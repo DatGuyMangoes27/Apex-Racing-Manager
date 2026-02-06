@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base resets and global styles */
+@layer base {
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    @apply text-text-primary;
+    background-color: var(--color-background);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen overflow-hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Allow fixed backgrounds to show through */
+  .bg-transparent-gradient {
+    background: linear-gradient(to bottom, transparent, var(--color-background));
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-secondary rounded-full;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-muted;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-accent-red/30 text-white;
+  }
+}
+
+/* Component layer for reusable patterns */
+@layer components {
+  /* Glass effect cards */
+  .glass-card {
+    @apply bg-surface/80 backdrop-blur-xl border border-surface-border rounded-xl;
+  }
+
+  /* Racing stripe accent */
+  .racing-stripe {
+    @apply relative overflow-hidden;
+  }
+  
+  .racing-stripe::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-accent-red;
+  }
+
+  /* Glow effects */
+  .glow-red {
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3), 0 0 40px rgba(225, 6, 0, 0.1);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(255, 128, 0, 0.3), 0 0 40px rgba(255, 128, 0, 0.1);
+  }
+
+  /* Stat bars */
+  .stat-bar {
+    @apply h-2 bg-surface-secondary rounded-full overflow-hidden;
+  }
+
+  .stat-bar-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Data tables */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply text-left text-text-secondary font-medium text-sm py-3 px-4 border-b border-surface-border;
+  }
+
+  .data-table td {
+    @apply py-3 px-4 border-b border-surface-border/50;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-surface/50;
+  }
+
+  /* Position badges */
+  .position-badge {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-lg font-display font-bold text-sm;
+  }
+
+  .position-1 {
+    @apply bg-gradient-to-br from-yellow-400 to-yellow-600 text-black;
+  }
+
+  .position-2 {
+    @apply bg-gradient-to-br from-gray-300 to-gray-400 text-black;
+  }
+
+  .position-3 {
+    @apply bg-gradient-to-br from-orange-400 to-orange-600 text-black;
+  }
+
+  /* Title styles */
+  .title-display {
+    @apply font-display font-bold tracking-wide uppercase;
+  }
+
+  .title-section {
+    @apply font-display font-semibold text-xl tracking-wide;
+  }
+}
+
+/* Utility layer for custom utilities */
+@layer utilities {
+  /* Text gradients */
+  .text-gradient-racing {
+    @apply bg-gradient-to-r from-accent-red to-accent-orange bg-clip-text text-transparent;
+  }
+
+  /* Animate on scroll helpers */
+  .animate-on-view {
+    @apply opacity-0 translate-y-4 transition-all duration-500;
+  }
+
+  .animate-on-view.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Grid patterns */
+  .grid-dots {
+    background-image: radial-gradient(circle, #2A2A2E 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+
+  /* No drag for images */
+  .no-drag {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Video background container */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 15, 0.7) 0%,
+    rgba(13, 13, 15, 0.85) 50%,
+    rgba(13, 13, 15, 0.95) 100%
+  );
+}
+
+/* Window draggable region */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag-region {
+  -webkit-app-region: no-drag;
+}
+
+
+
+
+
+
+
+
+
+

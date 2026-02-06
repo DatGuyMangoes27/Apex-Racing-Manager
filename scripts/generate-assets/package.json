@@ -1,0 +1,26 @@
+{
+  "name": "career-mod-asset-generator",
+  "version": "2.0.0",
+  "description": "AI-powered asset generator for Career Mod using Gemini API - Parallel Edition",
+  "type": "module",
+  "scripts": {
+    "generate:all": "node run-all-parallel.js",
+    "generate:parallel": "node run-all-parallel.js",
+    "gen1": "node generators/gen1-drivers-batch1.js",
+    "gen2": "node generators/gen2-drivers-batch2.js",
+    "gen3": "node generators/gen3-drivers-batch3.js",
+    "gen4": "node generators/gen4-personal-life.js",
+    "gen5": "node generators/gen5-staff-business.js",
+    "gen6": "node generators/gen6-venues-ui.js",
+    "test:data": "node test-data-reader.js",
+    "test:api": "node test-api.js"
+  },
+  "dependencies": {
+    "@google/genai": "^0.9.0",
+    "dotenv": "^16.4.0",
+    "commander": "^12.0.0",
+    "ora": "^8.0.0",
+    "chalk": "^5.3.0",
+    "sharp": "^0.33.0"
+  }
+}
