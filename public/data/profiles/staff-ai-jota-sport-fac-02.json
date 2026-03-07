@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 46,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jean-Pierre discovered his passion for motorsport at a young age, tinkering with go-karts in his family's garage outside Montreal. After graduating from a technical college with a specialization in composite materials, he landed his first job with a local racing team, gaining valuable experience in fabrication and repair. A decade later, he moved to Europe, seeking higher competition and broader opportunities. \n\nJean-Pierre is known for his meticulous approach to composite work. He believes in precision and thoroughness, ensuring every component meets the highest standards of quality and performance. His ability to adapt to different materials and manufacturing processes has made him an asset to several teams. Joining JOTA Sport presents a new challenge, and he's eager to contribute his expertise to their success.\n\nWhat sets Jean-Pierre apart is his calm demeanor under pressure. Even during the most intense race weekends, he remains focused and composed, providing a steady hand in the garage. This, combined with his extensive technical knowledge, makes him a highly valued member of any motorsport team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Jean-Pierre is of average height, with a sturdy build and a kind face."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down technical observations.",
+    "Has a habit of humming quietly while working on intricate composite repairs.",
+    "Insists on using a specific brand of carbon fiber resin."
+  ]
+}

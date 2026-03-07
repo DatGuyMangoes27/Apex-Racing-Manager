@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas",
+  "nationality": "Colombian",
+  "age": 57,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Sofia Vargas's journey in motorsport began unexpectedly. While studying engineering at the National University of Colombia, she volunteered at a local racing team as a data analyst. Her knack for understanding complex systems and identifying performance bottlenecks quickly led to a full-time position. Over the years, she worked her way up, gaining experience in various technical and managerial roles within South American racing series before joining Reiza Studios Factory. \n\nAs a sporting director, Sofia is known for her pragmatic approach. She prioritizes data-driven decision-making and focuses on optimizing team performance through meticulous planning and resource allocation. Her experience has taught her the importance of clear communication and fostering a collaborative environment where every team member feels valued and empowered. Sofia's reputation for level-headedness and strategic thinking makes her a valuable asset in high-pressure situations.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Shoulder-length, neatly styled in a low bun",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "A woman of medium build with a composed demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on a daily team debriefing, no matter how brief.",
+    "Prefers to communicate via email, even when in the same room."
+  ]
+}

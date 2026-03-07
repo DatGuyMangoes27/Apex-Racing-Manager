@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0393",
+  "name": "Credinvest Suisse",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Switzerland",
+  "description": "Securing your future, accelerating your success.",
+  "story": "Credinvest Suisse has a long history of supporting Swiss innovation and excellence. Motorsport, with its blend of precision engineering and daring ambition, perfectly aligns with our values. We seek partnerships that reflect our commitment to high performance and global reach, and we value brand alignment with teams that demonstrate integrity and a drive to be the best.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 65000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0393.png"
+}

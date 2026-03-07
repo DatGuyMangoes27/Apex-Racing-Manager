@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Katsaros",
+  "nationality": "Greek",
+  "age": 41,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Dimitrios Katsaros' journey into motorsport began unexpectedly, fueled by a childhood fascination with the precision and engineering behind rally racing in the mountains of Greece. He started as a data analyst for a small Greek racing team, quickly proving his aptitude for interpreting complex telemetry and providing actionable insights. Dimitrios transitioned into test driver coordination, leveraging his technical acumen and organizational skills to optimize testing schedules and ensure comprehensive data collection. His meticulous approach and big-picture thinking have made him a valuable asset. \n\nAt Team Penske, Dimitrios focuses on streamlining the testing process, ensuring that every session provides maximum value to the race team. He is known for his ability to identify potential issues before they arise, and his dedication to pushing the boundaries of performance through rigorous testing. Dimitrios' visionary perspective, coupled with his perfectionist tendencies, allows him to see the interconnectedness of various testing components, providing a holistic approach to vehicle development.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Dimitrios has a sturdy build and a focused gaze, reflecting his analytical mind."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with engineering diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using metric units for all measurements."
+  ]
+}

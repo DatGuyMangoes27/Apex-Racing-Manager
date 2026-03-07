@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 47,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jean-Pierre's journey into motorsport began unexpectedly. After years managing a small, family-owned restaurant in Geneva, a chance encounter with a Hot Racing Team engineer led to a proposition: revamp the team's catering to improve morale and performance. Initially hesitant, Jean-Pierre embraced the challenge, bringing his meticulous Swiss approach to organization and quality to the paddock. His philosophy centers on providing nutritious, satisfying meals that cater to the specific dietary needs of the drivers and crew, understanding that peak performance demands peak fuel.\n\nJean-Pierre's unwavering commitment to quality ingredients and his ability to adapt to the logistical challenges of a traveling motorsport team sets him apart. He takes pride in sourcing local ingredients whenever possible, even in far-flung locations, and his insistence on proper hygiene and food safety standards is legendary within the Hot Racing Team. He's more than just a caterer; he's a vital part of the team's support structure, ensuring everyone is well-fed and ready to perform.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back, with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of medium build, with a warm smile and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Insists on using only Swiss-made knives in the kitchen.",
+    "Always carries a small notebook to jot down meal ideas and ingredient lists.",
+    "Starts every morning with a strong espresso, meticulously prepared."
+  ]
+}

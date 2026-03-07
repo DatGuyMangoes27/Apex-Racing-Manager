@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Kovačić",
+  "nationality": "Croatian",
+  "age": 31,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Mateo's journey into motorsport began with a childhood fascination for electronics, fueled by his father's work as an electrician. He excelled in his studies, earning a degree in electrical engineering from the University of Zagreb before interning with a local rally team. His exceptional problem-solving skills and dedication quickly caught the attention of Mercedes-AMG, where he joined the team five years ago. \n\nMateo approaches his role with a methodical and data-driven mindset, always seeking to optimize the car's electronic systems for peak performance. His pragmatic nature ensures that he remains grounded and focused, even under immense pressure. He's known for his ability to quickly diagnose and resolve complex electrical issues, making him a valuable asset to the team's engineering efforts.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mateo is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Prefers working late at night when the garage is quiet."
+  ]
+}

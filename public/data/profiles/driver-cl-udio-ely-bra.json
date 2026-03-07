@@ -1,0 +1,27 @@
+{
+  "biography": "Cláudio Ely, a name whispered with a mix of respect and apprehension in Brazilian racing circles, hails from the vibrant favelas of Rio de Janeiro. His journey began not on asphalt, but on the chaotic, makeshift dirt tracks carved into the hillsides, where he honed his skills dodging stray dogs and navigating treacherous terrain in a battered go-kart his father, a former mechanic, pieced together. One sweltering afternoon, during a local karting event, a talent scout from Gol HC witnessed Cláudio's raw talent and reckless abandon, immediately offering him a spot in their development program. His aggressive driving style and uncanny ability to extract every last ounce of performance from his machine quickly set him apart. While some see him as a future champion, others question his temperament, recalling the infamous incident at Interlagos where he punted a rival off the track on the final lap, a move that cost him the race and earned him a stern warning from the stewards. Currently, Cláudio is fighting for a spot in the national championship, aiming to prove he can channel his aggression into consistent, winning performances.",
+  "drivingStyle": "Cláudio's driving style is a high-risk, high-reward approach characterized by late braking, aggressive overtaking maneuvers, and a relentless pursuit of speed. He thrives in wet conditions, where his ability to read the changing grip levels gives him a distinct advantage. Tire management isn't his forte; he tends to overdrive the car early in the race, sacrificing long-term pace for immediate gains. Under pressure, Cláudio either cracks, making uncharacteristic mistakes, or elevates his game to another level, pulling off seemingly impossible feats of car control and bravery. His 'no fear' attitude frequently pushes the limits of both his car and his competitors.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Vargas",
+      "reason": "A long-standing rivalry stemming from a controversial collision in their karting days. Vargas represents the 'old guard' of calculated racing, directly contrasting Cláudio's wild style."
+    },
+    {
+      "driver": "Isabela Flores",
+      "reason": "A fierce on-track battle for position at a recent race resulted in heated words and accusations of blocking, escalating into a personal feud."
+    },
+    {
+      "driver": "Mateus Oliveira",
+      "reason": "Oliveira is Cláudio's teammate at Gol HC, their rivalry is a friendly, but intense competition to prove who is the fastest within the team."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded wristband his father gave him before every race.",
+    "Listens to a specific Brazilian funk song on repeat in the hour leading up to the start.",
+    "Refuses to start a race if the car's tires haven't been personally inspected by him."
+  ],
+  "nickname": "The Carioca Comet",
+  "famousQuote": "\"Second place is just the first loser. I race to win, no matter the cost.\"",
+  "careerHighlight": "Winning the Rio de Janeiro State Karting Championship at the age of 16, a victory that paved the way for his professional racing career.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Interlagos Grand Prix, costing him not only the race but also a valuable championship point."
+}

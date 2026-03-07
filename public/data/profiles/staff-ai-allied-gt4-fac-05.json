@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 42,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport began unexpectedly, fueled by a childhood fascination with the intricate mechanics of his grandfather's vintage Citroen. After earning a degree in engineering, he initially worked in the aerospace industry, developing a meticulous eye for detail and an unwavering commitment to precision. However, the roar of the racetrack proved too alluring, and he transitioned to motorsport, bringing his rigorous standards to bear on quality control.\n\nAt Allied Racing, Jean-Pierre is known for his relentless pursuit of perfection. He believes that even the smallest imperfection can have catastrophic consequences on the track, and he approaches every inspection with an almost obsessive focus. His exacting standards can be demanding, but his colleagues respect his expertise and recognize his unwavering dedication to ensuring the team's success. He prides himself on catching errors before they become problems, saving valuable time and resources.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is a man of average height with a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect parts.",
+    "Insists on using a specific brand of French coffee in the workshop.",
+    "Has a habit of tapping his pen rhythmically when reviewing technical documents."
+  ]
+}

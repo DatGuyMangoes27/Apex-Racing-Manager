@@ -1,0 +1,22 @@
+{
+  "name": "Andreas Gruber",
+  "nationality": "Austrian",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Andreas' motorsport obsession began dismantling and rebuilding his father's moped engine in their small alpine village. This early tinkering led to a degree in mechanical engineering from Graz University of Technology, specializing in advanced materials and computational fluid dynamics. His professional career started at a small Austrian racing outfit before catching the eye of Brad Jones Racing, who recognized his potential and recruited him. \n\nAndreas is known for his meticulous approach to problem-solving. He believes in data-driven decisions and spends countless hours analyzing telemetry and simulations to optimize car performance. While demanding of his team, he fosters a culture of continuous improvement and relentless pursuit of marginal gains. What sets Andreas apart is his uncanny ability to identify subtle aerodynamic inefficiencies that others often miss, a skill honed by years of studying airflow patterns in the mountains.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Andreas is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a precisely calibrated cup of strong black coffee every morning before starting work."
+  ]
+}

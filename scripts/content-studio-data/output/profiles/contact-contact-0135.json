@@ -1,0 +1,31 @@
+{
+  "name": "Greta Gruber",
+  "nationality": "Austrian",
+  "age": 46,
+  "gender": "female",
+  "contactType": "musician",
+  "bio": "Greta Gruber is a renowned Austrian violinist and composer, celebrated for her avant-garde interpretations of classical pieces and her experimental electronic soundscapes. A child prodigy, she quickly ascended the ranks of the classical music world before branching out into more unconventional genres, collaborating with DJs and visual artists alike. Her optimistic, if somewhat unreliable, nature often leads to spontaneous performances and last-minute changes of plans, but her passionate dedication to her art is undeniable.\n\nWhile seemingly removed from the world of motorsport, Greta has a surprising connection: her younger brother, Franz, is a moderately successful Formula 3 driver. She attends races occasionally, often as a guest of honor in team hospitality suites. Furthermore, she's been commissioned to compose theme music for several racing events, bringing her vibrant musical style to a wider audience, including motorsport enthusiasts.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often pulled back in a messy bun",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Greta has a striking, almost ethereal look, with high cheekbones and a mischievous glint in her eyes. She favors bohemian-chic clothing with a touch of avant-garde flair."
+  },
+  "connectionToMotorsport": "Greta's younger brother is a Formula 3 driver, and she has composed music for racing events, giving her a foot in the door of the motorsport world.",
+  "meetingContext": "You might meet Greta at a Formula 3 race supporting her brother, or at a concert/charity event where she's performing or making an appearance.",
+  "conversationTopics": [
+    "The intersection of music and emotion",
+    "Her brother's racing career",
+    "Surfing in Portugal",
+    "Her latest composition",
+    "The merits of classical music versus electronic music"
+  ],
+  "canHelp": [
+    "Offer connections within the Austrian arts and entertainment scene",
+    "Introduce the player to potential sponsors who appreciate the arts",
+    "Offer a motivational boost with her optimistic outlook"
+  ],
+  "personality_summary": "A passionate and optimistic musician who's brilliant but also a bit unreliable."
+}

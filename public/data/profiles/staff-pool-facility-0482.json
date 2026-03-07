@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Sofia Ramirez",
+    "nationality": "Mexican",
+    "age": 45,
+    "gender": "female",
+    "role": "machinist",
+    "bio": "Sofia Ramirez discovered her passion for motorsport while helping her father in his auto repair shop in Guadalajara. Initially drawn to the intricate mechanics of everyday vehicles, she quickly became fascinated by the high-performance engineering of racing cars. After earning a degree in mechanical engineering, Sofia dedicated herself to mastering the art of precision machining, quickly gaining a reputation for her meticulous attention to detail. She's worked with multiple teams, enhancing chassis and engine components, always striving for optimal performance. \n\nSofia approaches her work with unwavering commitment and an insatiable thirst for knowledge. She believes in continuous improvement, constantly seeking out new technologies and techniques to refine her craft. Her ambition lies not only in achieving technical excellence, but also in mentoring the next generation of machinists, fostering a culture of innovation and precision within her team. Her perfectionist nature ensures that every component meets the highest standards, contributing to the overall success of the racing team.\n\nWhat truly sets Sofia apart is her ability to blend traditional machining techniques with modern technology, resulting in innovative solutions that push the boundaries of performance. She also has a knack for quickly identifying and resolving mechanical issues, which makes her an invaluable asset in the fast-paced world of motorsport.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark brown",
+      "hairStyle": "Shoulder-length, wavy hair, often pulled back in a practical braid",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "A strong, athletic build with a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always has a small cup of strong coffee nearby.",
+      "Meticulously cleans her tools after each use, regardless of how busy she is.",
+      "Has a habit of humming quietly while working on complex parts."
+    ]
+  }
+]

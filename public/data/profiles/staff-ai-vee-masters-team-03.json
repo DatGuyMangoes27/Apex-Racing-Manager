@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's passion for motorsport ignited during his youth, captivated by the roaring engines and aerodynamic designs of Formula 1 cars. He pursued a degree in aerospace engineering at the Universidad Nacional de Ingeniería, where he excelled in fluid dynamics and composite materials. His early career involved working on drone design, but he quickly transitioned to motorsport, initially as a junior aerodynamicist for a small racing team. \n\nHe's a firm believer in a holistic approach to aerodynamics, emphasizing the importance of wind tunnel testing, CFD simulations, and track data analysis. Ricardo’s known for his calm demeanor under pressure and his ability to find innovative solutions to complex aerodynamic challenges. His creative problem-solving and talent for thinking outside the box has resulted in several key aerodynamic improvements for past teams. Ricardo joined Vee Masters, seeing a chance to bring his experience and skills to a team with significant potential.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is a man of average height with a kind face and a slightly weathered look."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to listen to traditional Peruvian music while working on complex simulations."
+  ]
+}

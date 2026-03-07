@@ -1,0 +1,61 @@
+{
+  "history": "The Circuito de Jerez – Ángel Nieto, inaugurated in 1985, quickly established itself as a cornerstone of Spanish motorsport. While primarily known for its Grand Prix layout, which hosts MotoGP and other international championships, the Historic layout offers a glimpse into the circuit's earlier years. This configuration, slightly shorter than the modern GP track, retains the essence of Jerez's challenging nature. Although specific races dedicated solely to the Historic layout are less frequent than those on the GP configuration, it is often used for classic car events and historic racing series, providing a stage for vintage machines to showcase their capabilities. The circuit has been pivotal in developing Spanish motorsport talent and fostering a deep-rooted racing culture in the Andalusian region.",
+  "atmosphere": "Standing on the grassy banks near Sito Pons corner during a historic racing event on the Historic layout is like stepping back in time. The air crackles with the raw energy of classic engines, their distinctive roars echoing off the grandstands. The smell of burning oil and high-octane fuel hangs heavy in the air, a nostalgic perfume for any motorsport enthusiast. The passionate Spanish crowd, ever enthusiastic, cheers on their favorite drivers and machines, creating a vibrant and authentic racing experience.",
+  "trackCharacter": "The Historic layout at Jerez is a flowing and technical circuit that demands precision and commitment. Its blend of fast sweepers and tight corners rewards drivers who can carry momentum and maintain a consistent rhythm. Unlike the modern GP layout, which incorporates more recent modifications, the Historic configuration retains a more old-school feel, with less run-off and a greater emphasis on driver skill. The track's undulating nature and the absence of certain braking zones found on the GP layout create a unique driving challenge, forcing drivers to adapt their techniques and find the optimal balance between speed and control.",
+  "nickname": "The Andalusian Flow",
+  "famousCorners": [
+    {
+      "name": "Curva 1 (Expo '92)",
+      "description": "The first corner after the start/finish line, a deceptively fast right-hander.",
+      "challenge": "Carrying enough speed while maintaining a tight line to set up for the next sequence."
+    },
+    {
+      "name": "Dry Sack",
+      "description": "A medium-speed, slightly banked right-hand corner.",
+      "challenge": "Maintaining momentum and finding the optimal apex to maximize exit speed."
+    },
+    {
+      "name": "Sito Pons",
+      "description": "A quick left-right chicane that requires precise placement.",
+      "challenge": "Maintaining balance and avoiding unsettling the car through the fast changes in direction."
+    },
+    {
+      "name": "Curva Angel Nieto",
+      "description": "A medium-speed hairpin corner that leads onto the back straight.",
+      "challenge": "Nailing the braking point and maximizing traction on exit for a good run down the straight."
+    },
+    {
+      "name": "Peluqui",
+      "description": "A decreasing radius corner, requiring good car balance and precision.",
+      "challenge": "Difficult to judge the entry speed, with a late apex required to avoid running wide on exit."
+    }
+  ],
+  "keyFactors": [
+    "Momentum",
+    "Braking precision",
+    "Traction out of slow corners",
+    "Car balance through the Sito Pons chicane",
+    "Consistent lap times"
+  ],
+  "overtakingSpots": [
+    "Into Curva Angel Nieto after the back straight",
+    "Into Dry Sack, if a driver gets a good run out of Curva 1",
+    "Into the final corner, if the car ahead is struggling for traction"
+  ],
+  "historySnippets": [
+    "Jerez hosted its first Formula 1 race in 1986.",
+    "The circuit is named in honor of Spanish motorcycling legend Ángel Nieto.",
+    "Jerez is a favorite testing venue for many racing teams.",
+    "The iconic grandstands offer fantastic views of the circuit.",
+    "The Historic layout emphasizes the original character of the circuit.",
+    "The circuit is located near the sherry-producing region of Spain."
+  ],
+  "weatherNotes": "Jerez enjoys a typically Mediterranean climate, with hot, dry summers and mild, wet winters. During race weekends, high track temperatures can be a significant factor, affecting tire wear and grip levels. Sudden rain showers can also occur, particularly in the spring and autumn, making tire strategy crucial.",
+  "drivingAdvice": "On the Historic layout, maintaining momentum is crucial. Avoid aggressive braking and focus on smooth inputs to carry speed through the corners. The Sito Pons chicane is a key section where time can be gained or lost, so practice finding the optimal line. Pay attention to tire management, as the abrasive surface can lead to degradation, especially in warmer conditions.",
+  "famousRaces": [
+    "1986 Spanish Grand Prix: Nigel Mansell's thrilling victory over Ayrton Senna by just 0.014 seconds.",
+    "1997 European Grand Prix: Michael Schumacher collided with Jacques Villeneuve while leading, resulting in Schumacher's disqualification from the championship.",
+    "Numerous MotoGP races: The circuit has been a staple on the MotoGP calendar, witnessing countless exciting battles and memorable moments."
+  ],
+  "localCulture": "Jerez de la Frontera is famous for its sherry production, flamenco dancing, and equestrian traditions. The city's historic center is a UNESCO World Heritage Site, boasting stunning architecture and vibrant culture. The paddock atmosphere is always lively, with passionate fans eager to engage with the teams and drivers. Local cuisine includes tapas, seafood, and, of course, plenty of sherry."
+}

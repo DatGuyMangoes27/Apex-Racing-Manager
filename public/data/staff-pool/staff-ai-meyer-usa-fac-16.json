@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Dlamini",
+  "nationality": "South African",
+  "age": 36,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Thabo's culinary journey began in the vibrant kitchens of Durban, where he honed his skills in traditional South African cuisine. A chance encounter with a motorsport team passing through sparked an unexpected passion. He saw an opportunity to blend his love for food with the fast-paced world of racing, ensuring that the team's nutritional needs were met with both flavor and efficiency. Thabo's approach to catering goes beyond simply providing meals; he believes that quality food fuels peak performance, both physically and mentally.\n\nHe joined Meyer Shank Racing after a stint at a smaller IndyCar team, quickly establishing himself as a vital part of the support crew. His insistence on using fresh, local ingredients and his creative menu planning set him apart. Thabo's dedication to providing personalized meals for each team member, catering to their specific dietary requirements and preferences, has earned him the respect and appreciation of the entire team.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed Afro",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Thabo is a stocky man with a warm, inviting smile that never seems to fade."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only South African-grown spices.",
+    "Always has a small notebook to jot down meal ideas based on team members' feedback.",
+    "Refers to the kitchen as his 'culinary cockpit'."
+  ]
+}

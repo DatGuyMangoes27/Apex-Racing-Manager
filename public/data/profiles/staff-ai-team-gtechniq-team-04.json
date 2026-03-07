@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began in his teens, tinkering with snowmobiles in rural Quebec. This hands-on experience fueled a passion for understanding how things worked, leading him to pursue mechanical engineering. After graduating, he started his career in a small IndyCar team, where he quickly proved his aptitude for race engineering. He's known for his calm demeanor under pressure and his ability to quickly diagnose and resolve mechanical issues. \n\nJean-Pierre brings a flexible and collaborative approach to his work. He believes in empowering the mechanics and fostering open communication within the team. While he's not the most radical innovator, his methodical approach and reliability make him a valuable asset, particularly in high-pressure race situations. He thrives on the challenge of optimizing car performance through careful analysis and incremental improvements.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "He has a kind face with deep lines around his eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against his teeth when concentrating.",
+    "Prefers to communicate face-to-face rather than through email."
+  ]
+}

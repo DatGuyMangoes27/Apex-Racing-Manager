@@ -1,0 +1,22 @@
+{
+  "name": "Angus McMillan",
+  "nationality": "Australian",
+  "age": 42,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Angus McMillan's journey into motorsport began not on the track, but in the data. Armed with a degree in mechanical engineering and a keen eye for detail, he started his career analyzing telemetry for a small Australian racing team. His knack for identifying crucial performance gains from seemingly insignificant data points quickly caught the attention of larger teams. Angus's strategic approach is characterized by a relentless pursuit of optimal performance through data-driven decision-making. \n\nHe favors a minimalist approach, focusing on squeezing every last drop of performance from existing resources before advocating for costly upgrades. While some may see him as overly cautious, Angus believes that consistent, incremental improvements are the key to long-term success in the high-pressure world of Formula 1. His analytical prowess and unwavering commitment to efficiency have earned him a reputation as a valuable asset to any team.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "hazel",
+    "facialHair": "short boxed beard",
+    "description": "Angus is a man of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking Earl Grey tea at precisely 10:00 AM every morning."
+  ]
+}

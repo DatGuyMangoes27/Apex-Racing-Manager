@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 34,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Zoltán's journey into motorsport IT began unexpectedly. While studying computer science at the Budapest University of Technology and Economics, he volunteered at a local rally team, initially just fixing computers. His knack for troubleshooting and optimizing systems quickly became apparent, and he was soon managing the team's entire data infrastructure.\n\nBefore joining Chip Ganassi Racing, Zoltán spent several years honing his skills at a Formula 3 team, where he learned the intricacies of real-time data analysis and predictive modeling. He believes in a proactive approach to IT management, constantly seeking ways to improve system performance and prevent potential issues before they arise. His calm demeanor and ability to remain focused under pressure make him a valuable asset, especially during high-stakes race weekends. He's known for always having a backup plan, even for the most unlikely scenarios. \n\nZoltán's distinctive approach is integrating machine learning models into the team's IT infrastructure to predict potential system failures and optimize resource allocation.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Zoltán is of average height and build, with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks.",
+    "Has a collection of vintage computer components on his desk.",
+    "Prefers to communicate via email, even for urgent matters."
+  ]
+}

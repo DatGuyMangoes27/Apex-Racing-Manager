@@ -1,0 +1,22 @@
+{
+  "name": "Jana Novotná",
+  "nationality": "Czech",
+  "age": 50,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Jana's journey into motorsport was unconventional, starting with a physics degree and a fascination with telemetry data. She initially worked in aerospace, but the allure of applying her analytical skills to racing's intricate datasets proved too strong. After a stint with a smaller GT team, she found her niche at Manthey EMA, where she meticulously dissects performance data to identify marginal gains that can translate into crucial advantages on the track.\n\nHer approach is data-driven, focusing on identifying patterns and correlations that others might miss. Jana is known for her rigorous analysis and ability to translate complex information into actionable strategies for the engineers and drivers. While her exacting standards can be demanding, her commitment to precision and optimization makes her an invaluable asset to the team. Her experience across various racing disciplines gives her a unique perspective on car setup and driver performance analysis.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Jana has a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a lucky pen, which she claims enhances her analytical abilities.",
+    "Insists on using a specific, outdated spreadsheet program that she mastered years ago.",
+    "Frequently listens to classical music through noise-cancelling headphones while working."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 37,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's journey into motorsport began unconventionally. Growing up in Lima, he was fascinated not by racing itself, but by the intricate electrical systems powering everything from the starting lights to the telemetry equipment. He pursued electrical engineering at university, excelling in digital signal processing and control systems. After graduating, he joined a local engineering firm, but his heart remained with motorsport. He volunteered at local karting events, offering his expertise in data acquisition and analysis, eventually catching the attention of a junior Formula team looking for an electronics specialist.\n\nRicardo approaches his work with meticulous precision and a deep understanding of the interplay between electronic components and vehicle performance. He believes in constant optimization and is always seeking innovative solutions to improve data reliability and system efficiency. He's known for his ability to troubleshoot complex issues under pressure and his dedication to ensuring the team has a competitive edge through cutting-edge electronics. He stands out due to his experience with hybrid powertrains and using AI to predict failures.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed hair with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a lean build and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Has a habit of tapping his pen against his teeth when concentrating.",
+    "Insists on drinking mate from a traditional gourd during races."
+  ]
+}

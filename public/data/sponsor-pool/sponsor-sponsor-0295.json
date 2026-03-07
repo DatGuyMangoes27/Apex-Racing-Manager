@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0295",
+  "name": "Bodegas Rioja Sol",
+  "category": "local",
+  "tier": "mid",
+  "country": "Spain",
+  "description": "The taste of the Rioja sun in every bottle.",
+  "story": "Bodegas Rioja Sol is a family-owned winery deeply rooted in the Rioja region of Spain. They see motorsport as a perfect platform to showcase the passion and precision that goes into crafting their wines. They seek a partnership that reflects their commitment to excellence and their heritage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0295.png"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0300",
+  "name": "Northern Performance",
+  "category": "equipment",
+  "tier": "entry",
+  "country": "Canada",
+  "description": "Canadian-made performance racing parts for all levels of competition.",
+  "story": "Northern Performance was founded by a former race mechanic who saw a need for reliable and affordable racing components. We believe in supporting Canadian motorsport and helping drivers reach their full potential. We seek to partner with teams that share our values of hard work, dedication, and a commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15,
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0300.png"
+}

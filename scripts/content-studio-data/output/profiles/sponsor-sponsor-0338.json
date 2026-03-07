@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0338",
+  "name": "Petroli d'Oro",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "Italy",
+  "description": "The golden standard in performance fuels.",
+  "story": "Petroli d'Oro is a family-owned Italian oil and fuel producer with a history dating back to the golden age of Italian motorsports. We believe in supporting up-and-coming talent and are looking for a team that embodies the passion and dedication that drives our own success. We seek a partnership that can help us expand our brand recognition within the racing community.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0338.png"
+}

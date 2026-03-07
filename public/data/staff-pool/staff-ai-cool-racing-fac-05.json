@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Davies",
+  "nationality": "British",
+  "age": 22,
+  "gender": "female",
+  "role": "quality_control",
+  "bio": "Eleanor Davies, a rising star in motorsport quality control, hails from a small village in Oxfordshire. From a young age, she was fascinated by the intricate engineering of racing cars, spending hours poring over technical manuals and watching races with her father, a former mechanic. This early exposure ignited a passion that led her to pursue a degree in mechanical engineering, specializing in materials science.\n\nAfter graduating, Eleanor secured a coveted internship at Cool Racing, quickly impressing her colleagues with her meticulous attention to detail and proactive approach to problem-solving. She believes that quality control is not just about identifying defects, but about proactively preventing them through rigorous testing and continuous improvement. Her colleagues describe her as ambitious and unafraid to challenge conventional thinking, making her a valuable asset to the team. Eleanor has a knack for spotting the smallest inconsistencies, a trait that has already saved Cool Racing from several potential setbacks.\n\nEleanor's ambition extends beyond just her technical skills; she is determined to become a leader in the field, driving innovation and setting new standards for quality in motorsport. Her ability to see the big picture, combined with her meticulous nature, makes her a force to be reckoned with.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Eleanor is petite with freckles scattered across her nose and cheeks."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a peculiar habit of tapping her pen on the desk when concentrating.",
+    "Insists on performing a 'sanity check' on all critical components before sign-off."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Ramirez",
+  "nationality": "Chilean",
+  "age": 33,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mateo's fascination with motorsport began during his childhood, watching Formula 1 races with his grandfather. This passion led him to pursue a degree in mechanical engineering, specializing in aerodynamics. After graduating, he gained experience at a smaller racing team, where he quickly learned the intricacies of wind tunnel testing and data analysis.\n\nHe is known for his meticulous approach to data collection and his ability to identify subtle aerodynamic improvements. Mateo joined Iron Dames, drawn by their commitment to innovation and their supportive team environment. He is particularly adept at translating complex data into actionable recommendations for the engineers, making him a valuable asset in the team's pursuit of performance gains.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "He has a lean build and often wears glasses when reviewing data."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always brings a thermos of mate to work.",
+    "Taps his pen rhythmically when deep in thought.",
+    "Has a habit of sketching aerodynamic profiles on napkins during lunch."
+  ]
+}

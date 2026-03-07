@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Swiss",
+  "age": 49,
+  "gender": "female",
+  "contactType": "tech_entrepreneur",
+  "bio": "Isabelle Dubois is a self-made billionaire, the founder and CEO of 'QuantumLeap Technologies,' a company specializing in advanced AI and data analytics. Known for her sharp intellect and unconventional approach to problem-solving, Isabelle transformed QuantumLeap from a small startup into a global leader. She's a demanding but fair leader, respected for her vision and dry wit. Despite her demanding schedule, Isabelle finds time for her passions, including a surprising interest in motorsport. \n\nHer competitive spirit extends beyond the boardroom. She's a regular attendee at Formula 1 races, often hosting exclusive events in the paddock. A racing driver might cross paths with Isabelle at a high-profile race, perhaps through a mutual connection in the tech or luxury goods industries, or even at a charity event she sponsors.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, asymmetrical bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle possesses a commanding presence, enhanced by her sharp, intelligent gaze. She favors tailored suits and minimalist jewelry."
+  },
+  "connectionToMotorsport": "Isabelle is a passionate motorsport enthusiast and an occasional sponsor of smaller racing teams. She views motorsport as a testing ground for cutting-edge technologies, particularly in data analysis and performance optimization.",
+  "meetingContext": "The player could meet Isabelle at a Formula 1 after-party hosted by a luxury watch brand or through a mutual contact within a team's engineering department.",
+  "conversationTopics": [
+    "The future of AI",
+    "The application of data analytics in motorsport",
+    "Her passion for contemporary dance",
+    "The challenges of being a female leader in a male-dominated industry",
+    "The latest developments in electric vehicle technology"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors in the tech industry",
+    "Provide access to advanced data analytics tools and expertise",
+    "Offer mentorship and guidance on career management"
+  ],
+  "personality_summary": "A driven and insightful tech visionary with a surprising soft spot for motorsport."
+}

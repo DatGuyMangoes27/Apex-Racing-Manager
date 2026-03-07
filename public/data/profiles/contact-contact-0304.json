@@ -1,0 +1,31 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "American",
+  "age": 53,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Eleanor Vance is a Senior Vice President at a prestigious New York investment bank, specializing in high-net-worth individuals and corporate acquisitions. Known for her creative financial solutions and ambitious approach to deal-making, Eleanor has built a reputation for maximizing returns, even if it means employing a subtle, passive-aggressive negotiation style. Despite her demanding career, she finds time for her passions: supporting the arts, designing innovative spaces, and pushing her physical limits with marathon running. \n\nA racing driver might cross paths with Eleanor either as a potential client seeking investment advice or through her involvement in sponsoring motorsport events. She frequently entertains clients at high-profile events, including races, as a means to build relationships and secure deals. Additionally, her bank sometimes invests in racing teams or sponsors promising drivers, making her a key contact for those seeking financial backing.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Silver",
+    "hairStyle": "Short, layered bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eleanor is a woman of refined elegance, with a slender build and an air of quiet authority. She favors tailored business attire and understated jewelry."
+  },
+  "connectionToMotorsport": "Eleanor's bank occasionally sponsors motorsport events or invests in racing teams. She also uses races as opportunities for client entertainment and networking.",
+  "meetingContext": "The player might meet Eleanor at a charity gala hosted by a motorsport sponsor, or during a meeting to discuss potential sponsorship opportunities with her bank.",
+  "conversationTopics": [
+    "The latest Broadway productions",
+    "Architectural design trends",
+    "Her marathon training regimen",
+    "The philosophical implications of modern finance",
+    "The polo season in the Hamptons"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with her bank or associated companies",
+    "Connect the player with other high-net-worth individuals who might be interested in investing in their career",
+    "Provide financial planning and investment advice to manage their earnings effectively"
+  ],
+  "personality_summary": "A confident and ambitious banker with a subtle, passive-aggressive streak."
+}

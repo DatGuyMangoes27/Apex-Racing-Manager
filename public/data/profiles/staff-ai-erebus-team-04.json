@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Souza",
+  "nationality": "Brazilian",
+  "age": 36,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Rafael's motorsport journey began with a childhood fascination for Formula 1, fueled by the legendary Ayrton Senna. After graduating with a degree in mechanical engineering from the Universidade de São Paulo, he honed his skills in local Brazilian racing series, quickly earning a reputation for his sharp analytical abilities and innovative problem-solving. He joined Erebus Motorsport five years ago, initially focusing on data analysis before transitioning to a race engineer role. \n\nRafael is known for his meticulous approach to race preparation, spending countless hours analyzing telemetry data to optimize car setup and race strategy. He believes in a data-driven approach but also values the driver's feedback, fostering open communication to find the perfect balance. His demanding nature pushes the team to perform at their best, always striving for marginal gains that can make the difference between winning and losing. He's focused on continuous improvement, constantly studying the competition and searching for novel engineering solutions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed, slightly receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Rafael is a lean man with a focused gaze and a perpetually furrowed brow, suggesting deep concentration."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on having a perfectly organized pit wall station."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Annelies Vermeer",
+  "nationality": "Dutch",
+  "age": 51,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Annelies has always been fascinated by the intricate dance of electrons. From disassembling radios as a child to earning her degree in Electrical Engineering from Delft University of Technology, she's built a solid foundation. A chance encounter at a local karting event ignited her passion for motorsport, realizing the potential to apply her expertise to the high-stakes world of racing.\n\nWhile relatively new to professional motorsport, Annelies brings a meticulous and pragmatic approach to her work. She thrives on troubleshooting complex electrical systems and is eager to contribute to the team's performance through careful analysis and precise adjustments. Her focus is on mastering the fundamentals, ensuring reliability, and optimizing the car's electronic systems for peak performance. She's particularly interested in data acquisition and finding the marginal gains that can make a difference on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, practical bob, often tied back with a scarf",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A slender woman with a serious demeanor and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and calculations.",
+    "Has a habit of tapping her pen against her teeth when concentrating.",
+    "Insists on using specific brands of soldering equipment and components."
+  ]
+}

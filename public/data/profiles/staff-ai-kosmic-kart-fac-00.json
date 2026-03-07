@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 53,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jaroslav's journey into motorsport began unexpectedly during his mandatory military service, where he maintained the communication systems for armored vehicles. This technical foundation, coupled with an insatiable curiosity for racing, led him to pursue a career in simulator technology. He joined Kosmic Kart after a decade spent refining his skills at smaller racing outfits, drawn by the team's commitment to innovation and its vibrant atmosphere.\n\nAs a simulator engineer, Jaroslav believes in a data-driven approach to problem-solving. He meticulously analyzes driver feedback and telemetry, translating complex data into actionable insights for the team. He prides himself on his ability to quickly identify and troubleshoot issues within the simulator, ensuring that drivers have a realistic and effective training environment. His flexible attitude allows him to adapt quickly to changing priorities and work collaboratively with drivers and engineers alike.\n\nWhat sets Jaroslav apart is his hands-on approach; he's not afraid to get his hands dirty and will often be found tinkering with the hardware components of the simulator. His deep understanding of both the software and hardware aspects makes him an invaluable asset to the Kosmic Kart team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "Jaroslav is a man of average height with a sturdy build and a kind face, often seen wearing a slightly bemused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a habit of humming Czech folk songs while calibrating the simulator.",
+    "Prefers using physical notebooks over digital devices for note-taking."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ahmad bin Idris",
+  "nationality": "Malaysian",
+  "age": 24,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ahmad's fascination with motorsport began during his childhood, watching the Sepang International Circuit races with his father. He pursued vocational training in mechanical engineering, quickly developing a knack for precision machining. His early career involved working on local touring cars, where he honed his skills in fabrication and engine tuning. He's known for his rigorous standards and relentless pursuit of perfection in every component he crafts.\n\nHe believes that the smallest details can make the biggest difference on the track. Ahmad strives to push the boundaries of what's possible with the available technology. His demanding nature stems from a deep-seated desire to deliver the highest quality work, ensuring that the team's machinery performs flawlessly under pressure. He is eager to apply his skills to a top-tier racing team, contributing to their success through meticulous craftsmanship.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a slight fade",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Ahmad is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before starting any job, even if they are already sharp.",
+    "Insists on using a specific brand of cutting fluid for all machining operations.",
+    "Listens to traditional Malaysian music through headphones while working to maintain focus."
+  ]
+}

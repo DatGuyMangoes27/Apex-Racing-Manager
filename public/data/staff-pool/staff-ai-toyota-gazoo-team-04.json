@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Benavides",
+  "nationality": "Argentine",
+  "age": 55,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began in his youth, tinkering with engines in his grandfather's auto repair shop in Buenos Aires. He earned a degree in mechanical engineering from the Instituto Tecnológico de Buenos Aires and quickly found his way into the world of racing, starting with local touring car series. His knack for problem-solving and meticulous approach caught the eye of a Toyota Gazoo Racing scout, and he has been with the team for over a decade. \n\nRicardo is known for his pragmatic approach to race engineering. He believes in data-driven decisions and clear communication, prioritizing reliability and consistent performance over risky, high-reward strategies. He is respected for his ability to quickly diagnose and address mechanical issues, and his calm demeanor under pressure makes him a valuable asset during challenging races. He is particularly skilled in suspension tuning and aerodynamic optimization, consistently finding incremental improvements that contribute to overall car performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on using a traditional slide rule for quick estimations, despite having access to advanced software.",
+    "Has a lucky wrench that he polishes before every race."
+  ]
+}

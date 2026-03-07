@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0166",
+  "name": "Estancias del Sur",
+  "category": "local",
+  "tier": "elite",
+  "country": "Argentina",
+  "description": "Premium Argentine beef, from our pastures to your plate.",
+  "story": "Estancias del Sur represents Argentina's rich agricultural heritage. We believe in supporting local talent and showcasing the passion and precision that mirrors our own commitment to quality. Motorsport embodies the spirit of competition and excellence, aligning perfectly with our brand values. We seek a partnership that amplifies our brand presence and connects with discerning consumers.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0166.png"
+}

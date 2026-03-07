@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0045",
+  "name": "Adronix Systems",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Germany",
+  "description": "Precision engineered software and hardware solutions for the automotive industry.",
+  "story": "Adronix Systems is a leading German developer of advanced driver-assistance systems (ADAS) and vehicle control software. Motorsport provides a proving ground for their technology under extreme conditions, accelerating development and showcasing their capabilities. They seek a partnership that delivers both performance and valuable data insights for future product improvements.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0045.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 48,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ivan Horvat's journey into motorsport began with a childhood fascination for engines and a knack for understanding mechanical systems. He started as a mechanic, quickly rising through the ranks due to his meticulous attention to detail and problem-solving abilities. He honed his skills working on various racing series, from Formula 3 to GT racing, before transitioning into leadership roles. \n\nAs Technical Director, Ivan focuses on the bigger picture, ensuring every aspect of the car's performance is optimized and aligned with the team's goals. He's known for his methodical approach and his ability to calmly analyze data under pressure, making him a valuable asset in challenging situations. His innovative ideas have led to several key improvements in car setup and performance, setting him apart in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ivan is of average height with a strong build and a serious demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to communicate technical issues using hand gestures and analogies."
+  ]
+}

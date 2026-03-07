@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 42,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Mads discovered his passion for electronics at a young age, disassembling and reassembling radios and other devices. This led him to pursue a degree in electrical engineering, and he quickly found his way into the world of motorsport, drawn by the high-stakes environment and the constant need for innovation. He spent several years working in Formula racing before transitioning to rallycross, where he felt his skills could make a tangible difference to the team's performance.\n\nMads is a firm believer in methodical problem-solving and data-driven decision-making. He approaches every challenge with a calm and analytical mindset, meticulously analyzing sensor data and circuit diagrams to identify potential issues and optimize performance. He's particularly adept at tuning engine control units and managing the complex electrical systems that are now integral to modern rallycross cars.\n\nWhat distinguishes Mads is his ability to remain level-headed under pressure. In the heat of a race weekend, when tensions are high and time is short, he's the one who can always be relied upon to stay focused and find solutions. He is also known for his uncanny ability to diagnose electrical faults simply by listening to the engine.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blond",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mads is of average height, with a lean build and intense, focused eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even outside the garage",
+    "Has a habit of humming quietly while concentrating on complex circuits",
+    "Insists on drinking black coffee, no sugar, from the same thermal mug every day"
+  ]
+}

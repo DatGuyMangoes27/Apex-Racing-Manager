@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair MacLeod's journey into motorsport began with a childhood fascination for mechanics and a deep-seated love for speed. Growing up in the Scottish Highlands, he spent countless hours tinkering with engines, fueled by a desire to understand how things work. This passion led him to pursue a degree in Mechanical Engineering, after which he landed his first job at a small racing team.\n\nOver the years, Alistair honed his skills in various racing disciplines, from Formula Ford to GT racing, always striving to optimize performance and reliability. He firmly believes in a data-driven approach, using every available piece of information to improve the car. A pragmatic problem-solver, Alistair is known for his ability to stay calm under pressure and find innovative solutions to complex engineering challenges. He is highly regarded for his loyalty to the team.\n\nHis unwavering dedication to precision, combined with his methodical approach to problem-solving, makes him a highly valued member of any motorsport team. Alistair's ability to connect the technical to the practical is what makes him stand out, finding the sweet spot between innovation and reliability.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height, with a slightly weathered face that reflects years spent at the racetrack."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn, leather-bound notebook filled with technical diagrams and observations.",
+    "Has a habit of whistling old Scottish folk tunes when deep in thought.",
+    "Insists on having a cup of strong tea before every race."
+  ]
+}

@@ -625,47 +625,43 @@ export interface TeamSponsorPaymentTier {
   minTeamReputation: number
 }
 
-// Realistic team sponsorship values
-// Local = Small businesses, local dealers (~$30-300K/year)
-// Regional = Mid-size companies, regional brands (~$200K-900K/year)
-// National = Major national brands (~$600K-2.5M/year)
-// International = Multi-national corporations (~$2M-6M/year)
-// Global = Title sponsors, mega deals (~$5M-25M+/year for top teams)
+// Team sponsorship values tuned for slow-burn progression.
+// Goal: avoid early snowballing and make top-tier brand status a 10-15 year arc.
 export const TEAM_SPONSOR_TIERS: TeamSponsorPaymentTier[] = [
   {
     tier: 'local',
-    monthlyPaymentRange: { min: 2500, max: 25000 },       // $30-300K/year
-    winBonusRange: { min: 1500, max: 8000 },
-    podiumBonusRange: { min: 750, max: 4000 },
+    monthlyPaymentRange: { min: 1200, max: 9000 },        // $14K-108K/year
+    winBonusRange: { min: 500, max: 3500 },
+    podiumBonusRange: { min: 250, max: 1800 },
     minTeamReputation: 0
   },
   {
     tier: 'regional',
-    monthlyPaymentRange: { min: 18000, max: 75000 },      // $200-900K/year
-    winBonusRange: { min: 8000, max: 25000 },
-    podiumBonusRange: { min: 4000, max: 12500 },
-    minTeamReputation: 20
+    monthlyPaymentRange: { min: 6000, max: 24000 },       // $72K-288K/year
+    winBonusRange: { min: 2500, max: 10000 },
+    podiumBonusRange: { min: 1200, max: 5000 },
+    minTeamReputation: 35
   },
   {
     tier: 'national',
-    monthlyPaymentRange: { min: 50000, max: 210000 },     // $600K-2.5M/year
-    winBonusRange: { min: 20000, max: 65000 },
-    podiumBonusRange: { min: 10000, max: 35000 },
-    minTeamReputation: 40
+    monthlyPaymentRange: { min: 18000, max: 65000 },      // $216K-780K/year
+    winBonusRange: { min: 7000, max: 28000 },
+    podiumBonusRange: { min: 3500, max: 14000 },
+    minTeamReputation: 55
   },
   {
     tier: 'international',
-    monthlyPaymentRange: { min: 175000, max: 500000 },    // $2-6M/year
-    winBonusRange: { min: 55000, max: 150000 },
-    podiumBonusRange: { min: 27500, max: 75000 },
-    minTeamReputation: 60
+    monthlyPaymentRange: { min: 60000, max: 180000 },     // $720K-2.2M/year
+    winBonusRange: { min: 22000, max: 70000 },
+    podiumBonusRange: { min: 11000, max: 35000 },
+    minTeamReputation: 72
   },
   {
     tier: 'global',
-    monthlyPaymentRange: { min: 450000, max: 2500000 },   // $5.4-30M/year (title sponsors)
-    winBonusRange: { min: 125000, max: 600000 },
-    podiumBonusRange: { min: 62500, max: 300000 },
-    minTeamReputation: 80
+    monthlyPaymentRange: { min: 140000, max: 500000 },    // $1.7M-6M/year (top-tier only)
+    winBonusRange: { min: 50000, max: 180000 },
+    podiumBonusRange: { min: 25000, max: 90000 },
+    minTeamReputation: 88
   }
 ]
 
@@ -673,6 +669,29 @@ export function getTeamSponsorTierForReputation(reputation: number): TeamSponsor
   // Find highest tier the team qualifies for
   const eligible = TEAM_SPONSOR_TIERS.filter(t => reputation >= t.minTeamReputation)
   return eligible[eligible.length - 1] || TEAM_SPONSOR_TIERS[0]
+}
+
+export interface SponsorPortfolioCapBand {
+  maxReputation: number
+  weeklyCap: number
+}
+
+// Weekly cap bands to keep sponsor income growth in line with long-term progression.
+export const SPONSOR_WEEKLY_PORTFOLIO_CAPS: SponsorPortfolioCapBand[] = [
+  { maxReputation: 35, weeklyCap: 12000 },
+  { maxReputation: 45, weeklyCap: 22000 },
+  { maxReputation: 60, weeklyCap: 38000 },
+  { maxReputation: 75, weeklyCap: 70000 },
+  { maxReputation: 85, weeklyCap: 110000 },
+  { maxReputation: 100, weeklyCap: 180000 }
+]
+
+export function getSponsorWeeklyPortfolioCap(reputation: number): number {
+  const safeRep = Math.max(0, Math.min(100, reputation))
+  for (const band of SPONSOR_WEEKLY_PORTFOLIO_CAPS) {
+    if (safeRep <= band.maxReputation) return band.weeklyCap
+  }
+  return SPONSOR_WEEKLY_PORTFOLIO_CAPS[SPONSOR_WEEKLY_PORTFOLIO_CAPS.length - 1].weeklyCap
 }
 
 // ============================================

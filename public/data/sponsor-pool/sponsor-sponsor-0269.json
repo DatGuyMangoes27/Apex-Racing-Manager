@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0269",
+  "name": "Eichenwald Automatik",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "Austria",
+  "description": "Precision timepieces, crafted for the discerning individual.",
+  "story": "Eichenwald Automatik has always been driven by a passion for performance and precision, values deeply ingrained in motorsport. As a relatively new entrant to the luxury watch market, they seek to elevate their brand awareness and associate themselves with the thrill and prestige of racing. They believe a successful partnership will expose their timepieces to a sophisticated and performance-oriented audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 40000,
+      "winBonus": 15000,
+      "podiumBonus": 7500,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0269.png"
+}

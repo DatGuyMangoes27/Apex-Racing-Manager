@@ -1,0 +1,31 @@
+{
+  "name": "Erik Solberg",
+  "nationality": "Norwegian",
+  "age": 29,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Erik Solberg is a rising star in the Oslo legal scene, specializing in contract law and intellectual property, particularly within the sports and entertainment sectors. Fresh out of his postgraduate studies at the University of Oslo, he quickly made a name for himself by successfully representing several high-profile athletes in endorsement deals and contract negotiations. Erik’s empathetic nature often leads him to take on pro bono cases, reflecting his strong moral compass, but this is balanced by a reckless streak that occasionally manifests in impulsive decisions and a tendency to be overprotective of his clients. He has a deep appreciation for the finer things in life, cultivated through his privileged upbringing, and enjoys pursuing hobbies like polo, sailing, and art collecting in his free time.\n\nDespite not being a driver himself, Erik's connection to motorsport stems from his family's long-standing sponsorship of a local rally team. He’s become increasingly involved in handling the legal affairs of several young drivers and racing teams, navigating the complex world of sponsorship agreements, driver contracts, and image rights. A racing driver might cross paths with Erik when seeking legal representation for contract negotiations, sponsorship deals, or intellectual property protection related to their brand or image.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Neatly styled, with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Clean-shaven",
+    "description": "Erik is tall and athletic, with a confident posture. He dresses impeccably, favoring tailored suits and designer accessories."
+  },
+  "connectionToMotorsport": "Erik's family sponsors a rally team, and he provides legal services to young drivers and racing teams, specializing in contracts and sponsorship deals.",
+  "meetingContext": "The player might meet Erik at a motorsport industry networking event, or through a mutual contact within the racing community when seeking legal counsel.",
+  "conversationTopics": [
+    "The intricacies of contract law in motorsport",
+    "The latest developments in the art world",
+    "His recent sailing trip in the fjords",
+    "The history of Norwegian motorsport",
+    "Ethical considerations in sports sponsorships"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship and endorsement deals",
+    "Provide legal counsel on contract disputes",
+    "Offer insights into the business side of motorsport"
+  ],
+  "personality_summary": "An empathetic and optimistic lawyer who can be recklessly overprotective of his clients."
+}

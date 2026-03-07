@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 38,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Astrid's journey into motorsport began unconventionally, not on the track, but in the engineering labs of Trondheim University. After completing her degree in Mechanical Engineering, she initially worked on optimizing engine performance for commercial vehicles. However, the allure of speed and precision soon drew her towards racing. She started as a data analyst for a small rally team, quickly proving her ability to translate complex data into actionable improvements for the drivers.\n\nHer meticulous approach and keen eye for detail led to her current role as Test Driver Coordinator for Team WRT. Astrid excels at organizing rigorous testing schedules, ensuring drivers receive comprehensive feedback and that vehicle performance is constantly optimized. She's known for her ability to extract the maximum potential from each test session, pushing drivers and engineers alike to constantly improve. Astrid's combination of technical expertise and strong management skills make her an invaluable asset to the team. Her loyalty and drive are well known throughout the paddock.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Shoulder-length, often tied back in a practical braid during testing sessions.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a focused intensity in her blue eyes and a smattering of freckles across her nose."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with handwritten notes and observations.",
+    "Insists on drinking her coffee black and precisely at 10:00 AM and 3:00 PM, no exceptions.",
+    "Has a habit of tapping her pen rhythmically when deep in thought, which can be distracting."
+  ]
+}

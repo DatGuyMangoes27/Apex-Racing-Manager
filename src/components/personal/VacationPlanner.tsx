@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import type {
+import {
   Plane,
   MapPin,
   Calendar,
@@ -20,6 +20,25 @@ import type {
   Plus,
   ChevronRight
 } from 'lucide-react';
+import { Card, Badge, Button, Modal, Tabs, TabsList, TabsTrigger, TabsContent, CardHeader } from '@/components/ui'
+import { DESTINATIONS, VACATION_ACTIVITIES, createVacation } from '@/data/travel-config'
+import type { Destination, Vacation, VacationActivity } from '@/data/travel-config'
+
+const DESTINATION_ICONS: Record<string, React.ReactNode> = {
+  beach: <Palmtree className="w-5 h-5" />,
+  mountain: <Mountain className="w-5 h-5" />,
+  city: <Building2 className="w-5 h-5" />,
+  adventure: <Compass className="w-5 h-5" />,
+  cultural: <Camera className="w-5 h-5" />,
+  tropical: <Sun className="w-5 h-5" />,
+}
+
+const LUXURY_LABELS: Record<string, { label: string; color: string }> = {
+  budget: { label: 'Budget', color: 'bg-slate-500/20 text-slate-400' },
+  comfortable: { label: 'Comfortable', color: 'bg-green-500/20 text-green-400' },
+  luxury: { label: 'Luxury', color: 'bg-purple-500/20 text-purple-400' },
+  ultra_luxury: { label: 'Ultra Luxury', color: 'bg-yellow-500/20 text-yellow-400' },
+}
 
 const TIER_STYLES: Record<string, { label: string; color: string }> = {
   budget: { label: 'Budget', color: 'bg-slate-500' },

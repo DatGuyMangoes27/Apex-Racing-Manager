@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Argentine",
+  "age": 50,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Ricardo Mendoza's journey into motorsport started with a childhood fascination for classic cars. Growing up in Buenos Aires, he spent countless hours tinkering with his grandfather's old Ford Falcon, learning the ins and outs of automotive mechanics. This hands-on experience fueled his passion, leading him to pursue a degree in mechanical engineering. After graduating, Ricardo joined a local racing team, where he honed his fabrication skills, building and modifying race cars for regional competitions.\n\nRicardo is a pragmatic and meticulous fabricator, known for his ability to find practical solutions to complex engineering challenges. He believes in a collaborative approach, working closely with engineers and mechanics to ensure that every component meets the highest standards of performance and reliability. His experience with diverse racing disciplines gives him a unique perspective, allowing him to adapt quickly to new technologies and techniques. At Academy Motorsport, Ricardo's experience is invaluable for maintaining and improving the team's racing equipment.\n\nWhat sets Ricardo apart is his attention to detail and his ability to work under pressure. He thrives in the fast-paced environment of motorsport, always striving to deliver top-quality work within tight deadlines. His dedication and expertise make him a trusted member of the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed mustache",
+    "description": "Ricardo is a stocky man with calloused hands and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a habit of tapping his wrench against metal surfaces when thinking.",
+    "Prefers to listen to tango music while working in the garage."
+  ]
+}

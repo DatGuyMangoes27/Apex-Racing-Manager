@@ -1,0 +1,31 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 34,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Ivana Kovačić is a rising star at Adria Bank, known for her unconventional investment strategies and willingness to take calculated risks. After graduating from the Zagreb School of Economics and Management, she quickly climbed the corporate ladder, securing lucrative deals in emerging markets and earning a reputation as a shrewd negotiator. While her professional life is demanding, Ivana seeks thrill outside the office, enjoying activities like drone racing and challenging board games. \n\nAlthough Ivana's primary focus is finance, she recognizes the growing commercial appeal of motorsport, particularly in Eastern Europe. She is actively seeking investment opportunities in motorsport teams and related ventures, believing that the sport's passionate fanbase and potential for technological innovation make it a smart long-term bet. A racing driver seeking sponsorship or investment might cross paths with Ivana at exclusive networking events, motorsport industry conferences, or even through a mutual connection in the business world.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a high ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana has a striking presence with sharp features and an athletic build. She carries herself with confidence, usually dressed in tailored business attire with a touch of modern flair."
+  },
+  "connectionToMotorsport": "Ivana is interested in investing in motorsport teams and related technologies, viewing the sport as a lucrative business opportunity. She regularly attends motorsport events to scout talent and evaluate potential investments.",
+  "meetingContext": "The player might meet Ivana at a motorsport industry networking event or through an introduction from another business contact while seeking sponsorship for their racing team.",
+  "conversationTopics": [
+    "Emerging market investments",
+    "The future of drone technology",
+    "Equestrian sports",
+    "Strategic board games like Go and Chess",
+    "The commercial potential of motorsport in Eastern Europe"
+  ],
+  "canHelp": [
+    "Secure significant sponsorship deals",
+    "Provide financial advice and investment strategies",
+    "Connect the player with other potential investors and business partners"
+  ],
+  "personality_summary": "An adventurous and shrewd banker with a keen eye for opportunity and a passion for calculated risk."
+}

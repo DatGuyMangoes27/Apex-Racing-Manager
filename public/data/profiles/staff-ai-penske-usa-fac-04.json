@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 27,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ivan's fascination with motorsport began as a child, tinkering with go-karts in his small Croatian village. He pursued his passion through university, earning a degree in electrical engineering with a specialization in automotive systems. His break came when he impressed a Team Penske scout at a European racing event, leading to his current position. Ivan is known for his methodical approach to problem-solving and his ability to quickly adapt to new technologies. He thrives under pressure and is dedicated to optimizing every electronic component to maximize performance.\n\nHe sees his role as more than just fixing circuits; it's about understanding the intricate relationship between the car's electronics and the driver's performance. He spends hours analyzing telemetry data, searching for that elusive edge. What sets Ivan apart is his ability to bridge the gap between the engineering lab and the racetrack, translating complex data into actionable insights for the team. He is highly ambitious and wants to be known as the greatest electronics engineer ever.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed beard",
+    "description": "Ivan is of average height with a lean build and sharp, focused eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even when not working on the car.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Prefers to listen to classical music while analyzing data."
+  ]
+}

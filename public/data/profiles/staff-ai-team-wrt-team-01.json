@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Davies",
+  "nationality": "British",
+  "age": 29,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair's fascination with motorsport began dismantling and rebuilding lawnmower engines as a child. That early tinkering evolved into a passion for performance engineering. After graduating with honors in mechanical engineering, he quickly climbed the ranks at smaller racing outfits before landing a coveted position at Team WRT. Alistair believes in a data-driven approach, meticulously analyzing telemetry and driver feedback to squeeze every last millisecond out of the car. He's known for his calm demeanor under pressure, a trait that allows him to quickly diagnose and resolve complex mechanical issues during high-stakes races.\n\nWhile Alistair excels in technical problem-solving, his independent nature sometimes presents challenges in collaborative environments. He thrives when given autonomy to explore innovative solutions, often working late into the night to perfect his designs. Despite his occasional tendency to isolate himself, Alistair's dedication to the team's success is unwavering. He views each race as a personal challenge, constantly seeking ways to improve performance and push the boundaries of what's possible.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly cropped",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Alistair has a lean build and perpetually looks like he's just rolled out of bed."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, worn copy of a thermodynamics textbook.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a slide rule for initial calculations, despite having access to advanced software."
+  ]
+}

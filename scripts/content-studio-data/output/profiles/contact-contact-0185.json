@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Solberg",
+  "nationality": "Norwegian",
+  "age": 30,
+  "gender": "female",
+  "contactType": "celebrity",
+  "bio": "Astrid Solberg is a globally recognized snowboarder and lifestyle influencer, known for her gravity-defying stunts and meticulously curated online presence. While she lacks formal education, Astrid's self-taught business acumen has transformed her athletic prowess into a multi-million dollar brand, complete with endorsements, her own line of activewear, and partnerships with luxury coffee brands. Her optimistic and eccentric personality, coupled with a fierce competitive spirit, has earned her a dedicated following and solidified her position as a trendsetter. \n\nAstrid's connection to motorsport stems from her passion for speed and adrenaline, often attending Formula 1 races and sponsoring up-and-coming drivers through her various ventures. A driver might cross paths with her at a race event, through mutual sponsorships, or even at a high-end winter sporting event, given her love of both snow and speed. Despite her outward friendliness, Astrid can be quite manipulative, always assessing how others can benefit her brand. Her loyalty, however, is fierce for those who earn her respect and trust.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Platinum Blonde",
+    "hairStyle": "Long, flowing waves",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is tall and athletic, with a slender build honed by years of snowboarding. Her piercing blue eyes and platinum blonde hair make her instantly recognizable."
+  },
+  "connectionToMotorsport": "Astrid is a motorsport enthusiast who occasionally sponsors young drivers and attends major races. Her brand aligns with the high-performance lifestyle often associated with racing.",
+  "meetingContext": "The player might meet Astrid at a Formula 1 race in Monaco, in the VIP paddock, or at a charity event related to winter sports. They could also be introduced through a mutual sponsor.",
+  "conversationTopics": [
+    "The latest trends in extreme sports",
+    "Her coffee brand and its ethical sourcing practices",
+    "The architecture of modern ski resorts",
+    "The challenges of maintaining a personal brand in the digital age",
+    "Her philanthropic work with environmental organizations"
+  ],
+  "canHelp": [
+    "Provide significant sponsorship through her brand.",
+    "Offer media exposure through her substantial social media following.",
+    "Introduce the player to other wealthy individuals and potential investors."
+  ],
+  "personality_summary": "An optimistic and eccentric snowboarder and influencer with a competitive edge and a hint of manipulation."
+}

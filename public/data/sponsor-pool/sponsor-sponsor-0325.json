@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0325",
+  "name": "Monaco Estates International",
+  "category": "local",
+  "tier": "elite",
+  "country": "Monaco",
+  "description": "Luxury real estate, exclusively in Monaco.",
+  "story": "Monaco Estates International has long supported local sporting talent. As the premier real estate agency in Monaco, they believe in fostering excellence and are eager to partner with a rising motorsport star to enhance their brand image and connect with an international audience. They seek a partnership that reflects the prestige and sophistication of their brand.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "nationalities": [
+      "Monaco",
+      "France",
+      "Italy"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0325.png"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Tan Wei Liang",
+    "nationality": "Singaporean",
+    "age": 54,
+    "gender": "male",
+    "role": "performance_engineer",
+    "bio": "Tan Wei Liang's journey into motorsport began with a childhood fascination for tinkering with engines, a passion nurtured by his father's auto repair shop. He honed his skills through local racing circuits, gradually transitioning from amateur mechanic to a respected performance engineer. Wei Liang's meticulous approach and deep understanding of vehicle dynamics have earned him a reputation for optimizing car setups to extract every last ounce of performance.\n\nThroughout his career, Wei Liang has worked with a variety of racing teams, adapting his expertise to different chassis and engine configurations. His collaborative spirit and keen problem-solving abilities make him an invaluable asset in the pit lane. What sets him apart is his uncanny ability to diagnose subtle mechanical issues based solely on driver feedback and telemetry data, often leading to crucial adjustments that impact race outcomes.",
+    "physical": {
+      "skinTone": "olive",
+      "hairColor": "grey",
+      "hairStyle": "short, neatly combed back",
+      "eyeColor": "brown",
+      "facialHair": "thin mustache",
+      "description": "A man of average height, he has a focused gaze and the build of someone who spends long hours on his feet."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a worn-out torque wrench as a good luck charm.",
+      "Has an encyclopedic knowledge of classic racing cars and their technical specifications.",
+      "Insists on using a specific brand of duct tape for all repairs, believing it is superior to all others."
+    ]
+  }
+]

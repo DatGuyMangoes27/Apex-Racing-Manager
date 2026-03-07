@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0140",
+  "name": "Stjärnurmakarna",
+  "category": "watches",
+  "tier": "mid",
+  "country": "Sweden",
+  "description": "Swedish precision, timeless elegance.",
+  "story": "Stjärnurmakarna, a Swedish watchmaker renowned for blending traditional craftsmanship with innovative design, seeks to expand its global reach through motorsport. They believe in the dedication and precision required in racing mirrors their own commitment to horological excellence. A partnership with a successful team will elevate their brand image and resonate with a discerning, performance-oriented audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0140.png"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0250",
+  "name": "InnovTech Solutions",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Hungary",
+  "description": "Driving innovation through cutting-edge technology solutions.",
+  "story": "InnovTech Solutions is a Hungarian software development firm specializing in high-performance computing and data analytics. Motorsport provides a perfect testbed for their technology, pushing boundaries in real-time data processing and simulation. They seek a partnership to enhance brand visibility and gather valuable data to refine their software products.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0250.png"
+}

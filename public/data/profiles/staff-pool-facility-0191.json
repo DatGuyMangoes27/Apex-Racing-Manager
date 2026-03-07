@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Rhys Williams",
+    "nationality": "New Zealand",
+    "age": 26,
+    "gender": "male",
+    "role": "machinist",
+    "bio": "Rhys discovered his passion for motorsport early, spending his childhood weekends at the local speedway with his dad, a former stock car racer. He pursued a mechanical engineering degree, but found himself drawn more to the hands-on aspect of machining. After graduating, he took a role at a small engineering firm specializing in high-performance engine components, quickly mastering CNC milling and lathe operations. He's developed a reputation for precision and his ability to rapidly prototype custom parts, often exceeding expectations under tight deadlines. Rhys is known for his calm demeanor and meticulous approach, ensuring that every component meets the highest standards. \n\nHe is driven by a desire to improve performance, constantly looking for innovative ways to optimize existing designs. His blend of technical skill and creative problem-solving make him a valuable asset to any team. Rhys is now seeking an opportunity to contribute his expertise to a top-tier motorsport team where he can further develop his skills and play a role in achieving competitive success.",
+    "physical": {
+      "skinTone": "light tan",
+      "hairColor": "dark brown",
+      "hairStyle": "short, neatly trimmed with a slight wave",
+      "eyeColor": "hazel",
+      "facialHair": "short boxed beard",
+      "description": "Rhys is a lean man with a focused gaze and calloused hands."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small notebook for sketching design ideas.",
+      "Has a habit of humming quietly while concentrating on complex tasks.",
+      "Insists on using a specific type of Japanese steel for certain critical components."
+    ]
+  }
+]

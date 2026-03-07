@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0448",
+  "name": "PneuBras",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Brazil",
+  "description": "Brazilian-made tires for superior performance and durability.",
+  "story": "PneuBras has been crafting tires in Brazil for over 30 years, focusing on innovation and quality. They are expanding into motorsport to showcase the performance and reliability of their products on the world stage. They seek a partnership that highlights their engineering and commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0448.png"
+}

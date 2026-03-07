@@ -1,9 +1,35 @@
 import { useState, useMemo, useCallback } from 'react'
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, Clock, AlertTriangle, Plus, Percent, CheckCircle, X } from 'lucide-react';
-import { Card, CardHeader, Badge, Button, Progress } from '@/components/ui';
-import { useCareerStore } from '@/store/careerStore';
-import type { BankLoan } from '@/store/careerStore';
+import { DollarSign, TrendingUp, Clock, AlertTriangle, Plus, Percent, CheckCircle, X, CheckCircle2, Target, Landmark, CreditCard, Users, Wallet } from 'lucide-react';
+import { Card, CardHeader, Badge, Button, Progress, Modal, useToast, BankLogo } from '@/components/ui';
+import { getBankLogo } from '@/utils/generated-assets';
+import { useCareerStore, createDefaultExtendedFinancialState } from '@/store/careerStore';
+import type { BankLoan, LoansState, CreditLine, PrivateInvestor, TeamTransaction } from '@/store/careerStore';
+import type { TeamTier } from '@/store/rivalStore';
+import type { LoanApplicationResult, InvestorOfferResult, InvestorCounterOffer } from '@/simulation/finances/loans';
+import { applyForBankLoan, applyForCreditLine, generateInvestorOffer, drawFromCreditLine, repayToCreditLine, payOffLoanEarly, buyoutInvestor } from '@/simulation/finances/loans';
+import { BANK_LOAN_TERMS_BY_TIER, CREDIT_LINE_TERMS_BY_TIER, PRIVATE_INVESTOR_CONFIG_BY_TIER, calculateLoanWeeklyPayment } from '@/data/financial-extended-config';
+import { formatCurrency } from '@/data/financial-config';
+import { getActivityTimeCost } from '@/data/activity-time-costs';
+import { routeNotification } from '@/services/notificationRouter';
+
+// Simple CreditScoreGauge component
+function CreditScoreGauge({ score }: { score: number }) {
+  const getScoreColor = (s: number) => {
+    if (s >= 750) return 'text-status-success'
+    if (s >= 700) return 'text-status-info'
+    if (s >= 650) return 'text-status-warning'
+    return 'text-status-danger'
+  }
+  
+  return (
+    <div className="text-center">
+      <div className={`text-3xl font-bold font-mono ${getScoreColor(score)}`}>
+        {score}
+      </div>
+    </div>
+  )
+}
 
 function LoanCard({ loan, onPayOff }: { loan: BankLoan; onPayOff: () => void }) {
   const progress = ((loan.totalWeeks - loan.weeksRemaining) / loan.totalWeeks) * 100
@@ -11,10 +37,17 @@ function LoanCard({ loan, onPayOff }: { loan: BankLoan; onPayOff: () => void }) 
   return (
     <Card variant="glass" padding="md" className="space-y-3">
       <div className="flex justify-between items-start">
-        <div>
-          <div className="font-semibold">{loan.lender}</div>
-          <div className="text-sm text-text-muted">
-            {loan.collateral ? `Secured by ${loan.collateral}` : 'Unsecured'}
+        <div className="flex items-center gap-3">
+          <BankLogo
+            src={getBankLogo(loan.lender)}
+            name={loan.lender}
+            size="sm"
+          />
+          <div>
+            <div className="font-semibold">{loan.lender}</div>
+            <div className="text-sm text-text-muted">
+              {loan.collateral ? `Secured by ${loan.collateral}` : 'Unsecured'}
+            </div>
           </div>
         </div>
         <Badge variant={loan.status === 'active' ? 'green' : loan.status === 'paid_off' ? 'blue' : 'red'}>
@@ -88,9 +121,16 @@ function CreditLineCard({
   return (
     <Card variant="glass" padding="md" className="space-y-3">
       <div className="flex justify-between items-start">
-        <div>
-          <div className="font-semibold">{creditLine.lender}</div>
-          <div className="text-sm text-text-muted">Revolving Credit Line</div>
+        <div className="flex items-center gap-3">
+          <BankLogo
+            src={getBankLogo(creditLine.lender)}
+            name={creditLine.lender}
+            size="sm"
+          />
+          <div>
+            <div className="font-semibold">{creditLine.lender}</div>
+            <div className="text-sm text-text-muted">Revolving Credit Line</div>
+          </div>
         </div>
         <Badge variant={creditLine.status === 'available' ? 'green' : 'red'}>
           {creditLine.status}
@@ -191,8 +231,8 @@ function CreditLineCard({
 
 function InvestorCard({
   investor,
-  _currentWeek,
-  _currentYear,
+  currentWeek: _currentWeek,
+  currentYear: _currentYear,
   onBuyout
 }: {
   investor: PrivateInvestor
@@ -338,6 +378,13 @@ function NewLoanModal({
     }
   }
 
+  const handleAcceptCounterOffer = () => {
+    if (result && !result.approved && result.loan) {
+      onApply(result.loan)
+      onClose()
+    }
+  }
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Apply for Bank Loan" size="md">
       <div className="space-y-4">
@@ -430,6 +477,13 @@ function NewLoanModal({
           </div>
         )}
 
+        {result && !result.approved && result.loan && (
+          <div className="flex gap-2">
+            <Button variant="secondary" onClick={() => setResult(null)} className="flex-1">Try different terms</Button>
+            <Button variant="primary" onClick={handleAcceptCounterOffer} className="flex-1">Accept counter-offer</Button>
+          </div>
+        )}
+
         <div className="flex gap-2">
           <Button variant="secondary" onClick={onClose} className="flex-1">Cancel</Button>
           <Button 
@@ -447,6 +501,102 @@ function NewLoanModal({
 }
 
 // ============================================
+// CREDIT LINE APPLICATION MODAL
+// ============================================
+
+function CreditLineModal({
+  isOpen,
+  onClose,
+  tier,
+  creditScore,
+  currentWeek,
+  currentYear,
+  onApply
+}: {
+  isOpen: boolean
+  onClose: () => void
+  tier: TeamTier
+  creditScore: number
+  currentWeek: number
+  currentYear: number
+  onApply: (requestedLimit?: number) => void
+}) {
+  const config = CREDIT_LINE_TERMS_BY_TIER[tier]
+  const minCredit = config.minCredit ?? 0
+  const [requestedLimit, setRequestedLimit] = useState<string>(config.maxCredit.toString())
+
+  const handleApply = () => {
+    const limit = requestedLimit ? parseInt(requestedLimit, 10) : undefined
+    const clamped = limit != null ? Math.min(config.maxCredit, Math.max(minCredit, limit)) : undefined
+    onApply(clamped)
+    onClose()
+  }
+
+  const presets = useMemo(() => {
+    const step = Math.max(1, Math.floor((config.maxCredit - minCredit) / 4))
+    return [minCredit, minCredit + step, minCredit + step * 2, minCredit + step * 3, config.maxCredit].filter((v, i, a) => a.indexOf(v) === i)
+  }, [config.maxCredit, minCredit])
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title="Apply for Credit Line" size="md">
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4 p-3 bg-background-elevated/50 rounded-lg text-sm">
+          <div>
+            <div className="text-text-muted">Credit Score</div>
+            <div className={`font-mono ${creditScore >= config.approvalThreshold ? 'text-status-success' : 'text-status-danger'}`}>
+              {creditScore} / {config.approvalThreshold} min
+            </div>
+          </div>
+          <div>
+            <div className="text-text-muted">Tier Limit Range</div>
+            <div className="font-mono">{formatCurrency(minCredit)} - {formatCurrency(config.maxCredit)}</div>
+          </div>
+          <div>
+            <div className="text-text-muted">Interest Rate (drawn)</div>
+            <div className="font-mono">{config.interestRate}% APR</div>
+          </div>
+          <div>
+            <div className="text-text-muted">Approval Threshold</div>
+            <div className="font-mono">{config.approvalThreshold}</div>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm text-text-muted mb-1">Requested Credit Limit</label>
+          <div className="flex gap-2 flex-wrap">
+            {presets.map(amt => (
+              <Button
+                key={amt}
+                variant={requestedLimit === String(amt) ? 'primary' : 'secondary'}
+                size="sm"
+                onClick={() => setRequestedLimit(String(amt))}
+              >
+                {formatCurrency(amt)}
+              </Button>
+            ))}
+          </div>
+          <input
+            type="number"
+            min={minCredit}
+            max={config.maxCredit}
+            value={requestedLimit}
+            onChange={(e) => setRequestedLimit(e.target.value)}
+            className="mt-2 w-full px-3 py-2 bg-background-elevated border border-surface-border rounded-lg text-white"
+          />
+        </div>
+
+        <div className="flex gap-2">
+          <Button variant="secondary" onClick={onClose} className="flex-1">Cancel</Button>
+          <Button variant="primary" onClick={handleApply} className="flex-1">
+            Apply for Credit Line
+          </Button>
+        </div>
+      </div>
+    </Modal>
+  )
+}
+
+// ============================================
 // NEW INVESTOR MODAL
 // ============================================
 
@@ -455,6 +605,8 @@ function NewInvestorModal({
   onClose,
   tier,
   teamReputation,
+  currentDebt,
+  currentCash,
   currentWeek,
   currentYear,
   onAccept
@@ -463,17 +615,26 @@ function NewInvestorModal({
   onClose: () => void
   tier: TeamTier
   teamReputation: number
+  currentDebt: number
+  currentCash: number
   currentWeek: number
   currentYear: number
   onAccept: (investor: PrivateInvestor) => void
 }) {
   const config = PRIVATE_INVESTOR_CONFIG_BY_TIER[tier]
   const [amount, setAmount] = useState(config.minInvestment.toString())
-  const [offer, setOffer] = useState<InvestorOfferResult | null>(null)
+  const [offer, setOffer] = useState<InvestorOfferResult | InvestorCounterOffer | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const handleGenerateOffer = () => {
-    const result = generateInvestorOffer(tier, teamReputation, parseInt(amount), currentWeek, currentYear)
+    const result = generateInvestorOffer(
+      tier,
+      teamReputation,
+      parseInt(amount) || config.minInvestment,
+      currentWeek,
+      currentYear,
+      { currentDebt, currentCash }
+    )
     if ('error' in result) {
       setError(result.error)
       setOffer(null)
@@ -484,10 +645,15 @@ function NewInvestorModal({
   }
 
   const handleAccept = () => {
-    if (offer) {
+    if (offer && 'investor' in offer) {
       onAccept(offer.investor)
       onClose()
     }
+  }
+
+  const handleTryDifferent = () => {
+    setOffer(null)
+    setError(null)
   }
 
   return (
@@ -570,9 +736,10 @@ function NewInvestorModal({
               </div>
             )}
 
-            <div className="flex gap-2 mt-4">
-              <Button variant="secondary" onClick={onClose} className="flex-1">Decline</Button>
-              <Button variant="primary" onClick={handleAccept} className="flex-1">Accept Investment</Button>
+            <div className="flex gap-2 mt-4 flex-wrap">
+              <Button variant="secondary" onClick={handleTryDifferent} className="flex-1 min-w-0">Try different amount</Button>
+              <Button variant="secondary" onClick={onClose} className="flex-1 min-w-0">Decline</Button>
+              <Button variant="primary" onClick={handleAccept} className="flex-1 min-w-0">Accept Investment</Button>
             </div>
           </div>
         )}
@@ -585,8 +752,14 @@ function NewInvestorModal({
 // MAIN COMPONENT
 // ============================================
 
+interface LoansPanelProps {
+  _teamId?: string
+  tier: TeamTier
+}
+
 export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
   const [showLoanModal, setShowLoanModal] = useState(false)
+  const [showCreditLineModal, setShowCreditLineModal] = useState(false)
   const [showInvestorModal, setShowInvestorModal] = useState(false)
   const { addToast } = useToast()
   
@@ -662,7 +835,7 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
     })
   }
 
-  const handleApplyCreditLine = () => {
+  const handleApplyCreditLine = (requestedLimit?: number) => {
     // === TIME BUDGET INTEGRATION ===
     const loanTimeCost = getActivityTimeCost('loan_meeting')
     if (loanTimeCost.hours > 0) {
@@ -681,7 +854,7 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
       immediate: true
     })
 
-    const result = applyForCreditLine(tier, loansState.creditScore, currentWeek, currentYear)
+    const result = applyForCreditLine(tier, loansState.creditScore, currentWeek, currentYear, requestedLimit)
     if (result.approved && result.creditLine) {
       updateLoansState({
         ...loansState,
@@ -755,7 +928,7 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
     const transaction = createTransaction(
       'income',
       investor.investmentAmount,
-      `Private investment from ${investor.name} (${investor.equityStake.toFixed(1)}% equity)`
+      `Private investment from ${investor.investorName} (${investor.equityStake.toFixed(1)}% equity)`
     )
     updateCashAndTransaction(investor.investmentAmount, transaction)
     
@@ -764,25 +937,23 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
       privateInvestors: [...loansState.privateInvestors, investor]
     })
     
-    addToast({ type: 'success', title: 'Investment Accepted', message: `Received ${formatCurrency(investor.investmentAmount)} from ${investor.name}` })
+    addToast({ type: 'success', title: 'Investment Accepted', message: `Received ${formatCurrency(investor.investmentAmount)} from ${investor.investorName}` })
   }
   
   const handleDrawCreditLine = (creditLineId: string, amount: number) => {
     const creditLine = loansState.creditLines.find(cl => cl.id === creditLineId)
     if (!creditLine) return
     
-    // Add drawn amount to cash
-    const transaction = createTransaction(
-      'income',
-      amount,
-      `Credit line draw from ${creditLine.lender}`
-    )
-    updateCashAndTransaction(amount, transaction)
+    const result = drawFromCreditLine(creditLine, amount, currentWeek, currentYear)
+    if ('error' in result) {
+      addToast({ type: 'error', title: 'Draw Failed', message: result.error })
+      return
+    }
+    
+    updateCashAndTransaction(amount, result.transaction)
     
     const updated = loansState.creditLines.map(cl => 
-      cl.id === creditLineId 
-        ? { ...cl, currentDrawn: cl.currentDrawn + amount }
-        : cl
+      cl.id === creditLineId ? result.updatedCreditLine : cl
     )
     updateLoansState({
       ...loansState,
@@ -804,18 +975,16 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
       return
     }
     
-    // Deduct repayment from cash
-    const transaction = createTransaction(
-      'expense',
-      amount,
-      `Credit line repayment to ${creditLine.lender}`
-    )
-    updateCashAndTransaction(-amount, transaction)
+    const result = repayToCreditLine(creditLine, amount, currentWeek, currentYear)
+    if ('error' in result) {
+      addToast({ type: 'error', title: 'Repayment Failed', message: result.error })
+      return
+    }
+    
+    updateCashAndTransaction(-amount, result.transaction)
     
     const updated = loansState.creditLines.map(cl => 
-      cl.id === creditLineId 
-        ? { ...cl, currentDrawn: Math.max(0, cl.currentDrawn - amount) }
-        : cl
+      cl.id === creditLineId ? result.updatedCreditLine : cl
     )
     updateLoansState({
       ...loansState,
@@ -830,57 +999,41 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
     const loan = loansState.bankLoans.find(l => l.id === loanId)
     if (!loan) return
     
-    // Check if we have enough cash
     const currentCash = ownedTeam?.budgets?.cash || 0
     if (currentCash < loan.remainingBalance) {
       addToast({ type: 'error', title: 'Insufficient Funds', message: `Need ${formatCurrency(loan.remainingBalance)} but only have ${formatCurrency(currentCash)}` })
       return
     }
     
-    // Deduct payoff amount from cash
-    const transaction = createTransaction(
-      'expense',
-      loan.remainingBalance,
-      `Loan payoff to ${loan.lender}`
-    )
-    updateCashAndTransaction(-loan.remainingBalance, transaction)
+    const { updatedLoan, transaction, totalPaid } = payOffLoanEarly(loan, currentWeek, currentYear)
+    updateCashAndTransaction(-totalPaid, transaction)
     
-    const updated = loansState.bankLoans.map(l => 
-      l.id === loanId ? { ...l, status: 'paid_off' as const } : l
-    )
+    const updated = loansState.bankLoans.map(l => (l.id === loanId ? updatedLoan : l))
     updateLoansState({
       ...loansState,
       bankLoans: updated,
-      totalDebt: Math.max(0, loansState.totalDebt - loan.remainingBalance),
+      totalDebt: Math.max(0, loansState.totalDebt - totalPaid),
       weeklyDebtService: Math.max(0, loansState.weeklyDebtService - loan.weeklyPayment)
     })
     
-    addToast({ type: 'success', title: 'Loan Paid Off', message: `Fully repaid ${formatCurrency(loan.remainingBalance)} to ${loan.lender}` })
+    addToast({ type: 'success', title: 'Loan Paid Off', message: `Fully repaid ${formatCurrency(totalPaid)} to ${loan.lender}` })
   }
   
   const handleBuyoutInvestor = (investorId: string) => {
     const investor = loansState.privateInvestors.find(i => i.id === investorId)
     if (!investor) return
     
-    // Calculate buyout price (investment amount + profit share + premium)
-    const buyoutPrice = investor.investmentAmount * 1.5 // 50% premium for buyout
+    const { buyoutCost, transaction } = buyoutInvestor(investor, currentYear, currentWeek, currentYear)
     
-    // Check if we have enough cash
     const currentCash = ownedTeam?.budgets?.cash || 0
-    if (currentCash < buyoutPrice) {
-      addToast({ type: 'error', title: 'Insufficient Funds', message: `Need ${formatCurrency(buyoutPrice)} to buy out investor` })
+    if (currentCash < buyoutCost) {
+      addToast({ type: 'error', title: 'Insufficient Funds', message: `Need ${formatCurrency(buyoutCost)} to buy out investor` })
       return
     }
     
-    // Deduct buyout price from cash
-    const transaction = createTransaction(
-      'expense',
-      buyoutPrice,
-      `Investor buyout: ${investor.name}`
-    )
-    updateCashAndTransaction(-buyoutPrice, transaction)
+    updateCashAndTransaction(-buyoutCost, transaction)
     
-    const updated = loansState.privateInvestors.map(i => 
+    const updated = loansState.privateInvestors.map(i =>
       i.id === investorId ? { ...i, status: 'bought_out' as const } : i
     )
     updateLoansState({
@@ -888,7 +1041,7 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
       privateInvestors: updated
     })
     
-    addToast({ type: 'success', title: 'Investor Bought Out', message: `Paid ${formatCurrency(buyoutPrice)} to buy out ${investor.name}` })
+    addToast({ type: 'success', title: 'Investor Bought Out', message: `Paid ${formatCurrency(buyoutCost)} to buy out ${investor.investorName}` })
   }
 
   const activeLoans = loansState.bankLoans.filter(l => l.status === 'active')
@@ -897,6 +1050,47 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
 
   return (
     <div className="space-y-6">
+      {/* What affects credit + last change */}
+      <Card variant="glass" padding="md" className="text-sm">
+        <div className="font-semibold text-text-muted mb-1">What affects your credit</div>
+        <p className="text-text-muted mb-2">
+          On-time payments (+), missed payments (−), paying off loans (+), profitable seasons (+), losses (−), and high credit line utilization (−).
+        </p>
+        {loansState.lastWeekCreditChange != null && loansState.lastWeekCreditChange !== 0 && (
+          <p className={loansState.lastWeekCreditChange >= 0 ? 'text-status-success' : 'text-status-danger'}>
+            Last week: {loansState.lastWeekCreditChange >= 0 ? '+' : ''}{loansState.lastWeekCreditChange} points
+          </p>
+        )}
+      </Card>
+
+      {/* Warnings */}
+      {(() => {
+        const cash = ownedTeam?.budgets?.cash ?? 0
+        const debtServicePct = cash > 0 ? (loansState.weeklyDebtService / cash) * 100 : 0
+        const totalCreditLimit = loansState.creditLines.filter(cl => cl.status === 'available').reduce((s, cl) => s + cl.maxCredit, 0)
+        const totalDrawn = loansState.creditLines.filter(cl => cl.status === 'available').reduce((s, cl) => s + cl.currentDrawn, 0)
+        const utilizationPct = totalCreditLimit > 0 ? (totalDrawn / totalCreditLimit) * 100 : 0
+        const showDebtWarning = debtServicePct > 30 && loansState.weeklyDebtService > 0
+        const showUtilWarning = utilizationPct > 75 && totalCreditLimit > 0
+        if (!showDebtWarning && !showUtilWarning) return null
+        return (
+          <div className="flex flex-col gap-2">
+            {showDebtWarning && (
+              <div className="p-3 bg-status-warning/20 border border-status-warning/50 rounded-lg text-sm text-status-warning flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                Debt service is {debtServicePct.toFixed(0)}% of cash — consider reducing debt or increasing revenue.
+              </div>
+            )}
+            {showUtilWarning && (
+              <div className="p-3 bg-status-warning/20 border border-status-warning/50 rounded-lg text-sm text-status-warning flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                High credit utilization ({utilizationPct.toFixed(0)}%) may hurt your credit score.
+              </div>
+            )}
+          </div>
+        )
+      })()}
+
       {/* Overview Cards */}
       <div className="grid grid-cols-4 gap-4">
         <Card variant="glass" padding="md" className="text-center">
@@ -952,11 +1146,10 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
         </Button>
         <Button 
           variant="secondary" 
-          onClick={handleApplyCreditLine}
-          disabled={activeCreditLines.length > 0}
+          onClick={() => setShowCreditLineModal(true)}
         >
           <CreditCard className="w-4 h-4 mr-2" />
-          {activeCreditLines.length > 0 ? 'Credit Line Active' : 'Get Credit Line'}
+          Get Credit Line
         </Button>
         <Button variant="secondary" onClick={() => setShowInvestorModal(true)}>
           <Users className="w-4 h-4 mr-2" />
@@ -1048,11 +1241,26 @@ export function LoansPanel({ _teamId, tier }: LoansPanelProps) {
         onApply={handleApplyForLoan}
       />
 
+      <CreditLineModal
+        isOpen={showCreditLineModal}
+        onClose={() => setShowCreditLineModal(false)}
+        tier={tier}
+        creditScore={loansState.creditScore}
+        currentWeek={currentWeek}
+        currentYear={currentYear}
+        onApply={(creditLine) => {
+          handleApplyCreditLine(creditLine)
+          setShowCreditLineModal(false)
+        }}
+      />
+
       <NewInvestorModal
         isOpen={showInvestorModal}
         onClose={() => setShowInvestorModal(false)}
         tier={tier}
         teamReputation={ownedTeam?.reputation || 50}
+        currentDebt={loansState.totalDebt}
+        currentCash={ownedTeam?.budgets?.cash || 0}
         currentWeek={currentWeek}
         currentYear={currentYear}
         onAccept={handleAcceptInvestor}

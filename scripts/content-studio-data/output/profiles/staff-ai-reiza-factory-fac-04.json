@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 31,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Marko's passion for motorsport ignited early, fueled by watching Formula One races with his father in their small village near Zagreb. He excelled in electronics during his studies at the University of Zagreb, quickly realizing that his skills could be applied to his passion. After graduating, he joined a local rally team, gaining invaluable practical experience in diagnosing and resolving electrical gremlins under immense pressure. His adaptability and problem-solving abilities caught the eye of Reiza Studios Factory, where he now plays a critical role in optimizing the complex electronics systems of their prototype race cars.\n\nMarko approaches his work with meticulous precision and a deep understanding of the interconnectedness of electronic components. He thrives in the fast-paced environment of motorsport, constantly seeking innovative solutions to improve performance and reliability. While he values collaboration, he is also a self-sufficient and resourceful engineer, often preferring to work independently to delve deeply into technical challenges. His dedication to continuous learning and his unwavering commitment to excellence make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly cropped with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Marko is of medium build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool on his belt, even in the office.",
+    "Has a habit of humming quietly when concentrating on complex problems.",
+    "Insists on using a specific brand of Croatian coffee beans in the team's espresso machine."
+  ]
+}

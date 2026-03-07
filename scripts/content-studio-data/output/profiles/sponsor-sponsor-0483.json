@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0483",
+  "name": "Sisu Solutions",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Finland",
+  "description": "Cutting-edge data analytics for performance optimization.",
+  "story": "Sisu Solutions is a Finnish company specializing in real-time data analysis and predictive modeling. Founded by motorsport enthusiasts, Sisu sees racing as the ultimate testing ground for their technology. They seek partnerships that showcase the power of data-driven decision-making and demonstrate the tangible benefits of their software in high-pressure environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 175000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "nationalities": [
+      "Finland"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0483.png"
+}

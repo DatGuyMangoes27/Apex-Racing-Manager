@@ -1,0 +1,22 @@
+{
+  "name": "Jari Mäkinen",
+  "nationality": "Finnish",
+  "age": 52,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jari's journey into motorsport began unexpectedly, swapping out a failing career as a mechanic for a newfound love of virtual racing. He quickly realized his technical aptitude translated surprisingly well into the digital realm. He honed his skills tinkering with racing simulators, optimizing them for both realism and driver performance. This led to his current role at Eurofarma RC, where he relishes the challenge of pushing the limits of their simulator technology.\n\nJari's approach is meticulous. He believes in a data-driven approach, constantly analyzing telemetry and driver feedback to fine-tune the simulator's parameters. He's also a strong advocate for driver comfort and psychological well-being, recognizing that a driver's mental state is just as critical as the simulator's accuracy. What sets Jari apart is his ability to translate abstract concepts into practical solutions, bridging the gap between the virtual and real worlds of motorsport.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build with a thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of humming quietly while calibrating the simulator.",
+    "Insists on having a specific type of Finnish coffee available at all times."
+  ]
+}

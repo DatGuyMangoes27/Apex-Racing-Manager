@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 53,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began unconventionally. Growing up in Lima, he was captivated not by racing itself, but by the intricate machinery of the cars. He pursued mechanical engineering, excelling in thermodynamics and fluid dynamics. His first job was at a local repair shop, but he quickly transitioned to a national rally team, where he honed his skills in the demanding environment of off-road racing. Ricardo's pragmatic approach is rooted in his belief that simplicity and reliability are paramount. He's known for his meticulous pre-race checks and his ability to quickly diagnose and resolve mechanical issues under pressure. What sets Ricardo apart is his quiet confidence and his knack for finding innovative solutions to improve performance within the existing framework.\n\nHe joined Mercedes-AMG five years ago and has become a vital part of the team. He consistently delivers reliable performance improvements, focusing on data analysis and predictive modeling to optimize car setup for varying track conditions. His experience with rally racing gives him a unique perspective on handling unpredictable variables and resourcefulness in challenging situations. Although Ricardo isn't the loudest voice in the garage, his insights are highly valued, and his dedication to his craft is unwavering.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is of medium height with a sturdy build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on using a slide rule for initial estimations, despite having access to advanced software.",
+    "Drinks a mate cocido every morning before starting work."
+  ]
+}

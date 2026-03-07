@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 57,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Mihai Popescu's journey into motorsport began unconventionally. While serving in the Romanian army as a signals intelligence officer, his analytical skills and knack for deciphering patterns caught the eye of a local rally team owner. He was recruited to analyze telemetry data and predict competitor strategies. This led to a passion for racing, and when the Eastern European racing scene fizzled out, he found his way to Lechner Racing, seeking a bigger challenge.\n\nMihai's approach to strategy is deeply rooted in data analysis and risk assessment. He believes in building a comprehensive picture of all possible scenarios, allowing the team to make informed decisions under pressure. While he's not one for flamboyant displays of emotion, his quiet dedication and meticulous planning have earned him the respect of the entire team. His distinctive ability lies in finding subtle advantages that others often overlook.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Thin, well-trimmed mustache",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn-out slide rule for quick calculations, despite having access to sophisticated software.",
+    "Prefers to work in a quiet corner, often humming quietly to himself while analyzing data.",
+    "Has a collection of vintage Romanian rally posters in his workspace."
+  ]
+}

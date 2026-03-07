@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Silva",
+  "nationality": "Brazilian",
+  "age": 42,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's fascination with electronics began dismantling radios as a child in São Paulo. He honed his skills at the Universidade de São Paulo, specializing in embedded systems and signal processing. His motorsport journey started at a local karting track, volunteering his expertise to improve engine performance. After several years working in automotive manufacturing, he yearned for the high-stakes environment of racing. He is meticulous in his approach to data analysis, always seeking to optimize electronic systems for peak performance, with a keen eye for reliability.\n\nRicardo is driven by a desire to see his work directly translate into improved lap times and race results. He is known for his ability to diagnose complex electrical problems quickly and efficiently, often coming up with innovative solutions under pressure. His colleagues admire his calm demeanor and problem-solving skills, making him a valuable asset to any racing team. He joined Brad Jones Racing hoping to make a name for himself in a top-tier team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Ricardo is of average height and build, with a focused and intent expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Drinks mate tea throughout the day.",
+    "Tidies his workspace obsessively."
+  ]
+}

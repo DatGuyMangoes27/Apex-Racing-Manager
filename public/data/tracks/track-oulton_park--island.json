@@ -1,0 +1,61 @@
+{
+  "history": "Oulton Park, nestled in the Cheshire countryside, boasts a rich history dating back to 1953 when it was carved out of the grounds of Oulton Hall. Initially conceived as a club racing venue, it quickly gained prominence and hosted prestigious events, becoming a favorite among drivers and spectators alike. While the full International circuit is well-known, the Island layout offers a more compact and arguably more intense challenge. Although specific races on the Island layout may not be as widely documented as those on the International circuit, it remains a staple for club racing, track days, and driver training, providing a demanding test of skill in a condensed package. Its blend of fast corners and tight complexes has ensured its place as a valued part of Oulton Park's heritage.",
+  "atmosphere": "Standing at Lodge corner during a British GT race on the Island circuit is an assault on the senses. The roar of the engines echoes through the trees, growing louder as the cars crest the rise from Clay Hill. You feel the ground vibrate as a pack of GT3 cars thunders past, mere feet away, battling for position into the braking zone. The smell of burning rubber and high-octane fuel hangs heavy in the air. The crowd cheers as a daring overtake is attempted, the tension palpable. It's a uniquely British racing experience, raw and visceral.",
+  "trackCharacter": "The Island layout at Oulton Park is a relentless test of car control and commitment. Its shortened length doesn't diminish the challenge; instead, it concentrates the demanding corners and elevation changes into an even more intense experience. The circuit flows beautifully when you get it right, but demands precision at every turn. It's a driver's circuit, rewarding bravery and rewarding smooth inputs while punishing mistakes instantly. The Island circuit is a true test of skill and nerve.",
+  "nickname": "The Cheshire Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Old Hall",
+      "description": "A deceptively fast right-hander that opens the lap, demanding immediate commitment.",
+      "challenge": "Carrying maximum speed through the corner without running wide or unsettling the car."
+    },
+    {
+      "name": "Cascades",
+      "description": "A downhill esses section that tests a car's balance and a driver's nerve.",
+      "challenge": "Maintaining a smooth line through the rapid changes in direction while managing the car's weight transfer."
+    },
+    {
+      "name": "Knickerbrook",
+      "description": "A tight chicane complex that demands precision and patience.",
+      "challenge": "Nailing the correct braking point and apex speeds to avoid compromising the exit onto the short straight."
+    },
+    {
+      "name": "Shell Oils Corner",
+      "description": "A medium speed left-hander taken after a short straight. A good exit is critical for speed onto the run to Lodge.",
+      "challenge": "Balancing entry speed and exit trajectory to set up the following straight."
+    },
+    {
+      "name": "Lodge",
+      "description": "A slow, tight right-hander that is crucial for setting up a good run onto Deer Leap.",
+      "challenge": "Maximizing grip on corner exit to accelerate onto the next straight."
+    }
+  ],
+  "keyFactors": [
+    "Braking precision",
+    "Car balance through the Cascades",
+    "Traction out of Lodge",
+    "Corner exit speed",
+    "Mid-corner speed"
+  ],
+  "overtakingSpots": [
+    "Into Old Hall (for the brave)",
+    "Into Knickerbrook (compromise the exit and be vulnerable on the short straight)",
+    "Into Lodge (requires a good run out of Shell Oils)"
+  ],
+  "historySnippets": [
+    "Oulton Park was built on the grounds of the former Oulton Hall estate.",
+    "The circuit opened in 1953.",
+    "Stirling Moss took part in the opening race at Oulton Park.",
+    "The Island layout is a popular choice for club racing events.",
+    "Oulton Park is known for its challenging and undulating track.",
+    "The circuit has hosted many major motorsport series, including British Touring Car Championship and British GT."
+  ],
+  "weatherNotes": "Oulton Park, like much of the UK, is susceptible to unpredictable weather. Rain is a frequent visitor, often turning the already challenging circuit into a treacherous test of skill. The Cheshire countryside can also bring fog and mist, especially in the mornings and evenings, which can significantly reduce visibility. Tire choice and adaptability are crucial for success at Oulton Park.",
+  "drivingAdvice": "On the Island layout, focus on maintaining momentum through the Cascades and maximizing traction out of Lodge. A clean exit from Lodge is essential for a good run down Deer Leap. Be patient at Knickerbrook; it's easy to overdrive the entry and compromise the exit. Consistent lap times are more important than chasing individual corners, especially in longer races.",
+  "famousRaces": [
+    "British Touring Car Championship races at Oulton Park are always thrilling, with close battles and dramatic overtakes.",
+    "British GT Championship races at Oulton Park often feature intense competition between high-performance GT cars.",
+    "Gold Cup races at Oulton Park are steeped in history and tradition."
+  ],
+  "localCulture": "Cheshire is known for its picturesque villages, rolling countryside, and historic market towns. The paddock at Oulton Park is a hub of activity, with teams preparing their cars and drivers interacting with fans. Local pubs and restaurants offer traditional British fare, and the surrounding area provides plenty of opportunities for exploring the natural beauty of the region."
+}

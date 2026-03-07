@@ -1,0 +1,61 @@
+{
+  "history": "The Circuito de Jerez – Ángel Nieto, inaugurated in 1985, quickly became a cornerstone of Spanish motorsport. The Grand Prix layout, in particular, has hosted countless thrilling races, most notably the Spanish Motorcycle Grand Prix since 1987. The circuit was renamed in 2018 to honor the legendary Spanish motorcycle racer Ángel Nieto. Beyond MotoGP, Jerez has been a regular fixture on the Formula One calendar (until 1997), World Superbike Championship, and various sports car series. The circuit's challenging layout and passionate fanbase have cemented its place as a beloved venue for both drivers and spectators alike. The Grand Prix layout is the primary configuration used for international events.",
+  "atmosphere": "Stepping into Jerez during the Spanish Grand Prix is an assault on the senses. The air vibrates with the roar of engines, the pungent smell of fuel, and the fervent cheers of thousands of fans draped in the colors of their favorite teams and riders. The grandstands are packed, a sea of faces craning for a glimpse of the action. The atmosphere is electric, fueled by the passionate Spanish motorsport culture and the knowledge that you're witnessing a spectacle steeped in history. Outside of the main grandstands, the hillsides are dotted with spectators, creating a natural amphitheater effect.",
+  "trackCharacter": "The Grand Prix layout at Jerez is a flowing, technical circuit that rewards precision and bravery. It's a blend of fast sweepers, tight hairpins, and challenging braking zones. The track demands a well-balanced car or bike and a driver or rider who can manage tire wear effectively. Jerez is known for its late-apex corners, requiring patience and a commitment to carrying speed through the turns. The final sector is crucial, with several linked corners that can make or break a lap. The Grand Prix layout's personality is one of constant challenge, where even the smallest mistake can be costly.",
+  "nickname": "The Sherry Triangle",
+  "famousCorners": [
+    {
+      "name": "Curva 1 - Expo '92",
+      "description": "A fast, sweeping right-hander that tests a driver's commitment from the start.",
+      "challenge": "Maintaining speed through the corner while positioning the car for the run down to Turn 2."
+    },
+    {
+      "name": "Curva 5 - Sito Pons",
+      "description": "A tight, downhill hairpin that is a classic overtaking spot and requires precise braking.",
+      "challenge": "Nailing the braking point and entry speed to avoid running wide or losing time."
+    },
+    {
+      "name": "Curva 6 - Dry Sack",
+      "description": "A medium-speed right-hander that leads onto a short straight.",
+      "challenge": "Getting a good exit to maximize acceleration onto the next straight."
+    },
+    {
+      "name": "Curva 9 - Nieto",
+      "description": "A fast, flowing right-hander named after the late Ángel Nieto, requiring confidence and commitment.",
+      "challenge": "Carrying maximum speed through the corner while setting up for the next turn."
+    },
+    {
+      "name": "Curva 13 - Lorenzo",
+      "description": "A double apex right-hander that is the last corner of the circuit, named after Jorge Lorenzo.",
+      "challenge": "Maintaining a tight line through both apexes to ensure a strong exit onto the main straight."
+    }
+  ],
+  "keyFactors": [
+    "Tire Management: The abrasive surface and flowing layout can quickly degrade tires.",
+    "Braking Stability: Several hard braking zones demand a stable and reliable braking system.",
+    "Aerodynamic Efficiency: A balance between downforce for the corners and drag reduction for the straights is crucial.",
+    "Corner Exit Speed: The linked corners require maximizing exit speed to set up for the next section.",
+    "Chassis Balance: A well-balanced chassis is essential for navigating the varied corners."
+  ],
+  "overtakingSpots": [
+    "Curva 5 - Sito Pons: A classic hairpin offers a prime opportunity for late-braking maneuvers.",
+    "Curva 6 - Dry Sack: A good exit from Curva 5 can set up an overtake into this corner.",
+    "Curva 13 - Lorenzo: The final corner provides a last-ditch chance for overtaking, especially if the car ahead compromises their exit."
+  ],
+  "historySnippets": [
+    "Jerez hosted its first Spanish Motorcycle Grand Prix in 1987.",
+    "The circuit was renamed in 2018 to honor Ángel Nieto, a legendary Spanish motorcycle racer.",
+    "Michael Schumacher won the controversial 1994 Spanish Grand Prix at Jerez.",
+    "The circuit is located in the heart of Andalusia, known for its sherry production.",
+    "Jerez has hosted both Formula One and MotoGP races.",
+    "The circuit's flowing layout is a favorite among drivers and riders."
+  ],
+  "weatherNotes": "Jerez experiences a Mediterranean climate, characterized by hot, dry summers and mild, wet winters. During the spring and autumn race seasons, the weather is generally warm and sunny, but sudden rain showers can occur, making tire strategy crucial. The track can also get very hot, leading to increased tire degradation.",
+  "drivingAdvice": "On the Grand Prix layout at Jerez, focus on maintaining momentum through the flowing sections. Prioritize corner exit speed, especially in the final sector, to maximize your lap time. Be patient on the brakes at Sito Pons, as it's easy to overshoot the corner. Conserve your tires, particularly the rear tires, as they can degrade quickly in the hot conditions. A clean and consistent lap is more rewarding than aggressive driving at Jerez.",
+  "famousRaces": [
+    "1994 Spanish Grand Prix: Michael Schumacher won a controversial race after his Benetton suffered electrical problems, leading to questions about the legality of his car.",
+    "1996 Spanish Grand Prix: Michael Schumacher in wet conditions dominated the race by over 45 seconds, showcasing his mastery in tricky conditions.",
+    "2005 Spanish Motorcycle Grand Prix: Valentino Rossi and Sete Gibernau engaged in a fierce battle, with Rossi ultimately taking the victory in a last-lap showdown."
+  ],
+  "localCulture": "Jerez de la Frontera is a vibrant city steeped in Spanish culture. It's famous for its sherry production, equestrian traditions, and flamenco music. The city boasts beautiful architecture, charming plazas, and a lively nightlife. Paddock life at Jerez is characterized by the friendly atmosphere and the passionate support of the local fans. Visitors can enjoy traditional Spanish cuisine, such as tapas and paella, and experience the warmth and hospitality of the Andalusian people."
+}

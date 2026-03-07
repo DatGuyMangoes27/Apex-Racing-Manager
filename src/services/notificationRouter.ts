@@ -14,6 +14,7 @@ import { useCareerStore, type Email, type EmailCategory } from '@/store/careerSt
 import {
   NOTIFICATION_SENDERS,
   ACTIVITY_TO_SENDER,
+  CATEGORY_FALLBACK_SENDER,
   type NotificationSender,
   type ResolvedSender,
   type NotificationQuality,
@@ -128,7 +129,16 @@ function resolveSender(senderConfig: NotificationSender): ResolvedSender {
       }
     }
     
-    // Phone messages REQUIRE a contact to exist
+    // No contact found — degrade to email if sender not required, otherwise missed
+    if (!senderConfig.requiresSender && senderConfig.fallbackDepartment) {
+      return {
+        name: senderConfig.fallbackDepartment,
+        role: senderConfig.role,
+        channel: 'email',
+        quality: 'degraded'
+      }
+    }
+    
     return {
       name: senderConfig.role,
       role: senderConfig.role,
@@ -283,9 +293,21 @@ function findPersonalContact(
         s => (s.role as string || '').toLowerCase().includes(staffType)
       )
       if (found) {
+        // The staff record's id (e.g. 'pa_julia_green') is ALSO used as the
+        // phone-contact id by syncAutomaticContacts (which no longer double-
+        // prefixes).  Return it directly so sendAsPhoneMessage finds the
+        // correct conversation.
+        const staffId = found.id as string
+        
+        // Also try to find the matching phone contact to grab their portraitId
+        const matchingContact = messaging?.contacts?.find(
+          c => c.id === staffId || c.staffRole?.toLowerCase().includes(staffType)
+        )
+        
         return { 
           name: found.name as string, 
-          id: found.id as string 
+          id: matchingContact?.id || staffId,
+          portraitId: (matchingContact as any)?.portraitId
         }
       }
       return null
@@ -354,8 +376,52 @@ export function routeNotification(params: NotificationParams): NotificationResul
   // Resolve the actual sender from game state
   const resolved = resolveSender(senderConfig)
   
-  // Handle missed notifications
+  // Handle missed notifications — check for category-level fallback first
   if (resolved.quality === 'missed') {
+    // Some categories (event invitations) can fall back to an alternative sender
+    // (e.g. the Event Committee) instead of being missed entirely
+    const fallbackKey = CATEGORY_FALLBACK_SENDER[category]
+    const fallbackConfig = fallbackKey ? NOTIFICATION_SENDERS[fallbackKey] : undefined
+    
+    if (fallbackConfig) {
+      const fallbackResolved = resolveSender(fallbackConfig)
+      if (fallbackResolved.quality !== 'missed') {
+        console.log(`[NotificationRouter] FALLBACK: "${subject}" - primary sender unavailable, using fallback "${fallbackKey}"`)
+        // Deliver via the fallback channel (email from Event Committee)
+        if (fallbackResolved.channel === 'email') {
+          return sendAsEmail({
+            subject: fallbackResolved.quality === 'degraded' ? subject : subject,
+            body: degradedBody || body,
+            sender: fallbackResolved.name,
+            senderRole: fallbackResolved.role,
+            emailCategory: emailCategory ?? 'personal',
+            actionType,
+            quality: fallbackResolved.quality
+          })
+        }
+      }
+    }
+    
+    // No fallback available — mark as missed
+    const state = useCareerStore.getState()
+    const { careerState } = state
+    if (careerState) {
+      state.addMissedNotification({
+        id: `missed_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+        category,
+        subject,
+        body,
+        channel: senderConfig.channel,
+        missingRoleLabel: senderConfig.role,
+        staffRoleKey: senderConfig.staffRoleKey,
+        personalLifeField: senderConfig.personalLifeField,
+        timestamp: {
+          week: careerState.currentWeek,
+          day: careerState.currentDay ?? 1,
+          year: careerState.currentYear
+        }
+      })
+    }
     console.log(`[NotificationRouter] MISSED: "${subject}" - no sender for category "${category}" (${senderConfig.role})`)
     return {
       delivered: false,
@@ -659,3 +725,4 @@ export function wouldNotificationDeliver(category: string): {
     missingRole: resolved.quality !== 'full' ? senderConfig.role : undefined
   }
 }
+

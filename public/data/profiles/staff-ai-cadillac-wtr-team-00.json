@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 53,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Alistair MacLeod's journey in motorsport began not on the track, but in the engineering labs of Glasgow University. A fascination with aerodynamics and vehicle dynamics led him to cut his teeth in Formula Ford, quickly rising through the ranks to become a respected race engineer. His keen eye for talent and strategic thinking saw him transition to team management, where he honed his leadership skills, first in GT racing and later in endurance events.\n\nHe joined Cadillac Racing three years ago, bringing a relentless focus on data-driven decision-making and a collaborative approach to team building. While some might see him as a bit of a pragmatist, Alistair's ambition is unwavering: to build a championship-winning team where every member is empowered to contribute their best. He believes in a harmonious blend of technical prowess, meticulous planning, and a never-say-die spirit.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave at the front.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair has a sturdy build and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out slide rule, despite using simulation software.",
+    "Has a habit of sketching out racing lines on napkins during meetings.",
+    "Insists on listening to bagpipe music before every race."
+  ]
+}

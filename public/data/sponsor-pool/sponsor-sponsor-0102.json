@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0102",
+  "name": "Vltava Racing Fuels",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "Czech Republic",
+  "description": "Czech precision, performance fuels.",
+  "story": "Vltava Racing Fuels has been at the forefront of fuel technology in the Czech Republic for over 50 years. Initially focused on rally racing, they expanded to other motorsport disciplines to prove the superior performance and reliability of their blends. They seek partnerships with teams demonstrating a commitment to excellence and a desire to push the limits of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 75000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "technical",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0102.png"
+}

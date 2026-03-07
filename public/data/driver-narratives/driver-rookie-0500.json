@@ -1,0 +1,27 @@
+{
+  "biography": "Pedro Novak hails from the bustling streets of Mumbai, India, a city where the roar of engines is as commonplace as the call of street vendors. Unlike many of his peers who started in karting at a young age, Pedro's entry into motorsport was almost accidental. At 12, he stumbled upon a local autocross event and, captivated by the raw energy of the competition, convinced his skeptical parents to let him participate. His natural talent was immediately apparent, placing surprisingly high in his very first race. This unexpected success ignited a passion within him, pushing him to hone his skills in makeshift karts cobbled together from spare parts. Lacking the resources of established teams, Pedro relies on his innate talent and ingenuity. His inconsistent performances, sometimes brilliant and other times disastrous, reflect his ongoing struggle to master the technical aspects of racing while battling self-doubt. Currently, he's making waves in the regional single-seater scene, attracting attention as a potential future star despite his independent status.",
+  "drivingStyle": "Pedro's driving style is characterized by a raw, almost reckless aggression. He attacks corners with abandon, often pushing his car to the very limit of grip. While this approach can yield spectacular results, it also makes him prone to errors. He's still learning to balance his natural speed with the tire management and calculated precision necessary for consistent performance. Under pressure, Pedro tends to become even more aggressive, sometimes leading to costly mistakes, but at other times unlocking a level of performance that stuns his rivals.",
+  "rivalries": [
+    {
+      "name": "Aryan Kapoor",
+      "reason": "A wealthy, established driver from a prominent racing family. Aryan dismisses Pedro as a 'street racer' and their contrasting backgrounds create natural tension."
+    },
+    {
+      "name": "Zara Khan",
+      "reason": "A fiercely competitive driver known for her tactical brilliance. Pedro's unpredictable driving style clashes with Zara's calculated approach, leading to frequent on-track battles."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "An experienced veteran driver in the regional single-seater series. Pedro's aggressive overtaking maneuvers have drawn Kenji's ire, who considers him disrespectful to the sport."
+    }
+  ],
+  "quirks": [
+    "Always wears a faded wristband given to him by his grandfather before every race.",
+    "Insists on cleaning his own visor, believing it brings him good luck.",
+    "Hums Bollywood tunes to calm his nerves before the start."
+  ],
+  "nickname": "The Mumbai Maverick",
+  "famousQuote": "\"Racing isn't about money or privilege; it's about the fire in your heart and the courage to push beyond your limits.\"",
+  "careerHighlight": "Winning the Mumbai Grand Prix in only his second year of racing, against much more experienced competition, after starting from the back of the grid due to a qualifying penalty.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the National Championship race due to an overambitious overtaking attempt, costing him the title."
+}

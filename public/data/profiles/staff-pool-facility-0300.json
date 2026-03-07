@@ -1,0 +1,22 @@
+{
+  "name": "Maria Albuquerque",
+  "nationality": "Portuguese",
+  "age": 51,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Maria's journey into motorsport was a happy accident. Initially trained as a precision mechanic in Lisbon, she found herself drawn to the roaring engines and demanding tolerances of racing through a local amateur rally team. The challenge of crafting and maintaining components under pressure ignited a passion that led her to specialize in machining high-performance engine parts. She's known for her meticulous attention to detail and ability to diagnose problems others overlook. \n\nMaria's pragmatic approach stems from years of experience in the workshop, where practical solutions are valued above theoretical perfection. She believes in getting her hands dirty, understanding the materials intimately, and constantly refining her techniques. While she appreciates innovation, she prioritizes reliability and durability, ensuring that every component she works on can withstand the rigors of the track. Her loyalty to a team is absolute, but she prefers to work independently, focusing intensely on the task at hand.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, practical bob with a few strands of grey visible",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Maria is a stout woman with strong hands and a focused gaze, often seen wearing safety glasses pushed up onto her forehead."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens her tools before starting any task, regardless of their current state.",
+    "Drinks strong black coffee from a chipped mug throughout the day.",
+    "Muttering specifications and tolerances under her breath while working."
+  ]
+}

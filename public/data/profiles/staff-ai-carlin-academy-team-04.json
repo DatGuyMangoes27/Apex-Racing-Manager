@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Valenzuela",
+  "nationality": "Argentine",
+  "age": 53,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's motorsport journey began in the dusty karting tracks of Buenos Aires, tinkering with engines alongside his father. He secured a mechanical engineering degree from the University of La Plata, fueling his passion with theoretical knowledge. After graduating, he joined a small touring car team, working his way up from data analyst to race engineer. His meticulous approach and ability to quickly diagnose mechanical issues earned him a reputation for reliability. Despite his technical prowess, Ricardo is constantly seeking improvements and pushing the boundaries of car performance, often suggesting unconventional adjustments during race weekends. He joined Carlin Academy hoping to nurture the next generation of racing talent, bringing his experience to bear on developing young drivers and their machinery.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a stocky man with a thoughtful gaze and calloused hands that betray his years of working on racing engines."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out slide rule for quick calculations, despite having access to advanced software.",
+    "Has a habit of humming tango melodies when concentrating.",
+    "Insists on personally inspecting every component after a race, believing in the value of hands-on assessment."
+  ]
+}

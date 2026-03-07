@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0293",
+  "name": "Impala PetroChem",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "South Africa",
+  "description": "High-performance fuels and lubricants for the demanding racer.",
+  "story": "Impala PetroChem has fueled South African motorsports for over 50 years. Born from the nation's rich mining heritage, we are driven by innovation and a relentless pursuit of excellence. We seek partnerships that embody the spirit of competition and push the boundaries of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0293.png"
+}

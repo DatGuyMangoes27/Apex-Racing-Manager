@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0237",
+  "name": "Bank Mandiri Motorsport",
+  "category": "financial",
+  "tier": "high",
+  "country": "Indonesia",
+  "description": "Indonesia's leading bank, fueling motorsport dreams.",
+  "story": "Bank Mandiri has a long history of supporting Indonesian athletes and cultural events. Recognizing the global appeal and growing popularity of motorsport, they see it as a powerful platform to connect with a diverse audience and showcase Indonesia's ambition on the world stage. They seek partnerships that align with their values of integrity, innovation, and national pride.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Indonesia"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0237.png"
+}

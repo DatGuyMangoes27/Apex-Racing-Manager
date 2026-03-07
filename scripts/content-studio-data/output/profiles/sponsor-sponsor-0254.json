@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0254",
+  "name": "PetroNova Racing Fuels",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "Belgium",
+  "description": "The ultimate fuel for ultimate performance.",
+  "story": "PetroNova has been at the forefront of racing fuel technology for over 50 years, developing advanced formulations that deliver unmatched power and reliability. We sponsor motorsport to prove our fuels under the most extreme conditions and to connect with passionate racing fans. We seek a partnership that showcases our commitment to innovation and performance on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Belgium",
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0254.png"
+}

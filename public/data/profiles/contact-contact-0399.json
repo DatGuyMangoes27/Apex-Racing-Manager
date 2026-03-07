@@ -1,0 +1,31 @@
+{
+  "name": "Professor Klaus-Dieter Richter",
+  "nationality": "German",
+  "age": 52,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Professor Richter is a renowned expert in fluid dynamics at the Technical University of Munich. He demands perfection from his students, but is also known for his surprisingly open-minded approach to new ideas and a flair for the dramatic in his lectures. Outside of academia, he indulges in a surprisingly wide range of interests, from meticulously brewed coffee to collecting vintage chronographs.\n\nHis connection to motorsport stems from his research, which occasionally involves consulting for racing teams on aerodynamic optimization. A racing driver might cross paths with Professor Richter by attending one of his lectures, seeking his expertise for a specific racing challenge, or through a mutual acquaintance in the engineering world.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Slicked back, thinning on top",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Klaus-Dieter has a distinguished appearance, often sporting tweed jackets and round spectacles. He carries himself with a slight air of academic superiority, but a hidden mischievous glint is often visible in his eyes."
+  },
+  "connectionToMotorsport": "Professor Richter occasionally consults with Formula 1 and other racing teams, providing expertise on aerodynamic design and fluid dynamics. He also oversees student projects that involve computational fluid dynamics simulations related to motorsport.",
+  "meetingContext": "The player might meet Professor Richter at a university lecture on aerodynamics, during a motorsport engineering conference, or perhaps through an introduction from a team engineer looking for expert consultation.",
+  "conversationTopics": [
+    "The latest advancements in CFD simulation",
+    "The nuances of German coffee culture",
+    "The historical significance of vintage watches",
+    "His upcoming opera performance",
+    "His latest board game acquisition"
+  ],
+  "canHelp": [
+    "Provide insights into aerodynamic optimization for the player's car",
+    "Offer a letter of recommendation for a coveted engineering role within a racing team",
+    "Connect the player with influential engineers or team principals"
+  ],
+  "personality_summary": "A dramatic and perfectionistic professor with a surprisingly impulsive streak and a deep passion for both academic pursuits and refined hobbies."
+}

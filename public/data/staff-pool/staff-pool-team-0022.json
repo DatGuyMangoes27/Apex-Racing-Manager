@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 53,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Marco Bellini's passion for aerodynamics began as a child, captivated by the sleek lines of Formula One cars. He pursued a degree in Aerospace Engineering at the Politecnico di Torino, specializing in Computational Fluid Dynamics. His career started at a small Italian racing team, where he quickly rose through the ranks, contributing to significant improvements in aerodynamic efficiency.\n\nMarco's approach is data-driven but tempered with intuition honed over decades of experience. He believes in fostering a collaborative environment where engineers feel empowered to challenge conventional wisdom. His innovative spirit and knack for finding unconventional solutions have earned him a reputation as a visionary in the field, always pushing the boundaries of what's aerodynamically possible.\n\nHe's known for his ability to translate complex technical concepts into easily understandable terms, making him an effective communicator and leader. Marco's relentless pursuit of performance gains, coupled with his mentorship of young engineers, makes him a valuable asset to any motorsport team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A lean man of average height, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of pacing when deep in thought.",
+    "Insists on having a fresh espresso every morning at precisely 10:00 AM."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 22,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Li Wei's passion for motorsport ignited during his childhood in Shanghai, where he spent countless hours tinkering with model cars and watching Formula 1 races. He excelled in mechanical engineering at university, gaining a solid foundation in materials science and precision manufacturing. After graduating, Li eagerly joined Sprint V8 Team as a machinist, eager to apply his skills to the high-pressure environment of racing.\n\nLi is known for his meticulous approach to his work, ensuring that every component he fabricates meets the team's exacting standards. He thrives on the challenge of creating custom parts that optimize performance and reliability. He's a quick learner and is always looking for ways to improve his skills. His youthful enthusiasm and commitment make him a valuable asset to the team. \n\nDespite being relatively new to the team, Li's contributions have already been noticeable. He's proven himself to be both adaptable and resourceful, particularly when faced with tight deadlines and complex projects. His ambition is to become a lead machinist and contribute to the team's future success.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Dark brown",
+    "facialHair": "Clean shaven",
+    "description": "Li is of average height with a lean build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always double-checks measurements, even if he's already confident.",
+    "Has a collection of miniature tools on his workbench.",
+    "Listens to classic rock while working."
+  ]
+}

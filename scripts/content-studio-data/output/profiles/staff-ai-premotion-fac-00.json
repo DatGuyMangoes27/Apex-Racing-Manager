@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 35,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Rhys's journey into motorsport began with a childhood fascination for speed and tinkering with go-karts on his family farm. He pursued a degree in Mechanical Engineering, specializing in simulation and modeling, from the University of Auckland. After graduation, he cut his teeth at a small racing outfit, honing his skills in data analysis and simulator development. \n\nHe joined Proton by Premotion three years ago, drawn by their ambitious vision and commitment to pushing the boundaries of simulator technology. Rhys is a meticulous and dedicated engineer, renowned for his ability to extract every last ounce of performance from the simulation environment. He believes in rigorous testing and continuous refinement, always striving to bridge the gap between the virtual and the real world. His perfectionistic approach to his work makes him a valuable asset to the team, even if it occasionally raises the pressure on his colleagues.\n\nRhys thrives on solving complex problems and collaborating with drivers and engineers to optimize car setups and driving techniques. He's known for his keen eye for detail and his relentless pursuit of accuracy, characteristics that set him apart in the highly competitive world of motorsport simulation.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, slightly receding hairline, neatly combed",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Rhys is of average height with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on a specific type of imported coffee for his morning brew."
+  ]
+}

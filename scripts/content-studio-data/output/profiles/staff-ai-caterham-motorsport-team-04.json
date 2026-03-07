@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 50,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for Formula 1, fueled by late-night races watched with his father. He pursued a degree in mechanical engineering at the University of Porto, specializing in vehicle dynamics. After graduation, he secured a junior engineer position at a small racing team competing in the Portuguese Touring Car Championship, where he quickly demonstrated a knack for data analysis and problem-solving. \n\nHe joined Caterham Motorsport after several successful seasons improving car performance and reliability. Ricardo's approach to race engineering is meticulously data-driven, believing in a holistic view of the vehicle's performance. He is known for his ability to identify subtle changes that yield significant improvements on track, and his calm demeanor under pressure. His experience in various racing categories has given him a broad understanding of different car setups and driving styles, making him a valuable asset to the team. He's also a known quantity, someone who understands the big picture and can communicate with everyone.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo has a stocky build and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a particular fondness for strong espresso, consuming several cups throughout the day.",
+    "Tends to pace back and forth when contemplating complex engineering problems."
+  ]
+}

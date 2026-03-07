@@ -1,0 +1,22 @@
+{
+  "name": "Elektra Papakonstantinou",
+  "nationality": "Greek",
+  "age": 42,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Elektra's journey into motorsport began unconventionally, not through racing, but through a deep fascination with applied physics. After graduating top of her class in mechanical engineering from the National Technical University of Athens, she initially worked in the aerospace industry, developing control systems for UAVs. However, the allure of high-performance vehicles proved too strong. She transitioned into motorsport five years ago, starting with a smaller GT team before being scouted by Cavaleiro Sports for her analytical skills and ability to translate data into tangible performance gains.\n\nAs a performance engineer, Elektra is known for her meticulous approach and ability to remain calm under pressure. She thrives on the challenge of optimizing every aspect of a car's performance, from aerodynamics to suspension setup. While she values innovation, she is also highly pragmatic, prioritizing solutions that are proven and reliable. Elektra has a knack for spotting subtle trends in data that others miss, often leading to breakthroughs in lap time improvements.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, usually tied back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elektra has a serious, focused look, accentuated by her strong jawline and intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and notes.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on brewing her own strong Greek coffee every morning."
+  ]
+}

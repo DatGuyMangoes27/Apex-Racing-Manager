@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0415",
+  "name": "Pixel Pista",
+  "category": "gaming",
+  "tier": "entry",
+  "country": "Spain",
+  "description": "Level up your racing experience.",
+  "story": "Pixel Pista is a Spanish gaming company specializing in racing simulators and esports platforms. Passionate about motorsports, they seek to connect with a younger audience and increase brand awareness through strategic partnerships. They are looking for a team to represent them both on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0415.png"
+}

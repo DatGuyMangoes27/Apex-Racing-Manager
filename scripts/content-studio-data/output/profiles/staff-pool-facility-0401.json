@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Bjorn's fascination with electronics began in his youth, tinkering with radios and building circuits in his father's workshop in Gothenburg. After graduating with a degree in electrical engineering from Chalmers University of Technology, he worked for Volvo, specializing in automotive electronics. However, his passion for motorsport led him to seek opportunities in racing. \n\nHe joined a smaller rally team initially, honing his skills in data acquisition and engine management systems. He believes in a methodical approach, prioritizing reliability and precision in his work. Bjorn's reputation for being a steady hand and a problem-solver has earned him respect throughout his career. He is known for his dedication to optimizing performance through meticulous analysis and careful calibration.\n\nWhat sets Bjorn apart is his deep understanding of both the theoretical and practical aspects of electronics. He's not just someone who follows instructions; he's capable of innovating and adapting to the ever-evolving demands of motorsport technology. He is a quick study, especially for someone of his age.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying blonde",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Bjorn is of average height and build, with a weathered face that speaks of years spent working in garages and paddocks."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool and uses it to fidget when he's deep in thought.",
+    "Has a habit of whistling classical music while working on complex wiring.",
+    "Insists on drinking only Swedish coffee, even when traveling internationally."
+  ]
+}

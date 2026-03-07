@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0311",
+  "name": "Northwind Studios",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "Sweden",
+  "description": "Crafting immersive gaming experiences for a global audience.",
+  "story": "Northwind Studios, a leading Swedish game developer, seeks to connect with the passionate motorsport community. We believe that the dedication, precision, and teamwork exhibited in racing mirror the values we strive for in creating compelling games. By partnering with top-tier racing teams, Northwind aims to expand its brand reach and engage with a new generation of players.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Sweden"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0311.png"
+}

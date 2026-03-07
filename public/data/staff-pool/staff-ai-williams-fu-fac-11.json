@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Hernandez",
+  "nationality": "Mexican",
+  "age": 44,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Sofia Hernandez's journey into motorsport began unconventionally, not with a burning desire for racing, but with a fascination for the engineering that underpinned it. Growing up in Guadalajara, she spent hours tinkering with engines alongside her mechanic father, developing a practical understanding of vehicle dynamics that would later prove invaluable. After earning her degree in Mechanical Engineering, she initially worked in automotive manufacturing, but the lure of Formula 1 proved too strong. She started as a junior data analyst, meticulously studying telemetry and performance metrics, before transitioning into a dedicated role within test driver programs. \n\nSofia's approach to coordinating test drivers is methodical and data-driven. She believes in fostering a collaborative environment where drivers feel comfortable providing honest feedback, even if it's critical. She carefully analyzes driver performance, correlating subjective observations with objective data to identify areas for improvement in both car setup and driver technique. Her reputation as a detail-oriented and approachable coordinator has made her a respected figure within the paddock, known for her ability to bridge the gap between the engineers and the drivers. Her distinctive ability lies in translating complex technical data into actionable insights for the drivers, ultimately leading to faster lap times and improved overall performance.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia has a warm, friendly face framed by her dark hair, and always looks like she's ready to solve a problem."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and observations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on starting every test session with a brief, but detailed, weather forecast analysis."
+  ]
+}

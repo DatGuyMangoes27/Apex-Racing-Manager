@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ivan's journey into motorsport started unexpectedly, during his mandatory military service. Stationed near a small karting track, the roar of engines sparked an unshakeable passion. He pursued mechanical engineering, specializing in aerodynamics, and landed his first role with a touring car team in the late 90s. His pragmatic approach and eye for detail quickly earned him recognition. \n\nBefore joining Scuderia Ferrari, Ivan honed his skills at a smaller Formula team, where limited resources forced him to be incredibly innovative and efficient. He believes in data-driven decisions, coupled with an intuitive understanding of airflow. Ivan is known for his ability to translate complex aerodynamic concepts into practical, track-ready solutions, making him a valuable asset in the high-pressure world of Formula 1.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "close-cropped salt and pepper beard",
+    "description": "A stocky man with a perpetually serious expression, Ivan exudes an air of quiet authority."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn aerodynamic sketches.",
+    "Refuses to use digital whiteboards, preferring traditional chalkboards for brainstorming sessions.",
+    "Has a habit of tapping his pen rhythmically when deep in thought, driving some colleagues crazy."
+  ]
+}

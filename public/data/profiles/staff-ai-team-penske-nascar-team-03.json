@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 38,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Thabo's journey into motorsport began unexpectedly. While studying mechanical engineering at the University of Cape Town, a guest lecture by a former Formula 1 engineer ignited a passion for aerodynamics. He initially worked with a small local racing team, refining his skills in wind tunnel testing and CFD analysis. His dedication and innovative solutions caught the eye of Team Penske scouts, leading to his current role as Head of Aero.\n\nThabo champions a holistic approach to aerodynamic development. He believes that close collaboration between engineers, drivers, and mechanics is crucial for maximizing performance. He emphasizes meticulous data analysis and iterative refinement, always striving to find marginal gains that can translate into significant on-track improvements. His detail-oriented nature and unwavering commitment to the team have earned him the respect of his colleagues and cemented his reputation as a rising star in motorsport aerodynamics.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly cropped afro",
+    "eyeColor": "Dark brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Thabo is of average height with a muscular build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on starting every wind tunnel test with a specific Zulu proverb.",
+    "Has an encyclopedic knowledge of historical motorsport aerodynamic innovations."
+  ]
+}

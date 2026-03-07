@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 49,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Gareth's journey into motorsport began with a childhood spent tinkering with go-karts in his father's garage in rural Wales. After earning a degree in mechanical engineering, he cut his teeth working on Formula Ford cars, quickly gaining a reputation for his meticulous attention to detail and knack for problem-solving. He joined Tony Kart Racing a decade ago, steadily rising through the ranks to become Chief Engineer.\n\nGareth's approach is rooted in data-driven analysis combined with a deep understanding of kart dynamics. He's known for his relentless pursuit of marginal gains, often spending hours poring over telemetry data to identify areas for improvement. While not the most charismatic leader, his unwavering commitment to performance and his deep knowledge of kart technology have earned him the respect of the entire team. He believes in a systematic approach to problem solving, and is always looking for ways to refine and improve the team's performance.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Gareth is a wiry man of medium height, with a focused gaze that betrays his analytical mind."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on personally inspecting every kart component before a race."
+  ]
+}

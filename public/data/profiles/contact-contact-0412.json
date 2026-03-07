@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Priya Sharma",
+  "nationality": "Indian",
+  "age": 50,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Priya Sharma is a renowned sports medicine physician with a PhD in Kinesiology and over 20 years of experience treating elite athletes. Known for her holistic approach, she combines cutting-edge medical techniques with a genuine concern for her patients' well-being. Priya is a vibrant personality, balancing her demanding career with passions like scuba diving, theater, and a surprising enthusiasm for boxing. She's known for her playful banter and unwavering loyalty to those she cares about.\n\nHer involvement in motorsport stems from a desire to apply her expertise to the unique challenges faced by racing drivers. She understands the immense physical and mental strain they endure, and her competitive spirit aligns with the dedication required to succeed in such a demanding sport. A racing driver might cross paths with Dr. Sharma after sustaining an injury during a race or seeking her expertise in optimizing their physical conditioning for peak performance.",
+  "physical": {
+    "skinTone": "Warm brown",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Priya has a warm, approachable face with kind eyes that crinkle when she smiles. She possesses a strong, athletic build, reflecting her active lifestyle."
+  },
+  "connectionToMotorsport": "Dr. Sharma serves as a consultant for several racing teams, providing medical support and performance optimization strategies. She also publishes research on the biomechanics of driving and injury prevention in motorsport.",
+  "meetingContext": "The player might meet Dr. Sharma at a motorsport event where she's providing medical support, or through a referral from another driver or team member seeking specialized sports medicine expertise.",
+  "conversationTopics": [
+    "The latest advancements in sports medicine",
+    "The challenges of balancing a demanding career with personal passions",
+    "Her experiences scuba diving in exotic locations",
+    "The psychological aspects of high-performance athletics",
+    "The beauty of Indian poetry"
+  ],
+  "canHelp": [
+    "Provide expert medical care and rehabilitation for injuries.",
+    "Offer performance optimization strategies to enhance physical and mental endurance.",
+    "Connect the player with other professionals in the sports medicine field."
+  ],
+  "personality_summary": "A caring and competitive doctor who is passionate about motorsports and helping athletes reach their full potential."
+}

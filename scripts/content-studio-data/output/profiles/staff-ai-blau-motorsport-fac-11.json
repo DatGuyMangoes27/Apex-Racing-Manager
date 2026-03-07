@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 52,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Bjørn's journey into motorsport was a gradual climb, starting with local rally events in his youth. He initially volunteered as a mechanic, quickly developing a knack for identifying subtle mechanical issues and offering practical solutions. This hands-on experience led him to Blau Motorsport, where he transitioned into coordinating test drivers. His pragmatic approach focuses on clear communication, efficient scheduling, and ensuring that test data is meticulously collected and analyzed.\n\nBjørn's strength lies in his ability to bridge the gap between the technical demands of the engineers and the feedback provided by the drivers. He's adept at translating subjective driving impressions into actionable data points. His calm demeanor and level-headed approach make him a valuable asset during intense testing sessions, ensuring that everyone remains focused on the task at hand. He is known for his meticulous pre-test checklists, often going above and beyond to ensure everything is prepared.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Bjørn is a man of medium build with a focused gaze and a neatly groomed appearance."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having his coffee black, no sugar, precisely 8 ounces."
+  ]
+}

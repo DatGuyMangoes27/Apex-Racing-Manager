@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Campbell",
+  "nationality": "New Zealand",
+  "age": 59,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair Campbell, a seasoned chief engineer hailing from the land of motorsport legends, has dedicated his life to pushing the boundaries of racing technology. His journey began in the small town of Invercargill, where he tinkered with engines from a young age, fueled by a passion ignited by the legendary Burt Munro. Alistair's approach to engineering is methodical and data-driven, yet he never loses sight of the human element within the team. \n\nAfter graduating with honors in mechanical engineering from the University of Canterbury, Alistair quickly rose through the ranks of various racing teams, showcasing his exceptional ability to diagnose complex mechanical issues and develop innovative solutions. His calm demeanor, even under immense pressure, has earned him the respect of drivers and crew members alike. Alistair joined Iron Lynx five years ago, bringing with him a wealth of experience and a fierce determination to achieve victory. His knack for optimizing car performance in diverse conditions has consistently proven invaluable to the team's success.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Alistair is a sturdy man with kind eyes and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a specific brand of New Zealand coffee every morning before starting work."
+  ]
+}

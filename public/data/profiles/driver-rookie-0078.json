@@ -1,0 +1,27 @@
+{
+  "biography": "Kimi Garcia, a name whispered with both excitement and frustration in the Mexican racing scene, hails from the vibrant streets of Guadalajara. Born into a family with no prior connection to motorsport, Kimi's passion ignited at a local go-kart track. Her father, initially skeptical, relented after witnessing Kimi’s raw talent and relentless determination, spending his savings on a second-hand kart. Kimi rapidly outgrew the local scene, earning victories against much older and more experienced drivers. A defining moment came at the Mexican National Karting Championship, where, despite starting last due to a mechanical issue, Kimi fought her way to a podium finish, showcasing her overtaking prowess. Now at 19, Kimi navigates the challenging world of open-wheel racing as an independent driver, relying on her skill and a small team of dedicated mechanics to make her mark. The inconsistent results reflect her team's limited resources, but her raw speed is undeniable, making her a rising star to watch, albeit one with a rollercoaster trajectory.",
+  "drivingStyle": "Kimi's driving style is a blend of aggressive precision and controlled chaos. She's known for her late-braking maneuvers and willingness to take risks in corners where others hesitate. Tire management is her Achilles' heel; she often pushes too hard early in a stint, resulting in a significant drop-off in performance later in the race. Under pressure, Kimi can either deliver electrifying performances or crack completely, reflecting her inconsistent temperament. Her raw pace, however, is undeniable.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Vargas",
+      "reason": "A long-standing rivalry stemming from their karting days, fueled by contrasting driving styles and a constant battle for supremacy."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A newcomer to the scene who has enjoyed more success early in their careers, leading to some bitter competition between the two drivers."
+    },
+    {
+      "driver": "Alejandro Herrera",
+      "reason": "Alejandro frequently calls Kimi's driving reckless, and Kimi sees Alejandro as overly cautious and slow."
+    }
+  ],
+  "quirks": [
+    "Always wears a bracelet given to her by her grandmother before every race.",
+    "Listens to traditional Mexican folk music to calm her nerves before the start.",
+    "Refuses to walk under ladders, even in the paddock."
+  ],
+  "nickname": "La Tormenta (The Storm)",
+  "famousQuote": "\"Racing isn't just about speed; it's about heart. And I've got plenty of that.\"",
+  "careerHighlight": "Winning the Formula Mexico Regional Championship in her rookie year, defying expectations and proving her potential.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a crucial race due to an unforced error, costing her a shot at a national title."
+}

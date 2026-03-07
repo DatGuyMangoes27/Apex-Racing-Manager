@@ -1,0 +1,22 @@
+{
+  "name": "Moira McTavish",
+  "nationality": "Scottish",
+  "age": 51,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Moira's journey into motorsport was a happy accident. Initially working in the financial sector managing large databases, she found herself increasingly drawn to the data-driven world of racing. After volunteering at a local race event to offer IT support, she quickly realized the potential for her skills in this fast-paced environment. Moira joined JHR Developments five years ago, bringing a pragmatic approach to IT infrastructure and cybersecurity. \n\nHer focus is on ensuring the team's data integrity and accessibility, crucial for trackside analysis and simulations. Moira believes in robust, reliable systems, favoring proven technologies over chasing the latest trends. Her meticulous nature and problem-solving skills make her an invaluable asset, especially during high-pressure race weekends where downtime is not an option. Moira is known for her calm demeanor and ability to troubleshoot under pressure, earning her the respect of the entire team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, layered bob, neatly styled",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A compact woman with kind eyes and a practical demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool in her bag.",
+    "Insists on backing up all critical data to physical hard drives, despite cloud storage being the norm.",
+    "Has a particular fondness for Earl Grey tea, consuming several cups daily."
+  ]
+}

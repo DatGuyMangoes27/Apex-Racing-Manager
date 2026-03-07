@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0086",
+  "name": "Fortis Racing Gear",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Czech Republic",
+  "description": "Engineered for Victory.",
+  "story": "Fortis Racing Gear has been crafting high-performance racing equipment since 1998. Based in the heart of Czech Republic, they specialize in safety gear, from helmets to racing suits, prioritizing driver safety and performance enhancement. Fortis seeks partnerships with teams that demonstrate a commitment to excellence and pushing the boundaries of motorsport technology.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0086.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 40,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. He initially worked in an auto body shop, where his keen eye for color matching and meticulous attention to detail caught the attention of a local racing team. He was offered a position to manage the team's paint shop, and he saw it as an opportunity to combine his passion for cars with his artistic skills. Ricardo is dedicated to ensuring every car leaves his shop with a flawless finish, reflecting the team's commitment to excellence. He believes that a perfectly painted car not only looks stunning but also provides a psychological edge to the driver, instilling confidence and pride.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Moustache",
+    "description": "Ricardo is of medium build, with a strong, focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only high-end imported paints, even for minor touch-ups.",
+    "Always listens to traditional Mexican music while working.",
+    "Has a superstitious ritual of polishing a small toy car before starting each paint job."
+  ]
+}

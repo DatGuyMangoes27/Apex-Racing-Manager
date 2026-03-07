@@ -38,6 +38,11 @@ export interface MandatoryActivityTemplate {
   // Display
   urgencyLevel: 'low' | 'medium' | 'high' | 'critical'
   warningDaysBefore: number       // Send warning email X days before deadline
+
+  /** Only trigger when the team has at least one active sponsor */
+  requiresSponsors?: boolean
+  /** Only trigger when the team has at least one hired staff member */
+  requiresStaff?: boolean
 }
 
 // ============================================
@@ -59,8 +64,8 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: true,          // Driver needs to attend
     requiresOwner: true,           // Owner must be present
     effectsOnComplete: {
-      teamMorale: 5,
-      boardMood: 3,
+      teamMorale: 2,
+      boardMood: 1,
       developmentPoints: 2
     },
     effectsOnMiss: {
@@ -109,8 +114,8 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: false,
     requiresOwner: true,           // Owner MUST attend
     effectsOnComplete: {
-      boardMood: 8,
-      teamMorale: 3
+      boardMood: 4,
+      teamMorale: 1
     },
     effectsOnMiss: {
       boardMood: -20,
@@ -134,7 +139,7 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: false,
     requiresOwner: true,           // Owner must review finances
     effectsOnComplete: {
-      boardMood: 5
+      boardMood: 2
     },
     effectsOnMiss: {
       boardMood: -15,
@@ -158,7 +163,7 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresOwner: true,
     effectsOnComplete: {
       sponsorSatisfaction: 10,
-      boardMood: 3
+      boardMood: 1
     },
     effectsOnMiss: {
       sponsorSatisfaction: -15,
@@ -166,7 +171,8 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
       reputation: -2
     },
     urgencyLevel: 'high',
-    warningDaysBefore: 3
+    warningDaysBefore: 3,
+    requiresSponsors: true,
   },
   
   // === PRE-RACE ACTIVITIES ===
@@ -183,8 +189,8 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: true,
     requiresOwner: true,
     effectsOnComplete: {
-      teamMorale: 3,
-      driverMorale: 3
+      teamMorale: 1,
+      driverMorale: 1
     },
     effectsOnMiss: {
       teamMorale: -5,
@@ -229,9 +235,9 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: true,
     requiresOwner: true,
     effectsOnComplete: {
-      reputation: 5,
-      fanSentiment: 10,
-      sponsorSatisfaction: 5
+      reputation: 2,
+      fanSentiment: 5,
+      sponsorSatisfaction: 3
     },
     effectsOnMiss: {
       reputation: -5,
@@ -254,8 +260,8 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: false,
     requiresOwner: true,
     effectsOnComplete: {
-      boardMood: 5,
-      teamMorale: 3
+      boardMood: 2,
+      teamMorale: 1
     },
     effectsOnMiss: {
       boardMood: -10,
@@ -277,9 +283,9 @@ export const MANDATORY_ACTIVITY_TEMPLATES: MandatoryActivityTemplate[] = [
     requiresDriver: true,
     requiresOwner: true,
     effectsOnComplete: {
-      teamMorale: 10,
-      boardMood: 5,
-      driverMorale: 5
+      teamMorale: 4,
+      boardMood: 2,
+      driverMorale: 2
     },
     effectsOnMiss: {
       teamMorale: -8,
@@ -309,6 +315,10 @@ export function shouldTriggerActivity(
     seasonEndWeek: number
     seasonMidpoint: number
     existingActivities: ScheduledActivity[]
+    hasSponsors?: boolean
+    hasRaceCalendar?: boolean
+    hasStaff?: boolean
+    hasDrivers?: boolean
   }
 ): boolean {
   // Check if already scheduled
@@ -318,6 +328,10 @@ export function shouldTriggerActivity(
   )
   
   if (alreadyScheduled) return false
+
+  if (template.requiresSponsors && !context.hasSponsors) return false
+  if (template.requiresStaff && !context.hasStaff) return false
+  if (template.requiresDriver && !context.hasDrivers) return false
   
   switch (template.trigger) {
     case 'post_race':
@@ -338,6 +352,7 @@ export function shouldTriggerActivity(
       return context.currentWeek % interval === 0 && context.currentDay === 1
       
     case 'season_milestone':
+      if (!context.hasRaceCalendar) return false
       // Check specific season milestones
       if (template.id === 'mandatory_season_opener_media') {
         return context.currentWeek === context.seasonStartWeek && context.currentDay === 1
@@ -365,6 +380,11 @@ export function createMandatoryActivity(
   deadlineWeek: number,
   deadlineDay: number
 ): ScheduledActivity {
+  // Mandatory activities can be moved, but with a meaningful admin fee.
+  const rescheduleCost = template.baseCost > 0
+    ? Math.floor(template.baseCost * 0.35)
+    : 500
+
   return {
     id: `mandatory_${template.id}_${week}_${Date.now()}`,
     templateId: template.id,
@@ -381,6 +401,8 @@ export function createMandatoryActivity(
     // Mark as mandatory with deadline
     triggeredBy: 'mandatory',
     mandatory: true,
+    canReschedule: true,
+    rescheduleCost,
     deadline: {
       week: deadlineWeek,
       day: deadlineDay
@@ -401,7 +423,13 @@ export function createMandatoryActivity(
     // Time Budget System: drain level and calendar type from cost config
     drainLevel: (MANDATORY_ACTIVITY_COSTS[template.id]?.drain ?? 'normal') as DrainLevel,
     calendarEntryType: (MANDATORY_ACTIVITY_COSTS[template.id]?.calendarType ?? 
-      (template.requiresOwner ? 'mandatory' : 'team')) as CalendarEntryType
+      (template.requiresOwner ? 'mandatory' : 'team')) as CalendarEntryType,
+    
+    // Day period scheduling from activity time cost config
+    scheduledPeriod: (() => {
+      const tc = getActivityTimeCost(template.id)
+      return tc.preferredPeriod || tc.allowedPeriods?.[0]
+    })()
   } as ScheduledActivity
 }
 

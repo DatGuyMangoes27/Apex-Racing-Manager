@@ -1,0 +1,27 @@
+{
+  "biography": "Kimi Wilson hails from the small coastal town of Punta del Este, Uruguay, a place more known for its beaches than its race tracks. Growing up, Kimi spent hours tinkering with an old go-kart gifted by her grandfather, a former mechanic. Her passion ignited during a local karting event; watching the older kids compete, she vowed to one day be among them. Lacking resources, Kimi worked tirelessly, saving every penny from her part-time job at a local diner to fund her racing dreams. Her junior career was a rollercoaster, marked by brilliant flashes of speed often hampered by mechanical issues and sheer bad luck. Now, at 21, Kimi is fighting her way up the single-seater ranks, largely self-funded and relying on her raw talent and unwavering determination. A defining moment came at a Formula 4 race in Argentina, where, despite starting last due to a qualifying mishap, she carved her way through the field to finish on the podium, showcasing her exceptional overtaking abilities. Currently competing in a regional Formula 3 series, she's steadily gaining recognition, attracting the attention of smaller independent teams.",
+  "drivingStyle": "Kimi's driving style is characterized by a blend of calculated aggression and remarkable car control. She's known for her late-braking maneuvers and ability to extract maximum performance from her tires, often pushing the limit without crossing the line. While not the most flamboyant driver, Kimi's consistency and strategic approach to races make her a formidable competitor. She's particularly adept at managing tire degradation, a skill honed from years of driving underfunded equipment that demanded careful resource management. Under pressure, Kimi remains remarkably calm, a trait that has earned her the respect of her peers.",
+  "rivalries": [
+    {
+      "name": "Enzo Silva",
+      "reason": "A long-standing rivalry dating back to their karting days. Enzo, from a wealthy family, often had superior equipment, fueling Kimi's determination to beat him. Their clashes on track are always intense."
+    },
+    {
+      "name": "Sofia Rossi",
+      "reason": "A fierce competitor in the Formula 3 series. Sofia's aggressive tactics and occasional on-track incidents have led to several heated exchanges with Kimi, creating a tense atmosphere whenever they share the track."
+    },
+    {
+      "name": "Marco Alvarez",
+      "reason": "Marco, a more experienced driver, often dismisses Kimi's achievements due to her independent status. Kimi is determined to prove him wrong and establish herself as a serious contender."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky charm bracelet given to her by her grandmother before every race.",
+    "Has a specific playlist of Uruguayan rock music that she listens to before getting into the car.",
+    "Meticulously cleans her helmet visor before each session, regardless of how clean it already is."
+  ],
+  "nickname": "La Roca (The Rock)",
+  "famousQuote": "\"Racing isn't just about speed; it's about heart. If you don't have the heart, you'll never win.\"",
+  "careerHighlight": "Finishing third at the Formula 4 race in Buenos Aires after starting last, showcasing incredible overtaking skills and determination.",
+  "careerLowPoint": "Crashing out of the lead in a crucial karting championship race due to a mechanical failure, costing her the title and a potential scholarship."
+}

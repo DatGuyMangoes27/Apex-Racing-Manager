@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 46,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. Initially a statistician for a major agricultural firm, he discovered his knack for predictive modeling after accurately forecasting crop yields months in advance. A chance encounter with a local racing team needing help analyzing telemetry data led him to the track. He was hooked.\n\nRicardo's approach to data analysis is rooted in pragmatism. He believes in distilling complex datasets into actionable insights for race engineers and drivers. His calm demeanor and ability to explain intricate data in plain language make him a valuable asset in high-pressure environments. He's known for his innovative approach to uncovering hidden performance gains within existing data, often finding improvements that others miss.\n\nWhat sets Ricardo apart is his ability to blend statistical rigor with a deep understanding of motorsport dynamics. He doesn't just crunch numbers; he understands the context behind them, resulting in strategies that are both data-driven and practically implementable.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed Goatee",
+    "description": "Ricardo is of average height with a slightly stocky build and a thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn copy of 'Statistics for Dummies'",
+    "Has a lucky sombrero that he wears to every race, tucked away in his bag.",
+    "Insists on analyzing data using a specific vintage spreadsheet software."
+  ]
+}

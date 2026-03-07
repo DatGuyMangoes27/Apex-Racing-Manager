@@ -1,0 +1,22 @@
+{
+  "name": "Zvonimir Kovačić",
+  "nationality": "Croatian",
+  "age": 59,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Zvonimir Kovačić's journey into motorsport began unconventionally, fueled by a childhood spent tinkering with engines in his grandfather's Zagreb workshop. After graduating with honors in mechanical engineering from the University of Zagreb, he cut his teeth in various junior racing series, steadily building a reputation for meticulous attention to detail and innovative problem-solving. His breakthrough came with a small Italian team, where he helped develop a revolutionary suspension system that caught the eye of Red Bull Racing.\n\nJoining Red Bull a decade ago, Zvonimir quickly ascended the ranks, becoming known for his analytical prowess and ability to translate complex data into actionable strategies. He approaches his role as Chief Engineer with a blend of pragmatism and a relentless pursuit of performance gains. His deep understanding of vehicle dynamics, coupled with his management style, allows him to effectively coordinate the engineering team, ensuring that every aspect of the car is optimized for peak performance.\n\nWhat distinguishes Zvonimir is his uncanny ability to predict potential mechanical failures before they occur. Some say it's intuition; others attribute it to his years of experience and meticulous data analysis. Whatever the reason, his foresight has saved the team from countless setbacks, solidifying his position as a vital asset to Red Bull Racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed gray goatee",
+    "description": "Zvonimir is a man of medium height, with a sturdy build and intense, focused eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he has access to advanced software.",
+    "Has a habit of muttering equations under his breath when deep in thought.",
+    "Insists on drinking Croatian coffee from the same chipped mug every morning."
+  ]
+}

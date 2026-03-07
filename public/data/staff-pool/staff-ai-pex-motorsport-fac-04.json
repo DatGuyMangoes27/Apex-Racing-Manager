@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Marco Bellini's journey into motorsport began as a teenager, tinkering with radios and electronics in his father's garage near Modena. This early fascination led him to pursue a degree in electrical engineering, focusing on embedded systems. After graduating, he spent several years working for an automotive supplier, honing his skills in vehicle electronics before finally landing his dream job with PEX Motorsport. \n\nMarco's approach to electronics engineering is methodical and precise. He believes in thorough testing and meticulous documentation. His knack for troubleshooting complex electrical issues has made him an invaluable asset to the team. What sets Marco apart is his ability to quickly identify and resolve electrical gremlins that often plague race cars, ensuring that the team minimizes downtime during crucial races. He values teamwork but often prefers to work independently, focusing intently on the problem at hand.\n\nMarco is also known for his dedication and loyalty to PEX Motorsport. He consistently goes the extra mile to ensure that the cars are performing at their peak. His commitment and passion for motorsport are evident in every task he undertakes.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A stocky man with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Drinks espresso every two hours, without fail.",
+    "Has a habit of humming quietly while working on complex circuits."
+  ]
+}

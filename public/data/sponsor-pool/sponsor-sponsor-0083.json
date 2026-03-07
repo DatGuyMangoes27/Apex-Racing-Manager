@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0083",
+  "name": "Bohemia Crystal",
+  "category": "luxury",
+  "tier": "mid",
+  "country": "Czech Republic",
+  "description": "Exquisite Czech crystal, crafted with precision and elegance.",
+  "story": "Bohemia Crystal has a long tradition of supporting the arts and craftsmanship. Motorsport represents the pinnacle of human skill and engineering, values that resonate deeply with the brand. They seek to associate with teams that demonstrate precision, dedication, and a commitment to excellence, mirroring their own pursuit of perfection in crystal making.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0083.png"
+}

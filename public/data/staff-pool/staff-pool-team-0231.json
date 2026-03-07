@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Velez",
+  "nationality": "Colombian",
+  "age": 40,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Mateo's journey into motorsport started unconventionally, not on the track, but in the bustling workshops of Medellin, Colombia. He initially pursued a mechanical engineering degree, but a local Formula SAE project ignited his passion for aerodynamics. He honed his skills through relentless experimentation and data analysis, quickly becoming the go-to guy for optimizing vehicle performance. He's worked with smaller teams in Formula Regional and Formula 3, and he’s built a reputation as a problem-solver who can squeeze performance out of limited resources.\n\nMateo's approach to aerodynamics is rooted in practical application. He values data-driven decision-making and believes in a collaborative environment where engineers, drivers, and mechanics work in sync. He understands that even the most sophisticated simulations are useless without real-world validation. Mateo is known for his ability to distill complex aerodynamic principles into easily understandable concepts for the entire team, fostering a shared understanding and maximizing efficiency. He's looking for a team where he can bring his experience and lead the aero department to a new level.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Mateo is of medium height and has a focused, intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a clear, unobstructed view of the wind tunnel data during testing."
+  ]
+}

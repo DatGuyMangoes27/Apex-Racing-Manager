@@ -1,0 +1,31 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 40,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Li Wei is a tenured professor of mechanical engineering at Tsinghua University. Known for his fiercely independent thinking and occasionally outlandish ideas, he's both admired and occasionally ridiculed by his peers. He genuinely believes in the power of engineering to change the world, holding stubbornly to his idealistic visions despite setbacks and criticisms. He's notoriously difficult to pin down for meetings, often disappearing for weeks on 'research trips' that seem suspiciously timed around golf tournaments. \n\nLi Wei's connection to motorsport stems from his research into advanced materials and aerodynamics, which has led to consulting work with various racing teams over the years. A racing driver might cross paths with him while seeking expert consultation on vehicle dynamics or exploring potential sponsorships from university-affiliated research programs. He is always looking for a new exciting research project to invest in.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Li Wei has a wiry build and always wears round, wire-rimmed glasses. He often sports a tweed jacket, even in warm weather."
+  },
+  "connectionToMotorsport": "Professor Li Wei consults with racing teams on cutting-edge engineering solutions, focusing on aerodynamics and material science. He also oversees university-backed motorsport research projects.",
+  "meetingContext": "The player might meet Professor Li Wei at a motorsport engineering conference or through an introduction from a mutual contact within the racing industry.",
+  "conversationTopics": [
+    "The future of automotive engineering",
+    "His latest golf game",
+    "The importance of sustainable technologies in racing",
+    "His travels through rural China",
+    "The best wines to pair with spicy Sichuan cuisine"
+  ],
+  "canHelp": [
+    "Provide technical expertise on vehicle performance and aerodynamics",
+    "Connect the player with potential sponsors from university-affiliated programs",
+    "Offer access to advanced research facilities for testing and development"
+  ],
+  "personality_summary": "An opinionated and unreliable professor with a passion for engineering and a penchant for disappearing on golfing adventures."
+}

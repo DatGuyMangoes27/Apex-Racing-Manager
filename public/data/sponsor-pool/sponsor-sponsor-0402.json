@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0402",
+  "name": "NordicDrive AB",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "Sweden",
+  "description": "Precision engineered performance parts for discerning drivers.",
+  "story": "NordicDrive AB has a long history of supporting Swedish motorsport talent. Founded by a former rally driver, the company believes in pushing the limits of automotive technology and seeks to partner with teams that share their commitment to excellence and innovation. They look for a team that can reliably demonstrate the performance gains from their parts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Sweden",
+      "Finland",
+      "Norway",
+      "Denmark"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0402.png"
+}

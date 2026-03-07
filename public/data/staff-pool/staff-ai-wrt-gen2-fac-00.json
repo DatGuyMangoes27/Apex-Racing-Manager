@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 54,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Kenji Tanaka's journey into motorsport began unconventionally, not on the track but in the digital realm. A skilled programmer from a young age, Kenji found himself drawn to the intricate algorithms and data analysis involved in racing simulations. He started as a hobbyist, tweaking and optimizing racing games, before a chance encounter with a Team WRT engineer at a gaming convention. Impressed by Kenji's technical acumen, he was offered a position within their simulator program.\n\nOver the years, Kenji has become an indispensable part of the team. He has a sharp eye for detail and tireless dedication to refining the simulator's fidelity. His approach blends a deep understanding of vehicle dynamics with a programmer's precision, allowing him to identify and correct even the most subtle discrepancies between the virtual and real worlds. What sets Kenji apart is his ability to communicate complex technical information in a way that drivers can easily understand, bridging the gap between engineering and performance.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "thin mustache",
+    "description": "Kenji is of average height, with a lean build that belies his age."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten code snippets.",
+    "Insists on calibrating the simulator using a specific set of vintage racing gloves.",
+    "Has a habit of muttering mathematical equations under his breath when troubleshooting."
+  ]
+}

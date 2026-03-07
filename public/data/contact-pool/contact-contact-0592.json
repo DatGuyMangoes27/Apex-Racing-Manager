@@ -1,0 +1,31 @@
+{
+  "name": "Beatriz Oliveira",
+  "nationality": "Brazilian",
+  "age": 53,
+  "gender": "female",
+  "contactType": "artist",
+  "bio": "Beatriz Oliveira is a renowned sculptor based in São Paulo, known for her large-scale, abstract metal works. Her pieces often explore themes of movement and speed, drawing inspiration from her lifelong fascination with motorsport. While she maintains a reserved demeanor in public, those who know her well describe her as fiercely loyal and surprisingly warm, with a generous spirit that extends to supporting emerging artists. Beatriz's work has been featured in galleries across South America and Europe, earning her critical acclaim and a comfortable living.\n\nA racing driver might cross paths with Beatriz through sponsorship opportunities, as she occasionally collaborates with brands for art installations at racing events. Her interest in sustainable living also leads her to support teams and drivers who prioritize environmentally friendly racing practices and technologies. Furthermore, her passion for drone racing makes her a frequent attendee at related events, increasing the likelihood of an introduction through shared acquaintances.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, wavy bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Beatriz has a strong, expressive face framed by short, salt-and-pepper hair. She favors practical, comfortable clothing, often with subtle artistic flair."
+  },
+  "connectionToMotorsport": "Beatriz draws artistic inspiration from the speed and dynamism of motorsport, incorporating these themes into her sculptures. She also occasionally collaborates with racing teams on art installations and promotional events.",
+  "meetingContext": "The player might meet Beatriz at a motorsport art exhibition, a VIP event at a Formula E race, or through a mutual connection within the Brazilian creative scene.",
+  "conversationTopics": [
+    "The artistic merit of Formula 1 car design",
+    "The use of sustainable materials in art and racing",
+    "The ethical considerations of drone racing",
+    "Local craft breweries in São Paulo",
+    "Her latest sculpture project"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors interested in art and innovation",
+    "Offer the player opportunities to collaborate on artistic projects, enhancing their public image",
+    "Connect the player with influential figures in the Brazilian art and design community"
+  ],
+  "personality_summary": "A generous but stubborn artist with a passion for speed and a quiet, observant nature."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 42,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Krzysztof's journey into motorsport data analysis began with a childhood fascination for speed and a teenage obsession with statistics. Leaving his hometown of Poznan, he pursued a degree in Computer Science, focusing on algorithm design and data modeling. After graduating, he initially worked in financial analysis, but the allure of motorsports proved too strong. He took a significant pay cut to join a small European racing team as a junior analyst.\n\nHis approach is rooted in meticulous data cleansing and a relentless pursuit of actionable insights. Krzysztof believes in distilling complex datasets into clear, concise reports that empower engineers and strategists to make informed decisions under pressure. His ability to identify subtle performance trends that others miss has made him a valuable asset to teams he's worked for.\n\nKrzysztof distinguishes himself through his unwavering dedication to accuracy and his almost uncanny ability to predict the impact of even the smallest adjustments to a race car's setup. While he may not be the most outgoing member of the team, his insights are highly sought after, and he's known for his commitment to providing the best possible data-driven guidance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Krzysztof has a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during breaks.",
+    "Has a particular fondness for statistical anomalies and loudly exclaims 'Intrygujace!' when discovering one",
+    "Insists on using a mechanical keyboard with very clicky keys."
+  ]
+}

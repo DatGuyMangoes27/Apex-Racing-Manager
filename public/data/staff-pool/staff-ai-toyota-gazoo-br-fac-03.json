@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Benavides",
+    "nationality": "Chilean",
+    "age": 52,
+    "gender": "male",
+    "role": "machinist",
+    "bio": "Ricardo grew up around engines, his father owning a small repair shop in Santiago. He spent his youth dismantling and rebuilding motors, developing an innate understanding of mechanics. This hands-on experience led him to motorsport, initially as a volunteer for local rally teams. His meticulous approach and problem-solving skills quickly made him indispensable.\n\nHe joined Toyota Gazoo Racing BR fifteen years ago, drawn by the team's commitment to precision and innovation. Ricardo thrives on the challenge of optimizing performance, even in the smallest components. He's known for his relentless pursuit of perfection and his willingness to share his knowledge with younger mechanics, though his high standards can sometimes make him a demanding colleague. Ricardo is valued for his ability to quickly diagnose mechanical failures and implement effective solutions, often under intense pressure, he is the guy the team calls on to solve the impossible.",
+    "physical": {
+      "skinTone": "olive",
+      "hairColor": "gray",
+      "hairStyle": "short, neatly combed back",
+      "eyeColor": "brown",
+      "facialHair": "trimmed goatee",
+      "description": "Ricardo is a stocky man with strong hands and a focused gaze."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always sharpens his pencils before starting any task.",
+      "Meticulously cleans his tools after each use, organizing them with extreme precision.",
+      "Drinks mate from a traditional gourd every afternoon at 3:00 PM, regardless of the situation."
+    ]
+  }
+]

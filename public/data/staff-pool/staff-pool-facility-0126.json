@@ -1,0 +1,22 @@
+{
+  "name": "Esko Järvinen",
+  "nationality": "Finnish",
+  "age": 55,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Esko's journey into motorsport began in his youth, tinkering with engines in his father's garage in rural Finland. That early experience fueled a lifelong passion for precision engineering. After completing his vocational training, Esko spent several years at a local machine shop, honing his skills and developing a reputation for meticulous work. He transitioned to motorsport in his late 20s, initially working with a small rally team before moving into Formula racing.\n\nThroughout his career, Esko has always emphasized reliability and accuracy above all else. He believes in a thorough, systematic approach to problem-solving, and his colleagues often seek his advice for complex machining challenges. Esko is known for his ability to adapt quickly to new technologies and his commitment to continuous improvement. His experience in both manual and CNC machining makes him a valuable asset to any team.\n\nWhat sets Esko apart is his old-school commitment to quality. He takes immense pride in his work and is always willing to go the extra mile to ensure that every part meets the highest standards. Although not the most outspoken member of the team, his dedication and expertise speak for themselves.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Full mustache",
+    "description": "A stout man with a weathered face and strong hands."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Insists on using traditional measuring tools alongside digital instruments.",
+    "Has a collection of antique engine parts displayed in his workspace."
+  ]
+}

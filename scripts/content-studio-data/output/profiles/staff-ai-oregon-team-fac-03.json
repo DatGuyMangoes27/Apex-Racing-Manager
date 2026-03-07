@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Halvorsen",
+  "nationality": "Norwegian",
+  "age": 54,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Astrid Halvorsen discovered her passion for machinery at a young age, tinkering with her grandfather's fishing boat engine in their small coastal town. After completing a rigorous apprenticeship in Oslo, she specialized in precision machining. Her career has spanned various industries, from shipbuilding to aerospace, before she found her true calling in motorsport. Her meticulous approach and uncanny ability to diagnose and resolve mechanical issues quickly made her an invaluable asset to any team.\n\nJoining Oregon Team was a deliberate choice for Astrid, drawn by the team's commitment to innovation and their underdog spirit. She approaches every task with a blend of pragmatism and a relentless pursuit of perfection, believing that even the smallest detail can make the difference between victory and defeat. What sets Astrid apart is her intuitive understanding of materials and her knack for improvising solutions in high-pressure situations, making her a go-to troubleshooter in the pit lane.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blonde",
+    "hairStyle": "Neatly braided, often tucked under a cap",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A stout woman with strong, calloused hands and a no-nonsense demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, well-worn machinist's handbook in her pocket.",
+    "Has a habit of tapping her wrench rhythmically against surfaces when deep in thought.",
+    "Insists on using only metric measurements, even when others use imperial."
+  ]
+}

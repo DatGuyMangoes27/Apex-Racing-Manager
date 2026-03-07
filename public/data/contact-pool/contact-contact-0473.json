@@ -1,0 +1,31 @@
+{
+  "name": "Mei Li",
+  "nationality": "Chinese",
+  "age": 40,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Mei Li is a seasoned motorsport journalist known for her insightful and often critical commentary. Having spent over 15 years covering various racing series, from Formula 1 to the Chinese Touring Car Championship, she's earned a reputation for asking the tough questions and holding teams and drivers accountable. While some find her directness abrasive, others appreciate her commitment to journalistic integrity. She deeply cares about the growth of motorsport and is especially passionate about seeing more diversity and inclusion in the sport.\n\nA racing driver might cross paths with Mei at press conferences, paddock interviews, or exclusive events. She's always on the lookout for compelling stories, and a driver with a unique background, a strong opinion, or a particularly impressive performance might catch her eye. Gaining her favor could lead to positive media coverage and increased visibility, but crossing her could result in unflattering articles and a tarnished reputation. Her nurturing side often comes out to younger drivers that remind her of her younger sister, so be genuine.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, slightly wavy with subtle highlights",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Mei has a thoughtful face framed by her dark hair. She often wears stylish, yet practical clothing, suitable for the paddock environment."
+  },
+  "connectionToMotorsport": "Mei is a prominent journalist who writes for several leading motorsport publications and also runs a popular racing blog. She provides commentary and analysis on races, teams, and drivers.",
+  "meetingContext": "The player might meet Mei during a post-race press conference, at a motorsport industry networking event, or through a mutual connection within a racing team.",
+  "conversationTopics": [
+    "The future of electric racing",
+    "The challenges faced by female drivers in motorsport",
+    "The impact of sponsorship on racing team performance",
+    "The evolving media landscape in motorsport",
+    "Her latest scuba diving trip and the coral reefs she explored"
+  ],
+  "canHelp": [
+    "Provide positive media coverage and increase the player's visibility.",
+    "Offer valuable insights and advice on navigating the media landscape.",
+    "Introduce the player to key figures in the motorsport industry."
+  ],
+  "personality_summary": "A compassionate yet opinionated journalist who isn't afraid to speak her mind."
+}

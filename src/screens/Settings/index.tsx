@@ -3,10 +3,46 @@ import {
   Settings as SettingsIcon, Folder, Play, WifiOff, 
   Check, X, AlertCircle, RefreshCw, Save, Monitor,
   Gamepad2, Radio, HardDrive, Volume2, Eye, Users, ChevronRight,
-  FileCode, Mic, Key, Volume1, VolumeX, TestTube, Wrench, Trash2, Layers, Zap, DollarSign, Sparkles
+  FileCode, Mic, Key, Volume1, VolumeX, TestTube, Wrench, Trash2, Layers, Zap, DollarSign, Sparkles, Heart, UserPlus
 } from 'lucide-react'
-import { Card, CardHeader, Button, Badge, PageHeader, useToast } from '@/components/ui'
+import { useToast } from '@/components/ui'
+
+// Local UI components implementing new design system
+function Card({ children, className = '', variant: _v, padding: _p, ...rest }: any) {
+  return <div className={`bg-white border-[0.8px] border-black/20 rounded-[24px] overflow-hidden ${className}`} {...rest}>{children}</div>
+}
+function CardHeader({ title, subtitle, action, icon, children }: { title?: string; subtitle?: string; action?: React.ReactNode; icon?: React.ReactNode; children?: React.ReactNode }) {
+  return (
+    <div className="px-[20px] pt-[16px] pb-[8px]">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-[8px]">
+          {icon}
+          <div>
+            <h3 className="text-[18px] text-[#0a0a0a]" style={{ fontFamily: "'Arial Black', 'Arial', sans-serif" }}>{title}</h3>
+            {subtitle && <p className="text-[13px] text-[#4a5565]" style={{ fontFamily: "'Arial', sans-serif" }}>{subtitle}</p>}
+          </div>
+        </div>
+        {action}
+      </div>
+      {children}
+    </div>
+  )
+}
+function Badge({ children, variant: _v, size: _s, className = '' }: any) {
+  return <span className={`inline-flex items-center text-[11px] px-[8px] py-[2px] rounded-[8px] border-[0.8px] border-black/20 text-[#4a5565] ${className}`}>{children}</span>
+}
+function Button({ children, variant = 'primary', size: _s, className = '', disabled, onClick, ...rest }: any) {
+  const base = variant === 'primary' || variant === 'danger'
+    ? 'bg-black text-white rounded-[16px]'
+    : variant === 'ghost'
+      ? 'bg-transparent hover:bg-black/5 rounded-[12px]'
+      : 'border-[0.8px] border-black/20 rounded-[12px] bg-white'
+  return <button className={`px-[16px] py-[8px] text-[14px] transition-colors disabled:opacity-50 ${base} ${className}`} disabled={disabled} onClick={onClick} {...rest}>{children}</button>
+}
 import { initStreamingAudio, startStreamingSession, setStreamingVoiceBoost, stopStreamingSession } from '@/services/streamingAudio'
+import { getGeminiKeyPool } from '@/services/geminiKeyRotation'
+import { buildCommentaryWorldSnapshot } from '@/services/commentaryWorldSnapshot'
+import { getDriverNarrative, getDriverNarrativeByName, getTeamNarrative, getTeamNarrativeByName, isContentLoaded as isPreGenContentLoaded } from '@/services/preGeneratedContentService'
 import { useCareerStore } from '@/store/careerStore'
 import { useRivalStore } from '@/store/rivalStore'
 import {
@@ -15,6 +51,106 @@ import {
   getNextTierInfo,
   checkIfWinBreaksRecord
 } from '@/data/achievements';
+
+// Local type definitions for settings
+interface AMS2Settings {
+  gamePath: string
+  autoConnect: boolean
+  disableVR: boolean
+  telemetryPort: number
+}
+
+interface CommentarySettings {
+  enabled: boolean
+  geminiKey: string
+  geminiKeys?: string[]
+  elevenLabsKey: string
+  voiceId: string
+  coCommentatorVoiceId: string
+  pitReporterVoiceId: string
+  volume: number
+  audioDeviceId: string
+}
+
+interface AudioDevice {
+  id: string
+  name: string
+  isDefault?: boolean
+}
+
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FBold: React.CSSProperties = { fontFamily: "'Arial', sans-serif", fontWeight: 700 }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
+const _CARD = 'bg-white border-[0.8px] border-black/20 rounded-[24px] overflow-hidden'
+
+type TelemetryStatus = { listening: boolean; receiving: boolean; lastPacket: number; participantCount: number }
+
+const DEFAULT_SETTINGS: AMS2Settings = {
+  gamePath: '',
+  autoConnect: false,
+  disableVR: false,
+  telemetryPort: 9000
+}
+
+const DEFAULT_COMMENTARY: CommentarySettings = {
+  enabled: false,
+  geminiKey: '',
+  elevenLabsKey: '',
+  voiceId: 'byILgTtsBg1jwbuvslb2',
+  coCommentatorVoiceId: 'cmPhBFoVi6Q3CAWAx2Gr',
+  pitReporterVoiceId: '',
+  volume: 80,
+  audioDeviceId: ''
+}
+
+const isElectron = !!(window as any).electron
+
+const VOICE_OPTIONS: Array<{ id: string; name: string; description: string }> = [
+  { id: 'byILgTtsBg1jwbuvslb2', name: 'Crofty V3', description: 'Lead commentator - David Croft style' },
+  { id: 'cmPhBFoVi6Q3CAWAx2Gr', name: 'Brundle', description: 'Co-commentator - Martin Brundle style' },
+  { id: 'CeyZm7wQSjZcnhOrE9l8', name: 'Crofty (v1)', description: 'Original Crofty voice clone' },
+  { id: 'V0cljQmo7wpx8LTdbqfJ', name: 'Vicky Cowan', description: 'Pro British radio presenter' },
+  { id: 'pNInz6obpgDQGcFmaJgB', name: 'Adam', description: 'Dominant, firm' },
+  { id: 'N2lVS1w4EtoT3dr4eOWO', name: 'Callum', description: 'Husky trickster' },
+  { id: 'IKne3meq5aSn9XLyUdCD', name: 'Charlie', description: 'Deep, confident, energetic' },
+]
+
+function getTeamSatisfactionStatus(satisfaction: number | undefined): string {
+  const s = satisfaction ?? 70
+  if (s >= 80) return 'Excellent'
+  if (s >= 60) return 'Good'
+  if (s >= 40) return 'Neutral'
+  if (s >= 20) return 'Unhappy'
+  return 'Critical'
+}
+
+function getSponsorSatisfactionData(sponsorDeals: any[] | undefined) {
+  if (!sponsorDeals || sponsorDeals.length === 0) {
+    return {
+      sponsorsSatisfied: 0,
+      sponsorsAtRisk: 0,
+      sponsorsTotal: 0,
+      topSponsorName: undefined,
+      sponsorPressureLevel: 'none' as const
+    }
+  }
+  const activeSponsors = sponsorDeals.filter((d: any) => d.active !== false)
+  const satisfied = activeSponsors.filter((d: any) => (d.satisfaction ?? 70) >= 70).length
+  const atRisk = activeSponsors.filter((d: any) => (d.satisfaction ?? 70) < 40).length
+  const topSponsor = activeSponsors.reduce((top: any, current: any) => 
+    (current.payment ?? 0) > (top?.payment ?? 0) ? current : top
+  , activeSponsors[0])
+  
+  return {
+    sponsorsSatisfied: satisfied,
+    sponsorsAtRisk: atRisk,
+    sponsorsTotal: activeSponsors.length,
+    topSponsorName: topSponsor?.sponsorName,
+    sponsorPressureLevel: (atRisk / Math.max(activeSponsors.length, 1)) >= 0.5 ? 'high' as const : atRisk > 0 ? 'moderate' as const : 'none' as const
+  }
+}
+
+function getSponsorPressure(sponsorDeals: any[]) {
   if (!sponsorDeals || sponsorDeals.length === 0) {
     return {
       sponsorsSatisfied: 0,
@@ -65,7 +201,18 @@ export function Settings() {
   const [commentary, setCommentary] = useState<CommentarySettings>(() => {
     try {
       const saved = localStorage.getItem('commentary-settings')
-      return saved ? JSON.parse(saved) : DEFAULT_COMMENTARY
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        // Merge with defaults so missing fields (from older schemas) get default values
+        // Also handle legacy key name 'openAIKey' -> 'geminiKey'
+        return {
+          ...DEFAULT_COMMENTARY,
+          ...parsed,
+          geminiKeys: Array.isArray(parsed.geminiKeys) ? parsed.geminiKeys : undefined,
+          geminiKey: parsed.geminiKey || parsed.openAIKey || parsed.geminiKeys?.[0] || DEFAULT_COMMENTARY.geminiKey,
+        }
+      }
+      return DEFAULT_COMMENTARY
     } catch {
       return DEFAULT_COMMENTARY
     }
@@ -111,7 +258,7 @@ export function Settings() {
   const [streamingLatency, setStreamingLatency] = useState<{ firstChunkMs: number; totalMs: number } | null>(null)
   
   // Career data for XML generation and repair
-  const { player, careerState, hasActiveCareer, repairCareerData, recalculateReputation, recalculateMarketability, recalculatePrizeMoney, recalculateEconomy, upgradeContractsAndSponsors } = useCareerStore()
+  const { player, careerState, hasActiveCareer, repairCareerData, repairPhoneMessages, recalculateTeamReputation, recalculateMarketability, recalculatePrizeMoney, recalculateEconomy, normalizeCurrentCareerEconomy, upgradeContractsAndSponsors, reassignStaffPortraits, setDatingPreference, replaceContactsWithPartnerPool, reassignActivityTimeslots } = useCareerStore()
   const { getStandings, getSeriesById, migrateNarrativesForAllSeries, needsNarrativeMigration, fixAllTeamEconomics, migrateSeriesData, getBackgroundNarrativeStatus, needsTeamNarrativeMigration, startBackgroundTeamNarrativeGeneration, getBackgroundTeamNarrativeStatus } = useRivalStore()
   
   // Team narrative generation is now tracked in the store (persists across navigation)
@@ -127,14 +274,28 @@ export function Settings() {
     oldBalance: number
     newBalance: number
   } | null>(null)
-  const [isResettingRep, setIsResettingRep] = useState(false)
-  const [repResetResult, setRepResetResult] = useState<{ oldRep: number; newRep: number } | null>(null)
+  const [isResettingTeamRep, setIsResettingTeamRep] = useState(false)
+  const [teamRepResetResult, setTeamRepResetResult] = useState<{ oldRep: number; newRep: number } | null>(null)
   const [isResettingMarketability, setIsResettingMarketability] = useState(false)
   const [marketabilityResetResult, setMarketabilityResetResult] = useState<{ oldMarketability: number; newMarketability: number } | null>(null)
+  const [isReassigningTimeslots, setIsReassigningTimeslots] = useState(false)
+  const [timeslotResult, setTimeslotResult] = useState<number | null>(null)
+  const [isRepairingMessages, setIsRepairingMessages] = useState(false)
+  const [messageRepairResult, setMessageRepairResult] = useState<{ conversationsFixed: number; queuedFixed: number; pendingRepliesFixed: number; queuedDelivered: number } | null>(null)
   const [isFixingPrizeMoney, setIsFixingPrizeMoney] = useState(false)
   const [prizeMoneyResult, setPrizeMoneyResult] = useState<{ racesFixed: number; oldTotal: number; newTotal: number; difference: number } | null>(null)
   const [isFixingEconomy, setIsFixingEconomy] = useState(false)
   const [economyResult, setEconomyResult] = useState<{ teamsUpdated: number; oldSeatCost: number; newSeatCost: number; oldSalary: number; newSalary: number; seatFeeDifference: number; message: string } | null>(null)
+  const [isNormalizingCareerEconomy, setIsNormalizingCareerEconomy] = useState(false)
+  const [careerEconomyNormalizeResult, setCareerEconomyNormalizeResult] = useState<{
+    sponsorsAdjusted: number
+    pendingOffersAdjusted: number
+    sponsorsDeactivatedForSlotCap: number
+    weeklyIncomeBefore: number
+    weeklyIncomeAfter: number
+    weeklyCap: number
+    message: string
+  } | null>(null)
   const [isUpgradingContracts, setIsUpgradingContracts] = useState(false)
   const [upgradeResult, setUpgradeResult] = useState<{ 
     contractsUpgraded: number
@@ -143,6 +304,11 @@ export function Settings() {
     removedNames: string[]
     message: string 
   } | null>(null)
+  const [isReassigningPortraits, setIsReassigningPortraits] = useState(false)
+  const [portraitResult, setPortraitResult] = useState<{ totalStaff: number; reassigned: number; duplicatesFixed: number; message: string } | null>(null)
+  const [replaceContactIds, setReplaceContactIds] = useState<string[]>([])
+  const [isReplacingContacts, setIsReplacingContacts] = useState(false)
+  const [replaceResult, setReplaceResult] = useState<{ replaced: number; error?: string } | null>(null)
   const { addToast } = useToast()
 
   // Helper function to build and send rich career data to commentary system
@@ -154,7 +320,7 @@ export function Settings() {
       const lastRace = player.raceHistory?.[player.raceHistory.length - 1]
       
       // Get current series standings
-      const currentSeriesId = player.currentSeriesId
+      const currentSeriesId = player.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId
       const standings = currentSeriesId ? getStandings(currentSeriesId) : []
       const playerStanding = standings.find(s => s.driverName === `${player.firstName} ${player.lastName}`)
       
@@ -232,28 +398,33 @@ export function Settings() {
       const seriesDrivers = allRivals.filter(r => r.currentSeriesId === currentSeriesId)
       
       // Build compact narratives for ALL series drivers (for diverse commentary)
+      // STRICT mode: only use Content Studio pre-generated narratives.
+      const preGenReady = isPreGenContentLoaded()
       const driverNarrativesForCommentary = seriesDrivers
-        .filter(r => r.narrative) // Only include those with narratives
-        .map(r => ({
-          name: `${r.firstName} ${r.lastName}`,
-          nationality: r.nationality,
-          age: r.age,
-          teamId: r.currentTeamId,
-          // Rich narrative data for colorful commentary
-          origin: r.narrative?.origin,
-          careerPath: r.narrative?.careerPath,
-          breakoutMoment: r.narrative?.breakoutMoment,
-          drivingStyle: r.narrative?.drivingStyle,
-          styleDescription: r.narrative?.styleDescription,
-          anecdotes: r.narrative?.anecdotes?.slice(0, 3), // 3 anecdotes per driver
-          // Stats for context
-          careerStage: r.careerStage,
-          totalWins: r.totalWins,
-          championships: r.championships,
-          rivalryIntensity: r.rivalryIntensity,
-          // For real drivers
-          realDriverInfo: r.narrative?.realDriverInfo,
-        }))
+        .map((r) => {
+          const n = preGenReady
+            ? (getDriverNarrative(r.id) || getDriverNarrativeByName(r.firstName, r.lastName))
+            : null
+          return {
+            name: `${r.firstName} ${r.lastName}`,
+            nationality: r.nationality,
+            age: r.age,
+            teamId: r.currentTeamId,
+            careerStage: r.careerStage,
+            totalWins: r.totalWins,
+            championships: r.championships,
+            rivalryIntensity: r.rivalryIntensity,
+            // Map pre-gen bundle fields to commentary fields
+            biography: (n as any)?.biography as string | undefined,
+            drivingStyle: (n as any)?.drivingStyle as string | undefined,
+            rivalries: (n as any)?.rivalries as string[] | undefined,
+            quirks: (n as any)?.quirks as string[] | undefined,
+            nickname: (n as any)?.nickname as string | undefined,
+            famousQuote: (n as any)?.famousQuote as string | undefined,
+            careerHighlight: (n as any)?.careerHighlight as string | undefined,
+            careerLowPoint: (n as any)?.careerLowPoint as string | undefined,
+          }
+        })
       
       // ===== TEAM NARRATIVES FOR TV BROADCAST COMMENTARY =====
       // Get ALL teams in current series for diverse team commentary
@@ -263,23 +434,22 @@ export function Settings() {
       const seriesTeams = teamsArray.filter(t => t.seriesId === currentSeriesId)
       
       const teamNarrativesForCommentary = seriesTeams
-        .filter(t => t.narrative) // Only include those with narratives
-        .map(t => ({
-          teamId: t.id,
-          name: t.name,
-          shortName: t.shortName,
-          origin: t.narrative?.origin,
-          philosophy: t.narrative?.philosophy,
-          culturalIdentity: t.narrative?.culturalIdentity,
-          technicalReputation: t.narrative?.technicalReputation,
-          paddockStanding: t.narrative?.paddockStanding,
-          achievements: t.narrative?.achievements?.slice(0, 3),
-          titleCount: t.narrative?.titleCount,
-          famousAlumni: t.narrative?.famousAlumni?.slice(0, 3),
-          currentTrajectory: t.narrative?.currentTrajectory,
-          recentForm: t.narrative?.recentForm,
-          anecdotes: t.narrative?.anecdotes?.slice(0, 3),
-        }))
+        .map((t) => {
+          const n = preGenReady ? (getTeamNarrative(t.id) || getTeamNarrativeByName(t.name)) : null
+          return {
+            teamId: t.id,
+            name: t.name,
+            shortName: t.shortName,
+            // Map pre-gen bundle fields (origin, philosophy, achievements, teamPrincipal, keyFigures, headquarters, reputation, fanBase)
+            origin: (n as any)?.origin as string | undefined,
+            philosophy: (n as any)?.philosophy as string | undefined,
+            achievements: ((n as any)?.achievements as string[] | undefined)?.slice(0, 3),
+            teamPrincipal: (n as any)?.teamPrincipal as string | undefined,
+            headquarters: (n as any)?.headquarters as string | undefined,
+            reputation: (n as any)?.reputation as string | undefined,
+            fanBase: (n as any)?.fanBase as string | undefined,
+          }
+        })
       
       // Calculate title fight status
       const pointsGapToLeader = playerStanding ? leaderPoints - playerStanding.points : 0
@@ -353,11 +523,55 @@ export function Settings() {
         ? (player.contract.endYear - (useCareerStore.getState().careerState?.currentYear || 2024)) * 12 
         : undefined
       const hasContractPressure = contractRacesLeft !== undefined && contractRacesLeft <= 6
+
+      const worldSnapshot = buildCommentaryWorldSnapshot({
+        seriesId: currentSeriesId,
+        seriesName: currentSeriesInfo?.name,
+        currentRound,
+        totalRounds,
+        racesRemaining,
+        titleFightStatus,
+        standings: sortedStandings.map((s, index) => ({
+          position: index + 1,
+          driverName: s.driverName,
+          teamName: s.teamName,
+          points: s.points,
+          wins: s.wins,
+          avgFinish: s.avgFinish,
+        })),
+        teams: seriesTeams.map((t) => ({
+          id: t.id,
+          name: t.name,
+          shortName: t.shortName,
+          narrative: {
+            recentForm: t.narrative?.recentForm,
+          },
+        })),
+        drivers: seriesDrivers.map((r) => ({
+          id: r.id,
+          firstName: r.firstName,
+          lastName: r.lastName,
+          currentTeamId: r.currentTeamId,
+          currentTeamName: seriesTeams.find((t) => t.id === r.currentTeamId)?.name,
+          totalWins: r.totalWins,
+          rivalryIntensity: r.rivalryIntensity,
+          narrative: {
+            recentForm: r.narrative?.recentForm,
+          },
+        })),
+        sponsorDeals: player.finances?.sponsorDeals || [],
+        ownedTeam: careerState?.ownedTeam ? {
+          boardMood: careerState.ownedTeam.boardMood,
+          budgets: {
+            runwayWeeks: careerState.ownedTeam.budgets?.runwayWeeks,
+          },
+        } : undefined,
+      })
       
       // Build rich career data for 8-Theme System
       const careerData = {
-        playerName: `${player.firstName} ${player.lastName}`,
-        teamName: currentTeam?.name || player.contract?.teamName,
+        playerName: `${player.firstName} ${player.lastName}`.replace(/\s+/g, ' ').trim(),
+        teamName: currentTeam?.name || player.contract?.teamName || careerState?.ownedTeam?.name,
         
         // Championship data
         championshipPosition: playerPosition,
@@ -368,7 +582,7 @@ export function Settings() {
         totalPodiums: player.totalPodiums,
         totalRaces: player.totalRaces,
         seasonWins: playerStanding?.wins || 0,
-        reputation: player.reputation,
+        reputation: careerState?.ownedTeam?.reputation ?? player.reputation,
         
         // Background info (8-Theme: CAREER)
         scenarioName: player.background?.scenarioId || player.scenario,
@@ -510,6 +724,8 @@ export function Settings() {
         seriesCategory: currentSeriesInfo?.category,
         seriesPrestige: currentSeriesInfo?.prestige,
         isMultiClass: currentSeriesInfo?.multiClass,
+        worldSnapshot,
+        commentaryDataSource: 'content_studio' as const,
         
         // ===== TV BROADCAST: DRIVER NARRATIVES FOR COLORFUL COMMENTARY =====
         // Rich backstories, driving styles, anecdotes for ALL drivers in series
@@ -684,27 +900,34 @@ export function Settings() {
   
   // Commentary handlers
   const handleSaveCommentary = async () => {
+    const keyPool = getGeminiKeyPool()
+    const payload: CommentarySettings = {
+      ...commentary,
+      geminiKeys: keyPool,
+      geminiKey: commentary.geminiKey || keyPool[0] || '',
+    }
     // ALWAYS save to localStorage first
-    localStorage.setItem('commentary-settings', JSON.stringify(commentary))
-    console.log('[Settings] Saved commentary settings to localStorage:', commentary)
+    localStorage.setItem('commentary-settings', JSON.stringify(payload))
+    setCommentary(payload)
+    console.log('[Settings] Saved commentary settings to localStorage:', payload)
     
     if (isElectron) {
       try {
         // Configure the commentary system with both voices
-        await window.electron?.setCommentaryAPIKeys?.(commentary.geminiKey, commentary.elevenLabsKey)
+        await window.electron?.setCommentaryAPIKeys?.(payload.geminiKey, payload.elevenLabsKey)
         await window.electron?.setCommentaryVoices?.(
-          commentary.voiceId, 
-          commentary.coCommentatorVoiceId, 
-          commentary.volume
+          payload.voiceId, 
+          payload.coCommentatorVoiceId, 
+          payload.volume
         )
         // Set pit reporter voice if configured
-        if (commentary.pitReporterVoiceId) {
-          await window.electron?.setPitReporterVoice?.(commentary.pitReporterVoiceId)
+        if (payload.pitReporterVoiceId) {
+          await window.electron?.setPitReporterVoice?.(payload.pitReporterVoiceId)
         }
-        await window.electron?.setCommentaryEnabled?.(commentary.enabled)
+        await window.electron?.setCommentaryEnabled?.(payload.enabled)
         
         // Send rich career data to commentary system for narrative context
-        if (commentary.enabled) {
+        if (payload.enabled) {
           await sendCareerDataToCommentary()
         }
         
@@ -1291,7 +1514,8 @@ export function Settings() {
       const contractResult = useCareerStore.getState().recalculateContractTargets()
       
       // Recalculate championship standings for the player's current series
-      const playerSeriesId = useCareerStore.getState().player?.currentSeriesId
+      const storeState = useCareerStore.getState()
+      const playerSeriesId = storeState.player?.currentSeriesId || storeState.careerState?.seriesEntries?.[0]?.seriesId
       let standingsRecalculated = false
       if (playerSeriesId) {
         const standingsResult = useRivalStore.getState().recalculateStandingsWithNewPoints(playerSeriesId)
@@ -1355,7 +1579,8 @@ export function Settings() {
   }
 
   const handleGenerateCareerXML = async () => {
-    if (!isElectron || !player?.currentSeriesId) {
+    const resolvedSeriesId = player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId
+    if (!isElectron || !resolvedSeriesId) {
       addToast({
         type: 'error',
         title: 'Cannot Generate XML',
@@ -1369,8 +1594,8 @@ export function Settings() {
     setXmlResult(null)
     
     try {
-      const standings = getStandings(player.currentSeriesId)
-      const currentSeries = getSeriesById(player.currentSeriesId)
+      const standings = getStandings(resolvedSeriesId)
+      const currentSeries = getSeriesById(resolvedSeriesId)
       
       if (standings.length === 0) {
         addToast({
@@ -1433,27 +1658,31 @@ export function Settings() {
     : null
 
   return (
-    <div className="space-y-6">
+    <div className="bg-white w-full h-full overflow-y-auto">
+      <div className="p-[24px] flex flex-col gap-[24px]">
       {/* Warning when not in Electron */}
       {!isElectron && (
-        <Card variant="default" padding="md" className="border-status-warning/50 bg-status-warning/10">
-          <div className="flex items-center gap-3">
-            <AlertCircle className="w-6 h-6 text-status-warning flex-shrink-0" />
+        <div className="bg-[#fef3c7] border-[0.8px] border-[#f59e0b]/30 rounded-[24px] overflow-hidden">
+          <div className="flex items-center gap-[12px] p-[16px]">
+            <AlertCircle className="w-[24px] h-[24px] text-[#f59e0b] flex-shrink-0" />
             <div>
-              <p className="font-medium text-status-warning">Running in Browser Mode</p>
-              <p className="text-sm text-text-muted">
-                AMS2 integration requires the Electron app. Launch with <code className="bg-surface px-1 rounded">npm run electron:dev</code>
+              <p className="text-[14px] text-[#f59e0b]" style={FBold}>Running in Browser Mode</p>
+              <p className="text-[13px] text-[#4a5565]" style={FR}>
+                AMS2 integration requires the Electron app. Launch with <code className="bg-black/5 px-[4px] rounded-[4px]">npm run electron:dev</code>
               </p>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
-      <PageHeader
-        title="Settings"
-        subtitle="Configure AMS2 integration and telemetry"
-        icon={<SettingsIcon className="w-6 h-6" />}
-      />
+      {/* Page Header */}
+      <div className="flex items-center gap-[12px]">
+        <SettingsIcon className="w-[24px] h-[24px] text-[#0a0a0a]" />
+        <div>
+          <h1 className="text-[30px] text-[#0a0a0a] tracking-[-1.5px]" style={FB}>Settings</h1>
+          <p className="text-[14px] text-[#4a5565]" style={FR}>Configure AMS2 integration and telemetry</p>
+        </div>
+      </div>
 
       <div className="grid grid-cols-2 gap-6">
         {/* AMS2 Connection Status */}
@@ -1731,16 +1960,16 @@ export function Settings() {
             <div className="flex items-center justify-between">
               <span className="text-sm text-text-muted">Current Championship</span>
               <span className="font-medium">
-                {player?.currentSeriesId 
-                  ? getSeriesById(player.currentSeriesId)?.name || 'Unknown Series'
+                {(player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId)
+                  ? getSeriesById(player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId || '')?.name || 'Unknown Series'
                   : 'No active championship'}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-text-muted">Drivers in Standings</span>
               <span className="font-mono">
-                {player?.currentSeriesId 
-                  ? getStandings(player.currentSeriesId).length
+                {(player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId)
+                  ? getStandings(player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId || '').length
                   : 0}
               </span>
             </div>
@@ -1770,7 +1999,7 @@ export function Settings() {
           <Button 
             variant="primary" 
             onClick={handleGenerateCareerXML}
-            disabled={isGeneratingXML || !player?.currentSeriesId || !isElectron}
+            disabled={isGeneratingXML || !(player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId) || !isElectron}
             className="w-full"
           >
             {isGeneratingXML ? (
@@ -2642,29 +2871,30 @@ export function Settings() {
               )}
             </Button>
             
-            {/* Reputation Reset Section */}
+            {/* Team Reputation Normalization Section */}
             <div className="pt-4 mt-4 border-t border-surface-border">
-              <h4 className="font-medium text-sm mb-2">Reset Reputation</h4>
+              <h4 className="font-medium text-sm mb-2">Normalize Team Reputation</h4>
               <p className="text-xs text-text-muted mb-3">
-                Recalculate your reputation based on your actual race results using the new tier-based multipliers.
+                Recalculate your team reputation based on current team state and performance.
+                Use this if team rep progression got inflated or drifted.
               </p>
               
-              {repResetResult && (
+              {teamRepResetResult && (
                 <div className="mb-3 p-3 rounded-lg bg-surface-secondary/50 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-text-muted">Old Reputation:</span>
-                    <span className="font-mono">{repResetResult.oldRep}</span>
+                    <span className="text-text-muted">Old Team Reputation:</span>
+                    <span className="font-mono">{teamRepResetResult.oldRep}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-text-muted">New Reputation:</span>
-                    <span className={`font-mono font-bold ${repResetResult.newRep > repResetResult.oldRep ? 'text-green-400' : repResetResult.newRep < repResetResult.oldRep ? 'text-red-400' : 'text-text-primary'}`}>
-                      {repResetResult.newRep}
+                    <span className="text-text-muted">New Team Reputation:</span>
+                    <span className={`font-mono font-bold ${teamRepResetResult.newRep > teamRepResetResult.oldRep ? 'text-green-400' : teamRepResetResult.newRep < teamRepResetResult.oldRep ? 'text-red-400' : 'text-text-primary'}`}>
+                      {teamRepResetResult.newRep}
                     </span>
                   </div>
                   <div className="flex justify-between pt-1 border-t border-surface-border mt-1">
                     <span className="text-text-muted">Change:</span>
-                    <span className={`font-mono ${repResetResult.newRep - repResetResult.oldRep > 0 ? 'text-green-400' : repResetResult.newRep - repResetResult.oldRep < 0 ? 'text-red-400' : 'text-text-muted'}`}>
-                      {repResetResult.newRep - repResetResult.oldRep > 0 ? '+' : ''}{repResetResult.newRep - repResetResult.oldRep}
+                    <span className={`font-mono ${teamRepResetResult.newRep - teamRepResetResult.oldRep > 0 ? 'text-green-400' : teamRepResetResult.newRep - teamRepResetResult.oldRep < 0 ? 'text-red-400' : 'text-text-muted'}`}>
+                      {teamRepResetResult.newRep - teamRepResetResult.oldRep > 0 ? '+' : ''}{teamRepResetResult.newRep - teamRepResetResult.oldRep}
                     </span>
                   </div>
                 </div>
@@ -2673,29 +2903,29 @@ export function Settings() {
               <Button
                 variant="secondary"
                 onClick={() => {
-                  setIsResettingRep(true)
-                  setRepResetResult(null)
+                  setIsResettingTeamRep(true)
+                  setTeamRepResetResult(null)
                   
                   setTimeout(() => {
-                    const result = recalculateReputation()
-                    setRepResetResult(result)
-                    setIsResettingRep(false)
+                    const result = recalculateTeamReputation()
+                    setTeamRepResetResult(result)
+                    setIsResettingTeamRep(false)
                     
                     const change = result.newRep - result.oldRep
                     addToast({
                       type: change !== 0 ? 'success' : 'info',
-                      title: 'Reputation Recalculated',
+                      title: 'Team Reputation Normalized',
                       message: change !== 0 
-                        ? `Reputation ${change > 0 ? 'increased' : 'decreased'} from ${result.oldRep} to ${result.newRep} (${change > 0 ? '+' : ''}${change})`
-                        : `Reputation unchanged at ${result.newRep}`,
+                        ? `Team reputation ${change > 0 ? 'increased' : 'decreased'} from ${result.oldRep} to ${result.newRep} (${change > 0 ? '+' : ''}${change})`
+                        : `Team reputation unchanged at ${result.newRep}`,
                       duration: 5000
                     })
                   }, 300)
                 }}
-                disabled={isResettingRep}
+                disabled={isResettingTeamRep}
                 className="w-full"
               >
-                {isResettingRep ? (
+                {isResettingTeamRep ? (
                   <>
                     <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
                     Recalculating...
@@ -2703,7 +2933,85 @@ export function Settings() {
                 ) : (
                   <>
                     <RefreshCw className="w-4 h-4 mr-2" />
-                    Reset Reputation
+                    Normalize Team Reputation
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Normalize Current Career Economy Section */}
+            <div className="pt-4 mt-4 border-t border-surface-border">
+              <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                <Zap className="w-4 h-4 text-amber-400" />
+                Normalize Current Career Economy
+              </h4>
+              <p className="text-xs text-text-muted mb-3">
+                Rebalances your <strong>existing sponsor deals</strong> to the current economy rules immediately.
+                Use this if your current save was created before the latest sponsor balancing changes.
+              </p>
+
+              {careerEconomyNormalizeResult && (
+                <div className="mb-3 p-3 rounded-lg bg-surface-secondary/50 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Sponsor Deals Adjusted:</span>
+                    <span className="font-mono font-bold text-amber-300">{careerEconomyNormalizeResult.sponsorsAdjusted}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Pending Offers Adjusted:</span>
+                    <span className="font-mono">{careerEconomyNormalizeResult.pendingOffersAdjusted}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Over-Cap Sponsors Deactivated:</span>
+                    <span className={`font-mono ${careerEconomyNormalizeResult.sponsorsDeactivatedForSlotCap > 0 ? 'text-red-300 font-bold' : ''}`}>
+                      {careerEconomyNormalizeResult.sponsorsDeactivatedForSlotCap}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Weekly Income Before:</span>
+                    <span className="font-mono">${careerEconomyNormalizeResult.weeklyIncomeBefore.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Weekly Income After:</span>
+                    <span className="font-mono font-bold text-green-400">${careerEconomyNormalizeResult.weeklyIncomeAfter.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between pt-1 border-t border-surface-border mt-1">
+                    <span className="text-text-muted">Weekly Cap:</span>
+                    <span className="font-mono">${careerEconomyNormalizeResult.weeklyCap.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setIsNormalizingCareerEconomy(true)
+                  setCareerEconomyNormalizeResult(null)
+
+                  setTimeout(() => {
+                    const result = normalizeCurrentCareerEconomy()
+                    setCareerEconomyNormalizeResult(result)
+                    setIsNormalizingCareerEconomy(false)
+
+                    addToast({
+                      type: result.sponsorsAdjusted > 0 ? 'success' : 'info',
+                      title: result.sponsorsAdjusted > 0 ? 'Career Economy Normalized' : 'No Changes Needed',
+                      message: result.message,
+                      duration: 5000
+                    })
+                  }, 300)
+                }}
+                disabled={isNormalizingCareerEconomy}
+                className="w-full"
+              >
+                {isNormalizingCareerEconomy ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    Normalizing Economy...
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-4 h-4 mr-2" />
+                    Normalize Current Career Economy
                   </>
                 )}
               </Button>
@@ -2771,6 +3079,153 @@ export function Settings() {
                   <>
                     <RefreshCw className="w-4 h-4 mr-2" />
                     Reset Marketability
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Reassign Activity Timeslots Section */}
+            <div className="pt-4 mt-4 border-t border-surface-border">
+              <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                <RefreshCw className="w-4 h-4 text-accent-cyan" />
+                Reassign Activity Timeslots
+              </h4>
+              <p className="text-xs text-text-muted mb-3">
+                Retroactively assign proper time-of-day periods (Morning, Afternoon, Evening, Night) to all existing 
+                scheduled activities that are currently missing a timeslot. New activities will automatically get timeslots going forward.
+              </p>
+              
+              {timeslotResult !== null && (
+                <div className={`mb-3 p-3 rounded-lg text-sm ${timeslotResult > 0 ? 'bg-status-success/10 border border-status-success/30' : 'bg-surface-secondary/50'}`}>
+                  <div className="flex items-center gap-2">
+                    {timeslotResult > 0 ? (
+                      <Check className="w-4 h-4 text-status-success" />
+                    ) : (
+                      <Check className="w-4 h-4 text-text-muted" />
+                    )}
+                    <span className={timeslotResult > 0 ? 'text-status-success font-medium' : 'text-text-muted'}>
+                      {timeslotResult > 0 
+                        ? `${timeslotResult} activities reassigned to proper timeslots!`
+                        : 'All activities already have timeslots assigned.'}
+                    </span>
+                  </div>
+                </div>
+              )}
+              
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setIsReassigningTimeslots(true)
+                  setTimeslotResult(null)
+                  
+                  setTimeout(() => {
+                    const count = reassignActivityTimeslots()
+                    setTimeslotResult(count)
+                    setIsReassigningTimeslots(false)
+                    
+                    addToast({
+                      type: count > 0 ? 'success' : 'info',
+                      title: 'Activity Timeslots',
+                      message: count > 0 
+                        ? `Reassigned ${count} activities to proper time-of-day slots.`
+                        : 'All activities already have timeslots.',
+                      duration: 4000
+                    })
+                  }, 300)
+                }}
+                disabled={isReassigningTimeslots}
+                className="w-full"
+              >
+                {isReassigningTimeslots ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    Reassigning...
+                  </>
+                ) : (
+                  <>
+                    <RefreshCw className="w-4 h-4 mr-2" />
+                    Reassign Timeslots
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Repair Phone Messages Section */}
+            <div className="pt-4 mt-4 border-t border-surface-border">
+              <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                <RefreshCw className="w-4 h-4 text-blue-400" />
+                Repair Phone Messages
+              </h4>
+              <p className="text-xs text-text-muted mb-3">
+                Fixes NPC messages that were generated with an incorrect conversation key format 
+                and immediately delivers any queued messages that were waiting for a future day. 
+                All pending messages will appear in your phone right away.
+              </p>
+              
+              {messageRepairResult && (
+                <div className={`mb-3 p-3 rounded-lg text-sm ${messageRepairResult.conversationsFixed + messageRepairResult.queuedFixed + messageRepairResult.pendingRepliesFixed + messageRepairResult.queuedDelivered > 0 ? 'bg-status-success/10 border border-status-success/30' : 'bg-surface-secondary/50'}`}>
+                  {messageRepairResult.conversationsFixed + messageRepairResult.queuedFixed + messageRepairResult.pendingRepliesFixed + messageRepairResult.queuedDelivered > 0 ? (
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-status-success font-medium">
+                        <Check className="w-4 h-4" />
+                        Messages Repaired!
+                      </div>
+                      {messageRepairResult.conversationsFixed > 0 && (
+                        <p className="text-xs text-text-muted ml-6">{messageRepairResult.conversationsFixed} conversation key(s) fixed</p>
+                      )}
+                      {messageRepairResult.queuedDelivered > 0 && (
+                        <p className="text-xs text-green-400 ml-6 font-medium">{messageRepairResult.queuedDelivered} queued message(s) delivered to your phone</p>
+                      )}
+                      {messageRepairResult.queuedFixed > 0 && (
+                        <p className="text-xs text-text-muted ml-6">{messageRepairResult.queuedFixed} queued message ID(s) normalized</p>
+                      )}
+                      {messageRepairResult.pendingRepliesFixed > 0 && (
+                        <p className="text-xs text-text-muted ml-6">{messageRepairResult.pendingRepliesFixed} pending reply(ies) fixed</p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 text-text-muted">
+                      <Check className="w-4 h-4" />
+                      All messages already using correct format and no queued messages pending.
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setIsRepairingMessages(true)
+                  setMessageRepairResult(null)
+                  
+                  setTimeout(() => {
+                    const result = repairPhoneMessages()
+                    setMessageRepairResult(result)
+                    setIsRepairingMessages(false)
+                    
+                    const total = result.conversationsFixed + result.queuedFixed + result.pendingRepliesFixed + result.queuedDelivered
+                    addToast({
+                      type: total > 0 ? 'success' : 'info',
+                      title: total > 0 ? 'Phone Messages Repaired' : 'No Issues Found',
+                      message: total > 0 
+                        ? `Fixed ${result.conversationsFixed} conversation(s), delivered ${result.queuedDelivered} queued message(s). Check your phone!`
+                        : 'All phone messages are using the correct format and no queued messages pending.',
+                      duration: 5000
+                    })
+                  }, 300)
+                }}
+                disabled={isRepairingMessages}
+                className="w-full"
+              >
+                {isRepairingMessages ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    Repairing Messages...
+                  </>
+                ) : (
+                  <>
+                    <Wrench className="w-4 h-4 mr-2" />
+                    Repair Phone Messages
                   </>
                 )}
               </Button>
@@ -2946,6 +3401,72 @@ export function Settings() {
               </Button>
             </div>
 
+            {/* Reassign Staff Portraits Section */}
+            <div className="pt-4 mt-4 border-t border-surface-border">
+              <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                <Users className="w-4 h-4 text-blue-400" />
+                Reassign Staff Portraits
+              </h4>
+              <p className="text-xs text-text-muted mb-3">
+                Re-imports all staff portraits, assigning a unique image to every staff member in your career. 
+                Fixes duplicate portrait images that may have been assigned to different people.
+              </p>
+              
+              {portraitResult && (
+                <div className="mb-3 p-3 rounded-lg bg-surface-secondary/50 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Total Staff:</span>
+                    <span className="font-mono">{portraitResult.totalStaff}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Portraits Changed:</span>
+                    <span className="font-mono font-bold text-blue-400">{portraitResult.reassigned}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-muted">Duplicates Fixed:</span>
+                    <span className={`font-mono font-bold ${portraitResult.duplicatesFixed > 0 ? 'text-green-400' : 'text-text-muted'}`}>
+                      {portraitResult.duplicatesFixed}
+                    </span>
+                  </div>
+                </div>
+              )}
+              
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setIsReassigningPortraits(true)
+                  setPortraitResult(null)
+                  
+                  setTimeout(() => {
+                    const result = reassignStaffPortraits()
+                    setPortraitResult(result)
+                    setIsReassigningPortraits(false)
+                    
+                    addToast({
+                      type: result.reassigned > 0 ? 'success' : 'info',
+                      title: result.reassigned > 0 ? 'Staff Portraits Reassigned!' : 'No Changes Needed',
+                      message: result.message,
+                      duration: 5000
+                    })
+                  }, 300)
+                }}
+                disabled={isReassigningPortraits}
+                className="w-full"
+              >
+                {isReassigningPortraits ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                    Reassigning Portraits...
+                  </>
+                ) : (
+                  <>
+                    <Users className="w-4 h-4 mr-2" />
+                    Reassign Staff Portraits
+                  </>
+                )}
+              </Button>
+            </div>
+
             {/* Upgrade Contracts & Sponsors Section */}
             <div className="pt-4 mt-4 border-t border-surface-border">
               <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
@@ -3036,6 +3557,111 @@ export function Settings() {
           </div>
         </Card>
       )}
+
+      {/* Dating preference & replace contacts with romanceable options */}
+      {hasActiveCareer && (
+        <Card variant="glass" padding="lg">
+          <CardHeader 
+            title="Dating preference & romanceable contacts" 
+            icon={<Heart className="w-5 h-5" />}
+          />
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm font-medium mb-2">Orientation / dating preference</p>
+              <p className="text-xs text-text-muted mb-3">
+                Used for romanceable contacts: only people matching this preference can become romantic interests. Others stay friends/business.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {(['women', 'men', 'both', 'none'] as const).map((pref) => (
+                  <Button
+                    key={pref}
+                    variant={(careerState as { datingPreference?: string })?.datingPreference === pref ? 'primary' : 'secondary'}
+                    size="sm"
+                    onClick={() => setDatingPreference(pref)}
+                  >
+                    {pref === 'women' ? 'Women' : pref === 'men' ? 'Men' : pref === 'both' ? 'Both' : 'None'}
+                  </Button>
+                ))}
+              </div>
+              <p className="text-xs text-text-muted mt-2">
+                Current: <strong className="text-text-primary">
+                  {((): string => {
+                    const p = (careerState as { datingPreference?: string })?.datingPreference
+                    return p === 'women' ? 'Women' : p === 'men' ? 'Men' : p === 'both' ? 'Both' : p === 'none' ? 'None' : 'Not set (defaults to Both)'
+                  })()}
+                </strong>
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-surface-border">
+              <p className="text-sm font-medium mb-2 flex items-center gap-2">
+                <UserPlus className="w-4 h-4" />
+                Replace contacts with partner-pool people
+              </p>
+              <p className="text-xs text-text-muted mb-3">
+                Select 1–2 friend or business contacts to replace with new people from the partner pool. Those matching your preference above can become romanceable later; others stay normal contacts.
+              </p>
+              {(careerState?.messaging?.contacts ?? []).filter((c: { type: string }) => c.type === 'friend' || c.type === 'business').length === 0 ? (
+                <p className="text-xs text-text-muted">No friend or business contacts to replace.</p>
+              ) : (
+                <>
+                  <div className="space-y-2 max-h-48 overflow-y-auto mb-3">
+                    {(careerState?.messaging?.contacts ?? [])
+                      .filter((c: { type: string }) => c.type === 'friend' || c.type === 'business')
+                      .map((c: { id: string; name: string; type: string }) => (
+                        <label key={c.id} className="flex items-center gap-2 p-2 rounded-lg bg-background/50 hover:bg-background/70 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={replaceContactIds.includes(c.id)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                if (replaceContactIds.length >= 2) return
+                                setReplaceContactIds([...replaceContactIds, c.id])
+                              } else {
+                                setReplaceContactIds(replaceContactIds.filter(id => id !== c.id))
+                              }
+                            }}
+                            className="rounded border-surface-border"
+                          />
+                          <span className="text-sm text-text-primary">{c.name}</span>
+                          <span className="text-xs text-text-muted capitalize">({c.type})</span>
+                        </label>
+                      ))}
+                  </div>
+                  <p className="text-xs text-text-muted mb-2">Selected: {replaceContactIds.length} (max 2)</p>
+                  {replaceResult && (
+                    <div className={`mb-3 p-3 rounded-lg text-sm ${replaceResult.error ? 'bg-red-500/10 border border-red-500/30' : 'bg-status-success/10 border border-status-success/30'}`}>
+                      {replaceResult.error ? replaceResult.error : `Replaced ${replaceResult.replaced} contact(s).`}
+                    </div>
+                  )}
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    disabled={replaceContactIds.length === 0 || isReplacingContacts}
+                    onClick={() => {
+                      setReplaceResult(null)
+                      setIsReplacingContacts(true)
+                      const result = replaceContactsWithPartnerPool(replaceContactIds)
+                      setReplaceResult(result)
+                      setIsReplacingContacts(false)
+                      if (result.replaced > 0) {
+                        setReplaceContactIds([])
+                        addToast({ type: 'success', message: `Contacts replaced: ${result.replaced} contact(s) replaced with partner-pool people.` })
+                      } else if (result.error) {
+                        addToast({ type: 'error', message: result.error })
+                      }
+                    }}
+                  >
+                    {isReplacingContacts ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <UserPlus className="w-4 h-4 mr-2" />}
+                    Replace selected
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+        </Card>
+      )}
+    </div>
     </div>
   )
 }

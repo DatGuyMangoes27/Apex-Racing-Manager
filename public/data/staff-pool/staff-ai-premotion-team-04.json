@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 37,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Kenji Tanaka's fascination with motorsport began in his childhood, captivated by the technical intricacies of Formula One cars. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and aerodynamics, at Tokyo University. After graduating, Kenji joined a small GT racing team, working his way up from data analyst to junior race engineer. His attention to detail and methodical approach quickly earned him recognition. \n\nHe joined Proton by Premotion five years ago, initially working on simulation and development before transitioning to a trackside role. Kenji's strength lies in his ability to diagnose and resolve complex mechanical issues, often identifying subtle performance gains through meticulous data analysis. He believes in building strong relationships with drivers, understanding their feedback, and translating it into tangible improvements in car setup. His calm and collected demeanor under pressure makes him a valuable asset to the team. Kenji is driven by a desire to optimize every aspect of the car's performance, seeking continuous improvement through innovation and collaboration.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Thin mustache",
+    "description": "Kenji has a lean build and often wears glasses."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data points.",
+    "Has a specific routine for cleaning his tools before and after each session.",
+    "Quietly hums classical music while reviewing telemetry data."
+  ]
+}

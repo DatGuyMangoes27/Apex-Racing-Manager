@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Eleanor Ainsworth",
+    "nationality": "British",
+    "age": 55,
+    "gender": "female",
+    "role": "quality_control",
+    "bio": "Eleanor's journey into motorsport began unconventionally, fueled by a lifelong fascination with engineering and a chance encounter at a Silverstone race weekend. She started as a junior technician, meticulously inspecting components and learning the intricacies of race car construction. Her keen eye for detail and unwavering commitment to quality quickly propelled her through the ranks. Eleanor now brings decades of experience to her role at Haas, ensuring every part meets the highest standards of performance and safety. Her methodical approach, combined with her ability to spot even the smallest imperfections, makes her an invaluable asset to the team. She’s known for her rigorous testing procedures and her insistence on thorough documentation, safeguarding the team's competitive edge and driver safety.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Grey",
+      "hairStyle": "Short, neatly styled bob with a slight wave.",
+      "eyeColor": "Blue",
+      "facialHair": null,
+      "description": "Eleanor is a woman of average height with a warm, approachable demeanor."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a small magnifying glass.",
+      "Insists on using a specific type of pen for all her reports.",
+      "Has a collection of vintage motorsport posters in her office."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 31,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Erik's fascination with motorsport began during his childhood summers spent watching rally races in the Swedish countryside. He pursued a degree in aerospace engineering at KTH Royal Institute of Technology in Stockholm, where he excelled in aerodynamics and fluid dynamics. After graduating, he quickly made a name for himself at a smaller Formula team, contributing to significant downforce improvements. \n\nErik's approach to aerodynamic development is rooted in data-driven analysis combined with an unwavering commitment to creative problem-solving. He believes that the key to success lies in fostering a collaborative environment where engineers feel empowered to experiment and push boundaries. His management style focuses on clear communication and providing the necessary resources for his team to thrive. He is known for his ability to translate complex technical concepts into understandable terms for drivers and other team members.\n\nHis unique blend of technical expertise and leadership makes him a highly sought-after asset in the world of motorsport. Erik is driven by a desire to continuously improve and innovate, always seeking the next marginal gain that can make the difference on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Erik is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his desk when deep in thought.",
+    "Insists on having Swedish coffee breaks every afternoon at 3 PM sharp."
+  ]
+}

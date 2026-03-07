@@ -1,0 +1,22 @@
+{
+  "name": "Jens Erik Christensen",
+  "nationality": "Danish",
+  "age": 46,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jens Christensen's journey into motorsport began in his youth, fueled by a fascination with aerodynamics and a relentless pursuit of efficiency. After completing his engineering degree at the Technical University of Denmark, Jens quickly established himself as a rising star in the field of aerodynamics. His early career involved working on various projects, from aircraft design to optimizing wind turbine performance, before making the leap into motorsport.\n\nJens joined a Formula 3 team, where he honed his skills in computational fluid dynamics (CFD) and wind tunnel testing. His innovative approach to aerodynamic design and unwavering commitment to excellence earned him recognition within the paddock. Before long, he was recruited by a prestigious Formula 1 team, where he spent several years leading aerodynamic research and development. Jens believes in fostering a collaborative environment where engineers are encouraged to challenge conventional thinking and explore new ideas. His meticulous attention to detail and ability to translate complex data into practical solutions make him a valuable asset to any racing team. He is now looking to bring his expertise to a team where he can have a direct and measurable impact on on-track performance.\n\nJens distinguishes himself with a unique blend of technical expertise and management acumen. He excels at motivating his team to push boundaries, while also ensuring that resources are allocated effectively to maximize results. His colleagues often remark on his calm demeanor, even under intense pressure, and his ability to find innovative solutions to challenging problems.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed Goatee",
+    "description": "A tall, lean man with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations and diagrams.",
+    "Has a habit of sketching aerodynamic profiles on napkins during meetings.",
+    "Insists on conducting all wind tunnel tests personally to ensure data accuracy."
+  ]
+}

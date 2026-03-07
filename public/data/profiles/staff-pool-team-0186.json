@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Zoltán Kiss",
+    "nationality": "Hungarian",
+    "age": 49,
+    "gender": "male",
+    "role": "technical_director",
+    "bio": "Zoltán's journey in motorsport began with a childhood fascination for engines and a deep-seated desire to understand how things worked. This passion led him to pursue a degree in mechanical engineering, where he excelled in thermodynamics and fluid dynamics. After graduating, he joined a small Hungarian racing team, quickly rising through the ranks due to his natural ability to diagnose and improve car performance. His sharp analytical mind and focus on innovation made him an invaluable asset, leading the team to several national championships.\n\nZoltán's approach to his role as Technical Director is holistic, focusing on the interplay between different technical aspects of the car. He believes that the smallest adjustment can have a significant impact on overall performance. His leadership style is collaborative but firm, empowering his team to explore new ideas while ensuring that efforts are aligned with the team's strategic goals. What sets Zoltán apart is his uncanny ability to spot potential weaknesses in a design and his relentless pursuit of perfection. He is known for his innovative solutions and willingness to challenge conventional wisdom, always seeking that extra edge that can make the difference between victory and defeat.",
+    "physical": {
+      "skinTone": "Light tan",
+      "hairColor": "Dark brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed goatee",
+      "description": "Zoltán is a man of medium height with a sturdy build and an intense gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook and pen to jot down ideas.",
+      "Has a habit of tapping his fingers on the table when deep in thought.",
+      "Insists on starting the day with a strong espresso."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 39,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Krzysztof's fascination with motorsport began as a child, watching rally races in the Polish countryside. He pursued a degree in mechanical engineering, specializing in aerodynamics, and quickly found his niche in wind tunnel operations. His meticulous nature and sharp eye for detail made him a valuable asset to several racing teams, where he contributed to improved aerodynamic performance. Krzysztof is known for his methodical approach and unwavering commitment to precision, even under pressure. He thrives on the challenges of optimizing vehicle performance through rigorous testing and analysis.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Krzysztof is of average height, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on calibrating the wind tunnel equipment himself before each session.",
+    "Has a habit of humming quietly while analyzing data."
+  ]
+}

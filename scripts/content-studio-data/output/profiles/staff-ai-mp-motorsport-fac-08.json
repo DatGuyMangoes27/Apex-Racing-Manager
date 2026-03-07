@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Ramirez",
+  "nationality": "Chilean",
+  "age": 26,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mateo's passion for motorsport ignited during his childhood in Santiago, watching Formula 1 races with his grandfather. He pursued a degree in Mechanical Engineering, focusing on aerodynamics. After graduating, Mateo gained initial experience at a small automotive research firm before landing a role at MP Motorsport Junior. He is meticulous in his work, ensuring data accuracy and precise control of the wind tunnel environment. Mateo believes in a data-driven approach, constantly seeking correlations between wind tunnel results and on-track performance. \n\nHis dedication extends beyond the technical aspects; he actively communicates findings to the aerodynamicists and engineers, striving to bridge the gap between simulation and reality. Mateo’s demanding nature stems from his unwavering commitment to excellence and his belief that even minor improvements can make a significant difference on the track. He is eager to contribute to the team's success and climb the ladder within the motorsport industry.\n\n Mateo is known for his systematic approach to data analysis and presentation, making complex information easily digestible for team members. His focus on collaboration and clear communication makes him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Insists on double-checking all data entries, even if done by others.",
+    "Has a specific playlist of electronic music he listens to while calibrating the wind tunnel."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Zsófia Kovács",
+  "nationality": "Hungarian",
+  "age": 39,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Zsófia's fascination with motorsport began early, fueled by watching Formula 1 races with her father. She pursued a degree in mechanical engineering at the Budapest University of Technology and Economics, specializing in vehicle dynamics and simulation. After graduating, she worked for a small automotive company, developing and testing vehicle control systems. However, her passion remained with racing. Zsófia joined Erebus Motorsport five years ago, initially as a junior engineer, quickly proving her ability to translate real-world data into effective simulator programs. She is known for her meticulous attention to detail and her talent for identifying subtle discrepancies between the simulator and the track. Her pragmatic approach ensures the team's simulator sessions are always productive and focused on improving performance.\n\nZsófia's approach to simulator engineering is deeply rooted in data analysis and real-world correlation. She spends hours poring over telemetry, tire data, and driver feedback to ensure the simulator accurately reflects the car's behavior. This dedication has led to significant improvements in the team's setup work and driver development programs. What sets her apart is her ability to communicate complex technical information in a clear and concise manner, making her a valuable asset to both the engineering and driver teams. She is always eager to learn new technologies and methodologies to improve the accuracy and effectiveness of the simulator.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight hair, usually pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zsófia is of average height and build, with a focused and intelligent expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always has a large mug of strong coffee on her desk.",
+    "Uses a Hungarian-English dictionary to precisely translate technical terms when communicating with non-Hungarian speakers.",
+    "Obsessively cleans her keyboard every morning."
+  ]
+}

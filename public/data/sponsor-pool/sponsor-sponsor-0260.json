@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0260",
+  "name": "Campeón Gear",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "Argentina",
+  "description": "Performance apparel designed for champions.",
+  "story": "Campeón Gear has been outfitting Argentine athletes for over 30 years. We believe in the relentless pursuit of excellence, and we are proud to support motorsport teams that share our dedication. We seek a partnership that showcases our brand on a global stage and reflects our commitment to quality and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Argentina"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0260.png"
+}

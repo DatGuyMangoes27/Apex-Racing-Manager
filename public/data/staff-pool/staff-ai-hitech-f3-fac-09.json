@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 48,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. Growing up in Bogota, he initially pursued a career in automotive refinishing, honing his skills with meticulous detail. A chance encounter with a local racing team needing a quick paint job on a damaged spoiler opened a door he never imagined. Impressed by his precision and ability to match colors perfectly under pressure, they offered him a full-time position. \n\nFor over two decades, Ricardo has dedicated himself to perfecting his craft. He is known for his unwavering commitment to quality, often spending extra hours ensuring every panel meets his exacting standards. His experience allows him to anticipate potential paint issues related to aerodynamics and material stress, offering proactive solutions to improve car performance and reliability. Ricardo prides himself on being a mentor to younger team members, passing on his knowledge and instilling a similar dedication to excellence.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a stocky man with strong hands, reflecting years of precision work."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a small cup of strong Colombian coffee on his workbench.",
+    "Insists on using only natural light when matching paint colors.",
+    "Meticulously cleans his spray gun after every use, regardless of how busy he is."
+  ]
+}

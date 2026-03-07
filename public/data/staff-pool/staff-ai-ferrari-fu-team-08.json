@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Connell",
+  "nationality": "Irish",
+  "age": 51,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Declan's journey into motorsport began in his youth, tinkering with engines on his family's farm in County Cork. This hands-on experience, coupled with a degree in mechanical engineering from University College Dublin, laid the foundation for his career. He started in Formula Ford, working his way up through various junior series before landing a role in Formula 1 with a smaller team. \n\nAfter several years gaining invaluable experience at the back of the grid, Declan was headhunted by Scuderia Ferrari. He brings a pragmatic and methodical approach to performance engineering, focusing on data-driven analysis and continuous improvement. While not a natural manager, his technical acumen and ability to identify subtle performance gains make him a valuable asset to the team, even if he prefers working independently. His dedication and sharp eye for detail are hallmarks of his work.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed salt-and-pepper goatee",
+    "description": "Declan is a man of medium build with a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

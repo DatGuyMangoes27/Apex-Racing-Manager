@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0028",
+  "name": "DeGiro Racing",
+  "category": "financial",
+  "tier": "high",
+  "country": "Netherlands",
+  "description": "Invest in your drive.",
+  "story": "DeGiro, a leading Dutch online broker, believes in empowering individuals to take control of their investments, just as racing teams take control of their performance on the track. Motorsport offers DeGiro a unique platform to reach a highly engaged and ambitious audience. We seek a partnership that showcases precision, strategic decision-making, and the pursuit of excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0028.png"
+}

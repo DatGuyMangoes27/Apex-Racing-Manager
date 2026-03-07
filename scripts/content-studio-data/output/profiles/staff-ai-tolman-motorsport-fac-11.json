@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Nyberg",
+  "nationality": "Swedish",
+  "age": 38,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Astrid's path into motorsport was unconventional, beginning not in the paddock but in a university laboratory. Her degree in mechanical engineering, combined with a lifelong fascination for racing, led her to a role analyzing telemetry data for a small touring car team. This experience honed her technical skills and sparked a passion for optimizing performance through data-driven insights.\n\nAt Tolman Motorsport, Astrid excels at coordinating test driver programs, ensuring that every session yields valuable data and contributes to the team's overall development. Her pragmatic approach focuses on clear communication, rigorous testing protocols, and efficient resource allocation. She has a knack for identifying promising young drivers and fostering their growth, making her a valuable asset to the team's long-term success.\n\nWhat sets Astrid apart is her ability to bridge the gap between the technical and the human elements of racing. She understands that even the most sophisticated technology is only as effective as the driver behind the wheel, and she works tirelessly to ensure that both are performing at their peak.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Astrid is of average height with a lean build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and observations.",
+    "Insists on starting every test session with a detailed pre-briefing, no matter how experienced the driver.",
+    "Has a habit of tapping her pen against her teeth when deep in thought."
+  ]
+}

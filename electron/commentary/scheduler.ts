@@ -79,10 +79,10 @@ let state: SchedulerState = {
   isAudioPlaying: false,
   pendingContent: null,
   silenceThresholds: {
-    pre_race: { min: 5000, max: 10000 },
-    early: { min: 8000, max: 12000 },
-    mid: { min: 15000, max: 25000 },
-    late: { min: 10000, max: 15000 },
+    pre_race: { min: 6000, max: 12000 },
+    early: { min: 10000, max: 18000 },
+    mid: { min: 18000, max: 30000 },
+    late: { min: 12000, max: 18000 },
     final: { min: 5000, max: 10000 }
   },
   linesSpoken: 0,
@@ -226,11 +226,14 @@ function getCurrentSilenceThreshold(): { min: number; max: number } {
 }
 
 /**
- * Get a randomized threshold within the current range
+ * Get a randomized threshold within the current range.
+ * ~15% of the time, doubles the threshold for a natural "let the racing breathe" moment.
  */
 function getRandomizedThreshold(): number {
   const { min, max } = getCurrentSilenceThreshold()
-  return min + Math.random() * (max - min)
+  const base = min + Math.random() * (max - min)
+  const extendedSilence = Math.random() < 0.15
+  return extendedSilence ? base * 2 : base
 }
 
 // ============================================================================
@@ -272,41 +275,57 @@ function runSchedulerTick(): void {
 }
 
 /**
- * Select content appropriate for the current race phase
+ * Select content appropriate for the current race phase.
+ * Leverages all content categories including rich data categories.
  */
 function selectContentForPhase(): GeneratedLine | null {
   const phase = state.currentPhase
   
-  // Phase-specific content selection
+  // Phase-specific content selection with rich category awareness
   switch (phase) {
     case 'pre_race':
     case 'early':
-      // Early race: focus on track and driver introductions
+      // Early race: track atmosphere, qualifying callbacks, personal color, team dynamics, introductions
       return getNextContent(undefined, 'early') || 
              getNextContent('track_atmosphere') ||
+             getNextContent('qualifying_callback') ||
+             getNextContent('player_track_history') ||
+             getNextContent('personal_color') ||
+             getNextContent('team_dynamics') ||
              getNextContent('driver_background') ||
              getNextContent()
              
     case 'mid':
-      // Mid race: strategy, gaps, championship implications
+      // Mid race: strategy, gaps, financial drama, world context, head-to-head, championship
       if (config.preferColorInMidRace) {
         return getNextContent('strategy_talk', 'mid') ||
                getNextContent('championship_context') ||
+               getNextContent('head_to_head') ||
+               getNextContent('financial_drama') ||
+               getNextContent('world_context') ||
+               getNextContent('form_narrative') ||
+               getNextContent('pit_reporter_insight') ||
                getNextContent('gap_analysis') ||
                getNextContent()
       }
       return getNextContent(undefined, 'mid') || getNextContent()
       
     case 'late':
-      // Late race: championship context, position battles
+      // Late race: championship context, pressure, career milestones, season arc, position battles
       return getNextContent('championship_context', 'late') ||
+             getNextContent('pressure_narrative') ||
+             getNextContent('career_milestone') ||
+             getNextContent('season_arc') ||
              getNextContent('position_battle') ||
              getNextContent(undefined, 'late') ||
              getNextContent()
              
     case 'final':
-      // Final laps: high energy, any available content
-      return getNextContent(undefined, 'final') ||
+      // Final laps: high drama - milestones, pressure, underdog moments, championship
+      return getNextContent('career_milestone', 'final') ||
+             getNextContent('pressure_narrative', 'final') ||
+             getNextContent('underdog_moment') ||
+             getNextContent(undefined, 'final') ||
              getNextContent('championship_context') ||
              getNextContent()
              

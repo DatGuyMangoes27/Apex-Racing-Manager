@@ -4,12 +4,28 @@
 // View and manage in-house parts manufacturing
 
 import React from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Gauge, Car, CircleDot, ArrowUpDown, Cog, Clock, CheckCircle, AlertTriangle, Play, Pause, X, Plus, Settings, Trash2, ChevronUp, Factory } from 'lucide-react'
+import { Card, CardHeader, CardContent, Badge, Button, Progress } from '@/components/ui'
+import { useCareerStore } from '@/store/careerStore'
+import type { ManufacturingJobStatus } from '@/data/facility-config'
+import { SPARE_PART_NAMES, MANUFACTURING_CONFIG, calculateManufacturingTime } from '@/data/spare-parts-config'
+import type { SparePartType } from '@/data/spare-parts-config'
+import { getManufacturingQueueStatus, getPendingProductionByType, getMaxConcurrentJobs } from '@/simulation/logistics/partsManufacturing'
+
+// CardTitle component - simple wrapper for card titles
+const CardTitle = ({ children, className = '', ...props }: { children: React.ReactNode; className?: string; [key: string]: unknown }) => (
+  <h3 className={`font-semibold text-text-primary ${className}`} {...props}>{children}</h3>
+)
+
+function PartTypeIcon({ type, className }: { type: string; className: string }): React.ReactElement | null {
   switch (type) {
     case 'engine': return <Gauge className={className} />
     case 'chassis': return <Car className={className} />
     case 'brakes': return <CircleDot className={className} />
     case 'suspension': return <ArrowUpDown className={className} />
     case 'gearbox': return <Cog className={className} />
+    default: return <Cog className={className} />
   }
 }
 

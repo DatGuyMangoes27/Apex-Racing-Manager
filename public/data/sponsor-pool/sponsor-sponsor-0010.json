@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0010",
+  "name": "Quantum Leap Gaming",
+  "category": "gaming",
+  "tier": "mid",
+  "country": "Hungary",
+  "description": "Innovating the future of competitive gaming.",
+  "story": "Quantum Leap Gaming is a Hungarian company specializing in high-performance gaming peripherals. Recognizing the overlap between the precision and reflexes required in both esports and motorsports, they've chosen racing as a key avenue for brand visibility. They seek a partnership that highlights technological innovation and consistent performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Hungary"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0010.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 34,
+  "gender": "female",
+  "role": "paint_shop_specialist",
+  "bio": "Elena's journey into motorsport began with a childhood fascination for the vibrant liveries of racing cars. Her early career involved working in automotive body shops, where she honed her skills in paint application and color matching. Dissatisfied with the mundane, she actively sought an opportunity to combine her artistic talent with her passion for speed. Her meticulous approach to her work, combined with her innate understanding of aerodynamics and aesthetics, makes her a valuable asset to any racing team. Elena is not afraid to push boundaries and experiment with new painting techniques, but also values the importance of meeting deadlines and maintaining the highest standards of quality.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail during work hours.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena is of average height with a strong build and focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only imported Italian paint pigments.",
+    "Always listens to classical music while working to maintain focus.",
+    "Constantly rearranges tools for optimal efficiency."
+  ]
+}

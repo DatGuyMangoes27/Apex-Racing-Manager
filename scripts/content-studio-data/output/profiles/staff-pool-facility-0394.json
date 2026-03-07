@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Chaiya",
+  "nationality": "Thai",
+  "age": 43,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Somchai's journey into motorsport began unexpectedly. While working as a general mechanic in his small village, a visiting racing team experienced a critical engine failure. Somchai's quick thinking and resourcefulness, using locally sourced materials to fashion a temporary replacement part, impressed the team manager. He was offered a position on the spot, and hasn't looked back since. \n\nHe is known for his meticulous approach to precision machining. Somchai is also a firm believer in preventative maintenance, spending as much time inspecting and calibrating equipment as he does fabricating new parts. While his high standards can sometimes come across as demanding, his dedication to quality is unquestionable. Somchai's ability to adapt and improvise, honed from his early days, makes him invaluable when unexpected problems arise trackside.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "Somchai is of average height with a wiry build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before and after each use, regardless of whether they need it.",
+    "Insists on drinking only jasmine tea during races.",
+    "Has a small Buddha amulet that he keeps near his workstation for good luck."
+  ]
+}

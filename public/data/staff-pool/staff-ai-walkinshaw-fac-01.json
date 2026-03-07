@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas Ramirez",
+  "nationality": "Colombian",
+  "age": 29,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Sofia's passion for motorsport ignited during her university years, captivated by the intricate dance of data and performance. Armed with a degree in statistics, she sought an entry point into the racing world, landing an internship with a small IndyCar team. There, she honed her skills in telemetry analysis and predictive modeling, quickly proving her worth. \n\nSofia thrives on extracting actionable insights from complex datasets. She believes in a data-driven approach to decision-making, advocating for rigorous testing and validation. Her ability to identify subtle performance gains has earned her a reputation as a valuable asset. Joining Walkinshaw Andretti United represents a significant step in her career, providing her with the platform to contribute to a top-tier racing organization.\n\nSofia's pragmatic approach, coupled with her relentless pursuit of data-driven solutions, makes her a distinctive force in the paddock. She's always seeking ways to improve the team's performance, pushing the boundaries of what's possible with data analysis.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail during work hours.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a slender build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and observations.",
+    "Has a specific ritual of listening to a particular classical music piece before analyzing critical data.",
+    "Insists on double-checking all data inputs, even if they've already been verified."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0423",
+  "name": "Phoenix Interactive",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "France",
+  "description": "Immersive gaming experiences for a new generation.",
+  "story": "Born from a small Parisian indie studio, Phoenix Interactive now dominates the global gaming landscape. Motorsports provide an unparalleled testing ground for our real-time simulation technologies, directly influencing the realism of our upcoming racing titles. We seek a partnership that embodies precision, innovation, and a relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 9000,
+      "podiumBonus": 4000,
+      "championshipBonus": 65000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 220000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0423.png"
+}

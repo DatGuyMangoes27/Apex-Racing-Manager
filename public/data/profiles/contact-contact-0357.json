@@ -1,0 +1,31 @@
+{
+  "name": "Jacinda Ardern",
+  "nationality": "New Zealand",
+  "age": 57,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Jacinda Ardern is a prominent figure in New Zealand politics, known for her sharp intellect and unwavering dedication to her constituents. Although never holding the office of Prime Minister, she served as a high-ranking minister in multiple governments. Her relentless drive for perfection and occasionally impatient nature are balanced by a genuine commitment to her country's success. She is surprisingly well-versed in motorsport history, often attending local races and vintage car shows in her free time. A racing driver might cross paths with her at a motorsport-related event, seeking support for a new racing series, or potentially as a sponsor connection.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often styled in a sleek bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "She carries herself with confidence and poise. Her style is professional, favouring tailored suits and understated jewelry."
+  },
+  "connectionToMotorsport": "Jacinda has been a vocal supporter of motorsports, both as a recreational activity and potential avenue for economic development in New Zealand. She sees motorsport as a valuable platform for promoting innovation and inspiring young engineers.",
+  "meetingContext": "The player could meet Jacinda at a motorsport charity event or a political fundraiser where she is a guest of honor.",
+  "conversationTopics": [
+    "The history of New Zealand motorsport",
+    "The economic impact of motorsport on local communities",
+    "The role of government in supporting motorsport infrastructure",
+    "Vintage car restoration projects",
+    "The importance of STEM education"
+  ],
+  "canHelp": [
+    "Brokering introductions to potential sponsors and investors",
+    "Facilitating access to government grants and funding opportunities",
+    "Increasing public awareness and support for the player's racing career"
+  ],
+  "personality_summary": "An ambitious and politically astute woman with a hidden passion for motorsports."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0354",
+  "name": "Alpenware Solutions",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Switzerland",
+  "description": "Innovative software solutions, engineered in the Alps.",
+  "story": "Alpenware Solutions is a young, ambitious software company focused on data analytics and cloud computing. Inspired by the precision and efficiency of motorsport, they see a partnership as a way to showcase their brand and reach a global audience of tech enthusiasts. They aim to leverage the data-driven nature of racing to highlight their analytical capabilities.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0354.png"
+}

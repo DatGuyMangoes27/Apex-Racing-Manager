@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Srisawat",
+  "nationality": "Thai",
+  "age": 26,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Somchai's journey into motorsport started unexpectedly. Growing up in Bangkok, he was always fascinated by how things worked, often dismantling and reassembling electronics. A local mechanic noticed his aptitude and offered him an apprenticeship, where he honed his skills working on various engines. His precision and attention to detail quickly set him apart, leading him to specialize in machining. \n\nHe joined Walkenhorst Motorsport after impressing their technical director during a racing event in Thailand. Somchai believes in a meticulous approach, ensuring every part meets exacting specifications. His dedication to continuous improvement and his ability to adapt to new technologies make him a valuable asset to the team. He is particularly adept at diagnosing and resolving complex mechanical issues quickly.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "dark brown",
+    "facialHair": "trimmed goatee",
+    "description": "He has a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sharpens his tools before starting any task, regardless of their current state.",
+    "Has a small Buddha amulet hanging from his workstation.",
+    "Speaks in engineering terms during his free time."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Wei Jun Jie",
+  "nationality": "Singaporean",
+  "age": 22,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Wei's fascination with motorsport began during his mandatory national service, where he worked on vehicle maintenance. This ignited a passion for the mechanical aspects of racing. Following his service, he pursued a diploma in mechanical engineering, focusing on aerodynamics and fluid dynamics. His internship at a local engineering firm involved computational fluid dynamics, which naturally led him to seek a role in Formula racing. He is known for his meticulous approach to data analysis, always seeking to validate simulations with real-world wind tunnel results. Wei is determined to optimise vehicle performance through understanding of aerodynamic principles.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed, with a slight quiff at the front",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Wei is of average height with a lean build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and data points.",
+    "Has a habit of tapping his pen against his teeth when concentrating.",
+    "Insists on double-checking all equipment calibrations before starting a wind tunnel session."
+  ]
+}

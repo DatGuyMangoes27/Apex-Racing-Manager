@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 23,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Nikola's passion for motorsport ignited during his childhood, spent tinkering with engines alongside his grandfather, a retired mechanic. He channeled this interest into specializing in automotive paintwork, mastering techniques from classic restorations to modern high-performance coatings. Nikola joined JHR Developments after impressing scouts with his meticulous attention to detail and ability to consistently deliver flawless finishes under pressure.\n\nHis approach to paintwork is rooted in precision and a deep understanding of material science. Nikola believes that a perfect paint job isn't just about aesthetics; it's about protecting the vehicle and enhancing its performance. He is known for his innovative problem-solving skills, often devising custom solutions to address unique challenges in paint application and surface preparation. His dedication and commitment to excellence make him an invaluable asset to the team, ensuring that every car leaves the shop looking its absolute best.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Nikola is of average height with a lean, athletic build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always wears noise-canceling headphones while working, even when no machinery is running.",
+    "Has a habit of meticulously cleaning his workspace at the end of each day, regardless of how busy he is.",
+    "Keeps a small notebook filled with color swatches and formulas, constantly experimenting with new combinations."
+  ]
+}

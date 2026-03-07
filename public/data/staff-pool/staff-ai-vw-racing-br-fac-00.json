@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 43,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Wei Zhang's journey into motorsport began unexpectedly. A gifted coder since childhood, Wei initially pursued a career in software development. However, a chance encounter with a local racing team needing help optimizing their simulation software sparked a passion he never knew existed. He quickly realized the potential of simulation technology to improve race strategy and driver performance.\n\nWei joined VW Racing Brasil five years ago and quickly became a key member of the team. His meticulous approach to data analysis and his ability to translate complex algorithms into actionable insights have proven invaluable. Wei is known for his calm demeanor under pressure and his unwavering commitment to finding that extra tenth of a second through simulation. His colleagues respect him for his dedication and innovative approach to problem-solving.\n\nWhat sets Wei apart is his ability to see the big picture. He doesn't just focus on the technical aspects of the simulation; he understands how it all connects to real-world performance on the track. This holistic approach, combined with his deep understanding of both software and racing, makes him a truly exceptional simulator engineer.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "Wei is of average height, with a focused and intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always drinks green tea before a simulation run.",
+    "Carries a lucky abacus with him to every race.",
+    "Meticulously cleans his workstation every day before leaving."
+  ]
+}

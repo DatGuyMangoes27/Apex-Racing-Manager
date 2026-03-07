@@ -1,0 +1,22 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 26,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Marko's fascination with motorsport began at a young age, fueled by watching Formula One races with his grandfather. He pursued a degree in mechanical engineering, specializing in aerodynamics, and landed an internship at a small racing team in Zagreb. He quickly proved his aptitude for wind tunnel operations, meticulously analyzing data and identifying subtle improvements to vehicle performance.\n\nMarko is known for his rigorous attention to detail and his ability to translate complex aerodynamic principles into practical solutions. He thrives in collaborative environments, readily sharing his knowledge and insights with engineers and drivers alike. While technically skilled, he also understands the importance of teamwork and communication, striving to build strong relationships with his colleagues.\n\nDriven by a desire to push the boundaries of aerodynamic innovation, Marko is constantly seeking new ways to optimize vehicle performance. He’s eager to contribute his expertise to a team that values innovation and embraces a data-driven approach to racing. He sees the wind tunnel not just as a testing ground, but as a crucial tool for unlocking competitive advantage.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed beard",
+    "description": "Marko is of average height with a lean build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Insists on calibrating the wind tunnel instruments himself before each session."
+  ]
+}

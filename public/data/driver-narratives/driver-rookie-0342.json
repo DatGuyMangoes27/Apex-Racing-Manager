@@ -1,0 +1,27 @@
+{
+  "biography": "Carlos Smith, a name whispered with a mixture of excitement and apprehension in Australian junior racing circles, hails from the small coastal town of Esperance, Western Australia. Growing up amidst the vast salt flats, Carlos developed an early fascination with speed, converting his dad's old ride-on lawnmower into a makeshift go-kart at the tender age of eight. His natural talent was undeniable, dominating local karting events before transitioning to Formula Ford at fourteen. A defining moment came at the Mallala Motor Sport Park, where, despite starting last due to a qualifying mishap, Carlos weaved his way through the field to snatch victory on the final corner. This audacious move became his signature – a blend of raw talent and calculated risk. Currently, Carlos is navigating the treacherous waters of the Australian Formula 3 Championship, operating as an independent driver, relying on a shoestring budget and the unwavering support of his family. While flashes of brilliance are frequent, inconsistency often plagues his performances, hindering his ascent to the top. He dreams of one day gracing the F1 grid, but needs to prove consistency and commitment to get there.",
+  "drivingStyle": "Carlos possesses a fiercely aggressive driving style, characterized by late braking and daring overtakes. He's a master of finding grip where others can't, often throwing the car into corners with seemingly reckless abandon. While this approach yields spectacular results on occasion, it also leads to costly mistakes and tire degradation. He struggles with tire management, often pushing too hard in the early stages of a race, leaving him vulnerable in the closing laps. His raw speed is undeniable, but refining his consistency and strategic approach will be crucial for his long-term success.",
+  "rivalries": [
+    {
+      "name": "Isabelle Rossi",
+      "reason": "A fierce competitor in Formula Ford, Isabelle and Carlos clashed repeatedly, their rivalry fueled by contrasting driving styles and a mutual desire for victory. Their battles often resulted in on-track collisions and heated exchanges in the paddock."
+    },
+    {
+      "name": "Marcus Chen",
+      "reason": "Marcus, a calculating and methodical driver, represents the antithesis of Carlos's impulsive nature. Their clashes stem from differing approaches to racing, with Marcus criticizing Carlos's recklessness and Carlos dismissing Marcus's style as boring."
+    },
+    {
+      "name": "James O’Connell",
+      "reason": "James is another independent driver, known for being ruthless on the track. Their cars came together at the last race, putting both drivers out of the competition. There is still some tension between both drivers."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks (unwashed) for every race.",
+    "Listens to a specific AC/DC song ('Thunderstruck') five minutes before getting into the car.",
+    "Has a small kangaroo plushie named 'Skippy' attached to his dashboard for good luck."
+  ],
+  "nickname": "The Esperance Enigma",
+  "famousQuote": "\"You gotta risk it to get the biscuit!\"",
+  "careerHighlight": "Winning the Mallala Motor Sport Park Formula Ford race after starting last, showcasing his exceptional overtaking skills and raw speed.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Bathurst 6 Hour race due to overzealous driving, costing his team a potential victory."
+}

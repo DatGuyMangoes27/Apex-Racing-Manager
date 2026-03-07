@@ -1,0 +1,22 @@
+{
+  "name": "Zola Mabaso",
+  "nationality": "South African",
+  "age": 33,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Zola's passion for motorsport ignited at a young age, growing up near the Kyalami Grand Prix Circuit. She pursued a degree in mechanical engineering, focusing on vehicle dynamics and performance optimization. After graduating, she worked as a data analyst for a smaller racing team before transitioning to Birel ART Factory. \n\nAs a test driver coordinator, Zola is responsible for meticulously planning and executing testing programs, ensuring that all data is accurately collected and analyzed. Her demanding nature pushes the test drivers to their limits, extracting every last bit of performance from the kart. She is known for her innovative approach to testing methodologies, constantly seeking new ways to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, natural afro with subtle highlights",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zola is of average height with a lean, athletic build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with test data scribbles.",
+    "Has a specific playlist of South African house music she listens to before each testing session.",
+    "Insists on double-checking all sensor calibrations personally."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 40,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Angus McGregor's journey into motorsport began with a childhood fascination for V8 Supercars, fueled by the roar of engines echoing through the Australian outback where he grew up. After earning a degree in mechanical engineering from the University of Melbourne, he landed his first role as a junior data analyst for a local racing team. His keen eye for detail and ability to translate complex data into actionable insights quickly propelled him through the ranks.\n\nKnown for his meticulous approach to vehicle dynamics, Angus believes in a data-driven methodology, constantly seeking marginal gains in performance. He is particularly adept at identifying subtle nuances in driver feedback and translating them into tangible setup changes. While his communication style can be direct, his dedication to the team's success is unwavering. He is a firm believer that clear, data-backed communication with the driver is key to unlocking the car's full potential, often spending hours pouring over telemetry with them.\n\nHe is a valuable asset to Hitech Development, bringing a unique blend of technical expertise and a pragmatic, results-oriented approach to performance engineering. He is fiercely loyal to his team, always willing to go the extra mile to ensure victory.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Angus has a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on drinking his coffee black, no sugar, at exactly 9:17 AM every morning.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

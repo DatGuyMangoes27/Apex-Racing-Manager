@@ -1,0 +1,31 @@
+{
+  "name": "Jolanta Kowalski",
+  "nationality": "Polish",
+  "age": 58,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Jolanta is a celebrated chef, known for her innovative fusion of traditional Polish cuisine with modern culinary techniques. After years of working in Michelin-starred restaurants across Europe, she returned to Poland to open her own acclaimed establishment, 'Smaki Dawne i Nowe' (Tastes Old and New). Jolanta is a perfectionist in the kitchen, instilling a sense of discipline and care in her staff. Her idealistic nature drives her to source only the freshest, locally-sourced ingredients, believing that quality food nourishes not only the body but also the soul. \n\nWhile seemingly removed from the high-octane world of motorsport, Jolanta's restaurant has become a favorite haunt for racing teams and drivers visiting Poland for events. Her dedication to excellence and her ability to create memorable dining experiences have made her a sought-after culinary artist within certain social circles. A racing driver might cross paths with her when attending a celebratory dinner after a race or seeking a quiet retreat to enjoy a well-prepared meal amidst the pressures of competition.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Jolanta is a woman of medium height, with a warm and welcoming presence. Her hands, though bearing the marks of a lifetime in the kitchen, move with graceful precision."
+  },
+  "connectionToMotorsport": "Jolanta's restaurant is a popular dining spot for racing teams and drivers visiting Poland. She occasionally caters private events for teams, offering bespoke menus tailored to their dietary needs and preferences.",
+  "meetingContext": "The player might meet Jolanta at her restaurant after a race in Poland, perhaps invited by a team manager who frequents the establishment, or through a chance encounter during a private catering event for a racing team.",
+  "conversationTopics": [
+    "The importance of fresh, local ingredients",
+    "The challenges and rewards of running a restaurant",
+    "Her travels and experiences in different European kitchens",
+    "The intersection of art and food",
+    "The discipline and dedication required to achieve excellence in any field"
+  ],
+  "canHelp": [
+    "Provide high-quality catering for the player's team or personal events.",
+    "Offer valuable connections within the Polish business and social scene.",
+    "Provide a relaxing and refined atmosphere for the player to unwind and escape the pressures of racing."
+  ],
+  "personality_summary": "A disciplined and caring chef with a passion for quality and an eye for detail."
+}

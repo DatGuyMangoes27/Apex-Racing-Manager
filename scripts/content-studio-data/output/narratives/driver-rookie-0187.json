@@ -1,0 +1,27 @@
+{
+  "biography": "Liam Petrov hails from the bustling streets of Jakarta, Indonesia, a world away from the pristine racetracks of Europe. His racing journey began unexpectedly. At the age of 12, scavenging parts from discarded scooters with his older brother, he built a makeshift go-kart, tearing through the narrow alleyways of his neighborhood. The roar of the engine, the wind in his hair - it was an addiction. His raw talent caught the eye of a local mechanic, Bapak Adi, who saw something special in the young Petrov. Bapak Adi, a former racer himself, mentored Liam, teaching him the basics of karting and instilling in him a deep respect for the mechanics of racing. A defining moment came at the regional karting championship when, despite starting last due to a qualifying mishap, Liam carved his way through the field, ultimately finishing second. This performance caught the attention of a small, independent racing team who offered him a chance to race in Formula 4. Now, at 18, Liam is navigating the steep learning curve of single-seater racing, showing flashes of brilliance while steadily improving his race craft.",
+  "drivingStyle": "Liam possesses a naturally aggressive driving style, honed from his early days of street racing. He attacks corners with a late-braking technique, often pushing the limits of grip. While this approach can lead to spectacular overtakes, it also leaves him vulnerable to mistakes. He's still developing the finesse required to manage tire wear effectively, often struggling in the latter stages of a race. However, Liam thrives under pressure. The more intense the situation, the calmer he seems to become, making him a formidable opponent in wheel-to-wheel battles.",
+  "rivalries": [
+    {
+      "driverName": "Marco Bellini",
+      "reason": "Bellini, a seasoned veteran of Formula 4, publicly dismissed Liam as a 'street racer' lacking the discipline for professional motorsport, igniting a fiery on-track rivalry."
+    },
+    {
+      "driverName": "Anya Volkov",
+      "reason": "Volkov and Petrov are constantly battling for position. They have a mutual respect, but Anya is hyper-competitive and never backs down, leading to intense, close-quarters racing."
+    },
+    {
+      "driverName": "Kenji Tanaka",
+      "reason": "Tanaka is the product of a well-funded driver academy, and resents Petrov's natural talent and underdog status. Their contrasting backgrounds fuel a personal and professional rivalry."
+    }
+  ],
+  "quirks": [
+    "Always wears a hand-knitted Indonesian 'songkok' (cap) under his helmet for good luck.",
+    "Listens to traditional Indonesian Gamelan music before every race to calm his nerves.",
+    "Has a lucky charm - a small, intricately carved wooden wayang (puppet) given to him by Bapak Adi."
+  ],
+  "nickname": "The Jakarta Jet",
+  "famousQuote": "\"The only way to learn is to push harder. If you're not on the edge, you're not trying hard enough.\"",
+  "careerHighlight": "Finishing second at the regional karting championship after starting last, showcasing his raw talent and determination.",
+  "careerLowPoint": "Spinning out of contention on the final lap of his first Formula 4 race while battling for a podium position, a costly mistake that taught him a valuable lesson about composure."
+}

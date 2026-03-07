@@ -1,0 +1,22 @@
+{
+  "name": "Pieter van der Merwe",
+  "nationality": "South African",
+  "age": 51,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Pieter's journey into motorsport began unexpectedly. Originally trained in telecommunications, a chance encounter repairing timing equipment at a local karting track ignited a passion that led him to completely change his career path. He is known for his meticulous approach and his ability to diagnose and resolve complex electrical issues under immense pressure. His experience spans various racing series, from Formula Ford to GT endurance racing, giving him a broad understanding of vehicle electronics systems.\n\nWhat sets Pieter apart is his pragmatic approach to problem-solving. He favors practical, reliable solutions over cutting-edge but untested technologies. This stems from a deep understanding of the realities of motorsport, where reliability often trumps outright performance. He's not afraid to challenge conventional wisdom if he believes there's a more efficient or dependable way to achieve the desired outcome. Pieter's ambition drives him to constantly seek improvements in the team's electronics setup, ensuring reliable performance and a competitive edge.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly trimmed receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A sturdy man with a focused gaze and a slight build around the middle."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-meter in his pocket.",
+    "Insists on using only analog gauges for initial diagnostics.",
+    "Has a collection of vintage circuit diagrams."
+  ]
+}

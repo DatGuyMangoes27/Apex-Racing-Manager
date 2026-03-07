@@ -1,0 +1,62 @@
+{
+  "history": "Sebring International Raceway, a legendary American circuit, traces its roots back to a World War II airbase, Hendricks Field. The first race was held in 1950, quickly establishing Sebring as a challenging and demanding venue. The 12 Hours of Sebring, a cornerstone of endurance racing, has been run annually since 1952, attracting teams and drivers from around the globe. Over the decades, the track has undergone several modifications, but it has retained its bumpy, unforgiving character. The Full Circuit layout, at 6.019km, showcases the track's most iconic and challenging sections. Its unique blend of high-speed straights and technical corners has made it a favorite among drivers and fans alike.",
+  "atmosphere": "Standing on the banks overlooking the Hairpin at Sebring during the 12 Hours is an assault on the senses. The roar of engines echoes off the grandstands and surrounding landscape, a cacophony of V8 muscle cars, screaming European sports cars, and the occasional exotic engine note. The air is thick with the smell of racing fuel, tire smoke, and the aroma of barbecue wafting from the campsites scattered around the circuit. As dusk settles, the headlights pierce the darkness, creating a mesmerizing spectacle as cars navigate the bumpy surface, pushing the limits of man and machine. The passionate fans, many of whom have camped out for days, cheer on their favorite teams, creating an unforgettable atmosphere of camaraderie and competition.",
+  "trackCharacter": "The Sebring Full Circuit is a brutal test of endurance and car setup. Its defining characteristic is its unforgiving, bumpy surface, a legacy of its airfield origins. The track demands a car that can handle both high-speed sections and technical corners, requiring a delicate balance between aerodynamic efficiency and mechanical grip. The long straights reward horsepower, while the tight corners and bumpy braking zones place a premium on driver skill and car control. Sebring is a place where mechanical failures are common, and the 12-hour race often becomes a survival of the fittest.",
+  "nickname": "The Bumpy One",
+  "famousCorners": [
+    {
+      "name": "Turn 1",
+      "description": "A deceptively fast right-hander that sets the tone for the entire lap. It's crucial to carry speed through here to maximize momentum onto the subsequent straights.",
+      "challenge": "Requires commitment and precision, as running wide can lead to a loss of time and compromise the entry into Turn 2."
+    },
+    {
+      "name": "The Esses (Turns 3-5)",
+      "description": "A high-speed complex of sweeping corners that tests a car's balance and aerodynamic grip. Maintaining momentum is key.",
+      "challenge": "Requires a car that's stable and responsive, and any slight mistake can be amplified, leading to significant time loss."
+    },
+    {
+      "name": "Sunset Bend (Turn 17)",
+      "description": "A long, sweeping right-hander that leads onto the front straight. It's a crucial corner for setting up overtaking opportunities.",
+      "challenge": "Requires carrying maximum speed while managing tire wear and maintaining a tight line to maximize acceleration onto the front straight."
+    },
+    {
+      "name": "The Hairpin (Turn 7)",
+      "description": "A slow, tight left-hander that provides a prime overtaking opportunity.",
+      "challenge": "Requires precise braking and throttle control to avoid locking up the wheels or running wide on exit."
+    },
+    {
+      "name": "Turn 10",
+      "description": "A fast, bumpy right-hander that requires courage and commitment. It's easy to lose time here if you're not fully confident.",
+      "challenge": "The bumps unsettle the car, making it difficult to maintain a consistent line and carry speed through the corner."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical reliability",
+    "Effective bump absorption",
+    "Aerodynamic balance",
+    "Driver endurance",
+    "Tire Management"
+  ],
+  "overtakingSpots": [
+    "The Hairpin (Turn 7)",
+    "Turn 10 under braking",
+    "Into Turn 17 (Sunset Bend) with a good exit"
+  ],
+  "historySnippets": [
+    "Sebring was originally a B-17 training base during WWII.",
+    "The first 12 Hours of Sebring was held in 1952.",
+    "The track's surface is notoriously bumpy due to its airfield origins.",
+    "Many famous drivers, including Mario Andretti and Stirling Moss, have raced at Sebring.",
+    "Sebring has hosted numerous international racing series, including the World Endurance Championship and IMSA.",
+    "The 12 Hours of Sebring is considered one of the toughest endurance races in the world."
+  ],
+  "weatherNotes": "Sebring's climate is typically hot and humid, especially during the 12 Hours of Sebring in March. Rain showers are common, and can quickly change track conditions, making tire choice and strategy crucial. The heat can also take a toll on drivers and equipment, increasing the chances of mechanical failures.",
+  "drivingAdvice": "At Sebring, focus on preserving your equipment and tires. The bumps and high speeds will punish any weaknesses in your setup. Be patient and strategic with your overtakes, and avoid unnecessary risks. Most importantly, learn the track's nuances and braking points, as this will give you a crucial advantage in the long run.",
+  "famousRaces": [
+    "1966 12 Hours of Sebring: Ford's dominant victory, showcasing their GT40's prowess in endurance racing.",
+    "1969 12 Hours of Sebring: A thrilling finish saw the Porsche 908 of Jo Siffert and Hans Herrmann take the win.",
+    "2018 12 Hours of Sebring: A dramatic race that saw multiple lead changes and a nail-biting finish, with Rebellion Racing ultimately taking the victory.",
+    "2023 1000 Miles of Sebring: Ferrari takes the victory and wins the first race of the new WEC Hypercar era after a red flag due to the dangerous weather conditions."
+  ],
+  "localCulture": "Sebring is a small town located in central Florida, surrounded by orange groves and lakes. The local culture is heavily influenced by motorsports, with many residents working in the racing industry or volunteering at the track. The paddock is a melting pot of cultures during race weekends, with teams and fans from all over the world converging to celebrate their passion for racing. Local cuisine includes Southern comfort food, seafood, and, of course, plenty of fresh orange juice."
+}

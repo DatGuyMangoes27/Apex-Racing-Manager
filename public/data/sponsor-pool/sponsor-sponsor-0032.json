@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0032",
+  "name": "Časomír Watches",
+  "category": "watches",
+  "tier": "mid",
+  "country": "Czech Republic",
+  "description": "Precision timekeeping, Czech heritage.",
+  "story": "Časomír Watches embodies Czech precision and craftsmanship. We're passionate about supporting motorsport, where split-second timing is everything. We seek partnerships that reflect our commitment to excellence and offer opportunities for brand exposure on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Czech Republic",
+      "Slovakia"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0032.png"
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Lucas Veloso, born under the relentless Brazilian sun in São Paulo, carries the weight of a nation's motorsport heritage on his shoulders. His journey began not on the asphalt, but on the dusty karting tracks carved into the outskirts of the city, fueled by a relentless ambition and a father who mortgaged his mechanic shop to fund his son's early career. A defining moment came at the 2008 Brazilian Karting Championship, where, despite a broken steering column halfway through the final lap, Veloso wrestled his kart across the finish line to secure a victory that etched his name into local folklore. Transitioning to single-seaters proved challenging, with financial constraints and a fiercely competitive landscape hindering his progress. He persevered, bouncing between regional series, demonstrating flashes of brilliance but struggling for consistency. Now, a veteran of the sport, Veloso pilots for his own self-funded team, a testament to his unwavering dedication, chasing that elusive breakthrough on a global stage, fighting tooth and nail, hoping to leave a legacy.",
+  "drivingStyle": "Veloso is a calculating driver, renowned for his meticulous approach and strategic tire management. He rarely pushes his car to the absolute limit early in a race, preferring to conserve resources and patiently observe his competitors' weaknesses. He's known for his late-braking maneuvers, often surprising opponents with his calculated aggression in the closing laps. His strength lies in endurance races, where his methodical approach and ability to adapt to changing conditions give him an edge. He thrives under pressure, displaying a remarkable composure that allows him to execute his strategy flawlessly, even in the face of adversity.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "A long-standing rivalry stemming from their Formula 3 days, fueled by contrasting driving styles and several on-track collisions."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A strategic rivalry, Veloso sees Tanaka as a benchmark for tire conservation and frequently attempts to outsmart him on pit stop strategies."
+    },
+    {
+      "driver": "Ricardo Alvarez",
+      "reason": "A personal rivalry, Alvarez openly criticized Veloso's self-funded team, sparking a fierce battle for respect on and off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue wristband his father gave him before every race.",
+    "Refuses to eat anything citrus-related on race weekends.",
+    "Studies the weather forecast obsessively, even if the race is indoors."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about speed; it's about chess on wheels. One wrong move, and it's checkmate.\"",
+  "careerHighlight": "Winning the 2012 Brazilian Endurance Championship after overcoming a three-lap deficit in the final hour.",
+  "careerLowPoint": "Crashing out of the lead in the 2015 Interlagos Grand Prix due to a mechanical failure, costing him a potential podium finish on home soil."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Gruber",
+  "nationality": "Austrian",
+  "age": 55,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Hans-Peter's fascination with electronics began in his youth, tinkering with radios and building circuits in his father's workshop. This passion led him to earn a degree in electrical engineering from the Vienna University of Technology. His motorsport journey started with a local racing team, where he honed his skills in diagnosing and resolving complex electrical issues in race cars.\n\nJoining Team WRT was a dream come true for Hans-Peter. He thrives on the fast-paced environment and the challenge of optimizing car performance through intricate electronic systems. He is known for his meticulous attention to detail, his ability to quickly identify problems under pressure, and his calm demeanor, which helps the team stay focused during critical moments. His 'big picture' thinking is invaluable, allowing him to predict potential electrical failures before they occur, saving valuable time and resources.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of sturdy build, with a focused gaze behind his glasses."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Insists on using metric measurements exclusively.",
+    "Has a peculiar habit of humming quietly while troubleshooting complex electrical systems."
+  ]
+}

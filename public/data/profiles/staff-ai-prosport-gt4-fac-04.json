@@ -1,0 +1,22 @@
+{
+  "name": "Klaus Richter",
+  "nationality": "German",
+  "age": 37,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Klaus Richter’s journey into motorsport began with a childhood obsession with dismantling and rebuilding electronics. He holds a master's degree in Electrical Engineering from RWTH Aachen University, where his thesis focused on advanced sensor technology for automotive applications. His first role was at Bosch, developing ECU systems for road cars. However, the allure of racing proved too strong, and he joined ProSport Racing five years ago.\n\nAt ProSport, Klaus has proven to be a crucial member of the team, known for his methodical approach to problem-solving and his ability to quickly diagnose and rectify complex electrical issues. He is particularly adept at optimizing energy recovery systems and fine-tuning engine control parameters to maximize performance. While his demanding nature can sometimes ruffle feathers, it stems from a deep commitment to excellence and a desire to push the boundaries of what's possible. Klaus firmly believes that data-driven analysis and relentless testing are the keys to success in modern motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Klaus is a man of medium build with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-meter in his briefcase, even on race day.",
+    "Insists on using a specific brand of soldering iron, which he brings to every track.",
+    "Has a habit of tapping his pen rapidly when deep in thought, often driving his colleagues crazy."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Lindström",
+  "nationality": "Swedish",
+  "age": 29,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Bjorn's journey into motorsport began in his early teens, captivated by the engineering intricacies of Formula 1 cars. He spent countless hours disassembling and reassembling engines in his father's workshop, developing a deep understanding of mechanical systems. This passion led him to pursue a degree in Mechanical Engineering, specializing in aerodynamics. After graduating, Bjorn joined a smaller racing outfit where he quickly rose through the ranks, proving his ability to optimize car performance and lead technical teams. He believes in a data-driven approach, meticulously analyzing telemetry and pushing the boundaries of innovation. His ability to adapt quickly to changing conditions and inspire his team sets him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed to the side with a slight fade.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Bjorn is a lean man with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on wearing noise-canceling headphones in the garage to maintain focus."
+  ]
+}

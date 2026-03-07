@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 32,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Dimitri's journey into motorsport began unconventionally, repairing fiberglass boats on the Volga River. His innate understanding of composite materials and meticulous attention to detail quickly set him apart. A chance encounter with a touring car team led to an apprenticeship, and he hasn't looked back since. He approaches composite work with a scientist's curiosity and an artist's touch, always seeking the optimal balance between strength and weight. Known for his calm demeanor and unwavering focus, he's a reliable presence in high-pressure situations. He thrives on challenging projects and is always eager to experiment with new materials and techniques, striving to push the boundaries of what's possible.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Dimitri is of average height with a wiry build, suggesting he's stronger than he looks."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Has a collection of miniature Formula 1 cars on his workbench.",
+    "Mumbles engineering calculations to himself while working."
+  ]
+}

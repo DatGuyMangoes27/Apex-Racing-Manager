@@ -1,0 +1,22 @@
+{
+  "name": "Javier Mendoza",
+  "nationality": "Argentine",
+  "age": 30,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Javier's passion for motorsport ignited during his childhood in Buenos Aires, fueled by watching the Turismo Carretera races. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing an internship with a local racing team. His analytical skills and ability to quickly assess track conditions led him to focus on race strategy. Javier joined Mitsubishi Motorsport five years ago and has consistently impressed with his data-driven approach and calm demeanor under pressure. He's known for his ability to formulate unconventional strategies that often give the team a competitive edge, even with limited resources. He excels at identifying opportunities others miss, even if it means taking calculated risks.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Javier is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Prefers to listen to classical music to focus before a race."
+  ]
+}

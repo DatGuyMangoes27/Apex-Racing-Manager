@@ -1,0 +1,22 @@
+{
+  "name": "Arjun Verma",
+  "nationality": "Indian",
+  "age": 40,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Arjun Verma's journey into motorsport began unexpectedly during his engineering studies, where a student project involving vehicle dynamics sparked an intense fascination. After graduating, he honed his technical skills in automotive manufacturing before transitioning to simulator technology. He joined Walkenhorst Motorsport three years ago, where his pragmatic problem-solving and adaptability quickly made him a valuable asset. Arjun approaches simulator engineering with a focus on data accuracy and driver feedback, striving to create a virtual environment that closely mirrors real-world track conditions. His ability to quickly adapt to new software and hardware, coupled with his commitment to continuous improvement, sets him apart.",
+  "physical": {
+    "skinTone": "Medium Brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed hair with a receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Arjun is of average height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down simulation data observations.",
+    "Insists on having a cup of masala chai before starting any major simulator session.",
+    "Has a collection of miniature race cars on his desk, each representing a significant motorsport victory."
+  ]
+}

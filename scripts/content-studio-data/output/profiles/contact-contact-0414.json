@@ -1,0 +1,31 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 35,
+  "gender": "male",
+  "contactType": "doctor",
+  "bio": "Dr. Thabo Cele is a renowned orthopedic surgeon specializing in sports-related injuries. He completed his postgraduate studies at the University of Cape Town, earning accolades for his innovative surgical techniques and dedication to patient care. Thabo's perfectionism drives him to seek the best possible outcomes, but his reckless side sometimes manifests in his hobbies, like challenging black diamond ski slopes. He has a sharp wit and a genuinely supportive nature, making him a respected figure in both the medical and social spheres. His involvement with motorsport stems from his expertise in treating high-impact injuries common in racing. A racing driver might cross paths with him after an accident, or through referrals from other athletes seeking his specialized care.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Close-cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed beard",
+    "description": "Thabo has a muscular build from regular exercise, and his friendly eyes often crinkle at the corners when he smiles. He exudes an air of quiet confidence."
+  },
+  "connectionToMotorsport": "Dr. Cele is the preferred orthopedic surgeon for several local racing teams, known for his rapid and effective treatment of fractures and other motorsport-related injuries. He's also an advocate for improved safety measures in racing.",
+  "meetingContext": "The player might meet Dr. Cele at a motorsport event where he's providing medical support, or through a referral after sustaining an injury on the track.",
+  "conversationTopics": [
+    "The latest advancements in orthopedic surgery",
+    "His recent acquisition of a rare South African artwork",
+    "The challenges of balancing work and his equestrian hobby",
+    "The Bulls' chances in the upcoming rugby season",
+    "The importance of safety regulations in motorsport"
+  ],
+  "canHelp": [
+    "Provide expert medical treatment and rehabilitation after injuries.",
+    "Offer advice on physical conditioning and injury prevention.",
+    "Connect the player with other medical professionals and trainers."
+  ],
+  "personality_summary": "A perfectionistic yet reckless doctor with a sincere desire to help others."
+}

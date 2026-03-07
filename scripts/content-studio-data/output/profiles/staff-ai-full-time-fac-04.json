@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 28,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Saoirse's fascination with motorsport began during her childhood, spent tinkering with old radios and electronics kits in her grandfather's workshop in County Mayo. This early exposure ignited a passion that led her to pursue a degree in Electrical Engineering from Trinity College Dublin. After graduating, she initially worked on renewable energy projects, gaining invaluable experience in power systems and circuit design. However, the lure of racing was too strong, and she made the leap to motorsport two years ago, joining Full Time Sports as a junior electronics engineer. \n\nSaoirse's pragmatic approach and keen eye for detail have quickly made her a valuable asset to the team. She excels at troubleshooting complex electrical systems and is constantly looking for ways to optimize performance through innovative solutions. While she's still relatively new to the sport, her unwavering loyalty and ability to see the big picture make her a promising talent with a bright future in motorsport. She is particularly interested in improving the energy recovery systems of the cars, and hopes to find the marginal gains needed to win races.\n\nShe is quickly proving herself to be one of the sharpest young minds in the paddock. Her colleagues value her input and her ability to keep calm under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A tall, slender woman with a focused expression and a determined stride."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool on her keychain.",
+    "Has a habit of sketching circuit diagrams on napkins during lunch.",
+    "Needs complete silence when debugging complex systems."
+  ]
+}

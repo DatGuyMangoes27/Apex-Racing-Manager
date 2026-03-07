@@ -35,27 +35,23 @@ export {
   calculateAdjustedPayment,
   calculateAdjustedBonus
 } from './sponsors'
-// Export contracts explicitly
+// Export contracts explicitly (only symbols that exist in contracts/index.ts)
 export {
   DEFAULT_TEAM_SATISFACTION,
   SATISFACTION_WARNING_THRESHOLD,
   SATISFACTION_FINAL_WARNING_THRESHOLD,
   SATISFACTION_TERMINATION_THRESHOLD,
-  GRACE_PERIOD_RACES as CONTRACT_GRACE_PERIOD_RACES,
-  type ContractSatisfactionModifiers,
-  CONTRACT_SATISFACTION_MODIFIERS,
-  type ContractTargetTemplate,
-  CONTRACT_TARGET_TEMPLATES,
   generateContractTargets,
+  generateTerminationConditions,
+  generateRenewalConditions,
+  generateMediaDuties,
+  generateTeamOption,
+  generatePlayerOption,
   updateContractTargets,
-  finalizeContractTargets,
-  isContractTargetMet,
-  isContractTargetExceeded,
-  type SatisfactionUpdateResult as ContractSatisfactionUpdateResult,
   calculateRaceSatisfactionChange as calculateContractRaceSatisfactionChange,
-  calculateSeasonEndSatisfaction as calculateContractSeasonEndSatisfaction,
   type RenewalEvaluationResult,
-  evaluateContractRenewal
+  evaluateContractRenewal,
+  type RaceResultForContract
 } from './contracts'
 // teamDevelopment exports TeamDevelopmentState which conflicts with aiModifiers
 export type { TeamMilestone, CarUpgrade } from './teamDevelopment'

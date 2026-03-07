@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Davies",
+  "nationality": "British",
+  "age": 38,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Alistair's motorsport journey began not on the track, but in the garage. Growing up in a small Welsh town, he spent his youth tinkering with engines and absorbing every detail of vehicle mechanics from his father, a local rally mechanic. This hands-on experience fueled his passion and led him to pursue a degree in Mechanical Engineering, specializing in vehicle dynamics. After graduating, Alistair joined a small engineering firm, working on suspension design and data analysis. \n\nHis meticulous approach and keen eye for detail quickly caught the attention of Reiza Studios Factory, who headhunted him to coordinate their test driver program. Alistair excels at translating driver feedback into actionable technical improvements. He is known for his demanding yet fair approach, pushing drivers to their limits while ensuring their safety. He believes in rigorous data analysis and a collaborative environment where engineers and drivers can effectively communicate and refine vehicle performance.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted",
+    "eyeColor": "hazel",
+    "facialHair": "short boxed beard",
+    "description": "Alistair is of average height, with a wiry build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations, even during meetings.",
+    "Insists on a specific type of Earl Grey tea, brewed to a precise temperature.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

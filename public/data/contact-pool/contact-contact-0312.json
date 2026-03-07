@@ -1,0 +1,31 @@
+{
+  "name": "Đặng Quốc Bảo",
+  "nationality": "Vietnamese",
+  "age": 38,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Đặng Quốc Bảo is a self-made man, having risen through the ranks of the Vietnamese banking sector with a combination of shrewd business acumen and an almost obsessive attention to detail. He started his career as a teller and now manages a significant portfolio of investments for high-net-worth individuals and corporations, including several involved in motorsports. Despite his professional success, Đặng harbors a romantic soul and a deep appreciation for the arts, often attending classical music concerts or the ballet in his free time. A racing driver might cross paths with Đặng while seeking funding for a team, sponsorship for a racing season, or strategic financial advice for managing their winnings and investments.",
+  "physical": {
+    "skinTone": "Warm, honey-toned",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin, well-groomed mustache",
+    "description": "Đặng is of average height with a lean build. He typically wears tailored suits that accentuate his sharp features and project an air of quiet confidence."
+  },
+  "connectionToMotorsport": "Đặng's bank manages the finances of several motorsport teams and sponsors in Southeast Asia, making him a key figure in the financial side of the sport. He also personally enjoys attending local racing events, seeing it as a good place to network and scout potential investment opportunities.",
+  "meetingContext": "The player might meet Đặng at a high-profile motorsport event in Vietnam or through a mutual business contact seeking investment for the driver's career.",
+  "conversationTopics": [
+    "The current state of the Vietnamese economy",
+    "Classical music composers and performances",
+    "The latest fashion trends from Milan and Paris",
+    "The challenges and rewards of self-made success",
+    "Strategic investments in emerging markets"
+  ],
+  "canHelp": [
+    "Secure substantial sponsorship deals from his corporate clients.",
+    "Provide expert financial advice on managing prize money and investments.",
+    "Introduce the player to other influential figures in the Vietnamese business community."
+  ],
+  "personality_summary": "A perfectionistic and somewhat aloof banker with a secret passion for the arts."
+}

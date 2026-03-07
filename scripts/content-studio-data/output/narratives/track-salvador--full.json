@@ -1,0 +1,61 @@
+{
+  "history": "The Circuito Ayrton Senna, commonly known as Salvador, is a street circuit in Salvador, Bahia, Brazil. First used in 2012, it was designed to bring high-level motorsport to the city. The Full Circuit configuration, a 2.5km layout, has been a staple for various racing series, primarily focusing on national-level Brazilian competitions. While not hosting major international events like Formula 1 or IndyCar, it has carved a niche as a challenging and exciting venue for local championships.",
+  "atmosphere": "The air crackles with energy at Salvador's Circuito Ayrton Senna. The roar of engines echoes off the buildings that line the track, creating an amphitheater of sound. The Bahia heat shimmers off the asphalt, adding another layer to the intensity. The smell of burning rubber and high-octane fuel mixes with the aroma of local street food, creating a sensory overload that is uniquely Brazilian. The passionate fans, packed into the grandstands and lining the barriers, add a vibrant splash of color and noise to the scene, their cheers rising and falling with the fortunes of their favorite drivers.",
+  "trackCharacter": "The Full Circuit at Salvador is a tight and twisty street course that demands precision and commitment. Its short length and numerous corners mean that there's little time for drivers to relax, requiring constant focus and car control. The bumpy surface adds an extra layer of challenge, making it crucial to find the right balance between aggression and smoothness. The nature of the circuit favors cars with good mechanical grip and nimble handling rather than outright power.",
+  "nickname": "The Bahia Twist",
+  "famousCorners": [
+    {
+      "name": "Curva do Farol",
+      "description": "A tight right-hander at the end of the start/finish straight, requiring heavy braking and precise placement.",
+      "challenge": "It's easy to lock up a wheel under braking, compromising the entry and exit."
+    },
+    {
+      "name": "Curva da Barra",
+      "description": "A flowing left-hand corner that requires maintaining good momentum.",
+      "challenge": "Maintaining the ideal line through the corner is crucial, as any deviation can scrub off valuable speed."
+    },
+    {
+      "name": "Curva do Teatro",
+      "description": "A slow, almost hairpin-like right-hand turn that tests the car's low-speed grip.",
+      "challenge": "Requires a late apex and careful throttle application to avoid wheelspin."
+    },
+    {
+      "name": "Curva do Museu",
+      "description": "A quick chicane that demands a precise and aggressive approach.",
+      "challenge": "Maintaining balance through the chicane is difficult, and any mistake can easily upset the car."
+    },
+    {
+      "name": "Ladeira da Barra",
+      "description": "The slightly uphill section leading to Curva da Barra, that can test the engine and drivetrain.",
+      "challenge": "Finding the best line can be tricky because of the slope and the bumpiness of the road."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical grip",
+    "Braking stability",
+    "Traction out of slow corners",
+    "Aggressive setup with short gears",
+    "Driver confidence"
+  ],
+  "overtakingSpots": [
+    "Curva do Farol (Turn 1) - the most obvious spot after the long straight",
+    "Curva do Teatro (Turn 3) - late braking is essential here",
+    "Into Curva da Barra (Turn 2) - if the car ahead makes a mistake on Turn 1"
+  ],
+  "historySnippets": [
+    "Salvador hosted its first race in 2012.",
+    "The circuit is named after the legendary Ayrton Senna.",
+    "The Full Circuit layout is 2.5km long and features 10 turns.",
+    "The circuit is known for its bumpy surface and tight corners.",
+    "The city of Salvador is a UNESCO World Heritage Site, known for its vibrant culture.",
+    "The circuit is a temporary street circuit, assembled before each race event."
+  ],
+  "weatherNotes": "Salvador has a tropical climate, meaning high temperatures and humidity are common. Rain showers can occur at any time of year, making tire choice a crucial factor. The track surface can become very slippery when wet, and visibility can be reduced by spray.",
+  "drivingAdvice": "The key to a fast lap at Salvador is to maintain momentum through the corners. Avoid locking up the brakes or spinning the wheels, and be patient with the throttle. The bumpy surface requires a compliant suspension setup, and the tight corners demand precise steering inputs. Be aggressive, but also be aware of the track limits, as running wide can result in penalties.",
+  "famousRaces": [
+    "Brazilian Stock Car Championship Races: These events showcase the best of Brazilian motorsport, drawing large crowds and producing thrilling races.",
+    "Formula Truck: This series brought the spectacle of racing trucks to the streets of Salvador, testing the limits of these massive vehicles on the tight and twisty layout.",
+    "Local Touring Car Races: The circuit has been a regular venue for local touring car series, providing a platform for up-and-coming Brazilian drivers to showcase their talent."
+  ],
+  "localCulture": "Salvador is a vibrant city known for its rich Afro-Brazilian culture. The local cuisine is spicy and flavorful, with dishes like moqueca (seafood stew) and acarajé (black-eyed pea fritters) being popular choices. The city is also famous for its music and dance, with samba and capoeira being integral parts of the local culture. Paddock life at Salvador is relaxed and friendly, with a strong sense of community among the teams and drivers."
+}

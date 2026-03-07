@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0034",
+  "name": "PixelForge Studios",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "France",
+  "description": "Crafting virtual worlds, powering real-world victories.",
+  "story": "PixelForge Studios, a leading French game developer known for immersive racing simulations, sees motorsport as the ultimate proving ground for precision and technology. They're eager to connect with a dedicated fanbase and showcase their brand to a global audience through high-performance partnerships. By supporting racing teams, PixelForge aims to bridge the gap between virtual and real racing, fostering innovation and inspiring gamers worldwide.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0034.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ren Tanaka",
+  "nationality": "Japanese",
+  "age": 25,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ren Tanaka's fascination with electronics began early, disassembling and reassembling radios as a child. This curiosity led him to excel in electrical engineering at the University of Tokyo, where he specialized in high-performance systems. Motorsport became his passion during his university years, drawn to the challenge of optimizing complex electronic systems for peak performance under extreme conditions.\n\nJoining Rexal FMI Racing was a dream come true. Ren's pragmatic approach ensures every electronic component functions flawlessly, from engine management systems to data acquisition units. He's known for his methodical problem-solving and relentless pursuit of marginal gains, pushing the boundaries of what's possible with current technology. Ren's innovative spirit and dedication to perfection are quickly making him an indispensable part of the team.\n\nHe thrives under pressure, seeing each race as an opportunity to refine and improve the car's electronic performance. Ren’s focus is always on reliability and efficiency, ensuring that the team can extract maximum performance lap after lap. He is driven by a desire to contribute to a winning team and believes that every detail matters.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly parted on the left",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "Ren has a lean build and a focused gaze behind his rectangular glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Insists on testing every electronic component three times before installation.",
+    "Has a habit of humming quietly when deeply focused."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0452",
+  "name": "DataSur SRL",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Argentina",
+  "description": "Optimizing performance through advanced data analytics.",
+  "story": "DataSur SRL is an Argentinian tech startup specializing in data analytics and performance optimization software. Founded in Buenos Aires, they see motorsport as the perfect testing ground for their cutting-edge algorithms. They seek to showcase their technology's ability to improve performance and strategy, while also expanding their brand awareness within the competitive global marketplace.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0452.png"
+}

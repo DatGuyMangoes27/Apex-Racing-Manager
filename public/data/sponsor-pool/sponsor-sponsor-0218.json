@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0218",
+  "name": "KiwiKraft Performance",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "New Zealand",
+  "description": "Precision engineered performance parts, born on the track.",
+  "story": "KiwiKraft Performance has been supplying top-tier motorsport teams with cutting-edge components for over 30 years. Founded by a former racing engineer, we are committed to innovation and pushing the boundaries of automotive technology. We seek partnerships that demonstrate a commitment to excellence and a passion for winning.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 55,
+    "nationalities": [
+      "New Zealand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0218.png"
+}

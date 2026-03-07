@@ -1,0 +1,22 @@
+{
+  "name": "Esko Virtanen",
+  "nationality": "Finnish",
+  "age": 60,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Esko's journey in motorsport began in the frozen landscapes of Finland, tinkering with rally cars in his youth. He quickly developed a knack for understanding the intricate mechanics of high-performance vehicles. After earning a degree in mechanical engineering, he worked his way through various racing teams, specializing in engine performance and vehicle dynamics. Esko is known for his relentless pursuit of perfection and his ability to troubleshoot complex issues under immense pressure.\n\nHis approach to chief engineering is rooted in a deep understanding of both the theoretical and practical aspects of racing. He values data-driven decisions but also trusts his intuition, honed by decades of experience. Esko's distinctive quality lies in his ability to inspire his team to push boundaries and innovate, even when faced with seemingly insurmountable challenges. He fosters a culture of continuous improvement and believes that every detail matters in the quest for victory.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Thinning, combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed gray beard",
+    "description": "A tall, lean man with a focused gaze and weathered hands."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific brand of Finnish coffee available at all times."
+  ]
+}

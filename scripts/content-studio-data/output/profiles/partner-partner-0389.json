@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Erika Schmidt",
+  "nationality": "German",
+  "age": 42,
+  "gender": "female",
+  "bio": "Erika is a brilliant materials scientist working at a leading research institute in Munich. After dedicating years to her studies and career, she has achieved a comfortable life and is respected in her field. While driven and ambitious, she can also be intensely jealous, a trait she works hard to manage. Now, she's looking for a partner who appreciates her intellect and drive, and can share in her aspirations for a fulfilling family life.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brunette",
+    "hairStyle": "Shoulder-length, sleek bob with subtle layers",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Erika has a poised and professional look, usually wearing minimal makeup. Her sharp features and intelligent gaze suggest a keen mind, complemented by a slender, athletic build."
+  },
+  "meetingContext": "At a high-tech conference where your team is showcasing new aerodynamic innovations.",
+  "firstImpression": "You notice her immediately – the way she confidently engages in technical discussions, her elegant attire contrasting with the often casual conference atmosphere, and an underlying intensity in her eyes.",
+  "interests": [
+    "Classical music",
+    "Hiking in the Bavarian Alps",
+    "Modern art",
+    "International travel",
+    "Gourmet cooking",
+    "Advanced mathematics"
+  ],
+  "dealBreakers": [
+    "Lack of intellectual curiosity",
+    "Financial instability or irresponsibility",
+    "Disinterest in starting a family"
+  ],
+  "loveLanguage": "Acts of Service: She appreciates practical help and support in her demanding life. A thoughtful gesture like handling chores when she's swamped at work would speak volumes."
+}

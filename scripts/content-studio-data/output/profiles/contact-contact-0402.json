@@ -1,0 +1,31 @@
+{
+  "name": "Anders Bjornstad",
+  "nationality": "Swedish",
+  "age": 52,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Professor Anders Bjornstad is a respected figure in the engineering department at Chalmers University of Technology in Gothenburg. He holds a PhD in mechanical engineering with a specialization in aerodynamics and has published extensively on the subject. Known for his principled approach to research and passionate lectures, Anders is also remarkably forgiving, often seeing the best in his students and colleagues. He is a proponent of practical learning and encourages students to push boundaries. While seemingly outside the racing world, Chalmers has a strong motorsport engineering program, and Anders oversees student projects related to vehicle dynamics and performance optimization. He is also an avid drone racing enthusiast, often applying his engineering knowledge to improve his own drones.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Anders has a kind face with a perpetual air of thoughtfulness. He's of average height and build, often dressed in tweed jackets and comfortable shoes."
+  },
+  "connectionToMotorsport": "Professor Bjornstad oversees the Formula Student team at Chalmers, providing invaluable guidance on aerodynamics and vehicle design. He also has connections to several smaller racing teams through his former students.",
+  "meetingContext": "The player could meet Professor Bjornstad by joining the Chalmers Formula Student team or attending a university-sponsored motorsport engineering workshop.",
+  "conversationTopics": [
+    "Aerodynamics",
+    "Formula Student",
+    "Drone racing",
+    "The ethics of autonomous vehicles",
+    "Scandinavian philosophy"
+  ],
+  "canHelp": [
+    "Provide technical expertise on vehicle setup",
+    "Offer internships with racing teams",
+    "Write letters of recommendation for racing academies"
+  ],
+  "personality_summary": "A principled and passionate professor who connects theoretical engineering with real-world motorsport applications."
+}

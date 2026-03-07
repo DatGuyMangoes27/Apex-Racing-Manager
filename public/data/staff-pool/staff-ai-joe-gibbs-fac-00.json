@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papakonstantinou",
+  "nationality": "Greek",
+  "age": 55,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitrios' journey into motorsport began unexpectedly. After a career as an electrical engineer specializing in simulation software for industrial applications, he attended a local rally race and was captivated by the technology powering the vehicles. He saw the potential to adapt his skills to improve driver training and vehicle development. \n\nDimitrios is meticulous and focused on data accuracy. He believes that a simulator is only as good as the information it provides, and is constantly refining the models to reflect real-world conditions. He has a reputation for being demanding, pushing drivers and engineers alike to extract the maximum performance from the simulated environment.\n\n His direct and no-nonsense approach, combined with his deep technical knowledge, makes him a valuable, if occasionally challenging, asset to the team. He is known for his ability to identify subtle differences between simulation and reality, ultimately leading to tangible improvements on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build, Dimitrios has a serious demeanor etched onto his face, softened only by the occasional wry smile."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with equations and observations.",
+    "Insists on drinking only Greek mountain tea during simulation sessions.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

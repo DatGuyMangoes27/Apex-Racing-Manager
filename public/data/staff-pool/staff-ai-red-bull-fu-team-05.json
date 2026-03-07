@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 45,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Adrian's journey into motorsport began with a childhood fascination for rally racing in the Carpathian Mountains. He studied mechanical engineering in Bucharest, but his passion always lay in optimizing performance. After graduating, he started as a data analyst for a smaller racing team, quickly proving his aptitude for spotting crucial advantages in real-time. His keen understanding of tire degradation and fuel consumption led to several underdog victories. He joined Red Bull Racing five years ago, where he has become a respected voice in race-day decision-making. \n\nAdrian is known for his methodical approach and ability to remain calm under immense pressure. He relies on meticulous data analysis combined with an intuitive understanding of driver behavior. He believes that the best strategy is one that anticipates the unexpected, allowing the team to capitalize on opportunities others miss. His loyalty to the team is unwavering, and he is always willing to go the extra mile to ensure success.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Adrian is of average height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn notebook filled with handwritten notes and calculations.",
+    "Has a particular fondness for strong black coffee, consuming several cups throughout the day.",
+    "Tends to pace back and forth when contemplating complex strategic decisions."
+  ]
+}

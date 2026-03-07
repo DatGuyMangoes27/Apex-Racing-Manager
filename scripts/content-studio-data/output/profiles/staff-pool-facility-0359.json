@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's journey into motorsport began unconventionally. While studying electrical engineering at the University of Porto, a chance encounter with a local rally team sparked an obsession. He volunteered his skills, quickly proving his aptitude for diagnosing and resolving complex electronic issues in high-stress environments. After graduating, he spent several years honing his craft in various racing series, from GT endurance racing to single-seater championships, gaining a reputation for his calm demeanor and ability to find creative solutions under pressure.\n\nRicardo is a pragmatic engineer who believes in data-driven decision-making. He is a staunch believer in preventative maintenance and meticulous preparation, often spending hours poring over schematics and sensor logs to identify potential problems before they arise. His colleagues appreciate his collaborative approach and willingness to share his knowledge, making him a valuable asset to any team. He's known for a particular talent in optimizing engine control units for both performance and reliability.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "short, well-groomed goatee",
+    "description": "Ricardo is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool, even outside the racetrack.",
+    "Insists on labeling every cable and connector with excruciating detail.",
+    "Has a collection of vintage circuit boards displayed in his workspace."
+  ]
+}

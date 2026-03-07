@@ -1,0 +1,31 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 39,
+  "gender": "male",
+  "contactType": "journalist",
+  "bio": "Angus is a seasoned motorsport journalist, primarily covering the Australian Supercars Championship and occasionally Formula 1 for a national sports publication. He's known for his in-depth race analysis and driver interviews, often digging beneath the surface to uncover compelling narratives. While generally respected, Angus can be frustratingly passive-aggressive when he feels slighted, and his stubbornness makes it difficult to change his opinion once formed. He is loyal to those he trusts and will stand by them, but earning that trust takes time and patience. A driver might cross paths with Angus during press conferences, paddock interviews, or at media events related to races and team sponsorships.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, slightly receding",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Angus has a stocky build and a perpetually slightly furrowed brow. He often wears practical, comfortable clothing suitable for being on his feet at the track."
+  },
+  "connectionToMotorsport": "Angus has been covering motorsports in Australia for over 15 years, starting as a junior writer and working his way up to a respected voice in the community. He's built relationships with teams, drivers, and sponsors across various racing series.",
+  "meetingContext": "You'd likely meet Angus in the media center at a Supercars race, during a pre-race interview session, or at a promotional event for a team he covers.",
+  "conversationTopics": [
+    "The latest Supercars race results",
+    "The future of Australian motorsport",
+    "Local craft breweries",
+    "The nuances of board game strategy",
+    "His latest camping trip"
+  ],
+  "canHelp": [
+    "Provide positive media coverage",
+    "Introduce you to key figures in the Australian racing scene",
+    "Offer insights into the political landscape of Australian motorsport"
+  ],
+  "personality_summary": "A loyal but stubborn journalist with a penchant for passive-aggression."
+}

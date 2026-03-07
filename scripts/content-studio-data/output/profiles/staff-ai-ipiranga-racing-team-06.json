@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Andersson",
+  "nationality": "Swedish",
+  "age": 41,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Bjorn's journey into motorsport began unexpectedly during his engineering studies in Stockholm. Initially focused on automotive design, he found himself drawn to the strategic and operational challenges of racing. After graduating, he secured a junior position at a local rally team, quickly demonstrating a knack for optimizing performance under pressure. His ability to analyze data and implement effective strategies caught the eye of Ipiranga Racing, where he now serves as Sporting Director.\n\nBjorn's approach is rooted in meticulous planning and data-driven decision-making. He believes in fostering a collaborative environment where every team member feels empowered to contribute their expertise. While not afraid to take calculated risks, he prioritizes stability and long-term sustainable growth over short-term gains. What sets Bjorn apart is his uncanny ability to predict potential problems before they arise, allowing the team to proactively address challenges and maintain a competitive edge.\n\nHe's known for his calm demeanor even in the heat of competition, a trait that helps him make rational decisions under pressure. Bjorn is dedicated to constantly refining processes and improving team communication to ensure Ipiranga Racing remains at the forefront of innovation in the sport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Bjorn is a man of average height, with a lean build and a perpetually focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every team meeting with a brief review of the previous race's data."
+  ]
+}

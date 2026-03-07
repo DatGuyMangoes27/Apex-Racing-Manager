@@ -1,0 +1,27 @@
+{
+  "biography": "Ron Fellows, a name whispered with a mix of awe and exasperation in the Chevrolet paddock, hails from the small town of Port Hope, Ontario. His racing journey began not on asphalt, but on frozen lakes, where he'd coax every last ounce of speed from his battered snowmobile. This icy apprenticeship instilled a unique car control that would become his trademark. Fellows transitioned to karts at 16, quickly dominating the regional scene with his aggressive, almost reckless style. His defining moment came at a wet Mosport race in '23, where, despite starting last due to a qualifying mishap, he carved his way through the field to snatch victory on the final lap, a move that earned him a coveted spot in the Chevrolet development program. Now at 26, Fellows is a rising star, balancing raw talent with the need for consistency, aiming for a top spot in the racing world.",
+  "drivingStyle": "Fellows' driving style is a high-wire act of controlled aggression. He's known for his late braking and his willingness to throw the car into corners with breathtaking precision. Tire management isn't exactly his forte; he prefers to extract maximum performance early in a stint, often sacrificing longevity for immediate speed. In high-pressure situations, Fellows tends to either thrive or implode spectacularly – there's rarely an in-between. His approach is always exciting to watch, as he's always pushing the limits and the car to its maximum, but can sometimes lead to overdriving.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A clash of styles. Rossi's meticulous, calculated approach clashes with Fellows' improvisational flair, leading to intense on-track battles and post-race barbs."
+    },
+    {
+      "driver": "Marcus 'The Machine' Lindstrom",
+      "reason": "Lindstrom views Fellows as undisciplined and a threat to the 'integrity' of racing, while Fellows sees Lindstrom as boring and predictable."
+    },
+    {
+      "driver": "Akira 'Kaze' Tanaka",
+      "reason": "A mutual respect, but a fierce rivalry born from their similar aggressive driving styles. Each believes they are the 'true' inheritor of the 'Kamikaze' approach to racing."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of maple leaf-patterned socks for every race.",
+    "Listens to a specific Canadian punk rock song (loudly) exactly 30 minutes before each race start.",
+    "Has a habit of talking to his car, often giving it pep talks or, if things aren't going well, stern reprimands."
+  ],
+  "nickname": "The Canadian Comet",
+  "famousQuote": "Second place is just the first loser. I came here to win, not to wave at the crowd.",
+  "careerHighlight": "Winning the wet Mosport race in '23 after starting last. The move was dubbed 'The Port Hope Plunge' by commentators.",
+  "careerLowPoint": "Crashing out of the lead at the '24 Sebring 12 Hours with only 15 minutes remaining, costing his team a likely victory. He blamed a faulty throttle, but many suspected driver error."
+}

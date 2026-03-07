@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0171",
+  "name": "Zeitlos Chronographs",
+  "category": "watches",
+  "tier": "high",
+  "country": "Austria",
+  "description": "Precision timekeeping, timeless design.",
+  "story": "Zeitlos Chronographs, based in Vienna, Austria, embodies the spirit of precision and excellence. With a rich heritage in crafting high-end timepieces, Zeitlos sees motorsport as the perfect arena to showcase their commitment to performance under pressure. They seek a partnership that reflects their brand values and resonates with a global audience of discerning enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 55
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0171.png"
+}

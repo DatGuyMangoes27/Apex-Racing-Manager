@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport began unexpectedly during his university years, volunteering at a local rally event to gain IT experience. He quickly became fascinated by the technical complexities behind the scenes. After graduating with a degree in Computer Science, he worked for a tech startup before eventually landing a position within a smaller racing team, implementing and maintaining their IT infrastructure.\n\nHis approach to IT systems management is meticulous and proactive. Ricardo believes in anticipating problems before they arise, using data analytics to optimize system performance and security. He strives to be a bridge between the technical and racing sides of the team, ensuring that IT solutions directly contribute to on-track performance. Known for his calm demeanor under pressure, Ricardo is a valuable asset during race weekends.\n\nWhat truly sets him apart is his ability to quickly troubleshoot complex issues, often finding solutions that others have overlooked. He is not afraid to challenge the status quo and is always looking for innovative ways to improve the team's IT capabilities.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a slightly athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas and potential problems.",
+    "Has a habit of tapping his pen when concentrating.",
+    "Prefers to work standing up, even during long meetings."
+  ]
+}

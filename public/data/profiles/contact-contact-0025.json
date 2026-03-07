@@ -1,0 +1,31 @@
+{
+  "name": "Dimitrios Katsaros",
+  "nationality": "Greek",
+  "age": 63,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Dimitrios Katsaros is a self-made billionaire, having built his fortune from the ground up in the shipping and logistics industry. Known for his stubborn negotiating tactics and unwavering commitment to his ventures, he is both respected and feared in the Greek business world. Despite his gruff exterior, Dimitrios has a deep appreciation for art, poetry, and the thrill of speed, hobbies which have led him to dabble in motorsport investments.\n\nWhile he's not directly involved in team management, Katsaros owns a significant share in a high-performance engine development company that supplies parts to several Formula teams and junior racing series. A driver might encounter him at a networking event, a sponsor dinner, or even at a private race track where he occasionally tests the engines his company produces. He is also known to scout for talent, looking for drivers who embody the same relentless drive and ambition he sees in himself.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Close-cropped, receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Trimmed salt and pepper goatee",
+    "description": "Dimitrios is a powerfully built man, with a commanding presence. His dark eyes are sharp and observant, often conveying a sense of intensity."
+  },
+  "connectionToMotorsport": "Dimitrios owns a major share in 'Aegean Dynamics', an engine development company supplying parts to several Formula teams and junior racing series. He is also known to be an avid motorsport enthusiast.",
+  "meetingContext": "The player could meet Dimitrios at a high-profile motorsport gala, a private event hosted by Aegean Dynamics, or through a mutual business contact.",
+  "conversationTopics": [
+    "The future of engine technology",
+    "Modern Greek poetry",
+    "The art market",
+    "Drone racing regulations",
+    "His early days in shipping"
+  ],
+  "canHelp": [
+    "Provide financial backing for the player's racing career",
+    "Offer a sponsored engine deal through Aegean Dynamics",
+    "Introduce the player to key figures in the motorsport industry"
+  ],
+  "personality_summary": "A stubborn and reliable business mogul with a surprisingly fiery passion for speed and a hidden appreciation for the arts."
+}

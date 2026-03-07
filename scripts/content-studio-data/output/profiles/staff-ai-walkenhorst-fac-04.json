@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 31,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Mads' fascination with motorsport began during his childhood visits to the local go-kart track. He was captivated by the intricate electronics and performance data. He pursued a degree in electrical engineering, focusing on embedded systems and data acquisition. After graduating, he gained experience with a small racing team before joining Walkenhorst Motorsport. Mads is meticulous and values getting the most out of the data collected from race vehicles, and he believes that every millisecond counts. His focus is on optimising the electronic systems for peak performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Mads is a lean man with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas and observations.",
+    "Has a habit of tapping his pen on the table when concentrating.",
+    "Insists on using a specific brand of cable ties for all electronic connections."
+  ]
+}

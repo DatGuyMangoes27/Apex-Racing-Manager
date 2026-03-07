@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0317",
+  "name": "Kopi Jaya",
+  "category": "local",
+  "tier": "entry",
+  "country": "Indonesia",
+  "description": "The taste of victory, brewed in Indonesia.",
+  "story": "Kopi Jaya is a local Indonesian coffee brand, passionate about supporting Indonesian talent. We believe in the power of dedication and hard work, mirroring our own journey from a small family business to a national favorite. We seek to partner with drivers who embody the same spirit of perseverance and excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0317.png"
+}

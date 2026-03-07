@@ -1,0 +1,22 @@
+{
+  "name": "Valtteri Nieminen",
+  "nationality": "Finnish",
+  "age": 27,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Valtteri's fascination with aerodynamics began during his childhood summers, spent watching F1 races with his grandfather. He pursued a degree in Aerospace Engineering at Aalto University, excelling in computational fluid dynamics and wind tunnel testing. After graduating, he quickly rose through the ranks at a smaller racing outfit, contributing significantly to their aerodynamic package development. \n\nHe is known for his data-driven approach and ability to translate complex simulations into tangible on-track improvements. Valtteri believes in fostering a collaborative environment where engineers feel empowered to experiment and challenge conventional wisdom. He is particularly interested in exploring the application of machine learning to optimize aerodynamic performance in real-time.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed to the side with a slight fade",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "A tall, slender man with a focused gaze and a meticulous appearance."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on starting every morning with a cup of strong Finnish coffee.",
+    "Has a habit of tapping his pen against his desk when deep in thought."
+  ]
+}

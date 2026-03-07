@@ -1,0 +1,22 @@
+{
+  "name": "Dmitri Volkov",
+  "nationality": "Russian",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dmitri's journey into motorsport began with a childhood obsession with racing games and a knack for understanding complex systems. He honed his skills in computer science and engineering, eventually landing an internship with a small Formula 3 team. There, he quickly proved his ability to translate real-world data into accurate and insightful simulator models. \n\nNow at Red Bull Racing, Dmitri is known for his meticulous approach to simulator development. He thrives on the challenge of recreating the nuances of a race car's performance, pushing the boundaries of what's possible in virtual testing. Dmitri's focus on data integrity and his innovative calibration methods have made him an indispensable member of the team, constantly striving to improve the realism and value of the simulator for driver development and race strategy preparation.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight wave in the front",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Dmitri has a focused gaze and a lean build, suggesting long hours spent analyzing data."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of adjusting his glasses even when they're perfectly in place.",
+    "Listens to classical music (quietly) while calibrating the simulator."
+  ]
+}

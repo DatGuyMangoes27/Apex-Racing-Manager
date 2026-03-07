@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0373",
+  "name": "Inversiones Mendoza",
+  "category": "finance",
+  "tier": "elite",
+  "country": "Argentina",
+  "description": "Securing your financial future, driving towards success.",
+  "story": "Inversiones Mendoza is a leading Argentinian investment firm dedicated to helping individuals and businesses achieve their financial goals. Recognizing the parallels between strategic investment and precision driving, they sponsor motorsport to connect with a passionate audience and showcase their commitment to performance and calculated risk. They seek partnerships that reflect their values of discipline, innovation, and achieving excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "nationalities": [
+      "Argentina"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0373.png"
+}

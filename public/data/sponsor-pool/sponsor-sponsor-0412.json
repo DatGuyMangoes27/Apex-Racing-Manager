@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0412",
+  "name": "Seoul Harmony Living",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "South Korea",
+  "description": "Curating moments of balance and tranquility for modern living.",
+  "story": "Seoul Harmony Living believes in the pursuit of excellence and the harmony of mind, body, and spirit. Motorsport embodies these values through its blend of precision, skill, and unwavering focus. We seek a partnership that amplifies our brand's message of mindful living to a global audience, emphasizing the dedication required to achieve peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "nationalities": [
+      "South Korea"
+    ],
+    "minPodiums": 3
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 4,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0412.png"
+}

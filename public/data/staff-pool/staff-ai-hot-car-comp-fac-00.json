@@ -1,0 +1,22 @@
+{
+  "name": "Ayşe Demir",
+  "nationality": "Turkish",
+  "age": 47,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Ayşe Demir's journey into motorsport began unconventionally, not on the track, but in the server rooms of Istanbul Technical University. Her fascination with data analysis and computational modeling led her to a PhD in computational fluid dynamics, and a chance encounter at a Formula Student competition sparked her interest in motorsport applications. She quickly recognized the potential of simulation technology to revolutionize race strategy and car development.\n\nBefore joining Hot Car Competições, Ayşe spent several years at a smaller racing outfit, honing her skills in simulator design and validation. Her pragmatic approach is characterized by a relentless focus on data integrity and real-world correlation. She's known for her meticulous attention to detail and her ability to translate complex simulations into actionable insights for the drivers and engineers. Ayşe distinguishes herself with her ability to extract maximum value from limited resources, making her an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Ayşe is a woman of medium build with a warm smile and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on calibrating the simulator herself before any major testing session.",
+    "Has a habit of muttering complex equations under her breath when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Katerina Svoboda",
+  "nationality": "Czech",
+  "age": 33,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Katerina's racing journey began unconventionally, not on the track, but in the pits. She initially volunteered as a data analyst for a small rally team, quickly proving her aptitude for deciphering complex telemetry. Her analytical skills and relentless pursuit of marginal gains led her to FVee Brasil, where she initially served as a race engineer. \n\nHer promotion to Sporting Director was driven by her ability to bridge the gap between technical performance and effective team management. Katerina is known for her data-driven approach, meticulously analyzing every aspect of the car and driver performance. She's demanding, pushing her team to constantly improve, but fiercely loyal to those who share her dedication. What sets Katerina apart is her understanding of the intricacies of vehicle dynamics, allowing her to anticipate and proactively address potential challenges on race day.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Straight, shoulder-length hair, often pulled back into a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Katerina is of average height with a focused, intense gaze that reflects her analytical mind."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on having a specific type of Czech coffee blend available in the team garage.",
+    "Has a habit of tapping her pen rhythmically against her teeth when deep in thought."
+  ]
+}

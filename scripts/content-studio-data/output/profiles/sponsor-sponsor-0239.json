@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0239",
+  "name": "Credit Suisse Private Banking",
+  "category": "financial",
+  "tier": "mid",
+  "country": "Switzerland",
+  "description": "Your trusted partner in wealth management.",
+  "story": "Credit Suisse Private Banking has a long history of supporting excellence and precision, values perfectly aligned with motorsport. Our sponsorship program reflects our commitment to innovation, technology, and global reach. We seek to partner with teams and drivers who demonstrate exceptional skill and professionalism, enhancing our brand visibility among discerning audiences.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0239.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Giovanni Rossi",
+  "nationality": "Italian",
+  "age": 55,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Giovanni's career began in his uncle's auto body shop in Modena, where he honed his skills in paint application and color matching. A lifelong motorsport enthusiast, he transitioned to working with racing teams in his late 20s, drawn by the precision and artistry required to maintain the pristine look of high-performance vehicles. Over the years, he's developed a reputation for his unwavering commitment to perfection, ensuring every car that leaves his shop is flawless, regardless of the pressure. \n\nGiovanni approaches his work with a blend of old-world craftsmanship and modern techniques. He's known for his meticulous attention to detail, often spending hours inspecting a single panel for imperfections. While some find his standards exacting, his dedication is undeniable, and the results speak for themselves. He is particularly proud of his ability to recreate historical racing liveries with unmatched accuracy, blending artistry and technical skill.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a weathered face and strong hands, Giovanni carries himself with the confidence of a seasoned craftsman."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears a pristine white lab coat, even when working with the messiest paints.",
+    "Has a collection of vintage Italian racing posters in his workspace and frequently references them.",
+    "Insists on using traditional Italian paintbrushes, claiming they provide a superior finish."
+  ]
+}

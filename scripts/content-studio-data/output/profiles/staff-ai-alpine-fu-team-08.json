@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 28,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Mateo's passion for motorsport ignited during his childhood, captivated by the Dakar Rally events that traversed his native Peru. This early fascination led him to pursue a degree in mechanical engineering, focusing on vehicle dynamics and simulation. He began his career with a small GT racing team, honing his skills in data analysis and performance optimization before making the leap to Formula racing. Mateo's meticulous approach and knack for identifying marginal gains quickly earned him recognition.\n\nAt Alpine F1, Mateo thrives on the challenge of extracting every last bit of performance from the car. He excels at collaborating with drivers and other engineers, translating complex data into actionable insights. He's known for his ability to stay calm under pressure and his unwavering commitment to continuous improvement. His dedication to detail and flexible mindset make him a valuable asset to the team.\n\nDriven by a desire to push the boundaries of performance, Mateo is always seeking new and innovative solutions. He believes that a deep understanding of the car's intricacies, combined with a collaborative spirit, is the key to success in the high-stakes world of Formula 1.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a habit of tapping his fingers on his leg when deep in thought.",
+    "Insists on having a specific type of Peruvian coffee before every race."
+  ]
+}

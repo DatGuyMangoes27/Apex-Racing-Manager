@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0408",
+  "name": "Van der Heijden Horloges",
+  "category": "watches",
+  "tier": "elite",
+  "country": "Netherlands",
+  "description": "Precision timekeeping, engineered for excellence.",
+  "story": "Van der Heijden Horloges has a long history of supporting Dutch engineering and innovation. Motorsport provides the perfect testing ground for our timekeeping technology, demanding precision and reliability. We seek a partnership that reflects our commitment to excellence and showcases our brand on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Netherlands"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0408.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 38,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo Vargas's motorsport journey began in the dusty karting tracks of Lima, where he honed his skills as a mechanic and strategist. His meticulous approach and knack for identifying talent quickly earned him a reputation in the local racing scene. After years spent building his own racing team, Ricardo transitioned into team management, eager to apply his technical knowledge and leadership abilities on a larger stage.\n\nJoining Sodi Kart Factory was a natural progression for Ricardo. He believes in fostering a culture of relentless improvement, focusing on data-driven decision-making and pushing the limits of karting technology. His demanding nature stems from a deep-seated desire to win and a belief that success requires unwavering dedication from every team member. Ricardo is known for his ability to extract maximum performance from both the equipment and the drivers under his charge.\n\nWhat sets Ricardo apart is his hands-on approach. He spends hours analyzing telemetry, working alongside the engineers to fine-tune every aspect of the kart's setup. He’s always looking for innovative solutions, constantly experimenting with new components and strategies to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with racing data and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting every kart before a race."
+  ]
+}

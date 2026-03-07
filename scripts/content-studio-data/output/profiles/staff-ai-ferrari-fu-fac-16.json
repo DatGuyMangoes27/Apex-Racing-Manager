@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 36,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jean-Pierre's culinary journey began in his grandmother's brasserie in Brussels, where he learned the art of crafting memorable dining experiences. A lifelong motorsport enthusiast, he saw an opportunity to blend his passion for food with his love for racing. After years managing high-end catering events, he joined Scuderia Ferrari, bringing a meticulous approach to ensure the team's dietary needs are met with the highest standards.\n\nJean-Pierre understands that proper nutrition is paramount for peak performance. He meticulously plans menus, considering individual dietary requirements and preferences, sourcing fresh, local ingredients whenever possible. His demanding nature stems from a desire to provide the best possible fuel for the team, believing that a satisfied team is a winning team. He is known for his unwavering commitment to quality and his ability to create a comforting and energizing atmosphere, even in the high-pressure environment of the paddock.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Jean-Pierre is a man of average height with a sturdy build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only Belgian chocolate in desserts.",
+    "Secretly taste-tests every dish before it leaves the kitchen.",
+    "Always carries a small notebook filled with recipe ideas."
+  ]
+}

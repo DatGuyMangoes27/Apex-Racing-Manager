@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0495",
+  "name": "PixelPushers",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "Belgium",
+  "description": "Level up your game with PixelPushers.",
+  "story": "PixelPushers is a leading Belgian game developer, known for its immersive and competitive titles. Recognizing the shared values of precision, strategy, and intense competition, PixelPushers has entered motorsport to connect with a passionate audience. They seek to amplify their brand and engage with a demographic that appreciates skill and high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0495.png"
+}

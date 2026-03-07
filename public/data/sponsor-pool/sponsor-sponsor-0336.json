@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0336",
+  "name": "VoltUp Energy",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "Ignite your potential with VoltUp Energy.",
+  "story": "Born from a desire to fuel extreme sports, VoltUp Energy has always been about pushing limits. We believe in the relentless pursuit of victory, and motorsport embodies this spirit perfectly. We seek partnerships that reflect our brand's dynamic energy and commitment to high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 35,
+    "minMarketability": 45,
+    "seriesTiers": [
+      "pro"
+    ],
+    "nationalities": [
+      "Belgium"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0336.png"
+}

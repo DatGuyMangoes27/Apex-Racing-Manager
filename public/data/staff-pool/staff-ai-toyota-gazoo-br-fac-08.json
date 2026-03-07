@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 22,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Thierry's fascination with motorsport started early, fueled by weekend trips to Spa-Francorchamps with his father. After excelling in physics and engineering courses, he pursued an internship at a smaller Formula racing team, where he quickly gained experience in data analysis and aerodynamic testing. His meticulous approach and ability to identify subtle airflow anomalies caught the attention of Toyota Gazoo Racing BR's recruiters. \n\nNow a valued member of the team, Thierry focuses on optimizing the car's aerodynamic performance through wind tunnel simulations and data validation. He is known for his ability to correlate wind tunnel data with on-track performance, helping the team make informed decisions about car setup and development. His pragmatic nature ensures that solutions are always practical and effective, contributing directly to the team's success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A tall, slender man with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Refuses to use digital calculators, preferring a slide rule for quick estimations.",
+    "Has a habit of humming quietly while analyzing data."
+  ]
+}

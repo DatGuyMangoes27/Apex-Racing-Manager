@@ -117,7 +117,7 @@ function extractStats(state: ReturnType<typeof useCareerStore.getState>): Tracke
   if (!player || !careerState) return null
   
   return {
-    reputation: player.reputation ?? 0,
+    reputation: careerState.ownedTeam?.reputation ?? player.reputation ?? 0,
     cash: player.finances?.bankBalance ?? 0,
     teamCash: careerState.ownedTeam?.budgets?.cash ?? 0,
     boardMood: careerState.ownedTeam?.boardMood ?? 50,

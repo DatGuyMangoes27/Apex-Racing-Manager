@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 31,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan's fascination with motorsport began early, fueled by watching rally races in the Czech countryside with his grandfather. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, and quickly landed a role at a small racing team. His meticulous approach and ability to quickly diagnose and resolve technical issues propelled him through the ranks. \n\nAt Tony Kart Racing, Jan is known for his holistic view of kart performance. He focuses not only on individual components but also on how they interact to maximize overall speed and handling. He is a strong believer in data analysis and uses it extensively to inform his decisions, always striving for incremental gains that add up to a competitive edge. His commitment to the team and his analytical approach set him apart.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height, with a focused gaze and a slight build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen, even on the track.",
+    "Has a habit of tapping his fingers on his leg when deep in thought.",
+    "Refuses to start any race weekend without a strong cup of Czech coffee."
+  ]
+}

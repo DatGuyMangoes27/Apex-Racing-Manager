@@ -1,0 +1,31 @@
+{
+  "name": "Aiko Tanaka",
+  "nationality": "Japanese",
+  "age": 33,
+  "gender": "female",
+  "contactType": "professor",
+  "bio": "Dr. Aiko Tanaka is a rising star in the field of mechanical engineering, specializing in advanced materials and sustainable design. Her PhD from Kyoto University focused on the application of bio-composites in high-performance vehicles, and she now lectures at Tokyo Institute of Technology. Aiko is known for her relentless work ethic, often pushing the boundaries of what's possible in materials science, and she possesses a sharp wit that keeps her students engaged, even during the most challenging lectures. \n\nA racing driver might cross paths with Aiko if they are seeking innovative solutions for lightweighting their car or exploring sustainable fuel options. Her expertise in bio-composites and her connections to research grants and development programs could be invaluable for a team looking to gain a competitive edge, particularly those committed to environmentally responsible racing.\n",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Sleek, shoulder-length bob with subtle waves",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Aiko is petite and athletic. Her style is practical and professional, but with a subtle artistic flair, often incorporating unique accessories."
+  },
+  "connectionToMotorsport": "Aiko's research into bio-composites for automotive applications has led to collaborations with several Formula E teams looking to improve vehicle efficiency and reduce their carbon footprint. She also consults on material science for a small Japanese GT team.",
+  "meetingContext": "The player could meet Aiko at a sustainable motorsport conference or through an introduction from a team engineer who is seeking her expertise.",
+  "conversationTopics": [
+    "The latest advancements in bio-composite materials",
+    "The challenges and opportunities of sustainable racing",
+    "Her recent marathon time",
+    "The ethical considerations of high-performance engineering",
+    "Contemporary Japanese art"
+  ],
+  "canHelp": [
+    "Provide access to cutting-edge research on sustainable materials",
+    "Introduce the player to potential sponsors interested in green technology",
+    "Offer technical consulting on vehicle design and performance optimization"
+  ],
+  "personality_summary": "A restless and ambitious professor dedicated to sustainable engineering and always seeking the next challenge."
+}

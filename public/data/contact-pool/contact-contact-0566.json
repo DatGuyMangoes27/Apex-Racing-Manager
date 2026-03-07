@@ -1,0 +1,31 @@
+{
+  "name": "Seamus O'Malley",
+  "nationality": "Irish",
+  "age": 51,
+  "gender": "male",
+  "contactType": "yacht_captain",
+  "bio": "Seamus O'Malley is a man of the sea, having captained luxury yachts for over two decades. His career began humbly enough, crewing on fishing boats off the Irish coast before working his way up through the ranks of the maritime industry. He now commands 'The Seraphina', a stunning vessel owned by a prominent figure in international motorsport. His reserved nature and dedication to his craft have earned him the respect of both his crew and the yacht's elite clientele.\n\nDespite his aloof exterior, Seamus possesses a quiet wisdom gleaned from years of observing the world from his unique vantage point. He rarely discusses his personal life, but his sincere nature shines through in his actions. A racing driver might encounter Seamus while vacationing or attending an event hosted on 'The Seraphina', gaining access to a discreet but influential network.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Close-cropped, neatly trimmed",
+    "eyeColor": "Deep blue",
+    "facialHair": "Short, well-maintained grey beard",
+    "description": "Seamus is a sturdy man, built for the sea, with weathered hands and a calm demeanor. His piercing blue eyes hold a hint of untold stories."
+  },
+  "connectionToMotorsport": "Seamus captains a yacht owned by a wealthy team owner in Formula 1. He often overhears conversations and observes interactions that provide him with valuable insights into the inner workings of the racing world.",
+  "meetingContext": "The player might meet Seamus while attending a private party on the yacht, or perhaps during a casual conversation while both are onshore at a port city during a Grand Prix weekend.",
+  "conversationTopics": [
+    "The challenges and rewards of life at sea",
+    "The nuances of yacht maintenance and navigation",
+    "His marathon running training regime and recent races",
+    "The history and techniques of classical ballet",
+    "The quiet beauty of a well-tended garden"
+  ],
+  "canHelp": [
+    "Provide introductions to influential figures within the motorsport industry.",
+    "Offer discreet advice based on his observations of team dynamics.",
+    "Potentially facilitate a sponsorship opportunity through the yacht owner."
+  ],
+  "personality_summary": "An aloof but surprisingly wise and sincere yacht captain with access to high-society circles."
+}

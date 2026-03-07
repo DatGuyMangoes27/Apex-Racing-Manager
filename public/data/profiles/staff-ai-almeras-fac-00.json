@@ -1,0 +1,22 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 25,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Marko's passion for motorsport ignited early, fueled by watching Formula One races with his grandfather. He honed his skills in simulation and data analysis through a mechanical engineering degree at the University of Zagreb, specializing in vehicle dynamics. His early career saw him working on virtual race car setups for smaller teams, quickly gaining a reputation for his keen eye and ability to translate real-world physics into the digital realm.\n\nAt CLRT by Almeras, Marko is responsible for developing and maintaining the team's state-of-the-art racing simulator. He works closely with drivers and engineers to optimize car setups, analyze track data, and improve driver performance. Marko's strength lies in his ability to not only understand the technical aspects of the simulator but also to communicate effectively with the team, bridging the gap between data and driver feedback. His relentless pursuit of accuracy and immersion makes him an invaluable asset.\n\nMarko's visionary approach is what sets him apart. He is constantly exploring new technologies and techniques to enhance the realism and effectiveness of the simulator, pushing the boundaries of what's possible in virtual racing. He believes that the simulator is not just a training tool, but a crucial platform for innovation and competitive advantage.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted to the side with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Marko has a lean build and an intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always drinks Croatian herbal tea before a simulation session.",
+    "Refers to the simulator as 'the lab'.",
+    "Has a habit of tapping his pen rhythmically when analyzing data."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0125",
+  "name": "AlpenGrip Tyres",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Austria",
+  "description": "Precision engineered for peak performance.",
+  "story": "AlpenGrip Tyres, originating in the Austrian Alps, has been developing high-performance tires for over 40 years. Initially focused on rally racing, they've expanded into other motorsport disciplines. They seek to partner with teams that demonstrate a commitment to innovation, precision, and pushing the limits of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Austria",
+      "Germany"
+    ],
+    "minWins": 3,
+    "minPodiums": 6
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 10,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0125.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 33,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jean-Pierre grew up in Montreal, surrounded by a family deeply involved in amateur racing. From a young age, he was fascinated by the mechanics of racing cars, spending countless hours in his uncle's garage, learning the intricacies of engine tuning and chassis setup. He honed his skills at a local trade school before landing a position with a regional racing team. His meticulous attention to detail and innovative solutions quickly made him an invaluable asset. Jean-Pierre is particularly skilled in diagnosing and resolving complex mechanical issues under pressure, ensuring the team's cars perform optimally even under the most demanding conditions.\n\nHis dedication to precision and his ability to adapt to the ever-evolving demands of motorsport have earned him a reputation as a highly competent and reliable machinist. Now part of the Iron Dames, Jean-Pierre brings his expertise to a team known for its dedication and high performance. He is driven by a desire to push the boundaries of what's mechanically possible, contributing to the team's success with both his technical knowledge and his unwavering commitment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Jean-Pierre is of average height with a wiry build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and mechanical diagrams.",
+    "Has a habit of whistling while working, often old French-Canadian folk songs.",
+    "Insists on cleaning his tools meticulously after each use, regardless of how pressed for time he is."
+  ]
+}

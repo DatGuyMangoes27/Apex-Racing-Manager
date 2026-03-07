@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0103",
+  "name": "KiberKom",
+  "category": "tech_gaming",
+  "tier": "elite",
+  "country": "Hungary",
+  "description": "Leading Hungarian esports infrastructure and gaming hardware provider.",
+  "story": "KiberKom is dedicated to fostering the next generation of esports talent and believes in the synergy between virtual and real-world competition. Motorsport provides an unparalleled testing ground for our hardware and software, pushing the limits of performance. We seek partnerships that reflect our commitment to innovation, precision, and the pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 220000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "nationalities": [
+      "Hungary"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0103.png"
+}

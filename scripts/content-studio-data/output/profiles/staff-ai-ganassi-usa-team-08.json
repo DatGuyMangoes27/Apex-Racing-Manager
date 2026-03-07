@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 49,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Sophie Dubois has been immersed in the world of motorsport since her childhood, growing up near the Le Mans circuit. Inspired by the engineering marvels she witnessed, she pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. Her career began in Formula Renault, where she quickly gained a reputation for her meticulous data analysis and ability to translate complex information into actionable improvements.\n\nSophie's approach to performance engineering is rooted in a pragmatic understanding of the interplay between driver feedback, track conditions, and vehicle setup. She believes in clear communication and fostering a collaborative environment within the team. Her experience has taught her the importance of patience and methodical problem-solving, especially under pressure. She's known for her uncanny ability to predict tire degradation and adjust strategies accordingly, often giving her team a crucial edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, neatly parted to the side, often pulled back in a low ponytail during races",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A woman of average height, with a focused gaze and a calm demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a specific type of French pastry she eats before every race.",
+    "Insists on using a traditional slide rule alongside modern software."
+  ]
+}

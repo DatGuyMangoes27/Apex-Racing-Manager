@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jean-Pierre's career began in the hallowed halls of Renault, where he honed his skills in engine development before transitioning to motorsport. His meticulous approach and deep understanding of vehicle dynamics quickly made him a sought-after engineer in Formula Renault. He spent several years refining his craft, learning from the best, and contributing to multiple championship-winning teams. \n\nJean-Pierre's move to rallycross was driven by a desire for a more hands-on role and a faster pace. He thrives on the constant problem-solving required to optimize performance in dynamic and unpredictable conditions. His pragmatic mindset and ability to see the big picture allows him to prioritize effectively and make crucial decisions under pressure. He joined Hansen World RX Team because he sees a real chance to make a difference, to help them return to their winning ways and he's not afraid of the challenge.\n\nWhat sets Jean-Pierre apart is his ability to communicate complex technical concepts in a clear and concise manner, fostering collaboration and trust within the team. He believes in empowering drivers with the knowledge they need to push the car to its limits while remaining within the technical boundaries.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with a receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey goatee",
+    "description": "A stocky man with a serious demeanor and a perpetual squint, likely from hours spent analyzing telemetry."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously drawn diagrams and calculations.",
+    "Insists on brewing his own strong coffee using a vintage French press.",
+    "Has a habit of tapping his pen on the table when deep in thought, which can be unnerving to some."
+  ]
+}

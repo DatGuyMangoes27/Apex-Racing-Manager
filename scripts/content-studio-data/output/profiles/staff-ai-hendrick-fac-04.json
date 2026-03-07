@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 24,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Alistair's journey into motorsport began in his childhood, tinkering with go-karts in his family's garage near Glasgow. His fascination with electronics led him to pursue a degree in electrical engineering, where he excelled in embedded systems and circuit design. While studying, he interned with a local racing team, gaining hands-on experience with data acquisition and engine management systems. \n\nAlistair is a highly motivated and meticulous engineer, known for his calm and methodical approach to problem-solving. He thrives under pressure and has a keen eye for detail, making him an invaluable asset to any team. He is always looking for new ways to improve performance and is particularly interested in developing innovative solutions for energy recovery systems.\n\n At Hendrick Motorsports, Alistair brings a fresh perspective, combining his strong technical foundation with a passion for innovation. He aims to bridge the gap between theoretical research and practical application, contributing to the team's competitive edge on the track.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "blue",
+    "facialHair": "short boxed beard",
+    "description": "Alistair is of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a multi-tool.",
+    "Has a habit of sketching circuit diagrams during meetings.",
+    "Drinks copious amounts of Earl Grey tea."
+  ]
+}

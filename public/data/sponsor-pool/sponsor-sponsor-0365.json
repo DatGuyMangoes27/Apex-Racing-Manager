@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0365",
+  "name": "Pohjola Performance Gear",
+  "category": "apparel",
+  "tier": "entry",
+  "country": "Finland",
+  "description": "Engineered for the elements, crafted for performance.",
+  "story": "Pohjola Performance Gear was founded in northern Finland, inspired by the harsh conditions and the need for durable, high-performance clothing. We believe in pushing boundaries, both in our designs and in the sports we support. Motorsport embodies the spirit of innovation and resilience, and we seek to partner with teams that share our commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0365.png"
+}

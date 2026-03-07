@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Arnesen",
+  "nationality": "Norwegian",
+  "age": 45,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Bjorn's journey into motorsport began with a childhood fascination with the intricate carbon fiber structures of racing yachts. He transitioned this passion to cars, securing an apprenticeship at a local composites workshop after completing his technical education. His dedication and keen eye for detail quickly caught the attention of a motorsport composites specialist, leading him to work on various racing series before landing at Rahal Letterman Lanigan. \n\nBjorn is a firm believer in practical solutions and meticulous execution. He values clear communication and precise measurements, always striving for the optimal balance between performance and reliability. He's not afraid to challenge assumptions, often suggesting improvements to existing designs based on his practical experience. His loyalty to the team and his focus on the big picture make him a reliable asset, even if he prefers to work independently.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky build with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils before starting any task, even if they're already sharp.",
+    "Has a habit of humming classical music while working.",
+    "Insists on using a specific type of measuring tape, despite newer, digital options being available."
+  ]
+}

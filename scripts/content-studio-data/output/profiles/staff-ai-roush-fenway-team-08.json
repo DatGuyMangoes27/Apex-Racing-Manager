@@ -1,0 +1,22 @@
+{
+  "name": "Bruce McKenzie",
+  "nationality": "Australian",
+  "age": 58,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bruce's journey in motorsport began in the dusty outback of Western Australia, tinkering with engines on his family's farm. He honed his skills at the local speedway before earning a mechanical engineering degree. His career ignited when he landed a spot with a small V8 Supercar team, where he quickly rose through the ranks, known for his meticulous data analysis and ability to squeeze every last drop of performance from an engine. \n\nHe joined RFK Racing a decade ago, bringing a wealth of experience and a pragmatic approach. Bruce believes in a holistic view of performance, focusing not just on raw power but also on reliability and efficiency. His attention to detail and relentless pursuit of improvement have made him a valuable asset, although his independent nature sometimes clashes with more collaborative team members. He is known for his ability to troubleshoot complex mechanical issues under immense pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed grey beard",
+    "description": "A sturdy man with a weathered face and a quiet intensity in his eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small, worn notebook filled with technical diagrams and calculations.",
+    "Has a habit of muttering to himself while analyzing data.",
+    "Insists on using a slide rule alongside modern software for cross-checking calculations."
+  ]
+}

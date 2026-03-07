@@ -1,1 +1,1 @@
-export { OpportunityResponseModal } from './OpportunityResponseModal'
+export { default as OpportunityResponseModal } from './OpportunityResponseModal'

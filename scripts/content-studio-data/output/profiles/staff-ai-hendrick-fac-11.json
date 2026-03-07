@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 29,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Jean-Pierre's passion for motorsport ignited early, fueled by watching Formula 1 races with his father in Montreal. He pursued a mechanical engineering degree at McGill University, specializing in vehicle dynamics. After graduating, he joined a smaller racing team as a data analyst, quickly proving his aptitude for interpreting complex datasets and identifying areas for performance improvement. His sharp analytical skills and proactive approach caught the attention of Hendrick Motorsports, leading to his current role as test driver coordinator.\n\nAs test driver coordinator, Jean-Pierre is known for his meticulous planning and demanding expectations. He believes that rigorous testing and detailed feedback are crucial for optimizing car performance and ensuring driver safety. He is always pushing his team to explore new approaches and challenge conventional wisdom, fostering a culture of continuous improvement. Jean-Pierre's dedication to data-driven decision-making and unwavering commitment to excellence make him a valuable asset to Hendrick Motorsports.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height, with a lean build and intense, focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his fingers on the table when deep in thought.",
+    "Insists on using metric units for all measurements, even when others use imperial."
+  ]
+}

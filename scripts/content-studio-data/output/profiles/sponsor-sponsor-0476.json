@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0476",
+  "name": "PixelPushers Inc.",
+  "category": "gaming",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "Level up your game with PixelPushers' innovative gaming hardware.",
+  "story": "PixelPushers Inc. is a Belgian gaming hardware company dedicated to performance and precision. Recognizing the similarities between esports and motorsport, they seek to enhance brand visibility through partnerships. They value technological advancement, precision, and a winning spirit, aligning perfectly with the intensity of racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 45
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0476.png"
+}

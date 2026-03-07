@@ -1,0 +1,22 @@
+{
+  "name": "Klaus-Dieter Richter",
+  "nationality": "German",
+  "age": 54,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Klaus-Dieter Richter’s motorsport journey began in his youth, disassembling and rebuilding engines in his father's garage. After graduating with honors in mechanical engineering, he quickly rose through the ranks at various German touring car teams, known for his methodical approach and ability to diagnose even the most elusive mechanical issues. He joined Hitech GP five years ago, bringing a stability and depth of knowledge to the engineering team. While not always the most outwardly innovative, his deep understanding of racing technology and ability to optimize existing systems have proven invaluable.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "short, trimmed grey beard",
+    "description": "A stout man with a serious demeanor, Klaus-Dieter always looks like he's contemplating a complex equation."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a well-worn slide rule, despite using CAD software",
+    "Insists on using a specific type of German coffee beans in the team espresso machine",
+    "Refers to the race car as 'das Auto'"
+  ]
+}

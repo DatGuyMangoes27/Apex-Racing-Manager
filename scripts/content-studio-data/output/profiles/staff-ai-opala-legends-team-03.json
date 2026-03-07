@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 43,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Sophie Dubois is a seasoned aerodynamicist with a passion for motorsport ignited by her father, a rally enthusiast. She honed her skills at École Polytechnique, specializing in fluid dynamics and aerospace engineering, before joining a Formula 3 team. After several successful seasons developing cutting-edge aero packages, she transitioned to Formula 1 as an aerodynamicist, eventually leading a small team. \n\nSophie prides herself on a data-driven approach, meticulously analyzing wind tunnel results and CFD simulations to maximize downforce and minimize drag. Her focus is on finding practical, reliable solutions that translate to tangible performance gains on the track. Known for her sharp eye for detail and collaborative spirit, Sophie strives to foster an environment of innovation and continuous improvement within her team. Her loyalty to Opala Legends is driven by the team's commitment to long-term success and innovative solutions.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, usually tied back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie has a focused gaze and a no-nonsense demeanor, with a slender build and determined expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Insists on a daily debriefing session with the entire aero team at precisely 8:00 AM.",
+    "Has a peculiar habit of tapping her pen against the table when deep in thought."
+  ]
+}

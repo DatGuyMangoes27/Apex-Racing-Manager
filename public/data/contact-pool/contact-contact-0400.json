@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Belgian",
+  "age": 41,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Professor Jean-Luc Dubois is a respected, though somewhat unconventional, figure in the engineering department at the University of Leuven. He earned his PhD in Mechanical Engineering, specializing in fluid dynamics, but his passion lies just as much in fostering critical thinking and pushing boundaries as it does in equations and simulations. He's known for his rigorous teaching style, laced with philosophical debates and unexpected field trips, and a tendency to challenge established norms, both in academia and beyond. \n\nWhile seemingly detached from the high-octane world of motorsport, Jean-Luc's expertise in aerodynamics and materials science makes him a valuable resource for racing teams looking to gain a competitive edge. Furthermore, he oversees the university's Formula Student team, providing hands-on experience to aspiring engineers, some of whom end up working in the motorsport industry. A racing driver might cross paths with Jean-Luc while scouting for engineering talent, seeking advice on car dynamics, or as a guest speaker for his students.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Slightly messy, short back and sides with some length on top",
+    "eyeColor": "Hazel",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Jean-Luc has a slender build, often seen in tweed jackets and corduroy trousers, giving him a classic intellectual look. His eyes are sharp and observant, hinting at a restless mind constantly at work."
+  },
+  "connectionToMotorsport": "Jean-Luc oversees the Formula Student team at the University of Leuven and consults on occasion for racing teams needing specialized simulations and aerodynamic analyses.",
+  "meetingContext": "The player might meet Jean-Luc while visiting the University of Leuven to scout for potential engineers, or through a mutual connection in the Formula Student community.",
+  "conversationTopics": [
+    "The philosophical implications of technological advancements",
+    "The importance of critical thinking",
+    "Contemporary dance performances",
+    "His latest equestrian pursuits",
+    "Formula Student team progress"
+  ],
+  "canHelp": [
+    "Provide access to talented engineering students",
+    "Offer consultations on aerodynamics and vehicle dynamics",
+    "Provide introductions to other contacts within his academic circle"
+  ],
+  "personality_summary": "An idealistic yet calculating professor who challenges the status quo."
+}

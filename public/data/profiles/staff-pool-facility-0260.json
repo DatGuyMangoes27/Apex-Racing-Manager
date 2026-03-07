@@ -1,0 +1,22 @@
+{
+  "name": "Kazimierz Lewandowski",
+  "nationality": "Polish",
+  "age": 45,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Kazimierz's hands have shaped more than a few winning cars. From a young age, he was fascinated by the construction of Formula 1 cars. This passion led him to pursue advanced studies in composite materials and engineering. After graduating, he honed his skills at a small racing team before joining a larger organization where he worked on various race cars.\n\nKazimierz is known for his methodical approach and unwavering attention to detail. He believes that the key to building a successful composite structure is to understand the material inside and out, from its molecular structure to its performance characteristics. He has a relentless work ethic, staying late to perfect his craft. He is also a firm believer in the power of experimentation, always looking for new ways to improve the strength and reliability of the composites he works with.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height with a strong build, suggesting a lifetime of hands-on work."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of meticulously cleaning his workstation before starting any new project.",
+    "Often hums quietly to himself while working, seemingly lost in thought."
+  ]
+}

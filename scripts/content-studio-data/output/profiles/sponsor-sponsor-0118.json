@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0118",
+  "name": "GumiTech Racing",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Hungary",
+  "description": "High-performance tires engineered for ultimate grip and durability.",
+  "story": "GumiTech Racing, a Hungarian tire manufacturer, has been developing cutting-edge tire technology for over 20 years. We believe in pushing the limits of performance and seek partnerships with racing teams that share our dedication to innovation and achieving peak performance on the track. By sponsoring motorsport, we aim to showcase the reliability and superior handling of our tires to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0118.png"
+}

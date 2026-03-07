@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Anneliese Schmidt",
+  "nationality": "German",
+  "age": 46,
+  "gender": "female",
+  "contactType": "professor",
+  "bio": "Dr. Anneliese Schmidt is a tenured professor of engineering at the Technical University of Munich (TUM). Renowned for her engaging lectures and groundbreaking research in advanced materials, she's earned the respect of both her colleagues and students. While possessing a sharp intellect, Anneliese is also known for her somewhat gossipy nature and unwavering idealism, qualities that make her a compelling and often controversial figure within the academic community. \n\nA racing driver might cross paths with Anneliese through TUM's motorsport engineering program, which has strong ties to various racing teams. She sometimes acts as a guest lecturer or advisor for student projects focused on vehicle dynamics and materials science, offering her expertise to aspiring engineers in the field. She's also been known to attend local motorsport events with some of her students.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, often styled in a neat bun or a sophisticated half-updo",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Anneliese is a slender woman with a perpetually thoughtful expression. She favors tailored blazers and classic dresses, projecting an air of academic elegance."
+  },
+  "connectionToMotorsport": "Dr. Schmidt's connection to motorsport lies primarily through her academic position at TUM, where she influences the next generation of motorsport engineers. She provides expertise on materials science, vehicle dynamics, and advanced technologies relevant to racing.",
+  "meetingContext": "The player might meet Dr. Schmidt while attending a motorsport engineering conference or during a visit to TUM's racing lab. Alternatively, a chance encounter at a vintage car show in Munich, where she showcases her meticulously restored 1967 Porsche 911, is possible.",
+  "conversationTopics": [
+    "The ethical implications of AI in engineering",
+    "The latest advancements in carbon fiber technology",
+    "The philosophical underpinnings of vehicle design",
+    "The beauty of Bauhaus architecture",
+    "The latest gossip from the TUM faculty lounge"
+  ],
+  "canHelp": [
+    "Provide introductions to engineering contacts within Formula 1 teams.",
+    "Offer advice on optimizing vehicle design for specific track conditions.",
+    "Write letters of recommendation to secure placements in top university motorsport programs."
+  ],
+  "personality_summary": "A charismatic and gossipy professor with a passion for both engineering and high-performance vehicles."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0064",
+  "name": "Barbour International",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "UK",
+  "description": "Modern British style, built for adventure.",
+  "story": "Barbour International has a long history with motorsports, dating back to providing motorcycle suits in the early 20th century. We seek to partner with teams and drivers who embody our spirit of adventure and resilience. We want a partnership that showcases our brand's connection to performance and style, reaching a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0064.png"
+}

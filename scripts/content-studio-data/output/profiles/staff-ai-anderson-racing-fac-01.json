@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 44,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for Formula 1, fueled by late-night broadcasts and a worn-out Senna poster. After graduating with a degree in statistics, he initially worked in finance but found the corporate world unfulfilling. A chance encounter with a local racing team led to a volunteer position analyzing telemetry data, and he never looked back. \n\nRicardo's approach is meticulous and data-driven. He believes that even the smallest improvements in performance can be found within the numbers, and he's relentless in his pursuit of those gains. His ability to translate complex data into actionable insights sets him apart. He's earned a reputation for being a keen problem solver, unafraid to challenge conventional wisdom when the data suggests a different path. Now working with Anderson Racing, he hopes to push his skills and the team to the highest level.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of medium height with a lean build and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with graphs and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Drinks mate throughout the day, offering it to colleagues (whether they want it or not)."
+  ]
+}

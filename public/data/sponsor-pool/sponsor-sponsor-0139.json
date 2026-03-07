@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0139",
+  "name": "Summit Ascent Gear",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "USA",
+  "description": "Adventure gear for the modern explorer.",
+  "story": "Summit Ascent Gear believes in pushing boundaries and embracing challenges, much like the drivers in motorsport. We see a natural synergy between our brand's values of resilience and peak performance and the dedication required to compete at the highest levels of racing. We aim to connect with a passionate audience through motorsport, showcasing our commitment to quality and adventure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 35,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0139.png"
+}

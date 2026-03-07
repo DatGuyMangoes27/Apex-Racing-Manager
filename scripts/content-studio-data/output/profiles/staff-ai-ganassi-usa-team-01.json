@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 42,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. Growing up in Valencia, he was initially drawn to architecture, but a summer internship at a local karting track ignited a passion for the intricate engineering behind racing. He abandoned architecture to study mechanical engineering, focusing on vehicle dynamics and simulation. He landed his first role with a small Spanish rally team before moving to single-seaters. \n\nRicardo is known for his meticulous attention to detail and his calm demeanor under pressure. He believes in fostering a collaborative environment within his engineering team, encouraging open communication and data-driven decision-making. His commitment to finding marginal gains, combined with his ability to translate complex data into practical solutions for the drivers, has earned him a reputation as a highly effective chief engineer.\n\nWhat distinguishes Ricardo is his ability to quickly identify performance bottlenecks and implement innovative solutions. He doesn't shy away from challenging conventional wisdom and is always exploring new technologies and methodologies to improve the team's competitive edge. He values precision above all else, ensuring every component and system operates at peak efficiency.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of medium height with a lean build and intense, focused eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on having a specific type of Spanish coffee before every race."
+  ]
+}

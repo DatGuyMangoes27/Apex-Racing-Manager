@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 33,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jean-Pierre discovered his love for motorsports early on, tinkering with snowmobiles in his native Quebec before transitioning to race cars. He brings a deep understanding of mechanical systems to Ipiranga Racing, honed through years of experience in various engineering workshops. Jean-Pierre's approach is methodical and precise, always striving for optimal performance and reliability. His ability to diagnose and fix complex mechanical issues quickly makes him a valuable asset to the team.\n\nJean-Pierre's distinctiveness lies in his ability to think outside the box, often devising innovative solutions to challenging problems. He's not afraid to experiment and push the boundaries of what's possible, always seeking that extra edge that can make the difference on the track. He is also a very keen student of vehicle telemetry and uses that data to inform how he sets up the mechanical components he's responsible for.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A stocky man with a focused gaze, Jean-Pierre carries himself with a quiet confidence."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of humming quietly while working on intricate parts.",
+    "Refuses to use digital tools when a mechanical solution exists."
+  ]
+}

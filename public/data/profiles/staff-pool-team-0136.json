@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Javier Ramirez",
+    "nationality": "Chilean",
+    "age": 37,
+    "gender": "male",
+    "role": "sporting_director",
+    "bio": "Javier's passion for motorsport ignited in his youth, fueled by watching Formula 1 races with his grandfather. He started his career as a junior engineer at a small Chilean racing team, quickly rising through the ranks due to his sharp technical mind and innovative ideas. Before transitioning to a sporting director role, he spent time as a race engineer and chief strategist, developing a keen understanding of race dynamics and team management.\n\nJavier is known for his ability to foster a collaborative and driven environment. He is a firm believer in empowering his team members and encouraging creative problem-solving. His strategic brilliance, coupled with his approachable leadership style, makes him a highly sought-after sporting director. Javier's distinctive trait is his ability to anticipate and adapt to changing race conditions, consistently making crucial decisions that provide a competitive edge.",
+    "physical": {
+      "skinTone": "Medium",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed back with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Goatee",
+      "description": "Javier is of average height, with a focused gaze and a warm smile that reflects his approachable nature."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook filled with technical diagrams and race strategies.",
+      "Has a habit of tapping his pen rhythmically when deep in thought.",
+      "Insists on a specific type of Chilean coffee before every race."
+    ]
+  }
+]

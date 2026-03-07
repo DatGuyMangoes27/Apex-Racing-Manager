@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 45,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in Vila Real, watching the annual street circuit races. He pursued a degree in Mechanical Engineering from the University of Porto, focusing on computational fluid dynamics and vehicle dynamics. After graduating, he joined a small engineering firm specializing in vehicle simulation for various racing teams. Ricardo quickly distinguished himself with his ability to translate complex data into actionable insights for drivers and engineers.\n\nHe spent several years honing his skills, working with Formula 3 and GT teams before transitioning to a larger operation in Formula racing. There, he was instrumental in developing advanced simulator models that significantly improved driver preparation and car setup. Ricardo’s approach is meticulous and data-driven, emphasizing the importance of accurate model calibration and driver feedback integration. He prides himself on fostering clear communication between the simulator team, the drivers, and the trackside engineers, ensuring that all parties are aligned on the simulation's objectives.\n\nWhat sets Ricardo apart is his relentless pursuit of realism in the simulation environment. He's always experimenting with new technologies and techniques to enhance the fidelity of the experience, believing that a truly immersive simulator is the key to unlocking a driver’s full potential and optimizing car performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of medium height, with a thoughtful expression and a build suggesting a past athleticism."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with simulation data and handwritten notes.",
+    "Insists on calibrating the simulator with a specific, obscure Portuguese folk song.",
+    "Has a habit of meticulously cleaning his workstation before and after each session."
+  ]
+}

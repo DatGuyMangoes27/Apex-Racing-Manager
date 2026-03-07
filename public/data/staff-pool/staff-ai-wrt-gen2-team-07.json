@@ -1,0 +1,22 @@
+{
+  "name": "Klaus-Dieter Richter",
+  "nationality": "German",
+  "age": 58,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Klaus-Dieter Richter is a seasoned motorsport professional, bringing decades of experience to Team WRT as Head of Operations. His journey began in his youth, tinkering with engines in his father's workshop, sparking a lifelong passion for motorsports engineering. He honed his skills working his way up through various racing teams, gaining expertise in vehicle dynamics and pit stop strategy. Klaus's management style is demanding but fair, pushing his team to excel while fostering a culture of continuous improvement. He emphasizes a data-driven approach, meticulously analyzing performance metrics to identify areas for optimization, while also encouraging innovative solutions from his team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed gray mustache",
+    "description": "A man of sturdy build with a focused gaze, he exudes authority and competence."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down observations and ideas.",
+    "Insists on a perfectly organized workspace and becomes visibly agitated by clutter.",
+    "Has a peculiar habit of humming classical music while reviewing technical data."
+  ]
+}

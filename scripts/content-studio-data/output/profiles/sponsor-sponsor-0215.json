@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0215",
+  "name": "Atelier du Coureur",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "Performance apparel designed for the discerning motorsport enthusiast.",
+  "story": "Atelier du Coureur was founded by a former racing driver who sought to bring the same level of precision and performance from the track to everyday apparel. Based in Belgium, we are passionate about motorsport and see sponsorship as a key way to connect with our target audience. We seek a partnership that reflects our commitment to quality and performance, helping us expand our brand recognition internationally.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0215.png"
+}

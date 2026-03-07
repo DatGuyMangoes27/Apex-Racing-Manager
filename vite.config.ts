@@ -39,7 +39,19 @@ function staticFilePlugin(): PluginOption {
 export default defineConfig({
   base: './', // Use relative paths for Electron production build
   build: {
-    emptyOutDir: false // Don't clear dist folder (electron-builder outputs there too)
+    emptyOutDir: false, // Don't clear dist folder (electron-builder outputs there too)
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('recharts')) return 'recharts'
+            if (id.includes('@fontsource')) return 'fonts'
+            return 'vendor'
+          }
+        }
+      }
+    },
+    chunkSizeWarningLimit: 800
   },
   plugins: [
     staticFilePlugin(),
@@ -55,7 +67,7 @@ export default defineConfig({
               formats: ['cjs']
             },
             rollupOptions: {
-              external: ['koffi'], // Native module - don't bundle
+              external: ['koffi', 'better-sqlite3'], // Native modules - don't bundle
               output: {
                 entryFileNames: '[name].js'
               }

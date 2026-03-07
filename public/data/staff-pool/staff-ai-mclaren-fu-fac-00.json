@@ -1,0 +1,22 @@
+{
+  "name": "Deniz Yılmaz",
+  "nationality": "Turkish",
+  "age": 24,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Deniz Yılmaz discovered his passion for motorsport through late-night online racing leagues during his university years. He quickly became fascinated by the physics and engineering that underpinned these virtual worlds, leading him to pursue a degree in mechanical engineering with a specialization in simulation technologies. After graduating at the top of his class, Deniz secured an internship at a smaller Formula team, where he honed his skills in data analysis and simulator development.\n\nHis meticulous approach to simulator calibration and his talent for identifying subtle discrepancies between simulated and real-world performance quickly set him apart. Deniz's knack for translating driver feedback into precise simulator adjustments makes him an invaluable asset in optimizing car setups and driver training. He is driven by a desire to push the boundaries of simulation technology to unlock even greater performance gains, and his calm demeanor and unwavering focus make him a natural leader within the team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Deniz is of average height with a lean, athletic build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and equations.",
+    "Insists on listening to Turkish folk music through headphones while calibrating the simulator.",
+    "Has an uncanny ability to predict the outcome of races based on simulator data."
+  ]
+}

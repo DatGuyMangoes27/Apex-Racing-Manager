@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 49,
+  "gender": "female",
+  "role": "quality_control",
+  "bio": "Elise's journey into motorsport began unconventionally. After earning a degree in materials science from ETH Zurich, she initially worked in the watchmaking industry, renowned for its precision. However, the allure of high-performance engineering drew her to Formula 1, where she spent several years honing her skills in composite materials testing. A desire for a more hands-on role led her to endurance racing, eventually landing her at Manthey EMA.\n\nIn quality control, Elise is known for her meticulous approach. She believes that perfection is not attainable but that the relentless pursuit of perfection is. She is deeply respected for her ability to identify and resolve potential issues before they escalate, ensuring that the team's equipment performs optimally under the extreme stresses of competition. Elise's unwavering commitment to excellence makes her an invaluable asset to the team.\n\nHer experience in both Formula 1 and endurance racing has given her a unique perspective on performance and reliability. She is often seen poring over data logs and component schematics, searching for subtle clues that others might miss.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Neatly styled bob with subtle layers that frame her face.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise is a woman of medium height with a serious but kind face."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect components.",
+    "Insists on using a specific type of Swiss-made lubricant for all moving parts.",
+    "Listens to classical music through noise-canceling headphones while working."
+  ]
+}

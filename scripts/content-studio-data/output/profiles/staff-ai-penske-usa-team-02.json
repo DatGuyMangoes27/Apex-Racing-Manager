@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papakonstantinou",
+  "nationality": "Greek",
+  "age": 37,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Dimitrios's journey into motorsport began with a childhood obsession with Formula 1, fueled by late-night races watched with his father. He excelled in mechanical engineering at the National Technical University of Athens, specializing in aerodynamics. His early career saw him working as a junior engineer at a small GT racing team in Greece, before moving to the UK to work in Formula 3. He quickly rose through the ranks, demonstrating a knack for problem-solving and a keen understanding of vehicle dynamics. \n\nJoining Team Penske three years ago, Dimitrios's approach to technical direction is rooted in data-driven analysis and a collaborative spirit. He believes in empowering his team to innovate while maintaining rigorous standards. He's known for his calm demeanor under pressure and his ability to distill complex technical issues into easily understandable concepts. What sets him apart is his relentless pursuit of marginal gains and his capacity to find innovative solutions to seemingly intractable problems.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short, well-groomed goatee",
+    "description": "Dimitrios is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with equations and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music while reviewing telemetry data."
+  ]
+}

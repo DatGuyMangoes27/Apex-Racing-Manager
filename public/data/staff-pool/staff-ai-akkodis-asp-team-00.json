@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 60,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Jean-Pierre Dubois's journey in motorsport began in the icy landscapes of Quebec, where he honed his mechanical skills working on snowmobiles and later, rally cars. His passion led him to Europe, where he spent years as a race engineer, immersing himself in the technical intricacies of Formula racing before transitioning to sports cars. Dubois possesses a keen eye for detail and a pragmatic approach to team management, prioritizing stability and consistent performance over radical innovation.\n\nAfter a successful stint with a smaller GT team, Dubois joined Akkodis ASP Team, drawn to their commitment to excellence. He believes in empowering his team members, fostering a collaborative environment where every voice is heard. While not the most flamboyant leader, his unwavering dedication to process and his ability to extract the best from his drivers and engineers make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a serious demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on personally inspecting every car before each race."
+  ]
+}

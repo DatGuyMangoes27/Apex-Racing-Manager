@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Andersson",
+  "nationality": "Swedish",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Bjorn's motorsport journey began in the frigid north of Sweden, tinkering with snowmobiles and dreaming of roaring engines instead of howling winds. He earned his engineering degree from KTH Royal Institute of Technology in Stockholm before landing a junior role at a small touring car team. A relentless pursuit of perfection and a knack for data analysis saw him quickly climb the ranks. He's known for his meticulous approach, demanding the absolute best from his team, but also for his uncanny ability to see the bigger picture and anticipate problems before they arise.\n\nHis years with various teams have taught him the importance of clear communication and fostering a culture of continuous improvement. Bjorn believes that every race is a learning opportunity, and he relentlessly pushes his team to analyze data, identify weaknesses, and implement solutions. While some find his demanding nature challenging, those who rise to the occasion often find themselves exceeding their own expectations under his guidance. He joined Trident to bring stability and experience to the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "short boxed beard, mostly gray",
+    "description": "A tall, imposing figure with a stern gaze and a weathered face."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on having a specific type of Swedish coffee before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

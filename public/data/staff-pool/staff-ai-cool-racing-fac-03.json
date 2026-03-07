@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 23,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Sophie's fascination with motorsport began during her childhood, watching her uncle repair rally cars in his garage. This early exposure sparked a deep interest in the mechanical intricacies of racing machines. She pursued a degree in mechanical engineering, focusing on precision manufacturing and materials science. During her studies, she interned at a local go-kart racing team, gaining hands-on experience with engine tuning and chassis setup.\n\nSophie is meticulous and deeply committed to her work. She believes in a methodical approach, emphasizing preventative maintenance and thorough inspection to ensure peak performance and reliability. While she enjoys collaborating on projects, she is also comfortable working independently, often preferring to immerse herself in complex technical challenges. She joined Cool Racing to be part of a dynamic team pushing the boundaries of motorsport engineering, aiming to improve the car's performance through innovative solutions.\n\nKnown for her sharp eye for detail and her ability to troubleshoot complex problems efficiently, Sophie is a valuable asset to any racing team. Her dedication and passion for motorsport are evident in her unwavering commitment to excellence.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "long, straight, usually tied back in a practical ponytail",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Sophie is petite with a focused gaze and constantly has grease under her fingernails."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a multi-tool on her keychain.",
+    "Talks to the machinery while working.",
+    "Insists on using metric measurements, even when others use imperial."
+  ]
+}

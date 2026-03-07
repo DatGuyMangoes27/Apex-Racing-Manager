@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0253",
+  "name": "Apex Racewear",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "UK",
+  "description": "Performance apparel engineered for the demands of motorsport.",
+  "story": "Apex Racewear was founded by ex-racers who understood the need for durable, breathable, and comfortable apparel in the cockpit. We've been supplying amateur teams for years and are now looking to expand our brand presence in professional racing. We seek a partnership that showcases our product's quality and resonates with motorsport enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": null,
+    "minPodiums": null
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": null,
+    "minSeasonPodiums": null,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0253.png"
+}

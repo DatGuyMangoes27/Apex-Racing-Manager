@@ -1,0 +1,27 @@
+{
+  "biography": "Pierre Wang, a Dutch driver barely out of his teens, is a curious case. Born in Rotterdam to a family with no motorsport background, Pierre's racing journey began with a beat-up kart he salvaged from a scrapyard. He spent countless hours tinkering with it, learning mechanics alongside driving. His raw talent was undeniable, but his inconsistency plagued him. One defining moment came at a local karting championship where, after qualifying last, he overtook nearly the entire field to finish second, only to crash out spectacularly on the final lap while attempting the lead. This blend of brilliance and recklessness has defined his early career. Now, struggling to make ends meet as an independent driver, Pierre bounces between regional Formula series, hoping for a lucky break that will elevate him to the international stage. He is known for flashes of brilliance interspersed with costly errors.",
+  "drivingStyle": "Pierre's driving style is characterized by aggressive corner entries and late braking. He has a natural feel for the car's limits, often pushing it to the very edge of control. He is less adept at tire management, frequently burning through his rubber early in a race. Under pressure, he can either elevate his performance to new heights or crumble completely, depending on the day. He thrives on instinct and raw speed, sometimes to his detriment.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Alvarez",
+      "reason": "A clash of egos. Ricardo views Pierre as an undisciplined upstart stealing the spotlight, while Pierre sees Ricardo as a boring, overly cautious driver."
+    },
+    {
+      "driver": "Anneliese Schmidt",
+      "reason": "A heated on-track incident resulted in both drivers retiring from a crucial race. They trade barbs in the media ever since."
+    },
+    {
+      "driver": "Kenji 'Kaze' Tanaka",
+      "reason": "A friendly rivalry based on mutual respect, but both are fiercely competitive and always try to outdo each other on and off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, no matter how tattered.",
+    "Refuses to start a race without drinking a specific brand of orange soda.",
+    "Talks to his car before every session, offering encouragement and apologies in advance."
+  ],
+  "nickname": "The Dutch Daredevil",
+  "famousQuote": "Second is just the first loser. If you're not taking risks, you're not trying hard enough.",
+  "careerHighlight": "Winning the Dutch Formula Regional Championship race at Zandvoort in 2023, in a car that was significantly underpowered compared to the competition. He pulled off a daring last-lap overtake to secure the victory.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the German Formula 4 race at Hockenheim in 2022, costing him valuable championship points and attracting negative media attention."
+}

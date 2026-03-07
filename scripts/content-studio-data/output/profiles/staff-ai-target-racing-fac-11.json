@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 45,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Jean-Pierre's motorsport journey began in his youth, tinkering with go-karts in his father's garage. He transitioned to racing after finishing his technical degree, but quickly realized his true passion lay in understanding and improving the machines rather than driving them. This led him to a series of engineering roles within smaller racing teams, eventually specializing in data analysis and vehicle dynamics. \n\nAt Target Racing, Jean-Pierre thrives as the test driver coordinator. He excels at translating driver feedback into actionable improvements, meticulously planning test sessions, and extracting maximum value from every on-track opportunity. His methodical approach, coupled with his ability to build strong relationships with drivers and engineers alike, makes him an invaluable asset to the team's development program. Jean-Pierre believes in marginal gains, constantly searching for those extra tenths through rigorous testing and analysis.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jean-Pierre is of average height with a slightly stocky build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a collection of vintage racing posters in his office, each with a story behind it.",
+    "Insists on calibrating all testing equipment himself before each session."
+  ]
+}

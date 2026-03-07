@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Gruber",
+  "nationality": "Austrian",
+  "age": 53,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Hans-Peter's journey into motorsport began with a childhood fascination for the precision and artistry of Formula 1 cars. After completing his apprenticeship in composite engineering, he honed his skills in the aerospace industry before transitioning to racing. Known for his meticulous approach and unwavering attention to detail, Hans-Peter has a reputation for delivering flawless composite components, essential for optimizing aerodynamic performance and ensuring driver safety. He sees every part he touches as a potential improvement waiting to be unlocked.\n\nHis deep understanding of material science and manufacturing processes allows him to push the boundaries of what's possible with composites. While some may find his standards exacting, his commitment to excellence has consistently earned him the respect of his colleagues. Hans-Peter's dedication extends beyond the technical aspects of his role; he is also a mentor to junior technicians, sharing his knowledge and passion for composite engineering.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed salt-and-pepper beard",
+    "description": "A sturdy man with a weathered face and kind eyes that hint at a demanding nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Insists on using a specific brand of microfiber cloth for cleaning composite surfaces.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

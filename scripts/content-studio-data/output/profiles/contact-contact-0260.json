@@ -1,0 +1,31 @@
+{
+  "name": "Retno Wulandari",
+  "nationality": "Indonesian",
+  "age": 60,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Retno Wulandari is a titan in the Indonesian entertainment industry, known for her uncanny ability to spot and nurture talent. Over her 35-year career, she's managed the careers of several A-list actors, musicians, and even a few athletes, turning them into household names across Southeast Asia. While primarily focused on entertainment, Retno has always held a soft spot for motorsport, viewing the discipline and raw talent of racing drivers with admiration. She is known for her warm, if slightly dramatic, personality, often treating her clients like family and going to bat for them fiercely, though her patience can wear thin if she feels her trust is betrayed. \n\nA racing driver might cross paths with Retno through her diverse network of contacts, perhaps at a charity event, a product endorsement opportunity, or even through a mutual connection within the Indonesian business elite. Her influence extends far beyond the entertainment world, making her a valuable ally for any aspiring driver looking to build a strong brand and secure lucrative sponsorships in the Asian market.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant, shoulder-length bob, carefully styled",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Retno carries herself with an undeniable grace. Her style leans towards sophisticated and classic, favoring elegant dresses and tasteful jewelry."
+  },
+  "connectionToMotorsport": "Retno dabbles in motorsport through her connections to wealthy Indonesian families who own racing teams, and occasionally represents drivers seeking endorsements in the Asian market.",
+  "meetingContext": "The player might meet Retno at a charity gala hosted by a luxury watch brand that sponsors a racing team, or through an introduction from a wealthy Indonesian businessman looking to invest in motorsport.",
+  "conversationTopics": [
+    "The latest opera performances",
+    "The complexities of the Indonesian art market",
+    "The growth of craft breweries in Southeast Asia",
+    "Gossip from the Indonesian entertainment scene",
+    "Her grandchildren"
+  ],
+  "canHelp": [
+    "Negotiate lucrative sponsorship deals with Indonesian companies.",
+    "Connect the player with influential figures in the Indonesian business and media landscape.",
+    "Offer advice on building a strong personal brand and public image in Asia."
+  ],
+  "personality_summary": "A warm and dramatic agent with a vast network and a knack for turning talent into stars."
+}

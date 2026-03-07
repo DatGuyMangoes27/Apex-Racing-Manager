@@ -1,0 +1,22 @@
+{
+  "name": "Kemal Demir",
+  "nationality": "Turkish",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Kemal's journey in motorsport began unconventionally, sparked by a fascination with the aerodynamics of birds in flight during his youth in rural Turkey. This led him to pursue a degree in aeronautical engineering, followed by a master's specializing in computational fluid dynamics. He cut his teeth at a small but ambitious Formula 3 team, where his innovative wing designs quickly gained attention, leading to opportunities with bigger teams. His approach is methodical, yet he encourages blue-sky thinking among his team members.\n\nKnown for his meticulous attention to detail and his ability to extract marginal gains through subtle aerodynamic tweaks, Kemal has a proven track record of significantly improving vehicle performance. He is a firm believer in the power of simulation and data analysis, but also values real-world testing and driver feedback. Kemal's distinctive ability lies in translating complex aerodynamic principles into practical, race-winning solutions. He is a mentor to young engineers and is known for his calm demeanor under pressure.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed salt and pepper mustache",
+    "description": "A man of medium height with a distinguished air, Kemal carries himself with quiet confidence."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Insists on having a specific brand of Turkish coffee brewed every afternoon at 3 PM.",
+    "Always carries a small notebook filled with hand-drawn aerodynamic sketches.",
+    "Has a habit of pacing while deep in thought, often muttering complex equations under his breath."
+  ]
+}

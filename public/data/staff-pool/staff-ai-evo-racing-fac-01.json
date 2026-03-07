@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Mads Christensen",
+    "nationality": "Danish",
+    "age": 25,
+    "gender": "male",
+    "role": "data_analyst",
+    "bio": "Mads's passion for motorsport ignited during his childhood visits to the Copenhagen Historic Grand Prix. Initially drawn to the raw power of the cars, he soon became fascinated by the intricate data analysis that underpinned every race. He pursued a degree in Statistics, always with the goal of applying his skills to the world of racing. After graduating, Mads landed a role with a smaller racing team, honing his abilities in race strategy and performance analysis. \n\nMads is a data-driven analyst who believes in leveraging every available data point to gain a competitive edge. He is meticulous in his approach, spending hours poring over telemetry and race simulations to identify areas for improvement. While demanding of himself and his colleagues, he is also deeply committed to the team's success. Mads's unique blend of analytical rigor and motorsport passion makes him a valuable asset to EVO Racing Team.\n\nHe is driven by a desire to find the smallest advantage, the hidden insights that can separate victory from defeat. He believes this approach allows him to bring something special to the table.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Blonde",
+      "hairStyle": "Short, neatly parted to the side with a slight wave.",
+      "eyeColor": "Blue",
+      "facialHair": "Short, well-groomed stubble",
+      "description": "Mads is of average height with a lean build and a focused gaze."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always color-codes his spreadsheets meticulously.",
+      "Has a habit of tapping his pen rhythmically when deep in thought.",
+      "Insists on having the team's data displayed on multiple monitors."
+    ]
+  }
+]

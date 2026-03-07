@@ -1,0 +1,22 @@
+{
+  "name": "Ruben van Dijk",
+  "nationality": "Dutch",
+  "age": 30,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ruben's journey into motorsport began with a fascination for the complex algorithms that underpinned Formula 1 strategies. After graduating with a degree in Data Science from Delft University of Technology, he honed his skills analyzing financial markets before realizing his true passion lay in applying those skills to racing. He thrives on uncovering hidden patterns within vast datasets, providing teams with a competitive edge through predictive modeling and optimized resource allocation. Ruben's analytical rigor combined with his intuitive understanding of racing dynamics sets him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly trimmed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Ruben has a lean build and a focused look."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on listening to classical music while working to enhance focus.",
+    "Has a collection of vintage racing posters displayed in his workspace."
+  ]
+}

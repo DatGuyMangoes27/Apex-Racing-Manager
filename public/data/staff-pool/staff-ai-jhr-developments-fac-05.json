@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 42,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Ricardo's meticulous nature and sharp eye for detail make him an invaluable asset in quality control. Growing up in Lima, he was always fascinated by the intricate workings of machinery, often spending hours disassembling and reassembling old radios and appliances. This curiosity led him to pursue a degree in mechanical engineering. His passion for motorsport ignited after attending a local rally race, and he was immediately drawn to the high-stakes environment and the relentless pursuit of perfection. \n\nBefore joining JHR Developments, Ricardo honed his skills at a smaller racing outfit, where he learned to identify and rectify even the most subtle performance-hindering flaws. He believes that a robust quality control system is crucial for maintaining a competitive edge, and he's dedicated to ensuring that every component meets the highest standards. His big-picture thinking allows him to anticipate potential problems and proactively implement preventative measures, minimizing costly errors and maximizing performance on the track.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is of average height with a sturdy build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect components.",
+    "Has a habit of tapping his pen on the desk when deep in thought.",
+    "Insists on double-checking every measurement, even if it's already been verified."
+  ]
+}

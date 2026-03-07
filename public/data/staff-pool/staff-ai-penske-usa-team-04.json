@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 47,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Dimitri's journey into motorsport began with a childhood fascination for Soviet-era Lada rally cars, a passion fueled by watching grainy broadcasts from distant rally stages. He excelled in mathematics and physics, choosing to channel his aptitude into engineering. After graduating from the Moscow Automobile and Road Construction University (MADI), Dimitri gained experience in various motorsports, including touring cars and Formula Russia, honing his skills in data analysis and car setup. He's known for his meticulous approach to problem-solving and ability to quickly adapt to changing track conditions. Dimitri came to the USA chasing bigger dreams and is determined to succeed in IndyCar.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "short, neatly trimmed goatee",
+    "description": "Dimitri is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, worn-out Russian-English technical dictionary.",
+    "Meticulously organizes his tools and workspace, arranging everything by size and function.",
+    "Has a habit of muttering complex calculations under his breath during stressful situations."
+  ]
+}

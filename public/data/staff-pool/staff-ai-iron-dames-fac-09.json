@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Belgian",
+  "age": 28,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jean-Luc discovered his passion for motorsport at a young age, spending countless hours at the local go-kart track. While his driving aspirations never materialized, his fascination with the meticulous preparation and vibrant liveries of race cars led him to specialize in automotive painting. He honed his skills through an apprenticeship at a high-end body shop before transitioning to motorsport. His experience with the Iron Dames has proven his ability to perform under pressure. \n\nJean-Luc is known for his unwavering commitment to perfection. He approaches each paint job with meticulous attention to detail, ensuring every surface is flawless and every shade is precisely matched. His demanding nature pushes both himself and his colleagues to exceed expectations. He thrives on the challenge of creating visually stunning designs that enhance the team's brand and capture the spirit of racing. He's not afraid to challenge the status quo, often suggesting innovative techniques and materials to improve the durability and aesthetic appeal of the paintwork.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jean-Luc is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears pristine white overalls, even when working on the dirtiest jobs.",
+    "Insists on listening to classical music while working, claiming it improves his concentration.",
+    "Has a habit of meticulously cleaning his tools after every use, regardless of how small the job was."
+  ]
+}

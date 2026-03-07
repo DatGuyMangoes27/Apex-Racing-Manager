@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 51,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Jean-Pierre's fascination with motorsport began with the roar of engines at the 24 Hours of Le Mans, a spectacle he witnessed as a young boy. This early exposure ignited a lifelong passion for the intricate electronics that power racing machines. He pursued electrical engineering with a focus on automotive applications, eventually landing a role at a smaller rally team before joining EKS JC. \n\nJean-Pierre is known for his meticulous approach to problem-solving, prioritizing reliability and efficiency above all else. He favors proven solutions over untested innovations, ensuring the car's electrical systems perform flawlessly under pressure. While not the most vocal member of the team, his quiet dedication and technical expertise are highly valued.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height with a slightly weathered face that reflects years spent working on engines."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Insists on using a physical notebook and pen for taking notes, despite modern technology.",
+    "Has a habit of humming quietly to himself when deeply focused on a task."
+  ]
+}

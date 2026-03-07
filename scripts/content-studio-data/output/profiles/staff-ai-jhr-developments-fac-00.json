@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 48,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Sophie's journey into motorsport began with a childhood fascination for engineering, fueled by her father's work at a local automotive plant. After graduating with a degree in mechanical engineering, she specialized in simulation technology, driven by the desire to create realistic and effective training environments for drivers. Before joining JHR Developments, she worked with a smaller racing team, gaining invaluable experience in data analysis and simulator calibration.\n\nSophie believes in a holistic approach to simulator engineering, emphasizing the importance of integrating driver feedback with technical data to achieve optimal performance. She is known for her meticulous attention to detail and her ability to troubleshoot complex technical issues under pressure. Her calm demeanor and ability to see the 'big picture' make her a valuable asset to any team.\n\nWhat sets Sophie apart is her dedication to continuous improvement. She constantly explores new technologies and methodologies to enhance the realism and effectiveness of the simulator, ensuring that drivers are always prepared for the challenges of the track.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie is a petite woman with a focused gaze and a warm smile."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always brings a thermos of chamomile tea to the simulator room.",
+    "Has a habit of tapping her pen against the desk when deep in thought.",
+    "Insists on calibrating the simulator steering wheel herself before each driver session."
+  ]
+}

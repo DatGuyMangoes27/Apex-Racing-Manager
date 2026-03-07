@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0435",
+  "name": "Dragonfire Energy",
+  "category": "energy_drinks",
+  "tier": "high",
+  "country": "Hong Kong",
+  "description": "Ignite your potential with Dragonfire Energy.",
+  "story": "Dragonfire Energy is a Hong Kong-based beverage company seeking to expand its global presence. Motorsport provides an ideal platform to showcase the brand's dynamic image and connect with a passionate audience. They value partnerships that deliver high visibility and align with their brand's core values of speed, innovation, and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0435.png"
+}

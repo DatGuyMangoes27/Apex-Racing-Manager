@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0177",
+  "name": "IndiGamer Esports",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "India",
+  "description": "Level up your game with IndiGamer Esports.",
+  "story": "IndiGamer Esports has rapidly risen to become a leading force in the Indian gaming scene, sponsoring various esports teams and tournaments. They see motorsport as the next frontier for reaching a wider audience of tech-savvy enthusiasts. They seek a partnership that can amplify their brand's message of skill, precision, and high performance on a global stage, particularly in markets with a strong gaming presence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 75,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "India"
+    ],
+    "minWins": 3,
+    "minPodiums": 7
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0177.png"
+}

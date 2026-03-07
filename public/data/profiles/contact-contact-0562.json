@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 60,
+  "gender": "male",
+  "contactType": "yacht_captain",
+  "bio": "Ricardo Oliveira has spent his entire life on the sea. Starting as a deckhand, he worked his way up through the ranks, mastering navigation, mechanics, and eventually earning his captain's license. For the past 25 years, he's been captaining luxury yachts, catering to the whims of the wealthy and powerful. He’s known for his calm demeanor, impeccable service, and an old-world charm that endears him to his clients. Ricardo is a sincere man who appreciates the finer things in life, but never forgets his humble beginnings. He holds a deep respect for skill and dedication. \n\nWhile seemingly distant from motorsport, many of Ricardo's clients are avid racing fans and even team owners. He often overhears conversations about sponsorship deals, driver performance, and upcoming races. A racing driver might cross paths with Ricardo while attending a high-profile yacht party during the Monaco Grand Prix, or perhaps hired by a team owner for a private function on their yacht. Ricardo's discretion and connections could prove invaluable.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo has a weathered face that speaks of countless days at sea. He carries himself with a quiet confidence and has a warm smile that puts people at ease."
+  },
+  "connectionToMotorsport": "Ricardo's high-society clientele includes team owners and sponsors, giving him insight into the business side of racing. He occasionally hosts private events for racing teams on yachts.",
+  "meetingContext": "The player might meet Ricardo at a yacht party during the Monaco Grand Prix, or perhaps while providing a service for a wealthy benefactor who supports the player's team.",
+  "conversationTopics": [
+    "Sailing anecdotes",
+    "The best wines from Portugal",
+    "Polo matches he's attended",
+    "His favourite hiking trails in the Algarve",
+    "The importance of tradition and respect"
+  ],
+  "canHelp": [
+    "Provide introductions to wealthy sponsors.",
+    "Offer discreet information about rival teams.",
+    "Facilitate exclusive networking opportunities at yacht parties."
+  ],
+  "personality_summary": "An optimistic and old-fashioned yacht captain with connections to the racing world through his wealthy clientele."
+}

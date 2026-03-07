@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 50,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for go-karts at his local track in Genk. He pursued a degree in mechanical engineering, specializing in computational fluid dynamics, which naturally led him to the world of racing simulation. Jean-Pierre's career took off at a smaller Formula Renault team, where he honed his skills in data analysis and simulator development. \n\nHe joined Tony Kart Racing a decade ago, bringing a pragmatic and methodical approach to simulator engineering. Jean-Pierre focuses on ensuring the simulator accurately reflects real-world conditions, allowing drivers to maximize their training time. His calm demeanor and attention to detail are invaluable assets, particularly during intense race weekends. He is known for his ability to quickly diagnose and resolve any technical issues, ensuring minimal disruption to the team's preparation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a slightly weathered face that reflects years spent analyzing data screens."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down simulator settings and observations.",
+    "Has a specific routine for calibrating the simulator each morning, involving a series of precise adjustments.",
+    "Drinks exactly two cups of strong black coffee before any major simulation session."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0072",
+  "name": "Longwei Motors",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "China",
+  "description": "Experience the prestige of Longwei, where performance meets luxury.",
+  "story": "Longwei Motors is a luxury automotive brand based in Shanghai, committed to pushing the boundaries of engineering and design. Inspired by the competitive spirit of motorsport, they seek partnerships with teams that reflect their dedication to excellence and innovation. They believe that motorsport provides a dynamic platform to showcase their brand's commitment to speed, precision, and cutting-edge technology.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 40000,
+      "winBonus": 15000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 25,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0072.png"
+}

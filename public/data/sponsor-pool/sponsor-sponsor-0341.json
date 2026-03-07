@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0341",
+  "name": "Tempus Watches",
+  "category": "watches",
+  "tier": "entry",
+  "country": "Hungary",
+  "description": "Timeless elegance, crafted for precision.",
+  "story": "Tempus Watches, a Hungarian watchmaker, has a long history of supporting local artisans. They see motorsport as a perfect platform to showcase their commitment to precision and performance, seeking partnerships that reflect their brand values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0341.png"
+}

@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0016",
+  "name": "Pertamina PrimaXP",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Indonesia",
+  "description": "High-performance lubricants engineered for ultimate engine protection.",
+  "story": "Pertamina PrimaXP is Indonesia's leading lubricant brand, committed to supporting national motorsport talent and technological advancement. We view motorsport as a proving ground for our products, demonstrating their reliability and performance under extreme conditions. Our partnership aims to elevate Indonesian motorsport and showcase our commitment to innovation on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Indonesia"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0016.png"
+}

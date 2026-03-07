@@ -1,0 +1,22 @@
+{
+  "name": "Keanu Williams",
+  "nationality": "New Zealand",
+  "age": 34,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Keanu Williams, a Kiwi through and through, found his calling amidst the roar of engines and the precision of metalwork. Growing up near a local speedway, he was captivated by the mechanical ballet of race cars from a young age. While others saw just noise and dirt, Keanu saw intricate systems working in perfect harmony.\n\nHe began his journey as an apprentice in a small engineering shop, honing his skills in metal fabrication and machining. It was there he discovered his knack for problem-solving and his unwavering commitment to precision. Keanu's approach to machining is a blend of technical expertise and artistic intuition. He believes that every component, no matter how small, plays a crucial role in the overall performance of a vehicle.\n\nWhat sets Keanu apart is his relentless pursuit of perfection. He's not content with 'good enough' – he strives for excellence in every task he undertakes. His demanding nature pushes those around him to elevate their standards, ensuring that only the highest quality workmanship makes its way onto the track.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Keanu is a stocky man with broad shoulders and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before each job, even if they're already sharp.",
+    "Has a specific playlist of classic rock he listens to while working.",
+    "Insists on double-checking every measurement, no matter how simple."
+  ]
+}

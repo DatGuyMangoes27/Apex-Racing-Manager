@@ -1,14 +1,23 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, TrendingDown, ArrowUpDown, PieChart, BarChart3, AlertTriangle, CheckCircle, ChevronRight, Plus, Settings, Users, Building2, Wrench, Car, Star, Clock } from 'lucide-react';
-import { Card, CardHeader, Badge, Button, Progress } from '@/components/ui';
+import { DollarSign, TrendingUp, TrendingDown, ArrowUpDown, PieChart, BarChart3, AlertTriangle, CheckCircle, ChevronRight, Plus, Settings, Users, Building2, Wrench, Car, Star, Clock, Wallet, Receipt, Trophy, Award, Factory, Coins, CreditCard, FlaskConical, Truck, Megaphone, Gauge, ArrowUpRight, ArrowDownRight, Target } from 'lucide-react';
+import { Card, CardHeader, Badge, Button, Progress, Tabs, TabsList, TabsTrigger, TabsContent, Modal, SponsorLogo, useToast } from '@/components/ui';
 import { useCareerStore } from '@/store/careerStore';
-import type { OwnedTeam } from '@/store/careerStore';
+import type { OwnedTeam, TeamSponsorDeal, TeamTransaction } from '@/store/careerStore';
+import type { TeamTier } from '@/store/rivalStore';
 import {
   getSponsorSatisfactionStatus,
   generateTeamSponsorOffers,
-  acceptSponsorOffer
+  acceptSponsorOffer,
+  getSponsorSlotLabel
 } from '@/simulation/finances/teamSponsors'
+import { calculateCostCapStatus, calculateTeamRunway } from '@/simulation/finances/teamFinances'
+import type { RunwayStatus, CostCapStatus } from '@/simulation/finances/teamFinances'
+import { FACILITY_COSTS_BY_TIER, DEVELOPMENT_COSTS_BY_TIER, TRANSACTION_CATEGORY_LABELS, formatCurrency } from '@/data/financial-config'
+import { getSponsorLogo } from '@/utils/generated-assets'
+import { BudgetAllocationPanel } from './BudgetAllocationPanel'
+import { FinancialCharts } from './FinancialCharts'
+import { TransactionHistory } from './TransactionHistory'
 
 // ============================================
 // TYPES
@@ -19,6 +28,7 @@ interface TeamFinancesDashboardProps {
   seriesEntries: Array<{ seriesId: string; seriesName: string; entryFee: number }>
   currentWeek: number
   currentYear: number
+}
 
 // ============================================
 // MAIN COMPONENT
@@ -1211,4 +1221,17 @@ function CostCapDetailView({ status }: { status: CostCapStatus }) {
 
       {status.status === 'exceeded' && (
         <div className="p-3 bg-status-danger/20 border border-status-danger/30 rounded-lg">
-          <div className="flex items-center gap-2
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-status-danger" />
+            <span className="text-status-danger font-medium">Cost Cap Exceeded!</span>
+          </div>
+          <p className="text-sm text-text-muted mt-1">
+            You have exceeded the cost cap. This may result in penalties.
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default TeamFinancesDashboard

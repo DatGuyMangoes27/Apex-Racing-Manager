@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 28,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Bjorn's passion for motorsport ignited early, fueled by a childhood spent tinkering with engines on his family's farm. He pursued a degree in mechanical engineering, specializing in vehicle dynamics and advanced materials. His career began with a small rally team, where he quickly rose through the ranks, showcasing a knack for problem-solving and a relentless pursuit of performance gains. \n\nBjorn's approach to engineering is deeply rooted in data analysis and rigorous testing. He believes in fostering open communication within his team, encouraging creative solutions while maintaining a focus on reliability and efficiency. His innovative streak led him to GCK Motorsport, where he sees an opportunity to push the boundaries of electric rallycross technology. He is particularly proud of his work on suspension geometry, which significantly improved handling in challenging terrain.\n\nWhat sets Bjorn apart is his uncanny ability to diagnose mechanical issues simply by listening to the engine. He is devoted to GCK Motorsport and its mission of winning races and helping the environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Bjorn is of average height with a focused, intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to work late at night when the garage is quiet."
+  ]
+}

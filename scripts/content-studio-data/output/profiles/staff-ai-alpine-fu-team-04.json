@@ -1,0 +1,22 @@
+{
+  "name": "Graeme McMillan",
+  "nationality": "New Zealand",
+  "age": 59,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Graeme's journey into motorsport began in rural New Zealand, tinkering with farm machinery and developing a knack for understanding mechanical systems. He transitioned to racing through local club events, where his analytical skills quickly became apparent. After gaining experience in various junior formulas in the Southern Hemisphere, Graeme moved to Europe in his late twenties, spending several years in Formula 3 and GT racing before finding a home in Formula 1.\n\nAs a race engineer, Graeme is known for his methodical approach and unwavering focus on data analysis. He prides himself on building strong relationships with drivers, providing them with clear and concise feedback to optimize performance. While not always the most flamboyant or outspoken member of the team, his consistency and reliability make him a valuable asset. Graeme has a reputation for being able to quickly identify and resolve mechanical issues, often under immense pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "A wiry man with a focused gaze and weathered hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his fingers on the desk when deep in thought.",
+    "Insists on using traditional tools alongside advanced software."
+  ]
+}

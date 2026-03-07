@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 54,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jean-Pierre's motorsport journey began in his youth, tinkering with go-karts in his father's garage. This early fascination blossomed into a formal education in mechanical engineering, followed by a career in Formula Renault. He quickly gained a reputation for his problem-solving skills and innovative approach to vehicle dynamics. He believes strongly in data-driven development, balancing simulation work with real-world testing to optimize performance. \n\nJean-Pierre joined a struggling F3 team and transformed it into a championship contender within three seasons, earning him recognition as a rising star in the technical world. He is known for his ability to inspire his team and foster a collaborative environment. His distinctive approach lies in combining traditional engineering principles with cutting-edge technologies, resulting in cars that are both reliable and incredibly fast.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A man of medium height with a focused gaze and a firm handshake."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule for quick calculations.",
+    "Insists on brewing his own strong coffee every morning.",
+    "Has a habit of pacing while deep in thought."
+  ]
+}

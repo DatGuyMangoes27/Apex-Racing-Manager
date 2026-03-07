@@ -1,0 +1,22 @@
+{
+  "name": "Kazimierz Lewandowski",
+  "nationality": "Polish",
+  "age": 60,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Kazimierz Lewandowski's journey in motorsport began in the gritty workshops of Warsaw, where he honed his engineering skills on rally cars during the communist era. His pragmatic approach and meticulous attention to detail quickly propelled him through the ranks, first as a successful race engineer, then as a technical director for several smaller teams. Lewandowski is known for his ability to extract maximum performance from limited resources, fostering a culture of resourcefulness and efficiency within his teams. He believes in data-driven decision-making and cultivates a no-nonsense atmosphere where results speak louder than words. \n\nHis leadership style is one of quiet authority. He doesn't shout or grandstand; instead, he analyzes situations calmly and provides clear, concise instructions. Lewandowski's teams are known for their reliability and consistency, a testament to his focus on fundamentals and his unwavering belief in the importance of a well-prepared machine. He is particularly adept at identifying and nurturing young talent, providing them with the guidance and support they need to thrive under pressure. Lewandowski seeks to build a lasting legacy of excellence and stability.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed mustache",
+    "description": "A sturdy man with a focused gaze and a slight build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on tasting the team's catering, claiming it affects morale.",
+    "Refuses to use email, preferring face-to-face communication."
+  ]
+}

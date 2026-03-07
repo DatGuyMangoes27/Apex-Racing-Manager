@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 34,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Zoltán's passion for motorsport ignited during his childhood, fueled by watching Formula 1 races with his father. He pursued a degree in Mechanical Engineering from the Budapest University of Technology and Economics, specializing in automotive engineering. After graduating, Zoltán gained valuable experience at a small racing team, where he honed his skills in data analysis, vehicle dynamics, and simulation.\n\nHe joined GCK Motorsport three years ago, initially focusing on improving the team's damper performance. Zoltán is known for his meticulous approach to problem-solving and his ability to translate complex data into actionable insights. He believes in a collaborative approach, working closely with drivers and other engineers to extract the maximum performance from the car. His drive and attention to detail make him a crucial part of the team.\n\nZoltán is particularly adept at identifying subtle areas for improvement that others may overlook. He has a knack for understanding how seemingly small changes can have a significant impact on overall performance. He is also passionate about mentoring junior engineers, sharing his knowledge and experience to help them develop their skills.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Zoltán is of average height, with a focused expression and a slightly athletic build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to stand while working, claiming it helps him concentrate."
+  ]
+}

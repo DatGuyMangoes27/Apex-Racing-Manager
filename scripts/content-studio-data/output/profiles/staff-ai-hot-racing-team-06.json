@@ -1,0 +1,22 @@
+{
+  "name": "Elena Rodriguez",
+  "nationality": "Spanish",
+  "age": 51,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Elena Rodriguez's motorsport journey began with a fascination for vehicle dynamics honed during her engineering studies at the Polytechnic University of Catalonia. She initially worked as a data analyst for a small rally team, quickly demonstrating an aptitude for spotting crucial performance gains that others overlooked. Her meticulous approach and ability to communicate complex technical information effectively led to a series of promotions, ultimately landing her the role of sporting director. \n\nElena's leadership style is marked by a relentless focus on data-driven decision-making and a pragmatic approach to problem-solving. She believes in empowering her team to take ownership of their work, fostering a culture of continuous improvement and open communication. Her distinctive ability to remain calm under pressure and make decisive calls in high-stakes situations has earned her the respect of her peers and competitors alike. Elena is known for her calculated risks and maximizing the team's potential.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, neatly styled with subtle waves.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena has a strong, determined face with a few fine lines around her eyes that speak of experience."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten trackside observations.",
+    "Insists on a pre-race espresso, brewed to a very specific strength.",
+    "Quietly hums classical music when deeply focused on analyzing telemetry data."
+  ]
+}

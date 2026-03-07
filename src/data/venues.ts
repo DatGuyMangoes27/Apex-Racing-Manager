@@ -5,6 +5,10 @@
  */
 
 import { ActivityCategory } from '@/store/careerStore'
+import { GuestAffinity, DEFAULT_VENUE_GUEST_AFFINITY, getTeamHQCapacity as _getTeamHQCapacity } from '@/data/guest-effects-config'
+
+// Re-export for convenience
+export { getTeamHQCapacity } from '@/data/guest-effects-config'
 
 // Venue types that determine base characteristics
 export type VenueType = 
@@ -62,18 +66,24 @@ export interface Venue {
     isExclusive?: boolean            // Only one team can book at a time
   }
   
+  // Guest type affinity: 0-1 per type (0 = unavailable, 1 = ideal)
+  // If not specified, uses DEFAULT_VENUE_GUEST_AFFINITY for this venue's type
+  guestAffinity?: GuestAffinity
+  
   // Description for UI
   description: string
 }
 
 // Team HQ - Always available, free venue option
+// NOTE: capacity.max here is the base default. Actual capacity is dynamically
+// determined by marketing facility level via getTeamHQCapacity().
 export const TEAM_HQ_VENUE: Venue = {
   id: 'team_hq',
   name: 'Team Headquarters',
   type: 'team_hq',
   country: 'dynamic', // Uses team's baseCountry
   city: 'dynamic',
-  capacity: { min: 1, max: 50 },
+  capacity: { min: 1, max: 15 },  // Base capacity (Level 1). Scales with marketing facility.
   baseCostPerDay: 0,
   prestigeLevel: 2,
   supportedActivities: ['team', 'development', 'media', 'personal', 'maintenance', 'sponsor'],
@@ -87,7 +97,7 @@ export const TEAM_HQ_VENUE: Venue = {
     hasTechnicalFacilities: true,
     hasCateringIncluded: false
   },
-  description: 'Your team\'s home base. Free to use but less impressive for external events.'
+  description: 'Your team\'s home base. Free to use but less impressive for external events. Capacity grows with Marketing facility upgrades.'
 }
 
 // Virtual venue - Free but reduced engagement
@@ -164,7 +174,7 @@ export const VENUES: Venue[] = [
     type: 'hotel_conference',
     country: 'UK',
     city: 'London',
-    capacity: { min: 30, max: 200 },
+    capacity: { min: 30, max: 350 },
     baseCostPerDay: 8000,
     prestigeLevel: 5,
     supportedActivities: ['sponsor', 'media', 'team'],
@@ -219,7 +229,7 @@ export const VENUES: Venue[] = [
     type: 'hotel_conference',
     country: 'Germany',
     city: 'Berlin',
-    capacity: { min: 50, max: 300 },
+    capacity: { min: 50, max: 500 },
     baseCostPerDay: 5000,
     prestigeLevel: 4,
     supportedActivities: ['sponsor', 'media', 'team'],
@@ -640,6 +650,26 @@ export function getPrestigeDescription(level: 1 | 2 | 3 | 4 | 5): string {
     5: 'Elite'
   }
   return descriptions[level]
+}
+
+/**
+ * Get the effective capacity of a venue.
+ * For team_hq, this scales with marketing facility level.
+ * For all other venues, returns the static capacity.max.
+ */
+export function getEffectiveVenueCapacity(venue: Venue, marketingLevel?: number): number {
+  if (venue.type === 'team_hq' && marketingLevel != null) {
+    return _getTeamHQCapacity(marketingLevel)
+  }
+  return venue.capacity.max
+}
+
+/**
+ * Get the guest affinity map for a venue.
+ * Uses venue-specific override if present, otherwise falls back to venue-type defaults.
+ */
+export function getVenueGuestAffinity(venue: Venue): GuestAffinity {
+  return venue.guestAffinity ?? DEFAULT_VENUE_GUEST_AFFINITY[venue.type]
 }
 
 /**

@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Costa",
+  "nationality": "Brazilian",
+  "age": 37,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Rafael's passion for motorsport ignited during his childhood in São Paulo, watching Ayrton Senna dominate Formula 1. He pursued a degree in Mechanical Engineering at the Universidade de São Paulo, focusing on aerodynamics and fluid dynamics. After graduating, he joined a local racing team, gaining hands-on experience in vehicle setup and aero development.\n\nHis meticulous approach and innovative ideas quickly earned him recognition, leading to his current role as Head of Aero at GCK Motorsport. Rafael believes in a data-driven approach, constantly analyzing wind tunnel results and track data to optimize aerodynamic performance. He's known for his relentless pursuit of marginal gains and his ability to translate complex simulations into practical solutions on the track. His innovative strategies and attention to detail make him a valuable asset to the team.\n\nRafael is also keen on developing young engineers, sharing his knowledge and experience to foster the next generation of motorsport talent. He's always looking for new ways to push the boundaries of aerodynamic design and bring GCK Motorsport to the forefront of the sport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Rafael is of average height, with a focused gaze and a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Refuses to start the day without a strong cup of Brazilian coffee."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 22,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mads's fascination with motorsport began during his childhood visits to the Jyllandsringen circuit with his father. He was immediately drawn to the technical aspects of racing, spending hours observing the mechanics and engineers in the paddock. This early exposure led him to pursue a degree in Mechanical Engineering at Aarhus University, where he specialized in aerodynamics. During his studies, he gained practical experience through internships at smaller racing teams, assisting with wind tunnel testing and data analysis. Mads is meticulous in his approach to wind tunnel operations, believing that even the smallest adjustments can lead to significant performance gains on the track. His focus on precision and his willingness to challenge conventional thinking make him a valuable asset to the Walkenhorst Motorsport team.\n\nMads is keen to prove himself and quickly become an indispensable member of Walkenhorst. He has an insatiable thirst for knowledge when it comes to aerodynamics and motorsport, often found reading academic papers or watching race footage in his spare time. He sees his role as critical in the development and optimization of the team's racing cars, and is determined to contribute to their success. He is particularly excited about the potential of computational fluid dynamics (CFD) and its integration with traditional wind tunnel testing, seeing it as a key area for future innovation in motorsport aerodynamics.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed stubble",
+    "description": "Mads is of average height with a lean build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations and ideas.",
+    "Has a habit of tapping his foot rapidly when concentrating.",
+    "Insists on calibrating the wind tunnel equipment himself before each session, regardless of the team's schedule."
+  ]
+}

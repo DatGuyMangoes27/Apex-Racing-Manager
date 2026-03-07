@@ -1,0 +1,56 @@
+{
+  "history": "The Circuito do Estoril, located near Lisbon, Portugal, boasts a rich motorsport history, having hosted the Portuguese Grand Prix on the Grand Prix layout intermittently from 1984 to 1996. It was built in 1972 on a plateau near the town of Estoril, a popular resort area. While Formula 1 is its most famous claim to fame, Estoril has also hosted World Superbike Championships, FIA GT events, and various other national and international racing series. The circuit has undergone several modifications over the years to meet evolving safety standards, but the essence of its fast, flowing character remains.",
+  "atmosphere": "Standing on the main grandstand at Estoril during a race on the Grand Prix layout is an experience. The echoes of roaring engines bounce off the surrounding hills, creating a visceral soundscape. You can feel the anticipation building as cars line up on the grid, the smell of burning rubber and high-octane fuel filling the air. The vibrant Portuguese fans, passionate and knowledgeable, add another layer of excitement, waving flags and cheering on their favorite drivers. The circuit has a classic, almost old-school feel, reminiscent of a bygone era of motorsport, making it a truly special place to witness racing.",
+  "trackCharacter": "The Grand Prix layout at Estoril is a fast, flowing circuit that rewards bravery and precision. The long, sweeping corners demand commitment and place a premium on aerodynamic efficiency and mechanical grip. Its blend of high-speed sections and technical corners means that a well-balanced car is crucial for success. Unlike some modern tracks with long straights and heavy braking zones, Estoril's Grand Prix configuration emphasizes momentum and rhythm, making it a challenging but rewarding experience for drivers.",
+  "nickname": "The Portuguese Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Parabolica Ayrton Senna",
+      "description": "A long, sweeping right-hander named in honor of the legendary driver, this corner is crucial for setting up a good run onto the start/finish straight.",
+      "challenge": "Maintaining speed and line through the corner is vital for a good exit. It requires precision and commitment to avoid running wide."
+    },
+    {
+      "name": "Turn 1",
+      "description": "A sharp right-hander at the end of the start/finish straight, Turn 1 is a prime overtaking spot.",
+      "challenge": "Requires heavy braking and precise turn-in to avoid locking up or running wide, especially under pressure from other cars."
+    },
+    {
+      "name": "Ascari Chicane",
+      "description": "A tricky, fast chicane that tests a car's agility and a driver's reflexes.",
+      "challenge": "Demands quick changes of direction and precise placement to maintain momentum and avoid upsetting the car's balance."
+    },
+    {
+      "name": "Galp Curve",
+      "description": "A sweeping right-hander that leads onto a short straight, setting up for the next sequence of corners.",
+      "challenge": "Carrying maximum speed through Galp is crucial for a good run towards the next corner, but it requires a delicate balance of throttle and steering."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic efficiency",
+    "Mechanical grip",
+    "Braking stability",
+    "Corner exit speed",
+    "Tire management"
+  ],
+  "overtakingSpots": [
+    "Turn 1",
+    "Into the Ascari Chicane",
+    "Under braking for Turn 4"
+  ],
+  "historySnippets": [
+    "Estoril hosted the Portuguese Grand Prix from 1984 to 1996.",
+    "Ayrton Senna won his first Formula 1 race at Estoril in 1985, in extremely wet conditions.",
+    "Nigel Mansell was famously black-flagged for reversing in the pit lane at the 1989 Portuguese Grand Prix.",
+    "The circuit has hosted World Superbike races since 1988.",
+    "Estoril has undergone several modifications to improve safety.",
+    "The circuit is located near the popular resort town of Estoril."
+  ],
+  "weatherNotes": "The Estoril region enjoys a Mediterranean climate, but the circuit's proximity to the Atlantic Ocean means that weather conditions can be unpredictable. Rain is not uncommon, especially during the spring and autumn months, which can make the track extremely slippery and challenging. Sea breezes can also affect the car's handling, particularly in the high-speed sections. Tire choice and strategy are crucial in these conditions.",
+  "drivingAdvice": "On the Grand Prix layout, maintaining momentum is key at Estoril. Focus on smooth inputs and carrying speed through the long, sweeping corners. The Parabolica Ayrton Senna is crucial for a good run down the start/finish straight, so practice your line and find the optimal braking point. Be mindful of tire wear, as the abrasive surface can take its toll, especially in warmer conditions. Also, be prepared for changing wind conditions, which can significantly affect the car's balance.",
+  "famousRaces": [
+    "1985 Portuguese Grand Prix: Ayrton Senna's dominant first F1 win in torrential rain, showcasing his exceptional car control.",
+    "1989 Portuguese Grand Prix: Nigel Mansell's infamous black flag for reversing in the pit lane, a controversial moment in F1 history.",
+    "1993 Portuguese Grand Prix: Michael Schumacher's first podium for Benetton, marking the beginning of his rise to stardom."
+  ],
+  "localCulture": "Estoril is a charming coastal town known for its casinos, beaches, and glamorous past. The area offers a mix of traditional Portuguese culture and modern amenities. Local cuisine features fresh seafood and hearty stews. Paddock life is relaxed and friendly, with teams and drivers often exploring the local restaurants and enjoying the beautiful scenery. The fans are passionate and knowledgeable, creating a vibrant atmosphere both on and off the track."
+}

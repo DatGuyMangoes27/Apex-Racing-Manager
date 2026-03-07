@@ -6,3 +6,4 @@
 export { PartsInventoryDashboard } from './PartsInventoryDashboard'
 export { ManufacturingQueue } from './ManufacturingQueue'
 export { RaceAllocationPanel } from './RaceAllocationPanel'
+export { RentWarehouseModal } from './RentWarehouseModal'

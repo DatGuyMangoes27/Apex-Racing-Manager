@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0255",
+  "name": "Kiwi Capital",
+  "category": "financial",
+  "tier": "mid",
+  "country": "New Zealand",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Kiwi Capital is a New Zealand-based investment firm dedicated to supporting local talent and innovation. Motorsports embodies the drive and precision we value, and we see it as a perfect platform to showcase our commitment to performance. We're looking for a team that reflects our values of hard work, determination, and a relentless pursuit of excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "New Zealand",
+      "Australia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0255.png"
+}

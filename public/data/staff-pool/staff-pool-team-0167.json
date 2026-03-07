@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Jean-Pierre Dubois",
+    "nationality": "Belgian",
+    "age": 43,
+    "gender": "male",
+    "role": "head_of_operations",
+    "bio": "Jean-Pierre's journey into motorsport began unconventionally, trading a career in accounting for a passion ignited during a visit to Spa-Francorchamps. He started as a volunteer mechanic for a local racing team, rapidly absorbing technical skills and demonstrating a knack for organization. Though relatively new to a leadership role, Jean-Pierre compensates with an infectious enthusiasm and a willingness to learn from every challenge. His approach is collaborative and pragmatic, always seeking the most efficient path to achieving team goals. He believes in empowering his team and fostering a culture of continuous improvement.",
+    "physical": {
+      "skinTone": "Light",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline.",
+      "eyeColor": "Blue",
+      "facialHair": "Short, trimmed goatee",
+      "description": "Jean-Pierre has a stocky build and a perpetually cheerful expression."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with engineering diagrams.",
+      "Has a habit of humming classic F1 theme songs while working.",
+      "Insists on a weekly team breakfast featuring Belgian waffles."
+    ]
+  }
+]

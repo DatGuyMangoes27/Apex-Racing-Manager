@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0119",
+  "name": "Tiroler Steinöl",
+  "category": "local",
+  "tier": "elite",
+  "country": "Austria",
+  "description": "Traditional Austrian shale oil products for health and wellness.",
+  "story": "Tiroler Steinöl has been a staple in the Austrian Alps for generations, known for its unique medicinal properties. As a family-owned business deeply rooted in the region, we see motorsport as a perfect platform to showcase our commitment to performance and tradition. We seek a partnership that embodies Austrian spirit and achieves success on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 75000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Austria",
+      "Germany",
+      "Switzerland"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0119.png"
+}

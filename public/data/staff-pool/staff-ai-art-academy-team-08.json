@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 39,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Eleanor Vance is a seasoned performance engineer with a pragmatic approach honed over years in the demanding world of motorsport. From a young age, she was captivated by the technical intricacies of racing, spending hours tinkering with engines and poring over race data. After graduating with a degree in Mechanical Engineering from Imperial College London, she quickly found her niche within Formula racing, working her way up through various junior teams before landing at ART Grand Prix Academy.\n\nEleanor's strength lies in her meticulous data analysis and her ability to translate complex information into actionable insights for the drivers and mechanics. She is known for her calm demeanor under pressure and her unwavering focus on optimizing performance. While collaborative, Eleanor also has a tendency to work independently, preferring to dive deep into the data herself to uncover hidden advantages. Her ambition is to lead a championship-winning team one day, leveraging her skills to push the boundaries of performance engineering.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eleanor has a focused look, with sharp eyes that constantly assess and analyze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping her pen against her teeth when deeply focused.",
+    "Insists on having a perfectly organized workspace, even in the chaotic environment of the garage."
+  ]
+}

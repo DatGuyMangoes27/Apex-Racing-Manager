@@ -1,0 +1,31 @@
+{
+  "name": "Aishah binti Rahman",
+  "nationality": "Malaysian",
+  "age": 25,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Aishah is a sharp and fiercely independent corporate lawyer, making waves in Kuala Lumpur's legal circles despite her young age. Graduating at the top of her class with a postgraduate degree in law, she quickly gained a reputation for her meticulous preparation and unwavering advocacy for her clients. While she thrives in the high-stakes world of mergers and acquisitions, Aishah's rebellious streak means she's not afraid to challenge the status quo, often taking on pro bono cases that align with her values.\n\nHer connection to motorsport is tangential but significant. She represents several high-net-worth individuals and corporations who sponsor racing teams and drivers. Aishah's bluntness and patient demeanor make her an effective negotiator, often brought in to resolve disputes or structure complex sponsorship deals. A driver seeking legal counsel regarding contracts, endorsements, or intellectual property might find themselves across the table from Aishah.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight hair, often pulled back into a sleek ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Aishah is petite but carries herself with confidence. She favors tailored business attire, reflecting her professional and sophisticated style."
+  },
+  "connectionToMotorsport": "Aishah represents several sponsors and occasionally drivers, offering legal counsel on contracts, endorsements, and intellectual property.",
+  "meetingContext": "The player might meet Aishah at a motorsport industry event, a sponsor's corporate function, or when seeking legal advice on a contract dispute.",
+  "conversationTopics": [
+    "The latest developments in corporate law",
+    "Her passion for collecting vintage watches",
+    "The challenges faced by women in male-dominated professions",
+    "The best surfing spots in Southeast Asia",
+    "Craft beer breweries around the world"
+  ],
+  "canHelp": [
+    "Negotiating sponsorship deals and contracts",
+    "Providing legal advice on intellectual property and image rights",
+    "Connecting the player with potential sponsors and investors"
+  ],
+  "personality_summary": "A patient but rebellious lawyer, unafraid to challenge the status quo and advocate fiercely for her clients."
+}

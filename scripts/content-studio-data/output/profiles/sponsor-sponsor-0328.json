@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0328",
+  "name": "Kruger Motors",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "South Africa's leading manufacturer of rugged, reliable SUVs and trucks.",
+  "story": "Kruger Motors has a long history of supporting local motorsport, viewing it as the ultimate test for their vehicles' durability and performance. They seek partnerships with teams that demonstrate a commitment to excellence and a strong connection with the South African market. Kruger Motors believes that motorsport sponsorships enhance brand visibility and showcase their engineering prowess to a passionate audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0328.png"
+}

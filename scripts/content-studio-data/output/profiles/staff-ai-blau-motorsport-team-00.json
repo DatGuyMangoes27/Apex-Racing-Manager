@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 52,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Alonso's journey in motorsport began in his youth, tinkering with go-karts in his small hometown near Valencia. He studied mechanical engineering, but his real education came from years spent in the garages of various racing teams, working his way up from a junior mechanic to a race engineer. Alonso’s experience has made him a pragmatic leader, focused on the details and dedicated to the team's performance.\n\nAs Team Principal of Blau Motorsport, Ricardo is known for his demanding approach, pushing his team to achieve peak performance. He believes in a data-driven strategy, emphasizing meticulous preparation and efficient resource management. He stands out for his calm demeanor under pressure and his ability to extract the best from his team, even in challenging circumstances. His personal motto is 'Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.'",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back with a slight recession at the temples",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a man of average height with a lean build and a serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down observations and ideas.",
+    "Insists on personally inspecting every car before it goes on track.",
+    "Has a collection of vintage racing posters in his office, each with a story to tell."
+  ]
+}

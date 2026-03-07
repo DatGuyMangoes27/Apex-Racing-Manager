@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Isabelle Dubois",
+    "nationality": "Belgian",
+    "age": 49,
+    "gender": "female",
+    "role": "performance_engineer",
+    "bio": "Isabelle's journey into motorsport began unexpectedly during a university project focused on fluid dynamics, where she discovered her passion for optimizing vehicle performance. After graduating, she quickly climbed the ranks, working with several prominent racing teams, specializing in data analysis and simulation. Her approach is meticulous and data-driven, ensuring every adjustment is backed by solid evidence and rigorous testing. Isabelle is known for her ability to quickly identify and resolve complex engineering problems, making her a valuable asset in high-pressure race environments. \n\nThroughout her career, Isabelle has developed a keen eye for detail, and has a knack for finding those marginal gains that can make all the difference on the track. She prides herself on her adaptability and her ability to work collaboratively with drivers and other engineers to achieve peak performance. Her ambition and drive have propelled her to the forefront of performance engineering.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, subtly wavy, often pulled back in a practical ponytail",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Isabelle has a serious, focused demeanor with a kind smile that appears easily."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook to jot down observations.",
+      "Has a habit of tapping her pen when deep in thought.",
+      "Insists on a perfectly clean and organized workspace."
+    ]
+  }
+]

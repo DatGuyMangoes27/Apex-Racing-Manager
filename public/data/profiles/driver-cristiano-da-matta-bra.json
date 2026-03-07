@@ -1,0 +1,27 @@
+{
+  "biography": "Cristiano da Matta, a name whispered with respect and a hint of caution in the paddocks, hails from the vibrant racing heartland of Brazil. Unlike many racers groomed from karting infancy, Cristiano's passion ignited later, fueled by watching Ayrton Senna carve his legend. He began his journey in Formula Ford, quickly demonstrating an uncanny ability to extract every ounce of performance from his machinery. His defining moment came during a torrential downpour at Interlagos. Starting from the back of the grid due to a mechanical failure in qualifying, he carved through the field, his Reynard 2Ki Toyota dancing on the edge of control, eventually snatching victory on the final lap. Currently, at the peak of his career, Cristiano remains a formidable force, a seasoned veteran who blends raw talent with a calculated approach.",
+  "drivingStyle": "Cristiano's driving style is a masterclass in controlled aggression. He's not one for flamboyant overtaking maneuvers; instead, he meticulously builds pressure, exploiting the slightest weakness in his opponent's armor. He's renowned for his exceptional tire management, often nursing his rubber through long stints while maintaining a competitive pace. In corners, he favors a late-braking technique, carrying immense speed into the apex and relying on his car control to maintain a tight line. He is a defensive driver, often making his car as wide as possible to prevent others from overtaking him.",
+  "rivalries": [
+    {
+      "driver": "Marco Visconti",
+      "reason": "A long-standing feud stemming from a controversial collision at Monza that cost da Matta the championship lead."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A rivalry fueled by contrasting driving styles; da Matta's calculated approach clashes with Dubois's aggressive, risk-taking tactics."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka is always on da Matta's tail, making for fierce racing."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, even if they're falling apart.",
+    "Listens to a specific Brazilian samba track exactly 30 minutes before every race.",
+    "Taps the steering wheel three times before the green flag drops."
+  ],
+  "nickname": "The Fortaleza",
+  "famousQuote": "\"Racing isn't just about speed; it's about strategy, patience, and knowing when to strike. It's a chess match at 200 miles per hour.\"",
+  "careerHighlight": "Winning the Brazilian Grand Prix in front of his home crowd, a victory he dedicated to his late father.",
+  "careerLowPoint": "Suffering a mechanical failure while leading the 24 Hours of Le Mans with only an hour remaining, denying him a likely victory."
+}

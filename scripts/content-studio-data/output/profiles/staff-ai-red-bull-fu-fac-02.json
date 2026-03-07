@@ -1,0 +1,22 @@
+{
+  "name": "Wei Lim",
+  "nationality": "Singaporean",
+  "age": 34,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Wei's journey into motorsport began with a childhood fascination for Formula 1. Growing up in Singapore, he spent countless hours tinkering with model cars and devouring any technical information he could find. This passion led him to pursue a degree in Mechanical Engineering, specializing in composite materials. After graduating, he gained valuable experience at a local aerospace firm, honing his skills in carbon fiber fabrication and repair.\n\nHis meticulous approach and keen eye for detail quickly caught the attention of Red Bull Racing. As a composite technician, Wei thrives on the challenge of pushing the boundaries of material science. He is known for his innovative solutions to complex engineering problems, often devising novel techniques to improve the performance and durability of the car's aerodynamic components. Wei's dedication and problem-solving skills have made him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "dark brown",
+    "facialHair": "goatee",
+    "description": "Wei is of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Insists on using a specific brand of carbon fiber epoxy.",
+    "Has a habit of humming quietly while working on intricate repairs."
+  ]
+}

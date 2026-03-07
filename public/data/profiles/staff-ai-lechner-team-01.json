@@ -1,0 +1,22 @@
+{
+  "name": "Arun Patel",
+  "nationality": "Indian",
+  "age": 60,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Arun's journey into motorsport began in his youth, tinkering with scooters in his family's garage in Mumbai. After graduating with a degree in mechanical engineering, he quickly found his niche optimizing performance for local rally teams. He steadily climbed the ranks, moving from grassroots racing to formula cars, eventually landing a role as a junior engineer at a European racing outfit. \n\nArun's pragmatic approach stems from years of facing resource constraints and needing to find creative solutions. He excels at identifying the most impactful areas for improvement and implementing practical, data-driven strategies. His experience makes him a valuable asset, especially in environments where reliability and consistency are key. He is known for his meticulous attention to detail and ability to calmly troubleshoot under pressure, making him an indispensable figure in the garage.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Trimmed grey mustache",
+    "description": "A man of medium build, Arun has a focused look and a calm demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer simulations.",
+    "Insists on drinking chai at precisely 10:30 AM every day, regardless of the situation.",
+    "Has a habit of muttering calculations under his breath while observing the car."
+  ]
+}

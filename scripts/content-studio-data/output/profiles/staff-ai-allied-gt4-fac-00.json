@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 41,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Kenji's passion for motorsport ignited during his university days, fueled by late-night races and technical discussions with his engineering cohort. He initially honed his skills in the automotive industry, working on vehicle dynamics and control systems. However, the allure of pushing the boundaries of performance within a simulated environment drew him to motorsport. He joined Allied Racing five years ago, determined to bridge the gap between virtual and real-world racing.\n\nKenji's approach to simulator engineering is meticulous and data-driven. He believes in a hands-on approach, often spending countless hours fine-tuning the simulator's parameters to accurately replicate the nuances of various tracks and vehicle setups. His dedication to realism has earned him the respect of the drivers, who rely on his expertise to prepare for races. Kenji is also known for his innovative solutions to complex problems, consistently seeking ways to improve the simulator's fidelity and enhance its usability. What sets him apart is his capacity to work independently and his relentless need to improve.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "Kenji is of average height with a focused expression, often seen tinkering with his tablet."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against his chin when deep in thought.",
+    "Insists on using only Japanese-made tools and equipment in his workspace."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan van Dijk",
+  "nationality": "Dutch",
+  "age": 36,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jan's journey into motorsport began with a childhood fascination for the intricate workings of machinery. Growing up near Zandvoort, the roar of engines became the soundtrack to his life. After completing his vocational training in mechanical engineering, he specialized in fabrication, finding immense satisfaction in crafting and assembling high-performance components.\n\nJan excels in translating technical drawings into tangible reality. His meticulous approach ensures precision and reliability in every weld and fitting. He thrives in collaborative environments and is always eager to share his knowledge with junior team members. His reputation for quality and adaptability makes him a valuable asset to any racing team.\n\nWhat sets Jan apart is his innovative problem-solving skills when faced with on-track damage. He has a knack for devising ingenious temporary repairs that allow the car to continue racing, often exceeding expectations.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark blond",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A sturdy build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches.",
+    "Has a habit of humming classical music while working.",
+    "Meticulously cleans his tools at the end of each shift."
+  ]
+}

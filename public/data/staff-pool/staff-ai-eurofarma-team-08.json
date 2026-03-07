@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Milena Petrović",
+    "nationality": "Serbian",
+    "age": 46,
+    "gender": "female",
+    "role": "performance_engineer",
+    "bio": "Milena's passion for motorsport ignited during her childhood, watching Formula 1 races with her father. She pursued a degree in Mechanical Engineering at the University of Belgrade, focusing on aerodynamics and vehicle dynamics. After graduation, she honed her skills at a local rally team before transitioning to single-seaters, working her way up through various junior categories.\n\nAt Eurofarma RC, Milena excels at analyzing telemetry data to optimize car setup for each race. Her meticulous approach and ability to quickly identify areas for improvement make her a valuable asset to the team. She believes in fostering open communication between the drivers and engineers to create a collaborative environment where everyone can contribute their best.\n\nMilena's distinctive trait is her unwavering commitment to finding innovative solutions, often challenging conventional wisdom to unlock hidden performance gains. She's always eager to experiment with new ideas and push the boundaries of what's possible.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, straight hair, often tied back in a practical ponytail.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Milena is of average height with a slender build and a focused, intense gaze."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with calculations and diagrams.",
+      "Has a habit of tapping her pen against her teeth when deep in thought.",
+      "Insists on having a cup of strong black coffee before every race."
+    ]
+  }
+]

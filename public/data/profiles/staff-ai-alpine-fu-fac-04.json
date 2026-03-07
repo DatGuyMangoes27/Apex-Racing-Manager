@@ -1,0 +1,22 @@
+{
+  "name": "Katarzyna Lewandowska",
+  "nationality": "Polish",
+  "age": 41,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Katarzyna's fascination with motorsport began in her childhood, watching rally races in the Polish countryside. This passion led her to pursue a degree in electrical engineering at the Warsaw University of Technology. After graduating, she joined a small engineering firm specializing in automotive electronics, quickly gaining experience in sensor technology and control systems. Her move to Formula 1 was driven by a desire to work at the cutting edge of automotive innovation. \n\nAt Alpine, Katarzyna focuses on developing and optimizing the car's electronic systems, ensuring peak performance and reliability. She's known for her meticulous approach and ability to troubleshoot complex problems under pressure. Katarzyna's distinctive strength lies in her ability to translate theoretical concepts into practical solutions, making her a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, straight with subtle highlights and a side parting.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Katarzyna is of average height with a focused and intelligent expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and equations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on testing every new electronic component herself before it's integrated into the car."
+  ]
+}

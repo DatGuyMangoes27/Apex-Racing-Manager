@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 43,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport began unconventionally. Initially a computer science graduate from the Pontifical Catholic University of Peru, he found himself drawn to the intricate data analysis required for optimizing race car performance. His expertise in network infrastructure and data security was honed through a decade of experience in the financial sector before he made the leap to motorsport. He joined Cool Racing five years ago, tasked with building a robust and secure IT infrastructure to support the team's growing data needs.\n\nRicardo believes in a proactive, rather than reactive approach to IT management. He spends a significant amount of time anticipating potential system vulnerabilities and implementing preemptive solutions. He is known for his meticulous planning and his ability to explain complex technical issues in a clear and understandable way to the rest of the team. Ricardo's distinctive trait is his unwavering commitment to data integrity and security, ensuring that Cool Racing's sensitive information remains protected from both internal and external threats.\n\nHis ambition extends beyond simply maintaining the current IT systems. Ricardo is constantly exploring new technologies and innovative solutions to improve data processing speeds, enhance real-time analysis capabilities, and ultimately, contribute to improved performance on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is a stocky man with a serious demeanor, often seen with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Insists on using a physical keyboard, even when a touchscreen would be more convenient.",
+    "Has a habit of muttering code snippets under his breath when troubleshooting."
+  ]
+}

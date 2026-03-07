@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0375",
+  "name": "Sol y Sombra Sunglasses",
+  "category": "lifestyle",
+  "tier": "mid",
+  "country": "Spain",
+  "description": "Sunglasses designed for the Spanish sun.",
+  "story": "Sol y Sombra is a Spanish brand that celebrates the vibrant lifestyle of the Iberian Peninsula. We believe in embracing life's adventures with style and clarity. Motorsport embodies the passion and precision that we value, and we seek a partnership that reflects our brand's energy and connects us with a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0375.png"
+}

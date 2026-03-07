@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Chilean",
+  "age": 28,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for go-karts, fueled by watching local races in Santiago. He quickly transitioned from spectator to participant, spending countless hours tinkering with his own kart to squeeze out every ounce of performance. This passion led him to pursue a degree in mechanical engineering, where he specialized in simulation and modeling.\n\nUpon graduation, Ricardo joined Sodi Kart Factory as a simulator engineer. He is known for his meticulous approach to data analysis and his ability to translate complex simulations into actionable insights for the drivers. Ricardo believes in pushing the boundaries of simulator technology to bridge the gap between virtual and real-world performance. His demanding nature pushes his colleagues to strive for the best possible outcomes.\n\nRicardo is always looking for new ways to improve the correlation between the simulator and the track, constantly experimenting with different modeling techniques and validation methods. His 'big picture' thinking has helped the team identify several key areas for performance improvement, making him a valuable asset to Sodi Kart Factory.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight side part",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with equations and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating the simulator himself before every major test session."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Major General Eleanor Brooke",
+  "nationality": "British",
+  "age": 58,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Eleanor Brooke is a Major General in the British Army, a career soldier who has risen through the ranks through a combination of strategic brilliance and unwavering dedication. Known for her reserved demeanor and sincere approach, she nonetheless possesses a warm and surprisingly playful side, often revealed during downtime with colleagues. While some find her occasionally judgmental, most appreciate her directness and commitment to excellence. She is an avid supporter of military charities, and often attends events to raise funds. She has a distinguished service record, including deployments in several conflict zones, and is now involved in high-level strategic planning within the Ministry of Defence. A racing driver might cross paths with her at a charity event, or through military-sponsored motorsport initiatives.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Eleanor is a woman of medium height with a strong, athletic build. Her face bears the marks of someone who has spent time outdoors, but her eyes are sharp and intelligent."
+  },
+  "connectionToMotorsport": "The British Army actively supports motorsport as a means of promoting engineering careers and fostering teamwork. Eleanor, in her role, occasionally attends races to represent the armed forces and meet with potential recruits and sponsors.",
+  "meetingContext": "The player could meet Eleanor at a military-sponsored motorsport event, perhaps a race day or a charity function supporting veterans, or through a mutual contact in the business world.",
+  "conversationTopics": [
+    "The importance of discipline and teamwork",
+    "The latest advancements in military technology and engineering",
+    "Her love of opera and classical music",
+    "Her passion for tennis",
+    "The challenges facing women in leadership roles"
+  ],
+  "canHelp": [
+    "Provide access to potential sponsorship opportunities within the military and related industries.",
+    "Offer connections to high-profile individuals in the business and political spheres.",
+    "Provide advice on leadership and strategic decision-making."
+  ],
+  "personality_summary": "A reserved yet warm military officer with a sharp mind and a playful side, committed to excellence and strategic thinking."
+}

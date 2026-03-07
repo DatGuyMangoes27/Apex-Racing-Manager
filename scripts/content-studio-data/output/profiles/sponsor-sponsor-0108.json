@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0108",
+  "name": "Kaua Games",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "New Zealand",
+  "description": "Level up your game with Kaua Games.",
+  "story": "Kaua Games is a leading game developer based in Auckland, New Zealand, known for its innovative racing simulators. Seeing the crossover between virtual and real-world racing, they sponsor motorsport to test their technology and connect with a passionate audience. They seek a team that embodies the spirit of innovation and pushes the boundaries of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "New Zealand"
+    ],
+    "minWins": 3,
+    "minPodiums": 6
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0108.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hakim Razali",
+  "nationality": "Malaysian",
+  "age": 24,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Hakim's journey into motorsport began unconventionally, not with a passion for racing itself, but with a fascination for the complex IT infrastructure that underpins modern F1. While studying Computer Science at the University of Malaya, he developed an interest in real-time data analysis and the challenges of maintaining system stability under immense pressure. An internship with a local racing team solidified his path, exposing him to the practical applications of his skills in a high-stakes environment.\n\nJoining McLaren Racing was a dream come true. Hakim's approach is rooted in meticulous planning and proactive problem-solving. He believes in anticipating potential issues before they arise, ensuring smooth operations during critical race moments. His focus extends beyond immediate tasks; he’s constantly exploring innovative solutions to optimize data flow and enhance the team’s analytical capabilities. What makes Hakim stand out is his ability to bridge the gap between theoretical knowledge and practical application, translating complex technical concepts into actionable strategies for the team.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "dark brown",
+    "facialHair": "trimmed goatee",
+    "description": "Hakim is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Insists on using a mechanical keyboard with loud, clicky keys."
+  ]
+}

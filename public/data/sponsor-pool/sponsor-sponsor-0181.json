@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0181",
+  "name": "DanaMakmur Investama",
+  "category": "finance",
+  "tier": "high",
+  "country": "Indonesia",
+  "description": "Investing in Indonesia's future, one race at a time.",
+  "story": "DanaMakmur Investama is a leading Indonesian investment firm focused on supporting growth industries within the country. Seeing the rising popularity and professionalization of motorsport, they view sponsorship as a way to connect with a younger, aspirational demographic. They aim to cultivate brand awareness and associate themselves with high performance and technological advancement.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Indonesia"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0181.png"
+}

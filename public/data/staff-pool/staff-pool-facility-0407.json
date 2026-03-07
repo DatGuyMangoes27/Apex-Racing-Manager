@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 35,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, spent tinkering with his grandfather's vintage motorcycles in rural Spain. He honed his skills through vocational training and gained initial experience at a local automotive workshop before setting his sights on racing. He believes precision and dedication are paramount in machining, striving to create parts that not only meet specifications but also enhance performance. Ricardo is driven by a desire to contribute to a winning team, and his demanding nature pushes himself and those around him to achieve excellence.\n\nWhile he is entry-level, Ricardo is eager to learn and improve his abilities under experienced direction. He is always looking for ways to streamline the machining process and reduce waste. His ambition and quick learning ability make him a valuable asset to any race team. He is especially adept at using CAD/CAM software to design and manufacture complex parts.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo has a stocky build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his pencils to a needle point.",
+    "Insists on listening to classical music while working, even with headphones.",
+    "Meticulously cleans his workspace before and after each task."
+  ]
+}

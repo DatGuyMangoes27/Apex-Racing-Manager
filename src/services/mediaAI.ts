@@ -6,6 +6,8 @@
  */
 
 import { MediaTone, MediaPersona, MEDIA_REP_MULTIPLIERS } from '@/store/careerStore'
+import { type ImageCategory } from '@/data/stock-images'
+import { getNextGeminiApiKey } from '@/services/geminiKeyRotation'
 
 // ============================================
 // TYPES
@@ -398,9 +400,69 @@ function safeParseJSON(content: string): any {
     console.log('[MediaAI] First parse attempt failed, trying to repair JSON...')
     console.log('[MediaAI] Problematic JSON (first 500 chars):', jsonStr.substring(0, 500))
     
-    // Step 4: Try to repair truncated JSON by extracting complete question objects
+    // Step 4: Generic array extraction - find any "key": [...] with complete objects
     try {
-      // Find all complete question objects using regex
+      const arrayKeyMatch = jsonStr.match(/"(\w+)"\s*:\s*\[/)
+      if (arrayKeyMatch) {
+        const arrayKey = arrayKeyMatch[1]
+        const arrayStart = jsonStr.indexOf('[', arrayKeyMatch.index!)
+        const completeObjects: any[] = []
+        let i = arrayStart + 1
+        
+        while (i < jsonStr.length) {
+          // Skip whitespace and commas
+          while (i < jsonStr.length && /[\s,]/.test(jsonStr[i])) i++
+          
+          if (jsonStr[i] === '{') {
+            // Found start of an object, try to find its end via brace balancing
+            let braceCount = 0
+            const objStart = i
+            let inString = false
+            let escaped = false
+            let complete = false
+            
+            for (let j = i; j < jsonStr.length; j++) {
+              const ch = jsonStr[j]
+              if (escaped) { escaped = false; continue }
+              if (ch === '\\') { escaped = true; continue }
+              if (ch === '"' && !escaped) { inString = !inString; continue }
+              if (inString) continue
+              if (ch === '{') braceCount++
+              if (ch === '}') braceCount--
+              if (braceCount === 0) {
+                // Found complete object
+                try {
+                  const objStr = jsonStr.substring(objStart, j + 1)
+                  const obj = JSON.parse(objStr)
+                  completeObjects.push(obj)
+                } catch (_e) {
+                  // Skip malformed object
+                }
+                i = j + 1
+                complete = true
+                break
+              }
+            }
+            
+            if (!complete) break // Incomplete object (truncated), stop
+          } else if (jsonStr[i] === ']') {
+            break // End of array
+          } else {
+            i++
+          }
+        }
+        
+        if (completeObjects.length > 0) {
+          console.log('[MediaAI] Generic extraction: found', completeObjects.length, 'complete objects in "' + arrayKey + '" array')
+          return { [arrayKey]: completeObjects }
+        }
+      }
+    } catch (e) {
+      console.log('[MediaAI] Generic array extraction failed:', e)
+    }
+    
+    // Step 5: Try question-specific extraction for press conference responses
+    try {
       const questionRegex = /\{\s*"question"\s*:\s*"([^"]+)"\s*,\s*"context"\s*:\s*"([^"]+)"\s*,\s*"rivalMentioned"\s*:\s*(?:null|"[^"]*")\s*,\s*"options"\s*:\s*\[([\s\S]*?)\]\s*\}/g
       const completeQuestions: any[] = []
       let match
@@ -421,37 +483,6 @@ function safeParseJSON(content: string): any {
       }
     } catch (e) {
       console.log('[MediaAI] Question extraction failed:', e)
-    }
-    
-    // Step 5: Try simpler extraction - just find the first complete question
-    try {
-      // Look for a complete question object with at least one option
-      const simpleQuestionMatch = jsonStr.match(/\{\s*"question"\s*:\s*"([^"]+)"[\s\S]*?"options"\s*:\s*\[[\s\S]*?\{[^}]+\}[\s\S]*?\][\s\S]*?\}/)
-      if (simpleQuestionMatch) {
-        // Try to find where this object ends properly
-        let objStr = simpleQuestionMatch[0]
-        
-        // Balance braces
-        let braceCount = 0
-        let endIndex = 0
-        for (let i = 0; i < objStr.length; i++) {
-          if (objStr[i] === '{') braceCount++
-          if (objStr[i] === '}') braceCount--
-          if (braceCount === 0) {
-            endIndex = i + 1
-            break
-          }
-        }
-        
-        if (endIndex > 0) {
-          objStr = objStr.substring(0, endIndex)
-          const question = JSON.parse(objStr)
-          console.log('[MediaAI] Extracted single question from truncated JSON')
-          return { questions: [question] }
-        }
-      }
-    } catch (e) {
-      console.log('[MediaAI] Simple extraction also failed')
     }
     
     throw firstError
@@ -489,38 +520,7 @@ Response format must be valid JSON matching the schema provided.`
  * Uses the same Gemini key as the commentary system
  */
 async function getGeminiKey(): Promise<string | null> {
-  try {
-    // First try commentary settings (primary location)
-    const commentaryStr = localStorage.getItem('commentary-settings')
-    if (commentaryStr) {
-      const commentary = JSON.parse(commentaryStr)
-      if (commentary?.geminiKey) {
-        return commentary.geminiKey
-      }
-    }
-    
-    // Try to get from window.electron if available
-    if (typeof window !== 'undefined' && window.electron?.getSettings) {
-      const settings = await window.electron.getSettings()
-      if (settings?.geminiApiKey) {
-        return settings.geminiApiKey
-      }
-    }
-    
-    // Fallback to career-settings (legacy)
-    const settingsStr = localStorage.getItem('career-settings')
-    if (settingsStr) {
-      const settings = JSON.parse(settingsStr)
-      if (settings?.state?.geminiApiKey) {
-        return settings.state.geminiApiKey
-      }
-    }
-    
-    return null
-  } catch (e) {
-    console.error('[MediaAI] Failed to get API key:', e)
-    return null
-  }
+  return getNextGeminiApiKey()
 }
 
 /**
@@ -1217,6 +1217,8 @@ export interface InterviewContext {
   recentWin?: boolean
   recentPodium?: boolean
   recentDNF?: boolean
+  /** Explicit topic so AI does not ask race questions for intro/onboarding interviews */
+  interviewTopic?: 'onboarding' | 'intro' | 'race_week' | 'post_race' | 'general'
 }
 
 const INTERVIEW_SYSTEM_PROMPT = `You are generating interview questions for a motorsport driver. The interview tier determines complexity and stakes:
@@ -1389,10 +1391,15 @@ function buildInterviewPrompt(context: InterviewContext, count: number): string 
   
   let additionalContext = ''
   
-  // RACE WEEK CONTEXT - Critical for contextual questions
-  if (context.isRaceWeek && context.upcomingTrack) {
+  // Explicit topic: intro/onboarding = NO race or result questions
+  if (context.interviewTopic === 'onboarding' || context.interviewTopic === 'intro') {
+    additionalContext += `\n⚠️ TOPIC: INTRO/ONBOARDING INTERVIEW. This is the driver's first or early media appearance (e.g. joining the team, intro press).
+Ask about: background, why they joined the team, goals for the season, getting to know the team, personal motivation.
+Do NOT ask about: specific race results, championship position, recent races, last weekend, or any race that has already happened.
+Keep questions appropriate for someone who may not have raced yet for this team.`
+  } else if (context.interviewTopic === 'race_week' && context.upcomingTrack) {
     additionalContext += `\n🏁 TIMING: RACE WEEK - Upcoming race at ${context.upcomingTrack}. Questions should focus on preparation and expectations.`
-  } else if (context.isPostRace && context.lastRaceResult) {
+  } else if (context.interviewTopic === 'post_race' && context.lastRaceResult) {
     if (context.recentWin) {
       additionalContext += `\n🏆 TIMING: POST-RACE - Just WON at ${context.lastRaceResult.trackName}! Questions should celebrate the victory.`
     } else if (context.recentPodium) {
@@ -1402,24 +1409,41 @@ function buildInterviewPrompt(context: InterviewContext, count: number): string 
     } else {
       additionalContext += `\n🏎️ TIMING: POST-RACE - Finished P${context.lastRaceResult.position} at ${context.lastRaceResult.trackName}. Questions about the weekend.`
     }
-  } else {
-    additionalContext += `\n📅 TIMING: OFF-WEEK - Between races. More general career/personal questions.`
+  } else if (!context.interviewTopic || context.interviewTopic === 'general') {
+    // RACE WEEK CONTEXT - only when no explicit topic or general
+    if (context.isRaceWeek && context.upcomingTrack) {
+      additionalContext += `\n🏁 TIMING: RACE WEEK - Upcoming race at ${context.upcomingTrack}. Questions should focus on preparation and expectations.`
+    } else if (context.isPostRace && context.lastRaceResult) {
+      if (context.recentWin) {
+        additionalContext += `\n🏆 TIMING: POST-RACE - Just WON at ${context.lastRaceResult.trackName}! Questions should celebrate the victory.`
+      } else if (context.recentPodium) {
+        additionalContext += `\n🥈 TIMING: POST-RACE - Just finished P${context.lastRaceResult.position} at ${context.lastRaceResult.trackName}. Questions about the strong result.`
+      } else if (context.recentDNF) {
+        additionalContext += `\n💔 TIMING: POST-RACE - DNF at ${context.lastRaceResult.trackName}. Questions about the disappointment.`
+      } else {
+        additionalContext += `\n🏎️ TIMING: POST-RACE - Finished P${context.lastRaceResult.position} at ${context.lastRaceResult.trackName}. Questions about the weekend.`
+      }
+    } else {
+      additionalContext += `\n📅 TIMING: OFF-WEEK - Between races. More general career/personal questions.`
+    }
   }
   
-  if (context.lastRaceResult && !context.isRaceWeek) {
-    additionalContext += `\nLast race: P${context.lastRaceResult.position} at ${context.lastRaceResult.trackName}${context.lastRaceResult.dnf ? ' (DNF)' : ''}`
-  }
-  if (context.championshipPosition) {
-    additionalContext += `\nChampionship position: P${context.championshipPosition}`
-  }
-  if (context.contractExpiring) {
-    additionalContext += `\nContract status: EXPIRING - hot topic!`
-  }
-  if (context.rivalName) {
-    additionalContext += `\nKey rival: ${context.rivalName}`
-  }
-  if (context.controversyLevel && context.controversyLevel > 30) {
-    additionalContext += `\nDriver is currently under media scrutiny (controversy level: ${context.controversyLevel})`
+  if (context.interviewTopic !== 'onboarding' && context.interviewTopic !== 'intro') {
+    if (context.lastRaceResult && !context.isRaceWeek) {
+      additionalContext += `\nLast race: P${context.lastRaceResult.position} at ${context.lastRaceResult.trackName}${context.lastRaceResult.dnf ? ' (DNF)' : ''}`
+    }
+    if (context.championshipPosition) {
+      additionalContext += `\nChampionship position: P${context.championshipPosition}`
+    }
+    if (context.contractExpiring) {
+      additionalContext += `\nContract status: EXPIRING - hot topic!`
+    }
+    if (context.rivalName) {
+      additionalContext += `\nKey rival: ${context.rivalName}`
+    }
+    if (context.controversyLevel && context.controversyLevel > 30) {
+      additionalContext += `\nDriver is currently under media scrutiny (controversy level: ${context.controversyLevel})`
+    }
   }
 
   return `Generate ${count} interview questions for this scenario:
@@ -1671,6 +1695,12 @@ export interface AIPostContext {
   recentWin?: boolean
   recentPodium?: boolean
   recentDNF?: boolean
+  // Enriched team context (for contextual posts)
+  teamTier?: string
+  staffCount?: number
+  carCount?: number
+  seasonsCompleted?: number
+  sponsorCount?: number
 }
 
 /**
@@ -1811,6 +1841,24 @@ function buildSocialPostPrompt(context: AIPostContext): string {
     additionalContext += '\nCurrently under media scrutiny'
   }
   additionalContext += `\nFollower count: ${context.followerCount.toLocaleString()}`
+  
+  // Enriched team context for more relevant posts
+  if (context.teamTier) {
+    additionalContext += `\nTeam tier: ${context.teamTier}`
+  }
+  if (context.staffCount !== undefined) {
+    const teamSize = context.staffCount <= 3 ? 'tiny skeleton crew' : context.staffCount <= 8 ? 'small growing team' : context.staffCount <= 15 ? 'solid team' : 'large professional outfit'
+    additionalContext += `\nTeam size: ${context.staffCount} staff (${teamSize})`
+  }
+  if (context.carCount !== undefined) {
+    additionalContext += `\nCars: ${context.carCount}`
+  }
+  if (context.seasonsCompleted !== undefined && context.seasonsCompleted === 0) {
+    additionalContext += `\nFirst season - brand new to the sport`
+  }
+  if (context.sponsorCount !== undefined && context.sponsorCount === 0) {
+    additionalContext += `\nNo sponsors yet - self-funded operation`
+  }
 
   return `Generate a social media post for this racing driver:
 
@@ -2754,6 +2802,9 @@ export interface MediaDutyContext {
   seriesName: string
   currentWeek: number
   currentYear: number
+  dutyTitle?: string
+  dutyDescription?: string
+  sourceTemplateId?: string
   
   // Performance context
   practicePosition?: number
@@ -3030,11 +3081,15 @@ function buildMediaDutyPrompt(context: MediaDutyContext): string {
   }
   
   const promptQuestions = contextPrompts.slice(0, 3).join('\n- ')
+  const briefingText = context.dutyDescription?.trim()
   
   return `Generate 4 media statement options for a team owner.
 
 MEDIA DUTY: ${config?.name || context.dutyType}
 DESCRIPTION: ${config?.description || 'Mandatory media appearance'}
+${context.dutyTitle ? `ACTIVITY TITLE: ${context.dutyTitle}` : ''}
+${briefingText ? `ACTIVITY BRIEF: ${briefingText}` : ''}
+${context.sourceTemplateId ? `ACTIVITY TEMPLATE: ${context.sourceTemplateId}` : ''}
 TEAM: ${context.teamName}
 TIER: ${context.teamTier}
 SERIES: ${context.seriesName}
@@ -3046,6 +3101,10 @@ ${situationContext || 'Standard media session'}
 
 KEY TOPICS TO CONSIDER:
 - ${promptQuestions || 'General team performance and outlook'}
+
+PRIORITY:
+- Anchor each option to the specific activity brief when provided.
+- Statements must directly address the activity topic and avoid generic race-weekend filler.
 
 Generate 4 distinct options with different tones and risk levels:
 1. SAFE/DIPLOMATIC - Low risk, modest gains
@@ -3171,17 +3230,51 @@ function getFallbackDutyOptions(context: MediaDutyContext): MediaDutyOption[] {
 // ============================================
 
 export type SocialPostType = 
+  // Race Weekend
   | 'race_result' 
+  | 'race_preview'
   | 'practice_update' 
   | 'qualifying_result' 
+  // Team & People
   | 'team_update' 
   | 'behind_scenes' 
-  | 'fan_engagement' 
-  | 'sponsor_thank_you'
   | 'driver_spotlight'
+  | 'staff_appreciation'
+  | 'new_signing'
+  // Development & Facilities
   | 'development_tease'
-  | 'throwback'
+  | 'upgrade_reveal'
+  | 'factory_tour'
+  // Sponsors & Business
+  | 'sponsor_thank_you'
+  | 'sponsor_activation'
+  | 'merch_announcement'
+  // Fan & Community
+  | 'fan_engagement' 
+  | 'poll_question'
+  | 'charity_community'
+  // Culture & Rivalry
   | 'motivation'
+  | 'throwback'
+  | 'rivalry_banter'
+  | 'milestone_celebration'
+  | 'championship_push'
+  // Activity-Linked Posts (contextual posts tied to calendar activities)
+  | 'activity_team_briefing'
+  | 'activity_season_launch'
+  | 'activity_testing'
+  | 'activity_race_debrief'
+  | 'activity_sponsor_event'
+  | 'activity_board_meeting'
+  | 'activity_facility_walkthrough'
+  | 'activity_charity_event'
+  | 'activity_pre_race_briefing'
+  // Early Career / Contextual Posts
+  | 'team_introduction'
+  | 'journey_begins'
+  | 'hiring_call'
+  | 'underdog_story'
+  | 'sponsor_search'
 
 export interface TeamSocialPostContext {
   postType: SocialPostType
@@ -3210,9 +3303,37 @@ export interface TeamSocialPostContext {
   isRaceWeek?: boolean
   // Development
   recentUpgrades?: string[]
+  completedUpgrades?: string[]
   // Streaks/milestones
   currentStreak?: string
   milestones?: string[]
+  // Staff & People
+  staffNames?: string[]
+  recentSigningName?: string
+  recentSigningRole?: string
+  // Facilities
+  facilityNames?: string[]
+  // Merchandise
+  hasMerch?: boolean
+  merchCollectionName?: string
+  // Rivalry
+  rivalTeamNames?: string[]
+  // Totals for milestones
+  totalRaces?: number
+  totalWins?: number
+  totalPodiums?: number
+  // Enriched context for contextual posts
+  staffCount?: number
+  facilityStaffCount?: number
+  carCount?: number
+  seasonsCompleted?: number
+  seriesName?: string
+  sponsorCount?: number
+  budgetRunwayWeeks?: number
+  // Activity-linked context
+  recentActivityName?: string
+  recentActivityDescription?: string
+  recentActivityCategory?: string
 }
 
 export interface SocialPostOption {
@@ -3236,17 +3357,21 @@ const TEAM_SOCIAL_POST_SYSTEM_PROMPT = `You are a social media manager for a pro
 
 Rules:
 - Posts should be 1-2 sentences (social media appropriate length)
-- Include relevant hashtags
+- Include relevant hashtags (2-4 per post)
 - Match the requested tone and context
 - Consider sponsor visibility but don't be too promotional
 - Balance fan engagement with professional image
-- Be realistic about racing situations`
+- Be realistic about racing situations - NEVER reference results, races, or events that aren't explicitly provided in the context
+- Only mention qualifying positions, race results, or specific tracks if they appear in the SITUATION context
+- For non-race content (team updates, behind scenes, motivation, etc.) focus on team culture, work ethic, and genuine emotion
+- Use appropriate emojis sparingly (1-2 per post max)
+- Make posts feel like they come from a real racing team social media account`
 
 /**
  * Generate AI social media post options for team accounts
  */
 export async function generateSocialPostOptions(context: TeamSocialPostContext): Promise<SocialPostOption[] | null> {
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY
+  const apiKey = await getGeminiKey()
   
   if (!apiKey) {
     console.log('[MediaAI] No API key, using fallback social posts')
@@ -3256,22 +3381,20 @@ export async function generateSocialPostOptions(context: TeamSocialPostContext):
   const prompt = buildTeamSocialPostPrompt(context)
   
   try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch(GEMINI_API_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'AMS2 Career Manager'
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-lite-001',
+        model: 'gemini-2.5-flash',
         messages: [
           { role: 'system', content: TEAM_SOCIAL_POST_SYSTEM_PROMPT },
           { role: 'user', content: prompt }
         ],
         temperature: 0.85,
-        max_tokens: 2000,
+        max_tokens: 3000,
         response_format: { type: 'json_object' }
       })
     })
@@ -3291,8 +3414,19 @@ export async function generateSocialPostOptions(context: TeamSocialPostContext):
     const parsed = safeParseJSON(content)
     const posts = parsed?.posts || parsed
     
-    if (!Array.isArray(posts) || posts.length < 3) {
+    if (!Array.isArray(posts) || posts.length < 1) {
       return getTeamFallbackSocialPosts(context)
+    }
+    
+    // If we got fewer than 4 posts (e.g. from truncated JSON recovery), pad with fallback posts
+    if (posts.length < 4) {
+      console.log(`[MediaAI] Only recovered ${posts.length} AI posts, padding with fallbacks`)
+      const fallbacks = getTeamFallbackSocialPosts(context)
+      while (posts.length < 4 && fallbacks.length > 0) {
+        // Add fallback posts that aren't duplicates
+        const fallback = fallbacks.shift()!
+        posts.push(fallback)
+      }
     }
     
     return posts.map((post: any, index: number) => ({
@@ -3354,6 +3488,9 @@ function buildTeamSocialPostPrompt(context: TeamSocialPostContext): string {
   if (context.primarySponsor) {
     situationContext += `Primary sponsor: ${context.primarySponsor}\n`
   }
+  if (context.allSponsors && context.allSponsors.length > 1) {
+    situationContext += `All sponsors: ${context.allSponsors.join(', ')}\n`
+  }
   
   // Streaks
   if (context.currentStreak) {
@@ -3365,15 +3502,137 @@ function buildTeamSocialPostPrompt(context: TeamSocialPostContext): string {
     situationContext += `Race weekend: ${context.nextRaceTrack}\n`
   }
   
+  // Staff info (for staff_appreciation, new_signing)
+  if (context.staffNames && context.staffNames.length > 0) {
+    situationContext += `Key staff: ${context.staffNames.slice(0, 3).join(', ')}\n`
+  }
+  if (context.recentSigningName) {
+    situationContext += `Recent signing: ${context.recentSigningName} (${context.recentSigningRole || 'new member'})\n`
+  }
+  
+  // Facilities (for factory_tour)
+  if (context.facilityNames && context.facilityNames.length > 0) {
+    situationContext += `Facilities: ${context.facilityNames.join(', ')}\n`
+  }
+  
+  // Development (for upgrade_reveal)
+  if (context.completedUpgrades && context.completedUpgrades.length > 0) {
+    situationContext += `Completed upgrades: ${context.completedUpgrades.join(', ')}\n`
+  }
+  if (context.recentUpgrades && context.recentUpgrades.length > 0) {
+    situationContext += `In development: ${context.recentUpgrades.join(', ')}\n`
+  }
+  
+  // Merchandise (for merch_announcement)
+  if (context.hasMerch) {
+    situationContext += `Merchandise: Active online store\n`
+  }
+  if (context.merchCollectionName) {
+    situationContext += `Latest collection: ${context.merchCollectionName}\n`
+  }
+  
+  // Rivalry (for rivalry_banter)
+  if (context.rivalTeamNames && context.rivalTeamNames.length > 0) {
+    situationContext += `Rival teams: ${context.rivalTeamNames.join(', ')}\n`
+  }
+  
+  // Milestones (for milestone_celebration)
+  if (context.totalRaces) situationContext += `Total races: ${context.totalRaces}\n`
+  if (context.totalWins) situationContext += `Total wins: ${context.totalWins}\n`
+  if (context.totalPodiums) situationContext += `Total podiums: ${context.totalPodiums}\n`
+  if (context.milestones && context.milestones.length > 0) {
+    situationContext += `Milestones: ${context.milestones.join(', ')}\n`
+  }
+  
+  // Enriched team context (for contextual/activity-linked posts)
+  if (context.staffCount !== undefined) {
+    const teamSize = context.staffCount <= 3 ? 'tiny skeleton crew' : context.staffCount <= 8 ? 'small but growing' : context.staffCount <= 15 ? 'solid medium-sized' : 'large professional'
+    situationContext += `Team size: ${context.staffCount} staff (${teamSize} team)\n`
+  }
+  if (context.carCount !== undefined) {
+    situationContext += `Cars: ${context.carCount} car${context.carCount !== 1 ? 's' : ''}\n`
+  }
+  if (context.seasonsCompleted !== undefined) {
+    if (context.seasonsCompleted === 0) {
+      situationContext += `Career stage: Brand new team, first season\n`
+    } else {
+      situationContext += `Seasons completed: ${context.seasonsCompleted}\n`
+    }
+  }
+  if (context.seriesName) {
+    situationContext += `Series: ${context.seriesName}\n`
+  }
+  if (context.sponsorCount !== undefined && context.sponsorCount === 0) {
+    situationContext += `Sponsors: None yet - team is self-funded\n`
+  }
+  if (context.budgetRunwayWeeks !== undefined && context.budgetRunwayWeeks < 20) {
+    situationContext += `Financial situation: Tight budget (${context.budgetRunwayWeeks} weeks runway)\n`
+  }
+  
+  // Activity-linked context
+  if (context.recentActivityName) {
+    situationContext += `Recent activity: "${context.recentActivityName}"\n`
+    if (context.recentActivityDescription) {
+      situationContext += `Activity details: ${context.recentActivityDescription}\n`
+    }
+  }
+
+  // Post-type-specific instructions
+  const typeGuidance: Partial<Record<SocialPostType, string>> = {
+    race_result: 'Focus on the race result, performance, and what it means for the championship. Reference the actual position and track.',
+    race_preview: 'Build excitement for the upcoming race. Reference the track, team preparation, and what fans can expect.',
+    practice_update: 'Share insights from the practice session. Focus on car feel, lap times direction, and preparation. Reference actual qualifying position if available.',
+    qualifying_result: 'React to the qualifying result. Reference the actual grid position and what it means for the race.',
+    team_update: 'Share genuine team news - could be about operations, logistics, or general team activity.',
+    behind_scenes: 'Give fans a glimpse into the inner workings of the team - factory, debriefs, travel, setup work.',
+    driver_spotlight: 'Highlight the team driver - their dedication, personality, or recent performance. Make it personal.',
+    staff_appreciation: 'Celebrate the unsung heroes - engineers, mechanics, strategists. Name specific staff if available.',
+    new_signing: 'Welcome a new team member. Show excitement and what they bring to the team.',
+    development_tease: 'Tease upcoming technical developments without giving away details. Build anticipation.',
+    upgrade_reveal: 'Announce a completed technical upgrade. Show pride in the engineering achievement.',
+    factory_tour: 'Take fans through the team facilities. Reference specific areas like wind tunnel, sim, or workshop.',
+    sponsor_thank_you: 'Genuinely thank sponsors for their support. Reference them by name.',
+    sponsor_activation: 'Promote a sponsor partnership event, product tie-in, or activation. Make it feel natural, not forced.',
+    merch_announcement: 'Promote team merchandise - new collections, limited items, or fan gear. Create urgency.',
+    fan_engagement: 'Start a conversation with fans. Ask questions, share personal moments, or celebrate the fanbase.',
+    poll_question: 'Ask fans an engaging question or run a poll. Make it fun and motorsport-related.',
+    charity_community: 'Share community involvement, charity work, or social responsibility initiatives.',
+    motivation: 'Share motivational content about the journey, the grind, or the passion for racing.',
+    throwback: 'Look back at a memorable moment in the team\'s history. Use nostalgia.',
+    rivalry_banter: 'Engage in friendly competitive banter with rival teams. Keep it fun but edgy.',
+    milestone_celebration: 'Celebrate a team milestone - race count, follower milestone, anniversary, or achievement.',
+    championship_push: 'Rally fans behind the championship fight. Show determination and belief in the title push.',
+    // Activity-linked post guidance
+    activity_team_briefing: 'Share that the team just had a briefing. Mention preparation, strategy discussions, or the team coming together.',
+    activity_season_launch: 'Announce the official start of the season. Build excitement, set expectations, show ambition.',
+    activity_testing: 'Share testing session content - laps completed, car feedback, shakedown vibes. Focus on preparation.',
+    activity_race_debrief: 'Share that the team is analyzing the race. Focus on learning, data, and coming back stronger.',
+    activity_sponsor_event: 'Share highlights from a sponsor event. Show partnership value and professionalism.',
+    activity_board_meeting: 'Share that big decisions were made for the team\'s future. Be mysterious but optimistic.',
+    activity_facility_walkthrough: 'Give fans a tour of team facilities. Highlight capabilities and what the team has built.',
+    activity_charity_event: 'Share a charity event the team participated in. Show the team\'s human side and community involvement.',
+    activity_pre_race_briefing: 'Share pre-race preparation. The team is locked in and ready for race day.',
+    // Early career / contextual post guidance
+    team_introduction: 'Introduce the team to the world for the first time. Share the vision, the name, and what you stand for.',
+    journey_begins: 'Announce the start of a new racing career/team journey. Show excitement and ambition for what\'s ahead.',
+    hiring_call: 'Announce the team is looking for talent. Show ambition to grow and build something special.',
+    underdog_story: 'Embrace the underdog narrative. Show heart, determination, and the scrappy team spirit.',
+    sponsor_search: 'Subtly communicate the team is open to partnerships. Show value proposition without being desperate.',
+  }
+  
   return `Generate 4 social media post options for a ${context.teamTier}-tier racing team.
 
-POST TYPE: ${context.postType.replace('_', ' ')}
+POST TYPE: ${context.postType.replace(/_/g, ' ')}
 TEAM: ${context.teamName}
 ${context.driverName ? `DRIVER: ${context.driverName}` : ''}
 FOLLOWERS: ${context.followerCount?.toLocaleString() || '10,000'}
 
 SITUATION:
 ${situationContext || 'Regular team update'}
+
+POST GUIDANCE: ${typeGuidance[context.postType] || 'Generate authentic, engaging social media content.'}
+
+IMPORTANT: Only reference things that are mentioned in the SITUATION above. Do NOT invent race results, positions, or events that aren't listed. If no specific results are available, focus on general team spirit, preparation, or culture.
 
 Generate 4 distinct options with varying risk/reward:
 1. SAFE - Low risk, modest engagement
@@ -3405,71 +3664,243 @@ Return JSON:
 
 function getTeamFallbackSocialPosts(context: TeamSocialPostContext): SocialPostOption[] {
   const teamName = context.teamName
+  const teamTag = `#${teamName.replace(/\s+/g, '')}`
+  const driver = context.driverName || 'our driver'
+  const sponsor = context.primarySponsor || ''
   
-  const posts: SocialPostOption[] = [
-    {
-      id: 'social-fallback-1',
-      content: `Great work by the entire ${teamName} crew this week. Every detail matters in our pursuit of excellence. 💪`,
-      tone: 'professional',
-      hashtags: ['#TeamWork', '#Racing', '#Motorsport'],
-      effects: {
-        followerGain: 30,
-        engagementBoost: 3,
-        fanSentiment: 1,
-        sponsorSatisfaction: 1,
-        viralChance: 3,
-        backlashRisk: 2
-      },
-      includesMedia: 'photo'
-    },
-    {
-      id: 'social-fallback-2',
-      content: `Can't wait for the next challenge! ${teamName} is ready to show what we're made of. Who's with us? 🏁`,
-      tone: 'confident',
-      hashtags: ['#RaceReady', '#Racing', teamName.replace(/\s+/g, '')],
-      effects: {
-        followerGain: 75,
-        engagementBoost: 8,
-        fanSentiment: 2,
-        sponsorSatisfaction: 1,
-        viralChance: 10,
-        backlashRisk: 8
-      },
-      includesMedia: 'video'
-    },
-    {
-      id: 'social-fallback-3',
-      content: `To our incredible fans - your support means everything. Every cheer, every message, every mile traveled to see us. Thank you! ❤️`,
-      tone: 'humble',
-      hashtags: ['#Grateful', '#BestFans', '#Racing'],
-      effects: {
-        followerGain: 100,
-        engagementBoost: 12,
-        fanSentiment: 3,
-        sponsorSatisfaction: 2,
-        viralChance: 15,
-        backlashRisk: 3
-      },
-      includesMedia: 'photo'
-    },
-    {
-      id: 'social-fallback-4',
-      content: `Some teams talk. We let our results do the talking. Watch this space. 👀🔥`,
-      tone: 'aggressive',
-      hashtags: ['#WatchUs', '#Racing', '#Motorsport'],
-      effects: {
-        followerGain: 150,
-        engagementBoost: 15,
-        fanSentiment: 2,
-        sponsorSatisfaction: 1,
-        viralChance: 25,
-        backlashRisk: 20
-      },
-      includesMedia: 'graphic'
-    }
-  ]
+  // Type-specific fallback post sets
+  const typeFallbacks: Record<SocialPostType, SocialPostOption[]> = {
+    race_result: [
+      { id: 'fb-1', content: `Race complete. The team gave everything today at ${context.lastRaceTrack || 'the circuit'}. Time to debrief and come back stronger.`, tone: 'professional', hashtags: ['#RaceDay', '#Motorsport', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `P${context.lastRacePosition || '?'} today. Not where we want to be, but every race teaches us something. The fight continues! 🏁`, tone: 'confident', hashtags: ['#NeverGiveUp', '#Racing', teamTag], effects: { followerGain: 80, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `What a race! Huge effort from every single member of ${teamName}. These are the days we live for. Thank you to everyone who cheered us on!`, tone: 'exciting', hashtags: ['#RaceDay', '#TeamEffort', teamTag], effects: { followerGain: 120, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 3 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `We showed them what ${teamName} is made of today. This is just the beginning. 🔥`, tone: 'aggressive', hashtags: ['#JustTheBeginning', '#Racing', '#Motorsport'], effects: { followerGain: 160, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 18 }, includesMedia: 'graphic' },
+    ],
+    race_preview: [
+      { id: 'fb-1', content: `Race week! The team is locked in and focused. Looking forward to a competitive weekend at ${context.nextRaceTrack || 'the circuit'}.`, tone: 'professional', hashtags: ['#RaceWeek', '#Motorsport', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 3, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Bags packed, car loaded. ${context.nextRaceTrack || 'Race weekend'} here we come! Who's ready? 🏎️`, tone: 'exciting', hashtags: ['#RaceWeek', '#LetsGo', teamTag], effects: { followerGain: 70, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 3 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `The preparation has been intense. ${teamName} arrives at ${context.nextRaceTrack || 'this weekend'} with one goal: leave everything on the track.`, tone: 'confident', hashtags: ['#RacePrep', '#Determined', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `They won't see us coming this weekend. ${teamName} has something special planned. 👀`, tone: 'aggressive', hashtags: ['#WatchOut', '#RaceWeek', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 15 }, includesMedia: 'graphic' },
+    ],
+    practice_update: [
+      { id: 'fb-1', content: `Productive practice session in the books. Lots of data to analyze, the engineers are already hard at work.`, tone: 'professional', hashtags: ['#Practice', '#DataDriven', teamTag], effects: { followerGain: 25, engagementBoost: 3, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 2, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Good vibes from the garage after practice! The car is feeling better with every run. Onwards! 💪`, tone: 'confident', hashtags: ['#FP', '#Racing', teamTag], effects: { followerGain: 60, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Practice done. ${driver} says the car is feeling alive. The team has found something interesting in the setup.`, tone: 'exciting', hashtags: ['#Practice', '#Motorsport', teamTag], effects: { followerGain: 85, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Practice pace means nothing... but if it did, our rivals should be worried. Just saying. 😏`, tone: 'aggressive', hashtags: ['#Practice', '#JustSaying', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 0, viralChance: 18, backlashRisk: 20 }, includesMedia: 'graphic' },
+    ],
+    qualifying_result: [
+      { id: 'fb-1', content: `Qualifying complete. P${context.qualifyingPosition || '?'} on the grid. Solid baseline for tomorrow's race.`, tone: 'professional', hashtags: ['#Qualifying', '#GridPosition', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 3, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `P${context.qualifyingPosition || '?'} in qualifying! ${driver} extracted the maximum from the car today. Bring on the race! 🏁`, tone: 'exciting', hashtags: ['#Quali', '#Racing', teamTag], effects: { followerGain: 75, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Grid position locked in. ${teamName} knows that qualifying is only half the battle. The real fight starts tomorrow.`, tone: 'confident', hashtags: ['#Qualifying', '#RaceDay', teamTag], effects: { followerGain: 95, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Qualifying done. The car has more to give and we know it. Watch the race - that's where we'll show our hand. 🃏`, tone: 'aggressive', hashtags: ['#Qualifying', '#WatchTheRace', '#Motorsport'], effects: { followerGain: 145, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 16 }, includesMedia: 'graphic' },
+    ],
+    team_update: [
+      { id: 'fb-1', content: `Another busy week at ${teamName} HQ. The team continues to push forward on all fronts. Progress is progress.`, tone: 'professional', hashtags: ['#TeamUpdate', '#Racing', teamTag], effects: { followerGain: 30, engagementBoost: 3, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 3, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Great energy around the factory this week. When the whole team is pulling in the same direction, good things happen. 🔧`, tone: 'confident', hashtags: ['#TeamSpirit', '#Motorsport', teamTag], effects: { followerGain: 65, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Big changes happening behind the scenes at ${teamName}. We can't share everything yet, but trust us - it's exciting! 👀`, tone: 'exciting', hashtags: ['#StayTuned', '#TeamUpdate', teamTag], effects: { followerGain: 100, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 8 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `While other teams are talking, ${teamName} is working. The results will speak for themselves soon enough. 🔥`, tone: 'aggressive', hashtags: ['#GrindMode', '#Racing', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 18 }, includesMedia: 'graphic' },
+    ],
+    behind_scenes: [
+      { id: 'fb-1', content: `A look inside the ${teamName} workshop today. This is where the magic happens. 📷`, tone: 'professional', hashtags: ['#BTS', '#BehindTheScenes', teamTag], effects: { followerGain: 45, engagementBoost: 5, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Ever wondered what a race team does between events? Here's a sneak peek at life inside ${teamName}. 🏭`, tone: 'humble', hashtags: ['#BehindTheScenes', '#TeamLife', teamTag], effects: { followerGain: 80, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `Late nights at the factory. The level of detail that goes into every component is insane. This is what separates the good from the great.`, tone: 'confident', hashtags: ['#Dedication', '#BTS', teamTag], effects: { followerGain: 110, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 14, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `If our rivals could see what we're cooking up in here right now... let's just say they wouldn't sleep well tonight. 😤`, tone: 'aggressive', hashtags: ['#SecretWeapon', '#BehindTheScenes', '#Motorsport'], effects: { followerGain: 155, engagementBoost: 16, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 24, backlashRisk: 20 }, includesMedia: 'graphic' },
+    ],
+    driver_spotlight: [
+      { id: 'fb-1', content: `Spotlight on ${driver}. The dedication and work ethic this season has been phenomenal. We're proud to have them leading our charge.`, tone: 'professional', hashtags: ['#DriverSpotlight', '#Racing', teamTag], effects: { followerGain: 50, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `${driver} putting in the work on and off the track. First one in, last one out. That's the mentality we love at ${teamName}. 💪`, tone: 'confident', hashtags: ['#WorkEthic', '#Driver', teamTag], effects: { followerGain: 85, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 4 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `Not just a driver. A leader, a teammate, and a fierce competitor. ${driver} is the heart of ${teamName}.`, tone: 'humble', hashtags: ['#OurDriver', '#Motorsport', teamTag], effects: { followerGain: 105, engagementBoost: 11, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 13, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `${driver} doesn't just drive for ${teamName} - they ARE ${teamName}. And the competition better take notice. 🔥`, tone: 'aggressive', hashtags: ['#OurWeapon', '#Racing', '#Motorsport'], effects: { followerGain: 150, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 16 }, includesMedia: 'graphic' },
+    ],
+    staff_appreciation: [
+      { id: 'fb-1', content: `Shoutout to the incredible crew at ${teamName}. From the factory floor to the pit wall, every member makes this team what it is.`, tone: 'professional', hashtags: ['#TeamBehindTheTeam', '#Crew', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `These are the faces you don't always see on TV, but they're the reason we race. Thank you to every engineer, mechanic, and team member. 🙏`, tone: 'humble', hashtags: ['#UnsungHeroes', '#TeamAppreciation', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Best crew in the paddock? We think so. The dedication of our team is unmatched. This one's for you! ❤️`, tone: 'confident', hashtags: ['#BestCrew', '#Racing', teamTag], effects: { followerGain: 110, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 3 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Other teams see cars. We see the hundreds of hours by our incredible staff that make those cars fly. No other team works harder. Period.`, tone: 'aggressive', hashtags: ['#NoOneWorksHarder', '#TeamWork', '#Motorsport'], effects: { followerGain: 135, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 18, backlashRisk: 12 }, includesMedia: 'graphic' },
+    ],
+    new_signing: [
+      { id: 'fb-1', content: `Welcome to ${teamName}! We're excited to announce our latest addition to the team. Great things ahead.`, tone: 'professional', hashtags: ['#Welcome', '#NewSigning', teamTag], effects: { followerGain: 60, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `The family just got bigger! A warm welcome to our newest team member. We can't wait to get to work together. 🤝`, tone: 'exciting', hashtags: ['#JoinTheTeam', '#NewEra', teamTag], effects: { followerGain: 95, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 12, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Big signing for ${teamName}! This is someone who's going to take us to the next level. We mean business.`, tone: 'confident', hashtags: ['#NewSigning', '#LevelUp', teamTag], effects: { followerGain: 120, engagementBoost: 13, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 16, backlashRisk: 8 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Our rivals won't like this one. A major new signing that changes everything for ${teamName}. Let the new chapter begin. 🔥`, tone: 'aggressive', hashtags: ['#GameChanger', '#NewSigning', '#Motorsport'], effects: { followerGain: 160, engagementBoost: 16, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 25, backlashRisk: 18 }, includesMedia: 'graphic' },
+    ],
+    development_tease: [
+      { id: 'fb-1', content: `The R&D department has been working overtime. Some exciting developments in the pipeline at ${teamName}.`, tone: 'professional', hashtags: ['#Development', '#Innovation', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Can't say too much, but something big is coming from the ${teamName} engineering department. Stay tuned... 👀`, tone: 'exciting', hashtags: ['#ComingSoon', '#Development', teamTag], effects: { followerGain: 80, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 12, backlashRisk: 6 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `Months of development work coming together. The car is going to be very different next time you see it. We promise.`, tone: 'confident', hashtags: ['#Upgrade', '#Engineering', teamTag], effects: { followerGain: 100, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 14, backlashRisk: 8 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `If our competitors saw what's on the wind tunnel data right now, they'd panic. A step change is coming from ${teamName}. 🚀`, tone: 'aggressive', hashtags: ['#StepChange', '#Development', '#Motorsport'], effects: { followerGain: 150, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 24, backlashRisk: 22 }, includesMedia: 'graphic' },
+    ],
+    upgrade_reveal: [
+      { id: 'fb-1', content: `New upgrade package now fitted to the car. The engineers have done exceptional work bringing this to fruition.`, tone: 'professional', hashtags: ['#Upgrade', '#TechUpdate', teamTag], effects: { followerGain: 50, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 6, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Upgrade reveal! New parts on the car and the data looks promising. Time to see what this baby can do on track! 🔧`, tone: 'exciting', hashtags: ['#NewParts', '#UpgradeDay', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `The latest ${teamName} spec is here. Countless hours of engineering brilliance condensed into carbon fiber. Performance unlocked.`, tone: 'confident', hashtags: ['#Evolution', '#Engineering', teamTag], effects: { followerGain: 115, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 6 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `New upgrade fitted. We're not just keeping up anymore - we're setting the pace. The field has been warned. 💥`, tone: 'aggressive', hashtags: ['#SettingThePace', '#Upgrade', '#Motorsport'], effects: { followerGain: 155, engagementBoost: 16, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 23, backlashRisk: 20 }, includesMedia: 'graphic' },
+    ],
+    factory_tour: [
+      { id: 'fb-1', content: `Welcome inside ${teamName} headquarters. This is where race cars are born and championships are built.`, tone: 'professional', hashtags: ['#FactoryTour', '#HQ', teamTag], effects: { followerGain: 55, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 6, backlashRisk: 1 }, includesMedia: 'video' },
+      { id: 'fb-2', content: `Doors open! Take a virtual tour of the ${teamName} factory. From design studio to assembly floor, this is our home. 🏭`, tone: 'humble', hashtags: ['#OpenDoors', '#FactoryTour', teamTag], effects: { followerGain: 85, engagementBoost: 10, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 10, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `State-of-the-art facilities, world-class equipment, and the best people in the business. This is ${teamName}.`, tone: 'confident', hashtags: ['#WorldClass', '#Facilities', teamTag], effects: { followerGain: 105, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 3, viralChance: 13, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Other teams dream of facilities like these. At ${teamName}, this is just Tuesday. Welcome to the best factory in the paddock. 😤`, tone: 'aggressive', hashtags: ['#BestInClass', '#FactoryTour', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 18 }, includesMedia: 'video' },
+    ],
+    sponsor_thank_you: [
+      { id: 'fb-1', content: `A huge thank you to ${sponsor || 'our incredible sponsors'} for their continued support of ${teamName}. We couldn't do this without you.`, tone: 'professional', hashtags: ['#Partners', '#ThankYou', teamTag], effects: { followerGain: 25, engagementBoost: 3, fanSentiment: 1, sponsorSatisfaction: 3, viralChance: 2, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Behind every great team is a great partner. Thank you ${sponsor || 'to our sponsors'} for believing in ${teamName}'s journey. 🤝`, tone: 'humble', hashtags: ['#Partnership', '#Grateful', teamTag], effects: { followerGain: 50, engagementBoost: 5, fanSentiment: 2, sponsorSatisfaction: 4, viralChance: 5, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `More than a sponsor - a true partner. ${sponsor || 'Our sponsors'} share our vision and ambition. Together, we're unstoppable.`, tone: 'confident', hashtags: ['#Unstoppable', '#Partners', teamTag], effects: { followerGain: 75, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 5, viralChance: 8, backlashRisk: 4 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `When you have partners like ${sponsor || 'ours'}, winning isn't just possible - it's expected. The best team deserves the best backers. 💎`, tone: 'aggressive', hashtags: ['#Premium', '#Winning', '#Motorsport'], effects: { followerGain: 100, engagementBoost: 10, fanSentiment: 1, sponsorSatisfaction: 3, viralChance: 12, backlashRisk: 10 }, includesMedia: 'graphic' },
+    ],
+    sponsor_activation: [
+      { id: 'fb-1', content: `Exciting collaboration with ${sponsor || 'our partners'} today! Great things happen when racing meets innovation.`, tone: 'professional', hashtags: ['#Partnership', '#Activation', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 4, viralChance: 4, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Check out what we've been working on with ${sponsor || 'our partners'}! When two great brands come together, magic happens. ✨`, tone: 'exciting', hashtags: ['#Collab', '#Partnership', teamTag], effects: { followerGain: 70, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 5, viralChance: 10, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `We don't just put logos on cars. Our partnership with ${sponsor || 'our sponsors'} is about shared values and shared success.`, tone: 'confident', hashtags: ['#BeyondTheTrack', '#Partners', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 4, viralChance: 12, backlashRisk: 6 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Best partner activation in the paddock? We think so. ${sponsor || 'Our sponsors'} and ${teamName} - setting the standard. 🏆`, tone: 'aggressive', hashtags: ['#BestInPaddock', '#Activation', '#Motorsport'], effects: { followerGain: 120, engagementBoost: 13, fanSentiment: 1, sponsorSatisfaction: 3, viralChance: 16, backlashRisk: 14 }, includesMedia: 'video' },
+    ],
+    merch_announcement: [
+      { id: 'fb-1', content: `New ${teamName} merchandise now available in the team store. Represent the team in style!`, tone: 'professional', hashtags: ['#TeamMerch', '#Store', teamTag], effects: { followerGain: 30, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 3, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Fresh drop! New ${teamName} gear just hit the store. Limited quantities - don't miss out! 🛍️`, tone: 'exciting', hashtags: ['#MerchDrop', '#LimitedEdition', teamTag], effects: { followerGain: 75, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Wear the team, be the team. Our new collection is designed for fans who live and breathe ${teamName} racing.`, tone: 'confident', hashtags: ['#NewCollection', '#TeamGear', teamTag], effects: { followerGain: 95, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 13, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Best-looking merch in the paddock? Obviously. New ${teamName} collection just dropped and it's going fast. Get it before it's gone! 🔥`, tone: 'aggressive', hashtags: ['#HotDrop', '#Merch', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 18, backlashRisk: 10 }, includesMedia: 'graphic' },
+    ],
+    fan_engagement: [
+      { id: 'fb-1', content: `We love seeing your support! Keep the messages coming - the team reads every single one. You make this all worthwhile.`, tone: 'professional', hashtags: ['#Fans', '#Support', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `What's your favorite ${teamName} moment this season? Drop it in the comments! We want to hear from you. 💬`, tone: 'humble', hashtags: ['#FanTalk', '#YourMoment', teamTag], effects: { followerGain: 80, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 2 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `${teamName} fans are the best in motorsport and that's a fact. If you know, you know. 🫡`, tone: 'confident', hashtags: ['#BestFans', '#Racing', teamTag], effects: { followerGain: 105, engagementBoost: 13, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Name a more passionate fanbase. We'll wait... ${teamName} fans run this sport. 🔥`, tone: 'aggressive', hashtags: ['#BestFanbase', '#WeRunThis', '#Motorsport'], effects: { followerGain: 145, engagementBoost: 16, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 15 }, includesMedia: 'graphic' },
+    ],
+    poll_question: [
+      { id: 'fb-1', content: `Quick question, ${teamName} fans: What area should we focus our development on next? Aero, chassis, or power unit? Let us know!`, tone: 'professional', hashtags: ['#Poll', '#FanVoice', teamTag], effects: { followerGain: 35, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 2 }, includesMedia: 'graphic' },
+      { id: 'fb-2', content: `Desert island question: You can only watch ONE race from history. Which one do you pick? 🏝️`, tone: 'humble', hashtags: ['#Question', '#Racing', teamTag], effects: { followerGain: 70, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 0, viralChance: 12, backlashRisk: 3 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `Rate our season so far out of 10! Be honest, we can take it. ${teamName} wants to know what you think. 📊`, tone: 'confident', hashtags: ['#RateOurSeason', '#Honest', teamTag], effects: { followerGain: 95, engagementBoost: 16, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 14, backlashRisk: 8 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `Hot take time: Is ${teamName} the most exciting team in the paddock right now? Yes or absolutely yes? 😏`, tone: 'aggressive', hashtags: ['#HotTake', '#Poll', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 18, fanSentiment: 2, sponsorSatisfaction: 0, viralChance: 20, backlashRisk: 16 }, includesMedia: 'graphic' },
+    ],
+    charity_community: [
+      { id: 'fb-1', content: `${teamName} is proud to support our local community. Racing is more than a sport - it's a platform for positive change.`, tone: 'professional', hashtags: ['#Community', '#GivingBack', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 5, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Spent the morning with an incredible charity today. The smiles on everyone's faces reminded us why we do this. ❤️`, tone: 'humble', hashtags: ['#Charity', '#MakingADifference', teamTag], effects: { followerGain: 85, engagementBoost: 10, fanSentiment: 4, sponsorSatisfaction: 3, viralChance: 12, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `We believe in using our platform for good. ${teamName} is committed to making a real difference beyond the racetrack.`, tone: 'confident', hashtags: ['#BeyondRacing', '#Community', teamTag], effects: { followerGain: 100, engagementBoost: 11, fanSentiment: 3, sponsorSatisfaction: 3, viralChance: 14, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Championships are great, but the real victory is what we give back. ${teamName} community program launching now - and we're going BIG.`, tone: 'exciting', hashtags: ['#BigAnnouncement', '#GivingBack', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 13, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 5 }, includesMedia: 'graphic' },
+    ],
+    motivation: [
+      { id: 'fb-1', content: `Every great achievement starts with the decision to try. ${teamName} never stops pushing. 💪`, tone: 'professional', hashtags: ['#Motivation', '#Racing', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 2 }, includesMedia: 'graphic' },
+      { id: 'fb-2', content: `The journey matters more than the destination. Every lap, every test, every late night brings us closer. Keep pushing. 🏁`, tone: 'humble', hashtags: ['#Journey', '#Dedication', teamTag], effects: { followerGain: 70, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `They said it couldn't be done. They said we weren't ready. ${teamName} doesn't listen to doubters. We prove them wrong.`, tone: 'confident', hashtags: ['#ProveThemWrong', '#Motivation', teamTag], effects: { followerGain: 100, engagementBoost: 12, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 15, backlashRisk: 8 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `Comfort zones don't win championships. ${teamName} chose the hard path because that's where the glory is. 🔥`, tone: 'aggressive', hashtags: ['#NoComfortZone', '#Glory', '#Motorsport'], effects: { followerGain: 145, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 15 }, includesMedia: 'graphic' },
+    ],
+    throwback: [
+      { id: 'fb-1', content: `Throwback to when it all began. The ${teamName} story is one of passion, determination, and never giving up. 📼`, tone: 'professional', hashtags: ['#TBT', '#ThrowbackThursday', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Remember this moment? Look how far we've come! The early days of ${teamName} were humble but full of heart.`, tone: 'humble', hashtags: ['#Throwback', '#HowItStarted', teamTag], effects: { followerGain: 75, engagementBoost: 9, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `From where we started to where we are now - the ${teamName} transformation has been incredible. And we're not done yet.`, tone: 'confident', hashtags: ['#Transformation', '#TBT', teamTag], effects: { followerGain: 95, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 13, backlashRisk: 4 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `They laughed at us back then. Nobody's laughing now. ${teamName} - from underdogs to contenders. The best is yet to come. 🔥`, tone: 'aggressive', hashtags: ['#FromNothing', '#Throwback', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 14 }, includesMedia: 'graphic' },
+    ],
+    rivalry_banter: [
+      { id: 'fb-1', content: `Respect to all our competitors. The rivalry pushes everyone to be better. That's what makes this sport great.`, tone: 'professional', hashtags: ['#Respect', '#Rivalry', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 3, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Good morning to everyone except the teams ahead of us in the championship. We're coming for you. 😉`, tone: 'confident', hashtags: ['#Rivalry', '#ComingForYou', teamTag], effects: { followerGain: 90, engagementBoost: 12, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 15, backlashRisk: 10 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `Heard a rival team talking big this week. That's cute. Let's settle it on track where it matters. 🏁`, tone: 'exciting', hashtags: ['#SettleItOnTrack', '#Rivalry', teamTag], effects: { followerGain: 120, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 15 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `The competition copies our setup, mimics our strategy, and still finishes behind us. Must be frustrating. 😂`, tone: 'aggressive', hashtags: ['#Levels', '#Rivalry', '#Motorsport'], effects: { followerGain: 165, engagementBoost: 18, fanSentiment: 2, sponsorSatisfaction: 0, viralChance: 28, backlashRisk: 25 }, includesMedia: 'graphic' },
+    ],
+    milestone_celebration: [
+      { id: 'fb-1', content: `A proud moment for ${teamName}. Another milestone achieved through hard work and dedication. Onwards and upwards.`, tone: 'professional', hashtags: ['#Milestone', '#Proud', teamTag], effects: { followerGain: 50, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 5, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `${context.totalRaces ? `${context.totalRaces} races` : 'Another milestone'} and counting! Every race adds to the ${teamName} legacy. Thank you for being part of it! 🎉`, tone: 'humble', hashtags: ['#Milestone', '#Legacy', teamTag], effects: { followerGain: 85, engagementBoost: 10, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Milestones aren't just numbers - they're proof that ${teamName} is built to last. And we're just getting started.`, tone: 'confident', hashtags: ['#BuiltToLast', '#Milestone', teamTag], effects: { followerGain: 105, engagementBoost: 12, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 14, backlashRisk: 5 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Milestone reached, but we're not here to celebrate - we're here to set the next one. ${teamName} never stops. 🏆`, tone: 'aggressive', hashtags: ['#NeverStop', '#Milestone', '#Motorsport'], effects: { followerGain: 145, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 12 }, includesMedia: 'graphic' },
+    ],
+    championship_push: [
+      { id: 'fb-1', content: `P${context.championshipPosition || '?'} in the championship. Every point counts from here. The team is fully committed to the fight.`, tone: 'professional', hashtags: ['#Championship', '#EveryPointCounts', teamTag], effects: { followerGain: 55, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 6, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `The championship battle is ON! ${teamName} is right in the thick of it and we wouldn't have it any other way. Let's go! 🏆`, tone: 'exciting', hashtags: ['#TitleFight', '#Championship', teamTag], effects: { followerGain: 95, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 14, backlashRisk: 6 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `Championship contenders. That's what ${teamName} is. With ${context.pointsTotal || '?'} points and counting, we believe. Do you?`, tone: 'confident', hashtags: ['#Believe', '#ChampionshipPush', teamTag], effects: { followerGain: 120, engagementBoost: 14, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 8 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `The championship is ours for the taking. ${teamName} didn't come this far to come this far. History awaits. 🔥`, tone: 'aggressive', hashtags: ['#HistoryAwaits', '#Championship', '#Motorsport'], effects: { followerGain: 170, engagementBoost: 18, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 26, backlashRisk: 18 }, includesMedia: 'graphic' },
+    ],
+    // ============================================
+    // ACTIVITY-LINKED POST FALLBACKS
+    // ============================================
+    activity_team_briefing: [
+      { id: 'fb-1', content: `Team briefing complete. Everyone's aligned, focused, and ready for what's ahead. This is where championships start - in the meeting room.`, tone: 'professional', hashtags: ['#TeamBriefing', '#Preparation', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Just wrapped up a team briefing. The energy in the room was incredible - everyone pulling in the same direction. Good things coming! 💪`, tone: 'exciting', hashtags: ['#TeamSpirit', '#Racing', teamTag], effects: { followerGain: 70, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `When the whole team sits down together, strategy becomes something real. ${teamName} just had one of THOSE briefings. We know what we need to do.`, tone: 'confident', hashtags: ['#Strategy', '#TeamBriefing', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Plans are drawn up. The game plan is set. If our rivals knew what was discussed in that briefing room, they'd be worried. 👀`, tone: 'aggressive', hashtags: ['#GamePlan', '#TeamBriefing', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 18, backlashRisk: 14 }, includesMedia: 'graphic' },
+    ],
+    activity_season_launch: [
+      { id: 'fb-1', content: `It's official - ${teamName}'s ${context.currentYear} season campaign has launched! A new chapter begins. Here's to an incredible year ahead.`, tone: 'professional', hashtags: ['#SeasonLaunch', '#NewSeason', teamTag], effects: { followerGain: 80, engagementBoost: 10, fanSentiment: 3, sponsorSatisfaction: 3, viralChance: 12, backlashRisk: 1 }, includesMedia: 'video' },
+      { id: 'fb-2', content: `NEW SEASON ALERT! ${teamName} is officially on the grid for ${context.currentYear}. We couldn't be more excited. The journey continues! 🏁`, tone: 'exciting', hashtags: ['#NewSeason', '#LetsRace', teamTag], effects: { followerGain: 120, engagementBoost: 14, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 3 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `Season launched. Ambitions set. ${teamName} is here to compete, and we're bringing everything we've got to ${context.currentYear}.`, tone: 'confident', hashtags: ['#SeasonLaunch', '#Ambition', teamTag], effects: { followerGain: 100, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `The ${context.currentYear} season starts NOW. ${teamName} has been preparing in the shadows and we're ready to shock the paddock. Watch this space. 🔥`, tone: 'aggressive', hashtags: ['#SeasonLaunch', '#WatchOut', '#Motorsport'], effects: { followerGain: 160, engagementBoost: 16, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 24, backlashRisk: 12 }, includesMedia: 'graphic' },
+    ],
+    activity_testing: [
+      { id: 'fb-1', content: `Testing day complete. Lots of laps, lots of data, and plenty to work with. The engineering team is already deep in the numbers.`, tone: 'professional', hashtags: ['#Testing', '#DataDriven', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `What a testing session! The car is responding well and the team is buzzing. Can't wait to see this translate to race pace! 🏎️`, tone: 'exciting', hashtags: ['#Testing', '#CarDevelopment', teamTag], effects: { followerGain: 75, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 4 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `Every lap in testing is a step closer to perfection. ${teamName} put in serious mileage today and the results speak for themselves.`, tone: 'confident', hashtags: ['#TestDay', '#Preparation', teamTag], effects: { followerGain: 95, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 13, backlashRisk: 6 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Testing complete. If the numbers we're seeing are real... let's just say the competition should start preparing. 💨`, tone: 'aggressive', hashtags: ['#Testing', '#SpeedMatters', '#Motorsport'], effects: { followerGain: 140, engagementBoost: 15, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 20, backlashRisk: 16 }, includesMedia: 'graphic' },
+    ],
+    activity_race_debrief: [
+      { id: 'fb-1', content: `Race debrief done. Every corner, every pit stop, every decision reviewed. That's how ${teamName} improves - through honest analysis.`, tone: 'professional', hashtags: ['#RaceDebrief', '#Analysis', teamTag], effects: { followerGain: 35, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 4, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Post-race debrief in the books. So much to learn from the weekend. The team never stops working to be better! 📋`, tone: 'humble', hashtags: ['#Debrief', '#AlwaysLearning', teamTag], effects: { followerGain: 65, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 7, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Spent hours in the debrief room. We found exactly where we gained and where we lost. Knowledge is power, and ${teamName} just got stronger.`, tone: 'confident', hashtags: ['#RaceDebrief', '#KnowledgeIsPower', teamTag], effects: { followerGain: 85, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 11, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `The debrief revealed everything. We know what went wrong, we know what went right, and we know exactly what's coming next. Other teams should take notes. 📝`, tone: 'aggressive', hashtags: ['#Debrief', '#NextLevel', '#Motorsport'], effects: { followerGain: 125, engagementBoost: 13, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 17, backlashRisk: 14 }, includesMedia: 'graphic' },
+    ],
+    activity_sponsor_event: [
+      { id: 'fb-1', content: `Fantastic sponsor event today. Building relationships beyond the racetrack is what makes ${teamName} a true partnership destination.`, tone: 'professional', hashtags: ['#SponsorEvent', '#Partnerships', teamTag], effects: { followerGain: 30, engagementBoost: 4, fanSentiment: 1, sponsorSatisfaction: 4, viralChance: 3, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `What an event! Great to connect with our partners face-to-face. These moments remind us that racing is about people too. 🤝`, tone: 'humble', hashtags: ['#PartnerEvent', '#Grateful', teamTag], effects: { followerGain: 60, engagementBoost: 7, fanSentiment: 2, sponsorSatisfaction: 5, viralChance: 8, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Sponsor event was a huge success. When you surround yourself with the best partners, everything clicks. ${teamName} has incredible backers.`, tone: 'confident', hashtags: ['#SponsorEvent', '#Premium', teamTag], effects: { followerGain: 80, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 4, viralChance: 10, backlashRisk: 4 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Top-tier sponsors, top-tier events. That's what happens when you build the best team in the paddock. The partners know quality when they see it. 💎`, tone: 'aggressive', hashtags: ['#PremiumPartners', '#SponsorEvent', '#Motorsport'], effects: { followerGain: 110, engagementBoost: 12, fanSentiment: 1, sponsorSatisfaction: 3, viralChance: 14, backlashRisk: 12 }, includesMedia: 'video' },
+    ],
+    activity_board_meeting: [
+      { id: 'fb-1', content: `Board meeting concluded. Important decisions made for the long-term direction of ${teamName}. Exciting times ahead.`, tone: 'professional', hashtags: ['#TeamNews', '#Direction', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 1, sponsorSatisfaction: 2, viralChance: 5, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Big meeting today at ${teamName} HQ. Can't reveal everything yet, but the future looks bright! Stay tuned for announcements. 👀`, tone: 'exciting', hashtags: ['#BigNews', '#StayTuned', teamTag], effects: { followerGain: 85, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 6 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `The board is aligned, the vision is clear. ${teamName} just set the course for the next chapter. This is going to be good.`, tone: 'confident', hashtags: ['#NextChapter', '#TeamVision', teamTag], effects: { followerGain: 100, engagementBoost: 12, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 14, backlashRisk: 7 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Decisions have been made. Investments confirmed. ${teamName} is going ALL IN. The board room just changed the game for this team. 🚀`, tone: 'aggressive', hashtags: ['#AllIn', '#BigDecisions', '#Motorsport'], effects: { followerGain: 150, engagementBoost: 16, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 16 }, includesMedia: 'graphic' },
+    ],
+    activity_facility_walkthrough: [
+      { id: 'fb-1', content: `Facility walkthrough complete. Impressed by the progress and capabilities across every department. ${teamName} is building something special.`, tone: 'professional', hashtags: ['#Facilities', '#TeamHQ', teamTag], effects: { followerGain: 45, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 5, backlashRisk: 1 }, includesMedia: 'video' },
+      { id: 'fb-2', content: `Walked through our facilities today and honestly... still can't believe this is our workshop. From humble beginnings to this! 🏭`, tone: 'humble', hashtags: ['#FacilityTour', '#HumbleBeginnings', teamTag], effects: { followerGain: 80, engagementBoost: 9, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 10, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `The tools. The tech. The people. Walking through ${teamName}'s facilities reminds you why this team is going places.`, tone: 'confident', hashtags: ['#WorldClass', '#Facilities', teamTag], effects: { followerGain: 100, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 3, viralChance: 13, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Just toured the facilities. If you could see what we're working with, you'd understand why ${teamName} is the future of this sport. 😤`, tone: 'aggressive', hashtags: ['#TheFuture', '#Facilities', '#Motorsport'], effects: { followerGain: 135, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 19, backlashRisk: 15 }, includesMedia: 'video' },
+    ],
+    activity_charity_event: [
+      { id: 'fb-1', content: `Proud to represent ${teamName} at today's charity event. Racing gives us a platform, and we're committed to using it for good.`, tone: 'professional', hashtags: ['#Charity', '#GivingBack', teamTag], effects: { followerGain: 50, engagementBoost: 6, fanSentiment: 3, sponsorSatisfaction: 3, viralChance: 6, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `What an incredible day. The charity event reminded us all that there's more to life than lap times. So grateful to be part of it. ❤️`, tone: 'humble', hashtags: ['#Charity', '#MakingADifference', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 4, sponsorSatisfaction: 3, viralChance: 13, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `${teamName} showed up in force at the charity event today. This team cares about more than just results - we care about people.`, tone: 'confident', hashtags: ['#Community', '#RacingWithHeart', teamTag], effects: { followerGain: 105, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 3, viralChance: 15, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-4', content: `Racing teams that give back are teams worth supporting. ${teamName} just made a massive impact at today's charity event. This is who we are. 💪`, tone: 'exciting', hashtags: ['#BigImpact', '#Charity', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 4 }, includesMedia: 'video' },
+    ],
+    activity_pre_race_briefing: [
+      { id: 'fb-1', content: `Pre-race briefing done. Strategy set, roles confirmed, everyone knows their job. ${teamName} is ready for race day.`, tone: 'professional', hashtags: ['#RaceReady', '#PreRace', teamTag], effects: { followerGain: 40, engagementBoost: 5, fanSentiment: 1, sponsorSatisfaction: 1, viralChance: 5, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Pre-race briefing locked in! The team is fired up and ready to go. Race day, bring it on! 🏁`, tone: 'exciting', hashtags: ['#RaceDay', '#BringItOn', teamTag], effects: { followerGain: 75, engagementBoost: 9, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `Briefing complete. The strategy is sharp, the car is ready, and ${teamName} knows exactly what needs to happen tomorrow.`, tone: 'confident', hashtags: ['#PreRace', '#Strategy', teamTag], effects: { followerGain: 90, engagementBoost: 11, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Just finished the pre-race briefing. The plan is aggressive, the target is clear. Race day is going to be something special. 🔥`, tone: 'aggressive', hashtags: ['#RaceReady', '#AttackMode', '#Motorsport'], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 18, backlashRisk: 12 }, includesMedia: 'graphic' },
+    ],
+    // ============================================
+    // EARLY CAREER / CONTEXTUAL POST FALLBACKS
+    // ============================================
+    team_introduction: [
+      { id: 'fb-1', content: `Introducing ${teamName}. A brand new team with big ambitions in motorsport. Follow our journey from day one.`, tone: 'professional', hashtags: ['#NewTeam', '#Motorsport', teamTag], effects: { followerGain: 100, engagementBoost: 12, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 15, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Hello, world! We're ${teamName}, and we're here to race. This is just the beginning of something incredible. Welcome aboard! 🏎️`, tone: 'exciting', hashtags: ['#Welcome', '#NewTeam', teamTag], effects: { followerGain: 150, engagementBoost: 16, fanSentiment: 4, sponsorSatisfaction: 2, viralChance: 20, backlashRisk: 2 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `${teamName} has arrived. New name, clear vision, unstoppable drive. Remember this moment - you're here from the very start.`, tone: 'confident', hashtags: ['#DayOne', '#NewTeam', teamTag], effects: { followerGain: 130, engagementBoost: 14, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 4 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `The paddock has a new team, and the competition should take notice. ${teamName} isn't here to make up the numbers. We're here to win. 🔥`, tone: 'aggressive', hashtags: ['#HereToWin', '#NewTeam', '#Motorsport'], effects: { followerGain: 180, engagementBoost: 18, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 25, backlashRisk: 12 }, includesMedia: 'graphic' },
+    ],
+    journey_begins: [
+      { id: 'fb-1', content: `Day one. The journey of ${teamName} in professional motorsport officially begins. Every great story starts with a single step.`, tone: 'professional', hashtags: ['#DayOne', '#NewBeginning', teamTag], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 12, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `It's happening! ${teamName} takes its first steps into motorsport. Dreams don't work unless you do, and today we START. Let's go! 🚀`, tone: 'exciting', hashtags: ['#JourneyBegins', '#DreamBig', teamTag], effects: { followerGain: 140, engagementBoost: 15, fanSentiment: 4, sponsorSatisfaction: 2, viralChance: 18, backlashRisk: 3 }, includesMedia: 'video' },
+      { id: 'fb-3', content: `From a dream to reality. ${teamName}'s motorsport journey starts today, and we're building something that will last generations.`, tone: 'confident', hashtags: ['#FromDreamsToReality', '#Motorsport', teamTag], effects: { followerGain: 120, engagementBoost: 13, fanSentiment: 3, sponsorSatisfaction: 2, viralChance: 16, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `New team on the grid. New team, same fire. ${teamName} starts its journey today and we're coming for EVERYONE. Buckle up. 🔥`, tone: 'aggressive', hashtags: ['#NewOnTheGrid', '#ComingForEveryone', '#Motorsport'], effects: { followerGain: 170, engagementBoost: 18, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 24, backlashRisk: 14 }, includesMedia: 'graphic' },
+    ],
+    hiring_call: [
+      { id: 'fb-1', content: `${teamName} is growing! We're looking for passionate, talented individuals to join our racing team. Think you've got what it takes?`, tone: 'professional', hashtags: ['#Hiring', '#JoinOurTeam', teamTag], effects: { followerGain: 60, engagementBoost: 8, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 8, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `We're building something special at ${teamName} and we need more incredible people. If you eat, sleep, and breathe motorsport - we want to hear from you! 💼`, tone: 'exciting', hashtags: ['#NowHiring', '#Motorsport', teamTag], effects: { followerGain: 95, engagementBoost: 12, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 12, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `${teamName} is expanding. We need the best minds in the business to take this team to the next level. Only apply if you're ready to win.`, tone: 'confident', hashtags: ['#JoinUs', '#TeamGrowth', teamTag], effects: { followerGain: 80, engagementBoost: 10, fanSentiment: 2, sponsorSatisfaction: 2, viralChance: 10, backlashRisk: 5 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `${teamName} is hiring. We don't want average. We want people who are as hungry as we are to shake up this sport. DM us. 🔥`, tone: 'aggressive', hashtags: ['#WeWantTheBest', '#Hiring', '#Motorsport'], effects: { followerGain: 120, engagementBoost: 14, fanSentiment: 2, sponsorSatisfaction: 1, viralChance: 16, backlashRisk: 10 }, includesMedia: 'graphic' },
+    ],
+    underdog_story: [
+      { id: 'fb-1', content: `Small team, big dreams. ${teamName} may not have the biggest budget, but we've got the biggest heart in the paddock.`, tone: 'professional', hashtags: ['#Underdogs', '#Heart', teamTag], effects: { followerGain: 70, engagementBoost: 9, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 10, backlashRisk: 1 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Nobody gave us a chance. Good. ${teamName} thrives when people doubt us. We'll let the results do the talking. 🏁`, tone: 'confident', hashtags: ['#UnderdogMentality', '#ProveThemWrong', teamTag], effects: { followerGain: 110, engagementBoost: 13, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 15, backlashRisk: 5 }, includesMedia: 'photo' },
+      { id: 'fb-3', content: `What we lack in resources, we make up for in passion and determination. ${teamName} is proof that heart beats budget every time. ❤️`, tone: 'humble', hashtags: ['#HeartOverBudget', '#Motorsport', teamTag], effects: { followerGain: 95, engagementBoost: 11, fanSentiment: 4, sponsorSatisfaction: 1, viralChance: 14, backlashRisk: 2 }, includesMedia: 'photo' },
+      { id: 'fb-4', content: `Underdogs? Fine by us. The big teams should be scared because ${teamName} has NOTHING to lose and EVERYTHING to gain. Watch. 🔥`, tone: 'aggressive', hashtags: ['#NothingToLose', '#Underdogs', '#Motorsport'], effects: { followerGain: 150, engagementBoost: 16, fanSentiment: 3, sponsorSatisfaction: 1, viralChance: 22, backlashRisk: 10 }, includesMedia: 'graphic' },
+    ],
+    sponsor_search: [
+      { id: 'fb-1', content: `${teamName} is open to partnerships. If your brand believes in motorsport, innovation, and determination - let's talk.`, tone: 'professional', hashtags: ['#Partnerships', '#Motorsport', teamTag], effects: { followerGain: 25, engagementBoost: 3, fanSentiment: 1, sponsorSatisfaction: 0, viralChance: 3, backlashRisk: 3 }, includesMedia: 'photo' },
+      { id: 'fb-2', content: `Looking for the perfect partner to join ${teamName}'s journey. We offer passion, visibility, and a story worth being part of. Let's build something together! 🤝`, tone: 'humble', hashtags: ['#PartnerWithUs', '#Racing', teamTag], effects: { followerGain: 50, engagementBoost: 6, fanSentiment: 2, sponsorSatisfaction: 0, viralChance: 6, backlashRisk: 4 }, includesMedia: 'graphic' },
+      { id: 'fb-3', content: `${teamName} is the opportunity smart brands have been waiting for. Ground floor. Rising team. Unlimited potential. Get in touch.`, tone: 'confident', hashtags: ['#Investment', '#Partnership', teamTag], effects: { followerGain: 65, engagementBoost: 8, fanSentiment: 1, sponsorSatisfaction: 0, viralChance: 8, backlashRisk: 6 }, includesMedia: 'graphic' },
+      { id: 'fb-4', content: `Any brand that partners with ${teamName} right now is getting in on the ground floor of something MASSIVE. Don't sleep on this opportunity. 🚀`, tone: 'aggressive', hashtags: ['#GroundFloor', '#SponsorUs', '#Motorsport'], effects: { followerGain: 90, engagementBoost: 10, fanSentiment: 1, sponsorSatisfaction: 0, viralChance: 12, backlashRisk: 14 }, includesMedia: 'graphic' },
+    ],
+  }
   
-  return posts
+  return typeFallbacks[context.postType] || typeFallbacks.team_update
 }
 
 // ============================================
@@ -3487,6 +3918,12 @@ export type PressReleaseType =
   | 'milestone'
   | 'apology'
   | 'general_statement'
+  | 'incident_response'
+  | 'championship_update'
+  | 'facility_expansion'
+  | 'merchandise_launch'
+  | 'staff_announcement'
+  | 'testing_report'
 
 export interface PressReleaseContext {
   releaseType: PressReleaseType
@@ -3507,6 +3944,58 @@ export interface PressReleaseContext {
   // Time
   currentWeek: number
   currentYear: number
+  
+  // Team state (enriched - matching social post depth)
+  teamMorale?: string              // "high"/"good"/"low"
+  fanSentiment?: number
+  followerCount?: number
+  
+  // People
+  staffCount?: number
+  facilityStaffCount?: number
+  staffNames?: string[]
+  recentSigningName?: string
+  recentSigningRole?: string
+  
+  // Business
+  primarySponsor?: string
+  allSponsors?: string[]
+  sponsorCount?: number
+  budgetRunwayWeeks?: number
+  
+  // Technical
+  carCount?: number
+  carType?: string
+  hasSeriesEntry?: boolean
+  seriesName?: string
+  recentUpgrades?: string[]
+  completedUpgrades?: string[]
+  facilityNames?: string[]
+  facilityDescriptions?: string[]
+  
+  // Performance history
+  totalRaces?: number
+  totalWins?: number
+  totalPodiums?: number
+  lastRaceTrack?: string
+  lastRacePosition?: number
+  qualifyingPosition?: number
+  isRaceWeek?: boolean
+  isPostRace?: boolean
+  
+  // Career stage
+  seasonsCompleted?: number
+  isFirstSeason?: boolean
+  rivalTeamNames?: string[]
+  
+  // Activity-linked (for suggested releases)
+  recentActivityName?: string
+  recentActivityDescription?: string
+  recentActivityCategory?: string
+  
+  // For image generation
+  baseCountry?: string
+  sponsorNames?: string[]
 }
 
 export interface PressReleaseOption {
@@ -3524,22 +4013,26 @@ export interface PressReleaseOption {
     controversyRisk: number
   }
   formalityLevel: 'high' | 'medium' | 'casual'
+  imageDataUrl?: string
 }
 
 const PRESS_RELEASE_SYSTEM_PROMPT = `You are a PR professional for a motorsport racing team. Generate formal press releases that are professional, newsworthy, and suitable for media distribution.
 
-Rules:
-- Headlines should be clear and impactful
-- Content should be 2-3 paragraphs, professional tone
-- Include a quote from the team principal/owner
-- Match the formality to the announcement type
-- Be realistic about racing situations`
+CRITICAL RULES:
+- Headlines should be clear, impactful, and specific to the announcement
+- Content should be 2-3 paragraphs, matching the chosen formality level
+- Include a quote from the team principal/owner that feels authentic
+- ALWAYS reference real team data provided (sponsor names, staff count, facility details, race results)
+- NEVER invent achievements, sponsors, staff, or results that aren't in the context
+- Match the scale and tone to the team's actual tier (entry-level team shouldn't sound like Ferrari)
+- Be realistic about racing situations and the team's actual position
+- If the team is small/entry-level, the tone should reflect scrappy ambition, not corporate grandeur`
 
 /**
  * Generate AI press release options
  */
 export async function generatePressReleaseOptions(context: PressReleaseContext): Promise<PressReleaseOption[] | null> {
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY
+  const apiKey = await getGeminiKey()
   
   if (!apiKey) {
     console.log('[MediaAI] No API key, using fallback press releases')
@@ -3549,16 +4042,14 @@ export async function generatePressReleaseOptions(context: PressReleaseContext):
   const prompt = buildPressReleasePrompt(context)
   
   try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch(GEMINI_API_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'AMS2 Career Manager'
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-lite-001',
+        model: 'gemini-2.5-flash',
         messages: [
           { role: 'system', content: PRESS_RELEASE_SYSTEM_PROMPT },
           { role: 'user', content: prompt }
@@ -3616,49 +4107,291 @@ function validateFormality(level: string | undefined): 'high' | 'medium' | 'casu
 }
 
 function buildPressReleasePrompt(context: PressReleaseContext): string {
-  let situationContext = ''
+  // === TEAM REALITY SECTION ===
+  const realityLines: string[] = ['TEAM REALITY (use this data to make the press release authentic and accurate):']
   
-  if (context.releaseType === 'race_recap' && context.racePosition && context.trackName) {
-    situationContext = `Race result: P${context.racePosition} at ${context.trackName}\n`
-    if (context.championshipPosition) {
-      situationContext += `Championship standing: P${context.championshipPosition}\n`
+  // Team identity & tier
+  const tierDescriptions: Record<string, string> = {
+    'entry': 'Entry-level startup racing team — small operation, big ambitions',
+    'amateur': 'Amateur-level team — still finding their feet, limited resources',
+    'semi-pro': 'Semi-professional team — growing, starting to compete properly',
+    'semi_pro': 'Semi-professional team — growing, starting to compete properly',
+    'professional': 'Professional racing team — well-established, competitive operation',
+    'pro': 'Professional racing team — well-established, competitive operation',
+    'elite': 'Elite-tier team — top-level operation with serious resources',
+    'pinnacle': 'Pinnacle-tier world-class team — among the very best in the sport',
+  }
+  const tierDesc = tierDescriptions[context.teamTier || ''] || `${context.teamTier}-tier racing team`
+  realityLines.push(`- Team: "${context.teamName}" — ${tierDesc}${context.baseCountry ? `, based in ${context.baseCountry}` : ''}`)
+  
+  // Driver
+  if (context.driverName) {
+    realityLines.push(`- Lead Driver: ${context.driverName}`)
+  }
+  
+  // Series
+  if (context.seriesName && context.hasSeriesEntry) {
+    realityLines.push(`- Series: Competing in ${context.seriesName}`)
+  } else if (context.hasSeriesEntry === false) {
+    realityLines.push('- Series: Not yet entered in any championship')
+  }
+  
+  // Staff
+  if (context.staffCount !== undefined) {
+    if (context.staffCount === 0) {
+      realityLines.push('- Staff: Owner is running everything alone — no hired staff yet')
+    } else if (context.staffCount <= 3) {
+      realityLines.push(`- Staff: Just ${context.staffCount} people — tiny skeleton crew`)
+    } else if (context.staffCount <= 8) {
+      realityLines.push(`- Staff: ${context.staffCount} people — small but dedicated team`)
+    } else if (context.staffCount <= 20) {
+      realityLines.push(`- Staff: ${context.staffCount} people — solid mid-size team`)
+    } else {
+      realityLines.push(`- Staff: ${context.staffCount} people — large professional operation`)
+    }
+    if (context.staffNames && context.staffNames.length > 0) {
+      realityLines.push(`  Key people: ${context.staffNames.slice(0, 6).join(', ')}`)
     }
   }
   
-  if (context.releaseType === 'driver_signing' && context.newEntityName) {
-    situationContext = `New driver: ${context.newEntityName}\n`
+  // Cars
+  if (context.carCount !== undefined) {
+    if (context.carCount === 0) {
+      realityLines.push('- Cars: No race car yet — team is in preparation phase')
+    } else if (context.carType) {
+      realityLines.push(`- Cars: ${context.carCount} ${context.carType}${context.carCount > 1 ? 's' : ''}`)
+    } else {
+      realityLines.push(`- Cars: ${context.carCount} race car${context.carCount > 1 ? 's' : ''}`)
+    }
   }
   
-  if (context.releaseType === 'sponsor_announcement' && context.newEntityName) {
-    situationContext = `New sponsor: ${context.newEntityName}\n`
+  // Facilities
+  if (context.facilityDescriptions && context.facilityDescriptions.length > 0) {
+    realityLines.push(`- Facilities: ${context.facilityDescriptions.join('. ')}`)
+  } else if (context.facilityNames && context.facilityNames.length > 0) {
+    realityLines.push(`- Facilities: ${context.facilityNames.join(', ')}`)
   }
   
-  if (context.announcementSubject) {
-    situationContext += `Subject: ${context.announcementSubject}\n`
+  // Sponsors
+  if (context.allSponsors && context.allSponsors.length > 0) {
+    realityLines.push(`- Sponsors: ${context.allSponsors.join(', ')}${context.primarySponsor ? ` (title sponsor: ${context.primarySponsor})` : ''}`)
+  } else if (context.sponsorCount === 0) {
+    realityLines.push('- Sponsors: None — self-funded operation')
   }
   
-  return `Generate 3 press release options for a ${context.teamTier}-tier racing team.
+  // Performance history
+  const perfLines: string[] = []
+  if (context.totalRaces !== undefined && context.totalRaces > 0) {
+    perfLines.push(`${context.totalRaces} races entered`)
+  }
+  if (context.totalWins !== undefined && context.totalWins > 0) {
+    perfLines.push(`${context.totalWins} win${context.totalWins > 1 ? 's' : ''}`)
+  }
+  if (context.totalPodiums !== undefined && context.totalPodiums > 0) {
+    perfLines.push(`${context.totalPodiums} podium${context.totalPodiums > 1 ? 's' : ''}`)
+  }
+  if (perfLines.length > 0) {
+    realityLines.push(`- Track record: ${perfLines.join(', ')}`)
+  }
+  
+  // Championship
+  if (context.championshipPosition) {
+    realityLines.push(`- Championship: P${context.championshipPosition}${context.seasonPoints ? ` (${context.seasonPoints} pts)` : ''}`)
+  }
+  
+  // Recent upgrades
+  if (context.completedUpgrades && context.completedUpgrades.length > 0) {
+    realityLines.push(`- Recent upgrades: ${context.completedUpgrades.slice(0, 4).join(', ')}`)
+  }
+  
+  // Fan & media state
+  if (context.fanSentiment !== undefined) {
+    const sentimentLabel = context.fanSentiment >= 70 ? 'very positive' : context.fanSentiment >= 40 ? 'positive' : context.fanSentiment >= 20 ? 'neutral' : 'negative'
+    realityLines.push(`- Fan sentiment: ${sentimentLabel} (${context.fanSentiment}/100)`)
+  }
+  if (context.followerCount !== undefined) {
+    realityLines.push(`- Social following: ${context.followerCount.toLocaleString()} followers`)
+  }
+  
+  // Career stage
+  if (context.isFirstSeason) {
+    realityLines.push('- Career stage: First season — brand new to the sport')
+  } else if (context.seasonsCompleted !== undefined) {
+    realityLines.push(`- Career stage: Season ${(context.seasonsCompleted || 0) + 1}`)
+  }
+  
+  // Team morale
+  if (context.teamMorale) {
+    const moods: Record<string, string> = {
+      'high': 'Morale is high — team is energized and motivated',
+      'good': 'Morale is good — team is steady and professional',
+      'low': 'Morale is low — team is under pressure',
+    }
+    if (moods[context.teamMorale]) realityLines.push(`- ${moods[context.teamMorale]}`)
+  }
+  
+  // Budget
+  if (context.budgetRunwayWeeks !== undefined) {
+    if (context.budgetRunwayWeeks < 8) {
+      realityLines.push(`- Budget: Tight — only ${context.budgetRunwayWeeks} weeks of runway`)
+    }
+  }
+  
+  // Rivals
+  if (context.rivalTeamNames && context.rivalTeamNames.length > 0) {
+    realityLines.push(`- Key rivals: ${context.rivalTeamNames.slice(0, 3).join(', ')}`)
+  }
+  
+  // === RELEASE-TYPE-SPECIFIC CONTEXT ===
+  let releaseSpecificContext = ''
+  
+  switch (context.releaseType) {
+    case 'race_recap':
+      if (context.racePosition && context.trackName) {
+        const isWin = context.racePosition === 1
+        const isPodium = context.racePosition <= 3
+        const isDNF = context.racePosition > 50
+        releaseSpecificContext = `RACE RESULT: ${isDNF ? 'DNF (Did Not Finish)' : `P${context.racePosition}`} at ${context.trackName}\n`
+        if (isWin) releaseSpecificContext += 'This was a VICTORY — celebrate accordingly!\n'
+        else if (isPodium) releaseSpecificContext += 'This was a podium finish — a strong result!\n'
+        else if (context.racePosition <= 10) releaseSpecificContext += 'A points-scoring finish.\n'
+        else if (isDNF) releaseSpecificContext += 'Focus on learning, positivity, and looking forward.\n'
+      } else if (context.lastRaceTrack && context.lastRacePosition) {
+        releaseSpecificContext = `LAST RACE: P${context.lastRacePosition} at ${context.lastRaceTrack}\n`
+      }
+      break
+      
+    case 'driver_signing':
+      if (context.newEntityName) {
+        releaseSpecificContext = `NEW DRIVER SIGNED: ${context.newEntityName}\nMake the release about welcoming them to the team.\n`
+      } else if (context.recentSigningName) {
+        releaseSpecificContext = `RECENTLY SIGNED: ${context.recentSigningName}${context.recentSigningRole ? ` (${context.recentSigningRole})` : ''}\n`
+      }
+      break
+      
+    case 'sponsor_announcement':
+      if (context.newEntityName) {
+        releaseSpecificContext = `NEW SPONSOR: ${context.newEntityName}\nAnnounce the partnership professionally.\n`
+      } else if (context.primarySponsor) {
+        releaseSpecificContext = `FEATURING SPONSOR: ${context.primarySponsor}\nHighlight the partnership.\n`
+      }
+      break
+      
+    case 'development_update':
+      if (context.recentUpgrades && context.recentUpgrades.length > 0) {
+        releaseSpecificContext = `RECENT DEVELOPMENTS: ${context.recentUpgrades.join(', ')}\n`
+      } else if (context.completedUpgrades && context.completedUpgrades.length > 0) {
+        releaseSpecificContext = `COMPLETED UPGRADES: ${context.completedUpgrades.join(', ')}\n`
+      }
+      releaseSpecificContext += 'Focus on technical progress and the team\'s development direction.\n'
+      break
+      
+    case 'season_preview':
+      releaseSpecificContext = `Looking ahead at the upcoming season.\n`
+      if (context.seriesName) releaseSpecificContext += `Series: ${context.seriesName}\n`
+      releaseSpecificContext += 'Set expectations, share goals, and build excitement.\n'
+      break
+      
+    case 'season_review':
+      releaseSpecificContext = `Reviewing the completed season.\n`
+      if (context.totalWins) releaseSpecificContext += `Wins: ${context.totalWins}\n`
+      if (context.totalPodiums) releaseSpecificContext += `Podiums: ${context.totalPodiums}\n`
+      if (context.championshipPosition) releaseSpecificContext += `Final championship position: P${context.championshipPosition}\n`
+      releaseSpecificContext += 'Reflect on highs and lows, thank partners and fans.\n'
+      break
+      
+    case 'partnership':
+      if (context.newEntityName) {
+        releaseSpecificContext = `NEW PARTNERSHIP: ${context.newEntityName}\n`
+      }
+      releaseSpecificContext += 'Announce the collaboration and what it means for both parties.\n'
+      break
+      
+    case 'milestone':
+      releaseSpecificContext = 'Celebrate a significant team achievement or milestone.\n'
+      if (context.totalWins) releaseSpecificContext += `Total wins to date: ${context.totalWins}\n`
+      if (context.totalRaces) releaseSpecificContext += `Total races: ${context.totalRaces}\n`
+      break
+      
+    case 'apology':
+      releaseSpecificContext = 'Issue a sincere, professional apology. Take responsibility, explain next steps.\n'
+      if (context.announcementSubject) releaseSpecificContext += `Regarding: ${context.announcementSubject}\n`
+      break
+      
+    case 'incident_response':
+      releaseSpecificContext = 'Respond to a recent incident or controversy. Be measured, factual, and forward-looking.\n'
+      if (context.announcementSubject) releaseSpecificContext += `Regarding: ${context.announcementSubject}\n`
+      break
+      
+    case 'championship_update':
+      releaseSpecificContext = `Championship position: P${context.championshipPosition || '?'}\n`
+      if (context.seasonPoints) releaseSpecificContext += `Points: ${context.seasonPoints}\n`
+      releaseSpecificContext += 'Update on the championship campaign — targets, form, and outlook.\n'
+      break
+      
+    case 'facility_expansion':
+      if (context.facilityDescriptions && context.facilityDescriptions.length > 0) {
+        releaseSpecificContext = `FACILITIES: ${context.facilityDescriptions.join('. ')}\n`
+      }
+      releaseSpecificContext += 'Announce facility upgrades or expansion. Focus on what it means for the team\'s competitiveness.\n'
+      break
+      
+    case 'merchandise_launch':
+      releaseSpecificContext = 'Announce a new merchandise collection or product launch.\n'
+      break
+      
+    case 'staff_announcement':
+      if (context.recentSigningName) {
+        releaseSpecificContext = `NEW HIRE: ${context.recentSigningName}${context.recentSigningRole ? ` as ${context.recentSigningRole}` : ''}\n`
+      }
+      releaseSpecificContext += 'Announce a staff hire, promotion, or team restructure.\n'
+      break
+      
+    case 'testing_report':
+      releaseSpecificContext = 'Report on a recent testing session — findings, performance, and learnings.\n'
+      if (context.trackName) releaseSpecificContext += `Test venue: ${context.trackName}\n`
+      break
+      
+    case 'general_statement':
+    default:
+      if (context.announcementSubject) {
+        releaseSpecificContext = `Subject: ${context.announcementSubject}\n`
+      }
+      releaseSpecificContext += 'General official statement from the team.\n'
+      break
+  }
+  
+  // Activity-linked context
+  if (context.recentActivityName) {
+    releaseSpecificContext += `\nRECENT ACTIVITY: ${context.recentActivityName}`
+    if (context.recentActivityDescription) releaseSpecificContext += ` — ${context.recentActivityDescription}`
+    releaseSpecificContext += '\nThe press release can reference this recent activity.\n'
+  }
+  
+  return `Generate 3 press release options for ${context.teamName}.
 
-RELEASE TYPE: ${context.releaseType.replace('_', ' ')}
-TEAM: ${context.teamName}
-${context.driverName ? `DRIVER: ${context.driverName}` : ''}
+${realityLines.join('\n')}
 
-CONTEXT:
-${situationContext || 'General team press release'}
+RELEASE TYPE: ${context.releaseType.replace(/_/g, ' ').toUpperCase()}
+
+SPECIFIC CONTEXT:
+${releaseSpecificContext || 'General team press release'}
+
+IMPORTANT: The press release MUST accurately reflect the team reality above. Do NOT invent sponsors, staff, achievements, or resources the team doesn't have. A small entry-level team should sound like a scrappy startup, not a corporate giant.
 
 Generate 3 options with different approaches:
-1. FORMAL - Traditional, corporate style
-2. BALANCED - Professional but personable  
-3. ENGAGING - More dynamic, quotable
+1. FORMAL (formalityLevel: "high") - Traditional, corporate style. Measured language, third-person references.
+2. BALANCED (formalityLevel: "medium") - Professional but personable. Warm, direct, shows personality.
+3. ENGAGING (formalityLevel: "casual") - Dynamic, quotable, fan-facing. More energy, first-person, social-friendly.
 
 Return JSON:
 {
   "releases": [
     {
-      "headline": "Press release headline",
-      "content": "2-3 paragraph press release body",
+      "headline": "Clear, specific headline referencing real data",
+      "content": "2-3 paragraph press release body that references actual team data",
       "tone": "professional|confident|humble",
-      "quote": "A quote from the team owner to include",
+      "quote": "An authentic quote from the team owner reflecting their personality",
       "effects": {
         "mediaScore": 0-10,
         "fanSentiment": -3 to 5,
@@ -3675,14 +4408,83 @@ Return JSON:
 
 function getFallbackPressReleases(context: PressReleaseContext): PressReleaseOption[] {
   const teamName = context.teamName
+  const isSmall = context.staffCount !== undefined && context.staffCount <= 5
+  const sponsorMention = context.allSponsors && context.allSponsors.length > 0 
+    ? `, alongside our partners ${context.allSponsors.slice(0, 2).join(' and ')}` 
+    : ''
+  
+  // Build release-type-specific fallbacks
+  let headlines: [string, string, string]
+  let bodies: [string, string, string]
+  let quotes: [string, string, string]
+  
+  switch (context.releaseType) {
+    case 'race_recap':
+      const pos = context.racePosition || context.lastRacePosition
+      const track = context.trackName || context.lastRaceTrack || 'the latest round'
+      const resultText = pos ? (pos === 1 ? 'Victory' : pos <= 3 ? `P${pos} Podium` : `P${pos} Finish`) : 'Race Complete'
+      headlines = [
+        `${teamName} ${resultText} at ${track}`,
+        `${teamName} Reflects on ${track} ${resultText}`,
+        `${track}: ${teamName} Delivers ${resultText}`
+      ]
+      bodies = [
+        `${teamName} is pleased to report a ${pos ? `P${pos}` : ''} finish at ${track}${sponsorMention}.\n\nThe team${isSmall ? ', despite limited resources,' : ''} delivered a solid performance through the entire race distance. ${context.driverName ? `${context.driverName} showed excellent pace` : 'The driver showed excellent pace'} throughout the event.\n\nAttention now turns to the next round as the team continues to build momentum.`,
+        `${teamName} came away from ${track} with a ${pos ? `P${pos}` : 'completed'} finish in a competitive field.\n\nThe whole team worked hard to maximize our potential this weekend. Every crew member played their part, and the result reflects that collective effort.\n\nWe're already looking forward to applying our learnings to the next race.`,
+        `What a weekend at ${track}! ${teamName} brought everything we had and came away with P${pos || '?'}.\n\n${context.driverName || 'Our driver'} was on it from the first lap. The crew nailed their strategy, and this result is for everyone who believed in this project${sponsorMention}.\n\nOnward and upward!`
+      ]
+      quotes = [
+        `"A solid day at the office. The team executed well and we're pleased with the result."`,
+        `"We came here to compete and that's exactly what we did. Proud of every member of this team."`,
+        `"This is what we work for. Days like today make all the late nights worth it."`
+      ]
+      break
+      
+    case 'driver_signing':
+      const driverName = context.newEntityName || context.recentSigningName || 'a new driver'
+      headlines = [
+        `${teamName} Confirms ${driverName} Signing`,
+        `${driverName} Joins ${teamName}`,
+        `Welcome to the Team: ${teamName} Signs ${driverName}`
+      ]
+      bodies = [
+        `${teamName} is pleased to confirm the signing of ${driverName}.\n\nThe team believes ${driverName} will bring valuable experience and pace to the operation. This signing represents an important step in the team's development.\n\nFurther details regarding the arrangement will be confirmed in due course.`,
+        `${teamName} is excited to welcome ${driverName} to the team.\n\n${driverName} has been identified as the ideal fit for the team's ambitions. ${isSmall ? 'Even as a growing operation, ' : ''}We are confident this partnership will yield strong results on track.\n\nThe entire team is looking forward to working together.`,
+        `Big news! ${teamName} is thrilled to announce that ${driverName} is joining the squad!\n\nThis is a huge moment for us. ${driverName} brings exactly what we need to push forward${sponsorMention}.\n\nThe journey continues — and it just got a whole lot more exciting.`
+      ]
+      quotes = [
+        `"We are delighted to welcome ${driverName}. This is a considered addition that strengthens our lineup."`,
+        `"${driverName} shares our vision and competitive drive. Together we can achieve great things."`,
+        `"I couldn't be more excited. ${driverName} is exactly who we wanted, and the energy is already electric."`
+      ]
+      break
+      
+    default:
+      headlines = [
+        `${teamName} Issues Official Statement`,
+        `${teamName}: Committed to Progress`,
+        `${teamName} Addresses Supporters`
+      ]
+      bodies = [
+        `${teamName} is pleased to provide this update to our supporters${sponsorMention ? `, partners${sponsorMention},` : ','} and the wider motorsport community.\n\n${isSmall ? 'Despite being a small operation, the' : 'The'} team continues to work diligently towards our goals. We remain committed to excellence in all aspects of our operations.\n\nWe thank everyone for their continued support.`,
+        `${teamName} is writing to share our enthusiasm for the road ahead.\n\nOur team of ${context.staffCount || 'dedicated individuals'} has been working tirelessly behind the scenes. The dedication of every team member continues to drive us forward.\n\nWe look forward to demonstrating our capabilities and rewarding the faith our partners and fans have placed in us.`,
+        `To our amazing fans and partners,\n\n${teamName} wanted to take a moment to connect with everyone who makes this journey possible. Your support doesn't go unnoticed — it fuels our determination every single day.\n\nWe're putting everything we have into achieving our goals. This is just the beginning.`
+      ]
+      quotes = [
+        `"We're focused on continuous improvement and delivering results for all our stakeholders."`,
+        `"Every challenge is an opportunity. This team has what it takes to compete."`,
+        `"Without our fans and partners, none of this would be possible. We race for you."`
+      ]
+      break
+  }
   
   return [
     {
       id: 'pr-fallback-1',
-      headline: `${teamName} Issues Official Statement`,
-      content: `${teamName} is pleased to provide this update to our supporters, partners, and the wider motorsport community.\n\nThe team continues to work diligently towards our goals for the current season. We remain committed to excellence in all aspects of our operations, from engineering and development to fan engagement and partner relations.\n\nWe thank everyone for their continued support as we progress through the season.`,
+      headline: headlines[0],
+      content: bodies[0],
       tone: 'professional',
-      quote: "We're focused on continuous improvement and delivering results for all our stakeholders.",
+      quote: quotes[0],
       effects: {
         mediaScore: 3,
         fanSentiment: 1,
@@ -3695,10 +4497,10 @@ function getFallbackPressReleases(context: PressReleaseContext): PressReleaseOpt
     },
     {
       id: 'pr-fallback-2',
-      headline: `${teamName}: Committed to Success`,
-      content: `${teamName} is writing to share our enthusiasm for the road ahead.\n\nOur team has been working tirelessly behind the scenes, and we're excited about the progress we're making. The dedication of every team member, from our engineers to our support staff, continues to drive us forward.\n\nWe look forward to demonstrating our capabilities on track and rewarding the faith our partners and fans have placed in us.`,
+      headline: headlines[1],
+      content: bodies[1],
       tone: 'confident',
-      quote: "Every challenge is an opportunity. This team has what it takes to compete at the highest level.",
+      quote: quotes[1],
       effects: {
         mediaScore: 5,
         fanSentiment: 2,
@@ -3711,10 +4513,10 @@ function getFallbackPressReleases(context: PressReleaseContext): PressReleaseOpt
     },
     {
       id: 'pr-fallback-3',
-      headline: `${teamName} Addresses Supporters`,
-      content: `To our amazing fans and partners,\n\n${teamName} wanted to take a moment to connect with everyone who makes this journey possible. Your support doesn't go unnoticed - it fuels our determination every single day.\n\nWe're putting everything we have into achieving our goals, and we promise to leave nothing on the table. This is just the beginning.`,
+      headline: headlines[2],
+      content: bodies[2],
       tone: 'humble',
-      quote: "Without our fans and partners, none of this would be possible. We race for you.",
+      quote: quotes[2],
       effects: {
         mediaScore: 6,
         fanSentiment: 4,
@@ -3726,6 +4528,232 @@ function getFallbackPressReleases(context: PressReleaseContext): PressReleaseOpt
       formalityLevel: 'casual'
     }
   ]
+}
+
+// ============================================
+// PRESS RELEASE IMAGE GENERATION
+// ============================================
+
+/**
+ * Image prompt templates for press release types.
+ * Each produces a professional PR-style photograph appropriate for the release type.
+ */
+const PRESS_RELEASE_IMAGE_PROMPTS: Record<string, (ctx: PressReleaseImageContext) => string> = {
+  race_recap: (ctx) =>
+    `Professional motorsport press photography: ${ctx.racePosition && ctx.racePosition === 1 ? 'victory celebration at the finish line, team celebrating' : ctx.racePosition && ctx.racePosition <= 3 ? 'podium celebration, driver holding trophy' : 'race car crossing the finish line at a circuit'}, "${ctx.teamName}" team branding visible. ${ctx.trackName ? `At ${ctx.trackName}.` : ''} Editorial photography style, sharp focus, cinematic lighting, 16:9 widescreen composition. No text overlays.`,
+
+  driver_signing: (ctx) =>
+    `Professional motorsport press photography: driver signing ceremony at team headquarters. ${ctx.newEntityName ? `A driver representing "${ctx.newEntityName}"` : 'A racing driver'} sitting at a table signing a contract, "${ctx.teamName}" team branding in the background. Handshake moment, team apparel visible. Corporate press photography style, sharp focus, warm lighting, 16:9 widescreen composition. No text overlays.`,
+
+  sponsor_announcement: (ctx) =>
+    `Professional corporate press photography: partnership announcement event. Representatives from "${ctx.teamName}" racing team and ${ctx.newEntityName ? `"${ctx.newEntityName}"` : 'a corporate partner'} shaking hands in front of branded backdrop. Corporate setting with race car or team imagery in background. Press conference lighting, professional atmosphere, 16:9 widescreen composition. No text overlays.`,
+
+  development_update: (ctx) =>
+    `Professional motorsport press photography: engineering workshop scene at "${ctx.teamName}" racing team. Engineers examining race car components, technical drawings on screens, precision tools and equipment. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Small but clean workshop, modest equipment' : 'Well-equipped modern facility'}. Documentary photography style, natural lighting, 16:9 widescreen composition. No text overlays.`,
+
+  season_preview: (ctx) =>
+    `Professional motorsport press photography: team launch event for "${ctx.teamName}". ${ctx.carCount && ctx.carCount > 0 ? 'Race car under dramatic lighting, covered and being revealed, team members standing beside it' : 'Team members gathered for a group photo, team branding visible, anticipation of the season ahead'}. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Intimate, scrappy launch in workshop setting' : 'Professional launch event with media present'}. Dramatic lighting, editorial photography, 16:9 widescreen composition. No text overlays.`,
+
+  season_review: (ctx) =>
+    `Professional motorsport press photography: season retrospective imagery for "${ctx.teamName}". ${ctx.totalWins && ctx.totalWins > 0 ? 'Trophy display case with season trophies, championship memorabilia' : 'Team gathered in their workshop, reflective mood, season photographs on the wall'}. Warm nostalgic lighting, editorial photography style, 16:9 widescreen composition. No text overlays.`,
+
+  partnership: (ctx) =>
+    `Professional corporate press photography: business partnership announcement for "${ctx.teamName}" racing team. Formal handshake between team and partner representatives, branded materials visible, press conference backdrop. Professional corporate atmosphere, sharp focus, 16:9 widescreen composition. No text overlays.`,
+
+  milestone: (ctx) =>
+    `Professional motorsport press photography: celebration of an achievement for "${ctx.teamName}" racing team. Team members celebrating together, possibly holding a commemorative item or trophy, joy and accomplishment visible. Team facilities in background. Warm celebratory lighting, editorial photography, 16:9 widescreen composition. No text overlays.`,
+
+  apology: (ctx) =>
+    `Professional press photography: somber team press conference. A team representative at a podium or desk with "${ctx.teamName}" branding, serious and measured expression, microphones present. Subdued, professional lighting. Journalistic photography style, 16:9 widescreen composition. No text overlays.`,
+
+  general_statement: (ctx) =>
+    `Professional motorsport press photography: "${ctx.teamName}" team headquarters exterior or reception area. Team branding visible, clean and professional environment. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Small workshop with team signage' : 'Modern facility with prominent team branding'}. Architectural press photography, sharp focus, natural lighting, 16:9 widescreen composition. No text overlays.`,
+
+  incident_response: (ctx) =>
+    `Professional press photography: serious team press conference. A team representative at a podium with "${ctx.teamName}" branding, addressing the media, composed and professional demeanor. Subdued professional lighting, press cameras visible. Journalistic photography style, 16:9 widescreen composition. No text overlays.`,
+
+  championship_update: (ctx) =>
+    `Professional motorsport press photography: championship campaign imagery for "${ctx.teamName}". ${ctx.championshipPosition && ctx.championshipPosition <= 3 ? 'Dramatic shot of the team car on track, championship-contending feel, intense racing action' : 'Team reviewing championship standings on a screen, strategic discussion in the pit wall or engineering room'}. Dynamic, high-energy editorial photography, 16:9 widescreen composition. No text overlays.`,
+
+  facility_expansion: (ctx) =>
+    `Professional architectural press photography: facility expansion at "${ctx.teamName}" racing team. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Construction work on a modest workshop expansion, new equipment being installed' : 'Modern motorsport facility, newly built or renovated section, clean and impressive interior'}. Architectural photography style, wide angle, natural lighting, 16:9 widescreen composition. No text overlays.`,
+
+  merchandise_launch: (ctx) =>
+    `Professional product press photography: merchandise launch for "${ctx.teamName}" racing team. Team-branded apparel and merchandise displayed attractively, team colors prominent. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Simple product display in workshop setting' : 'Professional product photography setup with team branding'}. Clean product photography, sharp focus, studio-style lighting, 16:9 widescreen composition. No text overlays.`,
+
+  staff_announcement: (ctx) =>
+    `Professional corporate press photography: new staff introduction at "${ctx.teamName}" racing team. ${ctx.recentSigningName ? `A new team member being welcomed` : 'Team leadership introducing a new member'}. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Casual workshop setting, team apparel' : 'Professional office or facility setting'}. Corporate portrait photography style, natural lighting, 16:9 widescreen composition. No text overlays.`,
+
+  testing_report: (ctx) =>
+    `Professional motorsport press photography: testing session imagery for "${ctx.teamName}". ${ctx.carCount && ctx.carCount > 0 ? 'Race car on a test track, data gathering, engineers with laptops at pit wall' : 'Engineering team reviewing data on screens, simulation tools in use'}. ${ctx.trackName ? `At ${ctx.trackName}.` : ''} Documentary photography style, sharp focus, natural lighting, 16:9 widescreen composition. No text overlays.`,
+}
+
+/**
+ * Context for generating a press release image
+ */
+export interface PressReleaseImageContext {
+  releaseType: string
+  teamName: string
+  teamTier?: string
+  driverName?: string
+  trackName?: string
+  newEntityName?: string
+  racePosition?: number
+  championshipPosition?: number
+  totalWins?: number
+  carCount?: number
+  carType?: string
+  staffCount?: number
+  hasSeriesEntry?: boolean
+  seriesName?: string
+  facilityDescriptions?: string[]
+  sponsorNames?: string[]
+  isFirstSeason?: boolean
+  seasonsCompleted?: number
+  teamMorale?: string
+  baseCountry?: string
+  recentSigningName?: string
+}
+
+/**
+ * Build a press release image prompt with TEAM REALITY scene description
+ */
+function buildPressReleaseImagePrompt(ctx: PressReleaseImageContext): string {
+  // Reuse the existing scene description builder by constructing a PostImageContext-compatible object
+  const sceneCtx: PostImageContext = {
+    postType: ctx.releaseType,
+    tone: 'confident', // PR images always have a confident, professional tone
+    playerName: ctx.driverName || '',
+    teamName: ctx.teamName,
+    seriesName: ctx.seriesName || '',
+    trackName: ctx.trackName,
+    teamTier: ctx.teamTier,
+    carCount: ctx.carCount,
+    carType: ctx.carType,
+    staffCount: ctx.staffCount,
+    hasSeriesEntry: ctx.hasSeriesEntry,
+    facilityDescriptions: ctx.facilityDescriptions,
+    sponsorNames: ctx.sponsorNames,
+    isFirstSeason: ctx.isFirstSeason,
+    seasonsCompleted: ctx.seasonsCompleted,
+    teamMorale: ctx.teamMorale,
+    baseCountry: ctx.baseCountry,
+  }
+  const sceneDescription = buildSceneDescription(sceneCtx)
+  
+  // Get the release-type-specific prompt
+  const promptFn = PRESS_RELEASE_IMAGE_PROMPTS[ctx.releaseType]
+  const basePrompt = promptFn 
+    ? promptFn(ctx) 
+    : `Professional motorsport press photography for "${ctx.teamName}" racing team. ${ctx.teamTier === 'entry' || ctx.teamTier === 'amateur' ? 'Modest workshop or small team setting' : 'Professional motorsport facility'}. Editorial photography style, sharp focus, natural lighting, 16:9 widescreen composition. No text overlays.`
+  
+  if (sceneDescription) {
+    return sceneDescription + '\n\n' + basePrompt
+  }
+  return basePrompt
+}
+
+/**
+ * Map press release types to stock image categories for fallback
+ */
+const PRESS_RELEASE_FALLBACK_IMAGES: Record<string, ImageCategory> = {
+  race_recap: 'victory',
+  driver_signing: 'paddock',
+  sponsor_announcement: 'paddock',
+  development_update: 'garage',
+  season_preview: 'paddock',
+  season_review: 'victory',
+  partnership: 'paddock',
+  milestone: 'victory',
+  apology: 'paddock',
+  general_statement: 'paddock',
+  incident_response: 'paddock',
+  championship_update: 'gt-racing',
+  facility_expansion: 'garage',
+  merchandise_launch: 'paddock',
+  staff_announcement: 'paddock',
+  testing_report: 'garage',
+}
+
+/**
+ * Generate an AI image for a press release using Gemini image generation.
+ * Falls back to null if generation fails (caller should use stock images).
+ */
+export async function generatePressReleaseImage(context: PressReleaseImageContext): Promise<string | null> {
+  const apiKey = await getGeminiKey()
+  
+  if (!apiKey) {
+    console.log('[MediaAI] No API key for press release image generation')
+    return null
+  }
+  
+  const prompt = buildPressReleaseImagePrompt(context)
+  
+  console.log('[MediaAI] Generating press release image...')
+  console.log('[MediaAI] PR image prompt:', prompt.substring(0, 120) + '...')
+  
+  try {
+    const response = await fetch(GEMINI_IMAGE_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{ text: prompt }]
+        }],
+        generationConfig: {
+          responseModalities: ['TEXT', 'IMAGE'],
+          imageConfig: {
+            aspectRatio: '16:9',
+            imageSize: '2K'
+          }
+        }
+      })
+    })
+    
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unknown error')
+      console.error('[MediaAI] PR image generation API error:', response.status, errorText)
+      return null
+    }
+    
+    const data = await response.json()
+    
+    const parts = data.candidates?.[0]?.content?.parts
+    if (!parts || !Array.isArray(parts)) {
+      console.log('[MediaAI] No parts in PR image generation response')
+      return null
+    }
+    
+    for (const part of parts) {
+      if (part.inlineData?.data && part.inlineData?.mimeType) {
+        const mimeType = part.inlineData.mimeType
+        const base64Data = part.inlineData.data
+        const dataUrl = `data:${mimeType};base64,${base64Data}`
+        console.log('[MediaAI] PR image generated successfully, size:', Math.round(base64Data.length / 1024), 'KB')
+        return dataUrl
+      }
+    }
+    
+    console.log('[MediaAI] No image data found in PR image response parts')
+    return null
+    
+  } catch (e) {
+    console.error('[MediaAI] PR image generation failed:', e)
+    return null
+  }
+}
+
+/**
+ * Get the fallback stock image category for a press release type
+ */
+export function getPressReleaseFallbackCategory(releaseType: string, carCount?: number): ImageCategory {
+  if (carCount !== undefined && carCount === 0) {
+    return 'paddock' // Don't show racing imagery if no car
+  }
+  return PRESS_RELEASE_FALLBACK_IMAGES[releaseType] || 'paddock'
 }
 
 // ============================================
@@ -4016,7 +5044,7 @@ export type PressConferenceType =
   | 'development_reveal'
   | 'mid_season_review'
 
-export interface PressConferenceContext {
+export interface TeamPressConferenceContext {
   conferenceType: PressConferenceType
   teamName: string
   teamTier: string
@@ -4037,6 +5065,9 @@ export interface PressConferenceContext {
   currentWeek: number
   currentYear: number
 }
+
+/** @deprecated Use TeamPressConferenceContext for team press conferences */
+export type TeamPressConfContext = TeamPressConferenceContext
 
 export interface PressConferenceQuestion {
   id: string
@@ -4084,7 +5115,7 @@ Rules:
 /**
  * Generate press conference options
  */
-export function generatePressConferenceOptions(context: PressConferenceContext): PressConferenceOption[] {
+export function generatePressConferenceOptions(context: TeamPressConferenceContext): PressConferenceOption[] {
   const tierMultiplier = context.teamTier === 'elite' ? 3 : context.teamTier === 'professional' ? 2 : context.teamTier === 'semi-pro' ? 1.5 : 1
   const timestamp = Date.now()
   
@@ -4134,7 +5165,7 @@ export function generatePressConferenceOptions(context: PressConferenceContext):
   return options
 }
 
-function generateBasicQuestions(_context: PressConferenceContext, count: number): PressConferenceQuestion[] {
+function generateBasicQuestions(_context: TeamPressConferenceContext, count: number): PressConferenceQuestion[] {
   const outlets = [
     'Motorsport Weekly', 'Racing Times', 'Speed Magazine', 'Auto News', 
     'The Racing Post', 'Pit Lane Report', 'Track & Field', 'Race Day Live'
@@ -4407,7 +5438,7 @@ export function generateExclusiveContentOptions(context: ExclusiveContentContext
  * AI-powered press conference question generation
  */
 export async function generateAIPressConferenceQuestions(
-  context: PressConferenceContext,
+  context: TeamPressConferenceContext,
   count: number,
   gameContext?: ComprehensiveGameContext
 ): Promise<PressConferenceQuestion[]> {
@@ -4515,7 +5546,7 @@ Return ONLY a JSON array:
  */
 export async function generateAIAnswerOptions(
   question: PressConferenceQuestion,
-  context: PressConferenceContext,
+  context: TeamPressConferenceContext,
   gameContext?: ComprehensiveGameContext
 ): Promise<PressConferenceAnswerOption[]> {
   const apiKey = await getGeminiKey()
@@ -4908,5 +5939,471 @@ Return ONLY a JSON array:
   } catch (e) {
     console.error('[MediaAI] Exclusive content generation failed:', e)
     return generateExclusiveContentOptions(context)
+  }
+}
+
+// ============================================
+// AI IMAGE GENERATION (Nano Banana Pro)
+// ============================================
+
+/**
+ * Gemini 3 Pro Image Preview API endpoint (Nano Banana Pro)
+ * Used for generating social media post images and news headline graphics.
+ */
+const GEMINI_IMAGE_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:generateContent'
+
+/**
+ * Context for generating a post image
+ */
+export interface PostImageContext {
+  postType: string
+  tone: MediaTone
+  playerName: string
+  teamName: string
+  seriesName: string
+  trackName?: string
+  rivalName?: string
+  isVictory?: boolean
+  isPodium?: boolean
+  isDNF?: boolean
+  aspectRatio?: '16:9' | '3:2' | '1:1' | '4:3'
+  // Full team state for context-aware image generation
+  teamTier?: string                  // entry/amateur/semi-pro/professional/pro/elite/pinnacle
+  carCount?: number                  // 0 = no car
+  carType?: string                   // "GT car", "prototype", "open-wheel" etc.
+  carModelName?: string              // Human-readable car/livery model name when available
+  carChassisId?: string              // Internal chassis identifier for accuracy hints
+  carEngineId?: string               // Internal engine identifier for accuracy hints
+  carLiveryName?: string             // Selected livery name for the owned car
+  carLiveryPath?: string             // Livery image path hint (filename often includes style/colors)
+  hasSeriesEntry?: boolean           // entered in a championship
+  staffCount?: number                // total staff (race + facility)
+  facilityDescriptions?: string[]    // actual descriptions from facility config per facility type
+  sponsorNames?: string[]            // sponsor names for branding context
+  isFirstSeason?: boolean            // brand new team
+  seasonsCompleted?: number          // career progress
+  teamMorale?: string                // "high"/"good"/"low"
+  baseCountry?: string               // where the team is based
+}
+
+/**
+ * Prompt templates for different post types
+ * Each template creates a motorsport scene appropriate for the post context
+ */
+const POST_IMAGE_PROMPTS: Record<string, (ctx: PostImageContext) => string> = {
+  post_race_win: (ctx) =>
+    `Professional motorsport photography: dramatic victory celebration at a race circuit. A race car with "${ctx.teamName}" livery crossing the finish line under the checkered flag, confetti in the air, team crew celebrating in the background. Cinematic lighting, high detail, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  post_race_podium: (ctx) =>
+    `Professional motorsport photography: podium celebration at a race event. A driver in "${ctx.teamName}" racing suit on the podium, champagne spray, trophy held high, fans cheering below. Warm celebratory lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  training_update: (ctx) =>
+    `Professional sports photography: an athlete in "${ctx.teamName}" team gear training in a modern gym facility. Focused and intense workout scene, dramatic gym lighting with warm tones, athletic equipment visible. Authentic documentary style, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  fan_appreciation: (ctx) =>
+    `Professional motorsport photography: enthusiastic racing fans at a circuit grandstand. Diverse crowd waving flags and holding banners, excited faces, stadium atmosphere with a race track visible in the background. Warm golden hour lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  charity_highlight: (ctx) =>
+    `Professional photography: a racing driver in "${ctx.teamName}" team apparel at a community charity event. Warm, heartfelt moment with children or community members, bright outdoor setting. Authentic candid style, warm lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  race_photo: (ctx) =>
+    `Professional motorsport action photography: a race car with "${ctx.teamName}" livery at high speed on a circuit${ctx.trackName ? ` at ${ctx.trackName}` : ''}. Motion blur on the background, sharp focus on the car, dramatic perspective angle. Professional racing photography style, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  behind_scenes: (ctx) =>
+    `Professional behind-the-scenes motorsport photography: inside a modern race team garage. Engineers and mechanics working on a race car with "${ctx.teamName}" branding, tools and equipment visible, telemetry screens in the background. Authentic documentary style, natural garage lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  team_appreciation: (ctx) =>
+    `Professional motorsport team photography: the "${ctx.teamName}" racing team group photo in front of their race car in the paddock. Mechanics, engineers, and crew members together, team spirit and camaraderie. Warm professional lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  fan_qa: (ctx) =>
+    `Professional photography: a racing driver at a fan meet-and-greet event. Signing autographs, taking selfies with fans, racing memorabilia around. Warm engaging atmosphere, event lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  sponsor_shoutout: (ctx) =>
+    `Professional motorsport photography: close-up of a race car showing sponsor logos and team branding for "${ctx.teamName}". Gleaming paint, paddock setting, professional product photography style. Sharp detail, studio-quality lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  track_preview: (ctx) =>
+    `Professional aerial motorsport photography: stunning wide view of ${ctx.trackName || 'a famous racing circuit'}, showing the full track layout from above. Golden hour lighting, lush green surroundings, grandstands visible, cars on track in the distance. Cinematic aerial composition, photorealistic, 16:9 widescreen. No text overlays.`,
+  
+  throwback_memory: (ctx) =>
+    `Nostalgic motorsport photography with vintage film aesthetic: a classic racing moment, slightly warm color grading, film grain effect. Race car in vintage livery on a historic circuit. Retro photography style reminiscent of 1990s motorsport photography, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  equipment_showcase: (ctx) =>
+    `Professional product photography: racing helmet and driving gear laid out on a clean surface. "${ctx.teamName}" team colors and branding, gloves, suit, and boots arranged artistically. Studio lighting, sharp detail, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  lifestyle_post: (ctx) =>
+    `Professional lifestyle photography: a young racing driver relaxing off-track. Casual setting — perhaps a scenic overlook, coffee shop, or travel scene. Relaxed, aspirational mood, warm natural lighting, shallow depth of field. Photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  championship_push: (ctx) =>
+    `Dramatic motorsport photography: intense wheel-to-wheel racing action between two competitive race cars on a circuit. High-speed corner entry, sparks flying, extreme close-up angle. Dramatic tension, high-contrast cinematic lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  comeback_update: (ctx) =>
+    `Professional motorsport photography: a race car emerging from the pit lane onto the track at sunrise. Symbolic comeback imagery — dawn light, empty track ahead, "${ctx.teamName}" livery gleaming. Inspirational cinematic composition, photorealistic, 16:9 widescreen. No text overlays.`,
+  
+  rival_callout: (ctx) =>
+    `Dramatic motorsport photography: two rival race cars battling side-by-side through a fast corner. Intense competition, aggressive positioning, high contrast dramatic lighting. ${ctx.rivalName ? `One car with "${ctx.teamName}" livery challenging a rival.` : ''} High-energy composition, photorealistic, 16:9 widescreen. No text overlays.`,
+  
+  team_criticism: (ctx) =>
+    `Professional motorsport photography: a frustrated scene in the pit lane. A race car being pushed back to the garage, team members with concerned expressions, overcast moody atmosphere. Gritty documentary style, muted colors, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  incident_reaction: (ctx) =>
+    `Dramatic motorsport photography: aftermath of a racing incident at a circuit. Gravel trap, safety car lights in the background, marshals on scene. Tense atmosphere, dramatic overcast lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  paddock_gossip: (ctx) =>
+    `Professional candid motorsport photography: busy paddock scene with team personnel, media, and drivers walking between motorhomes. Paparazzi style, candid captures, buzzing F1/GT paddock atmosphere. Natural lighting, photorealistic, 16:9 widescreen composition. No text overlays.`,
+  
+  media_clap_back: (ctx) =>
+    `Professional press conference photography: a driver at a press conference microphone, confident and defiant expression, team backdrop with "${ctx.teamName}" branding. Dramatic press room lighting, media flash effects, photorealistic, 16:9 widescreen composition. No text overlays.`,
+}
+
+/**
+ * Default/generic prompt for post types without a specific template
+ */
+function getDefaultImagePrompt(ctx: PostImageContext): string {
+  // Context-aware default: don't show race cars if team has none
+  if (ctx.carCount === 0) {
+    return `Professional photography: inside the "${ctx.teamName}" team workshop. A small, clean workspace with tools, whiteboards, planning boards, and equipment. The atmosphere of a startup racing team preparing for their future. Natural lighting, authentic documentary style, photorealistic, 16:9 widescreen composition. No text overlays.`
+  }
+  if (ctx.staffCount !== undefined && ctx.staffCount <= 3) {
+    return `Professional photography: a small, dedicated racing team at work in their modest workshop. "${ctx.teamName}" branding visible. A lean operation with just a few passionate people. Authentic documentary feel, natural lighting, photorealistic, 16:9 widescreen composition. No text overlays.`
+  }
+  return `Professional motorsport photography: a compelling scene from "${ctx.teamName}" racing team${ctx.seriesName && ctx.seriesName !== 'racing series' ? ` in the ${ctx.seriesName}` : ''}. ${ctx.carCount && ctx.carCount > 0 ? 'Race car, paddock atmosphere' : 'Workshop atmosphere'}, professional quality. Cinematic lighting, photorealistic, 16:9 widescreen composition. No text overlays.`
+}
+
+/**
+ * Tone-based style modifiers appended to prompts
+ */
+function getToneModifier(tone: MediaTone): string {
+  switch (tone) {
+    case 'humble':
+      return ' Style: candid, documentary, authentic, natural lighting, genuine moments.'
+    case 'confident':
+      return ' Style: polished, professional, well-composed, clean and sharp.'
+    case 'bold':
+      return ' Style: dramatic, cinematic, high-impact, vivid colors, bold composition.'
+    case 'aggressive':
+      return ' Style: intense, high-contrast, gritty, dramatic shadows, raw energy.'
+    case 'diplomatic':
+      return ' Style: clean, professional, corporate-quality, neutral and balanced.'
+    case 'deflecting':
+      return ' Style: minimal, clean, subtle, muted tones, simple composition.'
+    default:
+      return ''
+  }
+}
+
+/**
+ * Build a "team reality" scene description from the full team state.
+ * This paragraph is prepended to every image prompt so the AI always knows
+ * the actual state of the team and generates appropriate imagery.
+ */
+function buildSceneDescription(ctx: PostImageContext): string {
+  // If no team state fields are provided, return empty (backward compat)
+  if (ctx.teamTier === undefined && ctx.carCount === undefined && ctx.staffCount === undefined) {
+    return ''
+  }
+
+  const lines: string[] = ['TEAM REALITY (use this to set the scene accurately):']
+
+  // Team tier & identity
+  const tierDescriptions: Record<string, string> = {
+    'entry': 'Entry-level startup racing team operating out of a small, modest workshop',
+    'amateur': 'Amateur-level racing team with a basic garage and limited equipment',
+    'semi-pro': 'Semi-professional racing team with a decent workshop and some proper equipment',
+    'semi_pro': 'Semi-professional racing team with a decent workshop and some proper equipment',
+    'professional': 'Professional racing team with a well-equipped factory and modern facilities',
+    'pro': 'Professional racing team with a well-equipped factory and modern facilities',
+    'elite': 'Elite-tier racing team with an impressive factory complex and top equipment',
+    'pinnacle': 'Pinnacle-tier world-class racing team with a massive state-of-the-art campus',
+  }
+  const tierDesc = tierDescriptions[ctx.teamTier || ''] || 'Racing team'
+  lines.push(`- Team: "${ctx.teamName}" — ${tierDesc}${ctx.baseCountry ? `, based in ${ctx.baseCountry}` : ''}`)
+
+  // Facilities
+  if (ctx.facilityDescriptions && ctx.facilityDescriptions.length > 0) {
+    lines.push(`- Facilities: ${ctx.facilityDescriptions.join('. ')}`)
+  } else if (ctx.teamTier === 'entry' || ctx.teamTier === 'amateur') {
+    lines.push('- Facilities: Small, modest workshop with basic tools and minimal equipment')
+  }
+
+  // Staff
+  if (ctx.staffCount !== undefined) {
+    if (ctx.staffCount === 0) {
+      lines.push('- Staff: Owner is running everything alone — no hired staff yet. Very lean, one-person operation')
+    } else if (ctx.staffCount <= 3) {
+      lines.push(`- Staff: Just ${ctx.staffCount} people — a tiny skeleton crew, very scrappy and lean`)
+    } else if (ctx.staffCount <= 8) {
+      lines.push(`- Staff: ${ctx.staffCount} people — a small but dedicated team, still growing`)
+    } else if (ctx.staffCount <= 20) {
+      lines.push(`- Staff: ${ctx.staffCount} people — a solid mid-size team with engineers, mechanics, and support`)
+    } else {
+      lines.push(`- Staff: ${ctx.staffCount} people — a large professional operation with full departments`)
+    }
+  }
+
+  // Cars
+  if (ctx.carCount !== undefined) {
+    if (ctx.carCount === 0) {
+      lines.push('- Cars: NO race car yet. The workshop has tools, planning boards, and equipment but NO racing car. Do NOT show any race cars in the image')
+    } else if (ctx.carType) {
+      lines.push(`- Cars: ${ctx.carCount} ${ctx.carType}${ctx.carCount > 1 ? 's' : ''} owned by the team`)
+    } else {
+      lines.push(`- Cars: ${ctx.carCount} race car${ctx.carCount > 1 ? 's' : ''}`)
+    }
+
+    const carProfileBits = [
+      ctx.carModelName ? `model/livery: ${ctx.carModelName}` : null,
+      ctx.carLiveryName ? `livery: ${ctx.carLiveryName}` : null,
+      ctx.carChassisId ? `chassis: ${ctx.carChassisId}` : null,
+      ctx.carEngineId ? `engine: ${ctx.carEngineId}` : null,
+      ctx.carLiveryPath ? `reference file: ${ctx.carLiveryPath.split('/').pop()}` : null,
+    ].filter(Boolean)
+
+    if (carProfileBits.length > 0) {
+      lines.push(`- Preferred car profile: ${carProfileBits.join(', ')}`)
+      lines.push('- If any race car appears in the image, it should visually resemble this preferred car profile and livery identity.')
+    }
+  }
+
+  // Series
+  if (ctx.hasSeriesEntry === false) {
+    lines.push('- Series: NOT entered in any championship yet — pre-season or preparation phase')
+  } else if (ctx.seriesName && ctx.seriesName !== 'racing series') {
+    lines.push(`- Series: Competing in ${ctx.seriesName}`)
+  }
+
+  // Sponsors
+  if (ctx.sponsorNames && ctx.sponsorNames.length > 0) {
+    lines.push(`- Sponsors: ${ctx.sponsorNames.join(', ')} (logos visible on walls, uniforms, and car if present)`)
+  } else {
+    lines.push('- Sponsors: None — no sponsor logos or corporate branding. Clean, unbranded workspace')
+  }
+
+  // Career stage
+  if (ctx.isFirstSeason) {
+    lines.push('- Stage: Brand new team, first season, just getting started — everything feels fresh and new')
+  } else if (ctx.seasonsCompleted !== undefined) {
+    lines.push(`- Stage: Season ${(ctx.seasonsCompleted || 0) + 1}, ${ctx.seasonsCompleted >= 3 ? 'established and experienced' : 'still building'}`)
+  }
+
+  // Morale
+  if (ctx.teamMorale) {
+    const moods: Record<string, string> = {
+      'high': 'Team atmosphere is positive and energetic',
+      'good': 'Team atmosphere is steady and professional',
+      'low': 'Team atmosphere is tense and subdued',
+    }
+    if (moods[ctx.teamMorale]) lines.push(`- Mood: ${moods[ctx.teamMorale]}`)
+  }
+
+  lines.push('IMPORTANT: The image MUST accurately reflect the team reality above. Do NOT show things the team does not have (e.g. race cars if they own none, large crews if the team is tiny, advanced facilities if they only have basic equipment).')
+
+  return lines.join('\n')
+}
+
+/**
+ * Build the full image generation prompt from context
+ */
+function buildImagePrompt(ctx: PostImageContext): string {
+  const sceneDescription = buildSceneDescription(ctx)
+  const basePromptFn = POST_IMAGE_PROMPTS[ctx.postType]
+  const basePrompt = basePromptFn ? basePromptFn(ctx) : getDefaultImagePrompt(ctx)
+  const toneModifier = getToneModifier(ctx.tone)
+  
+  if (sceneDescription) {
+    return sceneDescription + '\n\n' + basePrompt + toneModifier
+  }
+  return basePrompt + toneModifier
+}
+
+/**
+ * Generate an AI image for a social media post using Gemini 3 Pro Image Preview (Nano Banana Pro)
+ * 
+ * @returns A data:image/png;base64,... string, or null if generation fails
+ */
+export async function generatePostImage(context: PostImageContext): Promise<string | null> {
+  const apiKey = await getGeminiKey()
+  
+  if (!apiKey) {
+    console.log('[MediaAI] No API key for image generation')
+    return null
+  }
+  
+  const prompt = buildImagePrompt(context)
+  const aspectRatio = context.aspectRatio || '16:9'
+  const imageSizes: Array<'2K' | '1K'> = ['2K', '1K']
+  const isRetriableStatus = (status: number) => [429, 500, 502, 503, 504].includes(status)
+  
+  console.log('[MediaAI] Generating post image with Nano Banana Pro...')
+  console.log('[MediaAI] Image prompt:', prompt.substring(0, 120) + '...')
+  
+  for (let attempt = 0; attempt < imageSizes.length; attempt++) {
+    const imageSize = imageSizes[attempt]
+
+    try {
+      const response = await fetch(GEMINI_IMAGE_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: prompt }]
+          }],
+          generationConfig: {
+            responseModalities: ['TEXT', 'IMAGE'],
+            imageConfig: {
+              aspectRatio,
+              imageSize
+            }
+          }
+        })
+      })
+      
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => 'Unknown error')
+        const retriable = isRetriableStatus(response.status)
+        const hasNextAttempt = attempt < imageSizes.length - 1
+
+        if (retriable && hasNextAttempt) {
+          console.warn(`[MediaAI] Image generation attempt ${attempt + 1} failed (${response.status}). Retrying with ${imageSizes[attempt + 1]}...`)
+          await new Promise(resolve => setTimeout(resolve, 400))
+          continue
+        }
+
+        console.error('[MediaAI] Image generation API error:', response.status, errorText)
+        return null
+      }
+      
+      const data = await response.json()
+      
+      // Extract image data from response parts
+      const parts = data.candidates?.[0]?.content?.parts
+      if (!parts || !Array.isArray(parts)) {
+        const hasNextAttempt = attempt < imageSizes.length - 1
+        if (hasNextAttempt) {
+          console.warn(`[MediaAI] No image parts returned on attempt ${attempt + 1}. Retrying with ${imageSizes[attempt + 1]}...`)
+          continue
+        }
+        console.log('[MediaAI] No parts in image generation response')
+        return null
+      }
+      
+      for (const part of parts) {
+        if (part.inlineData?.data && part.inlineData?.mimeType) {
+          const mimeType = part.inlineData.mimeType
+          const base64Data = part.inlineData.data
+          const dataUrl = `data:${mimeType};base64,${base64Data}`
+          console.log('[MediaAI] Image generated successfully, size:', Math.round(base64Data.length / 1024), 'KB')
+          return dataUrl
+        }
+      }
+
+      const hasNextAttempt = attempt < imageSizes.length - 1
+      if (hasNextAttempt) {
+        console.warn(`[MediaAI] No inline image data on attempt ${attempt + 1}. Retrying with ${imageSizes[attempt + 1]}...`)
+        continue
+      }
+      
+      console.log('[MediaAI] No image data found in response parts')
+      return null
+      
+    } catch (e) {
+      const hasNextAttempt = attempt < imageSizes.length - 1
+      if (hasNextAttempt) {
+        console.warn(`[MediaAI] Image generation network failure on attempt ${attempt + 1}. Retrying with ${imageSizes[attempt + 1]}...`)
+        await new Promise(resolve => setTimeout(resolve, 400))
+        continue
+      }
+      console.error('[MediaAI] Image generation failed:', e)
+      return null
+    }
+  }
+
+  return null
+}
+
+/**
+ * Generate a news headline image using Gemini 3 Pro Image Preview (Nano Banana Pro)
+ * Designed for press clipping / news article header images
+ * 
+ * @returns A data:image/png;base64,... string, or null if generation fails
+ */
+export async function generateHeadlineImage(context: {
+  headline: string
+  outlet: string
+  sentiment: 'positive' | 'neutral' | 'negative' | 'controversial'
+  playerName: string
+  teamName: string
+}): Promise<string | null> {
+  const apiKey = await getGeminiKey()
+  
+  if (!apiKey) {
+    console.log('[MediaAI] No API key for headline image generation')
+    return null
+  }
+  
+  const sentimentStyles: Record<string, string> = {
+    positive: 'bright, warm, uplifting, golden lighting, celebration',
+    neutral: 'clean, professional, journalistic, balanced tones',
+    negative: 'moody, dramatic, overcast, cool tones, tension',
+    controversial: 'high-contrast, dramatic red/orange accents, tension, confrontation'
+  }
+  
+  const styleHint = sentimentStyles[context.sentiment] || sentimentStyles.neutral
+  
+  const prompt = `Professional motorsport journalism header image for a news article. The scene should visually represent this headline: "${context.headline}". 
+Setting: ${context.teamName} racing team, motorsport environment.
+Visual mood: ${styleHint}.
+Style: Editorial photography, magazine-quality, 3:2 aspect ratio, no text or typography rendered in the image. Photorealistic, high detail.`
+  
+  console.log('[MediaAI] Generating headline image with Nano Banana Pro...')
+  
+  try {
+    const response = await fetch(GEMINI_IMAGE_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{ text: prompt }]
+        }],
+        generationConfig: {
+          responseModalities: ['TEXT', 'IMAGE'],
+          imageConfig: {
+            aspectRatio: '3:2',
+            imageSize: '1K'
+          }
+        }
+      })
+    })
+    
+    if (!response.ok) {
+      console.error('[MediaAI] Headline image API error:', response.status)
+      return null
+    }
+    
+    const data = await response.json()
+    const parts = data.candidates?.[0]?.content?.parts
+    
+    if (!parts || !Array.isArray(parts)) {
+      return null
+    }
+    
+    for (const part of parts) {
+      if (part.inlineData?.data && part.inlineData?.mimeType) {
+        const dataUrl = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`
+        console.log('[MediaAI] Headline image generated successfully')
+        return dataUrl
+      }
+    }
+    
+    return null
+    
+  } catch (e) {
+    console.error('[MediaAI] Headline image generation failed:', e)
+    return null
   }
 }

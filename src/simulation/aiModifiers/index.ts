@@ -11,6 +11,85 @@
 
 import { PlayerDriver, RaceResult } from '@/store/careerStore';
 
+// ============================================
+// TYPES
+// ============================================
+
+export interface MilestoneProgress {
+  firstRaceCompleted: boolean
+  firstPointsFinish: boolean
+  firstPodium: boolean
+  firstWin: boolean
+  firstPole: boolean
+  firstFastestLap: boolean
+  tenRacesCompleted: boolean
+  twentyFiveRacesCompleted: boolean
+  fiftyRacesCompleted: boolean
+  hundredRacesCompleted: boolean
+  firstChampionship: boolean
+  multipleChampionships: boolean
+  firstTeamOwnership: boolean
+  [key: string]: boolean
+}
+
+export interface TeamDevelopmentState {
+  points: number
+  weeklyGrowthRate: number
+  lastUpdatedWeek: number
+}
+
+export interface InjuryState {
+  injured: boolean
+  severity: 'none' | 'minor' | 'moderate' | 'major'
+  recoveryWeeksRemaining: number
+  originalRecoveryWeeks: number
+  type?: string
+  description?: string
+}
+
+export interface AIModifierBreakdown {
+  teamDevelopment: number
+  milestonePerks: number
+  formBonus: number
+  injuryPenalty: number
+  fatiguePenalty: number
+  pressurePenalty: number
+  total: number
+}
+
+export interface AIModifierResult {
+  modifier: number
+  breakdown: AIModifierBreakdown
+  description: string
+}
+
+export interface RPGState {
+  teamDevelopment: TeamDevelopmentState
+  milestones: MilestoneProgress
+  injury: InjuryState
+  recentPodiumStreak: number
+  championshipPosition: number
+  totalDriversInChampionship: number
+  roundsRemaining: number
+  pointsToLeader: number
+}
+
+export const MILESTONE_PERKS: Record<keyof MilestoneProgress, { label: string; description: string; aiEffect?: Array<{ stat: string; modifier: number }> } | undefined> = {
+  firstRaceCompleted: { label: 'Rookie No More', description: 'Completed your first race' },
+  firstPointsFinish: { label: 'Points Scorer', description: 'Scored championship points' },
+  firstPodium: { label: 'Podium Finisher', description: 'Achieved your first podium', aiEffect: [{ stat: 'skill', modifier: -0.005 }] },
+  firstWin: { label: 'Race Winner', description: 'Won your first race', aiEffect: [{ stat: 'skill', modifier: -0.01 }] },
+  firstPole: { label: 'Pole Position', description: 'Took your first pole position' },
+  firstFastestLap: { label: 'Fastest Lap', description: 'Set the fastest lap in a race' },
+  tenRacesCompleted: { label: 'Experienced', description: 'Completed 10 races' },
+  twentyFiveRacesCompleted: { label: 'Veteran', description: 'Completed 25 races' },
+  fiftyRacesCompleted: { label: 'Seasoned Pro', description: 'Completed 50 races' },
+  hundredRacesCompleted: { label: 'Legend', description: 'Completed 100 races', aiEffect: [{ stat: 'skill', modifier: -0.015 }] },
+  firstChampionship: { label: 'Champion', description: 'Won your first championship', aiEffect: [{ stat: 'skill', modifier: -0.02 }] },
+  multipleChampionships: { label: 'Dynasty', description: 'Won multiple championships', aiEffect: [{ stat: 'skill', modifier: -0.025 }] },
+  firstTeamOwnership: { label: 'Team Owner', description: 'Started your own team' },
+}
+
 const MILESTONE_EFFECTS: Record<string, {
   aiEffect: Array<{ stat: string; modifier: number }>;
   economicEffect: string
@@ -31,7 +110,7 @@ const MILESTONE_EFFECTS: Record<string, {
     aiEffect: [{ stat: 'raceSkill', modifier: -0.003 }],
     economicEffect: '+10% prize money'
   },
-  firstPolePosition: {
+  firstPole: {
     aiEffect: [{ stat: 'qualifyingSkill', modifier: -0.002 }],
     economicEffect: '+5% qualifying bonuses'
   },
@@ -39,19 +118,19 @@ const MILESTONE_EFFECTS: Record<string, {
     aiEffect: [{ stat: 'raceSkill', modifier: -0.005 }],
     economicEffect: '+15% contract salary'
   },
-  races10: {
+  tenRacesCompleted: {
     aiEffect: [{ stat: 'defending', modifier: -0.002 }],
     economicEffect: '-1 AP training cost'
   },
-  races25: {
+  twentyFiveRacesCompleted: {
     aiEffect: [{ stat: 'qualifyingSkill', modifier: -0.003 }],
     economicEffect: 'Unlock mid-tier sponsors'
   },
-  races50: {
+  fiftyRacesCompleted: {
     aiEffect: [{ stat: 'consistency', modifier: -0.003 }],
     economicEffect: 'Unlock elite sponsors'
   },
-  races100: {
+  hundredRacesCompleted: {
     aiEffect: [
       { stat: 'raceSkill', modifier: -0.005 },
       { stat: 'qualifyingSkill', modifier: -0.005 },
@@ -59,23 +138,7 @@ const MILESTONE_EFFECTS: Record<string, {
     ],
     economicEffect: 'Legend status - permanent rep bonus'
   },
-  wins5: {
-    aiEffect: [{ stat: 'avoidanceOfMistakes', modifier: -0.002 }],
-    economicEffect: '+5% rep gains'
-  },
-  wins10: {
-    aiEffect: [{ stat: 'raceSkill', modifier: -0.002 }],
-    economicEffect: '+10% rep gains'
-  },
-  wins25: {
-    aiEffect: [{ stat: 'raceSkill', modifier: -0.003 }],
-    economicEffect: '+15% rep gains'
-  },
-  championships3: {
-    aiEffect: [{ stat: 'qualifyingSkill', modifier: -0.005 }],
-    economicEffect: 'Legendary contract offers'
-  },
-  championships5: {
+  multipleChampionships: {
     aiEffect: [
       { stat: 'raceSkill', modifier: -0.005 },
       { stat: 'qualifyingSkill', modifier: -0.005 }
@@ -83,6 +146,10 @@ const MILESTONE_EFFECTS: Record<string, {
     economicEffect: 'Hall of Fame status'
   }
 }
+
+const MIN_MODIFIER = -0.03
+const MAX_MODIFIER = 0.03
+const TEAM_DEV_MAX_BONUS = -0.015
 
 // Injury severity penalties (AI gets stronger when player is hurt)
 const INJURY_PENALTIES: Record<InjuryState['severity'], number> = {
@@ -136,7 +203,8 @@ export function calculateAIModifier(
 
   // 1. Team Development Bonus (0 to -1.5%)
   // Higher development = bigger AI nerf
-  const devProgress = (rpgState.teamDevelopment?.points ?? 0) / 100  // 0-1
+  const devPoints = toFiniteNumber(rpgState.teamDevelopment?.points, 0)
+  const devProgress = devPoints / 100  // 0-1
   breakdown.teamDevelopment = devProgress * TEAM_DEV_MAX_BONUS
 
   // 2. Milestone Perks (cumulative)
@@ -158,14 +226,21 @@ export function calculateAIModifier(
     breakdown.fatiguePenalty = FATIGUE_PENALTY
   }
 
-  // 6. Pressure Penalty (title fight with low mental strength)
-  const inTitleFight = isInTitleFight(rpgState)
-  if (inTitleFight && (player.stats?.mentalStrength ?? 100) < MENTAL_STRENGTH_LOW) {
-    breakdown.pressurePenalty = PRESSURE_PENALTY
+  // 6. Pressure Penalty — use stored weekly pressure AI modifier if available,
+  //    otherwise fall back to simple title-fight check
+  const storedPressureMod = toFiniteNumber((rpgState as any).pressureAIModifier, 0)
+  if (storedPressureMod !== 0) {
+    // pressureAIModifier is negative when player handles pressure well, positive when cracking
+    breakdown.pressurePenalty = -storedPressureMod // negate: positive aiModifier = AI advantage
+  } else {
+    const inTitleFight = isInTitleFight(rpgState)
+    if (inTitleFight && (player.stats?.mentalStrength ?? 100) < MENTAL_STRENGTH_LOW) {
+      breakdown.pressurePenalty = PRESSURE_PENALTY
+    }
   }
 
   // Calculate total and clamp
-  const rawTotal = 
+  const rawTotal =
     breakdown.teamDevelopment +
     breakdown.milestonePerks +
     breakdown.formBonus +
@@ -173,6 +248,12 @@ export function calculateAIModifier(
     breakdown.fatiguePenalty +
     breakdown.pressurePenalty
 
+  breakdown.teamDevelopment = toFiniteNumber(breakdown.teamDevelopment, 0)
+  breakdown.milestonePerks = toFiniteNumber(breakdown.milestonePerks, 0)
+  breakdown.formBonus = toFiniteNumber(breakdown.formBonus, 0)
+  breakdown.injuryPenalty = toFiniteNumber(breakdown.injuryPenalty, 0)
+  breakdown.fatiguePenalty = toFiniteNumber(breakdown.fatiguePenalty, 0)
+  breakdown.pressurePenalty = toFiniteNumber(breakdown.pressurePenalty, 0)
   breakdown.total = clamp(rawTotal, MIN_MODIFIER, MAX_MODIFIER)
 
   // Generate description
@@ -270,24 +351,19 @@ export function updateMilestones(
   player: PlayerDriver
 ): MilestoneProgress {
   return {
-    // Race milestones
     firstRaceCompleted: currentMilestones.firstRaceCompleted || player.totalRaces >= 1,
     firstPointsFinish: currentMilestones.firstPointsFinish || hasPointsFinish(player),
     firstPodium: currentMilestones.firstPodium || player.totalPodiums >= 1,
     firstWin: currentMilestones.firstWin || player.totalWins >= 1,
-    firstPolePosition: currentMilestones.firstPolePosition || player.totalPoles >= 1,
+    firstPole: currentMilestones.firstPole || player.totalPoles >= 1,
+    firstFastestLap: currentMilestones.firstFastestLap,
+    tenRacesCompleted: currentMilestones.tenRacesCompleted || player.totalRaces >= 10,
+    twentyFiveRacesCompleted: currentMilestones.twentyFiveRacesCompleted || player.totalRaces >= 25,
+    fiftyRacesCompleted: currentMilestones.fiftyRacesCompleted || player.totalRaces >= 50,
+    hundredRacesCompleted: currentMilestones.hundredRacesCompleted || player.totalRaces >= 100,
     firstChampionship: currentMilestones.firstChampionship || player.championships >= 1,
-    
-    // Career milestones
-    races10: currentMilestones.races10 || player.totalRaces >= 10,
-    races25: currentMilestones.races25 || player.totalRaces >= 25,
-    races50: currentMilestones.races50 || player.totalRaces >= 50,
-    races100: currentMilestones.races100 || player.totalRaces >= 100,
-    wins5: currentMilestones.wins5 || player.totalWins >= 5,
-    wins10: currentMilestones.wins10 || player.totalWins >= 10,
-    wins25: currentMilestones.wins25 || player.totalWins >= 25,
-    championships3: currentMilestones.championships3 || player.championships >= 3,
-    championships5: currentMilestones.championships5 || player.championships >= 5
+    multipleChampionships: currentMilestones.multipleChampionships || player.championships >= 2,
+    firstTeamOwnership: currentMilestones.firstTeamOwnership
   }
 }
 
@@ -334,17 +410,15 @@ export function createDefaultMilestones(): MilestoneProgress {
     firstPointsFinish: false,
     firstPodium: false,
     firstWin: false,
-    firstPolePosition: false,
+    firstPole: false,
+    firstFastestLap: false,
+    tenRacesCompleted: false,
+    twentyFiveRacesCompleted: false,
+    fiftyRacesCompleted: false,
+    hundredRacesCompleted: false,
     firstChampionship: false,
-    races10: false,
-    races25: false,
-    races50: false,
-    races100: false,
-    wins5: false,
-    wins10: false,
-    wins25: false,
-    championships3: false,
-    championships5: false
+    multipleChampionships: false,
+    firstTeamOwnership: false
   }
 }
 
@@ -457,7 +531,12 @@ export function applyModifiersToAIDriver(
 // ============================================
 
 function clamp(value: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, value))
+  const safe = toFiniteNumber(value, 0)
+  return Math.min(max, Math.max(min, safe))
+}
+
+function toFiniteNumber(value: unknown, fallback: number): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback
 }
 
 /**
@@ -485,22 +564,20 @@ export function getNewlyUnlockedMilestones(
  * Format milestone name for display
  */
 export function formatMilestoneName(key: keyof MilestoneProgress): string {
-  const names: Record<keyof MilestoneProgress, string> = {
+  const names: Partial<Record<keyof MilestoneProgress, string>> = {
     firstRaceCompleted: 'First Race Completed',
     firstPointsFinish: 'First Points Finish',
     firstPodium: 'First Podium',
     firstWin: 'First Victory',
-    firstPolePosition: 'First Pole Position',
+    firstPole: 'First Pole Position',
+    firstFastestLap: 'First Fastest Lap',
+    tenRacesCompleted: '10 Races',
+    twentyFiveRacesCompleted: '25 Races',
+    fiftyRacesCompleted: '50 Races',
+    hundredRacesCompleted: '100 Races',
     firstChampionship: 'First Championship',
-    races10: '10 Races',
-    races25: '25 Races',
-    races50: '50 Races',
-    races100: '100 Races',
-    wins5: '5 Wins',
-    wins10: '10 Wins',
-    wins25: '25 Wins',
-    championships3: '3 Championships',
-    championships5: '5 Championships'
+    multipleChampionships: 'Multiple Championships',
+    firstTeamOwnership: 'Team Owner'
   }
-  return names[key] || key
+  return (names[key] ?? String(key)) as string
 }

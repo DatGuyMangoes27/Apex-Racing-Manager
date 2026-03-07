@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 41,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Dimitri's journey into motorsport began with a childhood fascination for Soviet-era engineering marvels and a knack for tinkering. He honed his skills at a technical college in Moscow, focusing on precision manufacturing and materials science. He began in rally racing before transitioning to single seaters. \n\nHe's a meticulous fabricator, always striving for perfection in every weld and joint. Dimitri values precision and reliability above all else, and his detail-oriented approach has earned him a reputation for producing high-quality components under pressure. He's known for his unwavering dedication to his craft and his ability to troubleshoot complex problems independently. His move to F1 was motivated by the challenge of working at the pinnacle of motorsport engineering.\n\nWhile he is a strong individual contributor, he is often quiet in the team environment, preferring to focus on the task at hand.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, boxed beard",
+    "description": "A man of moderate height and build, Dimitri's hands are calloused from years of working with metal."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to an exact point before starting any task.",
+    "Has a collection of vintage Soviet-era tools he occasionally uses.",
+    "Insists on listening to classical music through noise-canceling headphones while working."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 51,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jan's journey into motorsport began unconventionally, stemming from a childhood fascination with the intricate mechanics of antique clocks. After studying precision engineering at Delft University, he initially found himself restoring historical timepieces. However, the allure of speed and performance eventually drew him to Formula racing, where he quickly established a reputation for meticulous attention to detail. \n\nJan joined Walkinshaw Andretti United five years ago, bringing with him a relentless pursuit of perfection. He believes that even the smallest imperfection can have a significant impact on performance, and he tirelessly works to identify and eliminate potential flaws. His visionary approach to quality control involves not just identifying problems, but also anticipating future challenges and developing innovative solutions. His dedication ensures the team operates at peak efficiency.\n\nWhat sets Jan apart is his ability to see the 'big picture' while simultaneously focusing on the minutiae. He's not just a quality control specialist; he's a strategic thinker who understands how every component contributes to the overall success of the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jan is a man of medium build, always seen with a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect components.",
+    "Has a habit of humming classical music while working.",
+    "Insists on using a specific brand of Dutch coffee in the workshop."
+  ]
+}

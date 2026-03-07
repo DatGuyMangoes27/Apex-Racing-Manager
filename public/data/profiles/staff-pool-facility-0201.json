@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 26,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Alistair's path into motorsport wasn't a straightforward one. Initially studying engineering, he found himself increasingly drawn to the meticulous processes and rigorous standards required in racing. He abandoned a traditional career to pursue his passion for quality control. Alistair's keen eye for detail and unwavering commitment to perfection have already begun to mark him as a promising talent.\n\nHe approaches his role with an almost obsessive focus, ensuring every component and system meets the highest standards. This dedication is driven by a deep understanding that even the smallest flaw can have catastrophic consequences on the track. His demanding nature pushes those around him to strive for excellence.\n\nAlistair's background in engineering, coupled with his innate ability to identify and address potential issues, makes him a valuable asset to any team. He is determined to make his mark on the sport through a relentless pursuit of flawlessness.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Ginger",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Alistair is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations",
+    "Has a habit of tapping his fingers when deep in thought",
+    "Insists on double-checking every calibration, even if it's already been verified by someone else"
+  ]
+}

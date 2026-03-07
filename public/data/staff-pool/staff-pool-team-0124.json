@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 26,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Mateo's passion for motorsport ignited during his childhood in Lima, watching Formula 1 races with his grandfather. He excelled in mathematics and physics, leading him to pursue a degree in Aeronautical Engineering at a local university. While still a student, Mateo immersed himself in the world of aerodynamics, devouring technical papers and participating in university-level design competitions. He honed his skills through countless hours of simulation and analysis. \n\nAs Head of Aero, Mateo is a firm believer in a data-driven approach, using advanced computational tools to refine aerodynamic performance. He is eager to learn from his team and contribute his fresh perspective to the design process. He is driven by the pursuit of perfection, meticulously analyzing every detail to extract maximum performance from the car's aerodynamic package. Mateo is determined to quickly establish himself as a valuable asset to the team.\n\nWhile still early in his career, Mateo's dedication and enthusiasm are infectious, and he possesses a unique talent for identifying innovative solutions to complex aerodynamic challenges. His commitment to excellence and his collaborative spirit make him a promising addition to any motorsport team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of average height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Insists on using metric units for everything, even when others use imperial."
+  ]
+}

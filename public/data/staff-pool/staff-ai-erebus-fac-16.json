@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 44,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Elena's journey into motorsport was an unexpected turn after years in high-end restaurant management. Initially skeptical of the track's demanding environment, she quickly recognized the need for consistent, high-quality catering to fuel the team's performance. Her approach centers on creating balanced and nutritious meals that cater to individual dietary needs and preferences. Elena's commitment to freshness and locally sourced ingredients, coupled with her impeccable organization, sets her apart. \n\nAt Erebus Motorsport, she has implemented a rotating menu designed to optimize energy levels and focus throughout race weekends. Her ability to adapt to last-minute changes and dietary restrictions without compromising quality is highly valued. Elena views her role as integral to the team's success, ensuring everyone is well-fed and energized to perform at their best, creating a positive and comforting atmosphere even amidst the high-pressure environment of the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical braid",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "A practical woman with a warm smile and kind eyes, Elena carries herself with quiet confidence."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down recipe ideas and dietary requests.",
+    "Insists on labeling every dish with detailed ingredient information.",
+    "Has a knack for predicting team members' food cravings based on their performance and stress levels."
+  ]
+}

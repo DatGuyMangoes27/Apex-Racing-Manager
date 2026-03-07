@@ -1,0 +1,22 @@
+{
+  "name": "Ahmad Zulkifli",
+  "nationality": "Malaysian",
+  "age": 30,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ahmad's journey into motorsport began unconventionally, fueled by a childhood spent tinkering with go-karts in his village. He pursued a degree in mechanical engineering, always with the dream of applying his knowledge to racing. After graduating, he joined a small Malaysian racing team, quickly rising through the ranks due to his sharp analytical skills and proactive problem-solving abilities. He transitioned to Formula racing as a junior engineer, demonstrating a knack for interpreting data and optimizing car performance. His ability to identify crucial performance bottlenecks and propose innovative solutions caught the attention of Aston Martin, leading to his current role. \n\nAs Sporting Director, Ahmad emphasizes a data-driven approach, constantly seeking marginal gains through meticulous analysis and process refinement. He believes in empowering his team to take ownership of their work, fostering a collaborative environment where ideas are freely exchanged and rigorously tested. He's known for his ability to remain calm under pressure, providing clear direction even in the most chaotic race situations. His detail-oriented nature and relentless pursuit of perfection make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back with a slight side part",
+    "eyeColor": "dark brown",
+    "facialHair": "goatee",
+    "description": "Ahmad is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with racing data and observations.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Prefers to conduct meetings standing up to encourage quicker, more decisive discussions."
+  ]
+}

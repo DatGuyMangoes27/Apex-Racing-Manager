@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0383",
+  "name": "Al-Sahra Tires",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Saudi Arabia",
+  "description": "Providing reliable and durable tires built for performance.",
+  "story": "Al-Sahra Tires is a new venture focused on bringing quality, locally manufactured tires to the global market. Motorsport is a key testing ground for their technology, and they are looking to partner with up-and-coming teams to prove their products on the track and build brand awareness. They value reliability and a strong work ethic.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0383.png"
+}

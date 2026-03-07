@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0319",
+  "name": "Forgiato Corse",
+  "category": "equipment",
+  "tier": "entry",
+  "country": "Italy",
+  "description": "Precision engineered wheels for superior performance.",
+  "story": "Forgiato has been crafting high-performance wheels in Italy for over 30 years. Their passion for motorsport stems from a desire to push the limits of engineering and innovation. Forgiato seeks partnerships that demonstrate dedication to excellence and a drive to win, aligning with their brand of precision and Italian craftsmanship.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7500,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0319.png"
+}

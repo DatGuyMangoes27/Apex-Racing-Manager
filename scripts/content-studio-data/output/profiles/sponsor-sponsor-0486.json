@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0486",
+  "name": "Kyeongseong Lubricants",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "South Korea",
+  "description": "Performance engineered lubricants for peak engine performance.",
+  "story": "Kyeongseong Lubricants has been a leading provider of high-performance lubricants in South Korea for over 30 years. They believe motorsport provides the ultimate testing ground for their products, pushing the boundaries of engine technology. Kyeongseong seeks a partnership that highlights their commitment to innovation and their ability to deliver a competitive edge.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0486.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 33,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Isabelle's journey into motorsport began with a childhood fascination for aircraft design, nurtured by her father, a former aerospace engineer. This passion led her to specialize in composite materials engineering at university, where she excelled in structural analysis and innovative material applications. After graduation, she gained valuable experience in the aerospace industry, but the thrill of racing called to her. \n\nShe joined Stewart-Haas Racing five years ago, quickly establishing herself as a highly competent composite technician. Her demanding nature pushes her to continuously improve the performance and safety of the car components. Isabelle is known for her meticulous attention to detail and her ability to troubleshoot complex structural issues, making her a valuable asset to the team. Her colleagues both respect and fear her dedication, often referring to her as 'The Hawk' due to her sharp focus and relentless pursuit of perfection.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, braided, often tucked under a cap",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Isabelle is of average height with a wiry build, reflecting her dedication to physical fitness."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on using only a specific brand of precision calipers.",
+    "Has a habit of tapping her pen rhythmically when concentrating on a problem."
+  ]
+}

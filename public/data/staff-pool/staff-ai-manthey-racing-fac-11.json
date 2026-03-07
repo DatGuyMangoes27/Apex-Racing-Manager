@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 30,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Erik's journey into motorsport began with a childhood spent dismantling and reassembling his father's old Volvo. This early fascination with mechanics led him to pursue a degree in automotive engineering. After graduating, he spent several years working as a data analyst for a smaller racing team, honing his technical skills. He joined Manthey Racing two years ago, eager to apply his analytical prowess to optimizing test programs and driver performance. Erik's methodical approach and unwavering dedication to precision make him an invaluable asset to the team, ensuring that every test session yields actionable insights. He is known for his ability to bridge the gap between the drivers' feedback and the engineering team's solutions, translating subjective impressions into concrete data points.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed beard",
+    "description": "Erik is of average height with a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously organized data points.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a perfectly aligned desk, even in the chaos of the garage."
+  ]
+}

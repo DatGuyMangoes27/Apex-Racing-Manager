@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0000",
+  "name": "Sabores do Campo",
+  "category": "local",
+  "tier": "entry",
+  "country": "Portugal",
+  "description": "The authentic taste of the Portuguese countryside.",
+  "story": "Sabores do Campo is a cooperative of local farmers in Portugal, dedicated to bringing fresh, high-quality produce to tables across the country. We believe in supporting local talent and see motorsport as a way to connect with communities and showcase the passion that goes into everything we do. We seek a partnership that aligns with our values of hard work, dedication, and a commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 5,
+    "nationalities": [
+      "Portugal"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "approach_only",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0000.png"
+}

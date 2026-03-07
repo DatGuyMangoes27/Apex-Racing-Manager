@@ -1,0 +1,31 @@
+{
+  "name": "Isabella \"Issa\" de los Reyes",
+  "nationality": "Filipino",
+  "age": 58,
+  "gender": "female",
+  "contactType": "business_mogul",
+  "bio": "Isabella \"Issa\" de los Reyes is a self-made billionaire, having built her fortune from the ground up in the Philippine energy sector. Her company, Reyes Renewable Resources, is a leader in sustainable energy solutions across Southeast Asia. Despite her immense wealth and influence, Issa remains surprisingly down-to-earth, often described as mischievous and witty, though her aloof demeanor can sometimes intimidate newcomers. She has a reputation for being an astute negotiator and a brilliant businesswoman, always several steps ahead. \n\nIssa's connection to motorsport is through her sponsorship of a burgeoning Formula 4 team, seeing it as an investment in young talent and a unique branding opportunity for her company. A racing driver might cross paths with her at a race event where Reyes Renewable Resources is a sponsor, or perhaps through a mutual contact in the business world. She appreciates ambition and talent, and isn't afraid to take risks on promising individuals.\n",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, sleek, with subtle highlights",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Issa is a striking woman with a commanding presence. She usually wears elegant, tailored clothing, and her eyes always seem to be evaluating everything around her."
+  },
+  "connectionToMotorsport": "Issa sponsors a Formula 4 team through her company, Reyes Renewable Resources. She views motorsport as a platform to promote sustainable technologies and support emerging talent.",
+  "meetingContext": "The player might meet Issa at a Formula 4 race where her team is competing, or through a chance encounter at a high-end charity gala.",
+  "conversationTopics": [
+    "The future of renewable energy",
+    "The challenges and rewards of building a business from scratch",
+    "Her passion for contemporary dance and classical music",
+    "The potential of young motorsport talents in Asia",
+    "Wine regions she has visited"
+  ],
+  "canHelp": [
+    "Provide financial backing and sponsorship opportunities.",
+    "Offer valuable business advice and mentorship.",
+    "Connect the player with influential figures in the business world."
+  ],
+  "personality_summary": "A mischievous and aloof billionaire with a sharp mind and an optimistic outlook."
+}

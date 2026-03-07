@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0271",
+  "name": "Al Zaman Watches",
+  "category": "watches",
+  "tier": "elite",
+  "country": "UAE",
+  "description": "Precision timekeeping, timeless elegance.",
+  "story": "Al Zaman Watches has been crafting exquisite timepieces in the UAE for over 50 years. Inspired by the precision and speed of motorsport, they seek to partner with teams that embody excellence and push boundaries. They value performance, innovation, and a commitment to perfection.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "UAE"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 5,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0271.png"
+}

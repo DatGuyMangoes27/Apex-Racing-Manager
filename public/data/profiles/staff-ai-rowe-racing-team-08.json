@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Souza",
+  "nationality": "Brazilian",
+  "age": 28,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Rafael's journey into motorsport began with a childhood spent tinkering with go-karts in his hometown. This early fascination quickly evolved into a passion for understanding the intricate physics governing vehicle performance. After earning a degree in Mechanical Engineering from the University of São Paulo, he cut his teeth in Formula 3 before transitioning to endurance racing. He joined ROWE Racing two years ago, quickly establishing himself as a key figure in optimizing the team's car setups. \n\nRafael is known for his meticulous approach to data analysis and his ability to translate complex information into actionable improvements for the drivers. He believes in fostering open communication within the team, encouraging drivers to provide candid feedback that can be used to refine the car's handling characteristics. His knack for identifying unconventional solutions to persistent problems makes him a valuable asset in the high-pressure environment of motorsport.\n\nWhat sets Rafael apart is his ability to anticipate potential issues before they arise. He meticulously studies historical data and simulations to predict how the car will respond to changing track conditions and driver input. This proactive approach allows the team to stay ahead of the curve and maximize their performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Rafael is of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on starting every debrief with a shot of espresso."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 54,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Jan's fascination with electronics began in his youth, tinkering with radios and building his own circuits. He pursued a degree in electrical engineering at the Czech Technical University in Prague. After graduating, he spent several years working in the automotive industry, honing his skills in vehicle electronics systems. A lifelong motorsport enthusiast, Jan transitioned to racing, drawn by the challenge of optimizing performance through innovative electronic solutions. He is known for his meticulous approach to data analysis and his ability to quickly diagnose and resolve complex electrical issues. His experience is invaluable to RFK Racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed mustache",
+    "description": "Jan is of average height, with a slightly weathered face that reflects years of experience."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a cup of strong espresso before every race."
+  ]
+}

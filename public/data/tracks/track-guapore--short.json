@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Internacional de Guaporé, inaugurated in 1992, quickly became a staple of Brazilian motorsport, hosting various national championships and regional series. While the longer 'Full Circuit' layout has seen more prominent events, the 'Short Circuit' has served as a vital proving ground for up-and-coming drivers and a popular venue for club-level racing and driver training. The track has a reputation for challenging drivers with its mix of fast corners and technical sections, demanding precision and car control. The Short Circuit remains a beloved configuration for its accessibility and its ability to hone fundamental driving skills.",
+  "atmosphere": "The air at Guaporé during a race on the Short Circuit is thick with anticipation, the roar of engines echoing off the surrounding hills. The grandstands, though smaller than those at Interlagos, buzz with passionate fans, their cheers rising above the din. The smell of burning rubber and high-octane fuel permeates the paddock, mingling with the aroma of grilling meats from nearby food stalls. It's an intimate and visceral experience, a true taste of Brazilian grassroots motorsport.",
+  "trackCharacter": "The Short Circuit at Guaporé is a fast and flowing layout, emphasizing momentum and precision. Its compact nature packs a surprising punch, demanding quick reflexes and a well-balanced car. The emphasis is on maintaining speed through the corners, making it a test of a driver's ability to carry corner speed and manage tire wear. Unlike the Full Circuit, the Short Circuit is more about rhythm and consistency than outright top speed.",
+  "nickname": "The Gauntlet",
+  "famousCorners": [
+    {
+      "name": "Curva do Lago (Lake Curve)",
+      "description": "A sweeping left-hander that runs alongside a small lake, this corner demands commitment and precision.",
+      "challenge": "Maintaining the correct line through the corner and managing the car's balance under sustained lateral load."
+    },
+    {
+      "name": "Curva da Mata (Forest Curve)",
+      "description": "A medium-speed right-hander that leads into the back straight, crucial for setting up an overtaking opportunity.",
+      "challenge": "Optimizing entry and exit speed to maximize acceleration onto the straight."
+    },
+    {
+      "name": "Retão (Back Straight)",
+      "description": "The longest straight on the Short Circuit, providing the best overtaking opportunity.",
+      "challenge": "Positioning the car for optimal slipstreaming and braking into the following corner."
+    },
+    {
+      "name": "Curva da Caixa (Box Curve)",
+      "description": "A tight, hairpin-like corner that requires heavy braking and precise car placement.",
+      "challenge": "Balancing braking performance with maintaining momentum through the corner to avoid losing valuable time."
+    },
+    {
+      "name": "Curva do Velódromo (Velodrome Curve)",
+      "description": "A long, constant radius right-hander that tests the car's stability and the driver's nerve.",
+      "challenge": "Maintaining a consistent line and managing tire wear throughout the corner."
+    }
+  ],
+  "keyFactors": [
+    "Corner exit speed",
+    "Braking efficiency",
+    "Tire management",
+    "Aerodynamic balance",
+    "Engine torque"
+  ],
+  "overtakingSpots": [
+    "Into Curva da Caixa (Box Curve) after the Retão (Back Straight)",
+    "Into Curva da Mata (Forest Curve) after Curva do Velódromo (Velodrome Curve)",
+    "Under braking for Curva do Lago (Lake Curve)"
+  ],
+  "historySnippets": [
+    "Guaporé hosted a round of the Formula Truck championship in its early years.",
+    "The Short Circuit is commonly used for driver training programs.",
+    "Guaporé's layout has been praised for its technical challenge and flowing nature.",
+    "The circuit's location provides a scenic backdrop for racing events.",
+    "Several famous Brazilian drivers have honed their skills at Guaporé.",
+    "The venue has undergone minor safety upgrades over the years to meet modern standards."
+  ],
+  "weatherNotes": "The weather at Guaporé can be unpredictable, with hot and humid conditions often giving way to sudden thunderstorms. Rain can dramatically alter the track's grip levels, making tire choice and car setup critical. The humidity also affects engine performance and driver stamina.",
+  "drivingAdvice": "On the Short Circuit, prioritize corner exit speed above all else. The flowing nature of the track rewards drivers who can maintain momentum. Be aggressive on the brakes into Curva da Caixa, but avoid locking up, as it's easy to lose time there. Use the Retão to set up overtaking opportunities, but be mindful of your braking point into the following corner.",
+  "famousRaces": [
+    "Various regional stock car races, showcasing intense battles and close finishes.",
+    "Local Formula Vee events, where young drivers gain valuable experience.",
+    "Endurance races held on the Short Circuit, testing the reliability of both cars and drivers."
+  ],
+  "localCulture": "Guaporé, a town nestled in the Serra Gaúcha region, is known for its Italian heritage and its strong connection to motorsport. The local cuisine features hearty dishes like polenta, pasta, and grilled meats, often accompanied by locally produced wines. The paddock atmosphere is friendly and welcoming, with a strong sense of community among the teams and drivers."
+}

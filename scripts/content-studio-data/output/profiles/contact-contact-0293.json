@@ -1,0 +1,31 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 22,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Isabela Oliveira is a rising star in the legal world, specializing in contract law and intellectual property with a particular focus on sports and entertainment. Despite her young age, she's already made a name for herself with her sharp legal mind, meticulous preparation, and unwavering dedication to her clients. Her reputation for being both fiercely protective and remarkably understanding makes her a sought-after advisor, especially among athletes navigating the complex world of sponsorships and endorsements.\n\nBeyond her legal prowess, Isabela is known for her vibrant personality and diverse interests. She's fluent in four languages, an avid painter, and enjoys unwinding with a game of basketball or a weekend ski trip. Her passion for music production adds another layer to her already multifaceted character. A racing driver might cross paths with Isabela as she represents several junior formula teams and individual drivers, ensuring their contracts are airtight and their rights are protected.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often worn in a high ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabela has a radiant smile and a confident posture. She favors tailored suits with a modern edge, reflecting her professional yet stylish demeanor."
+  },
+  "connectionToMotorsport": "Isabela represents several up-and-coming drivers and junior formula teams, providing legal counsel on contracts, sponsorships, and intellectual property rights.",
+  "meetingContext": "The player might meet Isabela at a networking event hosted by a motorsport association, or perhaps through a mutual connection within the racing scene when looking for legal representation.",
+  "conversationTopics": [
+    "The latest developments in contract law",
+    "Her favorite music producers and their creative processes",
+    "The challenges and opportunities in Brazilian motorsport",
+    "The importance of protecting athletes' intellectual property",
+    "Her recent skiing trip to the Alps"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship deals.",
+    "Review and revise driver contracts to ensure fair terms.",
+    "Provide legal advice on intellectual property rights and brand protection."
+  ],
+  "personality_summary": "A caring yet calculating lawyer with a burning ambition, blending confidence with a naturally optimistic outlook."
+}

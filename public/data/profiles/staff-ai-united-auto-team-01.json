@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 39,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo discovered motorsport through his father, a mechanic for a local rally team. He was immediately captivated by the technical complexity and the relentless pursuit of performance. After earning a degree in mechanical engineering from the Polytechnic University of Valencia, Ricardo started his career in Formula Student before transitioning to GT racing. He quickly gained a reputation for his methodical approach to problem-solving and his ability to optimize car setups for diverse track conditions.\n\nRicardo believes that a chief engineer's role is as much about people management as it is about technical expertise. He fosters a collaborative environment within his team, encouraging open communication and creative thinking. Known for his calm demeanor under pressure, he has a knack for making strategic decisions during critical moments of a race. His dedication to data analysis and relentless pursuit of improvement have made him a valuable asset to any team.\n\nHis distinctive trait is his ability to simplify complex technical concepts, making them accessible to the entire team, from drivers to mechanics, fostering a shared understanding and purpose.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "Ricardo is of medium height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches.",
+    "Has a particular fondness for strong espresso and drinks one every morning.",
+    "Taps his pen rhythmically when deep in thought."
+  ]
+}

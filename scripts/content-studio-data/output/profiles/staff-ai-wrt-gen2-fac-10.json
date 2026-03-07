@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Marco Bellini's passion for motorsport ignited during his childhood, spent tinkering in his grandfather's repair shop near the Imola circuit. He honed his fabrication skills at a technical institute in Bologna, excelling in welding and composite materials. After graduating, Marco gained valuable experience working for a small rally team, where he learned the importance of precision and adaptability under pressure. \n\nJoining Team WRT was a significant step in Marco's career, allowing him to apply his expertise to GT racing. He is known for his meticulous approach to vehicle preparation and his uncanny ability to diagnose and resolve mechanical issues quickly. Marco strives to push the boundaries of performance through innovative fabrication techniques, always seeking marginal gains that can make a difference on the track. His perfectionism and dedication make him a reliable asset to the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight side part",
+    "eyeColor": "brown",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Marco is of medium build, with a focused gaze and hands that show signs of meticulous work."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always wears noise-canceling headphones, even when not working directly on the car.",
+    "Refuses to start a project without first sketching a detailed plan, no matter how small the task.",
+    "Has a collection of miniature car models on his workbench, each representing a different motorsport discipline."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0291",
+  "name": "Cuero Argentino",
+  "category": "luxury",
+  "tier": "mid",
+  "country": "Argentina",
+  "description": "Finest Argentine leather goods and accessories.",
+  "story": "Cuero Argentino seeks to expand its global brand presence by associating with the precision and passion of motorsport. As a company rooted in tradition and craftsmanship, they admire the dedication and skill required to compete at the highest levels. Motorsports provide a perfect platform to showcase the brand's commitment to quality and performance, particularly in markets with a strong appreciation for luxury goods.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "seriesTiers": [],
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0291.png"
+}

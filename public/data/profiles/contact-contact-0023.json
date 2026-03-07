@@ -1,0 +1,31 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "American",
+  "age": 57,
+  "gender": "female",
+  "contactType": "business_mogul",
+  "bio": "Eleanor Vance made her fortune transforming a small family textile mill into a global luxury brand, Maison Vance. Known for her relentless pursuit of perfection and a keen eye for detail, she's both admired and feared in the business world. While appearing outwardly composed, Eleanor harbors a deep well of nostalgia for a simpler time, often retreating to her equestrian estate to find solace in poetry and classical music. She is known to support young, up-and-coming talents in fields that align with her brand's values of excellence and innovation, and a racing driver demonstrating similar traits might attract her attention.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant chignon",
+    "eyeColor": "Emerald green",
+    "facialHair": null,
+    "description": "Eleanor carries herself with an almost regal posture, her designer clothes always impeccably tailored. Her sharp features and piercing gaze convey a sense of unwavering determination."
+  },
+  "connectionToMotorsport": "Eleanor Vance sponsors a GT racing team, Vance Racing, as a branding extension for Maison Vance, and she regularly attends races. She sees motorsport as a perfect blend of artistry, engineering, and risk, mirroring the values of her luxury brand.",
+  "meetingContext": "The player might meet Eleanor at a VIP event hosted by Vance Racing, either at the racetrack or a private gala.",
+  "conversationTopics": [
+    "The intersection of art and technology",
+    "The challenges of building a luxury brand",
+    "Equestrian sports and polo",
+    "The importance of dedication and perseverance",
+    "Her love of classical music, especially opera"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal with Maison Vance",
+    "Connect the player with other influential figures in the business world",
+    "Provide access to exclusive events and networking opportunities"
+  ],
+  "personality_summary": "A sophisticated and intensely creative business mogul with a nostalgic streak."
+}

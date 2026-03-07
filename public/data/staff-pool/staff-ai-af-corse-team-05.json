@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alistair Davies",
+    "nationality": "British",
+    "age": 39,
+    "gender": "male",
+    "role": "strategist",
+    "bio": "Alistair's journey into motorsport started with a childhood fascination for complex systems, nurtured by countless hours spent tinkering with engines alongside his father, a mechanical engineer. He quickly realized his strengths lay not in the hands-on aspect, but in understanding the bigger picture, analyzing data, and predicting outcomes. Alistair honed his strategic skills in Formula Student, leading his university team to several podium finishes. This led to a junior strategist role with a smaller racing outfit before securing a position with AF Corse.\n\nAlistair's approach to strategy is rooted in meticulous preparation and a deep understanding of the regulations. He prides himself on being adaptable and able to make informed decisions under pressure. He is known for his calm demeanor in the heat of the moment, earning him the respect of drivers and engineers alike. Alistair distinguishes himself by always considering the long game, balancing immediate gains with the overall championship strategy. His innovative thinking, especially in pit stop strategy, makes him a valued asset to the team.",
+    "physical": {
+      "skinTone": "fair",
+      "hairColor": "brown",
+      "hairStyle": "short, neatly combed with a slight receding hairline",
+      "eyeColor": "blue",
+      "facialHair": "short, well-trimmed goatee",
+      "description": "Alistair is of average height with a lean build."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small notebook filled with racing statistics",
+      "Has a habit of tapping his pen against his teeth when deep in thought",
+      "Drinks precisely one cup of Earl Grey tea every morning"
+    ]
+  }
+]

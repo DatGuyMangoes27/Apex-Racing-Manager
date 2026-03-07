@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0302",
+  "name": "Almas Yasmine",
+  "category": "luxury",
+  "tier": "elite",
+  "country": "Saudi Arabia",
+  "description": "Exquisite fragrances, crafted for the discerning individual.",
+  "story": "Almas Yasmine, inspired by the rare jasmine found in the Arabian desert, seeks to expand its global reach through motorsport. The brand believes in precision, elegance, and the pursuit of excellence, values they see reflected in elite racing teams. They aim to associate their brand with winning performances and a sophisticated image.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Saudi Arabia"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0302.png"
+}

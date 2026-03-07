@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Maximilian Weber",
+    "nationality": "German",
+    "age": 24,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Maximilian's fascination with motorsport ignited early, fueled by childhood visits to the Nürburgring. He pursued a degree in aerospace engineering, specializing in aerodynamics. His passion led him to Team Gtechniq, where he meticulously analyzes airflow data and contributes to optimizing the car's performance. While he is skilled at working independently, his insights are invaluable during collaborative problem-solving sessions. He is driven by a relentless pursuit of aerodynamic perfection and pushing the boundaries of what's possible.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly styled with a slight side part",
+      "eyeColor": "Blue",
+      "facialHair": "None",
+      "description": "Maximilian is of average height, with a focused and intelligent look."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a small notebook to jot down aerodynamic calculations or ideas.",
+      "Insists on absolute silence and darkness in the wind tunnel control room.",
+      "Has a habit of tapping his pen rhythmically when deep in thought."
+    ]
+  }
+]

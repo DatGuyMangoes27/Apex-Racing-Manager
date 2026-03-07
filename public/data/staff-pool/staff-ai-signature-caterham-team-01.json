@@ -1,0 +1,22 @@
+{
+  "name": "Robert 'Bob' Peterson",
+  "nationality": "American",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Robert, or 'Bob' as he prefers, is a seasoned chief engineer whose motorsport journey began in the heartland of America, tinkering with engines on his family farm. His passion for speed and mechanics led him to a degree in Mechanical Engineering, followed by years honing his skills in various racing series, from local stock car events to open-wheel circuits. Bob joined Signature Racing after proving his ability to adapt and innovate in high-pressure environments. \n\nBob believes in a collaborative approach to engineering, valuing input from every member of the team. He's known for his methodical problem-solving, often finding creative solutions where others see dead ends. While he's not afraid to push the boundaries of design, he prioritizes reliability and safety above all else. His ability to blend cutting-edge technology with practical application makes him a valuable asset to Signature Racing, always looking for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A stocky man with a friendly face, Bob always has a smudge of grease on his cheek."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool in his pocket.",
+    "Has a habit of whistling classical music while working.",
+    "Keeps a small collection of vintage spark plugs on his desk."
+  ]
+}

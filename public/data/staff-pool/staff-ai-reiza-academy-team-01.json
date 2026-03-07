@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 41,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Declan's motorsport journey began in the garages of County Galway, tinkering with rally cars alongside his father. This hands-on experience ignited a passion for engineering that led him to a degree in Mechanical Engineering from University College Dublin. After graduating, Declan worked his way up through the ranks of several smaller racing teams, honing his skills in data analysis, vehicle dynamics, and team leadership. \n\nKnown for his calm demeanor under pressure and his ability to see the 'big picture,' Declan excels at optimizing car setups and managing engineering projects efficiently. He joined Reiza Racing Academy to apply his experience to developing young talent and contributing to the team's long-term success. His pragmatic approach to problem-solving and knack for identifying crucial performance gains make him a valuable asset.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted on the left",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Declan is of average height, with a slightly weathered face that hints at long hours spent at the track."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer software.",
+    "Has a habit of tapping his pen rhythmically against his teeth when deep in thought.",
+    "Insists on drinking his tea black, no sugar, precisely at 10:30 AM and 3:00 PM every day."
+  ]
+}

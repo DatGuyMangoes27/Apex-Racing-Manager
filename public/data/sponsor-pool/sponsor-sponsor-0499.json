@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0499",
+  "name": "Koning Gaming",
+  "category": "tech_gaming",
+  "tier": "elite",
+  "country": "Netherlands",
+  "description": "Elevating your gameplay to royal status.",
+  "story": "Koning Gaming, a Dutch leader in high-performance gaming peripherals, sponsors motorsport to showcase the precision and reliability of their technology under extreme conditions. They believe the dedication required to win in motorsport mirrors their own commitment to gaming excellence. Koning seeks a partnership that amplifies brand awareness and demonstrates their products' superior performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Netherlands"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0499.png"
+}

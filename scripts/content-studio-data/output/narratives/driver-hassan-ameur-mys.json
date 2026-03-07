@@ -1,0 +1,27 @@
+{
+  "biography": "Hassan Ameur's journey began amidst the bustling streets of Kuala Lumpur, a far cry from the roar of engines he now commands. He started with go-karts at a local track, quickly outstripping the competition with a blend of raw talent and meticulous planning. His family, initially hesitant, recognized his dedication after he secured a national karting championship. A defining moment came during a Formula 4 race in Sepang; after a collision pushed him to the back of the grid, he executed a series of daring overtakes to finish second, showcasing his exceptional racecraft. Now, at 32, Ameur is at the peak of his career, driving for Lamborghini, meticulously analyzing every race and pushing for championship glory.",
+  "drivingStyle": "Ameur is a calculating driver, often described as a 'chess master' on the track. He doesn't rely on flamboyant overtakes or aggressive braking, instead preferring to conserve his tires and pick his moments with surgical precision. He excels at reading the track and anticipating his opponents' moves, patiently waiting for the perfect opportunity to strike. His tire management is exceptional, allowing him to maintain consistent pace throughout long stints, a crucial advantage in endurance races.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "Ameur and Rossi have a long-standing rivalry stemming from their Formula 3 days, marked by several on-track clashes and accusations of unsportsmanlike conduct."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Tanaka, known for his aggressive style, often clashes with Ameur's calculated approach, leading to heated battles for track position."
+    },
+    {
+      "name": "Isabelle Dubois",
+      "reason": "Dubois and Ameur share a mutual respect, but their rivalry is intense due to their similar driving styles and their constant battle for the top spot in championship standings."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky wristband given to him by his grandmother before every race.",
+    "Studies the weather forecast meticulously, even when indoors, convinced it affects his mental preparation.",
+    "Always eats a specific Malaysian dish, Nasi Lemak, for breakfast on race days."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about raw speed; it's about managing chaos and making the right decisions at the right time.\"",
+  "careerHighlight": "Winning the 24 Hours of Spa in 2021, where he executed a flawless final stint, overtaking the leading car in the last hour to secure victory for his team.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the 2019 Macau Grand Prix due to a mechanical failure, costing him a guaranteed victory."
+}

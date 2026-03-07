@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 56,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Astrid Christensen has been immersed in the world of motorsport since childhood, accompanying her father, a local rally driver, to events across Denmark. This early exposure ignited a passion for the technical intricacies of racing, leading her to pursue a degree in Mechanical Engineering. After graduating, she started her career in Formula Ford before progressing through various junior categories. Astrid's meticulous approach to data analysis and her ability to quickly identify and resolve mechanical issues earned her a reputation as a reliable and insightful engineer. \n\nHer move to Formula 1 came with Jordan Grand Prix in the late 90s, followed by stints at Renault and Sauber. She's known for her calm demeanor under pressure and her ability to communicate complex technical information clearly to drivers. Astrid joined Williams Racing five years ago, drawn by the team's rich history and commitment to innovation. She thrives on the challenge of optimizing car performance and enjoys mentoring younger engineers. Her loyalty to the team and dedication to excellence are unwavering.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A woman of average height with a practical, no-nonsense appearance."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with hand-drawn diagrams and calculations.",
+    "Has a particular fondness for licorice and always keeps a stash in her toolbox.",
+    "Insists on using a slide rule for quick calculations, despite having access to sophisticated software."
+  ]
+}

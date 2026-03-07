@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Swiss",
+  "age": 59,
+  "gender": "male",
+  "contactType": "musician",
+  "bio": "Jean-Luc Dubois is a Swiss music icon, renowned for his innovative blend of classical composition with modern electronic elements. His albums have topped charts globally, and his live performances are legendary for their intensity and theatrical flair. A complex character, Jean-Luc is known for his fiery temperament in creative settings but is also deeply thoughtful and grateful for his success. \n\nWhile seemingly distant from the racing world, Jean-Luc is a passionate supporter of Swiss talent and has been known to commission bespoke scores for promotional materials and events. A racing driver might cross paths with him at a high-society gala in Zurich, an art auction benefitting a Swiss charity, or even through a mutual acquaintance in the luxury automotive scene.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Slicked back, slightly thinning",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Jean-Luc is a man of medium height with a commanding presence. His sharp features and intense gaze reflect his passionate nature."
+  },
+  "connectionToMotorsport": "Jean-Luc occasionally attends Formula E races in Switzerland and has been commissioned to compose music for promotional campaigns for luxury car brands, creating a potential connection to the motorsport world.",
+  "meetingContext": "The player might meet Jean-Luc at an exclusive fundraising gala for a children's hospital held at a private art gallery in Geneva.",
+  "conversationTopics": [
+    "The fusion of classical and electronic music",
+    "The role of art in modern society",
+    "The thrill of snowboarding in the Swiss Alps",
+    "The nuances of the French language",
+    "The merits of different craft beer breweries"
+  ],
+  "canHelp": [
+    "Provide introductions to high-profile sponsors",
+    "Offer opportunities to appear in promotional materials with his music",
+    "Connect the player with influential figures in the Swiss business community"
+  ],
+  "personality_summary": "A fiery and creative musician with a hidden soft spot for supporting Swiss talent."
+}

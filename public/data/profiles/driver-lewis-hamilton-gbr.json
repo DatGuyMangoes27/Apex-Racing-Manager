@@ -1,0 +1,27 @@
+{
+  "biography": "Lewis, a name whispered with reverence and a touch of apprehension in the Starward paddock, hails from the affluent enclaves of Silverstone, a stark contrast to the grit and grime of the racing world. He didn't climb through the karting ranks fueled by ramen and sheer willpower; instead, his journey began with a custom-built, miniature Starward racer gifted on his tenth birthday. While some saw privilege, Lewis saw opportunity, devouring telemetry data instead of comic books. His breakthrough came at the Monaco Junior GP, where, despite starting last after a qualifying engine failure, he carved through the field with ruthless efficiency, showcasing a preternatural understanding of racing lines and tire management, winning by a comfortable margin. Now, at 30, entering what many consider his peak, Lewis continues to dissect his rivals with a cold, calculating precision that both fascinates and intimidates. He's a chess master on wheels, always three steps ahead, patiently waiting for the opportune moment to strike, a trait that has solidified his place as a formidable force within Starward G.P.",
+  "drivingStyle": "Lewis's driving style is a fascinating blend of aggression and calculated risk. He's not one for flamboyant oversteer or desperate lunges. Instead, he prefers a surgically precise approach, maximizing every tenth of a second. His corner entry is deceptively smooth, lulling opponents into a false sense of security before unleashing a burst of speed on exit. He is a master of tire conservation, able to extract surprising longevity from even the most degraded compounds. This allows him to run longer stints and gain crucial track position. Under pressure, Lewis remains remarkably composed, exhibiting a clinical detachment that often unnerves his rivals, forcing them into mistakes.",
+  "rivalries": [
+    {
+      "driver": "Marco Rossi",
+      "reason": "A fiery Italian driver known for his aggressive overtaking maneuvers. Their clashes on track are often spectacular, resulting in penalties and damaged cars."
+    },
+    {
+      "driver": "Anya Volkov",
+      "reason": "A stoic Russian driver with impeccable technical skills. Their rivalry is more strategic, a battle of wits and engineering prowess rather than wheel-to-wheel combat."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A rising Japanese star with lightning-fast reflexes. Their rivalry is built on respect but also a fierce determination to prove who is the faster of the new generation."
+    }
+  ],
+  "quirks": [
+    "Always polishes his helmet visor exactly 17 times before each race.",
+    "Insists on using the same worn-out racing gloves for every race, believing they hold his luck.",
+    "Listens to classical piano music precisely one hour before entering the car, claiming it helps him focus."
+  ],
+  "nickname": "The Iceman",
+  "famousQuote": "Racing isn't just about speed; it's about anticipating the moment when everyone else falters.",
+  "careerHighlight": "Winning the Starward World Championship in 2048 after a season-long battle with Marco Rossi, securing the title by a single point in the final race.",
+  "careerLowPoint": "Crashing out of the lead at the Monaco Grand Prix in 2046 due to a mechanical failure, costing him valuable championship points and handing the victory to his arch-rival, Marco Rossi."
+}

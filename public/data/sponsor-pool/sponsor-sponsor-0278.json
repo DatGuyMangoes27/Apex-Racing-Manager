@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0278",
+  "name": "AutoCraft Solutions",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Precision engineered solutions for automotive performance and reliability.",
+  "story": "AutoCraft Solutions has been providing high-quality aftermarket parts and engineering services to racing teams and enthusiasts for over 20 years. We believe in pushing the boundaries of automotive technology and seek partnerships with teams that share our commitment to innovation and winning. We are looking for teams that can showcase the durability and performance enhancements our products provide in demanding racing environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0278.png"
+}

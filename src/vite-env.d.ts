@@ -57,6 +57,8 @@ interface ElectronAPI {
   testCommentaryBanter?: (...args: any[]) => Promise<any>
   testCommentaryStreaming?: (...args: any[]) => Promise<any>
   testCommentaryQueueSequence?: (...args: any[]) => Promise<any>
+  getCommentaryRecentMentions?: (...args: any[]) => Promise<any>
+  getCommentaryEntityState?: (...args: any[]) => Promise<any>
   // Streaming audio
   onStreamingAudioChunk?: (callback: (...args: any[]) => void) => any
   onStreamingAudioEnd?: (callback: (...args: any[]) => void) => any

@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 24,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Antoine's passion for motorsport ignited during his childhood, spending countless hours watching Formula 1 races with his father. Inspired by the strategic brilliance of legendary team managers, he pursued a degree in engineering with a focus on motorsports. After graduating, Antoine secured an internship with a small racing team, where he quickly demonstrated a knack for optimizing performance through data analysis and strategic planning. Although relatively new to the role of sporting director, Antoine is driven by a desire to prove himself and lead a team to victory. He is known for his meticulous approach, his unwavering commitment to excellence, and his ability to inspire confidence in those around him. \n\nAntoine's demanding nature stems from his belief that success requires unwavering dedication and a relentless pursuit of perfection. He is not afraid to push his team members to their limits, but he also provides them with the support and resources they need to succeed. His loyalty to his team is unwavering, and he is always willing to go the extra mile to ensure their success. He believes in fostering a collaborative environment where everyone feels valued and empowered to contribute their best work. Antoine is confident that his combination of technical expertise, strategic thinking, and strong leadership skills will make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "Antoine is of average height with a wiry build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn copy of 'The Art of War'.",
+    "Insists on a specific brand of French press coffee before every race.",
+    "Has a nervous habit of clicking his pen during tense meetings."
+  ]
+}

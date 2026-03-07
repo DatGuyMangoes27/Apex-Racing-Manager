@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Ramirez Garcia",
+  "nationality": "Spanish",
+  "age": 33,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Sofia's passion for motorsport ignited during her university days, fueled by late-night Formula 1 races. After graduating with a degree in data science, she initially worked in finance, but the pull of racing proved too strong. She took a significant pay cut to join a smaller racing team, quickly proving her worth with her ability to extract crucial insights from complex datasets.\n\nAt Stewart-Haas Racing, Sofia is known for her meticulous approach to data analysis. She believes in leaving no stone unturned, often spending hours poring over telemetry data to identify even the slightest performance gains. Her demanding nature stems from her unwavering commitment to excellence and her belief that every detail matters in the pursuit of victory.\n\nWhat sets Sofia apart is her ability to communicate complex data insights in a clear and concise manner to engineers and drivers. She is not afraid to challenge conventional wisdom and push the team to explore new approaches, making her a valuable asset in the relentless quest for competitive advantage.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail, with a few loose strands framing her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a lean build, reflecting her disciplined lifestyle."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a perfectly organized desk, with color-coded folders and sticky notes.",
+    "Insists on using a specific brand of ergonomic keyboard to avoid wrist strain.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

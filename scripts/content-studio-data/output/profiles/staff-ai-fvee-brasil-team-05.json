@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Weber",
+  "nationality": "Swiss",
+  "age": 53,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Hans-Peter's journey into motorsport began unconventionally, not on the track, but in the precision workshops of Swiss watchmaking. He transferred his meticulous attention to detail and analytical mindset to racing, starting as a data analyst for a small Formula Ford team. His ability to predict tire wear and optimize pit strategies quickly gained him recognition. He joined FVee Brasil three years ago, drawn by their underdog spirit and commitment to innovation. Hans-Peter believes in a data-driven approach, rigorously analyzing every aspect of the race to gain a competitive edge. \n\nHis strength lies in his capacity to synthesize complex information into actionable insights for the drivers and engineers. Hans-Peter fosters a collaborative environment, encouraging open communication and a shared understanding of the race strategy. While some might see him as reserved, his dedication to the team and unwavering focus make him an invaluable asset, especially in high-pressure situations. He is known for his ability to stay calm and make critical decisions under immense pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed salt-and-pepper beard",
+    "description": "A man of medium height with a thoughtful demeanor, Hans-Peter always looks like he is calculating optimal race lines."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a particular brand of Swiss chocolate he insists on having before every race.",
+    "Quietly hums classical music while reviewing telemetry data."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 47,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Elise Dubois's journey into motorsport began with a fascination for aerodynamics, sparked by observing the precision of aircraft design. After earning a degree in aeronautical engineering from ETH Zurich, she gravitated towards Formula racing, drawn by the challenge of optimizing performance within tight constraints. Over the years, Elise honed her skills at several smaller racing teams, steadily climbing the ranks to become a highly sought-after aerodynamicist. \n\nAt Rexal FMI Racing, Elise leads the aero department with a blend of meticulous analysis and creative problem-solving. She emphasizes a collaborative approach, encouraging her team to explore unconventional solutions while maintaining a focus on data-driven results. What sets Elise apart is her ability to visualize airflow patterns intuitively, allowing her to identify subtle opportunities for improvement that others might miss. Her relentless pursuit of aerodynamic efficiency is a driving force behind Rexal's competitive edge.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight, often pulled back into a low ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A focused woman with a sharp gaze and a no-nonsense demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Has a habit of pacing while deep in thought, often muttering aerodynamic equations.",
+    "Refuses to start a design session without first drinking a cup of strong Swiss coffee."
+  ]
+}

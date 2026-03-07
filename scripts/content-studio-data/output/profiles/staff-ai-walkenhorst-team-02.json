@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 39,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jean-Pierre's fascination with motorsport ignited during his childhood, spent tinkering with engines in his grandfather's garage. This early exposure fueled his passion, leading him to pursue a degree in mechanical engineering. After graduating, he joined a small racing team as a junior engineer, quickly impressing his superiors with his meticulous attention to detail and problem-solving abilities.\n\nOver the years, Jean-Pierre honed his skills, working his way up the ranks to become a technical director. He is known for his data-driven approach and his ability to identify subtle performance gains. His dedication to precision and his visionary approach to problem-solving make him a valuable asset to any team, ensuring the car is in optimal condition for every race. At Walkenhorst, he's focused on integrating sustainable materials into the racing program.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A lean man with a focused gaze and a perpetual air of intensity."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific brand of Belgian coffee before every race."
+  ]
+}

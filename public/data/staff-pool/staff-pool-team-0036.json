@@ -1,0 +1,22 @@
+{
+  "name": "Park Jae-hyun",
+  "nationality": "South Korean",
+  "age": 42,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Park Jae-hyun's passion for motorsport ignited during his university days, fueled by late nights spent dissecting race telemetry and modifying student-built electric vehicles. After graduating with a degree in Mechanical Engineering, he honed his skills at a local engineering firm before landing a role with a small touring car team. There, he quickly distinguished himself with his meticulous data analysis and innovative problem-solving, improving lap times by identifying subtle aerodynamic inefficiencies others had missed.\n\nJae-hyun's approach to performance engineering is deeply rooted in collaboration. He believes that the best results come from fostering open communication and a shared understanding between driver, mechanics, and engineers. He prioritizes clear, concise data presentation to ensure everyone is on the same page, allowing for rapid iteration and optimization. What sets Jae-hyun apart is his knack for anticipating potential issues before they arise, preventing costly setbacks and ensuring the team is always ahead of the curve. His loyalty and dedication make him an invaluable asset to any racing team.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly parted with a slight wave",
+    "eyeColor": "Dark brown",
+    "facialHair": "Goatee",
+    "description": "A man of medium build with a focused gaze behind wire-rimmed glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on listening to classical music while analyzing race data."
+  ]
+}

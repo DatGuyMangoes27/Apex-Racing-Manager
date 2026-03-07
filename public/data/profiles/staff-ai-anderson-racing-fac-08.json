@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 44,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Bjorn's journey into motorsport began unexpectedly after a childhood fascination with aircraft design led him to study aerodynamics. He initially worked for Saab, contributing to the development of fuel-efficient vehicles. However, the allure of high-speed competition proved irresistible, and he transitioned to motorsport, drawn by the challenge of optimizing performance at the extreme limits. He landed a junior position at Anderson Racing and has worked his way to senior operator.\n\nBjorn approaches his work in the wind tunnel with meticulous precision, believing that even the smallest adjustments can yield significant gains on the track. He's known for his rigorous testing protocols and his insistence on data accuracy. He believes in a pragmatic approach to wind tunnel data, focusing on real-world applicability rather than theoretical perfection. His ability to identify subtle aerodynamic nuances makes him a valuable asset to the team, even if his demanding nature can occasionally ruffle feathers.\n\n He constantly looks for improvement, he wants to get the best possible data to help make the car faster, sometimes to the detriment of other team members.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blond",
+    "hairStyle": "Short, slightly receding hairline, neatly combed to the side",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "A lean man with a focused gaze, always wearing a lab coat."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on calibrating the wind tunnel sensors before every test run, regardless of how recently it was done.",
+    "Has a habit of muttering aerodynamic equations under his breath while observing airflow simulations."
+  ]
+}

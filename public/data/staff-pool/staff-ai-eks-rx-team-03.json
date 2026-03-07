@@ -1,0 +1,22 @@
+{
+  "name": "Katarzyna Lewandowska",
+  "nationality": "Polish",
+  "age": 57,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Katarzyna Lewandowska's fascination with aerodynamics began with a childhood obsession with paper airplanes, meticulously tweaking wing designs for optimal flight. This early passion led her to pursue a degree in aerospace engineering, followed by a successful career in the aviation industry. Seeking a new challenge, she transitioned to motorsport, drawn to the high-stakes environment and the constant push for incremental gains.\n\nAt EKS JC, Katarzyna brings a methodical and data-driven approach to aerodynamic development. She emphasizes rigorous wind tunnel testing and computational fluid dynamics simulations to optimize vehicle performance. Known for her sharp eye for detail and relentless pursuit of perfection, Katarzyna fosters a culture of innovation and continuous improvement within her team. Her ability to translate complex scientific principles into practical engineering solutions makes her a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Shoulder-length, neatly styled in a low bun with a few strands escaping to frame her face.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A poised woman with a focused gaze, she carries herself with quiet confidence."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on a perfectly clean workspace, even in the chaotic environment of the garage.",
+    "Has a habit of adjusting her glasses when contemplating a particularly complex problem."
+  ]
+}

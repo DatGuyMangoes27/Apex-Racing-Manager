@@ -1,0 +1,31 @@
+{
+  "name": "Astri Widjaja",
+  "nationality": "Indonesian",
+  "age": 52,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Astri Widjaja is a highly respected and independent lawyer specializing in international business law and contract negotiations, particularly within the sports and entertainment industries. A postgraduate of Universitas Indonesia, she's known for her idealistic approach to justice, often championing the underdog while maintaining a playful and sincere demeanor that puts her clients at ease, even amidst high-stakes deals. Her success has afforded her a life of luxury, indulging in passions like polo, scuba diving, and equestrian sports. \n\nShe initially became involved in motorsports through representing a wealthy Indonesian businessman who sponsored a Formula 3 team. This experience gave her insight into the legal intricacies and financial risks involved in the racing world. A driver might cross paths with her when seeking legal counsel regarding sponsorship deals, contract negotiations with racing teams, or intellectual property protection for their personal brand.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, subtly layered, often pulled back in a low ponytail during business hours.",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Astri has a warm, inviting smile and carries herself with confidence. She favors elegant, tailored clothing that reflects her sophisticated tastes."
+  },
+  "connectionToMotorsport": "Astri provides legal counsel to racing teams and individual drivers, especially regarding sponsorship agreements and contract negotiations. She also advises on intellectual property matters related to branding and image rights within the motorsports industry.",
+  "meetingContext": "You might meet Astri at a high-profile motorsport event in Jakarta, or through a mutual acquaintance in the business world who knows of her legal expertise in the racing industry. Alternatively, another driver might recommend her services to you.",
+  "conversationTopics": [
+    "The latest developments in international business law.",
+    "Her experiences scuba diving in Raja Ampat.",
+    "The challenges and rewards of being a successful businesswoman in Indonesia.",
+    "Her photography projects documenting Indonesian culture.",
+    "The intricacies of contract law in motorsports."
+  ],
+  "canHelp": [
+    "Negotiating favorable sponsorship deals with sponsors.",
+    "Reviewing and improving driver contracts with racing teams.",
+    "Protecting your brand and image rights, ensuring you maintain control over your public persona."
+  ],
+  "personality_summary": "An independent and idealistic lawyer with a playful spirit and a sharp legal mind."
+}

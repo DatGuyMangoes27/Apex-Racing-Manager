@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 25,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Saoirse's passion for motorsport ignited during her childhood, growing up near Mondello Park and attending races with her father. This early exposure fueled her interest in the intricate electronics that power these machines. She pursued a degree in Electrical Engineering at Trinity College Dublin, specializing in embedded systems and control engineering. Her thesis on advanced sensor integration in Formula Student race cars earned her high praise and opened doors to several racing teams.\n\nSaoirse's approach to electronics engineering is rooted in meticulousness and a deep understanding of the interplay between hardware and software. She excels at troubleshooting complex electrical issues, optimizing control systems, and implementing innovative solutions to enhance performance and reliability. Her knack for quickly grasping new technologies and her proactive approach to problem-solving make her a valuable asset to any team. She is particularly skilled at data analysis and using insights to inform circuit design and improve vehicle dynamics.\n\nSaoirse believes that effective communication is key to a successful racing team. She actively collaborates with other engineers and drivers, ensuring that everyone is aligned on the team's goals and objectives. She is adept at translating technical jargon into clear and concise language that is easily understood by all team members. Her ability to foster a positive and collaborative environment makes her not only a skilled engineer but also a respected and valued teammate.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A slim woman with freckled skin and an intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool on her keychain",
+    "Has a habit of sketching circuit diagrams on napkins during meetings",
+    "Prefers listening to traditional Irish music while working to focus"
+  ]
+}

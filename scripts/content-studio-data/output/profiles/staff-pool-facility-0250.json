@@ -1,0 +1,22 @@
+{
+  "name": "Mei Zhang",
+  "nationality": "Chinese",
+  "age": 23,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Mei Zhang's passion for motorsport ignited during her childhood, fueled by watching Formula 1 races with her grandfather. This early fascination led her to pursue a degree in Electrical Engineering at Tsinghua University, where she excelled in advanced circuit design and embedded systems. After graduating at the top of her class, she gained invaluable experience at a leading automotive technology firm in Shanghai, specializing in electric vehicle powertrains and battery management systems. \n\nDriven by a desire to contribute to the cutting edge of motorsport technology, Mei focuses on optimizing electronic systems for performance and reliability. She possesses a keen eye for detail and a knack for identifying even the most subtle electrical inefficiencies. Her approach is rooted in meticulous analysis, rigorous testing, and a relentless pursuit of innovation. Mei believes that a strong team dynamic is critical for success and always strives to foster collaboration and open communication.\n\nWhat sets Mei apart is her unwavering dedication and her ability to quickly adapt to new challenges. Her innovative solutions and proactive problem-solving skills make her an invaluable asset to any team seeking an edge in the highly competitive world of motorsports. She's also known for her meticulous data logging and her insistance on documenting every change made to a car's electronics.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight hair with subtle layers, often pulled back into a high ponytail during work.",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei is petite with a focused gaze and a confident, yet approachable demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multimeter in her bag.",
+    "Has a habit of humming quietly while debugging complex circuits.",
+    "Insists on labeling every cable and connector with extreme precision."
+  ]
+}

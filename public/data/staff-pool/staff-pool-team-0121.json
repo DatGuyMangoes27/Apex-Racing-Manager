@@ -1,0 +1,22 @@
+{
+  "name": "Raúl Guzmán",
+  "nationality": "Mexican",
+  "age": 24,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Raúl’s fascination with motorsport began during his childhood in Guadalajara, where he spent countless hours tinkering with go-karts. This early passion led him to pursue a degree in mechanical engineering, focusing on vehicle dynamics and aerodynamics. After graduating, he landed an internship with a small racing team, quickly impressing them with his analytical skills and dedication.\n\nAlthough relatively new to the professional scene, Raúl possesses a keen understanding of race car setup and optimization. He believes in a data-driven approach, meticulously analyzing telemetry and driver feedback to identify areas for improvement. His calm demeanor and willingness to learn make him an invaluable asset to any team looking to develop young talent. He's eager to prove himself and climb the ranks within the motorsport world, bringing a fresh perspective and unwavering loyalty to his role as technical director.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Raúl is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to listen to classical music while analyzing data."
+  ]
+}

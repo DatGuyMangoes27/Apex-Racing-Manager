@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 50,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his youth, fueled by the roar of engines at local rallies in Portugal. He pursued his love for electronics at the University of Porto, specializing in control systems and data acquisition. After graduating, Ricardo joined a small engineering firm, quickly gaining experience in designing and implementing electronic solutions for various industries. However, his heart remained set on motorsport. \n\nHe landed a role with a Formula Ford team, where he honed his skills in data analysis and electronic component optimization. Ricardo is known for his systematic approach to problem-solving and his commitment to continuous improvement. He believes that a deep understanding of the underlying principles is crucial for developing innovative solutions, and his meticulous attention to detail ensures reliability and performance. He approaches his role with a blend of rigorous technical analysis and a collaborative spirit, always seeking to learn from and contribute to the team's collective knowledge. His ability to see the 'big picture' while ensuring every small detail is correct is what makes him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed Goatee",
+    "description": "Ricardo is a man of medium height, with a thoughtful expression etched on his face."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a habit of humming softly while concentrating on complex problems.",
+    "Insists on calibrating his own test equipment."
+  ]
+}

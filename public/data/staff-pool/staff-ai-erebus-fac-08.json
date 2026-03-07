@@ -1,0 +1,22 @@
+{
+  "name": "Fiona MacLeod",
+  "nationality": "Scottish",
+  "age": 44,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Fiona's journey into motorsport began unexpectedly, fueled by a childhood fascination with engineering and a chance encounter with a Formula Ford race at Knockhill. She pursued a degree in Mechanical Engineering, specializing in fluid dynamics, and quickly found her niche in wind tunnel operations. Her experience spans various motorsport disciplines, from touring cars to single-seaters, giving her a broad understanding of aerodynamic principles and their practical application. Fiona is known for her meticulous approach and ability to translate complex data into actionable insights for the engineering team. She believes in continuous improvement and fosters a collaborative environment, valuing open communication and shared learning.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, usually tied back in a practical braid",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Fiona has a practical, no-nonsense demeanor reflected in her neatly kept appearance."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always has a flask of strong tea on hand.",
+    "Keeps a small notebook filled with hand-drawn aerodynamic sketches.",
+    "Insists on calibrating the wind tunnel instruments herself before any major test."
+  ]
+}

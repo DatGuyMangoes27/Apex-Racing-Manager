@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 42,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Erik's journey into motorsport began with a childhood spent tinkering with engines in his father's garage in Gothenburg. He always had a fascination with the mechanics of speed. After a brief stint as a junior mechanic in rallycross, Erik transitioned into karting, quickly realizing his strength lay not in driving, but in understanding and communicating technical feedback. He joined the Kart Academy five years ago, bringing a sharp eye for detail and an ability to translate complex data into actionable insights for the young drivers.\n\nAs Test Driver Coordinator, Erik is responsible for orchestrating all testing activities, from scheduling and logistics to data analysis and driver debriefs. His calm demeanor and methodical approach are invaluable in high-pressure situations. Erik is known for his meticulousness and his unwavering commitment to helping the Academy's drivers achieve their full potential. He firmly believes that the smallest adjustments can make the biggest difference on the track.\n\nWhat sets Erik apart is his intuition. He possesses a knack for identifying subtle nuances in driver performance and translating them into practical adjustments to the kart setup. This unique combination of technical expertise and intuitive understanding makes him a valuable asset to the Kart Academy.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Erik is a lean man of average height with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen, even during meetings.",
+    "Has a specific brand of coffee that he drinks every morning.",
+    "Tends to tap his fingers rhythmically when deep in thought."
+  ]
+}

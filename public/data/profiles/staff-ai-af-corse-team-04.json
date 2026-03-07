@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 56,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jan Kolář's journey in motorsport began with a childhood fascination for speed and mechanics, fueled by watching rally races in his native Czech Republic. He earned a degree in mechanical engineering from the Czech Technical University in Prague, specializing in automotive dynamics. Upon graduating, Jan started in a small engineering firm that supported local racing teams, honing his skills in data analysis and vehicle setup. He steadily progressed, working his way up to the European GT scene before landing a role with AF Corse a decade ago. \n\nJan is known for his methodical approach to problem-solving and his ability to remain calm under pressure. He's a firm believer in the power of data, meticulously analyzing every aspect of the car's performance to extract marginal gains. While not the most outwardly charismatic, Jan's dedication to his craft and unwavering loyalty to his team have earned him the respect of drivers and colleagues alike. He's particularly adept at translating complex technical information into actionable insights that drivers can immediately implement on the track. \n\nWhat sets Jan apart is his ability to find innovative solutions to complex problems, often drawing inspiration from seemingly unrelated fields. He is a quiet but powerful force within the team, consistently pushing the boundaries of performance through his technical expertise and unwavering commitment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed gray mustache",
+    "description": "A man of medium build, Jan has a focused gaze and carries himself with quiet confidence."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn notebook filled with hand-drawn schematics.",
+    "Has a specific brand of herbal tea he drinks religiously before each race.",
+    "Muttering technical details to himself when deep in thought."
+  ]
+}

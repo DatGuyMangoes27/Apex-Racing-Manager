@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 35,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Jean-Pierre's journey into motorsport security began unconventionally. After a stint in the Royal Canadian Mounted Police, where he specialized in high-profile event security, he found the roar of engines more appealing than the quiet of parliamentary grounds. His transition to motorsport was seamless, bringing with him a rigorous approach to risk assessment and mitigation. \n\nJean-Pierre is known for his meticulous planning and unwavering commitment to safety. He believes in proactive security measures, constantly seeking innovative solutions to potential threats. His demanding nature stems from a deep sense of responsibility for the well-being of the team and ensuring the integrity of the competition. He's particularly focused on cyber security vulnerabilities within the increasingly digital world of racing.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A man of medium build with a stern gaze that exudes authority."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously documenting security protocols.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on performing a personal security sweep of the team garage before each race."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Lee Mei Fong",
+  "nationality": "Singaporean",
+  "age": 62,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Lee Mei Fong is a prominent figure in Singaporean politics, known for her unwavering dedication to economic development and infrastructure projects. Rising through the ranks from a community organizer to a Member of Parliament, she's earned a reputation for being both a shrewd negotiator and a passionate advocate for her constituents. While self-taught and driven, her intense focus and impatience have occasionally ruffled feathers, but her reliability is unquestioned. \n\nAs the chair of several governmental committees related to tourism and urban planning, Lee Mei Fong's influence extends to the development of the Marina Bay Street Circuit and other motorsport-related events in Singapore. A racing driver might cross paths with her while seeking government support for a team, sponsorship opportunities, or navigating the complex permitting processes required for racing events in the city-state. Her reserved nature makes her challenging to impress, but genuine passion and a well-prepared presentation will earn her respect.",
+  "physical": {
+    "skinTone": "Light-tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly coiffed bob",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Lee Mei Fong carries herself with a quiet confidence, often seen in tailored business attire. Her sharp eyes convey both intelligence and a hint of weariness from years of public service."
+  },
+  "connectionToMotorsport": "As a key figure in urban planning and tourism, Lee Mei Fong has been instrumental in securing permits and funding for the Singapore Grand Prix. She views motorsport events as vital for attracting international investment and boosting Singapore's global profile.",
+  "meetingContext": "The player might meet Lee Mei Fong at a formal gala event celebrating Singapore's sporting achievements or through a mutual contact in the business community who facilitates an introduction to discuss potential partnerships.",
+  "conversationTopics": [
+    "Singapore's economic development strategy",
+    "The importance of sustainable infrastructure projects",
+    "The challenges of balancing economic growth with social welfare",
+    "Her travels in Southeast Asia",
+    "The latest classical music performances"
+  ],
+  "canHelp": [
+    "Facilitate introductions to potential Singaporean sponsors",
+    "Provide assistance in navigating bureaucratic hurdles related to racing events in Singapore",
+    "Offer insights into the local political landscape and potential government support programs"
+  ],
+  "personality_summary": "An impatient but reliable politician with a passion for her country and a reserved demeanor."
+}

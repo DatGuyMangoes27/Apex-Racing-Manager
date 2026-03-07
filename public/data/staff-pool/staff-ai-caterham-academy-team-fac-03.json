@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 38,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Mateo's journey into motorsport started with a childhood obsession with go-karts, fueled by watching Formula 1 races broadcast from Europe. He honed his skills working in his uncle's auto repair shop in Buenos Aires, where he quickly developed a reputation for meticulousness and problem-solving. After completing his technical education, he sought out opportunities in racing, initially assisting smaller local teams before catching the eye of a Caterham Academy scout during a regional competition.\n\nAs a machinist, Mateo is known for his innovative approach to improving component performance and durability. He believes in a hands-on approach, often spending hours meticulously inspecting parts and tweaking designs to optimize their efficiency. His passion for precision, combined with his natural ability to anticipate potential mechanical issues, makes him a valuable asset to the team.\n\nMateo's colleagues appreciate his collaborative spirit and his willingness to share his knowledge. He also has a knack for finding creative solutions to complex engineering challenges, often drawing inspiration from unexpected sources. His deep understanding of materials and manufacturing processes allows him to push the boundaries of what's possible, ensuring that the team benefits from cutting-edge technology.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Mateo is a lean man of average height, with calloused hands that speak to years of working with machinery."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Constantly hums tango melodies while working, barely audible above the machinery.",
+    "Insists on using only metric measurements, even when dealing with parts from non-metric sources."
+  ]
+}

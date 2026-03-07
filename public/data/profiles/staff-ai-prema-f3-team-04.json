@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 40,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's racing journey began in the frozen karting tracks of Quebec. He spent his youth tinkering with engines, driven by a relentless curiosity to understand the intricacies of motorsport. After earning his engineering degree, he quickly climbed the ranks, working his way through smaller racing series before landing a coveted role at Prema Racing.\n\nJean-Pierre is known for his meticulous approach to data analysis and his ability to translate complex information into actionable strategies for the driver. He believes in fostering a collaborative environment within the team, empowering each member to contribute their unique expertise. His distinctive talent lies in his ability to adapt quickly to changing conditions, making him an invaluable asset in the high-pressure world of motorsport.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly parted, with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of average height and build, Jean-Pierre always carries a focused intensity in his gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music during pre-race preparations to maintain focus."
+  ]
+}

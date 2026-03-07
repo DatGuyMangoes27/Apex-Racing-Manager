@@ -1,0 +1,22 @@
+{
+  "name": "Stefan Meier",
+  "nationality": "Swiss",
+  "age": 36,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Stefan Meier's journey into motorsport began with a childhood fascination for the intricate mechanics of Formula 1 cars. Raised in a small village nestled near the Swiss Alps, he spent countless hours dismantling and reassembling bicycles, radios, and anything else he could get his hands on. This early tinkering evolved into a passion for engineering, leading him to pursue a degree in Mechanical Engineering at ETH Zurich.\n\nAfter graduating, Stefan joined a small engineering firm specializing in high-performance automotive components. It was here that he honed his technical skills and developed a keen understanding of the complexities of motorsport. Driven by a desire to contribute directly to a racing team, he transitioned to Sprint V8 Team, initially as a junior engineer. His methodical approach to problem-solving, combined with his innovative ideas, quickly propelled him through the ranks. Now, as Head of Operations, Stefan is responsible for overseeing all aspects of the team's technical and logistical operations, ensuring that everything runs smoothly both on and off the track. He is known for his meticulous attention to detail and his unwavering commitment to excellence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Stefan has a focused gaze and a serious demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small Leatherman multi-tool.",
+    "Insists on using a mechanical keyboard, even on the road.",
+    "Has a habit of sketching technical diagrams on napkins during meetings."
+  ]
+}

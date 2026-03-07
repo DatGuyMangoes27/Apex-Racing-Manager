@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 37,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Declan's journey into motorsport began with a childhood obsession with go-karts, tearing them apart and rebuilding them in his father's garage. He honed his skills through an apprenticeship at a local engineering firm, specializing in precision machining. Eager to apply his expertise to racing, Declan joined Speed Kart Racing five years ago and has since become an integral part of the team, ensuring the karts are always in peak condition.\n\nDeclan is known for his meticulous approach and unwavering commitment to quality. He believes in finding practical, effective solutions, often improvising with available resources to overcome challenges. While not one for elaborate designs, his modifications are always reliable and performance-driven. His ability to diagnose and fix mechanical issues under pressure makes him a valuable asset during race weekends. \n\nHis dedication to precision and his pragmatic nature make him a reliable and effective machinist. He is always willing to lend a hand, but prefers to work independently, focusing intently on the task at hand.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained stubble",
+    "description": "A wiry man of average height, Declan always looks like he's just stepped out of the workshop, with traces of grease under his fingernails."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always has a small, worn notebook filled with sketches and measurements.",
+    "Drinks strong black tea throughout the day.",
+    "Talks to the machinery while he works, often muttering about tolerances and torque."
+  ]
+}

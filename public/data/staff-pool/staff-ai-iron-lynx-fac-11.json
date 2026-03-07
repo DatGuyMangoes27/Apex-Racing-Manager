@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 42,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Alistair's journey into motorsport was almost accidental. Initially a mechanical engineering student, he found himself drawn to the intricacies of race car dynamics during a university project. This led to a series of internships with smaller racing teams, where he honed his skills in data analysis and vehicle setup. His keen eye for detail and ability to translate driver feedback into actionable adjustments quickly made him an asset.\n\nAs test driver coordinator for Iron Lynx, Alistair thrives on the pressure of optimizing performance. He's known for his meticulous approach to planning and execution, ensuring every test session yields maximum data. While some might find his demanding nature off-putting, it stems from a deep-seated belief in the importance of precision and preparation. He's always looking for marginal gains, pushing both drivers and engineers to extract the last tenth of a second.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Alistair is of average height with a wiry build, often seen sporting a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten track notes.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific brand of Scottish shortbread available in the garage during test sessions."
+  ]
+}

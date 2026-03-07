@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 39,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Jean-Pierre's motorsport journey began with a childhood spent karting near his family's vineyards in the Lavaux region. While a promising driver, a serious injury at 17 redirected his passion toward the technical side of racing. He earned a degree in mechanical engineering from ETH Zurich and quickly found himself working with smaller Formula teams, steadily climbing the ranks with his sharp analytical skills and knack for identifying performance gains. His arrival at Carlin Academy marked a turning point, where he is determined to cultivate the next generation of racing talent. \n\nAs Sporting Director, Jean-Pierre is known for his meticulous approach and data-driven decision-making. He believes in empowering his team, fostering a collaborative environment where everyone's input is valued. He's constantly pushing the boundaries of what's possible, always seeking innovative solutions to gain a competitive edge, and is recognized for his uncanny ability to spot talent early and nurture their potential.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium height with a focused expression, Jean-Pierre exudes quiet confidence."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn leather-bound notebook filled with technical diagrams and ideas.",
+    "Insists on brewing his own espresso every morning, using a vintage Italian machine.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

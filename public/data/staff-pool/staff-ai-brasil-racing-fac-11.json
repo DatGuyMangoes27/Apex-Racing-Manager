@@ -1,0 +1,22 @@
+{
+  "name": "Milena Petrović",
+  "nationality": "Serbian",
+  "age": 39,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Milena's path to motorsport wasn't conventional. After graduating with a degree in mechanical engineering from the University of Belgrade, she initially worked in the automotive industry, focusing on vehicle dynamics and simulation. Frustrated by the slow pace of development in the consumer car market, she sought a faster, more demanding environment. A chance encounter with a former racing engineer led her to Brasil Racing, where her technical expertise and sharp organizational skills quickly made her an indispensable part of the team. \n\nAs Test Driver Coordinator, Milena is known for her meticulous planning and relentless pursuit of data-driven improvements. She believes in creating a rigorous testing schedule that pushes drivers and equipment to their limits, extracting every last ounce of performance. While some find her demanding nature intimidating, her unwavering commitment to excellence has consistently delivered results, making her a respected, if somewhat feared, figure in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Milena is of average height, with a wiry build honed from years of intense focus."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping her pen against the table when deep in thought.",
+    "Insists on using a specific, almost obsolete, type of spreadsheet software."
+  ]
+}

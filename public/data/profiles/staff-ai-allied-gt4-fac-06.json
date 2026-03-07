@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Branislav Jovanović",
+    "nationality": "Serbian",
+    "age": 45,
+    "gender": "male",
+    "role": "logistics_coordinator",
+    "bio": "Branislav's journey into motorsport began unconventionally, not on the track, but in the back of a truck hauling spare parts across Europe. He learned the importance of timing and reliability early on, skills that have served him well throughout his career. After years on the road, he transitioned to a logistics role, initially with smaller racing outfits before joining Allied Racing. \n\nBranislav's pragmatic approach is the backbone of Allied Racing's logistical efficiency. He meticulously plans every detail, anticipating potential issues and ensuring that everything arrives on time and in perfect condition. He's known for his calm demeanor under pressure and his ability to find solutions where others see only problems. His distinctive approach lies in viewing the entire operation as a holistic system, where every part is interconnected and crucial for success.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Short, trimmed goatee",
+      "description": "A stocky man with a weathered face that reflects years of hard work."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small notebook filled with logistical diagrams.",
+      "Insists on personally inspecting every shipment before it leaves.",
+      "Has a habit of tapping his pen against his teeth when deep in thought."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Mei Zhang",
+  "nationality": "Chinese",
+  "age": 43,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Mei Zhang's journey into motorsport began unexpectedly. Growing up in rural China, she was fascinated by the intricate workings of farm machinery. This curiosity led her to pursue a degree in mechanical engineering. After graduating, she moved to Germany, seeking opportunities to apply her skills in a more specialized field. Her first job was at a small machine shop that supplied parts for various racing teams, quickly finding her niche.\n\nAt Herberth Motorsport, Mei is known for her meticulous approach and ability to troubleshoot complex mechanical issues. She thrives on the pressure of race weekends, often working long hours to ensure every component is perfectly calibrated. Her colleagues value her willingness to share her knowledge and her calm demeanor under pressure. Mei is particularly adept at optimizing engine performance through innovative machining techniques, although she sometimes struggles to articulate her ideas to those less technically inclined.\n\nWhat sets Mei apart is her dedication to precision. She has an almost uncanny ability to detect even the slightest imperfections in a machined part. Her relentless pursuit of perfection has earned her the respect of the entire team, making her a vital asset in their pursuit of racing excellence.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, often tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Mei is of average height with a wiry build, reflecting years of working with heavy machinery."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, antique caliper in her pocket.",
+    "Meticulously cleans her tools after every use, regardless of how busy the garage is.",
+    "Humming traditional Chinese folk songs while working on particularly challenging tasks."
+  ]
+}

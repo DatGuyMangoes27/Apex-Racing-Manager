@@ -1,0 +1,58 @@
+{
+  "id": "sponsor-0067",
+  "name": "Apex Dynamics",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Monaco",
+  "description": "Precision engineering for peak performance.",
+  "story": "Apex Dynamics is a leading provider of advanced telemetry and simulation software for motorsport teams. Founded in Monaco, they believe in pushing the boundaries of performance through data-driven insights. They seek partnerships with teams who share their commitment to innovation and achieving peak results on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Monaco",
+      "France"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0067.png"
+}

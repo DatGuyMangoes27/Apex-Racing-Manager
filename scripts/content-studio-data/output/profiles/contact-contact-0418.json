@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Akari Tanaka",
+  "nationality": "Japanese",
+  "age": 54,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Akari Tanaka is a renowned orthopedic surgeon specializing in sports-related injuries, particularly those affecting athletes in high-impact sports. She's built a reputation for her innovative surgical techniques and patient-centered approach, attracting patients from around the globe. While outwardly caring, Akari harbors a deep-seated nostalgia for her youth and a manipulative streak, often using dramatic flair to get her way, especially when discussing her past. \n\nAkari's connection to the motorsport world stems from her work treating drivers who have sustained injuries on the track. She occasionally serves as a consultant for racing teams, advising on injury prevention and rehabilitation strategies. A racing driver might cross paths with Dr. Tanaka after a crash requiring specialized orthopedic care, or through team affiliations seeking her expertise.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, subtly layered with soft waves",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Dr. Tanaka carries herself with an air of quiet confidence. She has a warm smile and expressive eyes that hint at a sharp intellect."
+  },
+  "connectionToMotorsport": "Dr. Tanaka is an orthopedic surgeon specializing in sports injuries and a consultant for various racing teams, providing expertise in injury prevention and rehabilitation for drivers.",
+  "meetingContext": "You might meet Dr. Tanaka at a motorsport event where she's consulting, or as a patient at her clinic after sustaining an injury during a race or training.",
+  "conversationTopics": [
+    "The latest advancements in orthopedic surgery",
+    "The challenges and rewards of working with elite athletes",
+    "Her collection of antique medical instruments",
+    "Classical Music composers and performances",
+    "The latest astronomical discoveries"
+  ],
+  "canHelp": [
+    "Provide top-tier medical treatment and rehabilitation for injuries",
+    "Offer advice on injury prevention strategies to enhance performance and longevity",
+    "Connect you with other medical professionals or sports performance specialists"
+  ],
+  "personality_summary": "A dramatic and manipulative, yet caring and nostalgic doctor with a passion for healing and a flair for the theatrical."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Maximilian Weber",
+  "nationality": "German",
+  "age": 31,
+  "gender": "male",
+  "contactType": "doctor",
+  "bio": "Dr. Maximilian Weber is a highly respected sports medicine physician specializing in performance optimization and injury rehabilitation. He earned his PhD in biomechanics and has published several papers on the physiological demands of motorsports. While outwardly confident and disciplined, Maximilian guards his personal life closely. He enjoys the finer things in life, often indulging in rare whiskeys and attending avant-garde theater performances.\n\nMaximilian's interest in motorsports stems from a fascination with the extreme physical and mental demands placed on drivers. He consults with several racing teams, providing expertise on driver fitness, injury prevention, and recovery strategies. A racing driver might cross paths with him during a routine medical evaluation, after an accident requiring specialized care, or as part of a team's performance enhancement program.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Maximilian has a lean, athletic build, a testament to his dedication to fitness. He typically wears stylish, tailored clothing, reflecting his appreciation for fashion."
+  },
+  "connectionToMotorsport": "Maximilian is a sports medicine physician who consults with several Formula racing teams, specializing in driver fitness and injury rehabilitation. He is often seen at the track providing medical support and performance advice.",
+  "meetingContext": "The player might meet Maximilian at a racing event while undergoing a medical check-up or during a consultation after sustaining an injury during a race or practice session.",
+  "conversationTopics": [
+    "The physiological demands of racing",
+    "The latest advances in sports medicine technology",
+    "His favorite whiskey distilleries",
+    "The works of Bertolt Brecht",
+    "Equestrian competitions and training methods"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for racing injuries",
+    "Offer performance-enhancing strategies to improve driver fitness",
+    "Introduce the player to other valuable contacts within the racing world"
+  ],
+  "personality_summary": "A reliable and confident doctor with a secretive side and a passion for both science and the arts."
+}

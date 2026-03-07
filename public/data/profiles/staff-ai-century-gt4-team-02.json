@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 28,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Mateo's passion for motorsport ignited early, fueled by the roar of engines at local Turismo Carretera races. He pursued a degree in mechanical engineering, quickly realizing the potential of applying cutting-edge technology to racing. After graduating, he joined a small development team, focusing on chassis dynamics and aerodynamic optimization. His dedication and innovative solutions led to a string of successes, catching the eye of Century Motorsport.\n\nAs Technical Director, Mateo emphasizes a data-driven approach, meticulously analyzing telemetry and performance metrics to identify areas for improvement. He believes in empowering his team to explore new ideas and fostering a collaborative environment where everyone feels comfortable contributing. His ambition extends beyond simple performance gains; he strives to create a culture of continuous learning and pushing the boundaries of what's possible within the sport.\n\nMateo's distinctive edge lies in his ability to blend theoretical knowledge with practical experience. He's not afraid to get his hands dirty, often working alongside his team in the garage, troubleshooting issues and implementing solutions in real-time. This hands-on approach, combined with his unwavering commitment to excellence, makes him a valuable asset to Century Motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mateo is of average height, with a focused expression and a build suggesting both intellect and practical aptitude."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of yerba mate during races."
+  ]
+}

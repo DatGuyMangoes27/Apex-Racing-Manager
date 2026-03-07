@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Kovačić",
+  "nationality": "Croatian",
+  "age": 42,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Ivan's journey into motorsport began with a childhood fascination for engines and a knack for tinkering. He started by modifying go-karts, eventually working his way up through various racing teams, gaining experience in chassis fabrication and aerodynamic component construction. He prides himself on his meticulous attention to detail and his ability to troubleshoot complex mechanical issues under pressure. His career highlights include contributing to the design and construction of a winning Le Mans prototype car, a feat that solidified his reputation as a highly competent fabricator.\n\nAt Mercedes-AMG, Ivan brings a wealth of experience and a commitment to excellence. He approaches each project with a systematic approach, ensuring that every component meets the highest standards of quality and performance. Known for his calm demeanor and problem-solving skills, Ivan is a valuable asset to the team, often finding innovative solutions to challenging fabrication problems. He is particularly adept at working with advanced materials like carbon fiber and titanium, constantly seeking ways to improve the performance and reliability of the team's vehicles.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "short boxed beard",
+    "description": "Ivan is of medium height with a sturdy build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils before starting any project, regardless of whether he needs them.",
+    "Has a lucky wrench he uses for crucial tasks.",
+    "Humming traditional Croatian folk songs while working."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Larsson",
+  "nationality": "Swedish",
+  "age": 43,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Astrid Larsson's fascination with motorsport ignited during her childhood summers spent near a local rallycross track. The roar of the engines and the precision of the drivers captivated her, leading her to pursue a degree in mechanical engineering with a specialization in vehicle dynamics. After graduating, she started as a junior engineer at a small touring car team, quickly proving her aptitude for problem-solving and data analysis. \n\nAstrid's approach to race engineering is meticulous and collaborative. She believes in fostering open communication with the driver and the mechanics to identify areas for improvement and develop innovative solutions. Her experience allows her to quickly diagnose issues, optimize car setup, and make critical decisions under pressure. Astrid is known for her calm demeanor and her ability to inspire confidence in her team, even in the most challenging situations. She’s always looking for that extra tenth of a second, whether through innovative suspension tweaks or meticulous tire management.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is of average height with a focused gaze and a practical, no-nonsense appearance."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Drinks copious amounts of strong black coffee throughout race weekends."
+  ]
+}

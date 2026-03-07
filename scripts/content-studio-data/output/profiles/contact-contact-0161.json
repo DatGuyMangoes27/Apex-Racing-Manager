@@ -1,0 +1,31 @@
+{
+  "name": "Adrián Benavides",
+  "nationality": "Spanish",
+  "age": 32,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Adrián Benavides is a name synonymous with cycling excellence in Spain. A two-time Vuelta a España champion and Olympic medalist, his career has been built on meticulous planning, unwavering discipline, and an unexpected empathy that endears him to fans and fellow athletes alike. Despite his public profile, Adrián is intensely private, often retreating into the world of architecture and design to recharge.\n\nWhile seemingly distant from motorsport, Adrián is a keen follower of Formula 1 and rally racing. He appreciates the technical precision and the mental fortitude required to compete at the highest levels. A racing driver might cross paths with Adrián at a charity event, a high-end cycling shop he frequents in Barcelona, or even a shared sponsor event, given his popularity and marketability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Adrián has a lean, athletic build honed from years of professional cycling. His intense gaze and thoughtful demeanor hint at the strategic mind beneath the surface."
+  },
+  "connectionToMotorsport": "Adrián is a private investor in a small, up-and-coming engineering firm that specializes in lightweight materials for racing components. He also occasionally provides mental conditioning advice to younger drivers.",
+  "meetingContext": "The player might meet Adrián at a fundraising gala for a children's hospital, where he's a frequent attendee, or at a cycling event near a racetrack.",
+  "conversationTopics": [
+    "The parallels between cycling and motorsport strategy",
+    "His passion for modernist architecture",
+    "The latest innovations in sports technology",
+    "The nuances of different single malt whiskies",
+    "The challenges of maintaining peak physical condition"
+  ],
+  "canHelp": [
+    "Provide access to his network of sponsors and investors.",
+    "Offer advice on mental fortitude and dealing with pressure.",
+    "Introduce the player to the engineering firm he invests in, potentially leading to a beneficial partnership."
+  ],
+  "personality_summary": "A nurturing and empathetic athlete, harboring a secretive and reserved nature."
+}

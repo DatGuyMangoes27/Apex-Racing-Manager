@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0219",
+  "name": "Arctic Esports Gear",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "Finland",
+  "description": "Precision gaming peripherals designed for ultimate performance.",
+  "story": "Arctic Esports Gear is a Finnish startup focused on creating high-quality gaming peripherals. We see motorsport as a natural fit for our brand, as both require precision, focus, and cutting-edge technology. We're looking for a team that embodies these values and can help us reach a wider audience of passionate gamers and tech enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Finland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0219.png"
+}

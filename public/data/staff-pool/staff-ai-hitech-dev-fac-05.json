@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 27,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Mateo's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering, specializing in materials science, which led him to an internship at a local racing team. There, he discovered his knack for identifying subtle flaws and optimizing performance through rigorous testing. He is now a vital part of the Hitech Development team, where he meticulously analyzes components and systems to ensure they meet the highest standards of quality and reliability.\n\nMateo's pragmatic approach is rooted in his belief that success in motorsport is built on a foundation of precision and consistency. He is known for his meticulous attention to detail and his ability to quickly diagnose and resolve technical issues. He is always looking for ways to improve processes and enhance the overall quality of the team's output.\n\nHis colleagues value his calm demeanor under pressure and his dedication to achieving excellence. He is committed to ensuring that every aspect of the team's work is of the highest quality, contributing to the overall performance and safety of the operation.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "He has a lean build and a focused gaze, often seen with safety glasses perched on his forehead."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Insists on calibrating his instruments himself before any critical test."
+  ]
+}

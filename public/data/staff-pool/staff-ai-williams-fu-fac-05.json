@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 27,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport began, unusually, not on the track but in his grandfather's machine shop. He spent countless hours tinkering with engines and learning the precision required for high-performance machinery. This early exposure instilled in him a deep respect for quality and a meticulous approach to problem-solving. After graduating with a degree in mechanical engineering from McGill University, Jean-Pierre joined Williams Racing, eager to apply his skills in a high-stakes environment.\n\nAs a quality control specialist, Jean-Pierre is relentless in his pursuit of perfection. He believes that even the smallest imperfection can have disastrous consequences on the track, and he holds himself and his colleagues to the highest standards. His demanding nature can sometimes ruffle feathers, but his dedication to excellence is undeniable. He is known for his ability to identify potential problems before they arise and for his innovative solutions to complex technical challenges. Jean-Pierre is determined to make his mark on the world of motorsport, one perfectly crafted component at a time.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed hair with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a lean build and intense eyes that reflect his focused personality."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect components",
+    "Insists on using metric measurements, even when others use imperial",
+    "Has a habit of tapping his pen rhythmically when concentrating"
+  ]
+}

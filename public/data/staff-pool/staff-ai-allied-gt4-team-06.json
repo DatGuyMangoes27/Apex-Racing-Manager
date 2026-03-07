@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 53,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Adrian Popescu's journey into motorsport began unexpectedly, fueled by a childhood fascination with the intricate mechanics of his father's repair shop. He initially pursued a degree in mechanical engineering, but quickly realized his passion lay in the strategic application of engineering principles within a racing environment. After years spent as a race engineer and team strategist for smaller outfits, Adrian's analytical skills and ability to identify and nurture talent led him to Allied Racing. \n\nAs Sporting Director, Adrian focuses on fostering a culture of continuous improvement and data-driven decision-making. He believes that success in motorsport requires a holistic approach, where every aspect of the team, from the garage to the driver's mindset, is meticulously optimized. His distinctive approach lies in his relentless pursuit of marginal gains, always seeking innovative solutions to extract the maximum performance from every resource available, even if it means challenging conventional wisdom.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Thin mustache",
+    "description": "A man of average height, Adrian carries himself with a quiet intensity, his eyes always scanning for details."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Insists on having a perfectly aligned desk, down to the millimeter.",
+    "Always carries a small notebook filled with handwritten observations and calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

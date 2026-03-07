@@ -1,0 +1,27 @@
+{
+  "biography": "Raphael Frossard, born under the scorching sun of São Paulo, carries the fire of Brazilian motorsport legends in his blood. His journey began not on a racetrack, but amidst the deafening roar of go-karts at the Interlagos Kart Grand Prix, where, at the tender age of 8, he outmaneuvered older, more experienced drivers, showcasing a raw talent that couldn't be ignored. His family, initially hesitant, recognized the spark and poured their savings into his nascent career. Frossard quickly rose through the ranks, dominating regional championships before catching the eye of F.Inter MG-15 during a national Formula 3 event where, despite a mechanical failure, he salvaged a podium by executing a daring overtake on the last corner. Now, at 29, Frossard is in his prime, fighting tooth and nail to prove he belongs among the elite, carrying the hopes of a nation eager for a new racing hero.",
+  "drivingStyle": "Frossard's driving style is a thrilling spectacle of controlled aggression. He's known for his late-braking maneuvers and fearless corner entries, often pushing his car to the absolute limit. While some criticize his risk-taking as reckless, his ability to extract every last ounce of performance from his machine is undeniable. He thrives under pressure, often delivering his best results when the stakes are highest, showcasing a remarkable ability to manage tire degradation while maintaining a blistering pace.",
+  "rivalries": [
+    {
+      "driver": "Viktor Volkov",
+      "reason": "A long-standing rivalry stemming from a controversial incident in a junior series where Volkov allegedly blocked Frossard, costing him a championship win."
+    },
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "A fierce on-track battle for position that resulted in multiple collisions and accusations of unsportsmanlike conduct."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Clashing personalities and differing racing philosophies have led to a constant battle for supremacy between the two drivers."
+    }
+  ],
+  "quirks": [
+    "Always wears a lucky wristband given to him by his grandmother.",
+    "Listens to a specific samba song before every race to calm his nerves.",
+    "Always inspects his tires before getting into the car, regardless of what his engineers say."
+  ],
+  "nickname": "The Carioca Comet",
+  "famousQuote": "\"Racing isn't about surviving, it's about attacking. If you're not pushing, you're not winning.\"",
+  "careerHighlight": "Winning the Brazilian Grand Prix in 2027, a historic victory on home soil that cemented his place as a national icon.",
+  "careerLowPoint": "Suffering a season-ending injury in 2025 after a high-speed crash during qualifying at the Monaco Grand Prix."
+}

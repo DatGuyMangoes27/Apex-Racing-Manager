@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0444",
+  "name": "KinetiQ Energy",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "Singapore",
+  "description": "Unleash Your Potential.",
+  "story": "KinetiQ Energy is a Singaporean energy drink company focused on fueling performance. Recognizing the intense demands of motorsport, KinetiQ sponsors racing teams to showcase the drink's ability to enhance focus and reaction time. They seek a partnership with a rising star to elevate their brand image and connect with a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0444.png"
+}

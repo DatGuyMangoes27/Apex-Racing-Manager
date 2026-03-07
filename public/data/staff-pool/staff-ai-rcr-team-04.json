@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 50,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for go-karts in his hometown of Montreal. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and aerodynamics, leading him to an entry-level position with a Formula Ford team. His meticulous attention to detail and ability to quickly diagnose mechanical issues propelled him through the ranks, eventually landing him in NASCAR. \n\nAt Richard Childress Racing, Jean-Pierre is known for his data-driven approach to race engineering. He meticulously analyzes telemetry and track conditions to optimize car setups, always pushing for marginal gains. While respected for his technical prowess, he's also cultivated a reputation for being a strong communicator, adept at translating complex engineering concepts into actionable feedback for the driver.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre has a wiry build and an intense, focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule despite using modern software",
+    "Has a habit of muttering calculations under his breath",
+    "Insists on having a double espresso before every race"
+  ]
+}

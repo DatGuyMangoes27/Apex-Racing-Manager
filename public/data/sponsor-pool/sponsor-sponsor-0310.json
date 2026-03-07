@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0310",
+  "name": "Voltio",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "Mexico",
+  "description": "Electrify your performance with Voltio.",
+  "story": "Voltio is a leading energy drink in Mexico, known for its bold flavors and commitment to pushing boundaries. We believe in supporting ambitious individuals who strive for greatness, and motorsport provides the perfect platform to showcase the Voltio spirit. We seek a partnership that amplifies our brand presence and resonates with a passionate audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0310.png"
+}

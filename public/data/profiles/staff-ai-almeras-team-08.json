@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 48,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Alistair's journey into motorsport began not on the track, but in a Glasgow engineering workshop. After completing his degree, he initially worked on aerospace components, but the roar of engines called to him. He transitioned to motorsport, cutting his teeth in Formula Ford before moving into GT racing.\n\nHe thrives on data analysis, always seeking marginal gains. His approach is methodical, focusing on identifying key areas for improvement and implementing solutions with precision. Alistair is known for his ability to translate complex technical information into actionable strategies for the drivers. He's a firm believer in clear communication and collaborative problem-solving within the team. \n\nWhat sets Alistair apart is his relentless pursuit of perfection and his creative problem-solving. He doesn't just fix problems; he anticipates them, developing innovative solutions to keep the team ahead of the competition.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly trimmed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed salt and pepper beard",
+    "description": "Alistair has a weathered face with a kind smile and a perpetually focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out engineering textbook.",
+    "Has a specific lucky wrench he uses for critical adjustments.",
+    "Prefers to work late at night when the garage is quiet."
+  ]
+}

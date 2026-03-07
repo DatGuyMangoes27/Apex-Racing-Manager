@@ -1,0 +1,22 @@
+{
+  "name": "Kazimierz Lewandowski",
+  "nationality": "Polish",
+  "age": 53,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Kazimierz's journey into motorsport began in his youth, tinkering with engines in his small hometown in Poland. His natural aptitude for mechanics led him to pursue technical training, eventually specializing in composite materials. He honed his skills in the aerospace industry before transitioning to motorsport, drawn by the challenge of pushing the boundaries of performance. Kazimierz is a meticulous and dedicated technician, renowned for his ability to identify and resolve even the most subtle flaws in composite structures. His experience makes him a valuable asset to Joe Gibbs Racing, where he is known for his commitment to excellence and his innovative problem-solving skills, always striving for perfection.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed mustache",
+    "description": "A man of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook for sketching ideas.",
+    "Believes that every composite part needs to be blessed for good luck.",
+    "Has a habit of humming Polish folk songs while working."
+  ]
+}

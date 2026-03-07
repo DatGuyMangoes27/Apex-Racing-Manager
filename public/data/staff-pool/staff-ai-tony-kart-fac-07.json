@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 45,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Bjørn's journey into the world of motorsport IT began somewhat unconventionally. After completing his degree in computer science at NTNU, he initially worked for a large telecom company. However, his lifelong passion for racing, instilled in him by his father who was a rally driver, led him to seek opportunities where he could combine his technical skills with his love for speed. He started as a volunteer data analyst for a local racing team, eventually proving his worth and landing a role at Tony Kart Racing.\n\nIn his current role, Bjørn is responsible for managing and maintaining the team's IT infrastructure, ensuring seamless data flow between the track, the factory, and the management offices. He's known for his meticulous approach and his ability to troubleshoot complex technical issues under pressure. His ambition drives him to continually seek innovative solutions to improve the team's performance through data analysis and technological advancements.\n\nBjørn distinguishes himself through his commitment to open-source solutions and his relentless pursuit of efficiency. He believes that even small improvements in data processing can make a significant difference on the track, and he's constantly looking for ways to optimize the team's IT systems.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Bjørn is a man of medium height with a focused, analytical gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Insists on using a mechanical keyboard, even when traveling.",
+    "Has a habit of muttering code snippets under his breath when stressed."
+  ]
+}

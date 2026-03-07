@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 33,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Nikola's fascination with motorsport began in his childhood, fueled by watching rally races with his father. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he worked for a smaller racing outfit, honing his skills in data analysis and driver-in-the-loop simulations. His dedication and ability to quickly identify areas for improvement caught the eye of Hansen World RX Team.\n\nAt Hansen, Nikola is responsible for developing and maintaining the team's simulator, ensuring it accurately reflects the real-world performance of their rallycross cars. He works closely with the drivers, translating their feedback into adjustments to the simulator's parameters. Nikola's approach is meticulous and detail-oriented; he believes that even the smallest changes in the simulator can have a significant impact on the driver's confidence and performance on the track. His relentless pursuit of accuracy and his ability to bridge the gap between the virtual and real worlds set him apart.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed, with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Nikola is of average height with a focused gaze and a wiry build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down simulator adjustments.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on brewing his own strong Serbian coffee every morning."
+  ]
+}

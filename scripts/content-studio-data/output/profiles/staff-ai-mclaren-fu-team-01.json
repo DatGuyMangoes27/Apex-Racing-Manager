@@ -1,0 +1,22 @@
+{
+  "name": "Deniz Yilmaz",
+  "nationality": "Turkish",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Deniz's passion for motorsport ignited during his childhood, spent watching Formula 1 races with his father in Istanbul. He pursued a degree in Mechanical Engineering, specializing in aerodynamics, and quickly found his way into the world of racing. He started his career with a smaller team, working his way up from junior engineer to lead aerodynamicist before being headhunted by McLaren Racing. Deniz is known for his systematic approach to problem-solving and his ability to translate complex data into actionable insights.\n\nHis pragmatic approach to engineering ensures that all decisions are grounded in reality and contribute to tangible performance improvements. He excels at identifying key performance bottlenecks and developing innovative solutions that provide a competitive edge. Deniz fosters a collaborative environment within his team, encouraging open communication and knowledge sharing to achieve collective success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "A man of average height with a focused gaze and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on starting every team meeting with a review of the fundamental engineering principles relevant to the day's challenges."
+  ]
+}

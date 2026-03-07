@@ -1,0 +1,22 @@
+{
+  "name": "Elise Meier",
+  "nationality": "Swiss",
+  "age": 25,
+  "gender": "female",
+  "role": "security_chief",
+  "bio": "Elise's path to motorsport security began unconventionally. Growing up in a small village nestled in the Swiss Alps, she initially pursued a degree in engineering, focusing on systems security. However, a chance encounter with a local karting team sparked a passion for racing. Recognizing the need for rigorous security protocols in the high-stakes world of motorsport, she transitioned her skills, earning certifications in risk management and specialized security operations tailored for racing environments.\n\nElise is a meticulous planner and a staunch advocate for preventative measures. Her approach emphasizes proactive threat assessment and a deep understanding of team dynamics. She believes that a successful security strategy involves not just physical protection, but also fostering a culture of vigilance and trust within the team. Elise is known for her unwavering dedication and the innovative security solutions she has implemented, making her a rising star in the field.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Neatly braided, often pulled back into a practical bun during races.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Elise is of average height with a lean build, often seen wearing practical attire."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a Swiss Army knife, even to meetings.",
+    "Insists on conducting a full security sweep of her office every morning.",
+    "Has a habit of speaking in technical jargon, even when unnecessary."
+  ]
+}

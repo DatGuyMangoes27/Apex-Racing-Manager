@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 40,
+  "gender": "male",
+  "role": "logistics_coordinator",
+  "bio": "Marko Babić's journey into motorsport began unconventionally, fueled by a childhood fascination with the intricate mechanics of his grandfather's vintage race car. After earning a degree in logistics management, he quickly found his niche optimizing supply chains for a regional rally team. His meticulous approach and knack for problem-solving soon caught the attention of larger organizations. \n\nMarko's expertise lies in anticipating logistical bottlenecks and implementing proactive solutions. He thrives under pressure, ensuring that vital components and equipment arrive precisely when and where they are needed. He joined Joe Gibbs Racing five years ago and has steadily become an invaluable asset, known for his calm demeanor and unwavering commitment to keeping the team moving forward. Marko's dedication and ability to maintain order amidst chaos have made him a respected and reliable figure within the team.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Marko is a man of medium height with a sturdy build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down potential logistical improvements.",
+    "Insists on double-checking every shipment manifest, even if it's already been verified.",
+    "Has a lucky Croatian 'oko' charm attached to his key ring that he always touches before a major race."
+  ]
+}

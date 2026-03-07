@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0023",
+  "name": "Maple Ridge Outdoor",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Canada",
+  "description": "Your gateway to adventure, inspired by the Canadian wilderness.",
+  "story": "Maple Ridge Outdoor is a Canadian brand dedicated to providing high-quality outdoor gear and apparel. We believe in the spirit of exploration and adventure, and see motorsport as a perfect platform to showcase our brand's values of resilience, precision, and a passion for pushing boundaries. We seek a partnership that highlights our commitment to quality and inspires others to embrace the great outdoors.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0023.png"
+}

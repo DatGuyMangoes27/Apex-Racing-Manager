@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 51,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Declan's journey into motorsport began unconventionally, not on the track, but amidst the windswept fields of County Clare where he developed an acute understanding of aerodynamics through kite flying and makeshift wind turbines. This passion led him to study mechanical engineering, specializing in fluid dynamics. After graduating, he spent a decade at a small aeronautics firm before McLaren Racing headhunted him for his unique perspective on airflow management.\n\nAt McLaren, Declan is known for his meticulous attention to detail and his ability to translate complex data into practical solutions. He has an uncanny knack for identifying minute discrepancies in the wind tunnel data that others might miss. Declan's ambition lies not just in optimizing aerodynamic performance, but in mentoring younger engineers, fostering a culture of innovation within the team. His colleagues often seek his advice not only on technical matters but also on career development, making him a highly valued member of the team.\n\nDeclan firmly believes that wind tunnel data is only as good as the interpretation, and he prides himself on being able to bridge the gap between raw numbers and actionable design changes.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed salt and pepper beard.",
+    "description": "A stocky man with a friendly face and permanently wind-burned cheeks, evidence of his early days spent outdoors."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn sketches of airflow patterns.",
+    "Insists on calibrating the wind tunnel equipment himself before each major test.",
+    "Has a habit of humming traditional Irish tunes while analyzing data."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 41,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood obsession with Formula 1, meticulously studying race strategies and car setups. He pursued a degree in engineering, specializing in vehicle dynamics, and quickly found his niche as a data analyst for a smaller racing team. His knack for identifying crucial performance improvements and predicting competitor strategies led to a rapid ascent. Jean-Pierre prides himself on his ability to translate complex data into actionable insights, giving his team a competitive edge. He is known for his calm demeanor under pressure and his ability to inspire confidence in his colleagues, turning data into victories.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A lean man with intense eyes, always meticulously dressed, Jean-Pierre exudes quiet confidence."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out copy of 'The Art of War' with him.",
+    "Insists on brewing his own espresso before every critical decision.",
+    "Taps his pen rhythmically against his notepad when deep in thought."
+  ]
+}

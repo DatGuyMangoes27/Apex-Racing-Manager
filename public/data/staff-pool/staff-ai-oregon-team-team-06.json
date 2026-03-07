@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 28,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo's passion for motorsport ignited at a young age, spending weekends at local karting events near Guadalajara. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and aerodynamics. After graduating, Ricardo gained experience at a smaller racing outfit, initially assisting with data analysis and trackside support. His talent for identifying performance bottlenecks and proposing innovative solutions quickly led to a more senior role overseeing race strategy. \n\nJoining Oregon Team was a significant step in Ricardo's career. He's known for his collaborative approach, working closely with engineers, drivers, and mechanics to optimize car setups and race execution. He believes in empowering his team members, fostering a culture of open communication and continuous improvement. His analytical mind, combined with his understanding of the human element in motorsport, makes him a highly effective sporting director.\n\n Ricardo is eager to bring a modern approach to race management to Oregon Team. He is a strong believer in data-driven decision making and is pushing the team to adopt newer simulation and analysis tools. His calm demeanour under pressure is a significant asset during tense race situations.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Ricardo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas, even during meetings.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Insists on listening to classical music before each race to calm his nerves."
+  ]
+}

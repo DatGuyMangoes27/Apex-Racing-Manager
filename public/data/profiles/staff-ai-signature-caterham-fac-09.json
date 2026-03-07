@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 37,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jean-Pierre discovered his love for motorsport restoring classic cars with his father in Montreal. He honed his skills in automotive refinishing, developing an eye for detail and a deep understanding of paint technology. After relocating to Europe to pursue his passion, Jean-Pierre joined Signature Racing. \n\nJean-Pierre is a meticulous and reliable paint shop specialist. He prides himself on his ability to consistently deliver flawless finishes, even under pressure. He is particularly adept at color matching and creating custom paint schemes that reflect the team's identity and enhance aerodynamic performance. He is known for his innovative approach to paint application, always looking for ways to improve efficiency and reduce weight.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A lean man with a focused gaze and paint-stained hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always listens to classical music while working.",
+    "Has a collection of miniature paint sprayers.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy it was."
+  ]
+}

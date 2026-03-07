@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Karlsson",
+  "nationality": "Swedish",
+  "age": 31,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Astrid's fascination with motorsport began during her childhood summers spent near the Anderstorp Raceway. The roar of engines and the intricate dance of aerodynamics captivated her. After completing her engineering degree at Chalmers University of Technology, she secured an internship at a smaller racing team, quickly proving her aptitude for wind tunnel operations. She excelled at data analysis and identifying subtle airflow improvements. \n\nAstrid is known for her meticulous approach and unwavering dedication to accuracy. She thrives under pressure, remaining calm and focused even when faced with tight deadlines and complex simulations. Her ability to translate technical data into actionable insights has made her a valuable asset to Prema Racing. She's always looking for that extra 0.001 seconds of performance. Astrid strives to refine her skills and contribute to the team's ongoing success.\n\nWhat sets Astrid apart is her intuitive understanding of the wind tunnel and her ability to identify anomalies that others might miss. She trusts her gut feeling, often leading to breakthroughs in aerodynamic optimization.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a slender build and a focused gaze, often sporting a smudge of graphite on her cheek from analyzing wind tunnel models."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and observations.",
+    "Refuses to start a wind tunnel session without first calibrating the sensors herself.",
+    "Has a lucky Swedish 'fika' cinnamon bun before major testing days."
+  ]
+}

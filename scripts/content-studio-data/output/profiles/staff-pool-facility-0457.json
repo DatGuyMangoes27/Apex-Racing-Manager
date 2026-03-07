@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 29,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Elise's journey into motorsport began with a childhood fascination for complex systems and a knack for understanding how things worked. Growing up in the shadow of the Alps, she was captivated by the precision engineering of racing cars. She studied mechanical engineering at ETH Zurich, specializing in simulation and modeling. During her studies, she interned at Sauber Motorsport, where she contributed to their simulator development program. Her hands-on experience fueled her passion to improve driver training through advanced simulation technologies.\n\nSince graduating, Elise has dedicated her career to optimizing simulator environments for various racing teams. She thrives on translating real-world track data into realistic virtual experiences, focusing on enhancing driver performance and car setup. Her approach is highly analytical, ensuring that every aspect of the simulation accurately reflects the car's dynamics and the track's characteristics. Elise's distinctive approach involves incorporating innovative data analysis techniques to identify areas for improvement in both the simulator and the car, ultimately aiming to give her team a competitive edge.\n\nElise's meticulous approach and dedication to her craft have earned her a reputation as a highly sought-after simulator engineer. She is known for her ability to bridge the gap between technical expertise and driver feedback, creating a collaborative environment that fosters success.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise has a focused gaze and an athletic build, reflecting her active lifestyle."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with intricate circuit diagrams and technical notes.",
+    "Has a habit of tapping her pen rhythmically when deep in thought, especially when analyzing simulation data.",
+    "Insists on having a perfectly calibrated cup of espresso before diving into a new simulation project."
+  ]
+}

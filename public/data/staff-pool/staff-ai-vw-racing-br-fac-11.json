@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 52,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Ricardo Oliveira's journey in motorsport began in his youth, tinkering with engines in his father's small garage in Lisbon. He nurtured a passion for understanding the intricacies of vehicle dynamics. After earning a degree in mechanical engineering, Ricardo joined a local racing team as a junior mechanic, quickly proving his aptitude for problem-solving and meticulous attention to detail. \n\nHis career progressed rapidly, taking him from the pit lane to the test track. He found his calling in coordinating test drivers, finding satisfaction in extracting the most granular data and translating it into actionable improvements for the team. Ricardo's demanding nature stems from his unwavering commitment to precision and his belief that marginal gains, painstakingly earned, are the key to success. He is known for his uncanny ability to identify subtle differences in driver feedback and correlate them with technical data, making him an invaluable asset to VW Racing Brasil.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "Ricardo is of medium build, with a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously jotting down observations.",
+    "Insists on drinking espresso at precisely 10:17 AM every day.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought."
+  ]
+}

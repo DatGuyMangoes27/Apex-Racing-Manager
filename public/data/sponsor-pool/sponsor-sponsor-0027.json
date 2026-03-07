@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0027",
+  "name": "Teknorulman A.Ş.",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Turkey",
+  "description": "Precision bearings for performance under pressure.",
+  "story": "Teknorulman is a leading Turkish manufacturer of high-performance bearings used in automotive and industrial applications. Recognizing the extreme demands of motorsports, Teknorulman sees an opportunity to showcase the reliability and durability of its products. They seek partnerships with teams demonstrating a commitment to excellence and innovation, hoping to enhance brand recognition and establish their presence in the global motorsport market.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0027.png"
+}

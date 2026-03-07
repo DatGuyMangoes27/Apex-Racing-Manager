@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 42,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Alistair MacLeod's journey into motorsport began not on the track, but in the precision environment of a fabrication workshop. After earning a degree in mechanical engineering from the University of Strathclyde, he initially honed his skills in aerospace, developing a keen eye for detail and an appreciation for the intricacies of airflow dynamics. The roar of engines always called to him, however, and he transitioned to Formula racing, drawn by the relentless pursuit of marginal gains.\n\nAt Hitech GP, Alistair is responsible for the meticulous setup and operation of the wind tunnel. He sees his role as more than just data collection; it's about understanding the physics at play and translating that knowledge into actionable insights for the aerodynamicists. He's known for his methodical approach and his ability to identify subtle anomalies in the airflow that others might miss. His calm demeanor and experience make him a valuable mentor to junior engineers.\n\nAlistair believes that success in motorsport comes down to meticulous preparation and a relentless pursuit of perfection. He takes pride in his work and is dedicated to ensuring that the team has the best possible aerodynamic data to work with. He's a firm believer in the power of collaboration and is always willing to share his expertise with others.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained beard",
+    "description": "Alistair is of average height with a sturdy build, reflecting his practical background."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations",
+    "Has a habit of humming quietly while analyzing data",
+    "Insists on calibrating the wind tunnel equipment himself before each major test"
+  ]
+}

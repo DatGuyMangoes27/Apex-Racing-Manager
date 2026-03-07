@@ -8,6 +8,7 @@ import {
   SocialEvent,
   SocialEventType,
   EventOutcome,
+  AttendanceTier,
   CharityFoundation,
   CharityCause,
   CharityEvent,
@@ -22,17 +23,107 @@ import {
   RIVALRY_EVENTS,
   SCANDAL_TEMPLATES,
   SCANDAL_RESPONSES,
-  _PRIVACY_LEVELS,
-  getPrivacyLevel,
   calculateScandalDamage
 } from '../../data/social-events-config'
 import type { PersonalBrand } from '../../data/lifestyle-config'
+import type { ContactInfo, PotentialDate } from '@/types/personalLife'
+import type { Gender } from '@/services/contactService'
+
+// ============================================
+// TIER BONUSES
+// ============================================
+
+const TIER_BONUSES: Record<AttendanceTier, {
+  positiveWeightBonus: number   // Added to positive outcome chance
+  guaranteedContacts: number    // Extra guaranteed contacts
+  guaranteedSponsorLead: boolean
+  qualityCapBonus: number       // Extra quality cap for hosting
+  networkingMultiplier: number  // Multiplier on networking effects
+}> = {
+  standard: { positiveWeightBonus: 0, guaranteedContacts: 0, guaranteedSponsorLead: false, qualityCapBonus: 0, networkingMultiplier: 1 },
+  vip: { positiveWeightBonus: 0.15, guaranteedContacts: 1, guaranteedSponsorLead: false, qualityCapBonus: 1, networkingMultiplier: 1.5 },
+  vip_table: { positiveWeightBonus: 0.3, guaranteedContacts: 2, guaranteedSponsorLead: true, qualityCapBonus: 2, networkingMultiplier: 2 }
+}
+
+// ============================================
+// INVITED CONTACT PROCESSING
+// ============================================
+
+export interface InvitedContactResult {
+  contactId: string
+  relationshipBoost: number
+  trustBoost: number
+  romanceBoost: number
+  bonusContact?: { type: string; name: string }  // Contact introduced by your guest
+  logMessage: string
+}
+
+export function processInvitedContacts(
+  invitedContactIds: string[],
+  contacts: any[],
+  outcomeType: 'positive' | 'neutral' | 'negative',
+  eventName: string,
+  hasPartner: boolean,
+  partnerId?: string
+): InvitedContactResult[] {
+  const results: InvitedContactResult[] = []
+  
+  const qualityBonus = outcomeType === 'positive' ? 15 : outcomeType === 'neutral' ? 8 : 3
+  const trustBonus = outcomeType === 'positive' ? 8 : outcomeType === 'neutral' ? 4 : 1
+  
+  for (const contactId of invitedContactIds) {
+    const contact = contacts.find((c: any) => c.id === contactId)
+    if (!contact) continue
+    
+    const result: InvitedContactResult = {
+      contactId,
+      relationshipBoost: qualityBonus,
+      trustBoost: trustBonus,
+      romanceBoost: 0,
+      logMessage: `Attended ${eventName} with ${contact.name}`
+    }
+    
+    // Partner/date romance boost
+    const contactType = contact.type || ''
+    if (contactId === partnerId) {
+      result.romanceBoost = outcomeType === 'positive' ? 10 : 5
+      result.relationshipBoost += 5
+      result.logMessage = `Power couple appearance at ${eventName} with ${contact.name}`
+    } else if (contactType === 'potential_date') {
+      result.romanceBoost = outcomeType === 'positive' ? 8 : 4
+      result.logMessage = `Date night at ${eventName} with ${contact.name}`
+      // Drama if player has a partner and brings a date
+      if (hasPartner && partnerId && contactId !== partnerId) {
+        result.logMessage = `Brought ${contact.name} to ${eventName} — your partner won't be happy`
+      }
+    }
+    
+    // Business contacts may introduce you to their network
+    const businessTypes = ['business_mogul', 'sponsor_exec', 'banker', 'politician', 'lawyer']
+    if (businessTypes.includes(contactType) && outcomeType !== 'negative' && Math.random() < 0.35) {
+      const introTypes = ['business_mogul', 'sponsor_exec', 'banker', 'celebrity']
+      const introType = introTypes[Math.floor(Math.random() * introTypes.length)]
+      result.bonusContact = { 
+        type: introType, 
+        name: `${contact.name}'s Associate` 
+      }
+      result.logMessage += ` — ${contact.name} introduced you to a colleague`
+    }
+    
+    results.push(result)
+  }
+  
+  return results
+}
 
 export function attendSocialEvent(
   event: SocialEvent,
   playerReputation: number,
   playerBrand: PersonalBrand,
-  partnerPresent: boolean
+  partnerPresent: boolean,
+  lifestyleNetworkingBonus: number = 0,
+  lifestylePrestigeBonus: number = 0,
+  partnerSocialEventBonus: number = 0
 ): {
   outcome: EventOutcome
   reputationChange: number
@@ -55,17 +146,25 @@ export function attendSocialEvent(
     }
   }
   
-  // Roll for outcome
+  const tier: AttendanceTier = event.attendanceTier || 'standard'
+  const tierBonus = TIER_BONUSES[tier]
+  
+  // Roll for outcome — tier improves positive weighting
   const possibleOutcomes = POSSIBLE_EVENT_OUTCOMES[event.type] || []
   const roll = Math.random()
   
-  // Weight towards positive with higher brand value
+  // Weight towards positive with higher brand value + tier bonus + lifestyle bonuses
   const brandBonus = playerBrand.brandValue / 200 // Max 0.5 bonus
+  const lifestyleBonus = Math.min(0.1, (lifestylePrestigeBonus * 0.0005) + (lifestyleNetworkingBonus * 0.001)) // Up to +10% from lifestyle
+  const partnerEventBonus = Math.min(0.05, partnerSocialEventBonus * 0.005) // Up to +5% from partner traits
+  const positiveThreshold = 0.4 + brandBonus + tierBonus.positiveWeightBonus + lifestyleBonus + partnerEventBonus
   
   let outcome: EventOutcome
-  if (roll < 0.4 + brandBonus) {
-    outcome = possibleOutcomes.filter(o => o.type === 'positive')[0] || possibleOutcomes[0]
-  } else if (roll < 0.8 + brandBonus / 2) {
+  if (roll < positiveThreshold) {
+    // Pick a random positive outcome for variety
+    const positives = possibleOutcomes.filter(o => o.type === 'positive')
+    outcome = positives[Math.floor(Math.random() * positives.length)] || possibleOutcomes[0]
+  } else if (roll < 0.8 + brandBonus / 2 + tierBonus.positiveWeightBonus / 2) {
     outcome = possibleOutcomes.filter(o => o.type === 'neutral')[0] || possibleOutcomes[0]
   } else {
     outcome = possibleOutcomes.filter(o => o.type === 'negative')[0] || possibleOutcomes[0]
@@ -86,13 +185,36 @@ export function attendSocialEvent(
     sponsorLeads.push(outcome.effects.sponsorLead)
   }
   
-  // Base reputation from event
+  // Tier guaranteed contacts
+  if (tierBonus.guaranteedContacts > 0) {
+    const contactTypes = event.expectedAttendeeTypes || ['business_mogul']
+    for (let i = 0; i < tierBonus.guaranteedContacts; i++) {
+      const ct = contactTypes[Math.floor(Math.random() * contactTypes.length)]
+      newContacts.push({ type: ct, name: `VIP ${ct.replace(/_/g, ' ')}` })
+    }
+  }
+  
+  // Lifestyle networking bonus: chance to meet an additional high-quality contact
+  if (lifestyleNetworkingBonus > 5 && Math.random() < Math.min(0.4, lifestyleNetworkingBonus * 0.02)) {
+    const premiumTypes = ['business_mogul', 'sponsor_exec', 'celebrity', 'politician']
+    const ct = premiumTypes[Math.floor(Math.random() * premiumTypes.length)]
+    newContacts.push({ type: ct, name: `Networking ${ct.replace(/_/g, ' ')}` })
+  }
+  
+  // Tier guaranteed sponsor lead
+  if (tierBonus.guaranteedSponsorLead && sponsorLeads.length === 0) {
+    sponsorLeads.push({ company: 'VIP Table Connection', value: Math.floor(100000 + Math.random() * 500000) })
+  }
+  
+  // Base reputation from event (boosted by networking multiplier for tier)
   let reputationChange = event.effects.publicImageChange
   reputationChange += outcome.effects.reputationChange || 0
+  reputationChange = Math.round(reputationChange * tierBonus.networkingMultiplier)
   
-  // Partner bonus
+  // Partner bonus — doubled if bringing partner as plus-one with VIP
   if (partnerPresent && event.effects.partnerHappinessBonus) {
-    reputationChange += 2 // Appearing as a couple is good for image
+    const coupleBonus = tier !== 'standard' ? 4 : 2
+    reputationChange += coupleBonus // Power couple image boost
   }
   
   const brandEffects: Partial<PersonalBrand> = {
@@ -123,26 +245,31 @@ export function hostSocialEvent(
   newContacts: number
   message: string
 } {
-  // Quality based on budget vs expected
+  const tier: AttendanceTier = event.attendanceTier || 'standard'
+  const tierBonus = TIER_BONUSES[tier]
+  
+  // Quality based on budget vs expected — tier raises cap
   const expectedBudget = event.cost
-  const qualityMultiplier = Math.min(2, budget / expectedBudget)
+  const maxQuality = 2 + tierBonus.qualityCapBonus
+  const qualityMultiplier = Math.min(maxQuality, budget / expectedBudget)
   
   const success = qualityMultiplier >= 0.8
   
-  // Effects scale with quality
-  const reputationGain = Math.round(event.effects.publicImageChange * qualityMultiplier)
-  const sponsorImpressions = Math.round(event.effects.sponsorImpressions * qualityMultiplier)
-  const newContacts = Math.floor(event.effects.networkingOpportunities / 10 * qualityMultiplier)
+  // Effects scale with quality and tier networking multiplier
+  const reputationGain = Math.round(event.effects.publicImageChange * qualityMultiplier * tierBonus.networkingMultiplier)
+  const sponsorImpressions = Math.round(event.effects.sponsorImpressions * qualityMultiplier * tierBonus.networkingMultiplier)
+  const newContacts = Math.floor(event.effects.networkingOpportunities / 10 * qualityMultiplier) + tierBonus.guaranteedContacts
   
+  const tierLabel = tier === 'vip' ? ' (VIP)' : tier === 'vip_table' ? ' (VIP Table)' : ''
   let message = ''
   if (qualityMultiplier >= 1.5) {
-    message = `Your ${event.name} was the talk of the town! Exceptional event.`
+    message = `Your ${event.name}${tierLabel} was the talk of the town! Exceptional event.`
   } else if (qualityMultiplier >= 1) {
-    message = `Your ${event.name} was a great success.`
+    message = `Your ${event.name}${tierLabel} was a great success.`
   } else if (qualityMultiplier >= 0.8) {
-    message = `Your ${event.name} went well, though it wasn't extravagant.`
+    message = `Your ${event.name}${tierLabel} went well, though it wasn't extravagant.`
   } else {
-    message = `Your ${event.name} was underwhelming. Guests expected more.`
+    message = `Your ${event.name}${tierLabel} was underwhelming. Guests expected more.`
   }
   
   return {
@@ -242,18 +369,15 @@ export function hostCharityGala(
   reputationGain: number
   newDonors: number
 } {
-  // Amount raised based on event quality and guest count
   const averageDonation = 5000 + (eventBudget / guestCount) * 0.5
   const participationRate = 0.6 + (foundation.impactScore / 200)
   const amountRaised = Math.round(averageDonation * guestCount * participationRate)
-  
   const causeConfig = CHARITY_CAUSE_CONFIG[foundation.cause]
   const reputationGain = Math.round(
-    10 + 
-    (amountRaised / 100000) * 5 + 
+    10 +
+    (amountRaised / 100000) * 5 +
     causeConfig.mediaAppeal / 10
   )
-  
   const event: CharityEvent = {
     id: `charity-event-${Date.now()}`,
     foundationId: foundation.id,
@@ -265,7 +389,6 @@ export function hostCharityGala(
     mediaExposure: causeConfig.mediaAppeal,
     taxDeductible: true
   }
-  
   return {
     event,
     amountRaised,
@@ -354,28 +477,32 @@ export function resolveRivalry(
 } {
   let reputationEffect = 0
   let message = ''
-  
+
   switch (resolution) {
     case 'reconciliation':
-      reputationEffect = 10
-      message = `You and ${rivalry.rivalName} have buried the hatchet. The feud is over.`
+      reputationEffect = 5
+      message = 'You and your rival have buried the hatchet. Respect earned.'
       break
     case 'total_victory':
-      reputationEffect = 15 + Math.floor(rivalry.intensity / 5)
-      message = `You've emerged victorious in your rivalry with ${rivalry.rivalName}!`
+      reputationEffect = 15
+      message = 'You dominated the rivalry. Your reputation soars.'
       break
     case 'defeat':
-      reputationEffect = -10 - Math.floor(rivalry.intensity / 5)
-      message = `${rivalry.rivalName} has bested you. The rivalry ends in your defeat.`
+      reputationEffect = -10
+      message = 'The rivalry ended with you on the losing side.'
       break
     case 'fade_away':
       reputationEffect = 0
-      message = `Your rivalry with ${rivalry.rivalName} has simply faded with time.`
+      message = 'The rivalry has faded with time. Neither side won.'
       break
   }
-  
+
   return {
-    finalRivalry: { ...rivalry, isActive: false },
+    finalRivalry: {
+      ...rivalry,
+      isActive: false,
+      intensity: 0
+    },
     reputationEffect,
     message
   }
@@ -592,37 +719,6 @@ export function calculateOngoingScandalEffects(scandals: Scandal[]): {
 }
 
 // ============================================
-// PRIVACY MANAGEMENT
-// ============================================
-
-export function setPrivacyLevel(
-  _currentLevel: PrivacyLevel['level'],
-  scandals: Scandal[]
-): {
-  recommendedLevel: PrivacyLevel['level']
-  reason: string
-} {
-  const activeScandals = scandals.filter(s => s.status !== 'resolved').length
-  
-  if (activeScandals > 0) {
-    return {
-      recommendedLevel: 'private',
-      reason: 'Active scandals make increased privacy advisable'
-    }
-  }
-  
-  // Default recommendation based on current
-  return {
-    recommendedLevel: 'balanced',
-    reason: 'Balanced privacy offers good sponsor appeal with reasonable protection'
-  }
-}
-
-export function calculatePrivacyCosts(level: PrivacyLevel['level']): number {
-  return getPrivacyLevel(level).monthlySecurityCost
-}
-
-// ============================================
 // CONTACT ENCOUNTER SYSTEM INTEGRATION
 // ============================================
 // Use these functions to roll for meeting new people at events
@@ -636,6 +732,9 @@ export interface EncounterContext {
   preferredGender?: Gender     // For romantic encounters
   currentWeek: number
   currentYear: number
+  // World encounter system: pass game-world entities for weighted encounter rolls
+  worldEntities?: Array<{ id: string; name: string; entityType: 'rival_driver' | 'team_owner' | 'staff' | 'investor'; teamName?: string; role?: string; nationality?: string; reputation?: number }>
+  existingContactEntityIds?: Set<string>  // Entity IDs already in player's contacts
 }
 
 export interface EncounterResult {
@@ -683,8 +782,14 @@ export async function rollForEventEncounters(
   try {
     // Dynamically import to avoid circular dependencies
     const { rollEventEncounter, generatePotentialDate } = await import('@/services/contactService')
+    const { getWeightedEncounterPool, pickWorldEntityForEncounter, generateWorldContact } = await import('@/services/worldContactService')
     
     const eventType = mapEventType(context.eventType)
+    
+    // Set up world encounter pool if world entities are provided
+    const worldPool = context.worldEntities && context.worldEntities.length > 0
+      ? getWeightedEncounterPool(context.eventType, context.worldEntities)
+      : null
     
     // Base number of encounter rolls based on event type
     let rollCount = 1
@@ -700,6 +805,30 @@ export async function rollForEventEncounters(
     }
     
     for (let i = 0; i < rollCount; i++) {
+      // Try world character encounter first (if world entities provided)
+      if (worldPool) {
+        const worldEntity = pickWorldEntityForEncounter(worldPool, context.existingContactEntityIds || new Set())
+        if (worldEntity) {
+          const worldContact = generateWorldContact(
+            worldEntity,
+            context.eventType,
+            context.currentWeek,
+            context.currentYear
+          )
+          results.push({
+            success: true,
+            contact: worldContact,
+            introMessage: `You met ${worldEntity.name}${worldEntity.teamName ? ` from ${worldEntity.teamName}` : ''} at the event.`,
+            metAt: context.eventType,
+            isRomantic: false
+          })
+          // Add to existing contacts so we don't pick them again
+          context.existingContactEntityIds?.add(worldEntity.id)
+          continue // Skip random NPC roll for this slot
+        }
+      }
+      
+      // Fall back to random NPC encounter
       const encounterResult = rollEventEncounter(
         eventType,
         {
@@ -754,7 +883,7 @@ export async function rollForEventEncounters(
   } catch (error) {
     console.error('[SocialEvents] Failed to roll for encounters:', error)
   }
-  
+
   return results
 }
 
@@ -776,20 +905,14 @@ export function attendSocialEventWithEncounters(
   encounters: EncounterResult[]
 }> {
   return new Promise(async (resolve) => {
-    // First, get the base event results
     const baseResult = attendSocialEvent(event, playerReputation, playerBrand, partnerPresent)
-    
-    // Then roll for encounters
     const encounters = await rollForEventEncounters(encounterContext)
-    
-    // Merge new contacts from encounters into the result
     const encounterContacts = encounters
       .filter(e => e.contact)
       .map(e => ({
         type: e.contact!.type,
         name: e.contact!.name
       }))
-    
     resolve({
       ...baseResult,
       newContacts: [...baseResult.newContacts, ...encounterContacts],
@@ -797,3 +920,4 @@ export function attendSocialEventWithEncounters(
     })
   })
 }
+

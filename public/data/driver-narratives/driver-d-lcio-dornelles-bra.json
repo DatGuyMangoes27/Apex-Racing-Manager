@@ -1,0 +1,27 @@
+{
+  "biography": "Délcio Dornelles hails from the sun-baked favelas of Rio de Janeiro, where his racing career began not on asphalt, but on dusty dirt tracks piloting souped-up go-karts cobbled together from scrap. His raw talent was undeniable, catching the eye of a local mechanic who sponsored his entry into regional karting competitions. Délcio's aggressive style and fearless overtaking maneuvers quickly made him a fan favorite, earning him the nickname 'The Carioca Comet'.\n\nHis break came at 22 when he secured a drive with the Passat HC team in the Brazilian Stock Car series. Early promise and a couple of podium finishes were overshadowed by inconsistent performances and a penchant for costly errors. While flashes of brilliance still emerge, Délcio struggles to maintain consistency, often succumbing to pressure in crucial moments. \n\nNow at 34, Dornelles is battling to stay relevant in a sport increasingly dominated by younger, more disciplined drivers. Rumors swirl of a potential move to a smaller team or even retirement, but Délcio insists he still has the fire to compete at the highest level. However, his inconsistency and penchant for dramatic crashes have made him a risky proposition for team owners looking for reliable results.",
+  "drivingStyle": "Délcio's driving style is best described as 'all or nothing'. He possesses an uncanny ability to extract maximum performance from his car, often pushing it to the very edge of control. He's known for late-braking maneuvers and daring overtakes, particularly on corner entry. However, this aggressive approach often leads to costly mistakes and tire degradation, making him a threat to both his rivals and himself. Tire management is not his forte, often resulting in a dramatic drop in pace in the latter stages of a race.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Vieira",
+      "reason": "A long-standing rivalry stemming from a controversial collision in the 2018 São Paulo Grand Prix that cost Vieira the championship."
+    },
+    {
+      "driver": "Isabela Flores",
+      "reason": "A clash of personalities and driving styles. Flores, known for her calculated approach, often criticizes Délcio's aggressive and unpredictable maneuvers."
+    },
+    {
+      "driver": "Mateus Oliveira",
+      "reason": "The young gun Oliveira has been consistently outperforming Dornelles, leading to a bitter rivalry fueled by Dornelles' resentment of Oliveira's success."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks gifted to him by his grandmother before every race.",
+    "Refuses to speak to anyone for 30 minutes before the race start, preferring complete isolation.",
+    "Has a specific ritual of tapping the steering wheel three times before the formation lap."
+  ],
+  "nickname": "The Carioca Comet",
+  "famousQuote": "\"Racing isn't about playing it safe. It's about pushing the limits and taking risks. You either win or you crash trying.\"",
+  "careerHighlight": "Winning the 2017 Curitiba Grand Prix after starting from 10th on the grid, showcasing his exceptional overtaking skills in a wet race.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the 2019 Rio de Janeiro Grand Prix, gifting the victory to his rival, Ricardo Vieira."
+}

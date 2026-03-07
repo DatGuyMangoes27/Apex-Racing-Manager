@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 44,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Alistair MacLeod's journey into motorsport began with a childhood obsession with aerodynamics. Growing up in the Highlands, he spent hours observing the way wind shaped the landscape, translating those observations into model aircraft designs. He pursued a degree in aerospace engineering before transitioning into motorsport, working his way up through various teams, always focusing on optimizing aerodynamic performance. Alistair believes in a holistic approach to aero development, emphasizing the interplay between computational fluid dynamics, wind tunnel testing, and on-track data analysis. He is known for his ability to identify subtle yet impactful improvements, pushing the boundaries of what's aerodynamically possible.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Alistair is a man of medium build with a thoughtful expression and an intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on a specific brand of Scottish shortbread during late-night design sessions."
+  ]
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Flag,
   CheckCircle,
@@ -12,15 +12,77 @@ import {
   Radio,
   Users,
   WifiOff,
+  Trophy,
+  HardDrive,
+  Mic,
+  ChevronRight,
+  AlertTriangle,
+  Wrench,
+  Calendar,
+  MapPin,
+  FileCode,
+  Loader2,
+  RefreshCw,
+  TrendingDown,
+  TrendingUp,
+  Minus,
+  Activity,
+  ArrowRight,
+  DollarSign,
+  Wind,
 } from 'lucide-react'
-import { Card, CardHeader, Badge, Button, Progress } from '@/components/ui'
+import { useToast } from '@/components/ui'
+import { getDriverPortrait, getCutsceneImage } from '@/utils/generated-assets'
+import { getTrackImage, findTrackImageFromManifest } from '@/utils/images'
 import { useCareerStore } from '@/store/careerStore'
+import type { TeamCar, CarPartWear, TelemetryRaceResult, SessionResult, ScheduledActivity } from '@/store/careerStore'
+import type { AIModifierResult } from '@/simulation/aiModifiers'
 import { useRivalStore } from '@/store/rivalStore'
+import type { RaceEvent } from '@/store/rivalStore'
+import { getPreRacePool, getDriverNarrative, getDriverNarrativeByName, getTrackNarrativeFromPreGen, isContentLoaded as isPreGenContentLoaded } from '@/services/preGeneratedContentService'
+import { getNextGeminiApiKey } from '@/services/geminiKeyRotation'
+import { buildCommentaryWorldSnapshot } from '@/services/commentaryWorldSnapshot'
+import { AMS2_TRACKS } from '@/data/ams2-tracks'
+import { AMS2_CAR_CLASSES } from '@/data/ams2-cars'
+import { getActivityTimeCost } from '@/data/activity-time-costs'
+
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FBold: React.CSSProperties = { fontFamily: "'Arial', sans-serif", fontWeight: 700 }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
+const CARD =
+  'bg-[rgba(255,255,255,0.8)] border-[1.6px] border-black rounded-[16px] overflow-hidden shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]'
 
 type SessionType = 'practice' | 'qualifying' | 'race'
 type TelemetryStatus = { listening: boolean; receiving: boolean; lastPacket: number; participantCount: number }
+type TelemetrySession = any // Electron telemetry session data
 
 export default function RaceDayScreen() {
+  const navigate = useNavigate()
+  const {
+    player,
+    careerState,
+    isInvitationalWeek,
+    getCurrentInvitationalEvent,
+    getAIModifier,
+    processRaceResult,
+    updateRaceWeekendProgress,
+    markScheduledActivityCompleted,
+    completeInvitation,
+    consumeHoursFromBudget
+  } = useCareerStore()
+  const {
+    getSeriesById,
+    getDriversWithForm,
+    getTeamById,
+    seasonStandings,
+    prepareRaceWeekend,
+    updateFormAfterRace,
+    rivals,
+    getTeamDevelopmentRanking,
+    teams: rivalTeams
+  } = useRivalStore()
+  const { addToast } = useToast()
+  const isElectron = !!(window as any).electron
   const [activeSession, setActiveSession] = useState<SessionType>('practice')
   const [sessionStatus, setSessionStatus] = useState<'pending' | 'ready' | 'in_progress' | 'completed'>('pending')
   const [isGeneratingXML, setIsGeneratingXML] = useState(false)
@@ -56,6 +118,9 @@ export default function RaceDayScreen() {
     }
   } | null>(null)
   
+  // Beat-by-beat reveal step: 0=moment, 1=story, 2=consequences, 3=nextChapter
+  const [revealStep, setRevealStep] = useState(0)
+
   // Track if current race has been processed (prevent double-processing)
   // Use BOTH state and ref - ref for synchronous checking, state for React updates
   const [_raceProcessedForWeek, setRaceProcessedForWeek] = useState<number | null>(null)
@@ -78,6 +143,64 @@ export default function RaceDayScreen() {
   // Car condition check state
   const [showCarConditionModal, setShowCarConditionModal] = useState(false)
   
+  // Compute AI modifier from store
+  const aiModifier = useMemo(() => getAIModifier(), [getAIModifier])
+
+  // Compute field development intel for the player's series
+  const fieldDevelopment = useMemo(() => {
+    const resolvedSeriesId = player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId
+    if (!resolvedSeriesId) return null
+    const ranking = getTeamDevelopmentRanking(resolvedSeriesId)
+    if (!ranking || ranking.length === 0) return null
+    const maxPoints = 400
+    const avgPoints = ranking.reduce((sum, t) => sum + t.totalPoints, 0) / ranking.length
+    const topTeam = ranking[0]
+    const bottomTeam = ranking[ranking.length - 1]
+    return {
+      avgPercent: Math.min(100, (avgPoints / maxPoints) * 100),
+      topTeam,
+      bottomTeam,
+      ranking,
+      totalTeams: ranking.length
+    }
+  }, [player?.currentSeriesId, careerState?.seriesEntries, getTeamDevelopmentRanking, rivalTeams])
+
+  const rivalByFullName = useMemo(() => {
+    const map = new Map<string, (typeof rivals)[number]>()
+    for (const r of rivals || []) {
+      map.set(`${r.firstName} ${r.lastName}`.trim().toLowerCase(), r)
+    }
+    return map
+  }, [rivals])
+
+  const getParticipantPortrait = useCallback((driverName?: string): string => {
+    if (!driverName) return ''
+    const normalizedName = driverName.trim().toLowerCase()
+
+    if (player) {
+      const playerName = `${player.firstName} ${player.lastName}`.trim().toLowerCase()
+      if (normalizedName === playerName) {
+        return (
+          getDriverPortrait(player.id) ||
+          getDriverPortrait(`${player.firstName} ${player.lastName}`, player.nationality || player.country) ||
+          ''
+        )
+      }
+    }
+
+    const rival = rivalByFullName.get(normalizedName)
+    if (rival) {
+      return (
+        getDriverPortrait(rival.id) ||
+        getDriverPortrait(`${rival.firstName} ${rival.lastName}`, rival.nationality || rival.country) ||
+        ''
+      )
+    }
+
+    // Last resort: try manifest name lookup directly.
+    return getDriverPortrait(driverName) || ''
+  }, [player, rivalByFullName])
+
   // Helper function to check if car can race
   const checkCarCondition = useCallback((car: TeamCar | undefined): { canRace: boolean; issues: { part: keyof CarPartWear; wear: number }[] } => {
     if (!car || !car.partWear) {
@@ -101,10 +224,26 @@ export default function RaceDayScreen() {
   }, [])
   
   // Get active car for the current series
+  const activeSeriesId = useMemo(() => {
+    const entries = careerState?.seriesEntries || []
+    if (entries.length === 0) return player?.currentSeriesId
+    const playerSeriesHasRaceThisWeek = player?.currentSeriesId
+      ? !!getSeriesById(player.currentSeriesId)?.calendar?.some(e => e.week === (careerState?.currentWeek || 1))
+      : false
+    if (playerSeriesHasRaceThisWeek) return player?.currentSeriesId
+    const raceWeekEntry = entries.find((entry) => getSeriesById(entry.seriesId)?.calendar?.some(e => e.week === (careerState?.currentWeek || 1)))
+    return raceWeekEntry?.seriesId || player?.currentSeriesId || entries[0]?.seriesId
+  }, [careerState?.seriesEntries, careerState?.currentWeek, player?.currentSeriesId, getSeriesById])
+
   const activeCar = useMemo(() => {
-    if (!careerState?.cars || !player?.currentSeriesId) return undefined
-    return careerState.cars.find(c => c.seriesId === player.currentSeriesId)
-  }, [careerState?.cars, player?.currentSeriesId])
+    if (!careerState?.cars || !activeSeriesId) return undefined
+    return careerState.cars.find(c => {
+      const ids = Array.isArray(c.seriesIds) && c.seriesIds.length > 0
+        ? c.seriesIds
+        : (c.seriesId ? [c.seriesId] : [])
+      return ids.includes(activeSeriesId)
+    })
+  }, [careerState?.cars, activeSeriesId])
   
   // Check car condition
   const carConditionCheck = useMemo(() => {
@@ -112,7 +251,7 @@ export default function RaceDayScreen() {
   }, [activeCar, checkCarCondition])
 
   // Get current race from calendar OR invitational event
-  const currentSeries = player?.currentSeriesId ? getSeriesById(player.currentSeriesId) : null
+  const currentSeries = activeSeriesId ? getSeriesById(activeSeriesId) : null
   const currentWeek = careerState?.currentWeek || 1
   
   // Check if this is an invitational week
@@ -134,7 +273,9 @@ export default function RaceDayScreen() {
       } as RaceEvent
     : currentSeries?.calendar?.find(
         event => event.week === currentWeek
-      ) || currentSeries?.calendar?.[0]
+      ) || currentSeries?.calendar?.find(
+        event => event.week > currentWeek
+      ) || currentSeries?.calendar?.[currentSeries.calendar.length - 1]
   
   // Get track details
   const trackInfo = currentRace ? AMS2_TRACKS.find(t => t.id === currentRace.trackId) : null
@@ -171,6 +312,13 @@ export default function RaceDayScreen() {
       const newSessionType = session.sessionType
       setLastDetectedSessionType(prev => {
         if (prev !== newSessionType && newSessionType) {
+          // Reset commentary timeline whenever AMS2 changes session.
+          if (schedulerStarted.current) {
+            window.electron?.stopScheduler?.()
+            schedulerStarted.current = false
+            lastReportedLap.current = 0
+          }
+
           // Session type changed - auto-switch to match
           if (newSessionType === 'Practice' || newSessionType === 'Test') {
             setActiveSession('practice')
@@ -187,7 +335,26 @@ export default function RaceDayScreen() {
         return newSessionType || prev
       })
       
-      const isRaceSession = session.sessionType === 'Race' || session.sessionType === 'Formation Lap'
+      const sessionType = session.sessionType || ''
+      const isRaceSession = sessionType === 'Race' || sessionType === 'Formation Lap'
+      const isCommentarySession =
+        sessionType === 'Practice' ||
+        sessionType === 'Test' ||
+        sessionType === 'Qualifying' ||
+        isRaceSession
+      const hasSessionStarted =
+        !!sessionType &&
+        session.sessionState !== 'Session Over' &&
+        session.raceState !== 'Finished' &&
+        session.raceState !== 'Retired' &&
+        session.raceState !== 'DNF' &&
+        (
+        session.raceState === 'Racing' ||
+        session.sessionState === 'Racing' ||
+        session.sessionState === 'Green Flag' ||
+        (((session as any).currentLap || 0) > 0) ||
+        (((session as any).sessionTimeRemaining || 0) > 0)
+        )
       
       // Track if race has actually started (Crew Chief approach)
       // Only set this when we see "Racing" state in a Race session
@@ -206,8 +373,17 @@ export default function RaceDayScreen() {
         }
       }
       
-      // Update scheduler with current lap (during race)
-      if (isRaceSession && hasRaceActuallyStarted.current && schedulerStarted.current) {
+      // Start commentary scheduler for any active session (practice/quali/race).
+      if (isCommentarySession && hasSessionStarted && !schedulerStarted.current && contentPoolStatus === 'ready') {
+        const fallbackLaps = Math.max(12, (((session as any).currentLap || 0) + 12))
+        const totalLaps = session.lapsInEvent || fallbackLaps
+        console.log(`[RaceDay] Starting commentary scheduler (${sessionType}) for ~${totalLaps} laps`)
+        window.electron?.startScheduler?.(totalLaps)
+        schedulerStarted.current = true
+      }
+
+      // Update scheduler with current lap (during practice/quali/race)
+      if (isCommentarySession && hasSessionStarted && schedulerStarted.current) {
         const currentLap = (session as any).currentLap || 0
         if (currentLap !== lastReportedLap.current) {
           lastReportedLap.current = currentLap
@@ -255,6 +431,40 @@ export default function RaceDayScreen() {
     
     const handleRaceComplete = (data: TelemetryRaceResult) => {
       console.log('[RaceDay] Session complete detected:', data)
+      if (schedulerStarted.current) {
+        window.electron?.stopScheduler?.()
+        schedulerStarted.current = false
+        lastReportedLap.current = 0
+      }
+      const syncSessionActivityCompletion = (sessionType: 'Practice' | 'Qualifying' | 'Race') => {
+        try {
+          const latest = useCareerStore.getState()
+          const cs = latest.careerState
+          const raceWeek = cs?.currentWeek || 1
+          const entries = cs?.seriesEntries || []
+          const raceWeekEntry = entries.find((entry) =>
+            useRivalStore.getState().getSeriesById(entry.seriesId)?.calendar?.some(e => e.week === raceWeek)
+          )
+          const seriesId = activeSeriesId || raceWeekEntry?.seriesId || latest.player?.currentSeriesId
+          if (!cs || !seriesId) return
+          const week = cs.currentWeek
+          const prefix = sessionType === 'Practice'
+            ? `race_session_practice_${seriesId}`
+            : sessionType === 'Qualifying'
+              ? `race_session_qualifying_${seriesId}`
+              : `race_session_race_${seriesId}`
+          const target = (cs.scheduledActivities || []).find(a =>
+            a.status === 'scheduled' &&
+            a.scheduledWeek === week &&
+            a.templateId === prefix
+          )
+          if (target) {
+            latest.markScheduledActivityCompleted(target.id)
+          }
+        } catch (e) {
+          console.warn('[RaceDay] Failed to sync calendar session completion:', e)
+        }
+      }
       
       // Guard: Don't process if we already processed THIS SESSION TYPE this week
       // Use REF for synchronous check to prevent race conditions from async state updates
@@ -282,13 +492,17 @@ export default function RaceDayScreen() {
       // Handle Practice session completion
       if (data.sessionType === 'Practice' || data.sessionType === 'Test') {
         console.log('[RaceDay] Practice session completed:', sessionResult)
-        
+        const practiceCost = getActivityTimeCost('race_practice')
+        if (practiceCost.hours > 0 && consumeHoursFromBudget) {
+          consumeHoursFromBudget(practiceCost.hours, practiceCost.drain, 'Free Practice', 'race_practice')
+        }
         updateRaceWeekendProgress({
           trackId: currentRace?.trackId || '',
           week: careerState?.currentWeek || 0,
           year: careerState?.currentYear || 0,
           practice: sessionResult
         })
+        syncSessionActivityCompletion('Practice')
         
         setSessionStatus('completed')
         
@@ -305,13 +519,17 @@ export default function RaceDayScreen() {
       // Handle Qualifying session completion
       if (data.sessionType === 'Qualifying') {
         console.log('[RaceDay] Qualifying session completed:', sessionResult)
-        
+        const qualiCost = getActivityTimeCost('race_qualifying')
+        if (qualiCost.hours > 0 && consumeHoursFromBudget) {
+          consumeHoursFromBudget(qualiCost.hours, qualiCost.drain, 'Qualifying', 'race_qualifying')
+        }
         updateRaceWeekendProgress({
           trackId: currentRace?.trackId || '',
           week: careerState?.currentWeek || 0,
           year: careerState?.currentYear || 0,
           qualifying: sessionResult
         })
+        syncSessionActivityCompletion('Qualifying')
         
         setSessionStatus('completed')
         
@@ -367,6 +585,12 @@ export default function RaceDayScreen() {
         setRaceProcessedForWeek(careerState.currentWeek)
       }
       
+      // Race session time cost
+      const raceCost = getActivityTimeCost('race_race')
+      if (raceCost.hours > 0 && consumeHoursFromBudget) {
+        consumeHoursFromBudget(raceCost.hours, raceCost.drain, 'Race', 'race_race')
+      }
+      
       // Mark race as complete in weekend progress with full result data
       const raceSessionResult: SessionResult = {
         completed: true,
@@ -382,6 +606,7 @@ export default function RaceDayScreen() {
         year: careerState?.currentYear || 0,
         race: raceSessionResult
       })
+      syncSessionActivityCompletion('Race')
       
       // Update form for all AI drivers based on their race results
       if (data.allParticipants && currentSeries) {
@@ -433,6 +658,7 @@ export default function RaceDayScreen() {
       // Store data for modal
       console.log('[RaceDay] Showing Race Complete Modal now!', { position: data.playerPosition, dnf: data.dnf })
       setRaceCompleteData({ result: data, processed, debrief })
+      setRevealStep(0)
       setShowRaceCompleteModal(true)
       setSessionStatus('completed')
       
@@ -512,7 +738,54 @@ export default function RaceDayScreen() {
       // Remove the race complete listener (registered via ipcRenderer.on, needs removeAllListeners)
       window.electron?.removeListener?.('telemetry:raceComplete', handleRaceComplete)
     }
-  }, [processRaceResult, addToast])
+  }, [processRaceResult, markScheduledActivityCompleted, addToast, activeSeriesId])
+
+  // ── Commentary engine initialization ──
+  // The main-process commentary engine must be configured+enabled from here,
+  // because the Settings page (the only other source) may not be mounted.
+  useEffect(() => {
+    if (!isElectron) return
+
+    let enabled = false
+    let geminiKey = ''
+    let elevenLabsKey = ''
+    let voiceId = ''
+    let coVoiceId = ''
+    let pitReporterVoiceId = ''
+    let volume = 80
+
+    try {
+      const raw = localStorage.getItem('commentary-settings')
+      if (raw) {
+        const s = JSON.parse(raw)
+        enabled = !!s.enabled
+        geminiKey = s.geminiKey || s.openAIKey || (Array.isArray(s.geminiKeys) ? s.geminiKeys[0] : '') || ''
+        elevenLabsKey = s.elevenLabsKey || ''
+        voiceId = s.voiceId || ''
+        coVoiceId = s.coCommentatorVoiceId || ''
+        pitReporterVoiceId = s.pitReporterVoiceId || ''
+        volume = s.volume ?? 80
+      }
+    } catch { /* corrupt localStorage – leave defaults */ }
+
+    if (!enabled || !geminiKey || !elevenLabsKey) {
+      console.log('[RaceDay] Commentary not enabled or keys missing – skipping engine init')
+      return
+    }
+
+    console.log('[RaceDay] Initialising commentary engine from localStorage')
+    window.electron?.setCommentaryAPIKeys?.(geminiKey, elevenLabsKey)
+    window.electron?.setCommentaryVoices?.(voiceId, coVoiceId, volume)
+    if (pitReporterVoiceId) {
+      window.electron?.setPitReporterVoice?.(pitReporterVoiceId)
+    }
+    window.electron?.setCommentaryEnabled?.(true)
+
+    // No cleanup — the commentary engine runs in the main process and must
+    // survive page navigation. Telemetry flows from shared memory regardless
+    // of which renderer page is active. Disabling is handled explicitly by
+    // the Settings toggle or on app close (stopCommentary in main.ts).
+  }, [isElectron])
 
   // Initialize sessionStatus from stored weekend progress on mount/tab change
   useEffect(() => {
@@ -733,18 +1006,62 @@ export default function RaceDayScreen() {
         return
       }
       
-      // Get API key from commentary settings
+      // Do not hard-block commentary on XML generation.
+      // XML improves AI setup, but commentary should still run in practice/quali/race
+      // even if XML generation fails or is skipped.
+
+      // ── Try pre-generated content pool first ──
+      if (isPreGenContentLoaded()) {
+        const trackId = currentRace.trackId
+        const layoutId = currentRace.layoutId
+        const preGenPool = getPreRacePool(trackId, layoutId)
+        if (preGenPool) {
+          console.log(`[RaceDay] Using pre-generated content pool for track: ${trackId}, layout: ${layoutId || 'default'}`)
+          setContentPoolStatus('generating')
+          contentPoolGenerated.current = true
+
+          try {
+            // Feed the pre-generated pool into the broadcast scheduler via IPC
+            const result = await window.electron?.loadPreGeneratedContentPool?.({
+              trackId,
+              seriesId: currentSeries.id,
+              pool: preGenPool
+            })
+
+            if (result?.success) {
+              setContentPoolStatus('ready')
+              setContentPoolStats(result.stats || null)
+              console.log('[RaceDay] Pre-generated content pool loaded:', result.stats)
+              return
+            }
+            // If IPC handler doesn't exist or fails, fall through to Gemini
+            console.log('[RaceDay] Pre-generated pool IPC not available, falling back to Gemini')
+          } catch {
+            console.log('[RaceDay] Pre-generated pool load failed, falling back to Gemini')
+          }
+
+          // Reset for Gemini fallback
+          contentPoolGenerated.current = false
+          setContentPoolStatus('idle')
+        }
+      }
+      
+      // ── Fallback: Gemini generation ──
+      
+      // Check whether commentary is enabled, then use rotated Gemini key.
       let apiKey: string | null = null
+      let commentaryEnabled = false
       try {
         const commentaryStr = localStorage.getItem('commentary-settings')
         if (commentaryStr) {
           const commentary = JSON.parse(commentaryStr)
-          if (commentary?.geminiKey && commentary?.enabled) {
-            apiKey = commentary.geminiKey
-          }
+          commentaryEnabled = !!commentary?.enabled
         }
       } catch (e) {
         console.warn('[RaceDay] Could not read commentary settings')
+      }
+      if (commentaryEnabled) {
+        apiKey = getNextGeminiApiKey()
       }
       
       if (!apiKey) {
@@ -752,37 +1069,414 @@ export default function RaceDayScreen() {
         return
       }
       
-      // Wait for XML to be generated first (ensures drivers are set up)
-      if (!xmlGenerated) {
-        return
-      }
-      
-      console.log('[RaceDay] Generating TV broadcast content pool...')
+      console.log('[RaceDay] Generating RICH TV broadcast content pool via Gemini...')
       setContentPoolStatus('generating')
       contentPoolGenerated.current = true
       
       try {
-        // Build context for content pool
+        // ── Build comprehensive content pool context from ALL game data ──
+        const playerName = `${player.firstName} ${player.lastName}`
+        const ownedTeam = careerState?.ownedTeam
+        const personalLife = careerState?.personalLife
+        const standings = seasonStandings?.[currentSeries.id]
+        const playerStanding = standings?.find(s => s.isPlayer || s.driverName === playerName)
+        const playerChampPos = playerStanding ? standings!.indexOf(playerStanding) + 1 : undefined
+        const trackHistory = player.trackHistory?.[currentRace.trackId]
+        const raceWeekendProgress = careerState?.raceWeekendProgress
+        
+        // Championship drama calculation
+        const champLeader = standings?.[0]
+        const driverAhead = playerChampPos && playerChampPos > 1 ? standings?.[playerChampPos - 2] : undefined
+        const driverBehind = playerChampPos && standings ? standings[playerChampPos] : undefined
+        const pointsGapToLeader = champLeader && playerStanding ? champLeader.points - playerStanding.points : 0
+        const currentRound = (currentSeries.calendar?.findIndex(e => e.week === currentWeek) ?? 0) + 1
+        const totalRounds = currentSeries.calendar?.length || 0
+        const racesRemaining = totalRounds - currentRound
+        
+        // Season form from race history
+        const currentYear = careerState?.currentYear || 2024
+        const thisSeasonRaces = (player.raceHistory || []).filter(r => r.date?.startsWith(String(currentYear)))
+        const seasonDNFs = thisSeasonRaces.filter(r => r.dnf).length
+        const seasonAvgFinish = thisSeasonRaces.length > 0
+          ? thisSeasonRaces.reduce((sum, r) => sum + (r.racePosition || 20), 0) / thisSeasonRaces.length
+          : 0
+        const seasonBestFinish = thisSeasonRaces.length > 0
+          ? Math.min(...thisSeasonRaces.map(r => r.racePosition || 99))
+          : 0
+        const lastRace = thisSeasonRaces[thisSeasonRaces.length - 1]
+        
+        // Streak calculation
+        let currentStreak = ''
+        if (player.consecutiveWins && player.consecutiveWins > 1) currentStreak = `${player.consecutiveWins} consecutive wins`
+        else if (player.consecutivePodiums && player.consecutivePodiums > 1) currentStreak = `${player.consecutivePodiums} consecutive podiums`
+        else if (player.consecutivePoints && player.consecutivePoints > 3) currentStreak = `${player.consecutivePoints} consecutive points finishes`
+        
+        // Title fight status
+        const maxPointsPerRace = 25 // Approximate
+        const maxPointsRemaining = racesRemaining * maxPointsPerRace
+        let titleFightStatus = 'out_of_contention'
+        if (pointsGapToLeader === 0 && playerChampPos === 1) titleFightStatus = 'leading'
+        else if (pointsGapToLeader <= maxPointsRemaining * 0.3) titleFightStatus = 'contending'
+        else if (pointsGapToLeader <= maxPointsRemaining) titleFightStatus = 'long_shot'
+        
+        // Sponsor pressure
+        const sponsors = ownedTeam?.finances?.sponsors || []
+        const sponsorWarnings = sponsors.filter(s => (s as any).warningIssued).length
+        const sponsorTargetsMet = sponsors.reduce((count, s) => count + ((s as any).targets?.filter((t: any) => t.met)?.length || 0), 0)
+        const sponsorTargetsTotal = sponsors.reduce((count, s) => count + ((s as any).targets?.length || 0), 0)
+        
+        // Staff morale average
+        const staffMoraleAvg = ownedTeam?.staff?.length 
+          ? Math.round(ownedTeam.staff.reduce((sum, s) => sum + (s.morale || 50), 0) / ownedTeam.staff.length) 
+          : undefined
+        
+        // Facility levels
+        const facilities = ownedTeam?.facilities
+        const facilityLevels = facilities ? {
+          aero: facilities.aero?.level || 1,
+          chassis: facilities.chassis?.level || 1,
+          engine: facilities.engine?.level || 1,
+          sim: facilities.sim?.level || 1,
+          manufacturing: facilities.manufacturing?.level || 1,
+        } : undefined
+        const upgradeInProgress = facilities
+          ? Object.entries(facilities).find(([, f]) => (f as any)?.upgradeInProgress)?.[0]
+            ? `${Object.entries(facilities).find(([, f]) => (f as any)?.upgradeInProgress)?.[0]} facility upgrading to Level ${((Object.entries(facilities).find(([, f]) => (f as any)?.upgradeInProgress)?.[1] as any)?.level || 1) + 1}`
+            : undefined
+          : undefined
+        
+        // Financial snapshot
+        const budgets = ownedTeam?.budgets
+        const runwayWeeks = budgets?.runwayWeeks || 0
+        const runwayStatus = runwayWeeks > 12 ? 'healthy' : runwayWeeks > 6 ? 'stable' : runwayWeeks > 2 ? 'caution' : runwayWeeks > 0 ? 'critical' : 'emergency'
+        const costCapPct = budgets?.costCapSpending && (ownedTeam as any)?.costCapLimit 
+          ? Math.round((budgets.costCapSpending / (ownedTeam as any).costCapLimit) * 100) 
+          : undefined
+        const merchRevenue = ownedTeam?.finances?.extended?.merchandise?.weeklyRevenue
+        
+        // Personal life highlights
+        const partner = personalLife?.partner
+        const children = personalLife?.children || []
+        const health = personalLife?.health
+        const relationshipStatus = partner?.marriageYear ? 'married' 
+          : partner?.datingStartYear ? 'dating' 
+          : 'single'
+        
+        // Pressure state
+        const rpgState = careerState?.rpgState
+        const pressureState = rpgState ? {
+          currentPressure: (rpgState as any).pressure?.currentPressure || 0,
+          pressureType: (rpgState as any).pressure?.pressureType || 'normal',
+          titleFight: titleFightStatus === 'leading' || titleFightStatus === 'contending',
+          homeRace: false, // Would need nationality matching with track country
+          contractPressure: player.contract?.endYear ? (player.contract.endYear - currentYear) <= 1 : false,
+          streakType: player.consecutiveWins && player.consecutiveWins > 0 ? 'winning' as const : undefined,
+          streakLength: player.consecutiveWins || player.consecutivePodiums || undefined,
+        } : undefined
+        
+        // Media profile
+        const mediaPersona = careerState?.mediaPersona
+        const socialState = careerState?.socialMediaState
+        
+        // Hired driver (teammate)
+        const hiredDriver = ownedTeam?.drivers?.[0]
+        
+        // Track narrative from Content Studio pre-generated content (layout-specific with venue fallback)
+        let trackNarrative: any = getTrackNarrativeFromPreGen(currentRace.trackId, currentRace.layoutId)
+        if (!trackNarrative) {
+          try {
+            const cached = localStorage.getItem(`track-narrative-${currentRace.trackId}`)
+            if (cached) trackNarrative = JSON.parse(cached)
+          } catch { /* ignore */ }
+        }
+        
+        // Driver narratives from Content Studio pre-generated content (strict source policy)
+        const driversWithForm = currentSeries ? getDriversWithForm(currentSeries.id) : []
+        const preGenNarrativesReady = isPreGenContentLoaded()
+        const seriesDriverByName = new Map(
+          driversWithForm.map((driver) => [`${driver.firstName} ${driver.lastName}`.trim(), driver])
+        )
+        const rivalState = useRivalStore.getState()
+        const seriesTeams = (Array.isArray(rivalState.teams) ? rivalState.teams : []).filter((team) => team.seriesId === currentSeries.id)
+        const seriesDrivers = (Array.isArray(rivalState.rivals) ? rivalState.rivals : []).filter((driver) => driver.currentSeriesId === currentSeries.id)
+
+        const worldSnapshot = buildCommentaryWorldSnapshot({
+          seriesId: currentSeries.id,
+          seriesName: currentSeries.name,
+          currentRound,
+          totalRounds,
+          racesRemaining,
+          titleFightStatus,
+          standings: (standings || []).map((s, index) => ({
+            position: index + 1,
+            driverName: s.driverName,
+            teamName: s.teamName,
+            points: s.points,
+            wins: s.wins,
+            avgFinish: s.avgFinish,
+          })),
+          teams: seriesTeams.map((team) => ({
+            id: team.id,
+            name: team.name,
+            shortName: team.shortName,
+            narrative: {
+              recentForm: team.narrative?.recentForm,
+            },
+          })),
+          drivers: seriesDrivers.map((driver) => ({
+            id: driver.id,
+            firstName: driver.firstName,
+            lastName: driver.lastName,
+            currentTeamId: driver.currentTeamId,
+            currentTeamName: seriesTeams.find((team) => team.id === driver.currentTeamId)?.name,
+            totalWins: driver.totalWins,
+            rivalryIntensity: driver.rivalryIntensity,
+            narrative: {
+              recentForm: driver.narrative?.recentForm,
+            },
+          })),
+          sponsorDeals: (ownedTeam?.finances?.sponsors as Array<{ active?: boolean; satisfaction?: number }> | undefined) || [],
+          ownedTeam: ownedTeam ? {
+            boardMood: ownedTeam.boardMood,
+            budgets: {
+              runwayWeeks: ownedTeam.budgets?.runwayWeeks,
+            },
+          } : undefined,
+        })
+        
+        // Build the FULL rich context
         const context = {
           trackId: currentRace.trackId,
           trackName: currentRace.trackName,
+          trackNarrative,
           seriesId: currentSeries.id,
           seriesName: currentSeries.name,
-          drivers: participants.slice(0, 20).map((p, idx) => ({
-            id: p.name?.replace(/\s+/g, '-').toLowerCase() || `driver-${idx}`,
-            name: p.name || `Driver ${idx + 1}`,
-            teamName: p.teamName || 'Unknown Team',
-            position: idx + 1
-          })),
-          playerName: `${player.firstName} ${player.lastName}`,
-          totalLaps: 20, // Default lap count - could be calculated from track length if needed
-          championshipStandings: seasonStandings?.[currentSeries.id]?.slice(0, 10).map((s, i) => ({
+          seriesCategory: currentSeries.category as any,
+          worldSnapshot,
+          
+          drivers: participants.slice(0, 20).map((p, idx) => {
+            const rivalDriver = seriesDriverByName.get((p.name || '').trim())
+            const preGenNarrative = preGenNarrativesReady && rivalDriver
+              ? (getDriverNarrative(rivalDriver.id) || getDriverNarrativeByName(rivalDriver.firstName, rivalDriver.lastName))
+              : null
+            return {
+              id: p.name?.replace(/\s+/g, '-').toLowerCase() || `driver-${idx}`,
+              name: p.name || `Driver ${idx + 1}`,
+              teamName: p.teamName || 'Unknown Team',
+              position: idx + 1,
+              narrative: preGenNarrative ? {
+                id: rivalDriver?.id || '',
+                biography: (preGenNarrative as any).biography,
+                drivingStyle: (preGenNarrative as any).drivingStyle,
+                rivalries: (preGenNarrative as any).rivalries,
+                quirks: (preGenNarrative as any).quirks,
+                nickname: (preGenNarrative as any).nickname,
+                famousQuote: (preGenNarrative as any).famousQuote,
+                careerHighlight: (preGenNarrative as any).careerHighlight,
+                careerLowPoint: (preGenNarrative as any).careerLowPoint,
+              } as any : undefined,
+              pointsPosition: standings?.findIndex(s => s.driverName === p.name) !== -1 
+                ? (standings?.findIndex(s => s.driverName === p.name) ?? -1) + 1 
+                : undefined,
+            }
+          }),
+          
+          playerName,
+          playerPointsPosition: playerChampPos,
+          totalLaps: 20,
+          weather: currentRace.weather || undefined,
+          sessionType: activeSession as 'practice' | 'qualifying' | 'race',
+          
+          // Qualifying/practice results from weekend progress
+          qualifyingPosition: raceWeekendProgress?.qualifying?.position,
+          qualifyingBest: raceWeekendProgress?.qualifying?.bestLapTime,
+          practiceBest: raceWeekendProgress?.practice?.bestLapTime,
+          
+          championshipStandings: standings?.slice(0, 10).map((s, i) => ({
             driverName: s.driverName,
             points: s.points,
             position: i + 1,
-            wins: s.wins
-          }))
+            wins: s.wins,
+            podiums: s.podiums,
+            dnfs: s.dnfs,
+            avgFinish: s.avgFinish,
+            isPlayer: s.isPlayer || s.driverName === playerName,
+          })),
+          
+          // Player career context
+          playerCareer: {
+            totalRaces: player.totalRaces || 0,
+            totalWins: player.totalWins || 0,
+            totalPodiums: player.totalPodiums || 0,
+            totalPoles: player.totalPoles || 0,
+            totalFastestLaps: player.totalFastestLaps || 0,
+            championships: player.championships || 0,
+            consecutiveWins: player.consecutiveWins || 0,
+            consecutivePodiums: player.consecutivePodiums || 0,
+            consecutivePoints: player.consecutivePoints || 0,
+            comebackWins: player.comebackWins || 0,
+            hatTricks: player.hatTricks || 0,
+            grandSlams: player.grandSlams || 0,
+            wetRaceWins: player.wetRaceWins,
+            reputation: player.reputation || 50,
+            experienceLevel: (player.totalRaces || 0) < 10 ? 'Rookie' : (player.totalRaces || 0) < 30 ? 'Sophomore' : 'Veteran',
+            isRookie: (player.totalRaces || 0) < 12,
+            age: player.age || 25,
+            nationality: player.nationality || 'Unknown',
+          },
+          
+          // Player track history at THIS track
+          playerTrackHistory: trackHistory ? {
+            visits: trackHistory.visits || 0,
+            wins: trackHistory.wins || 0,
+            podiums: trackHistory.podiums || 0,
+            poles: trackHistory.poles || 0,
+            fastestLaps: trackHistory.fastestLaps || 0,
+            dnfs: trackHistory.dnfs || 0,
+            bestFinish: trackHistory.bestFinish || 99,
+            worstFinish: trackHistory.worstFinish || 0,
+            avgFinish: trackHistory.avgFinish || 0,
+            consecutiveWins: trackHistory.consecutiveWins || 0,
+            maxConsecutiveWins: trackHistory.maxConsecutiveWins || 0,
+            lastResult: trackHistory.lastResult || 0,
+            firstVisitYear: trackHistory.firstVisitYear || currentYear,
+            lastVisitYear: trackHistory.lastVisitYear || currentYear,
+            seriesRacedHere: trackHistory.seriesRacedHere || [],
+          } : { visits: 0, wins: 0, podiums: 0, poles: 0, fastestLaps: 0, dnfs: 0, bestFinish: 99, worstFinish: 0, avgFinish: 0, consecutiveWins: 0, maxConsecutiveWins: 0, lastResult: 0, firstVisitYear: currentYear, lastVisitYear: currentYear, seriesRacedHere: [] },
+          
+          // Season form
+          seasonForm: {
+            seasonWins: playerStanding?.wins || 0,
+            seasonPodiums: playerStanding?.podiums || 0,
+            seasonPoles: playerStanding?.poles || 0,
+            seasonFastestLaps: playerStanding?.fastestLaps || 0,
+            seasonDNFs,
+            seasonAvgFinish: seasonAvgFinish || (playerStanding?.avgFinish || 0),
+            seasonBestFinish: seasonBestFinish || (playerStanding?.bestFinish || 0),
+            racesCompleted: thisSeasonRaces.length || (playerStanding?.races || 0),
+            currentStreak,
+            lastRaceResult: lastRace?.racePosition,
+            lastTrackName: lastRace?.trackName,
+          },
+          
+          // GOAT progress
+          goatProgress: player.goatProgress ? {
+            currentTier: player.goatProgress.currentTier || 'unknown',
+            tierProgress: player.goatProgress.tierProgress || 0,
+            recordsNearBreaking: undefined, // Would need getRecordsNearBreaking utility
+            recordBreakingMoment: undefined,
+            recentMilestones: player.goatProgress.newlyUnlocked || [],
+            tripleCrownProgress: undefined,
+          } : undefined,
+          
+          // Championship drama
+          championshipDrama: standings ? {
+            pointsGapToLeader,
+            pointsGapToAhead: driverAhead ? driverAhead.points - (playerStanding?.points || 0) : 0,
+            pointsGapToBehind: driverBehind ? (playerStanding?.points || 0) - driverBehind.points : 0,
+            driverAheadInStandings: driverAhead?.driverName,
+            driverBehindInStandings: driverBehind?.driverName,
+            titleFightStatus,
+            mathematicallyAlive: pointsGapToLeader <= maxPointsRemaining,
+            maxPointsRemaining,
+            racesRemaining,
+            isSeasonOpener: currentRound === 1,
+            isSeasonFinale: currentRound === totalRounds,
+            currentRound,
+            totalRounds,
+          } : undefined,
+          
+          // Team dynamics
+          teamDynamics: ownedTeam ? {
+            teamName: ownedTeam.name,
+            teamReputation: ownedTeam.reputation || 50,
+            teamMorale: ownedTeam.teamMorale,
+            boardMood: ownedTeam.boardMood,
+            carPerformance: activeCar ? (activeCar as any).performance : undefined,
+            carReliability: activeCar ? (activeCar as any).reliability : undefined,
+            staffMoraleAvg,
+            facilityLevels,
+            upgradeInProgress,
+            hiredDriverName: hiredDriver ? `Driver #2` : undefined,
+            hiredDriverSeasonWins: hiredDriver?.seasonStats?.wins,
+            hiredDriverSeasonPodiums: hiredDriver?.seasonStats?.podiums,
+          } : undefined,
+          
+          // Financial snapshot
+          financialSnapshot: ownedTeam ? {
+            runwayStatus,
+            costCapUsagePercent: costCapPct,
+            activeSponsorCount: sponsors.length,
+            merchandiseWeeklyRevenue: merchRevenue,
+            sponsorsAtRisk: sponsors.filter(s => ((s as any).satisfaction || 50) < 40).length || undefined,
+          } : undefined,
+          
+          // Sponsor pressure
+          sponsorPressure: sponsors.length > 0 ? {
+            totalSponsors: sponsors.length,
+            sponsorWarnings,
+            targetsMetCount: sponsorTargetsMet,
+            targetsTotalCount: sponsorTargetsTotal,
+            titleSponsorHappy: sponsors.find(s => (s as any).slot === 'title') 
+              ? ((sponsors.find(s => (s as any).slot === 'title') as any).satisfaction || 50) >= 60 
+              : undefined,
+          } : undefined,
+          
+          // Personal life
+          personalLife: personalLife ? {
+            relationshipStatus,
+            partnerName: partner ? `${partner.firstName}` : undefined,
+            childrenCount: children.length,
+            recentLifeEvent: undefined, // Could compute from recent events
+            healthLevel: health?.overall || 50,
+            fitnessLevel: health?.fitness || health?.fitnessLevel || 50,
+            stressLevel: health?.stress || 0,
+            lifestyleTier: personalLife.lifestyleLevel?.tier || 'modest',
+            injuryStatus: player.health?.injured ? `Recovering from ${player.health.injuryType || 'injury'}` : undefined,
+          } : undefined,
+          
+          // Media profile
+          mediaProfile: mediaPersona ? {
+            mediaPersona: mediaPersona.dominantTone || 'unknown',
+            followerCount: socialState?.followerCount || 0,
+            recentHeadline: careerState?.pressClippings?.slice(-1)[0]?.headline,
+            controversyLevel: mediaPersona.controversyLevel || 0,
+            publicPerception: mediaPersona.publicPerception || 50,
+            viralPosts: socialState?.viralPosts,
+          } : undefined,
+          
+          // Pressure state
+          pressureState,
+          
+          // Logistics
+          logisticsSnapshot: ownedTeam?.spareParts ? {
+            raceKitReady: (ownedTeam.spareParts.raceSparesKits?.length || 0) > 0,
+            partsShortage: (ownedTeam.spareParts.inventory?.length || 0) < 5,
+            manufacturingActive: (ownedTeam.spareParts.manufacturingQueue?.length || 0) > 0,
+            manufacturingJobs: ownedTeam.spareParts.manufacturingQueue?.length,
+          } : undefined,
+          
+          // Contract context
+          contractContext: player.contract ? {
+            contractEndingSoon: player.contract.endYear ? (player.contract.endYear - currentYear) <= 1 : false,
+            contractTargetsMet: player.contract.targets?.filter((t: any) => t.met)?.length || 0,
+            contractTargetsTotal: player.contract.targets?.length || 0,
+            teamSatisfaction: player.contract.teamSatisfaction,
+            teamWarningIssued: player.contract.warningIssued || false,
+          } : undefined,
         }
+        
+        console.log('[RaceDay] Rich context built:', {
+          hasTrackHistory: !!context.playerTrackHistory?.visits,
+          hasSeasonForm: !!context.seasonForm?.racesCompleted,
+          hasTeamDynamics: !!context.teamDynamics,
+          hasFinancials: !!context.financialSnapshot,
+          hasPersonalLife: !!context.personalLife,
+          hasMedia: !!context.mediaProfile,
+          hasPressure: !!context.pressureState,
+          hasChampDrama: !!context.championshipDrama,
+          hasGoat: !!context.goatProgress,
+        })
         
         const result = await window.electron?.generateContentPool?.(context, apiKey)
         
@@ -911,28 +1605,48 @@ export default function RaceDayScreen() {
     weekendProgress.week === careerState.currentWeek && 
     weekendProgress.year === careerState.currentYear
 
-  // Get pending media duties for this weekend
-  const mediaState = careerState?.teamMediaState
+  // Get pending media duties for this weekend from calendar-backed race expected activities
+  const currentDay = careerState.currentDay ?? 1
   const pendingDuties = useMemo(() => {
-    if (!mediaState?.dutySchedule?.weekendDuties) return []
-    return mediaState.dutySchedule.weekendDuties.filter(
-      d => (d.status === 'available' || d.status === 'upcoming') && 
-           d.week === careerState?.currentWeek
+    return (careerState.scheduledActivities || []).filter((a): a is ScheduledActivity =>
+      a.status === 'scheduled' &&
+      a.category === 'media' &&
+      a.triggeredBy === 'race_weekend_expected' &&
+      a.scheduledWeek === careerState.currentWeek &&
+      (a.templateId || '').includes('race_expected_')
     )
-  }, [mediaState?.dutySchedule?.weekendDuties, careerState?.currentWeek])
+  }, [careerState.scheduledActivities, careerState.currentWeek])
   
-  const activeDuties = pendingDuties.filter(d => d.status === 'available')
-  const upcomingDuties = pendingDuties.filter(d => d.status === 'upcoming')
+  const activeDuties = pendingDuties.filter(d => (d.scheduledDay || 1) <= currentDay)
+  const upcomingDuties = pendingDuties.filter(d => (d.scheduledDay || 1) > currentDay)
   
-  // Determine which duty is relevant for current session
-  const getRelevantDuty = (sessionType: SessionType): MediaDuty | undefined => {
-    const dutyTypeMap: Record<SessionType, string[]> = {
-      'practice': ['pre_practice', 'post_practice'],
-      'qualifying': ['pre_qualifying', 'post_qualifying'],
-      'race': ['pre_race', 'post_race']
+  // Determine which duty is relevant for current session based on race weekend day
+  const getRelevantDuty = (sessionType: SessionType): ScheduledActivity | undefined => {
+    const expectedDayBySession: Record<SessionType, number> = {
+      practice: 5,
+      qualifying: 6,
+      race: 7,
     }
-    const relevantTypes = dutyTypeMap[sessionType]
-    return activeDuties.find(d => relevantTypes.includes(d.type))
+    const expectedDay = expectedDayBySession[sessionType]
+    return activeDuties.find(d => (d.scheduledDay || 1) === expectedDay)
+  }
+  
+  const toCalendarDutyState = (duty: ScheduledActivity) => ({
+    activityId: duty.id,
+    templateId: duty.templateId || '',
+    name: duty.name,
+    description: duty.description,
+    category: duty.category,
+  })
+  
+  const getDutyConsequenceText = (duty: ScheduledActivity): string => {
+    const e = duty.effectsOnMiss || {}
+    const parts: string[] = []
+    if (e.reputation) parts.push(`Reputation ${e.reputation > 0 ? '+' : ''}${e.reputation}`)
+    if (e.sponsorSatisfaction) parts.push(`Sponsor ${e.sponsorSatisfaction > 0 ? '+' : ''}${e.sponsorSatisfaction}`)
+    if (e.fanSentiment) parts.push(`Fans ${e.fanSentiment > 0 ? '+' : ''}${e.fanSentiment}`)
+    if (e.boardMood) parts.push(`Board ${e.boardMood > 0 ? '+' : ''}${e.boardMood}`)
+    return parts.length > 0 ? parts.join(' · ') : 'Potential PR fallout'
   }
   
   const currentSessionDuty = getRelevantDuty(activeSession)
@@ -967,1121 +1681,1013 @@ export default function RaceDayScreen() {
     },
   ]
 
-  return (
-    <div className="space-y-6">
-      <PageHeader
-        title={isInvitational ? "Invitational Event" : "Race Day"}
-        subtitle={
-          isInvitational && invitationalEvent 
-            ? `${invitationalEvent.name} - ${invitationalEvent.trackName}`
-            : currentRace 
-              ? `Round ${currentSeries?.calendar?.indexOf(currentRace) ?? 0 + 1} - ${currentRace.trackName}`
-              : 'No race scheduled'
-        }
-        icon={isInvitational ? <Trophy className="w-6 h-6 text-accent-gold" /> : <Flag className="w-6 h-6" />}
-        actions={
-          <div className="flex items-center gap-2">
-            {telemetryStatus.listening ? (
-              telemetryStatus.receiving ? (
-                <Badge variant="green">
-                  <HardDrive className="w-3 h-3 mr-1 animate-pulse" />
-                  {telemetryStatus.raceState || liveSession?.sessionType || 'Connected'}
-                </Badge>
-              ) : (
-                <Badge variant="orange">
-                  <Radio className="w-3 h-3 mr-1" />
-                  Waiting for AMS2...
-                </Badge>
-              )
-            ) : (
-              <Button variant="secondary" size="sm" onClick={handleConnectTelemetry}>
-                <HardDrive className="w-4 h-4 mr-2" />
-                Connect Telemetry
-              </Button>
-            )}
-          </div>
-        }
-      />
+  const roundNumber = currentSeries?.calendar ? (currentSeries.calendar.findIndex(e => e.week === currentWeek) + 1) : 0
+  const totalRounds = currentSeries?.calendar?.length || 0
 
-      {/* Telemetry Status Bar - show when connected */}
-      {telemetryStatus.listening && telemetryStatus.receiving && (
-        <Card variant="glass" padding="sm">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-status-success rounded-full animate-pulse" />
-                <span className="text-sm font-medium">AMS2 Connected</span>
-              </div>
-              <div className="h-4 w-px bg-surface-border" />
-              <span className="text-sm text-text-muted">
-                <span className="text-accent-orange">{liveSession?.sessionType || 'Session'}</span>
-                {' • '}
-                <span className={telemetryStatus.raceState === 'Racing' ? 'text-status-success' : ''}>{telemetryStatus.raceState || 'Ready'}</span>
+  const championshipData = useMemo(() => {
+    if (!activeSeriesId) return { standings: [] as any[], playerStanding: null as any, leaderPoints: 0 }
+    const st = seasonStandings[activeSeriesId] || []
+    const ps = st.find((s: any) => s.isPlayer) || null
+    return { standings: st, playerStanding: ps, leaderPoints: st[0]?.points || 0 }
+  }, [activeSeriesId, seasonStandings])
+
+  return (
+    <div className="bg-white w-full h-full overflow-y-auto">
+      <div className="p-[24px] flex flex-col gap-[24px]">
+      {/* Page Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-[12px]">
+          {isInvitational ? <Trophy className="w-[24px] h-[24px] text-[#f0b100]" /> : <Flag className="w-[24px] h-[24px]" />}
+          <h1 className="text-[24px] text-black tracking-[-1.2px]" style={FB}>{isInvitational ? "Invitational Event" : "Race Day"}</h1>
+        </div>
+        <div className="flex items-center gap-[8px]">
+          {telemetryStatus.listening ? (
+            telemetryStatus.receiving ? (
+              <span className="px-[10px] py-[4px] text-[11px] rounded-full bg-[#00a63e] text-white flex items-center gap-[4px]" style={FBold}>
+                <HardDrive className="w-[12px] h-[12px] animate-pulse" /> {telemetryStatus.raceState || liveSession?.sessionType || 'Connected'}
               </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-text-muted">
-                <Users className="w-3 h-3 inline mr-1" />
-                {telemetryStatus.participantCount} drivers
+            ) : (
+              <span className="px-[10px] py-[4px] text-[11px] rounded-full bg-[#f0b100] text-white flex items-center gap-[4px]" style={FBold}>
+                <Radio className="w-[12px] h-[12px]" /> Waiting for AMS2...
               </span>
-              {liveSession?.trackName && (
-                <Badge variant="default" size="sm">
-                  {liveSession.trackName}
-                </Badge>
-              )}
-            </div>
-          </div>
-        </Card>
-      )}
+            )
+          ) : (
+            <button onClick={handleConnectTelemetry} className="h-[32px] px-[12px] border-[1.6px] border-black rounded-full text-[11px] text-black flex items-center gap-[6px] hover:bg-[#f9fafb] transition-colors" style={FBold}>
+              <HardDrive className="w-[14px] h-[14px]" /> Connect Telemetry
+            </button>
+          )}
+        </div>
+      </div>
 
       {/* Invitational Event Banner */}
       {isInvitational && invitationalEvent && (
-        <Card variant="racing" padding="lg" className="border-2 border-accent-gold bg-gradient-to-r from-accent-gold/10 to-accent-orange/10">
+        <div className={`${CARD} p-[20px] border-l-4 border-l-[#f0b100]`}>
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-xl bg-accent-gold/20 flex items-center justify-center">
-              <Trophy className="w-8 h-8 text-accent-gold" />
+            <div className="w-16 h-16 rounded-xl bg-[#f0b100]/20 flex items-center justify-center">
+              <Trophy className="w-8 h-8 text-[#f0b100]" />
             </div>
             <div className="flex-1">
-              <Badge variant="gold" className="mb-1">Special Invitational Event</Badge>
-              <h3 className="font-display font-bold text-xl">{invitationalEvent.name}</h3>
-              <p className="text-text-secondary">
+              <span className="px-[8px] py-[2px] text-[11px] rounded-full bg-[#f0b100]/10 text-[#f0b100] mb-[4px] inline-block" style={FBold}>Special Invitational Event</span>
+              <h3 className="text-[16px] text-black" style={FB}>{invitationalEvent.name}</h3>
+              <p className="text-[12px] text-[#4a5565]" style={FR}>
                 {invitationalEvent.organizerName} • {invitationalCarClass?.name || invitationalEvent.carClassName}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-text-muted">Prize Pool</p>
-              <p className="font-display font-bold text-xl text-status-success">
-                ${(invitationalEvent.rewards.prize / 1000).toFixed(0)}k
-              </p>
-              <p className="text-xs text-accent-orange">+{invitationalEvent.rewards.reputationBonus} Rep</p>
+              <p className="text-[10px] text-[#4a5565] uppercase" style={FBold}>Prize Pool</p>
+              <p className="text-[20px] text-[#00a63e]" style={FB}>${(invitationalEvent.rewards.prize / 1000).toFixed(0)}k</p>
+              <p className="text-[11px] text-[#ff6900]" style={FBold}>+{invitationalEvent.rewards.reputationBonus} Rep</p>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
-      {/* Media Duty Reminder - Show when there are pending duties */}
+      {/* Media Duty Reminder */}
       {showDutyReminder && activeDuties.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative"
-        >
-          <Card 
-            variant="glass" 
-            padding="md" 
-            className="border-l-4 border-l-accent-orange bg-accent-orange/5"
-          >
-            <button 
-              onClick={() => setShowDutyReminder(false)}
-              className="absolute top-2 right-2 p-1 text-text-muted hover:text-text-primary transition-colors"
-            >
-              ×
-            </button>
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="relative">
+          <div className={`${CARD} p-[16px] border-l-4 border-l-[#ff6900]`}>
+            <button onClick={() => setShowDutyReminder(false)} className="absolute top-2 right-2 p-1 text-[#4a5565] hover:text-black transition-colors">×</button>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-accent-orange/20 flex items-center justify-center">
-                  <Mic className="w-6 h-6 text-accent-orange" />
+                <div className="w-12 h-12 rounded-xl bg-[#ff6900]/20 flex items-center justify-center">
+                  <Mic className="w-6 h-6 text-[#ff6900]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-text-primary">Media Duties Pending</h3>
-                    <Badge variant="warning" size="sm">{activeDuties.length} Active</Badge>
+                    <h3 className="text-[13px] text-black" style={FBold}>Media Duties Pending</h3>
+                    <span className="px-[6px] py-[2px] text-[10px] rounded-full bg-[#ff6900]/10 text-[#ff6900]" style={FBold}>{activeDuties.length} Active</span>
                   </div>
-                  <p className="text-sm text-text-muted mt-0.5">
-                    {activeDuties.map(d => getDutyDisplayInfo(d).name).join(', ')}
-                  </p>
+                  <p className="text-[12px] text-[#4a5565] mt-0.5" style={FR}>{activeDuties.map(d => d.name).join(', ')}</p>
                 </div>
               </div>
-              <Button 
-                variant="secondary" 
-                size="sm"
-                onClick={() => navigate('/media')}
-                className="flex items-center gap-2"
-              >
-                <span>Complete Duties</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
+              <button onClick={() => navigate('/media', { state: { calendarDuty: toCalendarDutyState(activeDuties[0]) } })} className="h-[32px] px-[12px] bg-black text-white rounded-full text-[11px] flex items-center gap-[6px] hover:bg-black/90 transition-colors" style={FBold}>
+                Complete Duties <ChevronRight className="w-[14px] h-[14px]" />
+              </button>
             </div>
             {upcomingDuties.length > 0 && (
-              <div className="mt-3 pt-3 border-t border-surface-border">
-                <p className="text-xs text-text-muted">
-                  <Clock className="w-3 h-3 inline mr-1" />
-                  {upcomingDuties.length} more duties scheduled for later this weekend
-                </p>
+              <div className="mt-3 pt-3 border-t border-black/10">
+                <p className="text-[11px] text-[#4a5565]" style={FR}><Clock className="w-3 h-3 inline mr-1" />{upcomingDuties.length} more duties scheduled for later this weekend</p>
               </div>
             )}
-          </Card>
+          </div>
         </motion.div>
       )}
 
-      {/* Pre-Session Duty Alert - Show before starting a session with pending duty */}
+      {/* Pre-Session Duty Alert */}
       {currentSessionDuty && activeSession && (
-        <Card 
-          variant="glass" 
-          padding="sm" 
-          className="border border-status-warning bg-status-warning/5"
-        >
+        <div className={`${CARD} p-[12px] border-l-4 border-l-[#f0b100]`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <AlertTriangle className="w-5 h-5 text-status-warning" />
+              <AlertTriangle className="w-5 h-5 text-[#f0b100]" />
               <div>
-                <p className="text-sm font-medium text-status-warning">
-                  Complete media duty before {activeSession}
-                </p>
-                <p className="text-xs text-text-muted">
-                  {getDutyDisplayInfo(currentSessionDuty).name} - Skip penalty: ${currentSessionDuty.skipPenalty.fine.toLocaleString()}
-                </p>
+                <p className="text-[12px] text-[#f0b100]" style={FBold}>Complete media duty before {activeSession}</p>
+                <p className="text-[11px] text-[#4a5565]" style={FR}>{currentSessionDuty.name} - {getDutyConsequenceText(currentSessionDuty)}</p>
               </div>
             </div>
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => navigate('/media')}
-            >
+            <button onClick={() => navigate('/media', { state: { calendarDuty: toCalendarDutyState(currentSessionDuty) } })} className="h-[28px] px-[10px] bg-black text-white rounded-full text-[11px] hover:bg-black/90 transition-colors" style={FBold}>
               Go to Media
-            </Button>
+            </button>
           </div>
-        </Card>
+        </div>
       )}
 
-      {/* Car Condition Warning - Show when car has critically worn parts */}
+      {/* Car Condition Warning */}
       {!carConditionCheck.canRace && activeCar && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <Card 
-            variant="glass" 
-            padding="md" 
-            className="border-2 border-status-error bg-status-error/10"
-          >
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+          <div className={`${CARD} p-[16px] border-l-4 border-l-[#fb2c36]`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-status-error/20 flex items-center justify-center">
-                  <AlertTriangle className="w-6 h-6 text-status-error" />
+                <div className="w-12 h-12 rounded-xl bg-[#fb2c36]/20 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-[#fb2c36]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-status-error">Car Not Race-Ready</h3>
-                    <Badge variant="red" size="sm">{carConditionCheck.issues.length} Critical</Badge>
+                    <h3 className="text-[13px] text-[#fb2c36]" style={FBold}>Car Not Race-Ready</h3>
+                    <span className="px-[6px] py-[2px] text-[10px] rounded-full bg-[#fb2c36]/10 text-[#fb2c36]" style={FBold}>{carConditionCheck.issues.length} Critical</span>
                   </div>
-                  <p className="text-sm text-text-muted mt-0.5">
-                    {carConditionCheck.issues.map(i => i.part).join(', ')} wear exceeds 90% - service required
-                  </p>
+                  <p className="text-[12px] text-[#4a5565] mt-0.5" style={FR}>{carConditionCheck.issues.map(i => i.part).join(', ')} wear exceeds 90%</p>
                 </div>
               </div>
-              <Button 
-                variant="primary"
-                size="sm"
-                onClick={() => navigate('/garage')}
-                className="bg-status-error hover:bg-status-error/80"
-              >
-                <Wrench className="w-4 h-4 mr-2" />
-                Service Car
-              </Button>
+              <button onClick={() => navigate('/garage')} className="h-[32px] px-[12px] bg-[#fb2c36] text-white rounded-full text-[12px] flex items-center gap-[6px] hover:bg-[#fb2c36]/80 transition-colors" style={FBold}>
+                <Wrench className="w-[14px] h-[14px]" /> Service Car
+              </button>
             </div>
-          </Card>
+          </div>
         </motion.div>
       )}
 
       {/* No Race Warning */}
       {!currentRace && !isInvitational && (
-        <Card variant="default" padding="lg">
-          <div className="flex items-center gap-4 text-status-warning">
+        <div className={`${CARD} p-[20px]`}>
+          <div className="flex items-center gap-4 text-[#f0b100]">
             <AlertCircle className="w-8 h-8" />
             <div>
-              <h3 className="font-display font-semibold text-lg">No Race This Week</h3>
-              <p className="text-text-muted">
-                Check your calendar for upcoming race events. Current week: {currentWeek}
-              </p>
+              <h3 className="text-[16px] text-black" style={FB}>No Race This Week</h3>
+              <p className="text-[13px] text-[#4a5565]" style={FR}>Check your calendar for upcoming race events. Current week: {currentWeek}</p>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
       {currentRace && (
-        <div className="grid grid-cols-3 gap-6">
-          {/* Main Panel */}
-          <div className="col-span-2 space-y-6">
-            {/* Race Info Header with Track Image */}
-            <Card variant="racing" padding="none" className="overflow-hidden">
-              {/* Track Image Banner */}
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={getGeneratedTrackImage(currentRace.trackName, 'grandstand') || findTrackImageFromManifest(currentRace.trackName, layoutInfo?.name) || getTrackImageOriginal(currentRace.trackName, layoutInfo?.name)}
-                  alt={currentRace.trackName}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Try without layout name, fall back to original images
-                    const target = e.currentTarget
-                    if (!target.dataset.tried) {
-                      target.dataset.tried = 'true'
-                      target.src = findTrackImageFromManifest(currentRace.trackName) || getTrackImageOriginal(currentRace.trackName)
-                    } else {
-                      // Show gradient fallback
-                      target.style.display = 'none'
-                    }
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                
-                {/* Weather Badge */}
-                <div className="absolute top-4 right-4">
-                  <Badge variant={currentRace.weather === 'rain' ? 'blue' : 'default'} size="lg">
-                    {currentRace.weather === 'rain' ? '🌧️ Wet' : '☀️ Dry'}
-                  </Badge>
-                </div>
-                
-                {/* Track Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h2 className="font-display font-bold text-3xl mb-1 drop-shadow-lg">{currentRace.trackName}</h2>
-                  <p className="text-text-secondary text-lg">{layoutInfo?.name || 'Grand Prix'} Layout</p>
-                </div>
+        <>
+          {/* ═══ TOP BANNER ═══ */}
+          <div className={CARD}>
+            <div className="relative h-[200px] overflow-hidden">
+              <img
+                src={getTrackImage(currentRace.trackName, layoutInfo?.name)}
+                alt={currentRace.trackName}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget
+                  if (!target.dataset.tried) {
+                    target.dataset.tried = 'true'
+                    target.src = findTrackImageFromManifest(currentRace.trackName) || getTrackImage(currentRace.trackName)
+                  } else {
+                    target.style.display = 'none'
+                  }
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+
+              {/* Track info overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-[24px]">
+                <span className="px-[10px] py-[4px] bg-black text-white text-[11px] rounded-full inline-block mb-[8px]" style={FBold}>
+                  ROUND {roundNumber}/{totalRounds}
+                </span>
+                <h1 className="text-[30px] text-white tracking-[-1.5px]" style={FB}>{currentRace.trackName}</h1>
+                <p className="text-[14px] text-white/80 flex items-center gap-[6px] mt-[4px]" style={FR}>
+                  <MapPin className="w-[14px] h-[14px]" /> {layoutInfo?.name || 'Grand Prix'} Layout
+                </p>
               </div>
-              
-              {/* Track Stats Bar */}
-              <div className="p-4 bg-surface-secondary/50 flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                  <span className="flex items-center gap-2 text-sm">
-                    <Calendar className="w-4 h-4 text-accent-red" />
-                    <span className="text-text-muted">Week</span>
-                    <span className="font-bold">{currentWeek}</span>
-                  </span>
-                  <span className="flex items-center gap-2 text-sm">
-                    <Timer className="w-4 h-4 text-accent-orange" />
-                    <span className="text-text-muted">Length</span>
-                    <span className="font-bold">{layoutInfo?.lengthKm ? `${layoutInfo.lengthKm.toFixed(2)} km` : 'N/A'}</span>
-                  </span>
-                  <span className="flex items-center gap-2 text-sm">
-                    <MapPin className="w-4 h-4 text-accent-gold" />
-                    <span className="text-text-muted">Turns</span>
-                    <span className="font-bold">{layoutInfo?.turns || 'N/A'}</span>
-                  </span>
-                </div>
-                <span className="flex items-center gap-2 text-sm">
-                  <Car className="w-4 h-4 text-status-info" />
-                  <span className="font-bold">{currentSeries?.gridSize || 20}</span>
-                  <span className="text-text-muted">cars</span>
+
+              {/* Weather badge top-right */}
+              <div className="absolute top-[16px] right-[16px]">
+                <span className={`px-[10px] py-[4px] text-[11px] rounded-full ${currentRace.weather === 'rain' ? 'bg-[#2b7fff] text-white' : 'bg-white/90 text-black'}`} style={FBold}>
+                  {currentRace.weather === 'rain' ? '🌧️ Wet' : '☀️ Dry'}
                 </span>
               </div>
-            </Card>
+            </div>
 
-            {/* Session Selector */}
-            <Card variant="glass" padding="none">
-              <div className="flex border-b border-surface-border">
-                {sessions.map((session) => (
-                  <button
-                    key={session.id}
-                    onClick={() => setActiveSession(session.id as SessionType)}
-                    className={`
-                      flex-1 flex items-center justify-center gap-2 px-6 py-4 font-medium transition-all
-                      ${activeSession === session.id 
-                        ? 'bg-surface-secondary text-white border-b-2 border-accent-red' 
-                        : 'text-text-muted hover:text-white hover:bg-surface/50'
-                      }
-                    `}
-                  >
-                    {session.completed ? (
-                      <CheckCircle className="w-5 h-5 text-status-success" />
-                    ) : (
-                      <session.icon className="w-5 h-5" />
-                    )}
-                    {session.label}
-                    {session.completed && (
-                      <Badge variant="green" size="sm">Done</Badge>
-                    )}
-                    {!session.completed && liveSession?.sessionType?.toLowerCase().includes(session.id) && (
-                      <span className="w-2 h-2 bg-status-success rounded-full animate-pulse" />
-                    )}
-                  </button>
-                ))}
-              </div>
+            {/* 4 stat boxes */}
+            <div className="p-[16px] grid grid-cols-4 gap-[12px]">
+              {[
+                { label: 'LENGTH', value: layoutInfo?.lengthKm ? `${layoutInfo.lengthKm.toFixed(2)} km` : 'N/A' },
+                { label: 'TURNS', value: String(layoutInfo?.turns || 'N/A') },
+                { label: 'GRID', value: String(currentSeries?.gridSize || 20) },
+                { label: 'WEATHER', value: currentRace.weather === 'rain' ? 'Wet' : 'Dry' },
+              ].map(stat => (
+                <div key={stat.label} className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[14px] text-center">
+                  <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>{stat.label}</p>
+                  <p className="text-[20px] text-black" style={FB}>{stat.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-              <div className="p-6">
-                <SessionPanel
-                  title={activeSession === 'practice' ? 'Free Practice' : activeSession === 'qualifying' ? 'Qualifying' : 'Race'}
-                  description={
-                    activeSession === 'practice' 
-                      ? 'Test setups, learn the track, and prepare for qualifying'
-                      : activeSession === 'qualifying'
-                      ? 'Set your fastest lap to determine grid position'
-                      : 'The main event - compete for championship points'
-                  }
-                  status={sessionStatus}
-                  liveSession={liveSession}
-                  isLive={telemetryStatus.receiving && liveSession?.sessionType?.toLowerCase().includes(activeSession)}
-                  telemetryConnected={telemetryStatus.listening}
-                  storedResult={sessions.find(s => s.id === activeSession)?.result as SessionResult | undefined}
-                  isRaceSession={activeSession === 'race'}
-                  isWeekendComplete={sessions.find(s => s.id === 'race')?.completed || false}
-                  onAdvanceWeek={() => {
-                    advanceWeek()
-                    clearRaceWeekendProgress()
-                    addToast({
-                      type: 'success',
-                      title: 'Week Advanced',
-                      message: 'Moving to the next week of your career.',
-                      duration: 3000
-                    })
-                    navigate('/')
-                  }}
-                  carConditionIssues={carConditionCheck.issues}
-                  onShowCarConditionModal={() => setShowCarConditionModal(true)}
-                />
-              </div>
-            </Card>
+          {/* ═══ THREE COLUMN GRID ═══ */}
+          <div className="grid grid-cols-12 gap-[16px]">
+            {/* ── LEFT COLUMN ── */}
+            <div className="col-span-4 flex flex-col gap-[16px]">
 
-            {/* Live Participants (when receiving) */}
-            {telemetryStatus.receiving && participants.length > 0 && (
-              <Card variant="glass" padding="lg">
-                <CardHeader 
-                  title="Live Standings" 
-                  subtitle={`${participants.length} participants`}
-                  action={
-                    <Badge variant="green" size="sm">
-                      <Radio className="w-3 h-3 mr-1 animate-pulse" />
-                      Live
-                    </Badge>
-                  }
-                />
-                <div className="space-y-1 max-h-48 overflow-y-auto">
-                  {participants
-                    .sort((a, b) => a.racePosition - b.racePosition)
-                    .slice(0, 10)
-                    .map((p, idx) => (
-                      <div 
-                        key={p.name || idx} 
-                        className={`flex items-center gap-3 p-2 rounded ${p.isPlayer ? 'bg-accent-red/20 border border-accent-red/30' : 'bg-background/50'}`}
+            {/* SESSION Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Zap className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>SESSION</span>
+                </div>
+                <div className="p-[16px]">
+                  {/* Pill tabs */}
+                  <div className="flex gap-[6px] mb-[16px]">
+                    {sessions.map(session => (
+                      <button
+                        key={session.id}
+                        onClick={() => setActiveSession(session.id as SessionType)}
+                        className={`flex-1 py-[8px] px-[10px] rounded-full text-[11px] flex items-center justify-center gap-[4px] transition-all ${
+                          activeSession === session.id
+                            ? 'bg-black text-white'
+                            : 'bg-[#f3f4f6] text-black hover:bg-[#e5e7eb]'
+                        }`}
+                        style={FBold}
                       >
-                        <span className={`w-6 h-6 rounded flex items-center justify-center text-xs font-bold
-                          ${p.racePosition === 1 ? 'bg-accent-gold text-black' : 
-                            p.racePosition === 2 ? 'bg-gray-400 text-black' :
-                            p.racePosition === 3 ? 'bg-amber-700 text-white' : 'bg-surface-secondary'}`}
-                        >
-                          {p.racePosition}
-                        </span>
-                        <span className={`flex-1 text-sm ${p.isPlayer ? 'font-bold text-accent-red' : ''}`}>
-                          {p.name || `Driver ${idx + 1}`}
-                          {p.isPlayer && ' (You)'}
-                        </span>
-                        <span className="text-xs text-text-muted font-mono">
-                          {p.bestLapTime > 0 ? formatLapTime(p.bestLapTime) : '-'}
-                        </span>
-                      </div>
+                        {session.completed && <CheckCircle className="w-[12px] h-[12px]" />}
+                        {session.label.toUpperCase()}
+                        {!session.completed && liveSession?.sessionType?.toLowerCase().includes(session.id) && (
+                          <span className="w-[6px] h-[6px] bg-[#00a63e] rounded-full animate-pulse" />
+                        )}
+                      </button>
                     ))}
-                </div>
-              </Card>
-            )}
-
-            {/* Race Results - Auto from Telemetry */}
-            <Card variant="default" padding="lg">
-              <CardHeader 
-                title="Race Results" 
-                subtitle={playerParticipant ? "Live results from telemetry" : "Waiting for telemetry data..."}
-              />
-              
-              {/* Live Position Display */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center p-4 bg-background/50 rounded-xl">
-                  <p className="text-sm text-text-muted mb-1">Qualifying</p>
-                  <p className={`font-display font-bold text-3xl ${qualifyingPosition && qualifyingPosition <= 3 ? 'text-accent-gold' : 'text-white'}`}>
-                    {qualifyingPosition ? `P${qualifyingPosition}` : '-'}
-                  </p>
-                </div>
-                <div className="text-center p-4 bg-background/50 rounded-xl">
-                  <p className="text-sm text-text-muted mb-1">Race Finish</p>
-                  <p className={`font-display font-bold text-3xl ${playerParticipant?.racePosition && playerParticipant.racePosition <= 3 ? 'text-accent-gold' : 'text-white'}`}>
-                    {playerParticipant?.racePosition ? `P${playerParticipant.racePosition}` : finishPosition ? `P${finishPosition}` : '-'}
-                  </p>
-                </div>
-                <div className="text-center p-4 bg-background/50 rounded-xl">
-                  <p className="text-sm text-text-muted mb-1">Best Lap</p>
-                  <p className="font-mono font-bold text-xl text-accent-cyan">
-                    {playerParticipant?.bestLapTime && playerParticipant.bestLapTime > 0 
-                      ? formatLapTime(playerParticipant.bestLapTime) 
-                      : bestLapTime || '-'}
-                  </p>
+                  </div>
+                  <SessionPanel
+                    title={activeSession === 'practice' ? 'Free Practice' : activeSession === 'qualifying' ? 'Qualifying' : 'Race'}
+                    description={
+                      activeSession === 'practice' ? 'Test setups and learn the track'
+                        : activeSession === 'qualifying' ? 'Set your fastest lap for grid position'
+                        : 'The main event — compete for points'
+                    }
+                    status={sessionStatus}
+                    liveSession={liveSession}
+                    isLive={telemetryStatus.receiving && liveSession?.sessionType?.toLowerCase().includes(activeSession)}
+                    telemetryConnected={telemetryStatus.listening}
+                    storedResult={sessions.find(s => s.id === activeSession)?.result as SessionResult | undefined}
+                    isRaceSession={activeSession === 'race'}
+                    isWeekendComplete={sessions.find(s => s.id === 'race')?.completed || false}
+                    onAdvanceWeek={() => {
+                      useCareerStore.getState().advanceWeek()
+                      useCareerStore.getState().clearRaceWeekendProgress()
+                      setTimeout(() => useCareerStore.getState().autoCompletePostRaceActivities(), 0)
+                      addToast({ type: 'success', message: 'Moving to the next week of your career.', duration: 3000 })
+                      navigate('/')
+                    }}
+                    carConditionIssues={carConditionCheck.issues}
+                    onShowCarConditionModal={() => setShowCarConditionModal(true)}
+                  />
                 </div>
               </div>
 
-              {/* Points Preview */}
-              {(playerParticipant?.racePosition || finishPosition) && (
-                <div className="p-4 bg-background/50 rounded-xl mb-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-text-muted">Points for P{playerParticipant?.racePosition || finishPosition}:</span>
-                    <span className="font-display font-bold text-2xl text-accent-gold">
-                      +{calculatePoints((playerParticipant?.racePosition || finishPosition) as number)} pts
+            {/* DRIVER STATUS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Users className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>DRIVER STATUS</span>
+                </div>
+                <div className="p-[16px] space-y-[12px]">
+                  {[
+                    { label: 'Confidence', value: player.mentalState?.confidence ?? 50 },
+                    { label: 'Focus', value: 100 - (player.mentalState?.fatigue ?? 0) },
+                    { label: 'Composure', value: 100 - (player.mentalState?.stress ?? 20) },
+                  ].map(stat => {
+                    const statusLabel = stat.value >= 80 ? 'EXCELLENT' : stat.value >= 50 ? 'GOOD' : 'LOW'
+                    const statusColor = stat.value >= 80 ? '#00a63e' : stat.value >= 50 ? '#ff6900' : '#fb2c36'
+                    return (
+                      <div key={stat.label}>
+                        <div className="flex items-center justify-between mb-[6px]">
+                          <span className="text-[12px] text-black" style={FBold}>{stat.label}</span>
+                          <span className="text-[10px] px-[8px] py-[2px] rounded-full" style={{ ...FBold, backgroundColor: `${statusColor}15`, color: statusColor }}>{statusLabel}</span>
+                        </div>
+                        <div className="h-[8px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                          <div className="h-full rounded-full transition-all duration-500 bg-black" style={{ width: `${stat.value}%` }} />
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* TRACK CONDITIONS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Thermometer className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>TRACK CONDITIONS</span>
+                </div>
+                <div className="p-[16px]">
+                  <div className="grid grid-cols-2 gap-[10px]">
+                    <div className="bg-[#fff7ed] border-[1.6px] border-[#ffd6a8] rounded-[14px] p-[14px]">
+                      <div className="flex items-center gap-[6px] mb-[6px]">
+                        <Thermometer className="w-[14px] h-[14px] text-[#ff6900]" />
+                        <span className="text-[9px] text-[#ff6900] uppercase tracking-[0.5px]" style={FBold}>AIR</span>
+                      </div>
+                      <p className="text-[16px] text-black" style={FB}>{currentRace.weather === 'rain' ? '18°C' : '24°C'}</p>
+                    </div>
+                    <div className="bg-[#fef2f2] border-[1.6px] border-[#fecaca] rounded-[14px] p-[14px]">
+                      <div className="flex items-center gap-[6px] mb-[6px]">
+                        <Thermometer className="w-[14px] h-[14px] text-[#fb2c36]" />
+                        <span className="text-[9px] text-[#fb2c36] uppercase tracking-[0.5px]" style={FBold}>TRACK</span>
+                      </div>
+                      <p className="text-[16px] text-black" style={FB}>{currentRace.weather === 'rain' ? '22°C' : '38°C'}</p>
+                    </div>
+                    <div className="bg-[#eff6ff] border-[1.6px] border-[#bfdbfe] rounded-[14px] p-[14px]">
+                      <div className="flex items-center gap-[6px] mb-[6px]">
+                        <Wind className="w-[14px] h-[14px] text-[#2b7fff]" />
+                        <span className="text-[9px] text-[#2b7fff] uppercase tracking-[0.5px]" style={FBold}>WIND</span>
+                      </div>
+                      <p className="text-[12px] text-black" style={FBold}>Light Breeze</p>
+                    </div>
+                    <div className="bg-[#eff6ff] border-[1.6px] border-[#bfdbfe] rounded-[14px] p-[14px]">
+                      <div className="flex items-center gap-[6px] mb-[6px]">
+                        <Droplets className="w-[14px] h-[14px] text-[#2b7fff]" />
+                        <span className="text-[9px] text-[#2b7fff] uppercase tracking-[0.5px]" style={FBold}>RAIN</span>
+                      </div>
+                      <p className="text-[16px] text-black" style={FB}>{currentRace.weather === 'rain' ? '80%' : '0%'}</p>
+                    </div>
+                  </div>
+                  <div className="mt-[12px] bg-[#f9fafb] rounded-full px-[14px] py-[8px] text-center">
+                    <span className="text-[11px] text-[#4a5565]" style={FR}>
+                      {currentRace.weather === 'rain' ? '🌧️ Rainy Conditions' : '☀️ Clear Skies'}
                     </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {/* ── CENTER COLUMN ── */}
+            <div className="col-span-5 flex flex-col gap-[16px]">
+              {/* TELEMETRY & RESULTS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Activity className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>TELEMETRY & RESULTS</span>
+                </div>
+                <div className="p-[16px]">
+                  <div className="grid grid-cols-3 gap-[12px] mb-[12px]">
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[14px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>QUALIFYING</p>
+                      <p className={`text-[24px] ${qualifyingPosition && qualifyingPosition <= 3 ? 'text-[#f0b100]' : 'text-black'}`} style={FB}>
+                        {qualifyingPosition ? `P${qualifyingPosition}` : '—'}
+                      </p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[14px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>RACE FINISH</p>
+                      <p className={`text-[24px] ${(playerParticipant?.racePosition ?? (typeof finishPosition === 'number' ? finishPosition : 99)) <= 3 ? 'text-[#f0b100]' : 'text-black'}`} style={FB}>
+                        {playerParticipant?.racePosition ? `P${playerParticipant.racePosition}` : finishPosition ? `P${finishPosition}` : '—'}
+                      </p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[14px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>BEST LAP</p>
+                      <p className="text-[16px] text-black font-mono" style={FBold}>
+                        {playerParticipant?.bestLapTime && playerParticipant.bestLapTime > 0 ? formatLapTime(playerParticipant.bestLapTime) : bestLapTime || '—'}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-[12px] mb-[16px]">
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[10px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[2px]" style={FBold}>TOP SPEED</p>
+                      <p className="text-[13px] text-black" style={FB}>—</p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[10px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[2px]" style={FBold}>AVG SPEED</p>
+                      <p className="text-[13px] text-black" style={FB}>—</p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[10px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[2px]" style={FBold}>INCIDENTS</p>
+                      <p className="text-[13px] text-black" style={FB}>—</p>
+                    </div>
+                  </div>
+
+                  {!playerParticipant && finishPosition === '' ? (
+                    <div className="bg-[#f9fafb] rounded-[14px] p-[24px] text-center">
+                      <Clock className="w-[24px] h-[24px] text-[#99a1af] mx-auto mb-[8px]" />
+                      <p className="text-[12px] text-[#4a5565]" style={FR}>Waiting for session data...</p>
+                      <p className="text-[10px] text-[#99a1af] mt-[4px]" style={FR}>Results auto-populate from AMS2 telemetry</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-[12px]">
+                      {(playerParticipant?.racePosition || finishPosition) && (
+                        <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[12px] flex items-center justify-between">
+                          <span className="text-[12px] text-[#4a5565]" style={FR}>Points for P{playerParticipant?.racePosition || finishPosition}</span>
+                          <span className="text-[18px] text-[#f0b100]" style={FB}>+{calculatePoints((playerParticipant?.racePosition || finishPosition) as number)} pts</span>
+                        </div>
+                      )}
+                      <button
+                        onClick={() => {
+                          if (playerParticipant?.racePosition) {
+                            setFinishPosition(playerParticipant.racePosition)
+                            if (playerParticipant.bestLapTime > 0) setBestLapTime(formatLapTime(playerParticipant.bestLapTime))
+                          }
+                          handleSubmitResults()
+                        }}
+                        disabled={!playerParticipant?.racePosition && finishPosition === ''}
+                        className="w-full h-[40px] bg-black text-white rounded-full text-[13px] flex items-center justify-center gap-[8px] hover:bg-black/90 transition-colors disabled:bg-[#e5e7eb] disabled:text-[#99a1af] disabled:cursor-not-allowed"
+                        style={FBold}
+                      >
+                        <CheckCircle className="w-[16px] h-[16px]" /> Confirm Race Result
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* FIELD DEVELOPMENT Card */}
+              {fieldDevelopment && (
+                <div className={CARD}>
+                  <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center justify-between">
+                    <div className="flex items-center gap-[8px]">
+                      <TrendingUp className="w-[16px] h-[16px]" />
+                      <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>FIELD DEVELOPMENT</span>
+                    </div>
+                    <span className="text-[10px] text-[#4a5565]" style={FR}>Rival car development</span>
+                  </div>
+                  <div className="p-[16px] space-y-[12px]">
+                    <div>
+                      <div className="flex justify-between mb-[6px]">
+                        <span className="text-[11px] text-[#9810fa]" style={FBold}>Field Average</span>
+                        <span className="text-[11px] text-[#9810fa]" style={FBold}>{fieldDevelopment.avgPercent.toFixed(0)}%</span>
+                      </div>
+                      <div className="h-[8px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                        <div className="h-full bg-black rounded-full transition-all" style={{ width: `${fieldDevelopment.avgPercent}%` }} />
+                      </div>
+                    </div>
+                    {fieldDevelopment.ranking.slice(0, 5).map((team, i) => {
+                      const pct = Math.min(100, (team.totalPoints / 400) * 100)
+                      
+                      return (
+                        <div key={team.teamId}>
+                          <div className="flex justify-between mb-[4px]">
+                            <span className={`text-[11px] truncate mr-2 ${i === 0 ? 'text-black' : 'text-[#4a5565]'}`} style={i === 0 ? FBold : FR}>
+                              {i + 1}. {team.teamName}
+                            </span>
+                            <span className="text-[11px] text-[#4a5565] shrink-0" style={FR}>{pct.toFixed(0)}%</span>
+                          </div>
+                          <div className="h-[6px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                            <div className="h-full rounded-full transition-all bg-black" style={{ width: `${pct}%` }} />
+                          </div>
+                        </div>
+                      )
+                    })}
+                    {fieldDevelopment.totalTeams > 5 && (
+                      <p className="text-[10px] text-[#99a1af] text-center" style={FR}>+ {fieldDevelopment.totalTeams - 5} more teams</p>
+                    )}
                   </div>
                 </div>
               )}
 
-              <div className="flex gap-3">
-                <Button 
-                  variant="primary" 
-                  className="flex-1"
-                  onClick={() => {
-                    // Use telemetry data if available, fall back to manual
-                    if (playerParticipant?.racePosition) {
-                      setFinishPosition(playerParticipant.racePosition)
-                      if (playerParticipant.bestLapTime > 0) {
-                        setBestLapTime(formatLapTime(playerParticipant.bestLapTime))
-                      }
-                    }
-                    handleSubmitResults()
-                  }}
-                  disabled={!playerParticipant?.racePosition && finishPosition === ''}
-                >
-                  <CheckCircle className="w-4 h-4 mr-2" />
-                  Confirm Race Result
-                </Button>
-              </div>
-              
-              {!playerParticipant && (
-                <p className="text-xs text-text-muted/60 mt-3 text-center">
-                  💡 Results will auto-populate from AMS2 telemetry. Enable Shared Memory in game settings.
-                </p>
-              )}
-            </Card>
+            </div>
 
-            {/* AI Generation Status */}
-            <Card variant="glass" padding="lg">
-              <CardHeader 
-                title="AI Drivers" 
-                subtitle="Weekend form applied to AI skill levels"
-              />
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <FileCode className={`w-5 h-5 ${xmlGenerated ? 'text-status-success' : 'text-text-muted'}`} />
-                    <div>
-                      <p className="text-sm font-medium">
-                        {xmlGenerated ? 'AI Ready' : 'Not Generated'}
-                      </p>
-                      <p className="text-xs text-text-muted">
-                        {xmlGenerated ? 'Form variance applied' : 'Will auto-generate on launch'}
+            {/* ── RIGHT COLUMN ── */}
+            <div className="col-span-3 flex flex-col gap-[16px]">
+
+              {/* RPG MODIFIERS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Zap className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>RPG MODIFIERS</span>
+                </div>
+                <div className="p-[16px]">
+                  <div className="grid grid-cols-3 gap-[10px] mb-[12px]">
+                    <div className="bg-[#f0fdf4] border-[1.6px] border-[#bbf7d0] rounded-[14px] p-[12px] text-center">
+                      <p className="text-[9px] text-[#00a63e] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>AI WEAKNESS</p>
+                      <p className="text-[20px] text-[#00a63e]" style={FB}>
+                        {((aiModifier.breakdown.teamDevelopment + aiModifier.breakdown.milestonePerks + aiModifier.breakdown.formBonus) * 100).toFixed(1)}%
                       </p>
                     </div>
+                    <div className="bg-[#fef2f2] border-[1.6px] border-[#fecaca] rounded-[14px] p-[12px] text-center">
+                      <p className="text-[9px] text-[#fb2c36] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>PRESSURE</p>
+                      <p className="text-[20px] text-[#fb2c36]" style={FB}>
+                        +{((aiModifier.breakdown.injuryPenalty + aiModifier.breakdown.fatiguePenalty + aiModifier.breakdown.pressurePenalty) * 100).toFixed(1)}%
+                      </p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[12px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[4px]" style={FBold}>NET</p>
+                      <p className={`text-[20px] ${aiModifier.modifier < 0 ? 'text-[#00a63e]' : aiModifier.modifier > 0 ? 'text-[#fb2c36]' : 'text-black'}`} style={FB}>
+                        {aiModifier.modifier < 0 ? '' : '+'}{(aiModifier.modifier * 100).toFixed(1)}%
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-[#eff6ff] border-[1.6px] border-[#bfdbfe] rounded-[14px] p-[12px]">
+                    <p className="text-[11px] text-[#2b7fff] text-center" style={FR}>
+                      {aiModifier.modifier < 0 ? 'AI is weaker — your training & development is paying off' : aiModifier.modifier > 0 ? 'AI is stronger — injury, fatigue or pressure is hurting you' : 'No active modifiers — train and race to unlock advantages'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* AI DRIVERS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center justify-between">
+                  <div className="flex items-center gap-[8px]">
+                    <FileCode className="w-[16px] h-[16px]" />
+                    <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>AI DRIVERS</span>
                   </div>
                   {xmlGenerated && (
-                    <Badge variant="green" size="sm">
-                      <CheckCircle className="w-3 h-3 mr-1" />
-                      Ready
-                    </Badge>
+                    <span className="text-[10px] px-[8px] py-[2px] rounded-full bg-[#00a63e]/10 text-[#00a63e]" style={FBold}>Ready</span>
                   )}
                 </div>
-                
-                <Button 
-                  variant="secondary" 
-                  className="w-full"
-                  onClick={generateAIXML}
-                  disabled={isGeneratingXML || !currentSeries || !currentRace}
-                >
-                  {isGeneratingXML ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <RefreshCw className="w-4 h-4 mr-2" />
-                      Regenerate AI
-                    </>
+                <div className="p-[16px] flex items-center justify-between">
+                  <div>
+                    <p className="text-[12px] text-black" style={FBold}>{xmlGenerated ? 'AI Ready — Form variance applied' : 'Not Generated'}</p>
+                    <p className="text-[10px] text-[#4a5565]" style={FR}>{xmlGenerated ? 'Regenerate for new random weekend variance' : 'Will auto-generate on launch'}</p>
+                  </div>
+                  <button
+                    onClick={generateAIXML}
+                    disabled={isGeneratingXML || !currentSeries || !currentRace}
+                    className="h-[32px] px-[14px] border-[1.6px] border-black rounded-full text-[11px] text-black flex items-center gap-[6px] hover:bg-[#f9fafb] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={FBold}
+                  >
+                    {isGeneratingXML ? <><Loader2 className="w-[14px] h-[14px] animate-spin" /> Generating...</> : <><RefreshCw className="w-[14px] h-[14px]" /> Regenerate</>}
+                  </button>
+                </div>
+              </div>
+              {/* CHAMPIONSHIP Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Trophy className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>CHAMPIONSHIP</span>
+                </div>
+                <div className="p-[16px]">
+                  <div className="bg-black rounded-[14px] p-[16px] text-center mb-[12px]">
+                    <p className="text-[9px] text-white/60 uppercase tracking-[0.5px] mb-[4px]" style={FBold}>POSITION</p>
+                    <p className="text-[36px] text-white" style={FB}>#{championshipData.playerStanding?.position || '—'}</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-[10px]">
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[12px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[2px]" style={FBold}>POINTS</p>
+                      <p className="text-[20px] text-[#f0b100]" style={FB}>{championshipData.playerStanding?.points || 0}</p>
+                    </div>
+                    <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[12px] text-center">
+                      <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px] mb-[2px]" style={FBold}>TO LEADER</p>
+                      <p className="text-[20px] text-black" style={FB}>
+                        {championshipData.playerStanding?.position === 1 ? '—' : `${championshipData.leaderPoints - (championshipData.playerStanding?.points || 0)}`}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* STANDINGS Card */}
+              <div className={CARD}>
+                <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                  <Flag className="w-[16px] h-[16px]" />
+                  <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>STANDINGS</span>
+                </div>
+                <div className="p-[16px] space-y-[8px]">
+                  {(() => {
+                    const top5 = championshipData.standings.slice(0, 5)
+                    const playerInTop5 = top5.some((s: any) => s.isPlayer)
+                    const rows = playerInTop5 ? top5 : [...top5.slice(0, 4), championshipData.playerStanding].filter(Boolean)
+                    return rows.map((s: any) => s && (
+                      <div
+                        key={s.driverId}
+                        className={`flex items-center gap-[10px] px-[12px] py-[10px] rounded-[12px] border-[1.6px] ${
+                          s.isPlayer ? 'bg-[#ff6900] border-[#ff6900] text-white' : 'bg-[#f9fafb] border-[#e5e7eb]'
+                        }`}
+                      >
+                        <span className={`text-[12px] w-[20px] text-center ${s.isPlayer ? 'text-white' : 'text-[#4a5565]'}`} style={FBold}>P{s.position}</span>
+                        <span className={`flex-1 text-[12px] truncate ${s.isPlayer ? 'text-white' : 'text-black'}`} style={FBold}>{s.driverName}</span>
+                        <span className={`text-[12px] font-mono ${s.isPlayer ? 'text-white/80' : 'text-[#4a5565]'}`} style={FR}>{s.points}pts</span>
+                      </div>
+                    ))
+                  })()}
+                  {championshipData.standings.length === 0 && (
+                    <div className="text-center py-[16px]">
+                      <p className="text-[11px] text-[#99a1af]" style={FR}>No standings data yet</p>
+                    </div>
                   )}
-                </Button>
-                <p className="text-xs text-text-muted text-center">
-                  Regenerate to apply new random weekend variance
-                </p>
+                </div>
               </div>
-            </Card>
-          </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Driver Status */}
-            <Card variant="racing" padding="lg">
-              <CardHeader title="Driver Status" />
-              <div className="space-y-4">
-                <StatBar label="Confidence" value={player.mentalState?.confidence ?? 50} color="orange" />
-                <StatBar label="Focus" value={100 - (player.mentalState?.fatigue ?? 0)} color="blue" />
-                <StatBar label="Stress" value={player.mentalState?.stress ?? 20} color="red" />
-              </div>
-            </Card>
+              {/* SERIES Card */}
+              {currentSeries && (
+                <div className={CARD}>
+                  <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center gap-[8px]">
+                    <Calendar className="w-[16px] h-[16px]" />
+                    <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>SERIES</span>
+                  </div>
+                  <div className="p-[16px]">
+                    <p className="text-[13px] text-black mb-[4px]" style={FBold}>{currentSeries.name}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Round {roundNumber} of {totalRounds}</p>
+                  </div>
+                </div>
+              )}
 
-            {/* RPG AI Modifier */}
-            <Card variant="glass" padding="lg">
-              <CardHeader 
-                title="RPG Modifier" 
-                subtitle="Affects AI difficulty"
-              />
-              <div className="space-y-4">
-                {/* Modifier Display */}
-                <div className={`
-                  p-4 rounded-xl text-center
-                  ${aiModifier.modifier < 0 
-                    ? 'bg-status-success/20 border border-status-success/30' 
-                    : aiModifier.modifier > 0 
-                    ? 'bg-status-error/20 border border-status-error/30'
-                    : 'bg-surface-secondary border border-surface-border'}
-                `}>
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    {aiModifier.modifier < 0 ? (
-                      <TrendingDown className="w-5 h-5 text-status-success" />
-                    ) : aiModifier.modifier > 0 ? (
-                      <TrendingUp className="w-5 h-5 text-status-error" />
-                    ) : (
-                      <Minus className="w-5 h-5 text-text-muted" />
-                    )}
-                    <span className={`font-display font-bold text-2xl
-                      ${aiModifier.modifier < 0 
-                        ? 'text-status-success' 
-                        : aiModifier.modifier > 0 
-                        ? 'text-status-error'
-                        : 'text-text-muted'}
-                    `}>
-                      {aiModifier.modifier < 0 ? '' : '+'}{(aiModifier.modifier * 100).toFixed(1)}%
+              {/* LIVE STANDINGS (when telemetry connected) */}
+              {telemetryStatus.receiving && participants.length > 0 && (
+                <div className={CARD}>
+                  <div className="px-[16px] py-[12px] border-b-[1.6px] border-black flex items-center justify-between">
+                    <div className="flex items-center gap-[8px]">
+                      <Radio className="w-[16px] h-[16px]" />
+                      <span className="text-[14px] text-black tracking-[-0.7px]" style={FB}>LIVE</span>
+                    </div>
+                    <span className="text-[10px] px-[8px] py-[2px] rounded-full bg-[#00a63e]/10 text-[#00a63e] flex items-center gap-[4px]" style={FBold}>
+                      <span className="w-[6px] h-[6px] bg-[#00a63e] rounded-full animate-pulse" /> {participants.length} drivers
                     </span>
                   </div>
-                  <p className="text-xs text-text-muted">
-                    {aiModifier.modifier < 0 
-                      ? 'AI is weaker (your advantage)' 
-                      : aiModifier.modifier > 0 
-                      ? 'AI is stronger (disadvantage)'
-                      : 'No active modifiers'}
-                  </p>
-                </div>
-
-                {/* Breakdown */}
-                <div className="space-y-2 text-sm">
-                  {aiModifier.breakdown.teamDevelopment !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Team Development</span>
-                      <span className="text-status-success">
-                        {(aiModifier.breakdown.teamDevelopment * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.breakdown.milestonePerks !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Milestone Perks</span>
-                      <span className="text-status-success">
-                        {(aiModifier.breakdown.milestonePerks * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.breakdown.formBonus !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Hot Streak</span>
-                      <span className="text-status-success">
-                        {(aiModifier.breakdown.formBonus * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.breakdown.injuryPenalty !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Injury</span>
-                      <span className="text-status-error">
-                        +{(aiModifier.breakdown.injuryPenalty * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.breakdown.fatiguePenalty !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Fatigue</span>
-                      <span className="text-status-error">
-                        +{(aiModifier.breakdown.fatiguePenalty * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.breakdown.pressurePenalty !== 0 && (
-                    <div className="flex justify-between p-2 bg-background/30 rounded">
-                      <span className="text-text-muted">Pressure</span>
-                      <span className="text-status-error">
-                        +{(aiModifier.breakdown.pressurePenalty * 100).toFixed(1)}%
-                      </span>
-                    </div>
-                  )}
-                  {aiModifier.modifier === 0 && (
-                    <div className="flex items-center justify-center gap-2 p-3 text-text-muted">
-                      <Activity className="w-4 h-4" />
-                      <span>Train and race to unlock modifiers</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </Card>
-
-            {/* Weather */}
-            <Card variant="glass" padding="lg">
-              <CardHeader title="Conditions" />
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg">
-                  <Thermometer className="w-5 h-5 text-accent-orange" />
-                  <div>
-                    <p className="text-xs text-text-muted">Air Temp</p>
-                    <p className="font-mono font-medium">
-                      {currentRace.weather === 'rain' ? '18°C' : '24°C'}
-                    </p>
+                  <div className="p-[12px] space-y-[4px] max-h-[300px] overflow-y-auto">
+                    {participants
+                      .sort((a, b) => a.racePosition - b.racePosition)
+                      .slice(0, 10)
+                      .map((p, idx) => (
+                        <div key={p.name || idx} className={`flex items-center gap-[8px] px-[10px] py-[6px] rounded-[10px] ${p.isPlayer ? 'bg-[#ff6900] text-white' : 'bg-[#f9fafb]'}`}>
+                          <span className={`w-[20px] h-[20px] rounded-[6px] flex items-center justify-center text-[10px] ${
+                            p.racePosition === 1 ? 'bg-[#f0b100] text-black' :
+                            p.racePosition === 2 ? 'bg-gray-400 text-black' :
+                            p.racePosition === 3 ? 'bg-amber-700 text-white' :
+                            p.isPlayer ? 'bg-white/20 text-white' : 'bg-[#e5e7eb]'
+                          }`} style={FBold}>{p.racePosition}</span>
+                          {getParticipantPortrait(p.name) ? (
+                            <img src={getParticipantPortrait(p.name)} alt={p.name || `Driver ${idx + 1}`} className="w-[20px] h-[20px] rounded-full object-cover bg-gray-200 border border-black/10" />
+                          ) : (
+                            <div className="w-[20px] h-[20px] rounded-full bg-[#e5e7eb] border border-black/10 flex items-center justify-center text-[8px] text-[#4a5565]" style={FBold}>
+                              {(p.name || `D${idx + 1}`).split(' ').map((w: string) => w[0]).join('').slice(0, 2)}
+                            </div>
+                          )}
+                          <span className={`flex-1 text-[11px] ${p.isPlayer ? 'text-white' : 'text-black'}`} style={p.isPlayer ? FBold : FR}>
+                            {p.name || `Driver ${idx + 1}`}{p.isPlayer && ' (You)'}
+                          </span>
+                          <span className={`text-[10px] font-mono ${p.isPlayer ? 'text-white/80' : 'text-[#4a5565]'}`}>
+                            {p.bestLapTime > 0 ? formatLapTime(p.bestLapTime) : '-'}
+                          </span>
+                        </div>
+                      ))}
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg">
-                  <Thermometer className="w-5 h-5 text-accent-red" />
-                  <div>
-                    <p className="text-xs text-text-muted">Track Temp</p>
-                    <p className="font-mono font-medium">
-                      {currentRace.weather === 'rain' ? '22°C' : '38°C'}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg col-span-2">
-                  <Droplets className="w-5 h-5 text-status-info" />
-                  <div>
-                    <p className="text-xs text-text-muted">Weather</p>
-                    <p className="font-mono font-medium">
-                      {currentRace.weather === 'rain' ? 'Rain - 80% chance' : 'Dry - 0% rain chance'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Championship Position */}
-            <Card variant="default" padding="lg">
-              <CardHeader title="Championship" />
-              <div className="space-y-3">
-                <div className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
-                  <span className="text-text-muted">Position</span>
-                  <span className="font-display font-bold">-</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
-                  <span className="text-text-muted">Points</span>
-                  <span className="font-mono font-bold text-accent-gold">0</span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
-                  <span className="text-text-muted">Wins</span>
-                  <span className="font-mono font-bold">{player.totalWins}</span>
-                </div>
-              </div>
-            </Card>
-
-            {/* Series Info */}
-            {currentSeries && (
-              <Card variant="default" padding="lg">
-                <CardHeader title="Series" />
-                <div className="space-y-2">
-                  <p className="font-display font-semibold">{currentSeries.name}</p>
-                  <p className="text-sm text-text-muted">
-                    Round {(currentSeries.calendar?.findIndex(e => e.week === currentWeek) ?? 0) + 1} of {currentSeries.calendar?.length || 0}
-                  </p>
-                </div>
-              </Card>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
       
       {/* Car Condition Warning Modal */}
-      <Modal
-        isOpen={showCarConditionModal}
-        onClose={() => setShowCarConditionModal(false)}
-        title="Car Not Race-Ready"
-        size="md"
-      >
-        <div className="space-y-6">
-          <div className="text-center py-4">
-            <div className="w-20 h-20 mx-auto rounded-full bg-status-error/20 flex items-center justify-center mb-4">
-              <AlertTriangle className="w-10 h-10 text-status-error" />
+      {showCarConditionModal && (
+        <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-[24px]" onClick={() => setShowCarConditionModal(false)}>
+          <div className={`bg-white border-[1.6px] border-black rounded-[16px] max-w-[520px] w-full max-h-[85vh] overflow-y-auto p-[24px]`} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-[16px]">
+              <h2 className="text-[20px] text-black tracking-[-1px]" style={FB}>Car Not Race-Ready</h2>
+              <button onClick={() => setShowCarConditionModal(false)} className="w-[32px] h-[32px] rounded-full bg-[#f9fafb] flex items-center justify-center text-[#4a5565] hover:bg-[#e5e7eb] transition-colors text-[18px]">&times;</button>
             </div>
-            <h2 className="font-display font-bold text-xl mb-2">Critical Wear Detected</h2>
-            <p className="text-text-muted">
-              Your car has critically worn parts that must be serviced before racing.
-            </p>
-          </div>
-          
-          {/* Critical Parts List */}
-          <div className="space-y-2">
-            <h4 className="text-sm font-medium text-text-muted">Parts requiring immediate attention:</h4>
-            {carConditionCheck.issues.map(issue => (
-              <div 
-                key={issue.part}
-                className="flex items-center justify-between p-3 bg-status-error/10 border border-status-error/30 rounded-lg"
-              >
-                <div className="flex items-center gap-3">
-                  <Wrench className="w-5 h-5 text-status-error" />
-                  <span className="font-medium capitalize">{issue.part}</span>
+            <div className="space-y-[20px]">
+              <div className="text-center py-[12px]">
+                <div className="w-[72px] h-[72px] mx-auto rounded-full bg-[#fb2c36]/15 flex items-center justify-center mb-[12px]">
+                  <AlertTriangle className="w-[36px] h-[36px] text-[#fb2c36]" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-24 h-2 bg-background rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-status-error"
-                      style={{ width: `${issue.wear}%` }}
-                    />
-                  </div>
-                  <span className="text-sm font-mono text-status-error">{issue.wear.toFixed(0)}%</span>
-                </div>
+                <h2 className="text-[16px] text-black mb-[6px]" style={FB}>Critical Wear Detected</h2>
+                <p className="text-[12px] text-[#4a5565]" style={FR}>Your car has critically worn parts that must be serviced before racing.</p>
               </div>
-            ))}
-          </div>
-          
-          <div className="p-4 bg-status-warning/10 border border-status-warning/30 rounded-lg">
-            <p className="text-sm text-status-warning">
-              <AlertCircle className="w-4 h-4 inline mr-2" />
-              Racing with critically worn parts will likely result in a DNF or mechanical failure.
-            </p>
-          </div>
-          
-          <div className="flex gap-3">
-            <Button
-              variant="secondary"
-              className="flex-1"
-              onClick={() => setShowCarConditionModal(false)}
-            >
-              Stay on Race Day
-            </Button>
-            <Button
-              variant="primary"
-              className="flex-1"
-              onClick={() => {
-                setShowCarConditionModal(false)
-                navigate('/garage')
-              }}
-            >
-              <Wrench className="w-4 h-4 mr-2" />
-              Go to Garage
-            </Button>
+
+              <div className="space-y-[8px]">
+                <h4 className="text-[11px] text-[#4a5565] uppercase tracking-[0.5px]" style={FBold}>Parts requiring attention</h4>
+                {carConditionCheck.issues.map(issue => (
+                  <div key={issue.part} className="flex items-center justify-between p-[12px] bg-[#fef2f2] border-[1.6px] border-[#fecaca] rounded-[14px]">
+                    <div className="flex items-center gap-[10px]">
+                      <Wrench className="w-[18px] h-[18px] text-[#fb2c36]" />
+                      <span className="text-[12px] capitalize" style={FBold}>{issue.part}</span>
+                    </div>
+                    <div className="flex items-center gap-[8px]">
+                      <div className="w-[80px] h-[8px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                        <div className="h-full bg-[#fb2c36] rounded-full" style={{ width: `${issue.wear}%` }} />
+                      </div>
+                      <span className="text-[11px] font-mono text-[#fb2c36]" style={FBold}>{issue.wear.toFixed(0)}%</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-[12px] bg-[#fff7ed] border-[1.6px] border-[#ffd6a8] rounded-[14px]">
+                <p className="text-[11px] text-[#ff6900]" style={FR}>
+                  <AlertCircle className="w-[14px] h-[14px] inline mr-[6px]" />
+                  Racing with critically worn parts will likely result in a DNF or mechanical failure.
+                </p>
+              </div>
+
+              <div className="flex gap-[12px]">
+                <button onClick={() => setShowCarConditionModal(false)} className="flex-1 h-[40px] border-[1.6px] border-black rounded-full text-[13px] text-black hover:bg-[#f9fafb] transition-colors" style={FBold}>Stay on Race Day</button>
+                <button onClick={() => { setShowCarConditionModal(false); navigate('/garage') }} className="flex-1 h-[40px] bg-black text-white rounded-full text-[13px] flex items-center justify-center gap-[8px] hover:bg-black/90 transition-colors" style={FBold}>
+                  <Wrench className="w-[14px] h-[14px]" /> Go to Garage
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </Modal>
+      )}
 
-      {/* Race Complete Modal */}
-      <Modal
-        isOpen={showRaceCompleteModal}
-        onClose={() => setShowRaceCompleteModal(false)}
-        title="Race Complete"
-        size="md"
-      >
-        {raceCompleteData && (
-          <div className="space-y-6">
-            {/* Cutscene Banner */}
-            {(() => {
-              const cutsceneId = raceCompleteData.result.dnf ? 'pit-stop-drama' :
-                raceCompleteData.result.playerPosition === 1 ? 'podium-celebration' :
-                raceCompleteData.result.playerPosition <= 3 ? 'garage-celebration' :
-                'race-start'
-              const cutsceneSrc = getCutsceneImage(cutsceneId)
-              return cutsceneSrc ? (
-                <div className="relative h-32 -mx-6 -mt-6 overflow-hidden rounded-t-lg">
-                  <img 
-                    src={cutsceneSrc}
-                    alt="Race moment"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                </div>
-              ) : null
-            })()}
-            
-            {/* Position Header */}
-            <div className="text-center py-6">
-              <div className={`
-                w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4
-                ${raceCompleteData.result.playerPosition === 1 ? 'bg-gradient-to-br from-accent-gold to-yellow-600' :
-                  raceCompleteData.result.playerPosition <= 3 ? 'bg-gradient-to-br from-gray-400 to-gray-600' :
-                  'bg-gradient-to-br from-surface-secondary to-surface'}
-              `}>
-                <span className="font-display font-black text-4xl text-white">
-                  {raceCompleteData.result.dnf ? 'DNF' : `P${raceCompleteData.result.playerPosition}`}
-                </span>
-              </div>
-              <h2 className="font-display font-bold text-2xl mb-1">
-                {raceCompleteData.result.dnf ? 'Race Retired' :
-                  raceCompleteData.result.playerPosition === 1 ? '🏆 VICTORY!' :
-                  raceCompleteData.result.playerPosition <= 3 ? 'Podium Finish!' :
-                  raceCompleteData.result.playerPosition <= 10 ? 'Points Finish' : 'Race Complete'}
-              </h2>
-              <p className="text-text-muted">{raceCompleteData.result.trackName}</p>
-            </div>
-            
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <Trophy className="w-6 h-6 mx-auto mb-2 text-accent-gold" />
-                <p className="text-2xl font-bold text-accent-gold">+{raceCompleteData.processed.points}</p>
-                <p className="text-xs text-text-muted">Points</p>
-              </div>
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <span className="text-2xl mb-2 block">💰</span>
-                <p className="text-2xl font-bold text-status-success">${raceCompleteData.processed.prizeMoney.toLocaleString()}</p>
-                <p className="text-xs text-text-muted">Prize Money</p>
-              </div>
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <span className="text-2xl mb-2 block">⭐</span>
-                <p className={`text-2xl font-bold ${raceCompleteData.processed.repChange >= 0 ? 'text-status-success' : 'text-status-error'}`}>
-                  {raceCompleteData.processed.repChange >= 0 ? '+' : ''}{raceCompleteData.processed.repChange}
-                </p>
-                <p className="text-xs text-text-muted">Reputation</p>
-              </div>
-            </div>
-            
-            {/* Race Debrief -- Contributing Factors */}
-            {raceCompleteData.debrief && (
-              <div className="p-4 bg-background/50 rounded-xl space-y-3">
-                <h4 className="text-sm font-semibold flex items-center gap-2 text-text-primary">
-                  <Activity className="w-4 h-4 text-accent-primary" />
-                  Race Debrief — Contributing Factors
-                </h4>
-                
-                {/* Qualifying vs Race */}
-                {raceCompleteData.debrief.qualifyingPos && !raceCompleteData.result.dnf && (
-                  <div className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg ${
-                    raceCompleteData.debrief.positionsGained > 0 
-                      ? 'bg-status-success/10 text-status-success' 
-                      : raceCompleteData.debrief.positionsGained < 0 
-                        ? 'bg-status-error/10 text-status-error'
-                        : 'bg-surface-secondary text-text-muted'
-                  }`}>
-                    {raceCompleteData.debrief.positionsGained > 0 ? (
-                      <TrendingUp className="w-3.5 h-3.5" />
-                    ) : raceCompleteData.debrief.positionsGained < 0 ? (
-                      <TrendingDown className="w-3.5 h-3.5" />
-                    ) : (
-                      <Minus className="w-3.5 h-3.5" />
-                    )}
-                    <span>
-                      Qualified P{raceCompleteData.debrief.qualifyingPos} → Finished P{raceCompleteData.result.playerPosition}
-                      {raceCompleteData.debrief.positionsGained > 0 
-                        ? ` (gained ${raceCompleteData.debrief.positionsGained} places)` 
-                        : raceCompleteData.debrief.positionsGained < 0 
-                          ? ` (lost ${Math.abs(raceCompleteData.debrief.positionsGained)} places)`
-                          : ' (held position)'}
-                    </span>
-                  </div>
-                )}
-                
-                {/* Factor Rows */}
-                <div className="space-y-1.5">
-                  {/* Fatigue */}
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${
-                        raceCompleteData.debrief.fatigue >= 80 ? 'bg-status-error' : 
-                        raceCompleteData.debrief.fatigue >= 50 ? 'bg-status-warning' : 'bg-status-success'
-                      }`} />
-                      <span className="text-text-muted">Fatigue</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className={
-                        raceCompleteData.debrief.fatigue >= 80 ? 'text-status-error font-medium' : 
-                        raceCompleteData.debrief.fatigue >= 50 ? 'text-status-warning' : 'text-status-success'
-                      }>
-                        {raceCompleteData.debrief.fatigue >= 80 ? 'HIGH' : raceCompleteData.debrief.fatigue >= 50 ? 'MODERATE' : 'LOW'}
-                        {' '}({Math.round(raceCompleteData.debrief.fatigue)})
-                      </span>
-                      {raceCompleteData.debrief.aiBreakdown.fatiguePenalty !== 0 && (
-                        <span className="text-status-error text-[10px] px-1.5 py-0.5 bg-status-error/10 rounded">
-                          +{(raceCompleteData.debrief.aiBreakdown.fatiguePenalty * 100).toFixed(1)}% AI
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  
-                  {/* Fitness */}
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${
-                        raceCompleteData.debrief.fitness >= 70 ? 'bg-status-success' : 
-                        raceCompleteData.debrief.fitness >= 40 ? 'bg-status-warning' : 'bg-status-error'
-                      }`} />
-                      <span className="text-text-muted">Fitness</span>
-                    </div>
-                    <span className={
-                      raceCompleteData.debrief.fitness >= 70 ? 'text-status-success' : 
-                      raceCompleteData.debrief.fitness >= 40 ? 'text-status-warning' : 'text-status-error'
-                    }>
-                      {raceCompleteData.debrief.fitness >= 70 ? 'STRONG' : raceCompleteData.debrief.fitness >= 40 ? 'ADEQUATE' : 'POOR'}
-                      {' '}({Math.round(raceCompleteData.debrief.fitness)})
-                    </span>
-                  </div>
-                  
-                  {/* Car Condition */}
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${
-                        raceCompleteData.debrief.carCondition === 'excellent' ? 'bg-status-success' :
-                        raceCompleteData.debrief.carCondition === 'good' ? 'bg-status-success' :
-                        raceCompleteData.debrief.carCondition === 'worn' ? 'bg-status-warning' : 'bg-status-error'
-                      }`} />
-                      <span className="text-text-muted">Car Condition</span>
-                    </div>
-                    <span className={
-                      raceCompleteData.debrief.carCondition === 'excellent' || raceCompleteData.debrief.carCondition === 'good' 
-                        ? 'text-status-success' 
-                        : raceCompleteData.debrief.carCondition === 'worn' ? 'text-status-warning' : 'text-status-error'
-                    }>
-                      {raceCompleteData.debrief.carCondition.toUpperCase()}
-                    </span>
-                  </div>
-                  
-                  {/* Team Development */}
-                  {raceCompleteData.debrief.aiBreakdown.teamDevelopment !== 0 && (
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-accent-primary" />
-                        <span className="text-text-muted">Team R&D</span>
-                      </div>
-                      <span className="text-accent-primary">
-                        {(raceCompleteData.debrief.aiBreakdown.teamDevelopment * 100).toFixed(1)}% advantage
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Form / Hot Streak */}
-                  {raceCompleteData.debrief.aiBreakdown.formBonus !== 0 && (
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-accent-gold" />
-                        <span className="text-text-muted">Hot Streak</span>
-                      </div>
-                      <span className="text-accent-gold">
-                        {(raceCompleteData.debrief.aiBreakdown.formBonus * 100).toFixed(1)}% bonus
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Milestone Perks */}
-                  {raceCompleteData.debrief.aiBreakdown.milestonePerks !== 0 && (
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-400" />
-                        <span className="text-text-muted">Career Milestones</span>
-                      </div>
-                      <span className="text-purple-400">
-                        {(raceCompleteData.debrief.aiBreakdown.milestonePerks * 100).toFixed(1)}% bonus
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Injury */}
-                  {raceCompleteData.debrief.aiBreakdown.injuryPenalty !== 0 && (
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-status-error" />
-                        <span className="text-text-muted">Injury</span>
-                      </div>
-                      <span className="text-status-error font-medium">
-                        +{(raceCompleteData.debrief.aiBreakdown.injuryPenalty * 100).toFixed(1)}% AI penalty
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Pressure */}
-                  {raceCompleteData.debrief.aiBreakdown.pressurePenalty !== 0 && (
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-status-error" />
-                        <span className="text-text-muted">Title Pressure</span>
-                      </div>
-                      <span className="text-status-error">
-                        +{(raceCompleteData.debrief.aiBreakdown.pressurePenalty * 100).toFixed(1)}% AI penalty
-                      </span>
-                    </div>
-                  )}
-                  
-                  {/* Confidence */}
-                  <div className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${
-                        raceCompleteData.debrief.confidence >= 60 ? 'bg-status-success' :
-                        raceCompleteData.debrief.confidence >= 30 ? 'bg-status-warning' : 'bg-status-error'
-                      }`} />
-                      <span className="text-text-muted">Confidence</span>
-                    </div>
-                    <span className={
-                      raceCompleteData.debrief.confidence >= 60 ? 'text-status-success' :
-                      raceCompleteData.debrief.confidence >= 30 ? 'text-status-warning' : 'text-status-error'
-                    }>
-                      {raceCompleteData.debrief.confidence >= 60 ? 'HIGH' : raceCompleteData.debrief.confidence >= 30 ? 'MODERATE' : 'LOW'}
-                    </span>
-                  </div>
-                </div>
-                
-                {/* Overall AI Modifier Summary */}
-                <div className={`mt-3 pt-3 border-t border-surface-border flex items-center justify-between text-xs`}>
-                  <span className="font-medium text-text-primary">Overall Race Modifier</span>
-                  <span className={`font-bold px-2 py-1 rounded ${
-                    raceCompleteData.debrief.totalModifier < 0 
-                      ? 'bg-status-success/10 text-status-success' 
-                      : raceCompleteData.debrief.totalModifier > 0 
-                        ? 'bg-status-error/10 text-status-error'
-                        : 'bg-surface-secondary text-text-muted'
-                  }`}>
-                    {raceCompleteData.debrief.totalModifier < 0 ? '' : '+'}{(raceCompleteData.debrief.totalModifier * 100).toFixed(1)}%
-                    {raceCompleteData.debrief.totalModifier < 0 ? ' (Your Advantage)' : 
-                     raceCompleteData.debrief.totalModifier > 0 ? ' (AI Advantage)' : ' (Neutral)'}
-                  </span>
-                </div>
-              </div>
-            )}
-            
-            {/* Race Details */}
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between p-2 bg-background/30 rounded">
-                <span className="text-text-muted">Car</span>
-                <span>{raceCompleteData.result.carName}</span>
-              </div>
-              <div className="flex justify-between p-2 bg-background/30 rounded">
-                <span className="text-text-muted">Class</span>
-                <span>{raceCompleteData.result.carClass}</span>
-              </div>
-              <div className="flex justify-between p-2 bg-background/30 rounded">
-                <span className="text-text-muted">Laps Completed</span>
-                <span>{raceCompleteData.result.lapsCompleted}</span>
-              </div>
-              {raceCompleteData.result.bestLapTime > 0 && (
-                <div className="flex justify-between p-2 bg-background/30 rounded">
-                  <span className="text-text-muted">Best Lap</span>
-                  <span className="font-mono">{formatLapTime(raceCompleteData.result.bestLapTime)}</span>
+      {/* Race Complete Modal — Beat-by-beat reveal */}
+      {showRaceCompleteModal && (
+      <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-[24px]" onClick={() => setShowRaceCompleteModal(false)}>
+        <div className="bg-white border-[1.6px] border-black rounded-[16px] max-w-[520px] w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
+        {raceCompleteData && (() => {
+          const { result, processed, debrief } = raceCompleteData
+          const pos = result.playerPosition
+          const isDnf = result.dnf
+          const isVictory = !isDnf && pos === 1
+          const isPodium = !isDnf && pos <= 3
+          const isPoints = !isDnf && pos <= 10
+
+          // ── Cutscene image ──────────────────────────────────────────────
+          const cutsceneId = isDnf ? 'pit-stop-drama' : isVictory ? 'podium-celebration' : isPodium ? 'garage-celebration' : 'race-start'
+          const cutsceneSrc = getCutsceneImage(cutsceneId)
+
+          // ── Position styling ────────────────────────────────────────────
+          const posRingClass = isVictory
+            ? 'bg-[#f0b100] shadow-lg shadow-[#f0b100]/30'
+            : isPodium ? 'bg-gradient-to-br from-gray-300 to-gray-500'
+            : isDnf ? 'bg-[#fb2c36]'
+            : 'bg-black'
+
+          // ── Narrative lines (logic-based, no AI) ───────────────────────
+          const storyLines: string[] = []
+          if (debrief.qualifyingPos && !isDnf) {
+            const gained = debrief.positionsGained
+            if (gained > 2) storyLines.push(`Started P${debrief.qualifyingPos} and charged through the field — a ${gained}-place gain.`)
+            else if (gained > 0) storyLines.push(`Gained ${gained} ${gained === 1 ? 'place' : 'places'} from P${debrief.qualifyingPos} to finish P${pos}.`)
+            else if (gained < 0) storyLines.push(`Dropped ${Math.abs(gained)} ${Math.abs(gained) === 1 ? 'place' : 'places'} from qualifying P${debrief.qualifyingPos}.`)
+            else storyLines.push(`Held P${pos} from qualifying to the flag.`)
+          }
+          if (debrief.aiBreakdown.injuryPenalty > 0) storyLines.push('Racing through injury cost you — recovery before the next round is essential.')
+          else if (debrief.fatigue >= 80) storyLines.push('High fatigue hurt your pace in the later stages — rest up before next time.')
+          else if (debrief.aiBreakdown.formBonus > 0.05) storyLines.push(`Hot streak delivering — ${(debrief.aiBreakdown.formBonus * 100).toFixed(0)}% edge on form alone.`)
+          else if (debrief.aiBreakdown.teamDevelopment > 0.05) storyLines.push(`R&D advantage showing — ${(debrief.aiBreakdown.teamDevelopment * 100).toFixed(0)}% car edge.`)
+          else if (debrief.carCondition === 'worn' || debrief.carCondition === 'critical') storyLines.push('Car wear is building — prioritise a service before the next race.')
+          if (storyLines.length === 0) storyLines.push('Clean race. The results speak for themselves.')
+
+          // ── Next race info ─────────────────────────────────────────────
+          const nextRace = currentSeries?.calendar?.find(r => r.week > (careerState?.currentWeek || 0))
+          const weeksToNext = nextRace ? nextRace.week - (careerState?.currentWeek || 0) : null
+
+          // ── Championship position ──────────────────────────────────────
+          const standings = activeSeriesId ? (seasonStandings[activeSeriesId] || []) : []
+          const myStanding = standings.find(s => s.isPlayer)
+          const leader = standings[0]
+          const pointsGap = myStanding && leader && myStanding.position !== 1
+            ? leader.points - myStanding.points
+            : 0
+
+          // ── Handle finish weekend ──────────────────────────────────────
+          const handleFinishWeekend = () => {
+            useCareerStore.getState().advanceWeek()
+            useCareerStore.getState().clearRaceWeekendProgress()
+            // Auto-complete routine post-race activities (debrief, damage check) after
+            // advanceWeek() has had a chance to schedule them
+            setTimeout(() => useCareerStore.getState().autoCompletePostRaceActivities(), 0)
+            setShowRaceCompleteModal(false)
+            addToast({ type: 'success', message: 'Race weekend complete!', duration: 2500 })
+            navigate('/')
+          }
+
+          return (
+            <div className="relative -mx-6 -mt-6">
+              {/* Cutscene header image */}
+              {cutsceneSrc && (
+                <div className="relative h-40 overflow-hidden rounded-t-lg">
+                  <img src={cutsceneSrc} alt="Race moment" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
                 </div>
               )}
-              <div className="flex justify-between p-2 bg-background/30 rounded">
-                <span className="text-text-muted">Field Size</span>
-                <span>{raceCompleteData.result.totalParticipants} drivers</span>
+
+              <div className="px-6 pb-6 space-y-0">
+                {/* ── BEAT 0 — The Moment ───────────────────────────────── */}
+                <AnimatePresence mode="wait">
+                  {revealStep === 0 && (
+                    <motion.div key="beat0"
+                      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-center pt-4 space-y-4"
+                    >
+                      <div className={`w-28 h-28 mx-auto rounded-full flex items-center justify-center ${posRingClass}`}>
+                        <span className="font-black text-4xl text-white tracking-tight">
+                          {isDnf ? 'DNF' : `P${pos}`}
+                        </span>
+                      </div>
+                      <div>
+                        <h2 className="font-black text-3xl mb-1 text-[#111827]">
+                          {isDnf ? 'Race Retired' : isVictory ? 'VICTORY' : isPodium ? 'Podium Finish' : isPoints ? 'Points Finish' : 'Race Complete'}
+                        </h2>
+                        <p className="text-[#374151] text-sm font-medium">{result.trackName}</p>
+                        {currentSeries && <p className="text-[#6b7280] text-xs mt-0.5 font-medium">{currentSeries.name}</p>}
+                      </div>
+                      <button
+                        onClick={() => setRevealStep(1)}
+                        className="w-full py-3 rounded-full bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] hover:bg-[#e5e7eb] text-[13px] transition-colors flex items-center justify-center gap-2"
+                        style={FBold}
+                      >
+                        The Story <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  )}
+
+                  {/* ── BEAT 1 — The Story ──────────────────────────────── */}
+                  {revealStep === 1 && (
+                    <motion.div key="beat1"
+                      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.3 }}
+                      className="pt-4 space-y-4"
+                    >
+                      <h3 className="font-bold text-lg text-center">The Story</h3>
+
+                      {/* Qualifying delta */}
+                      {debrief.qualifyingPos && !isDnf && (
+                        <div className={`flex items-center gap-3 p-3 rounded-xl text-sm ${
+                          debrief.positionsGained > 0 ? 'bg-[#00a63e]/10 text-[#00a63e]' :
+                          debrief.positionsGained < 0 ? 'bg-[#ef4444]/10 text-[#ef4444]' :
+                          'bg-[#f9fafb] text-[#4a5565]'
+                        }`}>
+                          {debrief.positionsGained > 0 ? <TrendingUp className="w-4 h-4 flex-shrink-0" /> :
+                           debrief.positionsGained < 0 ? <TrendingDown className="w-4 h-4 flex-shrink-0" /> :
+                           <Minus className="w-4 h-4 flex-shrink-0" />}
+                          <span>P{debrief.qualifyingPos} → P{pos}</span>
+                        </div>
+                      )}
+
+                      {/* Narrative lines */}
+                      <div className="space-y-2">
+                        {storyLines.map((line, i) => (
+                          <p key={i} className="text-sm text-[#374151] leading-relaxed">{line}</p>
+                        ))}
+                      </div>
+
+                      {/* Key factor pill */}
+                      <div className="flex flex-wrap gap-2">
+                        {debrief.fatigue >= 70 && (
+                          <span className="px-2.5 py-1 rounded-full text-xs bg-[#ea580c]/15 text-[#ea580c] border border-[#ea580c]/25">High Fatigue</span>
+                        )}
+                        {debrief.aiBreakdown.formBonus > 0.03 && (
+                          <span className="px-2.5 py-1 rounded-full text-xs bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/25">Hot Streak</span>
+                        )}
+                        {debrief.aiBreakdown.injuryPenalty > 0 && (
+                          <span className="px-2.5 py-1 rounded-full text-xs bg-[#ef4444]/15 text-[#ef4444] border border-[#ef4444]/25">Injury</span>
+                        )}
+                        {(debrief.carCondition === 'worn' || debrief.carCondition === 'critical') && (
+                          <span className="px-2.5 py-1 rounded-full text-xs bg-[#ea580c]/15 text-[#ea580c] border border-[#ea580c]/25">Car Wear</span>
+                        )}
+                        {debrief.carCondition === 'excellent' && (
+                          <span className="px-2.5 py-1 rounded-full text-xs bg-[#00a63e]/15 text-[#00a63e] border border-[#00a63e]/25">Fresh Car</span>
+                        )}
+                      </div>
+
+                      <button
+                        onClick={() => setRevealStep(2)}
+                        className="w-full py-3 rounded-full bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] hover:bg-[#e5e7eb] text-[13px] transition-colors flex items-center justify-center gap-2"
+                        style={FBold}
+                      >
+                        The Consequences <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  )}
+
+                  {/* ── BEAT 2 — The Consequences ───────────────────────── */}
+                  {revealStep === 2 && (
+                    <motion.div key="beat2"
+                      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.3 }}
+                      className="pt-4 space-y-4"
+                    >
+                      <h3 className="font-bold text-lg text-center">The Consequences</h3>
+
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="text-center p-3 bg-[#f9fafb] rounded-xl border border-[#e5e7eb]">
+                          <Trophy className="w-5 h-5 mx-auto mb-1.5 text-[#f59e0b]" />
+                          <p className={`text-xl font-bold ${processed.points > 0 ? 'text-[#f59e0b]' : 'text-[#374151]'}`}>
+                            {processed.points > 0 ? `+${processed.points}` : '—'}
+                          </p>
+                          <p className="text-[11px] text-[#6b7280] mt-0.5 font-medium">Points</p>
+                        </div>
+                        <div className="text-center p-3 bg-[#f9fafb] rounded-xl border border-[#e5e7eb]">
+                          <DollarSign className="w-5 h-5 mx-auto mb-1.5 text-[#00a63e]" />
+                          <p className="text-xl font-bold text-[#00a63e]">
+                            ${(processed.prizeMoney / 1000).toFixed(0)}k
+                          </p>
+                          <p className="text-[11px] text-[#6b7280] mt-0.5 font-medium">Prize</p>
+                        </div>
+                        <div className="text-center p-3 bg-[#f9fafb] rounded-xl border border-[#e5e7eb]">
+                          <Activity className="w-5 h-5 mx-auto mb-1.5 text-[#2563eb]" />
+                          <p className={`text-xl font-bold ${processed.repChange >= 0 ? 'text-[#00a63e]' : 'text-[#ef4444]'}`}>
+                            {processed.repChange >= 0 ? '+' : ''}{processed.repChange}
+                          </p>
+                          <p className="text-[11px] text-[#6b7280] mt-0.5 font-medium">Reputation</p>
+                        </div>
+                      </div>
+
+                      {/* Championship delta */}
+                      {myStanding && (
+                        <div className="p-3 bg-[#f9fafb] rounded-xl border border-[#e5e7eb] flex items-center justify-between text-sm">
+                          <span className="text-[#374151] font-medium">Championship</span>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-[#111827]">P{myStanding.position}</span>
+                            {pointsGap > 0 && (
+                              <span className="text-xs text-[#6b7280] font-medium">{pointsGap} pts off lead</span>
+                            )}
+                            {myStanding.position === 1 && (
+                              <span className="text-xs text-[#f59e0b] font-bold">LEADING</span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      <button
+                        onClick={() => setRevealStep(3)}
+                        className="w-full py-3 rounded-full bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] hover:bg-[#e5e7eb] text-[13px] transition-colors flex items-center justify-center gap-2"
+                        style={FBold}
+                      >
+                        What&apos;s Next <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </motion.div>
+                  )}
+
+                  {/* ── BEAT 3 — The Next Chapter ────────────────────────── */}
+                  {revealStep === 3 && (
+                    <motion.div key="beat3"
+                      initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.3 }}
+                      className="pt-4 space-y-4"
+                    >
+                      <h3 className="font-bold text-lg text-center">What's Next</h3>
+
+                      {nextRace ? (
+                        <div className="p-4 bg-[#ea580c]/10 border border-[#ea580c]/30 rounded-xl">
+                          <div className="flex items-start gap-3">
+                            <Flag className="w-5 h-5 text-[#ea580c] mt-0.5 flex-shrink-0" />
+                            <div>
+                              <p className="font-semibold text-sm text-[#111827]">{nextRace.trackName}</p>
+                              <p className="text-xs text-[#6b7280] mt-0.5 font-medium">
+                                {weeksToNext === 1 ? 'Next week' : `${weeksToNext} weeks away`} · Round {nextRace.round}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="p-4 bg-[#f9fafb] rounded-xl border border-[#e5e7eb] text-center">
+                          <Trophy className="w-6 h-6 mx-auto mb-2 text-[#f59e0b]" />
+                          <p className="font-semibold text-sm text-[#111827]">Season Complete</p>
+                          <p className="text-xs text-[#6b7280] mt-1">All races finished. Check your season summary.</p>
+                        </div>
+                      )}
+
+                      {myStanding && standings.length > 0 && (
+                        <div className="space-y-1.5">
+                          {standings.slice(0, 3).map((s, i) => (
+                            <div key={i} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm ${s.isPlayer ? 'bg-[#2563eb] border border-[#2563eb]' : 'bg-[#f9fafb] border border-[#e5e7eb]'}`}>
+                              <span className={`w-5 text-center font-bold text-xs ${s.isPlayer ? 'text-white/80' : 'text-[#6b7280]'}`}>P{s.position}</span>
+                              <span className={`flex-1 text-xs font-semibold ${s.isPlayer ? 'text-white' : 'text-[#374151]'}`}>{s.driverName}</span>
+                              <span className={`font-mono text-xs font-medium ${s.isPlayer ? 'text-white/90' : 'text-[#6b7280]'}`}>{s.points}pts</span>
+                            </div>
+                          ))}
+                          {myStanding.position > 3 && (
+                            <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-[#2563eb] border border-[#2563eb]">
+                              <span className="w-5 text-center font-bold text-white/80 text-xs">P{myStanding.position}</span>
+                              <span className="flex-1 text-xs text-white font-semibold">{myStanding.driverName}</span>
+                              <span className="font-mono text-xs text-white/90 font-medium">{myStanding.points}pts</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Primary CTA */}
+                      <button
+                        onClick={handleFinishWeekend}
+                        className="w-full py-3.5 rounded-full text-[13px] transition-all bg-black text-white hover:bg-black/90 flex items-center justify-center gap-2"
+                        style={FBold}
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                        Finish Weekend
+                      </button>
+                      <button
+                        onClick={() => setShowRaceCompleteModal(false)}
+                        className="w-full py-2 text-[11px] text-[#4a5565] hover:text-black transition-colors"
+                        style={FR}
+                      >
+                        Stay on Race Day
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Step dots */}
+                <div className="flex justify-center gap-1.5 pt-4">
+                  {[0,1,2,3].map(i => (
+                    <button
+                      key={i}
+                      onClick={() => i < revealStep + 1 && setRevealStep(i)}
+                      className={`rounded-full transition-all ${i === revealStep ? 'w-4 h-1.5 bg-black' : i < revealStep ? 'w-1.5 h-1.5 bg-[#99a1af] hover:bg-[#4a5565]' : 'w-1.5 h-1.5 bg-[#e5e7eb]'}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-            
-            {/* Action Buttons */}
-            <div className="flex gap-3">
-              <Button
-                variant="secondary"
-                className="flex-1"
-                onClick={() => setShowRaceCompleteModal(false)}
-              >
-                Stay on Race Day
-              </Button>
-              <Button
-                variant="primary"
-                className="flex-1"
-                onClick={() => {
-                  advanceWeek()
-                  clearRaceWeekendProgress()
-                  setShowRaceCompleteModal(false)
-                  addToast({
-                    type: 'success',
-                    title: 'Week Advanced',
-                    message: 'Race weekend complete! Moving to the next week.',
-                    duration: 3000
-                  })
-                  navigate('/')
-                }}
-              >
-                <ArrowRight className="w-4 h-4 mr-2" />
-                Finish Weekend
-              </Button>
-            </div>
-          </div>
-        )}
-      </Modal>
+          )
+        })()}
+        </div>
+      </div>
+      )}
     </div>
+  </div>
   )
 }
 
@@ -2101,153 +2707,101 @@ interface SessionPanelProps {
 }
 
 function SessionPanel({ title, description, status, liveSession, isLive, telemetryConnected, storedResult, isRaceSession, isWeekendComplete, onAdvanceWeek, carConditionIssues, onShowCarConditionModal }: SessionPanelProps) {
-  // If we have a stored result, show that instead
   const hasStoredResult = storedResult?.completed
   const effectiveStatus = hasStoredResult ? 'completed' : status
   const hasCarIssues = carConditionIssues && carConditionIssues.length > 0
-  
+
   return (
-    <div className="text-center py-8">
-      <div className={`
-        w-20 h-20 mx-auto rounded-2xl flex items-center justify-center mb-4
-        ${hasCarIssues && !hasStoredResult
-          ? 'bg-status-error/20 text-status-error'
-          : isLive 
-          ? 'bg-status-success/20 text-status-success animate-pulse' 
-          : effectiveStatus === 'completed'
-          ? 'bg-status-success/20 text-status-success'
-          : telemetryConnected
-          ? 'bg-accent-orange/20 text-accent-orange'
-          : 'bg-surface-secondary text-text-muted'
-        }
-      `}>
+    <div className="text-center py-[16px]">
+      {/* Status area */}
+      <div className={`inline-flex items-center gap-[8px] px-[14px] py-[8px] rounded-full mb-[12px] ${
+        hasCarIssues && !hasStoredResult ? 'bg-[#fef2f2] border-[1.6px] border-[#fecaca]'
+        : isLive ? 'bg-[#00a63e] text-white'
+        : effectiveStatus === 'completed' ? 'bg-[#f0fdf4] border-[1.6px] border-[#bbf7d0]'
+        : telemetryConnected ? 'bg-[#fff7ed] border-[1.6px] border-[#ffd6a8]'
+        : 'bg-[#f9fafb] border-[1.6px] border-[#e5e7eb]'
+      }`}>
         {hasCarIssues && !hasStoredResult ? (
-          <AlertTriangle className="w-10 h-10" />
+          <><AlertTriangle className="w-[14px] h-[14px] text-[#fb2c36]" /><span className="text-[11px] text-[#fb2c36]" style={FBold}>Car Service Required</span></>
         ) : effectiveStatus === 'completed' ? (
-          <CheckCircle className="w-10 h-10" />
+          <><CheckCircle className="w-[14px] h-[14px] text-[#00a63e]" /><span className="text-[11px] text-[#00a63e]" style={FBold}>Completed</span></>
         ) : isLive ? (
-          <Radio className="w-10 h-10" />
+          <><Radio className="w-[14px] h-[14px] animate-pulse" /><span className="text-[11px]" style={FBold}>In Progress</span></>
         ) : telemetryConnected ? (
-          <HardDrive className="w-10 h-10" />
+          <><HardDrive className="w-[14px] h-[14px] text-[#ff6900]" /><span className="text-[11px] text-[#ff6900]" style={FBold}>Waiting for Session</span></>
         ) : (
-          <Clock className="w-10 h-10" />
+          <><WifiOff className="w-[14px] h-[14px] text-[#99a1af]" /><span className="text-[11px] text-[#4a5565]" style={FBold}>Telemetry Not Connected</span></>
         )}
       </div>
-      
-      <h3 className="font-display font-bold text-2xl mb-2">{title}</h3>
-      <p className="text-text-muted mb-6 max-w-md mx-auto">{description}</p>
-      
-      {/* Car Condition Warning in Session Panel */}
+
+      <h3 className="text-[16px] text-black mb-[4px]" style={FB}>{title}</h3>
+      <p className="text-[11px] text-[#4a5565] mb-[16px]" style={FR}>{description}</p>
+
+      {/* Car Condition Warning */}
       {hasCarIssues && !hasStoredResult && (
-        <div className="mb-6 p-4 bg-status-error/10 border border-status-error/30 rounded-xl max-w-md mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <AlertTriangle className="w-5 h-5 text-status-error" />
-            <span className="font-medium text-status-error">Car Service Required</span>
-          </div>
-          <p className="text-sm text-text-muted mb-3">
+        <div className="mb-[16px] p-[12px] bg-[#fef2f2] border-[1.6px] border-[#fecaca] rounded-[14px]">
+          <p className="text-[11px] text-[#fb2c36] mb-[8px]" style={FR}>
             {carConditionIssues.map(i => i.part).join(', ')} wear is critical ({'>'}90%)
           </p>
           {onShowCarConditionModal && (
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={onShowCarConditionModal}
-              className="border-status-error text-status-error hover:bg-status-error/10"
-            >
+            <button onClick={onShowCarConditionModal} className="h-[28px] px-[12px] border-[1.6px] border-[#fb2c36] text-[#fb2c36] rounded-full text-[11px] hover:bg-[#fb2c36]/10 transition-colors" style={FBold}>
               View Details
-            </Button>
+            </button>
           )}
         </div>
       )}
 
       {isLive ? (
-        <div className="space-y-3">
-          <Badge variant="green" size="lg">
-            <Radio className="w-4 h-4 mr-2 animate-pulse" />
-            Session In Progress
-          </Badge>
-          <p className="text-sm text-text-muted">
+        <div className="space-y-[8px]">
+          <p className="text-[11px] text-[#4a5565]" style={FR}>
             {liveSession?.sessionState} • {liveSession?.numParticipants || 0} participants
           </p>
         </div>
       ) : hasStoredResult ? (
-        // Show stored session results
-        <div className="space-y-4">
-          <Badge variant="green" size="lg">
-            <CheckCircle className="w-4 h-4 mr-2" />
-            Session Completed
-          </Badge>
-          
-          {/* Results Summary */}
-          <div className="bg-surface-secondary rounded-xl p-4 max-w-sm mx-auto">
-            <div className="grid grid-cols-3 gap-4 text-center">
+        <div className="space-y-[12px]">
+          <div className="bg-[#f9fafb] border-[1.6px] border-[#e5e7eb] rounded-[14px] p-[12px]">
+            <div className="grid grid-cols-3 gap-[12px] text-center">
               <div>
-                <p className="text-2xl font-display font-bold text-accent-red">
-                  P{storedResult.position}
-                </p>
-                <p className="text-xs text-text-muted">Position</p>
+                <p className="text-[20px] text-[#ff6900]" style={FB}>P{storedResult.position}</p>
+                <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px]" style={FBold}>Position</p>
               </div>
               <div>
-                <p className="text-2xl font-display font-bold text-accent-orange">
-                  {formatLapTime(storedResult.bestLapTime)}
-                </p>
-                <p className="text-xs text-text-muted">Best Lap</p>
+                <p className="text-[16px] text-black font-mono" style={FBold}>{formatLapTime(storedResult.bestLapTime)}</p>
+                <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px]" style={FBold}>Best Lap</p>
               </div>
               <div>
-                <p className="text-2xl font-display font-bold text-status-info">
-                  {storedResult.participantCount}
-                </p>
-                <p className="text-xs text-text-muted">Drivers</p>
+                <p className="text-[20px] text-[#2b7fff]" style={FB}>{storedResult.participantCount}</p>
+                <p className="text-[9px] text-[#4a5565] uppercase tracking-[0.5px]" style={FBold}>Drivers</p>
               </div>
             </div>
           </div>
-          
-          <p className="text-xs text-text-muted">
-            Completed at {new Date(storedResult.completedAt).toLocaleTimeString()}
-          </p>
-          
-          {/* Show advance week button when race is complete */}
+          <p className="text-[10px] text-[#99a1af]" style={FR}>Completed at {new Date(storedResult.completedAt).toLocaleTimeString()}</p>
           {isRaceSession && isWeekendComplete && onAdvanceWeek && (
-            <Button
-              variant="primary"
-              className="mt-4"
-              onClick={onAdvanceWeek}
-            >
-              <ArrowRight className="w-4 h-4 mr-2" />
-              Advance Week & Return Home
-            </Button>
+            <button onClick={onAdvanceWeek} className="mt-[8px] h-[36px] px-[16px] bg-black text-white rounded-full text-[12px] flex items-center gap-[6px] mx-auto hover:bg-black/90 transition-colors" style={FBold}>
+              <ArrowRight className="w-[14px] h-[14px]" /> Advance Week
+            </button>
           )}
         </div>
       ) : effectiveStatus === 'completed' ? (
-        <div className="space-y-4">
-          <Badge variant="green" size="lg">
-            <CheckCircle className="w-4 h-4 mr-2" />
-            Completed
-          </Badge>
-          
-          {/* Show advance week button when race is complete */}
+        <div className="space-y-[12px]">
           {isRaceSession && isWeekendComplete && onAdvanceWeek && (
-            <Button
-              variant="primary"
-              onClick={onAdvanceWeek}
-            >
-              <ArrowRight className="w-4 h-4 mr-2" />
-              Advance Week & Return Home
-            </Button>
+            <button onClick={onAdvanceWeek} className="h-[36px] px-[16px] bg-black text-white rounded-full text-[12px] flex items-center gap-[6px] mx-auto hover:bg-black/90 transition-colors" style={FBold}>
+              <ArrowRight className="w-[14px] h-[14px]" /> Advance Week
+            </button>
           )}
         </div>
       ) : telemetryConnected ? (
-        <div className="space-y-3">
-          <Badge variant="orange" size="lg">
-            <HardDrive className="w-4 h-4 mr-2" />
-            Waiting for Session...
-          </Badge>
-          <p className="text-xs text-text-muted">
-            Open AMS2 and start a session - it will be detected automatically
-          </p>
-        </div>
+        <p className="text-[11px] text-[#4a5565]" style={FR}>Open AMS2 and start a session — it will be detected automatically</p>
       ) : (
-        <div className="space-y-3">
-          <Badge variant="default" size="lg">
-            <WifiOff className="w-4 h-4 mr-2" />
-         
+        <p className="text-[11px] text-[#99a1af]" style={FR}>Connect to AMS2 using the button above</p>
+      )}
+    </div>
+  )
+}
+
+function formatLapTime(seconds: number): string {
+  if (seconds <= 0) return '-'
+  const mins = Math.floor(seconds / 60)
+  const secs = (seconds % 60).toFixed(3)
+  return `${mins}:${secs.padStart(6, '0')}`
+}

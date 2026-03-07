@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Christiansen",
+  "nationality": "Danish",
+  "age": 49,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Bjørn Christiansen's passion for aerodynamics began with building model airplanes as a child, a hobby that quickly evolved into a fascination with the science of airflow. He pursued a degree in Aerospace Engineering at the Technical University of Denmark, focusing his studies on computational fluid dynamics. After graduating, he joined a smaller engineering firm specializing in wind tunnel testing for various industries, including automotive and motorsport.\n\nHis dedication and keen eye for detail caught the attention of Hitech Development, where he initially served as a senior aerodynamicist. Bjørn's ability to identify subtle improvements in aerodynamic performance and his knack for translating complex data into practical solutions led to his promotion to Head of Aero. He believes in fostering a collaborative environment where innovation thrives, and his meticulous approach ensures every detail is considered. Bjørn's strength lies in his ability to bridge the gap between theoretical concepts and real-world applications, consistently pushing the boundaries of what's possible in aerodynamic design.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark blonde",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "short, trimmed goatee",
+    "description": "Bjørn is of average height with a lean build, often seen wearing glasses perched on his nose."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on having a specific type of Danish pastry for breakfast every morning."
+  ]
+}

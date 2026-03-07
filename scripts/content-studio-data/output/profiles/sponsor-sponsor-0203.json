@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0203",
+  "name": "Sisu Auto Oy",
+  "category": "automotive",
+  "tier": "entry",
+  "country": "Finland",
+  "description": "Built to Endure.",
+  "story": "Sisu Auto has been manufacturing trucks in Finland since 1931, known for their ruggedness and reliability in harsh conditions. They are entering motorsport to showcase their engineering prowess and connect with a new generation of customers who value durability and performance. Sisu Auto seeks a partnership that highlights their vehicles' capabilities in challenging environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 35000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 20,
+    "nationalities": [
+      "Finland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0203.png"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0280",
+  "name": "Tempus Imperium",
+  "category": "watches",
+  "tier": "high",
+  "country": "Hong Kong",
+  "description": "Precision engineered timepieces for the discerning individual.",
+  "story": "Tempus Imperium has a long history of supporting excellence in fields requiring utmost precision and unwavering performance. Motorsport represents the pinnacle of these qualities, aligning perfectly with our brand values. We seek a partnership that showcases our commitment to craftsmanship and innovation, while associating our brand with the thrill of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0280.png"
+}

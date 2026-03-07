@@ -1,0 +1,22 @@
+{
+  "name": "Alessandro Bellini",
+  "nationality": "Italian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Alessandro Bellini's journey in motorsport began in the wind tunnels of Ferrari, where he spent his formative years meticulously studying airflow and downforce. His early work on the F399 established him as a rising star in aerodynamics. After a decade at Ferrari, Alessandro sought new challenges, leading him to a smaller, independent outfit where he honed his management skills while continuing to push the boundaries of aerodynamic innovation. He joined Reiza Studios Factory five years ago, drawn by the team's commitment to pushing the envelope. \n\nAlessandro is known for his pragmatic approach to problem-solving. He's not one for chasing radical, unproven concepts; instead, he favors incremental improvements and data-driven decisions. His experience allows him to quickly identify the most impactful areas for aerodynamic development. He is a strong believer in teamwork, fostering collaboration between the design, engineering, and simulation teams.\n\nAlessandro's defining characteristic is his ability to translate complex aerodynamic principles into practical solutions that drivers can feel on the track. He has a knack for understanding how even the smallest changes can affect a car's balance and performance, making him an invaluable asset to Reiza Studios Factory.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium height with a thoughtful gaze and a perpetually furrowed brow."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic equations and sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every meeting with a review of the team's latest CFD simulations."
+  ]
+}

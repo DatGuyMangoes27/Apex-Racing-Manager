@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 46,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Moira MacLeod's passion for motorsport ignited early, fueled by watching her father tinker with engines in their small Highland garage. After earning a degree in Electrical Engineering from the University of Edinburgh, she cut her teeth in the British Touring Car Championship before transitioning to Formula E. Her meticulous approach to data analysis and problem-solving quickly earned her a reputation as a reliable and insightful engineer.\n\nNow at Trackhouse Racing, Moira thrives on the challenge of optimizing electronic systems for peak performance. She's known for her ability to translate complex technical jargon into actionable insights for the drivers and mechanics, fostering a collaborative environment. Her pragmatic mindset keeps the team grounded during high-pressure situations, and her unwavering commitment to continuous improvement ensures that Trackhouse stays ahead of the curve.\n\nWhat sets Moira apart is her knack for spotting subtle anomalies in electronic performance that others often miss. This 'sixth sense' for electronics, combined with her calm demeanor and strategic thinking, makes her an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Moira is of average height, with a lean build and a perpetually thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool keychain, even when wearing formal attire.",
+    "Insists on having a cup of strong black tea precisely at 10:30 AM every day.",
+    "Meticulously labels every cable and connector with custom color-coded tags."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Erik 'The Calculator' Jones didn't come from racing royalty. Born in the heartland, his early years were spent tinkering with engines in his father's auto repair shop. Weekends weren't for relaxing; they were for local dirt track races where Erik, barely a teenager, started building his reputation. His raw talent caught the eye of a Stock USA Gen3 scout, leading to a development deal that catapulted him into the national spotlight. Erik's methodical approach initially drew criticism, some deeming him too cautious, but a stunning victory at the '24 Heartland 500, where he conserved tires to steal the win in the final laps, silenced the doubters. Now, a seasoned veteran, Erik mentors young drivers while strategically planning his own path to a championship before retirement.",
+  "drivingStyle": "Erik Jones is the epitome of a calculating driver. He doesn't overdrive the car; instead, he meticulously analyzes every corner, searching for the optimal line. Tire management is his forte – he's known for nursing his equipment early in a race, patiently waiting for others to burn theirs out. Under pressure, Erik remains remarkably calm, making him a formidable opponent in late-race situations. He prefers a tight setup, maximizing corner speed while sacrificing a bit of straight-line grunt, a tactic that often frustrates more aggressive drivers.",
+  "rivalries": [
+    {
+      "driver": "Jake 'The Hammer' Harrison",
+      "reason": "A clash of styles – Harrison's aggressive, elbows-out driving constantly put Jones's calculated approach to the test, leading to multiple on-track incidents."
+    },
+    {
+      "driver": "Ava 'Hurricane' Ramirez",
+      "reason": "A battle for the championship in '28 saw Ramirez and Jones trading paint and accusations, culminating in a controversial finish that left a bitter taste for both."
+    },
+    {
+      "driver": "Marcus 'The Rocket' Li",
+      "reason": "Li's youthful exuberance and raw speed challenged Jones's veteran status, leading to a rivalry defined by the contrast between experience and potential."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue racing gloves, believing they bring him luck.",
+    "Studies telemetry data from past races at the same track for hours before each event.",
+    "Has a specific type of coffee he must drink before every race or he feels 'off'. It has to be a medium roast, exactly 175 degrees Fahrenheit."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about brute force; it's about understanding the equation and solving it before anyone else.\"",
+  "careerHighlight": "Winning the '24 Heartland 500 after conserving tires, passing three cars in the final two laps, and securing his first major victory, proving his calculated approach could triumph over raw speed.",
+  "careerLowPoint": "Crashing out on the final lap of the '27 Daytona 500 while leading, costing him a potential championship and leaving him questioning his risk assessment."
+}

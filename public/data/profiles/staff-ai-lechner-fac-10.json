@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas Trujillo",
+  "nationality": "Peruvian",
+  "age": 25,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Mateo's journey into motorsport began in his small Andean village, where he spent hours tinkering with old motorcycles, a necessity for navigating the rough terrain. His natural aptitude for mechanics led him to a technical college in Lima, where he excelled in metalworking and design. An internship with a local rally team solidified his passion, exposing him to the demanding world of race car preparation. \n\nNow at Lechner Racing, Mateo brings a meticulous approach to fabrication. He prides himself on precision and innovation, constantly seeking ways to improve component durability and performance. He’s known for his ability to troubleshoot complex mechanical issues and his unwavering commitment to quality, making him a valuable asset to the team. Mateo dreams of one day designing his own race car, incorporating sustainable materials and cutting-edge technology.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "a thin, neatly trimmed goatee",
+    "description": "He is of average height with a wiry build, reflecting years of hands-on work."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always sharpens his pencils to a needle point before starting any task.",
+    "Humms traditional Andean melodies while welding.",
+    "Insists on using metric measurements exclusively, even when others are using imperial."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Arnesen",
+  "nationality": "Norwegian",
+  "age": 60,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Bjørn's journey into motorsport began unconventionally, not with a burning passion for speed, but a deep fascination with the intricate machinery that made it possible. After graduating with a degree in Mechanical Engineering from the Norwegian University of Science and Technology, he initially worked in the shipbuilding industry. However, the allure of Formula 1, seen on grainy television broadcasts in his youth, never truly faded. He made a calculated career shift, starting in a small tuning shop before landing a role with a junior rally team.\n\nHis pragmatic approach, honed over years of troubleshooting complex systems under pressure, quickly made him an invaluable asset. He believes in data-driven decisions, meticulous preparation, and fostering a collaborative environment where engineers can freely exchange ideas. Bjørn emphasizes reliability and incremental improvements over radical innovation, focusing on extracting maximum performance from existing technology. His ability to keep the team focused and grounded during high-stakes situations has earned him the respect of drivers and colleagues alike. He joined Team WRT after a successful stint at a smaller GT racing outfit, drawn by the challenge of competing at the highest level.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back, thinning on top",
+    "eyeColor": "blue",
+    "facialHair": "trimmed grey goatee",
+    "description": "A tall, slender man with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on using a slide rule alongside modern software for calculations.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

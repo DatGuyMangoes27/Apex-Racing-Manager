@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 25,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Marko's fascination with motorsport began not on the track, but in the digital realm. As a child, he spent countless hours fine-tuning virtual race cars, dissecting telemetry data, and optimizing setups. This passion led him to pursue a degree in mechanical engineering, where he specialized in simulation and modeling. Before joining Academy Motorsport, he honed his skills at a smaller racing outfit, where he was responsible for developing and maintaining their simulator environment. \n\nMarko possesses an exceptional ability to translate real-world driving characteristics into accurate and immersive simulator experiences. He believes that the simulator is not just a training tool, but also a crucial platform for experimentation and innovation. His meticulous approach to data analysis, combined with his innate understanding of vehicle dynamics, allows him to identify subtle improvements that can make a significant difference on the track. He's particularly adept at identifying and rectifying discrepancies between simulated and real-world performance, ensuring that the team's drivers receive the most realistic and effective training possible.\n\nWhat sets Marko apart is his dedication to continuous improvement. He's constantly seeking out new technologies and methodologies to enhance the simulator's capabilities. He's also an avid follower of motorsport trends, always looking for ways to incorporate new insights and strategies into the team's simulation program.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly cropped with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Marko is of average height and build, with a focused expression that suggests deep concentration."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his fingers on the table when analyzing data.",
+    "Drinks copious amounts of strong coffee throughout the day."
+  ]
+}

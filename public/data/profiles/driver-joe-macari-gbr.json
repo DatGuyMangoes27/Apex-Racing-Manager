@@ -1,0 +1,27 @@
+{
+  "biography": "Joe Macari, a name quickly gaining notoriety in the GT3 circuit, hails from the unassuming town of Brackley, Northamptonshire – a place more known for its Formula 1 pedigree than GT racing. Unlike many of his peers who were practically born in go-karts, Joe’s entry into motorsport was almost accidental. He spent his youth tinkering with his father's old Mini Cooper, honing his mechanical skills more than his driving. One rainy Saturday at Silverstone, filling in for a no-show in a local club race, he stunned everyone – including himself – by taking pole position and leading until the final lap when a mechanical failure robbed him of victory. That day ignited a fire. Joe rapidly ascended through the ranks, showcasing raw talent and an aggressive driving style that both thrilled and terrified spectators. Currently, he races for Milano GT36, a relatively new but ambitious team, hoping to make a serious impact in the GT3 European Championship. The pressure is on, but Joe seems to thrive under it, hungry to prove his worth.",
+  "drivingStyle": "Macari's driving style can be described as 'controlled aggression.' He's known for late braking and daring overtaking maneuvers, often pushing the limits of the car and his competitors. He possesses exceptional car control, particularly in wet conditions, and isn't afraid to wrestle the car through corners. Tire management isn't his strongest suit, often prioritizing immediate pace over long-term strategy, a characteristic that has both won and lost him races.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A clash of egos. Both are young, ambitious drivers vying for the same top spot in the GT3 European Championship, resulting in several on-track collisions and heated exchanges in the paddock."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "Dubois, a seasoned veteran, publicly criticized Macari's aggressive driving style, calling him 'reckless' and 'dangerous,' sparking a war of words in the media and intensifying their on-track battles."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka and Macari share a history of near-misses and intense battles on the track. Their rivalry is fueled by mutual respect and a determination to outdo one another, pushing both drivers to their absolute limits."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of driving gloves, despite them being heavily worn and patched.",
+    "Listens to classical music (specifically Mozart) before every race to calm his nerves.",
+    "Refuses to eat anything with tomatoes on race days, believing it brings bad luck."
+  ],
+  "nickname": "The Brackley Bandit",
+  "famousQuote": "You've got to be willing to risk it all to win. Second place is just the first loser.",
+  "careerHighlight": "Winning the Spa 24 Hours in only his second year of GT3 racing, pulling off a daring overtake in the final hour to secure the victory for his team.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Monza round due to a mechanical failure, costing his team valuable championship points and enduring the frustration of seeing victory snatched away at the last moment."
+}

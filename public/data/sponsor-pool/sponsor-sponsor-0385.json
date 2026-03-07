@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0385",
+  "name": "Chang Siam Cement",
+  "category": "local",
+  "tier": "entry",
+  "country": "Thailand",
+  "description": "Building Thailand, Brick by Brick.",
+  "story": "Chang Siam Cement has been a cornerstone of Thai infrastructure for over 50 years. They believe in supporting local talent and see motorsport as a way to connect with a younger generation. They seek a partnership that showcases Thai excellence and determination on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15,
+    "nationalities": [
+      "Thailand"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0385.png"
+}

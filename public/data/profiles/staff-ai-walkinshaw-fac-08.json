@@ -1,0 +1,22 @@
+{
+  "name": "Alexandra Popescu",
+  "nationality": "Romanian",
+  "age": 26,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Alexandra's fascination with motorsport began during her university days in Bucharest, where she excelled in fluid dynamics. She secured an internship at a small Romanian racing team after graduation, analyzing aerodynamic data and contributing to vehicle setup. Eager to broaden her horizons, she moved to the UK and steadily built her reputation. Her proficiency in optimizing airflow and identifying subtle aerodynamic improvements led to her recruitment by Walkinshaw Andretti United. \n\nAlexandra takes a meticulous, data-driven approach to her work in the wind tunnel. She is known for her ability to quickly identify and communicate key performance indicators, and for her dedication to continuous improvement. What sets Alexandra apart is her capacity for translating complex technical data into easily digestible insights for the engineers and drivers, facilitating faster and more informed decision-making.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Alexandra is of average height with a focused, intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and ideas.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work in complete silence, even in a busy wind tunnel environment."
+  ]
+}

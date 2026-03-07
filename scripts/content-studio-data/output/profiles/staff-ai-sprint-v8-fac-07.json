@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 55,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. A gifted programmer from a young age, he initially pursued a career in finance, developing trading algorithms. However, a chance encounter at a local racing event ignited a passion for the technological side of the sport. He quickly realized that his skills in data analysis and systems management could be invaluable.\n\nRicardo transitioned into motorsport, starting with a smaller racing team before being recruited by Sprint V8 Team. He believes in a practical, no-nonsense approach to IT systems, prioritizing stability and efficiency. His reputation is built on his ability to troubleshoot complex issues swiftly and implement robust solutions, ensuring the team's data and communication infrastructure runs smoothly. He's known for his calm demeanor under pressure, a valuable asset during race weekends.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is a man of average height with a slightly stocky build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Insists on backing up all data on physical hard drives, despite cloud-based solutions.",
+    "Has a tendency to explain technical issues using analogies from classic Mexican cinema."
+  ]
+}

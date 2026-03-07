@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0160",
+  "name": "Nordic Forge Motorsport",
+  "category": "equipment",
+  "tier": "elite",
+  "country": "Sweden",
+  "description": "Precision-engineered motorsport components from Sweden.",
+  "story": "Nordic Forge has been supplying high-performance components to rally teams for over 30 years. They are now expanding into circuit racing, seeking to prove their reliability and performance at the highest levels of motorsport. They value innovation and pushing the boundaries of engineering.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0160.png"
+}

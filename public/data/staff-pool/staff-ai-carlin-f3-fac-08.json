@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 41,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Kenji Tanaka's journey into motorsport began with a childhood fascination with aerodynamics. Growing up near a small airfield, he spent countless hours observing planes taking off and landing, fueling his curiosity about airflow and its effects. He pursued a degree in mechanical engineering, specializing in fluid dynamics, and quickly found himself drawn to the high-stakes world of racing.\n\nAfter university, Kenji landed a position at a smaller racing outfit, where he honed his skills in wind tunnel testing. He is methodical in his approach, meticulously analyzing data and identifying even the smallest improvements. He prides himself on his ability to translate complex data into actionable insights for the engineers, and is known to push them hard to implement his suggestions. His attention to detail and relentless pursuit of aerodynamic perfection make him a valuable asset to any team, even if his demanding personality can sometimes rub people the wrong way.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Kenji is of average height with a lean build and focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on absolute silence during wind tunnel runs.",
+    "Drinks copious amounts of green tea throughout the day."
+  ]
+}

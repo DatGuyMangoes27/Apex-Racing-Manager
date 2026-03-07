@@ -1,14 +1,15 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, FastForward, Sun, Moon, Play, Flag, Clock, TrendingUp, TrendingDown } from 'lucide-react'
+import { Calendar, FastForward, Sun, Moon, Play, Flag, Clock, TrendingUp, TrendingDown, Sunrise, Sunset } from 'lucide-react'
 import { Button, Badge } from '@/components/ui'
 import { useCareerStore, getDayName } from '@/store/careerStore'
 import { useRivalStore } from '@/store/rivalStore'
 import { useNavigate } from 'react-router-dom'
 import { EndDayModal } from './EndDayModal'
 import { InterruptionModal } from './InterruptionModal'
-import { calculateFatigueZone } from '@/simulation/timeBudget'
+import { calculateFatigueZone, getDaySummary } from '@/simulation/timeBudget'
 import { generateDailyInterruption, type InterruptionEvent, type InterruptionChoice } from '@/simulation/events/interruptions'
+import { formatGameHour, getPeriodForHour, getHoursRemainingInPeriod, DAY_PERIODS, DAY_PERIOD_ORDER } from '@/data/day-periods-config'
 
 interface TransitionHighlight {
   id: string
@@ -23,7 +24,15 @@ interface DayAdvanceControlsProps {
 
 export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   const navigate = useNavigate()
-  const { careerState, player, advanceDay, advanceWeek } = useCareerStore()
+  const {
+    careerState,
+    player,
+    advanceDay,
+    getActivitiesForDay,
+    fastForwardPeriod,
+    startFastForwardToRaceWeek,
+    stopFastForward
+  } = useCareerStore()
   const { getSeriesById } = useRivalStore()
   
   const [showTransition, setShowTransition] = useState(false)
@@ -32,7 +41,7 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   const [pendingInterruption, setPendingInterruption] = useState<InterruptionEvent | null>(null)
   const [showInterruption, setShowInterruption] = useState(false)
   const [transitionHighlights, setTransitionHighlights] = useState<TransitionHighlight[]>([])
-  const preAdvanceSnapshot = useRef<Record<string, number>>({})
+  const previousAutoFastForwarding = useRef(false)
   
   if (!careerState || !player) return null
   
@@ -41,8 +50,9 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   const currentYear = careerState.currentYear
   const dayName = getDayName(currentDay)
   
-  // Get current series calendar
-  const currentSeries = player.currentSeriesId ? getSeriesById(player.currentSeriesId) : null
+  // Get current series calendar (fallback to first entered series if currentSeriesId is not set)
+  const resolvedSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+  const currentSeries = resolvedSeriesId ? getSeriesById(resolvedSeriesId) : null
   const calendar = currentSeries?.calendar ?? []
   
   // Find upcoming race
@@ -53,6 +63,12 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   // Check if it's race day (Sunday of race week)
   const isRaceDay = currentRace && currentDay === 7
   const isRaceWeekend = currentRace && currentDay >= 5  // Friday, Saturday, Sunday
+  const isAutoFastForwarding = careerState.fastForward?.isActive ?? false
+  const fastForwardTargetWeek = careerState.fastForward?.targetWeek
+  const fastForwardTargetDay = careerState.fastForward?.targetDay
+  const fastForwardStopReason = careerState.fastForward?.lastStopReason
+  const fastForwardStopMessage = careerState.fastForward?.lastStopMessage
+  const fastForwardLastSummary = careerState.fastForward?.lastSummary
   
   // Calculate days/weeks until next race
   const daysUntilRaceThisWeek = currentRace ? 7 - currentDay : null
@@ -60,9 +76,17 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   
   // Time budget info
   const dayBudget = careerState.dayBudget
-  const hoursRemaining = dayBudget?.hoursRemaining ?? 16
+  const daySummary = dayBudget ? getDaySummary(dayBudget) : null
+  const hoursRemaining = daySummary?.hoursRemaining ?? dayBudget?.hoursRemaining ?? 16
+  const activitiesCompleted = daySummary?.activitiesCompleted ?? dayBudget?.dayLog?.length ?? 0
   const fatigueZone = dayBudget ? calculateFatigueZone(dayBudget.hoursUsed) : 'green'
-  
+  const missedNotificationsToday = (careerState.missedNotifications ?? []).filter(
+    notification => notification.timestamp.week === currentWeek
+      && notification.timestamp.day === currentDay
+      && notification.timestamp.year === currentYear
+  )
+  const incompleteActivities = getActivitiesForDay ? getActivitiesForDay(currentWeek, currentDay) : []
+
   const handleAdvanceDay = () => {
     // Show End Day summary modal before advancing
     setShowEndDayModal(true)
@@ -70,31 +94,34 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   
   const handleConfirmEndDay = () => {
     setShowEndDayModal(false)
-    
-    // Check for random interruption event before advancing
-    const interruption = generateDailyInterruption({
-      currentWeek,
-      currentDay,
-      currentYear,
-      isRaceWeek: !!currentRace,
-      isRaceDay: !!(currentRace && currentDay === 7),
-      reputation: player.reputation ?? 0,
-      fatigue: player.mentalState?.fatigue ?? 0,
-      stress: player.mentalState?.stress ?? 0,
-      hasPartner: !!(careerState.personalLife as unknown as Record<string, unknown>)?.partner,
-      staffCount: careerState.ownedTeam?.staff?.length ?? 0,
-      teamCash: careerState.ownedTeam?.budgets?.cash ?? 0,
-      personalCash: player.finances?.bankBalance ?? 0,
-      boardMood: careerState.ownedTeam?.boardMood ?? 50,
-    })
-    
-    if (interruption) {
-      // Show the interruption modal before advancing
-      setPendingInterruption(interruption.event)
-      setShowInterruption(true)
-      return // Don't advance yet - wait for player choice
+
+    // Only surface random interruption events during race weekend.
+    const shouldAllowRandomInterruption = !!currentRace && currentDay >= 5
+    if (shouldAllowRandomInterruption) {
+      const interruption = generateDailyInterruption({
+        currentWeek,
+        currentDay,
+        currentYear,
+        isRaceWeek: !!currentRace,
+        isRaceDay: !!(currentRace && currentDay === 7),
+        reputation: careerState.ownedTeam?.reputation ?? player.reputation ?? 0,
+        fatigue: player.mentalState?.fatigue ?? 0,
+        stress: player.mentalState?.stress ?? 0,
+        hasPartner: !!(careerState.personalLife as unknown as Record<string, unknown>)?.partner,
+        staffCount: careerState.ownedTeam?.staff?.length ?? 0,
+        teamCash: careerState.ownedTeam?.budgets?.cash ?? 0,
+        personalCash: player.finances?.bankBalance ?? 0,
+        boardMood: careerState.ownedTeam?.boardMood ?? 50,
+      })
+
+      if (interruption) {
+        // Show the interruption modal before advancing
+        setPendingInterruption(interruption.event)
+        setShowInterruption(true)
+        return // Don't advance yet - wait for player choice
+      }
     }
-    
+
     // No interruption - advance normally
     proceedWithDayAdvance()
   }
@@ -183,12 +210,13 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
         }
       }
       
-      // Apply time cost
+      // Apply time cost (also advance the clock)
       if (choice.timeCost > 0 && currentState.dayBudget) {
         updates.dayBudget = {
           ...currentState.dayBudget,
           hoursUsed: currentState.dayBudget.hoursUsed + choice.timeCost,
           hoursRemaining: Math.max(0, currentState.dayBudget.hoursRemaining - choice.timeCost),
+          currentHour: Math.min(23, (currentState.dayBudget.currentHour ?? 7) + choice.timeCost),
         }
       }
       
@@ -275,8 +303,7 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
   }
   
   const proceedWithDayAdvance = () => {
-    // Capture state BEFORE advancing
-    preAdvanceSnapshot.current = captureStateSnapshot()
+    const beforeState = captureStateSnapshot()
     
     const newDay = currentDay >= 7 ? 1 : currentDay + 1
     const newWeek = currentDay >= 7 ? currentWeek + 1 : currentWeek
@@ -287,56 +314,37 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
     
     advanceDay()
     
-    // Capture state AFTER advancing and generate highlights
-    // Small delay to let the store update propagate
-    setTimeout(() => {
-      const afterState = captureStateSnapshot()
-      const highlights = generateHighlights(preAdvanceSnapshot.current, afterState)
-      setTransitionHighlights(highlights)
-    }, 50)
+    // advanceDay is synchronous and captureStateSnapshot reads from getState(),
+    // so the store is already up-to-date — no setTimeout needed.
+    const afterState = captureStateSnapshot()
+    const highlights = generateHighlights(beforeState, afterState)
+    setTransitionHighlights(highlights)
     
+    const dismissDelay = highlights.length > 0 ? 2200 : 1500
     setTimeout(() => {
       setShowTransition(false)
       setTransitionHighlights([])
       onDayAdvanced?.()
-    }, transitionHighlights.length > 0 ? 2200 : 1500)
+    }, dismissDelay)
   }
   
   const handleSkipToRace = () => {
-    if (!upcomingRace) return
-    
-    // If race is this week, skip to Sunday
-    if (currentRace) {
-      const daysToSkip = 7 - currentDay
-      for (let i = 0; i < daysToSkip; i++) {
-        advanceDay()
-      }
-      setTransitionInfo({ day: 7, week: currentWeek, year: currentYear })
-    } else if (nextRace) {
-      // Skip entire weeks until race week, then to Sunday
-      const weeksToSkip = nextRace.week - currentWeek - 1
-      for (let i = 0; i < weeksToSkip; i++) {
-        advanceWeek()
-      }
-      // Then advance days to Sunday
-      const { careerState: newState } = useCareerStore.getState()
-      const daysToSunday = 7 - (newState?.currentDay ?? 1)
-      for (let i = 0; i <= daysToSunday; i++) {
-        advanceDay()
-      }
-      setTransitionInfo({ day: 7, week: nextRace.week, year: currentYear })
+    const result = startFastForwardToRaceWeek()
+    if (!result.success && result.reason) {
+      console.warn('[DayAdvanceControls] Failed to start fast forward:', result.reason)
     }
-    
-    setShowTransition(true)
-    setTimeout(() => {
-      setShowTransition(false)
-      onDayAdvanced?.()
-    }, 2000)
   }
   
   const handleGoToRaceDay = () => {
     navigate('/race-day')
   }
+
+  useEffect(() => {
+    if (previousAutoFastForwarding.current && !isAutoFastForwarding) {
+      onDayAdvanced?.()
+    }
+    previousAutoFastForwarding.current = isAutoFastForwarding
+  }, [isAutoFastForwarding, onDayAdvanced])
   
   return (
     <>
@@ -363,27 +371,48 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
         )}
       </div>
       
-      {/* Hours Remaining Indicator */}
-      {dayBudget && !isRaceDay && (
-        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border ${
-          fatigueZone === 'green' ? 'bg-status-success/10 border-status-success/30' :
-          fatigueZone === 'yellow' ? 'bg-accent-orange/10 border-accent-orange/30' :
-          'bg-accent-red/10 border-accent-red/30'
-        }`}>
-          <Clock className={`w-4 h-4 ${
-            fatigueZone === 'green' ? 'text-status-success' :
-            fatigueZone === 'yellow' ? 'text-accent-orange' :
-            'text-accent-red'
-          }`} />
-          <span className={`font-mono font-bold text-sm ${
-            fatigueZone === 'green' ? 'text-status-success' :
-            fatigueZone === 'yellow' ? 'text-accent-orange' :
-            'text-accent-red'
-          }`}>
-            {hoursRemaining}h left
-          </span>
-        </div>
-      )}
+      {/* Current Time + Period + Hours Remaining */}
+      {dayBudget && !isRaceDay && (() => {
+        const currentHour = dayBudget.currentHour ?? 7
+        const period = getPeriodForHour(currentHour)
+        const periodConfig = DAY_PERIODS[period]
+        const PeriodIcon = period === 'morning' ? Sunrise : period === 'night' ? Moon : period === 'evening' ? Sunset : Sun
+        
+        return (
+          <div className="flex items-center gap-2">
+            {/* Time of day display */}
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-dark/50 border border-border/20">
+              <PeriodIcon className="w-3.5 h-3.5 text-text-muted" />
+              <span className="font-mono text-sm text-text-secondary">
+                {formatGameHour(currentHour)}
+              </span>
+              <span className="text-[10px] text-text-muted">
+                {periodConfig.shortLabel}
+              </span>
+            </div>
+            
+            {/* Hours remaining badge */}
+            <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border ${
+              fatigueZone === 'green' ? 'bg-status-success/10 border-status-success/30' :
+              fatigueZone === 'yellow' ? 'bg-accent-orange/10 border-accent-orange/30' :
+              'bg-accent-red/10 border-accent-red/30'
+            }`}>
+              <Clock className={`w-4 h-4 ${
+                fatigueZone === 'green' ? 'text-status-success' :
+                fatigueZone === 'yellow' ? 'text-accent-orange' :
+                'text-accent-red'
+              }`} />
+              <span className={`font-mono font-bold text-sm ${
+                fatigueZone === 'green' ? 'text-status-success' :
+                fatigueZone === 'yellow' ? 'text-accent-orange' :
+                'text-accent-red'
+              }`}>
+                {hoursRemaining}h left
+              </span>
+            </div>
+          </div>
+        )
+      })()}
       
       {/* Control Buttons */}
       <div className="flex items-center gap-2">
@@ -397,32 +426,104 @@ export function DayAdvanceControls({ onDayAdvanced }: DayAdvanceControlsProps) {
           </Button>
         ) : (
           <>
-            <Button 
-              variant={hoursRemaining <= 0 ? 'primary' : 'secondary'}
-              onClick={handleAdvanceDay}
-            >
-              <Calendar className="w-4 h-4 mr-2" />
-              {hoursRemaining <= 0 ? 'End Day' : 'End Day'}
-            </Button>
+            {(() => {
+              const curHour = dayBudget?.currentHour ?? 7
+              const curPeriod = getPeriodForHour(curHour)
+              const isNight = curPeriod === 'night'
+              const noHours = hoursRemaining <= 0
+              const showEndDay = isNight || noHours
+              
+              if (showEndDay) {
+                return (
+                  <Button 
+                    variant={noHours ? 'primary' : 'secondary'}
+                    onClick={handleAdvanceDay}
+                      disabled={isAutoFastForwarding}
+                  >
+                    <Calendar className="w-4 h-4 mr-2" />
+                    End Day
+                  </Button>
+                )
+              }
+              
+              // Show Fast Forward + secondary End Day
+              const currentIdx = DAY_PERIOD_ORDER.indexOf(curPeriod)
+              const nextPeriod = currentIdx < DAY_PERIOD_ORDER.length - 1 ? DAY_PERIOD_ORDER[currentIdx + 1] : 'night'
+              const nextLabel = DAY_PERIODS[nextPeriod].shortLabel
+              
+              return (
+                <>
+                  <Button 
+                    variant="primary"
+                    onClick={() => fastForwardPeriod()}
+                    disabled={isAutoFastForwarding}
+                  >
+                    <FastForward className="w-4 h-4 mr-2" />
+                    Fast Forward to {nextLabel}
+                  </Button>
+                  <Button 
+                    variant="secondary"
+                    onClick={handleAdvanceDay}
+                    disabled={isAutoFastForwarding}
+                  >
+                    <Calendar className="w-4 h-4 mr-2" />
+                    End Day
+                  </Button>
+                </>
+              )
+            })()}
             
-            {upcomingRace && !isRaceWeekend && (
+            {!isAutoFastForwarding && upcomingRace && !isRaceWeekend && (
               <Button 
                 variant="primary"
                 onClick={handleSkipToRace}
               >
                 <FastForward className="w-4 h-4 mr-2" />
-                Skip to {currentRace ? 'Race Day' : `${upcomingRace.trackName.split(' ')[0]} (W${upcomingRace.week})`}
+                Advance to {currentRace ? 'Race Weekend' : `${upcomingRace.trackName.split(' ')[0]} (W${upcomingRace.week})`}
+              </Button>
+            )}
+            {isAutoFastForwarding && (
+              <Button
+                variant="primary"
+                onClick={() => stopFastForward('manual', 'Fast forward stopped by player.')}
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                Stop Fast Forward
               </Button>
             )}
           </>
         )}
       </div>
+      {isAutoFastForwarding && (
+        <p className="text-xs text-text-muted">
+          Fast-forwarding to Week {fastForwardTargetWeek ?? currentWeek}, Day {fastForwardTargetDay ?? 1}...
+        </p>
+      )}
+      {!isAutoFastForwarding && fastForwardStopReason === 'critical_event' && fastForwardStopMessage && (
+        <p className="text-xs text-accent-orange">
+          Fast forward paused: {fastForwardStopMessage}
+        </p>
+      )}
+      {!isAutoFastForwarding && fastForwardStopReason === 'completed' && fastForwardLastSummary && (
+        <p className="text-xs text-status-success">
+          Skip complete: {fastForwardLastSummary.skippedDays} days, Rep {fastForwardLastSummary.reputationDelta >= 0 ? '+' : ''}{fastForwardLastSummary.reputationDelta}, Cash {fastForwardLastSummary.personalCashDelta >= 0 ? '+' : ''}${fastForwardLastSummary.personalCashDelta.toLocaleString()}.
+        </p>
+      )}
+      {!isAutoFastForwarding && fastForwardStopReason === 'manual' && fastForwardLastSummary && (
+        <p className="text-xs text-text-muted">
+          Skip stopped: {fastForwardLastSummary.skippedDays} days simulated.
+        </p>
+      )}
       
       {/* End Day Summary Modal */}
       <EndDayModal
         isOpen={showEndDayModal}
         onClose={() => setShowEndDayModal(false)}
-        onConfirmEndDay={handleConfirmEndDay}
+        onConfirm={handleConfirmEndDay}
+        hoursRemaining={hoursRemaining}
+        activitiesCompleted={activitiesCompleted}
+        missedNotifications={missedNotificationsToday}
+        incompleteActivities={incompleteActivities}
       />
       
       {/* Interruption Event Modal */}

@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 56,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Declan O'Malley's journey in motorsport began in the wind tunnels of Dublin Institute of Technology, where he honed his understanding of aerodynamics. After graduating top of his class, Declan spent several years with smaller racing outfits, developing innovative solutions on a shoestring budget. His meticulous approach and ability to extract maximum performance from limited resources caught the eye of Porsche Penske Motorsport. \n\nAs Head of Aero, Declan is known for his unwavering pursuit of aerodynamic perfection. He demands precision and data-driven decision-making from his team. While sometimes perceived as aloof, Declan's commitment to excellence and his knack for spotting minute details that others miss have made him an invaluable asset to the team. He's also known for his calm demeanor, even under the most intense pressure, a trait that has helped him steer the team through many challenging races.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed salt and pepper beard",
+    "description": "A man of medium build, Declan has a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using imperial measurements alongside metric, much to the annoyance of his team.",
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

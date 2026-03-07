@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kowalski",
+  "nationality": "Polish",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jan's journey into motorsport started with a childhood fascination with his father's automotive repair shop. He spent countless hours tinkering with engines and learning the intricacies of vehicle mechanics. This hands-on experience fueled his passion, leading him to pursue a degree in mechanical engineering with a focus on motorsport applications.\n\nAfter graduating, Jan gained valuable experience at a smaller racing team, where he honed his fabrication skills and developed a reputation for his meticulous attention to detail. He is known for his ability to quickly diagnose and resolve complex mechanical issues, ensuring that the team's cars are always performing at their peak. Jan's demanding nature pushes those around him to strive for excellence, and he takes immense pride in the quality of his work. He joined Manthey EMA after proving himself as a top talent.\n\nJan's approach to fabrication is characterized by a relentless pursuit of perfection. He believes that even the smallest details can make a significant difference in performance, and he is always looking for ways to optimize and improve the team's equipment. He is a valuable asset to Manthey EMA, bringing both technical expertise and a strong work ethic to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with a slight fade on the sides.",
+    "eyeColor": "Hazel",
+    "facialHair": "Stubble beard",
+    "description": "Jan is a lean, wiry man with calloused hands and a focused gaze, reflecting his dedication to his craft."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before starting a new task.",
+    "Insists on using a specific brand of lubricant for all mechanical components.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy he is."
+  ]
+}

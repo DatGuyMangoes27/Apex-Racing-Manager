@@ -1,0 +1,22 @@
+{
+  "name": "Iona MacLeod",
+  "nationality": "Scottish",
+  "age": 42,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Iona's journey into motorsport began with a childhood fascination for engineering and a love for the roar of engines at Knockhill Racing Circuit. She pursued a degree in Mechanical Engineering from the University of Edinburgh, specializing in computational fluid dynamics. Before joining Triple Eight, Iona honed her skills developing vehicle dynamics models for a leading automotive manufacturer.\n\nAt Triple Eight, Iona's meticulous approach to simulator development has earned her a reputation for unparalleled accuracy. She believes that a simulator is only as good as the data it's fed, and she's relentless in her pursuit of perfection. Her team relies on her ability to translate complex data into actionable insights for the drivers and race engineers, bridging the gap between virtual practice and on-track performance. She strives to find the perfect balance in the simulation environment to maximize its benefit for the team.\n\nIona is driven by a desire to push the boundaries of simulation technology and is known for her innovative approach to problem-solving. She's always looking for new ways to improve the realism and fidelity of the simulator, ensuring that Triple Eight drivers have the best possible preparation for every race.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Iona is of average height and has a focused intensity about her."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping her pen against her teeth when deeply concentrated.",
+    "Insists on listening to classical music while calibrating the simulator."
+  ]
+}

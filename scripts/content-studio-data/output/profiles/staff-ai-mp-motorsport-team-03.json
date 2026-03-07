@@ -1,0 +1,22 @@
+{
+  "name": "Eleni Papadopoulos",
+  "nationality": "Greek",
+  "age": 48,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Eleni's journey in motorsport began unexpectedly. While studying mechanical engineering at the National Technical University of Athens, she volunteered at a local rally team to gain practical experience. Initially focused on engine performance, she quickly became fascinated by the impact of aerodynamics on vehicle handling and speed. After graduating, she pursued a masters in aerodynamics and secured a junior role at a Formula 3 team, proving her worth through rigorous testing and innovative wing designs.\n\nShe joined MP Motorsport Junior five years ago, bringing a no-nonsense approach to the aero department. Eleni believes in data-driven development, pushing her team to constantly analyze wind tunnel results and track telemetry. Her keen eye for detail and insistence on rigorous testing have consistently yielded performance gains, even if her demanding personality can sometimes rub her colleagues the wrong way. She is respected for her unwavering loyalty to the team and her dedication to excellence.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Eleni is a woman of medium height with a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out aerodynamics textbook.",
+    "Insists on being the first to review new wind tunnel data.",
+    "Has a habit of tapping her pen rapidly when deep in thought."
+  ]
+}

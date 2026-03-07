@@ -1,0 +1,31 @@
+{
+  "name": "Dimitrios 'Dimi' Katsaros",
+  "nationality": "Greek",
+  "age": 63,
+  "gender": "male",
+  "contactType": "yacht_captain",
+  "bio": "Dimitrios, or 'Dimi' as he prefers, is a seasoned yacht captain with over 40 years of experience navigating the Mediterranean and beyond. He's captained vessels for some of the world's wealthiest individuals, earning a reputation for discretion and unwavering loyalty. Though nearing retirement, he remains ambitious, always seeking the next challenge and clinging to a romanticized vision of his younger days sailing the Aegean. He's idealistic about sustainable living, a passion stemming from witnessing firsthand the pollution affecting the oceans he loves.\n\nDimi's connection to motorsport is tangential, but significant. Many of his clients are involved in racing, either as team owners, sponsors, or even amateur drivers. He often overhears conversations about the sport and has even transported racing teams and their equipment to various events. A racing driver might cross paths with Dimi while vacationing on a yacht owned by a sponsor, or perhaps even be introduced through a mutual connection within the high-society circles he navigates.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Deep brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Dimitrios has a weathered face that speaks of years spent at sea. He's of medium build, still surprisingly fit for his age, and carries himself with a quiet confidence."
+  },
+  "connectionToMotorsport": "Dimitrios' connection to motorsport comes through his wealthy clientele, many of whom are team owners or sponsors. He has overheard many conversations and transported teams to racing events.",
+  "meetingContext": "The player might meet Dimitrios while attending a lavish party on a yacht during the Monaco Grand Prix or another similarly glamorous racing event.",
+  "conversationTopics": [
+    "The best dive spots in the Mediterranean",
+    "The environmental impact of large yachts (and how to mitigate it)",
+    "His sailing adventures from his youth",
+    "The eccentric habits of his wealthiest clients",
+    "The intricacies of yacht maintenance and management"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy potential sponsors within his social circle",
+    "Offer temporary accommodation on a yacht during a race weekend",
+    "Provide insights into the personalities and preferences of team owners"
+  ],
+  "personality_summary": "An ambitious and nostalgic yacht captain with high society connections and a soft spot for racing drivers."
+}

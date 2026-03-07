@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Miller",
+  "nationality": "American",
+  "age": 34,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ethan Miller's journey into motorsport began with a childhood obsession with building and racing go-karts. This passion led him to pursue a degree in mechanical engineering, focusing on vehicle dynamics and aerodynamics. After graduating, he cut his teeth in the lower formulas, working his way up through various teams, honing his skills in data analysis, simulation, and vehicle setup. His meticulous approach and talent for identifying key performance areas quickly gained him recognition.\n\nEthan's expertise lies in his ability to see the 'big picture' – understanding how each component of the car interacts and contributes to overall performance. He excels at bridging the gap between the engineering department and the race track, translating complex data into actionable strategies. At Dick Johnson Racing, he aims to build a cohesive team, fostering a culture of innovation and pushing the boundaries of what's possible.\n\nEthan is known for his calm demeanor under pressure and his ability to motivate his team. He is a firm believer in continuous improvement and is always seeking new ways to optimize performance. His ultimate goal is to lead DJR to championship glory, utilizing his technical skills and leadership qualities.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly parted on the side with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed stubble",
+    "description": "Ethan is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classic rock music during crucial data analysis sessions."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Beatriz Oliveira",
+  "nationality": "Brazilian",
+  "age": 28,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Beatriz's journey into motorsport began unexpectedly during a university project focused on material science. Intrigued by the possibilities of carbon fiber and its application in racing, she shifted her focus, securing an internship with a local racing team crafting composite bodywork. Her meticulous attention to detail and unwavering commitment to quality quickly made her an invaluable asset.\n\nAfter gaining experience with smaller racing outfits, Beatriz joined Carlin, drawn to their ambitious approach and dedication to developing young talent. She approaches her role with a scientific mindset, constantly seeking ways to improve the strength, weight, and aerodynamic properties of composite components. Beatriz is known for her collaborative spirit and ability to troubleshoot complex issues under pressure, a skill honed by years of working in high-stakes racing environments.\n\nWhat truly sets Beatriz apart is her passion for sustainable materials. She actively researches and experiments with bio-based composites, hoping to contribute to a greener future for motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Beatriz is of average height with a lean, athletic build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and material calculations.",
+    "Has a habit of tapping her foot rhythmically when concentrating on a complex task.",
+    "Prefers listening to Brazilian bossa nova music while working to maintain focus."
+  ]
+}

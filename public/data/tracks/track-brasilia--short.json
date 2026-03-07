@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Brasília BRB, inaugurated in 1974, was envisioned as a cornerstone of Brazilian motorsport. Designed by the renowned Brazilian architect Oscar Niemeyer, the circuit initially hosted non-championship Formula One races, adding to its early prestige. While the full circuit has seen major international events, the shorter 3.4km layout has primarily catered to national racing series, touring car championships, and club events. Despite not hosting Formula 1, the track has remained a vital part of Brazilian racing culture, providing a challenging and accessible venue for local talent to hone their skills and for fans to experience the thrill of motorsports. The venue has undergone several renovations, including significant upgrades to safety standards, to meet the evolving requirements of modern racing.",
+  "atmosphere": "The roar of engines echoes through the Brasília air as a pack of touring cars thunders through the Curva do Lago on the Short Circuit. The energy is palpable, a mix of gasoline fumes and the excited chatter of fans crammed into the grandstands. The atmosphere is less about the glamour of Formula 1 and more about the raw passion of grassroots racing. The Brazilian sun beats down, adding to the intensity, as local heroes battle wheel-to-wheel, providing a spectacle that is both thrilling and authentically Brazilian.",
+  "trackCharacter": "The Short Circuit at Brasília is a flowing and technical layout that rewards precision and momentum. With only 8 turns, it emphasizes corner speed and car balance. The layout is much shorter than the full circuit, focusing on the inner loop and eliminating the long back straight, creating a more intense and compact experience. It's a track that demands a well-sorted chassis and a driver who can maintain consistent speed through the flowing corners. The continuous nature of the layout provides very little respite for the drivers.",
+  "nickname": "The National Loop",
+  "famousCorners": [
+    {
+      "name": "Curva do Lago",
+      "description": "A fast, sweeping right-hander that leads onto a short straight.",
+      "challenge": "Requires immense commitment and precise placement to carry maximum speed onto the following straight."
+    },
+    {
+      "name": "Curva da Torre",
+      "description": "A tight right-hand corner at the end of a straight.",
+      "challenge": "Difficult braking zone which often creates overtaking opportunities."
+    },
+    {
+      "name": "Curva do Cafezinho",
+      "description": "A medium-speed right-hander that tests the car's balance.",
+      "challenge": "Requires a delicate touch to avoid understeer and maintain momentum."
+    },
+    {
+      "name": "Curva Zero",
+      "description": "A slow corner before entering the main straight.",
+      "challenge": "Getting the power down early is key to maximizing speed onto the straight."
+    },
+    {
+      "name": "Curva Um",
+      "description": "A long and sweeping right-hander",
+      "challenge": "Carrying speed through the corner and maintaining good exit speed."
+    }
+  ],
+  "keyFactors": [
+    "Corner exit speed",
+    "Car balance and stability",
+    "Braking precision",
+    "Tire management, especially on the front tires",
+    "Aerodynamic efficiency"
+  ],
+  "overtakingSpots": [
+    "Into Curva da Torre after the short straight",
+    "Under braking for Curva Zero",
+    "Into Curva do Lago, but it's a high-risk maneuver"
+  ],
+  "historySnippets": [
+    "Brasília was designed by the same architect as the city itself, Oscar Niemeyer.",
+    "The circuit's elevation changes add to its character.",
+    "Nelson Piquet tested at Brasília early in his career.",
+    "The track has hosted various national championships, including Formula Truck.",
+    "The circuit's location near the Brazilian capital makes it a popular venue.",
+    "The Short Circuit is frequently used for driver training and testing."
+  ],
+  "weatherNotes": "Brasília experiences a tropical savanna climate with distinct wet and dry seasons. During the wet season (October to April), heavy rain showers can quickly drench the track, making for treacherous conditions. The dry season (May to September) brings consistently sunny weather and high temperatures, which can lead to increased tire wear. The high altitude of Brasília can also affect engine performance, particularly in naturally aspirated engines.",
+  "drivingAdvice": "On the Short Circuit, focus on maintaining momentum and minimizing braking distances. The key is to be smooth and precise with your inputs. The Curva do Lago is crucial for a good lap time, so experiment with different lines to find the optimal entry and exit speeds. Pay close attention to tire wear, especially on the front tires, as the frequent changes of direction can take their toll. Aggressive driving will quickly degrade the tires, leading to slower lap times later in the race. Be patient and strategic with your overtaking maneuvers, as the track is relatively narrow and unforgiving.",
+  "famousRaces": [
+    "Brazilian Formula Truck Championship: Always a crowd-pleaser, the Formula Truck series features massive trucks battling for position, often resulting in spectacular crashes.",
+    "Stock Car Brasil: This popular Brazilian touring car series has held numerous races at Brasília, showcasing close racing and fierce competition.",
+    "Local Club Racing Events: The Short Circuit regularly hosts club-level events, providing a platform for amateur racers to develop their skills and experience the thrill of motorsports."
+  ],
+  "localCulture": "Brasília, a UNESCO World Heritage site, is a planned city renowned for its modernist architecture. The local cuisine features hearty dishes like feijoada (black bean stew with pork) and pão de queijo (cheese bread). The paddock is often filled with the sounds of samba music and the aroma of grilling meat. Brazilians are passionate motorsport fans, creating a vibrant and welcoming atmosphere for both drivers and spectators. Expect a warm reception and plenty of enthusiastic support, regardless of your nationality."
+}

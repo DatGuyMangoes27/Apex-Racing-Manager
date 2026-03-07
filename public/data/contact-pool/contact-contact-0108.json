@@ -1,0 +1,31 @@
+{
+  "name": "Sofia Herrera",
+  "nationality": "Mexican",
+  "age": 59,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Sofia Herrera is a celebrated Mexican actress known for her roles in critically acclaimed telenovelas and independent films. Her performances are often praised for their emotional depth and authenticity, reflecting her own restless spirit and genuine empathy. While primarily known for her acting, Sofia has always been a motorsport enthusiast, attending races and events whenever her schedule allows, and occasionally lending her celebrity status to promote Mexican racing talent.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Shoulder-length, softly layered",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is a striking woman with a warm smile and expressive eyes. She carries herself with confidence and grace."
+  },
+  "connectionToMotorsport": "Sofia is a vocal supporter of young Mexican drivers and often attends local racing events. She also sponsors a small up-and-coming team in Formula 4.",
+  "meetingContext": "You might meet Sofia at a motorsport charity gala or a Formula 4 race in Mexico City.",
+  "conversationTopics": [
+    "The current state of Mexican cinema",
+    "Her travels through South America",
+    "The challenges faced by young female drivers",
+    "Her love for drone racing",
+    "Interesting podcasts she has listened to recently"
+  ],
+  "canHelp": [
+    "Introduce you to influential figures in the Mexican entertainment industry, potentially securing endorsements.",
+    "Provide media training and guidance on public image.",
+    "Offer financial backing or introductions to potential sponsors through her extensive network."
+  ],
+  "personality_summary": "A restless and caring actress with a passion for motorsport and helping others."
+}

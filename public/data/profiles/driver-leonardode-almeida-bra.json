@@ -1,0 +1,27 @@
+{
+  "biography": "Leonardo Almeida, a name whispered with a mix of awe and exasperation in the paddocks, hails from the sun-drenched streets of Sao Paulo. He wasn't born into racing royalty; his father was a mechanic, and Leo practically grew up in the garage, inhaling the scent of oil and burning rubber. His break came unexpectedly at 18, when he filled in for an injured driver in a local karting championship and promptly won, showcasing raw talent no one could ignore. Agip scouted him soon after, and he rocketed through the junior formulas, his aggressive style both thrilling and prone to errors. Now at 28, Almeida is at the peak of his abilities, though consistency remains his Achilles' heel. He's known for his flamboyant personality and equally flamboyant driving, a combination that makes him both a fan favorite and a source of constant anxiety for his team. His contract with Agip is nearing its end, and rumours are circulating about a possible move to a rival team, desperate for his marketable image and raw speed.",
+  "drivingStyle": "Almeida's driving style is best described as 'controlled chaos.' He's an incredibly late braker, often throwing the car into corners with a degree of aggression that seems almost reckless. He thrives on the limit, constantly pushing the boundaries of grip and daring his rivals to follow. While this approach yields spectacular overtakes and blistering lap times, it also results in costly mistakes and tire degradation. His tire management is notoriously poor, often sacrificing the later stages of a race for early gains. He handles pressure surprisingly well, almost seeming to relish the challenge when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "A long-standing feud stemming from a controversial collision during a championship-deciding race in their junior formula days. Rossi accuses Almeida of deliberately taking him out, a charge Almeida vehemently denies (while secretly enjoying the drama)."
+    },
+    {
+      "driver": "Eva Rostova",
+      "reason": "A battle of egos and driving philosophies. Rostova, known for her calculated and precise driving, openly criticizes Almeida's 'reckless abandon,' leading to heated exchanges in press conferences and on the track."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka is another driver known for his smooth and clean driving style, which clashes directly with Almeida's aggressive style. The two have traded places on the podium several times, and there is always a tense atmosphere whenever they are near each other on the track."
+    }
+  ],
+  "quirks": [
+    "Always wears a lucky charm, a small wooden toucan, hidden inside his racing suit.",
+    "Refuses to eat anything green on race days, believing it brings bad luck.",
+    "Listens to a specific Brazilian samba song just before entering the car, claiming it 'injects rhythm' into his driving."
+  ],
+  "nickname": "The Samba Storm",
+  "famousQuote": "\"Life's too short to drive slow. If you're not on the edge, you're taking up too much space.\"",
+  "careerHighlight": "Winning the Monaco Grand Prix in 2027 after starting from P10, executing a series of daring overtakes in the rain, and holding off intense pressure from Rostova in the closing laps. The crowd went wild, and his car was swarmed after the finish.",
+  "careerLowPoint": "Crashing out of the lead in the final race of the 2026 season, handing the championship to his arch-rival, Alessandro Rossi. He spun on the last lap while trying to push for a faster lap time."
+}

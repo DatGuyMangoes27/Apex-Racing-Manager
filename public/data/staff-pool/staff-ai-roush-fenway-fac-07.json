@@ -1,0 +1,22 @@
+{
+  "name": "Javier Andres Silva",
+  "nationality": "Chilean",
+  "age": 29,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Javier's journey into motorsport began unconventionally. While studying Computer Engineering at the Pontifical Catholic University of Chile, he developed a fascination with telemetry data and simulation software used by racing teams. He saw an opportunity to apply his technical skills in a dynamic, high-stakes environment, and after graduating, he actively sought out internships with smaller Chilean racing outfits. This gave him a foundational understanding of the unique IT challenges within motorsport, from managing real-time data streams during races to ensuring secure communication across the team. \n\nJavier is now the IT Systems Manager for RFK Racing. He approaches his role with a calm and methodical demeanor, focusing on preventative measures to avoid costly system failures during crucial moments. He believes in empowering the team with the best technological tools and ensuring seamless data flow. He is known for his meticulous attention to detail and ability to troubleshoot complex issues under pressure, making him a valuable asset to the team. What sets Javier apart is his commitment to open-source solutions and developing custom tools tailored to the specific needs of RFK Racing, reducing reliance on expensive, off-the-shelf software.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "Javier is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a Yerba Mate gourd and bombilla (metal straw) on his desk.",
+    "Insists on backing up all critical data on physical hard drives in addition to cloud storage.",
+    "Uses a custom-built keyboard with unusual keycaps."
+  ]
+}

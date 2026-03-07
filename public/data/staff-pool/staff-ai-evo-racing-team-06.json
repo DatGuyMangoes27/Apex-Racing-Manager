@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Argentine",
+  "age": 56,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo Alonso's journey in motorsport began in the dusty karting tracks of Buenos Aires, fueled by a passion for engineering and the roar of engines. He quickly rose through the ranks, earning a reputation as a shrewd tactician and a master of car setup. His early career saw him working as a race engineer for smaller teams, where he learned to squeeze every last ounce of performance from limited resources. He joined EVO Racing Team five years ago and has been instrumental in their recent successes.\n\nAs Sporting Director, Ricardo is known for his meticulous planning and his ability to inspire his team. He believes in a data-driven approach, but also values the intuition and experience of his mechanics and drivers. He is a firm believer in fostering a positive and collaborative environment, where everyone feels empowered to contribute their best. Ricardo's distinctive ability lies in identifying and nurturing young talent, ensuring a steady stream of skilled personnel for EVO Racing Team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build, Ricardo has a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn leather-bound notebook filled with technical diagrams and notes.",
+    "Insists on having a mate cocido every morning before reviewing race strategies.",
+    "Has a habit of tapping his pen rhythmically when deep in thought, much to the annoyance of nearby staff."
+  ]
+}

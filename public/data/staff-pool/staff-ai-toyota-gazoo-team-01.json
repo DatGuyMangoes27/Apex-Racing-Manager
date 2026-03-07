@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Srisuk",
+  "nationality": "Thai",
+  "age": 33,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Somchai's journey into motorsport began with a childhood fascination for modifying scooters in his neighborhood. This passion led him to pursue a degree in mechanical engineering, where he excelled in thermodynamics and fluid dynamics. After graduating, he joined a small Thai racing team, quickly proving his aptitude for problem-solving and optimization. His talent caught the attention of Toyota Gazoo Racing, who recruited him to work in their engine development department. \n\nSomchai's approach to engineering is methodical and data-driven, but he also believes in the importance of intuition and collaboration. He values clear communication within his team and is known for his ability to explain complex concepts in a way that everyone can understand. As Chief Engineer, he is focused on maximizing performance while ensuring reliability, always seeking innovative solutions to gain a competitive edge. His loyalty to the team is unwavering, and he sees his role as a crucial part of the larger effort to achieve victory. He also enjoys mentoring younger engineers, sharing his knowledge and experiences to help them grow.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "dark brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "He has a lean build with a focused gaze, and often wears a Toyota Gazoo Racing polo shirt."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Prefers to drink strong, sweet Thai iced tea throughout the day."
+  ]
+}

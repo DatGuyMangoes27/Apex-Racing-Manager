@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 28,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Astrid's fascination with motorsport began during her childhood visits to the local go-kart track, where the roar of engines and the pursuit of speed ignited a lifelong passion. After completing her degree in Aerospace Engineering from the Technical University of Denmark, she sought to combine her technical expertise with her love for racing. She started as a junior technician, meticulously analyzing airflow data and learning the intricacies of aerodynamic optimization.\n\nNow at Mercedes-AMG, Astrid is a competent wind tunnel operator known for her rigorous approach to data collection and analysis. She believes in the power of meticulous observation and constantly seeks to refine testing methodologies to extract maximum value from each run. Astrid is respected for her technical skills and her unwavering commitment to improving aerodynamic performance. \n\nWhat sets Astrid apart is her sharp eye for detail and her ability to identify subtle nuances in airflow patterns that others might miss. She is never afraid to challenge conventional wisdom and is always pushing the boundaries of what's possible in aerodynamic development.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair often pulled back into a practical ponytail during work hours.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a tall, slender woman with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas.",
+    "Has a habit of tapping her pen against the table when deep in thought.",
+    "Insists on calibrating the wind tunnel sensors herself before each major test session."
+  ]
+}

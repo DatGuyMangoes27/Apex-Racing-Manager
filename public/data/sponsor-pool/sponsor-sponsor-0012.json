@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0012",
+  "name": "Al Sahra Tyres",
+  "category": "tires",
+  "tier": "mid",
+  "country": "UAE",
+  "description": "Engineered for performance, inspired by the desert.",
+  "story": "Al Sahra Tyres is a leading tyre manufacturer in the UAE, known for its durability and performance in harsh conditions. Motorsport is a natural proving ground for their technology. They seek a partnership that showcases their tyres' capabilities and enhances their brand recognition on a global stage, proving that their tyres are built to withstand any challenge.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": null,
+    "minPodiums": null
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": null,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 62,
+  "imagePath": "logos/sponsors/sponsor-0012.png"
+}

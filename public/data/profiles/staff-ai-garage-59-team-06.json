@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Andreas Reiter",
+    "nationality": "Austrian",
+    "age": 48,
+    "gender": "male",
+    "role": "sporting_director",
+    "bio": "Andreas discovered his passion for motorsport early, spending countless hours at the local karting track near his hometown in Austria. He studied mechanical engineering, focusing on vehicle dynamics, and began his career as a data analyst for a small touring car team. His sharp analytical skills and ability to identify subtle performance gains quickly led to a promotion to race engineer. Before transitioning to Garage 59, Andreas spent several years as the chief engineer for a GT team, known for his meticulous approach and ability to extract maximum performance from limited resources. As Sporting Director, he focuses on creating a data-driven environment and fostering collaboration between engineering and driver teams.\n\nAndreas is known for his calm demeanor and ability to make crucial decisions under pressure. He emphasizes the importance of thorough preparation and proactive problem-solving. He believes that a strong team dynamic, built on mutual respect and open communication, is essential for success in motorsport. He is especially proud of his ability to identify and nurture young talent, helping them develop into successful drivers and engineers.\n\nHis distinctive approach lies in integrating cutting-edge simulation technology into the team's strategy, allowing for precise pre-race planning and real-time adjustments based on simulated scenarios. Andreas is constantly seeking new ways to leverage technology to gain a competitive edge, making him a valuable asset to Garage 59.",
+    "physical": {
+      "skinTone": "light",
+      "hairColor": "dark brown",
+      "hairStyle": "short, neatly combed back with a slight receding hairline",
+      "eyeColor": "blue",
+      "facialHair": "trimmed goatee",
+      "description": "Andreas is of average height with a slightly athletic build."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook and pen, even in meetings.",
+      "Has a habit of tapping his pen on the table when deep in thought.",
+      "Insists on having a double espresso before every race."
+    ]
+  }
+]

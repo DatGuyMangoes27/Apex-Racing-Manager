@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 24,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jan developed a passion for motorsport early, attending local rally events with his father. His culinary journey began in his grandmother's kitchen, where he learned traditional Czech recipes. He honed his skills in hospitality management, with a focus on large-scale event catering. Jan's background is in delivering high-quality meals and logistics for demanding clients, and eventually led him to the high-pressure environment of Formula 1. \n\nHis methodical approach ensures every team member receives the nutrition they need to perform at their best. He sees his role as integral to the team's success, believing that a well-fed crew is a focused and efficient crew. Jan is known for his attention to detail, ensuring dietary requirements are meticulously met and that the catering setup is always impeccably organised. He's always looking for ways to improve the team's dining experience, incorporating locally-sourced ingredients and innovative meal plans.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Jan is of average height with a lean build and friendly, approachable demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down recipe ideas.",
+    "Insists on personally tasting every dish before it's served.",
+    "Has a collection of vintage motorsport posters in his office."
+  ]
+}

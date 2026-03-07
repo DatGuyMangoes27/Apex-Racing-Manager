@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Mexican",
+  "age": 35,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, spending weekends glued to Formula 1 races with his grandfather. He earned a degree in Mechanical Engineering from the National Autonomous University of Mexico, focusing on vehicle dynamics and race strategy. After graduation, he started his career as a junior data analyst for a local racing team, quickly proving his aptitude for extracting insights from complex data sets. \n\nHe transitioned to ART Grand Prix five years ago, initially as a support strategist before taking on a lead role. Ricardo is known for his meticulous approach, spending hours simulating various race scenarios and developing contingency plans. While a strong individual contributor, he sometimes struggles to fully integrate his strategies with broader team dynamics, preferring to work independently to ensure accuracy and thoroughness. His loyalty to ART is unwavering, seeing the team as his extended family.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is of average height with a serious, focused demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on having the same brand of Mexican coffee every morning.",
+    "Tends to mumble strategy ideas aloud when deeply focused."
+  ]
+}

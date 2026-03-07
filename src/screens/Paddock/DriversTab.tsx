@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Users,
@@ -17,17 +17,86 @@ import {
   MapPin,
   Calendar,
   Crown,
+  ShoppingCart,
+  Radar,
+  FileText,
+  UserPlus,
+  Car,
+  Heart,
+  HeartOff,
+  ChevronUp,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  Info,
+  Trophy,
 } from 'lucide-react'
-import { Card, CardHeader, Badge, Button } from '@/components/ui'
+import { Card, CardHeader, Badge, Button, Modal, DriverPortrait } from '@/components/ui'
 import { useCareerStore } from '@/store/careerStore'
+import type { OwnedTeam } from '@/store/careerStore'
 import { useRivalStore } from '@/store/rivalStore'
-import type { RivalDriver } from '@/store/rivalStore'
+import type { RivalDriver, TeamTier, Team } from '@/store/rivalStore'
+import { useScoutingStore } from '@/store/scoutingStore'
+import { calculateScoutingCost } from '@/store/scoutingStore'
+import type { ScoutingLevel } from '@/store/scoutingStore'
+import { getDriverPortrait } from '@/utils/generated-assets'
+import { getTrackById } from '@/data/ams2-tracks'
 
 type SortType = 'skill' | 'form' | 'name' | 'team'
 type IntelFilterType = 'your-series' | 'all' | 'free-agents'
+type MarketFilterType = 'all' | 'expiring' | 'free-agents' | 'prospects'
+type SubTab = 'market' | 'intel'
+
+const DRIVERS_PER_PAGE = 20
+
+// Skill labels for driver stats display
+const SKILL_LABELS: Array<{ key: string; label: string; icon: React.ReactNode }> = [
+  { key: 'raceSkill', label: 'Race Skill', icon: <Flag className="w-3 h-3" /> },
+  { key: 'qualifyingSkill', label: 'Qualifying', icon: <Zap className="w-3 h-3" /> },
+  { key: 'consistency', label: 'Consistency', icon: <Target className="w-3 h-3" /> },
+  { key: 'aggression', label: 'Aggression', icon: <Swords className="w-3 h-3" /> },
+  { key: 'defending', label: 'Defending', icon: <Activity className="w-3 h-3" /> },
+  { key: 'wetSkill', label: 'Wet Skill', icon: <Star className="w-3 h-3" /> },
+  { key: 'tireManagement', label: 'Tire Mgmt', icon: <TrendingUp className="w-3 h-3" /> },
+  { key: 'fuelManagement', label: 'Fuel Mgmt', icon: <TrendingDown className="w-3 h-3" /> },
+  { key: 'stamina', label: 'Stamina', icon: <Heart className="w-3 h-3" /> },
+  { key: 'startReactions', label: 'Start Reactions', icon: <Award className="w-3 h-3" /> },
+]
+
+// Local type definitions for narrative data
+interface DriverNarrative {
+  origin: string
+  careerPath?: string
+  breakoutMoment?: string
+  drivingStyle?: string
+  styleDescription?: string
+  knownRivalries?: Array<{ rivalId?: string; driverId?: string; intensity: number; description?: string; reason?: string }>
+  milestones?: DriverMilestone[]
+  careerMilestones?: DriverMilestone[]
+  anecdotes?: string[]
+}
+
+interface DriverMilestone {
+  type: string
+  description: string
+  year: number
+  trackId?: string
+}
 
 export function DriversTab() {
+  const { ownedTeam, careerState } = useCareerStore()
+  const { rivals, series, seasonStandings, getTeamById, getSeriesById: getSeriesByIdFromStore } = useRivalStore()
+  const { getScoutingLevel, getDriverIntelligence, scoutDriver } = useScoutingStore()
+  
+  const currentYear = careerState?.currentYear || new Date().getFullYear()
+  const enteredSeriesIds = (careerState?.seriesEntries || []).map(e => e.seriesId)
+  const seriesEntries = careerState?.seriesEntries || []
+
   const [marketSort, setMarketSort] = useState<SortType>('skill')
+  const [marketFilter, setMarketFilter] = useState<MarketFilterType>('all')
+  const [activeSubTab, setActiveSubTab] = useState<'market' | 'intel'>('market')
   
   // Intel tab filters  
   const [intelFilter, setIntelFilter] = useState<IntelFilterType>('your-series')
@@ -37,6 +106,16 @@ export function DriversTab() {
   const [selectedSeries, setSelectedSeries] = useState<string>('all')
   const [selectedDriver, setSelectedDriver] = useState<RivalDriver | null>(null)
   const [showDriverModal, setShowDriverModal] = useState(false)
+  const [marketPage, setMarketPage] = useState(1)
+  const [intelPage, setIntelPage] = useState(1)
+  const getSeriesById = useCallback(
+    (seriesId: string) => getSeriesByIdFromStore?.(seriesId) ?? series.find(s => s.id === seriesId),
+    [getSeriesByIdFromStore, series]
+  )
+
+  // Reset pagination when filters change
+  useEffect(() => { setMarketPage(1) }, [marketFilter, marketSort, searchQuery, selectedSeries])
+  useEffect(() => { setIntelPage(1) }, [intelFilter, intelSort, searchQuery, selectedSeries])
 
   // Active drivers only
   const activeDrivers = useMemo(() => 
@@ -194,6 +273,19 @@ export function DriversTab() {
     risingStars: enrichedDrivers.filter(d => d.isInYourSeries && d.driver.careerStage === 'rising').length,
     peakDrivers: enrichedDrivers.filter(d => d.isInYourSeries && d.driver.careerStage === 'peak').length
   }), [enrichedDrivers])
+
+  // Pagination calculations
+  const marketTotalPages = Math.max(1, Math.ceil(marketDrivers.length / DRIVERS_PER_PAGE))
+  const paginatedMarketDrivers = marketDrivers.slice(
+    (marketPage - 1) * DRIVERS_PER_PAGE,
+    marketPage * DRIVERS_PER_PAGE
+  )
+
+  const intelTotalPages = Math.max(1, Math.ceil(intelDrivers.length / DRIVERS_PER_PAGE))
+  const paginatedIntelDrivers = intelDrivers.slice(
+    (intelPage - 1) * DRIVERS_PER_PAGE,
+    intelPage * DRIVERS_PER_PAGE
+  )
 
   const handleScout = (driverId: string, driverName: string) => {
     const report = scoutDriver(driverId, driverName)
@@ -429,9 +521,14 @@ export function DriversTab() {
       {/* Driver Grid - Market View */}
       {activeSubTab === 'market' && (
         <>
+          {/* Results count */}
+          <div className="flex items-center justify-between text-sm text-text-muted">
+            <span>Showing {((marketPage - 1) * DRIVERS_PER_PAGE) + 1}–{Math.min(marketPage * DRIVERS_PER_PAGE, marketDrivers.length)} of {marketDrivers.length} drivers</span>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <AnimatePresence mode="popLayout">
-              {marketDrivers.map(({ driver, team, series, _scoutingLevel, contractExpiring, isFreeAgent, _performance }, index) => (
+              {paginatedMarketDrivers.map(({ driver, team, series, _scoutingLevel, contractExpiring, isFreeAgent, _performance }, index) => (
                 <motion.div
                   key={driver.id}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -542,6 +639,15 @@ export function DriversTab() {
             </AnimatePresence>
           </div>
 
+          {/* Market Pagination */}
+          {marketDrivers.length > DRIVERS_PER_PAGE && (
+            <PaginationControls
+              currentPage={marketPage}
+              totalPages={marketTotalPages}
+              onPageChange={setMarketPage}
+            />
+          )}
+
           {marketDrivers.length === 0 && (
             <Card variant="glass" padding="lg">
               <div className="text-center py-12">
@@ -556,9 +662,14 @@ export function DriversTab() {
       {/* Driver Grid - Intel View */}
       {activeSubTab === 'intel' && (
         <>
+          {/* Results count */}
+          <div className="flex items-center justify-between text-sm text-text-muted">
+            <span>Showing {((intelPage - 1) * DRIVERS_PER_PAGE) + 1}–{Math.min(intelPage * DRIVERS_PER_PAGE, intelDrivers.length)} of {intelDrivers.length} drivers</span>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <AnimatePresence mode="popLayout">
-              {intelDrivers.map(({ driver, team, series, performance, isInYourSeries }, index) => (
+              {paginatedIntelDrivers.map(({ driver, team, series, performance, isInYourSeries }, index) => (
                 <motion.div
                   key={driver.id}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -676,6 +787,15 @@ export function DriversTab() {
             </AnimatePresence>
           </div>
 
+          {/* Intel Pagination */}
+          {intelDrivers.length > DRIVERS_PER_PAGE && (
+            <PaginationControls
+              currentPage={intelPage}
+              totalPages={intelTotalPages}
+              onPageChange={setIntelPage}
+            />
+          )}
+
           {intelDrivers.length === 0 && (
             <Card variant="glass" padding="lg">
               <div className="text-center py-12">
@@ -716,6 +836,106 @@ export function DriversTab() {
   )
 }
 
+// Pagination Controls Component
+function PaginationControls({ 
+  currentPage, 
+  totalPages, 
+  onPageChange 
+}: { 
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void 
+}) {
+  // Generate visible page numbers with ellipsis
+  const getPageNumbers = (): (number | 'ellipsis')[] => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1)
+    }
+    
+    const pages: (number | 'ellipsis')[] = [1]
+    
+    if (currentPage > 3) pages.push('ellipsis')
+    
+    const start = Math.max(2, currentPage - 1)
+    const end = Math.min(totalPages - 1, currentPage + 1)
+    
+    for (let i = start; i <= end; i++) {
+      pages.push(i)
+    }
+    
+    if (currentPage < totalPages - 2) pages.push('ellipsis')
+    
+    pages.push(totalPages)
+    
+    return pages
+  }
+
+  return (
+    <div className="flex items-center justify-center gap-1 pt-2">
+      {/* First page */}
+      <button
+        onClick={() => onPageChange(1)}
+        disabled={currentPage === 1}
+        className="p-2 rounded-lg text-text-muted hover:bg-surface hover:text-text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        title="First page"
+      >
+        <ChevronsLeft className="w-4 h-4" />
+      </button>
+
+      {/* Previous */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 rounded-lg text-text-muted hover:bg-surface hover:text-text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        title="Previous page"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+
+      {/* Page numbers */}
+      {getPageNumbers().map((page, idx) =>
+        page === 'ellipsis' ? (
+          <span key={`ellipsis-${idx}`} className="px-2 text-text-muted">...</span>
+        ) : (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`
+              min-w-[36px] h-9 rounded-lg text-sm font-medium transition-all
+              ${currentPage === page
+                ? 'bg-accent-red text-white shadow-lg'
+                : 'text-text-muted hover:bg-surface hover:text-text-primary'
+              }
+            `}
+          >
+            {page}
+          </button>
+        )
+      )}
+
+      {/* Next */}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 rounded-lg text-text-muted hover:bg-surface hover:text-text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        title="Next page"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+
+      {/* Last page */}
+      <button
+        onClick={() => onPageChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className="p-2 rounded-lg text-text-muted hover:bg-surface hover:text-text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        title="Last page"
+      >
+        <ChevronsRight className="w-4 h-4" />
+      </button>
+    </div>
+  )
+}
+
 // Driver Detail Component - Supports both Market and Intel views
 interface DriverDetailViewProps {
   driver: RivalDriver
@@ -728,10 +948,10 @@ interface DriverDetailViewProps {
   performance?: { wins: number; podiums: number; points: number; position: number | null }
 }
 
-function DriverDetailView({ driver, team, _series, _onScout, _isTeammate = false, viewMode, ownedTeam, performance }: DriverDetailViewProps) {
+function DriverDetailView({ driver, team, series: _series, onScout: _onScout, isTeammate: _isTeammate = false, viewMode, ownedTeam, performance }: DriverDetailViewProps) {
   const { 
     getScoutingLevel, 
-    _canSeeData, 
+    canSeeData: _canSeeData, 
     scoutingBudget,
     getDriverIntelligence,
     teamIntelLevel
@@ -1169,7 +1389,7 @@ function DriverNarrativeSection({ narrative, _driverName }: { narrative: DriverN
                 </h5>
                 <div className="space-y-2">
                   {narrative.knownRivalries.map((rivalry, idx) => {
-                    const rivalDriver = getRivalDriver(rivalry.driverId)
+                    const rivalDriver = getRivalDriver(rivalry.driverId || rivalry.rivalId || '')
                     return (
                       <div key={idx} className="flex items-center justify-between p-2 bg-background/50 rounded-lg">
                         <div className="flex items-center gap-2">
@@ -1180,7 +1400,7 @@ function DriverNarrativeSection({ narrative, _driverName }: { narrative: DriverN
                             <p className="text-sm font-medium">
                               {rivalDriver ? `${rivalDriver.firstName} ${rivalDriver.lastName}` : 'Unknown Driver'}
                             </p>
-                            <p className="text-xs text-text-muted">{rivalry.reason}</p>
+                            <p className="text-xs text-text-muted">{rivalry.reason || rivalry.description}</p>
                           </div>
                         </div>
                         <div className="text-right">
@@ -1204,14 +1424,14 @@ function DriverNarrativeSection({ narrative, _driverName }: { narrative: DriverN
             )}
 
             {/* Career Milestones */}
-            {narrative.careerMilestones && narrative.careerMilestones.length > 0 && (
+            {((narrative.careerMilestones || narrative.milestones) && (narrative.careerMilestones || narrative.milestones)!.length > 0) && (
               <Card variant="glass" padding="md">
                 <h5 className="text-xs text-text-muted mb-3 flex items-center gap-2">
                   <Crown className="w-3 h-3" />
                   Career Milestones
                 </h5>
                 <div className="space-y-2">
-                  {narrative.careerMilestones.slice(0, 5).map((milestone, idx) => (
+                  {(narrative.careerMilestones || narrative.milestones)!.slice(0, 5).map((milestone, idx) => (
                     <MilestoneItem key={idx} milestone={milestone} />
                   ))}
                 </div>

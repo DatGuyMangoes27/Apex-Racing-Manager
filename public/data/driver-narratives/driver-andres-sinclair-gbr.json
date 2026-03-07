@@ -1,0 +1,27 @@
+{
+  "biography": "Andres Sinclair, born in the quaint Cotswolds village of Bourton-on-the-Water, wasn't bred for the racetrack. His father, a sheep farmer, expected him to inherit the family business. But Andres, captivated by the roar of engines during a local hill climb event at age 10, harbored a different ambition. He badgered his father for a go-kart, eventually striking a deal: stellar grades in school for a secondhand kart. That kart became his obsession, transforming the family's back field into his private proving ground. He rose through the karting ranks swiftly, displaying an uncanny ability to dissect the nuances of each track. A defining moment came at the age of 18 in the British Karting Championship, where, despite starting 15th, he meticulously overtook each competitor, securing victory with a last-corner move that stunned seasoned observers. This victory earned him a scholarship to a Caterham academy. Now, at 32, Andres is at his career peak driving for Caterham Supersport and is considered to be a very calculative driver.",
+  "drivingStyle": "Sinclair's driving is characterized by precision and calculation. He doesn't possess the raw, aggressive flair of some drivers, but his approach is methodical and highly effective. He meticulously studies telemetry data, identifying optimal braking points and racing lines. Tire management is a particular strength; he's known for nursing his tires through long stints, allowing him to gain an advantage in the closing laps. He thrives under pressure, rarely making mistakes, and his race craft is extremely refined, allowing him to overtake with calculated precision.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A long-standing rivalry stemming from a controversial collision in a Formula 3 race that cost Sinclair the championship. Bellini's aggressive driving style clashes directly with Sinclair's calculated approach."
+    },
+    {
+      "driver": "Anya Petrova",
+      "reason": "Petrova, known for her raw speed, often qualifies ahead of Sinclair, but he consistently outmaneuvers her during races due to his superior race craft and tire management."
+    },
+    {
+      "driver": "Jameson Hayes",
+      "reason": "Hayes and Sinclair have a tactical rivalry, often battling to outsmart each other with strategic pit stop timings, attempting to undercut or overcut each other. Each is an excellent strategist."
+    }
+  ],
+  "quirks": [
+    "Always polishes his helmet visor exactly 7 times before each race.",
+    "Listens to classical music (specifically Bach) to calm his nerves before a race.",
+    "Carries a small, worn teddy bear given to him by his grandmother as a child, which he keeps hidden in his race suit."
+  ],
+  "nickname": "The Cotswold Calculator",
+  "famousQuote": "\"Racing isn't about speed alone; it's about understanding the equation and solving it better than anyone else.\"",
+  "careerHighlight": "Winning the Caterham Supersport Championship in 2021 after a season-long battle with Marco Bellini, securing the title with a dramatic overtake on the final lap of the final race.",
+  "careerLowPoint": "Crashing out of the lead in the British Grand Prix in 2018 due to a mechanical failure, a race he was heavily favored to win on home soil."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 51,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Mads Christensen's journey in motorsport began in his teens, fueled by a fascination with the engineering marvels behind racing cars. He honed his skills through a rigorous mechanical engineering program at the Technical University of Denmark, followed by years of practical experience in various racing teams. His meticulous approach to problem-solving and his ability to translate complex data into actionable insights quickly earned him a reputation as a rising star.\n\nAs Technical Director, Mads believes in fostering a collaborative environment where innovative ideas are encouraged and rigorously tested. He's known for his calm demeanor under pressure, a trait that allows him to make critical decisions during high-stakes situations. His dedication to continuous improvement and a relentless pursuit of performance gains define his leadership style, making him a valuable asset to Triple Eight Race Engineering. What sets Mads apart is his ability to see the bigger picture, integrating technical expertise with strategic race planning for optimal results.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A tall, lean man with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen, even to the cafeteria.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on using metric measurements exclusively, even when discussing historical data in imperial units."
+  ]
+}

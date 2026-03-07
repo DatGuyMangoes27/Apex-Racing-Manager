@@ -1,0 +1,22 @@
+{
+  "name": "Miloš Petrović",
+  "nationality": "Serbian",
+  "age": 40,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Miloš's journey into motorsport began with a childhood fascination for engineering, nurtured by his father, a skilled mechanic. He earned a degree in Mechanical Engineering from the University of Belgrade and quickly found his niche in performance engineering. His early career involved stints with smaller racing teams, allowing him to gain hands-on experience and develop a deep understanding of vehicle dynamics and data analysis.\n\nMiloš's approach to performance engineering is rooted in a pragmatic and methodical mindset. He believes in a data-driven approach, carefully analyzing telemetry to identify areas for improvement. While he appreciates innovative solutions, he prioritizes reliability and proven techniques. He's known for his calm demeanor under pressure, a valuable asset during race weekends. His ability to translate complex data into actionable insights for the drivers sets him apart.\n\nAt Hot Racing Team, Miloš seeks to leverage his experience to elevate the team's performance. He aims to foster a collaborative environment where engineers and drivers can work together seamlessly to extract the maximum potential from the car. His long term career goal is to win a championship.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, slightly receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Miloš is of average height with a lean build and an intense, focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific order of tools in his workstation, meticulously arranging them before each session."
+  ]
+}

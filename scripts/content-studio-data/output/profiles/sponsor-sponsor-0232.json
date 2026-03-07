@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0232",
+  "name": "Emerald Isle Games",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Ireland",
+  "description": "Fueling your passion, one pixel at a time.",
+  "story": "Emerald Isle Games is a leading Irish game developer focused on immersive and competitive gaming experiences. Recognizing the parallels between high-performance gaming and motorsport, they sponsor teams that demonstrate precision, strategy, and relentless pursuit of victory. They aim to connect with a broader audience of tech-savvy enthusiasts and elevate their brand on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0232.png"
+}

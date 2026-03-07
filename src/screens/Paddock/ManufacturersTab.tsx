@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Factory, Building2, Trophy, Star,
@@ -19,13 +19,17 @@ import {
 type SortType = 'name' | 'tier' | 'teams' | 'programs'
 
 export function ManufacturersTab() {
-  const { teams, getSeriesById } = useRivalStore()
+  const { teams, series, getSeriesById: getSeriesByIdFromStore } = useRivalStore()
   
   const [searchQuery, setSearchQuery] = useState('')
   const [sort, setSort] = useState<SortType>('tier')
   const [expandedManufacturers, setExpandedManufacturers] = useState<Set<string>>(new Set())
   const [selectedProgram, setSelectedProgram] = useState<RacingProgram | null>(null)
   const [showProgramModal, setShowProgramModal] = useState(false)
+  const getSeriesById = useCallback(
+    (seriesId: string) => getSeriesByIdFromStore?.(seriesId) ?? series.find(s => s.id === seriesId),
+    [getSeriesByIdFromStore, series]
+  )
 
   // Manufacturers with their teams and programs
   const manufacturerData = useMemo(() => {
@@ -405,8 +409,12 @@ interface ProgramDetailViewProps {
 }
 
 function ProgramDetailView({ program }: ProgramDetailViewProps) {
-  const { teams, getSeriesById } = useRivalStore()
+  const { teams, series, getSeriesById: getSeriesByIdFromStore } = useRivalStore()
   const manufacturer = program.manufacturerId ? getManufacturerById(program.manufacturerId) : null
+  const getSeriesById = useCallback(
+    (seriesId: string) => getSeriesByIdFromStore?.(seriesId) ?? series.find(s => s.id === seriesId),
+    [getSeriesByIdFromStore, series]
+  )
   
   const programTeams = teams.filter(t => program.teamEntryIds.includes(t.id))
   const programSeries = program.seriesIds.map(id => getSeriesById(id)).filter(Boolean) as Series[]
@@ -418,7 +426,7 @@ function ProgramDetailView({ program }: ProgramDetailViewProps) {
         <div 
           className="w-16 h-16 rounded-xl flex items-center justify-center"
           style={{ 
-            backgroundColor: '#66630',
+            backgroundColor: '#666330',
             borderLeft: '4px solid #666'
           }}
         >

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Hernandez",
+  "nationality": "Mexican",
+  "age": 51,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began in his youth, tinkering with engines in his grandfather's garage in Mexico City. After earning a degree in mechanical engineering from UNAM, he honed his skills in various local racing series before landing a role with a Formula Ford team. His meticulous approach to data analysis and ability to quickly identify performance bottlenecks led him to Praga Racing. \n\nRicardo is known for his pragmatic problem-solving and his dedication to extracting every last bit of performance from the car. He values collaboration and clear communication, always ensuring the drivers are fully informed about the technical aspects of their vehicle. He has a talent for translating complex engineering concepts into simple, actionable insights for the pit crew and drivers alike. His experience and calm demeanor make him a valuable asset during high-pressure race situations.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A man of medium build with a focused look."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Prefers to analyze data in complete silence, often wearing noise-canceling headphones.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

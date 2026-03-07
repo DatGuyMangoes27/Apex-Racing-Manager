@@ -1,0 +1,22 @@
+{
+  "name": "Javier Morales",
+  "nationality": "Argentine",
+  "age": 35,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Javier's motorsport journey began in his father's auto repair shop in Buenos Aires, tinkering with engines from a young age. He excelled in engineering studies, specializing in vehicle dynamics and aerodynamics. He quickly moved to race engineering, proving his mettle in Formula Renault before making a name for himself in touring cars. His keen eye for detail and relentless pursuit of performance caught the attention of Team Penske, where he now serves as Chief Engineer.\n\nJavier's approach to engineering is methodical and data-driven. He believes in a collaborative environment, where every member of the team contributes to finding the optimal solution. He is known for pushing the boundaries of innovation, always seeking that extra edge in performance. However, he can be demanding, expecting the same level of commitment and precision from his team that he demands of himself. He values clear communication and direct feedback, fostering an environment of continuous improvement.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Javier is of average height with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Argentine coffee before every race."
+  ]
+}

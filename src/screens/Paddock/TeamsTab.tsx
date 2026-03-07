@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Star,
@@ -13,19 +13,63 @@ import {
   Minus,
   Trophy,
   History,
+  Building2,
+  Medal,
+  Eye,
+  BarChart3,
+  Quote,
+  Globe2,
+  Wrench,
+  Award,
+  Zap,
+  Info,
+  Briefcase,
+  UserPlus,
+  Shield,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react'
-import { Card, CardHeader, Badge, Button } from '@/components/ui'
+import { Card, CardHeader, Badge, Button, Modal, TeamLogo, ManufacturerBadge } from '@/components/ui'
+import { getManufacturerLogo } from '@/utils/generated-assets'
 import { useCareerStore } from '@/store/careerStore'
+import type { OwnedTeam, WorldStaffMember } from '@/store/careerStore'
+import { STAFF_ROLE_NAMES, STAFF_ROLE_CATEGORY } from '@/data/facility-staff-config'
+import type { StaffRole } from '@/data/facility-staff-config'
 import { useRivalStore } from '@/store/rivalStore'
+import type { Team, Series, SeasonStanding } from '@/store/rivalStore'
+import { getTeamLogo } from '@/utils/generated-assets'
+import { getManufacturerById } from '@/data/manufacturers'
+import { getTeamNarrative } from '@/services/preGeneratedContentService'
 
-// Get unique manufacturers from teams
+type FilterType = 'your-series' | 'all'
+type SortType = 'performance' | 'prestige' | 'budget' | 'name'
+
+export function TeamsTab() {
+  const { ownedTeam, careerState } = useCareerStore()
+  const { teams, series, getManufacturer, getSeriesById: getSeriesByIdFromStore, seasonStandings, rivals } = useRivalStore()
+  const enteredSeriesIds = (careerState?.seriesEntries || []).map(e => e.seriesId)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null)
+  const [showDetailModal, setShowDetailModal] = useState(false)
+  const [showTeamModal, setShowTeamModal] = useState(false)
+  const [filter, setFilter] = useState<FilterType>('your-series')
+  const [sort, setSort] = useState<SortType>('performance')
+  const [selectedChampionship, setSelectedChampionship] = useState('all')
+  const [selectedManufacturer, setSelectedManufacturer] = useState('all')
+  const seriesEntries = careerState?.seriesEntries || []
+  const getSeriesById = useCallback(
+    (seriesId: string) => getSeriesByIdFromStore?.(seriesId) ?? series.find(s => s.id === seriesId),
+    [getSeriesByIdFromStore, series]
+  )
+
+  // Get unique manufacturers from teams
   const manufacturers = useMemo(() => {
     const manuIds = new Set<string>()
     teams.forEach(t => {
       if (t.manufacturerId) manuIds.add(t.manufacturerId)
     })
     return Array.from(manuIds).map(id => {
-      const manu = getManufacturerById(id)
+      const manu = getManufacturer(id)
       return manu || { id, name: id }
     }).sort((a, b) => a.name.localeCompare(b.name))
   }, [teams])
@@ -301,25 +345,43 @@ import { useRivalStore } from '@/store/rivalStore'
                       </div>
 
                       {/* Development Trend */}
-                      <div className="text-right">
+                      <div className="text-right min-w-[100px]">
                         {(() => {
                           const dev = team.development
                           const trajectory = dev && dev.totalPoints > (dev.seasonStartPoints || 50) ? 'improving' :
                                             dev && dev.totalPoints < (dev.seasonStartPoints || 50) ? 'declining' :
                                             null
+                          const devPct = dev ? Math.min(100, (dev.totalPoints / 400) * 100) : 0
                           return (
-                            <Badge 
-                              variant={
-                                trajectory === 'improving' ? 'green' :
-                                trajectory === 'declining' ? 'orange' :
-                                'default'
-                              }
-                            >
-                              {trajectory === 'improving' && <TrendingUp className="w-3 h-3 mr-1" />}
-                              {trajectory === 'declining' && <TrendingDown className="w-3 h-3 mr-1" />}
-                              {!trajectory && <Minus className="w-3 h-3 mr-1" />}
-                              {trajectory || 'Stable'}
-                            </Badge>
+                            <>
+                              <Badge 
+                                variant={
+                                  trajectory === 'improving' ? 'green' :
+                                  trajectory === 'declining' ? 'orange' :
+                                  'default'
+                                }
+                              >
+                                {trajectory === 'improving' && <TrendingUp className="w-3 h-3 mr-1" />}
+                                {trajectory === 'declining' && <TrendingDown className="w-3 h-3 mr-1" />}
+                                {!trajectory && <Minus className="w-3 h-3 mr-1" />}
+                                {trajectory || 'Stable'}
+                              </Badge>
+                              {dev && (
+                                <div className="mt-1.5">
+                                  <div className="h-1 bg-surface-secondary rounded-full overflow-hidden w-[80px] ml-auto">
+                                    <div
+                                      className={`h-full rounded-full ${
+                                        trajectory === 'improving' ? 'bg-status-success' :
+                                        trajectory === 'declining' ? 'bg-accent-orange' :
+                                        'bg-text-muted'
+                                      }`}
+                                      style={{ width: `${devPct}%` }}
+                                    />
+                                  </div>
+                                  <p className="text-[10px] text-text-muted mt-0.5">{devPct.toFixed(0)}% dev</p>
+                                </div>
+                              )}
+                            </>
                           )
                         })()}
                         <p className="text-xs text-text-muted mt-1">
@@ -372,6 +434,248 @@ import { useRivalStore } from '@/store/rivalStore'
   )
 }
 
+// ============================================
+// STAFF ROSTER COMPONENTS
+// ============================================
+
+function getReputationBadge(reputation: number): { variant: 'green' | 'blue' | 'orange' | 'red' | 'default'; label: string } {
+  if (reputation >= 80) return { variant: 'green', label: 'Elite' }
+  if (reputation >= 60) return { variant: 'blue', label: 'Experienced' }
+  if (reputation >= 40) return { variant: 'orange', label: 'Developing' }
+  if (reputation >= 20) return { variant: 'red', label: 'Junior' }
+  return { variant: 'default', label: 'Rookie' }
+}
+
+function StaffRosterRow({ member, canPoach, onPoach }: { member: WorldStaffMember; canPoach: boolean; onPoach: () => void }) {
+  const { staff } = member
+  const roleName = STAFF_ROLE_NAMES[staff.role as StaffRole] || staff.role.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+  const repBadge = getReputationBadge(staff.reputation)
+
+  return (
+    <div className="flex items-center gap-3 p-2 bg-background/50 rounded-lg hover:bg-background/80 transition-colors group">
+      <div className="w-8 h-8 rounded-full bg-surface-secondary flex items-center justify-center text-xs font-bold shrink-0">
+        {staff.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium truncate">{staff.name}</p>
+        <p className="text-xs text-text-muted">{roleName}</p>
+      </div>
+      <div className="flex items-center gap-2 shrink-0">
+        <Badge variant={repBadge.variant} size="sm">{repBadge.label}</Badge>
+        <span className="text-xs text-text-muted font-mono">{staff.reputation}</span>
+        {canPoach && (
+          <button
+            onClick={(e) => { e.stopPropagation(); onPoach() }}
+            className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded hover:bg-accent-red/20 text-accent-red"
+            title="Approach this staff member"
+          >
+            <UserPlus className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function PoachStaffModal({ staffId, teamName, onClose }: { staffId: string; teamName: string; onClose: () => void }) {
+  const { careerState, poachAIStaff } = useCareerStore()
+  const [offeredSalary, setOfferedSalary] = useState(0)
+  const [result, setResult] = useState<{ hired?: boolean; counterOffer?: boolean; message?: string } | null>(null)
+  const [isProcessing, setIsProcessing] = useState(false)
+
+  // Find staff member
+  const poolEntry = useMemo(() => {
+    if (!careerState?.worldStaffPool) return null
+    return careerState.worldStaffPool.find(m => m.staff.id === staffId)
+  }, [careerState?.worldStaffPool, staffId])
+
+  const staff = poolEntry?.staff
+  const currentSalary = staff?.salary || 0
+
+  // Set default offered salary to 125% of current
+  useState(() => {
+    if (currentSalary > 0 && offeredSalary === 0) {
+      setOfferedSalary(Math.round(currentSalary * 1.25))
+    }
+  })
+
+  // Calculate estimated buyout
+  const estimatedContractYears = Math.max(1, staff?.contractYears || 2)
+  const buyoutClause = currentSalary * 4 * estimatedContractYears
+
+  if (!staff) return null
+
+  const roleName = STAFF_ROLE_NAMES[staff.role as StaffRole] || staff.role.replace(/_/g, ' ')
+  const repBadge = getReputationBadge(staff.reputation)
+
+  const handlePoach = () => {
+    if (isProcessing) return
+    setIsProcessing(true)
+    const poachResult = poachAIStaff(staffId, offeredSalary || Math.round(currentSalary * 1.25))
+    if (poachResult.success) {
+      setResult({
+        hired: poachResult.hired,
+        counterOffer: poachResult.counterOffer,
+        message: poachResult.message
+      })
+    } else {
+      setResult({ hired: false, message: poachResult.error })
+    }
+    setIsProcessing(false)
+  }
+
+  return (
+    <Modal isOpen onClose={onClose} title="Approach Staff Member" size="md">
+      <div className="space-y-4">
+        {/* Staff Info */}
+        <div className="flex items-center gap-4 p-4 bg-surface rounded-xl">
+          <div className="w-12 h-12 rounded-full bg-surface-secondary flex items-center justify-center font-bold">
+            {staff.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+          </div>
+          <div className="flex-1">
+            <h3 className="font-display font-bold text-lg">{staff.name}</h3>
+            <p className="text-text-muted text-sm">{roleName} at {teamName}</p>
+          </div>
+          <Badge variant={repBadge.variant} size="md">{repBadge.label} ({staff.reputation})</Badge>
+        </div>
+
+        {/* Staff Details */}
+        <div className="grid grid-cols-3 gap-3">
+          <div className="p-3 bg-surface/50 rounded-lg text-center">
+            <p className="text-xs text-text-muted">Age</p>
+            <p className="font-bold">{staff.age}</p>
+          </div>
+          <div className="p-3 bg-surface/50 rounded-lg text-center">
+            <p className="text-xs text-text-muted">Experience</p>
+            <p className="font-bold">{staff.experience}y</p>
+          </div>
+          <div className="p-3 bg-surface/50 rounded-lg text-center">
+            <p className="text-xs text-text-muted">Current Salary</p>
+            <p className="font-bold text-accent-gold">${currentSalary.toLocaleString()}/wk</p>
+          </div>
+        </div>
+
+        {/* Skills */}
+        <Card variant="glass" padding="md">
+          <h4 className="text-xs text-text-muted mb-2">Skills</h4>
+          <div className="space-y-2">
+            {Object.entries(staff.skills || {}).map(([skill, value]) => (
+              <div key={skill} className="flex items-center gap-2">
+                <span className="text-xs text-text-muted w-24 capitalize">{skill}</span>
+                <div className="flex-1 h-1.5 bg-background rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full ${
+                      (value as number) >= 70 ? 'bg-status-success' :
+                      (value as number) >= 50 ? 'bg-accent-orange' :
+                      'bg-accent-red'
+                    }`}
+                    style={{ width: `${value as number}%` }}
+                  />
+                </div>
+                <span className="text-xs font-mono w-8 text-right">{value as number}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {!result ? (
+          <>
+            {/* Buyout Info */}
+            <div className="p-3 bg-accent-red/10 border border-accent-red/30 rounded-lg">
+              <div className="flex items-center gap-2 mb-1">
+                <Shield className="w-4 h-4 text-accent-red" />
+                <span className="text-sm font-medium text-accent-red">Under Contract</span>
+              </div>
+              <p className="text-xs text-text-muted">
+                This staff member is under contract with {teamName}.
+                Estimated buyout clause: <span className="font-bold text-text-primary">${buyoutClause.toLocaleString()}</span>
+              </p>
+            </div>
+
+            {/* Salary Offer */}
+            <div>
+              <label className="text-sm text-text-muted mb-2 block">Your Weekly Salary Offer</label>
+              <div className="flex items-center gap-3">
+                <span className="text-text-muted">$</span>
+                <input
+                  type="number"
+                  value={offeredSalary || Math.round(currentSalary * 1.25)}
+                  onChange={(e) => setOfferedSalary(Number(e.target.value))}
+                  className="flex-1 bg-surface border border-surface-border rounded-lg px-3 py-2 text-sm font-mono"
+                  min={currentSalary}
+                  step={100}
+                />
+                <span className="text-text-muted text-sm">/week</span>
+              </div>
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => setOfferedSalary(Math.round(currentSalary * 1.15))}
+                  className="text-xs px-2 py-1 bg-surface rounded hover:bg-surface-secondary"
+                >+15%</button>
+                <button
+                  onClick={() => setOfferedSalary(Math.round(currentSalary * 1.25))}
+                  className="text-xs px-2 py-1 bg-surface rounded hover:bg-surface-secondary"
+                >+25%</button>
+                <button
+                  onClick={() => setOfferedSalary(Math.round(currentSalary * 1.50))}
+                  className="text-xs px-2 py-1 bg-surface rounded hover:bg-surface-secondary"
+                >+50%</button>
+              </div>
+            </div>
+
+            {/* Total Cost Summary */}
+            <div className="p-3 bg-surface rounded-lg">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-text-muted">Buyout Clause</span>
+                <span className="font-mono">${buyoutClause.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm font-bold border-t border-surface-border pt-1 mt-1">
+                <span>Total Upfront Cost</span>
+                <span className="text-accent-red">${buyoutClause.toLocaleString()}</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex gap-3">
+              <Button variant="ghost" onClick={onClose} className="flex-1">Cancel</Button>
+              <Button
+                variant="primary"
+                onClick={handlePoach}
+                disabled={isProcessing}
+                className="flex-1"
+              >
+                <UserPlus className="w-4 h-4 mr-2" />
+                {isProcessing ? 'Negotiating...' : 'Make Approach'}
+              </Button>
+            </div>
+          </>
+        ) : (
+          /* Result Display */
+          <div className="space-y-4">
+            <div className={`p-4 rounded-xl text-center ${
+              result.hired ? 'bg-status-success/10 border border-status-success/30' :
+              result.counterOffer ? 'bg-accent-orange/10 border border-accent-orange/30' :
+              'bg-accent-red/10 border border-accent-red/30'
+            }`}>
+              <p className={`text-lg font-bold mb-2 ${
+                result.hired ? 'text-status-success' :
+                result.counterOffer ? 'text-accent-orange' :
+                'text-accent-red'
+              }`}>
+                {result.hired ? 'Successfully Poached!' :
+                 result.counterOffer ? 'Counter Offer Made' :
+                 'Approach Failed'}
+              </p>
+              <p className="text-sm text-text-secondary">{result.message}</p>
+            </div>
+            <Button variant="ghost" onClick={onClose} className="w-full">Close</Button>
+          </div>
+        )}
+      </div>
+    </Modal>
+  )
+}
+
 // Team Detail Component - Competitor Intel View
 interface TeamDetailViewProps {
   team: Team
@@ -383,8 +687,32 @@ interface TeamDetailViewProps {
 
 function TeamDetailView({ team, series, ownedTeam, performance, seasonStandings }: TeamDetailViewProps) {
   const { rivals } = useRivalStore()
+  const { careerState } = useCareerStore()
   const manufacturer = team.manufacturerId ? getManufacturerById(team.manufacturerId) : null
   const narrative = getTeamNarrative(team.id)
+  const [showStaffRoster, setShowStaffRoster] = useState(false)
+  const [poachingStaffId, setPoachingStaffId] = useState<string | null>(null)
+
+  // Get staff roster for this team from world pool
+  const teamStaffRoster = useMemo(() => {
+    if (!careerState?.worldStaffPool) return []
+    return careerState.worldStaffPool.filter(
+      m => m.status === 'employed_ai' && m.employedBy === team.name
+    )
+  }, [careerState?.worldStaffPool, team.name])
+
+  // Split into facility and team/race staff
+  const facilityStaffRoster = useMemo(() => 
+    teamStaffRoster.filter(m => {
+      const role = m.staff.role as StaffRole
+      return STAFF_ROLE_CATEGORY[role] === 'facility'
+    }), [teamStaffRoster])
+  
+  const raceStaffRoster = useMemo(() => 
+    teamStaffRoster.filter(m => {
+      const role = m.staff.role as StaffRole
+      return STAFF_ROLE_CATEGORY[role] === 'team'
+    }), [teamStaffRoster])
   
   // Get team drivers from rivals
   const teamDrivers = rivals.filter(r => r.currentTeamId === team.id && r.careerActive)
@@ -465,6 +793,78 @@ function TeamDetailView({ team, series, ownedTeam, performance, seasonStandings 
           </div>
         </div>
       </Card>
+
+      {/* Car Development Intel */}
+      {development && (
+        <Card variant="glass" padding="md">
+          <h4 className="text-sm text-text-muted mb-3 flex items-center gap-2">
+            <Zap className="w-4 h-4" />
+            Car Development
+            <Badge variant={
+              team.budget === 'factory' ? 'red' :
+              team.budget === 'high' ? 'orange' :
+              team.budget === 'medium' ? 'blue' :
+              'default'
+            } size="sm">
+              {team.budget === 'factory' ? 'Factory Backed' :
+               team.budget === 'high' ? 'Well Funded' :
+               team.budget === 'medium' ? 'Mid Budget' :
+               'Low Budget'}
+            </Badge>
+          </h4>
+          {/* Overall progress */}
+          <div className="mb-4">
+            <div className="flex justify-between text-xs mb-1">
+              <span className="text-text-muted">Overall Progress</span>
+              <span className="font-bold">{Math.min(100, (development.totalPoints / 400) * 100).toFixed(0)}%</span>
+            </div>
+            <div className="h-2.5 bg-background/80 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all ${
+                  isImproving ? 'bg-status-success' : isDeclining ? 'bg-accent-orange' : 'bg-text-muted'
+                }`}
+                style={{ width: `${Math.min(100, (development.totalPoints / 400) * 100)}%` }}
+              />
+            </div>
+          </div>
+          {/* Area breakdowns */}
+          <div className="grid grid-cols-2 gap-3">
+            {(['aerodynamics', 'chassis', 'powertrain', 'electronics'] as const).map(area => {
+              const areaPoints = development.areaPoints?.[area] ?? 0
+              const maxAreaPoints = 100
+              const pct = Math.min(100, (areaPoints / maxAreaPoints) * 100)
+              const areaLabels: Record<string, { label: string; color: string }> = {
+                aerodynamics: { label: 'Aerodynamics', color: 'bg-[#6366f1]' },
+                chassis: { label: 'Chassis', color: 'bg-[#f59e0b]' },
+                powertrain: { label: 'Powertrain', color: 'bg-[#ef4444]' },
+                electronics: { label: 'Electronics', color: 'bg-[#10b981]' }
+              }
+              const { label, color } = areaLabels[area]
+              return (
+                <div key={area} className="p-2 bg-background/50 rounded-lg">
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-text-muted">{label}</span>
+                    <span className="font-mono text-text-secondary">{pct.toFixed(0)}%</span>
+                  </div>
+                  <div className="h-1.5 bg-background rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full transition-all ${color}`} style={{ width: `${pct}%` }} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          {/* Dev rate hint */}
+          <p className="text-xs text-text-muted mt-3 flex items-center gap-1">
+            <Info className="w-3 h-3" />
+            Development rate: {development.developmentRate >= 1.2 ? 'Very Fast' : development.developmentRate >= 0.9 ? 'Fast' : development.developmentRate >= 0.5 ? 'Moderate' : 'Slow'}
+            {development.totalPoints > (development.seasonStartPoints || 0) && (
+              <span className="text-status-success ml-2">
+                +{(development.totalPoints - (development.seasonStartPoints || 0)).toFixed(0)} pts this season
+              </span>
+            )}
+          </p>
+        </Card>
+      )}
 
       {/* Team Story Section - NEW */}
       {narrative && (
@@ -662,7 +1062,14 @@ function TeamDetailView({ team, series, ownedTeam, performance, seasonStandings 
             {manufacturer && (
               <div>
                 <p className="text-xs text-text-muted">Manufacturer</p>
-                <p className="font-medium">{manufacturer.name}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <ManufacturerBadge
+                    src={getManufacturerLogo(manufacturer.id)}
+                    name={manufacturer.name}
+                    size="sm"
+                  />
+                  <p className="font-medium">{manufacturer.name}</p>
+                </div>
               </div>
             )}
             <div>
@@ -728,6 +1135,98 @@ function TeamDetailView({ team, series, ownedTeam, performance, seasonStandings 
           )}
         </div>
       </div>
+
+      {/* Staff Roster Section */}
+      <Card variant="glass" padding="md">
+        <button
+          onClick={() => setShowStaffRoster(!showStaffRoster)}
+          className="w-full flex items-center justify-between text-left"
+        >
+          <h4 className="text-sm text-text-muted flex items-center gap-2">
+            <Briefcase className="w-4 h-4" />
+            Staff Roster
+            <Badge variant="default" size="sm">{teamStaffRoster.length}</Badge>
+          </h4>
+          {showStaffRoster ? (
+            <ChevronUp className="w-4 h-4 text-text-muted" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-text-muted" />
+          )}
+        </button>
+        
+        <AnimatePresence>
+          {showStaffRoster && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              {teamStaffRoster.length === 0 ? (
+                <p className="text-sm text-text-muted text-center py-4 mt-3">
+                  No staff data available for this team
+                </p>
+              ) : (
+                <div className="mt-3 space-y-4">
+                  {/* Facility Staff */}
+                  {facilityStaffRoster.length > 0 && (
+                    <div>
+                      <p className="text-xs text-text-muted uppercase tracking-wider mb-2 flex items-center gap-1">
+                        <Factory className="w-3 h-3" />
+                        Facility Staff ({facilityStaffRoster.length})
+                      </p>
+                      <div className="space-y-1.5">
+                        {facilityStaffRoster
+                          .sort((a, b) => b.staff.reputation - a.staff.reputation)
+                          .map(member => (
+                            <StaffRosterRow
+                              key={member.staff.id}
+                              member={member}
+                              canPoach={!!ownedTeam}
+                              onPoach={() => setPoachingStaffId(member.staff.id)}
+                            />
+                          ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Team/Race Staff */}
+                  {raceStaffRoster.length > 0 && (
+                    <div>
+                      <p className="text-xs text-text-muted uppercase tracking-wider mb-2 flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        Race Staff ({raceStaffRoster.length})
+                      </p>
+                      <div className="space-y-1.5">
+                        {raceStaffRoster
+                          .sort((a, b) => b.staff.reputation - a.staff.reputation)
+                          .map(member => (
+                            <StaffRosterRow
+                              key={member.staff.id}
+                              member={member}
+                              canPoach={!!ownedTeam}
+                              onPoach={() => setPoachingStaffId(member.staff.id)}
+                            />
+                          ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Card>
+
+      {/* Poaching Modal */}
+      {poachingStaffId && (
+        <PoachStaffModal
+          staffId={poachingStaffId}
+          teamName={team.name}
+          onClose={() => setPoachingStaffId(null)}
+        />
+      )}
 
       {/* Team Resources */}
       <Card variant="glass" padding="md">

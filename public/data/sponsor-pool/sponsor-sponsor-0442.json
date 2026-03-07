@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0442",
+  "name": "Rodajes Iberia",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Spain",
+  "description": "Precision engineered tires for peak performance.",
+  "story": "Rodajes Iberia has been at the forefront of tire technology in Spain for over 50 years. Their commitment to innovation and performance drives them to support motorsport. They are looking to partner with a team that embodies the same dedication to excellence and can deliver consistent results on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0442.png"
+}

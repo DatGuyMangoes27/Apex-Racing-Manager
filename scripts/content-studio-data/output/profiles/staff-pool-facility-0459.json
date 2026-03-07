@@ -1,0 +1,22 @@
+{
+  "name": "Katarzyna Lewandowska",
+  "nationality": "Polish",
+  "age": 52,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Katarzyna's journey into motorsport began unexpectedly. After earning a degree in mechanical engineering, she found herself drawn to the complex simulations used in Formula 1. She started as a junior engineer, quickly mastering the intricacies of vehicle dynamics modeling and simulator hardware. Her sharp analytical skills and pragmatic approach allowed her to troubleshoot complex issues, optimizing simulator performance and providing invaluable feedback to drivers.\n\nOver the years, Katarzyna has become renowned for her ability to bridge the gap between technical data and driver experience. She understands that the simulator is not just a tool for gathering data but also a vital training ground for drivers to hone their skills. She is meticulous in her approach, constantly seeking to improve the realism and accuracy of the simulations, making her a highly sought-after asset for any racing team. Her independent streak and dedication to her craft set her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Katarzyna has a serious, focused expression and is of average height with a sturdy build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and calculations.",
+    "Insists on using a specific brand of Polish coffee, even when travelling.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

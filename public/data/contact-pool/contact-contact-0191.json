@@ -1,0 +1,31 @@
+{
+  "name": "Kamau Omondi",
+  "nationality": "Kenyan",
+  "age": 25,
+  "gender": "male",
+  "contactType": "celebrity",
+  "bio": "Kamau Omondi is a Kenyan architectural prodigy, known for his innovative designs that blend modern technology with traditional African aesthetics. Despite his young age, he has already won several international awards and his designs are sought after across the globe. He is intensely ambitious and overprotective of his brand. While seemingly mischievous, he is always open to new ideas, and his growing tech empire and high society connections often intersect with the world of motorsports through sponsorships and private events.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed afro",
+    "eyeColor": "Dark brown",
+    "facialHair": "Clean shaven",
+    "description": "Kamau is tall and has a lean build, often seen in tailored suits or designer casual wear. His piercing gaze and confident posture command attention in any room."
+  },
+  "connectionToMotorsport": "Kamau's tech company sponsors a Formula 2 team and he is a regular attendee at Grand Prix races, often seen in the paddock hobnobbing with drivers and team principals. He also owns a private collection of vintage and modern supercars.",
+  "meetingContext": "You might meet Kamau at a Formula 2 race while attending as a guest of a rival team, or at a high-end charity gala where he's a keynote speaker.",
+  "conversationTopics": [
+    "Sustainable architecture",
+    "The future of electric vehicles",
+    "The latest advancements in AI and machine learning",
+    "His favorite opera performances",
+    "The Kenyan tech startup scene"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with his tech company.",
+    "Introduce you to influential figures in the business world.",
+    "Offer exclusive access to high-profile events and parties."
+  ],
+  "personality_summary": "An ambitious and overprotective architectural genius with a mischievous streak."
+}

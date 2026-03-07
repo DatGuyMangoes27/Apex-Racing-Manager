@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 42,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Marco Bellini's journey in motorsport began not on the track, but in the garage. As a young engineering student, he volunteered with a local racing team, quickly impressing with his technical aptitude and sharp mind. He rose through the ranks, mastering vehicle dynamics and race strategy before transitioning into management roles. \n\nBellini is known for his meticulous approach to every aspect of team performance. He believes in data-driven decision-making, pushing his team to analyze every detail to gain a competitive edge. His demanding nature is balanced by his commitment to fostering a culture of continuous improvement, always striving to push the boundaries of what's possible. He places immense value on precision and accountability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of medium build, he often sports a focused, intense expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Obsessively cleans his glasses multiple times a day.",
+    "Keeps a detailed notebook filled with lap times and weather conditions.",
+    "Always arrives at the track at least two hours before anyone else."
+  ]
+}

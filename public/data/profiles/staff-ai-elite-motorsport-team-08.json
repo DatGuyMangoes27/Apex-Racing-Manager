@@ -1,0 +1,22 @@
+{
+  "name": "Branislav Ivanović",
+  "nationality": "Serbian",
+  "age": 58,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Branislav's journey into motorsport began in his youth, tinkering with engines in his father's Belgrade garage. He earned a degree in Mechanical Engineering from the University of Belgrade and quickly found his niche in racing, initially working with smaller touring car teams. His methodical approach and sharp eye for detail soon caught the attention of Elite Motorsport.\n\nNow a senior member of the team, Branislav excels at data analysis and track-side adjustments, always seeking marginal gains. He is known for his calm demeanor under pressure and his ability to quickly diagnose mechanical issues. While not the most innovative, his deep understanding of vehicle dynamics and unwavering loyalty make him a valuable asset. He prefers working independently, delving deep into the numbers to find that critical edge, but happily guides younger engineers.\n\nBranislav is highly respected for his practical knowledge and calm demeanor. He is a mentor to junior engineers, patiently guiding them through complex simulations and real-world track data, ensuring that the next generation of talent is well-prepared.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back with slight thinning on top",
+    "eyeColor": "brown",
+    "facialHair": "trimmed grey mustache",
+    "description": "A stout man with a weathered face and kind eyes that hold years of racing experience."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Drinks copious amounts of strong black coffee throughout the day.",
+    "Has a habit of muttering to himself while analyzing data."
+  ]
+}

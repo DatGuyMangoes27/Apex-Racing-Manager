@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Spanish",
+  "age": 40,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's journey into motorsport began during his university days, tinkering with electric go-karts and dreaming of Formula 1. After graduating with a degree in electrical engineering from the Polytechnic University of Catalonia, he spent several years honing his skills in the automotive industry, specializing in advanced sensor systems and data acquisition. His meticulous approach and ability to see the broader implications of technical details led him to a role in a smaller racing team, where he quickly proved his worth. Ricardo is renowned for his ability to troubleshoot complex electrical issues under pressure and his knack for identifying marginal gains through data analysis. He's always seeking innovative solutions to improve vehicle performance and reliability.\n\nRicardo's pragmatic nature shines through in his work. He favors practical, well-tested solutions over overly ambitious, unproven technologies. This grounded approach, combined with his innovative spirit, makes him a valuable asset to any team. He believes in clear communication and collaborative problem-solving, fostering a positive and productive work environment. He is always striving to better himself and those around him.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is of medium build with a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook for jotting down technical observations.",
+    "Insists on using a specific brand of soldering iron.",
+    "Has a habit of tapping his pen rhythmically when concentrating."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Álvarez",
+  "nationality": "Spanish",
+  "age": 30,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. While pursuing a degree in mechanical engineering at the Polytechnic University of Valencia, a mandatory internship at a local racing team sparked an unforeseen passion. He quickly discovered an aptitude for identifying and resolving intricate technical flaws, far exceeding the expectations of his supervisors. This led to a full-time position upon graduation and a steady climb through the ranks.\n\nRicardo is known for his meticulous approach and unwavering commitment to precision. His pragmatic nature allows him to objectively assess situations and implement effective solutions, often under intense pressure. He thrives on the challenge of ensuring every component and process meets the highest standards, believing that even the smallest detail can make the difference between victory and defeat. His collaborative approach and ability to clearly communicate technical information make him a valuable asset to any team.\n\nHe is uniquely skilled at pinpointing the source of performance issues. His skill in non-destructive testing gives him an edge in avoiding costly failures before they happen.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly styled with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Ricardo is of average height with a lean build and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating his tools before every use, regardless of how recently they were calibrated."
+  ]
+}

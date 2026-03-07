@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0060",
+  "name": "Pohjola Rahoitus",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Finland",
+  "description": "Finland's premier provider of financial solutions.",
+  "story": "Pohjola Rahoitus has a long history of supporting Finnish innovation and excellence. Motorsport provides a unique platform to showcase precision, teamwork, and cutting-edge technology, values that align perfectly with our commitment to delivering top-tier financial services. We seek a partnership that amplifies our brand presence globally and demonstrates our commitment to high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 75000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Finland"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0060.png"
+}

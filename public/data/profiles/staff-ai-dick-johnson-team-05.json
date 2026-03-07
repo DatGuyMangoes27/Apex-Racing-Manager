@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 55,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Alistair's journey into motorsport began unconventionally, not on the track, but in the analytical depths of aerospace engineering. Frustrated by the slow pace of civilian projects, he found himself drawn to the fast-paced, data-driven world of racing. After a brief stint with a smaller GT team, he joined Dick Johnson Racing, where his knack for translating complex data into actionable race strategies quickly became apparent.\n\nHis approach is methodical yet adaptable, constantly seeking to refine and optimize every aspect of the team's performance through rigorous analysis. He's known for his ability to predict and counter the moves of rival teams. Alistair distinguishes himself by his calm demeanor under pressure, a stark contrast to the frenetic energy of the pit lane, and his capability to see beyond immediate concerns and keep the long-term strategic goals in focus.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair has a lean build and a focused gaze behind his wire-rimmed glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn copy of 'The Art of War'.",
+    "Insists on using a slide rule for initial calculations before using software.",
+    "Drinks a single shot of espresso precisely 30 minutes before each race."
+  ]
+}

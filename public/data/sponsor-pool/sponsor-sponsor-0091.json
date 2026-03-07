@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0091",
+  "name": "Quantum Leap Studios",
+  "category": "tech_gaming",
+  "tier": "high",
+  "country": "Hungary",
+  "description": "Developing cutting-edge VR gaming experiences.",
+  "story": "Quantum Leap Studios is a Hungarian company on the rise, developing immersive VR experiences. Motorsport provides a thrilling platform to showcase the precision and cutting-edge technology behind their games. They seek a partnership that will elevate brand awareness and connect with a tech-savvy audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 4,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0091.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Spanish",
+  "age": 48,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Ricardo's culinary journey began in his grandmother's tapas bar in Seville. The vibrant flavors and bustling atmosphere ignited a passion that led him to formal training in Barcelona. While working in a high-end restaurant catering to corporate events, he met a racing team owner who recognized his talent for managing logistics and delivering exceptional meals under pressure. He joined Carlin five years ago, transforming their catering operations from basic fare to a gourmet experience.\n\nRicardo is known for his uncompromising standards. He insists on using the freshest, locally sourced ingredients, and his menus are meticulously planned to provide optimal nutrition and energy for the team. His meticulous approach extends to every aspect of the catering service, from presentation to waste management. He believes that a well-fed team is a winning team, and he takes immense pride in contributing to Carlin's success through his culinary expertise.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "Ricardo is a stout man with a warm smile that belies his demanding nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on tasting every dish prepared, even if it's something he makes daily.",
+    "Has a specific type of olive oil he requires for all cooking, and gets visibly upset if it's not available.",
+    "Always wears a crisp white chef's coat, even during casual team gatherings."
+  ]
+}

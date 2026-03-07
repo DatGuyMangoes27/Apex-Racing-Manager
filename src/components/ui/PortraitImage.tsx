@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import clsx from 'clsx'
 
-export type PortraitSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type PortraitSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+export type PortraitVariant = 'circle' | 'card'
 
 interface PortraitImageProps {
   /** Path to the portrait image */
@@ -12,6 +13,8 @@ interface PortraitImageProps {
   country?: string
   /** Size of the portrait */
   size?: PortraitSize
+  /** Shape variant: 'circle' (default) or 'card' (rectangular, fills container) */
+  variant?: PortraitVariant
   /** Additional CSS classes */
   className?: string
   /** Whether to show a border */
@@ -30,7 +33,8 @@ const sizeStyles: Record<PortraitSize, string> = {
   md: 'w-10 h-10 text-sm',
   lg: 'w-12 h-12 text-base',
   xl: 'w-16 h-16 text-lg',
-  '2xl': 'w-24 h-24 text-xl'
+  '2xl': 'w-24 h-24 text-xl',
+  '3xl': 'w-40 h-40 text-2xl'
 }
 
 const borderColorStyles: Record<string, string> = {
@@ -98,6 +102,7 @@ export function PortraitImage({
   name,
   country,
   size = 'md',
+  variant = 'circle',
   className,
   bordered = false,
   borderColor = 'default',
@@ -110,6 +115,7 @@ export function PortraitImage({
   const showImage = src && !imageError
   const initials = getInitials(name)
   const bgColor = getBackgroundColor(name, country)
+  const isCard = variant === 'card'
   
   const handleImageError = () => {
     setImageError(true)
@@ -120,8 +126,9 @@ export function PortraitImage({
   }
   
   const containerClasses = clsx(
-    'relative rounded-full overflow-hidden flex items-center justify-center flex-shrink-0',
-    sizeStyles[size],
+    'relative overflow-hidden flex items-center justify-center flex-shrink-0',
+    isCard ? 'w-full h-full rounded-xl' : 'rounded-full',
+    !isCard && sizeStyles[size],
     bordered && 'ring-2',
     bordered && !customBorderColor && borderColorStyles[borderColor],
     onClick && 'cursor-pointer hover:ring-accent-primary transition-all',
@@ -145,6 +152,7 @@ export function PortraitImage({
         className={clsx(
           'absolute inset-0 flex items-center justify-center font-semibold text-white',
           bgColor,
+          isCard && 'text-3xl',
           showImage && imageLoaded && 'opacity-0'
         )}
       >

@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 27,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Adrian's fascination with motorsport began as a child, watching Formula 1 races with his grandfather in their small Romanian village. He pursued his passion by studying mechanical engineering at the University of Bucharest, specializing in composite materials. Eager to apply his knowledge, Adrian joined a local racing team, honing his skills in repairing and optimizing composite components. \n\nHis meticulous approach and innovative problem-solving abilities quickly gained him recognition. Adrian is known for his dedication to precision and his constant pursuit of performance improvements through material science. He believes that even the smallest details in composite construction can significantly impact a race car's overall performance, a philosophy he brings to Richard Childress Racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Adrian is of average height with a lean build and focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas.",
+    "Has a habit of tapping his fingers when concentrating.",
+    "Insists on listening to classical music while working with composites."
+  ]
+}

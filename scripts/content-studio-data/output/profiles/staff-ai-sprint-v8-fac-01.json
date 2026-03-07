@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 24,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Antoine's passion for motorsport ignited during his childhood, spent glued to the television watching Formula 1 races. He pursued his interest in data analysis by earning a degree in Applied Mathematics from École Polytechnique. Following graduation, he interned with a smaller racing team, where he honed his skills in interpreting telemetry data and identifying areas for performance improvement. \n\nAntoine is meticulous in his approach, poring over every dataset with unwavering focus. He believes that marginal gains are crucial in motorsport, and leaves no stone unturned in his quest for optimization. His work ethic and dedication have quickly made him a valuable asset to Sprint V8 Team. He hopes that his work will drive the team to the championship.\n\nHis critical eye and demanding nature, while sometimes challenging, stem from a deep-seated desire to push the team to achieve its full potential. He believes that by holding himself and others to the highest standards, Sprint V8 can consistently outperform expectations.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "None",
+    "description": "Antoine is a lean man with a focused gaze, often seen adjusting his glasses as he reviews data."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Insists on using a specific brand of noise-canceling headphones to concentrate.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

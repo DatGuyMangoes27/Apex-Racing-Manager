@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0226",
+  "name": "Alpenkredit",
+  "category": "finance",
+  "tier": "mid",
+  "country": "Austria",
+  "description": "Your financial partner on the road to success.",
+  "story": "Alpenkredit is a leading Austrian financial institution dedicated to providing innovative solutions for individuals and businesses. Motorsport embodies the same spirit of precision, strategy, and high performance that drives Alpenkredit. We seek to align with teams that demonstrate a commitment to excellence and resonate with our values of integrity and reliability.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 35,
+    "nationalities": [
+      "Austria"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0226.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Srisuk",
+  "nationality": "Thai",
+  "age": 35,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Somchai's journey into motorsport began with a childhood fascination with the engineering marvels displayed at local motorcycle races. He was captivated by the intricate designs and the sheer speed of the machines. After earning a degree in Materials Engineering, Somchai honed his skills at a composite manufacturing firm before transitioning to the high-stakes world of racing. \n\nHis meticulous approach to composite design and repair, combined with a keen understanding of aerodynamics, makes him a valuable asset to the Peugeot TotalEnergies team. Somchai is known for his ability to quickly assess damage and devise innovative repair solutions, minimizing downtime and maximizing performance. He's a quiet but confident presence in the garage, always focused on the task at hand.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed with a slight wave",
+    "eyeColor": "dark brown",
+    "facialHair": "slight goatee",
+    "description": "Somchai is of average height with a lean build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with sketches and calculations.",
+    "Has a habit of tapping his fingers on surfaces while deep in thought.",
+    "Insists on personally inspecting every composite component before it's installed."
+  ]
+}

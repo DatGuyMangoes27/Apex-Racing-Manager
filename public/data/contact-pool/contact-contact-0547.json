@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 65,
+  "gender": "male",
+  "contactType": "pilot",
+  "bio": "Ricardo Oliveira is a celebrated figure in the world of aviation, having spent decades as a commercial airline pilot and an avid private pilot in his spare time. Known for his calm demeanor and unwavering focus, Ricardo is a highly respected instructor. He's always been an empathetic and supportive mentor to aspiring pilots and has a protective instinct for those under his wing.\n\nBeyond the cockpit, Ricardo is a man of many interests, from the quiet contemplation of equestrian pursuits to the adrenaline rush of snowboarding. His love for languages has led him to fluency in several, and he enjoys engaging in cultural experiences. A racing driver might cross paths with Ricardo through shared interests in high-performance machinery, perhaps through a mutual friend involved in aviation or a chance encounter at a luxury event.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed mustache",
+    "description": "Ricardo has a warm, weathered face that speaks of years spent under the sun. He carries himself with the confidence of someone accustomed to being in control."
+  },
+  "connectionToMotorsport": "Ricardo occasionally flies private charters for racing teams and drivers, allowing him to observe the intensity and precision of motorsport up close. He appreciates the shared dedication to peak performance found in both aviation and racing.",
+  "meetingContext": "The player might meet Ricardo at a private airfield while waiting for a flight to a race, or at a high-end coffee shop frequented by aviation enthusiasts.",
+  "conversationTopics": [
+    "Aviation safety and training",
+    "The parallels between flying and racing",
+    "His travels around the world",
+    "His passion for horses",
+    "The latest drone technology"
+  ],
+  "canHelp": [
+    "Provide connections to wealthy sponsors who appreciate aviation",
+    "Offer advice on mental discipline and focus under pressure",
+    "Potentially provide free or discounted private air travel to races"
+  ],
+  "personality_summary": "A supportive and experienced pilot with a protective nature and a wealth of knowledge to share."
+}

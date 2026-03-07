@@ -895,10 +895,13 @@ export function calculateWeeklyDevelopment(
   }
 }
 
+/** Per-facility trait bonuses from facility staff (junior_growth when facility has junior + mentor, solo_bonus when lone_wolf alone) */
+export type TraitBonuses = Record<string, number>
+
 /**
  * Apply weekly development to state
- * Now accepts optional morale modifiers, facility levels, and staff bonuses
- * 
+ * Now accepts optional morale modifiers, facility levels, staff bonuses, and trait bonuses
+ *
  * @param state - Current development state
  * @param technicalFeedback - Driver's technical feedback stat (0-100)
  * @param currentWeek - Current game week
@@ -906,6 +909,9 @@ export function calculateWeeklyDevelopment(
  * @param moraleModifiers - Optional morale modifiers from team management
  * @param facilityLevels - Optional facility levels (1-5 for each facility type)
  * @param staffBonuses - Optional staff effectiveness bonuses per facility (0.0 - 0.25+)
+ * @param traitBonuses - Optional aggregated facility staff trait bonuses (speed, quality, efficiency, etc.)
+ * @param juniorGrowthByFacility - Optional per-facility junior_growth multiplier (when juniors + mentors)
+ * @param soloBonusByFacility - Optional per-facility solo_bonus multiplier (lone_wolf alone)
  */
 export function applyWeeklyDevelopment(
   state: TeamDevelopmentState,
@@ -914,7 +920,10 @@ export function applyWeeklyDevelopment(
   currentYear: number,
   moraleModifiers?: MoraleModifiers,
   facilityLevels?: Record<FacilityType, number>,
-  staffBonuses?: Record<FacilityType, number>
+  staffBonuses?: Record<FacilityType, number>,
+  traitBonuses?: TraitBonuses,
+  juniorGrowthByFacility?: Record<FacilityType, number>,
+  soloBonusByFacility?: Record<FacilityType, number>
 ): {
   newState: TeamDevelopmentState
   pointsGained: Record<DevelopmentArea, number>
@@ -1006,16 +1015,20 @@ export function applyWeeklyDevelopment(
   
   // Apply staff effectiveness bonuses to each development area
   // Staff assigned to R&D facilities provide additional bonuses
+  const facilityToArea: Record<string, DevelopmentArea> = {
+    aero: 'aerodynamics',
+    chassis: 'chassis',
+    engine: 'powertrain',
+    sim: 'electronics'
+  }
+  const areaToFacility: Record<DevelopmentArea, FacilityType> = {
+    aerodynamics: 'aero',
+    chassis: 'chassis',
+    powertrain: 'engine',
+    electronics: 'sim'
+  }
+
   if (staffBonuses) {
-    // Map facilities to development areas
-    const facilityToArea: Record<string, DevelopmentArea> = {
-      aero: 'aerodynamics',
-      chassis: 'chassis',
-      engine: 'powertrain',
-      sim: 'electronics'
-    }
-    
-    // Apply staff bonuses from their respective facilities
     for (const [facility, bonus] of Object.entries(staffBonuses)) {
       const devArea = facilityToArea[facility]
       if (devArea && bonus > 0) {
@@ -1026,7 +1039,28 @@ export function applyWeeklyDevelopment(
       }
     }
   }
-  
+
+  // Apply global trait multipliers (speed, quality, efficiency) from facility staff
+  if (traitBonuses) {
+    const speedMult = 1 + (traitBonuses.speed ?? 0)
+    const qualityMult = 1 + (traitBonuses.quality ?? 0)
+    const efficiencyMult = 1 + (traitBonuses.efficiency ?? 0)
+    areas.forEach(area => {
+      pointsGained[area] *= speedMult * qualityMult * efficiencyMult
+    })
+  }
+
+  // Apply per-facility trait bonuses (junior_growth when facility has juniors + mentors, solo_bonus when lone_wolf alone)
+  if (juniorGrowthByFacility || soloBonusByFacility) {
+    areas.forEach(area => {
+      const facility = areaToFacility[area]
+      let mult = 1
+      if (juniorGrowthByFacility?.[facility]) mult *= 1 + juniorGrowthByFacility[facility]
+      if (soloBonusByFacility?.[facility]) mult *= 1 + soloBonusByFacility[facility]
+      pointsGained[area] *= mult
+    })
+  }
+
   // Calculate manufacturing speed bonus (faster upgrade completion)
   // Manufacturing level reduces the effective "points required" for upgrades
   // Level 1 = 1.0x (no bonus), Level 5 = ~0.7x (30% faster)
@@ -1103,8 +1137,8 @@ export function applyWeeklyDevelopment(
     return milestone
   })
   
-  // Generate random events (15% chance)
-  const event = generateDevelopmentEvent(state, currentWeek, currentYear)
+  // Generate random events (probability influenced by traitBonuses: breakthrough_chance, consistency)
+  const event = generateDevelopmentEvent(state, currentWeek, currentYear, traitBonuses)
   if (event) {
     events.push(event)
   }
@@ -1344,28 +1378,34 @@ export function resetAITeamForSeason(aiTeam: AITeamDevelopment): AITeamDevelopme
 // ============================================
 
 /**
- * Generate a random development event
+ * Generate a random development event.
+ * Trait bonuses: breakthrough_chance increases positive event probability (capped at 0.25), consistency reduces negative event probability.
  */
 export function generateDevelopmentEvent(
   _state: TeamDevelopmentState,
   currentWeek: number,
-  currentYear: number
+  currentYear: number,
+  traitBonuses?: TraitBonuses
 ): TeamDevelopmentEvent | null {
-  // Check each event type
+  const breakthroughBonus = Math.min(traitBonuses?.breakthrough_chance ?? 0, 0.25)
+  const consistencyBonus = Math.min(traitBonuses?.consistency ?? 0, 0.5)
+
   for (const [type, config] of Object.entries(EVENT_TEMPLATES)) {
-    if (Math.random() < config.probability) {
+    const baseProb = config.probability
+    const effectiveProb = config.positive
+      ? baseProb + breakthroughBonus
+      : baseProb * (1 - consistencyBonus)
+    if (Math.random() < effectiveProb) {
       const template = config.templates[Math.floor(Math.random() * config.templates.length)]
-      
-      // Determine affected area (if applicable)
+
       const areas: DevelopmentArea[] = ['aerodynamics', 'chassis', 'powertrain', 'electronics']
       const randomArea = areas[Math.floor(Math.random() * areas.length)]
-      
-      // Apply area to effects that need it
+
       const effects = template.effects.map(effect => ({
         ...effect,
         area: effect.area || randomArea
       }))
-      
+
       return {
         id: `${type}_${currentWeek}_${currentYear}_${Math.random().toString(36).substr(2, 9)}`,
         type: type as DevelopmentEventType,
@@ -1379,7 +1419,7 @@ export function generateDevelopmentEvent(
       }
     }
   }
-  
+
   return null
 }
 

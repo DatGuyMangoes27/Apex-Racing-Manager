@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 35,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitri's fascination with motorsport began in his childhood, watching Formula 1 races with his grandfather. This passion led him to pursue a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he worked for a smaller racing team, honing his skills in data analysis and simulator development. He joined Elite Motorsport three years ago and has since become a vital part of the team, focusing on refining the simulator to accurately reflect real-world conditions.\n\nDimitri believes in a data-driven approach, meticulously analyzing telemetry and driver feedback to improve the simulator's realism. He's known for his calm demeanor under pressure and his ability to quickly identify and resolve technical issues. His dedication to continuous improvement and his unwavering loyalty make him a valuable asset to the team. He is driven by the desire to make the team simulator the best in the league.\n\nWhat sets Dimitri apart is his innate understanding of vehicle dynamics and his creative approach to problem-solving. He's not afraid to experiment with new algorithms and techniques to enhance the simulator's performance, often surprising his colleagues with innovative solutions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Dimitri is of average height with a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and equations.",
+    "Prefers to work late at night when the simulator room is quiet.",
+    "Has a habit of tapping his pen against his teeth when deeply focused."
+  ]
+}

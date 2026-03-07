@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0063",
+  "name": "Bellissima Orologi",
+  "category": "luxury",
+  "tier": "elite",
+  "country": "Italy",
+  "description": "Italian crafted luxury timepieces.",
+  "story": "Bellissima Orologi embodies precision and elegance. As a brand rooted in Italian heritage, we appreciate the dedication and craftsmanship required to achieve excellence, mirroring our own watchmaking philosophy. We seek a partnership that showcases our commitment to quality and enhances our brand image through motorsport's global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 9000,
+      "podiumBonus": 4000,
+      "championshipBonus": 70000
+    },
+    "mid": {
+      "monthly": 75000,
+      "winBonus": 32000,
+      "podiumBonus": 16000,
+      "championshipBonus": 230000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 130000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1300000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Italy"
+    ],
+    "minWins": 3,
+    "minPodiums": 7
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0063.png"
+}

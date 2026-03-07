@@ -1,0 +1,27 @@
+{
+  "biography": "James Martin, born under the scorching sun of rural New South Wales, Australia, wasn't raised on silver spoons but on the roar of V8 engines. His introduction to motorsport wasn't through karting tracks but through the dust-choked dirt ovals of local speedway racing, where his father, a mechanic with calloused hands and a heart full of petrol, taught him the art of car control. He started tinkering with engines before he could legally drive, a skill that would later prove invaluable. A defining moment came at age 16 when, with a self-built modified Holden, he won the State Speedway Championship, outmaneuvering seasoned veterans. Transitioning to circuit racing was a gamble, requiring him to sell his beloved Holden to fund his Formula Ford campaign. Now, at 21, he's an independent driver clawing his way up the ranks, known for his tenacity and refusal to yield an inch on the track. He's currently competing in the Australian Supercars Development Series, hoping to catch the eye of a major team and prove he belongs among the elite. His journey is far from over, and the echoes of that Holden still resonate in his aggressive driving style.",
+  "drivingStyle": "Martin's driving style is characterized by a tenacious defense. He's a master of late braking and blocking maneuvers, making it incredibly difficult for rivals to overtake him. While not the flashiest driver, he consistently extracts the maximum performance from his car, often exceeding its perceived limitations. He is known to be exceptionally careful with his tires, preserving them for crucial end-of-race battles. Under pressure, he remains remarkably calm, focusing on executing his strategy with unwavering precision. Some criticize his defensive approach, but Martin argues it's about maximizing every opportunity and minimizing risks in the long game.",
+  "rivalries": [
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A clash during the Bathurst 1000 Development race where Martin aggressively defended his position, forcing Rossi off the track, led to a heated exchange and simmering animosity."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a highly-funded young gun, publicly dismissed Martin's independent status, claiming he lacks the resources to compete at the highest level. Martin took this as a personal challenge."
+    },
+    {
+      "driver": "Marcus Bell",
+      "reason": "Both drivers are fierce competitors in the same racing series, with Martin and Bell constantly battling for the same positions on the grid, leading to a tense and competitive atmosphere."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded Akubra hat in the paddock, a gift from his grandfather.",
+    "Listens to classic Australian rock band AC/DC on repeat before every race.",
+    "Always has a Vegemite sandwich before qualifying."
+  ],
+  "nickname": "The Outback Wall",
+  "famousQuote": "\"Racing ain't about flash. It's about grit, guts, and knowing when to hit the brakes... and when to floor it.\"",
+  "careerHighlight": "Winning the 2022 Bathurst 1000 Development Race after starting from 15th on the grid. He masterfully managed his tires and capitalized on late-race chaos to snatch victory.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Sandown 500 Development Series race in 2023. A mechanical failure sent him spinning into the wall, costing him a potential championship lead."
+}

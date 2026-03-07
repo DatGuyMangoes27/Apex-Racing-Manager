@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 39,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jan's journey into motorsport began with a childhood fascination for model airplanes, which led him to study mechanical engineering with a focus on composite materials. After graduating from the Czech Technical University in Prague, he initially worked in the aerospace industry before transitioning to motorsport. He spent several years with a smaller European racing team, honing his skills in composite repair and fabrication, before being scouted by Team Penske. \n\nJan is known for his meticulous attention to detail and his ability to quickly assess and repair damaged composite components, often devising innovative temporary solutions to keep the car on track. He's a firm believer in preventative maintenance and constantly pushes for improvements in the team's composite layup and repair procedures. He can be demanding, but this stems from his unwavering commitment to perfection and reliability.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave on the left side",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jan is of medium height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with detailed diagrams and calculations.",
+    "Insists on using only Czech-made tools whenever possible.",
+    "Has a habit of tapping his fingers on surfaces while deep in thought."
+  ]
+}

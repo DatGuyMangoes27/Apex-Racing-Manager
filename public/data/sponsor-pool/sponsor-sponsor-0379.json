@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0379",
+  "name": "Umkhonto Racing Fuels",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "Powering performance, engineered for victory.",
+  "story": "Umkhonto Racing Fuels is a South African company dedicated to developing high-performance fuels for competitive motorsports. With roots in advanced chemical engineering, Umkhonto seeks to enhance its brand recognition on a global stage. They are looking for a team that embodies their commitment to performance and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0379.png"
+}

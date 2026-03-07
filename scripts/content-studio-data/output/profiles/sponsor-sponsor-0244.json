@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0244",
+  "name": "Herança Timepieces",
+  "category": "luxury",
+  "tier": "mid",
+  "country": "Portugal",
+  "description": "Crafting timeless elegance, inspired by Portuguese heritage.",
+  "story": "Herança Timepieces, a Portuguese watchmaker renowned for its intricate designs and commitment to precision, seeks to enhance its brand recognition on a global stage. Motorsport embodies the same dedication to performance and craftsmanship that defines Herança. By partnering with a promising team, they aim to showcase their brand to a discerning audience and foster a legacy of excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 180000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 4,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0244.png"
+}

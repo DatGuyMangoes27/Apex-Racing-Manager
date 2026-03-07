@@ -1,0 +1,31 @@
+{
+  "name": "Vlasta Kopecká",
+  "nationality": "Czech",
+  "age": 59,
+  "gender": "female",
+  "contactType": "artist",
+  "bio": "Vlasta Kopecká is a renowned Czech novelist and playwright, celebrated for her insightful and often controversial works exploring the human condition. Known for her charismatic public persona, she balances it with a deeply reserved and intellectual nature. While appearing confident, Vlasta secretly battles a controlling personality, often demanding perfection in her work and the work of others. Her passion for storytelling is matched only by her love for fine art and a good single malt.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, wavy bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Vlasta carries herself with an air of quiet confidence. Her sharp eyes hint at a keen intellect and a lifetime of observing the world."
+  },
+  "connectionToMotorsport": "Vlasta is commissioned to write a play about the life of a famous Czech racing driver, Jan Sýkora, which will be performed at the National Theatre. She seeks to understand the pressures and motivations of a modern driver to bring authenticity to her work.",
+  "meetingContext": "The player might meet Vlasta at a charity gala for the arts, which is sponsored by one of their team's partners. Alternatively, a mutual contact might arrange an introduction to help Vlasta research her play.",
+  "conversationTopics": [
+    "Czech literature and theatre",
+    "The creative process and overcoming writer's block",
+    "The psychology of high-pressure environments",
+    "Her equestrian pursuits",
+    "The allure of sailing"
+  ],
+  "canHelp": [
+    "Provide valuable insights into dealing with pressure and media attention",
+    "Introduce the player to influential figures in the Czech arts and culture scene",
+    "Offer nuanced feedback on public speaking and interview skills"
+  ],
+  "personality_summary": "A charismatic and intellectual artist, passionate about her craft but secretly controlling."
+}

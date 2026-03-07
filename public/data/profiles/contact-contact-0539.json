@@ -1,0 +1,31 @@
+{
+  "name": "Kamau Onyango",
+  "nationality": "Kenyan",
+  "age": 40,
+  "gender": "male",
+  "contactType": "military_officer",
+  "bio": "Major Kamau Onyango is a decorated officer in the Kenyan Army, specializing in logistics and procurement. Known for his meticulous attention to detail and unwavering commitment to excellence, Kamau has earned the respect of his peers and superiors alike. Beneath his professional demeanor lies a generous and supportive nature, evidenced by his active involvement in various charitable initiatives and his genuine interest in fostering the success of those around him. He developed an appreciation for motorsport through attending the Safari Rally as a child, and now helps the organizers with logistical support through his connections in the military.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Kamau has a strong, athletic build, a testament to his military training. He carries himself with an air of quiet confidence and authority."
+  },
+  "connectionToMotorsport": "Kamau's military unit provides logistical support for the Safari Rally each year, assisting with transportation, security, and communication. He also occasionally advises local racing teams on vehicle maintenance and strategic planning, drawing on his experience in military operations.",
+  "meetingContext": "You would likely meet Kamau through a motorsport event such as the Safari Rally, or perhaps at a charity gala supporting local racing initiatives.",
+  "conversationTopics": [
+    "The challenges of organizing large-scale events",
+    "His passion for music production and the local music scene",
+    "The importance of discipline and teamwork",
+    "The beauty and diversity of Kenyan landscapes",
+    "His experience with marathon running"
+  ],
+  "canHelp": [
+    "Facilitate introductions to potential sponsors within the Kenyan business community.",
+    "Provide strategic advice based on his experience in logistics and planning.",
+    "Offer insights into navigating the local motorsport scene in Kenya."
+  ],
+  "personality_summary": "A generous and supportive military officer with a passion for motorsport and a dedication to excellence."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Carlos Oliveira",
+  "nationality": "Brazilian",
+  "age": 53,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Carlos Oliveira's journey into motorsport began amidst the roar of engines at Interlagos, where his father worked as a track marshal. The intricate machinery fascinated him, leading him to pursue a degree in mechanical engineering. After graduating, he honed his skills at a local tuning shop before landing a role at a smaller Brazilian racing outfit. There, he quickly established himself as a competent and reliable fabricator, capable of tackling complex projects under pressure. \n\nHis approach to fabrication is meticulous and driven by a relentless pursuit of perfection. He believes in the importance of understanding every component and how it contributes to the overall performance of the car. While his demanding nature can sometimes ruffle feathers, his dedication to quality and his willingness to share his knowledge make him a valuable asset to Praga Racing. His experience across various racing disciplines brings a unique perspective to problem-solving, often leading to innovative solutions.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Carlos is a stocky man with a strong build, reflecting years of working with heavy machinery."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his wrench against metal surfaces to check for structural integrity.",
+    "Insists on listening to classic samba music while working."
+  ]
+}

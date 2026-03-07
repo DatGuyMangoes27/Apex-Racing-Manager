@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 22,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Dimitri's fascination with motorsport began in his small Siberian hometown, watching grainy F1 races on a flickering TV. He was captivated by the engineering, the raw power, and the precision of it all. After completing his technical education in Krasnoyarsk, he sought an opportunity to apply his skills in a racing environment. He started as a junior machinist in a local karting team, where he quickly demonstrated his aptitude for problem-solving and attention to detail. \n\nDimitri is known for his methodical approach to his work. He believes in understanding the 'why' behind every component and process, not just blindly following instructions. He's also a quick learner, eager to embrace new technologies and techniques to improve performance. He joined Prema Junior with the ambition to contribute to a championship-winning team, seeing himself as a vital piece in the puzzle of success. His pragmatic nature ensures that he focuses on practical solutions that deliver tangible results, making him a valuable asset to the team.\n\nHis 'big picture' trait means he's always thinking about how his work impacts the overall performance of the car and the team, looking to optimize processes from end to end.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed to the side with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Dimitri is of average height, with a lean build and focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always double-checks torque settings, even if someone else did it.",
+    "Drinks black tea with lemon at precisely 10:00 AM every morning.",
+    "Organizes his tools in a specific order based on frequency of use."
+  ]
+}

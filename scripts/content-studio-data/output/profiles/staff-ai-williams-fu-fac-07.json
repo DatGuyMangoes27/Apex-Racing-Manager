@@ -1,0 +1,22 @@
+{
+  "name": "Klaus Richter",
+  "nationality": "Austrian",
+  "age": 50,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Klaus Richter's career began not on the racetrack, but in the server rooms of Vienna's largest tech firms. A meticulous eye for detail and an innate understanding of complex systems propelled him rapidly through the ranks. His transition to motorsport was a calculated risk, driven by a lifelong passion for Formula 1 and a belief that cutting-edge IT infrastructure could provide a decisive competitive edge. \n\nAt Williams Racing, Klaus is known for his relentless pursuit of system optimization and his unwavering commitment to data security. He fosters a culture of continuous improvement within his team, constantly pushing the boundaries of what's possible with real-time data analysis and predictive modeling. His demanding nature is tempered by a genuine desire to mentor young talent and cultivate a collaborative environment.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a focused gaze and a perpetually furrowed brow."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Insists on using a mechanical keyboard, regardless of noise complaints.",
+    "Has a whiteboard filled with complex flowcharts in his office."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0098",
+  "name": "Harimau Fuel",
+  "category": "energy_drinks",
+  "tier": "elite",
+  "country": "Malaysia",
+  "description": "Unleash Your Inner Tiger.",
+  "story": "Harimau Fuel is Malaysia's leading energy drink, fueling athletes and adventurers across Southeast Asia. We believe in pushing boundaries and achieving peak performance, mirroring the dedication and intensity of motorsport. We seek partnerships that amplify our brand reach and showcase the relentless spirit of Harimau Fuel.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Malaysia"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0098.png"
+}

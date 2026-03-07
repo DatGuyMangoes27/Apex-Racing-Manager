@@ -1,0 +1,22 @@
+{
+  "name": "Rhys ap Gruffydd",
+  "nationality": "Welsh",
+  "age": 47,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Rhys's journey into motorsport began unconventionally, not with a passion for racing, but with a fascination for the intricate electronic systems that underpin modern vehicles. After completing his degree in Electrical Engineering at Cardiff University, he honed his skills in the aerospace industry before a chance encounter with a former F1 engineer sparked his interest in the high-stakes world of racing. Rhys is methodical and precise in his approach to electronics, prioritizing reliability and efficiency above all else. He's known for his ability to diagnose and resolve complex electrical issues quickly, often under immense pressure.\n\nHis demanding nature stems from a deep-seated belief that mediocrity is unacceptable. He pushes himself and his team to constantly improve and innovate. While sometimes perceived as abrasive, Rhys's dedication to achieving peak performance is undeniable, and he's earned the respect of his colleagues through his unwavering commitment and exceptional technical skills. He's eager to contribute to RSC Motorsport's success, focusing on improving the car's electrical systems for better reliability and performance.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "short boxed beard",
+    "description": "Rhys is a stocky man with a focused gaze and a perpetually furrowed brow."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool",
+    "Insists on using only metric measurements",
+    "Mumbles technical jargon to himself when troubleshooting"
+  ]
+}

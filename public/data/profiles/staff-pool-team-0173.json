@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 28,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Antoine Dubois entered the world of motorsport through a family connection to a small racing team in the French Formula Renault series. Initially a mechanic's assistant, his sharp intellect and keen eye for detail quickly propelled him into engineering roles. At 25, he led a smaller team to an unexpected championship victory, showcasing his ability to extract maximum performance even with limited resources. \n\nDubois is known for his rigorous and data-driven approach. He demands excellence from every member of his team and believes in meticulous preparation as the key to success. While his intensity can be challenging, it's balanced by a strategic mind and a commitment to fostering a culture of continuous improvement. His relative youth is offset by an unwavering confidence in his own abilities and a firm belief that the devil is in the details.\n\nUnlike many principals who excel in grandstanding, Dubois is most comfortable behind the scenes, analyzing data and optimizing performance. He views the team as a finely tuned machine, and his role is to ensure every component operates at peak efficiency. While he may not always be the most charismatic leader, his results speak for themselves.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed to the side with a slight parting",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Antoine has a serious, focused demeanor reflected in his sharp features and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on a specific brand of coffee, prepared with exactly 8 grams of coffee per cup.",
+    "Has a habit of tapping his pen rhythmically when deep in thought, which can be unnerving to others."
+  ]
+}

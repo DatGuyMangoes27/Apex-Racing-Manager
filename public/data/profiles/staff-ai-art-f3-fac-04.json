@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 47,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Isabelle's journey into motorsport began unexpectedly. While completing her electrical engineering degree at McGill University, she took a part-time job wiring data acquisition systems for a local rally team. The adrenaline and technical challenge hooked her immediately. After graduation, she bounced around various racing series, honing her skills and learning the nuances of vehicle electronics. Her dedication led her to ART Grand Prix where she uses her meticulous problem-solving abilities and innovative workaround solutions to ensure the team's electronics perform optimally under any condition.\n\nIsabelle's approach is characterized by a relentless pursuit of perfection. She believes that even the smallest electrical glitches can have disastrous consequences on the track. She's earned a reputation for her calm demeanor under pressure, a trait that proves invaluable during tense race weekends. Her colleagues know her for her dedication to data integrity and she often champions the use of redundant systems to mitigate risk.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is of average height, with a focused expression, and she always wears practical glasses."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a multi-meter in her pocket.",
+    "Insists on using a specific brand of electrical tape, claiming it provides better insulation.",
+    "Has a habit of muttering technical jargon to herself when troubleshooting."
+  ]
+}

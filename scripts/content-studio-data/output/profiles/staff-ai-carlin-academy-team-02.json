@@ -1,0 +1,22 @@
+{
+  "name": "Dirk Vermeer",
+  "nationality": "Dutch",
+  "age": 34,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Dirk's journey into motorsport began with a childhood fascination for complex machinery and a love for Formula 1. He earned a degree in Mechanical Engineering from Delft University of Technology, specializing in aerodynamics. His career started at a small engineering firm designing components for racing yachts, but his ambition led him to motorsport. He joined a smaller F3 team as a junior engineer, quickly rising through the ranks due to his sharp analytical skills and innovative ideas. \n\nDirk is known for his meticulous approach to problem-solving and his focus on data-driven decision-making. He believes in fostering a collaborative environment where engineers are encouraged to challenge conventional thinking. He is a demanding leader, pushing his team to deliver their best, but always ensuring they have the resources and support they need. He believes in a holistic approach to car development, considering not only outright performance but also reliability and ease of maintenance, believing that races are often won in the garage as much as on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Dirk is a tall, lean man with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down ideas at any moment.",
+    "Insists on precisely aligning the tools in his workspace.",
+    "Has a habit of tapping his fingers on the table when deep in thought."
+  ]
+}

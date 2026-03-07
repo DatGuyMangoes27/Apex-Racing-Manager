@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Humphrey",
+  "nationality": "British",
+  "age": 55,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Alistair Humphrey's motorsport journey began unexpectedly during his engineering studies, where he stumbled upon a university racing team and was captivated by the strategic complexities of racing. After graduation, he spent several years honing his skills in data analysis and simulation, eventually landing a role with a junior formula team. His calm demeanor and sharp analytical mind quickly made him an asset, leading to opportunities at larger teams. \n\nAlistair is known for his methodical approach to race strategy, meticulously analyzing every possible scenario and contingency. He prides himself on being able to adapt quickly to changing track conditions and unexpected events, always looking for the optimal path to victory. His distinctive ability is his talent for recognizing and exploiting minute advantages that others often overlook, making him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with slight thinning on top.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey mustache",
+    "description": "Alistair is of average height with a slightly weathered face that reflects years spent trackside."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with racing statistics.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a cup of Earl Grey tea before every race."
+  ]
+}

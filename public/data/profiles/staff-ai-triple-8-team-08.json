@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 31,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Thierry's passion for motorsport ignited during his childhood, spent tinkering with go-karts in his grandfather's workshop. He pursued a degree in Mechanical Engineering at the University of Leuven, specializing in vehicle dynamics. After graduating, he joined a smaller Formula 4 team, gaining valuable experience in data analysis and trackside support. \n\nHis meticulous approach to data, combined with his ability to quickly adapt to changing track conditions, led to a string of successes, catching the eye of Triple Eight Race Engineering. Thierry believes in a collaborative environment, encouraging open communication between drivers and engineers. He's known for his ability to distill complex data into actionable insights, helping drivers extract maximum performance from their cars. Thierry is driven by a relentless pursuit of marginal gains, constantly seeking new ways to optimize car setup and strategy.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "Thierry is of average height with a focused look."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks copious amounts of espresso throughout the day."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "history": "The Kouvola Circuit, affectionately known as Tykki, has been a cornerstone of Finnish rallycross since its inception. While it boasts several layouts, the Short Circuit configuration is a popular choice for national-level events and testing. The venue itself has evolved over the years, adapting to the growing demands of rallycross competition, but it has maintained its rugged, distinctly Finnish character. The Short Circuit offers a condensed version of the full Kouvola experience, packing all the thrills into a tighter space.",
+  "atmosphere": "Standing beside the track during a race on the Short Circuit layout is an assault on the senses. The roar of highly-tuned engines echoes off the nearby trees, punctuated by the sharp crackle of anti-lag systems. The smell of burning rubber and methanol hangs heavy in the air, a testament to the intense battles unfolding on the track. The closely packed layout means you're never far from the action, feeling every bump and jump as the cars hurtle past.",
+  "trackCharacter": "The Short Circuit layout at Kouvola is a raw, unforgiving beast. Its compact nature emphasizes aggression and car control, demanding drivers wrestle their machines through a series of tight corners and strategically placed jumps. Unlike the flowing nature of the full circuit, the Short Circuit is all about rapid acceleration, hard braking, and maximizing every inch of available track. The rhythm is staccato, a relentless series of short bursts of speed followed by brutal deceleration zones.",
+  "nickname": "The Gauntlet",
+  "famousCorners": [
+    {
+      "name": "Turn 1",
+      "description": "A tight, almost hairpin-like left-hander that immediately follows the start. It's a critical corner for establishing position early in the race.",
+      "challenge": "Demands a precise entry and maximum grip to avoid getting boxed in or losing momentum."
+    },
+    {
+      "name": "The Jump",
+      "description": "A small but strategically placed jump that launches the cars over a short distance. It is crucial for maintaining speed and setting up for the following corner.",
+      "challenge": "Requires precise timing and throttle control to land smoothly and avoid unsettling the car."
+    },
+    {
+      "name": "Turn 4",
+      "description": "A fast, sweeping right-hander that tests the driver's courage and commitment. Maintaining momentum through this corner is vital for a good lap time.",
+      "challenge": "Requires a delicate balance of speed and grip to avoid running wide or losing control."
+    },
+    {
+      "name": "The Joker Lap Entry",
+      "description": "A tight right-hander leading into the Joker Lap section. It's a crucial point for strategy and race management.",
+      "challenge": "Requires precise braking and positioning to avoid losing time when taking the Joker Lap."
+    },
+    {
+      "name": "Final Corner",
+      "description": "A sharp right-hander onto the finish straight. It's the last chance for a desperate overtake or a defensive maneuver.",
+      "challenge": "Demands a clean exit to maximize acceleration onto the finish straight and secure the position."
+    }
+  ],
+  "keyFactors": [
+    "Aggressive driving style",
+    "Braking precision",
+    "Launch control",
+    "Joker Lap strategy",
+    "Mechanical Grip"
+  ],
+  "overtakingSpots": [
+    "Turn 1 (under braking)",
+    "The Jump (setup for the following corner)",
+    "Entry to the Joker Lap"
+  ],
+  "historySnippets": [
+    "Kouvola is a staple of the Finnish rallycross scene.",
+    "The Short Circuit layout is often used for testing and national-level events.",
+    "The track surface is notoriously rough and challenging.",
+    "Tykki is known for its enthusiastic and knowledgeable fans.",
+    "The Joker Lap can be a real game-changer on the Short Circuit.",
+    "Many famous Finnish rallycross drivers have honed their skills at Kouvola."
+  ],
+  "weatherNotes": "Kouvola experiences a wide range of weather conditions. Rain can turn the track into a mud bath, making car control even more challenging. In winter, the circuit is sometimes converted to ice or snow layouts, offering a completely different driving experience. Even on dry days, the track surface can be dusty, reducing grip levels.",
+  "drivingAdvice": "On the Short Circuit at Kouvola, aggression is key. Don't be afraid to get physical with your competitors, but always maintain control. Precise braking is crucial for navigating the tight corners, and a good launch is essential for getting ahead at the start. Pay close attention to your Joker Lap strategy, as it can make or break your race. Most of all, be prepared for a wild and unpredictable ride.",
+  "famousRaces": [
+    "Finnish National Rallycross Championship events are regularly held on the short circuit, offering thrilling battles.",
+    "The Finnish Rallycross Challenge attracts a diverse field of drivers, showcasing the talent and passion for the sport.",
+    "Local club races provide a platform for aspiring rallycross drivers to hone their skills and gain experience."
+  ],
+  "localCulture": "Kouvola is a city steeped in motorsport tradition, with a passionate local community that embraces rallycross. The atmosphere in the paddock is friendly and welcoming, with drivers and teams often sharing tips and advice. Traditional Finnish cuisine, such as Karjalanpiirakka (rice pies) and grilled sausages, can be found at the trackside vendors. The local area offers opportunities for outdoor activities, such as hiking and fishing, making it a great destination for motorsport enthusiasts."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Dirk van der Meer",
+  "nationality": "Dutch",
+  "age": 33,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Dirk's fascination with motorsport began at a young age, tinkering with his father's old kart in their garage. He pursued a degree in aerospace engineering, focusing on aerodynamics, which naturally led him to wind tunnel technology. After graduating, he gained valuable experience at a smaller racing outfit before joining Target Racing. Dirk is known for his meticulous approach, ensuring every test run is conducted with the highest precision. He believes in data-driven decisions and constantly seeks ways to refine the team's aerodynamic package. His pragmatic nature helps him quickly identify critical areas for improvement, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Dirk has a lean build and a focused expression, often seen with a pen behind his ear."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always calibrates equipment twice before starting a test.",
+    "Drinks black coffee with exactly one sugar cube.",
+    "Organizes his tools by size and function every morning."
+  ]
+}

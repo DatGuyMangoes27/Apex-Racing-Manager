@@ -1,0 +1,22 @@
+{
+  "name": "Katrin Weber",
+  "nationality": "German",
+  "age": 35,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Katrin's passion for motorsports ignited during her childhood visits to the Nürburgring with her father, a seasoned mechanic. She pursued a degree in mechanical engineering, specializing in simulation and modeling. Before joining ROWE Racing, Katrin honed her skills at a smaller outfit, developing driver-in-the-loop simulators for various racing series. Her dedication to data accuracy and driver feedback integration makes her an invaluable asset to the team.\n\nKatrin's pragmatic approach centers around finding practical solutions that translate into tangible on-track improvements. She meticulously analyzes simulator data, identifying areas where the virtual environment can better reflect real-world conditions. Her focus on efficient workflows and clear communication ensures seamless collaboration between drivers, engineers, and strategists. Katrin is known for her relentless pursuit of marginal gains, believing that even the smallest adjustments can make a significant difference in competitive motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight hair with subtle blonde highlights, often pulled back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Katrin is of average height with a lean build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and notes.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on calibrating her own monitor settings at every new track simulation."
+  ]
+}

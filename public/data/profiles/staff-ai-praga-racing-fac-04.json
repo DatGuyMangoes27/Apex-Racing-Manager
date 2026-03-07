@@ -1,0 +1,22 @@
+{
+  "name": "Elena Rodriguez Garcia",
+  "nationality": "Spanish",
+  "age": 42,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Elena's fascination with motorsport began during her childhood, watching Formula 1 races with her father. This passion led her to pursue a degree in Electrical Engineering at the Polytechnic University of Catalonia, where she excelled in electronics and control systems. After graduating, she joined a small engineering firm specializing in automotive electronics, quickly gaining experience in designing and testing engine control units and data acquisition systems. \n\nDriven by her ambition to work in motorsport, Elena transitioned to Praga Racing five years ago. Her meticulous approach to problem-solving and her ability to remain calm under pressure have made her an invaluable asset to the team. She is responsible for ensuring the reliability and optimal performance of the car's electronic systems, constantly seeking innovative solutions to improve efficiency and gain a competitive edge. Elena is known for her dedication and her ability to communicate complex technical information clearly and concisely.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, wavy hair, usually tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is of average height with a focused expression and a warm, approachable smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and technical notes.",
+    "Has a habit of tapping her pen against her teeth when concentrating.",
+    "Insists on listening to classical music through her headphones while working on complex wiring."
+  ]
+}

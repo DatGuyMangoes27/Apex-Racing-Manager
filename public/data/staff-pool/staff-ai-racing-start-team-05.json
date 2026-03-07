@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 37,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Adrian's journey into motorsport began with a childhood fascination for rally racing in the Carpathian Mountains. He studied mechanical engineering at the Polytechnic University of Bucharest, where he honed his technical skills and developed a keen eye for data analysis. After graduating, he started as a junior data analyst for a small touring car team, quickly rising through the ranks due to his strategic insights and ability to predict opponent strategies. \n\nHe joined Racing Start Academy five years ago, bringing a wealth of experience in race simulation and strategy optimization. Adrian is known for his meticulous approach to race planning, his ability to adapt quickly to changing conditions, and his calm demeanor under pressure. He believes in a data-driven approach, constantly seeking new ways to extract insights from telemetry and race data to gain a competitive edge. Adrian’s visionary approach is tempered by pragmatism and a deep understanding of the limitations of both the equipment and the drivers.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Adrian is of average height with a lean build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during stressful moments.",
+    "Drinks copious amounts of black coffee, preferring it strong and bitter.",
+    "Has a habit of tapping his pen rhythmically while analyzing data."
+  ]
+}

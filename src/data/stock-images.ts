@@ -1,7 +1,10 @@
 /**
  * Stock Imagery for AMS2 Career Mode
- * Curated high-quality motorsport photography from Unsplash
+ * AI-generated motorsport scene photography (Nano Banana Pro)
  * Used for atmospheric backgrounds throughout the app
+ * 
+ * Images are stored in: public/images/generated/scenes/
+ * Generated via Content Studio's scene-generator or the standalone script.
  */
 
 // ============================================
@@ -40,284 +43,290 @@ export interface StockImage {
 }
 
 // ============================================
-// UNSPLASH IMAGE URLS
-// Using direct Unsplash URLs with sizing parameters
-// Format: https://images.unsplash.com/photo-ID?w=WIDTH&h=HEIGHT&fit=crop
+// BASE PATH for generated scene images
+// ============================================
+
+const SCENES_BASE = '/images/generated/scenes'
+
+// ============================================
+// AI-GENERATED SCENE IMAGES
+// All images generated via Nano Banana Pro (gemini-3-pro-image-preview)
+// Stored in: public/images/generated/scenes/
 // ============================================
 
 // GT Racing - Modern GT cars, GT3/GT4
 const GT_RACING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=600&fit=crop',
-    photographer: 'Campbell',
+    url: `${SCENES_BASE}/gt-racing-001.jpg`,
+    photographer: 'AI Generated',
     category: 'gt-racing',
-    tags: ['gt', 'sports-car', 'racing']
+    tags: ['gt', 'sports-car', 'racing', 'pack']
   },
   {
-    url: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&h=600&fit=crop',
-    photographer: 'Adrian Dascal',
+    url: `${SCENES_BASE}/gt-racing-002.jpg`,
+    photographer: 'AI Generated',
     category: 'gt-racing',
-    tags: ['gt', 'track', 'supercar']
+    tags: ['gt', 'track', 'chicane']
   },
   {
-    url: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=600&fit=crop',
-    photographer: 'Campbell',
+    url: `${SCENES_BASE}/gt-racing-003.jpg`,
+    photographer: 'AI Generated',
     category: 'gt-racing',
     tags: ['porsche', 'gt', 'racing']
   },
   {
-    url: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&h=600&fit=crop',
-    photographer: 'Erik Mclean',
+    url: `${SCENES_BASE}/gt-racing-004.jpg`,
+    photographer: 'AI Generated',
     category: 'gt-racing',
-    tags: ['bmw', 'racing', 'track']
+    tags: ['bmw', 'racing', 'speed']
   },
 ]
 
 // Prototype / Endurance Racing
 const PROTOTYPE_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop',
-    photographer: 'Harley-Davidson',
+    url: `${SCENES_BASE}/prototype-001.jpg`,
+    photographer: 'AI Generated',
     category: 'prototype',
     tags: ['endurance', 'le-mans', 'night']
   },
   {
-    url: 'https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&h=600&fit=crop',
-    photographer: 'Taras Chernus',
+    url: `${SCENES_BASE}/prototype-002.jpg`,
+    photographer: 'AI Generated',
     category: 'prototype',
-    tags: ['prototype', 'racing', 'track']
+    tags: ['prototype', 'dawn', 'endurance']
   },
   {
-    url: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1200&h=600&fit=crop',
-    photographer: 'Jannes Glas',
+    url: `${SCENES_BASE}/prototype-003.jpg`,
+    photographer: 'AI Generated',
     category: 'prototype',
-    tags: ['endurance', 'racing', 'sports-car']
+    tags: ['lmp2', 'racing', 'start-finish']
   },
 ]
 
 // Formula / Open Wheel
 const FORMULA_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1541447553396-53fbe2d77f70?w=1200&h=600&fit=crop',
-    photographer: 'Caleb Oquendo',
+    url: `${SCENES_BASE}/formula-001.jpg`,
+    photographer: 'AI Generated',
     category: 'formula',
-    tags: ['formula', 'open-wheel', 'track']
+    tags: ['formula', 'open-wheel', 'start']
   },
   {
-    url: 'https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1200&h=600&fit=crop',
-    photographer: 'Spencer Davis',
+    url: `${SCENES_BASE}/formula-002.jpg`,
+    photographer: 'AI Generated',
     category: 'formula',
-    tags: ['formula', 'racing', 'single-seater']
+    tags: ['formula', 'street-circuit', 'sparks']
   },
   {
-    url: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=1200&h=600&fit=crop',
-    photographer: 'Jonathan Petersson',
+    url: `${SCENES_BASE}/formula-003.jpg`,
+    photographer: 'AI Generated',
     category: 'formula',
-    tags: ['formula', 'grid', 'racing']
+    tags: ['formula', 'grid', 'aerial']
   },
 ]
 
 // Touring / Stock Cars
 const TOURING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1600706432502-77a0e2e32431?w=1200&h=600&fit=crop',
-    photographer: 'Meritt Thomas',
+    url: `${SCENES_BASE}/touring-001.jpg`,
+    photographer: 'AI Generated',
     category: 'touring',
-    tags: ['touring', 'muscle', 'racing']
+    tags: ['touring', 'door-to-door', 'racing']
   },
   {
-    url: 'https://images.unsplash.com/photo-1558618047-f4b511b673f6?w=1200&h=600&fit=crop',
-    photographer: 'Harley-Davidson',
+    url: `${SCENES_BASE}/touring-002.jpg`,
+    photographer: 'AI Generated',
     category: 'touring',
-    tags: ['touring', 'track', 'racing']
+    tags: ['stock-car', 'brazil', 'racing']
   },
   {
-    url: 'https://images.unsplash.com/photo-1611016186353-9af58c69a533?w=1200&h=600&fit=crop',
-    photographer: 'Jakob Rosen',
+    url: `${SCENES_BASE}/touring-003.jpg`,
+    photographer: 'AI Generated',
     category: 'touring',
-    tags: ['touring', 'muscle-car', 'track']
+    tags: ['muscle', 'drift', 'v8']
   },
 ]
 
 // Spec Series (Porsche, one-make)
 const SPEC_SERIES_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&h=600&fit=crop',
-    photographer: 'Nigel Tadyanehondo',
+    url: `${SCENES_BASE}/spec-series-001.jpg`,
+    photographer: 'AI Generated',
     category: 'spec-series',
-    tags: ['porsche', 'cup', 'racing']
+    tags: ['porsche', 'cup', 'one-make']
   },
   {
-    url: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1200&h=600&fit=crop',
-    photographer: 'Jannes Glas',
+    url: `${SCENES_BASE}/spec-series-002.jpg`,
+    photographer: 'AI Generated',
     category: 'spec-series',
-    tags: ['one-make', 'racing', 'grid']
+    tags: ['ginetta', 'racing', 'british']
   },
   {
-    url: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&h=600&fit=crop',
-    photographer: 'Maxim Hopman',
+    url: `${SCENES_BASE}/spec-series-003.jpg`,
+    photographer: 'AI Generated',
     category: 'spec-series',
-    tags: ['sports-car', 'racing', 'track']
+    tags: ['lamborghini', 'super-trofeo', 'racing']
   },
 ]
 
 // Historic / Vintage Racing
 const HISTORIC_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1591384640699-9a85bd036da2?w=1200&h=600&fit=crop',
-    photographer: 'Mathew Schwartz',
+    url: `${SCENES_BASE}/historic-001.jpg`,
+    photographer: 'AI Generated',
     category: 'historic',
-    tags: ['vintage', 'classic', 'racing']
+    tags: ['vintage', 'group-c', 'le-mans']
   },
   {
-    url: 'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&h=600&fit=crop',
-    photographer: 'Peter Broomfield',
+    url: `${SCENES_BASE}/historic-002.jpg`,
+    photographer: 'AI Generated',
     category: 'historic',
-    tags: ['vintage', 'sports-car', 'classic']
+    tags: ['classic', 'formula', '1970s']
   },
   {
-    url: 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?w=1200&h=600&fit=crop',
-    photographer: 'Evan Velez Saxer',
+    url: `${SCENES_BASE}/historic-003.jpg`,
+    photographer: 'AI Generated',
     category: 'historic',
-    tags: ['classic', 'retro', 'vintage']
+    tags: ['classic', '1950s', 'silver']
   },
 ]
 
 // Karting
 const KARTING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1541447553396-53fbe2d77f70?w=1200&h=600&fit=crop',
-    photographer: 'Caleb Oquendo',
+    url: `${SCENES_BASE}/karting-001.jpg`,
+    photographer: 'AI Generated',
     category: 'karting',
-    tags: ['karting', 'junior', 'racing']
+    tags: ['karting', 'wheel-to-wheel', 'hairpin']
   },
   {
-    url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=600&fit=crop',
-    photographer: 'National Cancer Institute',
+    url: `${SCENES_BASE}/karting-002.jpg`,
+    photographer: 'AI Generated',
     category: 'karting',
-    tags: ['karting', 'track', 'motorsport']
+    tags: ['karting', 'track', 'junior']
   },
 ]
 
 // Paddock / Pit Lane / Garage
 const PADDOCK_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1567818735868-e71b99932e29?w=1200&h=600&fit=crop',
-    photographer: 'Jeff Cooper',
+    url: `${SCENES_BASE}/paddock-001.jpg`,
+    photographer: 'AI Generated',
     category: 'paddock',
-    tags: ['paddock', 'pit', 'team']
+    tags: ['paddock', 'motorhome', 'atmosphere']
   },
   {
-    url: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1200&h=600&fit=crop',
-    photographer: 'Markus Spiske',
+    url: `${SCENES_BASE}/paddock-002.jpg`,
+    photographer: 'AI Generated',
     category: 'paddock',
     tags: ['garage', 'mechanic', 'tools']
   },
   {
-    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop',
-    photographer: 'Harley-Davidson',
+    url: `${SCENES_BASE}/paddock-003.jpg`,
+    photographer: 'AI Generated',
     category: 'paddock',
-    tags: ['pit-lane', 'night', 'racing']
+    tags: ['pit-lane', 'night', 'endurance']
   },
 ]
 
 // Victory / Celebration
 const VICTORY_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=1200&h=600&fit=crop',
-    photographer: 'Jonathan Petersson',
+    url: `${SCENES_BASE}/victory-001.jpg`,
+    photographer: 'AI Generated',
     category: 'victory',
-    tags: ['victory', 'celebration', 'podium']
+    tags: ['victory', 'champagne', 'podium']
   },
   {
-    url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1200&h=600&fit=crop',
-    photographer: 'Victor Freitas',
+    url: `${SCENES_BASE}/victory-002.jpg`,
+    photographer: 'AI Generated',
     category: 'victory',
-    tags: ['trophy', 'winner', 'celebration']
+    tags: ['winner', 'parc-ferme', 'celebration']
   },
 ]
 
 // Night Racing
 const NIGHT_RACING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop',
-    photographer: 'Harley-Davidson',
+    url: `${SCENES_BASE}/night-racing-001.jpg`,
+    photographer: 'AI Generated',
     category: 'night-racing',
-    tags: ['night', 'endurance', 'lights']
+    tags: ['night', 'headlights', 'endurance']
   },
   {
-    url: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&h=600&fit=crop',
-    photographer: 'Traf',
+    url: `${SCENES_BASE}/night-racing-002.jpg`,
+    photographer: 'AI Generated',
     category: 'night-racing',
-    tags: ['night', 'racing', 'dark']
+    tags: ['night', 'solitary', 'dark']
   },
 ]
 
 // Sim Racing
 const SIM_RACING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=1200&h=600&fit=crop',
-    photographer: 'Florian Olivo',
+    url: `${SCENES_BASE}/sim-racing-001.jpg`,
+    photographer: 'AI Generated',
     category: 'sim-racing',
-    tags: ['sim', 'esports', 'gaming']
+    tags: ['sim', 'cockpit', 'gaming']
   },
   {
-    url: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop',
-    photographer: 'Fredrick Tendong',
+    url: `${SCENES_BASE}/sim-racing-002.jpg`,
+    photographer: 'AI Generated',
     category: 'sim-racing',
-    tags: ['gaming', 'setup', 'sim']
+    tags: ['esports', 'competition', 'stage']
   },
 ]
 
 // Track Aerials
 const TRACK_AERIAL_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=600&fit=crop',
-    photographer: 'Campbell',
+    url: `${SCENES_BASE}/track-aerial-001.jpg`,
+    photographer: 'AI Generated',
     category: 'track-aerial',
     tags: ['track', 'aerial', 'circuit']
   },
   {
-    url: 'https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&h=600&fit=crop',
-    photographer: 'Taras Chernus',
+    url: `${SCENES_BASE}/track-aerial-002.jpg`,
+    photographer: 'AI Generated',
     category: 'track-aerial',
-    tags: ['circuit', 'track', 'racing']
+    tags: ['circuit', 'overhead', 'racing']
   },
 ]
 
 // Garage / Workshop
 const GARAGE_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1200&h=600&fit=crop',
-    photographer: 'Markus Spiske',
+    url: `${SCENES_BASE}/garage-001.jpg`,
+    photographer: 'AI Generated',
     category: 'garage',
-    tags: ['garage', 'tools', 'mechanic']
+    tags: ['garage', 'workshop', 'professional']
   },
   {
-    url: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=1200&h=600&fit=crop',
-    photographer: 'Tim Mossholder',
+    url: `${SCENES_BASE}/garage-002.jpg`,
+    photographer: 'AI Generated',
     category: 'garage',
-    tags: ['workshop', 'tools', 'automotive']
+    tags: ['engine', 'assembly', 'craftsmanship']
   },
 ]
 
 // Pit Stop
 const PIT_STOP_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop',
-    photographer: 'Harley-Davidson',
+    url: `${SCENES_BASE}/pit-stop-001.jpg`,
+    photographer: 'AI Generated',
     category: 'pit-stop',
-    tags: ['pit-stop', 'team', 'racing']
+    tags: ['pit-stop', 'crew', 'action']
   },
 ]
 
 // Rain Racing
 const RAIN_RACING_IMAGES: StockImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=1200&h=600&fit=crop',
-    photographer: 'Erik Mclean',
+    url: `${SCENES_BASE}/rain-racing-001.jpg`,
+    photographer: 'AI Generated',
     category: 'rain-racing',
-    tags: ['rain', 'wet', 'racing']
+    tags: ['rain', 'wet', 'spray']
   },
 ]
 
@@ -366,33 +375,33 @@ export const SCENARIO_IMAGES: Record<string, ImageCategory> = {
 
 // ============================================
 // OWNER BACKGROUND IMAGES
-// High-quality images for team owner backgrounds
+// AI-generated scene images for team owner backgrounds
 // ============================================
 
 export const OWNER_BACKGROUND_IMAGES: Record<string, string> = {
   // Self-Made Entrepreneur - Business/office setting
-  'self_made': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop&auto=format&q=80',
+  'self_made': `${SCENES_BASE}/owner-bg-self-made.jpg`,
   
   // Racing Dynasty Heir - Luxury/heritage
-  'racing_dynasty': 'https://images.unsplash.com/photo-1532906619279-a764d9526715?w=600&h=400&fit=crop&auto=format&q=80',
+  'racing_dynasty': `${SCENES_BASE}/owner-bg-racing-dynasty.jpg`,
   
   // Tech Investor - Modern tech/office
-  'tech_investor': 'https://images.unsplash.com/photo-1558494949-ef526b01201b?w=600&h=400&fit=crop&auto=format&q=80',
+  'tech_investor': `${SCENES_BASE}/owner-bg-tech-investor.jpg`,
   
   // Former Racing Driver - Racing/podium
-  'former_driver': 'https://images.unsplash.com/photo-1530906622963-8a60586a49c7?w=600&h=400&fit=crop&auto=format&q=80',
+  'former_driver': `${SCENES_BASE}/owner-bg-former-driver.jpg`,
   
   // Finance Mogul - Finance/city
-  'finance_mogul': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&auto=format&q=80',
+  'finance_mogul': `${SCENES_BASE}/owner-bg-finance-mogul.jpg`,
   
   // Passionate Enthusiast - Fan/paddock
-  'passionate_enthusiast': 'https://images.unsplash.com/photo-1529651737248-dad5e287768e?w=600&h=400&fit=crop&auto=format&q=80',
+  'passionate_enthusiast': `${SCENES_BASE}/owner-bg-passionate-enthusiast.jpg`,
   
   // Corporate Executive - Corporate/boardroom
-  'corporate_executive': 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop&auto=format&q=80',
+  'corporate_executive': `${SCENES_BASE}/owner-bg-corporate-executive.jpg`,
   
   // Lottery Winner - Celebration/luck
-  'lottery_winner': 'https://images.unsplash.com/photo-1585516093375-38104875080c?w=600&h=400&fit=crop&auto=format&q=80',
+  'lottery_winner': `${SCENES_BASE}/owner-bg-lottery-winner.jpg`,
 }
 
 /**
@@ -503,17 +512,13 @@ export function getRegionImage(region: string): string {
 }
 
 /**
- * Get image URL with custom dimensions
+ * Get image URL with custom dimensions.
+ * For local images, returns the URL as-is (no Unsplash resize params needed).
  */
-export function getImageWithSize(baseUrl: string, width: number, height: number): string {
-  // Unsplash URLs can be modified with w= and h= parameters
-  const url = new URL(baseUrl)
-  url.searchParams.set('w', width.toString())
-  url.searchParams.set('h', height.toString())
-  url.searchParams.set('fit', 'crop')
-  url.searchParams.set('auto', 'format')
-  url.searchParams.set('q', '80')
-  return url.toString()
+export function getImageWithSize(baseUrl: string, _width: number, _height: number): string {
+  // Local generated images don't support dynamic resizing via URL params.
+  // The image is served as-is. CSS handles display sizing.
+  return baseUrl
 }
 
 /**
@@ -531,34 +536,29 @@ export function getAllImageUrls(): string[] {
 
 export const HERO_IMAGES = {
   // Main menu / Career creation header
-  mainMenu: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&h=400&fit=crop&auto=format&q=80',
+  mainMenu: `${SCENES_BASE}/hero-main-menu.jpg`,
   
   // Home screen - career hub
-  careerHub: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=300&fit=crop&auto=format&q=80',
+  careerHub: `${SCENES_BASE}/hero-career-hub.jpg`,
   
   // Paddock / World browser
-  paddock: 'https://images.unsplash.com/photo-1567818735868-e71b99932e29?w=1200&h=300&fit=crop&auto=format&q=80',
+  paddock: `${SCENES_BASE}/hero-paddock.jpg`,
   
   // Contracts
-  contracts: 'https://images.unsplash.com/photo-1547744152-14d985cb937f?w=1200&h=300&fit=crop&auto=format&q=80',
+  contracts: `${SCENES_BASE}/hero-contracts.jpg`,
   
   // Calendar
-  calendar: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&h=300&fit=crop&auto=format&q=80',
+  calendar: `${SCENES_BASE}/hero-calendar.jpg`,
   
   // Garage
-  garage: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1200&h=300&fit=crop&auto=format&q=80',
+  garage: `${SCENES_BASE}/hero-garage.jpg`,
   
   // Stats / Achievements
-  achievements: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=1200&h=300&fit=crop&auto=format&q=80',
+  achievements: `${SCENES_BASE}/hero-achievements.jpg`,
   
   // Race day
-  raceDay: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=400&fit=crop&auto=format&q=80',
+  raceDay: `${SCENES_BASE}/hero-race-day.jpg`,
 }
 
 // Default fallback image
-export const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=600&fit=crop&auto=format&q=80'
-
-
-
-
-
+export const FALLBACK_IMAGE = `${SCENES_BASE}/scene-fallback.jpg`

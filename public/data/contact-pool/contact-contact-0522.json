@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Belgian",
+  "age": 53,
+  "gender": "male",
+  "contactType": "philanthropist",
+  "bio": "Jean-Luc Dubois made his fortune in sustainable energy, parlaying a small inheritance into a multi-billion euro empire. He's known for his sharp wit and uncompromising principles, often cloaked in a layer of sarcasm that can be disarming. Despite his wealth, Jean-Luc actively promotes eco-friendly initiatives and supports various environmental charities, often clashing with industries he deems unsustainable. \n\nWhile seemingly distant from motorsport, Jean-Luc is a major benefactor of a racing team developing electric racing technologies, seeing it as a viable path towards greener racing. He also sponsors young drivers who align with his values, seeking to promote a more responsible image for the sport. A driver demonstrating a commitment to sustainability or possessing a compelling personal story might catch his eye.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Jean-Luc is a man of medium height with a wiry build, reflecting his active lifestyle. He typically wears tailored suits that subtly hint at his wealth but never feel ostentatious."
+  },
+  "connectionToMotorsport": "Jean-Luc is a significant investor in a Formula E team and sponsors young drivers who promote sustainability within motorsport.",
+  "meetingContext": "The player might meet Jean-Luc at a Formula E event, a charity gala, or through an introduction from another contact involved in sustainable racing initiatives.",
+  "conversationTopics": [
+    "The future of sustainable energy",
+    "The ethics of wealth",
+    "His latest hiking trip in the Ardennes",
+    "The environmental impact of motorsport",
+    "Antique clocks"
+  ],
+  "canHelp": [
+    "Financial backing for the player's racing career",
+    "Introductions to key figures in the electric racing scene",
+    "Positive media exposure related to sustainability initiatives"
+  ],
+  "personality_summary": "A sarcastic but principled philanthropist with a keen interest in sustainable living."
+}

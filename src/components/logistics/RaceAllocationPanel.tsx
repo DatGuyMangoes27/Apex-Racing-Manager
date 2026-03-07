@@ -18,20 +18,43 @@ import {
   Minus,
   ArrowRight,
   Calendar,
-  _Send,
+  Send,
   Gauge,
   Car,
   CircleDot,
   ArrowUpDown,
   Cog
 } from 'lucide-react'
-import type { Card, CardContent } from '@/components/ui/Card';
+import { Card, CardHeader, CardContent, Badge, Button, Progress } from '@/components/ui'
+import type { ButtonVariant } from '@/components/ui'
+import { useCareerStore } from '@/store/careerStore'
+import type { RaceSparesKitStatus, RaceSparesKit, SparePartsState } from '@/store/careerStore'
+import type { SparePartType, ShippingMethod } from '@/data/spare-parts-config'
+import { SPARE_PART_TYPES, SPARE_PART_NAMES, SHIPPING_METHODS } from '@/data/spare-parts-config'
+import type { WorldRegion } from '@/data/travel-logistics'
+import { getRegionDisplayName } from '@/data/travel-logistics'
+import { getKitAllocationStatus, getKitShippingUrgency } from '@/simulation/logistics/raceAllocation'
+import { getShippingOptions } from '@/simulation/logistics/partsShipping'
+import { countPartsByTypeAtLocation } from '@/simulation/logistics/partsInventory'
+
+function getPartTypeIcon(type: string, className: string): React.ReactNode {
   switch (type) {
     case 'engine': return <Gauge className={className} />
     case 'chassis': return <Car className={className} />
     case 'brakes': return <CircleDot className={className} />
     case 'suspension': return <ArrowUpDown className={className} />
     case 'gearbox': return <Cog className={className} />
+  }
+}
+
+function PartTypeIcon({ type, className }: { type: string; className: string }): React.ReactElement | null {
+  switch (type) {
+    case 'engine': return <Gauge className={className} />
+    case 'chassis': return <Car className={className} />
+    case 'brakes': return <CircleDot className={className} />
+    case 'suspension': return <ArrowUpDown className={className} />
+    case 'gearbox': return <Cog className={className} />
+    default: return <Cog className={className} />
   }
 }
 

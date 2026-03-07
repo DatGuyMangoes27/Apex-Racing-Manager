@@ -5,25 +5,61 @@
  * For accepted opportunities, allows scheduling on the calendar.
  */
 
-import { useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  DollarSign, TrendingUp, PiggyBank, Receipt, Briefcase, Building2, 
-  ArrowUpRight, ArrowDownRight, Check, X, Clock, Trophy, Award, 
-  Star, Sparkles, RefreshCw, AlertCircle, Lock, Unlock, Filter,
-  ChevronDown, Search, Globe, Wrench, Zap, Target, AlertTriangle,
-  Megaphone, ShieldAlert, Mic, TrendingUp as ViralIcon, Users, History,
-  Heart, MessageSquare, Share2, Ban
+  DollarSign, TrendingUp, TrendingDown, Briefcase, Building2, 
+  Check, X, Clock, Trophy, Star, Sparkles, AlertTriangle,
+  Users, Heart, Calendar, Factory, Sunrise, Sun, Sunset, Moon, CheckCircle2
 } from 'lucide-react'
-import { Card, CardHeader, Button, Badge, PageHeader, Tabs, TabsList, TabsTrigger, TabsContent, Modal, useToast, Input, SatisfactionMeter } from '@/components/ui'
-import { useCareerStore, SponsorDeal } from '@/store/careerStore'
-import { useRivalStore } from '@/store/rivalStore'
-import {
-  calculateLivingExpenses,
-  getAllSponsorsWithEligibility,
-  SponsorEligibility,
-  getSponsorPersonality
-} from '@/simulation/finances';
+import { Card, Button, Badge, Modal } from '@/components/ui'
+import { useCareerStore, getDayName } from '@/store/careerStore'
+import { getActivityTimeCost } from '@/data/activity-time-costs'
+import { DAY_PERIOD_ORDER, DAY_PERIODS, type DayPeriod } from '@/data/day-periods-config'
+
+// Helper functions for opportunity categories
+function getCategoryIcon(category: string) {
+  switch (category) {
+    case 'media': return <Sparkles className="w-6 h-6" />
+    case 'sponsor': return <Briefcase className="w-6 h-6" />
+    case 'team': return <Users className="w-6 h-6" />
+    case 'manufacturer': return <Factory className="w-6 h-6" />
+    case 'special': return <Trophy className="w-6 h-6" />
+    default: return <Star className="w-6 h-6" />
+  }
+}
+
+function getCategoryLabel(category: string) {
+  switch (category) {
+    case 'media': return 'Media'
+    case 'sponsor': return 'Sponsor'
+    case 'team': return 'Team'
+    case 'manufacturer': return 'Manufacturer'
+    case 'special': return 'Special'
+    default: return category
+  }
+}
+
+function getCategoryColor(category: string) {
+  switch (category) {
+    case 'media': return 'bg-accent-red/20'
+    case 'sponsor': return 'bg-accent-gold/20'
+    case 'team': return 'bg-accent-blue/20'
+    case 'manufacturer': return 'bg-accent-purple/20'
+    case 'special': return 'bg-accent-orange/20'
+    default: return 'bg-surface-secondary'
+  }
+}
+
+function getOrganizerIcon(type: string) {
+  switch (type) {
+    case 'sponsor': return <Briefcase className="w-4 h-4 text-text-muted" />
+    case 'manufacturer': return <Factory className="w-4 h-4 text-text-muted" />
+    case 'media': return <Sparkles className="w-4 h-4 text-text-muted" />
+    case 'team': return <Users className="w-4 h-4 text-text-muted" />
+    default: return <Star className="w-4 h-4 text-text-muted" />
+  }
+}
 
 interface OpportunityResponseModalProps {
   opportunity: any
@@ -45,8 +81,38 @@ export default function OpportunityResponseModal({
   const [isAccepting, setIsAccepting] = useState(false)
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
   const [selectedDay, setSelectedDay] = useState<number | null>(null)
+  const [selectedPeriod, setSelectedPeriod] = useState<DayPeriod | null>(null)
+  const [showAllWeeks, setShowAllWeeks] = useState(false)
   
   const { acceptOpportunity, declineOpportunity } = useCareerStore()
+
+  const timeCostInfo = useMemo(() => getActivityTimeCost(opportunity.id), [opportunity.id])
+  const allowedPeriods = useMemo<DayPeriod[]>(
+    () => (timeCostInfo.allowedPeriods && timeCostInfo.allowedPeriods.length > 0)
+      ? timeCostInfo.allowedPeriods
+      : DAY_PERIOD_ORDER,
+    [timeCostInfo.allowedPeriods]
+  )
+
+  const periodIcons: Record<DayPeriod, typeof Sun> = {
+    morning: Sunrise,
+    afternoon: Sun,
+    evening: Sunset,
+    night: Moon,
+  }
+
+  useEffect(() => {
+    if (!isOpen) return
+    setIsAccepting(false)
+    setSelectedWeek(null)
+    setSelectedDay(null)
+    setShowAllWeeks(false)
+
+    const initialPeriod = timeCostInfo.preferredPeriod
+      || (timeCostInfo.allowedPeriods && timeCostInfo.allowedPeriods[0])
+      || null
+    setSelectedPeriod(initialPeriod)
+  }, [isOpen, opportunity.instanceId, timeCostInfo.preferredPeriod, timeCostInfo.allowedPeriods])
   
   // Generate available weeks for scheduling
   const availableWeeks = useMemo(() => {
@@ -66,6 +132,36 @@ export default function OpportunityResponseModal({
       a => a.scheduledWeek === week && a.status === 'scheduled'
     )
   }
+
+  const isActivityOnDay = (activity: any, day: number) => {
+    const span = activity.spanDays || 1
+    const startDay = activity.scheduledDay
+    const endDay = startDay + span - 1
+    return day >= startDay && day <= endDay
+  }
+
+  const hasPeriodConflict = (week: number, day: number, period: DayPeriod) => {
+    return scheduledActivities.some((activity) => {
+      if (activity.status !== 'scheduled') return false
+      if (activity.scheduledWeek !== week) return false
+      if (!isActivityOnDay(activity, day)) return false
+
+      // Legacy activities without a period should block all periods to avoid invisible overlap.
+      if (!activity.scheduledPeriod) return true
+      return activity.scheduledPeriod === period
+    })
+  }
+
+  const getAvailableDaysForWeekAndPeriod = (week: number, period: DayPeriod | null) => {
+    if (!period) return 7
+    return [1, 2, 3, 4, 5, 6, 7].filter(day => !hasPeriodConflict(week, day, period)).length
+  }
+
+  const visibleWeeks = useMemo(() => {
+    const BASE_VISIBLE_WEEKS = 12
+    if (showAllWeeks) return availableWeeks
+    return availableWeeks.slice(0, BASE_VISIBLE_WEEKS)
+  }, [availableWeeks, showAllWeeks])
   
   // Calculate rewards summary
   const rewardsSummary = useMemo(() => {
@@ -159,9 +255,9 @@ export default function OpportunityResponseModal({
   
   // Handle accept
   const handleAccept = () => {
-    if (!selectedWeek) return
+    if (!selectedWeek || !selectedDay || !selectedPeriod) return
     
-    acceptOpportunity(opportunity.instanceId, selectedWeek, selectedDay)
+    acceptOpportunity(opportunity.instanceId, selectedWeek, selectedDay, selectedPeriod)
     onClose()
   }
   
@@ -173,11 +269,15 @@ export default function OpportunityResponseModal({
   
   // Days until expiry
   const daysUntilExpiry = useMemo(() => {
-    const expiresInWeeks = opportunity.expiresWeek - currentWeek
-    if (opportunity.expiresYear > currentYear) {
-      return expiresInWeeks + 52
+    const expWeek = opportunity.expiresWeek ?? 0
+    const expYear = opportunity.expiresYear ?? currentYear
+    if (!expWeek || !currentWeek) return 7 // Default fallback
+    
+    let weeksRemaining = expWeek - currentWeek
+    if (expYear > currentYear) {
+      weeksRemaining += (expYear - currentYear) * 52
     }
-    return Math.max(0, expiresInWeeks * 7)
+    return Math.max(0, weeksRemaining * 7)
   }, [opportunity, currentWeek, currentYear])
   
   return (
@@ -185,7 +285,7 @@ export default function OpportunityResponseModal({
       isOpen={isOpen}
       onClose={onClose}
       title={isAccepting ? 'Schedule Opportunity' : 'Opportunity Received'}
-      size="lg"
+      size="xl"
     >
       <div className="space-y-6">
         {/* Header */}
@@ -292,70 +392,165 @@ export default function OpportunityResponseModal({
           <div className="space-y-4">
             <h4 className="text-sm font-semibold flex items-center gap-2">
               <Calendar className="w-4 h-4 text-accent-blue" />
-              Select Week & Day
+              Select Week, Slot & Day
             </h4>
-            
+
+            {/* Time Slot Selection */}
+            <div>
+              <p className="text-sm text-text-muted mb-2">Pick time slot first:</p>
+              <div className="grid grid-cols-4 gap-2">
+                {DAY_PERIOD_ORDER.map(period => {
+                  const isAllowed = allowedPeriods.includes(period)
+                  const isSelected = selectedPeriod === period
+                  const PIcon = periodIcons[period]
+                  const config = DAY_PERIODS[period]
+
+                  return (
+                    <button
+                      key={period}
+                      type="button"
+                      disabled={!isAllowed}
+                      onClick={() => {
+                        if (!isAllowed) return
+                        setSelectedPeriod(period)
+                        if (selectedWeek && selectedDay && hasPeriodConflict(selectedWeek, selectedDay, period)) {
+                          setSelectedDay(null)
+                        }
+                      }}
+                      className={`
+                        p-2 rounded-lg border transition-all text-center
+                        ${!isAllowed
+                          ? 'opacity-30 cursor-not-allowed border-surface-secondary bg-surface-secondary/20'
+                          : isSelected
+                            ? 'border-accent-blue bg-accent-blue/20 text-accent-blue ring-2 ring-accent-blue/40'
+                            : 'border-surface-secondary bg-surface hover:border-accent-blue/50'
+                        }
+                      `}
+                    >
+                      <div className="flex items-center justify-center gap-1 mb-0.5">
+                        <PIcon className="w-3.5 h-3.5" />
+                        <span className="text-xs font-semibold">{config.shortLabel}</span>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
             {/* Week Selection */}
-            <div className="grid grid-cols-4 gap-2">
-              {availableWeeks.map(week => {
+            <div className="max-h-56 overflow-y-auto pr-1">
+              <div className="grid grid-cols-4 gap-2">
+              {visibleWeeks.map(week => {
                 const conflicts = getWeekConflicts(week)
                 const hasConflicts = conflicts.length > 0
+                const availableDays = getAvailableDaysForWeekAndPeriod(week, selectedPeriod)
+                const hasNoAvailableDays = selectedPeriod ? availableDays === 0 : false
                 
                 return (
                   <button
                     key={week}
-                    onClick={() => setSelectedWeek(week)}
+                    type="button"
+                    disabled={hasNoAvailableDays}
+                    onClick={() => {
+                      setSelectedWeek(week)
+                      if (selectedPeriod && selectedDay && hasPeriodConflict(week, selectedDay, selectedPeriod)) {
+                        setSelectedDay(null)
+                      }
+                    }}
                     className={`
-                      p-3 rounded-lg border-2 transition-all text-center
+                      p-3 rounded-lg border-2 transition-all text-center relative
                       ${selectedWeek === week 
-                        ? 'border-accent-blue bg-accent-blue/20' 
+                        ? 'border-accent-blue bg-accent-blue/25 ring-2 ring-accent-blue/30 shadow-[0_0_0_1px_rgba(59,130,246,0.35)]' 
                         : 'border-surface-secondary hover:border-surface-tertiary'}
-                      ${hasConflicts ? 'opacity-70' : ''}
+                      ${hasConflicts ? 'opacity-85' : ''}
+                      ${hasNoAvailableDays ? 'opacity-40 cursor-not-allowed' : ''}
                     `}
                   >
                     <p className="font-bold">Week {week}</p>
+                    {selectedWeek === week && (
+                      <span className="absolute top-2 right-2 text-accent-blue">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </span>
+                    )}
                     {hasConflicts && (
                       <p className="text-xs text-status-warning mt-1">
                         {conflicts.length} event{conflicts.length > 1 ? 's' : ''}
                       </p>
                     )}
+                    {selectedPeriod && (
+                      <p className={`text-xs mt-1 ${hasNoAvailableDays ? 'text-status-error' : 'text-status-success'}`}>
+                        {hasNoAvailableDays ? 'No open slots' : `${availableDays} open day${availableDays > 1 ? 's' : ''}`}
+                      </p>
+                    )}
                   </button>
                 )
               })}
+              </div>
             </div>
+            {availableWeeks.length > 12 && (
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAllWeeks(v => !v)}
+                  className="text-xs px-3 py-1.5 rounded-md border border-surface-secondary text-text-muted hover:text-text-primary hover:border-accent-blue/40 transition-colors"
+                >
+                  {showAllWeeks
+                    ? 'Show fewer weeks'
+                    : `Show more weeks (${availableWeeks.length - visibleWeeks.length} more)`}
+                </button>
+              </div>
+            )}
             
             {/* Day Selection */}
             {selectedWeek && (
               <div>
                 <p className="text-sm text-text-muted mb-2">Select starting day:</p>
+                {!selectedPeriod && (
+                  <p className="text-xs text-status-warning mb-2">
+                    Choose a time slot first to see available days.
+                  </p>
+                )}
                 <div className="grid grid-cols-7 gap-1">
                   {[1, 2, 3, 4, 5, 6, 7].map(day => {
                     const dayName = getDayName(day)
-                    const hasConflict = scheduledActivities.some(
-                      a => a.scheduledWeek === selectedWeek && 
-                           a.scheduledDay === day && 
-                           a.status === 'scheduled'
-                    )
+                    const hasConflict = selectedPeriod
+                      ? hasPeriodConflict(selectedWeek, day, selectedPeriod)
+                      : false
+                    const isDisabled = !selectedPeriod || hasConflict
                     
                     return (
                       <button
                         key={day}
                         onClick={() => setSelectedDay(day)}
-                        disabled={hasConflict}
+                        type="button"
+                        disabled={isDisabled}
                         className={`
-                          p-2 rounded text-xs transition-all
+                          p-2 rounded text-xs transition-all border
                           ${selectedDay === day 
-                            ? 'bg-accent-blue text-white' 
-                            : hasConflict 
-                              ? 'bg-status-error/20 text-status-error cursor-not-allowed' 
-                              : 'bg-surface hover:bg-surface-secondary'}
+                            ? 'bg-accent-blue text-white border-accent-blue ring-2 ring-accent-blue/35' 
+                            : hasConflict
+                              ? 'bg-status-error/15 border-status-error/40 text-status-error cursor-not-allowed'
+                              : !selectedPeriod
+                                ? 'bg-surface-secondary/30 border-surface-secondary text-text-muted cursor-not-allowed'
+                                : 'bg-surface border-surface-secondary hover:border-accent-blue/50'}
                         `}
                       >
-                        {dayName.substring(0, 3)}
+                        <div className="font-semibold">{dayName.substring(0, 3)}</div>
+                        <div className="text-[10px] opacity-80">
+                          {hasConflict ? 'Taken' : !selectedPeriod ? '-' : 'Open'}
+                        </div>
                       </button>
                     )
                   })}
                 </div>
+              </div>
+            )}
+
+            {(selectedWeek && selectedDay && selectedPeriod) && (
+              <div className="p-3 rounded-lg bg-accent-blue/10 border border-accent-blue/30 text-sm">
+                <p className="font-medium text-accent-blue">
+                  Scheduled for Week {selectedWeek}, {getDayName(selectedDay)}, {DAY_PERIODS[selectedPeriod].shortLabel}
+                </p>
               </div>
             )}
           </div>
@@ -395,7 +590,7 @@ export default function OpportunityResponseModal({
                 variant="primary"
                 className="flex-1"
                 onClick={handleAccept}
-                disabled={!selectedWeek}
+                disabled={!selectedWeek || !selectedDay || !selectedPeriod}
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Confirm Schedule
@@ -408,4 +603,4 @@ export default function OpportunityResponseModal({
   )
 }
 
-export default OpportunityResponseModal
+// default export is on the function declaration above

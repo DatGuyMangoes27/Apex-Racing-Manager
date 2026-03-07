@@ -1,0 +1,27 @@
+{
+  "biography": "Bruno D'Almeida, a name synonymous with raw speed and unapologetic flair in the Fusca HC1 circuit, hails from the vibrant favelas of Rio de Janeiro. His journey began not on the asphalt, but on the treacherous, winding dirt roads clinging to the hillsides, where he honed his car control skills delivering goods in his grandfather's beat-up Volkswagen Beetle. One sweltering afternoon, while outrunning a rival gang also trying to secure the same delivery, Bruno executed a daring maneuver, drifting the Bug through a nearly impossible hairpin turn, leaving his pursuers in a cloud of dust. It was this moment, witnessed by a local racing scout, that changed his life forever. He traded the dirt roads for the racetrack, quickly ascending the ranks with his aggressive style and innate ability to extract every ounce of performance from his machine. While his early years were marked by frequent crashes, his determination never wavered. Now, in his prime, Bruno is a force to be reckoned with, a true showman both on and off the track, constantly pushing the limits of himself and his iconic Fusca.",
+  "drivingStyle": "D'Almeida's driving style is best described as 'controlled chaos'. He's known for his late-braking maneuvers and his willingness to throw the car into corners with reckless abandon. Tire management isn't exactly his forte; he prefers to go all-out, pushing the limits of grip until the rubber is begging for mercy. Under pressure, he either crumbles spectacularly or elevates his performance to another level, often depending on the phases of the moon. His approach is high-risk, high-reward, making him a thrilling, if unpredictable, driver to watch.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Esteves",
+      "reason": "A longstanding feud rooted in a controversial incident during the 2020 Rio Grand Prix where Bruno allegedly punted Ricardo off the track on the final lap."
+    },
+    {
+      "driver": "Isabela 'Iza' Santos",
+      "reason": "A fierce rivalry fueled by constant on-track battles and a mutual desire to be the top Brazilian driver in the series. Their contrasting styles – Bruno's aggression versus Iza's precision – make for captivating races."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "A clash of personalities as much as driving styles. Jean-Pierre, known for his calm demeanor and calculated approach, often clashes with Bruno's impulsive and flamboyant nature."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks knitted by his grandmother, no matter the weather.",
+    "Listens to a specific Brazilian samba track moments before the race to get 'in the zone'.",
+    "Has a habit of talking to his car, offering encouragement and apologies depending on its performance."
+  ],
+  "nickname": "The Rio Rocket",
+  "famousQuote": "\"Life's too short to drive slow, amigo!\"",
+  "careerHighlight": "Winning the 2022 Interlagos Grand Prix in front of his home crowd, battling through torrential rain and mechanical issues to take the checkered flag in a truly unforgettable performance.",
+  "careerLowPoint": "Crashing out on the first lap of the 2021 São Paulo 500 after a risky overtaking maneuver, resulting in significant damage to his car and a wave of criticism from the racing community."
+}

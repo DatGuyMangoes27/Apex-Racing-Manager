@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 55,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair MacLeod's journey into motorsport began unexpectedly, swapping out gearboxes in his father's garage in the Highlands. It was there, wrestling with stubborn bolts and greasy engine parts, that he discovered an innate talent for mechanical problem-solving. He honed his skills working on local rally cars, eventually earning a scholarship to study mechanical engineering at Edinburgh University. \n\nWhile his academic performance was adequate, Alistair thrived in practical application, constantly tinkering and innovating. He believes in a hands-on approach, meticulously analyzing data and fostering a collaborative environment within his team. Alistair is driven by the pursuit of perfection, relentlessly seeking marginal gains that collectively contribute to enhanced performance on the track. His attention to detail and uncanny ability to diagnose obscure mechanical issues set him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with thinning on top",
+    "eyeColor": "Blue",
+    "facialHair": "Close-cropped grey beard",
+    "description": "Alistair is a man of medium height with a sturdy build, suggesting a life spent working with his hands."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small, worn notebook filled with sketches and technical diagrams.",
+    "Has a habit of muttering to himself while examining engine components.",
+    "Insists on brewing a pot of strong Scottish tea for the team every afternoon at 3 PM."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "sponsor-0391",
+  "name": "Al-Malik Investments",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Saudi Arabia",
+  "description": "Investing in the future, on and off the track.",
+  "story": "Al-Malik Investments is a Saudi Arabian investment firm focused on emerging technologies and sustainable growth. Motorsport provides a unique platform to showcase their commitment to innovation and global reach. They seek to partner with teams that demonstrate dedication and a drive to succeed, reflecting their own values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0391.png"
+}

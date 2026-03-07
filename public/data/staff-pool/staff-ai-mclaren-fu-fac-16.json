@@ -1,0 +1,22 @@
+{
+  "name": "Bruce McKenzie",
+  "nationality": "Australian",
+  "age": 51,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Bruce grew up around the smell of petrol and burnt rubber, his father a mechanic for a local touring car team. While he lacked the mechanical aptitude, Bruce discovered a knack for keeping everyone fed and happy during race weekends. He started small, prepping sandwiches and brewing coffee, but his dedication and attention to detail soon caught the eye of a national racing series team. \n\nHe spent years honing his skills, learning the intricacies of catering for demanding personalities and logistical nightmares that come with motorsport. Now with McLaren Racing, Bruce prides himself on delivering high-quality meals and catering services, understanding that a well-fed team is a winning team. He's known for his uncompromising standards and belief that even the smallest detail can impact performance.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stout man with a perpetually serious expression and kind eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only locally sourced ingredients, even when travelling internationally.",
+    "Has a meticulously organized spice rack, labeled with military precision.",
+    "Always tastes the coffee before allowing anyone else to drink it."
+  ]
+}

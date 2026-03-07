@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0399",
+  "name": "NetVerse Gaming",
+  "category": "tech_gaming",
+  "tier": "high",
+  "country": "Hong Kong",
+  "description": "Level Up Your Reality.",
+  "story": "NetVerse Gaming is a leading Hong Kong-based developer of immersive VR and AR gaming experiences. Recognizing the growing synergy between the virtual and real worlds, they sponsor motorsport to connect with a tech-savvy audience and showcase the parallels between precision driving and high-performance gaming. They seek partnerships that reflect innovation, speed, and cutting-edge technology.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0399.png"
+}

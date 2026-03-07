@@ -714,6 +714,28 @@ function generateCareerAIDrivers(
 
 // Register IPC handlers
 export function registerXMLGeneratorHandlers(): void {
+  // Backward compatibility for deprecated channel
+  ipcMain.handle('xml:generateGrid', async (_event, data: any) => {
+    try {
+      if (data?.drivers && data?.seriesName && data?.config) {
+        return generateRaceWeekendAIDrivers(
+          data.drivers,
+          data.seriesName,
+          data.config,
+          data.carClassId,
+          data.aiModifier
+        )
+      }
+      if (data?.standings && data?.seriesName && data?.config) {
+        return generateCareerAIDrivers(data.standings, data.seriesName, data.config)
+      }
+      return { success: false, filePath: '', error: 'Invalid XML generation payload', driversGenerated: 0 }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      return { success: false, filePath: '', error: errorMessage, driversGenerated: 0 }
+    }
+  })
+
   // Write AI drivers to XML
   ipcMain.handle('ams2:writeAIDriver', async (_event, data: {
     drivers: AIDriverParams[]

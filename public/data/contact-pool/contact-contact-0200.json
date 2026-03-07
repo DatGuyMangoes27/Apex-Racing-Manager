@@ -1,0 +1,31 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 38,
+  "gender": "female",
+  "contactType": "celebrity",
+  "bio": "Priya Sharma is a Bollywood superstar, known for her versatile acting and sharp wit. From critically acclaimed dramas to blockbuster comedies, she's conquered the Indian film industry. Despite her self-taught background, Priya's dedication to her craft and genuine connection with her audience has made her one of the most beloved figures in Indian entertainment. She is fiercely loyal to those she considers her family and friends, though can be overprotective. Beneath the glamorous exterior is a down-to-earth individual with a passion for various hobbies, including craft beer and gardening. \n\nPriya's connection to the motorsport world stems from her sponsorship of a rising Formula 3 team, and her occasional attendance at races, fueled by her love for speed and adrenaline. A racing driver might cross paths with her through team events, charity functions she hosts, or even at exclusive after-parties, providing opportunities for networking and potential endorsements.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often styled in elaborate braids or loose curls",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Priya is of average height, with a slender build and striking features. Her expressive hazel eyes and radiant smile are instantly recognizable."
+  },
+  "connectionToMotorsport": "Priya sponsors a Formula 3 team, and is an avid motorsports fan. She occasionally attends races and hosts events related to the sport.",
+  "meetingContext": "You could meet Priya at a Formula 3 race or a promotional event for her sponsored team. Alternatively, you might encounter her at a high-profile charity gala or a celebrity after-party related to motorsport.",
+  "conversationTopics": [
+    "Her latest film projects",
+    "The challenges and rewards of self-education",
+    "Her favorite craft breweries and beers",
+    "The thrill of snowboarding and the meditative aspects of gardening",
+    "Her involvement with her Formula 3 team"
+  ],
+  "canHelp": [
+    "Provide valuable introductions to other high-profile individuals in the entertainment industry.",
+    "Offer potential endorsement deals and sponsorship opportunities.",
+    "Boost your public image and social media presence through collaborations."
+  ],
+  "personality_summary": "A Bollywood superstar with a generous heart and a surprising love for motorsports."
+}

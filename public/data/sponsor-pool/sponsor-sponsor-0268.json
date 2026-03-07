@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0268",
+  "name": "Atherton & Sons Bespoke",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "Australia",
+  "description": "Handcrafted leather goods and accessories for the discerning individual.",
+  "story": "Atherton & Sons is a family-owned Australian business with a heritage of craftsmanship spanning three generations. We value precision, dedication, and the pursuit of excellence, qualities we see mirrored in motorsport. We seek a partnership that reflects our brand values and provides us with exposure to a sophisticated, global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 35000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0268.png"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Aiman Zulkifli",
+    "nationality": "Malaysian",
+    "age": 39,
+    "gender": "male",
+    "role": "head_of_aero",
+    "bio": "Aiman's journey into motorsport began unexpectedly. While studying mechanical engineering at the University of Malaya, he stumbled upon a Formula Student competition and was immediately captivated by the application of aerodynamics to achieve peak performance. He quickly immersed himself, leading the university team's aero development for two years. Post-graduation, Aiman honed his skills at a local engineering firm, gaining practical experience in computational fluid dynamics and wind tunnel testing before making the leap to single-seater racing. \n\nNow at Inter Europol Competition, Aiman focuses on creating a collaborative environment where data analysis and innovative ideas converge. He believes in a holistic approach, integrating feedback from drivers and mechanics to refine aerodynamic solutions. He is constantly pushing the boundaries of what is aerodynamically possible, always looking for that marginal gain that can make all the difference on the track.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly trimmed with a slight wave",
+      "eyeColor": "Dark brown",
+      "facialHair": "Short, boxed beard",
+      "description": "Aiman is a lean man of average height with a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic sketches.",
+      "Has a habit of tapping his fingers on his desk when deep in thought.",
+      "Prefers to work late into the night when the workshop is quiet."
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "name": "Santiago Herrera",
+  "nationality": "Colombian",
+  "age": 23,
+  "gender": "male",
+  "contactType": "diplomat",
+  "bio": "Santiago Herrera comes from a prominent Colombian family with deep ties to both the political and business worlds. His father is a former ambassador, and his mother manages a successful coffee export business. Santiago himself is quickly rising through the ranks of the diplomatic corps, specializing in international trade relations. Despite his demanding career, Santiago harbors a strong passion for motorsport, inherited from his grandfather, who was a successful amateur rally driver in the 1970s. \n\nDriven by a desire to uphold his family's legacy, Santiago often finds himself torn between tradition and a craving for new experiences. His overprotective nature stems from seeing the pressures faced by his family, and he carries a desire to shield those he cares about from similar hardships. A racing driver might cross paths with Santiago at a high-society event, perhaps one sponsored by a luxury watch brand involved in motorsport or through a mutual connection to a wealthy team owner.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Santiago has a refined and sophisticated appearance. He is of average height with a slim build, often dressed in impeccably tailored suits."
+  },
+  "connectionToMotorsport": "Santiago's family has a history in Colombian rallying. He is also a personal friend of several team owners and drivers through his social circles.",
+  "meetingContext": "At a charity gala hosted by a luxury watch brand that sponsors a racing team or at a high-end polo match.",
+  "conversationTopics": [
+    "The golden age of rallying",
+    "The challenges of sustainable living in Latin America",
+    "The latest opera performances at the Teatro Colón",
+    "Craft beer brewing techniques",
+    "International Trade Agreements"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy investors or sponsors",
+    "Leverage his diplomatic connections to ease travel and logistics for international races",
+    "Offer advice on navigating complex business deals and negotiations with teams"
+  ],
+  "personality_summary": "A nostalgic and controlling young diplomat striving to balance tradition with modern ambition."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 60,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey in motorsport began in the dusty karting tracks of Santiago, where he tinkered with engines alongside his father, a local mechanic. This hands-on experience ignited a lifelong passion for engineering and a deep understanding of vehicle dynamics. He honed his skills at the Universidad de Chile, earning a degree in mechanical engineering before dedicating himself to racing. Throughout his career, Ricardo has always prioritized practical knowledge and a collaborative team environment. He believes in fostering open communication and empowering his team members to contribute their best ideas. His distinctive approach lies in combining meticulous data analysis with an intuitive feel for the machine, allowing him to fine-tune setups for optimal performance.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, gray goatee",
+    "description": "A stout man with a weathered face and kind eyes, Ricardo always looks like he's contemplating a complex equation."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out torque wrench he calls 'La Confianza' (The Trust).",
+    "Insists on having a cup of strong coffee before every qualifying session.",
+    "Mumbles technical jargon to himself when deep in thought."
+  ]
+}

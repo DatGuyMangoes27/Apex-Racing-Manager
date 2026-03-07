@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0136",
+  "name": "Al-Fursan Performance",
+  "category": "equipment",
+  "tier": "elite",
+  "country": "Saudi Arabia",
+  "description": "Precision engineered motorsport components for peak performance.",
+  "story": "Al-Fursan Performance is a leading Saudi Arabian manufacturer of high-performance racing components, forged from a passion for motorsport excellence and a commitment to pushing technological boundaries. We seek to partner with teams that demonstrate exceptional engineering and a relentless pursuit of victory, showcasing our products on the world stage and driving innovation in motorsport technology. Our heritage is rooted in the spirit of the desert, where resilience and precision are paramount.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0136.png"
+}

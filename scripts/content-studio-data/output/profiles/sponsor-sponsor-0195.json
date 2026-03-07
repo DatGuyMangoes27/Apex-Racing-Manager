@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0195",
+  "name": "Summit Peak Performance Apparel",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "Canada",
+  "description": "Canadian-made performance apparel for peak athletic achievement.",
+  "story": "Summit Peak has been outfitting Canadian adventurers and athletes for over 30 years. They believe in pushing boundaries and supporting those who strive for excellence. Motorsport provides a perfect platform to showcase the durability and performance of their apparel in extreme conditions, while aligning with a high-achieving demographic.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "nationalities": [
+      "Canada"
+    ],
+    "minPodiums": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0195.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 50,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for engineering, sparked by rebuilding old mopeds with his grandfather in rural Portugal. He pursued a degree in mechanical engineering, quickly gravitating towards simulation technology. His first role was at a small firm specializing in flight simulators, but his true passion remained with racing. An opportunity arose at a local karting team, where he built a rudimentary simulator that significantly improved driver performance. \n\nHe joined Carlin five years ago, bringing a wealth of practical experience and a meticulous approach to simulator development. Ricardo focuses on creating realistic scenarios that push drivers to their limits, constantly refining the software and hardware to mirror real-world conditions. His dedication and ability to troubleshoot complex issues make him a valuable asset to the team. He is known for his calm demeanor and dedication to the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Ricardo is of medium build with a slight stoop from years spent hunched over computers."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with equations and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking his espresso black, no sugar, no exceptions."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Javier Silva",
+  "nationality": "Chilean",
+  "age": 33,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Javier's journey into motorsport began unexpectedly. Initially pursuing a degree in mechanical engineering, a university project involving vehicle dynamics ignited his passion. He quickly realized the immense potential of simulation in refining race car setups and driver training. After graduating, Javier joined a small Chilean racing team, where he honed his skills in data analysis and simulator development. His dedication and problem-solving abilities caught the attention of Brasil Racing, who headhunted him to enhance their simulator program. \n\nJavier approaches his role with a methodical precision, meticulously analyzing telemetry data to correlate simulator results with real-world performance. He believes that a truly effective simulator should not only replicate the car's behavior but also challenge the driver's mental fortitude. He's known for his ability to identify subtle discrepancies between the simulator and the track, enabling the team to make critical adjustments that translate into tangible improvements on race day. Javier’s loyalty and dedication to his craft make him a valuable asset to Brasil Racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Javier is a man of medium height with a focused gaze and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with equations and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking mate tea during every simulator session."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0401",
+  "name": "Iberian Motors",
+  "category": "automotive",
+  "tier": "high",
+  "country": "Spain",
+  "description": "Driving innovation, engineering excellence.",
+  "story": "Iberian Motors, a renowned Spanish automotive manufacturer, sees motorsport as the ultimate proving ground for their advanced technology and engineering prowess. With a history of pushing boundaries in vehicle performance, they seek partnerships that reflect their commitment to excellence and innovation. Iberian Motors aims to leverage motorsport to enhance brand visibility and showcase their cutting-edge technology to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Spain"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0401.png"
+}

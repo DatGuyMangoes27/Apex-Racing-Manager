@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0329",
+  "name": "Széchenyi Thermal Baths",
+  "category": "local",
+  "tier": "high",
+  "country": "Hungary",
+  "description": "Relax and rejuvenate with Budapest's famous thermal waters.",
+  "story": "As a Budapest landmark, Széchenyi Baths aims to promote Hungarian culture and wellness on a global stage. Motorsport provides a unique platform to reach diverse audiences and showcase the energy and precision that mirrors the dedication of their staff. They seek a partnership that reflects their commitment to excellence and provides opportunities for unique promotional events.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Hungary"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "events",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0329.png"
+}

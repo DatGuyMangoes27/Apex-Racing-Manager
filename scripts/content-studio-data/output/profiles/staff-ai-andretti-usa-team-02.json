@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 44,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Elena's journey into motorsport began with a childhood fascination for rally racing, fueled by her father's amateur involvement. She pursued a degree in Mechanical Engineering at the Polytechnic University of Bucharest, specializing in aerodynamics. After graduation, Elena joined a small Formula Renault team, quickly rising through the ranks thanks to her sharp analytical skills and practical problem-solving abilities. Her knack for identifying and implementing incremental improvements led to several podium finishes for the team. \n\nElena is known for her pragmatic approach to technical leadership. She prioritizes clear communication and collaboration, ensuring that all team members are aligned on objectives and understand their roles. Her calm demeanor under pressure and ability to make quick, informed decisions are invaluable during race weekends. She distinguishes herself by constantly advocating for data-driven decisions and fostering a culture of continuous learning within the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, subtly layered with slight waves.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena has a focused gaze and a warm smile that often puts people at ease."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on having a strong espresso before every race."
+  ]
+}

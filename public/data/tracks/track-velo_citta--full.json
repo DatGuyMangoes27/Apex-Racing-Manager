@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Velo Città, opened in 2012, is a modern racing facility located in Mogi Guaçu, São Paulo, Brazil. Designed by Maurício Slaviero, the track prioritizes driver enjoyment and safety, aiming to deliver a challenging yet accessible experience for both professional racers and amateur enthusiasts. The Full Circuit configuration, the longest of Velo Città's layouts, has hosted numerous national-level championships, including rounds of the Brazilian Stock Car series and various touring car categories. While it may not have a long history compared to more established Brazilian circuits, Velo Città has quickly become a popular destination for testing, driver training, and club racing due to its technical nature and well-maintained facilities.",
+  "atmosphere": "Standing at the crest overlooking the downhill section of the Full Circuit at Velo Città, the air crackles with the high-pitched whine of engines. The Brazilian sun beats down as the cars navigate the tight, twisting corners, the smell of burning rubber and high-octane fuel filling the air. The roar of the crowd intensifies as a pack of cars battles for position into the Descida do Lago, their vibrant liveries flashing through the trees. The whole scene is a captivating blend of speed, skill, and Brazilian passion.",
+  "trackCharacter": "The Full Circuit layout at Velo Città is a demanding test of a driver's skill and car setup. Its 3.444km length packs in a challenging mix of high-speed straights, tight hairpins, and flowing corners. The circuit rewards precision and commitment, requiring drivers to maintain momentum and carry speed through the corners. The undulating terrain adds another layer of complexity, with blind crests and tricky camber changes that can easily catch out the unwary. Unlike the shorter layouts, the full circuit demands respect throughout the entire lap.",
+  "nickname": "The Little Nürburgring of Brazil",
+  "famousCorners": [
+    {
+      "name": "Curva do Lago",
+      "description": "A fast, sweeping right-hander that requires commitment and precision. It leads onto a short straight, making a good exit crucial for carrying speed.",
+      "challenge": "Maintaining momentum and carrying speed through the corner while avoiding running wide onto the curbing."
+    },
+    {
+      "name": "Descida do Lago",
+      "description": "A downhill section with a series of S-curves that demand quick reactions and car control. The elevation change adds to the challenge.",
+      "challenge": "Managing the car's balance and maintaining grip through the rapid changes of direction."
+    },
+    {
+      "name": "Curva da Ferradura",
+      "description": "A tight hairpin corner that requires heavy braking and precise turn-in. It's a key overtaking opportunity.",
+      "challenge": "Braking late and accurately while maintaining control and avoiding locking up the wheels."
+    },
+    {
+      "name": "Curva do Miolo",
+      "description": "A series of technical turns in the middle sector, requiring precise car placement and smooth inputs to maintain momentum.",
+      "challenge": "Stringing together the turns smoothly and efficiently to maximize lap time."
+    },
+    {
+      "name": "Reta Oposta",
+      "description": "The longest straight on the circuit, offering a good overtaking opportunity with a braking zone at the end.",
+      "challenge": "Maximizing top speed and setting up for a clean braking maneuver into the next corner."
+    }
+  ],
+  "keyFactors": [
+    "Braking Performance",
+    "Corner Exit Speed",
+    "Aerodynamic Efficiency",
+    "Suspension Setup for Undulating Terrain",
+    "Engine Power Delivery"
+  ],
+  "overtakingSpots": [
+    "Curva da Ferradura (hairpin after the back straight)",
+    "Reta Oposta (into the braking zone at the end)",
+    "Into Curva do Lago (with a good run out of the previous corner)"
+  ],
+  "historySnippets": [
+    "Autódromo Velo Città was designed by Maurício Slaviero.",
+    "The track opened in 2012.",
+    "Velo Città is located in Mogi Guaçu, São Paulo.",
+    "The Full Circuit layout is 3.444 km long.",
+    "The circuit has 12 turns on the Full Circuit layout.",
+    "Velo Città hosts national racing series and private events."
+  ],
+  "weatherNotes": "The weather in Mogi Guaçu is typically warm and humid, with occasional afternoon thunderstorms. Rain can significantly affect grip levels on the smooth asphalt of Velo Città, making the track particularly challenging in wet conditions. Humidity can also play a role, affecting engine performance and tire wear.",
+  "drivingAdvice": "The key to a fast lap on the Full Circuit at Velo Città is maintaining momentum. Smooth inputs and precise car placement are essential to navigating the tight and technical sections. Don't overdrive the car, especially in the Descida do Lago, where it's easy to make a mistake. Focus on maximizing your exit speed from the corners to carry as much momentum as possible onto the straights. Setup-wise, prioritize a balance that allows for good rotation in the slower corners without sacrificing stability at higher speeds.",
+  "famousRaces": [
+    "Brazilian Stock Car: Velo Città has hosted multiple rounds of the Brazilian Stock Car series, showcasing thrilling battles and close racing.",
+    "Porsche Cup Brasil: The Porsche Cup Brasil series often visits Velo Città, providing spectacular racing action with identical Porsche 911 GT3 Cup cars.",
+    "Brazilian Endurance Championship: Velo Città has hosted rounds of the Brazilian Endurance Championship, testing the limits of both cars and drivers in long-distance races."
+  ],
+  "localCulture": "Mogi Guaçu is a city with a rich agricultural heritage, surrounded by farms and plantations. The local cuisine features traditional Brazilian dishes, often incorporating fresh, locally sourced ingredients. Paddock life at Velo Città is typically relaxed and friendly, with a strong sense of camaraderie among the teams and drivers. Visitors can experience the warmth and hospitality of the Brazilian people while enjoying the excitement of motorsport."
+}

@@ -441,3 +441,26 @@ export function getActivePerksSummary(): {
   
   return summary
 }
+
+/**
+ * Calculate sponsor attraction bonus based on player background
+ */
+export function calculateBackgroundSponsorBonus(
+  background: { type?: string; industry?: string; connections?: string[] } | undefined,
+  sponsor: { category?: string; industry?: string } | undefined
+): number {
+  if (!background || !sponsor) return 0
+  let bonus = 0
+  // Industry match
+  if (background.industry && sponsor.industry && 
+      background.industry.toLowerCase() === sponsor.industry.toLowerCase()) {
+    bonus += 3
+  }
+  // Connection-based bonus
+  if (background.connections?.some(c => 
+    sponsor.category?.toLowerCase().includes(c.toLowerCase())
+  )) {
+    bonus += 2
+  }
+  return bonus
+}

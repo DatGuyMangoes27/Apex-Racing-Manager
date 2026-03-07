@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 26,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Adrian discovered his passion for motorsport while helping his uncle repair old Dacias in their village. He quickly learned the fundamentals of mechanics and developed a keen eye for detail. Seeking to professionalize his skills, Adrian pursued a degree in mechanical engineering, focusing on precision machining. He joined Cavaleiro Sports two years ago, quickly proving himself as a competent and reliable machinist. His pragmatic approach to problem-solving and his ability to maintain composure under pressure make him a valuable asset to the team, particularly during demanding race weekends. Adrian is known for his innovative solutions to improve the car's performance, often suggesting modifications that push the boundaries of what's possible.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave on top",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Adrian is of average height, with a muscular build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a needle point before starting a task.",
+    "Listens to traditional Romanian folk music on noise-canceling headphones while working.",
+    "Carries a small notebook filled with meticulously drawn technical diagrams and calculations."
+  ]
+}

@@ -29,3 +29,6 @@ Thumbs.db
 # Temp files
 fix-unused.js
 
+# Livery generation tools & extracted textures
+tools/
+

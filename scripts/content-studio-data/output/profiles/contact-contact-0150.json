@@ -1,0 +1,31 @@
+{
+  "name": "Lin Mei",
+  "nationality": "Chinese",
+  "age": 24,
+  "gender": "female",
+  "contactType": "athlete",
+  "bio": "Lin Mei is a rising star in the world of professional tennis. Known for her strategic mind and unwavering optimism on the court, she quickly gained recognition for her elegant playing style. Despite having no formal coaching, she analyzes her opponents and her own performance with exceptional detail, leading her to climb the ranks rapidly.\n\nBeyond tennis, Lin is a passionate motorsports enthusiast. She appreciates the precision and skill involved in racing, often attending Formula 1 races and engaging with racing teams. Her family's business connections in the sports apparel industry have led her to explore sponsorship opportunities within motorsport, bringing her into contact with drivers and teams.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Long, straight hair, often tied in a high ponytail during matches",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Lin has a slender, athletic build. She often wears designer sportswear, even off the court, reflecting her sponsorship deals."
+  },
+  "connectionToMotorsport": "Lin is a huge motorsports fan and is exploring potential sponsorship opportunities for her family's sports apparel company. She's often seen at Formula 1 races and has expressed interest in supporting up-and-coming drivers.",
+  "meetingContext": "The player might meet Lin at a Formula 1 race, a charity event associated with motorsport, or through a mutual connection within the sports industry.",
+  "conversationTopics": [
+    "The latest Formula 1 race results",
+    "The strategy involved in different sports",
+    "Her recent wine tasting trip in Napa Valley",
+    "The challenges of being a self-taught athlete",
+    "The latest advancements in sports apparel technology"
+  ],
+  "canHelp": [
+    "Offer endorsement deals from her family's sports apparel company",
+    "Introduce the player to other wealthy sponsors and investors",
+    "Provide mental fortitude advice based on her experience in high-pressure situations"
+  ],
+  "personality_summary": "An intellectual and supportive athlete with a passion for motorsports and a keen eye for strategic partnerships."
+}

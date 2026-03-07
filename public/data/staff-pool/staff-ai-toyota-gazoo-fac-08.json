@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Elena Vargas",
+    "nationality": "Chilean",
+    "age": 50,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Elena's journey into motorsport began unconventionally. After earning a degree in mechanical engineering, she initially worked on optimizing irrigation systems in Chile's agricultural sector. However, a lifelong fascination with speed and aerodynamics led her to seek opportunities within the racing world. She started as a junior technician at a small Chilean rally team, quickly demonstrating a knack for interpreting wind tunnel data and translating it into tangible performance gains.\n\nShe prides herself on her meticulous approach to data analysis, often spending hours poring over simulations and wind tunnel results to identify even the smallest areas for improvement. Her demanding nature stems from a deep-seated belief that success in motorsport hinges on unwavering attention to detail. While some find her intensity challenging, her track record speaks for itself, making her a valuable asset to Toyota Gazoo Racing. Elena aims to improve overall car performance by identifying subtle aerodynamic inefficiencies.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark brown",
+      "hairStyle": "Shoulder-length, neatly braided and pinned back",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Elena is a woman of medium height, with a focused gaze and a practical demeanor."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten notes and diagrams.",
+      "Insists on drinking mate tea before and after every wind tunnel session.",
+      "Has a habit of tapping her pen rhythmically when deep in thought."
+    ]
+  }
+]

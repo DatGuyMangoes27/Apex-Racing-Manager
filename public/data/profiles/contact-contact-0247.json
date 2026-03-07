@@ -1,0 +1,31 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 43,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Angus McLeod carved a name for himself in the cutthroat world of sports management after a short-lived career as a junior open-wheel driver. While his on-track ambitions stalled due to a lack of funding and perhaps a touch of raw talent, Angus possesses an undeniable knack for spotting potential. He's known for his old-school approach, valuing loyalty and long-term partnerships over quick profits. Beneath his sometimes-gruff exterior lies a nostalgic romantic, yearning for the golden age of motorsport. He believes in nurturing talent and finding the perfect fit for his drivers, not just chasing the biggest paycheck.\n\nDespite his demanding profession, Angus finds solace in the arts and outdoor activities. He's a surprisingly accomplished contemporary dancer and a passionate scuba diver. He's also a coffee aficionado, always seeking the perfect brew. A racing driver might cross paths with Angus through mutual connections within the motorsport community, typically when seeking representation or sponsorship opportunities.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Hazel",
+    "facialHair": "Goatee",
+    "description": "Angus is of average height with a slightly weathered face that hints at long days spent trackside. He favors tailored suits, even in casual settings, giving him a perpetually professional air."
+  },
+  "connectionToMotorsport": "Angus is a well-respected agent who represents a diverse roster of drivers across various motorsport disciplines, from Formula racing to Australian V8 Supercars. He helps secure sponsorships, negotiate contracts, and manage his clients' careers.",
+  "meetingContext": "The player would likely meet Angus at a motorsport event, either in the paddock or at a networking event, possibly introduced by a mutual contact.",
+  "conversationTopics": [
+    "The 'good old days' of racing",
+    "The artistry of contemporary dance",
+    "The perfect espresso",
+    "The thrill of scuba diving",
+    "The importance of loyalty in business"
+  ],
+  "canHelp": [
+    "Negotiate contracts with racing teams",
+    "Secure sponsorship deals",
+    "Provide career guidance and mentorship"
+  ],
+  "personality_summary": "A nostalgic and stubborn agent with a surprisingly romantic heart, who values loyalty and long-term partnerships."
+}

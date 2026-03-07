@@ -1,0 +1,27 @@
+{
+  "biography": "Bert Longin, born in the shadow of the Zolder circuit in Belgium, practically inhaled gasoline fumes from infancy. His father, a weekend club racer, strapped him into a go-kart at the tender age of five, and Bert hasn't looked back since. Early success in karting series across Europe led to a swift transition into single-seaters, but Bert quickly realized his aggressive, sometimes reckless style was better suited to the more robust world of GT racing. A defining moment came at the Spa 24 Hours in 2018, when, driving a battered Chevrolet Corvette, he wrestled the car through a torrential downpour, overtaking three rivals in the final laps to secure a podium finish. Known for his inconsistent performances, he's capable of breathtaking brilliance one race and baffling errors the next. Currently, he is signed with Chevrolet, searching for consistency.",
+  "drivingStyle": "Longin is a high-risk, high-reward driver. He thrives on late-braking maneuvers and isn't afraid to throw the car into a corner, often flirting with the edge of control. His tire management can be erratic, sometimes burning through rubber in the early stages of a race but capable of exhibiting masterful control when required. He struggles under pressure, prone to making mistakes when leading or battling for position. However, when he's in the zone, few can match his raw speed and aggression.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "Rossi, a calculated and consistent Italian driver, represents everything Longin isn't. Their contrasting styles often clash on track, leading to heated battles and the occasional on-track incident."
+    },
+    {
+      "driver": "Klaus Richter",
+      "reason": "Richter, a veteran German driver, accused Longin of reckless driving after a controversial collision that ended Richter's race at the Nürburgring. The feud continues to simmer."
+    },
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "Moreau, a rising star in GT racing, has consistently outperformed Longin in similar machinery, fueling a competitive tension and a desire to prove his superiority."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, inherited from his grandfather, during race weekends.",
+    "Refuses to eat anything green on the day of a race.",
+    "Listens to a specific heavy metal song – 'Fuel' by Metallica – before every race start to psych himself up."
+  ],
+  "nickname": "The Belgian Bullet",
+  "famousQuote": "Sometimes you have to drive like you stole it, even if you didn't.",
+  "careerHighlight": "His podium finish at the 2018 Spa 24 Hours, where he showcased his incredible wet-weather driving skill.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the 2021 Zolder GT race due to a last-corner misjudgment."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Davies",
+  "nationality": "British",
+  "age": 50,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Alistair's journey into motorsport began dismantling lawnmower engines as a boy, fuelled by a fascination with how things worked. He quickly progressed to karts, then Formula Ford, before finding his true calling on the pit wall. He believes in a data-driven approach, meticulously analyzing telemetry to unlock every last tenth of a second. Alistair is known for his ability to stay calm under pressure, a crucial asset during chaotic race weekends.\n\nHe's spent the last 15 years at Sprint Masters, becoming a cornerstone of their engineering team. While sometimes perceived as demanding, Alistair's unwavering commitment to performance and his fierce loyalty to the team are undeniable. His experience with various drivers and car setups provides a valuable perspective that few others possess, making him a key asset in developing competitive strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair is of average height with a slightly weathered face that speaks of long hours spent trackside."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn notebook filled with handwritten calculations.",
+    "Insists on using a specific type of stopwatch, claiming it's 'lucky'.",
+    "Has a habit of muttering engineering jargon under his breath."
+  ]
+}

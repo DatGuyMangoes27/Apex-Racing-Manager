@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Javier Beltrán",
+    "nationality": "Spanish",
+    "age": 35,
+    "gender": "male",
+    "role": "electronics_engineer",
+    "bio": "Javier's passion for motorsport ignited early, fueled by watching Fernando Alonso dominate the Formula 1 circuit. He pursued a degree in electrical engineering at the Polytechnic University of Catalonia, specializing in telemetry and data acquisition systems. His career began at a smaller racing outfit, where he honed his skills in diagnosing and resolving electrical issues under immense pressure. He quickly gained a reputation for his methodical approach and ability to optimize electronic systems for improved performance. \n\nAt Cavaleiro Sports, Javier is responsible for ensuring the reliability and efficiency of all electronic components, from engine control units to sensor networks. He thrives in the fast-paced environment, constantly seeking innovative solutions to improve the car's performance. His pragmatic nature allows him to quickly identify and address potential problems, making him an invaluable asset to the team. What sets Javier apart is his ability to translate complex technical data into actionable insights for the drivers and mechanics, fostering a collaborative and data-driven approach to racing.\n\nJavier is known for his calm demeanor even under immense pressure, he can quickly diagnose and solve complex electrical issues, and his effective communication makes him a valuable asset to the team.",
+    "physical": {
+      "skinTone": "Medium",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly trimmed",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-groomed beard",
+      "description": "Javier is of average height with a lean build and an intense gaze."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small multi-tool.",
+      "Insists on calibrating every sensor himself before a race.",
+      "Has a habit of tapping his pen when analyzing data."
+    ]
+  }
+]

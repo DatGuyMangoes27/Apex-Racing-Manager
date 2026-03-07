@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kiss",
+  "nationality": "Hungarian",
+  "age": 45,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Zoltán's journey into motorsport began with a childhood fascination for Formula 1, fueled by late-night races and a passion for understanding the intricate mechanics of racing cars. After graduating top of his class in Mechanical Engineering from Budapest University of Technology and Economics, he joined a junior formula team as a data analyst, quickly rising through the ranks due to his exceptional analytical skills and keen eye for detail.\n\nZoltán's approach to performance engineering is meticulous and data-driven, combining a deep understanding of vehicle dynamics with cutting-edge simulation techniques. He is known for his ability to identify marginal gains and translate complex data into actionable insights for drivers and mechanics. His innovative approach led to significant aerodynamic improvements and suspension tuning breakthroughs in his previous role, marking him as a valuable asset for any team seeking a competitive edge. Zoltán is a driven perfectionist, seeking to find gains where others cannot.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Zoltán is of average height with a slightly stocky build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out copy of 'Race Car Vehicle Dynamics'",
+    "Insists on using Hungarian thermal baths as a team-building activity",
+    "Has a habit of sketching aerodynamic concepts on napkins during lunch"
+  ]
+}

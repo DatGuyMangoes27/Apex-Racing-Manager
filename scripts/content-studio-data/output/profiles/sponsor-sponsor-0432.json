@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0432",
+  "name": "PixelPulse",
+  "category": "gaming",
+  "tier": "mid",
+  "country": "Spain",
+  "description": "Level up your game with PixelPulse's high-performance peripherals.",
+  "story": "PixelPulse, a leading Spanish manufacturer of gaming peripherals, seeks to expand its brand awareness into the fast-paced world of motorsports. We believe that the precision and performance required in racing mirror the values we instill in our products. A successful partnership will help us reach a broader audience of tech-savvy consumers and solidify our position as a top gaming brand.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0432.png"
+}

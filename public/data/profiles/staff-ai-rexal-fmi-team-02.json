@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 60,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo Alonso's motorsport journey began in the dusty backroads of rural Spain, tinkering with his father's rally car. A natural engineer, Ricardo excelled in his studies, earning a degree in mechanical engineering and quickly finding work with a small racing team. He rose through the ranks, his sharp eye for detail and innovative solutions proving invaluable. Ricardo joined Rexal FMI Racing 15 years ago, bringing a wealth of experience and a no-nonsense approach to problem-solving. \n\nRicardo is a demanding leader, known for pushing his team to achieve excellence. He believes in a data-driven approach to technical development, constantly analyzing performance metrics to identify areas for improvement. He is particularly passionate about aerodynamic efficiency and engine optimization. While he can be abrasive, Ricardo genuinely cares about his team's success and is fiercely loyal to those who demonstrate dedication and competence. What sets him apart is his ability to anticipate technical issues before they arise, thanks to his deep understanding of vehicle dynamics.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a stocky man with a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having his espresso at exactly 10:00 AM and 3:00 PM."
+  ]
+}

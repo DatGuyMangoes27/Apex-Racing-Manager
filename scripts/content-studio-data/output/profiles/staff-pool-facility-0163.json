@@ -1,0 +1,22 @@
+{
+  "name": "Jana Novotná",
+  "nationality": "Czech",
+  "age": 55,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Jana's journey into motorsport began unexpectedly, through a chance encounter at a local racing event. Intrigued by the engineering and artistry behind the cars, she pursued formal training in composite materials and quickly established herself as a rising star in the field. Her experience spans decades, working with several top-tier racing teams, honing her skills in crafting and repairing lightweight, high-performance components.\n\nJana's approach is rooted in precision and a deep understanding of material properties. She is known for her meticulous attention to detail, ensuring that every composite part meets the highest standards of quality and performance. Beyond her technical expertise, Jana possesses a keen eye for innovation, constantly seeking new ways to improve existing designs and explore cutting-edge materials. Her calm demeanor under pressure and ability to troubleshoot complex problems have made her an invaluable asset to any racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly styled bob with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A woman of average height with a thoughtful face and strong hands."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always wears a pair of lucky racing gloves while working on critical components.",
+    "Has a habit of sketching design ideas on napkins during lunch breaks.",
+    "Refuses to start a new project without a cup of strong black coffee."
+  ]
+}

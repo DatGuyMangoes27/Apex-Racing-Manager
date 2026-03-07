@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 29,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Bjørn's fascination with motorsport began in his childhood, tinkering with engines in his grandfather's workshop. He pursued mechanical engineering at the University of Trondheim, specializing in precision machining. After graduating, he gained valuable experience at a local engineering firm, working on projects ranging from automotive components to aerospace parts. His keen eye for detail and problem-solving skills quickly made him an indispensable asset. \n\nDriven by a desire to apply his expertise to the high-octane world of racing, Bjørn joined Brasil Racing two years ago. He approaches his role with unwavering dedication, meticulously crafting and maintaining the team's critical engine components. His ability to blend traditional machining techniques with innovative solutions has earned him the respect of his colleagues. What sets Bjørn apart is his ability to anticipate potential mechanical issues before they arise, ensuring the team's cars perform at their peak.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Bjørn is of average height with a sturdy build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches of engine modifications.",
+    "Has a habit of humming quietly while working on complex machinery.",
+    "Insists on using only metric tools, even when working with foreign-made parts."
+  ]
+}

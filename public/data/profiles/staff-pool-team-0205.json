@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 46,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jean-Pierre's passion for motorsport ignited during his childhood visits to Le Mans. He pursued engineering, graduating top of his class and immediately seeking opportunities within racing. He started in Formula Renault, working his way through various teams, gaining experience in aerodynamics and vehicle dynamics. Jean-Pierre believes in a methodical approach to technical development, meticulously analyzing data and seeking marginal gains in every aspect of the car.\n\nHe is driven by a desire to prove himself at the highest levels of motorsport. While relatively new to a Technical Director role, he compensates with an insatiable work ethic and willingness to learn from anyone. He is eager to implement innovative solutions and build a strong, collaborative team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height with a lean build, and his intense gaze suggests a focused mind."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer simulations.",
+    "Drinks copious amounts of black coffee throughout the day.",
+    "Insists on personally inspecting every new component before installation."
+  ]
+}

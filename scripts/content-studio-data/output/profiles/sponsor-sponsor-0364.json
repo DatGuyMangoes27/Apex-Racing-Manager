@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0364",
+  "name": "Svenska Kullagerfabriken (SKF)",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Sweden",
+  "description": "The world's leading manufacturer of bearings, seals, lubrication systems and services.",
+  "story": "SKF has a long history of supporting engineering innovation. Motorsport provides a proving ground for their bearings and advanced materials under extreme conditions. They seek partnerships that demonstrate the reliability and performance of SKF products, especially in high-stress racing environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0364.png"
+}

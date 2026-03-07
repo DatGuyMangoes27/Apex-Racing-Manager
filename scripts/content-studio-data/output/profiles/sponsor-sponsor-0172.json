@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0172",
+  "name": "Vihar Performance Apparel",
+  "category": "apparel",
+  "tier": "entry",
+  "country": "Hungary",
+  "description": "Engineered for speed, designed for victory.",
+  "story": "Vihar Performance Apparel is a Hungarian brand specializing in high-performance racing suits and gear. Born from a passion for motorsport and a desire to provide drivers with the competitive edge, Vihar seeks to establish itself as a key player in the apparel market through strategic partnerships and proven results. They aim to associate their brand with winning teams and drivers, boosting brand recognition and driving sales.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10,
+    "nationalities": [
+      "Hungary"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0172.png"
+}

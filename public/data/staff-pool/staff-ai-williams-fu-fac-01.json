@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Rhys Llewellyn",
+    "nationality": "Welsh",
+    "age": 41,
+    "gender": "male",
+    "role": "data_analyst",
+    "bio": "Rhys's path to motorsport was unconventional, starting with a degree in theoretical physics before finding his true calling in data analysis. After graduating from Cardiff University, he worked briefly in financial modelling, but the allure of racing was too strong. He volunteered at local rally events, crunching timing data and developing predictive models for driver performance. His analytical skills quickly caught the eye of a junior Formula team, where he honed his skills for five years. Now at Williams, Rhys brings a rigorous approach to data, always seeking to uncover hidden patterns that can give the team a competitive edge. His relentless pursuit of accuracy and his ability to translate complex data into actionable insights make him a valuable asset.\n\nRhys is driven by a desire to see his insights directly contribute to improved on-track performance. He spends countless hours poring over telemetry data, looking for marginal gains that could shave tenths of a second off lap times. He's not afraid to challenge conventional wisdom and often pushes the boundaries of data analysis techniques. Rhys is known for his ability to work collaboratively with engineers and drivers, translating complex data into easily understandable terms. He is also a keen advocate for data visualization and believes that visual representations can often reveal insights that are not immediately apparent from raw data. Rhys is committed to helping Williams return to its former glory through the power of data.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly trimmed",
+      "eyeColor": "Green",
+      "facialHair": "Short boxed beard",
+      "description": "Rhys is of average height, with a slightly wiry build."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a Rubik's Cube and solves it during breaks.",
+      "Insists on using a specific brand of mechanical keyboard for optimal data entry.",
+      "Drinks copious amounts of herbal tea throughout the day."
+    ]
+  }
+]

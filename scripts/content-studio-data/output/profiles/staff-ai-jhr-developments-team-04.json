@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Alonso",
+    "nationality": "Spanish",
+    "age": 50,
+    "gender": "male",
+    "role": "race_engineer",
+    "bio": "Ricardo's journey into motorsport started in his youth, tinkering with engines in his family's garage. After earning a degree in mechanical engineering from the Polytechnic University of Valencia, he quickly found his way into the world of racing, beginning as a data analyst for a small Formula Ford team. His meticulous approach and keen understanding of vehicle dynamics led to a quick promotion to race engineer.\n\nThroughout his career, Ricardo has worked with a diverse range of drivers and teams, adapting his strategies to suit individual needs and car characteristics. He believes in fostering open communication and a collaborative environment within the team, always striving for incremental improvements and data-driven decisions. His experience, reliability, and ability to see the bigger picture contribute significantly to his success.\n\nRicardo brings a unique blend of old-school engineering principles and modern analytical techniques to the table. He's known for his calm demeanor under pressure, an ability to quickly diagnose problems, and his unwavering commitment to his drivers' success.",
+    "physical": {
+      "skinTone": "Medium",
+      "hairColor": "Graying brown",
+      "hairStyle": "Short, neatly combed back with slight receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Close-trimmed goatee",
+      "description": "A man of medium build with a focused expression and thoughtful eyes."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a worn-out slide rule in his pocket, even though he uses a computer.",
+      "Meticulously cleans his workstation at the end of each day.",
+      "Has a habit of tapping his pen rhythmically when deep in thought."
+    ]
+  }
+]

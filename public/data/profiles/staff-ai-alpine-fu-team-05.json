@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 56,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Ricardo's journey in motorsport began unexpectedly, detouring from his early career in aerospace engineering. A chance encounter at a local karting event ignited a passion that led him to abandon simulations for the real thing. He started as a data analyst for a junior formula team, quickly proving his aptitude for race strategy. His ability to anticipate track conditions and exploit strategic opportunities propelled him through the ranks. \n\nRicardo joined Alpine F1 five years ago, bringing with him a pragmatic yet innovative approach to race planning. He's known for his calm demeanor under pressure and his ability to distill complex data into actionable insights. He emphasizes collaborative decision-making, ensuring that the entire team feels invested in the strategy. His distinctive edge lies in his knack for identifying the 'unconventional' strategy - the one others overlook – often leading to significant gains in challenging races.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo has a sturdy build and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out copy of 'The Art of War'.",
+    "Insists on drinking black coffee before every strategy session.",
+    "Paces while formulating a race strategy."
+  ]
+}

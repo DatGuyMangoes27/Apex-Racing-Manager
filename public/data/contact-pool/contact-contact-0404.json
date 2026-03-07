@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Dr. Ricardo Elias Álvarez",
+    "nationality": "Argentine",
+    "age": 65,
+    "gender": "male",
+    "contactType": "doctor",
+    "bio": "Dr. Ricardo Elias Álvarez is a renowned orthopedic surgeon in Buenos Aires, specializing in sports-related injuries. He built his career on meticulous research and adopting cutting-edge surgical techniques, amassing considerable wealth and a reputation for being demanding but effective. His intellectual pursuits extend beyond medicine; he's an avid collector of modern art and a patron of architectural preservation projects. He has a controlling personality, wanting things done his way.\n\nRicardo's path crosses with motorsport through his work with athletes. He's treated several prominent racing drivers over the years, earning a reputation for getting them back on the track quickly and safely. He is overprotective of his patients, sometimes to a fault, and is known to offer unsolicited advice on their training and lifestyle. His materialistic nature is balanced by a genuine concern for his patients' well-being, albeit expressed in a somewhat overbearing manner.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Gray",
+      "hairStyle": "Neatly combed, thinning on top",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed salt and pepper mustache",
+      "description": "Ricardo is of medium height with a slightly stocky build. He carries himself with a confident, almost arrogant posture."
+    },
+    "connectionToMotorsport": "Dr. Álvarez is sought after by racing teams for his expertise in treating complex bone fractures and other injuries common in high-speed accidents. His success rate and advanced surgical techniques have made him a valuable asset to drivers seeking a quick and full recovery.",
+    "meetingContext": "The player might meet Dr. Álvarez after sustaining an injury during a race or testing session, referred by their team or another driver who has benefited from his care.",
+    "conversationTopics": [
+      "The latest advancements in orthopedic surgery",
+      "The architectural design of historical buildings in Buenos Aires",
+      "The importance of proper nutrition for athletes",
+      "His latest golf scores",
+      "The merits of different types of Malbec wine"
+    ],
+    "canHelp": [
+      "Provide expert medical care and rehabilitation for injuries",
+      "Offer advice on physical conditioning and injury prevention",
+      "Connect the player with other medical professionals specializing in sports medicine"
+    ],
+    "personality_summary": "A wealthy, controlling, and overprotective doctor with a keen interest in technology and high-end living."
+  }
+]

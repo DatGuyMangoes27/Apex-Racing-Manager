@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 36,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Dimitri's journey in motorsport began with a childhood fascination for engineering and a deep love for the raw power of engines. He studied mechanical engineering at Bauman Moscow State Technical University, but his passion was always trackside. After graduation, he initially worked as a data analyst for a small rally team, quickly proving his aptitude for extracting valuable insights from complex datasets. This led to a position as a junior engineer, then eventually the coordinator position for Opala Legends.\n\nDimitri is known for his methodical approach to test driver programs. He believes in meticulous planning, clear communication, and rigorous data analysis. He's not afraid to challenge assumptions and encourages his team to explore unconventional testing strategies. His focus is always on the big picture, ensuring that every test session contributes directly to improving the car's overall performance and driver confidence. \n\nWhat distinguishes Dimitri is his ability to bridge the gap between the technical and human elements of testing. He understands that the driver's feedback is paramount, but he also knows how to translate that feedback into actionable data that engineers can use to fine-tune the car. He sees himself as a facilitator, ensuring that everyone is working in harmony towards a common goal.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Dimitri is of average height with a focused, intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn notebook filled with handwritten test session notes.",
+    "Insists on starting every test day with a strong cup of black coffee.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

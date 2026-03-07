@@ -1,0 +1,22 @@
+{
+  "name": "Mei Li",
+  "nationality": "Chinese",
+  "age": 22,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Mei Li's fascination with motorsport began during her childhood in Shanghai, where she spent countless hours watching Formula 1 races with her grandfather. This early exposure sparked a deep interest in the mechanics and engineering behind high-performance vehicles. She pursued a degree in Mechanical Engineering, focusing on precision manufacturing and materials science, graduating top of her class. \n\nJoining Praga Racing was a dream come true. Mei is known for her meticulous approach to machining components, ensuring that every piece meets the exact specifications required for optimal performance. Her understanding of material properties and CNC programming allows her to optimize machining processes for speed and accuracy. She also shows great promise in team management and innovation.\n\nWhat sets Mei apart is her ability to visualize the entire manufacturing process from start to finish. She is often seen sketching designs and refining her approach before even touching a machine, a trait that has earned her the respect of her colleagues and the admiration of her superiors.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight hair pulled back into a neat ponytail, with a few strands framing her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Mei is of average height, with a slender build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas and measurements.",
+    "Has a habit of tapping her fingers on surfaces when concentrating.",
+    "Drinks jasmine tea religiously at 3 PM every day."
+  ]
+}

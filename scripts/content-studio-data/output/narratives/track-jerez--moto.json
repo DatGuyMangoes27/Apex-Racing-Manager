@@ -1,0 +1,61 @@
+{
+  "history": "The Circuito de Jerez – Ángel Nieto, often simply called Jerez, has been a mainstay of the motorcycle racing calendar since its inauguration in 1985. While primarily known for hosting the Spanish Motorcycle Grand Prix, the circuit has also been used for Formula One testing and other racing series. The 'Moto' layout, at 4.423 km, is the configuration typically used for MotoGP events. Jerez quickly became a favorite among riders and fans alike, thanks to its challenging layout and the vibrant atmosphere of the surrounding region. The circuit was renamed in 2018 to honor the legendary Spanish motorcycle racer Ángel Nieto.",
+  "atmosphere": "The air crackles with anticipation as the MotoGP bikes scream through the final corner and onto the start/finish straight at Jerez. The grandstands, packed with passionate Spanish fans, erupt in a cacophony of cheers, waving flags, and the rhythmic clapping that echoes through the valley. The smell of paella and exhaust fumes hangs heavy in the air, a potent combination that defines the sensory experience of a race weekend at Jerez. The sun beats down, intensifying the excitement as the riders battle for position, the crowd's energy fueling their every move.",
+  "trackCharacter": "The Jerez 'Moto' layout is a flowing, technical circuit that rewards precision and bravery. It's known for its blend of fast, sweeping corners and tight, challenging sections, requiring riders to find a perfect balance between aggression and control. The relatively short length of the circuit ensures close racing and frequent overtaking opportunities. A key characteristic is the need for strong front-end feel, particularly in the numerous high-speed changes of direction. The final sector, with its decreasing radius corners, is crucial for setting up a good run onto the main straight.",
+  "nickname": "The Andalusian Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Curva 1 - Expo '92",
+      "description": "The first corner is a fast, sweeping right-hander that tests a rider's commitment from the start. It's crucial to carry as much speed as possible through here to set up the rest of the lap.",
+      "challenge": "Requires a delicate touch and immense bravery to maintain momentum."
+    },
+    {
+      "name": "Curva 5 - Sito Pons",
+      "description": "A fast, downhill left-hander that requires maximum commitment. Riders often use the kerbs to straighten the corner and carry more speed.",
+      "challenge": "Demands absolute trust in the front-end of the motorcycle. Tricky to get right as it leads into a change of direction."
+    },
+    {
+      "name": "Curva 6 - Dry Sack",
+      "description": "A slow, hairpin right-hander that presents a good overtaking opportunity. The tight radius requires precise braking and throttle control.",
+      "challenge": "Difficult to get the entry right and maximize the exit speed. Prone to lock-ups under braking."
+    },
+    {
+      "name": "Curva 9 - Nieto",
+      "description": "A flowing right-hander that sets up the fast run down towards Peluqui. Maintaining momentum is key.",
+      "challenge": "Requires smooth inputs and a good understanding of the available grip."
+    },
+    {
+      "name": "Curva 13 - Lorenzo",
+      "description": "The final corner, a double apex right-hander that leads onto the main straight. Getting a good exit is crucial for a strong run to the finish line.",
+      "challenge": "A difficult corner to master, requiring riders to compromise their line through the first apex to ensure a good exit."
+    }
+  ],
+  "keyFactors": [
+    "Front-end feel and confidence",
+    "Braking stability",
+    "Traction control",
+    "Smooth throttle control",
+    "Corner speed"
+  ],
+  "overtakingSpots": [
+    "Turn 1 - Expo '92 (under braking)",
+    "Turn 6 - Dry Sack (hairpin)",
+    "Turn 13 - Lorenzo (divebomb into the final corner)"
+  ],
+  "historySnippets": [
+    "The circuit was inaugurated in 1985.",
+    "Jerez hosted its first Spanish Motorcycle Grand Prix in 1987.",
+    "The circuit was resurfaced in 2018 to improve grip levels.",
+    "The circuit is named after the Spanish motorcycle legend Ángel Nieto.",
+    "Jerez is one of the most popular circuits on the MotoGP calendar.",
+    "The circuit is known for its passionate and knowledgeable fans."
+  ],
+  "weatherNotes": "Jerez is located in a region that experiences hot and dry summers. Track temperatures can often exceed 50 degrees Celsius, which can significantly affect tire performance. Rain is less common, but when it does occur, it can make the track extremely slippery. The wind can also be a factor, particularly in the afternoon.",
+  "drivingAdvice": "On the 'Moto' layout at Jerez, prioritize a smooth and flowing style. Conserve your tires, especially in the heat. Use the kerbs to your advantage, but be mindful of the track limits. Focus on maximizing your exit speed from the final corner to gain an advantage on the main straight. Be prepared for close racing and be opportunistic with your overtaking maneuvers.",
+  "famousRaces": [
+    "1996 Spanish Grand Prix (MotoGP): Michael Doohan took a dominant victory, showcasing his mastery of the circuit and further solidifying his championship campaign.",
+    "2005 Spanish Grand Prix (MotoGP): Valentino Rossi and Sete Gibernau engaged in an epic last-lap battle, with Rossi ultimately prevailing in a controversial finish.",
+    "2013 Spanish Grand Prix (MotoGP): Dani Pedrosa secured a home victory, delighting the Spanish fans with a commanding performance."
+  ],
+  "localCulture": "Jerez de la Frontera is a city steeped in history and tradition, famous for its sherry production, flamenco music, and equestrian culture. The local cuisine is rich and flavorful, with tapas, paella, and seafood being popular dishes. The paddock is known for its friendly and welcoming atmosphere, with teams and riders often engaging with the local community. Visiting Jerez offers a unique opportunity to experience the passion and energy of Spanish motorsport culture."
+}

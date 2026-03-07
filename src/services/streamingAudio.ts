@@ -35,6 +35,8 @@ interface StreamingAudioState {
 
 // Voice boost map - Crofty v2 is quieter than Vicky
 const VOICE_BOOSTS: Record<string, number> = {
+  'byILgTtsBg1jwbuvslb2': 1.2, // Crofty V3
+  'cmPhBFoVi6Q3CAWAx2Gr': 1.0, // Brundle
   'KYXXenFO8IFao5NWmALZ': 1.4, // Crofty v2 - needs 40% boost
   'CeyZm7wQSjZcnhOrE9l8': 1.3, // Original Crofty - needs 30% boost
 }
@@ -47,7 +49,7 @@ function getState(): StreamingAudioState {
       nextStartTime: 0,
       isPlaying: false,
       volume: 0.8,
-      voiceBoost: 1.4, // Default boost for Crofty v2 (the default lead voice)
+      voiceBoost: 1.2, // Default boost for Crofty V3 (the default lead voice)
       instanceId: Math.random().toString(36).slice(2),
       ipcSetup: false,
       activeSources: [],
@@ -233,8 +235,6 @@ export async function playAudioChunk(chunk: any, _sessionId: number): Promise<vo
   }
 }
 
-export function isStreamingActive(): boolean { return getState().isPlaying }
-export function getCurrentSessionId(): number { return 1 }
 export async function flushStreamingBuffer(_sessionId: number): Promise<void> {
   const state = getState()
   if (state.isBuffering && state.bufferQueue.length > 0) {

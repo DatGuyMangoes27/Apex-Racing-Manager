@@ -1,0 +1,22 @@
+{
+  "name": "Murat Kaya",
+  "nationality": "Turkish",
+  "age": 48,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Murat Kaya's motorsport journey began in his late teens, tinkering with engines in his uncle's garage in Istanbul. This hands-on experience fueled a passion that led him to pursue a mechanical engineering degree. After graduating, Murat started as a junior engineer with a small touring car team, quickly rising through the ranks due to his sharp technical mind and relentless work ethic. His ability to identify and solve complex problems under pressure became his hallmark.\n\nAs a sporting director, Murat is known for his meticulous approach and unwavering focus on maximizing performance. He believes in fostering a culture of continuous improvement, pushing his team to constantly analyze data and refine their strategies. Murat's demanding nature is balanced by his commitment to fairness and his genuine desire to see his team succeed. He's distinctive for his detailed race preparation and his ability to find the smallest competitive advantage.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Murat is a man of medium build with a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations during races.",
+    "Has a collection of vintage motorsport posters in his office.",
+    "Insists on drinking Turkish coffee before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 32,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Jean-Pierre's motorsport journey began not on the track, but in the pits. Growing up in Montreal, he was captivated by the technical intricacies of Formula 1 cars. He pursued a degree in Mechanical Engineering, and his first role was as a junior mechanic with a local racing team. He quickly impressed with his analytical skills and attention to detail, leading to a promotion to race engineer. \n\nAfter several successful seasons, Jean-Pierre transitioned to team management, believing he could make a bigger impact by optimizing the entire operation. He is known for his data-driven approach and his focus on extracting every last bit of performance from both the car and the team. His unwavering commitment to excellence and ability to inspire his team has made him a rising star in the motorsport world, culminating in his current role with Iron Dames. Jean-Pierre believes in pushing boundaries and is not afraid to make the tough calls to secure victory.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed to the side",
+    "eyeColor": "hazel",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Jean-Pierre is of average height with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on personally inspecting the car before every session."
+  ]
+}

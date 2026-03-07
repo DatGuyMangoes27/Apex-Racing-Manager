@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Brunner",
+  "nationality": "Swiss",
+  "age": 58,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Hans-Peter's journey into motorsport began with a childhood fascination for precision mechanics. He honed his skills through rigorous training, eventually earning a degree in mechanical engineering from ETH Zurich. He started in Formula Ford, working his way up through the ranks with smaller teams, always prioritizing data-driven decisions and a methodical approach. Hans-Peter's pragmatic mindset allows him to quickly identify problems and implement effective solutions under pressure. He prides himself on clear communication and fostering a collaborative atmosphere within the garage, although he prefers to focus on technical aspects rather than team management.\n\nHe joined Cavaleiro Sports 15 years ago, drawn to their commitment to innovation. While not actively seeking the spotlight, Hans-Peter's contributions have been instrumental in several podium finishes. His ability to adapt and learn makes him a valuable asset to any team, and although getting on in years, he still has the drive to contribute to success on the track.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height with a wiry build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a slide rule, even though he uses modern software.",
+    "Insists on using a specific type of Swiss-made pen for all his notes.",
+    "Has a habit of adjusting his glasses when deep in thought."
+  ]
+}

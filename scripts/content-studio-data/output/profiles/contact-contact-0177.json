@@ -1,0 +1,31 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 39,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Marko Kovačić is a retired Olympic swimmer, known for his explosive starts and controversial outbursts. He secured two gold medals in the 100m freestyle, cementing his place as a national hero, but his career was often overshadowed by clashes with coaches and doping allegations (of which he was cleared). Since retiring, he's invested heavily in sustainable agriculture and has become a vocal advocate for environmental protection. His flamboyant personality and success have made him a recognizable figure across various social circles, including those intersecting with motorsport.\n\nHis competitive spirit hasn't waned since leaving the pool. He sponsors a small Croatian racing team as a hobby, and is a regular attendee at Formula 1 races, often seen in the VIP lounges, making connections and enjoying the spectacle. He enjoys the lifestyle and the thrill of competition that he used to find in swimming.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, slicked back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Marko is built like a swimmer, with broad shoulders and a lean physique. His intense gaze and confident posture command attention."
+  },
+  "connectionToMotorsport": "Marko sponsors a small Croatian racing team competing in Formula 4. He's also a frequent guest at F1 races, leveraging his wealth and fame for access.",
+  "meetingContext": "You could meet Marko at a charity gala for environmental protection or at a Formula 1 race in the paddock club.",
+  "conversationTopics": [
+    "Swimming records",
+    "The importance of sustainability",
+    "His racing team's progress",
+    "Controversies in sports",
+    "His latest gardening project"
+  ],
+  "canHelp": [
+    "Provide financial backing for your team",
+    "Introduce you to potential sponsors and investors in his network",
+    "Offer advice on physical training and mental fortitude"
+  ],
+  "personality_summary": "A dramatic and intense former Olympian who still seeks the thrill of competition."
+}

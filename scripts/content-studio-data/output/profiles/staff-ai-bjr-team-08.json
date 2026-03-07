@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 53,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jan's journey into motorsport began unexpectedly during his mechanical engineering studies at Delft University, when a Formula Student project sparked an enduring passion. He initially focused on vehicle dynamics and simulation, quickly developing an aptitude for data analysis and problem-solving. After graduating, Jan spent several years in European touring car racing, honing his skills in real-world track environments. He moved to Australia and joined Brad Jones Racing, drawn to the team's commitment to innovation and competitive spirit. \n\nAs a performance engineer, Jan is known for his meticulous approach and ability to translate complex data into actionable insights for the drivers and crew. He emphasizes continuous improvement and collaboration, fostering a positive and productive environment within the team. What sets Jan apart is his dedication to mentoring junior engineers, ensuring the next generation is well-equipped to tackle the challenges of modern motorsport. He aims to see Brad Jones Racing at the top of the podium.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A sturdy man of medium height, Jan has the focused look of someone perpetually analyzing data."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical observations.",
+    "Insists on having a specific type of Dutch licorice in his desk drawer.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

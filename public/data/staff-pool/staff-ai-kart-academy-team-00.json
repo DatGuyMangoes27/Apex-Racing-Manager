@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 31,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Mateo Vargas's journey into motorsport began, unusually, with an engineering degree and a fascination with kart dynamics. While his classmates dreamt of Formula 1, Mateo saw untapped potential in the karting world, a vital breeding ground for future stars. He started Kart Academy with a vision: to provide young drivers with not just the fastest karts, but also a holistic understanding of racing principles. \n\nHis management style is hands-on, often found in the workshop analyzing telemetry data or tweaking engine performance. Mateo believes in fostering a collaborative environment where drivers are encouraged to provide feedback, turning them into active participants in their own development. He is known for his unconventional strategies, frequently experimenting with chassis setups and aerodynamic modifications that others might dismiss as too radical. His focus is on measurable gains through constant experimentation and data analysis.\n\nUnlike many Team Principals who focus solely on finance and driver management, Mateo has a deep technical understanding of the machinery involved. This makes him distinctive, allowing him to bridge the gap between drivers, engineers, and mechanics, creating a cohesive and highly effective team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mateo is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with racing data and sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on personally inspecting the spark plugs of every kart before a race."
+  ]
+}

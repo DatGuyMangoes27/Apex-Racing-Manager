@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 35,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in Lisbon, captivated by Formula 1 races broadcast on television. This early fascination led him to pursue a degree in Aerospace Engineering at Instituto Superior Técnico. After graduating, he honed his skills at a small, independent racing team, focusing on aerodynamic development using limited resources. This experience instilled in him a resourceful and pragmatic approach to problem-solving.\n\nHe joined V8 Masters Racing five years ago as a junior aerodynamicist, quickly proving his worth with innovative solutions that significantly improved the car's downforce and stability. Ricardo emphasizes collaboration and data-driven decision-making, believing that a strong team dynamic is essential for achieving peak performance. His colleagues value his ability to translate complex aerodynamic concepts into understandable terms, fostering a shared understanding across the engineering department. Ricardo's unique blend of academic rigor and hands-on experience makes him a valuable asset to the team.\n\nRicardo is driven by a desire to push the boundaries of aerodynamic innovation, consistently seeking new ways to optimize vehicle performance. He is known for his meticulous attention to detail and his unwavering commitment to excellence, always striving to extract every last ounce of performance from the car. He sees aerodynamics not just as a technical discipline, but as an art form, shaping the car's interaction with the air to achieve perfect harmony and speed.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Ricardo has a lean build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a perfectly aligned monitor setup for optimal data analysis."
+  ]
+}

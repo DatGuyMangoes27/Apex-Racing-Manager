@@ -1,0 +1,31 @@
+{
+  "name": "Elias Virtanen",
+  "nationality": "Finnish",
+  "age": 35,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Elias Virtanen is a rising star at Pohjola Bank, specializing in wealth management for high-net-worth individuals and corporate clients. Known for his sharp intellect and competitive spirit, Elias has quickly climbed the ranks, earning a reputation for securing lucrative deals and fostering lasting relationships. Despite his demanding career, he is known for his generosity and loyalty to his friends and family.\n\nElias's connection to motorsport stems from managing the finances of several racing teams and drivers. He sees the sport as a unique investment opportunity and enjoys the thrill of high-stakes competition. A racing driver might cross paths with Elias while seeking sponsorship, financial advice, or investment opportunities to fund their career and racing endeavors.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Elias is tall and athletic, with a confident posture. He typically wears tailored suits that emphasize his professional demeanor."
+  },
+  "connectionToMotorsport": "Elias manages the finances of several racing teams and individual drivers, providing investment strategies and financial planning.",
+  "meetingContext": "The player might meet Elias at a networking event hosted by a motorsport sponsor, or through an introduction from another contact within the racing community.",
+  "conversationTopics": [
+    "Equestrian competitions and breeding",
+    "The latest trends in Scandinavian interior design",
+    "Optimal skiing conditions in Lapland",
+    "The art of brewing the perfect cup of Finnish coffee",
+    "Investment opportunities in emerging technologies"
+  ],
+  "canHelp": [
+    "Secure sponsorships from corporate clients.",
+    "Provide expert financial advice and investment strategies.",
+    "Connect the player with other influential individuals in the business world."
+  ],
+  "personality_summary": "A competitive and intellectual banker with a generous heart, Elias is a loyal friend and a valuable ally."
+}

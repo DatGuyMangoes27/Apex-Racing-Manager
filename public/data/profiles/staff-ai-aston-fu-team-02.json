@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 52,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Marco Bellini's journey into motorsport began with a childhood spent tinkering with his father's vintage Fiat. That early fascination evolved into a passion for engineering, leading him to pursue a degree in Mechanical Engineering from the Polytechnic University of Turin. He quickly rose through the ranks at Ferrari, starting as a junior aerodynamicist before moving into vehicle dynamics. \n\nMarco's approach to his role as Technical Director is characterized by meticulous attention to detail and a relentless pursuit of performance gains. He believes in empowering his team and fostering a collaborative environment where innovation can thrive. While his time at Aston Martin has been relatively short, he's already implemented several key changes to the team's development process, focusing on simulation and data analysis. His distinctive trait is his ability to translate complex technical concepts into clear and actionable strategies.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "A man of medium build, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen, even during casual conversations.",
+    "Insists on a specific brand of Italian espresso, brewed at precisely 92 degrees Celsius.",
+    "Has a habit of sketching technical diagrams on napkins during lunch."
+  ]
+}

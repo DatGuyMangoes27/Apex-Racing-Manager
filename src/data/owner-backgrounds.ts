@@ -19,7 +19,8 @@ export interface OwnerBackground {
   bio: string // Longer story/flavor text for the owner's history
   
   // Starting conditions
-  startingCash: number
+  startingCash: number        // Team investment amount
+  personalBuffer: number      // Personal liquid cash (separate from team investment)
   startingReputation: number
   
   // Perks
@@ -66,6 +67,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'Starting with nothing but ambition, you worked your way up from a small garage operation to running a profitable business. Along the way, you developed a keen eye for talent, a knack for negotiation, and an unshakeable belief in doing things your way. The racing paddock is unfamiliar territory, but you\'ve conquered tougher challenges before.',
     
     startingCash: 350000,
+    personalBuffer: 200000,
     startingReputation: 40,
     
     perks: [
@@ -103,6 +105,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'Your grandfather raced in the early days of motorsport. Your father ran a successful team for two decades. Now it\'s your turn to carry the family legacy forward. Everyone knows your name, and everyone will be watching to see if you can live up to it. The connections are there, but so is the pressure.',
     
     startingCash: 850000,
+    personalBuffer: 500000,
     startingReputation: 60,
     
     perks: [
@@ -141,6 +144,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'You made your fortune in the tech boom, building and investing in companies that changed industries. Racing has always been a passion, and now you have the resources to pursue it properly. Your approach is data-driven and innovative, which some traditionalists view with skepticism. But you\'ve disrupted industries before.',
     
     startingCash: 2500000,
+    personalBuffer: 1500000,
     startingReputation: 35,
     
     perks: [
@@ -179,6 +183,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'You know what it takes to compete at the highest level because you\'ve done it. The roar of engines, the smell of burning rubber, the thrill of the fight - it\'s in your blood. Retirement from driving didn\'t mean retirement from racing. Your experience gives you unique insight, and the paddock respects what you achieved behind the wheel.',
     
     startingCash: 450000,
+    personalBuffer: 300000,
     startingReputation: 55,
     
     perks: [
@@ -217,6 +222,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'Wall Street, hedge funds, private equity - you\'ve navigated them all. Numbers tell stories if you know how to read them. Racing teams are businesses, and businesses can be optimized. Some call you cold and calculating, but you call it efficient. The paddock will learn to respect your methods.',
     
     startingCash: 1400000,
+    personalBuffer: 800000,
     startingReputation: 30,
     
     perks: [
@@ -255,6 +261,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'Every weekend spent at circuits. Every penny saved for this moment. You may not have the deepest pockets or the best connections, but you have something more valuable: genuine love for the sport. The fans see it. The drivers feel it. Your enthusiasm is contagious, and it just might be enough to build something special.',
     
     startingCash: 280000,
+    personalBuffer: 100000,
     startingReputation: 45,
     
     perks: [
@@ -293,6 +300,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'You climbed the corporate ladder and sat in the corner office. Meetings, mergers, market strategy - you\'ve seen it all. Racing is different, but business principles remain the same. Your corporate network is extensive, and sponsors trust your professional approach. Some say you lack passion, but results speak louder.',
     
     startingCash: 900000,
+    personalBuffer: 500000,
     startingReputation: 35,
     
     perks: [
@@ -331,6 +339,7 @@ export const OWNER_BACKGROUNDS: Record<string, OwnerBackground> = {
     bio: 'One ticket changed everything. Suddenly, dreams became possibilities. Racing was always the dream, watching from the stands and wondering "what if." Now you have the chance to find out. The paddock doesn\'t quite know what to make of you, and neither does the media. But money talks, and you\'ve got plenty to say.',
     
     startingCash: 1000000,
+    personalBuffer: 400000,
     startingReputation: 20,
     
     perks: [

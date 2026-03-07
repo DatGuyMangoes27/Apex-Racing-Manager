@@ -1,0 +1,31 @@
+{
+  "name": "Siriporn Chaiya",
+  "nationality": "Thai",
+  "age": 43,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Siriporn is a culinary artist known for her innovative interpretations of traditional Thai flavors. After graduating from a vocational school in Bangkok, she honed her skills in Michelin-starred restaurants across Europe before returning to open her own acclaimed restaurant, 'Kinaree,' which quickly became a favorite among Bangkok's elite. Her rebellious spirit manifests in her unconventional flavor combinations and her refusal to adhere to rigid culinary norms. \n\nWhile seemingly distant from motorsport, Siriporn's restaurant is a popular haunt for racing teams and drivers when they're in Thailand for events. Her meticulous approach to her craft and her competitive drive resonate with the precision and ambition found in the racing world. She also caters several high-profile events, including some smaller local racing series gatherings.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, subtly layered with face-framing pieces",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Siriporn possesses a poised elegance, accentuated by her thoughtful gaze. She often wears minimalist makeup and prefers simple, stylish clothing that doesn't detract from her confident demeanor."
+  },
+  "connectionToMotorsport": "Siriporn's restaurant, Kinaree, is a popular spot for motorsport personnel visiting Bangkok, and she provides catering services for private racing events. She appreciates the precision and artistry involved in both cooking and racing.",
+  "meetingContext": "The player might meet Siriporn by dining at Kinaree after a race event in Thailand, or by attending a catered event where she is overseeing the food service.",
+  "conversationTopics": [
+    "The evolution of Thai cuisine",
+    "Independent cinema and foreign films",
+    "The challenges of running a successful restaurant",
+    "Her experiences training in Europe",
+    "The art of perfectly pairing food and craft beer"
+  ],
+  "canHelp": [
+    "Offer exclusive catering deals for the player's racing team events.",
+    "Introduce the player to high-net-worth individuals and potential sponsors who frequent her restaurant.",
+    "Provide stress-management or wellness tips based on her experiences managing a high-pressure environment."
+  ],
+  "personality_summary": "A sharp-witted and talented chef, Siriporn is both fiercely independent and surprisingly generous to those who earn her respect."
+}

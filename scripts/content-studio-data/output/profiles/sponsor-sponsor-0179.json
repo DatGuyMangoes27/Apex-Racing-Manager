@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0179",
+  "name": "YPF ELAION Competición",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "Argentina",
+  "description": "Argentine performance lubricants for superior engine protection.",
+  "story": "YPF ELAION Competición is the high-performance lubricant division of Argentina's leading energy company, YPF. With a long history in motorsports throughout South America, ELAION Competición seeks partnerships that showcase the reliability and advanced technology of their lubricants in demanding racing environments. They value performance, innovation, and promoting Argentine motorsport talent on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "nationalities": [
+      "Argentina",
+      "Spain",
+      "Italy"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0179.png"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Ifeoma Okoro",
+  "nationality": "Nigerian",
+  "age": 40,
+  "gender": "female",
+  "contactType": "athlete",
+  "bio": "Ifeoma Okoro is a decorated long-distance runner, known for her incredible endurance and a surprising burst of speed in the final stretch. She's represented Nigeria in multiple international marathons, winning gold at the All-Africa Games and securing several podium finishes in prestigious races worldwide. Her passive-aggressive humor is legendary, often delivered with a witty barb hidden beneath a charming smile.\n\nBeyond her athletic achievements, Ifeoma is a patron of the arts, actively involved in supporting emerging Nigerian artists and collecting contemporary pieces. While seemingly unrelated to motorsport, her rigorous training regimen and discipline have caught the attention of several Formula 1 teams looking into new training methods and mental fortitude development. A racing driver might encounter her at a fitness seminar or a high-profile charity event.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Braided into intricate cornrows that often incorporate colorful beads",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Ifeoma has a lean, muscular build honed from years of running. Her bright eyes are often crinkled at the corners, hinting at her playful wit."
+  },
+  "connectionToMotorsport": "Ifeoma is consulted by several Formula 1 teams for her expertise in endurance training and mental toughness techniques for drivers. She also provides physiological insights into peak performance under extreme stress, making her a valuable asset to team training programs.",
+  "meetingContext": "The player might meet Ifeoma at a motorsport-themed charity gala, or perhaps during a specialized fitness camp organized by a racing team.",
+  "conversationTopics": [
+    "The mental aspects of competitive sports",
+    "The burgeoning contemporary art scene in Lagos",
+    "Her experiences running marathons in different climates",
+    "The latest advancements in sports science and training techniques",
+    "Her scuba diving adventures in exotic locations"
+  ],
+  "canHelp": [
+    "Introduce the player to top-tier fitness coaches and sports psychologists.",
+    "Provide insights into mental fortitude and performance optimization techniques.",
+    "Connect the player with potential sponsors interested in supporting athletes."
+  ],
+  "personality_summary": "A world-class marathon runner with a sharp wit and a passion for the arts."
+}

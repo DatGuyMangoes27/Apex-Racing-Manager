@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Kovačić",
+  "nationality": "Croatian",
+  "age": 50,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Ivan's motorsport journey began in his youth, tinkering with engines on his uncle's farm in rural Croatia. He developed a keen understanding of mechanical systems early on. While he initially pursued a degree in engineering, the allure of the racetrack proved too strong. He started as a mechanic for a local rally team, quickly rising through the ranks due to his meticulous attention to detail and ability to diagnose issues under pressure.\n\nHe transitioned to test driving coordination after recognizing a need for better communication between drivers and engineers. Ivan excels at translating driver feedback into actionable technical improvements. His calm demeanor and methodical approach make him a valuable asset to EKS JC, ensuring that every test session yields maximum data and performance gains. He is known for his ability to find the balance between pushing the limits of the car and protecting valuable equipment.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Ivan is a stout man with a weathered face, hinting at years spent outdoors."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Insists on starting every morning with a strong cup of Turkish coffee.",
+    "Mumbles technical jargon to himself when deep in thought."
+  ]
+}

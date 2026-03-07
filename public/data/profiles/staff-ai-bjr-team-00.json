@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 43,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Adrian's journey into motorsport began unconventionally, not on the track, but in the university labs of Bucharest, where he earned a degree in mechanical engineering. After graduating, he initially worked in the automotive industry, but a chance encounter with a local racing team ignited a passion for the competitive edge of motorsport. He started as a data analyst, quickly demonstrating an aptitude for translating complex data into actionable strategies. \n\nHis relentless pursuit of optimization and a knack for identifying talent led to his promotion to team manager, and subsequently, to team principal. Adrian believes in fostering a collaborative environment, empowering his team to push boundaries while maintaining a data-driven approach to decision-making. He is known for his calm demeanor under pressure and his ability to extract the best performance from both his drivers and his engineers, making him a valuable asset to Brad Jones Racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Adrian is of average height with a slightly athletic build, often seen in a team polo shirt."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with data points and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of Romanian coffee before every race."
+  ]
+}

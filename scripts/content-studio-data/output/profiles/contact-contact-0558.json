@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Swiss",
+  "age": 46,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Isabelle Dubois is a formidable presence in the world of aerobatic piloting, known for her precision and daring maneuvers. She's a multiple national champion and has represented Switzerland at numerous international competitions. Off the runway, Isabelle can be a bit of a handful. While deeply caring towards her close friends and family, she's also known for holding grudges and expressing her opinions without filter. She's earned a reputation for being both fiercely competitive and surprisingly petty, a combination that keeps her rivals on their toes.\n\nIsabelle's involvement with motorsport stems from her passion for speed and precision. She often performs aerial displays at major racing events, attracting large crowds. Additionally, she invests in several small racing teams. Her network extends to team owners, mechanics, and drivers, making her a valuable contact in the motorsport world. A rising driver might cross paths with her at an airshow or through a mutual acquaintance within the racing community.",
+  "physical": {
+    "skinTone": "Light with freckles",
+    "hairColor": "Auburn",
+    "hairStyle": "Short, layered bob",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Isabelle has a strong, athletic build, reflecting her years of training. She often sports aviator sunglasses, even when not flying."
+  },
+  "connectionToMotorsport": "Isabelle performs aerial displays at racing events and invests in small racing teams, connecting her to drivers, team owners, and mechanics.",
+  "meetingContext": "The player could meet Isabelle at a motorsport event where she's performing an aerial display or through a mutual contact within a racing team she sponsors.",
+  "conversationTopics": [
+    "The latest advancements in aviation technology",
+    "The merits of different craft breweries",
+    "Her latest yoga retreat experiences",
+    "The challenges of competitive flying",
+    "Her investment portfolio"
+  ],
+  "canHelp": [
+    "Provide financial backing for the player's racing team",
+    "Introduce the player to influential figures in the motorsport industry",
+    "Offer advice on sponsorship acquisition and management"
+  ],
+  "personality_summary": "A caring but petty and opinionated aerobatic pilot with a passion for motorsport and a competitive spirit."
+}

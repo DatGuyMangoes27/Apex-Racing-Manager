@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0006",
+  "name": "Celtic Tread",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Ireland",
+  "description": "High-performance tires engineered for superior grip and durability.",
+  "story": "Celtic Tread has been manufacturing tires in Ireland for over 40 years, initially focusing on agricultural and commercial vehicles. Recently, they've expanded into motorsports, seeking to prove their technology on the world stage and increase brand recognition. They value a partnership that highlights their commitment to quality and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Ireland",
+      "United Kingdom"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0006.png"
+}

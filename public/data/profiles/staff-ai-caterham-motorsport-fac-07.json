@@ -1,0 +1,22 @@
+{
+  "name": "Mei Lin",
+  "nationality": "Chinese",
+  "age": 38,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Mei Lin's journey into motorsport began unconventionally, not through a love of racing, but through a fascination with the complex data networks that underpin it. Graduating with a degree in Computer Science from Tsinghua University, she initially worked for a large telecommunications company, but the allure of real-time data analysis and the fast-paced environment of racing proved irresistible. She joined Caterham Motorsport five years ago, quickly rising through the ranks to become IT Systems Manager.\n\nMei's approach is meticulous and proactive. She believes in preventative maintenance and robust system design, minimizing downtime and ensuring the team always has access to the data they need. Her dedication to innovation has led to the implementation of several new data analysis tools, enhancing the team's ability to make informed decisions on and off the track. She's known for her ability to troubleshoot complex issues under pressure, a skill that has proven invaluable during race weekends. Mei sets herself apart with her ability to translate complex technical information into easily understandable insights for non-technical staff.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Straight, shoulder-length hair with subtle highlights and a neat side parting.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Mei has a focused gaze and a composed demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small Rubik's cube and solves it during stressful situations.",
+    "Prefers to communicate via concise bullet points, even in casual conversations.",
+    "Has a habit of meticulously organizing her desk before leaving for the day, regardless of how late it is."
+  ]
+}

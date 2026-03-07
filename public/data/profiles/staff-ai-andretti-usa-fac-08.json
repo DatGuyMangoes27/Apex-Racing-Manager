@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Alvarez",
+    "nationality": "Chilean",
+    "age": 45,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Ricardo's journey into motorsport began with a childhood fascination for aerodynamics, sparked by watching Formula 1 races on television. After studying mechanical engineering at the Universidad de Chile, he sought opportunities to apply his knowledge in practical settings. He started as a junior technician at a local aerodynamics research facility before landing a role at a smaller racing team in Chile. His methodical approach to data analysis and his ability to identify subtle aerodynamic improvements quickly made him an asset. Ricardo joined Andretti Global five years ago, where he's become known for his meticulousness and pragmatic solutions in optimizing the car's performance in the wind tunnel. He values teamwork and always aims to contribute to the collective success of the team.\n\nRicardo is known for his dedication to empirical evidence. He trusts the data above all else, often challenging assumptions with rigorous testing. His colleagues appreciate his willingness to explain complex aerodynamic principles in simple terms, making him a valuable mentor to junior members of the team. He believes that small, incremental improvements, achieved through careful analysis and collaboration, ultimately lead to significant gains on the track. He is particularly proud of his contributions to improving the car's downforce characteristics, which led to increased cornering speeds.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Dark brown, greying at the temples",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Short, trimmed goatee",
+      "description": "Ricardo is of average height with a stocky build and a focused gaze."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten aerodynamic calculations.",
+      "Insists on calibrating the wind tunnel equipment himself before each session.",
+      "Has a habit of tapping his pen against his teeth when deep in thought."
+    ]
+  }
+]

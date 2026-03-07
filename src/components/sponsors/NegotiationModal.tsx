@@ -5,7 +5,7 @@
  * offer terms, and handles accepting/countering/declining negotiations.
  */
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   Handshake,
@@ -33,9 +33,13 @@ import {
   Calendar,
   Camera,
   Gift,
-  Sparkles
+  Sparkles,
+  Shield,
+  Ban,
+  ArrowRight
 } from 'lucide-react'
-import { Modal, Button, Badge, Card, useToast } from '@/components/ui'
+import { Modal, Button, Badge, Card, useToast, SponsorLogo } from '@/components/ui'
+import { getSponsorLogo } from '@/utils/generated-assets'
 import {
   SponsorNegotiation,
   SponsorOffer,
@@ -50,7 +54,10 @@ import {
   isCounterAcceptable,
   processSponsorCounterResponse,
   acceptNegotiation,
-  NEGOTIATION_CONFIG
+  NEGOTIATION_CONFIG,
+  getSponsorDeclinePenalty,
+  DECLINE_COOLDOWN_WEEKS,
+  getResponseDelay
 } from '@/simulation/sponsors/negotiation'
 import {
   generateCounterResponseEmail,
@@ -62,13 +69,15 @@ import {
 } from '@/services/sponsorNegotiationAI'
 import { 
   SPONSOR_CATEGORIES, 
-  getSponsorById, 
   getSponsorPriority, 
   getDefaultExpectations,
   type SponsorPriority,
   type SponsorExpectations
 } from '@/data/sponsors'
+import { getSponsorById, getSponsorLogoPath } from '@/services/preGeneratedContentService'
 import { getActivityTimeCost } from '@/data/activity-time-costs'
+import { createTeamTransaction } from '@/simulation/finances/teamFinances'
+import { isSlotAvailable } from '@/simulation/finances/teamSponsors'
 
 // ============================================
 // TYPES
@@ -113,12 +122,22 @@ const PERSONALITY_DESCRIPTIONS: Record<string, string> = {
 // ============================================
 
 export function NegotiationModal({ isOpen, onClose, negotiation, team }: NegotiationModalProps) {
-  const { addEmail, careerState, consumeHoursFromBudget, addPersonalCalendarEntry } = useCareerStore()
+  const { addEmail, careerState, updateCareerState, consumeHoursFromBudget, addPersonalCalendarEntry } = useCareerStore()
+
+  // Record that the player has "contacted" this sponsor (unlocks visibility for unlock_after_contact sponsors)
+  useEffect(() => {
+    if (!isOpen || !negotiation?.sponsorId || !careerState) return
+    const contacted = careerState.contactedSponsorIds ?? []
+    if (contacted.includes(negotiation.sponsorId)) return
+    updateCareerState({ contactedSponsorIds: [...contacted, negotiation.sponsorId] })
+  }, [isOpen, negotiation?.sponsorId, careerState, updateCareerState])
   const { addToast } = useToast()
   
   const [isProcessing, setIsProcessing] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [counterMode, setCounterMode] = useState(false)
+  const [showAcceptConfirm, setShowAcceptConfirm] = useState(false)
+  const [showDeclineConfirm, setShowDeclineConfirm] = useState(false)
   const [counterOffer, setCounterOffer] = useState<OfferAdjustment>({
     monthlyPayment: negotiation.currentOffer.monthlyPayment,
     winBonus: negotiation.currentOffer.winBonus,
@@ -176,6 +195,54 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
   
   // Check if player can take action
   const canTakeAction = negotiation.status === 'reviewing_offer'
+  const activeSponsorsInOfferSlot = (team.finances?.sponsors || []).filter(
+    (s) => s.active && s.slot === negotiation.currentOffer.slot
+  )
+  const slotStillAvailable = isSlotAvailable(team, negotiation.currentOffer.slot)
+  const slotIsFull = !slotStillAvailable
+  const [selectedReplacementSponsorId, setSelectedReplacementSponsorId] = useState<string>('')
+  const selectedReplacementSponsor = activeSponsorsInOfferSlot.find((s) => s.id === selectedReplacementSponsorId) || activeSponsorsInOfferSlot[0] || null
+  const activeSlotSponsorNames = activeSponsorsInOfferSlot.map((s) => s.sponsorName)
+  const canReplaceExistingSponsor = slotIsFull && activeSponsorsInOfferSlot.length > 0 && !!selectedReplacementSponsor
+  const replacementYearsRemaining = selectedReplacementSponsor
+    ? Math.max(1, (selectedReplacementSponsor.startYear + selectedReplacementSponsor.duration) - currentYear)
+    : 0
+  const buyoutRateBySlot: Record<TeamSponsorSlot, number> = {
+    title: 0.85,
+    primary: 0.7,
+    secondary: 0.6,
+    associate: 0.5
+  }
+  const switchMonthsBySlot: Record<TeamSponsorSlot, number> = {
+    title: 6,
+    primary: 4,
+    secondary: 3,
+    associate: 2
+  }
+  const boardPenaltyBySlot: Record<TeamSponsorSlot, number> = {
+    title: 12,
+    primary: 8,
+    secondary: 6,
+    associate: 4
+  }
+  const repPenaltyScaleBySlot: Record<TeamSponsorSlot, { min: number; max: number; divisor: number }> = {
+    title: { min: 8, max: 20, divisor: 300000 },
+    primary: { min: 6, max: 16, divisor: 450000 },
+    secondary: { min: 4, max: 12, divisor: 600000 },
+    associate: { min: 3, max: 10, divisor: 800000 }
+  }
+  const replacementBuyoutCost = selectedReplacementSponsor
+    ? Math.round(selectedReplacementSponsor.monthlyPayment * 12 * replacementYearsRemaining * buyoutRateBySlot[negotiation.currentOffer.slot])
+    : 0
+  const replacementSwitchFee = canReplaceExistingSponsor
+    ? Math.round(negotiation.currentOffer.monthlyPayment * switchMonthsBySlot[negotiation.currentOffer.slot])
+    : 0
+  const replacementTotalPenalty = replacementBuyoutCost + replacementSwitchFee
+  const repScale = repPenaltyScaleBySlot[negotiation.currentOffer.slot]
+  const replacementRepPenalty = canReplaceExistingSponsor
+    ? Math.min(repScale.max, Math.max(repScale.min, Math.round(replacementTotalPenalty / repScale.divisor)))
+    : 0
+  const replacementBoardPenalty = canReplaceExistingSponsor ? boardPenaltyBySlot[negotiation.currentOffer.slot] : 0
   
   // Handle accept
   const handleAccept = async () => {
@@ -222,23 +289,73 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
       // Update store - add sponsor deal, update negotiation status
       useCareerStore.setState(state => {
         if (!state.careerState?.ownedTeam?.finances) return state
+        const currentTeam = state.careerState.ownedTeam
+        const currentFinances = currentTeam.finances
         
-        const updatedNegotiations = state.careerState.ownedTeam.finances.activeNegotiations.map(n =>
+        const updatedNegotiations = currentFinances.activeNegotiations.map(n =>
           n.id === negotiation.id
             ? { ...n, status: 'accepted' as const, lastEmailId: emailId }
             : n
         )
+
+        const replacementTarget = canReplaceExistingSponsor
+          ? (currentFinances.sponsors || []).find((s) => s.id === selectedReplacementSponsor!.id)
+          : null
+        const updatedSponsors = replacementTarget
+          ? (currentFinances.sponsors || []).map((s) =>
+              s.id === replacementTarget.id
+                ? { ...s, active: false, satisfaction: Math.max(0, (s.satisfaction || 70) - 40) }
+                : s
+            )
+          : (currentFinances.sponsors || [])
+
+        const updatedCash = replacementTarget
+          ? (currentTeam.budgets?.cash || 0) - replacementTotalPenalty
+          : (currentTeam.budgets?.cash || 0)
+        const replacementTx = replacementTarget
+          ? createTeamTransaction(
+              'expense',
+              'other',
+              replacementTotalPenalty,
+              `Sponsor buyout: replaced ${replacementTarget.sponsorName} (${SLOT_LABELS[replacementTarget.slot]}) with ${negotiation.sponsorName}`,
+              currentWeek,
+              currentYear,
+              { sponsorId: replacementTarget.id }
+            )
+          : null
         
         return {
           ...state,
+          ...(state.player ? {
+            player: {
+              ...state.player,
+              reputation: replacementTarget
+                ? Math.max(0, (currentTeam.reputation ?? 50) - replacementRepPenalty)
+                : currentTeam.reputation
+            }
+          } : {}),
           careerState: {
             ...state.careerState,
             ownedTeam: {
-              ...state.careerState.ownedTeam,
+              ...currentTeam,
+              reputation: replacementTarget
+                ? Math.max(0, (currentTeam.reputation ?? 50) - replacementRepPenalty)
+                : currentTeam.reputation,
+              boardMood: replacementTarget
+                ? Math.max(0, (currentTeam.boardMood ?? 50) - replacementBoardPenalty)
+                : currentTeam.boardMood,
+              budgets: {
+                ...currentTeam.budgets,
+                cash: updatedCash,
+                yearToDateExpenses: (currentTeam.budgets?.yearToDateExpenses || 0) + (replacementTarget ? replacementTotalPenalty : 0)
+              },
               finances: {
-                ...state.careerState.ownedTeam.finances,
-                sponsors: [...state.careerState.ownedTeam.finances.sponsors, newDeal],
-                activeNegotiations: updatedNegotiations
+                ...currentFinances,
+                sponsors: [...updatedSponsors, newDeal],
+                activeNegotiations: updatedNegotiations,
+                transactions: replacementTx
+                  ? [...(currentFinances.transactions || []), replacementTx]
+                  : (currentFinances.transactions || [])
               }
             }
           }
@@ -264,9 +381,11 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
       })
 
       addToast({
-        type: 'success',
-        title: 'Deal Signed!',
-        message: `${negotiation.sponsorName} is now a ${SLOT_LABELS[negotiation.currentOffer.slot].toLowerCase()} for ${team.name}!`,
+        type: canReplaceExistingSponsor ? 'warning' : 'success',
+        title: canReplaceExistingSponsor ? 'Deal Signed (Buyout Applied)' : 'Deal Signed!',
+        message: canReplaceExistingSponsor
+          ? `${negotiation.sponsorName} replaced your ${SLOT_LABELS[negotiation.currentOffer.slot].toLowerCase()}. Buyout/restructure cost: $${replacementTotalPenalty.toLocaleString()}.`
+          : `${negotiation.sponsorName} is now a ${SLOT_LABELS[negotiation.currentOffer.slot].toLowerCase()} for ${team.name}!`,
         duration: 5000
       })
       
@@ -352,8 +471,11 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
                 lastActivityWeek: currentWeek,
                 lastActivityYear: currentYear,
                 lastEmailId: teamEmailId,
-                // Sponsor will respond in 1-3 days (handled in advanceWeek)
-                nextResponseWeek: currentWeek + 1
+                // Sponsor response time varies by tier/personality
+                nextResponseWeek: currentWeek + getResponseDelay(
+                  { tier: negotiation.sponsorTier, personality: negotiation.personality },
+                  'counter'
+                )
               }
             : n
         )
@@ -413,11 +535,14 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
     setIsProcessing(false)
   }
   
-  // Handle decline
+  // Handle decline with gameplay effects
   const handleDecline = () => {
     if (!canTakeAction || isProcessing) return
     
-    // Update negotiation status
+    const reputationPenalty = getSponsorDeclinePenalty(negotiation.sponsorTier as any)
+    const cooldownExpiryWeek = ((currentYear - 1) * 52) + currentWeek + DECLINE_COOLDOWN_WEEKS
+    
+    // Update negotiation status + apply gameplay effects
     useCareerStore.setState(state => {
       if (!state.careerState?.ownedTeam?.finances) return state
       
@@ -427,26 +552,46 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
           : n
       )
       
+      // Apply reputation penalty
+      const currentReputation = state.careerState.ownedTeam?.reputation ?? 50
+      const newReputation = Math.max(0, currentReputation - reputationPenalty)
+      
+      // Add to declined cooldowns
+      const existingCooldowns = state.careerState.ownedTeam.finances.declinedSponsorCooldowns ?? {}
+      const updatedCooldowns = {
+        ...existingCooldowns,
+        [negotiation.sponsorId]: cooldownExpiryWeek
+      }
+      
       return {
         ...state,
+        ...(state.player ? {
+          player: {
+            ...state.player,
+            reputation: newReputation
+          }
+        } : {}),
         careerState: {
           ...state.careerState,
           ownedTeam: {
             ...state.careerState.ownedTeam,
+            reputation: newReputation,
             finances: {
               ...state.careerState.ownedTeam.finances,
-              activeNegotiations: updatedNegotiations
+              activeNegotiations: updatedNegotiations,
+              declinedSponsorCooldowns: updatedCooldowns
             }
           }
         }
       }
     })
     
+    const penaltyMsg = reputationPenalty > 0 ? ` Team reputation -${reputationPenalty}.` : ''
     addToast({
       type: 'info',
       title: 'Negotiation Ended',
-      message: `You have declined the offer from ${negotiation.sponsorName}.`,
-      duration: 3000
+      message: `You have declined the offer from ${negotiation.sponsorName}.${penaltyMsg}`,
+      duration: 4000
     })
     
     onClose()
@@ -490,9 +635,11 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
       <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center gap-4 p-4 bg-surface rounded-xl">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-gold/20 to-surface flex items-center justify-center text-2xl">
-            {categoryInfo.icon}
-          </div>
+          <SponsorLogo
+            src={getSponsorLogoPath(negotiation.sponsorId) || getSponsorLogo(negotiation.sponsorId)}
+            name={negotiation.sponsorName}
+            size="lg"
+          />
           <div className="flex-1">
             <div className="flex items-center gap-3">
               <h3 className="font-display font-bold text-xl">{negotiation.sponsorName}</h3>
@@ -514,7 +661,92 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
             </p>
           </div>
         </div>
-        
+
+        {/* Waiting for sponsor response (after you clicked Approach) */}
+        {(negotiation.status === 'outreach_sent' || negotiation.status === 'pending_response') && (() => {
+          // Calculate expected response week from absolute nextResponseWeek
+          const absResponseWeek = negotiation.nextResponseWeek
+          const responseWeek = absResponseWeek ? ((absResponseWeek - 1) % 52) + 1 : null
+          const responseYear = absResponseWeek ? Math.floor((absResponseWeek - 1) / 52) + 1 : null
+          
+          const steps = [
+            { label: 'Outreach Sent', done: true },
+            { label: 'Awaiting Response', done: false, active: true },
+            { label: 'Offer Received', done: false }
+          ]
+          
+          return (
+            <Card variant="glass" padding="lg" className="space-y-5">
+              {/* Progress Timeline */}
+              <div className="flex items-center justify-center gap-0">
+                {steps.map((step, idx) => (
+                  <div key={step.label} className="flex items-center">
+                    <div className="flex flex-col items-center">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                        step.done 
+                          ? 'bg-status-success text-white' 
+                          : step.active 
+                            ? 'bg-accent-blue/20 border-2 border-accent-blue text-accent-blue' 
+                            : 'bg-surface border border-border text-text-muted'
+                      }`}>
+                        {step.done ? <Check className="w-4 h-4" /> : idx + 1}
+                      </div>
+                      <span className={`text-xs mt-1 whitespace-nowrap ${
+                        step.done ? 'text-status-success' : step.active ? 'text-accent-blue' : 'text-text-muted'
+                      }`}>
+                        {step.label}
+                      </span>
+                    </div>
+                    {idx < steps.length - 1 && (
+                      <div className={`w-12 h-0.5 mx-1 mt-[-16px] ${step.done ? 'bg-status-success' : 'bg-border'}`} />
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Sponsor Summary */}
+              <div className="p-3 bg-background rounded-lg space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-text-muted">Tier</span>
+                  <Badge variant="default" size="sm">{negotiation.sponsorTier}</Badge>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-text-muted">Category</span>
+                  <span>{categoryInfo.icon} {categoryInfo.name}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-text-muted">Style</span>
+                  <span>{PERSONALITY_DESCRIPTIONS[negotiation.personality]}</span>
+                </div>
+                {responseWeek && (
+                  <div className="flex justify-between text-sm pt-2 border-t border-border">
+                    <span className="text-text-muted flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" /> Expected response
+                    </span>
+                    <span className="font-mono text-accent-blue">
+                      Week {responseWeek}{responseYear && responseYear !== currentYear ? `, ${responseYear}` : ''}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <p className="text-sm text-text-muted text-center max-w-md mx-auto">
+                You&apos;ll receive an <strong>email</strong> when {negotiation.sponsorName} responds.
+                Advance the week and check your inbox.
+              </p>
+              
+              <div className="flex justify-center">
+                <Button variant="secondary" onClick={onClose}>
+                  Close
+                </Button>
+              </div>
+            </Card>
+          )
+        })()}
+
+        {/* Contract and actions — only when sponsor has responded with an offer */}
+        {(negotiation.status === 'reviewing_offer' || negotiation.status === 'counter_pending') && (
+        <>
         {/* Progress from Initial */}
         {negotiation.rounds.length > 0 && (
           <div className="p-3 bg-surface rounded-lg">
@@ -866,14 +1098,198 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
           </div>
         )}
         
+        {/* Accept Confirmation Panel */}
+        {showAcceptConfirm && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="p-4 bg-status-success/5 border border-status-success/30 rounded-xl space-y-4"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-status-success/20 flex items-center justify-center">
+                <Check className="w-5 h-5 text-status-success" />
+              </div>
+              <div>
+                <h4 className="font-medium">Confirm Deal with {negotiation.sponsorName}?</h4>
+                <p className="text-xs text-text-muted">Review the terms before signing</p>
+              </div>
+            </div>
+            
+            <div className="p-3 bg-background rounded-lg space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-text-muted">Slot</span>
+                <span className="font-medium">{SLOT_LABELS[negotiation.currentOffer.slot]}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-text-muted">Monthly Payment</span>
+                <span className="font-mono text-status-success">${negotiation.currentOffer.monthlyPayment.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-text-muted">Win Bonus</span>
+                <span className="font-mono">${negotiation.currentOffer.winBonus.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-text-muted">Podium Bonus</span>
+                <span className="font-mono">${negotiation.currentOffer.podiumBonus.toLocaleString()}</span>
+              </div>
+              {(negotiation.currentOffer.championshipBonus ?? 0) > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-text-muted">Championship Bonus</span>
+                  <span className="font-mono">${(negotiation.currentOffer.championshipBonus ?? 0).toLocaleString()}</span>
+                </div>
+              )}
+              <div className="flex justify-between text-sm">
+                <span className="text-text-muted">Duration</span>
+                <span className="font-mono">{negotiation.currentOffer.duration} year{negotiation.currentOffer.duration !== 1 ? 's' : ''}</span>
+              </div>
+              <div className="pt-2 border-t border-border flex justify-between text-sm">
+                <span className="text-text-muted font-medium">Est. Annual Value</span>
+                <span className="font-mono font-bold text-status-success">${currentTotalValue.toLocaleString()}</span>
+              </div>
+              {canReplaceExistingSponsor && selectedReplacementSponsor && (
+                <div className="pt-2 border-t border-status-danger/30 space-y-1.5">
+                  <p className="text-xs font-semibold text-status-danger">Replacing an active {SLOT_LABELS[negotiation.currentOffer.slot].toLowerCase()} triggers contract buyout penalties</p>
+                  {activeSponsorsInOfferSlot.length > 1 ? (
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className="text-text-muted whitespace-nowrap">Replace sponsor</span>
+                      <select
+                        className="bg-surface border border-surface-border rounded px-2 py-1 text-xs flex-1"
+                        value={selectedReplacementSponsor?.id || ''}
+                        onChange={(e) => setSelectedReplacementSponsorId(e.target.value)}
+                      >
+                        {activeSponsorsInOfferSlot.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.sponsorName} (${s.monthlyPayment.toLocaleString()}/mo)
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  ) : (
+                    <div className="flex justify-between text-xs">
+                      <span className="text-text-muted">Replacing sponsor</span>
+                      <span className="font-medium">{selectedReplacementSponsor.sponsorName}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between text-xs">
+                    <span className="text-text-muted">Buyout + restructuring fee</span>
+                    <span className="font-mono text-status-danger">${replacementTotalPenalty.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-text-muted">Reputation / Board</span>
+                    <span className="font-mono text-status-danger">-{replacementRepPenalty} / -{replacementBoardPenalty}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            <div className="flex gap-2">
+              <Button
+                variant="primary"
+                className="flex-1"
+                onClick={() => { setShowAcceptConfirm(false); handleAccept() }}
+                disabled={isProcessing}
+              >
+                {isProcessing ? (
+                  <Clock className="w-4 h-4 mr-2 animate-spin" />
+                ) : (
+                  <Handshake className="w-4 h-4 mr-2" />
+                )}
+                {canReplaceExistingSponsor ? 'Buy out & Replace' : 'Confirm Deal'}
+              </Button>
+              <Button variant="ghost" onClick={() => setShowAcceptConfirm(false)} disabled={isProcessing}>
+                Go Back
+              </Button>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Decline Confirmation Panel */}
+        {showDeclineConfirm && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="p-4 bg-status-danger/5 border border-status-danger/30 rounded-xl space-y-4"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-status-danger/20 flex items-center justify-center">
+                <AlertTriangle className="w-5 h-5 text-status-danger" />
+              </div>
+              <div>
+                <h4 className="font-medium">Decline offer from {negotiation.sponsorName}?</h4>
+                <p className="text-xs text-text-muted">This will have consequences for your team</p>
+              </div>
+            </div>
+            
+            <div className="p-3 bg-background rounded-lg space-y-3">
+              {/* Reputation impact */}
+              {(() => {
+                const repPenalty = getSponsorDeclinePenalty(negotiation.sponsorTier as any)
+                return repPenalty > 0 ? (
+                  <div className="flex items-center gap-2 text-sm">
+                    <Shield className="w-4 h-4 text-status-danger" />
+                    <span className="text-text-muted">Reputation impact:</span>
+                    <span className="font-mono text-status-danger">-{repPenalty}</span>
+                  </div>
+                ) : null
+              })()}
+              
+              {/* Cooldown */}
+              <div className="flex items-center gap-2 text-sm">
+                <Ban className="w-4 h-4 text-status-warning" />
+                <span className="text-text-muted">
+                  {negotiation.sponsorName} won&apos;t consider approaches for {DECLINE_COOLDOWN_WEEKS} weeks
+                </span>
+              </div>
+              
+              {/* Missed income */}
+              <div className="flex items-center gap-2 text-sm">
+                <DollarSign className="w-4 h-4 text-status-warning" />
+                <span className="text-text-muted">Missed income:</span>
+                <span className="font-mono text-status-warning">${negotiation.currentOffer.monthlyPayment.toLocaleString()}/mo</span>
+              </div>
+              
+              {/* Slot */}
+              <div className="flex items-center gap-2 text-sm">
+                <Target className="w-4 h-4 text-text-muted" />
+                <span className="text-text-muted">
+                  {activeSlotSponsorNames.length > 0
+                    ? `${SLOT_LABELS[negotiation.currentOffer.slot]} slot stays with ${activeSlotSponsorNames.join(', ')}`
+                    : `${SLOT_LABELS[negotiation.currentOffer.slot]} slot remains vacant`}
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                className="flex-1 !text-status-danger !border-status-danger/30 hover:!bg-status-danger/10"
+                onClick={() => { setShowDeclineConfirm(false); handleDecline() }}
+                disabled={isProcessing}
+              >
+                <X className="w-4 h-4 mr-2" />
+                Confirm Decline
+              </Button>
+              <Button variant="secondary" onClick={() => setShowDeclineConfirm(false)} disabled={isProcessing}>
+                Cancel
+              </Button>
+            </div>
+          </motion.div>
+        )}
+
         {/* Actions */}
+        {!showAcceptConfirm && !showDeclineConfirm && (
         <div className="flex gap-3 pt-4 border-t border-surface-border">
           {!counterMode ? (
             <>
               <Button
                 variant="primary"
                 className="flex-1"
-                onClick={handleAccept}
+                onClick={() => {
+                  if (activeSponsorsInOfferSlot.length > 0 && !selectedReplacementSponsorId) {
+                    setSelectedReplacementSponsorId(activeSponsorsInOfferSlot[0].id)
+                  }
+                  setShowAcceptConfirm(true)
+                }}
                 disabled={!canTakeAction || isProcessing}
               >
                 {isProcessing ? (
@@ -903,7 +1319,7 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
               </Button>
               <Button
                 variant="ghost"
-                onClick={handleDecline}
+                onClick={() => setShowDeclineConfirm(true)}
                 disabled={!canTakeAction || isProcessing}
               >
                 <X className="w-4 h-4 mr-2" />
@@ -935,6 +1351,7 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
             </>
           )}
         </div>
+        )}
         
         {/* Warning for near max rounds */}
         {negotiation.rounds.length >= negotiation.maxRounds - 1 && canTakeAction && (
@@ -944,6 +1361,8 @@ export function NegotiationModal({ isOpen, onClose, negotiation, team }: Negotia
               This is likely your final chance to negotiate. The sponsor may walk away if you counter again.
             </span>
           </div>
+        )}
+        </>
         )}
       </div>
     </Modal>

@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0110",
+  "name": "Down Under Diesel",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "Australia",
+  "description": "Reliable diesel fuel, built for Australian conditions.",
+  "story": "Down Under Diesel is a family-owned fuel company operating out of Western Australia. We've been supplying farmers and miners for decades, and now we're expanding into motorsport to prove the reliability and performance of our diesel in extreme conditions. We believe in supporting local talent and fostering a strong Aussie spirit.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7500,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0110.png"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0265",
+  "name": "Maple Ridge Supply Co.",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Canada",
+  "description": "Embrace the everyday adventure.",
+  "story": "Maple Ridge Supply Co. celebrates the spirit of exploration and the pursuit of passions. Rooted in Canadian heritage, they see motorsport as a perfect embodiment of skill, daring, and dedication. They seek a partnership that reflects their brand values of authenticity and a commitment to excellence, associating with drivers who embody these qualities.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0265.png"
+}

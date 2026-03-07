@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 53,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Jan Kolář's motorsport journey began in his youth, captivated by the roar of engines at local hill climb races. After earning a degree in mechanical engineering, he transitioned from amateur racing to a role within a small GT team. He spent years honing his skills, developing a keen eye for detail and a pragmatic approach to problem-solving.\n\nHis experience at Herberth Motorsport started five years ago, where he quickly rose through the ranks to become Sporting Director. Jan is known for his methodical approach to race strategy and his ability to keep the team focused under pressure. He believes in fostering a collaborative environment, ensuring every team member feels valued and contributes to the overall success.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jan is a man of average height with a sturdy build, suggesting a history of hands-on work in the garage."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on drinking a specific brand of herbal tea before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

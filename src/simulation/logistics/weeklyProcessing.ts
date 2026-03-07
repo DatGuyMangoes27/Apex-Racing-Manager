@@ -10,7 +10,8 @@ import type {
   ManufacturingJob,
   SparePart,
   RaceSparesKit,
-  _PartsWarehouse
+  PartsWarehouse,
+  TeamTransaction
 } from '@/store/careerStore'
 import type { WorldRegion } from '@/data/travel-logistics'
 import type { TeamTier } from '@/store/rivalStore'
@@ -25,6 +26,12 @@ import {
 } from './raceAllocation'
 import { getReorderNeeds, getActiveWarehouses } from './partsInventory'
 import { MANUFACTURERS } from '@/data/manufacturers'
+import {
+  processWarehouseRentalCosts,
+  processAutoReorderCosts,
+  processPartsOrderCost,
+  processShippingCost as processShippingCostTransaction
+} from '@/simulation/finances/teamFinances'
 
 // ============================================
 // MAIN WEEKLY PROCESSING FUNCTION
@@ -53,6 +60,9 @@ export interface WeeklySparePartsResult {
   // Costs
   warehouseRentalCosts: number
   autoOrderCosts: number
+  
+  // Financial transactions for proper budget tracking
+  financialTransactions: TeamTransaction[]
   
   // Alerts
   alerts: SparePartsAlert[]
@@ -210,11 +220,29 @@ export function processWeeklySpareParts(
     }
   }
   
-  // 7. Calculate warehouse rental costs
+  // 7. Calculate warehouse rental costs and generate transactions
   const activeWarehouses = getActiveWarehouses(updatedState)
   const warehouseRentalCosts = activeWarehouses.reduce(
     (sum, w) => sum + w.weeklyRentalCost, 0
   )
+  const warehouseTransactions = processWarehouseRentalCosts(
+    activeWarehouses.map(w => ({ id: w.id, name: w.name || w.id, weeklyRentalCost: w.weeklyRentalCost, rentalActive: true })),
+    currentWeek,
+    currentYear
+  )
+  
+  // Generate auto-reorder aggregate transaction
+  const autoReorderTransaction = processAutoReorderCosts(
+    autoOrdersPlaced.map(o => ({ partType: o.partType, quantity: o.quantity, cost: o.totalCost || 0 })),
+    currentWeek,
+    currentYear
+  )
+  
+  // Collect all financial transactions
+  const financialTransactions: TeamTransaction[] = [
+    ...warehouseTransactions,
+    ...(autoReorderTransaction ? [autoReorderTransaction] : [])
+  ]
   
   // 8. Clean up old race kits
   updatedState = cleanupOldKits(updatedState, currentWeek, currentYear)
@@ -254,6 +282,7 @@ export function processWeeklySpareParts(
     kitsArrivedAtTrack,
     warehouseRentalCosts,
     autoOrderCosts,
+    financialTransactions,
     alerts
   }
 }

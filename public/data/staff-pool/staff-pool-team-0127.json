@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Karlsson",
+  "nationality": "Swedish",
+  "age": 45,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Astrid Karlsson's journey in motorsport began in her teens, assisting her father, a local rally mechanic, in his garage. This hands-on experience ignited a passion that led her to pursue a degree in mechanical engineering. After graduating, Astrid joined a small Formula 3 team, quickly rising through the ranks due to her sharp technical mind and unwavering dedication. She possesses a keen eye for detail and a relentless pursuit of excellence, often pushing her team to exceed their perceived limits.\n\nAstrid's approach to her role as Sporting Director is centered around data-driven decision-making and fostering a culture of continuous improvement. She believes in empowering her team members to take ownership of their work, while simultaneously holding them accountable for their performance. Her demanding nature is balanced by a genuine commitment to developing talent and creating a collaborative environment where everyone can thrive. Astrid's distinctive edge lies in her ability to blend technical expertise with strong leadership, making her a formidable force in the paddock.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, straight with subtle waves and a side part",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a tall woman with a commanding presence and sharp, intelligent eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on having a perfectly organized workspace and will rearrange things if they're out of place.",
+    "Has a habit of tapping her pen when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Marcus Reynolds",
+  "nationality": "American",
+  "age": 36,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Marcus Reynolds is a driven Head of Aerodynamics, shaping airflow and downforce for the Iron Dames team. His path to motorsport started unexpectedly – a chance encounter with a retired aerodynamicist at a local airshow sparked an insatiable curiosity. He devoured textbooks and online courses, eventually landing an internship with a small IndyCar team. From there, he honed his skills, specializing in Computational Fluid Dynamics and wind tunnel testing. \n\nReynolds is known for his meticulous approach, relentlessly pursuing every marginal gain. He believes that understanding the fundamental physics is key to innovation, constantly challenging his team to push boundaries. His demanding nature stems from a deep-seated desire for perfection, driven by a desire to win. He is a firm believer in data-driven decisions, often found poring over simulations and telemetry, searching for that elusive competitive edge.\n\nWhat truly sets Reynolds apart is his ability to translate complex aerodynamic principles into actionable insights for the drivers and engineers. He can explain subtle changes in airflow in a way that empowers the team to make better decisions, contributing significantly to the car's overall performance.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Goatee",
+    "description": "Marcus is of average height, with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and equations.",
+    "Drinks black coffee throughout the day, refusing any additions.",
+    "Has a habit of tapping his pen rhythmically on the table when deep in thought."
+  ]
+}

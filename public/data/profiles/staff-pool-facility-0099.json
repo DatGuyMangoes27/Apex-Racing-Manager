@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Velez",
+    "nationality": "Colombian",
+    "age": 45,
+    "gender": "male",
+    "role": "electronics_engineer",
+    "bio": "Ricardo's passion for motorsports ignited during his childhood, watching Colombian drivers compete in Formula 3. He pursued an electrical engineering degree, specializing in embedded systems and signal processing, skills he believed could directly translate to improving car performance. His early career involved working on industrial automation projects, but he always kept an eye on opportunities in motorsport. \n\nRicardo believes a deep understanding of sensor data is key to unlocking a car's full potential. He's meticulous in his approach, always double-checking connections and ensuring data integrity. Though relatively new to the high-stakes world of racing, his enthusiasm and willingness to learn are infectious. He hopes to bring a fresh perspective and innovative solutions to the team, focusing on reliability and data-driven optimization.",
+    "physical": {
+      "skinTone": "tan",
+      "hairColor": "dark brown",
+      "hairStyle": "short, neatly combed with a slight receding hairline",
+      "eyeColor": "brown",
+      "facialHair": "trimmed mustache",
+      "description": "Ricardo has a warm smile and a focused gaze, suggesting a blend of enthusiasm and analytical thinking."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a small notebook filled with circuit diagrams and technical notes.",
+      "Has a habit of tapping his pen against his teeth when deep in thought.",
+      "Insists on calibrating equipment himself to ensure accuracy."
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0287",
+  "name": "Banque Avenir",
+  "category": "financial",
+  "tier": "elite",
+  "country": "France",
+  "description": "Securing your future, accelerating your ambitions.",
+  "story": "Banque Avenir, a leading French investment bank, believes in fostering growth and innovation. Motorsport's blend of cutting-edge technology, strategic thinking, and high-stakes competition aligns perfectly with their values. They seek to partner with teams demonstrating exceptional performance and a commitment to excellence, mirroring their own dedication to clients' financial success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0287.png"
+}

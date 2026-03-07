@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Elise Dubois",
+    "nationality": "Belgian",
+    "age": 25,
+    "gender": "female",
+    "role": "fabricator",
+    "bio": "Elise's passion for motorsport ignited early, fueled by weekends spent at local rallycross events with her father, a former mechanic. After completing a technical degree in mechanical engineering, she sought out opportunities to combine her academic knowledge with hands-on experience. Her career began with an internship at a small racing team specializing in historic touring cars, where she quickly proved her aptitude for fabrication and problem-solving. She is now an integral part of the ALL-INKL.COM Münnich Motorsport team.\n\nElise prides herself on her meticulous approach to her work. She believes in precision and quality, understanding that even the smallest detail can make a difference on the track. She is constantly seeking innovative solutions to improve vehicle performance and reliability, often drawing inspiration from outside the motorsport world. Elise's ambition is to one day lead a team of fabricators, pushing the boundaries of motorsport engineering.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Auburn",
+      "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+      "eyeColor": "Green",
+      "facialHair": null,
+      "description": "Elise is of average height with a lean, athletic build."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always sharpens her pencils to a perfect point before starting any task.",
+      "Has a collection of vintage motorsport posters in her workshop area.",
+      "Can identify the make and model of a car just by the sound of its engine."
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "biography": "Born in the bustling metropolis of São Paulo, Brazil, Bruno Monteles's journey into motorsports began amidst the vibrant chaos of the city's karting scene. Unlike many aspiring racers with silver-spoon beginnings, Bruno's family ran a small auto repair shop on the outskirts of the city. His introduction to racing wasn't through a pristine karting academy, but rather by tinkering with discarded engines and welding together makeshift chassis in his father's workshop. He first grabbed attention at the 'Interlagos Karting Cup' when, against all odds, his self-built kart outperformed factory-built machines, earning him a spot with the local 'Kart 4' team. A defining moment came during a rain-soaked race where, despite starting last due to a mechanical failure, Bruno showcased his audacious overtaking skills, finishing second. Currently, Bruno is navigating the fiercely competitive world of Formula racing, leveraging his raw talent and unwavering determination to climb the ranks.",
+  "drivingStyle": "Bruno's driving style is characterized by a relentless aggression and a willingness to push the limits. He's known for his late-braking maneuvers and his ability to extract every last ounce of grip from his tires. While some criticize his approach as overly risky, his raw speed and fearless attitude often deliver unexpected results. He is particularly adept at adapting to changing track conditions, often thriving in wet races where his car control skills shine.",
+  "rivalries": [
+    {
+      "driver": "Enzo Bellini",
+      "reason": "A fierce on-track battle during a championship-deciding race led to a controversial collision, fostering a bitter rivalry ever since."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "Their contrasting driving styles – Bruno's aggression versus Isabella's calculated precision – often result in heated clashes on the track."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A long-standing rivalry stemming from karting days, fueled by consistent competition and a mutual desire to be the best."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks given to him by his grandmother before every race.",
+    "Listens to a specific Brazilian samba song before entering his car to calm his nerves.",
+    "Inspects all four tires of his car himself before the race even if the mechanics already did."
+  ],
+  "nickname": "The Torpedo",
+  "famousQuote": "\"Racing isn't just about speed; it's about heart. You have to want it more than anyone else.\"",
+  "careerHighlight": "Winning the Brazilian National Karting Championship in his first year competing, defying all expectations and proving his raw talent.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a crucial Formula race due to a mechanical failure, costing him valuable championship points."
+}

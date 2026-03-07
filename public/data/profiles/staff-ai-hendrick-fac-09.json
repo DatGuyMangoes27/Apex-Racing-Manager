@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 38,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Mateo's journey into motorsport began in the bustling streets of Buenos Aires, tinkering with vintage cars alongside his grandfather. This early exposure ignited a passion for automotive aesthetics and precision. After completing his apprenticeship as an auto body technician, he honed his skills in custom paint shops, quickly earning a reputation for his meticulous attention to detail and ability to blend colors flawlessly. \n\nHis dedication led him to the world of racing, where he thrives on the challenge of creating visually stunning and aerodynamically optimized paint schemes for Hendrick Motorsports. Mateo's approach centers around close collaboration with engineers and designers to ensure that every layer of paint not only looks spectacular but also contributes to the car's overall performance. He is known for his expertise in applying cutting-edge paint technologies and his unwavering commitment to perfection, making him a valuable asset to the team.\n\nMateo's distinctive approach combines a deep understanding of color theory with a practical knowledge of aerodynamics. His ability to translate complex technical requirements into visually appealing designs sets him apart from his peers, ensuring that Hendrick Motorsport's cars always make a statement on and off the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mateo is of average height with a sturdy build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always listens to tango music while working.",
+    "Meticulously organizes his paint supplies by color shade.",
+    "Prefers to use traditional brushes alongside modern spray guns."
+  ]
+}

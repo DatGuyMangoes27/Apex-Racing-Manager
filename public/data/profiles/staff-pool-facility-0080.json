@@ -1,0 +1,22 @@
+{
+  "name": "Jari Mäkinen",
+  "nationality": "Finnish",
+  "age": 55,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Jari's passion for motorsport ignited in his youth, tinkering with go-karts in his father's garage in rural Finland. This hands-on experience led him to pursue a degree in electrical engineering, specializing in embedded systems and control. After graduating, he spent several years developing advanced control systems for industrial automation, before finally making the leap to motorsport. He joined a smaller rally team initially, honing his skills on the fly, before being headhunted by a Formula 1 team. \n\nHe approaches his work with a meticulous eye for detail, believing that even the smallest improvements can make a significant difference on the track. He is known for his ability to diagnose complex electrical problems quickly and efficiently. Jari's demanding nature pushes his team to strive for excellence, ensuring that every electronic component performs flawlessly under the extreme conditions of motorsport. His focus is always on extracting maximum performance and reliability from every circuit and sensor.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, receding hairline, neatly combed",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jari is of medium build with a serious demeanor etched on his face."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Insists on using specific German-made soldering equipment.",
+    "Has a habit of tapping his pen rhythmically on his desk when deep in thought."
+  ]
+}

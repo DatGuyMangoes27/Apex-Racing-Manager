@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 54,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Declan's journey into motorsport began unconventionally, stemming from a lifelong fascination with flight simulators and a degree in aeronautical engineering from Trinity College, Dublin. After a brief stint designing flight control systems, he realized his true passion lay in the ground-based equivalent: race car simulation. He joined PEX Motorsport five years ago, bringing with him a rare blend of technical expertise and innovative thinking. \n\nDeclan approaches simulator engineering with a meticulous eye for detail, believing that even the smallest discrepancies between the virtual and real worlds can significantly impact driver performance. He's constantly seeking new ways to improve the realism of the simulation, pushing the boundaries of what's possible with existing technology. Known for his forward-thinking ideas and an uncanny ability to predict the impact of setup changes, Declan has become an invaluable asset to the team.\n\nHis talent lies not just in technical skill, but in his visionary approach to the work, always looking for ways to innovate and improve the team's simulator program. He has been known to be able to shave off tenths of a second from a driver's lap time simply by tweaking the software and providing detailed feedback. This knack for improvement makes him an incredibly valuable asset.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed grey beard",
+    "description": "A man of average height and build, Declan has a friendly face etched with the lines of concentration and a permanent hint of a smile."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small, worn copy of 'The Art of Simulation' by Peter Ormsby.",
+    "Insists on calibrating the simulator with a specific Irish folk music playlist in the background.",
+    "Has a habit of doodling complex aerodynamic equations on coffee shop napkins during his lunch break."
+  ]
+}

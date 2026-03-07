@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0356",
+  "name": "Élan Vital Oil",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "France",
+  "description": "Powering performance, protecting your engine.",
+  "story": "Élan Vital has been a leading French lubricant manufacturer for over 50 years. We believe in pushing the boundaries of engine technology and performance. Motorsport provides the perfect testing ground for our advanced oil formulations, ensuring superior reliability and power for our customers.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 45,
+    "nationalities": [
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0356.png"
+}

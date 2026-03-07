@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 57,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Astrid is a culinary institution in Stavanger, known for her unwavering commitment to traditional Norwegian cuisine with a modern twist. She trained at a local vocational school and has been running her restaurant, \"Smak av Norge\" (Taste of Norway), for over 30 years, earning numerous accolades for her dedication to quality and her stubborn refusal to compromise on her vision. Despite her sarcastic wit and old-fashioned ways, Astrid possesses a surprising optimism that shines through in her cooking and interactions with others.\n\nA racing driver might cross paths with Astrid because her restaurant is a favorite among local business leaders and tourists alike. Motorsport teams often visit Stavanger for testing at the nearby Sola Airport, and Astrid's restaurant is a popular spot for post-session meals and celebrations. Astrid herself might be skeptical of the glitz and glamour of racing, but she appreciates hard work and dedication, and a driver who takes the time to appreciate her food and her story might find a surprising ally.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, tightly permed",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a stout woman with a perpetually rosy complexion, a testament to years spent over a hot stove. She favors practical, comfortable clothing, often adorned with a simple silver brooch."
+  },
+  "connectionToMotorsport": "Astrid's restaurant is a popular dining spot for motorsport teams visiting Stavanger for testing or promotional events, making her a familiar face within the local racing scene.",
+  "meetingContext": "The player could meet Astrid by dining at her restaurant, \"Smak av Norge,\" perhaps after a test session at Sola Airport. Engaging her in conversation about her food and her restaurant's history would be a good start.",
+  "conversationTopics": [
+    "Traditional Norwegian cuisine",
+    "The importance of using local ingredients",
+    "The decline of traditional values",
+    "Her garden, especially her prize-winning roses",
+    "The best local coffee roasters"
+  ],
+  "canHelp": [
+    "Provide catering for the team at a discounted rate.",
+    "Connect the player with local business leaders who could offer sponsorship opportunities.",
+    "Offer valuable insights into the local culture and community."
+  ],
+  "personality_summary": "A sarcastic but secretly optimistic chef with a passion for tradition and a stubborn refusal to compromise."
+}

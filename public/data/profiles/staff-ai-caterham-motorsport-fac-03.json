@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Rossi",
+  "nationality": "Argentine",
+  "age": 38,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Valentina's journey into motorsport began unexpectedly. Initially training as a mechanical engineer in Buenos Aires, she stumbled upon a local racing team needing assistance with engine diagnostics. Her natural aptitude for problem-solving and a keen eye for detail quickly propelled her into the world of high-performance machinery. She spent several years honing her skills in various Argentine racing series before catching the attention of Caterham Motorsport, who recognized her potential and brought her to the UK. \n\nAs a machinist, Valentina is known for her meticulous approach and unwavering commitment to precision. She thrives on the challenge of pushing the boundaries of what's possible, always seeking innovative solutions to improve performance. Her loyalty to the team is unquestionable, but she also possesses a strong independent streak, preferring to tackle complex problems on her own before seeking collaboration. Her relentless pursuit of perfection often leads to late nights in the garage, ensuring every component meets her exacting standards.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, braided ponytail with a few strands framing her face",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of average height with a lean build, always sporting a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of humming quietly while working on intricate machinery.",
+    "Insists on using only analog measuring tools for critical measurements."
+  ]
+}

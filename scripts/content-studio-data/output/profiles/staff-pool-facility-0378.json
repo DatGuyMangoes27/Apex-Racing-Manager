@@ -1,0 +1,22 @@
+{
+  "name": "Magnus Olsen",
+  "nationality": "Norwegian",
+  "age": 24,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Magnus developed a passion for electronics and racing early on, spending countless hours tinkering with go-karts alongside his father, a local mechanic. This hands-on experience ignited a desire to push the boundaries of motorsport technology. After graduating from the Norwegian University of Science and Technology with a degree in electrical engineering, he honed his skills working on electric vehicle charging infrastructure, contributing to sustainable solutions. He is fascinated by the intricacies of vehicle systems and is always looking for ways to optimize them for maximum performance and reliability. Magnus believes that data-driven decisions and innovation are key to success in modern motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "A tall, slender man with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Sketches circuit diagrams on napkins during lunch.",
+    "Has a habit of tapping his fingers when deep in thought."
+  ]
+}

@@ -236,6 +236,11 @@ export interface Partner {
   // Desires and preferences
   desires: PartnerDesires
   
+  // Deal breaker tracking
+  dealBreakerViolationCount: Record<string, number>  // Maps deal breaker string -> violation count
+  dealBreakerWarningsGiven: string[]                 // Deal breakers that have triggered an ultimatum
+  lastDealBreakerCheckWeek?: number                  // Prevents duplicate checks in same week
+  
   // Physical appearance (for UI/flavor)
   appearance?: {
     hairColor: string
@@ -277,6 +282,13 @@ export type DateType =
   | 'private_concert'
   | 'home_cooked'
 
+export type LoveLanguageType =
+  | 'words_of_affirmation'
+  | 'acts_of_service'
+  | 'receiving_gifts'
+  | 'quality_time'
+  | 'physical_touch'
+
 export interface DateOption {
   type: DateType
   name: string
@@ -293,6 +305,8 @@ export interface DateOption {
   requiresPrivacy?: boolean
   requiresWealth?: number       // Minimum net worth
   traitBonuses?: Record<string, number>  // Extra gain if partner has trait
+  loveLanguageTag?: LoveLanguageType     // Which love language this date appeals to
+  interestTags?: string[]                // Interest categories for bonus matching
 }
 
 export const DATE_OPTIONS: DateOption[] = [
@@ -305,7 +319,9 @@ export const DATE_OPTIONS: DateOption[] = [
     happinessGain: 5,
     loveLevelGain: 3,
     trustGain: 2,
-    traitBonuses: { practical: 3, private: 2 }
+    traitBonuses: { practical: 3, private: 2 },
+    loveLanguageTag: 'quality_time',
+    interestTags: ['fine_dining']
   },
   {
     type: 'fancy_restaurant',
@@ -316,7 +332,9 @@ export const DATE_OPTIONS: DateOption[] = [
     happinessGain: 8,
     loveLevelGain: 5,
     trustGain: 3,
-    traitBonuses: { glamorous: 5, high_maintenance: 5 }
+    traitBonuses: { glamorous: 5, high_maintenance: 5 },
+    loveLanguageTag: 'quality_time',
+    interestTags: ['fine_dining', 'luxury']
   },
   {
     type: 'movie_night',
@@ -328,7 +346,9 @@ export const DATE_OPTIONS: DateOption[] = [
     loveLevelGain: 4,
     trustGain: 3,
     requiresPrivacy: true,
-    traitBonuses: { private: 4, practical: 2 }
+    traitBonuses: { private: 4, practical: 2 },
+    loveLanguageTag: 'physical_touch',
+    interestTags: ['entertainment']
   },
   {
     type: 'sporting_event',
@@ -339,7 +359,9 @@ export const DATE_OPTIONS: DateOption[] = [
     happinessGain: 7,
     loveLevelGain: 4,
     trustGain: 2,
-    traitBonuses: { racing_enthusiast: 6, adventurous: 3 }
+    traitBonuses: { racing_enthusiast: 6, adventurous: 3 },
+    loveLanguageTag: 'quality_time',
+    interestTags: ['sports', 'motorsport', 'entertainment']
   },
   {
     type: 'weekend_getaway',
@@ -350,7 +372,9 @@ export const DATE_OPTIONS: DateOption[] = [
     happinessGain: 12,
     loveLevelGain: 8,
     trustGain: 5,
-    traitBonuses: { adventurous: 5, supportive: 3 }
+    traitBonuses: { adventurous: 5, supportive: 3 },
+    loveLanguageTag: 'physical_touch',
+    interestTags: ['travel', 'adventure']
   },
   {
     type: 'exotic_vacation',
@@ -362,7 +386,9 @@ export const DATE_OPTIONS: DateOption[] = [
     loveLevelGain: 15,
     trustGain: 8,
     requiresWealth: 1000000,
-    traitBonuses: { glamorous: 8, adventurous: 8, high_maintenance: 5 }
+    traitBonuses: { glamorous: 8, adventurous: 8, high_maintenance: 5 },
+    loveLanguageTag: 'quality_time',
+    interestTags: ['travel', 'luxury', 'adventure']
   },
   {
     type: 'yacht_cruise',
@@ -374,7 +400,9 @@ export const DATE_OPTIONS: DateOption[] = [
     loveLevelGain: 10,
     trustGain: 6,
     requiresWealth: 5000000,
-    traitBonuses: { glamorous: 6, social_butterfly: 4 }
+    traitBonuses: { glamorous: 6, social_butterfly: 4 },
+    loveLanguageTag: 'quality_time',
+    interestTags: ['luxury', 'socializing', 'travel']
   },
   {
     type: 'private_concert',
@@ -386,7 +414,9 @@ export const DATE_OPTIONS: DateOption[] = [
     loveLevelGain: 15,
     trustGain: 5,
     requiresWealth: 10000000,
-    traitBonuses: { high_maintenance: 10, glamorous: 8 }
+    traitBonuses: { high_maintenance: 10, glamorous: 8 },
+    loveLanguageTag: 'receiving_gifts',
+    interestTags: ['music', 'luxury', 'entertainment']
   },
   {
     type: 'home_cooked',
@@ -398,7 +428,9 @@ export const DATE_OPTIONS: DateOption[] = [
     loveLevelGain: 6,
     trustGain: 5,
     requiresPrivacy: true,
-    traitBonuses: { practical: 5, supportive: 4, nurturing: 4 }
+    traitBonuses: { practical: 5, supportive: 4, nurturing: 4 },
+    loveLanguageTag: 'acts_of_service',
+    interestTags: ['fine_dining']
   }
 ]
 
@@ -862,6 +894,221 @@ export const RELATIONSHIP_CONFIG = {
   // Karting costs
   kartingAnnualCost: 30000,
   juniorFormulaAnnualCost: 150000
+}
+
+// ============================================
+// DEAL BREAKER SYSTEM
+// ============================================
+
+/**
+ * Snapshot of game state used by deal breaker checks.
+ * Callers build this from the full store state.
+ */
+export interface DealBreakerGameState {
+  // Financial
+  personalNetWorth: number
+  teamCashBalance: number
+  teamBudgetDeficit: number
+  // Career / performance
+  teamPerformanceTrend: 'improving' | 'stable' | 'declining'
+  weeksWithoutUpgrade: number
+  recentRaceResults: Array<{ position: number; dnf?: boolean }>
+  // Social
+  socialEventsDeclinedRecently: number
+  socialEventsAttendedRecently: number
+  weeksSinceLastDate: number
+  weeksSinceLastQualityTime: number
+  // Lifestyle
+  lifestyleTier: string
+  recentMediaScandals: number
+  publicSocialMediaPosts: number
+  // Relationship context
+  partnerTraits: string[]
+  weeksInRelationship: number
+  isMarried: boolean
+  hasChildren: boolean
+  childrenCount: number
+  // Player behavior
+  alcoholEventsRecently: number
+  gamblingEventsRecently: number
+  lateNightEventsRecently: number
+  otherFemaleContactsHighAffection: number
+}
+
+export interface DealBreakerMapping {
+  /** Function to check if this deal breaker is currently violated */
+  check: (gs: DealBreakerGameState) => boolean
+  /** Trust damage per weekly violation */
+  trustDamage: number
+  /** Romance damage per weekly violation */
+  romanceDamage: number
+  /** Warning message template (partner name will be prefixed) */
+  warningMessage: string
+  /** Number of violations before an ultimatum event triggers */
+  ultimatumAfter: number
+}
+
+/**
+ * Maps deal breaker strings (as they appear in partner profiles) to
+ * mechanical game-state checks and consequences.
+ */
+export const DEAL_BREAKER_MAPPINGS: Record<string, DealBreakerMapping> = {
+  'Lack of ambition': {
+    check: (gs) => gs.teamPerformanceTrend === 'declining' && gs.weeksWithoutUpgrade > 8,
+    trustDamage: -3,
+    romanceDamage: -2,
+    warningMessage: 'feels like you\'ve lost your drive',
+    ultimatumAfter: 4
+  },
+  'Financial instability': {
+    check: (gs) => gs.personalNetWorth < 0 || gs.teamBudgetDeficit > 50000,
+    trustDamage: -4,
+    romanceDamage: -2,
+    warningMessage: 'is worried about your financial situation',
+    ultimatumAfter: 3
+  },
+  'Disinterest in social events': {
+    check: (gs) => gs.socialEventsDeclinedRecently >= 3,
+    trustDamage: -2,
+    romanceDamage: -3,
+    warningMessage: 'is upset you keep skipping social events',
+    ultimatumAfter: 5
+  },
+  'Workaholism': {
+    check: (gs) => gs.weeksSinceLastDate > 4 && gs.weeksSinceLastQualityTime > 3,
+    trustDamage: -3,
+    romanceDamage: -3,
+    warningMessage: 'feels like you only care about work',
+    ultimatumAfter: 4
+  },
+  'Infidelity': {
+    check: (gs) => gs.otherFemaleContactsHighAffection >= 2,
+    trustDamage: -6,
+    romanceDamage: -4,
+    warningMessage: 'has noticed how close you are with other people',
+    ultimatumAfter: 2
+  },
+  'Dishonesty': {
+    check: (gs) => gs.recentMediaScandals >= 2,
+    trustDamage: -5,
+    romanceDamage: -2,
+    warningMessage: 'doesn\'t feel like they can trust you anymore',
+    ultimatumAfter: 3
+  },
+  'Neglect': {
+    check: (gs) => gs.weeksSinceLastQualityTime > 5,
+    trustDamage: -3,
+    romanceDamage: -4,
+    warningMessage: 'feels completely neglected',
+    ultimatumAfter: 3
+  },
+  'Poor lifestyle choices': {
+    check: (gs) => gs.alcoholEventsRecently >= 3 || gs.gamblingEventsRecently >= 2,
+    trustDamage: -3,
+    romanceDamage: -2,
+    warningMessage: 'is concerned about your lifestyle choices',
+    ultimatumAfter: 4
+  },
+  'Reckless spending': {
+    check: (gs) => gs.teamCashBalance < 0 && gs.personalNetWorth < 100000,
+    trustDamage: -3,
+    romanceDamage: -2,
+    warningMessage: 'is frustrated by your reckless spending',
+    ultimatumAfter: 4
+  },
+  'Lack of emotional support': {
+    check: (gs) => gs.weeksSinceLastQualityTime > 4,
+    trustDamage: -2,
+    romanceDamage: -3,
+    warningMessage: 'doesn\'t feel emotionally supported',
+    ultimatumAfter: 4
+  },
+  'Constant travelling': {
+    check: (gs) => gs.weeksSinceLastDate > 3 && gs.socialEventsAttendedRecently < 1,
+    trustDamage: -2,
+    romanceDamage: -3,
+    warningMessage: 'is tired of you always being away',
+    ultimatumAfter: 5
+  },
+  'Public embarrassment': {
+    check: (gs) => gs.recentMediaScandals >= 1 && gs.publicSocialMediaPosts >= 3,
+    trustDamage: -4,
+    romanceDamage: -3,
+    warningMessage: 'is mortified by the public attention',
+    ultimatumAfter: 3
+  },
+  'Lack of family focus': {
+    check: (gs) => gs.isMarried && gs.weeksSinceLastQualityTime > 4,
+    trustDamage: -3,
+    romanceDamage: -2,
+    warningMessage: 'feels like family isn\'t a priority for you',
+    ultimatumAfter: 4
+  },
+  'Excessive partying': {
+    check: (gs) => gs.lateNightEventsRecently >= 3 || gs.alcoholEventsRecently >= 3,
+    trustDamage: -3,
+    romanceDamage: -2,
+    warningMessage: 'thinks you party too much',
+    ultimatumAfter: 4
+  },
+  'Career stagnation': {
+    check: (gs) => gs.weeksWithoutUpgrade > 12 && gs.teamPerformanceTrend !== 'improving',
+    trustDamage: -2,
+    romanceDamage: -2,
+    warningMessage: 'is worried your career isn\'t going anywhere',
+    ultimatumAfter: 5
+  },
+  'Controlling behavior': {
+    check: (gs) => gs.socialEventsDeclinedRecently >= 2 && gs.weeksSinceLastQualityTime > 3,
+    trustDamage: -3,
+    romanceDamage: -3,
+    warningMessage: 'feels suffocated by your expectations',
+    ultimatumAfter: 3
+  },
+  'Selfishness': {
+    check: (gs) => gs.weeksSinceLastDate > 4 && gs.socialEventsAttendedRecently >= 2,
+    trustDamage: -3,
+    romanceDamage: -3,
+    warningMessage: 'feels like everything is always about you',
+    ultimatumAfter: 4
+  },
+  'Lack of romance': {
+    check: (gs) => gs.weeksSinceLastDate > 6,
+    trustDamage: -1,
+    romanceDamage: -5,
+    warningMessage: 'feels like the romance has died',
+    ultimatumAfter: 4
+  }
+}
+
+/**
+ * Find the closest matching deal breaker mapping for a given string.
+ * Does fuzzy matching: checks if any mapping key is contained in the
+ * deal breaker string (case-insensitive) or vice versa.
+ */
+export function findDealBreakerMapping(dealBreaker: string): DealBreakerMapping | undefined {
+  // Exact match first
+  if (DEAL_BREAKER_MAPPINGS[dealBreaker]) return DEAL_BREAKER_MAPPINGS[dealBreaker]
+  
+  // Fuzzy match: check if any key is contained in the deal breaker or vice versa
+  const lower = dealBreaker.toLowerCase()
+  for (const [key, mapping] of Object.entries(DEAL_BREAKER_MAPPINGS)) {
+    const keyLower = key.toLowerCase()
+    if (lower.includes(keyLower) || keyLower.includes(lower)) return mapping
+    // Keyword match
+    const keywords = keyLower.split(/\s+/)
+    const matchCount = keywords.filter(kw => kw.length > 3 && lower.includes(kw)).length
+    if (matchCount >= 2 || (keywords.length <= 2 && matchCount >= 1)) return mapping
+  }
+  
+  // Fallback: generic deal breaker with mild consequences
+  return {
+    check: (gs) => gs.weeksSinceLastQualityTime > 5 || gs.weeksSinceLastDate > 5,
+    trustDamage: -2,
+    romanceDamage: -2,
+    warningMessage: 'seems unhappy about something',
+    ultimatumAfter: 5
+  }
 }
 
 // ============================================

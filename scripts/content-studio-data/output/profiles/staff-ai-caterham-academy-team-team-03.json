@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. A civil engineering graduate from the National University of Colombia, he initially worked on bridge construction, but a chance encounter with a local racing team led him down a different path. He started by applying his knowledge of aerodynamics to optimize their modest race car, and his innovative solutions quickly gained attention. He moved to Europe in his early 30s to pursue his passion, working his way up the ranks at various teams before eventually landing at Caterham Academy.\n\nAs Head of Aero, Ricardo believes in a data-driven approach, meticulously analyzing wind tunnel results and on-track performance. He emphasizes the importance of understanding the fundamental principles of airflow and how they interact with the car's components. He's known for his ability to translate complex technical concepts into practical solutions that the mechanics can readily implement. What sets Ricardo apart is his calm demeanor under pressure and his unwavering focus on continuous improvement, always seeking marginal gains that can make a difference on the track.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying black",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed mustache",
+    "description": "Ricardo is a lean man of average height with a thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a cup of strong black coffee at precisely 10:00 AM every day."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 38,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Saoirse O'Malley isn't your typical motorsports agent. A self-made woman with a sharp wit and even sharper business acumen, she carved her own path in the cutthroat world of talent representation, initially focusing on athletes in traditional sports before identifying a gap in the market for personalized management within racing. Her independent streak and thoughtful approach have earned her a reputation for nurturing raw talent and securing lucrative deals, always prioritizing the long-term success and well-being of her clients. A racing driver might cross paths with Saoirse as she actively scouts for promising talent at various racing events, from Formula regional series to local karting championships, seeking individuals with the potential to reach the pinnacle of motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often tied back in a loose braid",
+    "eyeColor": "Emerald Green",
+    "facialHair": null,
+    "description": "Saoirse is of average height with a lean build, a testament to her active lifestyle. She often sports a subtle, knowing smile that hints at her mischievous nature."
+  },
+  "connectionToMotorsport": "Saoirse is a successful agent who represents several up-and-coming drivers in various motorsport categories. She is known for her strategic thinking and ability to secure beneficial sponsorships and racing opportunities for her clients.",
+  "meetingContext": "The player might meet Saoirse at a motorsport networking event or through a mutual contact in the racing industry, perhaps after a particularly impressive performance on the track.",
+  "conversationTopics": [
+    "The evolving landscape of motorsport sponsorships",
+    "Sustainable practices in racing and automotive technology",
+    "The latest wine regions and vintages",
+    "The thrill of drone racing and its technological advancements",
+    "The importance of driver well-being and mental health"
+  ],
+  "canHelp": [
+    "Negotiate contracts with racing teams and sponsors",
+    "Provide personalized career guidance and mentorship",
+    "Connect the player with influential figures in the motorsport community"
+  ],
+  "personality_summary": "An independent and thoughtful agent with a playful side, always looking out for her clients' best interests."
+}

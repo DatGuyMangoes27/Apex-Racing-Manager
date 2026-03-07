@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0434",
+  "name": "Adrenaline Rush",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "Saudi Arabia",
+  "description": "Fueling your passion, one rush at a time.",
+  "story": "Adrenaline Rush is a burgeoning energy drink brand based in Saudi Arabia, seeking to expand its market presence. They believe motorsport provides an ideal platform to showcase their product's energy-boosting properties and align with a dynamic and competitive environment. They are eager to partner with emerging teams to build brand awareness and drive sales in the region.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 25
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0434.png"
+}

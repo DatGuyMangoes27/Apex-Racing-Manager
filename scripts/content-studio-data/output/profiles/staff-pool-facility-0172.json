@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 44,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Ricardo's motorsport journey began somewhat unconventionally. While many in his village dreamed of becoming the next Formula 1 star, Ricardo was fascinated by the intricate dance of data and machinery that made it all possible. He started as a mechanic's assistant at a local karting track, absorbing everything he could about vehicle dynamics and performance. His meticulous nature and knack for spotting subtle anomalies quickly caught the eye of a small racing team, where he transitioned into a data analysis role.\n\nAs a test driver coordinator, Ricardo emphasizes clear communication and meticulous planning. He believes the most valuable insights come from a collaborative environment where drivers, engineers, and mechanics can freely exchange ideas. While his technical skills are still developing, his dedication to process and his unwavering commitment to teamwork are his greatest assets. He strives to create a structured yet adaptable testing program, ensuring every run yields maximum information to improve car setup and driver performance. He's known for his calm demeanor, even under pressure, which helps maintain focus during demanding test sessions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard, neatly trimmed.",
+    "description": "Ricardo is of average height with a stocky build, reflecting years spent around the garage."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a cup of strong black coffee before every test session."
+  ]
+}

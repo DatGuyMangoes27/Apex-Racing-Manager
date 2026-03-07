@@ -1,0 +1,31 @@
+{
+  "name": "Adisak Chaiyawat",
+  "nationality": "Thai",
+  "age": 39,
+  "gender": "male",
+  "contactType": "doctor",
+  "bio": "Dr. Adisak Chaiyawat is a renowned orthopedic surgeon specializing in sports-related injuries, particularly those affecting athletes involved in high-impact sports. After completing his postgraduate studies at Chulalongkorn University, he pursued advanced training in minimally invasive surgical techniques in Germany. Known for his meticulous approach and dedication to patient recovery, Dr. Chaiyawat has earned the respect of both his peers and his patients. His obsessive nature drives him to explore the latest advancements in orthopedic medicine. Despite his demanding career, he finds solace in his personal passions, often retreating to nature for hiking or meditation. \n\nHis connection to motorsport stems from his work with several prominent Thai racing teams and drivers. Many seek his expertise due to the high risk of injuries in racing. A driver might cross paths with Dr. Chaiyawat following an accident on the track, during pre-season physical assessments, or through referrals from other members of the racing community seeking preventative care and performance enhancement strategies related to physical health.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Adisak is of average height and build, with a focused gaze. He often wears impeccably tailored suits, even in casual settings."
+  },
+  "connectionToMotorsport": "Dr. Chaiyawat serves as a consultant for several motorsport teams, providing medical expertise and treatment for driver injuries. He's often seen at racing events, ready to provide immediate care.",
+  "meetingContext": "The player could meet Dr. Chaiyawat after a crash at a race event where he's on call, or through a recommendation from a team manager seeking a top-tier medical professional.",
+  "conversationTopics": [
+    "The latest advancements in orthopedic surgery",
+    "His recent hiking trip in the Himalayas",
+    "The intricacies of Italian opera",
+    "The importance of mindfulness and meditation for performance",
+    "His vintage motorcycle collection"
+  ],
+  "canHelp": [
+    "Provide top-quality medical care and rehabilitation for injuries.",
+    "Offer advice on physical conditioning and injury prevention.",
+    "Connect the player with other medical professionals specializing in motorsport-related health concerns."
+  ],
+  "personality_summary": "An obsessive yet compassionate doctor with a soft spot for nature and the arts."
+}

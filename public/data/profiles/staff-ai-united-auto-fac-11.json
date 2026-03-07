@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 31,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Mihai's passion for motorsport ignited during his university years, where he studied mechanical engineering. He initially joined a small Formula Student team, quickly rising to lead the vehicle dynamics department. This hands-on experience sparked a deep understanding of vehicle performance and testing methodologies. After graduating, Mihai transitioned into a test engineering role at a local racing team, honing his skills in data analysis and driver communication. \n\nMihai's approach to test driver coordination is meticulous and driver-centric. He believes in fostering open communication and creating a supportive environment where drivers feel comfortable providing detailed feedback. He is adept at translating driver input into actionable data, helping the team to optimize vehicle setup and performance. His creative problem-solving and ability to adapt to changing circumstances make him a valuable asset to United Autosports. He thrives on the challenge of extracting the maximum potential from both the drivers and the cars.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mihai is of average height with a wiry build and an intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific brand of Romanian coffee during testing sessions."
+  ]
+}

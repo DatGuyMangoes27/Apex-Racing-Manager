@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0145",
+  "name": "Restoran Mak Kiah",
+  "category": "local",
+  "tier": "entry",
+  "country": "Malaysia",
+  "description": "Authentic Malaysian cuisine, served with love.",
+  "story": "Restoran Mak Kiah is a family-owned restaurant chain serving traditional Malaysian dishes. Passionate about supporting local talent, they see motorsport sponsorship as a way to give back to the community and increase brand awareness within Malaysia. They are looking for a partner who embodies the spirit of Malaysian determination and can deliver consistent results.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15,
+    "nationalities": [
+      "Malaysia"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0145.png"
+}

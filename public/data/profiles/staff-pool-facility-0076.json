@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ahmad bin Razali",
+    "nationality": "Malaysian",
+    "age": 37,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Ahmad's journey into motorsport began unexpectedly during his engineering studies. A university project involving aerodynamics sparked a fascination that led him to pursue internships with local racing teams. He quickly discovered a passion for wind tunnel testing, recognizing its crucial role in optimizing vehicle performance. Over the years, he has honed his skills, becoming adept at analyzing complex airflow patterns and translating data into actionable improvements for car designs.\n\nAhmad is known for his meticulous approach to wind tunnel operation. He believes in the power of precise measurements and rigorous testing protocols. He's deeply committed to fostering a data-driven culture within the team. His colleagues appreciate his ability to explain intricate concepts clearly and his unwavering dedication to pushing the boundaries of aerodynamic efficiency.\n\nHis distinctive trait lies in his ability to identify subtle anomalies in airflow that others might miss. This keen observational skill, coupled with his expertise in computational fluid dynamics (CFD), makes him a valuable asset in developing cutting-edge aerodynamic solutions.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly cropped with a slight receding hairline",
+      "eyeColor": "Dark brown",
+      "facialHair": "A neatly trimmed goatee",
+      "description": "Ahmad is of average height with a lean build and a focused gaze."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook for jotting down observations.",
+      "Has a habit of meticulously cleaning the wind tunnel equipment after each session.",
+      "Prefers to listen to traditional Malaysian music while working."
+    ]
+  }
+]

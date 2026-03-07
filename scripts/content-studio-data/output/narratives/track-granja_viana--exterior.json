@@ -1,0 +1,61 @@
+{
+  "history": "The Kartódromo Internacional da Granja Viana, located in Cotia, near São Paulo, is a cornerstone of Brazilian karting. Since its opening in the late 1990s, it has hosted countless national and international karting events, nurturing the talents of many drivers who would later find success in Formula 1 and other motorsport disciplines. While specific historical records detailing races held exclusively on the Exterior layout are scarce, it's a frequently used configuration for regional championships and single-make karting series. The venue is known for its challenging and technical nature, making it a proving ground for aspiring racers. It's also a popular spot for arrive-and-drive karting, giving motorsport enthusiasts the chance to experience the thrill of racing.",
+  "atmosphere": "The air crackles with anticipation at Granja Viana during a race on the Exterior configuration. The smell of burning rubber and high-octane fuel hangs heavy in the air. The roar of high-revving two-stroke engines echoes off the surrounding hills, creating a symphony of speed. Spectators line the fences, cheering on their favorite drivers as they navigate the tight and twisty layout. The energy is infectious, a vibrant mix of passion and competition that defines Brazilian karting.",
+  "trackCharacter": "The Exterior layout at Granja Viana is a fast and flowing configuration that emphasizes momentum and precision. Its relatively short length and 10 turns demand constant driver input, with little time to relax between corners. The layout rewards aggressive driving styles and a kart setup that favors mid-corner speed. The emphasis is on maintaining minimum speed through the turns, maximizing exit speed, and setting up overtakes. It's a different experience than the full circuit, requiring a more reactive style.",
+  "nickname": "The Speedway Sprint",
+  "famousCorners": [
+    {
+      "name": "Curva do Lago (Lake Corner)",
+      "description": "A sweeping right-hander that requires a delicate balance of speed and precision.",
+      "challenge": "Maintaining momentum while avoiding running wide onto the astroturf."
+    },
+    {
+      "name": "Curva do Café (Coffee Corner)",
+      "description": "A quick right-hand kink that is barely a corner but requires a flick of the wheel and a lift of the throttle to avoid losing time.",
+      "challenge": "Perfecting the line and timing the throttle application to maximize corner speed."
+    },
+    {
+      "name": "Curva da Arquibancada (Grandstand Corner)",
+      "description": "A hairpin that is a key overtaking spot. Requires a late braking maneuver and a perfect apex to set up the next straight",
+      "challenge": "Balancing braking force with corner speed to avoid locking up the wheels or running wide."
+    },
+    {
+      "name": "Curva da Caixa D'Água (Water Tank Corner)",
+      "description": "A medium-speed left-hander that leads onto the longest straight of the Exterior configuration.",
+      "challenge": "Getting a good exit to maximize speed down the straight, crucial for overtaking."
+    },
+    {
+      "name": "Curva do S (S-Bend)",
+      "description": "A quick chicane that tests a driver's reflexes and kart control.",
+      "challenge": "Maintaining a smooth and flowing line through the complex while avoiding upsetting the kart's balance."
+    }
+  ],
+  "keyFactors": [
+    "Mid-corner speed",
+    "Braking precision",
+    "Kart setup for agility",
+    "Aggressive driving style",
+    "Consistent lap times"
+  ],
+  "overtakingSpots": [
+    "Curva da Arquibancada (Grandstand Corner)",
+    "Approach to Curva da Caixa D'Água (Water Tank Corner)",
+    "The S-Bend"
+  ],
+  "historySnippets": [
+    "Granja Viana has hosted the Brazilian Karting Championship multiple times.",
+    "Many Formula 1 drivers, including Felipe Massa and Rubens Barrichello, honed their skills at Granja Viana.",
+    "The kartodrome is located close to São Paulo, making it easily accessible.",
+    "Granja Viana offers various track configurations, including the Full Circuit, Short Circuit, and Exterior layouts.",
+    "The venue is known for its challenging and technical nature.",
+    "The Exterior layout is frequently used for regional and single-make karting series."
+  ],
+  "weatherNotes": "The weather at Granja Viana can be unpredictable. Sudden rain showers are common, especially during the summer months (December to March). These conditions can drastically change the grip levels and require drivers to adapt quickly. The track can also get very hot during the day, which can affect tire performance. Monitoring weather radar is crucial for race strategy.",
+  "drivingAdvice": "On the Exterior layout, focus on maintaining momentum through the corners. The track is relatively short, so every tenth of a second counts. Get a good exit out of Curva da Caixa D'Água to maximize your speed down the straight. Be aggressive in the braking zones, but avoid locking up the wheels. Practice your overtaking maneuvers at Curva da Arquibancada. Remember, consistency is key.",
+  "famousRaces": [
+    "Brazilian Karting Championship: Granja Viana has hosted several rounds of this prestigious national championship, showcasing the best karting talent in Brazil.",
+    "São Paulo State Karting Championship: The Exterior layout is a regular feature in this regional championship, attracting a large field of competitors.",
+    "Various single-make karting series: Several single-make series, such as those using Honda engines, have held races on the Exterior layout, providing affordable and competitive racing."
+  ],
+  "localCulture": "Cotia, where Granja Viana is located, is a suburb of São Paulo. Expect to find delicious Brazilian cuisine, including churrasco (barbecue) and feijoada (bean stew). The locals are passionate about motorsport and are always welcoming to visitors. Paddock life is lively, with teams working hard to prepare their karts and drivers socializing between races. Be sure to try some local coffee – it's strong and flavorful!"
+}

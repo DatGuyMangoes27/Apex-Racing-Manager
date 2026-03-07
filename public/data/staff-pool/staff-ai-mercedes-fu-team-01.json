@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Zimmerman",
+  "nationality": "Swiss",
+  "age": 50,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Hans-Peter's journey into motorsport began with a childhood fascination for precision mechanics, fueled by his father's watchmaking business. He earned a degree in Mechanical Engineering from ETH Zurich, focusing on advanced materials and computational fluid dynamics. After graduating, he spent several years at Sauber, refining his skills in aerodynamic development before moving to Mercedes-AMG as a senior engineer. \n\nHans-Peter is known for his methodical approach to problem-solving and his ability to translate complex data into actionable insights. He believes in fostering a collaborative environment where engineers can freely exchange ideas and challenge conventional thinking. His focus is on optimizing car performance through incremental improvements and pushing the boundaries of technological innovation within the team's resources. His calm demeanor and unwavering focus make him a rock within the team.\n\nWhat truly sets Hans-Peter apart is his uncanny ability to foresee potential mechanical failures, often identifying subtle warning signs before they escalate into major issues. He has a knack for understanding the interplay between various systems and their impact on overall car performance.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium height with a lean build, Hans-Peter always seems to have a thoughtful expression on his face."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to communicate through detailed technical reports rather than casual conversation."
+  ]
+}

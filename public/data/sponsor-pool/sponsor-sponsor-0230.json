@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0230",
+  "name": "Genève Roues",
+  "category": "local",
+  "tier": "entry",
+  "country": "Switzerland",
+  "description": "Your trusted source for premium automotive wheels in Geneva.",
+  "story": "Genève Roues is a family-owned business deeply rooted in the Geneva automotive scene. We've been providing the city's drivers with top-quality wheels for over 25 years. Motorsport represents the pinnacle of automotive engineering, and we're eager to support local talent pushing the boundaries of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0230.png"
+}

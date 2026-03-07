@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0132",
+  "name": "Outback Burst",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "Australia",
+  "description": "Fuel your adventure with Outback Burst!",
+  "story": "Outback Burst is an Australian energy drink company focused on capturing the spirit of adventure and the raw energy of the Australian outback. We believe in supporting individuals who push their limits. Motorsport provides a perfect platform to showcase the brand's dedication to performance and excitement, while reaching a broad audience of adrenaline enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0132.png"
+}

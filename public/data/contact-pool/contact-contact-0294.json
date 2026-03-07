@@ -1,0 +1,31 @@
+{
+  "name": "Imani Okumu",
+  "nationality": "Kenyan",
+  "age": 33,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Imani Okumu is a rising star in Nairobi's banking scene, known for her sharp financial acumen and unwavering loyalty to her clients. She bypassed traditional academic routes, building her expertise through relentless self-study and a knack for identifying lucrative opportunities. Her romantic streak sometimes clashes with her pragmatic business sense, leading to interesting decisions, but her stubbornness ensures she always finds a way to make things work, eventually forgiving mistakes along the way.\n\nWhile not directly involved in motorsport, Imani's bank handles the accounts of several prominent Kenyan racing teams and sponsors. She's also a polo enthusiast and often attends events where racing drivers are guests or sponsors, providing ample opportunities for a connection to be made. Her wealth and influence make her a valuable contact for any driver seeking financial backing or strategic advice.",
+  "physical": {
+    "skinTone": "Ebony",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, intricately braided",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Imani possesses a striking elegance with a commanding presence. Her sharp features are softened by her warm, expressive eyes."
+  },
+  "connectionToMotorsport": "Imani's bank manages the finances for several Kenyan motorsport teams and sponsors, giving her indirect involvement in the racing world. She also attends social events related to polo where she may encounter members of the motorsport community.",
+  "meetingContext": "The player could meet Imani at a motorsport-related fundraising gala, or through a mutual business acquaintance involved in racing sponsorships.",
+  "conversationTopics": [
+    "The Kenyan economy and investment opportunities",
+    "Her latest travels and surfing adventures",
+    "The parallels between polo and business strategy",
+    "Her passion for jazz music",
+    "Ethical banking practices and sustainable development"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with her banking clients.",
+    "Provide sound financial advice and investment strategies.",
+    "Introduce the player to influential figures in the Kenyan business community."
+  ],
+  "personality_summary": "A self-made banker with a romantic heart and a pragmatic mind, stubborn but ultimately forgiving."
+}

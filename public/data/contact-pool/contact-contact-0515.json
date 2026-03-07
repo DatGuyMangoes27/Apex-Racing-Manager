@@ -1,0 +1,31 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 44,
+  "gender": "female",
+  "contactType": "philanthropist",
+  "bio": "Isabela Oliveira is a prominent figure in Brazilian high society, known for her astute business acumen and generous philanthropic endeavors. After inheriting her family's industrial conglomerate, she diversified the company's portfolio, achieving record profits and expanding into sustainable technologies. Despite her success, Isabela maintains a low profile, preferring quiet evenings at home listening to jazz or attending private art viewings. She's known for her impulsive decisions in business, balanced by a nurturing and forgiving nature in her personal life, though her perfectionist tendencies often surface. Drivers might cross paths with Isabela at exclusive motorsport charity galas or events, where she is known to be a major donor.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back in a sophisticated bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabela is a striking woman with a commanding presence. Her sharp features are softened by a warm smile, and she always dresses impeccably."
+  },
+  "connectionToMotorsport": "Isabela is a passionate motorsport enthusiast and a major sponsor of a young driver development program, providing financial support and mentorship to promising talents.",
+  "meetingContext": "The player might meet Isabela at a high-end charity auction benefiting a motorsport-related cause or at an exclusive after-party following a Formula 1 race in São Paulo.",
+  "conversationTopics": [
+    "The latest developments in sustainable energy technologies",
+    "Rare and vintage watch collecting",
+    "The burgeoning Brazilian art scene",
+    "Her scuba diving adventures in Fernando de Noronha",
+    "The potential of young Brazilian racing talent"
+  ],
+  "canHelp": [
+    "Provide significant financial backing for the player's racing career.",
+    "Connect the player with influential figures in the Brazilian business world.",
+    "Offer invaluable mentorship and guidance on navigating the complexities of the motorsport industry."
+  ],
+  "personality_summary": "An impulsive but nurturing perfectionist, Isabela is a generous philanthropist with a keen eye for talent."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Albuquerque",
+  "nationality": "Brazilian",
+  "age": 42,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in São Paulo, attending Formula 1 races at Interlagos. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. He quickly excelled in the field, contributing to several smaller racing teams before landing a role at Tickford Racing five years ago. Ricardo's methodical approach and dedication to data analysis have made him a valuable asset. He believes a successful race strategy hinges on meticulous preparation and the ability to adapt quickly to changing track conditions. His distinctive analytical skills are complemented by his uncanny ability to predict mechanical failures before they occur, making him invaluable on race day. He is known for his calm demeanor even under immense pressure.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a slightly athletic build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Drinks mate tea constantly throughout the day.",
+    "Has a habit of tapping his pen on the table when deep in thought."
+  ]
+}

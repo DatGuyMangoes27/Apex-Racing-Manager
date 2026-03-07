@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0220",
+  "name": "UbuntuVest",
+  "category": "finance",
+  "tier": "high",
+  "country": "South Africa",
+  "description": "Empowering your financial future, responsibly.",
+  "story": "UbuntuVest believes in the power of community and shared success. As a leading South African investment firm, they see motorsport as a platform to showcase their commitment to excellence and innovation. They seek partnerships that reflect their values of integrity, performance, and social responsibility, supporting drivers who embody these principles both on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0220.png"
+}

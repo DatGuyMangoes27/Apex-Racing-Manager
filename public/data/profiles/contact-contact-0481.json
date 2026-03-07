@@ -1,0 +1,31 @@
+{
+  "name": "Lenka Veselá",
+  "nationality": "Czech",
+  "age": 60,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Lenka Veselá is a seasoned motorsport journalist with over thirty years of experience covering Formula 1, MotoGP, and various touring car championships. Known for her insightful analysis and unwavering integrity, she's a respected figure in the paddock. While she maintains a professional distance, her sophisticated charm and genuine interest in the sport endear her to many. \n\nLenka's journalistic approach is less about sensationalism and more about understanding the nuances of racing - the strategy, the technology, and the human element. This often leads her to seek out drivers who demonstrate not only talent but also a deep understanding of their craft. A racing driver might cross paths with her during press conferences, paddock interviews, or at exclusive motorsport events, where she's always on the lookout for the next compelling story.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Lenka has a dignified bearing and carries herself with grace. Her tailored suits and understated jewelry reflect her refined taste."
+  },
+  "connectionToMotorsport": "Lenka is a respected motorsport journalist for a prominent Czech newspaper and various international online publications. She regularly attends races and provides insightful commentary on the sport's key developments.",
+  "meetingContext": "The player might meet Lenka at a post-race press conference or during a media day event at a European circuit.",
+  "conversationTopics": [
+    "The history of motorsport",
+    "The evolution of racing technology",
+    "Wine tasting in the Moravian region",
+    "The importance of ethical journalism",
+    "Jazz music"
+  ],
+  "canHelp": [
+    "Provide positive media coverage",
+    "Introduce the player to influential figures in the European racing scene",
+    "Offer valuable insights into the political landscape of motorsport"
+  ],
+  "personality_summary": "A sophisticated and principled journalist with a passion for motorsport and a keen eye for talent."
+}

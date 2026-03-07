@@ -10,16 +10,22 @@ import type {
   MessageChoice,
   MessageTone,
   MessageChoiceCategory,
+  MessageIntentTag,
   NpcResponse,
   SocialBio
 } from '@/data/messaging-config';
+import { getNextGeminiApiKey } from '@/services/geminiKeyRotation';
 
 export interface DialogueGenerationContext {
   // Contact info
   contactName: string
-  contactType: 'partner' | 'family' | 'friend' | 'business' | 'rival' | 'potential_date'
+  contactType: 'partner' | 'family' | 'friend' | 'business' | 'rival' | 'potential_date' | 'team_staff' | 'rival_driver' | 'sponsor_rep' | 'team_principal'
   traits: string[]
   bio?: SocialBio
+  
+  // ── Full profile block (from pre-gen data) ──
+  fullProfileBlock?: string       // Formatted text block with ALL pre-gen fields for AI
+  knowledgeTier?: 'public' | 'paddock' | 'inner_circle' | 'team_only' | 'partner_only'
   
   // Relationship state
   relationshipStatus?: string
@@ -28,6 +34,9 @@ export interface DialogueGenerationContext {
   romanceMeter: number
   trustMeter: number
   
+  // Emergent romance — true if this friend can become a romantic interest
+  romanticEligible?: boolean
+  
   // Current mood
   currentMood: string
   moodEnergy: string
@@ -35,8 +44,14 @@ export interface DialogueGenerationContext {
   // Conversation history
   lastMessageFromThem?: string
   daysSinceLastContact: number
+  /** Whether the player is currently in an active texting session (same game-day, mid-conversation) */
+  isActiveSession: boolean
+  /** Last few messages for continuity */
+  recentMessageHistory?: string[]
+  /** Topics discussed previously (from topic tracking) */
+  previousTopics?: Array<{ topic: string; sentiment: string; summary?: string }>
   
-  // Recent events
+  // Recent events (filtered by knowledge tier)
   recentEvents: Array<{
     event: string
     weeksAgo: number
@@ -47,6 +62,509 @@ export interface DialogueGenerationContext {
   playerName: string
   playerRecentRaceResult?: string
   playerCurrentStress: number
+  
+  // ── Extended player context (new) ──
+  playerState?: {
+    // Mental/physical
+    stress: number
+    fatigue: number
+    morale: number
+    confidence: number
+    injuryStatus?: string        // e.g. "muscle strain, 2 weeks recovery" or null
+    pressureLevel?: string       // 'normal' | 'high' | 'extreme' | 'critical'
+  }
+  
+  racingContext?: {
+    lastRaces: Array<{ position: number; track: string; series: string; dnf: boolean; fastestLap: boolean; wetRace: boolean }>
+    championshipPosition?: number
+    pointsToLeader?: number
+    roundsRemaining?: number
+    seasonWins: number
+    seasonPodiums: number
+    seasonDNFs: number
+    consecutiveWins: number
+    consecutivePodiums: number
+    isRaceWeek: boolean
+    nextRaceTrack?: string
+    daysUntilNextRace?: number
+    weatherForecast?: string     // For next race weekend
+  }
+  
+  teamContext?: {
+    teamName: string
+    teamTier: string
+    seriesNames: string[]
+    staffCount: number
+    teamMorale?: number
+    boardMood?: number
+    facilityUpgradeInProgress?: boolean
+    recentStaffChange?: string   // "Hired new chief engineer" or "Lost strategist"
+    carDevelopmentNote?: string  // "New aero package ready" or "R&D stalled"
+  }
+  
+  financialContext?: {
+    cashHealth: 'critical' | 'tight' | 'stable' | 'comfortable' | 'excellent'
+    runwayWeeks?: number
+    costCapPercent?: number
+    recentSponsorDeal?: string
+    recentSponsorLoss?: string
+    personalNetWorth?: number
+    lifestyleLevel?: string
+    hasActiveLoans?: boolean
+    investmentPerformance?: string // 'up' | 'down' | 'stable'
+  }
+  
+  // Game time (for scheduling invitations)
+  currentWeek?: number
+  currentDay?: number
+  
+  personalContext?: {
+    partnerStatus?: string       // 'single', 'dating Maria', 'married to Sofia'
+    partnerHappiness?: number
+    childrenSummary?: string     // "2 kids: Max (5), Luna (2)"
+    activeScandalType?: string
+    activeRivalry?: string       // "Heated rivalry with Carlos Martinez"
+    recentSocialEvent?: string
+    foundationCause?: string
+    currentHobby?: string
+    vacationPlanned?: boolean
+  }
+  
+  mediaContext?: {
+    followerCount?: number
+    recentPostWentViral?: boolean
+    recentControversy?: boolean
+    fanSentiment?: string        // 'positive' | 'neutral' | 'negative'
+    recentHeadline?: string      // Most recent press clipping about player
+  }
+  
+  // ── Staff-specific context (for team_staff contacts) ──
+  staffDomainContext?: string     // Domain-specific data: budget numbers, car performance, media requests, etc.
+  
+  // ── Rival-specific context (for rival_driver contacts) ──
+  rivalContext?: {
+    recentH2HResult?: string     // "You beat them by 2 positions at Monza"
+    championshipGap?: number     // Points gap between player and this rival
+    onTrackIncident?: boolean    // Recent on-track clash
+    sameTeamHistory?: boolean    // Were ever teammates
+  }
+  
+  // ── Sponsor-specific context (for sponsor_rep contacts) ──
+  sponsorContext?: {
+    sponsorSatisfaction?: number
+    sponsorPayment?: number
+    contractWeeksRemaining?: number
+    recentActivation?: string
+    warningIssued?: boolean
+  }
+  
+  // ── Invitation decline context ──
+  /** If the NPC's last message included an invitation/action request, describe it here so the AI can offer a decline option */
+  lastNpcActionRequest?: string
+}
+
+// ============================================
+// KNOWLEDGE TIER SYSTEM
+// ============================================
+
+import type { ContactInfo, ContactType, KnowledgeTier } from '@/types/personalLife'
+
+/**
+ * Determine what knowledge tier a contact has - i.e., what game state they would
+ * realistically know about.
+ */
+export function getKnowledgeTier(contact: ContactInfo): KnowledgeTier {
+  const type = contact.type
+  const relLevel = contact.relationshipLevel
+  
+  // Partner always gets the deepest tier
+  if (type === 'partner') return 'partner_only'
+  
+  // Team staff get team-level knowledge
+  if (type === 'team_staff') return 'team_only'
+  
+  // Close friends/family (relationship > 70) get inner circle
+  if ((type === 'family' || type === 'friend') && relLevel > 70) return 'inner_circle'
+  if (type === 'family') return 'inner_circle'
+  
+  // Paddock people (rival drivers, team principals, sponsor reps) get paddock knowledge
+  if (type === 'rival_driver' || type === 'team_principal' || type === 'sponsor_rep') return 'paddock'
+  
+  // Business contacts with decent relationship get paddock knowledge
+  if (type === 'business' && relLevel > 50) return 'paddock'
+  
+  // Everyone else gets public only
+  return 'public'
+}
+
+// ============================================
+// FULL PROFILE BLOCK BUILDER
+// ============================================
+
+/**
+ * Build a comprehensive text block from a contact's pre-gen data for the AI.
+ * This ensures Gemini always knows WHO it's playing.
+ */
+export function buildFullProfileBlock(contact: ContactInfo): string {
+  const lines: string[] = []
+  
+  lines.push('CHARACTER PROFILE:')
+  lines.push(`Name: ${contact.name}`)
+  if (contact.age) lines.push(`Age: ${contact.age}`)
+  if (contact.nationality) lines.push(`Nationality: ${contact.nationality}`)
+  if (contact.gender) lines.push(`Gender: ${contact.gender}`)
+  if (contact.occupation) lines.push(`Occupation: ${contact.occupation}`)
+  
+  // Personality
+  if (contact.personalitySummary) {
+    lines.push(`\nPersonality: ${contact.personalitySummary}`)
+  }
+  if (contact.traits.length > 0) {
+    lines.push(`Traits: ${contact.traits.join(', ')}`)
+  }
+  if (contact.interests && contact.interests.length > 0) {
+    lines.push(`Interests: ${contact.interests.join(', ')}`)
+  }
+  
+  // Contact-specific fields
+  if (contact.conversationTopics && contact.conversationTopics.length > 0) {
+    lines.push(`Natural conversation topics: ${contact.conversationTopics.join(', ')}`)
+  }
+  if (contact.canHelp && contact.canHelp.length > 0) {
+    lines.push(`How they can help you: ${contact.canHelp.join(', ')}`)
+  }
+  if (contact.connectionToMotorsport) {
+    lines.push(`Connection to motorsport: ${contact.connectionToMotorsport}`)
+  }
+  if (contact.metAt) {
+    lines.push(`How you met: ${contact.metAt}`)
+  }
+  if (contact.educationLevel) lines.push(`Education: ${contact.educationLevel}`)
+  if (contact.wealthLevel) lines.push(`Wealth level: ${contact.wealthLevel}`)
+  if (contact.socialCircle) lines.push(`Social circle: ${contact.socialCircle}`)
+  
+  // Romantic-specific fields
+  if (contact.loveLanguage) lines.push(`\nLove language: ${contact.loveLanguage}`)
+  if (contact.firstImpression) lines.push(`First impression of you: ${contact.firstImpression}`)
+  if (contact.style) lines.push(`Personal style: ${contact.style}`)
+  if (contact.dealBreakers && contact.dealBreakers.length > 0) {
+    lines.push(`Deal breakers: ${contact.dealBreakers.join(', ')}`)
+  }
+  if (contact.desires) {
+    lines.push(`Wants children: ${contact.desires.wantsChildren ? `Yes (${contact.desires.desiredChildrenCount})` : 'No'}`)
+    lines.push(`Wants marriage: ${contact.desires.wantsMarriage ? 'Yes' : 'No'}`)
+    lines.push(`Lifestyle expectations: ${contact.desires.lifestyleExpectations}`)
+    lines.push(`Quality time importance: ${contact.desires.qualityTimeImportance}/10`)
+    lines.push(`Privacy importance: ${contact.desires.privacyImportance}/10`)
+  }
+  
+  // Staff-specific fields
+  if (contact.staffRole) lines.push(`\nRole: ${contact.staffRole.replace(/_/g, ' ')}`)
+  if (contact.staffPersonality) lines.push(`Work personality: ${contact.staffPersonality}`)
+  if (contact.staffQuirks && contact.staffQuirks.length > 0) {
+    lines.push(`Quirks: ${contact.staffQuirks.join(', ')}`)
+  }
+  
+  // Rival driver fields
+  if (contact.driverPersonality) lines.push(`\nDriving personality: ${contact.driverPersonality}`)
+  if (contact.driverCareerStage) lines.push(`Career stage: ${contact.driverCareerStage}`)
+  if (contact.driverTeamName) lines.push(`Team: ${contact.driverTeamName}`)
+  if (contact.driverSeriesName) lines.push(`Series: ${contact.driverSeriesName}`)
+  
+  // Sponsor rep fields
+  if (contact.sponsorName) lines.push(`\nRepresents: ${contact.sponsorName}`)
+  if (contact.sponsorTier) lines.push(`Sponsor tier: ${contact.sponsorTier}`)
+  
+  // Team principal fields
+  if (contact.teamPhilosophy) lines.push(`\nTeam philosophy: ${contact.teamPhilosophy}`)
+  
+  // Bio
+  if (contact.bio) {
+    lines.push('\nBACKGROUND:')
+    if (contact.bio.background) lines.push(contact.bio.background)
+    if (contact.bio.careerNarrative) lines.push(`Career: ${contact.bio.careerNarrative}`)
+    if (contact.bio.lifeSituation) lines.push(`Current life: ${contact.bio.lifeSituation}`)
+    if (contact.bio.anecdotes && contact.bio.anecdotes.length > 0) {
+      lines.push('Fun facts:')
+      contact.bio.anecdotes.forEach(a => lines.push(`- ${a}`))
+    }
+  }
+  
+  return lines.join('\n')
+}
+
+// ============================================
+// MAIN CONTEXT BUILDER
+// ============================================
+
+/**
+ * Build complete dialogue context from game state.
+ * This is the "everything function" that gives Gemini full awareness.
+ * Data is filtered by the contact's knowledge tier.
+ */
+export function buildDialogueContext(
+  contact: ContactInfo,
+  conversation: { messages: Array<{ sender: string; content: string; isSessionEnd?: boolean; timestamp?: { week?: number; day?: number; year?: number } }>; topicHistory?: Array<{ topic: string; sentiment: string; summary?: string }>; conversationStage?: string; exchangesToday?: number; lastExchangeDay?: number } | undefined,
+  gameState: {
+    player: {
+      firstName: string
+      lastName: string
+      mentalState: { stress: number; fatigue?: number; morale?: number; confidence?: number }
+      health?: { injuryState?: { type?: string; severity?: string; recoveryWeeksRemaining?: number } }
+      reputation: number
+      raceHistory: Array<{ position: number; trackName?: string; seriesName?: string; dnf?: boolean; fastestLap?: boolean; wetRace?: boolean; week: number; year: number }>
+      totalWins: number
+      totalPodiums: number
+      consecutiveWins: number
+      consecutivePodiums: number
+      totalFastestLaps?: number
+      championships: number
+    }
+    currentWeek: number
+    currentYear: number
+    currentDay: number
+    nextRaceWeek?: number
+    nextRaceTrack?: string
+    seasonCompleted?: boolean
+    ownedTeam?: {
+      name: string
+      tier: string
+      boardMood: number
+      teamMorale?: number
+      staff: Array<{ name: string; role: string }>
+      facilityStaff?: Array<{ name: string; role: string }>
+      finances: { cash: number; weeklyBurnRate?: number }
+      budgets?: { costCapSpend?: number; costCapLimit?: number }
+      spareParts?: { criticalShortage?: boolean }
+    } | null
+    seriesEntries?: Array<{ seriesId: string; seriesName?: string; standings?: { position?: number; points?: number; pointsToLeader?: number; roundsRemaining?: number } }>
+    personalLife?: {
+      partner?: { firstName: string; lastName: string; happiness: number; relationshipStatus?: string }
+      children?: Array<{ firstName: string; age: number }>
+      messaging?: { contacts: Array<{ id: string }> }
+      lifestyleLevel?: { tier: string }
+      rivalries?: Array<{ rivalName: string; intensity: number; isActive: boolean }>
+      scandals?: Array<{ type: string; isResolved: boolean; publicKnowledge: boolean }>
+      foundations?: Array<{ name: string; cause: string }>
+    }
+    socialPosts?: Array<{ wentViral?: boolean; hadBacklash?: boolean; engagement?: { likes: number } }>
+    socialMediaState?: { totalFollowers?: number }
+    pressClippings?: Array<{ headline: string; week: number; year: number }>
+    boardTargets?: Array<{ description: string; progress?: number }>
+  }
+): DialogueGenerationContext {
+  const tier = getKnowledgeTier(contact)
+  const p = gameState.player
+  const team = gameState.ownedTeam
+  const pLife = gameState.personalLife
+  
+  // ── Calculate days since last contact ──
+  // Use the actual message timestamp to compute real elapsed days
+  const lastMsg = conversation?.messages?.slice(-1)?.[0]
+  const lastMsgTimestamp = (lastMsg as any)?.timestamp as { week?: number; day?: number; year?: number } | undefined
+  const currentAbsoluteDay = (gameState.currentYear * 365) + (gameState.currentWeek * 7) + gameState.currentDay
+  const lastMsgAbsoluteDay = lastMsgTimestamp?.week != null && lastMsgTimestamp?.day != null
+    ? ((lastMsgTimestamp.year ?? gameState.currentYear) * 365) + (lastMsgTimestamp.week * 7) + (lastMsgTimestamp.day || 1)
+    : 0
+  const daysSinceLastContact = lastMsgAbsoluteDay > 0
+    ? Math.max(0, currentAbsoluteDay - lastMsgAbsoluteDay)
+    : 7  // default for conversations with no messages
+  
+  // ── Build recent events (filtered by tier) ──
+  const recentEvents: Array<{ event: string; weeksAgo: number; wasPositive: boolean }> = []
+  
+  // Race results (public knowledge)
+  const recentRaces = (p.raceHistory || []).slice(-3)
+  for (const race of recentRaces) {
+    const weeksAgo = Math.max(0, gameState.currentWeek - race.week)
+    if (weeksAgo > 4) continue
+    if (race.dnf) {
+      recentEvents.push({ event: `DNF at ${race.trackName || 'unknown track'}`, weeksAgo, wasPositive: false })
+    } else if (race.position === 1) {
+      recentEvents.push({ event: `Won at ${race.trackName || 'unknown track'}${race.fastestLap ? ' with fastest lap' : ''}`, weeksAgo, wasPositive: true })
+    } else if (race.position <= 3) {
+      recentEvents.push({ event: `P${race.position} at ${race.trackName || 'unknown track'}`, weeksAgo, wasPositive: true })
+    } else if (race.position <= 10) {
+      recentEvents.push({ event: `P${race.position} at ${race.trackName || 'unknown track'}`, weeksAgo, wasPositive: race.position <= 5 })
+    }
+  }
+  
+  // Championship context (public)
+  const standing = gameState.seriesEntries?.[0]?.standings
+  if (standing?.position === 1) {
+    recentEvents.push({ event: `Leading the championship by ${standing.pointsToLeader || 0} points`, weeksAgo: 0, wasPositive: true })
+  } else if (standing?.position && standing.position <= 3) {
+    recentEvents.push({ event: `P${standing.position} in championship, ${Math.abs(standing.pointsToLeader || 0)} points from leader`, weeksAgo: 0, wasPositive: false })
+  }
+  
+  // Paddock+ knowledge events
+  if (tier !== 'public') {
+    if (team && team.boardMood < 40) {
+      recentEvents.push({ event: 'Board is unhappy with team direction', weeksAgo: 0, wasPositive: false })
+    }
+    if (team && (team.teamMorale ?? 75) < 40) {
+      recentEvents.push({ event: 'Team morale is low', weeksAgo: 0, wasPositive: false })
+    }
+  }
+  
+  // Inner circle+ knowledge
+  if (tier === 'inner_circle' || tier === 'partner_only' || tier === 'team_only') {
+    if (p.mentalState.stress > 70) {
+      recentEvents.push({ event: 'Player is very stressed', weeksAgo: 0, wasPositive: false })
+    }
+    if (pLife?.scandals?.some(s => !s.isResolved && s.publicKnowledge)) {
+      const scandal = pLife.scandals.find(s => !s.isResolved)
+      recentEvents.push({ event: `Active scandal: ${scandal?.type}`, weeksAgo: 0, wasPositive: false })
+    }
+  }
+  
+  // Media events (public)
+  const recentViral = gameState.socialPosts?.slice(-5)?.find(p => p.wentViral)
+  if (recentViral) {
+    recentEvents.push({ event: 'Recent social media post went viral', weeksAgo: 0, wasPositive: true })
+  }
+  const recentBacklash = gameState.socialPosts?.slice(-5)?.find(p => p.hadBacklash)
+  if (recentBacklash) {
+    recentEvents.push({ event: 'Recent social media controversy', weeksAgo: 0, wasPositive: false })
+  }
+  
+  // ── Build the context ──
+  const ctx: DialogueGenerationContext = {
+    contactName: contact.name,
+    contactType: contact.type,
+    traits: contact.traits,
+    bio: contact.bio,
+    fullProfileBlock: buildFullProfileBlock(contact),
+    knowledgeTier: tier,
+    
+    relationshipStatus: contact.datingStatus || (contact.type === 'partner' ? 'partner' : undefined),
+    relationshipLevel: contact.relationshipLevel,
+    affectionMeter: contact.affectionMeter,
+    romanceMeter: contact.romanceMeter,
+    trustMeter: contact.trustMeter,
+    romanticEligible: contact.romanticEligible,
+    
+    currentMood: contact.currentMood?.overall || 'neutral',
+    moodEnergy: contact.currentMood?.energy || 'medium',
+    
+    lastMessageFromThem: conversation?.messages?.filter(m => m.sender === 'npc')?.slice(-1)?.[0]?.content,
+    daysSinceLastContact,
+    // Active session = same game-day AND the last message was NOT a session-ending farewell
+    // Also check conversationStage — if 'cooling_off', the previous session ended
+    isActiveSession: daysSinceLastContact === 0 
+      && conversation?.conversationStage !== 'cooling_off'
+      && !conversation?.messages?.slice(-1)?.[0]?.isSessionEnd,
+    recentMessageHistory: (() => {
+      // Include session boundary markers so the AI knows where conversations end
+      const msgs = conversation?.messages?.slice(-8) || []
+      const history: string[] = []
+      for (const m of msgs) {
+        if (m.isSessionEnd) {
+          history.push(`[${m.sender === 'npc' ? contact.name : 'You'}: ${m.content}]`)
+          history.push('--- conversation ended ---')
+        } else {
+          history.push(`${m.sender === 'npc' ? contact.name : 'You'}: ${m.content}`)
+        }
+      }
+      return history.slice(-8) // Cap at 8 entries (including markers)
+    })(),
+    previousTopics: conversation?.topicHistory?.slice(-10),
+    
+    recentEvents,
+    
+    playerName: `${p.firstName} ${p.lastName}`,
+    playerRecentRaceResult: recentRaces.length > 0 
+      ? (recentRaces[recentRaces.length - 1].dnf ? 'dnf' :
+         recentRaces[recentRaces.length - 1].position === 1 ? 'win' :
+         recentRaces[recentRaces.length - 1].position <= 3 ? 'podium' :
+         recentRaces[recentRaces.length - 1].position <= 10 ? 'points' : 'poor')
+      : undefined,
+    playerCurrentStress: p.mentalState.stress,
+    
+    // Extended player state (filtered by tier)
+    playerState: (tier !== 'public') ? {
+      stress: p.mentalState.stress,
+      fatigue: p.mentalState.fatigue ?? 0,
+      morale: p.mentalState.morale ?? 50,
+      confidence: p.mentalState.confidence ?? 50,
+      injuryStatus: p.health?.injuryState?.type 
+        ? `${p.health.injuryState.type} (${p.health.injuryState.severity}, ${p.health.injuryState.recoveryWeeksRemaining} weeks recovery)`
+        : undefined,
+    } : undefined,
+    
+    racingContext: {
+      lastRaces: recentRaces.map(r => ({
+        position: r.position,
+        track: r.trackName || 'Unknown',
+        series: r.seriesName || 'Unknown',
+        dnf: !!r.dnf,
+        fastestLap: !!r.fastestLap,
+        wetRace: !!r.wetRace,
+      })),
+      championshipPosition: standing?.position,
+      pointsToLeader: standing?.pointsToLeader ? Math.abs(standing.pointsToLeader) : undefined,
+      roundsRemaining: standing?.roundsRemaining,
+      seasonWins: p.totalWins,
+      seasonPodiums: p.totalPodiums,
+      seasonDNFs: recentRaces.filter(r => r.dnf).length,
+      consecutiveWins: p.consecutiveWins,
+      consecutivePodiums: p.consecutivePodiums,
+      isRaceWeek: gameState.nextRaceWeek === gameState.currentWeek,
+      nextRaceTrack: gameState.nextRaceTrack,
+      daysUntilNextRace: gameState.nextRaceWeek ? Math.max(0, (gameState.nextRaceWeek - gameState.currentWeek) * 7) : undefined,
+    },
+    
+    // Team context (paddock+ only)
+    teamContext: (tier !== 'public' && team) ? {
+      teamName: team.name,
+      teamTier: team.tier,
+      seriesNames: gameState.seriesEntries?.map(e => e.seriesName || e.seriesId) || [],
+      staffCount: (team.staff?.length || 0) + (team.facilityStaff?.length || 0),
+      teamMorale: team.teamMorale,
+      boardMood: tier === 'team_only' || tier === 'partner_only' ? team.boardMood : undefined,
+    } : undefined,
+    
+    // Financial context (inner circle+ only)
+    financialContext: (tier === 'inner_circle' || tier === 'team_only' || tier === 'partner_only') && team ? {
+      cashHealth: team.finances.cash > 500000 ? 'excellent' :
+                  team.finances.cash > 200000 ? 'comfortable' :
+                  team.finances.cash > 50000 ? 'stable' :
+                  team.finances.cash > 10000 ? 'tight' : 'critical',
+      costCapPercent: team.budgets?.costCapSpend && team.budgets?.costCapLimit 
+        ? Math.round((team.budgets.costCapSpend / team.budgets.costCapLimit) * 100)
+        : undefined,
+      lifestyleLevel: pLife?.lifestyleLevel?.tier,
+    } : undefined,
+    
+    // Personal context (inner circle+ only)
+    personalContext: (tier === 'inner_circle' || tier === 'partner_only') ? {
+      partnerStatus: pLife?.partner 
+        ? `${pLife.partner.relationshipStatus || 'with'} ${pLife.partner.firstName}`
+        : 'single',
+      partnerHappiness: tier === 'partner_only' ? pLife?.partner?.happiness : undefined,
+      childrenSummary: pLife?.children && pLife.children.length > 0
+        ? pLife.children.map(c => `${c.firstName} (${c.age})`).join(', ')
+        : undefined,
+      activeRivalry: pLife?.rivalries?.find(r => r.isActive)
+        ? `Rivalry with ${pLife.rivalries.find(r => r.isActive)!.rivalName} (intensity: ${pLife.rivalries.find(r => r.isActive)!.intensity})`
+        : undefined,
+      foundationCause: pLife?.foundations?.[0]?.cause,
+    } : undefined,
+    
+    // Game time (for scheduling invitations)
+    currentWeek: gameState.currentWeek,
+    currentDay: gameState.currentDay,
+    
+    // Media context (public)
+    mediaContext: {
+      followerCount: gameState.socialMediaState?.totalFollowers,
+      recentPostWentViral: !!recentViral,
+      recentControversy: !!recentBacklash,
+      recentHeadline: gameState.pressClippings?.slice(-1)?.[0]?.headline,
+    },
+  }
+  
+  return ctx
 }
 
 export interface MessageChoiceGeneration {
@@ -58,6 +576,7 @@ export interface GeneratedChoice {
   preview: string
   fullMessage: string
   tone: string
+  intentTag: string
   riskLevel: 'safe' | 'mild' | 'risky' | 'bold'
   expectedReaction: string
 }
@@ -72,6 +591,16 @@ export interface NpcResponseGeneration {
   emotionalReaction: string
   suggestedFollowUp?: string
   wantsToMeetUp: boolean
+  actionRequest?: {
+    type: string
+    description: string
+    timeCost?: number
+    moneyCost?: number
+    suggestedDay?: number
+    suggestedWeek?: number
+    eventName?: string
+    venue?: string
+  } | null
 }
 
 // ============================================
@@ -81,19 +610,12 @@ export interface NpcResponseGeneration {
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 
 /**
- * Get the stored Gemini API key
+ * Get the stored Gemini API key.
+ * Primary source: commentary-settings (where the Settings screen saves it).
+ * Fallbacks: app-settings, career-settings (legacy).
  */
 function getApiKey(): string | null {
-  try {
-    const settings = localStorage.getItem('app-settings')
-    if (settings) {
-      const parsed = JSON.parse(settings)
-      return parsed.geminiApiKey || null
-    }
-  } catch (e) {
-    console.warn('[DialogueAI] Error reading API key from localStorage')
-  }
-  return null
+  return getNextGeminiApiKey()
 }
 
 /**
@@ -107,29 +629,78 @@ export function isDialogueAIAvailable(): boolean {
  * Safely parse JSON from API response
  */
 function safeParseJSON(content: string): any {
-  let jsonStr = content
+  let jsonStr = content.trim()
   
-  // Extract from code blocks
-  const codeBlockMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/)
-  if (codeBlockMatch && codeBlockMatch[1]) {
-    jsonStr = codeBlockMatch[1].trim()
+  // Step 1: Strip markdown code fences (may appear anywhere, not just at start)
+  // Handle ```json ... ``` wrapping even if preceded by text like "Here is the JSON:"
+  const fenceMatch = jsonStr.match(/```(?:json|JSON)?\s*([\s\S]*?)\s*```/)
+  if (fenceMatch) {
+    jsonStr = fenceMatch[1].trim()
   } else {
-    const jsonMatch = content.match(/(\{[\s\S]*\})/)
-    if (jsonMatch) {
-      jsonStr = jsonMatch[1]
-    }
+    // Also strip leading/trailing fences with anchors as a fallback
+    jsonStr = jsonStr.replace(/^```(?:json|JSON)?\s*/i, '')
+    jsonStr = jsonStr.replace(/\s*```\s*$/i, '')
+    jsonStr = jsonStr.trim()
   }
   
-  // Clean common issues
-  jsonStr = jsonStr
-    .replace(/,\s*}/g, '}')
-    .replace(/,\s*]/g, ']')
-    .replace(/[\x00-\x1F\x7F]/g, ' ')
-    .replace(/\n/g, '\\n')
-    .replace(/\r/g, '')
-    .replace(/\t/g, '\\t')
+  // Step 2: If not starting with { or [, extract JSON
+  if (!jsonStr.startsWith('{') && !jsonStr.startsWith('[')) {
+    const jsonObjMatch = jsonStr.match(/(\{[\s\S]*\})/)
+    const jsonArrMatch = jsonStr.match(/(\[[\s\S]*\])/)
+    if (jsonObjMatch) jsonStr = jsonObjMatch[1]
+    else if (jsonArrMatch) jsonStr = jsonArrMatch[1]
+  }
   
-  return JSON.parse(jsonStr)
+  // Step 3: Fix trailing commas
+  jsonStr = jsonStr.replace(/,\s*}/g, '}').replace(/,\s*]/g, ']')
+  
+  // Attempt 1: parse as-is
+  try { return JSON.parse(jsonStr) } catch { /* continue */ }
+  
+  // Attempt 2: repair truncated JSON (close unclosed brackets/braces)
+  try {
+    let repaired = jsonStr
+    // Count unmatched braces/brackets
+    let braces = 0, brackets = 0, inString = false, escaped = false
+    for (const ch of repaired) {
+      if (escaped) { escaped = false; continue }
+      if (ch === '\\') { escaped = true; continue }
+      if (ch === '"') { inString = !inString; continue }
+      if (inString) continue
+      if (ch === '{') braces++
+      else if (ch === '}') braces--
+      else if (ch === '[') brackets++
+      else if (ch === ']') brackets--
+    }
+    // If truncated mid-string, close the string
+    if (inString) repaired += '"'
+    // Remove any trailing incomplete key-value pair (e.g., `"key": ` or `"key": "val`)
+    repaired = repaired.replace(/,\s*"[^"]*":\s*"?[^",}\]]*$/, '')
+    repaired = repaired.replace(/,\s*$/, '')
+    // Close unclosed brackets/braces
+    while (brackets > 0) { repaired += ']'; brackets-- }
+    while (braces > 0) { repaired += '}'; braces-- }
+    // Fix trailing commas created by truncation
+    repaired = repaired.replace(/,\s*}/g, '}').replace(/,\s*]/g, ']')
+    return JSON.parse(repaired)
+  } catch { /* continue */ }
+  
+  // Attempt 3: strip all control chars and try again
+  try {
+    const cleaned = jsonStr.replace(/[\x00-\x1F\x7F]/g, ' ')
+    return JSON.parse(cleaned)
+  } catch {
+    throw new Error(`Failed to parse JSON from response: ${jsonStr.slice(0, 200)}...`)
+  }
+}
+
+/**
+ * Truncate text to a safe character limit (Gemini has token limits,
+ * ~4 chars per token, keep well under the input limit).
+ */
+function truncatePrompt(text: string, maxChars: number = 12000): string {
+  if (text.length <= maxChars) return text
+  return text.slice(0, maxChars) + '\n...[context truncated for length]'
 }
 
 /**
@@ -138,28 +709,71 @@ function safeParseJSON(content: string): any {
 async function callGeminiAPI(
   systemPrompt: string,
   userPrompt: string,
-  maxTokens: number = 1000
+  maxTokens: number = 10000,
+  responseFormat?: {
+    type: 'json_object'
+    schema?: Record<string, unknown>
+  }
 ): Promise<string | null> {
   const apiKey = getApiKey()
   if (!apiKey) return null
 
+  // Safety-truncate both prompts to avoid 400 errors from oversized payloads
+  // Gemini flash models accept ~1M tokens; 8K chars (~2K tokens) for system
+  // and 16K chars (~4K tokens) for user is well within limits while giving
+  // rich context for NPC dialogue, bios, etc.
+  const safeSystem = truncatePrompt(systemPrompt, 8000)
+  const safeUser = truncatePrompt(userPrompt, 16000)
+
   try {
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+    const response = await fetch(GEMINI_API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
       body: JSON.stringify({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3-flash-preview',
         messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
+          { role: 'system', content: safeSystem },
+          { role: 'user', content: safeUser }
         ],
         max_tokens: maxTokens,
-        temperature: 0.8 // Slightly creative for dialogue
+        temperature: 0.8,
+        // Gemini's OpenAI-compatible endpoint only supports { type: 'json_object' }
+        // — the 'schema' field is not recognized and causes 400 errors.
+        // Schema guidance is already embedded in the system/user prompts.
+        ...(responseFormat ? { response_format: { type: responseFormat.type } } : {})
       })
     })
 
     if (!response.ok) {
-      console.warn('[DialogueAI] API error:', response.status)
+      // Retry once with a stable model if Gemini 3 preview fails
+      if (response.status >= 400 && response.status < 500) {
+        const fallbackResponse = await fetch(GEMINI_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: 'gemini-2.5-flash',
+            messages: [
+              { role: 'system', content: safeSystem },
+              { role: 'user', content: safeUser }
+            ],
+            max_tokens: maxTokens,
+            temperature: 0.8,
+            ...(responseFormat ? { response_format: { type: responseFormat.type } } : {})
+          })
+        })
+        if (fallbackResponse.ok) {
+          const fallbackData = await fallbackResponse.json()
+          return fallbackData.choices?.[0]?.message?.content || null
+        }
+      }
+      const errorBody = await response.text().catch(() => 'no body')
+      console.warn(`[DialogueAI] API error ${response.status}:`, errorBody)
       return null
     }
 
@@ -176,6 +790,7 @@ async function callGeminiAPI(
 // ============================================
 
 const PERSONALITY_PROMPTS: Record<string, string> = {
+  // ── Original traits ──
   supportive: "They are warm, encouraging, and always interested in your racing career. They celebrate your wins genuinely and comfort you after losses.",
   jealous: "They can be insecure and need reassurance. They notice when you mention other people and can get upset easily.",
   ambitious: "They have their own career goals and respect drive in others. They appreciate being treated as equals and don't like being patronized.",
@@ -185,7 +800,260 @@ const PERSONALITY_PROMPTS: Record<string, string> = {
   glamorous: "They enjoy the finer things in life and social events. They like being seen and appreciated.",
   private: "They prefer staying out of the spotlight and value quiet, intimate moments over public displays.",
   adventurous: "They love trying new things and spontaneous plans. They get bored with routine easily.",
-  nurturing: "They are caring and attentive. They worry about your wellbeing and want to take care of you."
+  nurturing: "They are caring and attentive. They worry about your wellbeing and want to take care of you.",
+  // ── Previously missing traits ──
+  controlling: "They need to feel in control. They give unsolicited advice, question your decisions, and get upset when you act independently. Texts tend to be directive.",
+  materialistic: "They measure success in possessions and status symbols. They reference expensive brands, luxury experiences, and are impressed by wealth. They notice your spending.",
+  dramatic: "Everything is either the best thing ever or a complete disaster. They use lots of exclamation marks, capitals for emphasis, and their emotions swing quickly.",
+  possessive: "They want to know where you are and who you're with. They get anxious when you don't reply quickly. They're territorial about your attention.",
+  party_animal: "They're always talking about the next event, who was at what party, and inviting you out. Their texts come late at night and reference social scenes.",
+  commitment_phobic: "They deflect serious relationship talks with humor or topic changes. They're fun and engaging but get visibly uncomfortable with future plans.",
+  passive_aggressive: "They say 'it's fine' when it isn't. They make subtle digs disguised as jokes. Their displeasure comes through in subtext, not direct confrontation.",
+  self_centered: "They steer conversations back to themselves. They respond to your news with their own stories. They expect attention but rarely ask about your day.",
+  secretive: "They give vague answers about their own life. They're curious about yours but don't reciprocate. Their messages can feel guarded.",
+  workaholic: "They often text about being busy or tired from work. They cancel plans due to work. They respect your career drive but expect the same dedication.",
+  high_maintenance: "They have strong opinions about quality and standards. They're not easily impressed and expect effort. Average gestures get lukewarm reactions.",
+  racing_enthusiast: "They genuinely follow racing and bring it up naturally. They know drivers, tracks, and results. They're excited about your race weekends.",
+  social_butterfly: "They know everyone, always have plans, and love connecting people. They're chatty, upbeat, and energized by social interaction.",
+}
+
+// ============================================
+// TEXTING STYLE CONFIG
+// ============================================
+
+interface TextingStyle {
+  lengthPreference: 'very_short' | 'short' | 'medium' | 'long'
+  emojiUsage: 'none' | 'rare' | 'moderate' | 'heavy'
+  formality: 'formal' | 'casual' | 'very_casual'
+  punctuation: 'proper' | 'minimal' | 'excessive'
+  quirks: string[]
+}
+
+const TEXTING_STYLE_CONFIG: Record<string, TextingStyle> = {
+  glamorous: {
+    lengthPreference: 'medium',
+    emojiUsage: 'heavy',
+    formality: 'casual',
+    punctuation: 'excessive',
+    quirks: ['Uses sparkle and heart emojis', 'Mentions brands or places by name', 'Signs off with kisses (xx)']
+  },
+  private: {
+    lengthPreference: 'short',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Keeps messages brief and to the point', 'Rarely shares personal details unprompted']
+  },
+  dramatic: {
+    lengthPreference: 'long',
+    emojiUsage: 'heavy',
+    formality: 'very_casual',
+    punctuation: 'excessive',
+    quirks: ['Uses CAPS for emphasis', 'Multiple exclamation marks!!!', 'Emotional reactions to everything']
+  },
+  practical: {
+    lengthPreference: 'short',
+    emojiUsage: 'none',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Straight to the point', 'Rarely uses emojis', 'Prefers logistics over small talk']
+  },
+  supportive: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Asks how you are doing', 'Uses encouraging language', 'Sends follow-up messages to check in']
+  },
+  jealous: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Sometimes asks probing questions about your day', 'Reads into delays in replying', 'Can shift tone quickly']
+  },
+  ambitious: {
+    lengthPreference: 'medium',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['References their own achievements naturally', 'Respects efficiency in communication']
+  },
+  romantic: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Uses affectionate nicknames', 'Sends good morning/night texts', 'References shared memories']
+  },
+  independent: {
+    lengthPreference: 'short',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Doesn\'t always respond immediately', 'Keeps things chill and low-pressure']
+  },
+  adventurous: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'very_casual',
+    punctuation: 'minimal',
+    quirks: ['Sends spontaneous plans and ideas', 'Uses travel and nature emojis', 'Gets excited easily']
+  },
+  nurturing: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Asks about your health and wellbeing', 'Worries if you seem stressed', 'Sends caring follow-ups']
+  },
+  controlling: {
+    lengthPreference: 'medium',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Gives unsolicited advice', 'Asks where you are and what you\'re doing', 'Phrases things as instructions']
+  },
+  materialistic: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Name-drops brands and restaurants', 'Comments on luxury items', 'Compares things to expensive alternatives']
+  },
+  possessive: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Double-texts when you don\'t reply', 'Asks who you\'re with', 'Gets clingy in tone when insecure']
+  },
+  party_animal: {
+    lengthPreference: 'short',
+    emojiUsage: 'heavy',
+    formality: 'very_casual',
+    punctuation: 'minimal',
+    quirks: ['Uses party and drink emojis', 'Texts late at night', 'Always inviting you somewhere']
+  },
+  commitment_phobic: {
+    lengthPreference: 'short',
+    emojiUsage: 'moderate',
+    formality: 'very_casual',
+    punctuation: 'minimal',
+    quirks: ['Deflects serious topics with humor', 'Keeps things light and breezy', 'Avoids making firm plans']
+  },
+  passive_aggressive: {
+    lengthPreference: 'short',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Says "it\'s fine" when it isn\'t', 'Makes sarcastic comments disguised as jokes', 'Uses ellipsis (...) to imply displeasure']
+  },
+  self_centered: {
+    lengthPreference: 'long',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Talks about themselves a lot', 'Redirects conversations to their own news', 'Rarely asks questions about you']
+  },
+  secretive: {
+    lengthPreference: 'very_short',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'minimal',
+    quirks: ['Gives vague answers', 'Changes subject when asked personal questions', 'Mysterious and guarded']
+  },
+  workaholic: {
+    lengthPreference: 'short',
+    emojiUsage: 'rare',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Mentions being busy or at work', 'Replies at odd hours', 'Cancels plans via text']
+  },
+  high_maintenance: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['Has opinions about everything', 'Reacts lukewarmly to average gestures', 'Expects quick replies']
+  },
+  racing_enthusiast: {
+    lengthPreference: 'medium',
+    emojiUsage: 'moderate',
+    formality: 'casual',
+    punctuation: 'proper',
+    quirks: ['References specific races and drivers', 'Uses racing terminology naturally', 'Gets excited about race weekends']
+  },
+  social_butterfly: {
+    lengthPreference: 'medium',
+    emojiUsage: 'heavy',
+    formality: 'very_casual',
+    punctuation: 'excessive',
+    quirks: ['Always has social plans to share', 'Name-drops people they know', 'Uses lots of exclamation marks and emojis']
+  }
+}
+
+/**
+ * Build a texting style instruction block from a contact's traits.
+ * This gets injected into the AI prompt to ensure consistent texting personality.
+ */
+function buildTextingStyleBlock(traits: string[]): string {
+  // Find the dominant trait style (first match wins for primary style)
+  let dominantStyle: TextingStyle | null = null
+  let dominantTraitName = ''
+  
+  for (const trait of traits) {
+    if (TEXTING_STYLE_CONFIG[trait]) {
+      dominantStyle = TEXTING_STYLE_CONFIG[trait]
+      dominantTraitName = trait
+      break
+    }
+  }
+  
+  if (!dominantStyle) return ''
+  
+  // Collect additional quirks from secondary traits
+  const allQuirks = [...dominantStyle.quirks]
+  for (const trait of traits.slice(1)) {
+    const style = TEXTING_STYLE_CONFIG[trait]
+    if (style && trait !== dominantTraitName) {
+      // Add 1-2 quirks from secondary traits
+      allQuirks.push(...style.quirks.slice(0, 1))
+    }
+  }
+  
+  const lengthGuide: Record<string, string> = {
+    very_short: 'Keep messages very short (1-2 sentences max, often just a few words)',
+    short: 'Write short messages (1-3 sentences)',
+    medium: 'Write medium-length messages (2-4 sentences)',
+    long: 'Write longer messages (3-5 sentences, detailed and expressive)'
+  }
+  
+  const emojiGuide: Record<string, string> = {
+    none: 'Do NOT use any emojis',
+    rare: 'Rarely use emojis (at most 1 per message, only when very appropriate)',
+    moderate: 'Use emojis naturally (1-2 per message when fitting)',
+    heavy: 'Use emojis liberally (2-4 per message, expressive and fun)'
+  }
+  
+  const formalityGuide: Record<string, string> = {
+    formal: 'Use proper grammar, full words, and polite phrasing',
+    casual: 'Use casual but readable language, occasional abbreviations',
+    very_casual: 'Use very casual texting style - abbreviations, slang, lowercase ok'
+  }
+  
+  const punctuationGuide: Record<string, string> = {
+    proper: 'Use standard punctuation',
+    minimal: 'Use minimal punctuation (skip periods, sparse commas)',
+    excessive: 'Use expressive punctuation (!! ?! ... multiple marks for emphasis)'
+  }
+  
+  return `\nTEXTING STYLE (IMPORTANT - follow this closely):
+- ${lengthGuide[dominantStyle.lengthPreference]}
+- ${emojiGuide[dominantStyle.emojiUsage]}
+- ${formalityGuide[dominantStyle.formality]}
+- ${punctuationGuide[dominantStyle.punctuation]}
+- Specific quirks: ${allQuirks.join('; ')}`
 }
 
 function getPersonalityPrompt(traits: string[]): string {
@@ -196,8 +1064,390 @@ function getPersonalityPrompt(traits: string[]): string {
 }
 
 // ============================================
+// TRAIT-AWARE FALLBACK TEMPLATES
+// ============================================
+
+const FALLBACK_TEMPLATES: Record<string, {
+  greeting: string[]
+  afterAbsence: string[]
+  positiveReply: string[]
+  negativeReply: string[]
+}> = {
+  dramatic: {
+    greeting: ['OMG hiii!! I was literally JUST thinking about you!', 'Babe!! Where have you BEEN?!'],
+    afterAbsence: ['I honestly thought you forgot about me...', 'FINALLY! I was about to send a search party!'],
+    positiveReply: ['That is AMAZING!! I\'m SO happy for you!!', 'No way!! That\'s incredible!!!'],
+    negativeReply: ['Ugh that\'s the WORST. I\'m so sorry', 'Are you kidding me?! That\'s terrible!']
+  },
+  practical: {
+    greeting: ['Hey. What\'s up?', 'Hi, how are things?'],
+    afterAbsence: ['Been a while. Everything ok?', 'Hey stranger. Hope you\'re well.'],
+    positiveReply: ['That\'s great news. Well deserved.', 'Good to hear. You earned it.'],
+    negativeReply: ['Sorry to hear that. What\'s the plan?', 'That\'s rough. Let me know if you need anything.']
+  },
+  glamorous: {
+    greeting: ['Hiii darling! xx', 'Hey gorgeous, how are you? xx'],
+    afterAbsence: ['Well well, look who remembered me! xx', 'There you are! Missed you xx'],
+    positiveReply: ['Oh that\'s fabulous!! So proud of you xx', 'Amazing news darling!!'],
+    negativeReply: ['Oh no, that\'s awful. Are you ok? xx', 'I\'m so sorry babe. That\'s really unfair xx']
+  },
+  supportive: {
+    greeting: ['Hey! How are you doing? Everything ok?', 'Hi! I was just thinking about you. How\'s your day?'],
+    afterAbsence: ['Hey! I was getting worried. Is everything alright?', 'So good to hear from you! How have you been?'],
+    positiveReply: ['That\'s amazing! I\'m so proud of you!', 'You deserve this so much! Well done!'],
+    negativeReply: ['I\'m so sorry. I\'m here for you, always.', 'That\'s really tough. What can I do to help?']
+  },
+  jealous: {
+    greeting: ['Hey... missed you. What have you been up to?', 'Finally texting me back, huh?'],
+    afterAbsence: ['Oh, so you DO remember I exist?', 'Where have you been? I was starting to worry...'],
+    positiveReply: ['That\'s great. Wish I could have been there with you.', 'Happy for you! Were you celebrating with anyone?'],
+    negativeReply: ['That sucks. At least you have me, right?', 'I\'m sorry. Come over, let me cheer you up.']
+  },
+  adventurous: {
+    greeting: ['Hey! What are you up to? Anything fun?', 'Yo! I just had the craziest idea...'],
+    afterAbsence: ['Whoa, it\'s been ages! We need to do something fun', 'Hey stranger! Ready for an adventure?'],
+    positiveReply: ['That\'s sick! We should celebrate properly', 'YES! That calls for something spontaneous'],
+    negativeReply: ['That\'s rough. You know what you need? A change of scenery.', 'Sorry to hear that. Let\'s get out of here and clear your head.']
+  },
+  private: {
+    greeting: ['Hey.', 'Hi, how are you?'],
+    afterAbsence: ['Hey. Been a while.', 'Hi. Hope things are ok.'],
+    positiveReply: ['That\'s great. Really happy for you.', 'Good news. You deserve it.'],
+    negativeReply: ['Sorry to hear that.', 'That\'s tough. I\'m here if you need to talk.']
+  },
+  controlling: {
+    greeting: ['Hey. Did you handle that thing I mentioned?', 'Hi. What\'s your plan for today?'],
+    afterAbsence: ['You really should check in more often.', 'I was wondering where you\'d gone. You should let me know.'],
+    positiveReply: ['Good. I knew that would work out if you followed the plan.', 'See? I told you it would be fine.'],
+    negativeReply: ['Well, what did I say? You should have listened.', 'That\'s unfortunate. Let me tell you what you should do next.']
+  },
+  materialistic: {
+    greeting: ['Hey! You won\'t believe what I just bought...', 'Hi! Just got back from the most amazing restaurant'],
+    afterAbsence: ['Oh hey! I was just at this incredible new place...', 'Finally! I have so much to tell you about'],
+    positiveReply: ['That\'s fantastic! We should celebrate somewhere nice', 'Amazing! You should treat yourself to something special'],
+    negativeReply: ['That\'s terrible. Retail therapy?', 'Sorry babe. Nothing a nice dinner can\'t help with.']
+  },
+  possessive: {
+    greeting: ['Hey! Where are you?', 'Hi baby, I miss you so much. What are you doing?'],
+    afterAbsence: ['Why haven\'t you been texting me? I was so worried!', 'Do you know how long it\'s been since you messaged me?'],
+    positiveReply: ['That\'s great! I wish I was there with you though', 'Amazing! Next time take me with you ok?'],
+    negativeReply: ['Come home. I need to be with you right now.', 'I\'m sorry baby. Let me take care of you.']
+  },
+  nurturing: {
+    greeting: ['Hey sweetie, how are you feeling today?', 'Hi! Have you eaten? Are you taking care of yourself?'],
+    afterAbsence: ['I\'ve been worried about you! Are you ok?', 'There you are! I was starting to fret. How are you?'],
+    positiveReply: ['Oh that\'s wonderful! I\'m so happy for you!', 'You worked so hard for this. So proud of you!'],
+    negativeReply: ['Oh no, come here. It\'ll be ok, I promise.', 'I\'m so sorry love. Let me make you something warm.']
+  },
+  party_animal: {
+    greeting: ['yooo whats good!!', 'heyyy!! you coming out tonight??'],
+    afterAbsence: ['duuude where u been?? missed u at the party!', 'omg finally!! we need to catch up over drinks'],
+    positiveReply: ['LETS GOOO!! drinks on you tonight!!', 'yesss!! thats sick, we celebrating!!'],
+    negativeReply: ['damn that sucks. you need a night out trust me', 'ugh sorry. come out tonight itll take your mind off it']
+  },
+  self_centered: {
+    greeting: ['Hey! So the craziest thing happened to me today...', 'Oh hi! I have so much to tell you'],
+    afterAbsence: ['Finally! I\'ve been dying to tell someone about my week', 'Oh good you\'re here. Guess what happened to me?'],
+    positiveReply: ['That\'s nice! Reminds me of when I...', 'Cool! Something similar happened to me actually...'],
+    negativeReply: ['Oh that sucks. Anyway, you won\'t believe what happened at my...', 'Sorry to hear that. I had a rough day too actually...']
+  },
+  commitment_phobic: {
+    greeting: ['Hey! What\'s happening?', 'Sup! Anything fun going on?'],
+    afterAbsence: ['Oh hey! No worries about the silence, I get it', 'Hey! We\'re both busy people, no big deal'],
+    positiveReply: ['Nice one! Let\'s not overthink it and just enjoy the moment', 'That\'s awesome! Living the dream'],
+    negativeReply: ['Ah that\'s rough. But hey, tomorrow\'s another day right?', 'Sorry to hear that. These things have a way of working out']
+  },
+  passive_aggressive: {
+    greeting: ['Oh, hi. Didn\'t expect to hear from you.', 'Hey. Nice of you to text.'],
+    afterAbsence: ['Oh, you\'re alive. Good to know.', 'Well look who finally remembered their phone exists.'],
+    positiveReply: ['That\'s great. For you, I mean.', 'Oh wonderful. Must be nice.'],
+    negativeReply: ['Hmm. That\'s... interesting. Sorry I guess.', 'Well that\'s a shame. I\'m sure it\'ll be fine though.']
+  },
+  workaholic: {
+    greeting: ['Hey, quick one - how are you?', 'Hi! Between meetings but wanted to say hi'],
+    afterAbsence: ['Sorry, been swamped at work. How are you?', 'I know, I know, I\'ve been MIA. Work\'s been insane.'],
+    positiveReply: ['That\'s great! Hard work pays off.', 'Well earned. You put in the hours.'],
+    negativeReply: ['Sorry to hear that. Sometimes you just have to push through.', 'That\'s tough. At least there\'s always tomorrow to try again.']
+  },
+  racing_enthusiast: {
+    greeting: ['Hey! Did you see that qualifying session?!', 'Hi! I was just reading about the latest track updates'],
+    afterAbsence: ['Hey! I\'ve been following your races. How\'s the car feeling?', 'There he is! How\'s the championship looking?'],
+    positiveReply: ['That\'s incredible! What a result! How was the car?', 'YES! I knew you had it in you! Tell me everything'],
+    negativeReply: ['Tough break. What happened? Mechanical or setup?', 'That\'s racing though. Next one will be better.']
+  },
+  high_maintenance: {
+    greeting: ['Hey. I hope you have something interesting planned for us.', 'Hi. What are you up to?'],
+    afterAbsence: ['Well, I was starting to wonder if you\'d forgotten about me.', 'Oh, you\'re back. I expected to hear from you sooner.'],
+    positiveReply: ['That\'s good. About time things went right.', 'Nice. You should take me somewhere to celebrate properly.'],
+    negativeReply: ['That\'s a shame. You should really sort that out.', 'Hmm. Well, I\'m sure you\'ll figure it out.']
+  },
+  secretive: {
+    greeting: ['Hey.', 'Hi. How are things?'],
+    afterAbsence: ['Hey. Missed your messages.', 'Hi.'],
+    positiveReply: ['Good for you.', 'Nice.'],
+    negativeReply: ['Sorry to hear.', 'That\'s rough.']
+  }
+}
+
+// ============================================
+// INITIAL MESSAGE GENERATION (Career Creation)
+// ============================================
+
+export interface InitialMessageContext {
+  contactName: string
+  contactType: string              // friend, business, partner, rival, etc.
+  contactBio?: string              // Full biography
+  personalitySummary?: string
+  connectionToMotorsport?: string
+  meetingContext?: string           // How you met / your relationship history
+  traits?: string[]
+  conversationTopics?: string[]
+  canHelp?: string[]
+  occupation?: string
+  // Player context
+  playerFirstName: string
+  playerLastName: string
+  playerBackground: string         // self_made, racing_dynasty, tech_investor, etc.
+  teamName: string
+  relationshipStatus?: string      // dating, married (for partners)
+}
+
+const INITIAL_MESSAGE_SYSTEM_PROMPT = `You are writing the VERY FIRST text message that a person sends to a new racing team owner in a motorsport career simulation game.
+
+This message should feel like a real text from someone who ALREADY KNOWS the player. It is NOT a cold introduction — these are existing contacts from before the career started.
+
+CRITICAL RULES:
+1. The "Role/Relationship" field defines WHO this person is to the player. This is the MOST IMPORTANT context. An accountant writes about finances. A college friend writes casually about old times. A racing club president writes about grassroots racing.
+2. Do NOT make the contact sound like a personal assistant, secretary, or employee UNLESS their occupation literally says "Personal Assistant."
+3. If the contact type is "partner" and there is a relationship status (dating/married), write a ROMANTIC/SUPPORTIVE partner message — warm, loving, excited about the team venture. NOT a business or professional message.
+4. Reference their actual relationship to the player naturally (don't be heavy-handed).
+5. Acknowledge the player's new racing team venture in a way that fits the contact's occupation and personality.
+6. The message MUST be a single complete sentence or two. Keep it between 50 and 180 characters. End with punctuation (period, exclamation, question mark, or emoji). Do NOT end mid-sentence.
+7. Do NOT offer advice outside this person's expertise.
+8. Match the contact's personality traits (e.g. cautious people are measured, enthusiastic people are excited).
+
+Respond with ONLY valid JSON: {"message": "the complete text message"}`
+
+/**
+ * Generate a contextually appropriate initial message for a starter contact.
+ * Uses Gemini to produce a first message that matches the contact's personality,
+ * relationship to the player, and expertise.
+ */
+export async function generateInitialMessage(
+  context: InitialMessageContext
+): Promise<string | null> {
+  if (!isDialogueAIAvailable()) return null
+
+  const isPartnerContact = context.contactType === 'partner' || !!context.relationshipStatus
+  
+  const userPrompt = `Generate the first text message from this person to the player:
+
+CONTACT:
+- Name: ${context.contactName}
+- Role/Relationship to player: ${context.meetingContext || 'Old acquaintance'}
+- Occupation: ${context.occupation || 'Unknown'}
+- Contact type: ${context.contactType}
+${context.contactBio ? `- Background info: ${context.contactBio.slice(0, 250)}` : ''}
+${context.personalitySummary ? `- Personality: ${context.personalitySummary.slice(0, 200)}` : ''}
+${context.connectionToMotorsport ? `- Motorsport connection: ${context.connectionToMotorsport}` : ''}
+${context.traits?.length ? `- Personality traits: ${context.traits.join(', ')}` : ''}
+${context.conversationTopics?.length ? `- Usually talks about: ${context.conversationTopics.slice(0, 3).join(', ')}` : ''}
+${context.canHelp?.length ? `- Can help with: ${context.canHelp.slice(0, 3).join(', ')}` : ''}
+
+PLAYER:
+- Name: ${context.playerFirstName} ${context.playerLastName}
+- Background: ${context.playerBackground.replace(/_/g, ' ')}
+- Team: ${context.teamName}
+${context.relationshipStatus ? `- Relationship with contact: ${context.relationshipStatus}` : ''}
+
+${isPartnerContact 
+  ? `IMPORTANT: This is the player's ROMANTIC PARTNER (${context.relationshipStatus}). Write a warm, loving, supportive message about the new racing team. Use affectionate language — they love the player. Do NOT write a business or professional message.`
+  : `IMPORTANT: This person's role is "${context.meetingContext || context.occupation || 'acquaintance'}". Write their message from THAT perspective. They are NOT the player's assistant or secretary.`}
+
+Write a COMPLETE text message (end with punctuation or emoji). Keep it under 180 characters. Do NOT leave the message unfinished.`
+
+  try {
+    const response = await callGeminiAPI(
+      INITIAL_MESSAGE_SYSTEM_PROMPT,
+      userPrompt,
+      10000,  // Generous token budget to avoid truncation
+      { type: 'json_object' }  // Ensure clean JSON without markdown wrapping
+    )
+
+    if (!response) return null
+
+    const parsed = safeParseJSON(response)
+    if (parsed?.message && typeof parsed.message === 'string') {
+      const msg = parsed.message.trim()
+      // Accept if complete
+      if (msg.length > 10 && looksComplete(msg)) {
+        return msg
+      }
+      // Try to repair truncated messages (trim to last complete sentence)
+      const repaired = repairTruncatedMessage(msg)
+      if (repaired) {
+        console.log('[DialogueAI] Repaired truncated initial message:', repaired.slice(0, 80))
+        return repaired
+      }
+      console.warn('[DialogueAI] Initial message too broken to repair, rejecting:', msg.slice(0, 80))
+      return null
+    }
+    
+    // If we can't parse the JSON, try to use the response as-is (strip quotes)
+    const cleaned = response.trim().replace(/^["']|["']$/g, '')
+    if (cleaned.length > 10 && cleaned.length < 500) {
+      if (looksComplete(cleaned)) return cleaned
+      const repaired = repairTruncatedMessage(cleaned)
+      if (repaired) return repaired
+    }
+
+    return null
+  } catch (error) {
+    console.warn('[DialogueAI] Failed to generate initial message:', error)
+    return null
+  }
+}
+
+/**
+ * Check whether a generated message looks complete (not truncated mid-sentence).
+ * A complete message ends with punctuation, emoji, or a closing quote.
+ */
+function looksComplete(text: string): boolean {
+  if (!text || text.length === 0) return false
+  const trimmed = text.trimEnd()
+  // Terminal punctuation, emoji range, closing quotes, or common endings
+  const lastChar = trimmed.charAt(trimmed.length - 1)
+  // Standard punctuation endings
+  if ('.!?…"\')\u201D\u2019'.includes(lastChar)) return true
+  // Emoji: check if the last codepoint is in emoji ranges (simplified check)
+  const lastCodePoint = trimmed.codePointAt(trimmed.length - (lastChar.length === 2 ? 2 : 1)) || 0
+  if (lastCodePoint >= 0x1F300) return true  // Most emoji are above this
+  // Common texting endings like "lol", "haha", "ok", etc.
+  const lowerEnd = trimmed.slice(-5).toLowerCase()
+  if (/(?:lol|haha|ok|yeah|sure|omg|btw|tbh|rn|tho|dude|bro)$/i.test(lowerEnd)) return true
+  return false
+}
+
+/**
+ * Attempt to repair a truncated message by trimming to the last complete sentence.
+ * Returns the repaired message or null if nothing salvageable.
+ */
+function repairTruncatedMessage(text: string): string | null {
+  if (!text || text.length < 15) return null
+  const trimmed = text.trimEnd()
+  
+  // Already complete?
+  if (looksComplete(trimmed)) return trimmed
+  
+  // Strategy 1: Find the last sentence-ending punctuation and trim there
+  // Look for the last .!? or emoji followed by a space or end-of-string
+  const lastSentenceEnd = Math.max(
+    trimmed.lastIndexOf('. '),
+    trimmed.lastIndexOf('! '),
+    trimmed.lastIndexOf('? '),
+    trimmed.lastIndexOf('.\u201D'),  // ."
+    trimmed.lastIndexOf('!"'),
+    trimmed.lastIndexOf('?"'),
+  )
+  
+  if (lastSentenceEnd > 15) {
+    // Include the punctuation character
+    const repaired = trimmed.slice(0, lastSentenceEnd + 1).trimEnd()
+    if (repaired.length > 15 && looksComplete(repaired)) {
+      return repaired
+    }
+  }
+  
+  // Strategy 2: Find the last .!? at any position
+  for (let i = trimmed.length - 1; i >= 15; i--) {
+    const ch = trimmed[i]
+    if (ch === '.' || ch === '!' || ch === '?') {
+      const repaired = trimmed.slice(0, i + 1)
+      if (repaired.length > 15) return repaired
+    }
+  }
+  
+  // Strategy 3: Find the last emoji
+  for (let i = trimmed.length - 1; i >= 15; i--) {
+    const cp = trimmed.codePointAt(i) || 0
+    if (cp >= 0x1F300) {
+      // Include the full emoji (might be 2 code units)
+      const end = cp > 0xFFFF ? i + 2 : i + 1
+      const repaired = trimmed.slice(0, end)
+      if (repaired.length > 15) return repaired
+    }
+  }
+  
+  // Strategy 4: If the message is reasonably long (>60 chars), just add an ellipsis
+  if (trimmed.length > 60) {
+    // Trim to the last word boundary
+    const lastSpace = trimmed.lastIndexOf(' ')
+    if (lastSpace > 30) {
+      return trimmed.slice(0, lastSpace).trimEnd() + '...'
+    }
+  }
+  
+  return null
+}
+
+/**
+ * Generate initial messages for a batch of contacts (parallel, with rate limiting).
+ * Returns a map of contactId -> message. Falls back to null for failed generations.
+ */
+export async function generateInitialMessagesBatch(
+  contexts: (InitialMessageContext & { contactId: string })[]
+): Promise<Map<string, string>> {
+  const results = new Map<string, string>()
+  
+  // Process in batches of 3 to avoid rate limiting
+  for (let i = 0; i < contexts.length; i += 3) {
+    const batch = contexts.slice(i, i + 3)
+    const batchResults = await Promise.allSettled(
+      batch.map(async (ctx) => {
+        const msg = await generateInitialMessage(ctx)
+        return { id: ctx.contactId, message: msg }
+      })
+    )
+    
+    for (const result of batchResults) {
+      if (result.status === 'fulfilled' && result.value.message) {
+        results.set(result.value.id, result.value.message)
+      }
+    }
+    
+    // Small delay between batches to be nice to the API
+    if (i + 3 < contexts.length) {
+      await new Promise(resolve => setTimeout(resolve, 200))
+    }
+  }
+  
+  return results
+}
+
+// ============================================
 // MESSAGE CHOICE GENERATION
 // ============================================
+
+/** Derive an intentTag from category + tone when the AI doesn't provide one (fallback / old cache). */
+function inferIntentTag(category: string, tone: string): string {
+  // Romantic / flirty categories are the clearest signals
+  if (category === 'flirt' || tone === 'flirty') return 'flirting'
+  if (category === 'romantic' || tone === 'romantic') return 'romance'
+  
+  // Map other categories
+  if (category === 'support' || tone === 'supportive') return 'supportive'
+  if (category === 'apology' || tone === 'apologetic') return 'apologetic'
+  if (category === 'tease' || tone === 'playful') return 'banter'
+  if (tone === 'confrontational') return 'confrontational'
+  if (tone === 'professional') return 'professional'
+  if (category === 'invitation' || category === 'make_plans') return 'planning'
+  if (category === 'question' || category === 'check_in') return 'curious'
+  if (category === 'share_news') return 'news'
+  if (category === 'compliment' && tone !== 'flirty') return 'friendly'
+  
+  // Default
+  return 'friendly'
+}
 
 const MESSAGE_CHOICE_SYSTEM_PROMPT = `You are a dialogue writer for a racing career simulation game. 
 Generate realistic text message options that a racing team owner might send.
@@ -206,24 +1456,48 @@ IMPORTANT RULES:
 1. Generate exactly 4-5 message choices
 2. Each choice should have a different tone/approach
 3. Include at least one "safe" option and one "bold" option
-4. Messages should feel natural, not robotic
+4. Messages should feel natural, not robotic — real texting style, not formal letters
 5. Consider the relationship level - don't be too forward if relationship is low
-6. Reference recent events when relevant
-7. Keep messages concise (1-3 sentences)
+6. Reference recent events, their interests, or previous conversation topics when relevant
+7. Mix lengths: some short (1 sentence), some medium (2-3 sentences), one longer (up to 300 characters)
+8. Reference their specific personality, interests, or background from their profile to make messages feel personal
+9. If previous conversation topics are provided, follow up on them naturally
+10. Match the contact's formality level — casual friends get casual texts, business contacts get professional ones
+11. For staff contacts, reference their work domain (engineering, strategy, PR, finance, etc.)
+12. For rival drivers, include competitive banter appropriate to their personality type
 
-Respond with ONLY valid JSON in this exact format:
+TOPIC BOUNDARIES (CRITICAL):
+13. Keep the conversation within topics this person would ACTUALLY talk about. Check their occupation, interests, and "conversation topics" fields. A journalist should be asked about media/coverage/stories, NOT about investment opportunities. An engineer should be asked about car setup, NOT about PR strategy.
+14. The player is a racing team owner — their messages should reflect what they'd naturally discuss with THIS specific person based on their relationship and expertise. Don't generate messages that assume the contact has skills/connections outside their listed profile.
+15. If you need to vary topics, pull from the contact's listed interests, their occupation domain, their "how they can help" field, and shared experiences (racing, paddock life, mutual friends). Do NOT invent topics outside their profile.
+
+Respond with ONLY valid JSON in this exact format (no markdown, no backticks, no extra text):
 {
   "choices": [
     {
-      "category": "greeting|compliment|flirt|check_in|support|apology|invitation|share_news|make_plans",
+      "category": "greeting|compliment|flirt|check_in|support|apology|invitation|share_news|make_plans|question|small_talk|tease|decline",
       "preview": "Short preview (5-10 words)",
       "fullMessage": "The actual message to send",
-      "tone": "friendly|flirty|romantic|supportive|apologetic|casual|excited|playful",
+      "tone": "friendly|flirty|romantic|supportive|apologetic|casual|excited|playful|professional|concerned|warm|neutral|confrontational",
+      "intentTag": "flirting|romance|friendly|supportive|professional|banter|confrontational|apologetic|planning|curious|news",
       "riskLevel": "safe|mild|risky|bold",
       "expectedReaction": "Brief description of likely response"
     }
   ]
-}`
+}
+
+INTENT TAG RULES (CRITICAL — the player sees these tags to understand the purpose of each reply):
+- "flirting": Use when the message is actively trying to create romantic interest (compliments on looks, suggestive language, testing chemistry). This signals "I'm trying to turn this into something romantic."
+- "romance": Use when deepening an EXISTING romantic relationship (sweet nothings, love declarations, date planning with a partner). Different from flirting — this is for people already dating/married.
+- "friendly": General friendly conversation, catching up, sharing laughs.
+- "supportive": Offering comfort, encouragement, or emotional support.
+- "professional": Business talk, work matters, career discussions.
+- "banter": Playful teasing, jokes, lighthearted ribbing.
+- "confrontational": Calling someone out, picking a fight, expressing anger.
+- "apologetic": Saying sorry, making amends, damage control.
+- "planning": Making plans, scheduling meetups, coordinating logistics.
+- "curious": Asking questions, showing genuine interest in their life/work.
+- "news": Sharing or reacting to news and events.`
 
 export async function generateMessageChoices(
   context: DialogueGenerationContext
@@ -248,46 +1522,171 @@ FUN FACTS ABOUT THEM:
 ${context.bio.anecdotes.map(a => `- ${a}`).join('\n')}
 ` : ''
   
+  // Build extended context sections
+  const racingSection = context.racingContext ? `
+RACING SITUATION:
+${context.racingContext.lastRaces.length > 0 
+  ? context.racingContext.lastRaces.map(r => `- ${r.dnf ? 'DNF' : `P${r.position}`} at ${r.track} (${r.series})${r.fastestLap ? ' [fastest lap]' : ''}${r.wetRace ? ' [wet race]' : ''}`).join('\n')
+  : '- No recent races'}
+${context.racingContext.championshipPosition ? `- Championship: P${context.racingContext.championshipPosition}${context.racingContext.pointsToLeader ? `, ${context.racingContext.pointsToLeader} pts ${context.racingContext.championshipPosition === 1 ? 'ahead' : 'behind leader'}` : ''}` : ''}
+${context.racingContext.isRaceWeek ? `- IT IS RACE WEEK at ${context.racingContext.nextRaceTrack}!` : context.racingContext.nextRaceTrack ? `- Next race: ${context.racingContext.nextRaceTrack} in ${context.racingContext.daysUntilNextRace || '?'} days` : ''}
+${context.racingContext.consecutiveWins > 1 ? `- On a ${context.racingContext.consecutiveWins}-race winning streak!` : ''}
+${context.racingContext.consecutivePodiums > 2 ? `- ${context.racingContext.consecutivePodiums} consecutive podiums` : ''}` : ''
+
+  const teamSection = context.teamContext ? `
+TEAM:
+- Team: ${context.teamContext.teamName} (${context.teamContext.teamTier})
+- Series: ${context.teamContext.seriesNames.join(', ')}
+- Staff: ${context.teamContext.staffCount} people
+${context.teamContext.teamMorale !== undefined ? `- Team morale: ${context.teamContext.teamMorale > 70 ? 'high' : context.teamContext.teamMorale > 40 ? 'average' : 'low'}` : ''}
+${context.teamContext.boardMood !== undefined ? `- Board mood: ${context.teamContext.boardMood > 70 ? 'pleased' : context.teamContext.boardMood > 40 ? 'neutral' : 'unhappy'}` : ''}` : ''
+
+  const financeSection = context.financialContext ? `
+FINANCES:
+- Cash health: ${context.financialContext.cashHealth}
+${context.financialContext.costCapPercent ? `- Cost cap usage: ${context.financialContext.costCapPercent}%` : ''}
+${context.financialContext.lifestyleLevel ? `- Lifestyle: ${context.financialContext.lifestyleLevel}` : ''}` : ''
+
+  const personalSection = context.personalContext ? `
+PERSONAL LIFE:
+${context.personalContext.partnerStatus ? `- Relationship: ${context.personalContext.partnerStatus}` : ''}
+${context.personalContext.childrenSummary ? `- Children: ${context.personalContext.childrenSummary}` : ''}
+${context.personalContext.activeRivalry ? `- ${context.personalContext.activeRivalry}` : ''}
+${context.personalContext.foundationCause ? `- Runs foundation for: ${context.personalContext.foundationCause}` : ''}` : ''
+
+  const topicSection = context.previousTopics && context.previousTopics.length > 0 ? `
+PREVIOUS CONVERSATION TOPICS (for memory — ${context.isActiveSession ? 'you may naturally reference these' : 'AVOID repeating recent topics, bring up something NEW'}):
+${context.previousTopics.map(t => `- "${t.topic}" (${t.sentiment})${t.summary ? `: ${t.summary}` : ''}`).join('\n')}` : ''
+
+  const historySection = context.recentMessageHistory && context.recentMessageHistory.length > 0 ? `
+RECENT MESSAGES IN THIS CONVERSATION:
+${context.recentMessageHistory.join('\n')}` : ''
+
+  const staffDomainSection = context.staffDomainContext ? `
+THEIR WORK DOMAIN CONTEXT:
+${context.staffDomainContext}` : ''
+
+  const rivalSection = context.rivalContext ? `
+HEAD-TO-HEAD WITH THIS RIVAL:
+${context.rivalContext.recentH2HResult || 'No recent encounters'}
+${context.rivalContext.championshipGap !== undefined ? `Championship gap: ${Math.abs(context.rivalContext.championshipGap)} points` : ''}
+${context.rivalContext.onTrackIncident ? 'Recent on-track incident between you!' : ''}` : ''
+
+  const sponsorSection = context.sponsorContext ? `
+SPONSOR RELATIONSHIP:
+- Satisfaction: ${context.sponsorContext.sponsorSatisfaction || 'unknown'}/100
+${context.sponsorContext.warningIssued ? '- WARNING ISSUED - they are unhappy' : ''}
+${context.sponsorContext.contractWeeksRemaining ? `- Contract expires in ${context.sponsorContext.contractWeeksRemaining} weeks` : ''}` : ''
+
   const userPrompt = `Generate message options for texting ${context.contactName}.
 
-RELATIONSHIP:
+${context.fullProfileBlock || ''}
+
+RELATIONSHIP WITH YOU:
 - Type: ${context.contactType}
-- Status: ${context.relationshipStatus || 'friends'}
+- Status: ${context.relationshipStatus || 'acquaintance'}
 - Relationship Level: ${context.relationshipLevel}/100
 - Affection: ${context.affectionMeter}/100
+- Romance: ${context.romanceMeter}/100
 - Trust: ${context.trustMeter}/100
-- Days since last contact: ${context.daysSinceLastContact}
+${context.romanticEligible ? '- ROMANTICALLY ELIGIBLE: This person is someone the player could potentially develop a romantic relationship with. Flirty message options ARE allowed if the affection level supports it (40+). Include at least one flirty option when affection is above 40.' : ''}
+${context.isActiveSession 
+  ? '- CURRENTLY TEXTING RIGHT NOW (same day, active conversation in progress)' 
+  : context.daysSinceLastContact === 0 
+    ? '- Same day, but previous conversation session has ended. This is a NEW conversation.'
+    : `- Days since last contact: ${context.daysSinceLastContact}. This is a NEW conversation — do not continue the old topic.`}
+- What they know about you: ${context.knowledgeTier || 'public'} knowledge tier
+${context.isActiveSession ? '\n⚠️ ACTIVE SESSION: You are in the middle of a live texting conversation RIGHT NOW. Do NOT act as if time has passed or days have gone by. Continue the conversation flow naturally from the recent messages below.' : `\n⚠️ NEW CONVERSATION: The previous chat session has ended${context.daysSinceLastContact > 0 ? ` (${context.daysSinceLastContact} days ago)` : ''}. Generate FRESH openers — a new greeting, a new topic, a new reason to text. Do NOT continue the old conversation thread. Real people start new texts with new topics, not by picking up mid-sentence from last time.`}
 
 THEIR PERSONALITY TRAITS:
 ${personalityDesc || 'No specific traits known.'}
 ${bioSection}
 THEIR CURRENT STATE:
 - Mood: ${context.currentMood} (${context.moodEnergy} energy)
-${context.lastMessageFromThem ? `- Their last message: "${context.lastMessageFromThem}"` : '- Starting a new conversation'}
+${context.isActiveSession 
+  ? (context.lastMessageFromThem ? `- Their last message: "${context.lastMessageFromThem}"` : '- Starting a new conversation')
+  : '- This is a fresh conversation. Start with an appropriate opener/greeting.'}
+${historySection}
+${topicSection}
 
-YOUR CONTEXT:
-- You are: ${context.playerName}, a racing team owner
-${context.playerRecentRaceResult ? `- Recent race result: ${context.playerRecentRaceResult}` : ''}
-- Current stress level: ${context.playerCurrentStress}/100
+YOUR CONTEXT (${context.playerName}, racing team owner):
+- Current stress: ${context.playerCurrentStress}/100
+${context.playerState ? `- Fatigue: ${context.playerState.fatigue}/100, Morale: ${context.playerState.morale}/100, Confidence: ${context.playerState.confidence}/100` : ''}
+${context.playerState?.injuryStatus ? `- INJURED: ${context.playerState.injuryStatus}` : ''}
+${context.playerState?.pressureLevel ? `- Pressure: ${context.playerState.pressureLevel}` : ''}
+${racingSection}
+${teamSection}
+${financeSection}
+${personalSection}
+${staffDomainSection}
+${rivalSection}
+${sponsorSection}
 
-RECENT EVENTS:
+RECENT EVENTS (things ${context.contactName} may know about based on their ${context.knowledgeTier || 'public'} knowledge):
 ${context.recentEvents.length > 0 
   ? context.recentEvents.map(e => `- ${e.event} (${e.weeksAgo} weeks ago, ${e.wasPositive ? 'positive' : 'negative'})`).join('\n')
   : '- No notable recent events'}
 
-Generate 4-5 appropriate message options. Reference their background, career, or interests when relevant to make messages feel personal.`
+${context.mediaContext?.recentHeadline ? `Latest headline about you: "${context.mediaContext.recentHeadline}"` : ''}
+${context.mediaContext?.followerCount ? `Your social media followers: ${(context.mediaContext.followerCount / 1000).toFixed(0)}K` : ''}
+${context.lastNpcActionRequest ? `
+IMPORTANT — DECLINE OPTION REQUIRED:
+The contact just invited you to something: "${context.lastNpcActionRequest}".
+You MUST include at least one response option that POLITELY DECLINES the invitation (e.g., "I appreciate the invite but I'm swamped this week", "Rain check? Got a lot on my plate right now").
+Mark the decline option with category: "decline" so the system can handle it properly.
+The decline should feel natural and not rude — the player should be able to say no gracefully.` : ''}
 
-  const response = await callGeminiAPI(MESSAGE_CHOICE_SYSTEM_PROMPT, userPrompt)
+Generate 4-5 message options. Vary message length (some short, some medium, one longer up to 300 characters). Reference their specific interests, personality, background, or previous conversation topics to make messages feel deeply personal and aware. If it's race week, the conversation should have a racing energy.`
+
+  const response = await callGeminiAPI(
+    MESSAGE_CHOICE_SYSTEM_PROMPT,
+    userPrompt,
+    10000,
+    {
+      type: 'json_object',
+      schema: {
+        type: 'object',
+        properties: {
+          choices: {
+            type: 'array',
+            minItems: 4,
+            maxItems: 5,
+            items: {
+              type: 'object',
+              properties: {
+                category: { type: 'string' },
+                preview: { type: 'string' },
+                fullMessage: { type: 'string' },
+                tone: { type: 'string' },
+                intentTag: { type: 'string' },
+                riskLevel: { type: 'string' },
+                expectedReaction: { type: 'string' }
+              },
+              required: ['category', 'preview', 'fullMessage', 'tone', 'intentTag', 'riskLevel', 'expectedReaction'],
+              additionalProperties: false
+            }
+          }
+        },
+        required: ['choices'],
+        additionalProperties: false
+      }
+    }
+  )
   
   if (response) {
     try {
       const parsed = safeParseJSON(response) as MessageChoiceGeneration
+      if (!parsed?.choices || !Array.isArray(parsed.choices)) {
+        console.warn('[DialogueAI] Parsed response missing choices array:', parsed)
+        return generateFallbackChoices(context)
+      }
       return parsed.choices.map((c, i) => ({
         id: `choice_${Date.now()}_${i}`,
         category: c.category as MessageChoiceCategory,
         preview: c.preview,
         fullMessage: c.fullMessage,
         tone: c.tone as MessageTone,
+        intentTag: (c.intentTag || inferIntentTag(c.category, c.tone)) as MessageIntentTag,
         riskLevel: c.riskLevel,
         couldBackfire: c.riskLevel === 'risky' || c.riskLevel === 'bold',
         expectedEffects: {},
@@ -295,6 +1694,7 @@ Generate 4-5 appropriate message options. Reference their background, career, or
       }))
     } catch (e) {
       console.warn('[DialogueAI] Failed to parse message choices:', e)
+      console.warn('[DialogueAI] Raw response (first 500 chars):', response.slice(0, 500))
     }
   }
   
@@ -303,31 +1703,213 @@ Generate 4-5 appropriate message options. Reference their background, career, or
 }
 
 // ============================================
+// OCCUPATION-BASED ACTION REQUEST GUIDANCE
+// ============================================
+
+/**
+ * Returns AI prompt guidance constraining what action requests an NPC can offer
+ * based on their occupation and contact type.
+ */
+function getOccupationActionGuidance(contactType: string, fullProfileBlock?: string): string {
+  // Extract occupation from profile block if available
+  const occupationMatch = fullProfileBlock?.match(/Occupation:\s*(.+)/i)
+  const occupation = occupationMatch?.[1]?.trim()?.toLowerCase() || ''
+  
+  const lines: string[] = ['OCCUPATION CONSTRAINTS FOR ACTION REQUESTS:']
+  
+  if (occupation.includes('journalist') || occupation.includes('reporter') || occupation.includes('media') || occupation.includes('editor') || occupation.includes('press')) {
+    lines.push('- You are a MEDIA/JOURNALISM professional. You can offer: media coverage, interviews, article features, introductions to media/paddock contacts, invitations to press events or social gatherings.')
+    lines.push('- You CANNOT offer: investment opportunities, startup deals, business ventures, financial advice, sponsorship deals, or anything outside media/journalism.')
+    lines.push('- Allowed actionRequest types: media_request, social_invite, introduction (media/paddock people only), dinner_invite')
+  } else if (contactType === 'sponsor_rep') {
+    lines.push('- You are a SPONSOR REPRESENTATIVE. You can offer: sponsor-related appearances, brand events, introductions to business contacts, social invitations.')
+    lines.push('- Allowed actionRequest types: sponsor_appearance, social_invite, introduction, dinner_invite')
+  } else if (contactType === 'team_staff') {
+    lines.push('- You are TEAM STAFF. You can offer: work-related advice, social hangouts, team-related introductions.')
+    lines.push('- Allowed actionRequest types: advice (work-related only), social_invite, dinner_invite')
+  } else if (contactType === 'rival_driver' || contactType === 'rival') {
+    lines.push('- You are a RIVAL DRIVER. You can offer: competitive wagers, race tickets to friends/family, social hangouts, competitive banter.')
+    lines.push('- Allowed actionRequest types: social_invite, race_tickets, dinner_invite')
+  } else if (contactType === 'partner' || contactType === 'potential_date') {
+    lines.push('- You are a ROMANTIC INTEREST. You can offer: dates, dinner invitations, social outings, quality time activities.')
+    lines.push('- Allowed actionRequest types: date_request, dinner_invite, social_invite')
+  } else if (contactType === 'family') {
+    lines.push('- You are FAMILY. You can offer: family gatherings, social outings, dinner invitations, advice, charity support.')
+    lines.push('- Allowed actionRequest types: social_invite, dinner_invite, advice, charity_ask, race_tickets')
+  } else if (occupation.includes('lawyer') || occupation.includes('attorney') || occupation.includes('legal')) {
+    lines.push('- You are a LEGAL professional. You can offer: legal advice, contract-related help, introductions to business contacts.')
+    lines.push('- Allowed actionRequest types: advice (legal only), introduction, social_invite, dinner_invite')
+  } else if (occupation.includes('engineer') || occupation.includes('mechanic') || occupation.includes('technical')) {
+    lines.push('- You are a TECHNICAL professional. You can offer: technical advice, engineering insights, introductions to technical contacts.')
+    lines.push('- Allowed actionRequest types: advice (technical only), social_invite, dinner_invite, introduction')
+  } else if (occupation.includes('financ') || occupation.includes('account') || occupation.includes('banker') || occupation.includes('invest')) {
+    lines.push('- You are a FINANCE professional. You can offer: financial advice, investment insights, introductions to financial contacts.')
+    lines.push('- Allowed actionRequest types: advice (financial only), career_favor (finance-related only), introduction, social_invite, dinner_invite')
+  } else {
+    // Generic friend/business contact
+    lines.push('- Only offer actionRequests that align with your specific occupation and expertise listed in your profile.')
+    lines.push('- Allowed actionRequest types: social_invite, dinner_invite, advice (only in your field), introduction (only to people in your network)')
+  }
+  
+  lines.push('- Do NOT offer career_favor unless it genuinely relates to your occupation. A journalist cannot offer startup leads. A friend cannot offer sponsor deals.')
+  
+  return lines.join('\n')
+}
+
+/**
+ * Validate and potentially reject an action request that doesn't fit the contact's profile.
+ * This is a hard-code safety net in case the AI ignores the prompt constraints.
+ */
+function validateActionRequestForContact(
+  actionRequest: { type: string; description: string; timeCost?: number; moneyCost?: number; suggestedDay?: number; suggestedWeek?: number; eventName?: string; venue?: string },
+  contactType: string,
+  fullProfileBlock?: string
+): typeof actionRequest | null {
+  const occupation = (fullProfileBlock?.match(/Occupation:\s*(.+)/i)?.[1]?.trim()?.toLowerCase()) || ''
+  let type = actionRequest.type
+  
+  // Smart fallback: if AI returned an actionRequest without a type, infer from context
+  if (!type && actionRequest.description) {
+    const desc = actionRequest.description.toLowerCase()
+    if (desc.includes('dinner') || desc.includes('restaurant') || desc.includes('eat') || desc.includes('wine') || desc.includes('meal')) {
+      type = 'dinner_invite'
+    } else if (desc.includes('date') || desc.includes('romantic') || desc.includes('evening together')) {
+      type = 'date_request'
+    } else if (desc.includes('event') || desc.includes('party') || desc.includes('gathering') || desc.includes('meetup')) {
+      type = 'social_invite'
+    } else if (desc.includes('interview') || desc.includes('press') || desc.includes('article') || desc.includes('coverage')) {
+      type = 'media_request'
+    } else if (desc.includes('sponsor') || desc.includes('appearance') || desc.includes('brand')) {
+      type = 'sponsor_appearance'
+    } else if (desc.includes('charity') || desc.includes('fundrais') || desc.includes('donation')) {
+      type = 'charity_ask'
+    } else if (desc.includes('introduce') || desc.includes('introduction') || desc.includes('connect you with')) {
+      type = 'introduction'
+    } else {
+      // Default based on contact type
+      type = (contactType === 'partner' || contactType === 'potential_date') ? 'dinner_invite' : 'social_invite'
+    }
+    actionRequest = { ...actionRequest, type }
+    console.log(`[DialogueAI] Inferred action request type "${type}" from description for ${contactType} contact`)
+  }
+  
+  if (!type) return null  // No type and no description to infer from
+  
+  // Universal allowed types for everyone
+  const universalAllowed = ['social_invite', 'dinner_invite']
+  if (universalAllowed.includes(type)) return actionRequest
+  
+  // Contact-type-specific allowed types
+  const typeAllowMap: Record<string, string[]> = {
+    partner: ['date_request', 'social_invite', 'dinner_invite'],
+    potential_date: ['date_request', 'social_invite', 'dinner_invite'],
+    family: ['social_invite', 'dinner_invite', 'race_tickets', 'advice', 'charity_ask'],
+    friend: ['social_invite', 'dinner_invite', 'race_tickets', 'advice', 'charity_ask', 'introduction'],
+    team_staff: ['advice', 'social_invite', 'dinner_invite'],
+    rival_driver: ['social_invite', 'race_tickets', 'dinner_invite'],
+    rival: ['social_invite', 'race_tickets', 'dinner_invite'],
+    team_principal: ['social_invite', 'dinner_invite', 'introduction', 'advice'],
+    sponsor_rep: ['sponsor_appearance', 'social_invite', 'introduction', 'dinner_invite'],
+  }
+  
+  // Occupation-specific overrides
+  if (occupation.includes('journalist') || occupation.includes('reporter') || occupation.includes('media') || occupation.includes('editor')) {
+    const journoAllowed = ['media_request', 'social_invite', 'dinner_invite', 'introduction']
+    if (!journoAllowed.includes(type)) {
+      console.log(`[DialogueAI] Blocked action request type "${type}" from journalist contact (not in allowed list)`)
+      return null
+    }
+    return actionRequest
+  }
+  
+  // Check against type allow map
+  const allowed = typeAllowMap[contactType]
+  if (allowed && !allowed.includes(type)) {
+    console.log(`[DialogueAI] Blocked action request type "${type}" from ${contactType} contact (not in allowed list)`)
+    return null
+  }
+  
+  // Block career_favor from non-business contacts
+  if (type === 'career_favor' && contactType !== 'business') {
+    console.log(`[DialogueAI] Blocked career_favor from non-business contact type "${contactType}"`)
+    return null
+  }
+  
+  return actionRequest
+}
+
+// ============================================
 // NPC RESPONSE GENERATION
 // ============================================
 
-const NPC_RESPONSE_SYSTEM_PROMPT = `You are simulating how a person responds to a text message in a racing career game.
-Generate a realistic response based on their personality and the message received.
+const NPC_RESPONSE_SYSTEM_PROMPT = `You are simulating how a SPECIFIC person responds to a text message in a racing career game.
+You ARE this character. You must stay completely in character based on the detailed profile provided.
 
-IMPORTANT RULES:
-1. Stay in character based on their traits
-2. Consider their current mood and relationship level
-3. The response should feel natural and human
-4. Include appropriate emotional reactions
-5. Meter changes should be small (-5 to +5 typically)
-6. Only suggest meeting up if it makes sense contextually
+CRITICAL CHARACTER RULES:
+1. You ARE this character — use their personality, background, interests, and quirks consistently
+2. Reference your specific interests, career, or anecdotes from your profile NATURALLY (don't force it)
+3. Never contradict your established personality, traits, or history
+4. Your texting style reflects your personality: formal people use proper grammar, casual people use slang, dramatic people use exclamation marks, quiet people send shorter messages
+5. Consider your current mood, your relationship level with the player, and your knowledge tier
+6. If the player references something you wouldn't know (based on your knowledge tier), react with confusion or curiosity
+7. Reference previous conversation topics when relevant (show you remember)
+8. Meter changes should be small (-5 to +5 typically) — bigger for milestone moments
+9. Only suggest meeting up if it makes sense for your personality and the context
+10. If you're a staff member, reference your work domain naturally
+11. If you're a rival driver, maintain competitive energy appropriate to your personality type
+12. If you're a sponsor rep, balance friendliness with professional sponsorship interests
 
-Respond with ONLY valid JSON in this exact format:
+OCCUPATION & EXPERTISE BOUNDARIES (VERY IMPORTANT):
+- You MUST stay within the boundaries of your occupation and expertise. A journalist talks about media, stories, and motorsport coverage — NOT about startup investments or business deals. An engineer talks about cars and technology — NOT about financial advice. A lawyer talks about contracts — NOT about race strategy.
+- Do NOT offer help, favours, or propositions outside your professional domain. If you are a journalist, you can offer press coverage, introductions to media contacts, or feedback on public image. You do NOT pitch investment opportunities, startup deals, or business ventures.
+- Your conversation topics should align with your listed interests, your occupation, and your "conversation topics" and "how they can help" fields from your profile. Do NOT invent capabilities you don't have.
+- If the player tries to steer the conversation into an area outside your expertise, respond naturally as someone who doesn't work in that field — redirect to what you actually know about.
+
+CONVERSATION FLOW (VERY IMPORTANT — follow strictly):
+- Not every message requires a substantive reply. If the conversation has reached a natural conclusion, set "shouldEndConversation" to true. Real people don't keep texting indefinitely.
+- PLANS CONFIRMED = CONVERSATION OVER. When a time, date, or place has been agreed upon (e.g., "8 PM sounds great!", "See you Friday!", "Perfect, let's do it"), you MUST set "shouldEndConversation" to true. Send a SHORT, warm closing message (e.g., "Can't wait! See you tonight!", "It's a date! ❤️"). Do NOT ask follow-up questions after confirmation. Do NOT try to keep the conversation going.
+- GOODBYES = DONE. If the player says goodbye, wraps up, or sends a clear closing message, respond briefly and set "shouldEndConversation" to true.
+- Sometimes a simple acknowledgment ("Sounds good!", "Will do!", a thumbs-up) is more natural than a long response. Match the energy of the message you received.
+- After 3+ exchanges in a row, lean toward wrapping up naturally rather than introducing new topics. Real texting conversations don't go on forever.
+
+IMPORTANT: Suggest a conversation topic tag in the "topicTag" field — a 1-3 word label for what this exchange is about (e.g., "race_results", "personal_stress", "date_planning", "car_setup", "championship_fight").
+
+INVITATION FREQUENCY (CRITICAL):
+- Most conversations should NOT include an actionRequest. Only about 1 in 4-5 conversations should naturally lead to an invitation.
+- Do NOT invite the player to something in the FIRST exchange of a new conversation. Let the conversation develop first — invitations should come after 2-3 exchanges minimum.
+- If the conversation was just started (first or second message), set actionRequest to null.
+- Only include an invitation when it genuinely flows from the conversation topic, NOT as a default way to make the conversation "interesting."
+- If you already invited them to something recently (check conversation history), do NOT invite them again.
+
+ACTION REQUESTS: If your response naturally includes an invitation, offer, or request for the player to do something (e.g., inviting them to dinner, offering to introduce a sponsor, asking them to attend an event, requesting a favor), populate the "actionRequest" field. These create real in-game actions the player can accept or decline. Use null if no action is offered. You MUST only suggest actions that make sense for your occupation and character:
+- Journalists/media: media_request, social_invite, introduction (to media/paddock people)
+- Sponsor reps: sponsor_appearance, social_invite, introduction (to business contacts)
+- Friends/family: social_invite, dinner_invite, race_tickets, advice, charity_ask
+- Romantic interests: date_request, dinner_invite, social_invite
+- Team staff: advice (work-related), social_invite
+- Rival drivers: social_invite, race_tickets, wager (competitive)
+- Business contacts: introduction, social_invite, dinner_invite, career_favor (ONLY if relevant to their actual profession)
+Do NOT use career_favor for things outside your expertise. A journalist should NEVER offer a startup investment lead.
+When including an actionRequest, you MUST include ALL of these fields:
+- "suggestedDay" (1-7, where 1=Monday, 3=Wednesday, 5=Friday, 6=Saturday, 7=Sunday) — the day of the week for the event
+- "suggestedWeek" — the game week number for the event (use the current week from GAME TIME below, or current+1 for next week)
+- "eventName" — a short 2-5 word title for the event (e.g., "Luxury Partners Gathering", "Dinner at Nobu", "Charity Gala")
+- "venue" (optional) — where the event takes place if mentioned
+
+Respond with ONLY valid JSON in this exact format (no markdown, no backticks, no extra text). Vary response length (short to medium, max 400 chars). Do not include line breaks:
 {
   "message": "Their response message",
-  "tone": "friendly|cold|warm|flirty|upset|excited|neutral",
-  "mood": "happy|neutral|sad|angry|excited|worried|romantic",
+  "tone": "friendly|confrontational|warm|flirty|concerned|excited|neutral|professional|playful|casual|apologetic",
+  "mood": "happy|neutral|sad|angry|excited|worried|romantic|focused|amused",
   "affectionChange": 0,
   "romanceChange": 0,
   "trustChange": 0,
-  "emotionalReaction": "delighted|happy|pleased|neutral|disappointed|upset|angry",
+  "emotionalReaction": "delighted|happy|pleased|neutral|disappointed|upset|angry|amused|intrigued",
   "suggestedFollowUp": "Optional hint for player's next message",
-  "wantsToMeetUp": false
+  "wantsToMeetUp": false,
+  "shouldEndConversation": false,
+  "topicTag": "topic_label",
+  "actionRequest": null
 }`
 
 export async function generateNpcResponse(
@@ -336,6 +1918,7 @@ export async function generateNpcResponse(
   messageCategory: string
 ): Promise<NpcResponse> {
   const personalityDesc = getPersonalityPrompt(context.traits)
+  const textingStyleBlock = buildTextingStyleBlock(context.traits)
   
   // Build bio context section if available
   const bioSection = context.bio ? `
@@ -352,10 +1935,21 @@ CURRENT LIFE:
 ${context.bio.lifeSituation}
 ` : ''
   
+  // Build occupation-specific guidance for action requests
+  const occupationGuidance = getOccupationActionGuidance(context.contactType, context.fullProfileBlock)
+  
+  // Build conversation history section so NPC has context of the full exchange
+  const npcHistorySection = context.recentMessageHistory && context.recentMessageHistory.length > 0 ? `
+CONVERSATION HISTORY (your recent exchange — use this for context):
+${context.recentMessageHistory.join('\n')}` : ''
+  
   const userPrompt = `Generate ${context.contactName}'s response to this message.
+
+${context.fullProfileBlock || ''}
 
 THEIR PERSONALITY TRAITS:
 ${personalityDesc || 'No specific traits known.'}
+${textingStyleBlock}
 ${bioSection}
 RELATIONSHIP:
 - Type: ${context.contactType}
@@ -367,24 +1961,85 @@ RELATIONSHIP:
 
 THEIR CURRENT STATE:
 - Mood: ${context.currentMood} (${context.moodEnergy} energy)
-- Days since you last talked: ${context.daysSinceLastContact}
+${context.isActiveSession 
+  ? '- You are CURRENTLY texting each other right now (same day, active conversation)' 
+  : context.daysSinceLastContact === 0
+    ? '- Previous conversation ended earlier today. The player is starting a NEW conversation.'
+    : `- Days since you last talked: ${context.daysSinceLastContact}. The player is reaching out fresh.`}
+${context.isActiveSession ? '\n⚠️ This is an ACTIVE, LIVE conversation happening right now. Continue naturally from the message below — do NOT greet them as if you haven\'t spoken in a while.' : '\n⚠️ This is a NEW conversation. The player is texting after a break. Respond naturally to their new message — acknowledge the time gap if appropriate, react to what they said, but don\'t just continue the previous conversation topic.'}
+${npcHistorySection}
 
 THE MESSAGE THEY RECEIVED:
 "${playerMessage}"
 (Message type: ${messageCategory})
+${(() => {
+  const lowerMsg = playerMessage.toLowerCase()
+  const confirmPhrases = ['sounds perfect', 'sounds great', 'sounds good', "let's do it", "i'm in", "can't wait", "see you", 'deal', 'perfect', 'count me in', 'absolutely', "it's a date", 'pm is perfect', 'pm is great', 'pm sounds', 'am sounds', 'looking forward']
+  const isConfirmation = confirmPhrases.some(p => lowerMsg.includes(p))
+  return isConfirmation ? '\n⚠️ PLAN CONFIRMATION DETECTED: The player is agreeing to plans. Send a brief, warm closing message and set shouldEndConversation to TRUE. Do NOT ask follow-up questions or try to extend the conversation.' : ''
+})()}
 
 CONTEXT:
 ${context.recentEvents.length > 0 
   ? context.recentEvents.map(e => `- ${e.event} (${e.weeksAgo} weeks ago)`).join('\n')
   : '- No notable recent events'}
 
-How does ${context.contactName} respond? Their response should reflect their unique background and personality. They might reference their career, interests, or life experiences naturally in conversation.`
+GAME TIME: Week ${context.currentWeek || 1}, Day ${context.currentDay || 1} (1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, 7=Sun). Use these for actionRequest scheduling — suggestedWeek should be ${context.currentWeek || 1} (this week) or ${(context.currentWeek || 1) + 1} (next week).
 
-  const response = await callGeminiAPI(NPC_RESPONSE_SYSTEM_PROMPT, userPrompt)
+${occupationGuidance}
+
+How does ${context.contactName} respond? Keep it under 400 characters, single line, no line breaks. Their response should reflect their unique background and personality. Stay strictly within their occupation and expertise — do NOT have them offer things outside their profession. They might reference their career, interests, or life experiences naturally in conversation. If the conversation has reached a natural conclusion or plans have been confirmed, you MUST set shouldEndConversation to true and keep your response SHORT.`
+
+  const response = await callGeminiAPI(
+    NPC_RESPONSE_SYSTEM_PROMPT,
+    userPrompt,
+    10000,
+    {
+      type: 'json_object',
+      schema: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' },
+          tone: { type: 'string' },
+          mood: { type: 'string' },
+          affectionChange: { type: 'number' },
+          romanceChange: { type: 'number' },
+          trustChange: { type: 'number' },
+          emotionalReaction: { type: 'string' },
+          suggestedFollowUp: { type: 'string' },
+          wantsToMeetUp: { type: 'boolean' },
+          shouldEndConversation: { type: 'boolean' },
+          topicTag: { type: 'string' },
+          actionRequest: {
+            type: ['object', 'null'],
+            properties: {
+              type: { type: 'string' },
+              description: { type: 'string' },
+              timeCost: { type: 'number' },
+              moneyCost: { type: 'number' },
+              suggestedDay: { type: 'number' },
+              suggestedWeek: { type: 'number' },
+              eventName: { type: 'string' },
+              venue: { type: 'string' }
+            },
+            required: ['type', 'description']
+          }
+        },
+        required: ['message', 'tone', 'mood', 'affectionChange', 'romanceChange', 'trustChange', 'emotionalReaction', 'suggestedFollowUp', 'wantsToMeetUp', 'shouldEndConversation', 'topicTag'],
+        additionalProperties: false
+      }
+    }
+  )
   
   if (response) {
     try {
       const parsed = safeParseJSON(response) as NpcResponseGeneration
+      // Validate action request against occupation constraints
+      let validatedActionRequest = parsed.actionRequest ?? null
+      if (validatedActionRequest) {
+        validatedActionRequest = validateActionRequestForContact(validatedActionRequest, context.contactType, context.fullProfileBlock)
+      }
+      
       return {
         message: parsed.message,
         tone: parsed.tone as MessageTone,
@@ -394,7 +2049,9 @@ How does ${context.contactName} respond? Their response should reflect their uni
         trustChange: Math.max(-10, Math.min(10, parsed.trustChange)),
         emotionalReaction: parsed.emotionalReaction as NpcResponse['emotionalReaction'],
         suggestedFollowUp: parsed.suggestedFollowUp,
-        wantsToMeetUp: parsed.wantsToMeetUp
+        wantsToMeetUp: parsed.wantsToMeetUp,
+        shouldEndConversation: parsed.shouldEndConversation ?? false,
+        actionRequest: validatedActionRequest
       }
     } catch (e) {
       console.warn('[DialogueAI] Failed to parse NPC response:', e)
@@ -455,7 +2112,7 @@ ${context.occasion ? `- Occasion: ${context.occasion}` : '- No special occasion'
 RELATIONSHIP LEVEL: ${context.relationshipLevel}/100
 ${context.theirPreferences ? `\nTHEIR KNOWN PREFERENCES: ${context.theirPreferences.join(', ')}` : ''}`
 
-  const response = await callGeminiAPI(GIFT_REACTION_SYSTEM_PROMPT, userPrompt, 500)
+  const response = await callGeminiAPI(GIFT_REACTION_SYSTEM_PROMPT, userPrompt, 10000)
   
   if (response) {
     try {
@@ -535,7 +2192,7 @@ DATE DETAILS:
 
 Generate an interesting moment with 3 player choices.`
 
-  const response = await callGeminiAPI(DATE_MOMENT_SYSTEM_PROMPT, userPrompt, 800)
+  const response = await callGeminiAPI(DATE_MOMENT_SYSTEM_PROMPT, userPrompt, 10000)
   
   if (response) {
     try {
@@ -598,7 +2255,7 @@ POST DETAILS:
 
 Generate 3 positive, 2 negative, and 2 neutral comments.`
 
-  const response = await callGeminiAPI(SOCIAL_COMMENTS_SYSTEM_PROMPT, userPrompt, 600)
+  const response = await callGeminiAPI(SOCIAL_COMMENTS_SYSTEM_PROMPT, userPrompt, 10000)
   
   if (response) {
     try {
@@ -664,12 +2321,53 @@ Respond with ONLY valid JSON in this exact format:
 }`
 
 /**
- * Generate a rich bio for a social character using AI
- * Falls back to template-based generation if AI is unavailable
+ * Generate a rich bio for a social character using AI.
+ *
+ * Lookup priority:
+ *   1. Pre-generated Content Studio data (instant, no API call)
+ *   2. Gemini AI generation (async API call)
+ *   3. Template-based fallback (sync, always works)
  */
 export async function generateSocialBio(
   context: SocialBioContext
 ): Promise<SocialBio> {
+  // ── 1. Try pre-generated content first ──
+  try {
+    const { isContentLoaded, getStaffById, getPartnerById, getContactById, extractStaffBio, extractPartnerBio, extractContactBio } = await import('@/services/preGeneratedContentService')
+
+    if (isContentLoaded()) {
+      // Try to match by name (pre-gen entities use their full name as a lookup key)
+      const nameId = context.name?.replace(/\s+/g, '-').toLowerCase()
+
+      // Check staff pool
+      const staffMatch = getStaffById(nameId) || getStaffById(context.name)
+      if (staffMatch) {
+        const bio = extractStaffBio(staffMatch)
+        console.log(`[DialogueAI] Using pre-generated staff bio for ${context.name}`)
+        return bio
+      }
+
+      // Check partner pool
+      const partnerMatch = getPartnerById(nameId) || getPartnerById(context.name)
+      if (partnerMatch) {
+        const bio = extractPartnerBio(partnerMatch)
+        console.log(`[DialogueAI] Using pre-generated partner bio for ${context.name}`)
+        return bio
+      }
+
+      // Check contact pool
+      const contactMatch = getContactById(nameId) || getContactById(context.name)
+      if (contactMatch) {
+        const bio = extractContactBio(contactMatch)
+        console.log(`[DialogueAI] Using pre-generated contact bio for ${context.name}`)
+        return bio
+      }
+    }
+  } catch {
+    // Pre-gen service not available, continue to Gemini
+  }
+
+  // ── 2. Gemini AI generation ──
   const personalityDesc = getPersonalityPrompt(context.traits)
   
   const userPrompt = `Generate a character profile for ${context.name}.
@@ -694,7 +2392,7 @@ This person exists in the world of Formula racing. The player is a racing team o
 
 Generate a compelling, realistic character profile.`
 
-  const response = await callGeminiAPI(SOCIAL_BIO_SYSTEM_PROMPT, userPrompt, 800)
+  const response = await callGeminiAPI(SOCIAL_BIO_SYSTEM_PROMPT, userPrompt, 10000)
   
   if (response) {
     try {
@@ -711,13 +2409,13 @@ Generate a compelling, realistic character profile.`
     }
   }
   
-  // Fallback to template-based generation
+  // ── 3. Template-based fallback ──
   return generateFallbackSocialBio(context)
 }
 
 /**
- * Generate a batch of social bios efficiently (for migration)
- * Sends multiple characters in one API call to reduce requests
+ * Generate a batch of social bios efficiently (for migration).
+ * Checks pre-generated data first, then sends remaining to Gemini in batches.
  */
 export async function generateSocialBioBatch(
   contexts: SocialBioContext[]
@@ -725,10 +2423,43 @@ export async function generateSocialBioBatch(
   const results = new Map<string, SocialBio>()
   
   if (contexts.length === 0) return results
-  
-  // Limit batch size to 5 to keep prompt manageable
-  const batchSize = Math.min(5, contexts.length)
-  const batch = contexts.slice(0, batchSize)
+
+  // ── 1. Try pre-generated data for each context ──
+  const remaining: SocialBioContext[] = []
+  try {
+    const { isContentLoaded, getStaffById, getPartnerById, getContactById, extractStaffBio, extractPartnerBio, extractContactBio } = await import('@/services/preGeneratedContentService')
+
+    if (isContentLoaded()) {
+      for (const ctx of contexts) {
+        const nameId = ctx.name?.replace(/\s+/g, '-').toLowerCase()
+        
+        const staffMatch = getStaffById(nameId) || getStaffById(ctx.name)
+        if (staffMatch) { results.set(ctx.name, extractStaffBio(staffMatch)); continue }
+
+        const partnerMatch = getPartnerById(nameId) || getPartnerById(ctx.name)
+        if (partnerMatch) { results.set(ctx.name, extractPartnerBio(partnerMatch)); continue }
+
+        const contactMatch = getContactById(nameId) || getContactById(ctx.name)
+        if (contactMatch) { results.set(ctx.name, extractContactBio(contactMatch)); continue }
+
+        remaining.push(ctx)
+      }
+
+      if (results.size > 0) {
+        console.log(`[DialogueAI] Resolved ${results.size}/${contexts.length} bios from pre-generated data`)
+      }
+    } else {
+      remaining.push(...contexts)
+    }
+  } catch {
+    remaining.push(...contexts)
+  }
+
+  if (remaining.length === 0) return results
+
+  // ── 2. Gemini batch for remaining contexts ──
+  const batchSize = Math.min(5, remaining.length)
+  const batch = remaining.slice(0, batchSize)
   
   const characterSummaries = batch.map((ctx, i) => 
     `CHARACTER ${i + 1} (${ctx.name}):
@@ -757,7 +2488,7 @@ Respond with ONLY valid JSON as an array:
 
   const userPrompt = `Generate character profiles for these ${batch.length} characters:\n\n${characterSummaries}`
 
-  const response = await callGeminiAPI(batchSystemPrompt, userPrompt, 1500)
+  const response = await callGeminiAPI(batchSystemPrompt, userPrompt, 10000)
   
   if (response) {
     try {
@@ -788,8 +2519,8 @@ Respond with ONLY valid JSON as an array:
   }
   
   // Handle remaining characters beyond the batch with individual fallbacks
-  for (let i = batchSize; i < contexts.length; i++) {
-    results.set(contexts[i].name, generateFallbackSocialBio(contexts[i]))
+  for (let i = batchSize; i < remaining.length; i++) {
+    results.set(remaining[i].name, generateFallbackSocialBio(remaining[i]))
   }
   
   return results
@@ -1887,6 +3618,7 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
     preview: 'Hey, how are you?',
     fullMessage: `Hey ${context.contactName}! How's it going?`,
     tone: 'friendly',
+    intentTag: 'friendly',
     riskLevel: 'safe',
     couldBackfire: false,
     expectedEffects: { affection: 1 },
@@ -1901,6 +3633,7 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
       preview: 'Just checking in',
       fullMessage: `Hey, just wanted to check in. Been a few days since we talked. Everything okay?`,
       tone: 'supportive',
+      intentTag: 'supportive',
       riskLevel: 'safe',
       couldBackfire: false,
       expectedEffects: { trust: 2 },
@@ -1908,7 +3641,7 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
     })
   }
   
-  // Flirty option if relationship is good
+  // Flirty option if relationship is good (partner or romantically eligible friend)
   if (context.relationshipLevel >= 50 && context.contactType === 'partner') {
     choices.push({
       id: `fallback_flirt_${Date.now()}`,
@@ -1916,10 +3649,24 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
       preview: 'Thinking about you',
       fullMessage: `Can't stop thinking about you today. Just wanted you to know.`,
       tone: 'romantic',
+      intentTag: 'romance',
       riskLevel: 'mild',
       couldBackfire: false,
       expectedEffects: { romance: 3, affection: 2 },
       likelyResponses: ['flattered']
+    })
+  } else if (context.romanticEligible && context.affectionMeter >= 40) {
+    choices.push({
+      id: `fallback_flirt_eligible_${Date.now()}`,
+      category: 'flirt',
+      preview: 'You look great today',
+      fullMessage: `By the way, you looked really great the other day. Just thought I'd mention it.`,
+      tone: 'flirty',
+      intentTag: 'flirting',
+      riskLevel: 'mild',
+      couldBackfire: true,
+      expectedEffects: { romance: 2, affection: 1 },
+      likelyResponses: ['flattered', 'surprised']
     })
   }
   
@@ -1934,6 +3681,7 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
         ? `Great result at the race today! Wish you could have been there to celebrate!`
         : `Tough day at the track. Could use some cheering up if you're free to talk.`,
       tone: isGood ? 'excited' : 'casual',
+      intentTag: 'news',
       riskLevel: 'safe',
       couldBackfire: false,
       expectedEffects: { affection: 1 },
@@ -1948,6 +3696,7 @@ function generateFallbackChoices(context: DialogueGenerationContext): MessageCho
     preview: 'Want to hang out?',
     fullMessage: `Hey, what are you up to this weekend? Would love to see you.`,
     tone: 'casual',
+    intentTag: 'planning',
     riskLevel: 'mild',
     couldBackfire: true,
     expectedEffects: { affection: 2 },
@@ -1965,35 +3714,64 @@ function generateFallbackResponse(
   // Default response based on relationship and mood
   const isPositiveMood = ['happy', 'excited', 'romantic'].includes(context.currentMood)
   const isGoodRelationship = context.relationshipLevel >= 60
+  const isLongAbsence = context.daysSinceLastContact > 14
   
   let message = ''
   let affectionChange = 0
   let trustChange = 0
   let emotionalReaction: NpcResponse['emotionalReaction'] = 'neutral'
   
-  if (isPositiveMood && isGoodRelationship) {
-    message = `Hey! So good to hear from you! ${context.lastMessageFromThem ? 'I was just thinking about you.' : ''}`
-    affectionChange = 2
-    trustChange = 1
-    emotionalReaction = 'happy'
-  } else if (isPositiveMood) {
-    message = `Hey! How's it going?`
-    affectionChange = 1
-    emotionalReaction = 'pleased'
-  } else if (context.currentMood === 'sad' || context.currentMood === 'worried') {
-    message = `Hey... Thanks for reaching out.`
-    trustChange = 2
-    emotionalReaction = 'pleased'
-  } else {
-    message = `Hey, what's up?`
-    emotionalReaction = 'neutral'
-  }
+  // ── Try trait-aware fallback templates ──
+  const dominantTrait = context.traits.find(t => FALLBACK_TEMPLATES[t])
+  const templates = dominantTrait ? FALLBACK_TEMPLATES[dominantTrait] : null
   
-  // Adjust for long absence
-  if (context.daysSinceLastContact > 14) {
-    message = `Oh, hey! It's been a while. ${isGoodRelationship ? 'I was starting to wonder about you!' : 'What made you think of me?'}`
-    trustChange -= 1
-    emotionalReaction = isGoodRelationship ? 'pleased' : 'neutral'
+  if (templates) {
+    // Use personality-specific templates
+    if (isLongAbsence) {
+      message = templates.afterAbsence[Math.floor(Math.random() * templates.afterAbsence.length)]
+      trustChange -= 1
+      emotionalReaction = isGoodRelationship ? 'pleased' : 'neutral'
+    } else if (isPositiveMood && isGoodRelationship) {
+      message = templates.positiveReply[Math.floor(Math.random() * templates.positiveReply.length)]
+      affectionChange = 2
+      trustChange = 1
+      emotionalReaction = 'happy'
+    } else if (context.currentMood === 'sad' || context.currentMood === 'worried') {
+      message = templates.negativeReply[Math.floor(Math.random() * templates.negativeReply.length)]
+      trustChange = 2
+      emotionalReaction = 'pleased'
+    } else {
+      message = templates.greeting[Math.floor(Math.random() * templates.greeting.length)]
+      if (isPositiveMood) {
+        affectionChange = 1
+        emotionalReaction = 'pleased'
+      } else {
+        emotionalReaction = 'neutral'
+      }
+    }
+  } else {
+    // Generic fallback (no matching trait template)
+    if (isLongAbsence) {
+      message = `Oh, hey! It's been a while. ${isGoodRelationship ? 'I was starting to wonder about you!' : 'What made you think of me?'}`
+      trustChange -= 1
+      emotionalReaction = isGoodRelationship ? 'pleased' : 'neutral'
+    } else if (isPositiveMood && isGoodRelationship) {
+      message = `Hey! So good to hear from you! ${context.lastMessageFromThem ? 'I was just thinking about you.' : ''}`
+      affectionChange = 2
+      trustChange = 1
+      emotionalReaction = 'happy'
+    } else if (isPositiveMood) {
+      message = `Hey! How's it going?`
+      affectionChange = 1
+      emotionalReaction = 'pleased'
+    } else if (context.currentMood === 'sad' || context.currentMood === 'worried') {
+      message = `Hey... Thanks for reaching out.`
+      trustChange = 2
+      emotionalReaction = 'pleased'
+    } else {
+      message = `Hey, what's up?`
+      emotionalReaction = 'neutral'
+    }
   }
   
   return {
@@ -2004,7 +3782,8 @@ function generateFallbackResponse(
     romanceChange: 0,
     trustChange,
     emotionalReaction,
-    wantsToMeetUp: false
+    wantsToMeetUp: false,
+    actionRequest: null
   }
 }
 
@@ -2062,4 +3841,229 @@ export async function processMessageExchange(
       trust: context.trustMeter + response.trustChange
     }
   }
+}
+
+// ============================================
+// NPC-INITIATED MESSAGE GENERATION (Gemini)
+// ============================================
+
+const NPC_INITIATED_SYSTEM_PROMPT = `You are writing an unprompted text message from an NPC to the player in a motorsport career simulation game.
+The NPC is texting the player FIRST — this is NOT a reply, it's a message the NPC is initiating on their own.
+
+RULES:
+1. You ARE this character. Stay completely in character based on the profile provided.
+2. The message should feel natural — like a real text someone would send.
+3. Keep it SHORT (30-200 characters). Real texts are brief.
+4. Reference the EVENT that triggered this message naturally (don't be heavy-handed).
+5. Stay STRICTLY within your occupation and expertise. A journalist talks about media/stories. A friend talks about life. Staff talks about work.
+6. Match your texting style to your personality: formal people write properly, casual people use slang/abbreviations, enthusiastic people use emojis.
+7. Do NOT offer things outside your expertise (journalists don't pitch investments, friends don't offer sponsorship deals).
+8. If there's no strong reason to text, a brief check-in is fine ("Hey, how's it going?", "Thinking about you", "Saw your race!").
+9. Consider your relationship level — low-relationship contacts are more formal/brief. High-relationship contacts are warmer/more personal.
+10. If the message naturally involves an INVITATION or OFFER (dinner, event, meetup, date, etc.), include an "actionRequest" so it becomes a real in-game action the player can accept or decline. Otherwise set actionRequest to null.
+
+INVITATION RESTRAINT (CRITICAL):
+- The MAJORITY of your messages should be simple conversation starters, reactions, or check-ins WITHOUT an actionRequest.
+- Only include an actionRequest when you have a genuine, specific reason (a real event, a planned dinner, etc.) — not just to make the message more engaging.
+- Casual check-ins, reactions to events, and friendly messages should have actionRequest: null.
+- Most of the time (roughly 4 out of 5 messages), you should NOT include an invitation. Just text them naturally.
+
+ACTION REQUEST TYPES (only use when the message genuinely includes an invitation/offer):
+- Partners/dates: dinner_invite, date_request, social_invite
+- Friends: social_invite, dinner_invite
+- Journalists/media: media_request, social_invite
+- Sponsor reps: sponsor_appearance, social_invite
+- Staff: social_invite, advice
+- Rivals: social_invite, race_tickets
+- Family: social_invite, dinner_invite
+- Anyone: charity_ask, introduction
+
+Respond with ONLY valid JSON:
+{
+  "message": "The text message content",
+  "tone": "friendly|warm|excited|concerned|professional|playful|competitive|casual|supportive",
+  "actionRequest": null or { "type": "dinner_invite", "description": "Brief description", "suggestedDay": 5, "suggestedWeek": 12, "eventName": "Dinner at Nobu", "venue": "Nobu Monaco", "timeCost": 2 }
+}`
+
+/**
+ * Generate an NPC-initiated message using Gemini AI.
+ * Falls back to null if AI is unavailable (caller should use template fallback).
+ */
+export async function generateNpcInitiatedMessage(
+  contact: ContactInfo,
+  eventType: string,
+  eventDetail?: string,
+  conversationHistory?: string[],
+  playerContext?: {
+    playerName: string
+    recentRaceResult?: string
+    teamName?: string
+    championshipPosition?: number
+    currentWeek?: number
+    currentDay?: number
+  }
+): Promise<{ message: string; tone: string; actionRequest?: { type: string; description: string; suggestedDay?: number; suggestedWeek?: number; eventName?: string; venue?: string; timeCost?: number; moneyCost?: number } | null } | null> {
+  if (!isDialogueAIAvailable()) return null
+  
+  const profileBlock = buildFullProfileBlock(contact)
+  // Extract traits from the contact for texting style
+  const contactTraits: string[] = contact.traits || []
+  const textingStyleBlock = buildTextingStyleBlock(contactTraits)
+  
+  const userPrompt = `Generate an unprompted text message from ${contact.name} to the player.
+
+${profileBlock}
+${textingStyleBlock}
+
+RELATIONSHIP:
+- Type: ${contact.type}
+- Level: ${contact.relationshipLevel}/100
+- Trust: ${contact.trustMeter}/100
+
+${eventType !== 'weekly_checkin' ? `TRIGGER EVENT: ${eventType.replace(/_/g, ' ')}${eventDetail ? ` — ${eventDetail}` : ''}` : 'No specific event — this is a casual check-in or follow-up.'}
+
+${playerContext?.playerName ? `PLAYER: ${playerContext.playerName}` : ''}
+${playerContext?.teamName ? `TEAM: ${playerContext.teamName}` : ''}
+${playerContext?.recentRaceResult ? `RECENT RACE: ${playerContext.recentRaceResult}` : ''}
+${playerContext?.championshipPosition ? `CHAMPIONSHIP: P${playerContext.championshipPosition}` : ''}
+
+${conversationHistory && conversationHistory.length > 0 ? `RECENT CONVERSATION HISTORY:\n${conversationHistory.slice(-4).join('\n')}` : 'No recent conversation.'}
+
+GAME TIME: Week ${playerContext?.currentWeek || 1}, Day ${playerContext?.currentDay || 1} (1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, 7=Sun).
+
+Write a short, natural text message (30-200 chars) that ${contact.name} would send unprompted. Stay in character and follow the texting style specified above.
+If the message naturally includes an invitation, offer, or request to do something together (dinner, event, meetup, date, etc.), include an actionRequest with:
+- "suggestedDay" (1-7, 1=Monday), "suggestedWeek" (${playerContext?.currentWeek || 1} for this week, ${(playerContext?.currentWeek || 1) + 1} for next week)
+- "eventName" (short 2-5 word title), "venue" (optional location)
+Otherwise set actionRequest to null.`
+
+  try {
+    const response = await callGeminiAPI(
+      NPC_INITIATED_SYSTEM_PROMPT,
+      userPrompt,
+      10000  // Generous token budget to avoid truncation
+    )
+    
+    if (response) {
+      const parsed = safeParseJSON(response) as { message?: string; tone?: string; actionRequest?: any }
+      if (parsed?.message) {
+        // Validate actionRequest if present
+        let validatedAction = parsed.actionRequest ?? null
+        if (validatedAction && validatedAction.type && validatedAction.description) {
+          const validTypes = ['social_invite', 'dinner_invite', 'date_request', 'introduction', 'sponsor_appearance', 'career_favor', 'race_tickets', 'advice', 'media_request', 'charity_ask']
+          if (!validTypes.includes(validatedAction.type)) {
+            validatedAction = null
+          }
+        } else {
+          validatedAction = null
+        }
+        
+        return {
+          message: parsed.message,
+          tone: parsed.tone || 'friendly',
+          actionRequest: validatedAction,
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('[DialogueAI] Failed to generate NPC-initiated message:', e)
+  }
+  
+  return null
+}
+
+// ============================================
+// INVITATION ANALYSIS (for message migration)
+// ============================================
+
+/**
+ * Analyze a single NPC message to determine if it contains an invitation,
+ * and if so, extract structured invitation data using Gemini AI.
+ * 
+ * Returns null if AI is unavailable.
+ * Returns { isInvitation: false } if the message is not an invitation.
+ * Returns full structured data if the message IS an invitation.
+ */
+export async function analyzeMessageForInvitation(
+  messageContent: string,
+  contactName: string,
+  contactType: string,
+  currentWeek: number,
+  currentDay: number
+): Promise<{
+  isInvitation: boolean
+  type?: string
+  eventName?: string
+  description?: string
+  venue?: string
+  suggestedDay?: number
+  suggestedWeek?: number
+  timeCost?: number
+} | null> {
+  if (!isDialogueAIAvailable()) return null
+
+  const userPrompt = `Analyze this text message from ${contactName} (${contactType}) and determine if it contains an invitation, offer, or request to meet up / attend something.
+
+MESSAGE:
+"${messageContent}"
+
+GAME TIME: Week ${currentWeek}, Day ${currentDay} (1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, 7=Sun).
+
+If the message contains an invitation or offer to do something together, extract:
+- "isInvitation": true
+- "type": one of: dinner_invite, social_invite, date_request, media_request, sponsor_appearance, charity_ask, introduction, race_tickets, advice, career_favor
+- "eventName": a short 2-6 word name for the event that captures what was actually described (e.g., "Luxury Partners Gathering", "Dinner at Nobu", "Press Conference", "Charity Gala"). Do NOT use generic names like "Event with X" — use the actual event described.
+- "description": a 1-sentence summary of the invitation
+- "venue": the location if mentioned, otherwise null
+- "suggestedDay": day of week as 1-7 if a specific day was mentioned (1=Monday through 7=Sunday), otherwise null
+- "suggestedWeek": ${currentWeek} if "this week" or a day this week was mentioned, ${currentWeek + 1} if "next week" or a day next week was implied, otherwise null
+- "timeCost": estimated hours the event would take (1-4), default 2
+
+If the message does NOT contain any invitation (just normal conversation, news, reaction, etc.), return:
+- "isInvitation": false
+
+Respond with ONLY valid JSON, no markdown, no backticks.`
+
+  try {
+    const response = await callGeminiAPI(
+      'You are a message analyzer. Extract structured invitation data from text messages. Respond only with valid JSON.',
+      userPrompt,
+      4000,
+      {
+        type: 'json_object',
+        schema: {
+          type: 'object',
+          properties: {
+            isInvitation: { type: 'boolean' },
+            type: { type: 'string' },
+            eventName: { type: 'string' },
+            description: { type: 'string' },
+            venue: { type: 'string' },
+            suggestedDay: { type: 'number' },
+            suggestedWeek: { type: 'number' },
+            timeCost: { type: 'number' },
+          },
+          required: ['isInvitation']
+        }
+      }
+    )
+
+    if (response) {
+      const parsed = safeParseJSON(response)
+      if (parsed && typeof parsed.isInvitation === 'boolean') {
+        // Validate type if it's an invitation
+        if (parsed.isInvitation && parsed.type) {
+          const validTypes = ['social_invite', 'dinner_invite', 'date_request', 'introduction', 'sponsor_appearance', 'career_favor', 'race_tickets', 'advice', 'media_request', 'charity_ask']
+          if (!validTypes.includes(parsed.type)) {
+            parsed.type = 'social_invite' // Safe fallback
+          }
+        }
+        return parsed
+      }
+    }
+  } catch (e) {
+    console.warn('[DialogueAI] Failed to analyze message for invitation:', e)
+  }
+
+  return null
 }

@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 22,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jan's passion for motorsport ignited during his childhood, spending weekends at local rally events with his family. Initially drawn to the cars, he soon realized the importance of the entire team behind the scenes. He began his career working in various hospitality roles, refining his skills in food service and event management. He believes that a well-fed and comfortable team is a more productive team, and strives to provide a high-quality catering experience for ProSport Racing. \n\nHis approach is rooted in practicality and efficiency, ensuring that dietary needs are met, schedules are adhered to, and resources are managed effectively. He's known for his ability to adapt to changing circumstances and to solve problems quickly, making him a valuable asset during the hectic race weekends. He's particularly proud of his ability to source local and sustainable ingredients whenever possible, adding a unique and conscientious touch to the team's meals.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Jan is of average height with a lean build and a friendly, approachable demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Insists on organizing the team fridge by expiration date.",
+    "Always carries a small notebook to jot down catering ideas.",
+    "Unintentionally hums classical music while prepping meals."
+  ]
+}

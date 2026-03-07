@@ -1,0 +1,22 @@
+{
+  "name": "Bruce McKenzie",
+  "nationality": "Australian",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bruce McKenzie is a seasoned performance engineer with nearly three decades of experience in motorsport. Born and raised in Melbourne, his passion for racing ignited at a young age, spending weekends at local tracks absorbing the sights and sounds of V8 Supercars. He started his career in a small racing team, learning the ropes of vehicle dynamics and data analysis from the ground up. \n\nBruce's approach to performance engineering is meticulously data-driven, but he also understands the importance of driver feedback and intuition. He believes in fostering a strong collaborative environment with drivers and mechanics, ensuring everyone is aligned in the pursuit of optimal car setup. His reputation for extracting marginal gains and his uncanny ability to diagnose complex handling issues have earned him respect throughout the paddock. He is known to be a bit of a lone wolf, but is always willing to lend his expertise to others.\n\n Over the years, Bruce has worked with a variety of teams and drivers, contributing to numerous race wins and championship successes. His extensive knowledge of suspension kinematics, aerodynamics, and engine management systems makes him a valuable asset to any team looking to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed grey beard",
+    "description": "Bruce is a lean man with a weathered face that reflects years spent in the high-octane world of racing."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a well-worn notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using imperial units for certain measurements, much to the chagrin of his younger colleagues."
+  ]
+}

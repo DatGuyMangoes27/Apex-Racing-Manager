@@ -12,7 +12,7 @@ import {
   TrendingDown,
   DollarSign
 } from 'lucide-react'
-import { Card, CardHeader } from '@/components/ui/Card'
+import { Card, CardHeader } from '@/components/ui'
 import { TeamTransaction, TeamTransactionCategory } from '@/store/careerStore'
 import { formatCurrency } from '@/data/financial-config'
 

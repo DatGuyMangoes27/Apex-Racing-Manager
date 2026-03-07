@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kowalski",
+  "nationality": "Polish",
+  "age": 57,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan's journey into motorsport began in his youth, fueled by a passion for engineering and a fascination with speed. He honed his skills at Warsaw University of Technology, earning a degree in Mechanical Engineering before joining a local rally team. His knack for problem-solving and innovative solutions quickly propelled him through the ranks, leading him to Formula racing. He spent several years with smaller teams, learning the ropes and refining his expertise in aerodynamics and vehicle dynamics.\n\nJan approaches his role with a meticulous attention to detail and a relentless pursuit of performance gains. He believes in fostering a collaborative environment where ideas are freely exchanged and innovation is encouraged. His distinctive ability lies in his capacity to bridge the gap between theory and practice, translating complex engineering concepts into tangible improvements on the track. He's known for his calm demeanor under pressure and his ability to inspire his team to overcome challenges.\n\nHis recent move to Alpine F1 presents a new challenge. He is confident he can use his experience and fresh thinking to turn the team into a contender. He's eager to demonstrate his leadership and technical prowess on the world stage, bringing a new era of success to the historic racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed Goatee",
+    "description": "A man of medium height, Jan has a focused gaze and a confident posture that reflects his expertise."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses CAD software.",
+    "Insists on having a single cup of black coffee at exactly 10:00 AM every day.",
+    "Secretly sketches car designs in his notebook during team meetings."
+  ]
+}

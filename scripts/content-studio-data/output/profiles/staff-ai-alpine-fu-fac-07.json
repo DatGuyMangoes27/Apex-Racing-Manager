@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 54,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Marco Bellini's journey into motorsport began unconventionally, not on the track, but in the data centers supporting the teams. After graduating with a degree in Computer Science from the University of Bologna, he spent several years developing IT infrastructure for various engineering firms. A chance project with a small Italian racing team ignited a passion for F1, leading him to specialize in the unique demands of high-speed data analysis and real-time communication crucial for competitive racing.\n\nAt Alpine F1, Marco oversees the entire IT ecosystem, ensuring seamless connectivity between the factory, the track, and the engineers. His pragmatic approach focuses on reliability and security, implementing robust systems that can withstand the pressures of a demanding race schedule. He is known for his calm demeanor under pressure and his ability to troubleshoot complex issues quickly, making him a vital asset to the team's operational efficiency. \n\nMarco also champions the use of open-source software wherever possible, believing in its flexibility and collaborative potential to drive innovation within the team. He fosters a culture of continuous learning within his IT department, ensuring that his team remains at the forefront of technological advancements.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Marco is a man of medium build with a slightly weathered face that speaks of long hours spent in front of computer screens."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small espresso maker to the track.",
+    "Has a habit of muttering code under his breath when troubleshooting.",
+    "Refuses to use cloud storage, preferring physical servers under his control."
+  ]
+}

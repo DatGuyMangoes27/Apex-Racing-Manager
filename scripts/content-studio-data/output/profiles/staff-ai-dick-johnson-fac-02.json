@@ -1,0 +1,22 @@
+{
+  "name": "Marcus Jones",
+  "nationality": "American",
+  "age": 34,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Marcus's journey into motorsport began with a childhood fascination for rebuilding go-karts. This passion led him to pursue a degree in mechanical engineering, specializing in composite materials. After graduating, he spent several years honing his skills at a small aerospace company, where he gained invaluable experience working with advanced carbon fiber layups. He joined Dick Johnson Racing two years ago, drawn by the team's commitment to innovation and its rich history. Marcus is known for his meticulous attention to detail and his ability to quickly troubleshoot complex problems. He believes that the key to success in composite technology is a deep understanding of both the materials and the manufacturing processes.",
+  "physical": {
+    "skinTone": "light brown",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "Marcus is of average height with a stocky build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a tendency to over-explain things when excited.",
+    "Listens to classic rock while working in the composites lab."
+  ]
+}

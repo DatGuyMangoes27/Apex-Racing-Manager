@@ -5,9 +5,10 @@ import { existsSync } from 'fs'
 import { spawn } from 'child_process'
 import { registerXMLGeneratorHandlers } from './xml/generator'
 import { registerSharedMemoryHandlers, stopTelemetry } from './shared-memory'
-import { registerDatabaseHandlers } from './db/database'
+import { initDatabase, registerDatabaseHandlers, closeDatabase } from './db/database'
 import { registerCommentaryHandlers, stopCommentary } from './commentary'
 import { registerNarrativeHandlers } from './narrative'
+import { registerLiveryHandlers } from './livery/generator'
 
 // Get __dirname for Electron main process
 // Vite will transform import.meta.url for CommonJS output
@@ -234,6 +235,14 @@ app.whenReady().then(async () => {
   const { setLoggerWindow } = await import('./services/debugLogger')
   setLoggerWindow(mainWindow)
   
+  // Initialise SQLite database (must happen before IPC handlers)
+  try {
+    initDatabase()
+  } catch (err) {
+    console.error('[Main] Failed to initialise SQLite database:', err)
+    console.error('[Main] Database operations will be unavailable — IPC handlers will still register')
+  }
+
   // Register all IPC handlers
   registerXMLGeneratorHandlers()
   registerSharedMemoryHandlers(mainWindow)  // Using shared memory instead of UDP
@@ -241,12 +250,18 @@ app.whenReady().then(async () => {
   registerAMS2Handlers()
   registerCommentaryHandlers(mainWindow)
   registerNarrativeHandlers()
+  registerLiveryHandlers()
 })
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+
+// Clean shutdown: close SQLite database and stop background services
+app.on('will-quit', () => {
+  closeDatabase()
 })
 
 app.on('activate', () => {

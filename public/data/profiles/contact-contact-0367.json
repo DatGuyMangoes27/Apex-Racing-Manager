@@ -1,0 +1,31 @@
+{
+  "name": "Giovanni Lombardi",
+  "nationality": "Italian",
+  "age": 63,
+  "gender": "male",
+  "contactType": "politician",
+  "bio": "Giovanni Lombardi is a seasoned Italian politician known for his sharp wit and unconventional approach. Rising through the ranks from a small-town councilman to a prominent member of parliament, he's built a reputation for cutting deals and pushing through controversial legislation, often ruffling feathers along the way. Despite his cynical public persona, Lombardi harbors a secret passion for adventure, indulging in activities like extreme camping and high-stakes tennis matches. His self-made success story fuels a relentless drive and a willingness to take risks, both in politics and his personal life. Lombardi's love for motorsport stems from his youth, attending races at Monza with his father. He now occasionally sponsors young Italian drivers through his private foundation, and his political influence can open doors for those seeking permits or support for racing events.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Grey",
+    "hairStyle": "Short, slicked-back",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped grey beard",
+    "description": "Lombardi is a stout man, with a commanding presence despite his average height. He favors expensive, tailored suits, and his eyes always seem to be evaluating the situation."
+  },
+  "connectionToMotorsport": "Lombardi is a long-time motorsport enthusiast and occasionally sponsors young Italian drivers through his private foundation. He also leverages his political influence to support racing events and infrastructure projects related to motorsport in Italy.",
+  "meetingContext": "The player might meet Lombardi at a charity gala for a motorsport-related cause or through an introduction from a mutual business contact at a Formula 1 event in Monza.",
+  "conversationTopics": [
+    "The state of Italian politics",
+    "His latest culinary experiment",
+    "The future of Formula 1",
+    "His tennis game and recent matches",
+    "The importance of supporting young Italian talent"
+  ],
+  "canHelp": [
+    "Facilitate introductions to influential sponsors.",
+    "Assist with securing permits and approvals for racing activities in Italy.",
+    "Provide financial backing through his private foundation."
+  ],
+  "personality_summary": "A cynical but adventurous politician with a passion for motorsport and a knack for making deals."
+}

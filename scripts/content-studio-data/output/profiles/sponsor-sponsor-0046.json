@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0046",
+  "name": "Siam Serenity Resorts",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "Thailand",
+  "description": "Luxury getaways in Thailand, redefined.",
+  "story": "Siam Serenity Resorts embodies the pursuit of excellence and the thrill of achieving peak performance, values that resonate deeply with motorsport. We believe in supporting individuals and teams who strive for perfection, mirroring our own commitment to providing unforgettable experiences. Our partnership with a top motorsport team will enhance brand visibility and connect with a discerning audience that appreciates quality and adventure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Thailand"
+    ],
+    "minPodiums": 2
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0046.png"
+}

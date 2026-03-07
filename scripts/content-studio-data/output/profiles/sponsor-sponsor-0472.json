@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0472",
+  "name": "Rhineol Lubricants",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Performance lubricants engineered for victory.",
+  "story": "Rhineol Lubricants has a long history of supporting German motorsport, dating back to the early days of the Nürburgring. We believe in pushing the boundaries of engine performance and reliability, and our partnerships reflect this commitment. We seek teams that share our passion for excellence and are willing to work with us to develop the next generation of high-performance lubricants.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 90000,
+      "podiumBonus": 45000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Germany"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "technical",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0472.png"
+}

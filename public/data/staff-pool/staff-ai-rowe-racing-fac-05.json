@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Beatriz Oliveira",
+    "nationality": "Brazilian",
+    "age": 42,
+    "gender": "female",
+    "role": "quality_control",
+    "bio": "Beatriz's journey into motorsport began unexpectedly, fueled by her meticulous nature and a knack for spotting inconsistencies. Initially trained as a mechanical engineer, she honed her skills in the automotive industry before transitioning to the high-stakes world of racing. A chance encounter with a race engineer at a local karting event sparked her interest, leading her to pursue a career in quality control. \n\nAt ROWE Racing, Beatriz is known for her unwavering dedication to precision. She approaches every task with a critical eye, meticulously reviewing processes and components to ensure compliance with stringent standards. Her ability to identify potential issues before they escalate has earned her the respect of her colleagues. Beatriz prides herself on being a proactive problem-solver, always seeking innovative solutions to improve efficiency and reliability. What sets her apart is her ability to translate complex technical data into actionable insights, bridging the gap between engineering and performance.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, wavy hair often pulled back in a practical ponytail.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "A slender woman with a focused gaze and a perpetually inquisitive expression."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Insists on using a specific brand of calipers, claiming they provide more accurate readings.",
+      "Always carries a small notebook filled with handwritten notes and diagrams.",
+      "Has a habit of tapping her pen rhythmically when deep in thought."
+    ]
+  }
+]

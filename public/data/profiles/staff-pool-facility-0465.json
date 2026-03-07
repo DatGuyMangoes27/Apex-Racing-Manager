@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 41,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Jean-Pierre's journey into motorsport began later than most. After a decade managing logistics for a construction firm, he realized his true passion lay in the intricate dance of engineering and speed. He enrolled in night classes to study automotive technology, eventually landing an internship at a small racing team. There, he quickly proved his organizational skills and meticulous attention to detail, making him a natural fit for coordinating test drivers. \n\nJean-Pierre is driven by a desire to optimize every aspect of the testing process. He believes that clear communication and a well-structured plan are crucial for extracting maximum value from each test session. He's known for his calm demeanor under pressure and his ability to anticipate potential problems before they arise, allowing drivers to focus solely on pushing the limits of the car. While some may see him as a newcomer, Jean-Pierre's unique background provides him with a fresh perspective and unwavering dedication.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "a trimmed goatee",
+    "description": "A man of average height with a wiry build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a meticulously organized notebook filled with testing schedules and driver feedback.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific type of French-made stopwatch for timing test runs."
+  ]
+}

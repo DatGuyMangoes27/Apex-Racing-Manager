@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 26,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Elena's passion for motorsport ignited during her childhood visits to local rally events in Romania. She excelled in mechanical engineering, and quickly transitioned into the world of racing. Her meticulous approach, coupled with a sharp understanding of vehicle dynamics, saw her rise through the ranks to become a key figure at Academy Motorsport. \n\nElena is known for her uncompromising standards and dedication to extracting the maximum performance from every test session. She believes that a well-structured test program, executed with precision, is crucial for gaining a competitive edge. Her colleagues respect her technical knowledge and appreciate her commitment to excellence, even if her demanding nature can sometimes be challenging. Elena thrives on optimizing every aspect of a test, striving to achieve perfection.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair, usually pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is a slim woman with a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only metric measurements.",
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping her pen when deep in thought."
+  ]
+}

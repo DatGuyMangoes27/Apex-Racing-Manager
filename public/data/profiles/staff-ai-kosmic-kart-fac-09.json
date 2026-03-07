@@ -1,0 +1,22 @@
+{
+  "name": "Jens Petersen",
+  "nationality": "Danish",
+  "age": 51,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jens has spent over 25 years perfecting the art of paint application and finishing, a craft he initially learned restoring vintage bicycles in his father's workshop. His transition to motorsport came somewhat unexpectedly, when a chance encounter with a Kosmic Kart team member led to an offer he couldn't refuse. Jens brings a meticulous approach to his work, understanding that even the smallest imperfection can impact aerodynamics and visual appeal. \n\nHe sees the paint shop as more than just a place to apply color; it's a critical element in the overall performance and presentation of the kart. Jens is known for his ability to match any color perfectly and his innovative techniques for achieving an exceptionally smooth, durable finish. His dedication and eye for detail make him an invaluable asset to the Kosmic Kart team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Jens is of average height with a sturdy build, reflecting years of hands-on work."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always wears a pristine white lab coat, even when doing the dirtiest work.",
+    "Has an uncanny ability to identify paint colors just by smelling them.",
+    "Listens to classical music while working to maintain focus and precision."
+  ]
+}

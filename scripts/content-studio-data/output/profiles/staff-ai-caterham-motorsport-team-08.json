@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 37,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for Formula 1, fueled by the roar of engines echoing from the Monaco Grand Prix broadcasts. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, and quickly found himself immersed in the world of racing. Before joining Caterham, he spent several years with a smaller Formula 3 team, honing his skills in data analysis and race strategy.\n\nJean-Pierre is known for his methodical approach to performance engineering, meticulously analyzing telemetry data to identify areas for improvement. He believes in fostering open communication within the team, ensuring that drivers and mechanics are aligned on performance goals. What sets him apart is his ability to translate complex technical data into actionable insights that drivers can immediately implement on the track. He strives to find marginal gains that contribute to overall performance.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "Short, neatly combed hair with a slight receding hairline.",
+    "eyeColor": "brown",
+    "facialHair": "Clean shaven",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn-out copy of 'Race Car Vehicle Dynamics'.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on starting every race day with a strong espresso."
+  ]
+}

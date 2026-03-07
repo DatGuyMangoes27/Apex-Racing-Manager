@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Liam Teague",
+    "nationality": "New Zealand",
+    "age": 29,
+    "gender": "male",
+    "role": "composite_technician",
+    "bio": "Liam grew up around speed. His father ran a small fabrication shop that specialized in custom parts for local racers. From a young age, Liam was immersed in the world of engineering and motorsport. After gaining a degree in Mechanical Engineering from the University of Auckland, he quickly gravitated towards the high-pressure world of V8 Supercars. \n\nLiam is meticulous in his approach to composite work, understanding that even the smallest imperfection can have major consequences at high speed. He excels at identifying areas for improvement and pushing the boundaries of what is possible with composite materials. Liam is driven by the desire to constantly learn and innovate, making him a valuable asset to any team.\n\nHis ambition extends beyond simply performing his duties; he actively seeks opportunities to collaborate with other departments and contribute to the overall performance of the race team. He aims to be a head engineer one day.",
+    "physical": {
+      "skinTone": "Light tan",
+      "hairColor": "Dark brown",
+      "hairStyle": "Short, neatly trimmed with a slight side part",
+      "eyeColor": "Hazel",
+      "facialHair": "Short, boxed beard",
+      "description": "Liam is of average height with a wiry build, suggesting both stamina and attention to detail."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always sharpens his pencils to an almost dangerous point.",
+      "Organizes his tools by size and function before starting any project.",
+      "Hums classic rock tunes while working."
+    ]
+  }
+]

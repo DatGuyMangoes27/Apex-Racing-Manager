@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0289",
+  "name": "VoltUp Energy",
+  "category": "energy_drinks",
+  "tier": "high",
+  "country": "South Korea",
+  "description": "Ignite Your Potential.",
+  "story": "VoltUp Energy is a leading South Korean energy drink brand committed to pushing boundaries and achieving peak performance. Inspired by the country's thriving esports scene and competitive spirit, VoltUp ventured into motorsport to connect with a passionate audience. They seek a partnership that amplifies their brand presence on a global stage and demonstrates their commitment to high-octane performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "nationalities": [
+      "South Korea"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0289.png"
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Erick Galassi hails from the vibrant, bustling city of Belo Horizonte, Brazil, a place where the roar of engines and the scent of burning rubber are practically woven into the fabric of daily life. Unlike many of his contemporaries who were practically born behind the wheel of a go-kart, Erick's entry into motorsport was a bit more…accidental. He initially pursued a degree in mechanical engineering, drawn to the intricate dance of metal and motion. However, a chance encounter with a local racing team needing a data analyst quickly changed the trajectory of his life. He was mesmerized, and within a year, he sold his prized motorcycle to fund his first Formula Inter MG-15 season. Erick's analytical mind quickly translated into a calculating driving style on the track. He's not the flashiest driver, but his consistency and meticulous planning have made him a formidable opponent. Currently, he's considered a veteran in the F.Inter MG-15 series, a series where he hopes to secure a championship before moving to bigger and better opportunities.",
+  "drivingStyle": "Galassi's driving style is best described as methodical and precise. He's not one for flamboyant overtakes or risky maneuvers. Instead, he excels at tire management, meticulously preserving his rubber throughout a race. His cornering technique is smooth and efficient, prioritizing exit speed over aggressive entry. Under pressure, Galassi remains remarkably composed, rarely making rash decisions. He's a master strategist, constantly analyzing the race situation and adapting his approach to maximize his chances of success. He is known for his late-race charges, capitalizing on the mistakes of others who have worn their tires out too early.",
+  "rivalries": [
+    {
+      "driver": "Marco Silva",
+      "reason": "A long-standing rivalry stemming from a contentious incident at the 2021 Interlagos Grand Prix, where Silva's aggressive move forced Galassi off the track, costing him a potential podium finish."
+    },
+    {
+      "driver": "Isabela Monteiro",
+      "reason": "A clash of styles. Monteiro is a naturally gifted, aggressive driver, whereas Galassi is calculating and consistent. Their contrasting approaches often lead to thrilling battles on the track."
+    },
+    {
+      "driver": "Ricardo Alves",
+      "reason": "Alves and Galassi are from the same city and have been competing against each other since their karting days, creating a deep-seated, yet respectful, rivalry."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, given to him by his grandmother.",
+    "Listens to a specific classical piece before every race to calm his nerves.",
+    "Meticulously cleans his steering wheel with a special microfiber cloth before each session."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "\"Racing isn't about being the fastest for a single lap; it's about being the smartest for the entire race.\"",
+  "careerHighlight": "Winning the 2022 Curitiba Grand Prix in dominant fashion, showcasing his tire management skills and strategic prowess by stretching his final stint further than anyone else thought possible and securing a comfortable victory.",
+  "careerLowPoint": "Crashing out on the first lap of the 2020 Buenos Aires Grand Prix due to a mechanical failure, resulting in a DNF and significant damage to his car, setting back his championship hopes considerably that season."
+}

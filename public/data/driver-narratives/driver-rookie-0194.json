@@ -1,0 +1,27 @@
+{
+  "biography": "James White, a whirlwind of Austrian ambition, began his racing journey not in a go-kart, but perched precariously on the handlebars of his older brother's BMX, bombing down the treacherous slopes of the Austrian Alps. The need for speed, the thrill of control, and the near-constant threat of gravel rash – it all fueled a fire that would only be quenched by the roar of an engine. After a surprise karting championship win at age 14 driving an old, battered kart he'd rebuilt himself from junkyard scraps, he caught the eye of a local investor who sponsored his entry into Formula Regional. Now, at 17, he is an independent driver, fighting tooth and nail against better-funded teams, proving that raw talent and grit can still turn heads. He currently competes in a mix of F4 and Formula Regional events, carefully selecting races where he believes his aggressive style and mechanical aptitude can give him an edge.",
+  "drivingStyle": "White's driving style is a study in controlled aggression. He's known for late-braking maneuvers that often leave rivals shaking their heads in disbelief, and sometimes, their fists. He attacks every corner with the ferocity of a cornered wolf, pushing the limits of adhesion and often flirting with disaster. While some criticize his approach as reckless, his supporters argue that it's precisely this boldness that sets him apart, allowing him to extract every last ounce of performance from his underfunded machinery. He has a knack for tire management, nursing his rubber through long stints by subtly adjusting his lines, a skill honed from his karting days where tires were a luxury he couldn't afford to waste.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "Rossi, a wealthy Italian driver with a top-tier team, represents everything White despises: privilege and perceived arrogance. Their clashes on track are always intense, often resulting in damaged cars and heated exchanges in the paddock."
+    },
+    {
+      "name": "Kaito Nakamura",
+      "reason": "Nakamura is White's intellectual opposite, a smooth and calculated driver. Their rivalry is a clash of styles, with White constantly trying to disrupt Nakamura's rhythm and Nakamura attempting to exploit White's aggressive tendencies."
+    },
+    {
+      "name": "Isabelle Dubois",
+      "reason": "A fierce competitor in Formula Regional, Dubois and White have traded paint on multiple occasions. Their rivalry is born from mutual respect but fueled by their shared ambition to climb the racing ladder."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of worn-out racing gloves, believing they bring him good fortune.",
+    "Listens to classical music (specifically Mozart) before every race to calm his nerves.",
+    "Obsessively cleans and polishes his helmet visor, even if it's already spotless."
+  ],
+  "nickname": "The Austrian Avalanche",
+  "famousQuote": "Second place is just the first loser.",
+  "careerHighlight": "Winning the Austrian National Karting Championship at 14, defeating drivers with far more resources and experience.",
+  "careerLowPoint": "Crashing out of a Formula Regional race while leading in the final lap due to over-aggression, costing him a potential podium finish and valuable championship points."
+}

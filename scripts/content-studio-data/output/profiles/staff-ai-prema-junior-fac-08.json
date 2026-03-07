@@ -1,0 +1,22 @@
+{
+  "name": "Jacobus 'Kobus' Venter",
+  "nationality": "South African",
+  "age": 42,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jacobus, affectionately known as Kobus, discovered his passion for motorsport dismantling (and occasionally reassembling) his father's bakkie engine as a boy in Johannesburg. He formally entered the scene via a mechanical engineering degree, leading to an apprenticeship at a local racing outfit. After a few years working on suspension setup, he transitioned to wind tunnel operation, finding the precision and data analysis deeply satisfying. \n\nKobus approaches his work with a quiet intensity, meticulously ensuring the accuracy of every test run. He's known for his ability to spot subtle anomalies in the data that others might miss, often leading to innovative aerodynamic tweaks. While not a boisterous personality, his insight and dedication have earned him the respect of the entire team, and he's proud to be part of Prema Junior.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A slightly weathered face hints at years spent tinkering and problem-solving in the highveld sun."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even in the office.",
+    "Has a habit of humming old Afrikaans folk songs while calibrating equipment.",
+    "Insists on using a specific brand of duct tape for all wind tunnel repairs, claiming it has superior aerodynamic properties."
+  ]
+}

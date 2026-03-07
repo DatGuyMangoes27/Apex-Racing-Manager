@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0498",
+  "name": "PetroBras Energia",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Brazil",
+  "description": "Powering Brazil, Fueling Champions.",
+  "story": "PetroBras Energia has been a cornerstone of Brazil's energy sector for decades, and motorsport is a natural extension of their commitment to performance and innovation. They seek to partner with teams that embody the Brazilian spirit of determination and excellence, showcasing their fuels on the global stage. PetroBras Energia values high performance, dedication, and a strong connection with the passionate Brazilian fanbase.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Brazil"
+    ],
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0498.png"
+}

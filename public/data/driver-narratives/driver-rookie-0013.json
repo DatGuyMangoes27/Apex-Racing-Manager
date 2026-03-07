@@ -1,0 +1,27 @@
+{
+  "biography": "Born in Kuala Lumpur to a family with modest means, Kimi Novak's racing journey began unconventionally. Instead of karting, his initial passion was remote-controlled cars. He would spend hours meticulously upgrading his RC car, learning about aerodynamics and weight distribution purely through trial and error in local parks. One day, a local karting club saw Kimi's skill with the RC car and invited him to test a real kart. Despite his lack of experience, Kimi immediately demonstrated raw talent, exhibiting an uncanny ability to find the limit of grip. Now at 16, he's participating in select regional open-wheel events, funded by small sponsorships and his family's savings. His defensive style has frustrated more experienced rivals, marking him as a rising talent to watch, albeit one facing significant financial hurdles.",
+  "drivingStyle": "Kimi's driving style is characterized by a cautious and calculating approach. He prioritizes corner exit speed over aggressive entries, preferring to maintain momentum and minimize risk. He is exceptionally skilled at defending his position, often employing late braking and strategic blocking maneuvers. Tire management is a strong suit, as he avoids unnecessary wheelspin and carefully conserves rubber throughout a race. Under pressure, he tends to become even more conservative, focusing on consistency and avoiding mistakes rather than pushing for overtakes.",
+  "rivalries": [
+    {
+      "name": "Rizal Rahman",
+      "reason": "A more established driver from a wealthy family, Rizal resents Kimi's natural talent and the attention he receives despite his limited resources. Their on-track battles are often fierce and result in collisions."
+    },
+    {
+      "name": "Siti Aminah",
+      "reason": "Siti, a technical wunderkind, constantly critiques Kimi's defensive driving, viewing it as unsportsmanlike and overly cautious. She often challenges him to take more risks and showcase his raw speed."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Kenji, known for his aggressive overtaking style, constantly tries to get under Kimi's skin and force him into errors, which often leads to heated exchanges both on and off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears a small, hand-carved wooden charm of a toucan given to him by his grandmother.",
+    "Before each race, he meticulously cleans his racing gloves, believing that dirt attracts bad luck.",
+    "He refuses to use the same helmet design for more than two races, feeling that a new design brings fresh energy."
+  ],
+  "nickname": "The Wall",
+  "famousQuote": "It's not about being the fastest in one corner; it's about being the smartest through all of them.",
+  "careerHighlight": "Finishing third in the Sepang Invitational Open-Wheel race despite starting last due to a mechanical failure in qualifying. He gained 17 positions through a combination of skillful driving and strategic tire management.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a regional championship race due to a brake failure, costing him the championship by a single point."
+}

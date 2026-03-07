@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0326",
+  "name": "PetroNova",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Belgium",
+  "description": "Belgian-engineered performance lubricants and fuels.",
+  "story": "PetroNova has been at the forefront of lubricant technology since 1978, constantly pushing the boundaries of engine performance and efficiency. Motorsport provides the ultimate testing ground for our products, and we seek partnerships that demonstrate innovation and a relentless pursuit of victory. We are particularly interested in teams that prioritize data-driven performance gains.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Belgium",
+      "Netherlands",
+      "France"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0326.png"
+}

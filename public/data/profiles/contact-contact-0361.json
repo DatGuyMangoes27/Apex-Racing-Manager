@@ -1,0 +1,31 @@
+{
+  "name": "Ayumi Tanaka",
+  "nationality": "Japanese",
+  "age": 55,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Ayumi Tanaka is a rising star in Japanese politics, known for her unconventional approach and surprising popularity among younger voters. She's built her career on a platform of sustainable development and technological innovation, pushing for policies that support both economic growth and environmental responsibility. While some criticize her playful nature and occasional petty squabbles with rivals, her disciplined work ethic and optimistic outlook have earned her the respect of many within her party. She is self-taught, and takes pride in that fact.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, slightly wavy",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Ayumi has a warm smile and a sharp gaze. Her stylish outfits often incorporate traditional Japanese elements with a modern twist."
+  },
+  "connectionToMotorsport": "Tanaka-san champions the development of sustainable racing technologies and sees motorsport as a proving ground for innovations that can benefit the wider automotive industry. She often attends races to promote her policies and connect with engineers and investors.",
+  "meetingContext": "You might meet Ayumi Tanaka at a motorsport technology expo, a government-sponsored racing event, or through an introduction from a wealthy business owner interested in green racing initiatives.",
+  "conversationTopics": [
+    "The future of sustainable energy",
+    "The importance of STEM education",
+    "Her latest contemporary dance class",
+    "The potential of hydrogen fuel cell technology in motorsport",
+    "Local craft beer breweries"
+  ],
+  "canHelp": [
+    "Introduce you to investors interested in funding racing teams that utilize sustainable technologies.",
+    "Lobby for favorable regulations regarding testing and development of new racing technologies.",
+    "Provide publicity and endorsement opportunities through government-sponsored events."
+  ],
+  "personality_summary": "A playfully petty yet disciplined and optimistic politician with a passion for sustainability."
+}

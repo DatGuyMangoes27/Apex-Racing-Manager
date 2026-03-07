@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas",
+  "nationality": "Colombian",
+  "age": 35,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Sofia Vargas's journey into motorsport began unexpectedly during her engineering studies in Bogotá. A chance encounter with a local rally team sparked her passion for aerodynamics and its impact on vehicle performance. After graduating, she secured a coveted internship with a European Formula team, where she honed her skills in CFD analysis and wind tunnel testing. Her meticulous approach and innovative solutions quickly earned her recognition. \n\nReturning to South America, Sofia led the aero development program for a regional racing outfit before catching the eye of Mitsubishi Motorsport. Now heading their aerodynamics department, she is known for her data-driven decision-making, relentless pursuit of marginal gains, and ability to translate complex theories into practical on-track improvements. Sofia is driven to push the boundaries of aerodynamic design, viewing each race as an opportunity to refine her team's competitive edge. Her focus is on creating a stable and reliable platform to deliver maximum performance, whilst still being innovative.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair pulled back into a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is a petite woman with an intense gaze and a focused demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping her pen rapidly when deep in thought.",
+    "Insists on a daily 'data debrief' meeting, regardless of the team's schedule."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Fiona MacLeod",
+  "nationality": "Scottish",
+  "age": 40,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Fiona's journey into motorsport began not on the track, but in her father's engineering workshop in the Highlands. From rebuilding engines to tinkering with suspension systems, her early years instilled a deep understanding of mechanical intricacies. After graduating with honors in mechanical engineering from the University of Edinburgh, she joined a small racing team, rapidly rising through the ranks due to her sharp analytical skills and innovative solutions. \n\nFiona's approach to engineering is both meticulous and forward-thinking. She believes in a data-driven approach, meticulously analyzing telemetry and performance metrics to identify areas for improvement. However, she also encourages creative problem-solving and is always open to exploring unconventional ideas. Her ambition drives her to constantly seek out new technologies and strategies to give her team a competitive edge, fostering a culture of continuous improvement and innovation.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, thick, and usually pulled back in a practical braid during race weekends.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A tall woman with a determined gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out multi-tool, a memento from her father.",
+    "Has a habit of sketching technical diagrams on napkins during meetings.",
+    "Insists on having a specific type of Scottish breakfast tea before every race."
+  ]
+}

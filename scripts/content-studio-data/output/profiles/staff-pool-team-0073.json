@@ -1,0 +1,22 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 26,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Klara's motorsport journey began not in the grandstands, but in her grandfather's engineering workshop in the Austrian Alps. She spent her childhood dismantling and rebuilding engines, developing a deep understanding of mechanical principles that far surpassed her peers. After earning a degree in Motorsports Engineering from Graz University of Technology, she quickly ascended through the ranks, initially as a data analyst, then as a junior strategist, before becoming a sporting director at a surprisingly young age.\n\nKlara's approach is highly analytical, emphasizing data-driven decision-making. She is known for her calm demeanor under pressure and her ability to identify and nurture talent within her team. While she values experience, she isn't afraid to challenge conventional wisdom, often pushing her team to explore unconventional strategies. Her innovative approach to race management and her ability to inspire her team sets her apart.\n\nHer loyalty extends beyond the team to the sport itself; she is a vocal advocate for sustainable racing practices and actively participates in initiatives to reduce the environmental impact of motorsport. She believes that innovation and sustainability are inextricably linked, and that the future of motorsport depends on embracing both.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail during races",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Klara is a slim woman with an intense gaze that reflects her sharp intellect."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, antique slide rule, despite relying on computer simulations.",
+    "Insists on having a specific type of Austrian mineral water available in the pit lane.",
+    "Has a habit of sketching complex racing lines on napkins during meetings."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 55,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Declan's journey into motorsport began unexpectedly, tracing back to his apprenticeship as a mechanic on agricultural machinery in rural County Clare. He developed a sharp eye for precision and a knack for diagnosing complex mechanical issues, skills he later honed in the high-pressure environment of rally racing. He transitioned to simulator technology as a natural evolution, recognizing its potential for driver development and vehicle optimization. \n\nAt RSC Motorsport, Declan is known for his relentless pursuit of realism in the simulator. He meticulously analyzes telemetry data, scrutinizing every detail from tire pressure fluctuations to subtle chassis movements, ensuring the simulated environment accurately reflects real-world conditions. His demanding nature pushes drivers and engineers alike to extract the maximum performance possible, even in a virtual setting. His colleagues describe him as a 'sim whisperer', capable of coaxing the most stubborn simulators into revealing their secrets.\n\nDeclan is a firm believer in the power of preparation. He sees the simulator not merely as a training tool, but as a virtual laboratory where risks can be taken and limits can be tested without consequence. His dedication to achieving perfection, while sometimes perceived as abrasive, stems from a deep-seated desire to give his team every possible advantage on race day.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed salt-and-pepper beard",
+    "description": "Declan is of average height, with a sturdy build and a perpetually furrowed brow."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with cryptic technical diagrams.",
+    "Has a habit of muttering equations under his breath while observing simulator runs.",
+    "Insists on drinking lukewarm tea from a chipped mug, claiming it's his 'lucky charm'."
+  ]
+}

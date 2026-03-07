@@ -1,0 +1,22 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 44,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Priya Sharma's journey in motorsport began unconventionally, fueled by a childhood fascination with engineering and a chance encounter with a local racing team. She started as a data analyst, quickly proving her aptitude for deciphering complex performance metrics. Her sharp insights and strategic thinking led to a rapid ascent through the ranks, transitioning from analyst to race engineer, and eventually to a key management role. \n\nAs a sporting director, Priya emphasizes data-driven decision-making coupled with strong team cohesion. She believes in empowering her team members, fostering a collaborative environment where innovation thrives. Her distinctive approach lies in her ability to blend analytical rigor with genuine empathy, creating a supportive yet high-performance culture. She's known for her meticulous planning and unwavering dedication to continuous improvement, always seeking marginal gains that can make a significant difference on the track.",
+  "physical": {
+    "skinTone": "Medium-tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, black hair usually tied back in a neat, practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Priya is a woman of medium height with a focused, intelligent gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a specific playlist of instrumental music she listens to before every race.",
+    "Insists on a team debriefing session, no matter how late or early it needs to occur."
+  ]
+}

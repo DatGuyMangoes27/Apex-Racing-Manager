@@ -1,0 +1,22 @@
+{
+  "name": "Tereza Novotná",
+  "nationality": "Czech",
+  "age": 28,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Tereza's journey into motorsport began with a fascination for the complex algorithms used in Formula 1 strategy. While studying Statistics at Charles University in Prague, she became obsessed with finding patterns in racing data. She honed her skills by analyzing historical race results and building predictive models. Her dedication led to an internship with a small GT racing team where she quickly proved her worth, identifying crucial setup changes that improved lap times.\n\nTereza thrives on extracting meaningful insights from vast datasets. She believes that data analysis is not just about numbers, but about understanding the underlying dynamics of the sport. Her calm and methodical approach allows her to remain objective even under pressure, making her an invaluable asset during crucial race moments. She is determined to bring a fresh perspective to data analysis and use her skills to propel her team to victory.\n\nWhat sets Tereza apart is her insatiable curiosity and her relentless pursuit of optimization. She is constantly exploring new analytical techniques and is always eager to share her knowledge with others, making her a valuable team player.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair with subtle layers and side-swept bangs.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Tereza is a slender woman with a thoughtful gaze and a warm smile."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with statistical formulas.",
+    "Listens to classical music while analyzing data to enhance focus.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

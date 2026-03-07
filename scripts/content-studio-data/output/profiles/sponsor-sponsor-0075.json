@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0075",
+  "name": "Finanzas Gauchas",
+  "category": "financial",
+  "tier": "entry",
+  "country": "Argentina",
+  "description": "Empowering your financial future, one investment at a time.",
+  "story": "Finanzas Gauchas is a leading Argentinian microfinance institution dedicated to supporting entrepreneurs and small businesses across the country. Recognizing the passion and determination required for success in motorsport, they see a natural alignment with their own values. They seek to partner with up-and-coming teams and drivers who embody the spirit of perseverance and drive.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0075.png"
+}

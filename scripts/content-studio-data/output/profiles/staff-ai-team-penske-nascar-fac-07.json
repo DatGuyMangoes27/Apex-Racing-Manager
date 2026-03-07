@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 28,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Bjorn's journey into motorsport began unexpectedly during a summer internship at a local racing team while pursuing his computer science degree at NTNU. He was immediately captivated by the complex data systems underpinning race strategy and car performance. After graduation, he honed his skills at a tech startup specializing in real-time data analysis before joining Team Penske. \n\nAs IT Systems Manager, Bjorn is responsible for ensuring the seamless operation of all IT infrastructure, from the pit lane telemetry systems to the team's secure communication networks. He's known for his proactive approach, always anticipating potential problems and implementing preventative measures. His ability to quickly diagnose and resolve technical issues under pressure is invaluable during race weekends. \n\nBjorn is particularly passionate about exploring new technologies to improve data analysis and communication within the team. He believes that innovative IT solutions can provide a competitive edge, and he's constantly seeking opportunities to implement cutting-edge systems.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Bjorn is of average height with a lean build and a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even to meetings.",
+    "Has a habit of tapping his fingers rapidly when concentrating.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

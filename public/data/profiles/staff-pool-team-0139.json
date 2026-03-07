@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 29,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Marco's passion for motorsport ignited during his childhood in Modena, the heart of Italian motorsports. Growing up surrounded by the roar of engines and the legacy of Ferrari, he was captivated by the strategic complexities of racing. He pursued a degree in engineering, focusing on vehicle dynamics and race strategy. After graduating, he gained experience working with a smaller racing team, where he honed his skills in data analysis and race simulations. \n\nMarco believes in a data-driven approach to strategy, emphasizing thorough preparation and adaptability. He meticulously analyzes every aspect of a race, from tire degradation to weather patterns, to formulate optimal plans. While relatively new to the top tier of motorsport, his dedication and analytical mindset make him a promising strategist. He is eager to prove himself and contribute to a winning team. His methodical approach to race strategy, combined with his unwavering loyalty, makes him a valuable asset.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the left side",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Marco has a lean build and a serious, focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a lucky espresso cup to the track.",
+    "Meticulously color-codes his data spreadsheets.",
+    "Obsessively cleans his glasses before every strategic session."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sakura Tanaka",
+  "nationality": "Japanese",
+  "age": 32,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Sakura's fascination with motorsport began during her university days, captivated by the intricate electronics systems powering Formula Student vehicles. After graduating with a degree in Electrical Engineering from Kyoto University, she joined a small racing team specializing in electric vehicle development, gaining invaluable hands-on experience with battery management systems and powertrain control. This led to a position at a larger manufacturer's motorsport division, where she honed her skills in data acquisition and analysis, contributing to significant performance improvements.\n\nSakura thrives on the challenges presented by high-performance racing environments. She's known for her meticulous approach to problem-solving, her ability to quickly diagnose and resolve complex electrical issues, and her proactive approach to identifying potential performance gains through innovative electronic solutions. She's excited to join United Autosports and contribute to the team's success.\n\nWhat sets Sakura apart is her uncanny ability to visualize electrical flow and identify subtle inefficiencies in the system. She has a knack for finding and fixing obscure software bugs that other engineers overlook, making her an invaluable asset during crucial race weekends.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "dark brown",
+    "hairStyle": "shoulder-length, straight with subtle highlights",
+    "eyeColor": "brown",
+    "facialHair": null,
+    "description": "Sakura is petite with an intense gaze and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams.",
+    "Drinks copious amounts of green tea throughout the day.",
+    "Has a habit of tapping her pen rhythmically when deeply concentrated."
+  ]
+}

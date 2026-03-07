@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0009",
+  "name": "Boucherie Laurent",
+  "category": "local",
+  "tier": "entry",
+  "country": "France",
+  "description": "Your local butcher, fueling champions.",
+  "story": "Boucherie Laurent has been a cornerstone of the community for three generations, providing quality meats and supporting local talent. We believe in hard work, dedication, and the pursuit of excellence, mirroring the values found in motorsport. We're looking to partner with a rising star who embodies these principles and can represent our brand with pride.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7500,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10,
+    "nationalities": [
+      "France"
+    ],
+    "minWins": 0,
+    "minPodiums": 0
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0009.png"
+}

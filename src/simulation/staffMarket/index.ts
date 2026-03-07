@@ -12,7 +12,7 @@ import type {
   StaffImpactPreview,
   TeamStaffRole,
   TeamStaff,
-  _FacilityType,
+  FacilityType,
   StaffBio,
   WorkHistoryEntry
 } from '@/store/careerStore'
@@ -25,15 +25,22 @@ import {
   calculateBaseSalary,
   getSpecializationsByRarity,
   checkPersonalityChemistry,
-  _STAFF_FIRST_NAMES,
-  _STAFF_LAST_NAMES,
-  _STAFF_NATIONALITIES,
+  STAFF_FIRST_NAMES,
+  STAFF_LAST_NAMES,
+  STAFF_NATIONALITIES,
   // Legacy imports still used by other parts of this file
-  _STAFF_ACHIEVEMENTS
+  STAFF_ACHIEVEMENTS
 } from '@/data/staff-traits'
 
 import { pickNationality, pickGender, generateStaffName } from '@/data/staff-names'
 import { getPortraitIdByGender } from '@/utils/generated-assets'
+import {
+  getRandomStaff,
+  getPreGenPortrait,
+  extractStaffBio,
+  isContentLoaded,
+  type PreGenStaffProfile
+} from '@/services/preGeneratedContentService'
 
 // ============================================
 // CANDIDATE GENERATION
@@ -472,13 +479,149 @@ function generateSpecializations(
 }
 
 /**
- * Generate a single staff candidate
+ * Map a pre-generated staff role string to the game's TeamStaffRole type.
+ * The Content Studio uses underscore-separated role names that may differ
+ * slightly from the game's exact enum values.
+ */
+function mapPreGenRoleToTeamStaffRole(preGenRole: string): TeamStaffRole | null {
+  const mapping: Record<string, TeamStaffRole> = {
+    chief_engineer: 'chief_engineer',
+    technical_director: 'technical_director',
+    strategist: 'strategist',
+    team_manager: 'team_manager',
+    pr_manager: 'pr_manager',
+    crew_chief: 'crew_chief',
+    data_engineer: 'data_engineer',
+    reserve_driver: 'reserve_driver',
+    // Aliases from Content Studio naming
+    race_engineer: 'chief_engineer',
+    simulator_engineer: 'data_engineer',
+    pit_crew_chief: 'crew_chief',
+    head_of_strategy: 'strategist',
+    head_of_engineering: 'technical_director',
+    communications_director: 'pr_manager',
+    operations_manager: 'team_manager'
+  }
+  return mapping[preGenRole] || null
+}
+
+/**
+ * Generate a single staff candidate.
+ *
+ * If pre-generated content is loaded, pulls from the Content Studio pool for
+ * rich narrative data (name, bio, physical, personality) and layers deterministic
+ * game stats on top. Falls back to runtime generation if pool is exhausted.
  */
 export function generateStaffCandidate(
   role: TeamStaffRole,
   reputationTier: 'low' | 'mid' | 'high' = 'mid'
 ): StaffCandidate {
-  // Determine reputation range based on tier
+  // ── Try pre-generated pool first ──
+  if (isContentLoaded()) {
+    const preGen = getRandomStaff(undefined, 1)
+    if (preGen.length > 0) {
+      return buildCandidateFromPreGen(preGen[0], role, reputationTier)
+    }
+  }
+
+  // ── Fallback: runtime generation (original logic) ──
+  return buildCandidateFromRuntime(role, reputationTier)
+}
+
+/**
+ * Build a StaffCandidate from a pre-generated profile + deterministic stats.
+ * The pre-generated data provides the "flavor" (name, bio, physical, personality).
+ * Numeric game stats are derived deterministically from the entity ID + reputation tier.
+ */
+function buildCandidateFromPreGen(
+  preGen: PreGenStaffProfile,
+  role: TeamStaffRole,
+  reputationTier: 'low' | 'mid' | 'high'
+): StaffCandidate {
+  // Deterministic seed from the pre-gen ID for reproducible stats
+  const seed = hashId(preGen.id)
+
+  // Reputation range based on tier
+  const repRanges = { low: [20, 45], mid: [40, 70], high: [65, 95] }
+  const [minRep, maxRep] = repRanges[reputationTier]
+  const reputation = minRep + Math.floor(seededRandom(seed, 0) * (maxRep - minRep))
+
+  // Map personality to game type
+  const personalityMap: Record<string, StaffPersonality> = {
+    ambitious: 'ambitious', loyal: 'loyal', demanding: 'demanding', flexible: 'flexible',
+    perfectionist: 'demanding', creative: 'flexible', disciplined: 'loyal',
+    charismatic: 'ambitious', analytical: 'demanding', calm: 'flexible'
+  }
+  const personality = personalityMap[preGen.personality] || randomPick(['ambitious', 'loyal', 'demanding', 'flexible'] as StaffPersonality[])
+
+  // Use pre-gen age or derive from reputation
+  const age = preGen.age || (25 + Math.floor(reputation / 10) + Math.floor(seededRandom(seed, 1) * 15))
+  const experience = Math.max(1, age - 23 - Math.floor(seededRandom(seed, 2) * 5))
+
+  // Deterministic skills from reputation
+  const baseSkill = reputation * 0.8 + Math.floor(seededRandom(seed, 3) * 20) - 10
+  const skills = {
+    reliability: clampSkill(baseSkill + Math.floor(seededRandom(seed, 4) * 30) - 15),
+    strategy: clampSkill(baseSkill + Math.floor(seededRandom(seed, 5) * 30) - 15),
+    pit: clampSkill(baseSkill + Math.floor(seededRandom(seed, 6) * 30) - 15),
+    aeroAssist: role === 'chief_engineer' || role === 'technical_director'
+      ? clampSkill(baseSkill + Math.floor(seededRandom(seed, 7) * 30) - 15)
+      : undefined
+  }
+
+  const specializations = generateSpecializations(role, reputation)
+  const salaryExpectation = calculateBaseSalary(role, reputation, personality, specializations)
+  const contractPreference = reputation > 70 ? 2 + Math.floor(seededRandom(seed, 8)) : reputation > 40 ? 1 + Math.floor(seededRandom(seed, 8) * 2) : 1
+  const availability = seededRandom(seed, 9) < 0.7 ? 0 : 1 + Math.floor(seededRandom(seed, 10) * 4)
+
+  const statusVal = seededRandom(seed, 11)
+  const currentStatus = statusVal < 0.6 ? 'available' : statusVal < 0.9 ? 'employed' : 'retiring'
+
+  // Use the pre-generated name and bio
+  const name = preGen.name
+  const preGenBioData = extractStaffBio(preGen)
+
+  // Build StaffBio from pre-generated narrative + deterministic career history
+  const workHistory = generateCareerHistory(role, experience, reputation, currentStatus)
+  const bio: StaffBio = {
+    background: preGenBioData.background || `${name} is a ${preGen.nationality} ${role.replace(/_/g, ' ')} with ${experience} years of experience.`,
+    careerHighlights: preGenBioData.anecdotes.length > 0 ? preGenBioData.anecdotes : workHistory.filter(w => w.achievement).map(w => `${w.achievement} at ${w.team}`).slice(0, 4),
+    workHistory,
+    personalityNote: preGenBioData.personalityDescription || `Known for being ${personality}.`,
+    strengths: preGen.quirks?.slice(0, 3) || [],
+    weaknesses: []
+  }
+
+  // Portrait from pre-generated images
+  const portraitId = getPreGenPortrait(preGen.id) || getPortraitIdByGender(preGen.gender as 'male' | 'female', preGen.id)
+
+  return {
+    id: preGen.id,
+    name,
+    role,
+    nationality: preGen.nationality,
+    age,
+    experience,
+    reputation,
+    skills,
+    specializations,
+    personality,
+    currentStatus,
+    salaryExpectation,
+    contractPreference,
+    availability,
+    interestedTeams: [],
+    bio
+  }
+}
+
+/**
+ * Fallback: build a staff candidate entirely from runtime generation (original logic).
+ */
+function buildCandidateFromRuntime(
+  role: TeamStaffRole,
+  reputationTier: 'low' | 'mid' | 'high'
+): StaffCandidate {
   const repRanges = {
     low: [20, 45],
     mid: [40, 70],
@@ -487,24 +630,20 @@ export function generateStaffCandidate(
   const [minRep, maxRep] = repRanges[reputationTier]
   const reputation = randomInRange(minRep, maxRep)
   
-  // Generate gender-aware name with nationality from new pool
   const gender = pickGender()
   const nat = pickNationality()
   const { firstName, lastName } = generateStaffName(gender, nat.region)
   const nationality = nat.country
   const personality = randomPick(['ambitious', 'loyal', 'demanding', 'flexible'] as StaffPersonality[])
   
-  // Generate a unique ID and assign persistent portrait
   const id = generateCandidateId()
   const _portraitId = getPortraitIdByGender(gender, id)
   
-  // Age and experience correlate with reputation
   const minAge = 25 + Math.floor(reputation / 10)
   const maxAge = 35 + Math.floor(reputation / 5)
   const age = randomInRange(minAge, maxAge)
   const experience = Math.max(1, age - 23 - randomInRange(0, 5))
   
-  // Generate skills based on reputation (with variance)
   const baseSkill = reputation * 0.8 + randomInRange(-10, 10)
   const skills = {
     reliability: Math.max(10, Math.min(100, Math.round(baseSkill + randomInRange(-15, 15)))),
@@ -515,25 +654,16 @@ export function generateStaffCandidate(
       : undefined
   }
   
-  // Generate specializations
   const specializations = generateSpecializations(role, reputation)
-  
-  // Calculate salary expectation
   const salaryExpectation = calculateBaseSalary(role, reputation, personality, specializations)
-  
-  // Contract preference (higher reputation = wants longer contracts)
   const contractPreference = reputation > 70 ? randomInRange(2, 3) : 
                             reputation > 40 ? randomInRange(1, 2) : 1
-  
-  // Availability (most are immediate, some have notice periods)
   const availability = Math.random() < 0.7 ? 0 : randomInRange(1, 4)
   
-  // Status
   const statusRoll = Math.random()
   const currentStatus = statusRoll < 0.6 ? 'available' : 
                        statusRoll < 0.9 ? 'employed' : 'retiring'
   
-  // Generate comprehensive bio with career history
   const name = `${firstName} ${lastName}`
   const bio = generateStaffBio(
     name,
@@ -562,9 +692,28 @@ export function generateStaffCandidate(
     salaryExpectation,
     contractPreference,
     availability,
-    interestedTeams: [],  // Will be populated by AI team interest simulation
+    interestedTeams: [],
     bio
   }
+}
+
+// ── Seeded random helpers for deterministic stat derivation ──
+
+function hashId(id: string): number {
+  let hash = 0
+  for (let i = 0; i < id.length; i++) {
+    hash = ((hash << 5) - hash + id.charCodeAt(i)) | 0
+  }
+  return Math.abs(hash)
+}
+
+function seededRandom(seed: number, offset: number): number {
+  const x = Math.sin(seed + offset * 9.8 + 0.1) * 10000
+  return x - Math.floor(x)
+}
+
+function clampSkill(v: number): number {
+  return Math.max(10, Math.min(100, Math.round(v)))
 }
 
 /**
@@ -893,9 +1042,9 @@ export function calculateCandidateImpact(
     const spec = STAFF_SPECIALIZATIONS[specId]
     if (spec.primaryEffect.type === 'development') {
       if (spec.primaryEffect.target === 'aero_rd_speed') {
-        developmentBonus.aero += spec.primaryEffect.value
+        developmentBonus.aero += spec.primaryEffect.bonus
       } else if (spec.primaryEffect.target === 'sim_effectiveness') {
-        developmentBonus.sim += spec.secondaryEffect?.value || 0
+        developmentBonus.sim += (spec as { secondaryEffect?: { bonus?: number } }).secondaryEffect?.bonus || 0
       }
     }
   }
@@ -929,16 +1078,17 @@ export function calculateCandidateImpact(
     if (spec.primaryEffect.type === 'race') {
       switch (spec.primaryEffect.target) {
         case 'pit_stop_time':
-          racePerformance.pitStopBonus += Math.abs(spec.primaryEffect.value)
+          racePerformance.pitStopBonus += Math.abs(spec.primaryEffect.bonus)
           break
         case 'tire_management':
-          racePerformance.tireManagement += spec.primaryEffect.value
+          racePerformance.tireManagement += spec.primaryEffect.bonus
           break
         case 'mechanical_failures':
-          racePerformance.reliabilityBonus += Math.abs(spec.primaryEffect.value)
+        case 'mechanical_failure_rate':
+          racePerformance.reliabilityBonus += Math.abs(spec.primaryEffect.bonus)
           break
         case 'race_strategy':
-          racePerformance.strategyBonus += spec.primaryEffect.value
+          racePerformance.strategyBonus += spec.primaryEffect.bonus
           break
       }
     }

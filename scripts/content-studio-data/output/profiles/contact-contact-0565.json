@@ -1,0 +1,30 @@
+{
+  "name": "Catalina Vargas",
+  "nationality": "Chilean",
+  "age": 29,
+  "gender": "female",
+  "contactType": "yacht_captain",
+  "bio": "Catalina is a seasoned yacht captain, having earned her stripes navigating the often treacherous waters of the Chilean fjords and beyond. Despite her relatively young age, she commands respect with a calm demeanor that belies her adventurous spirit and tendency for impulsive decisions. Those who underestimate her sharp wit and ability to hold a grudge often find themselves regretting it. She values her privacy and rarely shares details about her personal life, adding to her enigmatic allure.\n\nHer connection to the motorsport world is somewhat tangential, stemming from wealthy yacht owners who frequent racing events. She's known to captain yachts for individuals who sponsor racing teams and attend prestigious Grand Prix races. A driver might cross paths with Catalina at a high-society yacht party during the Monaco Grand Prix, or perhaps through a chance encounter at a regatta where racing sponsors are present. She appreciates the precision and skill involved in motorsport and has been known to offer her yacht for private events and celebrations within that world.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, often pulled back in a practical braid",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Catalina has a lean, athletic build honed from years at sea. Her sun-kissed skin and sharp features give her a striking, confident appearance."
+  },
+  "connectionToMotorsport": "Catalina captains yachts for wealthy individuals who sponsor racing teams and attend major racing events, putting her in close proximity to the motorsport elite.",
+  "meetingContext": "The player might meet Catalina at a high-profile yacht party during a Grand Prix weekend or at a charity regatta frequented by racing team sponsors.",
+  "conversationTopics": [
+    "Sailing adventures",
+    "Philosophy, especially Stoicism",
+    "The best jazz clubs in South America",
+    "Meditation techniques"
+  ],
+  "canHelp": [
+    "Provide introductions to wealthy sponsors",
+    "Offer hospitality on her yacht for networking events",
+    "Offer discreet advice on navigating the upper echelons of high society"
+  ],
+  "personality_summary": "Adventurous and secretive yacht captain with a sharp mind and a penchant for holding grudges."
+}

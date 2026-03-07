@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Harris wasn't born into racing royalty; he clawed his way onto the asphalt from the dusty backroads of rural Oklahoma. His first taste of speed came piloting his grandfather's beat-up pickup truck around the family farm, honing his reflexes dodging hay bales and outmaneuvering stubborn cattle. He entered his first local go-kart race at the age of 12, funded by saving every penny from his summer jobs, and shocked everyone by placing second in his debut. The karting scene quickly became too small for Marco's ambition. Now, at 16, he's made the jump to open-wheel racing, campaigning as an independent driver, his raw talent and unyielding determination making waves in the junior circuits. He's a force to be reckoned with, a true underdog story in the making.",
+  "drivingStyle": "Marco's driving style is a reflection of his aggressive personality. He's a late-braking maestro, unafraid to divebomb into corners, often pushing the limits of his car and the patience of his rivals. While his tire management still needs refinement, his raw speed and willingness to take risks make him a thrilling, if occasionally unpredictable, competitor. He thrives under pressure, viewing each race as a personal battle to be won through sheer force of will.",
+  "rivalries": [
+    {
+      "driverName": "Ethan Sterling",
+      "reason": "A wealthy, established driver whose family connections have always made things easier for him. Marco sees Ethan as a symbol of everything he's fighting against."
+    },
+    {
+      "driverName": "Ava Rostova",
+      "reason": "A fellow rising star known for her technical precision. Their contrasting styles often lead to intense battles on the track, with each trying to prove their method is superior."
+    },
+    {
+      "driverName": "Damian ‘The Wall’ Alvarez",
+      "reason": "Damian is a veteran racer known for his defensive driving. Marco has been blocked by him several times, and is determined to get past him."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded baseball cap his grandfather gave him before every race.",
+    "Listens to a specific classic rock playlist before getting into the car.",
+    "Has a habit of sketching racing lines on his hand during drivers' briefings."
+  ],
+  "nickname": "The Oklahoma Outlaw",
+  "famousQuote": "Second place is just the first loser. I race to win, plain and simple.",
+  "careerHighlight": "Winning the regional junior open-wheel championship after starting from the back of the grid due to a mechanical issue in qualifying. He overtook seven cars in the last two laps.",
+  "careerLowPoint": "Crashing out of a race while leading in wet conditions, costing him valuable championship points and damaging his car beyond immediate repair, forcing him to miss the next race."
+}

@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0007",
+  "name": "Hayate Timepieces",
+  "category": "watches",
+  "tier": "elite",
+  "country": "Japan",
+  "description": "Precision timekeeping, inspired by speed.",
+  "story": "Hayate Timepieces are crafted with the same dedication to precision and performance found in motorsport. Since 1953, Hayate has been at the forefront of horological innovation, driven by a relentless pursuit of perfection. We seek to partner with teams that embody this spirit, pushing boundaries and achieving excellence on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Japan"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0007.png"
+}

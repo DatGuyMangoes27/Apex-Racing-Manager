@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0055",
+  "name": "Fortuna Capital",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Portugal",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Fortuna Capital is a Portuguese investment firm dedicated to supporting emerging talent. Motorsport provides a unique platform to showcase dedication, precision, and the pursuit of excellence, values Fortuna deeply aligns with. They seek to partner with drivers who demonstrate potential and a commitment to achieving their goals.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0055.png"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0247",
+  "name": "Uhuru Watches",
+  "category": "watches",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "Precision timekeeping, crafted in South Africa.",
+  "story": "Uhuru Watches blends the art of Swiss watchmaking with South African heritage. We believe in precision and pushing boundaries, mirroring the dedication required in motorsport. Our partnership aims to showcase our commitment to excellence and reach a global audience through the thrill of racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0247.png"
+}

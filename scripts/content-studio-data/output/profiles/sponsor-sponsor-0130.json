@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0130",
+  "name": "Vastra Racing",
+  "category": "apparel",
+  "tier": "high",
+  "country": "India",
+  "description": "Performance apparel engineered for the heat of competition.",
+  "story": "Vastra Racing was founded by a former motorsport engineer who saw a need for better cooling and moisture-wicking apparel for drivers and pit crews. We are passionate about innovation and pushing the limits of performance, both on and off the track. We seek a partnership that embodies our values of precision, dedication, and relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0130.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 51,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ivan Horvat's journey into motorsport began unconventionally – not on the track, but behind a computer screen. Initially working as a statistician for a local sports publication, he stumbled upon the intricate world of racing analytics. The sheer volume of data, the subtle correlations between seemingly disparate variables, and the direct impact on race strategy captivated him. He transitioned to motorsport, quickly establishing himself as a competent analyst known for his meticulousness and ability to extract meaningful insights from complex datasets.\n\nAt V8 Masters Racing, Ivan focuses on pre-race simulations and post-race analysis, providing critical data to the engineers and drivers. His approach is characterized by a relentless pursuit of accuracy and a commitment to uncovering every competitive edge, no matter how small. While his technical skills are solid, his true strength lies in his innovative thinking and ability to identify patterns that others miss. He is driven by a desire to refine and perfect the team's data-driven strategies, making him a valuable asset to the V8 Masters Racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ivan is of average height and build, often seen with a slightly furrowed brow, lost in thought."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with statistical formulas.",
+    "Insists on using a specific brand of green pens for his data annotations.",
+    "Has a habit of muttering racing telemetry under his breath."
+  ]
+}

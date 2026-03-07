@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 34,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Mateo Rodriguez's passion for motorsport ignited during his childhood in Buenos Aires, captivated by the roar of engines at local racing events. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and simulation, before landing an internship with a smaller racing team. There, he quickly demonstrated an aptitude for race strategy, making data-driven decisions that propelled the team to unexpected victories.\n\nHis methodical approach to analyzing track conditions, competitor data, and weather patterns, combined with his ability to adapt strategies on the fly, caught the attention of Porsche Penske Motorsport. Mateo thrives in high-pressure situations, always seeking the optimal path to victory, even if it means making unconventional calls. He's known for his calm demeanor and clear communication, ensuring the driver and pit crew are always aligned with the strategic plan. Mateo’s distinctive edge lies in his talent for risk assessment, allowing him to make bold decisions when the opportunity presents itself.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Mateo is of average height, with a lean build and an intense, focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and notes.",
+    "Has a habit of tapping his pen rhythmically against the table when deep in thought.",
+    "Prefers to drink mate during races for focus and energy."
+  ]
+}

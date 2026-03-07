@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 53,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Dimitrios' journey into motorsport began unexpectedly, during his time maintaining HVAC systems at a local university. He became fascinated by the principles of aerodynamics and fluid dynamics. This interest led him to volunteer at a small racing team, eventually securing a position assisting with wind tunnel testing. Dimitrios is meticulous and methodical, focusing on precise data collection and analysis. His strength lies in his practical approach to problem-solving, always seeking the most efficient and reliable solutions to optimize aerodynamic performance. While not naturally innovative, Dimitrios' dedication to continuous improvement and his willingness to learn from others make him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Dimitrios is of average height with a slightly stocky build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on calibrating the wind tunnel equipment himself before each session.",
+    "Has a collection of miniature airplanes on his desk."
+  ]
+}

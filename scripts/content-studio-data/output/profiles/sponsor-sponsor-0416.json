@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0416",
+  "name": "Renard Tyres",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Belgium",
+  "description": "Reliable performance for every lap.",
+  "story": "Renard Tyres has been producing high-quality tires in Belgium for over 30 years, focusing on durability and performance for everyday drivers. They are now entering the world of motorsport to showcase their technology and build brand awareness among a performance-oriented audience. Renard seeks a partnership that demonstrates the reliability of their tires under extreme conditions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0416.png"
+}

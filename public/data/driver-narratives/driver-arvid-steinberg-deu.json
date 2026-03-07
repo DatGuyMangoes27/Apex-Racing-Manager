@@ -1,0 +1,27 @@
+{
+  "biography": "Arvid Steinberg, born in the shadow of the Nürburgring, practically inhaled gasoline fumes from the cradle. His father, a mechanic for a local touring car team, instilled a love for motorsport early on. Arvid's racing journey began with karting at age eight, quickly dominating regional championships. A defining moment came at 16 when, during a wet race at the Oschersleben circuit, his throttle stuck open mid-corner. Instead of panicking, he expertly feathered the clutch and steered through the slide, ultimately winning the race. This incident earned him local acclaim and solidified his reputation for fearless driving. After a brief stint in Formula racing, he found his true calling in GT racing, piloting the iconic BMW M3 E46 GTR. Despite flashes of brilliance, his inconsistency has prevented him from achieving true championship contention, a fact that both motivates and frustrates him. Currently, he's focused on securing a factory drive for the upcoming season, seeking the stability and resources needed to unlock his full potential.",
+  "drivingStyle": "Steinberg's driving style is a high-risk, high-reward approach. He's known for late-braking maneuvers and aggressive corner entries, often pushing the limits of grip. While this yields spectacular overtaking moves, it also leads to tire degradation and occasional mistakes. He thrives under pressure, often delivering his best performances when the stakes are highest. However, his inconsistency stems from a tendency to over-drive the car, sacrificing long-term race strategy for immediate gains. He excels in wet conditions, where his car control and fearless nature give him a distinct advantage.",
+  "rivalries": [
+    {
+      "name": "Klaus Richter",
+      "reason": "A long-standing rivalry dating back to their karting days. Richter's consistent, calculated approach clashes with Steinberg's aggressive style, leading to frequent on-track clashes."
+    },
+    {
+      "name": "Isabelle Moreau",
+      "reason": "A fierce competitor known for her exceptional racecraft. Their rivalry is built on respect but fueled by the desire to be the fastest in the GT field."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "A Japanese driver known for his technical prowess. Their rivalry is based on their different approaches to car setup and driving style. Tanaka's precise, data-driven approach often conflicts with Steinberg's more intuitive style."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky driving gloves, despite the wear and tear.",
+    "Listens to a specific German rock band (Rammstein) before every race to get pumped up.",
+    "Visually traces the track layout on the steering wheel before the formation lap."
+  ],
+  "nickname": "The Bavarian Berserker",
+  "famousQuote": "\"Racing isn't about playing it safe; it's about finding the limit and dancing right on the edge.\"",
+  "careerHighlight": "Winning the 24 Hours of Spa in a privately-entered BMW M3 E46 GTR, overcoming mechanical issues and adverse weather conditions to secure a stunning victory.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Nürburgring 24 Hours, handing the victory to a rival team due to a preventable mistake."
+}

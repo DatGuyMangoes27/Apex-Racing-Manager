@@ -3,6 +3,68 @@
 // ============================================
 // Planning, shipping, and managing spare parts for race weekends
 
+import type { SparePartsState, SparePart, RaceSparesKit } from '@/store/careerStore'
+import type { SparePartType } from '@/data/spare-parts-config'
+import type { WorldRegion } from '@/data/travel-logistics'
+import type { TeamTier } from '@/store/rivalStore'
+import { getRecommendedSpares } from '@/data/spare-parts-config'
+import { shipParts as initiateShipment, willArriveInTime } from './partsShipping'
+
+/**
+ * Initialize race kits for upcoming races that don't already have one
+ */
+export function initializeRaceKits(
+  state: SparePartsState,
+  upcomingRaces: Array<{
+    raceId: string
+    raceName: string
+    trackId: string
+    raceWeek: number
+    raceYear: number
+    trackRegion: WorldRegion
+  }>,
+  teamTier: TeamTier,
+  _currentWeek: number,
+  _currentYear: number
+): SparePartsState {
+  const existingRaceIds = new Set(state.raceSparesKits.map(k => k.raceId))
+  const recommended = getRecommendedSpares(teamTier)
+
+  const newKits: RaceSparesKit[] = upcomingRaces
+    .filter(race => !existingRaceIds.has(race.raceId))
+    .map(race => ({
+      raceId: race.raceId,
+      raceName: race.raceName,
+      trackId: race.trackId,
+      raceWeek: race.raceWeek,
+      raceYear: race.raceYear,
+      trackRegion: race.trackRegion,
+      allocatedParts: { engine: [], chassis: [], brakes: [], suspension: [], gearbox: [] },
+      usedParts: [],
+      status: 'planning' as const,
+      minimumRequired: {
+        engine: recommended.engine,
+        chassis: recommended.chassis,
+        brakes: recommended.brakes,
+        suspension: recommended.suspension,
+        gearbox: recommended.gearbox
+      }
+    }))
+
+  if (newKits.length === 0) return state
+
+  return {
+    ...state,
+    raceSparesKits: [...state.raceSparesKits, ...newKits]
+  }
+}
+
+export function addPartsToKit(
+  state: SparePartsState,
+  raceId: string,
+  partType: SparePartType,
+  partIds: string[]
+): { state: SparePartsState; success: boolean; error?: string } {
   const kit = state.raceSparesKits.find(k => k.raceId === raceId)
   
   if (!kit) {

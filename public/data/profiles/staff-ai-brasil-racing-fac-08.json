@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 50,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Wei Zhang's journey into motorsport began unconventionally, not on the track, but in the humming corridors of a Shanghai university's aerodynamics lab. Fresh out of his engineering program, a chance encounter with a Brasil Racing engineer scouting for talent changed his trajectory. Captivated by the intricacies of airflow and its impact on vehicle performance, Wei immersed himself in the world of wind tunnels. \n\nFor over two decades, Wei has honed his skills, developing an uncanny ability to detect subtle anomalies in data and translate them into actionable improvements. His meticulous approach and dedication to precision are hallmarks of his work. While not a man of many words, Wei's loyalty to Brasil Racing is unwavering, and he takes immense pride in contributing to the team's aerodynamic advancements. He is a quiet force, whose expertise is valued by all.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin mustache",
+    "description": "Wei is of average height with a slender build, often seen wearing safety glasses."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn airflow diagrams.",
+    "Insists on calibrating the wind tunnel equipment himself before each session.",
+    "Has a lucky abacus he uses to double-check calculations."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0309",
+  "name": "NexusForge Studios",
+  "category": "tech_gaming",
+  "tier": "high",
+  "country": "Portugal",
+  "description": "Crafting immersive gaming experiences and pioneering esports technology.",
+  "story": "NexusForge Studios, a leading Portuguese game developer, entered motorsport to showcase the cutting-edge technology behind their simulations. They value precision, performance, and pushing boundaries, mirroring their approach to game development. NexusForge aims to connect with a global audience of tech enthusiasts and gaming aficionados who share their passion for speed and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0309.png"
+}

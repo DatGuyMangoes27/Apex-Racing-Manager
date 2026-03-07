@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Hayes",
+  "nationality": "American",
+  "age": 43,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ethan Hayes' journey into motorsport began with a childhood fascination for aircraft design, fueled by countless hours building model planes. This passion evolved into a deep interest in aerodynamics, leading him to pursue a degree in aerospace engineering. After graduating, Ethan transitioned into motorsport, initially working with smaller teams before joining Team Gtechniq.\n\nAs Head of Aero, Ethan is known for his meticulous approach and unwavering dedication to optimizing aerodynamic performance. He believes in a data-driven methodology, constantly analyzing wind tunnel results and track data to identify areas for improvement. Ethan's demanding nature pushes his team to excel, but his loyalty ensures that he always has their backs.\n\nEthan's distinctive feature is his ability to blend theoretical knowledge with practical application. He's not just a numbers guy; he understands how aerodynamic changes translate into real-world performance on the track, making him a valuable asset to Team Gtechniq.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on having the wind tunnel data displayed on a large monitor in his office.",
+    "Has a habit of tapping his pen rapidly when deep in thought."
+  ]
+}

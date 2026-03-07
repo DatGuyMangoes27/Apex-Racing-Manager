@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McTavish",
+  "nationality": "Scottish",
+  "age": 43,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Alistair's journey into motorsport started with a fascination for aircraft as a young boy, building intricate model planes and devouring books on aerodynamics. This passion led him to pursue a degree in Mechanical Engineering from the University of Strathclyde, where he specialized in fluid dynamics and composite materials. His early career saw him working on wind tunnel testing for a Formula Student team, quickly establishing himself as a meticulous and resourceful engineer.\n\nBefore joining PEX Motorsport, Alistair honed his skills at several smaller racing outfits, focusing on optimizing aerodynamic packages for various racing series. He believes in a data-driven approach, meticulously analyzing wind tunnel results and on-track performance to identify areas for improvement. Alistair's dedication to precision and his ability to translate complex aerodynamic principles into practical solutions make him a valuable asset to the team. He is known for his relentless pursuit of perfection, often pushing the boundaries of what's possible within the regulations.\n\nAt PEX, Alistair has implemented a new simulation process that allows the team to quickly iterate and test new aerodynamic concepts. He fosters a collaborative environment, encouraging his team to share ideas and challenge conventional thinking. His colleagues appreciate his calm demeanor under pressure and his unwavering commitment to excellence.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height with a lean build, suggesting an active lifestyle."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn copy of 'Aerodynamics for Engineering Students'.",
+    "Has a habit of meticulously cleaning his glasses even when they appear spotless.",
+    "Insists on using Imperial measurements alongside metric, much to the annoyance of some team members."
+  ]
+}

@@ -17,7 +17,8 @@ import {
   LifestyleAssets,
   LifestyleScoreBreakdown,
   FurnishingTier,
-  _MembershipType,
+  FurnishingCategory,
+  MembershipType,
   FURNISHING_CATALOG,
   MEMBERSHIP_CATALOG,
   LUXURY_SERVICES_CATALOG,
@@ -27,7 +28,7 @@ import {
   WARDROBE_CATALOG,
   DIET_CATALOG,
   LIFESTYLE_SCORE_WEIGHTS,
-  _LIFESTYLE_LEVEL_THRESHOLDS,
+  LIFESTYLE_LEVEL_THRESHOLDS,
   VEHICLE_MAINTENANCE_RATES,
   VEHICLE_INSURANCE_RATES,
   VEHICLE_DEPRECIATION_RATES,
@@ -44,69 +45,92 @@ import {
   type DietCatalogEntry,
   calculateCollectiblePurchasePrice
 } from '@/data/lifestyle-assets-config'
-import type { VEHICLE_CATALOG, type PersonalStaff, type Hobby } from '@/data/lifestyle-config';
-  // Find existing furnishing in this category for this property
-  const existingIndex = furnishings.findIndex(
-    f => f.propertyId === propertyId && f.category === category
-  )
-  
-  // Find new tier item in catalog
-  const newItem = FURNISHING_CATALOG.find(
-    f => f.category === category && f.tier === newTier
-  )
-  
-  if (!newItem) {
-    return { success: false, message: `No ${newTier} tier available for ${category}` }
+import { VEHICLE_CATALOG } from '@/data/lifestyle-config';
+import type { PersonalStaff, Hobby } from '@/data/lifestyle-config';
+import type { PersonalFinancialState } from '@/data/personal-finance-config';
+
+// ============================================
+// TYPES
+// ============================================
+
+export interface WeeklyAssetProcessingResult {
+  updatedAssets: LifestyleAssets
+  totalCosts: number
+  depreciation: number
+  appreciation: number
+  costBreakdown: {
+    vehicleMaintenance: number
+    vehicleInsurance: number
+    membershipFees: number
+    total: number
   }
-  
-  // Calculate cost (full price minus trade-in value of existing)
-  let tradeinValue = 0
-  if (existingIndex >= 0) {
-    const existing = furnishings[existingIndex]
-    tradeinValue = Math.round(existing.currentValue * 0.4) // 40% trade-in value
-  }
-  
-  const netCost = newItem.basePrice - tradeinValue
-  
-  if (finances.liquidCash < netCost) {
-    return {
-      success: false,
-      message: `Insufficient funds. Need $${netCost.toLocaleString()} (after $${tradeinValue.toLocaleString()} trade-in)`
-    }
-  }
-  
-  // Create new furnishing
-  const newFurnishing: HomeFurnishing = {
-    id: `furn_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-    propertyId,
-    category: newItem.category,
-    tier: newItem.tier,
-    name: newItem.name,
-    description: newItem.description,
-    purchasePrice: newItem.basePrice,
-    currentValue: newItem.basePrice,
-    purchaseDate: { week: currentWeek, year: currentYear },
-    monthlyDepreciation: newItem.monthlyDepreciation,
-    comfortBonus: newItem.comfortBonus,
-    prestigeBonus: newItem.prestigeBonus,
-    condition: 100,
-    needsReplacement: false
-  }
-  
-  // Update furnishings array
-  const updatedFurnishings = [...furnishings]
-  if (existingIndex >= 0) {
-    updatedFurnishings[existingIndex] = newFurnishing
-  } else {
-    updatedFurnishings.push(newFurnishing)
-  }
-  
-  return {
-    success: true,
-    message: `Upgraded to ${newItem.name} for $${netCost.toLocaleString()} (after trade-in)`,
-    cost: netCost,
-    updatedFurnishings
-  }
+  events: string[]
+}
+
+// ============================================
+// VALUE CHANGE PROCESSING
+// ============================================
+
+/**
+ * Process monthly vehicle depreciation/appreciation.
+ * Regular vehicles depreciate, collectible/classic vehicles appreciate.
+ * Uses VEHICLE_DEPRECIATION_RATES config with random variance.
+ */
+function processVehicleDepreciation(vehicles: OwnedVehicle[], months: number): OwnedVehicle[] {
+  return vehicles.map(v => {
+    // Get the rate: positive = depreciation, negative = appreciation (for collectibles)
+    const configRate = VEHICLE_DEPRECIATION_RATES[v.category] ?? 0.10
+    const rate = v.isCollectible
+      ? -(v.appreciationRate || Math.abs(configRate))
+      : (v.depreciationRate || configRate)
+    // Monthly rate with +/-20% random variance so values aren't perfectly predictable
+    const variance = 0.8 + Math.random() * 0.4
+    const monthlyRate = (rate / 12) * months * variance
+    const newValue = Math.round(v.currentValue * (1 - monthlyRate))
+    // Regular vehicles floor at 10% of purchase price; collectibles have no floor
+    const floor = v.isCollectible ? 0 : Math.round(v.purchasePrice * 0.10)
+    return { ...v, currentValue: Math.max(newValue, floor) }
+  })
+}
+
+/**
+ * Process monthly furnishing depreciation.
+ * Condition degrades over time based on tier quality.
+ * Value drops proportionally with condition.
+ */
+function processFurnishingDepreciation(furnishings: HomeFurnishing[], months: number): HomeFurnishing[] {
+  return furnishings.map(f => {
+    // Luxury items degrade slower than basic items
+    const degradeRate = f.tier === 'luxury' ? 0.5 : f.tier === 'premium' ? 0.8 : 1.2
+    const newCondition = Math.max(0, f.condition - (degradeRate * months))
+    // Value drops proportionally with condition; max 80% resale even at 100% condition
+    const conditionRatio = newCondition / 100
+    const newValue = Math.round(f.purchasePrice * conditionRatio * 0.8)
+    const needsReplacement = newCondition < 25
+    return { ...f, condition: newCondition, currentValue: newValue, needsReplacement }
+  })
+}
+
+/**
+ * Process monthly collectible appreciation/depreciation.
+ * Rarity affects consistency: legendary items are more stable,
+ * common items are more volatile and can lose value.
+ */
+function processCollectibleAppreciation(collectibles: Collectible[], months: number): Collectible[] {
+  return collectibles.map(c => {
+    const baseRate = c.appreciationRate || 0.04 // Default 4% annual
+    // Rarity multiplier: legendary items appreciate more consistently
+    const rarityMult: Record<string, number> = { legendary: 1.3, rare: 1.1, uncommon: 1.0, common: 0.9 }
+    const mult = rarityMult[c.rarity] || 1.0
+    // Random market variance: common items more volatile
+    const volatilityMap: Record<string, number> = { legendary: 0.15, rare: 0.25, uncommon: 0.35, common: 0.45 }
+    const volatility = volatilityMap[c.rarity] || 0.3
+    const variance = (1 - volatility) + Math.random() * (volatility * 2)
+    const monthlyRate = (baseRate * mult / 12) * months * variance
+    const newValue = Math.round(c.currentValue * (1 + monthlyRate))
+    // Floor at 50% of purchase price
+    return { ...c, currentValue: Math.max(newValue, Math.round(c.purchasePrice * 0.5)) }
+  })
 }
 
 // ============================================
@@ -287,7 +311,7 @@ export function calculateLifestyleScore(
   // 7. Hobbies score (0-5)
   const hobbiesBasePoints = hobbies.length * weights.hobbies.perHobby
   const hobbiesPrestigeBonus = hobbies.reduce((sum, h) => 
-    sum + (h.prestigeLevel * weights.hobbies.prestigeBonus), 0
+    sum + ((h as any).prestigeLevel || 0) * weights.hobbies.prestigeBonus, 0
   )
   const hobbiesScore = Math.min(hobbiesBasePoints + hobbiesPrestigeBonus, weights.hobbies.maxPoints)
   
@@ -310,6 +334,140 @@ export function calculateLifestyleScore(
     hobbies: Math.round(hobbiesScore * 10) / 10,
     total,
     level
+  }
+}
+
+// ============================================
+// WEEKLY LIFESTYLE BONUSES (Aggregates all asset bonuses into gameplay effects)
+// ============================================
+
+export interface WeeklyLifestyleBonuses {
+  // Stress & Health
+  totalStressReduction: number       // Points of stress reduced per week (passive)
+  totalHealthBonus: number           // Bonus to health recovery per week
+  totalFitnessBonus: number          // Bonus to fitness per week
+  totalEnergyBonus: number           // Reduces fatigue debt carry-over
+  timeFreedPerWeek: number           // Extra hours freed from services (added to day budget)
+  
+  // Prestige & Brand
+  totalPrestigeBonus: number         // Added to brand value / public image calculation
+  totalConfidenceBoost: number       // Bonus for negotiations and social events
+  totalNetworkingBonus: number       // Bonus for contact quality at events
+  
+  // Happiness
+  totalHappinessBoost: number        // Passive happiness effect
+  
+  // Breakdown for UI
+  breakdown: {
+    services: { stressReduction: number; prestigeBonus: number; timeFreed: number; healthBonus: number }
+    dietPlans: { healthBonus: number; fitnessBonus: number; energyBonus: number; stressReduction: number }
+    memberships: { prestigeBonus: number; networkingBonus: number; stressReduction: number }
+    wardrobe: { prestigeBonus: number; confidenceBoost: number; networkingBonus: number }
+    vehicles: { prestigeBonus: number }
+    furnishings: { comfortBonus: number; prestigeBonus: number }
+    collectibles: { prestigeBonus: number }
+    pets: { stressReduction: number; happinessBoost: number }
+    experiences: { stressReduction: number; networkingBonus: number; prestigeBonus: number }
+  }
+}
+
+/**
+ * Aggregates ALL lifestyle asset bonuses into concrete gameplay effects.
+ * Call this during weekly processing and apply the results to:
+ * - Health/stress (stressLevel, health, fitness)
+ * - Day budget (fatigueDebt reduction, bonus hours)
+ * - Brand (publicImage, brandValue via prestige)
+ * - Social events (networking bonuses, confidence)
+ * - Sponsor negotiations (prestige/confidence bonuses)
+ */
+export function processWeeklyLifestyleBonuses(
+  assets: LifestyleAssets
+): WeeklyLifestyleBonuses {
+  // --- Services ---
+  const activeServices = (assets.services || []).filter(s => s.isActive)
+  const serviceStress = activeServices.reduce((sum, s) => sum + (s.stressReduction || 0), 0)
+  const servicePrestige = activeServices.reduce((sum, s) => sum + (s.prestigeBonus || 0), 0)
+  const serviceTimeFreed = activeServices.reduce((sum, s) => sum + (s.timeFreedPerWeek || 0), 0)
+  const serviceHealth = activeServices.reduce((sum, s) => sum + (s.healthBonus || 0), 0)
+  
+  // --- Diet Plans ---
+  const activeDiets = (assets.dietPlans || []).filter(d => d.isActive)
+  const dietHealth = activeDiets.reduce((sum, d) => sum + (d.healthBonus || 0), 0)
+  const dietFitness = activeDiets.reduce((sum, d) => sum + (d.fitnessBonus || 0), 0)
+  const dietEnergy = activeDiets.reduce((sum, d) => sum + (d.energyBonus || 0), 0)
+  const dietStress = activeDiets.reduce((sum, d) => sum + (d.stressReduction || 0), 0)
+  
+  // --- Memberships ---
+  const memberPrestige = (assets.memberships || []).reduce((sum, m) => sum + (m.prestigeBonus || 0), 0)
+  const memberNetworking = (assets.memberships || []).reduce((sum, m) => sum + (m.networkingBonus || 0), 0)
+  const memberStress = (assets.memberships || []).reduce((sum, m) => sum + (m.stressReduction || 0), 0)
+  
+  // --- Wardrobe ---
+  const wardrobePrestige = (assets.wardrobe || []).reduce((sum, w) => sum + (w.prestigeBonus || 0), 0)
+  const wardrobeConfidence = (assets.wardrobe || []).reduce((sum, w) => sum + (w.confidenceBoost || 0), 0)
+  const wardrobeNetworking = (assets.wardrobe || []).reduce((sum, w) => sum + (w.networkingBonus || 0), 0)
+  
+  // --- Vehicles (primary vehicle gets extra weight) ---
+  const primaryVehicle = (assets.vehicles || []).find(v => v.isPrimary)
+  const vehiclePrestige = (assets.vehicles || []).reduce((sum, v) => {
+    const catalog = VEHICLE_CATALOG.find(c => c.brand === v.brand && c.model === v.model)
+    return sum + ((catalog as any)?.prestige || 0)
+  }, 0)
+  // Primary vehicle gives a bonus on top
+  const primaryVehiclePrestige = primaryVehicle ? (() => {
+    const catalog = VEHICLE_CATALOG.find(c => c.brand === primaryVehicle.brand && c.model === primaryVehicle.model)
+    return ((catalog as any)?.prestige || 0) * 0.5 // 50% extra for primary
+  })() : 0
+  
+  // --- Furnishings ---
+  const furnishingComfort = (assets.furnishings || []).reduce((sum, f) => sum + (f.comfortBonus || 0), 0)
+  const furnishingPrestige = (assets.furnishings || []).reduce((sum, f) => sum + (f.prestigeBonus || 0), 0)
+  
+  // --- Collectibles ---
+  const collectiblePrestige = (assets.collectibles || []).reduce((sum, c) => sum + (c.prestigeBonus || 0), 0)
+  
+  // --- Pets (passive weekly stress reduction + happiness) ---
+  const petStress = (assets.pets || []).reduce((sum, p) => sum + Math.round((p.stressReduction || 0) * 0.3), 0) // 30% of full value as passive
+  const petHappiness = (assets.pets || []).reduce((sum, p) => sum + Math.round((p.happinessBoost || 0) * 0.2), 0)
+  
+  // --- Experiences (active/recent experiences give temporary bonuses) ---
+  const activeExperiences = (assets.experiences || []).filter(e => !e.completedWeek)
+  const expStress = activeExperiences.reduce((sum, e) => sum + (e.stressReduction || 0), 0)
+  const expNetworking = activeExperiences.reduce((sum, e) => sum + (e.networkingBonus || 0), 0)
+  const expPrestige = activeExperiences.reduce((sum, e) => sum + (e.prestigeBonus || 0), 0)
+  
+  // --- Aggregate ---
+  const totalStressReduction = serviceStress + dietStress + memberStress + petStress + expStress + Math.round(furnishingComfort * 0.1)
+  const totalHealthBonus = serviceHealth + dietHealth
+  const totalFitnessBonus = dietFitness
+  const totalEnergyBonus = dietEnergy
+  const timeFreedPerWeek = serviceTimeFreed
+  const totalPrestigeBonus = servicePrestige + memberPrestige + wardrobePrestige + vehiclePrestige + primaryVehiclePrestige + furnishingPrestige + collectiblePrestige + expPrestige
+  const totalConfidenceBoost = wardrobeConfidence
+  const totalNetworkingBonus = memberNetworking + wardrobeNetworking + expNetworking
+  const totalHappinessBoost = petHappiness
+  
+  return {
+    totalStressReduction,
+    totalHealthBonus,
+    totalFitnessBonus,
+    totalEnergyBonus,
+    timeFreedPerWeek,
+    totalPrestigeBonus,
+    totalConfidenceBoost,
+    totalNetworkingBonus,
+    totalHappinessBoost,
+    breakdown: {
+      services: { stressReduction: serviceStress, prestigeBonus: servicePrestige, timeFreed: serviceTimeFreed, healthBonus: serviceHealth },
+      dietPlans: { healthBonus: dietHealth, fitnessBonus: dietFitness, energyBonus: dietEnergy, stressReduction: dietStress },
+      memberships: { prestigeBonus: memberPrestige, networkingBonus: memberNetworking, stressReduction: memberStress },
+      wardrobe: { prestigeBonus: wardrobePrestige, confidenceBoost: wardrobeConfidence, networkingBonus: wardrobeNetworking },
+      vehicles: { prestigeBonus: vehiclePrestige + primaryVehiclePrestige },
+      furnishings: { comfortBonus: furnishingComfort, prestigeBonus: furnishingPrestige },
+      collectibles: { prestigeBonus: collectiblePrestige },
+      pets: { stressReduction: petStress, happinessBoost: petHappiness },
+      experiences: { stressReduction: expStress, networkingBonus: expNetworking, prestigeBonus: expPrestige }
+    }
   }
 }
 
@@ -351,10 +509,24 @@ export function processWeeklyAssets(
       events.push(`${f.name} needs replacement (condition: ${Math.round(f.condition)}%)`)
     })
     
+    // Process collectible appreciation
+    const updatedCollectibles = processCollectibleAppreciation(assets.collectibles || [], 1)
+    
+    const oldCollectibleValue = (assets.collectibles || []).reduce((sum, c) => sum + c.currentValue, 0)
+    const newCollectibleValue = updatedCollectibles.reduce((sum, c) => sum + c.currentValue, 0)
+    const collectibleValueChange = newCollectibleValue - oldCollectibleValue
+    
+    if (collectibleValueChange > 0) {
+      events.push(`Collectibles appreciated by $${collectibleValueChange.toLocaleString()}`)
+    } else if (collectibleValueChange < 0) {
+      events.push(`Collectibles depreciated by $${Math.abs(collectibleValueChange).toLocaleString()}`)
+    }
+
     updatedAssets = {
       ...updatedAssets,
       vehicles: updatedVehicles,
-      furnishings: updatedFurnishings
+      furnishings: updatedFurnishings,
+      collectibles: updatedCollectibles
     }
   }
   
@@ -414,11 +586,10 @@ export function processWeeklyAssets(
 // ============================================
 
 export function getTotalAssetValue(assets: LifestyleAssets): number {
-  const vehicleValue = assets.vehicles.reduce((sum, v) => sum + v.currentValue, 0)
-  const furnishingValue = assets.furnishings.reduce((sum, f) => sum + f.currentValue, 0)
-  // Memberships don't have resale value
-  
-  return vehicleValue + furnishingValue
+  const vehicleValue = (assets.vehicles || []).reduce((sum, v) => sum + v.currentValue, 0)
+  const furnishingValue = (assets.furnishings || []).reduce((sum, f) => sum + f.currentValue, 0)
+  const collectibleValue = (assets.collectibles || []).reduce((sum, c) => sum + c.currentValue, 0)
+  return vehicleValue + furnishingValue + collectibleValue
 }
 
 export function getAssetSummary(assets: LifestyleAssets): {
@@ -427,26 +598,50 @@ export function getAssetSummary(assets: LifestyleAssets): {
   furnishingCount: number
   furnishingValue: number
   membershipCount: number
+  collectibleCount: number
+  collectibleValue: number
   monthlyAssetCosts: number
   annualMembershipFees: number
 } {
-  const vehicleValue = assets.vehicles.reduce((sum, v) => sum + v.currentValue, 0)
-  const furnishingValue = assets.furnishings.reduce((sum, f) => sum + f.currentValue, 0)
-  const monthlyVehicleCosts = assets.vehicles.reduce((sum, v) => 
-    sum + v.monthlyMaintenanceCost + v.monthlyInsuranceCost, 0
+  const vehicleValue = (assets.vehicles || []).reduce((sum, v) => sum + v.currentValue, 0)
+  const furnishingValue = (assets.furnishings || []).reduce((sum, f) => sum + f.currentValue, 0)
+  const collectibleValue = (assets.collectibles || []).reduce((sum, c) => sum + c.currentValue, 0)
+  const monthlyVehicleCosts = (assets.vehicles || []).reduce((sum, v) =>
+    sum + (v.maintenanceCostPerWeek || 0) * 4 + (v.insuranceCostPerWeek || 0) * 4, 0
   )
-  const annualMembershipFees = assets.memberships.reduce((sum, m) => sum + m.annualFee, 0)
-  const monthlyMembershipFees = assets.memberships.reduce((sum, m) => sum + m.monthlyFee, 0)
-  
+  const annualMembershipFees = (assets.memberships || []).reduce((sum, m) => sum + (m.annualFee || 0), 0)
+  const monthlyMembershipFees = (assets.memberships || []).reduce((sum, m) => sum + (m.monthlyFee || 0), 0)
+
   return {
-    vehicleCount: assets.vehicles.length,
+    vehicleCount: (assets.vehicles || []).length,
     vehicleValue,
-    furnishingCount: assets.furnishings.length,
+    furnishingCount: (assets.furnishings || []).length,
     furnishingValue,
-    membershipCount: assets.memberships.length,
+    membershipCount: (assets.memberships || []).length,
+    collectibleCount: (assets.collectibles || []).length,
+    collectibleValue,
     monthlyAssetCosts: monthlyVehicleCosts + monthlyMembershipFees,
     annualMembershipFees
   }
+}
+
+export function canAffordAsset(
+  price: number,
+  liquidCash: number,
+  minimumReserve: number = 50000
+): { canAfford: boolean; reason?: string } {
+  if (liquidCash < price) {
+    return { canAfford: false, reason: 'Insufficient funds' }
+  }
+
+  if (liquidCash - price < minimumReserve) {
+    return {
+      canAfford: false,
+      reason: `Would leave less than $${minimumReserve.toLocaleString()} reserve`
+    }
+  }
+
+  return { canAfford: true }
 }
 
 export function getVehicleCatalog() {
@@ -468,25 +663,6 @@ export function getMembershipCatalog(): MembershipCatalogEntry[] {
 
 export function getFurnishingCatalog(): FurnishingCatalogEntry[] {
   return FURNISHING_CATALOG
-}
-
-export function canAffordAsset(
-  price: number,
-  liquidCash: number,
-  minimumReserve: number = 50000
-): { canAfford: boolean; reason?: string } {
-  if (liquidCash < price) {
-    return { canAfford: false, reason: 'Insufficient funds' }
-  }
-  
-  if (liquidCash - price < minimumReserve) {
-    return { 
-      canAfford: false, 
-      reason: `Would leave less than $${minimumReserve.toLocaleString()} reserve` 
-    }
-  }
-  
-  return { canAfford: true }
 }
 
 // ============================================
@@ -734,4 +910,174 @@ export function cancelDiet(): SaleResult {
 
 export function getDietCatalog(): DietCatalogEntry[] {
   return DIET_CATALOG
+}
+
+// ============================================
+// VEHICLE PURCHASE / SELL
+// ============================================
+
+interface PurchaseResult {
+  success: boolean
+  message: string
+  cost?: number
+  item?: any
+}
+
+interface SaleResult {
+  success: boolean
+  message: string
+  proceeds?: number
+}
+
+export function purchaseVehicle(
+  catalogIndex: number,
+  finances: { liquidCash: number },
+  currentWeek: number,
+  currentYear: number
+): PurchaseResult {
+  const catalog = VEHICLE_CATALOG
+  if (catalogIndex < 0 || catalogIndex >= catalog.length) {
+    return { success: false, message: 'Vehicle not found in catalog' }
+  }
+  const entry = catalog[catalogIndex]
+  if (finances.liquidCash < entry.basePrice) {
+    return { success: false, message: `Cannot afford ${entry.brand} ${entry.model} ($${entry.basePrice.toLocaleString()})` }
+  }
+
+  const vehicle: OwnedVehicle = {
+    id: `vehicle_${Date.now()}`,
+    brand: entry.brand,
+    model: entry.model,
+    type: entry.type as any,
+    purchasePrice: entry.basePrice,
+    currentValue: entry.basePrice,
+    purchaseWeek: currentWeek,
+    purchaseYear: currentYear,
+    condition: 100,
+    mileage: 0,
+    isPrimary: false,
+    maintenanceCostPerWeek: Math.round(entry.basePrice * 0.001),
+    insuranceCostPerWeek: Math.round(entry.basePrice * 0.0005)
+  }
+
+  return { success: true, message: `Purchased ${entry.brand} ${entry.model}`, cost: entry.basePrice, item: vehicle }
+}
+
+export function sellVehicle(vehicle: OwnedVehicle): SaleResult {
+  const depreciation = 0.85 // 15% loss on resale
+  const proceeds = Math.round(vehicle.currentValue * depreciation)
+  return { success: true, message: `Sold ${vehicle.brand} ${vehicle.model} for $${proceeds.toLocaleString()}`, proceeds }
+}
+
+// ============================================
+// FURNISHING PURCHASE / SELL
+// ============================================
+
+export function purchaseFurnishing(
+  furnishingId: string,
+  propertyId: string,
+  finances: { liquidCash: number },
+  currentWeek: number,
+  currentYear: number
+): PurchaseResult {
+  const catalogEntry = getFurnishingById(furnishingId)
+  if (!catalogEntry) return { success: false, message: 'Furnishing not found in catalog' }
+  if (finances.liquidCash < catalogEntry.basePrice) {
+    return { success: false, message: `Cannot afford ${catalogEntry.name} ($${catalogEntry.basePrice.toLocaleString()})` }
+  }
+
+  const furnishing: HomeFurnishing = {
+    id: `furnishing_${Date.now()}`,
+    catalogId: furnishingId,
+    propertyId,
+    name: catalogEntry.name,
+    category: catalogEntry.category,
+    tier: catalogEntry.tier as FurnishingTier,
+    purchasePrice: catalogEntry.basePrice,
+    currentValue: catalogEntry.basePrice,
+    condition: 100,
+    purchaseWeek: currentWeek,
+    purchaseYear: currentYear
+  }
+
+  return { success: true, message: `Purchased ${catalogEntry.name}`, cost: catalogEntry.basePrice, item: furnishing }
+}
+
+export function sellFurnishing(furnishing: HomeFurnishing): SaleResult {
+  const proceeds = Math.round((furnishing.currentValue || furnishing.purchasePrice) * 0.5)
+  return { success: true, message: `Sold ${furnishing.name} for $${proceeds.toLocaleString()}`, proceeds }
+}
+
+export function upgradeFurnishing(
+  propertyId: string,
+  category: FurnishingCategory,
+  newTier: FurnishingTier,
+  furnishings: HomeFurnishing[],
+  finances: PersonalFinancialState,
+  currentWeek: number,
+  currentYear: number
+): PurchaseResult & { updatedFurnishings?: HomeFurnishing[] } {
+  const existingIndex = furnishings.findIndex(
+    f => f.propertyId === propertyId && f.category === category
+  )
+  const newItem = FURNISHING_CATALOG.find(
+    f => f.category === category && f.tier === newTier
+  )
+  if (!newItem) {
+    return { success: false, message: `No ${newTier} tier available for ${category}` }
+  }
+  let tradeinValue = 0
+  if (existingIndex >= 0) {
+    const existing = furnishings[existingIndex]
+    tradeinValue = Math.round(existing.currentValue * 0.4)
+  }
+  const netCost = newItem.basePrice - tradeinValue
+  if (finances.liquidCash < netCost) {
+    return {
+      success: false,
+      message: `Insufficient funds. Need $${netCost.toLocaleString()} (after $${tradeinValue.toLocaleString()} trade-in)`
+    }
+  }
+  const newFurnishing: HomeFurnishing = {
+    id: `furn_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+    propertyId,
+    category: newItem.category,
+    tier: newItem.tier,
+    name: newItem.name,
+    description: newItem.description,
+    purchasePrice: newItem.basePrice,
+    currentValue: newItem.basePrice,
+    purchaseDate: { week: currentWeek, year: currentYear },
+    monthlyDepreciation: newItem.monthlyDepreciation,
+    comfortBonus: newItem.comfortBonus,
+    prestigeBonus: newItem.prestigeBonus,
+    condition: 100,
+    needsReplacement: false
+  }
+  const updatedFurnishings = [...furnishings]
+  if (existingIndex >= 0) {
+    updatedFurnishings[existingIndex] = newFurnishing
+  } else {
+    updatedFurnishings.push(newFurnishing)
+  }
+  return {
+    success: true,
+    message: `Upgraded to ${newItem.name} for $${netCost.toLocaleString()} (after trade-in)`,
+    cost: netCost,
+    updatedFurnishings
+  }
+}
+
+// ============================================
+// PRIMARY VEHICLE
+// ============================================
+
+export function setPrimaryVehicle(
+  vehicles: OwnedVehicle[],
+  vehicleId: string
+): OwnedVehicle[] {
+  return vehicles.map(v => ({
+    ...v,
+    isPrimary: v.id === vehicleId
+  }))
 }

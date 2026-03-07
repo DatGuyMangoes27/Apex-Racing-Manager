@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Ratna Kartika",
+    "nationality": "Indonesian",
+    "age": 62,
+    "gender": "female",
+    "contactType": "fashion_designer",
+    "bio": "Ratna Kartika is a titan in Indonesian high fashion, renowned for her bold, modern designs that blend traditional batik techniques with cutting-edge silhouettes. Her label, Kartika Designs, is a staple at Jakarta Fashion Week and a favorite among socialites and celebrities. While known for her innovative creations, Ratna is equally recognized for her sharp business acumen and exacting standards. She exudes an air of cool detachment, but beneath that lies a fiercely competitive spirit honed by years of navigating the demanding world of haute couture. \n\nA racing driver might cross paths with Ratna because she frequently sponsors high-profile events, seeking to align her brand with prestige and excitement. She's been known to design custom outfits for team owners and their partners attending VIP events at Grand Prix races in Asia, and often hosts exclusive after-parties during these events.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Silver",
+      "hairStyle": "Short, impeccably styled bob",
+      "eyeColor": "Dark brown",
+      "facialHair": null,
+      "description": "Ratna carries herself with an unmistakable elegance. Her sharp features and piercing gaze command attention, framed by her perfectly coiffed silver hair."
+    },
+    "connectionToMotorsport": "Ratna sponsors certain races and racing teams to promote her brand, Kartika Designs, and often creates custom outfits for prominent figures in the racing world.",
+    "meetingContext": "The player might meet Ratna at a VIP party during the Jakarta E-Prix, or at a charity gala she's sponsoring that is attended by team owners.",
+    "conversationTopics": [
+      "The latest trends in high fashion",
+      "Her design philosophy and use of traditional Indonesian techniques",
+      "The Indonesian art scene",
+      "Her philanthropic endeavors",
+      "Polo and her favorite polo ponies"
+    ],
+    "canHelp": [
+      "Introduce the player to high-profile sponsors and investors",
+      "Offer the player a brand ambassadorship, increasing their visibility",
+      "Provide access to exclusive social events where the player can network"
+    ],
+    "personality_summary": "A controlling and cynical fashion designer with a competitive edge and reserved demeanor."
+  }
+]

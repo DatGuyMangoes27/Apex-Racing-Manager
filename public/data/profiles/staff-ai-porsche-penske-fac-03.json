@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 54,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Gareth's journey into motorsport began in his father's small engineering workshop nestled in the valleys of South Wales. He honed his skills working on agricultural machinery before a chance encounter with a local rally team ignited his passion for racing. He joined their ranks, quickly becoming indispensable for his ability to fabricate and repair under pressure. His meticulous attention to detail and pragmatic approach to problem-solving saw him rise through the ranks, eventually attracting the attention of Porsche Penske Motorsport.\n\nAt Porsche Penske, Gareth is a vital cog in the machine, responsible for the precision machining of critical engine and chassis components. He believes in a 'measure twice, cut once' philosophy, ensuring the highest levels of accuracy and reliability. His decades of experience allow him to anticipate potential issues and devise innovative solutions, earning him the respect of his colleagues and the admiration of the younger engineers. He also serves as a mentor, passing down his wealth of knowledge to the next generation of motorsport machinists.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey mustache",
+    "description": "A stocky build, Gareth has the strong hands of someone who has worked with metal his whole life."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, well-worn engineering handbook in his pocket.",
+    "Insists on using Imperial measurements alongside metric.",
+    "Has a habit of whistling Welsh folk tunes while working."
+  ]
+}

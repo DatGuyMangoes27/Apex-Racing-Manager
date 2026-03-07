@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 31,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began not on the track, but in the skies. Growing up near an air force base in Chile, he was captivated by aerodynamics from a young age. This fascination led him to pursue a degree in mechanical engineering, specializing in fluid dynamics. After graduating, Ricardo initially worked in the aerospace industry, but the allure of motorsport was too strong to resist. He joined a small Formula 3 team as an aerodynamicist, quickly proving his worth with innovative wing designs that improved downforce and handling. \n\nHis meticulous approach to data analysis and his ability to translate complex simulations into practical solutions caught the eye of Brasil Racing. Now heading their aero department, Ricardo is driven by a desire for perfection. He believes that even the smallest aerodynamic gains can make a significant difference on the track. He's known for his relentless pursuit of optimization and his ability to inspire his team to push the boundaries of what's possible. He's a firm believer in a data-driven approach, but also values the intuition and experience of his team members.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "A thin, well-groomed mustache",
+    "description": "Ricardo is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having perfectly aligned monitors in his office."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 58,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Bjorn Stromberg is a self-made man, a titan in the world of international business and venture capital. His sharp mind and relentless drive have made him a force to be reckoned with, though his competitive spirit often manifests as a dismissive attitude toward those he deems less capable. He enjoys playing the role of a mischievous disruptor, always looking for the next big thing, and is surprisingly open-minded when presented with a compelling opportunity.\n\nWhile seemingly disconnected from motorsport, Bjorn has a soft spot for speed and innovation. He views racing drivers as high-risk, high-reward investments, often seeking to back talents with exceptional potential. A driver might cross paths with Bjorn through a mutual business acquaintance, a chance encounter at a high-profile event, or if the driver demonstrates the ambition and raw skill that catches Bjorn's discerning eye. His interest in astronomy often leads him to see potential where others don't. ",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Bjorn is a tall, imposing figure with a stern look that softens when he smiles. He usually wears expensive tailored suits."
+  },
+  "connectionToMotorsport": "Bjorn occasionally invests in promising young drivers, seeing them as potentially lucrative assets. He also enjoys attending Formula 1 races, primarily for the networking opportunities and the thrill of witnessing peak performance.",
+  "meetingContext": "At a private fundraising event for a charity, or through an introduction by a wealthy sponsor.",
+  "conversationTopics": [
+    "The stock market and investment strategies",
+    "The latest advancements in space exploration",
+    "The challenges and rewards of high-stakes business deals",
+    "The performance of various racing teams and drivers",
+    "The importance of innovation in different industries"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals",
+    "Provide financial backing for career advancement",
+    "Offer introductions to influential figures in the motorsport industry"
+  ],
+  "personality_summary": "A competitive and mischievous businessman always looking for the next big opportunity."
+}

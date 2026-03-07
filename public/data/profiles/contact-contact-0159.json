@@ -1,0 +1,31 @@
+{
+  "name": "Chukwudi Okoro",
+  "nationality": "Nigerian",
+  "age": 63,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Chukwudi Okoro is a retired Olympic wrestler, celebrated throughout Nigeria for his unwavering spirit and gold medal win in the 1984 Los Angeles Games. Known for his formidable strength and tactical brilliance on the mat, Chukwudi is equally respected for his compassionate nature and dedication to charitable causes, particularly those supporting youth sports programs across Africa. Despite his success, he remains remarkably humble, often attributing his achievements to the guidance of his mentors and the support of his community.\n\nWhile primarily associated with wrestling, Chukwudi has become a notable figure in motorsport circles through his philanthropic efforts. He sponsors promising young drivers from underprivileged backgrounds, providing them with the resources and mentorship needed to pursue their racing dreams. His involvement stems from a deep belief in the power of sport to transform lives and his admiration for the discipline and precision of racing.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Gray",
+    "hairStyle": "Close-cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed gray beard",
+    "description": "Chukwudi is powerfully built, a testament to his years as a wrestler, though his frame is now softened with age. He carries himself with a quiet dignity, his eyes often twinkling with warmth and wisdom."
+  },
+  "connectionToMotorsport": "Chukwudi is a passionate supporter of motorsport, specifically junior formula racing, and sponsors several young drivers from Nigeria. He often attends races and provides guidance to his sponsored athletes.",
+  "meetingContext": "You might meet Chukwudi at a junior formula race where he is supporting one of his drivers, or at a motorsport charity gala.",
+  "conversationTopics": [
+    "Wrestling and martial arts philosophy",
+    "The importance of sports for youth development",
+    "His art collection, focusing on African artists",
+    "Sustainable farming practices",
+    "The challenges and opportunities for young African athletes"
+  ],
+  "canHelp": [
+    "Provide introductions to wealthy sponsors and philanthropists interested in motorsport",
+    "Offer mentorship and guidance on maintaining a positive public image",
+    "Connect you with sports psychologists and performance coaches"
+  ],
+  "personality_summary": "A compassionate and opinionated former Olympian dedicated to helping young athletes succeed."
+}

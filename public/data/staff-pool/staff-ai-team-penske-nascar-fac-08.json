@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Chavez",
+  "nationality": "Argentine",
+  "age": 53,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Ricardo's journey into motorsport began in his youth, tinkering with engines in his father's garage in Buenos Aires. He always had a knack for understanding how things worked, leading him to pursue a degree in mechanical engineering. After graduating, he worked for several years in the automotive industry before finally landing a role with a small Argentine racing team. His meticulous approach to data analysis and his ability to identify subtle aerodynamic improvements quickly made him an asset. He joined Team Penske a decade ago, where he has been instrumental in optimizing their car designs. He prides himself on his ability to translate complex data into actionable insights for the engineers, always striving for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed with a receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed mustache",
+    "description": "Ricardo is a sturdy man with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating the wind tunnel equipment himself before any major testing session."
+  ]
+}

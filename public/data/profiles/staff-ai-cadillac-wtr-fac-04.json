@@ -1,0 +1,22 @@
+{
+  "name": "Aoife O'Malley",
+  "nationality": "Irish",
+  "age": 54,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Aoife O'Malley's journey into motorsport began unexpectedly. Initially trained in telecommunications, a chance encounter with a local rally team sparked a fascination with the intricate electronics underpinning racing performance. She transitioned, self-teaching and earning certifications while volunteering at race events. Her early career was spent troubleshooting engine management systems for smaller racing outfits, honing her skills in high-pressure environments. Aoife is known for her meticulous approach to diagnostics and her ability to quickly identify and resolve complex electrical faults. \n\nAt Cadillac Racing, Aoife is a key figure in maintaining the reliability and optimizing the performance of the team's hybrid powertrain systems. She prides herself on her ability to stay calm under pressure, a trait that has earned her the respect of her colleagues. While collaborative in team settings, Aoife thrives on independent projects, often disappearing into the garage for hours to pore over schematics and data logs. Her dedication to detail and her unwavering focus make her a valuable asset to the team, even if her independent nature sometimes means she prefers to work alone.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Auburn",
+    "hairStyle": "Short, practical bob with a slight wave",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A petite woman with a serious demeanor, often seen with reading glasses perched on her nose."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a multi-meter in her handbag.",
+    "Has a habit of muttering technical jargon to herself when concentrating.",
+    "Insists on using a specific brand of soldering iron, claiming it's the only one that provides a perfect connection."
+  ]
+}

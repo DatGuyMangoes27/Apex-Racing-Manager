@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 30,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Nikola's fascination with motorsport began during his childhood in Belgrade, captivated by the roar of engines at local hill climb events. This passion led him to pursue a degree in Mechanical Engineering, specializing in vehicle dynamics. After graduating, he gained valuable experience at a smaller GT racing team, honing his skills in data analysis and race strategy before being scouted by Porsche Penske Motorsport.\n\nNikola is known for his meticulous approach to performance optimization, meticulously analyzing every aspect of the car's setup to extract maximum performance. He believes in a holistic approach, considering not just the technical aspects but also the driver's feedback and the overall team strategy. His ability to see the big picture while maintaining an eye for detail makes him a valuable asset to the team. He is a strong believer in simulation and data-driven decision making.",
+  "physical": {
+    "skinTone": "light olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "hazel",
+    "facialHair": "short, trimmed beard",
+    "description": "Nikola has a focused gaze and a serious demeanor, often seen with a pen behind his ear."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using metric units exclusively, even when communicating with international colleagues."
+  ]
+}

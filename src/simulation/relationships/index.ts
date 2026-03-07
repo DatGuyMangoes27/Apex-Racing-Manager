@@ -409,6 +409,36 @@ export function createDefaultRelationshipState(): RelationshipState {
 }
 
 // ============================================
+// RACE-BASED RELATIONSHIP UPDATES
+// ============================================
+
+/**
+ * Update team relationship based on race result
+ */
+export function updateTeamRelationshipFromRace(
+  state: RelationshipState,
+  result: { position: number; expectedPosition: number; dnf?: boolean }
+): RelationshipState {
+  let change = 0
+
+  if (result.dnf) {
+    change = -3 // DNF is bad but not the driver's fault usually
+  } else if (result.position <= result.expectedPosition) {
+    // Met or exceeded expectations
+    change = Math.min(10, (result.expectedPosition - result.position + 1) * 2)
+  } else {
+    // Underperformed
+    change = -Math.min(8, (result.position - result.expectedPosition) * 1.5)
+  }
+
+  return {
+    ...state,
+    teamRelationship: clamp(state.teamRelationship + change, 0, 100),
+    engineerRelationship: clamp(state.engineerRelationship + change * 0.5, 0, 100)
+  }
+}
+
+// ============================================
 // HELPERS
 // ============================================
 

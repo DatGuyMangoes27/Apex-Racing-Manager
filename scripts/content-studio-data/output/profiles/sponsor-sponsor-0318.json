@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0318",
+  "name": "Emirates Global Aluminium (EGA)",
+  "category": "local",
+  "tier": "elite",
+  "country": "UAE",
+  "description": "The world's largest 'premium aluminium' producer.",
+  "story": "EGA is deeply invested in promoting innovation and technological advancement within the UAE. Motorsport provides an ideal platform to showcase the durability and versatility of aluminium in high-performance applications. They seek a partnership that reflects their commitment to excellence and technological leadership, with a focus on sustainability.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 25000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "UAE"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0318.png"
+}

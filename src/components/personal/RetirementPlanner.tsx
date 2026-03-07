@@ -9,7 +9,7 @@ import {
   Users,
   Briefcase,
   Mic,
-  _BookOpen,
+  BookOpen,
   Heart,
   Building2,
   GraduationCap,
@@ -17,8 +17,8 @@ import {
   Clock,
   AlertTriangle,
   Check,
-  _ChevronRight,
-  _Shield,
+  ChevronRight,
+  Shield,
   Sparkles
 } from 'lucide-react'
 import { Card, CardHeader, Button, Badge, Modal, Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui'

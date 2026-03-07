@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 37,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Nikola's journey into motorsport began unconventionally, not with a wrench in hand, but with a computer mouse. Initially fascinated by the precision and problem-solving of CAD software, he transitioned his skills to the practical realm, apprenticing at a local machine shop servicing rally cars. It was here that he discovered his true calling: the art of shaping metal to achieve peak performance. \n\nHe approaches his role at Alpine F1 with a quiet intensity, meticulously reviewing blueprints and tolerances, always seeking ways to improve the durability and efficiency of components. Nikola is known for his ability to diagnose and resolve complex mechanical issues swiftly and accurately, a trait honed through years of working on a diverse range of racing machinery. He's not one for grand pronouncements, preferring to let his craftsmanship speak for itself.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly cropped with a slight recession at the temples",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Nikola is of medium build, with strong hands that show the wear of his craft."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sharpens his pencils to an exact point before starting any project.",
+    "Has a collection of antique calipers that he occasionally uses for reference.",
+    "Listens to Serbian folk music through headphones while working, but only at low volume."
+  ]
+}

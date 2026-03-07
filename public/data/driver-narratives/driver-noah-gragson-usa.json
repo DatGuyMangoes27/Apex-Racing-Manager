@@ -1,0 +1,27 @@
+{
+  "biography": "Noah \"The Maverick\" Gragson didn't come from racing royalty. He clawed his way up from the dusty dirt tracks of rural Nevada, fixing his own go-karts with parts scavenged from the junkyard. His raw talent was undeniable, earning him local championships and the attention of a small, underfunded Stock USA Gen3 team. His breakout moment came at the '28 Vegas Showdown, where he wrestled the lead from veteran champion Rick Decker on the final lap, showcasing his trademark aggressive style. Now in his prime, Gragson is a constant threat, known for pushing his equipment and his rivals to the absolute limit, a true embodiment of the 'drive it like you stole it' mentality. He's proving that heart and determination can triumph over pedigree.",
+  "drivingStyle": "Gragson's driving style is a blend of controlled aggression and calculated risk. He's known for late-braking maneuvers and daring passes, often diving into corners where others fear to tread. While this sometimes results in spectacular crashes, it also earns him crucial positions. He is surprisingly adept at tire management, preserving his equipment just enough to unleash a final, relentless attack. Gragson thrives under pressure, often elevating his performance when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Rick Decker",
+      "reason": "A veteran champion who represents the old guard, Decker constantly clashes with Gragson's aggressive style, viewing him as reckless and disrespectful."
+    },
+    {
+      "driver": "Ava Sterling",
+      "reason": "A rising star known for her technical precision, Sterling often finds herself battling Gragson for track position, their contrasting styles leading to intense and frequent on-track duels."
+    },
+    {
+      "driver": "Ethan Cole",
+      "reason": "Cole and Gragson both came up through the same racing series, leading to a long and bitter rivalry for dominance that continues to this day."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks, even if they're full of holes.",
+    "Listens to a specific heavy metal track right before climbing into the car.",
+    "Refuses to look at the race standings until the checkered flag waves."
+  ],
+  "nickname": "The Maverick",
+  "famousQuote": "\"Second place is just the first loser. You gotta go out there and take what's yours!\"",
+  "careerHighlight": "Winning the '31 Stock USA Gen3 Championship after a season-long battle with Rick Decker, proving his doubters wrong and cementing his status as a top-tier driver.",
+  "careerLowPoint": "Crashing out of the lead on the last lap of the '30 Daytona 500 due to a mechanical failure, costing him a potentially career-defining victory."
+}

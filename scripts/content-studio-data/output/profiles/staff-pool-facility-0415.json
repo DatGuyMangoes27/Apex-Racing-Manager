@@ -1,0 +1,22 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 30,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Ivana's journey into motorsport began unconventionally, not through racing, but through restoring classic cars with her grandfather. This hands-on experience ignited a passion for mechanics and precision engineering. She honed her fabrication skills at a local engineering firm before transitioning to motorsport, drawn by the fast-paced environment and constant innovation.\n\nAs a fabricator, Ivana is meticulous and demanding, both of herself and her colleagues. She believes in doing things right the first time, ensuring the highest standards of quality and safety. She's known for her ability to troubleshoot complex issues and find creative solutions under pressure. Ivana's distinctive approach lies in her deep understanding of material science, enabling her to optimize components for both performance and durability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, braided, often with stray strands escaping",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana is of average height, with a strong build developed from years of physical work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens her tools before starting any task, regardless of how new they are.",
+    "Insists on using only metric measurements, even when working on older, non-metric cars.",
+    "Keeps a small, worn copy of a materials science textbook in her toolbox."
+  ]
+}

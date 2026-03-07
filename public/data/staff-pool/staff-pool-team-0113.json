@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 60,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Alistair McGregor's motorsport journey began in the highlands of Scotland, tinkering with engines in his father's garage. His passion led him to earn a degree in mechanical engineering, after which he quickly found a home within the racing world. Alistair's career has spanned various racing series, from Formula Ford to touring cars, where he steadily climbed the ranks, showcasing a knack for identifying and nurturing talent, and a calm but effective management style. He believes in fostering a collaborative environment where innovation thrives, and his reputation for remaining composed under pressure has earned him the respect of drivers and engineers alike.\n\nAs team principal, Alistair prefers a data-driven approach, meticulously analyzing performance metrics to fine-tune strategies and optimize car setups. He is known for his ability to extract the maximum potential from his team, fostering a culture of continuous improvement. While his technical expertise is considerable, he understands the importance of empowering his staff, creating an environment where individuals can contribute their unique perspectives and expertise. His flexible approach allows him to adapt to the ever-changing landscape of motorsport, always striving for that competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "Alistair is a man of medium build, with a weathered face that speaks of years spent trackside."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on having a cup of strong Scottish tea before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Alessandro Mancini",
+  "nationality": "Italian",
+  "age": 48,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Alessandro's journey into motorsport began unexpectedly, tracing back to a university project on telemetry data analysis in Formula 1. Enthralled by the intricate dance of data and performance, he pivoted from theoretical computer science to applied IT solutions within the racing world. He spent several years honing his skills at a smaller Italian racing outfit before being headhunted by Caterham Academy.\n\nHis approach to IT systems management is holistic, focusing not just on maintaining infrastructure but on leveraging technology to gain a competitive edge. He's known for his ability to translate complex technical jargon into actionable insights for the engineers and strategists on the team. What sets Alessandro apart is his unwavering commitment to data security and his proactive approach to anticipating and mitigating potential system vulnerabilities.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight recession at the temples",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of medium height with a wiry build, Alessandro always looks sharp in his team attire."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with flowcharts and diagrams.",
+    "Insists on using a mechanical keyboard, much to the annoyance of his colleagues.",
+    "Has a habit of humming classical music while debugging code."
+  ]
+}

@@ -6,25 +6,28 @@
 
 import {
   PersonalFinancialState,
+  PersonalIncomeBreakdown,
   PersonalLoan,
   Mortgage,
   PersonalTransaction,
   PersonalTransactionCategory,
   PersonalLoanType,
   CreditHistoryEvent,
+  TeamEquityStake,
   PERSONAL_LOAN_CONFIGS,
   MORTGAGE_CONFIG,
   CREDIT_SCORE_CONFIG,
-  LIFESTYLE_CONFIGS,
   LifestyleLevel,
   getCreditScoreCategory,
   calculatePersonalLoanRate,
   calculateMortgageRate,
   calculateMonthlyPayment,
+  calculateNetWorth,
   TAX_CONFIGS,
-  _TaxCategory,
+  TaxCategory,
   Country
 } from '@/data/personal-finance-config'
+import type { StockHolding, BusinessVenture } from '@/data/investment-config'
 
 // ============================================
 // ID GENERATION
@@ -463,22 +466,8 @@ export function processWeeklyPersonalFinances(
   const warnings: string[] = []
   let newCreditScore = finances.creditScore
   
-  // Process lifestyle expenses (weekly portion of monthly cost)
-  const lifestyleConfig = LIFESTYLE_CONFIGS[lifestyleLevel]
-  const weeklyLifestyleCost = lifestyleConfig.monthlyBaseCost / 4
-  
-  if (finances.liquidCash >= weeklyLifestyleCost) {
-    transactions.push(createPersonalTransaction(
-      'expense',
-      'lifestyle',
-      weeklyLifestyleCost,
-      `Weekly lifestyle expenses (${lifestyleConfig.name})`,
-      week,
-      year
-    ))
-  } else {
-    warnings.push(`Cannot afford ${lifestyleConfig.name} lifestyle. Consider downgrading.`)
-  }
+  // Individual lifestyle costs (vehicles, staff, hobbies, pets, etc.) are deducted
+  // separately in the weekly tick - no base lifestyle cost to deduct here.
   
   // Process loan payments (check if due this week - monthly payments every 4 weeks)
   // Track updated loan objects with decremented balances
@@ -555,7 +544,7 @@ export function processWeeklyPersonalFinances(
           totalInterestPaid: mortgage.totalInterestPaid + result.interestPaid,
           currentEquity: currentPropertyValue - result.newBalance,
           nextPaymentDue: week + 4,
-          yearsRemaining: result.newBalance > 0 
+          yearsRemaining: result.newBalance > 0 && mortgage.monthlyPayment > 0
             ? Math.ceil(result.newBalance / (mortgage.monthlyPayment * 12))
             : 0
         }
@@ -650,6 +639,149 @@ export function processRentalIncome(
     year,
     { relatedPropertyId: propertyId, taxDeductible: false }
   )
+}
+
+// ============================================
+// MONTHLY INCOME SYNC
+// ============================================
+// Recalculates all income sources from actual game state.
+// Mirrors the "Sync Monthly Expense Tracking" block in careerStore.ts.
+
+export interface SyncMonthlyIncomeParams {
+  currentIncome: PersonalIncomeBreakdown
+  ownerSalary: number                    // Configured owner salary (monthly)
+  stockHoldings: StockHolding[]          // Player's stock portfolio
+  businessVentures: BusinessVenture[]    // Player's business investments
+  properties: Array<{                    // Player's real estate
+    monthlyRentalIncome?: number
+    monthlyExpenses?: number
+    occupancyRate?: number
+    currentValue?: number
+  }>
+  teamEquity?: TeamEquityStake           // Team equity for dividend calc
+  teamAnnualRevenue?: number             // For dividend income estimation
+}
+
+/**
+ * Recalculates monthly income breakdown from actual owned assets/investments.
+ * Endorsements and speakingFees are preserved (synced elsewhere).
+ */
+export function syncMonthlyIncome(params: SyncMonthlyIncomeParams): PersonalIncomeBreakdown {
+  const {
+    currentIncome,
+    ownerSalary,
+    stockHoldings,
+    businessVentures,
+    properties,
+    teamEquity,
+    teamAnnualRevenue
+  } = params
+
+  // Owner salary: use the configured value
+  const syncedOwnerSalary = ownerSalary
+
+  // Rental income: sum net rental income from all properties
+  const rentalIncome = properties.reduce((sum, prop) => {
+    const grossRental = (prop.monthlyRentalIncome || 0) * ((prop.occupancyRate || 0) / 100)
+    const netRental = grossRental - (prop.monthlyExpenses || 0)
+    return sum + Math.max(0, netRental)
+  }, 0)
+
+  // Investment income from stocks: estimate monthly dividend yield
+  // dividend yield is annual %, so monthly = (value * yield / 100) / 12
+  const stockDividendIncome = stockHoldings.reduce((sum, holding) => {
+    // Use dividendsReceived as a proxy: if holding has accumulated dividends, estimate monthly
+    // For a rough monthly figure, use currentValue * estimated yield
+    // We don't have yield per holding, so estimate 2% annual average if they have any value
+    const estimatedAnnualDividend = holding.currentValue * 0.02
+    return sum + Math.floor(estimatedAnnualDividend / 12)
+  }, 0)
+
+  // Investment income from business ventures: monthly profit * ownership %
+  const businessIncome = businessVentures.reduce((sum, biz) => {
+    if (biz.monthlyProfit > 0) {
+      return sum + Math.floor(biz.monthlyProfit * (biz.ownershipPercent / 100))
+    }
+    return sum
+  }, 0)
+
+  const investmentIncome = stockDividendIncome + businessIncome
+
+  // Team dividends: from dividend policy if enabled
+  let dividends = 0
+  if (teamEquity?.dividendPolicy?.enabled && teamAnnualRevenue) {
+    const annualDividendPool = teamAnnualRevenue * (teamEquity.dividendPolicy.percentOfProfit / 100)
+    const ownerShare = annualDividendPool * (teamEquity.ownershipPercent / 100)
+    dividends = Math.floor(ownerShare / 12) // Monthly estimate
+  }
+
+  return {
+    ownerSalary: Math.round(syncedOwnerSalary),
+    dividends: Math.round(dividends),
+    rentalIncome: Math.round(rentalIncome),
+    investmentIncome: Math.round(investmentIncome),
+    // Preserve endorsements and speakingFees - they are synced by other systems
+    endorsements: currentIncome.endorsements || 0,
+    speakingFees: currentIncome.speakingFees || 0,
+    other: currentIncome.other || 0
+  }
+}
+
+// ============================================
+// NET WORTH RECALCULATION
+// ============================================
+
+export interface RecalcNetWorthParams {
+  finances: PersonalFinancialState
+  teamEquity: TeamEquityStake
+  stockHoldings: StockHolding[]
+  businessVentures: BusinessVenture[]
+  properties: Array<{ currentValue?: number }>
+  currentWeek: number
+}
+
+/**
+ * Recalculates cachedNetWorth from actual asset values.
+ * Returns updated cachedNetWorth and lastNetWorthUpdate values.
+ */
+export function recalculateNetWorth(params: RecalcNetWorthParams): {
+  cachedNetWorth: number
+  lastNetWorthUpdate: number
+} {
+  const {
+    finances,
+    teamEquity,
+    stockHoldings,
+    businessVentures,
+    properties,
+    currentWeek
+  } = params
+
+  // Sum property values
+  const propertyValues = properties.reduce(
+    (sum, p) => sum + (p.currentValue || 0), 0
+  )
+
+  // Sum investment values (stocks + business ownership value)
+  const stockValues = stockHoldings.reduce(
+    (sum, h) => sum + h.currentValue, 0
+  )
+  const businessValues = businessVentures.reduce(
+    (sum, b) => sum + b.currentValuation * (b.ownershipPercent / 100), 0
+  )
+  const investmentValues = stockValues + businessValues
+
+  const netWorth = calculateNetWorth(
+    finances,
+    teamEquity,
+    propertyValues,
+    investmentValues
+  )
+
+  return {
+    cachedNetWorth: netWorth,
+    lastNetWorthUpdate: currentWeek
+  }
 }
 
 // ============================================

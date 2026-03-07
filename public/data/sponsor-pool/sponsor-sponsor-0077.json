@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0077",
+  "name": "Arrojo Capital",
+  "category": "finance",
+  "tier": "elite",
+  "country": "Brazil",
+  "description": "Investing in your future, driving success.",
+  "story": "Arrojo Capital, a leading Brazilian investment firm, recognizes the global appeal and high-performance nature of motorsport. They see a partnership as a way to connect with a discerning audience and showcase their commitment to precision, strategy, and achieving peak results. Arrojo seeks a team that embodies their values of innovation and a relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Brazil"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0077.png"
+}

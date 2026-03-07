@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 37,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan's passion for motorsport ignited during his childhood, spent tinkering with go-karts in his father's garage. After graduating with a degree in mechanical engineering from Delft University of Technology, he quickly ascended through the ranks of several Formula teams, specializing in aerodynamics. His knack for identifying subtle yet impactful performance gains led him to Ipiranga Racing, drawn by the team's ambition and willingness to embrace unconventional solutions.\n\nAs Technical Director, Jan is known for his hands-on approach, frequently found on the shop floor collaborating directly with engineers. He champions a data-driven methodology, meticulously analyzing every aspect of the car's performance to unlock its full potential. While demanding, he fosters a culture of innovation and experimentation within his team, always pushing the boundaries of what's possible. His ability to see the big picture while maintaining a keen eye for detail makes him a valuable asset to Ipiranga Racing, driving them toward consistent improvement and success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed to the side with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Jan is of average height with a lean build and a perpetually focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule, despite having access to advanced software.",
+    "Has a habit of sketching complex mechanical diagrams on napkins during meetings.",
+    "Insists on listening to classical music at a very low volume in his office to aid concentration."
+  ]
+}

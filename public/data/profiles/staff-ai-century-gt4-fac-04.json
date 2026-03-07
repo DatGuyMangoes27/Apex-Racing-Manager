@@ -1,0 +1,22 @@
+{
+  "name": "Park Min-seo",
+  "nationality": "South Korean",
+  "age": 45,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Park Min-seo's journey into motorsport began unconventionally. After graduating with honors in electrical engineering from KAIST, he initially worked in the consumer electronics industry, designing circuit boards for smartphones. Frustrated by the limitations of mass production, he sought a more challenging and dynamic environment. A chance encounter with a former Formula 3 engineer at a conference ignited his passion for racing. He took a significant pay cut to join a smaller racing team, where he quickly proved his worth through meticulous problem-solving and innovative solutions. \n\nPark's approach to electronics engineering is characterized by unwavering precision and a deep understanding of how individual components interact within the complex systems of a race car. He believes in thorough testing and data analysis to identify potential weaknesses and optimize performance. While he values collaboration, he is also comfortable working independently, often spending long hours in the garage fine-tuning electronic systems. What sets him apart is his ability to diagnose obscure electrical faults, earning him a reputation as the team's 'electrical whisperer'. He joined Century Motorsport seeking a more competitive environment to further hone his skills.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin goatee",
+    "description": "A man of average height, Park has a focused expression and a wiry build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-meter in his pocket.",
+    "Insists on using a specific brand of soldering iron.",
+    "Meticulously labels all components with color-coded tape."
+  ]
+}

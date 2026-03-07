@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "New Zealand",
+  "age": 34,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Liam's path to motorsport began in his father's garage, tinkering with engines from a young age. A fascination with precision and performance led him to pursue mechanical engineering, graduating top of his class at the University of Auckland. His career started in the V8 Supercars scene, before making the move to IndyCar with Rahal Letterman Lanigan. Liam is known for his meticulous data analysis and ability to translate complex technical information into actionable insights for the driver.\n\nHis approach to race engineering is deeply rooted in understanding the car as a complete system, constantly seeking marginal gains through innovative setups and strategies. He believes in open communication with the driver and the rest of the engineering team, fostering a collaborative environment where everyone can contribute their expertise. What sets Liam apart is his relentless pursuit of perfection, often pushing boundaries to unlock the car's full potential, combined with an intuition for race dynamics honed by years of experience.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Liam is of average height, with a lean build and focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a lucky kiwi charm that he keeps attached to his laptop.",
+    "Obsessively cleans his workspace before and after each session."
+  ]
+}

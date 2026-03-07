@@ -1,0 +1,31 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 35,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Krzysztof is a self-made man who clawed his way into the upper echelons of motorsport representation. He started out as a personal assistant to a moderately successful rally driver, quickly learning the ropes of contract negotiation and sponsorship acquisition. His dramatic flair and unwavering loyalty have earned him a reputation as a fiercely protective advocate for his clients. He's known for securing lucrative deals for drivers on the rise and rebuilding careers after setbacks. Racing drivers looking for an agent to seriously champion their career, both on and off the track, might find themselves at Krzysztof's door. He is known for taking on drivers that have shown true grit and talent, even if they don't have the funds to support themselves.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, slicked back",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Krzysztof has a commanding presence, often enhanced by tailored suits. He carries himself with an air of confidence."
+  },
+  "connectionToMotorsport": "Krzysztof is a highly sought-after agent, representing several up-and-coming talents in various motorsport disciplines, from Formula racing to rallycross. He's a regular fixture in the paddock, always scouting for the next big thing.",
+  "meetingContext": "You might meet Krzysztof at a racing event, either in the paddock, the VIP lounge, or even at a post-race celebration. He's always on the lookout for fresh talent, and his presence is usually felt.",
+  "conversationTopics": [
+    "The philosophical implications of racing",
+    "The latest trends in craft beer",
+    "The beauty of modern architecture",
+    "The nuances of a good single malt whiskey",
+    "The mental game of tennis"
+  ],
+  "canHelp": [
+    "Negotiate contracts with racing teams",
+    "Secure sponsorship deals with major brands",
+    "Provide career guidance and media training"
+  ],
+  "personality_summary": "A dramatic and fiercely loyal agent with a passion for both motorsport and the finer things in life."
+}

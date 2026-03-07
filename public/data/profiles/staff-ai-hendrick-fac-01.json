@@ -1,0 +1,22 @@
+{
+  "name": "Jan Veselý",
+  "nationality": "Czech",
+  "age": 39,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Jan's journey into motorsport began unconventionally, with a background in theoretical physics. After completing his doctorate, he found himself drawn to the complex data patterns inherent in racing. He started as an intern at a small rally team before being headhunted by Hendrick Motorsports. \n\nJan approaches data analysis with a deep understanding of statistical modeling and a passion for uncovering hidden performance gains. He is known for his ability to translate complex data into actionable insights for drivers and engineers alike. His colleagues appreciate his ability to predict tire wear, allowing for optimized pit strategies. What sets Jan apart is his relentless pursuit of efficiency, often leading to innovative data visualization techniques.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a focused gaze and a slight build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with equations.",
+    "Drinks copious amounts of herbal tea throughout the day.",
+    "Has a habit of muttering algorithms under his breath when concentrating."
+  ]
+}

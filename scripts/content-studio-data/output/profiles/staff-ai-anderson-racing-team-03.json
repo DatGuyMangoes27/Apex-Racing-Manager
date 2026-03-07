@@ -1,0 +1,22 @@
+{
+  "name": "Pieter Botha",
+  "nationality": "South African",
+  "age": 41,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Pieter's journey into motorsport was an unusual one. He originally trained as a mechanical engineer, focusing on fluid dynamics, before finding himself drawn to the high-stakes world of racing. An internship at a small Formula Ford team ignited his passion, and he quickly realized his expertise could be applied to maximizing aerodynamic performance. He thrives on the challenge of finding that extra tenth of a second, and believes in a data-driven approach to aero development, combined with a deep understanding of driver feedback.\n\nAt Anderson Racing, Pieter emphasizes rigorous testing and analysis. He's not afraid to challenge conventional wisdom, but always demands solid evidence to back up new ideas. His perfectionist tendencies sometimes lead to long hours in the wind tunnel, but he's driven by a desire to push the boundaries of what's aerodynamically possible. His reputation for being a bit of a 'lone wolf' stems from his intense focus, but he is a capable manager and ultimately values the team's success.\n\nPieter's distinctive approach lies in his ability to translate complex aerodynamic concepts into practical, race-winning solutions. He excels at identifying subtle areas for improvement that others might overlook, and his meticulous attention to detail ensures that every component is optimized for maximum performance.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly cropped",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Pieter is a lean man with a focused gaze and a determined set to his jaw."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on using metric units exclusively, even when others use imperial.",
+    "Has a habit of muttering aerodynamic equations under his breath."
+  ]
+}

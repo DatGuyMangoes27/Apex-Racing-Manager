@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 29,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Jean-Pierre's journey into motorsport began unconventionally, not on the track but in the data labs of McGill University. His fascination with optimizing performance through algorithms led him to intern at a small Formula Ford team. There, he quickly realized his aptitude for understanding the intricate interplay between technical aspects and team dynamics. While he isn't an engineer by training, he has an intuitive grasp of car setup and sees the big picture. He's a keen listener, able to quickly synthesize information from various sources. \n\nJean-Pierre's approach to being a team principal is less about dictating and more about facilitating. He believes in empowering his team members, fostering an environment where innovative ideas can flourish. He's not afraid to challenge the status quo and is always looking for that marginal gain, that edge that can propel his team ahead. His lone wolf trait comes from his reliance on data and analytical thinking, trusting numbers as much as intuition.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Jean-Pierre has a focused look, his sharp features and calculating gaze reflecting his analytical mind."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought.",
+    "Drinks copious amounts of black coffee throughout the day."
+  ]
+}

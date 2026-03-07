@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 24,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Astrid is a rising star at Danske Bank's investment division, specializing in high-net-worth individuals and emerging markets. Despite her young age, she's already proven herself adept at securing lucrative deals and managing complex portfolios, earning the respect of her older colleagues. Astrid's playful nature balances her intellectual side, making her approachable despite her sophisticated demeanor. She's a true believer in the power of strategic investments, both financially and in people. \n\nAstrid's interest in motorsport stems from her belief that Formula racing represents the pinnacle of technological innovation and human performance. Her bank is increasingly interested in sponsoring younger drivers and teams. A racing driver might cross paths with Astrid if they are seeking financial backing for their racing career, investment advice, or introductions to potential sponsors.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Long, wavy, often pulled back into a loose ponytail",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a slender build and a youthful face. She often wears stylish, modern business attire."
+  },
+  "connectionToMotorsport": "Astrid's bank is exploring opportunities to sponsor up-and-coming drivers, and she's been tasked with identifying potential candidates. She also enjoys attending races as a VIP guest.",
+  "meetingContext": "The player might meet Astrid at a motorsport networking event, a high-end gala, or through an introduction from another business contact.",
+  "conversationTopics": [
+    "The latest trends in the investment world",
+    "The art market and up-and-coming artists",
+    "Drone racing technology",
+    "The Danish football league",
+    "Sustainable investment strategies"
+  ],
+  "canHelp": [
+    "Secure financial backing for the player's racing career",
+    "Provide introductions to potential sponsors and investors",
+    "Offer financial planning and investment advice"
+  ],
+  "personality_summary": "An ambitious and sophisticated banker with a surprisingly playful side."
+}

@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0374",
+  "name": "Belgian Brakes",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "High-performance braking systems engineered for motorsport.",
+  "story": "Born from a passion for racing and a dedication to precision engineering, Belgian Brakes has been providing cutting-edge braking solutions to motorsport teams for over two decades. We believe in pushing the limits of performance and reliability, and we seek partnerships with teams that share our commitment to excellence. Our sponsorship aims to showcase the superior stopping power and durability of our braking systems in the demanding world of competitive racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [],
+    "nationalities": [
+      "Belgium"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0374.png"
+}

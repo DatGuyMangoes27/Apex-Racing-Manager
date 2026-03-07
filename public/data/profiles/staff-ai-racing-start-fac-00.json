@@ -1,0 +1,22 @@
+{
+  "name": "Carlos Alberto Velez",
+  "nationality": "Colombian",
+  "age": 55,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Carlos Velez's journey into motorsport began unexpectedly. Originally trained as an aeronautical engineer, his expertise in flight simulation caught the eye of a local racing team seeking to improve driver training. He quickly adapted his skills to the intricacies of race car dynamics, finding a unique challenge in replicating the unpredictable conditions of the track.\n\nAt Racing Start Academy, Carlos is known for his meticulous approach. He believes in building a simulator environment that pushes drivers to their limits, forcing them to confront the same pressures they'll face on race day. His focus extends beyond simply recreating the car's behavior; he strives to capture the nuances of each track, from subtle elevation changes to the grip levels affected by weather. His demanding nature stems from a deep commitment to preparing drivers for real-world competition, making him a valuable, albeit intense, asset to the team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "A man of medium build with a serious demeanor etched onto his face."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with simulator data and handwritten notes.",
+    "Insists on using a vintage slide rule alongside modern software.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

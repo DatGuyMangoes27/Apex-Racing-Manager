@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0057",
+  "name": "AlpenKredit",
+  "category": "financial",
+  "tier": "entry",
+  "country": "Austria",
+  "description": "Your trusted Austrian partner for personal and business loans.",
+  "story": "AlpenKredit is a regional Austrian bank committed to supporting local talent. Motorsport reflects our values of precision, speed, and reliability. We seek to partner with promising drivers who embody these qualities and represent the AlpenKredit brand with integrity.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10,
+    "nationalities": [
+      "Austria",
+      "Germany",
+      "Switzerland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0057.png"
+}

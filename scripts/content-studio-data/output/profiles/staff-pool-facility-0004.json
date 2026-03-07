@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Bronte Callaghan",
+    "nationality": "Australian",
+    "age": 40,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Bronte's journey into motorsport began unexpectedly after a university internship at a local aerodynamics research facility. While initially studying engineering, she found herself drawn to the practical application of airflow manipulation, captivated by the tangible impact on vehicle performance. Her meticulous approach to data analysis and inherent understanding of fluid dynamics quickly made her an invaluable asset during testing.\n\nBronte is dedicated to optimizing aerodynamic efficiency. She excels at identifying subtle improvements that can yield significant gains on the track. Her loyalty extends beyond her work, fostering a supportive team environment where open communication and shared problem-solving are prioritized. She believes in the power of collaboration to push boundaries and unlock innovation. Despite her entry-level status, she is actively expanding her knowledge and skills, driven by a passion for continuous improvement and a commitment to excellence.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Auburn",
+      "hairStyle": "Long, braided and often pulled back in a practical ponytail to keep it out of her face.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Bronte is of average height with a lean build, often seen wearing safety glasses and practical work attire."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always brings homemade Anzac biscuits to share with the team.",
+      "Has a habit of muttering calculations under her breath when analyzing data.",
+      "Keeps a small collection of vintage racing car models on her desk."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Kovačić",
+  "nationality": "Croatian",
+  "age": 28,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ivan's passion for motorsport ignited during his childhood, fueled by watching F1 races with his father. He excelled in aerodynamics during his engineering studies at the University of Zagreb, which led him to pursue a career in Formula 1. After graduating, he landed an internship at a smaller F1 team, quickly proving his worth through meticulous analysis and innovative problem-solving.\n\nHe is known for his data-driven approach to aerodynamic development. Ivan meticulously analyzes wind tunnel data and CFD simulations to optimize car performance. His ability to balance creativity with technical rigor makes him an invaluable asset to the team. At Alpine, he aims to bring a fresh perspective and drive forward-thinking aerodynamic solutions to improve the car's performance.\n\nIvan is a strong believer in collaboration and open communication. He fosters a team environment where ideas are freely exchanged and constructive feedback is welcomed. He is not afraid to challenge conventional wisdom and is committed to pushing the boundaries of aerodynamic innovation.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained stubble",
+    "description": "Ivan is of average height, with a focused expression and a lean build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to stand during meetings, claiming it helps him focus."
+  ]
+}

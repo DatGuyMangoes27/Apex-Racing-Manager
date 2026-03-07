@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 43,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Moira MacLeod has been orchestrating culinary delights in the motorsport world for over a decade. Starting in smaller racing circuits, she quickly gained a reputation for her ability to manage complex catering operations under immense pressure. Moira joined Williams Racing five years ago, bringing her meticulous planning and unwavering commitment to quality. She sees her role not just as providing food, but as ensuring the team is fueled, both physically and mentally, to perform at their best. Moira's dedication to sourcing fresh, local ingredients, combined with her understanding of the team's dietary needs, sets her apart.\n\nHer philosophy revolves around creating a 'home away from home' atmosphere for the team during grueling race weekends. Moira believes a good meal can boost morale and foster camaraderie. She meticulously plans menus to cater to diverse tastes and dietary restrictions, ensuring everyone feels valued and cared for. She is a firm believer in sustainable practices and minimizing waste, striving to make the catering operation as environmentally friendly as possible.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, styled in soft waves, often pulled back with a practical clip.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Moira is a stout woman with a warm, friendly face and a constant twinkle in her eye."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Insists on personally tasting every dish before it's served.",
+    "Always has a stash of Scottish shortbread hidden in her office.",
+    "Uses a specific type of tartan cloth to line the serving trays."
+  ]
+}

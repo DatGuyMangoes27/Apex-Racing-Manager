@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0360",
+  "name": "Golden Dragon Investments",
+  "category": "local",
+  "tier": "elite",
+  "country": "Hong Kong",
+  "description": "Investing in Hong Kong's future, one race at a time.",
+  "story": "Golden Dragon Investments is a Hong Kong-based private equity firm focused on emerging technologies and high-growth companies in the region. Recognizing the growing popularity of motorsport in Asia, they see sponsorship as a valuable tool for brand building and talent development within Hong Kong. They seek to partner with teams and drivers who demonstrate a commitment to excellence and represent the dynamism of the Hong Kong spirit.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0360.png"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0447",
+  "name": "BergWerk Motorsport",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Austria",
+  "description": "Precision engineering for peak performance.",
+  "story": "BergWerk Motorsport provides high-performance suspension and damping systems. With roots in Austrian metalworking, they seek partnerships that demonstrate the superior quality and reliability of their components in demanding racing environments. They value innovation and are keen to showcase their technologies on winning teams.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0447.png"
+}

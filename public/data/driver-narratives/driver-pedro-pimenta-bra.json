@@ -1,0 +1,27 @@
+{
+  "biography": "Pedro Pimenta, a name whispered with respect in the Brazilian Opala Old Stock Race scene, hails from the dusty karting tracks of Ribeirão Preto. Unlike many racers with silver-spoon beginnings, Pedro's journey began with a battered kart salvaged from a junkyard by his mechanic father. He honed his skills on makeshift circuits, a raw talent nurtured by relentless practice and a keen understanding of vehicle mechanics. His breakthrough came at the 2018 Ribeirão Preto Karting Championship, where he clinched victory after a daring last-lap overtake that saw him brush the barriers – a move that cemented his reputation as a calculating risk-taker. Transitioning to the Opala Old Stock Race in 2020, Pedro quickly adapted to the heavy, powerful machines. He currently drives for a small, privately funded team, consistently punching above their weight, proving that raw talent and strategic brilliance can overcome financial limitations. His meticulous approach to race preparation and his uncanny ability to extract every ounce of performance from his Opala have made him a force to be reckoned with.",
+  "drivingStyle": "Pedro's driving style is best described as 'controlled aggression.' He meticulously studies track data and opponent behavior, identifying vulnerabilities and exploiting them with surgical precision. While capable of breathtaking overtakes, he prioritizes consistency and tire management. He is known for his late-braking maneuvers and his ability to maintain momentum through corners, sacrificing a bit of entry speed for a faster exit. Under pressure, Pedro remains remarkably calm, making calculated decisions based on real-time data and track conditions. He doesn't often make mistakes, preferring to bide his time and strike when the opportunity is optimal.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Vargas",
+      "reason": "A long-standing rivalry stemming from their karting days, Vargas accuses Pedro of overly aggressive tactics while Pedro sees Vargas as a pampered rich kid who doesn't understand the meaning of hard work."
+    },
+    {
+      "driver": "Isabela Costa",
+      "reason": "A fierce competitor known for her daring overtakes, Isabela and Pedro often find themselves battling wheel-to-wheel, pushing each other to the absolute limit. Their rivalry is based on mutual respect, but neither is willing to concede an inch on the track."
+    },
+    {
+      "driver": "Joaquim Silva",
+      "reason": "Joaquim's team has far more resources, leading to tensions due to perceived advantages. Pedro often comments about how the playing field isn't fair."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue lucky t-shirt under his racing suit.",
+    "Listens to Brazilian samba music to calm his nerves before a race.",
+    "Spends at least 30 minutes meticulously cleaning his helmet visor before each session, believing a clear view is crucial for success."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "\"Racing isn't just about speed; it's about chess at 200 kilometers per hour.\"",
+  "careerHighlight": "Winning the 2022 Interlagos Old Stock Race after starting from 12th on the grid. He executed a brilliant tire management strategy and capitalized on late-race chaos to snatch victory in the final lap.",
+  "careerLowPoint": "Crashing out of the 2021 Curitiba Old Stock Race due to a mechanical failure while leading the race. The incident cost him valuable championship points and left him questioning his team's reliability."
+}

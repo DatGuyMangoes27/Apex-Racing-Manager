@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0351",
+  "name": "SiamArcade",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "Thailand",
+  "description": "Thailand's premier destination for arcade gaming experiences.",
+  "story": "SiamArcade is a leading provider of state-of-the-art arcade gaming experiences across Thailand. They see motorsport as a way to reach a young, tech-savvy audience and showcase their brand's commitment to innovation and excitement. A successful partnership will boost brand awareness among potential customers and partners in Southeast Asia.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0351.png"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0312",
+  "name": "Straits Capital",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Singapore",
+  "description": "Empowering your financial journey in Asia.",
+  "story": "Straits Capital is a Singapore-based investment firm focused on emerging markets. Seeing motorsport's growing popularity in Southeast Asia, they aim to increase brand awareness and associate their name with high-performance and precision. They believe a successful motorsport partnership can elevate their brand image and attract new clients seeking reliable financial solutions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0312.png"
+}

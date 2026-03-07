@@ -1,0 +1,27 @@
+{
+  "biography": "Mika Smith, a name whispered with both excitement and exasperation in Swiss karting circles, hails from a small village nestled in the Alps. Born into a family with no prior motorsport connections, Mika’s passion ignited at the age of eight after witnessing a local karting event. He pestered his parents relentlessly until they relented, scraping together enough money to buy him a second-hand kart. Early results were mixed; flashes of brilliance punctuated by clumsy errors. One defining moment came during a regional championship race where, despite starting last due to a mechanical issue, Mika clawed his way to third, showcasing raw speed and audacious overtaking maneuvers. However, a late-race spin cost him the podium. This inconsistency has followed him; now at 16, competing as an independent, he demonstrates prodigious talent, but struggles to maintain focus and composure under pressure. He is currently seeking sponsorship to move up to Formula 4.",
+  "drivingStyle": "Mika's driving style is best described as 'seat-of-the-pants' reactive. He possesses an uncanny ability to sense grip levels and adapt his lines mid-corner, often executing daring overtakes in seemingly impossible spaces. He is aggressive on corner entry, favoring late braking and carrying significant speed through the apex. However, this aggressive style often leads to tire degradation issues, particularly in longer races, and makes him prone to costly mistakes when pressured.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "A fierce rivalry developed after a controversial collision during the Swiss Karting Championship final, costing Mika the title. Rossi, known for his calculated and consistent approach, represents everything Mika is not."
+    },
+    {
+      "name": "Isabelle Dubois",
+      "reason": "Dubois, a rising female star in karting, consistently outperforms Mika in wet conditions, a constant source of frustration for the Swiss driver who prides himself on adaptability."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Tanaka and Smith are often battling for the same positions on track, leading to intense on-track battles and frequent accusations of blocking and unfair driving tactics."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of racing socks, despite their increasingly questionable condition.",
+    "Listens to classical music to calm his nerves before each race.",
+    "Refuses to eat anything yellow on race day, believing it brings bad luck."
+  ],
+  "nickname": "The Alpine Anomaly",
+  "famousQuote": "\"You either send it or you go home. Second place is just the first loser.\"",
+  "careerHighlight": "Winning the Swiss Junior Karting Cup in 2022 after a dominant performance in challenging wet conditions.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a regional championship race due to overconfidence, costing him valuable championship points."
+}

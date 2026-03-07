@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0344",
+  "name": "ApexWerks Simulation",
+  "category": "tech_gaming",
+  "tier": "high",
+  "country": "Austria",
+  "description": "Elevating your game through cutting-edge simulation technology.",
+  "story": "ApexWerks Simulation is an Austrian company specializing in high-fidelity racing simulators for both professional drivers and esports enthusiasts. Founded by former motorsport engineers, they understand the importance of precision and performance. They sponsor motorsport to showcase their technology's ability to bridge the gap between virtual and real-world racing, seeking teams that value innovation and data-driven improvement.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 75000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 6,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0344.png"
+}

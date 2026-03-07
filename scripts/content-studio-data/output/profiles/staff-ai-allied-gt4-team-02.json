@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papageorgiou",
+  "nationality": "Greek",
+  "age": 55,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Dimitrios's passion for motorsport ignited during his youth, fueled by watching Formula 1 races on a grainy television in his village. He pursued mechanical engineering at the National Technical University of Athens, specializing in aerodynamics. After graduation, he joined a small Greek racing team, cutting his teeth designing and building their open-wheel cars. His dedication and innovative solutions caught the eye of Allied Racing, who offered him a role in their technical department.\n\nAt Allied, Dimitrios quickly rose through the ranks, proving his ability to optimize vehicle performance and lead engineering teams. He is known for his meticulous approach to problem-solving, his ability to translate complex data into actionable insights, and his unwavering commitment to continuous improvement. Dimitrios distinguishes himself by fostering a collaborative environment where engineers feel empowered to experiment and push boundaries, always striving for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a thoughtful gaze and a perpetually furrowed brow, reflecting his deep concentration."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out slide rule in his pocket, even though he uses computer simulations.",
+    "Insists on drinking strong Greek coffee before every race.",
+    "Has a habit of sketching aerodynamic concepts on napkins during meetings."
+  ]
+}

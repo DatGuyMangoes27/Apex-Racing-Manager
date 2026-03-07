@@ -1,0 +1,31 @@
+{
+  "name": "Arunee Somsri",
+  "nationality": "Thai",
+  "age": 65,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Arunee Somsri is a veteran motorsports journalist with over 40 years of experience covering racing events across Southeast Asia and beyond. Known for her sharp wit and occasional passive-aggressive tendencies, she's earned the respect of many in the industry. While she might come across as reserved, she's incredibly loyal to those who earn her trust and deeply appreciates genuine kindness.\n\nArunee initially focused on endurance racing and touring cars, but has expanded her coverage to include open-wheel competitions. A racing driver might cross paths with her at a press conference, in the paddock during an Asian Le Mans Series event, or even at a local karting competition, as she keeps an eye on up-and-coming talent. Despite her age she has a soft spot for young drivers trying to make a name for themselves.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Shoulder-length, neatly styled in a simple wave",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Arunee is petite but carries herself with an air of quiet authority. She typically wears stylish, modest clothing and large, square glasses."
+  },
+  "connectionToMotorsport": "Arunee is a respected motorsports journalist, primarily covering Southeast Asian racing circuits and occasionally international events featuring Asian drivers. She writes for several online publications and has a small but dedicated following on social media.",
+  "meetingContext": "The player would likely meet Arunee at a press conference or in the media center at a race event in Thailand or another Southeast Asian country. Alternatively, she might be seen interviewing drivers in the paddock.",
+  "conversationTopics": [
+    "The history of motorsports in Thailand",
+    "The challenges faced by young Asian drivers",
+    "Her latest scuba diving adventure",
+    "The state of automotive technology",
+    "Contemporary Thai dance"
+  ],
+  "canHelp": [
+    "Provide positive media coverage and raise the player's profile in Southeast Asia.",
+    "Introduce the player to other influential figures in the Asian motorsports scene.",
+    "Offer valuable insights into the cultural nuances of racing in Asia."
+  ],
+  "personality_summary": "A seasoned journalist with a sharp mind and a subtle, but loyal heart."
+}

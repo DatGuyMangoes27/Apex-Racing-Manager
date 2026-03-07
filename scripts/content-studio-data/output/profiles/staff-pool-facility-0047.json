@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 38,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Bjørn Halvorsen's journey into motorsport began not on the track, but in the intricate world of computer engineering. Growing up in Bergen, he was captivated by the precision and problem-solving required in coding, a fascination he channeled into simulating real-world physics. This led him to develop his own rudimentary racing simulator in his teens. After earning a master's degree in mechanical engineering, Bjørn quickly found his niche optimizing driving simulators for various motorsport teams. His approach centers on creating immersive and realistic environments that allow drivers to push their limits without consequence. He is known for his relentless pursuit of perfection, ensuring that the simulator data mirrors real-world conditions as closely as possible.\n\nBjørn's rigorous standards and demanding nature have earned him a reputation as a highly effective, albeit sometimes challenging, team member. He doesn't mince words and expects the same level of dedication from those around him. However, those who meet his expectations find him to be a supportive and invaluable asset, pushing the boundaries of simulator technology. Bjørn is driven by the belief that simulator training is no longer a luxury, but a necessity for success in modern motorsport, and his mission is to ensure that his drivers have the best possible preparation.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Bjørn is a tall, lean man with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with complex mathematical equations.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on using a specific type of mechanical keyboard for optimal data input."
+  ]
+}

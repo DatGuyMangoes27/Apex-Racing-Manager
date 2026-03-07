@@ -1,0 +1,22 @@
+{
+  "name": "Elena Rodriguez",
+  "nationality": "Spanish",
+  "age": 54,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Elena Rodriguez's journey into motorsport began unexpectedly. A physics graduate from the University of Barcelona, she initially envisioned a career in academia. However, a chance encounter with a former F1 aerodynamicist during a scientific conference sparked a new interest. Intrigued by the practical application of fluid dynamics in racing, Elena pursued specialized training in wind tunnel technology. \n\nShe joined Triple Eight Race Engineering fifteen years ago and has risen through the ranks to become a competent operator. Her meticulous approach to data collection and analysis has made her a valuable asset to the team. Elena is dedicated to optimizing aerodynamic performance, diligently working to translate theoretical models into tangible improvements on the track. What distinguishes her is her ability to discern subtle airflow patterns that others often miss. Her lone wolf nature allows her to focus intensely on the data, filtering out distractions and generating valuable insights.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, practical bob with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is of average height with a thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with equations and airflow diagrams.",
+    "Insists on complete silence in the wind tunnel during critical testing phases.",
+    "Has a collection of miniature wind turbines on her desk."
+  ]
+}

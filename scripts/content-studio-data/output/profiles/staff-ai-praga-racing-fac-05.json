@@ -1,0 +1,22 @@
+{
+  "name": "István Kovács",
+  "nationality": "Hungarian",
+  "age": 45,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "István's journey into motorsport began unexpectedly. While working as a mechanic in Budapest, he caught the attention of a local racing team with his meticulous attention to detail. He quickly transitioned from routine maintenance to quality control, where his sharp eye and methodical approach proved invaluable. István believes in preventative measures, implementing rigorous testing protocols to identify potential issues before they become critical failures on the track. He is known for his calm demeanor under pressure and his unwavering commitment to maintaining the highest standards. At Praga Racing, he's focused on ensuring every component meets exacting specifications.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed mustache",
+    "description": "István is of average height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to record observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his own measuring tools before each use."
+  ]
+}

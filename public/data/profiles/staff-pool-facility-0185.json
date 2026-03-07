@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 34,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Krzysztof's journey into motorsport began unconventionally, not on the track, but behind a computer screen, analyzing telemetry data for a local rally team while pursuing his master's in Statistics. His knack for spotting crucial patterns and translating raw data into actionable insights quickly gained recognition. He joined a Formula 3 team, rising through the ranks to become a senior analyst, specializing in race strategy optimization and predictive modeling. Krzysztof thrives on challenges, approaching every problem with a blend of statistical rigor and creative thinking. His ability to see the 'big picture' while meticulously attending to detail makes him an invaluable asset. He's known for his quiet intensity and relentless pursuit of improvement, both for himself and the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Krzysztof has a lean build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks.",
+    "Insists on using a specific brand of mechanical keyboard for optimal data input.",
+    "Keeps a meticulously organized spreadsheet of team performance metrics dating back several seasons."
+  ]
+}

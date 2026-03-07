@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0196",
+  "name": "Vredestein Motorsport",
+  "category": "tires",
+  "tier": "high",
+  "country": "Netherlands",
+  "description": "The apex of grip and performance.",
+  "story": "Vredestein has a long and storied history in motorsport, dating back to the early days of rallying. Founded in the Netherlands, they are driven by a passion for innovation and performance. They seek partnerships that can showcase the reliability and cutting-edge technology of their tires on the world's most demanding tracks.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0196.png"
+}

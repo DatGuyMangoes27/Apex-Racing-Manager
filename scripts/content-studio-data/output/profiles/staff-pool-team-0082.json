@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 38,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Valentina's passion for motorsport ignited at a young age, fueled by countless weekends spent at local karting events with her father, a former amateur racer. After earning a degree in mechanical engineering from the University of Buenos Aires, she began her career at a small, family-run racing team, quickly proving her aptitude for problem-solving and data analysis. Her talent and dedication led her to opportunities with larger teams, where she honed her skills in vehicle dynamics, aerodynamics, and engine performance.\n\nValentina excels at translating complex data into actionable insights, enabling drivers to push their limits and teams to optimize their strategies. She is known for her calm demeanor under pressure and her ability to foster a collaborative environment within the garage. Her approach is holistic, considering not just the technical aspects but also the driver's feedback and psychological state, leading to a strong rapport with those she works with. She's driven by a desire to win, and her ambition is contagious.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, wavy, often pulled back into a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of average height with a lean, athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a lucky charm, a worn-out wrench, that she keeps in her toolbox.",
+    "Listens to tango music to focus before crucial sessions."
+  ]
+}

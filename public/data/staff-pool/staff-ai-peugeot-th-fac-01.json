@@ -1,0 +1,22 @@
+{
+  "name": "Eszter Kovács",
+  "nationality": "Hungarian",
+  "age": 47,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Eszter's journey into motorsport began with a childhood fascination with complex systems. She excelled in mathematics and physics, leading her to pursue a degree in data science. After graduation, she worked in financial modeling for several years, honing her analytical skills. A chance encounter with a former racing engineer sparked her interest in applying her expertise to motorsport.\n\nEszter joined Peugeot TotalEnergies five years ago, quickly becoming a valuable asset to the team. Her approach to data analysis is meticulous and thorough. She believes in extracting actionable insights from raw data, translating complex information into understandable recommendations for the engineers and drivers. Her knack for identifying subtle patterns that others miss has led to several crucial performance improvements.\n\nWhat sets Eszter apart is her unwavering dedication to accuracy and her relentless pursuit of perfection. She is not afraid to challenge conventional wisdom and is always seeking innovative ways to leverage data to gain a competitive edge. She sees data as a language, and she's fluent in it.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy hair, often pulled back into a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Eszter is of average height with a focused, intelligent gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down data-related ideas, even in meetings.",
+    "Has a habit of tapping her pen against her teeth when deeply focused on a problem.",
+    "Insists on having a specific brand of Hungarian paprika on hand for her lunch, claiming it enhances her analytical abilities."
+  ]
+}

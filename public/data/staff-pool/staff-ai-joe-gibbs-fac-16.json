@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Chaiya",
+  "nationality": "Thai",
+  "age": 33,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Somchai's journey into motorsport catering began unexpectedly. After years of honing his culinary skills in Bangkok's bustling street food scene, a chance encounter with a racing team during a promotional event sparked his interest. Intrigued by the fast-paced environment and the dedication of the crew, he transitioned from serving tourists to nourishing pit crews. His approach to catering is rooted in providing balanced and delicious meals that fuel peak performance, understanding the unique dietary needs and preferences of drivers and team members.\n\nWhat sets Somchai apart is his ability to adapt traditional Thai flavors to suit international palates while maintaining nutritional integrity. He's known for his meticulously planned menus, accommodating various dietary restrictions and ensuring everyone feels energized and satisfied throughout grueling race weekends. His loyalty to the team is unwavering, and he sees his role as integral to their success.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly cropped with a slight wave at the front",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "Somchai is of average height with a wiry build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always tastes the food three times before serving, regardless of the recipe.",
+    "Insists on using fresh ginger in almost every dish.",
+    "Secretly believes the team's success is directly proportional to the spice level of his green curry."
+  ]
+}

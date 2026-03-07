@@ -1,0 +1,22 @@
+{
+  "name": "Katerina Svoboda",
+  "nationality": "Czech",
+  "age": 32,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Katerina's fascination with motorsport began during her childhood, attending local rally races with her father, a former mechanic. She quickly became captivated by the intricate electronics that powered these machines. This passion led her to pursue a degree in electrical engineering from the Czech Technical University in Prague.\n\nAfter graduating, Katerina joined a small engineering firm specializing in automotive electronics, where she honed her skills in circuit design and troubleshooting. Her dedication and aptitude soon caught the attention of Hitech GP, who recruited her to their Formula 2 team. Katerina thrives on the challenges of optimizing car performance through innovative electronic solutions. Her meticulous attention to detail and relentless pursuit of improvement make her a valuable asset to the team. She's particularly adept at data analysis, using telemetry to identify subtle electronic issues that can give the team a competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually pulled back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A slender woman with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and technical notes.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on listening to classical music through her headphones while working on complex electronic systems."
+  ]
+}

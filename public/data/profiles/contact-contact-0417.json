@@ -1,0 +1,31 @@
+{
+  "name": "Jens Erik Christiansen",
+  "nationality": "Danish",
+  "age": 61,
+  "gender": "male",
+  "contactType": "doctor",
+  "bio": "Dr. Jens Erik Christiansen is a renowned orthopedic surgeon specializing in sports injuries, with a particular focus on knee and shoulder reconstruction. He received his PhD from Aarhus University and has been practicing for over 30 years, building a reputation for his meticulous approach and cutting-edge techniques. While he can be rather judgmental and argumentative, especially when discussing medical procedures, he is also known for his patience with his patients, taking the time to explain complex issues thoroughly.\n\nBeyond his medical practice, Jens is an avid drone racing enthusiast and a surprisingly skilled ballroom dancer. His interest in vintage cars also leads him to attend the occasional classic car show. A racing driver might cross paths with Dr. Christiansen either as a patient needing specialized orthopedic care after an accident or through connections within the wealthy Danish social circles, where Jens's reputation and social standing make him a valuable contact. He might also be found at the race track as a consultant or team doctor.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Gray goatee",
+    "description": "Jens has a sturdy build, a testament to his occasional basketball games. His weathered face is framed by a neatly trimmed goatee and piercing blue eyes."
+  },
+  "connectionToMotorsport": "Dr. Christiansen occasionally serves as a consultant for motorsport teams, advising on injury prevention and treatment strategies. He also provides medical evaluations for drivers seeking racing licenses.",
+  "meetingContext": "You might meet Dr. Christiansen at a high-end charity golf tournament, a classic car auction, or through a referral from another driver after sustaining a racing injury.",
+  "conversationTopics": [
+    "Drone racing technology",
+    "The latest advancements in orthopedic surgery",
+    "The restoration of classic Mercedes-Benz models",
+    "The nuances of ballroom dancing",
+    "The Danish healthcare system"
+  ],
+  "canHelp": [
+    "Provide expert medical care and rehabilitation after an injury",
+    "Offer insights into injury prevention strategies to optimize physical performance",
+    "Connect the player with sponsors and wealthy individuals within his social circle"
+  ],
+  "personality_summary": "A judgmental but skilled doctor with a passion for sports and vintage cars, who can be a valuable ally."
+}

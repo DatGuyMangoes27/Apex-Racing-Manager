@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0222",
+  "name": "Straits Performance",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Singapore",
+  "description": "Performance parts and tuning for discerning drivers.",
+  "story": "Straits Performance has been at the forefront of Singapore's aftermarket tuning scene for over 20 years. We believe in pushing the limits of automotive engineering and see motorsport as the ultimate proving ground. We seek a partnership that showcases the reliability and performance of our components under extreme conditions, ultimately driving sales and brand recognition in the Asia-Pacific region.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 4,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0222.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Klaus-Dieter Ziegler",
+  "nationality": "German",
+  "age": 38,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Klaus-Dieter's motorsport journey began not on the track, but in the garage. He spent his youth dismantling and rebuilding engines with his father, a local mechanic. This hands-on experience instilled in him a deep appreciation for the technical intricacies of racing. He transitioned to coordinating test drivers after a short stint as a data analyst for a Formula 3 team. \n\nKlaus-Dieter is known for his meticulous planning and unrelenting pursuit of optimal performance. He believes that every test session is a chance to uncover hidden potential, and he pushes his drivers to the absolute limit. His demanding nature, while sometimes abrasive, stems from a genuine desire to extract the best possible data and feedback for the team. He is driven to find the smallest advantage, striving for perfection in every aspect of testing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed to the side with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Klaus-Dieter is a man of medium build with a focused gaze that conveys his seriousness."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific brand of stopwatch, claiming it's the most accurate.",
+    "Always carries a worn copy of a technical manual, frequently referencing it.",
+    "Has a habit of tapping his pen rhythmically against his clipboard when deep in thought."
+  ]
+}

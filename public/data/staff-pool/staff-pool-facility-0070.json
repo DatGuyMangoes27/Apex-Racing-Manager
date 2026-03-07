@@ -1,0 +1,22 @@
+{
+  "name": "Valtteri Niemi",
+  "nationality": "Finnish",
+  "age": 22,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Valtteri's passion for motorsport ignited at a young age, fueled by countless hours spent watching Formula 1 races with his grandfather. He channeled this enthusiasm into virtual racing, quickly mastering various simulation platforms. Recognizing his aptitude, he pursued a degree in mechanical engineering, eager to apply his technical skills to the real world of racing. Valtteri sees the simulator as an invaluable tool, not only for driver development but also for optimizing car setups and exploring innovative strategies. He's particularly interested in developing AI-driven simulation tools to accelerate the learning process.\n\nValtteri is known for his meticulous approach to data analysis and his ability to translate complex technical information into easily understandable terms. While he's still relatively new to the field, his dedication to continuous learning and his natural talent for problem-solving make him a valuable asset to any team. He's eager to prove himself and contribute to pushing the boundaries of simulator technology in motorsport.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, slightly messy, with a side part",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Valtteri is of average height with a lean build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas.",
+    "Fidgets with a Rubik's Cube during downtime.",
+    "Has a collection of miniature racing car models on his desk."
+  ]
+}

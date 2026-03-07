@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 43,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Thabo's journey into motorsport began with a fascination for the intricate designs and innovative materials used in Formula 1 cars. Growing up in Durban, he spent hours sketching race cars and devouring technical publications. After completing his engineering degree at the University of KwaZulu-Natal, he specialized in composite materials and landed a coveted apprenticeship with a local racing team, where he honed his skills in fabrication, repair, and optimization.\n\nHis meticulous approach and dedication to quality quickly earned him recognition. Thabo is known for his calm demeanor under pressure and his ability to troubleshoot complex issues efficiently. He believes in a holistic approach, carefully considering the interplay between materials, aerodynamics, and performance to deliver optimal results. He joined Hitech Development to be part of a team pushing the boundaries of composite technology.",
+  "physical": {
+    "skinTone": "dark brown",
+    "hairColor": "black",
+    "hairStyle": "short, neatly cropped",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "He has a muscular build from years of hands-on work."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Taps his fingers rhythmically on surfaces when deep in thought.",
+    "Insists on using a specific brand of adhesive tape for all composite repairs."
+  ]
+}

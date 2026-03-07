@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0346",
+  "name": "Aether Dynamics",
+  "category": "tech",
+  "tier": "elite",
+  "country": "Monaco",
+  "description": "Advanced simulation and data analytics for motorsport.",
+  "story": "Founded in Monaco, Aether Dynamics provides cutting-edge simulation and data analysis tools to Formula 1 teams. We believe in pushing the boundaries of performance through technology and seek to partner with teams who share our commitment to innovation and achieving peak performance on the track. We want to use motorsport to showcase the reliability and precision of our modeling software.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0346.png"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Lindstrom",
+  "nationality": "Swedish",
+  "age": 32,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Astrid Lindstrom is a rising star at Nordea Bank's private wealth management division in Stockholm, specializing in high-net-worth individuals and corporate investments. A graduate of the Stockholm School of Economics, Astrid is known for her sharp intellect, unwavering confidence, and a surprisingly sentimental streak hidden beneath her professional exterior. She values loyalty and appreciates those who demonstrate genuine gratitude, but can be quick to write off those she perceives as undeserving or entitled.\n\nWhile not directly involved in motorsport, Astrid manages the financial portfolios of several prominent figures in the Swedish racing scene, including team owners and sponsors. A racing driver seeking financial backing or strategic investment opportunities might find themselves pitching their vision to Astrid, hoping to secure her firm's support. Her love of speed and precision cultivated through her passion for skiing and snowboarding makes her surprisingly receptive to the world of motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Sleek bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a sharp, intelligent face framed by a meticulously styled blonde bob. She favors tailored suits and understated jewelry, projecting an image of effortless competence."
+  },
+  "connectionToMotorsport": "Astrid manages the financial portfolios of several Swedish motorsport team owners and sponsors, making her a key contact for securing funding.",
+  "meetingContext": "The player might meet Astrid at a fundraising gala for a motorsport charity or through a mutual business acquaintance seeking investment opportunities.",
+  "conversationTopics": [
+    "The Swedish economy",
+    "Modern poetry",
+    "The challenges of wealth management",
+    "Her latest ski trip to Åre",
+    "Emerging trends in sustainable investment"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals",
+    "Provide access to high-net-worth investors",
+    "Offer sound financial advice and investment strategies"
+  ],
+  "personality_summary": "A confident and intellectual banker with a surprisingly nostalgic and sentimental side."
+}

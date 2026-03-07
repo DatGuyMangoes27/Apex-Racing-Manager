@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 39,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Nikola's fascination with motorsport began during his childhood in Belgrade, watching rally races with his father. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, and quickly landed a role with a smaller racing team, honing his skills in data analysis and simulation. He's known for his methodical approach, meticulously examining every aspect of the car's performance to squeeze out marginal gains. \n\nHis career progressed through various racing series, each offering unique challenges and opportunities for growth. Nikola's expertise lies in translating complex data into actionable insights for the drivers and mechanics. He's a firm believer in data-driven decision-making, balancing innovative solutions with proven methodologies. He now brings his experience to Andretti Global, hoping to contribute to their championship aspirations. He is known for his calm demeanor and ability to troubleshoot under pressure.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Nikola has a focused gaze and a build hinting at a past athletic life."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical observations.",
+    "Has a habit of tapping his pen rhythmically while analyzing data.",
+    "Prefers to work late into the night when the garage is quiet."
+  ]
+}

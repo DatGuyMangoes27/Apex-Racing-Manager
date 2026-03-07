@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 39,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Dimitrios's motorsport journey began in the dusty karting tracks outside Thessaloniki, where he spent his youth tinkering with engines and pushing the limits of grip. Although his racing ambitions never fully materialized, his keen understanding of vehicle dynamics and data analysis led him towards a career in motorsport management. He has spent the last 12 years honing his skills in test driver coordination, working with various teams to optimize testing programs and extract maximum value from every lap.\n\nDimitrios is known for his meticulous approach and his ability to build strong relationships with drivers and engineers alike. He believes that effective communication is crucial for a successful testing program. He is driven by a desire to find innovative solutions and improve team performance, always looking for that extra tenth of a second that can make all the difference. His ambition is to lead a test program for a World Championship-winning team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave at the front.",
+    "eyeColor": "Brown",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Dimitrios is a lean man of average height with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a strong Greek coffee before every debriefing session."
+  ]
+}

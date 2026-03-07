@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Hakim Benali",
+    "nationality": "Moroccan",
+    "age": 34,
+    "gender": "male",
+    "contactType": "pilot",
+    "bio": "Hakim Benali is a rising star in the world of endurance racing. Known for his flamboyant driving style and even more flamboyant personality off the track, Hakim has quickly become a fan favorite. Despite coming from a wealthy background, he's earned his place through sheer talent and a relentless desire to win. His playful nature often masks a fierce competitor, and his loyalty to his team is unwavering. \n\nHaving secured a few podium finishes in the World Endurance Championship, Hakim is now eyeing a move to Formula racing. His connections within the sports world are extensive, and his genuine enthusiasm for motorsports makes him a valuable ally. A racing driver might cross paths with him at exclusive after-parties, charity events, or even through shared sponsors looking for cross-promotion opportunities.",
+    "physical": {
+      "skinTone": "Medium Tan",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly styled with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-groomed beard",
+      "description": "Hakim has a charismatic smile and an athletic build. He often sports designer sunglasses, even indoors."
+    },
+    "connectionToMotorsport": "Hakim is a professional racing driver currently competing in the World Endurance Championship, with aspirations to move into Formula racing.",
+    "meetingContext": "The player might meet Hakim at a celebratory event after a race, or perhaps at a high-end lounge frequented by motorsport professionals.",
+    "conversationTopics": [
+      "His latest racing successes (or setbacks)",
+      "The best whiskey distilleries around the world",
+      "His snowboarding trips in the Swiss Alps",
+      "The latest independent films",
+      "Classical music concerts"
+    ],
+    "canHelp": [
+      "Introduce the player to wealthy sponsors or investors",
+      "Offer insider knowledge about racing circuits and strategies",
+      "Provide access to exclusive training facilities"
+    ],
+    "personality_summary": "An eccentric and ambitious racing driver with a playful spirit and surprising loyalty."
+  }
+]

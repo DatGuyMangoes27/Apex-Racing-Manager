@@ -4,20 +4,204 @@
 // Handles stock trading, index fund investments,
 // business ventures, and market simulation.
 
-import type {
-  Stock,
-  StockHolding,
-  StockTransaction,
-  BusinessVenture,
-  BusinessType,
-  _BusinessTemplate,
-  _STOCKS,
-  _INDEX_FUNDS,
+import {
+  type Stock,
+  type StockHolding,
+  type StockTransaction,
+  type BusinessVenture,
+  type BusinessType,
+  type BusinessTemplate,
+  STOCKS,
+  INDEX_FUNDS,
   BUSINESS_TEMPLATES,
   MARKET_CONFIG,
   getStockBySymbol,
   calculateBusinessValuation
 } from '@/data/investment-config';
+import type { PersonalTransaction } from '@/data/personal-finance-config';
+import { createPersonalTransaction } from '@/simulation/finances/personalFinances';
+
+// ============================================
+// ID GENERATION
+// ============================================
+
+let investmentIdCounter = 0
+function generateInvestmentId(prefix: string): string {
+  return `${prefix}_${Date.now()}_${++investmentIdCounter}`
+}
+
+// ============================================
+// STOCK BUY / SELL
+// ============================================
+
+export interface BuyStockResult {
+  success: boolean
+  reason?: string
+  holding?: StockHolding
+  transaction?: PersonalTransaction
+}
+
+export function buyStock(
+  symbol: string,
+  shares: number,
+  personalCash: number,
+  week: number,
+  year: number,
+  existingHoldings: StockHolding[]
+): BuyStockResult {
+  const stock = getStockBySymbol(symbol)
+  if (!stock) return { success: false, reason: 'Invalid stock symbol.' }
+  if (shares < 1) return { success: false, reason: 'Must buy at least 1 share.' }
+
+  const totalCost = Math.round(stock.currentPrice * shares)
+  if (totalCost > personalCash) {
+    return {
+      success: false,
+      reason: `Insufficient funds. Need $${totalCost.toLocaleString()}, have $${personalCash.toLocaleString()}`
+    }
+  }
+
+  const transaction = createPersonalTransaction(
+    'expense',
+    'other_expense',
+    totalCost,
+    `Stock purchase: ${shares} shares of ${stock.companyName} (${symbol})`,
+    week,
+    year,
+    { relatedInvestmentId: symbol }
+  )
+
+  const existing = existingHoldings.find(h => h.stockSymbol === symbol)
+  const avgPurchasePrice = existing
+    ? (existing.avgPurchasePrice * existing.shares + stock.currentPrice * shares) / (existing.shares + shares)
+    : stock.currentPrice
+  const totalInvested = existing ? existing.totalInvested + totalCost : totalCost
+  const newShares = existing ? existing.shares + shares : shares
+  const currentValue = Math.round(stock.currentPrice * newShares)
+  const unrealizedGain = currentValue - totalInvested
+  const unrealizedGainPercent = totalInvested > 0 ? (unrealizedGain / totalInvested) * 100 : 0
+
+  const holding: StockHolding = {
+    stockSymbol: symbol,
+    companyName: stock.companyName,
+    sector: stock.sector,
+    shares: newShares,
+    avgPurchasePrice: Math.round(avgPurchasePrice * 100) / 100,
+    totalInvested,
+    currentPrice: stock.currentPrice,
+    currentValue,
+    unrealizedGain,
+    unrealizedGainPercent,
+    purchaseDate: existing ? existing.purchaseDate : { week, year },
+    dividendsReceived: existing ? existing.dividendsReceived : 0
+  }
+
+  return { success: true, holding, transaction }
+}
+
+export interface SellStockResult {
+  success: boolean
+  reason?: string
+  updatedHoldings: StockHolding[]
+  transaction?: PersonalTransaction
+  proceeds: number
+}
+
+export function sellStock(
+  holdings: StockHolding[],
+  symbol: string,
+  sharesToSell: number,
+  week: number,
+  year: number,
+  stocks: Stock[]
+): SellStockResult {
+  const stock = stocks.find(s => s.symbol === symbol)
+  const holding = holdings.find(h => h.stockSymbol === symbol)
+  if (!holding) return { success: false, reason: 'You do not own this stock.', updatedHoldings: holdings }
+  if (sharesToSell < 1) return { success: false, reason: 'Must sell at least 1 share.', updatedHoldings: holdings }
+  if (sharesToSell > holding.shares) {
+    return { success: false, reason: `You only own ${holding.shares} shares.`, updatedHoldings: holdings }
+  }
+
+  const pricePerShare = stock ? stock.currentPrice : holding.currentPrice
+  const proceeds = Math.round(pricePerShare * sharesToSell)
+  const transaction = createPersonalTransaction(
+    'income',
+    'other_income',
+    proceeds,
+    `Stock sale: ${sharesToSell} shares of ${holding.companyName} (${symbol})`,
+    week,
+    year,
+    { relatedInvestmentId: symbol }
+  )
+
+  if (sharesToSell >= holding.shares) {
+    return {
+      success: true,
+      updatedHoldings: holdings.filter(h => h.stockSymbol !== symbol),
+      transaction,
+      proceeds
+    }
+  }
+
+  const remainingShares = holding.shares - sharesToSell
+  const remainingInvested = Math.round(holding.totalInvested * (remainingShares / holding.shares))
+  const currentValue = Math.round(pricePerShare * remainingShares)
+  const unrealizedGain = currentValue - remainingInvested
+  const updatedHolding: StockHolding = {
+    ...holding,
+    shares: remainingShares,
+    totalInvested: remainingInvested,
+    currentValue,
+    unrealizedGain,
+    unrealizedGainPercent: remainingInvested > 0 ? (unrealizedGain / remainingInvested) * 100 : 0
+  }
+  const updatedHoldings = holdings.map(h => (h.stockSymbol === symbol ? updatedHolding : h))
+  return { success: true, updatedHoldings, transaction, proceeds }
+}
+
+// ============================================
+// WEEKLY STOCK PRICE UPDATE
+// ============================================
+
+/** Volatility to weekly price move (approximate) */
+const VOLATILITY_MULT: Record<string, number> = {
+  very_low: 0.002,
+  low: 0.005,
+  medium: 0.012,
+  high: 0.02,
+  very_high: 0.035
+}
+
+export function updateStockPricesForHoldings(
+  holdings: StockHolding[],
+  stocks: Stock[]
+): StockHolding[] {
+  return holdings.map(holding => {
+    const stock = stocks.find(s => s.symbol === holding.stockSymbol)
+    if (!stock) return holding
+    const mult = VOLATILITY_MULT[stock.volatility] ?? 0.01
+    const change = (Math.random() - 0.5) * 2 * mult
+    const newPrice = Math.max(stock.weekLow52 * 0.5, Math.min(stock.weekHigh52 * 1.2, stock.currentPrice * (1 + change)))
+    const newPriceRounded = Math.round(newPrice * 100) / 100
+    const currentValue = Math.round(newPriceRounded * holding.shares)
+    const unrealizedGain = currentValue - holding.totalInvested
+    return {
+      ...holding,
+      currentPrice: newPriceRounded,
+      currentValue,
+      unrealizedGain,
+      unrealizedGainPercent: holding.totalInvested > 0 ? (unrealizedGain / holding.totalInvested) * 100 : 0
+    }
+  })
+}
+
+export function processDividends(
+  holdings: StockHolding[],
+  stocks: Stock[],
+  week: number,
+  year: number
+): { updatedHoldings: StockHolding[]; transactions: PersonalTransaction[] } {
   // Only process dividends on quarterly payment weeks
   if (!MARKET_CONFIG.dividendPaymentWeeks.includes(week)) {
     return { updatedHoldings: holdings, transactions: [] }

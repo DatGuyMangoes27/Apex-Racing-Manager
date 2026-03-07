@@ -1,0 +1,31 @@
+{
+  "name": "Layla Al-Faisal",
+  "nationality": "Saudi",
+  "age": 62,
+  "gender": "female",
+  "contactType": "sponsor_exec",
+  "bio": "Layla Al-Faisal is a prominent figure in the Saudi business world, known for her strategic investments and sharp business acumen. She rose through the ranks of her family's conglomerate, Al-Faisal Holdings, demonstrating an exceptional ability to identify and cultivate lucrative ventures. Beyond her professional achievements, Layla is respected for her elegant demeanor and optimistic outlook, though those who underestimate her competitive spirit and stubborn resolve often find themselves surprised. Her interest in motorsport stems from a desire to diversify Al-Faisal Holdings' portfolio and her personal love of competitive sports.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant, tightly wound bun",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Layla is a striking woman with an aura of sophistication. She carries herself with grace, often seen wearing impeccably tailored suits and understated jewelry."
+  },
+  "connectionToMotorsport": "Layla is the head of sponsorship acquisitions for Al-Faisal Holdings, which sponsors several racing teams across various motorsport disciplines, including Formula racing and rally events. She is also a keen observer of young talent and is always looking for the next rising star to endorse.",
+  "meetingContext": "The player might meet Layla at a corporate event hosted by Al-Faisal Holdings, or perhaps at a VIP lounge during a major race where Al-Faisal Holdings is a primary sponsor.",
+  "conversationTopics": [
+    "The future of Saudi Arabia's economy",
+    "The merits of different luxury watch brands",
+    "Her experiences with competitive fencing",
+    "The challenges and rewards of managing a large family business",
+    "The potential for motorsport to grow in the Middle East"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal with Al-Faisal Holdings",
+    "Provide introductions to other influential figures in the Saudi business community",
+    "Offer mentorship and guidance on managing finances and building a personal brand"
+  ],
+  "personality_summary": "An elegant and astute businesswoman with a competitive edge."
+}

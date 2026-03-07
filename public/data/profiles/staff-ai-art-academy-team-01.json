@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 47,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Moira's journey into motorsport began not in the grandstands, but in her father's Glasgow garage, tinkering with engines. That early exposure ignited a passion that led her to a mechanical engineering degree and eventually to the pit lane. Her career has spanned various racing series, from Formula Ford to GT racing, before landing at ART Grand Prix Academy. \n\nAs a chief engineer, Moira champions a data-driven approach combined with practical experience. She believes in fostering a collaborative environment where every team member's insights are valued. Her pragmatic nature ensures resources are allocated efficiently and solutions are grounded in reality, making her a vital asset in the pursuit of on-track performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Moira is of average height with a sturdy build, and a perpetually thoughtful expression etched on her face."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, worn notebook filled with technical sketches and observations.",
+    "Has a particular fondness for strong tea, consuming several cups throughout the day.",
+    "Tends to tap her pen rhythmically when deep in thought, a habit that can be both endearing and distracting."
+  ]
+}

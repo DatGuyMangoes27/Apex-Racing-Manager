@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0456",
+  "name": "Siam Synthetic Lubricants",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "Thailand",
+  "description": "Advanced synthetic lubricants, engineered for peak performance.",
+  "story": "Siam Synthetic Lubricants is a leading Thai manufacturer of high-performance synthetic oils and lubricants. With a commitment to innovation and pushing the boundaries of engine technology, they sponsor motorsport to showcase their products' capabilities in extreme conditions. They seek partnerships that demonstrate reliability and performance under pressure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 85000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0456.png"
+}

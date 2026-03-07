@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0314",
+  "name": "PetroForce UK",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "UK",
+  "description": "Fueling performance, engineered for victory.",
+  "story": "PetroForce UK has been a regional fuel supplier for over 30 years, recently expanding into performance lubricants. Motorsport provides an ideal testing ground for their advanced formulations. They seek a team that embodies British engineering excellence and a drive to succeed.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0314.png"
+}

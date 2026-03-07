@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 36,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Marko's passion for motorsport ignited in his youth, tinkering with go-karts in his hometown of Zagreb. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. After graduating, he gained valuable experience at a smaller racing outfit, honing his skills in data analysis and simulation. Marko's approach to performance engineering is deeply rooted in data-driven decision-making. He meticulously analyzes telemetry, searching for even the smallest improvements in lap time. \n\nHe is known for his ability to translate complex data into actionable insights for the drivers and mechanics. His detail-oriented nature and relentless pursuit of perfection make him a valuable asset to the Iron Dames, where he is committed to pushing the boundaries of performance. He joined the team two seasons ago and has already made a significant contribution to their improved performance.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "short boxed beard",
+    "description": "Marko is of average height, with a focused and intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Insists on having a specific type of Croatian coffee before every race."
+  ]
+}

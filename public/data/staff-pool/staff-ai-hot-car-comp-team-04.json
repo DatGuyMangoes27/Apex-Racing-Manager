@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 31,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Liam's passion for motorsport ignited during his childhood, spent tinkering with engines alongside his grandfather, a seasoned mechanic. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics, and quickly found his way into the racing world. Liam's career began with a small Formula Ford team before he transitioned to GT racing, where he honed his skills in data analysis and vehicle setup. He's known for his meticulous approach and ability to extract maximum performance from the car, even under pressure. His demanding nature stems from his unwavering commitment to achieving the best possible results.\n\nLiam is a staunch believer in data-driven decision-making, spending countless hours analyzing telemetry to identify areas for improvement. He also has a knack for developing innovative solutions to complex engineering challenges, although he often prefers to work independently. While his direct communication style can sometimes rub people the wrong way, his dedication to the team's success is undeniable. He recently joined Hot Car Competições hoping to take his career to the next level.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Short, neatly parted with a slight wave.",
+    "eyeColor": "Green",
+    "facialHair": "Short, trimmed beard",
+    "description": "Lean and wiry, Liam always seems to be deep in thought, his brow furrowed in concentration."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen rhythmically when analyzing data.",
+    "Insists on drinking strong black coffee at precise intervals throughout the race weekend."
+  ]
+}

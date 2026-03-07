@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 30,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood spent karting on frozen lakes outside Montreal. His analytical mind quickly identified the importance of tire management and optimal racing lines in challenging conditions. After earning a degree in mechanical engineering from McGill University, Jean-Pierre interned at a local rally team before transitioning to single-seaters. He joined Hitech Development three years ago, initially as a junior data analyst, and quickly rose through the ranks to become a strategist.\n\nJean-Pierre's approach to strategy is data-driven but not inflexible. He believes in understanding the nuances of each track and driver, adapting pre-race simulations to real-time conditions. He's known for his calm demeanor under pressure and his ability to identify opportunities that others miss. His distinctive attribute is his willingness to challenge conventional wisdom, always seeking innovative solutions to gain a competitive edge. He combines a sharp technical mind with strong management skills, making him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height with a lean build and intense eyes that constantly scan the data screens."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn track maps.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of maple syrup available in the team garage at all times."
+  ]
+}

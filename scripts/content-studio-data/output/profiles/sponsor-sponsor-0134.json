@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0134",
+  "name": "Sulbrasil Camisetas",
+  "category": "apparel",
+  "tier": "entry",
+  "country": "Brazil",
+  "description": "Authentic Brazilian motorsport apparel.",
+  "story": "Sulbrasil Camisetas is a clothing company based in Porto Alegre, Brazil, specializing in motorsport-themed apparel. They see sponsoring racing teams as a way to connect with their core demographic and expand brand recognition nationally. They value teams that represent the passion and vibrant spirit of Brazilian racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0134.png"
+}

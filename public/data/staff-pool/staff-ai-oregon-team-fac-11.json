@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 49,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Jean-Pierre's journey into motorsport was unconventional, starting not on the track but in the engineering workshops of Montreal. A fascination with vehicle dynamics led him to complete a degree in mechanical engineering, after which he worked for a local race team as a data analyst. His keen eye for detail and ability to translate raw data into actionable insights quickly made him an invaluable asset. \n\nMoving to Oregon Team, Jean-Pierre now manages the test driver program. His approach is methodical, emphasizing clear communication and rigorous testing protocols to ensure the team extracts maximum value from every session. He believes in fostering a collaborative environment where test drivers and engineers can work seamlessly together, pushing the boundaries of performance.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "A man of medium build, Jean-Pierre carries himself with a quiet confidence."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a specific lucky pen he uses when signing off on test reports.",
+    "Frequently adjusts his glasses, even when they're perfectly in place."
+  ]
+}

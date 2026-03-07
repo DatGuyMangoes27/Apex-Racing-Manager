@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 53,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo's journey into motorsport started unconventionally, through his deep love of mathematics and a chance encounter with a racing engineer during his university days in Santiago. Intrigued by the complexity of vehicle dynamics and the potential for data to unlock performance, he dedicated himself to learning the intricacies of racing analysis. Before joining Porsche Penske Motorsport, Ricardo spent years honing his skills with smaller racing teams across South America, becoming known for his ability to quickly identify subtle but critical patterns in telemetry data.\n\nRicardo's approach to data analysis is methodical and meticulous. He believes that every data point tells a story, and it's his job to translate those stories into actionable insights for the engineers and drivers. What sets Ricardo apart is his relentless pursuit of marginal gains. He has an uncanny ability to find hidden correlations between seemingly unrelated data sets, leading to breakthroughs in areas such as tire management and fuel efficiency. He's earned the quiet respect of the entire team, though his independent nature sometimes puts him at odds with management.\n\nWhile some might see Ricardo's lone-wolf tendencies as a disadvantage, he believes that his independence allows him to think outside the box and challenge conventional wisdom. He also values collaborative brainstorming sessions, where he uses his data to push the team to explore new ideas, always striving for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build with a serious, focused demeanor, Ricardo always looks like he's solving a complex equation in his head."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn leather-bound notebook filled with equations and observations.",
+    "Insists on listening to classical music through noise-cancelling headphones while analyzing data.",
+    "Has a habit of muttering mathematical formulas under his breath when deep in thought."
+  ]
+}

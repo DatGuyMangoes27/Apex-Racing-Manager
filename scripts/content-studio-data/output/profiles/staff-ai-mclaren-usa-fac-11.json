@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Bjørn Halvorsen",
+    "nationality": "Norwegian",
+    "age": 40,
+    "gender": "male",
+    "role": "test_driver_coordinator",
+    "bio": "Bjørn's fascination with motorsport began in his youth, watching rally races navigate the challenging Norwegian terrain. This passion led him to pursue a degree in mechanical engineering, focusing on vehicle dynamics and performance optimization. After graduating, he joined a small engineering firm specializing in motorsport vehicle testing and development. He quickly gained experience in data analysis, simulation, and on-track testing. \n\nBjørn's methodical approach and keen eye for detail earned him a reputation as a reliable and insightful test driver coordinator. He excels at organizing comprehensive testing programs, ensuring clear communication between drivers, engineers, and mechanics, and extracting maximum value from every test session. He joined Arrow McLaren three years ago, bringing his expertise to the IndyCar program. Bjørn's dedication to continuous improvement and his ability to identify even the smallest areas for optimization make him an invaluable asset to the team.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Blonde",
+      "hairStyle": "Short, neatly combed with a slight side part",
+      "eyeColor": "Blue",
+      "facialHair": "Short, trimmed beard",
+      "description": "Bjørn is a lean man, always seen with a focused expression."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook and pen to jot down observations.",
+      "Has a habit of tapping his pen against his teeth when deep in thought.",
+      "Insists on having a specific brand of Norwegian coffee before any testing session."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 35,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Valentina's journey into motorsport began with a fascination for aerodynamics, sparked by her father's work as an aircraft engineer. After graduating with a degree in Mechanical Engineering from the Universidad de Buenos Aires, she pursued an internship at a small Formula 3 team, where she quickly proved her aptitude for wind tunnel testing and data analysis. Her meticulous approach and sharp eye for detail led to a full-time position. \n\nValentina is known for her calm demeanor under pressure and her ability to translate complex data into actionable insights for the engineering team. She is particularly adept at identifying subtle airflow anomalies that can significantly impact vehicle performance. Her loyalty to Praga Racing stems from a shared commitment to pushing boundaries and achieving excellence through innovation and teamwork. Valentina believes the key to success in motorsport is a blend of technical expertise and collaborative spirit.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair pulled back into a practical ponytail during work hours.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is a slender woman of average height, with a focused gaze and a warm smile."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with wind tunnel data sketches.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on calibrating the wind tunnel sensors herself before each major test session."
+  ]
+}

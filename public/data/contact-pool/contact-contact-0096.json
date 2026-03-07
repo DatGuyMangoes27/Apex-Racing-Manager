@@ -1,0 +1,31 @@
+{
+  "name": "Kenan Demir",
+  "nationality": "Turkish",
+  "age": 61,
+  "gender": "male",
+  "contactType": "actor",
+  "bio": "Kenan Demir is a celebrated Turkish actor, known for his diverse roles in both critically acclaimed dramas and commercially successful comedies. His fiery passion and intellectual curiosity have made him a household name. Beyond the screen, Kenan is an avid enthusiast of vintage cars, often seen at classic car rallies and auctions. He appreciates the craftsmanship and history behind these machines, and often finds himself drawn to the intensity and precision of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Kenan has a distinguished presence with a strong jawline and a twinkle in his eyes. He carries himself with the confidence of a seasoned performer."
+  },
+  "connectionToMotorsport": "Kenan is a vocal supporter of Turkish motorsport talent and occasionally attends races as a guest of honor. He's also been known to participate in celebrity races for charity.",
+  "meetingContext": "You might meet Kenan at a motorsport gala, a vintage car show, or even at a high-end craft brewery he frequents in Istanbul.",
+  "conversationTopics": [
+    "The golden age of Turkish cinema",
+    "The artistry of ballet",
+    "The restoration of vintage automobiles",
+    "The complexities of craft beer brewing",
+    "His latest film project"
+  ],
+  "canHelp": [
+    "Provide introductions to influential figures in the entertainment industry, leading to sponsorship opportunities",
+    "Raise your profile through celebrity endorsements and media appearances",
+    "Offer acting lessons to improve your public speaking and media presence"
+  ],
+  "personality_summary": "A witty and passionate actor with a love for the finer things in life, and a surprising connection to the world of motorsport."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 56,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Gareth's journey into motorsport began with a childhood fascination for engineering, fueled by watching rally races in the Welsh countryside. He earned a degree in mechanical engineering and honed his skills in various engineering roles, before finally landing a position as a junior engineer with a small Formula 3 team. Gareth quickly rose through the ranks, demonstrating a keen eye for detail and a knack for problem-solving under pressure. \n\nHis approach as a Technical Director is characterized by a strong emphasis on data-driven decision-making and fostering a collaborative team environment. He believes in empowering his engineers to take ownership of their work and encourages open communication across all departments. Gareth is known for his unwavering loyalty and dedication to the team's success, often putting in long hours to ensure that the car is performing at its peak. He is a firm believer in continuous improvement and always seeks to refine the team's processes and technologies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "A robust man with a friendly face and a serious demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer software.",
+    "Has a specific type of Welsh tea he insists on drinking at 3 PM every day.",
+    "Refers to the race car as 'the beastie' when discussing technical issues."
+  ]
+}

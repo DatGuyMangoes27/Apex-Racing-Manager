@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0243",
+  "name": "PixelWizards",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "Belgium",
+  "description": "Leveling up your game, one pixel at a time.",
+  "story": "PixelWizards is a Belgian gaming hardware and software company focused on creating immersive experiences. They believe in pushing the boundaries of technology and see motorsport as the perfect testing ground for their products, especially in areas like simulation and data analysis. They are looking to partner with a promising team to increase brand awareness among the gaming community.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0243.png"
+}

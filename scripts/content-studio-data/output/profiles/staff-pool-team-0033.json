@@ -1,0 +1,22 @@
+{
+  "name": "Murat Demir",
+  "nationality": "Turkish",
+  "age": 54,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Murat's journey into motorsport began with a childhood fascination for disassembling and reassembling anything with an engine. This early passion led him to pursue a degree in Mechanical Engineering, specializing in vehicle dynamics. After graduating, he landed a role at a small Turkish rally team, quickly proving his ability to diagnose and resolve complex mechanical issues under pressure. He moved to Europe and worked his way up the ranks, contributing to championship-winning teams in various racing series.\n\nMurat's approach to race engineering is rooted in meticulous data analysis and a deep understanding of vehicle performance. He believes in fostering open communication between drivers and engineers, ensuring that feedback is translated into actionable improvements. Known for his calm demeanor and ability to find solutions where others see roadblocks, Murat is a highly sought-after race engineer.\n\nWhat sets Murat apart is his holistic approach, considering not only the technical aspects but also the driver's mental and physical state. He strives to create a harmonious working environment, believing that a cohesive team performs at its best. His blend of technical expertise and people skills makes him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A man of medium build, Murat has a focused gaze and a warm smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking Turkish coffee before every race."
+  ]
+}

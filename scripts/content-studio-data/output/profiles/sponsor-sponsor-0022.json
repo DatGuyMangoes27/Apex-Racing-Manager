@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0022",
+  "name": "Apex Global Investments",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Monaco",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Apex Global Investments understands the high-stakes, high-reward world of motorsport. Based in Monaco, they specialize in managing wealth for high-net-worth individuals and institutions. They see motorsport sponsorship as a way to enhance their brand image and connect with a discerning clientele, looking for a team that embodies precision, performance, and a winning mindset.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0022.png"
+}

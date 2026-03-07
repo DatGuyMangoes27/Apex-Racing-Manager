@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Mateo Vargas",
+    "nationality": "Colombian",
+    "age": 41,
+    "gender": "male",
+    "role": "sporting_director",
+    "bio": "Mateo Vargas's motorsport journey began in Bogotá, fueled by a childhood obsession with Formula 1 races broadcasted on late-night television. He quickly rose through the ranks of local racing teams, demonstrating a remarkable aptitude for technical strategy and a keen eye for talent. His meticulous approach to race preparation and his ability to inspire confidence in his team members set him apart. He's known for his innovative strategies, often pushing the boundaries of accepted practices. \n\nAs a sporting director, Mateo is fiercely competitive, fostering a culture of continuous improvement and relentless pursuit of excellence. He firmly believes in empowering his team, valuing their input and creating a collaborative environment where every member feels valued and heard. He's not afraid to challenge conventional wisdom, and his willingness to experiment has often led to significant performance gains for his teams. His loyalty to his team is absolute.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed back with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-trimmed goatee",
+      "description": "Mateo is of medium build with a focused gaze that conveys both intelligence and determination."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook to jot down ideas, regardless of the situation.",
+      "Has a specific ritual involving cleaning his glasses before every important meeting.",
+      "Drinks only black coffee, precisely brewed, at 8:00 AM and 3:00 PM every day."
+    ]
+  }
+]

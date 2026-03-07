@@ -1,0 +1,22 @@
+{
+  "name": "Maria Rodriguez",
+  "nationality": "American",
+  "age": 42,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Maria's passion for motorsport ignited during her childhood, spent watching her father tinker with classic cars. This fascination led her to pursue a degree in mechanical engineering, specializing in materials science. After graduating, she spent several years honing her skills at a local race shop, fabricating custom components for various racing series. Her meticulous attention to detail and problem-solving abilities quickly earned her a reputation as a highly capable fabricator.\n\nMaria joined Scuderia Ferrari five years ago, where she has become an integral part of the team's fabrication department. She takes immense pride in her work, ensuring that every component meets the highest standards of quality and precision. Maria's commitment to teamwork and her unwavering dedication to excellence make her a valuable asset to the team. Her colleagues often seek her advice on complex fabrication challenges, appreciating her ability to find creative solutions.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Maria is of average height with a muscular build from years of hands-on work."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens her pencils to a perfect point before starting a new project.",
+    "Drinks copious amounts of black coffee throughout the day.",
+    "Has a habit of humming classical music while welding."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 59,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Kenji Tanaka's journey in motorsport began unexpectedly, through a chance encounter with a local racing team while he was studying engineering. Intrigued by the complex interplay of mechanics and strategy, he quickly transitioned from observer to active participant, volunteering his skills to optimize engine performance. His dedication and sharp analytical mind led to a rapid ascent through the ranks, from junior engineer to chief mechanic, and eventually, team principal. Kenji is known for his meticulous attention to detail and unwavering focus on achieving peak performance. \n\nAs team principal, Kenji emphasizes data-driven decision-making and fostering a culture of continuous improvement. He believes in empowering his team members, providing them with the resources and support they need to excel. While demanding, Kenji is also deeply loyal to his team, valuing hard work and dedication above all else. His distinctive approach lies in his ability to balance technical expertise with astute management, creating a cohesive and high-performing team environment.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "A lean man with a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer simulations.",
+    "Insists on personally checking tire pressures before every session.",
+    "Has a collection of vintage motorsport magazines he refers to for inspiration."
+  ]
+}

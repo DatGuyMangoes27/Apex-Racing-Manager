@@ -1,0 +1,27 @@
+{
+  "biography": "Clive Richards, a name whispered with a mix of awe and apprehension in the Caterham Supersport paddock, hails from the unassuming town of Market Harborough, Leicestershire. His racing journey began, not on a karting track fueled by wealthy benefactors, but in a dilapidated shed, wrenching on a clapped-out Mini with his grandfather, a former rally driver. That shared passion ignited a fire in young Clive, a raw, untamed talent yearning for the asphalt. A defining moment came at Brands Hatch in his first season; starting from the back after a qualifying mishap, Richards carved through the field with ruthless precision, culminating in a last-lap overtake that stunned even himself. Now, at 23, Richards is on the cusp of breaking into the big leagues. While his aggressive style has drawn criticism, it's undeniable that he has the raw speed and determination to reach the top.",
+  "drivingStyle": "Richards' driving style is akin to a bare-knuckle brawl – aggressive, relentless, and bordering on reckless. He attacks every corner as if it's his last, favoring late braking and daring overtakes that often leave rivals fuming. Tire management isn't exactly his forte; he tends to push them to the limit early on, sacrificing long-run pace for immediate advantage. Under pressure, Richards either thrives or implodes; a cool head is not among his many virtues. He either channels the heat into pure speed, or makes errors that are both spectacular and costly.",
+  "rivalries": [
+    {
+      "name": "Marcus Thorne",
+      "reason": "A bitter rivalry stemming from a controversial collision at Silverstone that cost Thorne the championship lead."
+    },
+    {
+      "name": "Isabelle Rossi",
+      "reason": "A fierce on-track battle for position, fueled by mutual respect but undeniable competitiveness; often trading paint and harsh words."
+    },
+    {
+      "name": "David Chen",
+      "reason": "Chen's calm, calculated approach clashes directly with Richards' impulsive aggression, creating friction both on and off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, riddled with holes, for every race.",
+    "Listens to a specific heavy metal track, played at ear-splitting volume, just before getting into the car.",
+    "Refuses to eat anything green on race day, believing it brings bad luck."
+  ],
+  "nickname": "The Harborough Hammer",
+  "famousQuote": "\"Second place is just the first loser.\"",
+  "careerHighlight": "Winning the Caterham Supersport Championship final race at Donington Park after starting from P8, securing the championship by a single point.",
+  "careerLowPoint": "Crashing out of the lead on the final lap at Oulton Park due to overzealous corner entry, losing valuable championship points."
+}

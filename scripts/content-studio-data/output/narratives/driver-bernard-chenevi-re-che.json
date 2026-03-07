@@ -1,0 +1,27 @@
+{
+  "biography": "Bernard Chenevière, a name whispered with a mix of awe and trepidation in the GT racing paddock, hails from the serene valleys of Switzerland, a stark contrast to the aggressive style that defines his racing. Born into a family of watchmakers, Bernard's precision was initially honed on intricate mechanisms, not asphalt. However, the hum of a finely tuned engine soon replaced the tick-tock of gears as his primary obsession. His entry into motorsport was almost accidental; a local hill climb event witnessed Chenevière, barely out of his teens, piloting a borrowed Porsche 911 with a ferocity that belied his age. That day, he didn't just win; he announced himself. A defining moment came at the Spa 24 Hours in '73. With his Porsche 911 RSR 74 struggling with mechanical issues, Chenevière delivered a blistering stint in the pouring rain, clawing back positions and ultimately securing a podium finish for his team. Now, at the peak of his career, he's a force to be reckoned with, consistently challenging for wins and pushing his machinery to the absolute limit.",
+  "drivingStyle": "Chenevière's driving style is best described as controlled aggression. He's known for his late braking maneuvers, often diving into corners with a daring that leaves spectators breathless. While some criticize his approach as reckless, it's undeniable that he possesses an uncanny ability to extract maximum performance from his car. Tire management is not his strongest suit; he tends to overdrive early in a stint, but he compensates with raw speed and relentless pressure on his rivals. He thrives under pressure, often delivering his best performances when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Enzo Bellini",
+      "reason": "A long-standing feud stemming from a controversial collision at Monza in '72. Both drivers accuse each other of deliberate foul play, and their on-track battles are always fiercely contested."
+    },
+    {
+      "driver": "Klaus-Dieter Richter",
+      "reason": "A clash of generations and styles. Richter, the seasoned veteran, views Chenevière's aggressive tactics as immature and disrespectful, while Chenevière sees Richter as a relic of a bygone era."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A rivalry born from pure competition. Both highly skilled drivers, they push each other to the absolute limit. Their battles are clean but intense."
+    }
+  ],
+  "quirks": [
+    "Always wears the same worn-out driving gloves, claiming they bring him luck.",
+    "Listens to classical music (specifically Bach) to calm his nerves before a race.",
+    "Refuses to discuss strategy with his team until exactly 15 minutes before the race start."
+  ],
+  "nickname": "The Swiss Storm",
+  "famousQuote": "\"There are two kinds of drivers: those who lift, and those who win.\"",
+  "careerHighlight": "Winning the 1973 Targa Florio. Chenevière drove a near-flawless race on the treacherous Sicilian roads, showcasing his skill and determination to the world.",
+  "careerLowPoint": "Crashing out of the lead at the 1972 Nürburgring 1000km due to mechanical failure, costing his team a guaranteed victory."
+}

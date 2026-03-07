@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 29,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Alistair's passion for motorsport ignited during his youth, tinkering with engines in his grandfather's garage in the Highlands. He honed his skills at a local engineering college, specializing in fabrication and welding, before securing a junior position with a rally team. There, he learned the ropes of motorsport under pressure, developing a reputation for meticulous work and unwavering dedication. After several years, he transitioned to circuit racing, seeking new challenges and a chance to work with more advanced technology. \n\nNow at Caterham Motorsport, Alistair brings his seasoned expertise to the fabrication team. He is known for his precise execution, unwavering commitment to quality, and relentless pursuit of perfection. He is not afraid to push boundaries or challenge conventional thinking, always seeking innovative solutions to enhance performance. While demanding of himself and others, he also enjoys mentoring junior members of the team, sharing his knowledge and fostering a culture of continuous improvement.\n\nAlistair stands out for his exceptional problem-solving abilities and his uncanny ability to diagnose mechanical issues through careful observation and analysis. His dedication to his craft and the team makes him an invaluable asset to Caterham Motorsport.",
+  "physical": {
+    "skinTone": "Fair, freckled",
+    "hairColor": "Dark auburn",
+    "hairStyle": "Short, neatly cropped with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Alistair is a stocky man with strong, calloused hands that speak to years of dedicated craftsmanship."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his welding tools before each session, regardless of their current condition.",
+    "Insists on listening to bagpipe music through his headphones while working on complex fabrication tasks.",
+    "Uses only metric measurements, even when the original design is in imperial units, often leading to slight (but ultimately beneficial) adjustments."
+  ]
+}

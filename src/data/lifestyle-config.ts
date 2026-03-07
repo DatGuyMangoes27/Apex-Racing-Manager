@@ -459,3 +459,243 @@ export function getHealthConditionDescription(health: number): HealthCondition {
   if (health >= 30) return 'poor'
   return 'critical'
 }
+
+// ============================================
+// TYPES USED BY LIFESTYLE MANAGER
+// ============================================
+
+export type HealthcareLevel = 'basic' | 'standard' | 'premium' | 'executive' | 'concierge'
+
+export interface OwnerHealth {
+  overall: number
+  stress: number
+  fitness: number
+  fitnessLevel: number
+  mentalHealth: number
+  physicalHealth: number
+  stressLevel: number
+  age: number
+  lifeExpectancy: number
+  activeConditions: HealthIssue[]
+  healthcareLevel: HealthcareLevel
+  annualHealthcareCost: number
+  lastCheckupWeek: number
+  lastCheckupYear: number
+}
+
+export interface HealthIssue {
+  id: string
+  name: string
+  description: string
+  severity: 'mild' | 'moderate' | 'serious' | 'critical'
+  weeksDiagnosed: number
+  isBeingTreated: boolean
+  treatmentCostPerWeek?: number
+  recoveryWeeks?: number
+}
+
+export interface Hobby {
+  type: HobbyType
+  name: string
+  description: string
+  skillLevel: number
+  yearsActive: number
+  hoursInvested: number
+  annualCost: number
+  currentMonthlyCost: number
+  progressToNextLevel: number
+  equipmentTier?: EquipmentTier
+}
+
+export interface PersonalVehicle {
+  id: string
+  name: string
+  type: string
+  value: number
+  purchasePrice: number
+  yearPurchased: number
+  condition: number
+  annualMaintenance: number
+}
+
+export interface PersonalStaff {
+  id: string
+  role: StaffRole
+  name: string
+  yearsEmployed: number
+  salary: number
+  annualSalary: number
+  competence: number
+  loyalty: number
+  satisfaction: number
+  totalRaisesThisYear: number
+  weeksAtLowSatisfaction: number
+  hasGivenNotice: boolean
+  canProvideReferral: boolean
+  referralsProvided: number
+  benefits: string[]
+}
+
+export type StaffRole =
+  | 'personal_assistant'
+  | 'chef'
+  | 'fitness_trainer'
+  | 'driver'
+  | 'bodyguard'
+  | 'nanny'
+  | 'estate_manager'
+  | 'publicist'
+
+// ============================================
+// HEALTHCARE COSTS & BENEFITS
+// ============================================
+
+export const HEALTHCARE_COSTS: Record<HealthcareLevel, number> = {
+  basic: 5000,
+  standard: 15000,
+  premium: 35000,
+  executive: 75000,
+  concierge: 150000
+}
+
+export const HEALTHCARE_BENEFITS: Record<HealthcareLevel, { recoveryBonus: number; checkupFrequency: number; stressReduction: number }> = {
+  basic: { recoveryBonus: 0, checkupFrequency: 52, stressReduction: 0 },
+  standard: { recoveryBonus: 0.1, checkupFrequency: 26, stressReduction: 1 },
+  premium: { recoveryBonus: 0.2, checkupFrequency: 12, stressReduction: 2 },
+  executive: { recoveryBonus: 0.35, checkupFrequency: 4, stressReduction: 4 },
+  concierge: { recoveryBonus: 0.5, checkupFrequency: 2, stressReduction: 6 }
+}
+
+// ============================================
+// HEALTH CONDITIONS DATABASE
+// ============================================
+
+export const HEALTH_CONDITIONS: Array<{
+  name: string
+  description: string
+  severity: 'mild' | 'moderate' | 'serious' | 'critical'
+  treatmentCostPerWeek: number
+  recoveryWeeks: number
+}> = [
+  { name: 'Burnout', description: 'Chronic stress and exhaustion', severity: 'moderate', treatmentCostPerWeek: 500, recoveryWeeks: 8 },
+  { name: 'Back Pain', description: 'Chronic lower back pain from racing posture', severity: 'mild', treatmentCostPerWeek: 200, recoveryWeeks: 12 },
+  { name: 'Anxiety', description: 'Performance anxiety and general worry', severity: 'moderate', treatmentCostPerWeek: 300, recoveryWeeks: 16 },
+  { name: 'Insomnia', description: 'Difficulty sleeping due to travel and stress', severity: 'mild', treatmentCostPerWeek: 150, recoveryWeeks: 8 },
+  { name: 'Tinnitus', description: 'Ringing in ears from engine noise exposure', severity: 'mild', treatmentCostPerWeek: 100, recoveryWeeks: 0 },
+  { name: 'Neck Strain', description: 'G-force related neck issues', severity: 'moderate', treatmentCostPerWeek: 400, recoveryWeeks: 6 },
+  { name: 'Depression', description: 'Persistent low mood affecting performance', severity: 'serious', treatmentCostPerWeek: 500, recoveryWeeks: 24 },
+  { name: 'Hypertension', description: 'High blood pressure from stress', severity: 'serious', treatmentCostPerWeek: 200, recoveryWeeks: 0 },
+  { name: 'Heart Condition', description: 'Cardiovascular concerns', severity: 'critical', treatmentCostPerWeek: 1000, recoveryWeeks: 52 }
+]
+
+// ============================================
+// HOBBY & STAFF TEMPLATES
+// ============================================
+
+export const HOBBY_TEMPLATES: Record<HobbyType, {
+  type: HobbyType
+  name: string
+  description: string
+  annualCost: number
+  initialInvestment: number
+  equipmentTier: EquipmentTier
+}> = {
+  golf: { type: 'golf', name: 'Golf', description: 'Club memberships, green fees, lessons, and equipment — a classic networking pastime', annualCost: 12000, initialInvestment: 8000, equipmentTier: 'starter' },
+  sim_racing: { type: 'sim_racing', name: 'Sim Racing', description: 'High-end rig, software subscriptions, and online league fees to stay race-sharp', annualCost: 5000, initialInvestment: 12000, equipmentTier: 'starter' },
+  fitness: { type: 'fitness', name: 'Fitness', description: 'Personal training sessions, premium gym access, supplements, and recovery gear', annualCost: 4000, initialInvestment: 2000, equipmentTier: 'starter' },
+  flying: { type: 'flying', name: 'Flying', description: 'PPL licence training, aircraft rental, fuel, and hangar fees — the ultimate freedom', annualCost: 35000, initialInvestment: 15000, equipmentTier: 'starter' },
+  sailing: { type: 'sailing', name: 'Sailing', description: 'Yacht club dues, boat maintenance, crew, and regatta entry fees', annualCost: 28000, initialInvestment: 20000, equipmentTier: 'starter' },
+  photography: { type: 'photography', name: 'Photography', description: 'Pro camera bodies, lenses, editing software, studio time, and travel shoots', annualCost: 6000, initialInvestment: 5000, equipmentTier: 'starter' },
+  cooking: { type: 'cooking', name: 'Cooking', description: 'Premium ingredients, cooking classes with chefs, specialty equipment and wine pairing courses', annualCost: 3500, initialInvestment: 3000, equipmentTier: 'starter' },
+  music: { type: 'music', name: 'Music', description: 'Instruments, private lessons, studio recording time, and concert tickets', annualCost: 8000, initialInvestment: 6000, equipmentTier: 'starter' },
+  art: { type: 'art', name: 'Art', description: 'Studio rental, premium materials, gallery visits, and masterclass workshops', annualCost: 7000, initialInvestment: 4000, equipmentTier: 'starter' },
+  charity_work: { type: 'charity_work', name: 'Charity Work', description: 'Donations, fundraiser attendance, gala tables, and foundation administration', annualCost: 25000, initialInvestment: 10000, equipmentTier: 'starter' }
+}
+
+export const STAFF_TEMPLATES: Record<StaffRole, {
+  role: StaffRole
+  title: string
+  baseSalary: number
+  benefits: string[]
+}> = {
+  personal_assistant: { role: 'personal_assistant', title: 'Personal Assistant', baseSalary: 55000, benefits: ['Schedule management', 'Travel booking', 'Email filtering'] },
+  chef: { role: 'chef', title: 'Personal Chef', baseSalary: 85000, benefits: ['Custom nutrition plans', 'Daily meal prep', 'Dinner parties'] },
+  fitness_trainer: { role: 'fitness_trainer', title: 'Fitness Trainer', baseSalary: 65000, benefits: ['Custom workouts', 'Recovery protocols', 'Race-day prep'] },
+  driver: { role: 'driver', title: 'Personal Driver', baseSalary: 48000, benefits: ['Airport transfers', 'Event transport', 'Errand running'] },
+  bodyguard: { role: 'bodyguard', title: 'Bodyguard', baseSalary: 95000, benefits: ['Event security', 'Travel protection', 'Threat assessment'] },
+  nanny: { role: 'nanny', title: 'Nanny', baseSalary: 52000, benefits: ['Childcare', 'Education support', 'School runs'] },
+  estate_manager: { role: 'estate_manager', title: 'Estate Manager', baseSalary: 75000, benefits: ['Property maintenance', 'Staff coordination', 'Vendor management'] },
+  publicist: { role: 'publicist', title: 'Publicist', baseSalary: 120000, benefits: ['Media management', 'Brand building', 'Crisis comms', 'Interview coaching'] }
+}
+
+// Re-export from lifestyle-activities-config for convenience
+export { HOBBY_ACTIVITY_CONFIG } from './lifestyle-activities-config'
+
+// ============================================
+// VEHICLE CATALOG
+// ============================================
+
+export const VEHICLE_CATALOG: Array<{
+  brand: string
+  model: string
+  type: string
+  basePrice: number
+  prestige: number
+  enjoyment: number
+  collectible?: boolean
+}> = [
+  // Starter / affordable vehicles
+  { brand: 'BMW', model: '3 Series', type: 'luxury_sedan', basePrice: 45000, prestige: 25, enjoyment: 55 },
+  { brand: 'Mercedes', model: 'S-Class', type: 'luxury_sedan', basePrice: 110000, prestige: 60, enjoyment: 60 },
+  { brand: 'Porsche', model: '911 Carrera', type: 'sports', basePrice: 120000, prestige: 65, enjoyment: 85 },
+  { brand: 'BMW', model: 'M4', type: 'sports', basePrice: 75000, prestige: 45, enjoyment: 76 },
+  { brand: 'Range Rover', model: 'Sport', type: 'suv', basePrice: 85000, prestige: 48, enjoyment: 55 },
+  // Entry-level sports
+  { brand: 'Mazda', model: 'MX-5 Miata', type: 'sports', basePrice: 35000, prestige: 15, enjoyment: 70 },
+  { brand: 'Toyota', model: 'GR86', type: 'sports', basePrice: 32000, prestige: 12, enjoyment: 72 },
+  { brand: 'Ford', model: 'Mustang GT', type: 'sports', basePrice: 55000, prestige: 25, enjoyment: 74 },
+  { brand: 'Chevrolet', model: 'Corvette Stingray', type: 'sports', basePrice: 70000, prestige: 40, enjoyment: 80 },
+  // Mid-range sports
+  { brand: 'Porsche', model: 'Cayman GTS', type: 'sports', basePrice: 95000, prestige: 55, enjoyment: 84 },
+  { brand: 'BMW', model: 'M4 CSL', type: 'sports', basePrice: 140000, prestige: 65, enjoyment: 78 },
+  { brand: 'Mercedes', model: 'AMG GT', type: 'sports', basePrice: 165000, prestige: 70, enjoyment: 82 },
+  { brand: 'Porsche', model: '911 GT3', type: 'sports', basePrice: 195000, prestige: 78, enjoyment: 92 },
+  // Grand tourers
+  { brand: 'Aston Martin', model: 'Vantage', type: 'grand_tourer', basePrice: 195000, prestige: 80, enjoyment: 80 },
+  { brand: 'Bentley', model: 'Continental GT', type: 'grand_tourer', basePrice: 260000, prestige: 85, enjoyment: 78 },
+  { brand: 'Ferrari', model: 'Roma', type: 'grand_tourer', basePrice: 275000, prestige: 88, enjoyment: 85 },
+  { brand: 'Aston Martin', model: 'DB12', type: 'grand_tourer', basePrice: 245000, prestige: 82, enjoyment: 82 },
+  // Supercars
+  { brand: 'Audi', model: 'R8 V10', type: 'supercar', basePrice: 210000, prestige: 78, enjoyment: 85 },
+  { brand: 'Lamborghini', model: 'Huracán EVO', type: 'supercar', basePrice: 290000, prestige: 90, enjoyment: 93 },
+  { brand: 'McLaren', model: '720S', type: 'supercar', basePrice: 320000, prestige: 88, enjoyment: 94 },
+  { brand: 'Ferrari', model: '296 GTB', type: 'supercar', basePrice: 370000, prestige: 92, enjoyment: 95 },
+  { brand: 'Lamborghini', model: 'Revuelto', type: 'supercar', basePrice: 620000, prestige: 94, enjoyment: 96 },
+  { brand: 'Ferrari', model: 'SF90 Stradale', type: 'supercar', basePrice: 560000, prestige: 95, enjoyment: 96 },
+  { brand: 'Ford', model: 'GT', type: 'supercar', basePrice: 500000, prestige: 85, enjoyment: 88, collectible: true },
+  // Hypercars
+  { brand: 'McLaren', model: 'Speedtail', type: 'hypercar', basePrice: 2100000, prestige: 96, enjoyment: 95, collectible: true },
+  { brand: 'Pagani', model: 'Huayra', type: 'hypercar', basePrice: 2800000, prestige: 98, enjoyment: 97, collectible: true },
+  { brand: 'Bugatti', model: 'Chiron', type: 'hypercar', basePrice: 3200000, prestige: 99, enjoyment: 96, collectible: true },
+  { brand: 'Koenigsegg', model: 'Jesko', type: 'hypercar', basePrice: 3500000, prestige: 99, enjoyment: 98, collectible: true },
+  // SUVs
+  { brand: 'Toyota', model: 'Land Cruiser', type: 'suv', basePrice: 90000, prestige: 35, enjoyment: 50 },
+  { brand: 'Porsche', model: 'Cayenne Turbo GT', type: 'suv', basePrice: 195000, prestige: 62, enjoyment: 65 },
+  { brand: 'Mercedes', model: 'G63 AMG', type: 'suv', basePrice: 185000, prestige: 72, enjoyment: 58 },
+  { brand: 'Range Rover', model: 'SV Autobiography', type: 'suv', basePrice: 215000, prestige: 68, enjoyment: 60 },
+  { brand: 'Lamborghini', model: 'Urus Performante', type: 'suv', basePrice: 280000, prestige: 82, enjoyment: 72 },
+  // Electric
+  { brand: 'Tesla', model: 'Model S Plaid', type: 'electric', basePrice: 130000, prestige: 50, enjoyment: 75 },
+  { brand: 'Porsche', model: 'Taycan Turbo S', type: 'electric', basePrice: 200000, prestige: 68, enjoyment: 82 },
+  { brand: 'Rimac', model: 'Nevera', type: 'electric', basePrice: 2400000, prestige: 95, enjoyment: 97, collectible: true },
+  // Luxury
+  { brand: 'Rolls-Royce', model: 'Ghost', type: 'luxury', basePrice: 370000, prestige: 95, enjoyment: 68 },
+  { brand: 'Rolls-Royce', model: 'Phantom', type: 'luxury', basePrice: 520000, prestige: 98, enjoyment: 70 },
+  { brand: 'Maybach', model: 'S680', type: 'luxury', basePrice: 240000, prestige: 88, enjoyment: 62 },
+  // Classics
+  { brand: 'Porsche', model: '959', type: 'classic', basePrice: 1500000, prestige: 88, enjoyment: 75, collectible: true },
+  { brand: 'Ferrari', model: '288 GTO', type: 'classic', basePrice: 3500000, prestige: 94, enjoyment: 78, collectible: true },
+  { brand: 'Shelby', model: 'Cobra 427', type: 'classic', basePrice: 4500000, prestige: 92, enjoyment: 72, collectible: true },
+  { brand: 'Mercedes', model: '300SL Gullwing', type: 'classic', basePrice: 2200000, prestige: 96, enjoyment: 65, collectible: true },
+  { brand: 'Ferrari', model: '250 GTO', type: 'classic', basePrice: 52000000, prestige: 100, enjoyment: 60, collectible: true }
+]

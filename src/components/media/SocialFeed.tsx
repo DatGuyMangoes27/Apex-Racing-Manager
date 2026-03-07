@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   Heart, MessageCircle, Share2, Flame, 
-  ChevronDown, ChevronUp, AlertTriangle
+  ChevronDown, ChevronUp, AlertTriangle, TrendingUp, TrendingDown
 } from 'lucide-react'
 import { Card, CardHeader, Badge } from '@/components/ui'
 import { SocialPost, MediaTone } from '@/store/careerStore'
@@ -114,6 +114,17 @@ export function SocialFeed({ posts, playerName, maxInitialDisplay = 5 }: SocialF
               </div>
             </div>
             
+            {/* Post Image */}
+            {post.imageDataUrl && (
+              <div className="mb-3 -mx-4 overflow-hidden">
+                <img 
+                  src={post.imageDataUrl} 
+                  alt={`${post.type.replace(/_/g, ' ')} post`}
+                  className="w-full aspect-video object-cover"
+                />
+              </div>
+            )}
+            
             {/* Content */}
             <p className="text-text-secondary text-sm mb-3">{post.content}</p>
             
@@ -131,6 +142,12 @@ export function SocialFeed({ posts, playerName, maxInitialDisplay = 5 }: SocialF
                 <Share2 className="w-4 h-4 text-text-muted" />
                 <span className="font-mono">{formatNumber(post.engagement.shares)}</span>
               </div>
+              {post.followerGain != null && post.followerGain !== 0 && (
+                <div className={`flex items-center gap-2 text-sm ${post.followerGain > 0 ? 'text-status-success' : 'text-status-error'}`}>
+                  {post.followerGain > 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                  <span className="font-mono">{post.followerGain > 0 ? '+' : ''}{formatNumber(post.followerGain)}</span>
+                </div>
+              )}
             </div>
             
             {/* Sample Reactions (show top 2) */}
@@ -181,8 +198,6 @@ export function SocialFeed({ posts, playerName, maxInitialDisplay = 5 }: SocialF
 }
 
 function formatNumber(num: number): string {
-  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
-  if (num >= 1000) return `${(num / 1000).toFixed(1)}k`
   return num.toLocaleString()
 }
 

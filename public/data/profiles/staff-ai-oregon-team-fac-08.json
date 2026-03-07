@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Milena Petrović",
+    "nationality": "Serbian",
+    "age": 42,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Milena Petrović's fascination with aerodynamics began during her childhood in Belgrade, where she spent countless hours building and testing model airplanes. After earning a degree in mechanical engineering from the University of Belgrade, she pursued her passion for motorsport by specializing in wind tunnel testing. Her early career involved stints at smaller racing teams, where she honed her skills in data analysis and model optimization. \n\nMilena joined Oregon Team five years ago and has since become an indispensable part of their aerodynamic development program. Known for her meticulous approach and unwavering commitment to accuracy, she relentlessly seeks to extract every last drop of performance from the wind tunnel data. She believes in a data-driven approach and is not afraid to challenge conventional wisdom, often suggesting innovative testing methodologies that have yielded significant improvements in the team's car designs. Her demanding personality pushes the team to always strive for the best results.\n\nWhat sets Milena apart is her ability to translate complex aerodynamic data into actionable insights for the engineers. She has a knack for identifying subtle flow characteristics that others might miss, and her recommendations have been instrumental in optimizing the car's downforce and drag characteristics. She is also deeply committed to nurturing the next generation of aerodynamicists, mentoring junior engineers and sharing her vast knowledge with them.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, neatly styled with a slight wave.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Milena is of average height with a serious and focused expression."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Insists on perfect order and cleanliness in the wind tunnel lab.",
+      "Always carries a small notebook filled with handwritten notes and calculations.",
+      "Has a habit of tapping her pen against the table when deep in thought."
+    ]
+  }
+]

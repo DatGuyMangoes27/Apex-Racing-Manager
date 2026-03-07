@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "French",
+  "age": 24,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Thierry's journey into motorsport began with a childhood fascination for racing games and a knack for solving computer problems. He initially honed his skills building custom gaming rigs, which led to a deep understanding of hardware and software optimization. He studied computer science at the École Polytechnique, specializing in network infrastructure and data security.\n\nHe joined Elite Motorsport after showcasing his skills in a university project that involved analyzing race telemetry data to predict mechanical failures. Thierry's approach to IT systems management is proactive and forward-thinking, always seeking to improve efficiency and security. He's known for his ability to bridge the gap between the technical and racing teams, ensuring seamless communication and data flow during crucial moments.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted to the side",
+    "eyeColor": "brown",
+    "facialHair": "short boxed beard",
+    "description": "Thierry is of average height with a focused, intellectual gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a habit of tapping his fingers on the desk when concentrating.",
+    "Drinks copious amounts of espresso throughout the day."
+  ]
+}

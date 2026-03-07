@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Brazilian",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo Oliveira's journey in motorsport began in his youth, fueled by a passion for engineering and the roar of engines at Interlagos. After graduating with a degree in mechanical engineering, he cut his teeth working with local racing teams, quickly establishing a reputation for his meticulous data analysis and innovative problem-solving. He has since worked for several prominent racing teams, contributing to numerous podium finishes and championship wins.\n\nRicardo's approach to performance engineering is rooted in a deep understanding of vehicle dynamics and a relentless pursuit of marginal gains. He is known for his ability to extract the maximum potential from a car through precise adjustments and optimizations. A demanding personality pushes him to get the most out of his team and the equipment. Ricardo believes in a data-driven approach, combined with intuitive understanding of the car's behavior on track. \n\nWhat sets Ricardo apart is his knack for identifying underlying mechanical issues that others often overlook. His experience and meticulous nature make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Graying goatee",
+    "description": "Ricardo is a stocky man with a focused gaze and a perpetual air of intensity."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses modern software.",
+    "Insists on having a specific brand of Brazilian coffee during race weekends.",
+    "Repeatedly adjusts his glasses while reviewing telemetry data, even if they are perfectly positioned."
+  ]
+}

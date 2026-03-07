@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 47,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Wei Zhang's motorsport journey began with a childhood fascination for karting, fueled by watching local races near his hometown. He pursued a degree in mechanical engineering, leading to roles in vehicle dynamics and simulation at various racing teams. Wei's pragmatic approach focuses on data-driven decision-making and optimizing car setups for diverse track conditions.\n\nBefore joining Sprint Masters, Wei spent several years as a race engineer, known for his meticulous planning and ability to extract maximum performance from drivers. He transitioned to a sporting director role, bringing his expertise in vehicle dynamics and race strategy. Wei's distinctive approach involves fostering a collaborative environment where engineers and drivers work together, ensuring optimal communication and seamless execution during races.\n\nHis relentless focus on data analysis and his experience in race engineering have allowed him to effectively enhance the team's vehicle setups and improve communication between engineers and drivers, resulting in improved performance during races.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Thin mustache",
+    "description": "Wei is of average height, with a focused expression and a slightly weathered face."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out notebook filled with handwritten track notes.",
+    "Insists on having a cup of green tea precisely 30 minutes before each race.",
+    "Paces back and forth while reviewing race data, muttering calculations under his breath."
+  ]
+}

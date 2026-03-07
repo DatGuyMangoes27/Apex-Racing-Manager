@@ -1,0 +1,31 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 50,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Isabela Oliveira is one of Brazil's most celebrated actresses, known for her captivating performances in both film and television. With a career spanning over three decades, she's garnered numerous awards and critical acclaim. Beyond her professional success, Isabela is recognized for her outspoken views on social issues and her unwavering support for emerging Brazilian talent. She can come across as demanding and very direct, but those who know her well appreciate her underlying generosity and loyalty. \n\nDespite her primary focus on acting, Isabela has always been fascinated by motorsport. She's been spotted at several Formula 1 races, often as a guest of sponsors or drivers. Her connection to the racing world has grown stronger in recent years, as she has started taking part in promotional campaigns for companies involved in motorsport and even starred in a documentary about the history of Brazilian racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Isabela possesses a striking presence with her warm smile and expressive eyes. She carries herself with an elegant confidence, often adorned in fashionable and colorful outfits."
+  },
+  "connectionToMotorsport": "Isabela is a motorsport enthusiast who attends races and participates in promotional activities for racing-related brands. She also starred in a documentary about Brazilian racing history.",
+  "meetingContext": "The player might meet Isabela at a Formula 1 event in São Paulo, either at a sponsor's party or through a mutual acquaintance within the racing community.",
+  "conversationTopics": [
+    "The state of Brazilian cinema",
+    "Her philanthropic work",
+    "The latest opera production in Rio de Janeiro",
+    "The excitement and danger of Formula 1",
+    "Yoga and wellness"
+  ],
+  "canHelp": [
+    "Introduce the player to high-profile sponsors and investors.",
+    "Offer media training and public speaking coaching.",
+    "Provide access to exclusive events and networking opportunities within the entertainment and business worlds."
+  ],
+  "personality_summary": "A celebrated Brazilian actress with a strong personality and a passion for motorsport."
+}

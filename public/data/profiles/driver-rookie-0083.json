@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Thomas, born in the bustling streets of Medellín, Colombia, didn't grow up with a silver spoon. His introduction to racing wasn't through karting academies, but through the dangerous, unofficial street races that snaked through the city's back alleys. It was raw, visceral, and illegal – but it ignited a fire in him. At 14, after narrowly avoiding serious consequences from one such race, a local mechanic, recognizing his raw talent, pooled together his savings to buy Marco a beat-up kart and get him into a legitimate regional series. His aggressive style and fearless overtaking quickly made him a sensation. Now, at 16, Marco races independently, funded by small sponsorships and the unwavering support of his community. His rapid ascent has caught the attention of a few junior formula teams, but he remains fiercely independent, determined to prove that talent can triumph over privilege.",
+  "drivingStyle": "Marco's driving style is a reflection of his street racing origins: aggressive, opportunistic, and borderline reckless. He's known for late-braking maneuvers that often leave opponents scrambling and a willingness to take risks where others wouldn't dare. Tire management isn't exactly his forte; he prefers to push hard from the start, relying on raw speed and instinct rather than calculated strategy. Under pressure, he tends to thrive, often pulling off spectacular overtakes when the stakes are highest, although this can also lead to costly mistakes.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "Rossi, a product of a prestigious racing academy, represents everything Marco is not: polished, calculated, and privileged. Their contrasting backgrounds and racing styles often clash on the track, leading to intense battles for position."
+    },
+    {
+      "name": "Isabella Flores",
+      "reason": "Flores and Thomas have a fierce but respectful rivalry. Both are equally aggressive on track and have traded paint on more than one occasion while battling for podium finishes. There is a mutual admiration for each other's talent, but neither is willing to give an inch."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Tanaka is known for his precision and methodical approach, a stark contrast to Marco's impulsive style. Their races are often a battle of strategy versus raw speed, and their personalities often clash off the track, with Marco viewing Kenji as boring and Kenji considering Marco irresponsible."
+    }
+  ],
+  "quirks": [
+    "Always wears a small, hand-painted charm of a hummingbird on his racing suit, a gift from his grandmother.",
+    "Listens to a specific salsa song before every race to calm his nerves and remind him of home.",
+    "Refuses to wash his racing gloves during a race weekend if he achieves a podium."
+  ],
+  "nickname": "El Relámpago (The Lightning)",
+  "famousQuote": "\"Racing isn't about money or pedigree; it's about heart and guts. If you ain't got the fire, you ain't got nothin'.\"",
+  "careerHighlight": "Winning the Regional Karting Championship in his first full season, beating several established academy drivers and proving that raw talent can overcome financial disadvantages.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a major junior formula race due to an overambitious overtake, costing him a potential contract with a top team."
+}

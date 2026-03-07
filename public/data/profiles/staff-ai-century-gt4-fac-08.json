@@ -1,0 +1,22 @@
+{
+  "name": "Elif Demir",
+  "nationality": "Turkish",
+  "age": 30,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Elif's journey into motorsport began with a childhood fascination with aerodynamics, sparked by observing the curves of airplanes taking off near her family's home. She pursued a degree in Mechanical Engineering, specializing in fluid dynamics, and quickly found her niche in wind tunnel operations. Her dedication and meticulous approach to data analysis caught the attention of Century Motorsport, where she now plays a crucial role in optimizing vehicle performance. Elif believes in pushing the boundaries of simulation, constantly seeking innovative ways to improve correlation between virtual models and real-world results.\n\nAt Century Motorsport, Elif is highly valued for her ability to identify subtle anomalies in airflow patterns that others might miss. She's a dedicated member of the team and her strong analytical skills and deep understanding of aerodynamic principles make her a key asset in the team's pursuit of victory. Outside of work, she enjoys rock climbing and applying her knowledge of physics to anticipate and conquer challenges.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elif is of average height, with a focused and intelligent gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has an uncanny ability to predict wind direction based on atmospheric pressure.",
+    "Insists on calibrating all wind tunnel equipment herself before each session."
+  ]
+}

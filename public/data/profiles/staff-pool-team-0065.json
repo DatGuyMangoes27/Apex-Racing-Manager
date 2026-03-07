@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 39,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Erik Karlsson's journey into motorsport began with a childhood fascination for rally racing. Growing up in the north of Sweden, he spent countless hours tinkering with engines in his father's garage, developing a keen understanding of mechanical engineering. This passion led him to pursue a degree in automotive engineering, where he excelled in vehicle dynamics and aerodynamics.\n\nAfter graduating, Erik joined a small Formula Ford team, initially as a junior mechanic. His sharp analytical skills and proactive approach quickly propelled him through the ranks. He gained valuable experience in race strategy, data analysis, and team management. Erik believes in fostering a collaborative and supportive environment where every team member feels empowered to contribute their best work. His meticulous attention to detail, coupled with his ability to inspire those around him, makes him a respected figure in the paddock.\n\nErik's distinctiveness lies in his hands-on approach. Unlike some principals who prefer to delegate, he maintains a close involvement in technical aspects, often spending time in the garage observing and offering insights. His loyalty to his team is unwavering, and he is known for his commitment to nurturing young talent.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Erik has a lean build and a focused gaze, reflecting his analytical mind."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Swedish coffee during race weekends."
+  ]
+}

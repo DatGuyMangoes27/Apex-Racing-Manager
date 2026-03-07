@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0015",
+  "name": "Kestavyys Composites",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Finland",
+  "description": "Engineered for endurance, built for victory.",
+  "story": "Kestavyys Composites specializes in high-performance composite materials for motorsport applications. Founded by Finnish rally enthusiasts, Kestavyys understands the demands of competitive racing and seeks partnerships that showcase the durability and performance advantages of their products. They aim to enhance brand recognition in global motorsport through successful collaborations.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "Finland"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0015.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 42,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's fascination with motorsport began during his childhood summers spent near the Le Mans circuit. Inspired by the raw power and intricate engineering, he pursued a degree in Aerospace Engineering from École Polytechnique, focusing on aerodynamics. After graduating, he started his career at a smaller racing outfit, quickly proving his worth with innovative downforce solutions that significantly improved their car's performance. His dedication and analytical skills led him to ProSport Racing, where he now heads the aerodynamics department.\n\nJean-Pierre is known for his meticulous approach and his ability to translate complex data into practical improvements. He believes that the key to success in motorsport aerodynamics is a deep understanding of fluid dynamics combined with a relentless pursuit of marginal gains. He fosters a collaborative environment within his team, encouraging open communication and creative problem-solving. He is determined to elevate ProSport Racing's aerodynamic capabilities to new heights, pushing the boundaries of what's possible on the track.\n\nWhat sets Jean-Pierre apart is his ability to see the big picture while remaining focused on the smallest details. He is not afraid to challenge conventional thinking and is always seeking new ways to optimize performance. He is a demanding leader, but his passion for the sport and his commitment to excellence inspire those around him.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A man of average height with a serious, focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on having his coffee brewed with exactly 8 grams of coffee grounds, no more, no less."
+  ]
+}

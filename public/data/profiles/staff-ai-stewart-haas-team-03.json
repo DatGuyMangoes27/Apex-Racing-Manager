@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Costa",
+  "nationality": "Portuguese",
+  "age": 38,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Rafael Costa's journey in motorsport began with a fascination for aerodynamics, sparked by watching Formula 1 races as a child. He pursued mechanical engineering at the University of Lisbon, specializing in fluid dynamics. After graduating, he joined a small Portuguese racing team, where he honed his skills in CFD analysis and wind tunnel testing, quickly rising through the ranks to lead their aero department. \n\nHis pragmatic approach to problem-solving, combined with his innovative ideas, caught the attention of Stewart-Haas Racing, who recruited him to head their aerodynamics division. Rafael emphasizes data-driven decisions and collaborative teamwork. He believes in constantly pushing the boundaries of aero development while maintaining a laser focus on real-world performance gains on the track. His ability to translate complex data into actionable strategies is what sets him apart.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Rafael has a focused intensity in his gaze, coupled with a calm demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Insists on having a specific type of Portuguese coffee before any major race.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

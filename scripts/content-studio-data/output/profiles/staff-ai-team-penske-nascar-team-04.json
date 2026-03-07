@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Davies",
+  "nationality": "Welsh",
+  "age": 30,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Rhys's passion for motorsport ignited during his childhood, spent tinkering with engines alongside his grandfather in their small garage in the Welsh valleys. This hands-on experience led him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. His professional journey began with a Formula Ford team before transitioning to IndyCar, where he quickly gained a reputation for his meticulous data analysis and ability to fine-tune car setups for optimal performance. \n\nRhys is known for his detail-oriented approach and his unwavering pursuit of perfection. He's a firm believer in the power of data to unlock performance, and he constantly seeks innovative solutions to push the boundaries of what's possible on the track. While his demanding nature can sometimes ruffle feathers, his commitment to winning is undeniable, making him a valuable asset to any team. He joined Team Penske eager for more success in a competitive environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Rhys is of average height with a lean build, often seen sporting a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations, even during meetings.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Welsh tea before every race."
+  ]
+}

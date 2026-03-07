@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Dimitrios Papadopoulos",
+    "nationality": "Greek",
+    "age": 52,
+    "gender": "male",
+    "role": "it_systems_manager",
+    "bio": "Dimitrios began his career in IT during the dot-com boom, quickly gaining expertise in network infrastructure and security. His passion for motorsport began in his youth, attending local rallies and dreaming of combining his technical skills with his love for racing. After years in the corporate world, he made the leap to motorsport, initially volunteering his IT expertise at smaller racing teams.\n\nHe approaches IT management with a focus on reliability and security, understanding that even minor technical glitches can have major consequences on the track. Dimitrios is known for his meticulous approach to data management and cybersecurity, ensuring that sensitive team information remains protected. His blend of old-school IT principles and a deep love for motorsport makes him a valuable asset, albeit a demanding one when it comes to system performance and uptime.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back with a slight receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed salt and pepper goatee",
+      "description": "Dimitrios is a man of medium build with a serious demeanor etched onto his face."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Insists on using a physical keyboard, even when a laptop is available.",
+      "Always carries a small worry stone in his pocket.",
+      "Has a collection of vintage racing posters in his office, meticulously organized by year."
+    ]
+  }
+]

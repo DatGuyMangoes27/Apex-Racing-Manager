@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 32,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mads' fascination with motorsport began as a child, watching Formula 1 races with his grandfather. This passion led him to pursue a degree in mechanical engineering, specializing in aerodynamics. After graduating, he secured an internship at a smaller racing team, where he quickly proved his aptitude for data analysis and wind tunnel testing. He's been with Signature Racing for five years, steadily improving his skills and becoming a crucial part of the team's aerodynamic development program.\n\nMads is known for his meticulous approach to data collection and analysis. He believes in a collaborative approach, working closely with the aerodynamicists and engineers to translate wind tunnel results into tangible improvements on the track. He's also adept at identifying subtle nuances in airflow patterns, often spotting potential issues that others might miss. His dedication and ability to adapt to changing priorities make him a valuable asset to Signature Racing, even if he sometimes gets overly focused on minor details.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Mads is a lean man of average height, with a focused expression that hints at his analytical mind."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a small, well-worn notebook filled with diagrams and calculations.",
+    "Prefers to listen to classical music while working in the wind tunnel to maintain focus.",
+    "Has a habit of tapping his pen against the desk when deep in thought."
+  ]
+}

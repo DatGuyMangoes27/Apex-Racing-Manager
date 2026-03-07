@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Trudeau",
+  "nationality": "Canadian",
+  "age": 60,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jean-Pierre's motorsport journey began in the snowy backroads of Quebec, tinkering with engines to gain a competitive edge in local rallycross events. He quickly developed a knack for problem-solving and optimization, leading him to pursue a degree in mechanical engineering. After graduation, he worked his way up through the ranks of various racing teams, specializing in engine performance and chassis dynamics.\n\nHe joined Tolman Motorsport fifteen years ago, drawn by their commitment to innovation and their underdog spirit. Jean-Pierre is known for his meticulous approach to data analysis and his ability to quickly identify and address mechanical issues. He believes in empowering his team members and fostering a collaborative environment where everyone feels comfortable sharing their ideas. His deep understanding of vehicle dynamics and his relentless pursuit of perfection have made him an invaluable asset to the team.\n\nWhat sets Jean-Pierre apart is his old-school approach blended with modern techniques. He's just as comfortable using a slide rule as he is analyzing telemetry data. This unique blend allows him to approach problems from multiple angles, often leading to innovative solutions that others might miss.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed grey beard",
+    "description": "Jean-Pierre is a man of medium build with a thoughtful expression etched on his face."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using metric units for everything, even when dealing with legacy parts."
+  ]
+}

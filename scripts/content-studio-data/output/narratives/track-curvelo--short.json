@@ -1,0 +1,56 @@
+{
+  "history": "Circuito dos Cristais, also known as Curvelo, is a permanent motorsport facility located in Curvelo, Minas Gerais, Brazil. Opened in 2016, it was designed to become a significant hub for Brazilian motorsports, hosting a variety of national racing series and events. The full circuit is the primary layout, but the shorter 1.8km configuration provides a challenging alternative for smaller championships and track days. While the national-level series tend to favor the longer configuration, the 'Short Circuit' layout sees regular use for regional competitions, driving schools, and manufacturer testing, offering a condensed and intense racing experience.",
+  "atmosphere": "Standing on the banks of the Short Circuit at Curvelo during a race is a sensory overload. The roar of engines echoes off the surrounding hills, intensified by the compact nature of the layout. The shorter straights mean the cars are constantly accelerating and braking, creating a frenetic energy. The scent of burning rubber and high-octane fuel hangs heavy in the air, mingling with the cheers and shouts of the passionate Brazilian fans gathered around the track.",
+  "trackCharacter": "The Short Circuit at Curvelo is a relentless test of a driver's ability to manage momentum and maintain a strong rhythm. With just six corners, it's a layout that emphasizes precise braking and maximizing corner exit speed. Its compact nature means there's little room for error, and any mistake is immediately punished. Unlike the longer, more flowing full circuit, the Short Circuit demands aggressive driving and rewards those who can string together a series of perfectly executed corners.",
+  "nickname": "The Squeeze",
+  "famousCorners": [
+    {
+      "name": "Curva 1",
+      "description": "The first corner is a fast right-hander, immediately testing the driver's commitment and car's stability.",
+      "challenge": "Requires a precise turn-in point and delicate throttle control to avoid running wide on exit."
+    },
+    {
+      "name": "Curva 2",
+      "description": "A quick left-hand kink that follows immediately after the first turn. It helps set the tone for the rest of the lap.",
+      "challenge": "Maintaining speed through the slight bend is crucial for carrying momentum onto the following straight."
+    },
+    {
+      "name": "Curva 3",
+      "description": "A tighter right-hand corner. A key spot for overtaking.",
+      "challenge": "Demands precise braking and a well-timed apex to maximize exit speed onto the back straight."
+    },
+    {
+      "name": "Curva 6",
+      "description": "The final corner is a medium-speed right-hander that leads onto the start/finish straight.",
+      "challenge": "Getting a good exit is crucial for maximizing speed down the main straight and setting up an overtaking opportunity into Turn 1 on the next lap."
+    }
+  ],
+  "keyFactors": [
+    "Braking precision",
+    "Corner exit speed",
+    "Momentum management",
+    "Aggressive driving style",
+    "Tire management (due to the constant acceleration and braking)"
+  ],
+  "overtakingSpots": [
+    "Turn 1 (into the first corner)",
+    "Turn 3 (after the back straight)",
+    "Into Turn 6 (final corner)"
+  ],
+  "historySnippets": [
+    "Circuito dos Cristais opened in 2016.",
+    "The venue is located in Curvelo, Minas Gerais.",
+    "The circuit was designed to boost motorsports in the Minas Gerais region.",
+    "The Short Circuit configuration is 1.8km long.",
+    "Curvelo has hosted national-level racing series.",
+    "The venue hosts driver training events."
+  ],
+  "weatherNotes": "Curvelo experiences a tropical climate, with hot and humid summers and mild winters. Rainfall is common throughout the year, and sudden downpours can dramatically affect track conditions. The high humidity can also lead to increased tire degradation.",
+  "drivingAdvice": "On the Short Circuit layout, focus on maximizing corner exit speed. The short straights mean that every tenth of a second gained out of a corner is amplified down the straight. Be aggressive on the brakes but avoid locking up, as this will ruin your corner entry and compromise your exit. Tire management is also crucial, as the constant acceleration and braking can quickly degrade your tires.",
+  "famousRaces": [
+    "Although the Short Circuit is often used for smaller series, it has hosted important regional races.",
+    "Driver training events have honed the skills of many aspiring racers.",
+    "Manufacturer testing has allowed for optimizing vehicle performance."
+  ],
+  "localCulture": "Curvelo is a historic city in Minas Gerais, known for its colonial architecture and strong agricultural traditions. The local cuisine is rich and hearty, featuring dishes like *pão de queijo* (cheese bread) and *feijão tropeiro* (bean stew). The paddock atmosphere at Curvelo is friendly and welcoming, with a strong sense of community among the teams and drivers. The locals are passionate about motorsports and eager to share their enthusiasm with visitors."
+}

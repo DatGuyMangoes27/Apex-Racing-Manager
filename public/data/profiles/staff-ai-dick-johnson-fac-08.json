@@ -1,0 +1,22 @@
+{
+  "name": "Olivia Rodriguez",
+  "nationality": "American",
+  "age": 34,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Olivia's journey into motorsport began with a childhood fascination for aerodynamics, fueled by countless hours spent building and testing model airplanes. This passion led her to pursue a degree in aerospace engineering, where she honed her skills in fluid dynamics and wind tunnel testing. After graduating, Olivia gained valuable experience at a smaller racing outfit before joining Dick Johnson Racing, where she's now a key part of the team.\n\nAs a wind tunnel operator, Olivia is meticulous and precise, always striving for the most accurate and reliable data. She believes that the devil is in the details and leaves no stone unturned in her quest for aerodynamic optimization. Olivia is constantly exploring new techniques and technologies to improve the team's performance on the track, pushing the boundaries of what's possible. Her demanding nature ensures that standards are kept high and the car is always the best it can be. Her ability to translate complex data into actionable recommendations for the engineers makes her invaluable to the team.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "dark brown",
+    "hairStyle": "long, wavy hair usually pulled back in a high ponytail",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Olivia is of average height with an athletic build from years of competitive swimming."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a lucky charm – a miniature wind turbine – on her desk.",
+    "Insists on precisely calibrating the wind tunnel equipment before each test session."
+  ]
+}

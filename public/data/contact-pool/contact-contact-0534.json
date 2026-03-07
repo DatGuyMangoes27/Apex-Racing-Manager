@@ -1,0 +1,31 @@
+{
+  "name": "Brigadier General Diane Dubois",
+  "nationality": "Canadian",
+  "age": 61,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Brigadier General Diane Dubois is a highly decorated officer in the Canadian Armed Forces, known for her meticulous planning and unwavering dedication to excellence. Rising through the ranks from a signals officer to a leadership position overseeing logistics and resource allocation, she has a reputation for efficiency and a keen eye for talent. While appearing generous and thoughtful, she is known for leveraging her connections for personal gain and manipulating individuals to achieve her goals. Her love for motorsport stems from her belief that racing teams represent the pinnacle of high-performance teamwork and strategic decision-making under extreme pressure. A racing driver might cross paths with her through military sponsorship opportunities or at high-profile motorsport events she frequents as a VIP guest, often scouting for potential future collaborations.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Diane is a commanding presence, standing tall with a posture that reflects her military background. Her sharp blue eyes convey both intelligence and a hint of calculation."
+  },
+  "connectionToMotorsport": "Brigadier General Dubois is a motorsport enthusiast who sees parallels between racing teams and military units. She is known to attend races and occasionally facilitate connections between racing teams and military-affiliated sponsors.",
+  "meetingContext": "You might meet Brigadier General Dubois at a corporate hospitality event during a Formula 1 race in Montreal or at a charity gala benefiting military veterans. She could also be a guest speaker at a leadership seminar you are attending.",
+  "conversationTopics": [
+    "Military strategy and leadership",
+    "The importance of teamwork and precision",
+    "Current events and geopolitics",
+    "Her love for opera",
+    "The parallels between motorsport and military operations"
+  ],
+  "canHelp": [
+    "Secure sponsorship from military-affiliated organizations",
+    "Provide access to valuable networking opportunities within the business and government sectors",
+    "Offer leadership and strategic planning advice"
+  ],
+  "personality_summary": "A perfectionist military officer with a generous facade masking a manipulative nature."
+}

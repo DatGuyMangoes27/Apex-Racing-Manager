@@ -1,0 +1,22 @@
+{
+  "name": "Deniz Yilmaz",
+  "nationality": "Turkish",
+  "age": 31,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Deniz Yilmaz discovered his passion for motorsport early, spending countless hours tinkering with go-karts in his youth. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and aerodynamics. His career began with a small Formula Ford team, where he quickly gained experience in data analysis and trackside problem-solving. Deniz's methodical approach and keen eye for detail earned him a reputation for optimizing car setups and improving driver performance.\n\nHe joined Target Racing three years ago, bringing a blend of technical expertise and a demanding approach to his work. Deniz believes in pushing the boundaries of car performance through rigorous testing and constant refinement. He is known for his ability to quickly identify and address mechanical issues, often working late into the night to ensure the car is in optimal condition. His dedication and relentless pursuit of perfection make him a valuable asset to the team, though his demanding nature can sometimes create friction.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of average height with a focused gaze and a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific type of Turkish coffee during races",
+    "Always carries a worn-out engineering textbook with him",
+    "Has a habit of tapping his pen rhythmically when analyzing data"
+  ]
+}

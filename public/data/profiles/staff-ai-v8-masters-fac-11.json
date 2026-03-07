@@ -1,0 +1,22 @@
+{
+  "name": "Daniel Dubois",
+  "nationality": "Canadian",
+  "age": 42,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Daniel's journey into motorsport began unconventionally, not on the track, but in a garage rebuilding classic cars with his father in rural Quebec. This hands-on experience ignited a passion for understanding the inner workings of vehicles, leading him to pursue a degree in mechanical engineering. After graduating, he sought a role that combined his technical knowledge with his burgeoning interest in racing, landing a position as a junior data analyst for a local racing team.\n\nOver the years, Daniel honed his skills in data analysis and strategic planning, eventually transitioning into the role of Test Driver Coordinator. He excels at analyzing driver feedback and translating it into actionable improvements for the car setup. What sets Daniel apart is his ability to build strong rapport with drivers, fostering a collaborative environment where they feel comfortable sharing even the most nuanced observations about the car's performance. He is known for his methodical approach and calm demeanor under pressure, making him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Daniel has a solid build and a friendly, approachable face."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Insists on brewing his own coffee blend every morning.",
+    "Meticulously organizes his workspace, categorizing every item by color and function."
+  ]
+}

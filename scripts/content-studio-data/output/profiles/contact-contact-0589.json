@@ -1,0 +1,31 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 32,
+  "gender": "female",
+  "contactType": "artist",
+  "bio": "Eleanor Vance is a rising star in the world of digital art and graphic design, known for her bold, vibrant style and her ability to capture the essence of speed and motion. Self-taught and fiercely independent, she's built a reputation for pushing boundaries and challenging conventional aesthetics. While her work spans various industries, she's increasingly drawn to the high-octane world of motorsport, finding inspiration in the raw energy and technological innovation. \n\nEleanor's fiery personality is evident in both her art and her interactions. She's not afraid to voice her opinions, and her judgmental streak can make her seem intimidating at first. However, beneath the surface lies a deep well of empathy and a sharp wit that can disarm even the most skeptical observer. A racing driver might cross paths with Eleanor when seeking a unique livery design for their car, a striking poster for their team, or simply through mutual connections within the creative circles that often intersect with the motorsport scene.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Fiery Red",
+    "hairStyle": "Short, choppy bob with asymmetrical bangs",
+    "eyeColor": "Emerald Green",
+    "facialHair": null,
+    "description": "Eleanor is petite but carries herself with confidence. She has a scattering of freckles across her nose and piercing green eyes that seem to see right through you."
+  },
+  "connectionToMotorsport": "Eleanor creates eye-catching livery designs for racing teams and drivers, and also designs marketing materials for various motorsport events. Her unique artistic style is gaining popularity within the racing community.",
+  "meetingContext": "The player might meet Eleanor at an art gallery showcasing motorsport-themed pieces, or through an introduction from a team manager looking to revamp their brand image.",
+  "conversationTopics": [
+    "The latest trends in digital art and design",
+    "The intersection of art and technology in motorsport",
+    "Her scuba diving adventures in exotic locations",
+    "The intricacies of music production",
+    "Her latest interior design project"
+  ],
+  "canHelp": [
+    "Design a custom livery for the player's car that stands out from the competition.",
+    "Create visually stunning marketing materials to attract sponsors and fans.",
+    "Connect the player with influential figures in the creative industry."
+  ],
+  "personality_summary": "A judgmental but empathetic artist with a fiery passion for motorsport and a sharp wit."
+}

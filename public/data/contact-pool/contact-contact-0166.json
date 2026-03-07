@@ -1,0 +1,31 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 30,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Kenji Tanaka is a celebrated cyclist, known for his aggressive racing style and multiple Grand Tour stage wins. While he's intensely competitive on the road, off it, he's known for his playful banter and surprising generosity to fellow athletes. He holds an undergraduate degree in Art History and is surprisingly knowledgeable about opera. \n\nKenji's passion for cycling extends to an appreciation for the engineering and technology behind high-performance machines, leading him to follow various motorsports closely. He's often seen at Formula 1 races and has expressed interest in the crossover between cycling aerodynamics and motorsport design. A racing driver might cross paths with Kenji at a charity event, a high-profile sporting awards ceremony, or even through mutual sponsorships.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Kenji has a lean, athletic build typical of a professional cyclist. He's often seen with a pair of designer sunglasses perched on his head."
+  },
+  "connectionToMotorsport": "Kenji is an avid follower of Formula 1 and other motorsports, drawn to the engineering and competitive spirit. He has occasionally been invited to racing events as a celebrity guest.",
+  "meetingContext": "The player might meet Kenji at a charity sports gala, a high-end cycling event sponsored by a motorsport brand, or at a fitness retreat frequented by athletes from various disciplines.",
+  "conversationTopics": [
+    "Cycling strategy and technology",
+    "Opera and classical music",
+    "The latest fashion trends",
+    "Photography techniques",
+    "Cricket scores"
+  ],
+  "canHelp": [
+    "Introduce the player to high-profile sponsors",
+    "Provide fitness and endurance training advice",
+    "Offer insights into mental toughness and competitive strategies"
+  ],
+  "personality_summary": "A playfully argumentative and generous champion cyclist with diverse interests."
+}

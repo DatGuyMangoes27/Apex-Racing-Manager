@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 42,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Mateo's motorsport journey began amidst the vibrant racing scene of Buenos Aires, where he spent his youth immersed in the roar of engines and the thrill of competition. He started as a junior mechanic, quickly proving his aptitude for technical details and strategic thinking. His dedication and keen eye for talent led to opportunities in team management, first at a national level and then internationally.\n\nAs a sporting director, Mateo is known for his meticulous planning and unwavering commitment to extracting maximum performance from his team. He believes in fostering a culture of continuous improvement and data-driven decision-making. His demanding nature is tempered by a genuine desire to see his team members succeed, making him a respected, if sometimes feared, leader. Mateo is driven by the pursuit of excellence, constantly seeking innovative approaches to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build, Mateo's serious demeanor is offset by a ready smile that appears when discussing racing."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with track data and driver notes.",
+    "Has a specific brand of mate that he insists on having before every race.",
+    "Tends to tap his pen rhythmically when deep in thought, often driving colleagues crazy."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 24,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Priya's journey into motorsport began with a childhood fascination for Formula 1, fueled by late-night races watched with her father. This passion led her to pursue a degree in mechanical engineering, where she specialized in computational fluid dynamics and vehicle dynamics. During her studies, she actively sought out opportunities to apply her knowledge, volunteering with a university racing team to optimize their simulator setup.\n\nAfter graduation, Priya honed her skills at a small automotive engineering firm, where she gained invaluable experience in data analysis and model calibration. She transitioned to motorsport when she landed a role at a simulator development company, focusing on creating realistic and immersive driving experiences. Priya's approach to simulator engineering is deeply rooted in understanding the physics behind vehicle behavior. She is particularly adept at identifying subtle nuances in driver feedback and translating them into tangible improvements in the simulation model.\n\nPriya stands out for her unique ability to bridge the gap between engineering theory and practical application. Her unwavering focus on the big picture, combined with a calm demeanor under pressure, makes her an invaluable asset to any team striving for performance gains through simulation.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Priya has a warm smile and expressive eyes, with a petite frame that belies her technical prowess."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and performance calculations",
+    "Has a habit of tapping her pen rhythmically when deeply focused on a problem",
+    "Prefers to work in a dimly lit environment to minimize distractions"
+  ]
+}

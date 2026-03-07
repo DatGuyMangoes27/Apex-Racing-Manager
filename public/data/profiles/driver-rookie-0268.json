@@ -1,0 +1,27 @@
+{
+  "biography": "Mika Jackson's story is rooted in the quiet, snow-dusted valleys of the Swiss Alps. Unlike most racers who grew up on karting tracks, Mika's first experience with speed was navigating winding mountain roads on his bicycle, a skill honed while delivering bread for his family's bakery. The precision and control required translated surprisingly well when, at age 12, he finally convinced his parents to let him try a kart. A defining moment came during a local karting championship where, despite starting last due to a mechanical issue, he carved his way through the field to finish second, showcasing an innate ability to overtake. Now at 16, Mika races as an independent, a testament to his family's commitment and his own unwavering determination. He's proving himself a formidable competitor, consistently punching above his weight against better-funded teams.",
+  "drivingStyle": "Mika's driving style is characterized by a remarkable level of composure and precision. He doesn't possess the raw aggression of some of his rivals, instead preferring a calculated approach. He excels at preserving his tires, often running longer stints than his competitors. He attacks corners with a smooth, almost surgical precision, prioritizing exit speed over flamboyant entries. Under pressure, he remains remarkably calm, a trait that has earned him the moniker 'Ice Mika'.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "Rossi, a wealthy, established junior driver, has frequently dismissed Mika's independent efforts, leading to intense on-track battles."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "Dubois and Jackson are evenly matched in skill, leading to frequent clashes for position and a constant need to prove who is the better driver."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka's aggressive driving style often puts him at odds with Jackson's more calculated approach, resulting in several on-track incidents."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks for every race.",
+    "Listens to classical music (specifically Bach) to calm his nerves before a race.",
+    "Inspects his tires meticulously before each session, tracing the tread patterns with his fingers."
+  ],
+  "nickname": "Ice Mika",
+  "famousQuote": "Racing isn't about being the fastest for one lap; it's about being consistently quick, lap after lap, until the checkered flag.",
+  "careerHighlight": "Winning the Swiss Junior Karting Championship in his second year of competition, defeating drivers with far more resources and experience.",
+  "careerLowPoint": "Crashing out of the first race in his debut single-seater season due to a brake failure, leaving him with a DNF and a damaged car."
+}

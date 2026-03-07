@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 51,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Ricardo's path to motorsport began with a childhood fascination for engineering. He studied mechanical engineering at the Polytechnic University of Catalonia, specializing in fluid dynamics. After graduation, he worked for a small automotive company before making the jump to racing. His first role was as a junior engineer at a Formula 3 team. Through dedication and a knack for problem-solving, he quickly rose through the ranks, eventually landing a position as a senior engineer at a Formula 2 team.\n\nRicardo's approach to operations is rooted in meticulous planning and effective communication. He believes in fostering a collaborative environment where every team member feels valued and empowered. At Caterham, he aims to streamline processes, optimize resource allocation, and ensure the team operates at peak efficiency. What sets Ricardo apart is his ability to remain calm and collected under pressure, a trait honed through years of experience in the high-stakes world of motorsports. He is known for his strategic thinking and ability to anticipate potential challenges before they arise.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium build with a warm, approachable demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on drinking his espresso at exactly 10:00 AM every morning."
+  ]
+}

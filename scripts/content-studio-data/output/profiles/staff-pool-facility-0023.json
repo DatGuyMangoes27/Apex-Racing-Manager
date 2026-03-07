@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 28,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Astrid's fascination with motorsport began during her childhood, watching rally races in the Norwegian countryside. She pursued her passion by earning a degree in Electrical Engineering from the Norwegian University of Science and Technology. Her specialization in embedded systems and data analysis led her to various internships with automotive companies, where she honed her skills in diagnosing and optimizing electronic control units.\n\nAstrid is meticulous and driven, always striving for peak performance. She excels at identifying subtle electronic inefficiencies and developing innovative solutions to improve vehicle reliability and speed. She's known for her ability to work under pressure and her collaborative approach, making her a valuable asset to any motorsport team. Astrid is particularly interested in exploring the applications of AI in optimizing race car performance, making her a forward-thinking engineer.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Long, wavy, often pulled back into a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a slender build and a focused, analytical gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even off the track.",
+    "Has a habit of tapping her pen against surfaces when deeply concentrated.",
+    "Organizes her workspace with obsessive precision."
+  ]
+}

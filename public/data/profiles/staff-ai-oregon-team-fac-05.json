@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 51,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Marko's journey in motorsport began unexpectedly. A mechanical engineering graduate, he initially worked in shipbuilding, a major industry in Croatia. However, a chance encounter with a racing team during a local rally sparked his passion. He quickly transitioned, leveraging his engineering knowledge into quality control. His meticulous approach, honed in the demanding shipbuilding environment, ensures the highest standards are met. Marko is known for his ability to quickly identify potential issues and his unwavering dedication to preventing failures, making him a vital asset to the Oregon Team. His experience has taught him that preventative action is always better than reactive repair.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A sturdy man with a focused gaze and hands that bear the marks of years spent working with machinery."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with checklists and diagrams.",
+    "Insists on using a traditional slide rule for initial calculations, before verifying with software.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

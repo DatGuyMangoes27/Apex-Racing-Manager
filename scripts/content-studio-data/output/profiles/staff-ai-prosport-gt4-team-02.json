@@ -1,0 +1,22 @@
+{
+  "name": "Lena Schmidt",
+  "nationality": "German",
+  "age": 37,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Lena Schmidt's passion for motorsport ignited during her childhood visits to the Nürburgring, fueling her desire to understand the intricate machinery behind the thrilling races. She pursued a degree in mechanical engineering, specializing in aerodynamics, and quickly made a name for herself in smaller racing teams, demonstrating a knack for identifying and rectifying technical inefficiencies. Her attention to detail and pragmatic approach to problem-solving caught the eye of ProSport Racing, where she now leads the technical team.\n\nAs Technical Director, Lena prioritizes fostering a collaborative environment where engineers can freely exchange ideas and push the boundaries of innovation. She believes in data-driven decisions, utilizing sophisticated analysis tools to optimize car performance and reliability. While her loyalty to ProSport is unwavering, Lena is always seeking opportunities to improve the team's competitive edge through cutting-edge technologies and unconventional strategies. Her ability to balance ambitious goals with realistic constraints makes her a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, sleek, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Lena is of average height with a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a peculiar habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on a daily walk around the garage to personally check on progress."
+  ]
+}

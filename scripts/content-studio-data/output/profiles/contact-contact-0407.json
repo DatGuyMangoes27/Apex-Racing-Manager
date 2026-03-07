@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Fatima Al-Thani",
+  "nationality": "Qatari",
+  "age": 39,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Fatima Al-Thani is a highly respected sports medicine physician based in Doha, Qatar. With a PhD in Exercise Physiology, she has dedicated her career to optimizing athlete performance and recovery. Her obsessive attention to detail and principled approach have earned her a reputation as one of the best in her field. Despite her demanding career, she maintains a charismatic and optimistic outlook. \n\nDr. Al-Thani's involvement in motorsport stems from her work with elite athletes across various disciplines. She serves as a consultant for several racing teams, providing expertise in injury prevention, rehabilitation, and performance enhancement. A racing driver might cross paths with Dr. Al-Thani either through team affiliations, injury assessments at a race event, or seeking her specialist advice to maintain peak physical condition throughout a demanding racing season.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, styled in loose waves",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Fatima possesses a commanding presence, with a warm smile that instantly puts people at ease. She is tall and athletic, a testament to her dedication to health and fitness."
+  },
+  "connectionToMotorsport": "Dr. Al-Thani provides sports medicine consultancy services to several high-profile racing teams, focusing on optimizing driver performance and recovery. She also serves as a medical consultant at major racing events held in the Middle East.",
+  "meetingContext": "The player might meet Dr. Al-Thani during a medical check-up after an incident on the track, through an introduction from a racing team manager looking to optimize the driver's fitness, or at a motorsport-related charity event.",
+  "conversationTopics": [
+    "The latest advancements in sports medicine",
+    "The importance of physical conditioning in motorsport",
+    "Her recent scuba diving trip to the Red Sea",
+    "The history of Qatari involvement in international sports",
+    "Collecting vintage Rolex watches"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment to improve the player's physical condition and recovery time.",
+    "Connect the player with top sports psychologists and nutritionists to enhance their mental and physical performance.",
+    "Offer introductions to team managers and sponsors within the Qatari motorsport scene."
+  ],
+  "personality_summary": "A principled and charismatic doctor with an obsessive dedication to sports medicine and a controlling streak."
+}

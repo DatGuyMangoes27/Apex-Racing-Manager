@@ -1,0 +1,31 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 25,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Sophie Dubois is a sharp, up-and-coming lawyer specializing in contract law and intellectual property, with a postgraduate degree from Sorbonne Law School. Known for her quick wit and fiercely independent spirit, she's quickly made a name for herself in the Parisian business world. Despite her often argumentative nature in professional settings, Sophie possesses a genuinely caring side, often dedicating her free time to pro bono cases and environmental causes.\n\nHer firm occasionally represents motorsport teams and drivers, especially in sponsorship agreements and intellectual property disputes regarding car designs and team branding. A racing driver might cross paths with Sophie if they're seeking legal counsel for contract negotiations, endorsement deals, or if their team requires representation in a dispute. Though she enjoys the thrill of motorsports, Sophie prefers experiencing the speed from a distance, often attending races with clients but never getting directly involved herself.\n\nBeyond her legal career, Sophie is passionate about the outdoors, spending weekends camping in the French Alps or surfing along the Atlantic coast. She also enjoys crafting her own beer, a hobby she picked up during her university days, and experimenting with music production in her small studio apartment.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Wavy, shoulder-length",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie is a petite woman with a confident, almost challenging gaze. She typically dresses in a modern, professional style, but with small touches that hint at her more relaxed off-duty persona."
+  },
+  "connectionToMotorsport": "Sophie's law firm represents several smaller racing teams and individual drivers, offering her a peripheral but consistent connection to the sport. She occasionally attends races with clients, providing legal counsel and networking opportunities.",
+  "meetingContext": "The player might meet Sophie at a motorsport industry networking event, a sponsor's launch party, or through a mutual connection within the racing community who needs legal assistance.",
+  "conversationTopics": [
+    "The intricacies of contract law",
+    "The ethics of sponsorship in sports",
+    "Her latest camping trip in the Alps",
+    "The best craft breweries in France",
+    "The challenges of being a young woman in a male-dominated profession"
+  ],
+  "canHelp": [
+    "Negotiate favorable contracts with racing teams or sponsors",
+    "Provide legal advice on intellectual property rights related to car design or team branding",
+    "Connect the player with potential sponsors through her business network"
+  ],
+  "personality_summary": "A sharp, independent lawyer with a surprising soft spot for outdoor adventures and creative pursuits."
+}

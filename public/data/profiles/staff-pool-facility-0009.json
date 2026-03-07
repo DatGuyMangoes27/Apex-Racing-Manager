@@ -1,0 +1,22 @@
+{
+  "name": "Javier Sepúlveda",
+  "nationality": "Chilean",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Javier's passion for motorsport ignited in his youth, tinkering with go-karts in his small hometown nestled in the foothills of the Andes. He honed his skills through hands-on experience, learning the intricacies of metalworking and design from his grandfather, a seasoned mechanic. Driven by a desire to contribute to the world of racing, he sought formal training, earning a degree in mechanical engineering.\n\nAs a fabricator, Javier approaches each project with a blend of meticulous precision and creative problem-solving. He thrives on the challenge of transforming abstract designs into tangible components, meticulously welding and shaping materials to meet exacting specifications. He's eager to learn from experienced professionals and contribute his innovative ideas to a winning team.\n\nJavier's ability to visualize complex assemblies and his unwavering commitment to quality set him apart. He is not afraid to experiment and push the boundaries of conventional fabrication techniques, always striving for optimal performance and durability.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "He's of average height, with a lean build and calloused hands that speak to his craft."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always sketches design ideas on napkins during lunch.",
+    "Has an uncanny ability to diagnose metal fatigue simply by tapping on a component.",
+    "Insists on using Chilean slang when describing technical processes."
+  ]
+}

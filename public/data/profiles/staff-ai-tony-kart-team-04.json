@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 54,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Elena Popescu's journey into motorsport began in her youth, fueled by a fascination with the intricate mechanics of cars. Growing up near a small karting track, she spent countless hours observing and eventually volunteering to assist local teams. Her natural aptitude for problem-solving and her deep understanding of vehicle dynamics quickly made her an indispensable asset.\n\nElena is known for her meticulous approach to race engineering. She believes in a data-driven strategy, meticulously analyzing telemetry to optimize kart performance and driver feedback. Her focus extends beyond mere technical adjustments, as she strongly advocates for clear communication and a collaborative atmosphere within the team. Her dedication to fostering younger talent has earned her respect and admiration throughout the paddock, solidifying her reputation as a mentor and a creative force, always seeking innovative solutions to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, practical bob cut",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is a woman of medium height, with a focused gaze that conveys her sharp intellect."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on a pre-race team huddle, regardless of the weather."
+  ]
+}

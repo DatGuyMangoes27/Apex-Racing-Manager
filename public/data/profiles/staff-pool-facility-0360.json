@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Marco Bellini",
+    "nationality": "Italian",
+    "age": 40,
+    "gender": "male",
+    "role": "test_driver_coordinator",
+    "bio": "Marco's journey into motorsport began with a childhood fascination for Formula 1, fueled by the legendary achievements of Ferrari. He started his career in a small karting team, assisting with logistics and vehicle preparation. His dedication and keen eye for detail quickly earned him a reputation as a reliable team player. Marco's approach to test driver coordination emphasizes clear communication and meticulous planning. He believes in creating a supportive environment where drivers can provide honest feedback, ultimately leading to improved vehicle performance. He is particularly skilled at managing diverse personalities and ensuring that testing schedules align with both driver preferences and team objectives.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Goatee",
+      "description": "Marco is of average height with a slightly athletic build."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook to jot down observations.",
+      "Has a habit of humming classical music while reviewing data.",
+      "Insists on having a perfectly organized workspace."
+    ]
+  }
+]

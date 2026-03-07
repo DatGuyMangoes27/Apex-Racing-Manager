@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Chloe Dubois",
+    "nationality": "Canadian",
+    "age": 25,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Chloe's fascination with motorsport began during her childhood summers spent at local racing events near Montreal. Inspired by the blend of engineering and adrenaline, she pursued a degree in mechanical engineering, specializing in aerodynamics. After graduating, she interned at a smaller racing team before landing a role at Hendrick Motorsports. \n\nChloe approaches her work in the wind tunnel with meticulous precision, analyzing data with a keen eye for detail. She's dedicated to optimizing aerodynamic performance, constantly seeking innovative ways to improve the car's efficiency. While comfortable working independently, her collaborative spirit allows her to communicate her findings effectively to the wider team. Her background in computational fluid dynamics also gives her an edge.",
+    "physical": {
+      "skinTone": "Light",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, usually tied back in a practical braid to keep it out of her face.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Chloe has a focused gaze and a slender build, often wearing comfortable, practical clothing."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic calculations and observations.",
+      "Has a habit of tapping her pen against her teeth when deeply concentrated.",
+      "Drinks copious amounts of green tea throughout the day."
+    ]
+  }
+]

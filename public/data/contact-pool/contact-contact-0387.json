@@ -1,0 +1,31 @@
+{
+  "name": "Thabo Dlamini",
+  "nationality": "South African",
+  "age": 24,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dr. Thabo Dlamini is a rising star in the field of biomechanics, recently earning his PhD from the University of Cape Town. Despite his academic focus, Thabo is a passionate motorsport enthusiast. He believes that advancements in engineering and material science can significantly improve driver safety and performance. Thabo's empathetic nature makes him an approachable mentor, while his blunt honesty ensures that his advice is always direct and actionable. \n\nA racing driver might cross paths with Thabo at a university lecture on the physics of racing, a motorsport technology conference, or through a mutual friend involved in local racing circuits. His expertise in biomechanics could offer insights into driver fitness, injury prevention, and optimizing racing equipment for individual physiques. He also has many connections to university racing teams and motorsport clubs.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neat Afro",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed beard",
+    "description": "Thabo is of average height with a lean, athletic build. He usually wears stylish glasses that complement his intellectual aura."
+  },
+  "connectionToMotorsport": "Thabo's research focuses on the biomechanics of racing, specifically the impact of G-forces on drivers and the optimization of cockpit ergonomics. He also provides consulting services to a few local racing teams, advising them on driver fitness and safety protocols.",
+  "meetingContext": "The player could meet Thabo while attending a lecture at a university or during a workshop on driver safety hosted by a motorsport organization. Alternatively, they could be introduced through a mutual connection within the local racing community.",
+  "conversationTopics": [
+    "The latest Formula 1 race results",
+    "Biomechanical engineering advancements",
+    "Driver safety in motorsport",
+    "The impact of technology on racing performance",
+    "His research on G-force impact on driver endurance"
+  ],
+  "canHelp": [
+    "Provide insights into driver fitness and injury prevention strategies.",
+    "Offer advice on optimizing racing equipment for improved performance and safety.",
+    "Connect the player with university racing teams or motorsport clubs for sponsorship opportunities."
+  ],
+  "personality_summary": "An empathetic and thoughtful professor, who is unafraid to give blunt advice."
+}

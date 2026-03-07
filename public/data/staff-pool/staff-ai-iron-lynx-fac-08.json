@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 46,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination with Formula 1, fueled by Ayrton Senna's legendary performances. After completing his engineering degree, he specialized in aerodynamics and secured a position at a research facility, honing his skills in wind tunnel operation. He moved to Europe seeking greater opportunities, eventually landing a role with Iron Lynx.\n\nRicardo is known for his meticulous approach and sharp eye for detail, ensuring that every test run yields accurate and valuable data. He believes in a hands-on approach, constantly monitoring equipment and collaborating with engineers to optimize aerodynamic performance. His experience allows him to quickly identify potential issues and suggest innovative solutions, even if he isn't the most outwardly 'innovative' person. Ricardo's calm demeanor and unwavering focus make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A stocky build, Ricardo always has a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with wind tunnel readings and calculations.",
+    "Insists on using a specific brand of stopwatch for timing test runs.",
+    "Has a habit of tapping his pen against surfaces when deep in thought."
+  ]
+}

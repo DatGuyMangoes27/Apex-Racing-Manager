@@ -1,0 +1,31 @@
+{
+  "name": "Dato' Azhar Mansor",
+  "nationality": "Malaysian",
+  "age": 63,
+  "gender": "male",
+  "contactType": "celebrity",
+  "bio": "Dato' Azhar Mansor is a Malaysian icon, best known for being the first Malaysian to sail solo around the world in 1999. His journey captivated the nation, cementing his status as a national hero and a charismatic public figure. While not directly involved in motorsport, Dato' Azhar is a frequent attendee at high-profile sporting events and a keen supporter of Malaysian talent on the international stage. His sophisticated air and patient demeanor belie a sharp, often judgmental, eye for detail, honed by years of navigating treacherous seas and complex social landscapes. A racing driver might cross paths with him at a gala event, a sponsorship launch, or even a chance encounter at a luxury resort.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark brown",
+    "facialHair": "Goatee",
+    "description": "Dato' Azhar is a well-maintained man for his age, with a distinguished air about him. He often sports tailored suits and carries himself with confidence."
+  },
+  "connectionToMotorsport": "Dato' Azhar is a well known celebrity and frequently attends motorsport events in Malaysia, and occasionally internationally, often as a guest of honor or sponsor representative. He appreciates the skill and dedication required to succeed in racing.",
+  "meetingContext": "The player could meet Dato' Azhar at a charity gala hosted by a motorsport sponsor, or perhaps at a VIP lounge during the Malaysian Grand Prix.",
+  "conversationTopics": [
+    "His solo sailing journey",
+    "The current state of Malaysian sports",
+    "The importance of perseverance and discipline",
+    "His scuba diving adventures in Sipadan",
+    "Global history and exploration"
+  ],
+  "canHelp": [
+    "Provide introductions to wealthy Malaysian investors.",
+    "Offer positive media exposure and endorsements.",
+    "Share valuable life lessons and mentorship on handling pressure."
+  ],
+  "personality_summary": "A charismatic but judgmental national icon with a passion for adventure and a keen eye for talent."
+}

@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0184",
+  "name": "Kiwi Krew Gaming",
+  "category": "gaming",
+  "tier": "entry",
+  "country": "New Zealand",
+  "description": "Level up your game with Kiwi Krew Gaming's top-tier peripherals.",
+  "story": "Kiwi Krew Gaming is a New Zealand-based esports brand looking to branch out into traditional motorsports. They believe in supporting local talent and see racing as a natural extension of their competitive spirit. They want to connect with a young, engaged audience and showcase their products in a high-octane environment.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0184.png"
+}

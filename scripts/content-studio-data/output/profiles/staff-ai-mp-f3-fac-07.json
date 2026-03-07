@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Argentine",
+  "age": 42,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport was somewhat accidental. Originally trained in Buenos Aires as a systems engineer, his career took a turn when he volunteered his IT skills to a local racing team competing in national rallies. He quickly realized the vital role of data and technology in optimizing performance. That experience ignited a passion that led him to Europe and eventually to MP Motorsport. \n\nAs IT Systems Manager, Ricardo approaches his role with a blend of technical expertise and a keen understanding of the team's needs. He's a firm believer in proactive problem-solving, always looking for ways to improve efficiency and streamline data flow. His focus is on ensuring the team has the technological edge to compete at the highest level. He prides himself on being a reliable and adaptable member of the crew, ready to tackle any technical challenge, from race telemetry to ensuring secure data transfer back to the factory.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Insists on backing up all critical data at the end of each day."
+  ]
+}

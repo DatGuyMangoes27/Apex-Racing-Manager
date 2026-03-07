@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0035",
+  "name": "SIAM SpeedTech",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Thailand",
+  "description": "Gear up for victory with SIAM SpeedTech: High-performance gaming peripherals engineered for champions.",
+  "story": "SIAM SpeedTech, a leading Thai manufacturer of gaming hardware, believes in pushing boundaries, both in the virtual world and on the racetrack. Motorsport embodies the same dedication to precision and performance that drives our product development. We seek to partner with teams who share our passion for innovation and competition, amplifying our brand presence on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 180000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "nationalities": [
+      "Thailand"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0035.png"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0387",
+  "name": "Grupo Financiero Norte",
+  "category": "financial",
+  "tier": "high",
+  "country": "Mexico",
+  "description": "Your financial future, driven by performance.",
+  "story": "Grupo Financiero Norte is a leading Mexican financial institution committed to excellence and growth. We see motorsport as a natural extension of our values, rewarding precision, teamwork, and a relentless pursuit of success. We seek a partnership that reflects our brand's commitment to high performance and resonates with our customer base.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0387.png"
+}

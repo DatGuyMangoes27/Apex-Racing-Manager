@@ -1,0 +1,22 @@
+{
+  "name": "Nadia Dubois",
+  "nationality": "Canadian",
+  "age": 54,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Nadia's motorsport journey began unconventionally, trading the snowy slopes of Whistler for the roar of engines. Starting as a data analyst for a small rally team in Quebec, she quickly proved her aptitude for extracting crucial performance insights. Her meticulous approach and uncanny ability to identify subtle anomalies led her to sports car racing, where she thrived. \n\nNow at JOTA Sport, Nadia is known for her unwavering loyalty and methodical problem-solving. She favors a data-driven approach, poring over telemetry with an almost obsessive focus until she uncovers the key to unlocking extra performance. While not always the flashiest engineer, her consistent and reliable contributions make her a valuable asset to the team. Her colleagues appreciate her dedication and commitment to excellence.\n\nNadia's distinctive approach lies in her blend of rigorous analysis and practical understanding. She is an innovator at heart, always looking for ways to optimize performance using cutting-edge technologies. Her ability to connect with drivers and communicate complex data in an accessible manner sets her apart, fostering trust and collaboration within the team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Nadia is a woman of medium height with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data analysis notes.",
+    "Has a habit of muttering technical jargon to herself when deep in thought.",
+    "Insists on brewing her own strong, dark coffee every morning."
+  ]
+}

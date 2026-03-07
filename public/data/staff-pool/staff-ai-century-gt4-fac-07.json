@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Benavides",
+  "nationality": "Spanish",
+  "age": 54,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport began unexpectedly after a career in telecommunications. He spent years optimizing network infrastructure for large corporations, but a chance encounter at a local racing event sparked a passion he couldn't ignore. He volunteered his IT skills to a small racing team, quickly realizing the impact efficient data management and communication systems could have on track performance.\n\nAt Century Motorsport, Ricardo is the backbone of their IT infrastructure, ensuring seamless data flow between the track, the garage, and the engineering headquarters. He's known for his calm demeanor under pressure and his ability to troubleshoot complex technical issues with a methodical approach. Ricardo believes in empowering his team to innovate, providing them with the tools and knowledge they need to push the boundaries of what's possible. His knack for finding cost-effective solutions without compromising on reliability sets him apart, a crucial asset in the high-stakes world of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium build with a thoughtful expression, reflecting years of technical problem-solving."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten network diagrams.",
+    "Insists on using a vintage keyboard, claiming it improves his typing speed.",
+    "Has a habit of humming quietly while debugging code."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Pieter van der Merwe",
+  "nationality": "South African",
+  "age": 55,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Pieter's journey into motorsport began unconventionally, not on the track, but behind the screen of a flight simulator. A former aeronautical engineer, Pieter transitioned his expertise into the world of racing after realizing the parallels between aircraft dynamics and race car handling. His deep understanding of aerodynamics and vehicle dynamics has made him an invaluable asset in the simulator program. At Walkinshaw Andretti United, Pieter focuses on translating real-world data into accurate virtual models, allowing drivers to fine-tune setups and strategies before hitting the track.\n\nWhat distinguishes Pieter is his meticulous attention to detail and his uncanny ability to diagnose subtle issues within the simulator. He approaches each simulation run with the precision of a seasoned engineer, meticulously analyzing every data point to identify areas for improvement. His dedication to realism and his ability to bridge the gap between the virtual and real worlds have earned him the respect of drivers and engineers alike. Pieter is driven by a desire to contribute to the team's success, always striving to improve the fidelity of the simulator and provide the best possible training environment for the drivers.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A man of medium height with a sturdy build and kind eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of muttering equations under his breath while analyzing data.",
+    "Insists on having a specific type of coffee before any major simulation session."
+  ]
+}

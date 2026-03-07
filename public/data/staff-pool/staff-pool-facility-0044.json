@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Meier",
+  "nationality": "Swiss",
+  "age": 26,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Hans-Peter's journey into motorsport began, predictably, with an obsession with Formula 1 as a child. Growing up near a small karting track, he spent every spare moment tinkering with engines and analyzing driving lines. While his own driving aspirations never quite took off, his knack for understanding vehicle dynamics was undeniable. He studied mechanical engineering at ETH Zurich, specializing in vehicle simulation and data analysis. \n\nFresh out of university, Hans-Peter is eager to apply his theoretical knowledge to real-world testing. He sees the role of test driver coordinator as crucial in bridging the gap between the engineers and the drivers, ensuring that feedback is translated into tangible improvements. His demanding personality stems from a deep-seated desire for precision and efficiency. He believes that even the smallest details can make a significant difference in performance, and he isn't afraid to push his team to achieve perfection. His loyalty, once earned, is unwavering, making him a valuable asset to any team willing to meet his high standards.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Hans-Peter is of average height, with a lean build and intense blue eyes that convey his focused demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of Swiss-made stopwatch for all timing activities."
+  ]
+}

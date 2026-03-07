@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 31,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Mateo's passion for motorsport ignited during his childhood, fueled by his grandfather's tales of Juan Manuel Fangio's legendary victories. He pursued a degree in engineering, specializing in vehicle dynamics, before transitioning to a junior strategist role with a small touring car team. His meticulous approach and data-driven insights quickly gained attention, leading to a series of promotions and a reputation for optimizing race strategies under pressure. Mateo thrives on the challenge of predicting opponent moves and adapting to changing track conditions, always striving for that elusive perfect race.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of average height with a focused gaze and a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on listening to tango music before every race to calm his nerves.",
+    "Obsessively cleans his workstation before and after each session."
+  ]
+}

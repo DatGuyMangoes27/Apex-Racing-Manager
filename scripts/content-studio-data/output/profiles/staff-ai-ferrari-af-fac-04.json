@@ -1,0 +1,22 @@
+{
+  "name": "Liam Dubois",
+  "nationality": "Canadian",
+  "age": 26,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Liam's journey into motorsport began with a fascination for robotics in high school, leading him to pursue a degree in electrical engineering. His summers were spent volunteering at a local racing team, honing his skills in data acquisition and telemetry. He quickly developed a knack for diagnosing intricate electrical issues and optimizing car performance through precise data analysis.\n\nLiam's meticulous approach and innovative thinking set him apart. He's driven by a desire to push the boundaries of what's possible, constantly seeking new ways to improve the car's electrical systems. His ability to see the 'big picture' allows him to integrate his work seamlessly with the overall team strategy, making him a valuable asset to Ferrari AF Corse. He is eager to contribute to the team's success by implementing cutting-edge solutions.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly parted on the side with a slight wave",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Liam has a focused gaze and a lean build, reflecting his dedication to his work."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his equipment personally before every race."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Guy Ligier, a name whispered with a mix of awe and exasperation in the paddocks, hails from the small village of Magny-Cours, a region steeped in French motorsport history. Unlike many of his peers who were practically born into racing karts, Guy's path was less conventional. His father, a mechanic with a local rally team, instilled in him a love for engines and speed, but it wasn't until he stumbled upon a battered Formula Ford car abandoned in his father's garage that his racing dream ignited. He spent months restoring it, fueled by a burning desire to prove himself. He entered local races with little sponsorship but raw skill, clawing his way to the top ranks of French junior formulas. His aggressive style and undeniable talent caught the eye of North Racing, securing him a coveted seat. Currently, he's making waves, proving to be a force to be reckoned with, even if his impetuous nature occasionally lands him in hot water. He is regarded as the next best thing in French racing, only time will tell if he fulfills that potential.",
+  "drivingStyle": "Ligier's driving style is best described as 'controlled chaos.' He attacks every corner with a ferocity that borders on reckless, pushing the car to its absolute limit. His car control is phenomenal, allowing him to recover from slides and near-misses that would send other drivers spinning into the barriers. While his tire management is a work in progress, he compensates with an uncanny ability to extract maximum performance from the car in short bursts, making him a formidable qualifier and a threat in the opening laps of any race. He thrives under pressure, often delivering his best performances when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "Rossi, a seasoned veteran, publicly criticized Ligier's aggressive driving, calling him 'a menace to the sport.' This sparked a heated on-track rivalry, with several close calls and accusations of blocking."
+    },
+    {
+      "driver": "Ingrid Svensson",
+      "reason": "Svensson and Ligier are both rising stars, constantly battling for position and recognition. Their contrasting driving styles – Svensson being smooth and calculated, Ligier being brash and impulsive – create compelling races."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka and Ligier engaged in a fierce battle for the lead at the Monaco Grand Prix, resulting in a controversial collision that eliminated both drivers from the race. The incident led to accusations and lingering animosity."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue driving gloves, claiming they bring him luck.",
+    "Before each race, he listens to a specific Edith Piaf song, believing it helps him focus.",
+    "He refuses to eat anything green on race days, a superstition dating back to a karting accident."
+  ],
+  "nickname": "Le Faucon (The Falcon)",
+  "famousQuote": "Second place is just the first loser. I'm here to win, not collect participation trophies.",
+  "careerHighlight": "Winning the French Formula Three Championship in dominant fashion, securing his place in the North Racing Formula team.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Pau Grand Prix while attempting an overly ambitious overtake, costing him a crucial victory."
+}

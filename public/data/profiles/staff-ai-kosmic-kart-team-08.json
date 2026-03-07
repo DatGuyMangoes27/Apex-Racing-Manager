@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 45,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began as a teenager, meticulously tuning mopeds in his father's garage in Lyon. This passion led him to engineering school, where he excelled in thermodynamics and fluid dynamics. After graduating, he joined a small racing team, honing his skills in data analysis and vehicle dynamics. Over the years, he's developed a reputation for his methodical approach and his ability to extract performance gains through subtle adjustments and a deep understanding of the kart's intricacies.\n\nJean-Pierre joined Kosmic Kart five years ago and has become an invaluable member of the team. He prides himself on his ability to communicate complex technical information clearly and concisely to drivers, ensuring they understand the impact of setup changes. He is renowned for his attention to detail, spending hours poring over telemetry data to identify areas for improvement. His loyalty to Kosmic Kart is unwavering, and he sees his role as crucial to the team's long-term success.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height with a lean build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on drinking black coffee from the same chipped mug every morning.",
+    "Has a habit of adjusting his glasses when deep in thought."
+  ]
+}

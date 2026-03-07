@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Moloi",
+  "nationality": "South African",
+  "age": 37,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Thabo's journey into motorsport began unexpectedly, fueled by a lifelong fascination with computing and a chance encounter with a racing team needing help with their simulator setup. Initially a self-taught programmer, he quickly realized the immense potential of simulation technology in driver development and vehicle dynamics. His pragmatic approach centers on translating real-world data into accurate and insightful simulations, focusing on providing drivers with the most realistic and beneficial training environment possible.\n\nHe sees the simulator not just as a game, but as a crucial tool for refining performance and reducing risk on the track. Thabo is particularly adept at identifying discrepancies between simulated and actual performance, constantly seeking ways to improve the fidelity and reliability of the simulator. While he is still developing his skills, his loyalty and dedication to the team are unwavering, making him a valuable asset in the long run. He's driven to become one of the best in the field.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly cropped afro",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Thabo is of average height, with a focused gaze and a lean build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations about the simulator's performance.",
+    "Has a habit of tapping his fingers on the desk when deep in thought.",
+    "Insists on using a specific brand of keyboard for coding, claiming it improves his accuracy."
+  ]
+}

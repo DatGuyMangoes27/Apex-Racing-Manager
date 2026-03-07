@@ -1,0 +1,22 @@
+{
+  "name": "Liam Walker",
+  "nationality": "New Zealand",
+  "age": 32,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Liam's passion for motorsport ignited early, fueled by countless hours spent tinkering with go-karts on his family's farm in rural Waikato. He pursued a degree in Mechanical Engineering at the University of Auckland, specializing in vehicle dynamics and data analysis. After graduating, Liam cut his teeth in the New Zealand Formula Ford series before landing a junior role with a V8 Supercars team across the Tasman Sea. He quickly rose through the ranks, demonstrating a keen eye for detail and an ability to translate complex data into tangible performance gains on the track.\n\nLiam's approach to performance engineering is rooted in meticulous preparation and a relentless pursuit of incremental improvements. He believes in fostering open communication within the team, ensuring that driver feedback is seamlessly integrated with data-driven analysis. His calm demeanor and ability to remain focused under pressure make him a valuable asset to any racing team. Liam distinguishes himself through his ability to identify subtle aerodynamic inefficiencies and optimize suspension setups for varying track conditions. He has a knack for finding the 'last tenth' that can often make the difference between victory and defeat.\n\nHe joined Crown Racing two years ago, and has become a valued member of the team, known for his dedication and insightful analysis. His goal is to see Crown Racing back at the top step of the podium.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Liam is of average height, with a lean build and an athletic posture."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen, even to the track.",
+    "Has a peculiar habit of tapping his fingers on his laptop while analyzing data.",
+    "Insists on listening to classic rock music (quietly) during long data analysis sessions."
+  ]
+}

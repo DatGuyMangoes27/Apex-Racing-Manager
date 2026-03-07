@@ -1,0 +1,22 @@
+{
+  "name": "Zola Mabaso",
+  "nationality": "South African",
+  "age": 30,
+  "gender": "female",
+  "role": "sporting_director",
+  "bio": "Zola's motorsport journey began unconventionally, not on the track, but in the data. She excelled in mathematical modelling and simulation, which led to an internship with a Formula E team. There, she quickly rose through the ranks, demonstrating a keen eye for strategy and an ability to translate complex data into actionable insights. Her technical proficiency combined with her sharp management skills, make her a valuable asset.\n\nZola is known for her demanding yet fair approach. She believes in pushing boundaries and constantly seeking innovative solutions. She views motorsport as a constantly evolving puzzle and relishes the challenge of finding the optimal strategy. Her ambition is to lead a team to multiple championships using data-driven decision-making and cutting-edge technology.",
+  "physical": {
+    "skinTone": "deep brown",
+    "hairColor": "black",
+    "hairStyle": "short, natural afro",
+    "eyeColor": "brown",
+    "facialHair": null,
+    "description": "Zola is a petite woman with a focused gaze and athletic build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a notebook filled with complex formulas.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Drinks Rooibos tea religiously throughout the day."
+  ]
+}

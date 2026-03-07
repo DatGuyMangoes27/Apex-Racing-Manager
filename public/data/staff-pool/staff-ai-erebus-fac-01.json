@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 49,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo's journey into motorsport began unexpectedly, sparked by a chance encounter with a touring racing team during a rural festival in his youth. Captivated by the blend of technology and raw skill, he pursued a degree in statistics, honing his analytical skills with a singular goal: to contribute to a racing team. Before Erebus, Ricardo spent years refining his data interpretation skills, helping smaller teams punch above their weight. He approaches data analysis with the belief that hidden within the numbers lies the key to unlocking a team's full potential.\n\nHe sees data not just as a collection of figures, but as a narrative of the car's performance, the driver's capabilities, and the ever-changing track conditions. His focus is on identifying subtle patterns and correlations that others might miss. Ricardo's unique ability to visualize complex data sets and translate them into actionable insights has earned him a reputation as a valuable asset. What sets him apart is his blend of rigorous statistical analysis with an intuitive understanding of the practical realities of racing, making his insights both data-driven and grounded in experience.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed, with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is of average height, with a lean build and a thoughtful expression etched on his face."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with statistical formulas.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Refers to the team's car by a quirky nickname only he uses, 'La Llama'."
+  ]
+}

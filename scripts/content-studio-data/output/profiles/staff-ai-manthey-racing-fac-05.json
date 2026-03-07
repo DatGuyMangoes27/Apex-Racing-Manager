@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kowalski",
+  "nationality": "Polish",
+  "age": 28,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jan grew up near a small karting track outside Poznan, spending most weekends tinkering with engines alongside his father. That early exposure ignited a passion for motorsport, leading him to pursue a degree in Mechanical Engineering with a specialization in automotive systems. After graduating, Jan initially worked for a local auto manufacturer, but his heart remained with racing. He volunteered at various motorsport events, eventually securing a junior role in a smaller GT racing team. \n\nHis meticulous nature and sharp eye for detail quickly made him an asset. Jan's approach to quality control is deeply rooted in preventative measures and continuous improvement, believing that spotting potential issues early is far more effective than reactive fixes. He joined Manthey Racing two years ago and has been instrumental in improving the team's reliability. He values precision and data-driven decision-making above all else, making him a reliable member of the team.\n\n Jan's commitment extends beyond the technical aspects; he actively mentors junior engineers, fostering a culture of excellence and collaboration within the team. His loyalty and dedication have earned him respect from colleagues and drivers alike.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee.",
+    "description": "Jan is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a habit of double-checking torque settings, even after they've been verified.",
+    "Insists on using a specific type of Polish coffee in the workshop."
+  ]
+}

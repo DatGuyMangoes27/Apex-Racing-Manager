@@ -1,0 +1,22 @@
+{
+  "name": "Graeme McMillan",
+  "nationality": "New Zealand",
+  "age": 54,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Graeme's journey into motorsport began unexpectedly during his engineering studies at the University of Canterbury. A chance encounter with a local racing team ignited a passion that would define his career. He quickly transitioned from theoretical knowledge to practical application, volunteering at race events and absorbing every detail of vehicle dynamics and performance optimization.\n\nOver the years, Graeme has honed his skills in data analysis, simulation, and on-track adjustments. He is known for his meticulous approach, his ability to translate complex data into actionable insights, and his calm demeanor under pressure. He believes in fostering a collaborative environment where open communication and shared knowledge lead to breakthroughs. His commitment to continuous improvement sets him apart, always seeking innovative solutions to gain a competitive edge.\n\nGraeme thrives on the challenge of extracting maximum performance from every component, and his dedication to his team is unwavering. His experience with a variety of racing formulas in the New Zealand racing scene makes him a valuable asset, especially regarding reliability and cost-effective solutions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a permanent squint from years in the sun."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Prefers to listen to classical music through noise-canceling headphones while working.",
+    "Has a habit of tapping his pen on the table when deep in thought."
+  ]
+}

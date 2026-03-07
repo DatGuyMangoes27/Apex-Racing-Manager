@@ -1,0 +1,22 @@
+{
+  "name": "Giovanni Rossi",
+  "nationality": "Italian",
+  "age": 28,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Giovanni Rossi's passion for motorsport ignited during his childhood karting days in Parma. Though his racing career peaked at the national level, his strategic mind quickly became apparent. He transitioned to engineering, earning a degree from the Politecnico di Milano before joining a small Formula 3 team as a data analyst. His knack for identifying performance bottlenecks and proposing innovative solutions caught the attention of Andretti Global scouts. \n\nAt Andretti, Giovanni quickly rose through the ranks, demonstrating exceptional leadership and an ability to inspire his team. He believes in fostering a collaborative environment where every member feels empowered to contribute their best ideas. His approach to sporting direction is data-driven, yet he values intuition and adaptability, understanding that motorsport is often a game of split-second decisions. He is known for his unconventional strategies and willingness to take calculated risks, making him a distinctive force within the team. His constant pursuit of innovation is what sets him apart.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Giovanni is of average height with a lean, athletic build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a habit of pacing when deep in thought.",
+    "Insists on having a double espresso every morning before team meetings."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 32,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Elena's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with her father. She pursued a degree in Mechanical Engineering, specializing in simulation and modeling. After graduating, she honed her skills at a smaller racing outfit, where she quickly became known for her ability to extract valuable insights from limited data. Her meticulous approach to data analysis and her proactive nature in identifying areas for improvement have made her a sought-after simulator engineer.\n\nElena joined Hot Racing Team two years ago and has quickly become an integral part of the team. She prides herself on her ability to translate complex data into actionable strategies for the drivers, working closely with them to refine their techniques and push the limits of the car. She's known for her innovative approach to problem-solving and her unwavering dedication to improving the team's performance. She is eager to prove herself and dreams of contributing to a championship-winning season.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back into a practical ponytail during work hours.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena is of average height with a determined expression, often seen with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a small notepad and pen to jot down ideas, even during meetings.",
+    "Prefers to work with classical music playing softly in the background.",
+    "Tends to over-analyze data, sometimes getting lost in the details."
+  ]
+}

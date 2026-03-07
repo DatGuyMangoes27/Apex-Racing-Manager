@@ -1,0 +1,31 @@
+{
+  "name": "Chukwudi Okoro",
+  "nationality": "Nigerian",
+  "age": 22,
+  "gender": "male",
+  "contactType": "chef",
+  "bio": "Chukwudi is a rising star in Lagos's burgeoning culinary scene, known for his innovative fusion of traditional Nigerian flavors with modern techniques. He honed his skills at a local culinary school before quickly making a name for himself at a trendy restaurant. His calculating nature extends from the kitchen to his personal life, driving him to constantly seek opportunities for advancement and recognition.\n\nDespite his youth, Chukwudi exudes an air of dismissive confidence, though he's surprisingly patient when it comes to perfecting his craft. His connection to motorsport is through catering exclusive events for wealthy patrons and racing teams who frequent the Lagos Motor Speedway. A driver might encounter him while attending a private dinner or celebration hosted by a sponsor or team principal.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neat fade",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-cropped beard",
+    "description": "Chukwudi has a lean build and carries himself with a quiet intensity. His sharp eyes miss nothing."
+  },
+  "connectionToMotorsport": "Chukwudi caters exclusive events for high-profile motorsport figures in Lagos, providing him with access to drivers, sponsors, and team personnel. He sees the racing world as another avenue for expanding his culinary empire.",
+  "meetingContext": "The player might meet Chukwudi at a post-race VIP party or a sponsored event at a high-end restaurant in Lagos.",
+  "conversationTopics": [
+    "The latest culinary trends and techniques",
+    "His vision for elevating Nigerian cuisine",
+    "The challenges and rewards of running a kitchen",
+    "Craft beer pairings with his dishes",
+    "His training for the Lagos marathon"
+  ],
+  "canHelp": [
+    "Provide catering services for team events, impressing sponsors.",
+    "Introduce the player to wealthy patrons and potential investors.",
+    "Offer insight into the Lagos social scene and navigate influential circles."
+  ],
+  "personality_summary": "A calculating and ambitious chef who sees motorsport as a path to further success."
+}

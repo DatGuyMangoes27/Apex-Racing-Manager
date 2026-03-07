@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 23,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Mateo's fascination with motorsport ignited during his childhood, watching Formula 1 races with his grandfather in Lima. He pursued a degree in mechanical engineering at the Pontifical Catholic University of Peru, focusing on simulation and modeling. During his studies, he gained practical experience by developing and optimizing vehicle dynamics models for a local racing team. His passion for pushing the boundaries of virtual performance led him to seek opportunities in international racing, eventually landing a role with RFK Racing as a simulator engineer.\n\nAt RFK Racing, Mateo is responsible for developing and maintaining the team's racing simulator, ensuring its accuracy and relevance to real-world track conditions. He works closely with drivers and engineers to translate data and feedback into actionable insights, helping to improve car setup and driver performance. His ability to analyze complex data sets and creatively solve problems makes him a valuable asset to the team. He's determined to leverage simulation technology to give RFK Racing a competitive edge on the track.\n\nMateo distinguishes himself through his proactive approach and relentless pursuit of improvement. He constantly explores new simulation techniques and technologies, ensuring that the team's simulator remains at the forefront of the industry. His dedication to bridging the gap between virtual and real-world racing makes him a rising star in motorsport engineering.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with simulation data and handwritten notes.",
+    "Has a habit of tapping his fingers on his desk when deep in thought.",
+    "Drinks mate throughout the day."
+  ]
+}

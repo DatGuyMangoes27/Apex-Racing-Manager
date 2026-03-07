@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0235",
+  "name": "Oro Azul Tequila",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "Mexico",
+  "description": "Premium tequila, handcrafted in Jalisco.",
+  "story": "Oro Azul Tequila seeks to expand its brand recognition beyond Mexico and connect with a discerning, global audience. Motorsports provides a thrilling platform to showcase their commitment to excellence and precision, mirroring the craft that goes into every bottle. They aim to associate the brand with success and a winning spirit.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 40000,
+      "winBonus": 15000,
+      "podiumBonus": 7000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 25,
+    "minMarketability": 30,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0235.png"
+}

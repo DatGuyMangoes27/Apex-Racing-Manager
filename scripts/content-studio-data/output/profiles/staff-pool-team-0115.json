@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 50,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Jean-Pierre's motorsport journey began in his youth, tinkering with go-karts in rural Quebec. His analytical mind led him to pursue engineering, but the thrill of racing never left him. He transitioned from designing vehicle components to race strategy, finding his niche in predicting opponent moves and optimizing pit stop timing. Jean-Pierre is known for his meticulous data analysis and ability to remain composed under pressure, turning complex information into actionable race plans. His pragmatic approach prioritizes calculated risks and maximizing points, making him a valuable asset to any team seeking consistent results.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a permanent crease between his brows."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten track data.",
+    "Has a specific brand of maple syrup he drinks before every race.",
+    "Taps his pen rhythmically when analyzing race telemetry."
+  ]
+}

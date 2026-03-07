@@ -1,0 +1,31 @@
+{
+  "name": "Elise Müller",
+  "nationality": "Swiss",
+  "age": 59,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Elise Müller is a culinary enigma, renowned in the Swiss Alps for her exclusive, invitation-only restaurant, 'Edelweiss Gastronomie'. After years of honing her craft in Michelin-starred establishments across Europe, she returned to her homeland to create a dining experience steeped in tradition, yet daringly innovative. Her sophisticated palate and relentless pursuit of perfection have earned her both accolades and a reputation for being…difficult. \n\nDespite her demanding nature, Elise possesses a deep appreciation for precision and artistry, qualities she sees mirrored in motorsport. While seemingly disparate, her restaurant is a frequent haunt for racing teams during the winter testing season, seeking refuge and exceptional cuisine amidst the cold. A driver might cross paths with Elise during a team dinner or a private event at her restaurant, but be warned - she doesn't suffer fools gladly, and her passive-aggressive tendencies are legendary.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant, tightly wound bun",
+    "eyeColor": "Steel Blue",
+    "facialHair": null,
+    "description": "Elise has a slender build and carries herself with an air of quiet authority. Her piercing blue eyes miss nothing."
+  },
+  "connectionToMotorsport": "Elise's exclusive restaurant in the Swiss Alps is a popular destination for motorsport teams during winter testing, providing a high-end dining experience.",
+  "meetingContext": "The player would likely meet Elise at her restaurant, either during a team dinner or a private event.",
+  "conversationTopics": [
+    "The intricacies of Swiss cuisine",
+    "Her travels through Europe",
+    "The parallels between culinary arts and other forms of art",
+    "The importance of discipline and precision",
+    "The failings of modern gastronomy"
+  ],
+  "canHelp": [
+    "Offer exclusive catering services for the player's team events, impressing sponsors and VIPs.",
+    "Provide valuable introductions to wealthy patrons who frequent her restaurant.",
+    "Offer the player a high profile endorsement due to her culinary status."
+  ],
+  "personality_summary": "A secretive and sophisticated chef with a penchant for passive-aggressive behavior and exacting standards."
+}

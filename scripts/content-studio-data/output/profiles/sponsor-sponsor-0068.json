@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0068",
+  "name": "Al-Sahra Motors",
+  "category": "automotive",
+  "tier": "entry",
+  "country": "Saudi Arabia",
+  "description": "Fueling your journey, wherever it takes you.",
+  "story": "Al-Sahra Motors is a growing automotive parts and service company based in Riyadh, seeking to expand its brand recognition beyond Saudi Arabia. Motorsport offers a thrilling platform to demonstrate the reliability and performance of their products in demanding conditions. They value partnerships that showcase a commitment to excellence and a drive for success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0068.png"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 41,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Eleanor Vance is a rising star in the British political scene, known for her passionate advocacy for infrastructure development and her commitment to supporting local businesses. Elected to Parliament at a relatively young age, she's quickly gained a reputation for being both a shrewd negotiator and a genuinely caring representative for her constituency. While some see her as idealistic, others recognize her dedication to practical solutions and her ability to build consensus across party lines.\n\nEleanor's connection to the motorsport world stems from her constituency, which is home to a historic racing circuit. She's actively involved in promoting motorsports as a key economic driver and a source of local pride. A racing driver might cross paths with Eleanor when seeking support for local events, infrastructure improvements around a track, or lobbying for favorable racing regulations.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Eleanor has a warm and approachable demeanor. She has a scattering of freckles across her nose and high cheekbones."
+  },
+  "connectionToMotorsport": "Eleanor represents a constituency with a major racing circuit and sees motorsport as vital to the local economy, actively supporting events and lobbying for favorable regulations.",
+  "meetingContext": "The player might meet Eleanor at a motorsport charity event, a local business expo in her constituency, or during a meeting to discuss track improvements with local officials.",
+  "conversationTopics": [
+    "Local economic development",
+    "The future of motorsports in Britain",
+    "Her efforts to support local businesses",
+    "The challenges of balancing political ideals with practical realities",
+    "The latest rugby scores"
+  ],
+  "canHelp": [
+    "Lobby for favorable racing regulations.",
+    "Provide connections to local businesses for sponsorship opportunities.",
+    "Offer endorsements and publicity support for the driver's career."
+  ],
+  "personality_summary": "A grateful and generous politician, but also unreliable and a bit of a romantic dreamer."
+}

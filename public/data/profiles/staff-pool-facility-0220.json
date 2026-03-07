@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Belgian",
+  "age": 24,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Elise discovered her passion for motorsport at a young age, attending the Spa 24 Hours with her father. This ignited a fascination with the technical aspects of racing, leading her to pursue a degree in Computer Science. Before joining the motorsport world, she honed her skills in cutting-edge tech startups, gaining invaluable experience in system architecture and data analytics. \n\nShe thrives on optimizing IT infrastructure to provide teams with a competitive edge. Her demanding nature pushes her to constantly seek improvements, ensuring that the team's IT systems are always operating at peak performance. Elise believes that seamless data flow and robust communication channels are crucial for success on and off the track, and she's dedicated to delivering just that.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Elise has a focused gaze and a no-nonsense demeanor, reflecting her dedication to her work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has noise-canceling headphones on, even when not actively working.",
+    "Insists on using specific keyboard and mouse models for optimal performance.",
+    "Has a habit of drawing network diagrams on whiteboards during meetings."
+  ]
+}

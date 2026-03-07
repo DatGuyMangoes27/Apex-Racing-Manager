@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 50,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport began in his youth, tinkering with engines in his father's garage in rural France. He honed his mechanical skills through formal education, earning a degree in engineering. After graduation, he joined a small racing team, quickly establishing himself as a meticulous and reliable technician. His keen eye for detail led him to specialize in quality control, where he excelled at identifying and rectifying potential issues before they could impact performance on the track.\n\nOver the years, Jean-Pierre has developed a reputation for his unwavering commitment to excellence. He meticulously reviews every component and process, ensuring that everything meets the highest standards. He's known for his rigorous testing procedures and his ability to diagnose complex problems with minimal information. While his methods can sometimes be seen as overly cautious, his dedication to quality is ultimately what sets RSC Motorsport apart. Jean-Pierre believes that victory is born from precision, and he strives to instill that belief in every member of the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A tall, slender man with a serious demeanor, Jean-Pierre always wears a crisp white shirt."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against surfaces when deep in thought.",
+    "Insists on performing a visual inspection of every part before sign-off, even if it's already been inspected by others."
+  ]
+}

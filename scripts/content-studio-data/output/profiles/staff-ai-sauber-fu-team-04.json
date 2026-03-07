@@ -1,0 +1,22 @@
+{
+  "name": "Javier Mendoza",
+  "nationality": "Spanish",
+  "age": 30,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Javier's passion for motorsport ignited during his childhood in Barcelona, watching Fernando Alonso's early F1 successes. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. Post-graduation, he cut his teeth in Formula Renault before landing a role with a GP2 team, where he quickly impressed with his analytical skills and ability to translate driver feedback into tangible performance gains. He’s known for his meticulous data analysis and relentless pursuit of marginal gains, believing that even the smallest adjustments can make a crucial difference on race day. Javier joined Stake Sauber, eager to contribute to a team with a rich history and a promising future, driven by a desire to reach the pinnacle of motorsport engineering.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Javier is of average height with a lean, athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a specific pre-race ritual involving checking tire pressures multiple times.",
+    "Obsessively cleans his workstation, ensuring every tool is perfectly organized."
+  ]
+}

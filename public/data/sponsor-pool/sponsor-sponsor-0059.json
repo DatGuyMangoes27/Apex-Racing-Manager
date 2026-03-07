@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0059",
+  "name": "Rodamientos Ibéricos",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Spain",
+  "description": "Precision bearings for peak performance.",
+  "story": "Rodamientos Ibéricos has been manufacturing high-performance bearings in Spain for over 30 years. We are committed to providing the best possible components to racing teams. We look for partnerships that reflect our dedication to quality and precision, helping teams achieve maximum performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0059.png"
+}

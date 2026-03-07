@@ -1,0 +1,22 @@
+{
+  "name": "Thandiwe Nkosi",
+  "nationality": "South African",
+  "age": 45,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Thandiwe's journey into motorsport began unconventionally, fueled by a childhood fascination with the aerodynamics of birds in flight. After completing her engineering degree at the University of Cape Town, she initially worked in the aviation industry, focusing on aircraft wing design. However, the lure of Formula racing proved too strong, and she transitioned to motorsport, taking a junior role at a smaller racing outfit where she could apply her knowledge to ground effect and downforce generation.\n\nAs Head of Aero, Thandiwe is meticulous and data-driven, believing that even the smallest aerodynamic adjustments can yield significant performance gains. Her approach is highly analytical, and she emphasizes rigorous testing and simulation to optimize the aerodynamic package. While she's still developing her management skills, her ambition is unmatched, and she's eager to prove her capabilities on the track. Thandiwe's particular focus is on finding innovative ways to improve airflow and reduce drag without sacrificing stability, a challenge she relishes.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, natural afro, neatly shaped",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Thandiwe has a focused gaze and a confident posture."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a peculiar habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on double-checking every CFD simulation output, no matter how reliable the software."
+  ]
+}

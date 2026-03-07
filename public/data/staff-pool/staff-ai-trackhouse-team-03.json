@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 38,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's fascination with motorsport began during his childhood in the Swiss Alps, watching rally cars navigate treacherous mountain roads. This early exposure ignited a passion that led him to pursue a degree in aerospace engineering. After graduating, he honed his skills at Sauber, focusing on computational fluid dynamics and wind tunnel testing. His innovative approach and meticulous attention to detail quickly earned him recognition. Jean-Pierre is known for his ability to translate complex data into practical aerodynamic solutions. \n\nJoining Trackhouse Racing was a natural progression for Jean-Pierre, offering him the opportunity to lead a team and implement his vision for aerodynamic excellence. He believes in a collaborative approach, fostering open communication and knowledge sharing among his team members. His goal is to develop cutting-edge aerodynamic packages that give Trackhouse an edge on the track, pushing the boundaries of what's possible within the regulations. His loyalty to his team is unwavering, making him a cornerstone of Trackhouse Racing's technical department.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Jean-Pierre is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn-out slide rule despite using advanced software.",
+    "Insists on having a specific type of Swiss chocolate available in his office at all times.",
+    "Has a habit of muttering aerodynamic equations under his breath when deep in thought."
+  ]
+}

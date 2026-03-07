@@ -1,0 +1,22 @@
+{
+  "name": "Aria Tangata",
+  "nationality": "New Zealand",
+  "age": 32,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Aria's passion for motorsport ignited early, fueled by her father's involvement in local rally racing. She excelled in electrical engineering at the University of Auckland, specializing in embedded systems and control algorithms. After graduating, she joined a small engineering firm that supported several racing teams, quickly gaining experience in data acquisition and analysis, sensor calibration, and ECU tuning.\n\nAria's approach to electronics engineering is meticulous and innovative. She believes in a holistic understanding of the car's systems, seeking to optimize not just individual components but the entire integrated network. She's known for her ability to troubleshoot complex electrical issues under pressure and her drive to push the boundaries of performance through advanced electronic solutions. Her dedication to precision and her innate understanding of racing dynamics makes her an invaluable asset to any motorsport team.\n\nHer visionary approach has led to some impressive innovations in her previous team, including a new telemetry system that drastically improved pit crew efficiency and a custom traction control algorithm that boosted the car's performance in adverse weather conditions. She is eager to bring her expertise to Hot Racing Team and contribute to their success on the track.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Aria has a determined gaze and a sporty build, reflecting her active lifestyle."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small multi-tool on her keychain.",
+    "Has a habit of sketching circuit diagrams on napkins during lunch.",
+    "Listens to classical music while debugging code to stay focused."
+  ]
+}

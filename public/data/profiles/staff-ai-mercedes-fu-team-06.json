@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 29,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Erik's passion for motorsport began at a young age, fueled by his father's involvement in rally racing. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before transitioning into a performance analysis role with a smaller racing team. His sharp analytical skills and ability to identify critical areas for improvement quickly propelled him through the ranks. Before joining Mercedes-AMG, Erik contributed significantly to the strategic decisions of a competing formula team.\n\nAs a sporting director, Erik prioritizes a data-driven approach, focusing on optimizing race strategies and ensuring seamless communication between the pit wall and the engineering team. He believes in empowering his team members to take ownership of their roles and fostering a collaborative environment where innovative solutions can emerge. Erik's pragmatic mindset allows him to make tough decisions under pressure, always keeping the team's long-term goals in sight. He is known for his calm demeanor, even in the most chaotic race situations, which helps to maintain team focus and morale.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed to the side with a slight undercut.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained stubble",
+    "description": "Erik is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations during races.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Swedish coffee before every race."
+  ]
+}

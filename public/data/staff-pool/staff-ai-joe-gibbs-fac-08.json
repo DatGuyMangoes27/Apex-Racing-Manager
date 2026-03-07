@@ -1,0 +1,22 @@
+{
+  "name": "Mei Zhang",
+  "nationality": "Chinese",
+  "age": 41,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Mei Zhang's fascination with motorsport began during her university days, while pursuing a degree in Aerospace Engineering at Tsinghua University. Captivated by the intricate dance between aerodynamics and vehicle performance, she sought an internship at a local racing team, immersing herself in the world of wind tunnels and computational fluid dynamics. After graduating, Mei honed her skills at a research lab focused on improving commercial aircraft efficiency. She quickly realised her passion lay in the high-stakes, fast-paced environment of motorsport, so she transferred her knowledge to Formula racing and then stock car racing. \n\nMei thrives on precision and meticulousness, approaching each wind tunnel session as a critical experiment. She is known for her sharp analytical mind and her ability to translate complex data into actionable insights for the race engineers. Her ambition drives her to constantly seek new ways to optimize aerodynamic performance, pushing the boundaries of what's possible within the rulebook. Now at Joe Gibbs Racing, she's determined to prove her ability to improve the team's performance using her skills in the wind tunnel.",
+  "physical": {
+    "skinTone": "Light Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight hair with subtle highlights.",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Mei has a slender build and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic equations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on calibrating the wind tunnel equipment herself before each session."
+  ]
+}

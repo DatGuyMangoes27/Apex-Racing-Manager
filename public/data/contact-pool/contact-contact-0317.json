@@ -1,0 +1,31 @@
+{
+  "name": "Elektra Papageorgiou",
+  "nationality": "Greek",
+  "age": 36,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Elektra Papageorgiou is a rising star in the Athens banking scene, known for her patient demeanor and shrewd financial instincts. As a Senior Investment Manager at Hellenic Financial Group, she specializes in high-net-worth individuals and corporate investments, carefully navigating the complex world of international finance. While seemingly reserved, Elektra possesses a flair for the dramatic and a deep intellectual curiosity, often spending her free time engrossed in philosophical texts or experimenting with exotic recipes.\n\nElektra's connection to the motorsport world stems from her firm's increasing involvement in sponsoring racing teams and individual drivers. She's the point person for evaluating potential motorsport-related investments, making her a key figure for drivers seeking financial backing. A racing driver might cross paths with her while seeking sponsorship or investment opportunities for their team or personal career, hoping to secure a lucrative deal that could propel them to new heights.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a sophisticated bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elektra carries herself with an air of quiet confidence. She has high cheekbones and a sharp jawline that accentuate her intense gaze."
+  },
+  "connectionToMotorsport": "Elektra's bank is increasingly involved in motorsport sponsorships, and she is the lead on evaluating new racing-related investment opportunities. This makes her a key contact for teams and drivers seeking financial backing.",
+  "meetingContext": "The player might meet Elektra at a business networking event specifically focused on motorsport investment or through an introduction from a team owner seeking sponsorship.",
+  "conversationTopics": [
+    "The Greek philosophical roots of strategy",
+    "The challenges and rewards of international finance",
+    "Her latest interior design project at her villa",
+    "The intricate techniques of Greek cuisine",
+    "The discipline and focus required for martial arts"
+  ],
+  "canHelp": [
+    "Secure substantial sponsorship deals for your racing team.",
+    "Provide expert financial advice on managing race winnings and investments.",
+    "Offer access to her extensive network of high-net-worth individuals and potential investors."
+  ],
+  "personality_summary": "A patient and intellectual banker with a mysterious air and a keen eye for investment opportunities."
+}

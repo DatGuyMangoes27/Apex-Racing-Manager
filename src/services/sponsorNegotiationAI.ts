@@ -14,6 +14,7 @@ import {
 } from '@/store/careerStore'
 import { Sponsor } from '@/data/sponsors'
 import { calculateOfferDifference } from '@/simulation/sponsors/negotiation'
+import { getNextGeminiApiKey } from '@/services/geminiKeyRotation'
 
 // ============================================
 // TYPES
@@ -66,22 +67,26 @@ export interface GeneratedNegotiationEmail {
 // ============================================
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
+const PRIMARY_MODEL = 'gemini-2.0-flash'
+const FALLBACK_MODEL = 'gemini-2.5-flash'
 
+/**
+ * Get the stored Gemini API key.
+ * Primary source: commentary-settings (where the Settings screen saves it).
+ * Fallbacks: app-settings, career-settings (legacy).
+ */
 function getApiKey(): string | null {
-  try {
-    const settings = localStorage.getItem('app-settings')
-    if (settings) {
-      const parsed = JSON.parse(settings)
-      return parsed.geminiApiKey || null
-    }
-  } catch (e) {
-    console.warn('[NegotiationAI] Error reading API key from localStorage')
-  }
-  return null
+  return getNextGeminiApiKey()
 }
 
 export function isNegotiationAIAvailable(): boolean {
   return !!getApiKey()
+}
+
+function truncatePrompt(prompt: string, maxChars: number): string {
+  if (!prompt) return prompt
+  if (prompt.length <= maxChars) return prompt
+  return `${prompt.slice(0, maxChars)}\n\n[...truncated for API safety...]`
 }
 
 function safeParseJSON(content: string): any {
@@ -112,16 +117,21 @@ async function callGemini(
 ): Promise<GeneratedNegotiationEmail | null> {
   const apiKey = getApiKey()
   if (!apiKey) return null
+  const safeSystem = truncatePrompt(systemPrompt, 8000)
+  const safeUser = truncatePrompt(userPrompt, 16000)
   
   try {
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+    const response = await fetch(GEMINI_API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
       body: JSON.stringify({
-        model: 'gemini-2.0-flash-lite',
+        model: PRIMARY_MODEL,
         messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
+          { role: 'system', content: safeSystem },
+          { role: 'user', content: safeUser }
         ],
         max_tokens: 1200,
         temperature: 0.8
@@ -129,7 +139,55 @@ async function callGemini(
     })
     
     if (!response.ok) {
-      console.warn('[NegotiationAI] API response not ok:', response.status)
+      const errorBody = await response.text().catch(() => 'no body')
+      console.warn('[NegotiationAI] API response not ok:', {
+        status: response.status,
+        model: PRIMARY_MODEL,
+        systemLength: safeSystem.length,
+        userLength: safeUser.length,
+        body: errorBody
+      })
+
+      // Retry once on client-side API errors with a known stable fallback model
+      if (response.status >= 400 && response.status < 500) {
+        const fallbackResponse = await fetch(GEMINI_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: FALLBACK_MODEL,
+            messages: [
+              { role: 'system', content: safeSystem },
+              { role: 'user', content: safeUser }
+            ],
+            max_tokens: 1200,
+            temperature: 0.8
+          })
+        })
+
+        if (!fallbackResponse.ok) {
+          const fallbackBody = await fallbackResponse.text().catch(() => 'no body')
+          console.warn('[NegotiationAI] Fallback API response not ok:', {
+            status: fallbackResponse.status,
+            model: FALLBACK_MODEL,
+            systemLength: safeSystem.length,
+            userLength: safeUser.length,
+            body: fallbackBody
+          })
+          return null
+        }
+
+        const fallbackData = await fallbackResponse.json()
+        const fallbackContent = fallbackData.choices?.[0]?.message?.content
+        if (!fallbackContent) {
+          console.warn('[NegotiationAI] No content in fallback response')
+          return null
+        }
+        return safeParseJSON(fallbackContent)
+      }
+
       return null
     }
     
@@ -689,3 +747,4 @@ export function buildOutreachContext(
     currentYear
   }
 }
+

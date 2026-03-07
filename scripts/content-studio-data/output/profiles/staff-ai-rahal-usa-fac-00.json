@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitri's passion for motorsport ignited during his childhood in Moscow, where he spent countless hours watching Formula 1 races with his father. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, at Bauman Moscow State Technical University. After graduating, Dimitri gained valuable experience working as a data analyst for a small racing team, where he honed his skills in interpreting telemetry data and identifying areas for improvement.\n\nHe joined Rahal Letterman Lanigan as a simulator engineer, where he is responsible for developing and maintaining the team's state-of-the-art simulator. Dimitri's meticulous approach to data analysis, coupled with his innovative ideas, has made him a valuable asset to the team. He is known for his ability to translate real-world data into accurate and meaningful simulator experiences, enabling drivers to fine-tune their performance and optimize car setups. Dimitri is also a creative problem solver, always seeking new ways to improve the simulator's fidelity and provide drivers with the most realistic and effective training environment possible.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Dimitri is of average height and build, with sharp, focused eyes and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during breaks.",
+    "Has a particular fondness for strong black tea and drinks several cups throughout the day.",
+    "Meticulously organizes his workspace and color-codes all his data files."
+  ]
+}

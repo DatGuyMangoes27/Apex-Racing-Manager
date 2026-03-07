@@ -1,0 +1,22 @@
+{
+  "name": "Dr. Evelyn Reed",
+  "nationality": "American",
+  "age": 40,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Evelyn's fascination with electronics began early, dismantling and reassembling radios as a child. Her passion led her to MIT, where she earned a doctorate in electrical engineering, specializing in embedded systems. After graduation, she spent several years developing control systems for aerospace applications, before the allure of motorsport proved too strong to resist.\n\nEvelyn joined Tolman Motorsport driven by the challenge of optimizing performance at the margins. Her approach blends rigorous analysis with creative problem-solving. She is known for her ability to quickly diagnose complex electrical issues, and her innovative solutions have consistently improved the reliability and efficiency of Tolman's cars. She prides herself on fostering a collaborative environment within the team, encouraging open communication and knowledge sharing.\n\nWhat sets Evelyn apart is her intuitive understanding of how electronic systems interact under extreme conditions. She excels at anticipating potential failures and implementing preventative measures, and her creative solutions to energy efficiency have helped the team gain a competitive edge.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Evelyn has a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool, even when not in the garage.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work standing up, even at her desk."
+  ]
+}

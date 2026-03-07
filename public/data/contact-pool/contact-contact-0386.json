@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Maria Elena Reyes",
+  "nationality": "Filipino",
+  "age": 35,
+  "gender": "female",
+  "contactType": "professor",
+  "bio": "Dr. Maria Elena Reyes is a respected history professor specializing in Southeast Asian socio-economic history at the Ateneo de Manila University. Known for her engaging lectures and dry wit, she is deeply committed to her students and scholarship. While seemingly far removed from the racing world, her sharp intellect and analytical skills make her a valuable asset to anyone seeking strategic advice.\n\nMaria Elena’s connection to motorsport stems from her family; her younger brother is a mechanic for a small, independent racing team competing in the Philippine GT Championship. She occasionally attends races to support him, offering a unique perspective on the logistical and human challenges inherent in competitive racing. A driver might encounter her at the track, perhaps seeking her insights on team dynamics or sponsorship opportunities within the local business community. Her reserved yet loyal nature means that once she commits to helping someone, she’s a steadfast ally.",
+  "physical": {
+    "skinTone": "Light brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, often pulled back in a neat bun or ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Maria Elena has a composed and intelligent look. She dresses professionally, favoring tailored blouses and skirts."
+  },
+  "connectionToMotorsport": "Dr. Reyes's brother is a mechanic for a Philippine GT Championship team, and she occasionally attends races.",
+  "meetingContext": "The player could meet Maria Elena through her brother at a race, or perhaps at a university event if the player is involved in motorsports engineering or a related academic field.",
+  "conversationTopics": [
+    "Philippine history and culture",
+    "The socio-economic impact of motorsport in the Philippines",
+    "Her students' achievements",
+    "Her brother's racing team",
+    "Wine tasting notes"
+  ],
+  "canHelp": [
+    "Provide strategic advice on team management and dynamics",
+    "Offer connections to potential local sponsors and investors",
+    "Help with media relations and crafting a compelling narrative"
+  ],
+  "personality_summary": "A humorous and sophisticated professor, reserved but fiercely loyal to those she cares about."
+}

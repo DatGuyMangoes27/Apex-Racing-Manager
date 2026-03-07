@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Prasert",
+  "nationality": "Thai",
+  "age": 33,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Somchai's journey into motorsport began with a childhood fascination with go-karts near his village. He excelled in mechanical engineering at Chulalongkorn University, focusing on vehicle dynamics and control systems. After graduation, he worked with a local racing team, honing his skills in data analysis and trackside adjustments. His dedication and quick problem-solving abilities caught the attention of Aston Martin's scouting network, leading to his current role. He's known for his calm demeanor under pressure and his ability to translate complex technical data into actionable strategies for the driver. Somchai's keen eye for detail ensures the car is always performing at its peak.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "dark brown",
+    "facialHair": "light stubble",
+    "description": "A lean man of average height, he always seems to be studying something intently."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Prefers to listen to classical music through noise-canceling headphones while analyzing data.",
+    "Has a lucky wrench that he uses for critical adjustments."
+  ]
+}

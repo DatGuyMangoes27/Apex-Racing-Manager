@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Luc Meier",
+  "nationality": "Swiss",
+  "age": 25,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Jean-Luc's path to motorsport security was unconventional. Growing up in the shadow of the Swiss Alps, he initially pursued a career in precision engineering, developing a keen eye for detail and a deep understanding of mechanical systems. A chance encounter with a former F1 engineer during a hiking trip sparked his interest in the sport, leading him to apply his technical skills to motorsport security. \n\nHis meticulous approach to risk assessment and security protocols sets him apart. Jean-Luc believes in proactive prevention rather than reactive damage control, constantly analyzing potential vulnerabilities and implementing innovative security measures. He is driven by a desire to create the safest possible environment for his team to operate in, ensuring that their focus remains solely on achieving success on the track. His perfectionist nature and visionary outlook make him a valuable asset to Prema Junior.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Close-cropped goatee",
+    "description": "Jean-Luc is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a multi-tool.",
+    "Insists on checking every lock and seal personally before leaving a secure area.",
+    "Has a habit of sketching security layouts on napkins during lunch."
+  ]
+}

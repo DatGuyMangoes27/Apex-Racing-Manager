@@ -1,0 +1,22 @@
+{
+  "name": "Bronte Mackenzie",
+  "nationality": "Australian",
+  "age": 35,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Bronte's journey into motorsport began with a childhood spent tinkering with go-karts on her family's farm in rural Queensland. This hands-on experience ignited a passion for understanding the intricate mechanics of racing vehicles. She pursued a degree in mechanical engineering, specializing in simulation and modeling, which led her to an internship at a V8 Supercars team. Bronte thrives in the fast-paced environment of the simulator lab, meticulously analyzing data and refining the virtual car models to provide drivers with crucial feedback before hitting the track.\n\nHer approach to simulator engineering is deeply rooted in collaboration and precision. Bronte works closely with drivers and race engineers to translate real-world issues into actionable simulator adjustments. What distinguishes Bronte is her uncanny ability to identify subtle discrepancies between the simulator and the actual car's behavior, leading to improved performance and reduced risks on race day. She is a dedicated problem-solver known for her unwavering commitment to accuracy and her capacity to push the boundaries of simulation technology.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "auburn",
+    "hairStyle": "long, wavy, often tied back in a practical ponytail",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Bronte has a focused gaze and an athletic build honed from years of competitive swimming in her youth."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool, even when nowhere near the simulator.",
+    "Insists on using a specific brand of noise-canceling headphones while working.",
+    "Has a habit of sketching out complex mechanical concepts on napkins during lunch."
+  ]
+}

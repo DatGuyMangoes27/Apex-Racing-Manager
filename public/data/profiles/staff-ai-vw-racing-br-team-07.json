@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Ricardo Vargas is a seasoned motorsport professional with a career spanning over three decades. Born and raised in Lima, Peru, his passion for racing was ignited watching local rally events as a child. He began his journey as a mechanic's apprentice, quickly demonstrating a keen understanding of vehicle dynamics and a knack for problem-solving. Over the years, he honed his skills, working his way up through various racing teams, always focused on the bigger picture. \n\nRicardo's approach to operations is rooted in a pragmatic understanding of the delicate balance between performance and reliability. He's known for his meticulous planning, resourcefulness, and ability to keep a cool head under pressure. At VW Racing Brasil, he's instrumental in ensuring that the team's logistical and technical infrastructure runs smoothly, allowing the drivers and engineers to focus on achieving victory. What sets Ricardo apart is his ability to connect with every member of the team, from the pit crew to the drivers, fostering a collaborative and high-performance environment.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Gray mustache",
+    "description": "A sturdy man with a confident demeanor, Ricardo exudes authority."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out notebook filled with racing schematics and notes.",
+    "Insists on personally inspecting every vehicle component before a race.",
+    "Has a habit of humming classic Peruvian folk songs when deep in thought."
+  ]
+}

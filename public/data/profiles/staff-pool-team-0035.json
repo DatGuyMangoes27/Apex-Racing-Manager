@@ -1,0 +1,22 @@
+{
+  "name": "Mikko Virtanen",
+  "nationality": "Finnish",
+  "age": 39,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Mikko's motorsport journey began in the frozen lakes of Finland, tinkering with engines alongside his father, a rally enthusiast. He quickly developed an intuitive understanding of vehicle dynamics and a relentless pursuit of optimal performance. After graduating with honors in mechanical engineering, he joined a small Formula Ford team, where he honed his skills in data analysis and trackside problem-solving. His meticulous approach and ability to extract the maximum potential from limited resources quickly gained him recognition.\n\nOver the past decade, Mikko has worked with several prominent teams in various racing series, including GT and endurance racing. He's known for his collaborative leadership style, fostering open communication and trust within his crew. While technically astute, Mikko also possesses exceptional management skills, effectively coordinating the efforts of specialists to achieve a common goal. He is driven by a deep-seated desire to win, viewing each race as a complex puzzle to be solved through ingenuity and precision.\n\nMikko is a highly sought-after race engineer, known for his ability to blend advanced technical knowledge with practical hands-on experience. His ambition extends beyond simply winning races; he wants to push the boundaries of motorsport engineering and leave a lasting legacy on the sport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Mikko has a focused gaze and a lean build, reflecting his dedication to his profession."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with cryptic calculations.",
+    "Insists on brewing his own strong Finnish coffee before every race.",
+    "Muttering technical jargon while analyzing telemetry data."
+  ]
+}

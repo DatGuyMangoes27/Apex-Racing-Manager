@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Davies",
+  "nationality": "Welsh",
+  "age": 49,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Rhys's journey into motorsport began unexpectedly after a career in statistical analysis for the Welsh government. Frustrated by the slow pace of bureaucratic change, he sought a field where data directly translated into tangible results. Karting, with its complex interplay of variables and immediate feedback loops, proved irresistible. Initially volunteering with a local karting club, he quickly demonstrated an uncanny ability to identify subtle performance gains hidden within the telemetry data. \n\nHis approach is methodical and deeply analytical. Rhys believes in the power of identifying marginal gains, meticulously dissecting performance data to uncover hidden efficiencies. He's particularly adept at modeling tire degradation and predicting optimal pit stop strategies. What sets him apart is his almost uncanny ability to visualize complex data sets, translating abstract numbers into actionable insights for the drivers and engineers. He joined Sodi Kart Factory five years ago and has been instrumental in their recent successes.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Rhys is of average height with a slightly stocky build and a focused, intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn copy of 'The Signal and the Noise' by Nate Silver.",
+    "Has a habit of muttering mathematical equations under his breath when stressed.",
+    "Insists on using a physical whiteboard and markers for brainstorming sessions, despite the availability of digital tools."
+  ]
+}

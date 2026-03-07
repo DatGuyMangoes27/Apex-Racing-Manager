@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "French",
+  "age": 35,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Thierry's passion for motorsport ignited during his childhood visits to the 24 Hours of Le Mans. He pursued a degree in Aerospace Engineering, focusing on aerodynamics. His early career was spent at a small racing outfit, where he honed his skills and developed a practical approach to problem-solving. Thierry joined Herberth Motorsport three years ago, quickly rising through the ranks to become the head of aero.\n\nThierry is known for his meticulous data analysis and his ability to translate complex aerodynamic concepts into tangible performance improvements. He favors a data-driven approach, ensuring every decision is grounded in evidence. While not a visionary innovator, his steady and reliable expertise makes him a valuable asset to the team. His ambition drives him to constantly seek improvements, no matter how small.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Thierry is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Insists on starting the day with a double espresso.",
+    "Has a habit of tapping his pen when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 36,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Sophie Dubois discovered her love for motorsport through her father, a mechanic for a local rally team. She pursued a degree in composite materials engineering, driven by a fascination with the innovative use of lightweight materials in racing. After graduating, she honed her skills at a small aerospace firm before transitioning to motorsport, drawn by the fast-paced, high-stakes environment.\n\nAt Lechner Racing, Sophie brings a meticulous and analytical approach to her work. She excels at identifying areas for improvement in the team's composite components, focusing on both performance and reliability. While she enjoys the technical challenges, Sophie also has a keen interest in the broader strategic goals of the team and contributes to long-term development plans. Her colleagues appreciate her reliability and her ability to see the big picture, ensuring that her work aligns with the overall team objectives.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie is of average height with a focused, intense gaze and a practical demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Insists on using a specific type of carbon fiber for all repairs, regardless of budget constraints.",
+    "Can often be found meticulously cleaning her workspace, even after a long day."
+  ]
+}

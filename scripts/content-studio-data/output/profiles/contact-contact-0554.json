@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 65,
+  "gender": "male",
+  "contactType": "pilot",
+  "bio": "Ricardo Velez is a name whispered with a mix of admiration and exasperation within Colombian aviation circles. Once a celebrated aerobatic pilot, Ricardo transitioned into commercial aviation in his late 30s, a move seen by many as a 'selling out' of his true passion. However, he maintains that flying passengers safely across continents is a different kind of thrill. Beneath his calm demeanor lies a history of impulsive decisions and a deep-seated rebellious streak, often manifesting in passive-aggressive comments and the occasional unexpected maneuver during flight simulations.\n\nNow nearing retirement, Ricardo spends his downtime indulging in his eclectic interests. He can be found practicing yoga at dawn, losing himself in the complexities of jazz music production, or meticulously studying historical aviation records. His connection to motorsport comes from his love of speed and precision, often drawing parallels between aviation and racing. You might cross paths with him at a local motorsports event, as he is a fan and often offers private piloting services to teams needing quick transport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper mustache",
+    "description": "Ricardo carries himself with the grace of a seasoned pilot. He's lean from years of marathon running, his face etched with the lines of experience and a perpetual hint of a smile."
+  },
+  "connectionToMotorsport": "Ricardo occasionally pilots private jets for racing teams and wealthy sponsors, offering him a unique perspective on the inner workings of the sport. He also provides aerial photography services during race events.",
+  "meetingContext": "You might meet Ricardo at a local motorsports event in Colombia, perhaps in the VIP section or near the helicopter landing pad. Alternatively, he could be the pilot of a chartered flight you or your team takes to a race.",
+  "conversationTopics": [
+    "The golden age of aerobatics",
+    "The nuances of jazz improvisation",
+    "The history of aviation in Colombia",
+    "The benefits of meditation on focus and performance",
+    "His latest music production project"
+  ],
+  "canHelp": [
+    "Provide quick and discreet transport to races via his private piloting services",
+    "Offer insights into the mental fortitude required for high-pressure situations",
+    "Potentially connect you with wealthy sponsors or team owners within his aviation network"
+  ],
+  "personality_summary": "A supportive yet impulsive pilot with a passion for speed and a hidden rebellious streak."
+}

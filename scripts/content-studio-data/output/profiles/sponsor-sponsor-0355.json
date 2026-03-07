@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0355",
+  "name": "Sandstorm Studios",
+  "category": "gaming",
+  "tier": "mid",
+  "country": "Saudi Arabia",
+  "description": "Crafting immersive gaming experiences from the heart of the desert.",
+  "story": "Sandstorm Studios is a leading game developer in Saudi Arabia, seeking to expand its brand recognition globally. Motorsport offers a unique platform to reach a diverse and passionate audience. They value cutting-edge technology and precision, aligning with the high-performance nature of racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0355.png"
+}

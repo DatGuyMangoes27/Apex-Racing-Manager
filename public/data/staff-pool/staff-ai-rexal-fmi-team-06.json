@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 34,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, watching Formula 1 races with his grandfather in Lima. He began his career as a junior engineer with a small rally team in Peru, quickly proving his worth with his meticulous approach to vehicle setup and data analysis. His dedication and technical acumen led to opportunities with larger teams, ultimately culminating in his current role as Sporting Director for Rexal FMI Racing.\n\nRicardo's focus as Sporting Director is on ensuring seamless coordination between the engineering, strategy, and driver performance departments. He believes in fostering a collaborative environment where every team member feels empowered to contribute their best ideas. While data-driven, he also trusts his intuition and experience, making him a decisive and respected leader within the team. His dedication to perfection is tempered by a realistic understanding of the pressures of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave on the left side.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a lean build and a serious demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Insists on having a specific type of Peruvian coffee every morning."
+  ]
+}

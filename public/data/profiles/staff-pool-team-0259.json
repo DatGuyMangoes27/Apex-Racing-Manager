@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 25,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Alistair's passion for motorsport ignited early, fueled by watching his grandfather tinker with classic cars. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, at the University of Edinburgh. His academic prowess earned him an internship with a Formula Ford team, where he quickly impressed with his analytical skills and ability to translate data into actionable insights. After graduation, Alistair honed his expertise in smaller racing series, working his way up to GT racing. \n\nAlistair's approach to race engineering centers around meticulous data analysis and a relentless pursuit of incremental improvements. He believes in fostering open communication with the driver and mechanics, ensuring everyone is aligned on the strategy and setup. While demanding in his expectations, Alistair is dedicated to nurturing talent and creating a high-performance environment. His knack for spotting unconventional solutions and his unwavering focus on the big picture makes him a valuable asset to any team aiming for the podium.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Ginger",
+    "hairStyle": "Short, neatly trimmed with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Alistair is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on a specific brand of Earl Grey tea during race weekends."
+  ]
+}

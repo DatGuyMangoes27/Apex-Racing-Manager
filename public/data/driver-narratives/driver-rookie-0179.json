@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Wilson’s story begins not on the pristine tarmac of a European circuit, but on the dusty, makeshift tracks carved into the South African veld. Born in a small rural community where motorsport was a distant dream, Marco’s first taste of speed came from tinkering with and racing souped-up quad bikes. It wasn’t until a visiting motorsport scout witnessed his raw talent, effortlessly drifting a clunky quad through a treacherous turn, that his potential was recognized. This led to a scholarship at a regional karting academy, a world away from his humble beginnings. Marco's calm demeanor and tactical brilliance quickly set him apart. A defining moment came during a national karting championship where, despite starting last due to a mechanical failure, he meticulously picked off rivals one by one, securing a podium finish. Now, at 16, Marco is navigating the challenging world of single-seaters, competing as an independent driver, hungry to prove that talent can emerge from anywhere.",
+  "drivingStyle": "Marco is a calculating and precise driver, known for his exceptional tire management and strategic overtaking. He doesn't often engage in flashy, high-risk maneuvers, instead preferring to patiently assess opportunities and exploit weaknesses in his opponents' lines. His corner entry is smooth and controlled, prioritizing exit speed and setting up the next maneuver. Under pressure, Marco remains remarkably calm, rarely making rash decisions and consistently delivering consistent lap times. He's often described as a 'chess player' on the track, always thinking several moves ahead.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A clash of styles; Isabelle is aggressive and flamboyant, often clashing with Marco's calculated approach. Their on-track battles are always intense."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Kenji is known for his raw speed, often outpacing Marco in qualifying, but Marco usually beats him in the race. This has created a rivalry based on consistency vs. outright pace."
+    },
+    {
+      "driver": "Adrian Dubois",
+      "reason": "Adrian and Marco were teammates in karting. Adrian, with more financial backing, was always favored by the team, leading to a simmering resentment and a fierce competition."
+    }
+  ],
+  "quirks": [
+    "Always wears the same beaded bracelet his grandmother gave him before every race.",
+    "Studies track maps obsessively the night before a race, visualizing every corner and braking point.",
+    "Listens to classical music to calm his nerves before getting into the car."
+  ],
+  "nickname": "The Veld Viper",
+  "famousQuote": "Speed is important, but strategy wins races.",
+  "careerHighlight": "Winning the National Karting Championship despite a starting grid penalty, showcasing his overtaking prowess and tactical brilliance.",
+  "careerLowPoint": "Crashing out of a Formula Regional race due to a mechanical failure while leading, losing valuable championship points."
+}

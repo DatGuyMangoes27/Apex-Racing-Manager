@@ -1,0 +1,22 @@
+{
+  "name": "Markus Reiter",
+  "nationality": "Austrian",
+  "age": 32,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Markus grew up near the Red Bull Ring, practically breathing motorsport since childhood. He spent his teenage years tinkering with go-karts, eventually landing an apprenticeship at a local engineering firm specializing in custom race parts. He quickly proved his worth, mastering welding, machining, and composite work. His attention to detail and problem-solving skills made him a valuable asset.\n\nHe joined Blau Motorsport five years ago, initially as a junior fabricator, and steadily climbed the ranks. Markus thrives under pressure, consistently delivering high-quality work, even when deadlines are tight. His colleagues appreciate his calm demeanor and willingness to help. He is known for his ability to diagnose and fix complex mechanical issues quickly and efficiently, a trait that has saved the team valuable time and resources on multiple occasions. He hopes to innovate and create new designs that improve the team's performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "A sturdy build with calloused hands from years of working with metal."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to an almost dangerous point.",
+    "Has a specific playlist for each stage of the fabrication process.",
+    "Keeps a small collection of vintage spark plugs on his workbench."
+  ]
+}

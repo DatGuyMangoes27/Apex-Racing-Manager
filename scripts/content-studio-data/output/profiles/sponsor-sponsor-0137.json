@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0137",
+  "name": "Bharat Tyres",
+  "category": "tires",
+  "tier": "entry",
+  "country": "India",
+  "description": "Reliable performance, built for every road.",
+  "story": "Bharat Tyres is a leading Indian manufacturer of tires for passenger vehicles and commercial trucks. With a commitment to quality and durability, they see motorsport as a proving ground for their technology. They are eager to partner with up-and-coming teams to showcase their brand on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 20,
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0137.png"
+}

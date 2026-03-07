@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 41,
+  "gender": "female",
+  "role": "quality_control",
+  "bio": "Moira's journey into motorsport started unconventionally – through her family's garage in the Highlands, where they repaired rally cars for local enthusiasts. This hands-on experience ignited a passion for precision and problem-solving. After earning a degree in Mechanical Engineering, she spent several years honing her skills in the automotive industry before transitioning to motorsport. \n\nHer approach to quality control is meticulous and proactive. Moira believes in identifying potential issues before they impact performance, using data analysis and her keen eye for detail to ensure every component meets the highest standards. She's known for her ability to work collaboratively with engineers and mechanics, fostering a culture of continuous improvement within the team. Her adaptability and dedication make her a valuable asset to Carlin.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Moira is a woman of medium build with a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn engineering handbook.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on using a traditional slide rule alongside modern software."
+  ]
+}

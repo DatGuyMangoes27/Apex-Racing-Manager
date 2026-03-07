@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0207",
+  "name": "Koruna Capital",
+  "category": "finance",
+  "tier": "high",
+  "country": "Czech Republic",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Koruna Capital is a leading Czech investment firm specializing in high-growth opportunities. We believe in backing individuals and teams with the drive to succeed, mirroring our own commitment to performance. Motorsport provides a platform to showcase our brand to a global audience and build relationships with ambitious partners.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0207.png"
+}

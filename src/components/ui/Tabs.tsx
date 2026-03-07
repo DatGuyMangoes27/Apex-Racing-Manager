@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, useId, ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
@@ -6,6 +6,7 @@ import clsx from 'clsx'
 interface TabsContextValue {
   activeTab: string
   setActiveTab: (tab: string) => void
+  tabsId: string  // Unique ID per Tabs instance for layoutId scoping
 }
 
 const TabsContext = createContext<TabsContextValue | null>(null)
@@ -29,6 +30,7 @@ interface TabsProps {
 
 export function Tabs({ defaultValue, value, onValueChange, children, className }: TabsProps) {
   const [internalValue, setInternalValue] = useState(defaultValue || '')
+  const tabsId = useId()
   
   // Support both controlled and uncontrolled modes
   const activeTab = value !== undefined ? value : internalValue
@@ -43,7 +45,7 @@ export function Tabs({ defaultValue, value, onValueChange, children, className }
   }
 
   return (
-    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+    <TabsContext.Provider value={{ activeTab, setActiveTab, tabsId }}>
       <div className={className}>
         {children}
       </div>
@@ -76,7 +78,7 @@ interface TabsTriggerProps {
 }
 
 export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
-  const { activeTab, setActiveTab } = useTabsContext()
+  const { activeTab, setActiveTab, tabsId } = useTabsContext()
   const isActive = activeTab === value
 
   return (
@@ -92,7 +94,7 @@ export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
     >
       {isActive && (
         <motion.div
-          layoutId="activeTab"
+          layoutId={`activeTab-${tabsId}`}
           className="absolute inset-0 bg-surface-secondary rounded-md"
           initial={false}
           transition={{ type: 'spring', stiffness: 500, damping: 30 }}

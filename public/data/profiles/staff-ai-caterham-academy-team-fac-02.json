@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Spanish",
+  "age": 51,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Ricardo's journey into motorsport began unconventionally, not on the track, but within the meticulous environment of aircraft manufacturing. He honed his expertise in composite materials there, developing an eye for precision and a deep understanding of structural integrity. A chance encounter with a Caterham Academy engineer at a local motorsports event sparked his interest in applying his skills to racing.\n\nRicardo brings a perfectionistic approach to his work, ensuring every component meets the highest standards. His background gives him a unique perspective on lightweighting and aerodynamic efficiency. While he might not be the most vocal member of the team, his dedication and meticulousness make him an invaluable asset. He thrives in the controlled environment of the workshop, where he can focus on the fine details that ultimately contribute to improved performance on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is of average height with a sturdy build, reflecting years of hands-on work."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always wears a pristine white lab coat, even when working on the dirtiest components.",
+    "Insists on using a specific brand of microfiber cloth for cleaning composite surfaces.",
+    "Humming quietly while laminating, often Spanish folk songs."
+  ]
+}

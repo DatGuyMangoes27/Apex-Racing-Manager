@@ -1,0 +1,22 @@
+{
+  "name": "Zofia Jankowska",
+  "nationality": "Polish",
+  "age": 23,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Zofia's fascination with motorsport began during her university studies, where she focused on statistical modeling and its application to racing strategy. After graduating with honors in Applied Mathematics, she joined a small racing team, quickly proving her ability to extract meaningful insights from complex datasets. Her keen eye for detail and innovative approach to data analysis led to significant improvements in the team's performance. \n\nAt Century Motorsport, Zofia is known for her ability to translate raw data into actionable strategies. She believes in a data-driven approach to decision-making, meticulously analyzing every aspect of the race, from tire degradation to aerodynamic performance. Her visionary outlook allows her to identify potential areas for improvement that others might overlook. \n\nZofia's loyalty and dedication to the team make her an invaluable asset. She is always willing to go the extra mile to ensure that the team has the information they need to succeed. Her colleagues appreciate her collaborative spirit and her unwavering commitment to excellence. She's seen as an innovator with a bright future.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair, often pulled back into a high ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Zofia has a slender build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a collection of lucky racing charms she keeps on her desk.",
+    "Insists on listening to classical music while analyzing data."
+  ]
+}

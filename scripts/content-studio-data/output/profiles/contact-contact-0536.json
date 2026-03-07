@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Bjornstad",
+  "nationality": "Swedish",
+  "age": 62,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Astrid Bjornstad is a recently retired Colonel from the Swedish Air Force, known for her sharp wit and strategic mind. During her distinguished career, she oversaw numerous procurement projects, including several related to vehicle testing and performance analysis for military applications. Though now retired, Astrid remains involved in several advisory boards related to defense technology and enjoys indulging in her wide range of hobbies.\n\nDespite her military background, Astrid has always held a quiet fascination with motorsport, viewing it as a civilian analogue to the precision and teamwork demanded in military aviation. She sees parallels between the high-stakes decision-making on the track and the split-second reactions required in the cockpit. A racing driver might cross paths with her at a charity gala, a business conference focused on materials science relevant to both the defense and automotive industries, or perhaps even at a local antique auction – one of her favorite pastimes.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid carries herself with the unmistakable bearing of a military officer. Her piercing blue eyes convey intelligence and quiet authority."
+  },
+  "connectionToMotorsport": "Astrid's connection to the racing world stems from her background in vehicle testing and performance analysis for the military, often working with automotive engineers. She also funds a small scholarship for promising female engineers interested in motorsports.",
+  "meetingContext": "The player could meet Astrid at a fundraising gala for injured veterans or a motorsports-related charity event she supports.",
+  "conversationTopics": [
+    "The strategic similarities between motorsport and military aviation",
+    "The complexities of music production",
+    "The history and craftsmanship of antique furniture",
+    "The importance of STEM education for young women",
+    "Her scuba diving adventures in the Baltic Sea"
+  ],
+  "canHelp": [
+    "Provide introductions to potential sponsors in the defense or engineering sectors.",
+    "Offer strategic advice on team management and negotiation.",
+    "Connect the player with engineers specializing in vehicle performance optimization."
+  ],
+  "personality_summary": "A sharp-witted and generous retired military officer with a surprising passion for the arts and a keen interest in motorsport."
+}

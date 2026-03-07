@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0193",
+  "name": "ChronoCan",
+  "category": "watches",
+  "tier": "high",
+  "country": "Canada",
+  "description": "Canadian precision, timeless design.",
+  "story": "ChronoCan is a luxury watchmaker based in Montreal, inspired by the relentless pursuit of perfection in motorsports. We believe in pushing boundaries and achieving peak performance, values that align perfectly with racing. Our sponsorship aims to showcase the precision and reliability of ChronoCan watches in the high-pressure environment of motorsport.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0193.png"
+}

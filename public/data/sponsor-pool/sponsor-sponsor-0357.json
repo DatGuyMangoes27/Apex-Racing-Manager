@@ -1,0 +1,58 @@
+{
+  "id": "sponsor-0357",
+  "name": "Räderwerk Motorsport",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Germany",
+  "description": "Precision engineered tires for ultimate performance.",
+  "story": "Räderwerk has been a leader in tire technology for over 50 years. We entered motorsport to push our products to the limit, seeking teams that value innovation and performance. We aim to partner with teams that are dedicated to winning and are willing to collaborate closely on tire development.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Germany",
+      "Austria",
+      "Switzerland"
+    ],
+    "minWins": 3,
+    "minPodiums": 6
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 10,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0357.png"
+}

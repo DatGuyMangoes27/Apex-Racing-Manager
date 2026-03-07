@@ -13,7 +13,7 @@ import {
   DrainLevel,
   CalendarEntryType
 } from '@/store/careerStore'
-import { TRIGGERED_ACTIVITY_COSTS } from '@/data/activity-time-costs'
+import { TRIGGERED_ACTIVITY_COSTS, getActivityTimeCost } from '@/data/activity-time-costs'
 
 // Trigger definition - conditions that generate activities
 export interface ActivityTrigger {
@@ -381,8 +381,8 @@ const BOARD_TEAM_TRIGGERS: ActivityTrigger[] = [
       suggestedWeek: 'next',
       effects: {
         onComplete: {
-          boardMood: 15,
-          teamMorale: 5
+          boardMood: 8,
+          teamMorale: 2
         },
         onMiss: {
           boardMoodPenalty: -20,
@@ -413,8 +413,8 @@ const BOARD_TEAM_TRIGGERS: ActivityTrigger[] = [
       suggestedWeek: 'next',
       effects: {
         onComplete: {
-          teamMorale: 25,
-          boardMood: 5
+          teamMorale: 12,
+          boardMood: 2
         },
         onMiss: {
           boardMoodPenalty: -10,
@@ -537,10 +537,10 @@ const SEASONAL_TRIGGERS: ActivityTrigger[] = [
       suggestedWeek: 3,
       effects: {
         onComplete: {
-          sponsorSatisfaction: 10,
-          reputation: 5,
-          fanSentiment: 15,
-          boardMood: 8
+          sponsorSatisfaction: 5,
+          reputation: 2,
+          fanSentiment: 8,
+          boardMood: 4
         },
         onMiss: {}
       }
@@ -566,8 +566,8 @@ const SEASONAL_TRIGGERS: ActivityTrigger[] = [
       suggestedWeek: 'next',
       effects: {
         onComplete: {
-          boardMood: 8,
-          teamMorale: 5
+          boardMood: 4,
+          teamMorale: 2
         },
         onMiss: {
           boardMoodPenalty: -15,
@@ -597,11 +597,11 @@ const SEASONAL_TRIGGERS: ActivityTrigger[] = [
       suggestedWeek: 'next',
       effects: {
         onComplete: {
-          reputation: 5,
-          fanSentiment: 10,
-          sponsorSatisfaction: 5,
-          teamMorale: 10,
-          boardMood: 10
+          reputation: 2,
+          fanSentiment: 5,
+          sponsorSatisfaction: 3,
+          teamMorale: 5,
+          boardMood: 5
         },
         onMiss: {
           reputationPenalty: -3
@@ -763,6 +763,7 @@ export interface TriggerContext {
   reputation: number
   hasSponsors: boolean
   hasStaff: boolean
+  hasDrivers: boolean
   boardMood: number
   avgSponsorSatisfaction: number
   avgStaffMorale: number
@@ -788,6 +789,9 @@ export function evaluateTriggerConditions(
   // Resource checks
   if (conditions.hasSponsors && !context.hasSponsors) return false
   if (conditions.hasStaff && !context.hasStaff) return false
+  
+  // Race-result triggers require drivers to exist
+  if (conditions.raceResult && !context.hasDrivers) return false
   
   // Week range check
   if (conditions.weekRange) {
@@ -904,8 +908,8 @@ export function createActivityFromTrigger(
       reputation: generatedActivity.effects.onMiss.reputationPenalty
     },
     
-    // Requirements
-    requiresDriver: true,
+    // Requirements — infer from trigger source; only race/driver-related triggers need a driver
+    requiresDriver: ['race_win', 'race_podium', 'race_dnf', 'championship_lead'].includes(trigger.source),
     
     // Trigger info
     triggeredBy: trigger.source,
@@ -926,7 +930,13 @@ export function createActivityFromTrigger(
     // Time Budget System: drain level and calendar type from cost config
     drainLevel: (TRIGGERED_ACTIVITY_COSTS[trigger.id]?.drain ?? 'normal') as DrainLevel,
     calendarEntryType: (TRIGGERED_ACTIVITY_COSTS[trigger.id]?.calendarType ?? 
-      (generatedActivity.mandatory ? 'mandatory' : 'personal')) as CalendarEntryType
+      (generatedActivity.mandatory ? 'mandatory' : 'personal')) as CalendarEntryType,
+    
+    // Day period scheduling from activity time cost config
+    scheduledPeriod: (() => {
+      const tc = getActivityTimeCost(generatedActivity.templateId || trigger.id)
+      return tc.preferredPeriod || tc.allowedPeriods?.[0]
+    })()
   }
   
   return activity

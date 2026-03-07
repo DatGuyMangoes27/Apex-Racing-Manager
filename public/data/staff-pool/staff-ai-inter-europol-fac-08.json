@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 38,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mads' journey into motorsport began with a fascination for aerodynamics sparked by watching Formula 1 races as a child. After completing his engineering degree at the Technical University of Denmark, he specialized in fluid dynamics and secured an internship at a smaller wind tunnel facility, honing his skills in data acquisition and analysis.\n\nHe joined Inter Europol Competition five years ago, bringing with him a meticulous approach to wind tunnel testing and a knack for identifying subtle airflow anomalies. Mads is known for his ability to translate complex data into actionable insights for the team's aerodynamicists. His focus is on optimizing the car's performance in varying conditions, always pushing the boundaries of what's possible within the regulations. He is particularly interested in how small adjustments can yield big results on the track.\n\nMads is distinctive for his ability to quickly adapt to new technologies and testing methodologies. He consistently seeks out new ways to improve the efficiency and accuracy of wind tunnel simulations. He is also a strong team player, always willing to share his knowledge and mentor junior engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blond",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Mads is of average height with a slightly athletic build, noticeable even under his lab coat."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations, even during breaks.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Insists on using a specific type of Danish pastry as his 'lucky charm' on test days."
+  ]
+}

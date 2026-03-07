@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Colombian",
+  "age": 38,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mateo's journey into motorsport began unexpectedly. While studying statistics at the National University of Colombia, he stumbled upon a research paper analyzing racing telemetry data. Intrigued, he started applying his skills to local karting events, quickly proving his knack for uncovering hidden performance gains. His passion and talent led him to Praga Racing, where he has spent the last five years honing his craft. \n\nAs a data analyst, Mateo is meticulous and thorough. He believes in a data-driven approach, constantly seeking patterns and insights that can give the team a competitive edge. He is known for his ability to translate complex data into actionable strategies that engineers and drivers can easily understand. His unwavering dedication to precision and his innate ability to anticipate trends set him apart.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during breaks.",
+    "Insists on using a specific brand of pen for taking notes during meetings.",
+    "Has a habit of tapping his foot rhythmically when processing complex data."
+  ]
+}

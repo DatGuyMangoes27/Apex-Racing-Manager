@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 42,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's passion for motorsport ignited in his youth, captivated by the roar of engines at local Turismo Carretera races. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing his first role with a small Argentine racing team. After several successful seasons improving vehicle performance, he sought international experience, joining a Formula 3 team in Europe. His meticulous data analysis and clear communication skills quickly earned him recognition, leading to opportunities with teams in higher series. \n\nRicardo is known for his calm demeanor under pressure and his ability to distill complex data into actionable insights for the driver. His approach to race engineering is rooted in a deep understanding of vehicle dynamics and a commitment to continuous improvement. He emphasizes a collaborative approach with the driver and other engineers, believing that the best results come from shared knowledge and mutual respect. What sets Ricardo apart is his tenacity to find innovative solutions to any problem he encounters on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is of average height, with a strong build and focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a lucky Argentine coin that he keeps on his desk during races.",
+    "Insists on listening to tango music before each qualifying session."
+  ]
+}

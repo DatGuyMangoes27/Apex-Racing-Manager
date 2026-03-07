@@ -1,0 +1,31 @@
+{
+  "name": "Klara von Heimburg",
+  "nationality": "German",
+  "age": 55,
+  "gender": "female",
+  "contactType": "fashion_designer",
+  "bio": "Klara von Heimburg is a self-made fashion icon, known for her avant-garde designs and her keen eye for detail. Eschewing formal training, she built her empire from the ground up, starting with a small atelier in Munich and expanding globally. Her designs often incorporate historical influences with a modern twist, attracting a clientele of artists, intellectuals, and those with a discerning taste for the unusual.\n\nBeneath her intellectual and often humorous exterior lies a deeply thoughtful and secretive woman. Klara is drawn to individuals who possess a unique spark and a passion for their craft. A racing driver might cross paths with her through sponsorship opportunities, high-society events, or even as a muse for a racing-inspired collection. She appreciates the dedication and precision required in motorsport, seeing parallels with her own artistic process.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, asymmetrical bob",
+    "eyeColor": "Grey-blue",
+    "facialHair": null,
+    "description": "Klara has a striking appearance, with a sharp nose and high cheekbones. She favors tailored clothing in muted tones, often accessorized with bold, vintage jewelry."
+  },
+  "connectionToMotorsport": "Klara occasionally designs racing suits for prominent drivers, blending high fashion with functionality. Her brand also sponsors a classic car rally team.",
+  "meetingContext": "The player might meet Klara at a high-end charity gala, a fashion show, or through a mutual acquaintance in the vintage car scene.",
+  "conversationTopics": [
+    "The history of fashion",
+    "Vintage automobiles and their design",
+    "Modern art and its influences",
+    "Her latest collection",
+    "The challenges of running a global brand"
+  ],
+  "canHelp": [
+    "Offer fashion-related sponsorship opportunities",
+    "Introduce the player to wealthy patrons and influencers",
+    "Enhance the player's public image through styling and branding"
+  ],
+  "personality_summary": "An intellectual and secretive fashion designer with a sharp wit and a discerning eye."
+}

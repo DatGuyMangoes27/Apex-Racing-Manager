@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Tan Wei Long",
+    "nationality": "Singaporean",
+    "age": 56,
+    "gender": "male",
+    "role": "race_engineer",
+    "bio": "Tan Wei Long's journey in motorsport began with a childhood fascination for go-karts at the old Pasir Gudang circuit. He pursued mechanical engineering at the National University of Singapore, eventually landing a coveted role at a local racing team competing in the Formula Asia series. His meticulous data analysis and innovative problem-solving quickly set him apart, leading to opportunities overseas. \n\nHe spent years honing his skills in various racing disciplines, from GT racing to Formula 3, before returning to Singapore. Tan's approach to race engineering blends technical expertise with a keen understanding of driver psychology. He's known for his ability to extract maximum performance from a car while maintaining a calm and focused demeanor under pressure. His loyalty and engineering acumen are highly sought after in the paddock.",
+    "physical": {
+      "skinTone": "olive",
+      "hairColor": "graying black",
+      "hairStyle": "short, neatly combed with a slight receding hairline",
+      "eyeColor": "dark brown",
+      "facialHair": "trimmed goatee",
+      "description": "A man of medium build with a focused gaze, he often wears a practical, slightly creased team shirt."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten calculations.",
+      "Insists on having a cup of strong kopi before every race.",
+      "Has a habit of tapping his pen against his teeth when deep in thought."
+    ]
+  }
+]

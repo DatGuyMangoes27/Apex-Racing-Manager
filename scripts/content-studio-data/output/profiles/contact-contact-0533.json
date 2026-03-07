@@ -1,0 +1,31 @@
+{
+  "name": "Hans-Ulrich Keller",
+  "nationality": "Swiss",
+  "age": 65,
+  "gender": "male",
+  "contactType": "military_officer",
+  "bio": "Hans-Ulrich Keller is a retired Brigadier General from the Swiss Armed Forces, known for his sharp intellect and unconventional approach to problem-solving. His career spanned decades, including deployments on peacekeeping missions and leadership roles in national security. Despite his serious profession, he possesses a dry wit and a flair for the dramatic, often surprising those who underestimate him. He is also a passionate amateur photographer, often found capturing the beauty of the Swiss Alps. Keller's connection to motorsport is somewhat indirect but revolves around his interest in high-performance engineering, a field where Swiss precision is highly valued and often intersects with Formula 1 teams. A racing driver might cross paths with him at an exclusive event showcasing Swiss engineering or at a private gathering hosted by a mutual acquaintance in the business world.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Grey",
+    "hairStyle": "Close-cropped, military-style",
+    "eyeColor": "Blue",
+    "facialHair": "Well-trimmed grey mustache",
+    "description": "Keller is a man of medium height with a sturdy build, reflecting his years of military service. His piercing blue eyes convey both intelligence and a hint of amusement."
+  },
+  "connectionToMotorsport": "Through his network in the Swiss engineering sector, Keller occasionally provides discreet consultation to Formula 1 teams, leveraging his expertise in logistics and strategic planning. He also follows the sport closely as a fan, appreciating the precision and teamwork involved.",
+  "meetingContext": "The player might meet Keller at a high-end watch auction in Geneva, where he is discreetly bidding on a rare vintage timepiece, or at a charity gala supporting Swiss engineering and innovation.",
+  "conversationTopics": [
+    "The strategic parallels between motorsport and military tactics",
+    "The evolution of Swiss engineering and its impact on various industries",
+    "His experiences in the military and peacekeeping operations",
+    "The nuances of craft beer brewing",
+    "The art of black and white photography"
+  ],
+  "canHelp": [
+    "Introduce the player to key figures in Swiss engineering and manufacturing, potentially leading to sponsorship opportunities.",
+    "Offer strategic advice on navigating complex team dynamics and contract negotiations.",
+    "Provide access to exclusive networking events in Switzerland."
+  ],
+  "personality_summary": "A witty and enigmatic retired Brigadier General with a hidden passion for precision and strategy."
+}

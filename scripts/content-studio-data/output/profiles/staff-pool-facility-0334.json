@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Lim Wei Liang",
+    "nationality": "Singaporean",
+    "age": 37,
+    "gender": "male",
+    "role": "data_analyst",
+    "bio": "Lim Wei Liang's journey into motorsport analytics began with a childhood fascination for Formula 1, spending countless hours dissecting race strategies with his father. His academic background in Statistics and Machine Learning from the National University of Singapore provided him with a solid foundation for applying data-driven insights to racing. He honed his skills at a local racing team, where he developed predictive models for tire degradation and optimal pit stop timings.\n\nWei Liang is known for his meticulous approach to data analysis, consistently striving to uncover hidden patterns and correlations that can provide a competitive edge. He believes in clear and concise communication of findings, ensuring that technical insights are readily accessible to the entire team. His relentless pursuit of accuracy and innovation has made him a sought-after data analyst in the racing world. He expects his colleagues to bring the same level of dedication to data integrity.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly combed with a slight side part",
+      "eyeColor": "Dark Brown",
+      "facialHair": "Goatee",
+      "description": "Lim Wei Liang is a slender man of average height, with a focused gaze and a serious demeanor."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always carries a small notebook filled with data insights.",
+      "Insists on using a specific brand of ergonomic keyboard.",
+      "Has a habit of tapping his pen rhythmically when deep in thought."
+    ]
+  }
+]

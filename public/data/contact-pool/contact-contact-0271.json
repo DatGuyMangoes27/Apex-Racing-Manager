@@ -1,0 +1,31 @@
+{
+  "name": "Eleanor Ainsworth",
+  "nationality": "British",
+  "age": 31,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Eleanor Ainsworth is a rising star in the world of sports and entertainment law, known for her unconventional approach and sharp legal mind. A graduate of Oxford, she quickly made a name for herself by taking on high-profile cases, often championing the underdog and challenging established norms. While some consider her reckless, her clients appreciate her unwavering dedication and refusal to back down. She has a reputation for being eccentric, even old-fashioned, but her intellectual prowess is undeniable. \n\nEleanor's connection to motorsport stems from representing several up-and-coming drivers and smaller racing teams. Her rebellious spirit draws her to the high-stakes, high-reward world of racing. A driver might cross paths with Eleanor when seeking legal representation for contract negotiations, sponsorship deals, or dispute resolution. She is a formidable advocate who values fairness and integrity, even in the cutthroat world of motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often tied back in a messy bun.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Eleanor has a smattering of freckles across her nose and a determined set to her jaw. She often wears vintage clothing and practical, but stylish, glasses."
+  },
+  "connectionToMotorsport": "Eleanor represents several drivers and racing teams, specializing in contract law and intellectual property rights within the motorsport industry. She's passionate about ensuring fair representation for smaller teams and individual racers against larger corporations.",
+  "meetingContext": "The player might meet Eleanor at a motorsport networking event, a legal seminar focused on sports law, or through a mutual acquaintance involved in racing.",
+  "conversationTopics": [
+    "The ethics of motorsport sponsorship",
+    "The latest developments in sustainable racing technology",
+    "The philosophy of competition",
+    "Her latest marathon training progress",
+    "The nuances of contract law in Formula racing"
+  ],
+  "canHelp": [
+    "Negotiating favorable sponsorship deals",
+    "Providing legal counsel on contractual agreements with teams and manufacturers",
+    "Protecting the player's image rights and intellectual property"
+  ],
+  "personality_summary": "A brilliant but eccentric lawyer with a rebellious streak and a passion for motorsport."
+}

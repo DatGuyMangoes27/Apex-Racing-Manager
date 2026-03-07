@@ -1,0 +1,27 @@
+{
+  "biography": "Allan McNish, hailing from Dumfries, Scotland, wasn't born into motorsport royalty, but his passion for speed was ignited early. The roar of engines at a local rally event as a boy sealed his fate. He started karting at the age of 10, showing raw talent but also a frustrating inconsistency that would follow him throughout his career. His breakthrough came in Formula Vauxhall, winning the championship with a daring last-lap overtake at Brands Hatch. This opened doors to sportscar racing, where he found his niche. After a stint with Porsche, he landed a coveted seat with Audi R8 LMP1. Though immensely talented, Allan continues to struggle with maintaining focus and composure, leading to flashes of brilliance followed by periods of frustration. He's now at a critical juncture, needing to prove he can consistently deliver at the highest level.",
+  "drivingStyle": "McNish is known for his aggressive, almost reckless, driving style. He's a master of late braking, often pushing the limits of adhesion to gain an advantage. While this approach can lead to spectacular overtakes and blistering lap times, it also makes him prone to errors. He tends to overdrive the car, especially when under pressure, leading to tire degradation and occasionally costly mistakes. He thrives in wet conditions, where his fearless style gives him a distinct edge.",
+  "rivalries": [
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "A constant battle for track position and team leadership within Audi, fueled by contrasting driving styles and personal animosity."
+    },
+    {
+      "driver": "Ricardo Silva",
+      "reason": "A heated rivalry dating back to their Formula Vauxhall days, marked by several on-track collisions and accusations of unsportsmanlike conduct."
+    },
+    {
+      "driver": "Klaus Richter",
+      "reason": "Richter accused McNish of blocking during qualifying at Le Mans, leading to a public spat and intense competition on the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks on race day, regardless of the weather.",
+    "Has a peculiar habit of polishing his helmet visor obsessively before each session.",
+    "Refuses to eat anything green the week leading up to a race, believing it brings bad luck."
+  ],
+  "nickname": "McCrash",
+  "famousQuote": "Sometimes you have to risk it all to win, even if it means ending up in the gravel.",
+  "careerHighlight": "Winning the 24 Hours of Le Mans in 2000, after a grueling race where he set the fastest lap and made a crucial overtake in the final hour.",
+  "careerLowPoint": "Crashing out of the lead at the 24 Hours of Daytona in 1999, due to a driver error, costing his team a likely victory."
+}

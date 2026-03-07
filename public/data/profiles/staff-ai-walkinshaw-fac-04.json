@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 32,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Alistair's fascination with motorsport began dismantling and rebuilding his father's lawnmower engine as a child. This early curiosity led him to pursue a degree in Electrical Engineering, specializing in embedded systems. After graduating, he landed a coveted internship with a Formula Ford team, quickly proving his aptitude for diagnosing and resolving complex electrical issues under pressure. \n\nAlistair joined Walkinshaw Andretti United three years ago, where he's become an integral part of the electronics team. He takes a meticulous, data-driven approach to his work, always striving to optimize the car's electronic systems for peak performance. He's known for his ability to quickly identify and rectify issues, often working late into the night to ensure the car is race-ready. What sets Alistair apart is his deep understanding of both the theoretical and practical aspects of race car electronics – he's equally comfortable poring over schematics as he is troubleshooting on the pit wall.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "ginger",
+    "hairStyle": "short, neatly cropped",
+    "eyeColor": "blue",
+    "facialHair": "short boxed beard",
+    "description": "Alistair is a lean man, with a concentrated gaze, always looking like he is about to solve a complicated equation."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Insists on using a mechanical keyboard, even at the track.",
+    "Has a habit of muttering technical jargon under his breath when stressed."
+  ]
+}

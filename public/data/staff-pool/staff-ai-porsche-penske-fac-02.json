@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 33,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Thierry's journey into motorsport began, unusually, with an apprenticeship in high-performance yacht construction. The meticulous nature of composite work and the relentless pursuit of weight reduction resonated with him. However, the call of roaring engines proved too strong, and he transitioned to motorsport, landing a junior role with a Formula 3 team. From there, his reputation for precision and innovative repair solutions quickly grew. He thrives under pressure, seeing each damaged component as a puzzle to solve, a challenge to not just repair but improve upon.\n\nHis approach to composite work is almost artistic. He's not just patching up damage; he's analyzing stress points, identifying weaknesses, and implementing subtle enhancements. Thierry's demanding nature pushes his team to meet his exacting standards, but the results speak for themselves: stronger, lighter, and more reliable components. He joined Porsche Penske Motorsport hoping to bring his unique blend of yacht-building precision and racing ingenuity to the highest level of competition.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "hazel",
+    "facialHair": "short boxed beard",
+    "description": "Thierry is of average height, with a wiry build and intense eyes that reflect his focused nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears noise-canceling headphones, even when not working on noisy equipment.",
+    "Insists on using only carbon fiber sourced from a specific supplier in Japan.",
+    "Sharpens his pencils to an almost dangerous point before every repair."
+  ]
+}

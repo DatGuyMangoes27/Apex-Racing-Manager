@@ -1,0 +1,31 @@
+{
+  "name": "Isabella Rodriguez",
+  "nationality": "Spanish",
+  "age": 55,
+  "gender": "female",
+  "contactType": "athlete",
+  "bio": "Isabella Rodriguez is a retired rally driver, celebrated for her daring maneuvers and strategic race management. Her career spanned two decades, during which she secured multiple national championships and a podium finish at the Dakar Rally. Known for her intense focus and meticulous preparation, Isabella also surprised many with her compassionate nature, often mentoring younger drivers and advocating for safety improvements in motorsport. Despite her retirement, she remains a fixture in the racing community, offering insights as a commentator and contributing articles to motorsport publications. A young driver might encounter her at a racing event, where she is often invited as a guest speaker or to offer advice to up-and-coming talents.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, layered bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Isabella has a strong, athletic build, reflecting her years as a rally driver. Her face is framed by a stylish bob, revealing a determined expression and warm, inviting eyes."
+  },
+  "connectionToMotorsport": "Isabella is a retired rally driver with a prestigious career, now working as a motorsport commentator and writer. She offers her expert opinions on races and the current state of motorsport.",
+  "meetingContext": "You would likely meet Isabella at a motorsport event, either in the paddock during a rally race, or perhaps at a motorsport journalism conference.",
+  "conversationTopics": [
+    "The history of rally racing",
+    "The mental game of motorsport",
+    "Her experiences at the Dakar Rally",
+    "The importance of safety in racing",
+    "Her favorite podcasts"
+  ],
+  "canHelp": [
+    "Provide valuable mentorship and advice on racing strategy",
+    "Offer introductions to key figures in the rally world",
+    "Potentially endorse the player to sponsors or teams"
+  ],
+  "personality_summary": "A compassionate and thoughtful, yet obsessive and occasionally reckless former rally driver turned commentator."
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "George Russell, born in the Oxfordshire market town of Didcot, England, wasn't raised in a racing dynasty. His father, a local mechanic, fostered George's early passion for speed by building him a go-kart from spare parts found in his garage. This makeshift kart became young George's obsession, transforming the local park into his personal racetrack. A defining moment came during a regional karting championship at age 12. Trailing the leader by a considerable margin, George executed a daring maneuver around the outside of the final corner, snatching victory in the last possible moment. This audacious move became his signature style. After a brief and unsuccessful stint with Didcot Racing, George was picked up by Starward G.P., where he currently competes, aiming to recapture the fire that defined his early career.",
+  "drivingStyle": "Russell is known for his relentlessly aggressive driving style. He attacks every corner with a ferocity that borders on reckless, often pushing the limits of grip and control. While this approach can lead to spectacular overtakes and blistering lap times, it also makes him prone to errors, especially when under pressure. He favors late braking and a high-speed entry into corners, trusting his innate car control to see him through. Tire management is an area where he struggles, often sacrificing long-term performance for short-term gains.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A long-standing feud stemming from a controversial collision during the 2028 Monaco Grand Prix that cost Rossi the race."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A rivalry based on contrasting driving styles, with Tanaka's smooth, calculated approach clashing with Russell's aggressive, unpredictable nature."
+    },
+    {
+      "driver": "Viktor Volkov",
+      "reason": "Battles for championship contention in the 2030 season saw numerous on-track altercations and heated exchanges off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, gifted to him by his grandmother, for every race.",
+    "Refuses to eat anything containing tomatoes on race weekends.",
+    "Spends exactly 15 minutes visualizing the first lap of the race before getting into the car."
+  ],
+  "nickname": "The Didcot Daredevil",
+  "famousQuote": "You don't win races by being cautious; you win them by taking risks. Sometimes those risks pay off, and sometimes they don't. But you always learn something.",
+  "careerHighlight": "Winning the 2029 British Grand Prix at Silverstone, overcoming a mid-race puncture to snatch victory in front of his home crowd.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the 2031 Italian Grand Prix, handing victory to his arch-rival, Isabelle Rossi."
+}

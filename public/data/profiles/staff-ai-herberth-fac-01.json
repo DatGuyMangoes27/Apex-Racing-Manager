@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 37,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Eleanor's journey into motorsport began unconventionally, sparked by a university project analyzing Formula One telemetry data for potential performance gains. This quickly transitioned into a passion, and she began volunteering with local racing teams, honing her analytical skills trackside. After gaining experience using data to optimize car setups and race strategies, she joined Herberth Motorsport, where she has become an invaluable asset. Eleanor meticulously dissects complex data sets, identifying subtle performance indicators often overlooked by others. Her dedication is driven by a relentless pursuit of measurable improvement, viewing data not just as numbers, but as a narrative of the race unfolding.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, wavy, often pulled back into a messy bun with stray strands framing her face.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eleanor is of average height with a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data observations.",
+    "Has a peculiar habit of tapping her pen against her teeth when deeply focused.",
+    "Insists on having a specific brand of herbal tea before analyzing crucial race data."
+  ]
+}

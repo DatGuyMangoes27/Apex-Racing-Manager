@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0205",
+  "name": "Nordic Grip Tires",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Sweden",
+  "description": "Engineered for performance, inspired by the north.",
+  "story": "Nordic Grip Tires has been developing high-performance tires in Sweden for over 40 years. We're committed to pushing the boundaries of tire technology and seek partnerships with teams that share our passion for innovation and achieving peak performance on the track. We believe motorsport is the ultimate proving ground for our products.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Sweden",
+      "Norway",
+      "Finland",
+      "Denmark"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0205.png"
+}

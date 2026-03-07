@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, watching F1 races with his grandfather in Mexico City. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he honed his skills at a local racing academy, developing simulator programs to train aspiring drivers. His dedication and precision caught the attention of V8 Masters Racing, where he now plays a crucial role in optimizing car setups and driver performance through advanced simulator technology.\n\nRicardo is known for his meticulous approach to data analysis and his ability to translate complex technical information into actionable insights for the drivers and race engineers. He's constantly exploring new simulation techniques and software to push the boundaries of what's possible. His innate understanding of vehicle dynamics, combined with his creative problem-solving abilities, makes him a valuable asset to the team. He is developing new tire models that will allow for more detailed simulation of tire degradation and performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks.",
+    "Insists on using a specific brand of Mexican coffee beans in the simulator lab.",
+    "Has a habit of tapping his pen rhythmically when concentrating."
+  ]
+}

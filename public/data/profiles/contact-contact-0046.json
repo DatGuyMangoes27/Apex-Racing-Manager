@@ -1,0 +1,31 @@
+{
+  "name": "Layla Khalil",
+  "nationality": "Lebanese",
+  "age": 27,
+  "gender": "female",
+  "contactType": "tech_entrepreneur",
+  "bio": "Layla Khalil is the visionary founder of 'Phoenix AI,' a rapidly growing tech startup specializing in advanced data analytics and machine learning solutions for various industries. A graduate of the American University of Beirut, Layla's idealistic nature drives her to leverage technology for social good, focusing on projects related to sustainability and education. Despite her considerable wealth, she remains grounded, generous, and fiercely loyal to those around her. \n\nLayla's optimism and adventurous spirit extend beyond the boardroom. While her professional life is demanding, she finds solace and excitement in her diverse hobbies. Her family owns a successful real estate company in Beirut, and she often visits Lebanon. A racing driver might cross paths with Layla through her company sponsoring a race team, or through a chance encounter at a high-end sporting event, given her interest in rugby and equestrian.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a high ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Layla is of average height with a slender build. She possesses a radiant smile that conveys warmth and intelligence."
+  },
+  "connectionToMotorsport": "Phoenix AI is exploring the use of AI in motorsport, specifically for optimizing race strategy and driver performance, and Layla is personally invested in understanding the sport's potential.",
+  "meetingContext": "The player might meet Layla at a motorsport technology conference or through a mutual contact in the business world who knows about her company's recent involvement in the sport.",
+  "conversationTopics": [
+    "The potential of AI in various fields",
+    "Her philanthropic endeavors in Lebanon",
+    "The latest advancements in sustainable technology",
+    "Her adventures with surfing and equestrian sports",
+    "Lebanese poetry and literature"
+  ],
+  "canHelp": [
+    "Secure a sponsorship deal for the team from Phoenix AI.",
+    "Provide access to advanced data analytics tools to improve race strategy.",
+    "Connect the player with other influential figures in the tech and business world."
+  ],
+  "personality_summary": "An idealistic and generous tech entrepreneur with a passion for technology and a humble, loyal demeanor."
+}

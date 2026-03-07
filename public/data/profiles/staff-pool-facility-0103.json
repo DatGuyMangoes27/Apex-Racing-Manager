@@ -1,0 +1,22 @@
+{
+  "name": "Zoran Petrović",
+  "nationality": "Serbian",
+  "age": 53,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Zoran's journey into motorsport was somewhat accidental. A master of metalworking since his early twenties, he initially focused on crafting intricate ironwork for architectural projects. However, a chance encounter with a local racing team, desperate for a skilled machinist to repair a damaged engine block, changed his trajectory forever. He found the precision and problem-solving required in motorsport incredibly stimulating. \n\nWhile his management skills are still developing, Zoran is known for his relentless pursuit of perfection. He approaches every task with meticulous care, ensuring every component meets the highest standards. His demanding nature stems from his unwavering commitment to quality; he believes that only the best is good enough for a winning machine. He is currently focused on improving his technical skills and learning new machining techniques, eager to contribute to a team's success.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "thick, grey mustache",
+    "description": "A stocky man with calloused hands and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before starting a job, even if they're already sharp.",
+    "Refuses to listen to music while working, claiming it distracts from the precision required.",
+    "Meticulously cleans his workspace at the end of each day, leaving it spotless."
+  ]
+}

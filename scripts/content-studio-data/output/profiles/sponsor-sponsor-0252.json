@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0252",
+  "name": "SiamArcade",
+  "category": "tech_gaming",
+  "tier": "elite",
+  "country": "Thailand",
+  "description": "Thailand's premier esports and gaming hardware company.",
+  "story": "SiamArcade is a leading innovator in gaming technology and esports infrastructure across Southeast Asia. With a passion for pushing boundaries and fostering a competitive spirit, they are eager to support motorsport as a parallel avenue for showcasing cutting-edge technology and achieving peak performance. They seek to align their brand with winning teams that demonstrate precision, innovation, and a commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 9000,
+      "podiumBonus": 4000,
+      "championshipBonus": 65000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 220000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 130000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1300000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Thailand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0252.png"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0008",
+  "name": "Serba Dinamik Holdings",
+  "category": "local",
+  "tier": "high",
+  "country": "Malaysia",
+  "description": "Powering Progress, Engineering Excellence.",
+  "story": "Serba Dinamik Holdings is a leading Malaysian integrated engineering services provider. Recognizing the global appeal of motorsport and its technological parallels, they seek to enhance brand visibility and demonstrate their commitment to innovation and precision engineering. Sponsoring motorsport aligns with their values of performance, reliability, and pushing boundaries.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Malaysia"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0008.png"
+}

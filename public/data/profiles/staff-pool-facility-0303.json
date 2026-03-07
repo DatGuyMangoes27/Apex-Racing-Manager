@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Radić",
+  "nationality": "Serbian",
+  "age": 33,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Nikola's fascination with motorsport began as a child, watching Formula 1 races with his father. This early exposure ignited a passion for aerodynamics and the intricate dance between engineering and speed. He pursued a degree in Mechanical Engineering, specializing in fluid dynamics, from the University of Belgrade, always with the goal of working in motorsport.\n\nAfter graduating, Nikola gained experience at a local aerospace company, honing his skills in wind tunnel testing and data analysis. He approaches his work with meticulous precision, believing that even the smallest details can have a significant impact on performance. Nikola is driven by a desire to constantly innovate and push the boundaries of aerodynamic understanding, seeking any opportunity to improve the car's efficiency. He is especially adept at identifying subtle airflow anomalies and translating them into actionable improvements for the engineering team.\n\nWhile his methods can be demanding, Nikola's focus is always on achieving the best possible results. He thrives in high-pressure environments and possesses a keen eye for detail, making him a valuable asset to any team looking to gain an aerodynamic edge.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Nikola is of average height with a sturdy build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on precisely calibrating the wind tunnel equipment before each test run, regardless of prior calibrations.",
+    "Has a habit of muttering aerodynamic principles aloud while observing airflow simulations."
+  ]
+}

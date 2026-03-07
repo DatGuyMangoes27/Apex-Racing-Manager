@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Belgian",
+  "age": 36,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Jean-Luc Dubois is a rising star at Banque Nationale de Belgique, specializing in investment strategies for high-net-worth individuals and corporate accounts. He's known for his meticulous approach and a keen eye for emerging markets, often preferring traditional investment principles over fleeting trends. While seemingly conservative, Jean-Luc possesses a deep-seated passion for calculated risks, particularly those with strong potential for long-term growth. \n\nJean-Luc's connection to motorsport stems from managing several accounts linked to racing teams and their sponsors. He sees the industry as a high-stakes arena where strategic investments can yield significant returns. A racing driver might cross paths with Jean-Luc when seeking sponsorship, financial advice, or investment opportunities for their racing team or personal wealth management.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained beard",
+    "description": "Jean-Luc has a serious and focused demeanor. He often wears tailored suits that accentuate his athletic build."
+  },
+  "connectionToMotorsport": "Jean-Luc manages the finances for several racing teams and sponsors, providing investment strategies and financial guidance. He sees motorsport as a viable investment opportunity.",
+  "meetingContext": "The player might meet Jean-Luc at a motorsport industry networking event, or through an introduction from a team owner or sponsor.",
+  "conversationTopics": [
+    "Financial markets and investment strategies",
+    "The history of Belgian banking",
+    "Drone racing technology and potential",
+    "Photography techniques",
+    "The importance of principled decision-making"
+  ],
+  "canHelp": [
+    "Secure sponsorships from Belgian companies",
+    "Provide sound financial advice and investment opportunities",
+    "Connect the player with wealthy investors interested in motorsport"
+  ],
+  "personality_summary": "A principled banker with a hidden passion for calculated risks and a keen interest in seeing others succeed."
+}

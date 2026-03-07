@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0161",
+  "name": "VoltUp Energy",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "Netherlands",
+  "description": "Electrify your performance with VoltUp!",
+  "story": "VoltUp Energy is a Dutch energy drink company focused on fueling peak performance. We're new to motorsports, but eager to partner with up-and-coming teams and drivers. VoltUp believes in pushing boundaries and supporting those who strive for victory, making motorsport a perfect fit for our brand values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0161.png"
+}

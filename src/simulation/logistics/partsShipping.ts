@@ -11,11 +11,54 @@ import type {
   PartShipmentStatus,
   PartOrder,
   PartOrderStatus,
-  _PartsWarehouse
+  PartsWarehouse
 } from '@/store/careerStore'
 import type { SparePartType, ShippingMethod } from '@/data/spare-parts-config'
 import type { WorldRegion } from '@/data/travel-logistics'
 import { calculateTransitTime, calculateShippingCost, MANUFACTURER_ORDER_CONFIG } from '@/data/spare-parts-config';
+import { addParts } from './partsInventory';
+
+function getPartById(state: SparePartsState, id: string): SparePart | undefined {
+  return state.inventory.find(p => p.id === id)
+}
+
+function createShipment(params: any): PartShipment {
+  return {
+    id: uuidv4(),
+    parts: params.parts.map((p: SparePart) => p.id),
+    origin: params.origin,
+    originRegion: params.originRegion,
+    destination: params.destination,
+    destinationRegion: params.destinationRegion,
+    method: params.method,
+    status: 'in-transit' as PartShipmentStatus,
+    departureWeek: params.currentWeek,
+    departureYear: params.currentYear,
+    estimatedArrivalWeek: params.currentWeek + 1,
+    cost: calculateShippingCost(params.method, params.originRegion, params.destinationRegion, params.parts.length),
+    raceId: params.raceId
+  }
+}
+
+function moveParts(state: SparePartsState, partIds: string[], location: string): SparePartsState {
+  return {
+    ...state,
+    inventory: state.inventory.map(p => partIds.includes(p.id) ? { ...p, location } : p)
+  }
+}
+
+export function shipParts(
+  state: SparePartsState,
+  partIds: string[],
+  origin: string,
+  originRegion: WorldRegion,
+  destination: string,
+  destinationRegion: WorldRegion,
+  method: ShippingMethod,
+  currentWeek: number,
+  currentYear: number,
+  raceId?: string
+): { state: SparePartsState; shipment: PartShipment; cost: number } {
   // Get the actual parts
   const parts = partIds
     .map(id => getPartById(state, id))

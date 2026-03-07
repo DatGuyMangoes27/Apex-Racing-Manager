@@ -1,5 +1,7 @@
-// Complete AMS2 Track Database - Based on official wiki (62 locations, 210 layouts)
-// Source: https://automobilista2.wiki.gg/wiki/Tracks_and_Layouts
+// AMS2 Track Database - Built from authoritative layout reference
+// All layouts come from ams2-layout-reference.ts (the single source of truth)
+
+import { AMS2_LAYOUT_REFERENCE, type AMS2LayoutReferenceRecord } from './ams2-layout-reference'
 
 export type TrackType = 'permanent' | 'street' | 'oval' | 'kart' | 'rallycross' | 'hillclimb'
 export type TrackRegion = 'brazil' | 'europe' | 'asia' | 'oceania' | 'north_america' | 'south_america' | 'africa'
@@ -9,8 +11,12 @@ export interface TrackLayout {
   name: string
   lengthKm: number
   turns: number
-  year: number | string // Year or "Historic"
-  grade?: string // FIA Grade or type
+  year: number | string
+  grade?: string
+  sourceLayoutName?: string
+  defaultDate?: string
+  altitudeM?: number
+  sourceVerified?: boolean
 }
 
 export interface AMS2Track {
@@ -25,1235 +31,468 @@ export interface AMS2Track {
   layoutCount: number
   layouts: TrackLayout[]
   defaultLayout: string
-  // Which car class tiers this track is suitable for (1=entry, 6=top)
   suitableTiers: number[]
-  dlc?: string // Which DLC pack if not base game
-  youtubeId?: string // Video preview of the track
+  dlc?: string
+  youtubeId?: string
 }
 
 // ============================================
-// ALL 62 AMS2 TRACK LOCATIONS (from wiki)
+// VENUE METADATA (game-specific data not in the reference)
 // ============================================
 
-export const ALL_TRACKS: AMS2Track[] = [
+interface VenueMeta {
+  id: string
+  name: string
+  shortName: string
+  officialName: string
+  country: string
+  countryCode: string
+  region: TrackRegion
+  type: TrackType
+  suitableTiers: number[]
+  defaultLayoutId?: string
+  layoutPrefixes?: string[]
+  dlc?: string
+  youtubeId?: string
+}
+
+const VENUE_META: Record<string, VenueMeta> = {
   // AUSTRALIA
-  {
-    id: 'adelaide',
-    name: 'Adelaide',
-    shortName: 'Adelaide',
-    officialName: 'Adelaide Street Circuit',
-    country: 'Australia',
-    countryCode: 'AU',
-    region: 'oceania',
-    type: 'street',
-    layoutCount: 3,
-    layouts: [
-      { id: 'historic_1988', name: 'Historic 1988', lengthKm: 3.780, turns: 16, year: 1988, grade: 'Historic' },
-      { id: '2020', name: 'Adelaide 2020', lengthKm: 3.219, turns: 14, year: 2020, grade: 'Grade 3' },
-      { id: 'stt', name: 'Adelaide STT', lengthKm: 3.219, turns: 14, year: 2020, grade: 'Grade 3' },
-    ],
-    defaultLayout: '2020',
-    suitableTiers: [3, 4, 5, 6],
+  'Adelaide': {
+    id: 'adelaide', name: 'Adelaide', shortName: 'Adelaide', officialName: 'Adelaide Street Circuit',
+    country: 'Australia', countryCode: 'AU', region: 'oceania', type: 'street', suitableTiers: [3, 4, 5, 6],
   },
-  {
-    id: 'bathurst',
-    name: 'Bathurst',
-    shortName: 'Bathurst',
-    officialName: 'Mount Panorama Circuit',
-    country: 'Australia',
-    countryCode: 'AU',
-    region: 'oceania',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 6.213, turns: 23, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 6.172, turns: 23, year: 1970 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5, 6],
+  'Bathurst': {
+    id: 'bathurst', name: 'Bathurst', shortName: 'Bathurst', officialName: 'Mount Panorama Circuit',
+    country: 'Australia', countryCode: 'AU', region: 'oceania', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
 
-  // BRAZIL (21 tracks)
-  {
-    id: 'ascurra',
-    name: 'Ascurra',
-    shortName: 'Ascurra',
-    officialName: 'Autódromo Max Mohr',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'rallycross',
-    layoutCount: 2,
-    layouts: [
-      { id: 'dirt', name: 'Ascurra Dirt', lengthKm: 0.910, turns: 8, year: 2022, grade: 'Off-road' },
-      { id: 'rx', name: 'Ascurra RX', lengthKm: 0.910, turns: 8, year: 2023, grade: 'Off-road' },
-    ],
-    defaultLayout: 'rx',
-    suitableTiers: [1, 2, 3],
-    dlc: 'Adrenaline 1',
+  // BRAZIL
+  'Ascurra': {
+    id: 'ascurra', name: 'Ascurra', shortName: 'Ascurra', officialName: 'Autódromo Max Mohr',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'rallycross', suitableTiers: [1, 2, 3],
+    defaultLayoutId: 'rx',
   },
-  {
-    id: 'brasilia',
-    name: 'Brasília',
-    shortName: 'Brasília',
-    officialName: 'Autódromo Brasília BRB',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 5.479, turns: 12, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 3.400, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [2, 3, 4, 5],
+  'Brasilia': {
+    id: 'brasilia', name: 'Brasília', shortName: 'Brasília', officialName: 'Autódromo Brasília BRB',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [2, 3, 4, 5],
   },
-  {
-    id: 'campo_grande',
-    name: 'Campo Grande',
-    shortName: 'Campo Grande',
-    officialName: 'Autódromo Internacional Orlando Moura',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.437, turns: 11, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Campo Grande': {
+    id: 'campo_grande', name: 'Campo Grande', shortName: 'Campo Grande', officialName: 'Autódromo Internacional Orlando Moura',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'cascavel',
-    name: 'Cascavel',
-    shortName: 'Cascavel',
-    officialName: 'Autódromo Internacional Zilmar Beux de Cascavel',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.033, turns: 10, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Cascavel': {
+    id: 'cascavel', name: 'Cascavel', shortName: 'Cascavel', officialName: 'Autódromo Internacional Zilmar Beux de Cascavel',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'curitiba',
-    name: 'Curitiba',
-    shortName: 'Curitiba',
-    officialName: 'Autódromo Internacional de Curitiba',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.695, turns: 12, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.500, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Curitiba': {
+    id: 'curitiba', name: 'Curitiba', shortName: 'Curitiba', officialName: 'Autódromo Internacional de Curitiba',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'curvelo',
-    name: 'Curvelo',
-    shortName: 'Curvelo',
-    officialName: 'Circuito dos Cristais',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 2.557, turns: 8, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 1.800, turns: 6, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3],
+  'Curvelo': {
+    id: 'curvelo', name: 'Curvelo', shortName: 'Curvelo', officialName: 'Circuito dos Cristais',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3],
   },
-  {
-    id: 'foz',
-    name: 'Foz do Iguaçu',
-    shortName: 'Foz',
-    officialName: 'X Games Foz do Iguaçu Rallycross',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'rallycross',
-    layoutCount: 1,
-    layouts: [
-      { id: 'rx', name: 'Rallycross', lengthKm: 1.200, turns: 10, year: 2020, grade: 'Off-road' },
-    ],
-    defaultLayout: 'rx',
-    suitableTiers: [1, 2, 3],
+  'Foz': {
+    id: 'foz', name: 'Foz do Iguaçu', shortName: 'Foz', officialName: 'X Games Foz do Iguaçu Rallycross',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'rallycross', suitableTiers: [1, 2, 3],
   },
-  {
-    id: 'galeao',
-    name: 'Galeão Airport',
-    shortName: 'Galeão',
-    officialName: 'Cacá Bueno Circuit',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'street',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 2.900, turns: 12, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [2, 3, 4],
+  'Galeao Airport': {
+    id: 'galeao', name: 'Galeão Airport', shortName: 'Galeão', officialName: 'Cacá Bueno Circuit',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'street', suitableTiers: [2, 3, 4],
+    layoutPrefixes: ['Galeao Airport'],
   },
-  {
-    id: 'goiania',
-    name: 'Goiânia',
-    shortName: 'Goiânia',
-    officialName: 'Autódromo Internacional Ayrton Senna (Goiânia)',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.835, turns: 11, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.850, turns: 8, year: 2020 },
-      { id: 'exterior', name: 'Exterior Circuit', lengthKm: 2.455, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4, 5],
+  'Goiânia': {
+    id: 'goiania', name: 'Goiânia', shortName: 'Goiânia', officialName: 'Autódromo Internacional Ayrton Senna (Goiânia)',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4, 5],
   },
-  {
-    id: 'granja_viana',
-    name: 'Granja Viana',
-    shortName: 'Granja Viana',
-    officialName: 'Kartódromo Internacional da Granja Viana',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'kart',
-    layoutCount: 5,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 1.150, turns: 16, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 0.900, turns: 12, year: 2020 },
-      { id: 'exterior', name: 'Exterior', lengthKm: 0.800, turns: 10, year: 2020 },
-      { id: 'interior', name: 'Interior', lengthKm: 0.700, turns: 8, year: 2020 },
-      { id: 'mini', name: 'Mini', lengthKm: 0.500, turns: 6, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1],
+  'Granja Viana': {
+    id: 'granja_viana', name: 'Granja Viana', shortName: 'Granja Viana', officialName: 'Kartódromo Internacional da Granja Viana',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'kart', suitableTiers: [1],
   },
-  {
-    id: 'guapore',
-    name: 'Guaporé',
-    shortName: 'Guaporé',
-    officialName: 'Autódromo Internacional de Guaporé',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 2.421, turns: 9, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 1.800, turns: 6, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3],
+  'Guaporé': {
+    id: 'guapore', name: 'Guaporé', shortName: 'Guaporé', officialName: 'Autódromo Internacional de Guaporé',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3],
   },
-  {
-    id: 'interlagos',
-    name: 'Interlagos',
-    shortName: 'Interlagos',
-    officialName: 'Autódromo José Carlos Pace',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 9,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.309, turns: 15, year: 2020, grade: 'Grade 1' },
-      { id: 'short', name: 'Short', lengthKm: 2.677, turns: 10, year: 2020 },
-      { id: 'historic_1976', name: 'Historic 1976', lengthKm: 7.960, turns: 26, year: 1976, grade: 'Historic' },
-      { id: 'historic_1979', name: 'Historic 1979', lengthKm: 7.874, turns: 25, year: 1979, grade: 'Historic' },
-      { id: 'kart', name: 'Kart Circuit', lengthKm: 1.200, turns: 12, year: 2020 },
-      { id: 'moto', name: 'Moto Circuit', lengthKm: 4.100, turns: 14, year: 2020 },
-      { id: 'stock', name: 'Stock Car Layout', lengthKm: 4.309, turns: 15, year: 2020 },
-      { id: 'classic', name: 'Classic', lengthKm: 4.309, turns: 15, year: 1990 },
-      { id: 'outer', name: 'Outer Circuit', lengthKm: 2.500, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [1, 2, 3, 4, 5, 6],
-    youtubeId: '8y1G9e8q7k8' // Interlagos Hotlap
+  'Interlagos': {
+    id: 'interlagos', name: 'Interlagos', shortName: 'Interlagos', officialName: 'Autódromo José Carlos Pace',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4, 5, 6],
+    defaultLayoutId: 'gp', youtubeId: '8y1G9e8q7k8',
   },
-  {
-    id: 'jacarepagua',
-    name: 'Jacarepaguá',
-    shortName: 'Jacarepaguá',
-    officialName: 'Autódromo Internacional Nelson Piquet',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'gp_1988', name: 'GP 1988', lengthKm: 5.031, turns: 14, year: 1988, grade: 'Historic' },
-      { id: 'gp_2005', name: 'GP 2005', lengthKm: 4.933, turns: 13, year: 2005 },
-      { id: 'short', name: 'Short', lengthKm: 3.280, turns: 10, year: 2005 },
-      { id: 'oval', name: 'Oval', lengthKm: 3.000, turns: 4, year: 2005 },
-      { id: 'roval', name: 'Roval', lengthKm: 3.800, turns: 12, year: 2005 },
-    ],
-    defaultLayout: 'gp_2005',
-    suitableTiers: [2, 3, 4, 5, 6],
+  'Jacarepaguá': {
+    id: 'jacarepagua', name: 'Jacarepaguá', shortName: 'Jacarepaguá', officialName: 'Autódromo Internacional Nelson Piquet',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [2, 3, 4, 5, 6],
   },
-  {
-    id: 'londrina',
-    name: 'Londrina',
-    shortName: 'Londrina',
-    officialName: 'Autódromo Internacional Ayrton Senna (Londrina)',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.135, turns: 9, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.200, turns: 6, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 3.135, turns: 9, year: 1990 },
-      { id: 'outer', name: 'Outer', lengthKm: 2.800, turns: 8, year: 2020 },
-      { id: 'inner', name: 'Inner', lengthKm: 1.800, turns: 5, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Londrina': {
+    id: 'londrina', name: 'Londrina', shortName: 'Londrina', officialName: 'Autódromo Internacional Ayrton Senna (Londrina)',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'salvador',
-    name: 'Salvador',
-    shortName: 'Salvador',
-    officialName: 'Circuito Ayrton Senna',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'street',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 2.500, turns: 10, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5],
+  'Salvador': {
+    id: 'salvador', name: 'Salvador', shortName: 'Salvador', officialName: 'Circuito Ayrton Senna',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'street', suitableTiers: [3, 4, 5],
   },
-  {
-    id: 'santa_cruz',
-    name: 'Santa Cruz do Sul',
-    shortName: 'Santa Cruz',
-    officialName: 'Autódromo Internacional de Santa Cruz do Sul',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.056, turns: 10, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Santa Cruz do Sul': {
+    id: 'santa_cruz', name: 'Santa Cruz do Sul', shortName: 'Santa Cruz', officialName: 'Autódromo Internacional de Santa Cruz do Sul',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'speedland',
-    name: 'Speedland',
-    shortName: 'Speedland',
-    officialName: 'Speedland Kart Center',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'kart',
-    layoutCount: 4,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 1.014, turns: 14, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 0.800, turns: 10, year: 2020 },
-      { id: 'exterior', name: 'Exterior', lengthKm: 0.700, turns: 8, year: 2020 },
-      { id: 'interior', name: 'Interior', lengthKm: 0.600, turns: 6, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1],
+  'Speedland': {
+    id: 'speedland', name: 'Speedland', shortName: 'Speedland', officialName: 'Speedland Kart Center',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'kart', suitableTiers: [1],
   },
-  {
-    id: 'taruma',
-    name: 'Tarumã',
-    shortName: 'Tarumã',
-    officialName: 'Autódromo Internacional de Tarumã',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'internacional', name: 'Internacional', lengthKm: 3.019, turns: 9, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.200, turns: 6, year: 2020 },
-    ],
-    defaultLayout: 'internacional',
-    suitableTiers: [1, 2, 3, 4],
+  'Tarumã': {
+    id: 'taruma', name: 'Tarumã', shortName: 'Tarumã', officialName: 'Autódromo Internacional de Tarumã',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
+    defaultLayoutId: 'international',
   },
-  {
-    id: 'velo_citta',
-    name: 'Velo Città',
-    shortName: 'Velo Città',
-    officialName: 'Autódromo Velo Città',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.444, turns: 12, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.500, turns: 8, year: 2020 },
-      { id: 'exterior', name: 'Exterior', lengthKm: 2.800, turns: 9, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Velo Cittá': {
+    id: 'velo_citta', name: 'Velo Città', shortName: 'Velo Città', officialName: 'Autódromo Velo Città',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'velopark',
-    name: 'Velopark',
-    shortName: 'Velopark',
-    officialName: 'Velopark',
-    country: 'Brazil',
-    countryCode: 'BR',
-    region: 'brazil',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.021, turns: 10, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.200, turns: 7, year: 2020 },
-      { id: 'exterior', name: 'Exterior', lengthKm: 2.500, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Velopark': {
+    id: 'velopark', name: 'Velopark', shortName: 'Velopark', officialName: 'Velopark',
+    country: 'Brazil', countryCode: 'BR', region: 'brazil', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
 
   // ARGENTINA
-  {
-    id: 'buenos_aires',
-    name: 'Buenos Aires',
-    shortName: 'Buenos Aires',
-    officialName: 'Autódromo Oscar y Juan Gálvez',
-    country: 'Argentina',
-    countryCode: 'AR',
-    region: 'south_america',
-    type: 'permanent',
-    layoutCount: 7,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.259, turns: 16, year: 2020 },
-      { id: 'no6', name: 'Circuit No. 6', lengthKm: 3.353, turns: 12, year: 2020 },
-      { id: 'no8', name: 'Circuit No. 8', lengthKm: 2.938, turns: 10, year: 2020 },
-      { id: 'no9', name: 'Circuit No. 9', lengthKm: 4.074, turns: 14, year: 2020 },
-      { id: 'no12', name: 'Circuit No. 12', lengthKm: 3.700, turns: 13, year: 2020 },
-      { id: 'no15', name: 'Circuit No. 15', lengthKm: 2.100, turns: 8, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 3.912, turns: 14, year: 1972 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5, 6],
+  'Buenos Aires': {
+    id: 'buenos_aires', name: 'Buenos Aires', shortName: 'Buenos Aires', officialName: 'Autódromo Oscar y Juan Gálvez',
+    country: 'Argentina', countryCode: 'AR', region: 'south_america', type: 'permanent', suitableTiers: [2, 3, 4, 5, 6],
   },
-  {
-    id: 'cordoba',
-    name: 'Córdoba',
-    shortName: 'Córdoba',
-    officialName: 'Autódromo Oscar Cabalén',
-    country: 'Argentina',
-    countryCode: 'AR',
-    region: 'south_america',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 4.000, turns: 12, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.800, turns: 8, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 4.200, turns: 14, year: 1970 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [2, 3, 4, 5],
+  'Córdoba': {
+    id: 'cordoba', name: 'Córdoba', shortName: 'Córdoba', officialName: 'Autódromo Oscar Cabalén',
+    country: 'Argentina', countryCode: 'AR', region: 'south_america', type: 'permanent', suitableTiers: [2, 3, 4, 5],
   },
-  {
-    id: 'termas',
-    name: 'Termas de Río Hondo',
-    shortName: 'Termas',
-    officialName: 'Autódromo Termas de Río Hondo',
-    country: 'Argentina',
-    countryCode: 'AR',
-    region: 'south_america',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 4.806, turns: 14, year: 2020, grade: 'Grade 1T' },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5, 6],
+  'Termas de Río Hondo': {
+    id: 'termas', name: 'Termas de Río Hondo', shortName: 'Termas', officialName: 'Autódromo Termas de Río Hondo',
+    country: 'Argentina', countryCode: 'AR', region: 'south_america', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
 
   // EUROPE - UK
-  {
-    id: 'brands_hatch',
-    name: 'Brands Hatch',
-    shortName: 'Brands Hatch',
-    officialName: 'Brands Hatch',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 3.908, turns: 9, year: 2020, grade: 'Grade 2' },
-      { id: 'indy', name: 'Indy', lengthKm: 1.929, turns: 6, year: 2020, grade: 'Grade 3' },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [1, 2, 3, 4, 5],
+  'Brands Hatch': {
+    id: 'brands_hatch', name: 'Brands Hatch', shortName: 'Brands Hatch', officialName: 'Brands Hatch',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [1, 2, 3, 4, 5],
   },
-  {
-    id: 'cadwell_park',
-    name: 'Cadwell Park',
-    shortName: 'Cadwell',
-    officialName: 'Cadwell Park',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.508, turns: 16, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3],
+  'Cadwell Park': {
+    id: 'cadwell_park', name: 'Cadwell Park', shortName: 'Cadwell', officialName: 'Cadwell Park',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [1, 2, 3],
   },
-  {
-    id: 'donington',
-    name: 'Donington Park',
-    shortName: 'Donington',
-    officialName: 'Donington Park',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.023, turns: 12, year: 2020, grade: 'Grade 2' },
-      { id: 'national', name: 'National', lengthKm: 3.149, turns: 10, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5],
+  'Donington Park': {
+    id: 'donington', name: 'Donington Park', shortName: 'Donington', officialName: 'Donington Park',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5],
+    layoutPrefixes: ['Donington'],
   },
-  {
-    id: 'oulton_park',
-    name: 'Oulton Park',
-    shortName: 'Oulton Park',
-    officialName: 'Oulton Park',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 4,
-    layouts: [
-      { id: 'international', name: 'International', lengthKm: 4.307, turns: 17, year: 2020 },
-      { id: 'island', name: 'Island', lengthKm: 3.621, turns: 14, year: 2020 },
-      { id: 'fosters', name: 'Fosters', lengthKm: 2.655, turns: 10, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 4.400, turns: 18, year: 1970 },
-    ],
-    defaultLayout: 'international',
-    suitableTiers: [1, 2, 3, 4],
+  'Oulton Park': {
+    id: 'oulton_park', name: 'Oulton Park', shortName: 'Oulton Park', officialName: 'Oulton Park',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
-  {
-    id: 'silverstone',
-    name: 'Silverstone',
-    shortName: 'Silverstone',
-    officialName: 'Silverstone Circuit',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 9,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 5.891, turns: 18, year: 2020, grade: 'Grade 1' },
-      { id: 'international', name: 'International', lengthKm: 3.619, turns: 11, year: 2020 },
-      { id: 'national', name: 'National', lengthKm: 2.638, turns: 8, year: 2020 },
-      { id: 'historic_1975', name: 'Historic 1975', lengthKm: 4.719, turns: 14, year: 1975 },
-      { id: 'historic_1991', name: 'Historic 1991', lengthKm: 5.226, turns: 16, year: 1991 },
-      { id: 'arena', name: 'Arena GP', lengthKm: 3.600, turns: 10, year: 2020 },
-      { id: 'bridge', name: 'Bridge', lengthKm: 2.000, turns: 6, year: 2020 },
-      { id: 'stowe', name: 'Stowe', lengthKm: 1.800, turns: 5, year: 2020 },
-      { id: 'stt', name: 'STT', lengthKm: 5.891, turns: 18, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5, 6],
+  'Silverstone': {
+    id: 'silverstone', name: 'Silverstone', shortName: 'Silverstone', officialName: 'Silverstone Circuit',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5, 6],
   },
-  {
-    id: 'snetterton',
-    name: 'Snetterton',
-    shortName: 'Snetterton',
-    officialName: 'Snetterton Circuit',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: '300', name: '300 Circuit', lengthKm: 4.779, turns: 12, year: 2020 },
-      { id: '200', name: '200 Circuit', lengthKm: 3.218, turns: 9, year: 2020 },
-      { id: '100', name: '100 Circuit', lengthKm: 1.609, turns: 6, year: 2020 },
-    ],
-    defaultLayout: '300',
-    suitableTiers: [1, 2, 3, 4],
+  'Snetterton': {
+    id: 'snetterton', name: 'Snetterton', shortName: 'Snetterton', officialName: 'Snetterton Circuit',
+    country: 'United Kingdom', countryCode: 'GB', region: 'europe', type: 'permanent', suitableTiers: [1, 2, 3, 4],
   },
 
   // EUROPE - GERMANY
-  {
-    id: 'hockenheim',
-    name: 'Hockenheim',
-    shortName: 'Hockenheim',
-    officialName: 'Hockenheimring Baden-Württemberg',
-    country: 'Germany',
-    countryCode: 'DE',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 10,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.574, turns: 17, year: 2020, grade: 'Grade 1' },
-      { id: 'national', name: 'National', lengthKm: 2.638, turns: 9, year: 2020 },
-      { id: 'historic_1988', name: 'Historic 1988', lengthKm: 6.823, turns: 13, year: 1988 },
-      { id: 'historic_2001', name: 'Historic 2001', lengthKm: 4.574, turns: 17, year: 2001 },
-      { id: 'short', name: 'Short', lengthKm: 2.600, turns: 8, year: 2020 },
-      { id: 'club', name: 'Club', lengthKm: 2.000, turns: 6, year: 2020 },
-      { id: 'a', name: 'Circuit A', lengthKm: 1.800, turns: 5, year: 2020 },
-      { id: 'b', name: 'Circuit B', lengthKm: 1.600, turns: 4, year: 2020 },
-      { id: 'stt', name: 'STT', lengthKm: 4.574, turns: 17, year: 2020 },
-      { id: 'rallycross', name: 'Rallycross', lengthKm: 1.100, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5, 6],
+  'Hockenheimring': {
+    id: 'hockenheim', name: 'Hockenheim', shortName: 'Hockenheim', officialName: 'Hockenheimring Baden-Württemberg',
+    country: 'Germany', countryCode: 'DE', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5, 6],
+    layoutPrefixes: ['Hockenheim'],
   },
-  {
-    id: 'nurburgring',
-    name: 'Nürburgring',
-    shortName: 'Nürburgring',
-    officialName: 'Nürburgring',
-    country: 'Germany',
-    countryCode: 'DE',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 14,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 5.148, turns: 15, year: 2020, grade: 'Grade 1' },
-      { id: 'nordschleife', name: 'Nordschleife', lengthKm: 20.832, turns: 154, year: 2020 },
-      { id: 'combined', name: '24h Combined', lengthKm: 25.378, turns: 166, year: 2020 },
-      { id: 'sprint', name: 'Sprint', lengthKm: 3.629, turns: 10, year: 2020 },
-      { id: 'short', name: 'Short', lengthKm: 3.600, turns: 9, year: 2020 },
-      { id: 'historic_1967', name: 'Historic 1967', lengthKm: 22.810, turns: 170, year: 1967 },
-      { id: 'historic_1971', name: 'Historic 1971', lengthKm: 22.835, turns: 170, year: 1971 },
-      { id: 'historic_1976', name: 'Historic 1976', lengthKm: 22.835, turns: 170, year: 1976 },
-      { id: 'gp_historic', name: 'GP Historic', lengthKm: 4.542, turns: 12, year: 1984 },
-      { id: 'muellenbachschleife', name: 'Müllenbachschleife', lengthKm: 1.500, turns: 6, year: 2020 },
-      { id: 'stt', name: 'STT', lengthKm: 5.148, turns: 15, year: 2020 },
-      { id: 'sprint_short', name: 'Sprint Short', lengthKm: 2.800, turns: 7, year: 2020 },
-      { id: 'vln', name: 'VLN', lengthKm: 24.358, turns: 160, year: 2020 },
-      { id: 'tourist', name: 'Touristenfahrten', lengthKm: 20.832, turns: 154, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
-    dlc: 'Nürburgring Pack',
+  'Nürburgring': {
+    id: 'nurburgring', name: 'Nürburgring', shortName: 'Nürburgring', officialName: 'Nürburgring',
+    country: 'Germany', countryCode: 'DE', region: 'europe', type: 'permanent', suitableTiers: [3, 4, 5, 6],
+    layoutPrefixes: ['Nürburgring', 'Nurburgring', 'Nordschleife'],
+    defaultLayoutId: 'gp_2020',
   },
 
   // EUROPE - ITALY
-  {
-    id: 'imola',
-    name: 'Imola',
-    shortName: 'Imola',
-    officialName: 'Autodromo Internazionale Enzo e Dino Ferrari',
-    country: 'Italy',
-    countryCode: 'IT',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 4,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.909, turns: 19, year: 2020, grade: 'Grade 1' },
-      { id: 'historic', name: 'Historic', lengthKm: 5.040, turns: 23, year: 1980 },
-      { id: 'moto', name: 'Moto', lengthKm: 4.936, turns: 19, year: 2020 },
-      { id: 'short', name: 'Short', lengthKm: 2.800, turns: 10, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Imola': {
+    id: 'imola', name: 'Imola', shortName: 'Imola', officialName: 'Autodromo Internazionale Enzo e Dino Ferrari',
+    country: 'Italy', countryCode: 'IT', region: 'europe', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
-  {
-    id: 'monza',
-    name: 'Monza',
-    shortName: 'Monza',
-    officialName: 'Autodromo Nazionale Monza',
-    country: 'Italy',
-    countryCode: 'IT',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 8,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 5.793, turns: 11, year: 2020, grade: 'Grade 1' },
-      { id: 'historic_1971', name: 'Historic 1971', lengthKm: 5.775, turns: 10, year: 1971 },
-      { id: 'historic_1966', name: 'Historic 1966', lengthKm: 10.000, turns: 14, year: 1966 },
-      { id: 'junior', name: 'Junior', lengthKm: 2.405, turns: 5, year: 2020 },
-      { id: 'short', name: 'Short', lengthKm: 4.200, turns: 8, year: 2020 },
-      { id: 'full_oval', name: 'Full with Oval', lengthKm: 10.000, turns: 14, year: 2020 },
-      { id: 'stt', name: 'STT', lengthKm: 5.793, turns: 11, year: 2020 },
-      { id: 'biassono', name: 'Biassono', lengthKm: 3.800, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Monza': {
+    id: 'monza', name: 'Monza', shortName: 'Monza', officialName: 'Autodromo Nazionale Monza',
+    country: 'Italy', countryCode: 'IT', region: 'europe', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
-  {
-    id: 'ortona',
-    name: 'Ortona',
-    shortName: 'Ortona',
-    officialName: "Circuito Internazionale d'Abruzzo",
-    country: 'Italy',
-    countryCode: 'IT',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 4,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.500, turns: 12, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.400, turns: 8, year: 2020 },
-      { id: 'east', name: 'East', lengthKm: 2.000, turns: 6, year: 2020 },
-      { id: 'west', name: 'West', lengthKm: 1.800, turns: 5, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3, 4],
+  'Ortona': {
+    id: 'ortona', name: 'Ortona', shortName: 'Ortona', officialName: "Circuito Internazionale d'Abruzzo",
+    country: 'Italy', countryCode: 'IT', region: 'europe', type: 'kart', suitableTiers: [1, 2, 3, 4],
   },
 
   // EUROPE - BELGIUM
-  {
-    id: 'spa',
-    name: 'Spa-Francorchamps',
-    shortName: 'Spa',
-    officialName: 'Circuit de Spa-Francorchamps',
-    country: 'Belgium',
-    countryCode: 'BE',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 6,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 7.004, turns: 19, year: 2020, grade: 'Grade 1' },
-      { id: 'historic_1970', name: 'Historic 1970', lengthKm: 14.120, turns: 32, year: 1970 },
-      { id: 'historic_1979', name: 'Historic 1979', lengthKm: 6.949, turns: 19, year: 1979 },
-      { id: 'historic_2004', name: 'Historic 2004', lengthKm: 6.976, turns: 19, year: 2004 },
-      { id: 'short', name: 'Short', lengthKm: 4.600, turns: 12, year: 2020 },
-      { id: 'stt', name: 'STT', lengthKm: 7.004, turns: 19, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Spa-Francorchamps': {
+    id: 'spa', name: 'Spa-Francorchamps', shortName: 'Spa', officialName: 'Circuit de Spa-Francorchamps',
+    country: 'Belgium', countryCode: 'BE', region: 'europe', type: 'permanent', suitableTiers: [3, 4, 5, 6],
+    defaultLayoutId: '2020',
   },
 
   // EUROPE - SPAIN
-  {
-    id: 'barcelona',
-    name: 'Barcelona',
-    shortName: 'Barcelona',
-    officialName: 'Circuit de Barcelona-Catalunya',
-    country: 'Spain',
-    countryCode: 'ES',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.657, turns: 16, year: 2020, grade: 'Grade 1' },
-      { id: 'national', name: 'National', lengthKm: 3.049, turns: 10, year: 2020 },
-      { id: 'moto', name: 'Moto GP', lengthKm: 4.627, turns: 14, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 4.747, turns: 17, year: 1991 },
-      { id: 'club', name: 'Club', lengthKm: 2.200, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Barcelona': {
+    id: 'barcelona', name: 'Barcelona', shortName: 'Barcelona', officialName: 'Circuit de Barcelona-Catalunya',
+    country: 'Spain', countryCode: 'ES', region: 'europe', type: 'permanent', suitableTiers: [3, 4, 5, 6],
+    layoutPrefixes: ['Circuit de Barcelona-Catalunya', 'Barcelona-Catalunya'],
   },
-  {
-    id: 'jerez',
-    name: 'Jerez',
-    shortName: 'Jerez',
-    officialName: 'Circuito de Jerez – Ángel Nieto',
-    country: 'Spain',
-    countryCode: 'ES',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.428, turns: 13, year: 2020, grade: 'Grade 1' },
-      { id: 'moto', name: 'Moto', lengthKm: 4.423, turns: 13, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 4.218, turns: 13, year: 1986 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5],
+  'Jerez': {
+    id: 'jerez', name: 'Jerez', shortName: 'Jerez', officialName: 'Circuito de Jerez – Ángel Nieto',
+    country: 'Spain', countryCode: 'ES', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5],
   },
 
   // EUROPE - AUSTRIA
-  {
-    id: 'spielberg',
-    name: 'Spielberg',
-    shortName: 'Spielberg',
-    officialName: 'Red Bull Ring',
-    country: 'Austria',
-    countryCode: 'AT',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.318, turns: 10, year: 2020, grade: 'Grade 1' },
-      { id: 'national', name: 'National', lengthKm: 2.336, turns: 5, year: 2020 },
-      { id: 'historic_1977', name: 'Historic 1977', lengthKm: 5.942, turns: 18, year: 1977 },
-      { id: 'short', name: 'Short', lengthKm: 2.400, turns: 6, year: 2020 },
-      { id: 'rallycross', name: 'Rallycross', lengthKm: 1.500, turns: 9, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5, 6],
+  'Spielberg (Red Bull Ring)': {
+    id: 'spielberg', name: 'Spielberg', shortName: 'Spielberg', officialName: 'Red Bull Ring',
+    country: 'Austria', countryCode: 'AT', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5, 6],
+    layoutPrefixes: ['Spielberg', 'Red Bull Ring'],
   },
 
   // EUROPE - PORTUGAL
-  {
-    id: 'estoril',
-    name: 'Estoril',
-    shortName: 'Estoril',
-    officialName: 'Circuito do Estoril',
-    country: 'Portugal',
-    countryCode: 'PT',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.182, turns: 13, year: 2020, grade: 'Grade 1' },
-      { id: 'historic', name: 'Historic', lengthKm: 4.350, turns: 13, year: 1984 },
-      { id: 'short', name: 'Short', lengthKm: 2.800, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [2, 3, 4, 5],
+  'Cascais (Estoril)': {
+    id: 'estoril', name: 'Estoril', shortName: 'Estoril', officialName: 'Circuito do Estoril',
+    country: 'Portugal', countryCode: 'PT', region: 'europe', type: 'permanent', suitableTiers: [2, 3, 4, 5],
+    layoutPrefixes: ['Cascais', 'Estoril'],
   },
 
   // EUROPE - FRANCE
-  {
-    id: 'le_mans',
-    name: 'Le Mans',
-    shortName: 'Le Mans',
-    officialName: 'Circuit des 24 Heures du Mans',
-    country: 'France',
-    countryCode: 'FR',
-    region: 'europe',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 13.626, turns: 38, year: 2020, grade: 'Grade 1' },
-      { id: 'bugatti', name: 'Bugatti Circuit', lengthKm: 4.185, turns: 9, year: 2020, grade: 'Grade 2' },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Le Mans Pack',
+  'La Sarthe': {
+    id: 'le_mans', name: 'Le Mans', shortName: 'Le Mans', officialName: 'Circuit des 24 Heures du Mans',
+    country: 'France', countryCode: 'FR', region: 'europe', type: 'permanent', suitableTiers: [4, 5, 6],
+    layoutPrefixes: ['Le Mans'],
   },
 
   // EUROPE - MONACO
-  {
-    id: 'monaco',
-    name: 'Monaco',
-    shortName: 'Monaco',
-    officialName: 'Circuit de Monaco',
-    country: 'Monaco',
-    countryCode: 'MC',
-    region: 'europe',
-    type: 'street',
-    layoutCount: 1,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 3.337, turns: 19, year: 2020, grade: 'Grade 1' },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [5, 6],
+  'Azure Circuit (Monaco)': {
+    id: 'monaco', name: 'Monaco', shortName: 'Monaco', officialName: 'Circuit de Monaco',
+    country: 'Monaco', countryCode: 'MC', region: 'europe', type: 'street', suitableTiers: [5, 6],
+    layoutPrefixes: ['Azure Circuit'],
   },
 
   // EUROPE - FINLAND
-  {
-    id: 'tykki',
-    name: 'Tykki',
-    shortName: 'Tykki',
-    officialName: 'Kouvola Circuit',
-    country: 'Finland',
-    countryCode: 'FI',
-    region: 'europe',
-    type: 'rallycross',
-    layoutCount: 4,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 1.200, turns: 8, year: 2020, grade: 'Off-road' },
-      { id: 'short', name: 'Short Circuit', lengthKm: 0.900, turns: 6, year: 2020 },
-      { id: 'snow', name: 'Snow', lengthKm: 1.200, turns: 8, year: 2020 },
-      { id: 'ice', name: 'Ice', lengthKm: 1.000, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3],
+  'Tykki': {
+    id: 'tykki', name: 'Tykki', shortName: 'Tykki', officialName: 'Kouvola Circuit',
+    country: 'Finland', countryCode: 'FI', region: 'europe', type: 'rallycross', suitableTiers: [1, 2, 3],
   },
 
   // EUROPE - NORWAY
-  {
-    id: 'buskerud',
-    name: 'Buskerud',
-    shortName: 'Buskerud',
-    officialName: 'Buskerud',
-    country: 'Norway',
-    countryCode: 'NO',
-    region: 'europe',
-    type: 'rallycross',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 1.300, turns: 9, year: 2020, grade: 'Off-road' },
-      { id: 'short', name: 'Short Circuit', lengthKm: 1.000, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [1, 2, 3],
+  'Buskerud': {
+    id: 'buskerud', name: 'Buskerud', shortName: 'Buskerud', officialName: 'Buskerud',
+    country: 'Norway', countryCode: 'NO', region: 'europe', type: 'rallycross', suitableTiers: [1, 2, 3],
   },
 
   // ASIA - JAPAN
-  {
-    id: 'suzuka',
-    name: 'Suzuka',
-    shortName: 'Suzuka',
-    officialName: 'Suzuka International Racing Course',
-    country: 'Japan',
-    countryCode: 'JP',
-    region: 'asia',
-    type: 'permanent',
-    layoutCount: 4,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 5.807, turns: 18, year: 2020, grade: 'Grade 1' },
-      { id: 'east', name: 'East Course', lengthKm: 2.243, turns: 8, year: 2020 },
-      { id: 'west', name: 'West Course', lengthKm: 3.475, turns: 10, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 5.859, turns: 18, year: 1987 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Kansai (Suzuka)': {
+    id: 'suzuka', name: 'Suzuka', shortName: 'Suzuka', officialName: 'Suzuka International Racing Course',
+    country: 'Japan', countryCode: 'JP', region: 'asia', type: 'permanent', suitableTiers: [3, 4, 5, 6],
+    layoutPrefixes: ['Kansai', 'Suzuka'],
+    defaultLayoutId: 'gp',
   },
 
   // AFRICA
-  {
-    id: 'kyalami',
-    name: 'Kyalami',
-    shortName: 'Kyalami',
-    officialName: 'Kyalami Grand Prix Circuit',
-    country: 'South Africa',
-    countryCode: 'ZA',
-    region: 'africa',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.522, turns: 16, year: 2020, grade: 'Grade 2' },
-      { id: 'historic_1976', name: 'Historic 1976', lengthKm: 4.104, turns: 13, year: 1976 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5, 6],
+  'Kyalami': {
+    id: 'kyalami', name: 'Kyalami', shortName: 'Kyalami', officialName: 'Kyalami Grand Prix Circuit',
+    country: 'South Africa', countryCode: 'ZA', region: 'africa', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
 
   // NORTH AMERICA - USA
-  {
-    id: 'cleveland',
-    name: 'Cleveland',
-    shortName: 'Cleveland',
-    officialName: 'Burke Lakefront Airport',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'street',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.500, turns: 10, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.800, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt1',
+  'Cleveland': {
+    id: 'cleveland', name: 'Cleveland', shortName: 'Cleveland', officialName: 'Burke Lakefront Airport',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'street', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'daytona',
-    name: 'Daytona',
-    shortName: 'Daytona',
-    officialName: 'Daytona International Speedway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'oval',
-    layoutCount: 3,
-    layouts: [
-      { id: 'road', name: 'Road Course', lengthKm: 5.729, turns: 12, year: 2020, grade: 'Grade 2' },
-      { id: 'oval', name: 'Oval', lengthKm: 4.023, turns: 4, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 6.100, turns: 13, year: 1964 },
-    ],
-    defaultLayout: 'road',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt1',
+  'Daytona': {
+    id: 'daytona', name: 'Daytona', shortName: 'Daytona', officialName: 'Daytona International Speedway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'oval', suitableTiers: [4, 5, 6],
+    defaultLayoutId: 'sports_car_course',
   },
-  {
-    id: 'fontana',
-    name: 'Fontana',
-    shortName: 'Fontana',
-    officialName: 'Auto Club Speedway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'oval',
-    layoutCount: 2,
-    layouts: [
-      { id: 'road', name: 'Road Course', lengthKm: 3.800, turns: 8, year: 2020 },
-      { id: 'oval', name: 'Oval', lengthKm: 3.219, turns: 4, year: 2020 },
-    ],
-    defaultLayout: 'road',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt3',
+  'Fontana': {
+    id: 'fontana', name: 'Fontana', shortName: 'Fontana', officialName: 'Auto Club Speedway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'oval', suitableTiers: [4, 5, 6],
+    layoutPrefixes: ['Auto Club Speedway'],
   },
-  {
-    id: 'gateway',
-    name: 'Gateway',
-    shortName: 'Gateway',
-    officialName: 'World Wide Technology Raceway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'oval',
-    layoutCount: 3,
-    layouts: [
-      { id: 'road', name: 'Road Course', lengthKm: 2.800, turns: 9, year: 2020 },
-      { id: 'oval', name: 'Oval', lengthKm: 2.012, turns: 4, year: 2020 },
-      { id: 'roval', name: 'Roval', lengthKm: 2.400, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'road',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt3',
+  'Gateway': {
+    id: 'gateway', name: 'Gateway', shortName: 'Gateway', officialName: 'World Wide Technology Raceway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'oval', suitableTiers: [4, 5, 6],
+    layoutPrefixes: ['WWT Raceway'],
   },
-  {
-    id: 'indianapolis',
-    name: 'Indianapolis',
-    shortName: 'Indianapolis',
-    officialName: 'Indianapolis Motor Speedway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'oval',
-    layoutCount: 2,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.192, turns: 14, year: 2020, grade: 'Grade 1' },
-      { id: 'oval', name: 'Oval', lengthKm: 4.023, turns: 4, year: 2020, grade: 'Grade 1' },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [5, 6],
-    dlc: 'Racin USA Pt2',
+  'Indianapolis': {
+    id: 'indianapolis', name: 'Indianapolis', shortName: 'Indianapolis', officialName: 'Indianapolis Motor Speedway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'oval', suitableTiers: [5, 6],
+    layoutPrefixes: ['Indianapolis Motor Speedway'],
   },
-  {
-    id: 'laguna_seca',
-    name: 'Laguna Seca',
-    shortName: 'Laguna Seca',
-    officialName: 'Laguna Seca Raceway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.602, turns: 11, year: 2020, grade: 'Grade 2' },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [2, 3, 4, 5],
-    dlc: 'Racin USA Pt1',
+  'Laguna Seca': {
+    id: 'laguna_seca', name: 'Laguna Seca', shortName: 'Laguna Seca', officialName: 'Laguna Seca Raceway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [2, 3, 4, 5],
   },
-  {
-    id: 'long_beach',
-    name: 'Long Beach',
-    shortName: 'Long Beach',
-    officialName: 'Long Beach Street Circuit',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'street',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.167, turns: 11, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 3.251, turns: 11, year: 1982 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt1',
+  'Long Beach': {
+    id: 'long_beach', name: 'Long Beach', shortName: 'Long Beach', officialName: 'Long Beach Street Circuit',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'street', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'pocono',
-    name: 'Pocono',
-    shortName: 'Pocono',
-    officialName: 'Pocono Raceway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'oval',
-    layoutCount: 7,
-    layouts: [
-      { id: 'oval', name: 'Oval', lengthKm: 4.023, turns: 3, year: 2020 },
-      { id: 'north', name: 'North', lengthKm: 2.000, turns: 6, year: 2020 },
-      { id: 'south', name: 'South', lengthKm: 2.200, turns: 5, year: 2020 },
-      { id: 'east', name: 'East', lengthKm: 1.800, turns: 4, year: 2020 },
-      { id: 'road', name: 'Road Course', lengthKm: 3.500, turns: 8, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 4.023, turns: 3, year: 1971 },
-      { id: 'roval', name: 'Roval', lengthKm: 3.200, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'oval',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt2',
+  'Pocono': {
+    id: 'pocono', name: 'Pocono', shortName: 'Pocono', officialName: 'Pocono Raceway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'oval', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'road_america',
-    name: 'Road America',
-    shortName: 'Road America',
-    officialName: 'Road America',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 6.515, turns: 14, year: 2020, grade: 'Grade 2' },
-      { id: 'historic', name: 'Historic', lengthKm: 6.436, turns: 14, year: 1960 },
-      { id: 'short', name: 'Short', lengthKm: 3.800, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5, 6],
-    dlc: 'Racin USA Pt2',
+  'Road America': {
+    id: 'road_america', name: 'Road America', shortName: 'Road America', officialName: 'Road America',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [3, 4, 5, 6],
   },
-  {
-    id: 'road_atlanta',
-    name: 'Road Atlanta',
-    shortName: 'Road Atlanta',
-    officialName: 'Road Atlanta',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 2,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 4.088, turns: 12, year: 2020, grade: 'Grade 2' },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.800, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5],
-    dlc: 'Racin USA Pt3',
+  'Road Atlanta': {
+    id: 'road_atlanta', name: 'Road Atlanta', shortName: 'Road Atlanta', officialName: 'Road Atlanta',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'sebring',
-    name: 'Sebring',
-    shortName: 'Sebring',
-    officialName: 'Sebring International Raceway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 4,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 6.019, turns: 17, year: 2020, grade: 'Grade 2' },
-      { id: 'short', name: 'Short Circuit', lengthKm: 3.700, turns: 10, year: 2020 },
-      { id: 'club', name: 'Club Circuit', lengthKm: 2.800, turns: 8, year: 2020 },
-      { id: 'historic', name: 'Historic', lengthKm: 8.369, turns: 20, year: 1967 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [4, 5, 6],
-    dlc: 'Racin USA Pt1',
+  'Sebring': {
+    id: 'sebring', name: 'Sebring', shortName: 'Sebring', officialName: 'Sebring International Raceway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'virginia',
-    name: 'Virginia',
-    shortName: 'VIR',
-    officialName: 'Virginia International Raceway',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 6.800, turns: 24, year: 2020, grade: 'Grade 2' },
-      { id: 'grand', name: 'Grand West', lengthKm: 4.500, turns: 16, year: 2020 },
-      { id: 'north', name: 'North', lengthKm: 3.200, turns: 12, year: 2020 },
-      { id: 'south', name: 'South', lengthKm: 2.500, turns: 9, year: 2020 },
-      { id: 'patriot', name: 'Patriot', lengthKm: 2.000, turns: 7, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5],
-    dlc: 'Racin USA Pt3',
+  'Virginia': {
+    id: 'virginia', name: 'Virginia', shortName: 'VIR', officialName: 'Virginia International Raceway',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [3, 4, 5],
+    layoutPrefixes: ['VIR', 'Virginia International Raceway'],
   },
-  {
-    id: 'watkins_glen',
-    name: 'Watkins Glen',
-    shortName: 'Watkins Glen',
-    officialName: 'Watkins Glen International',
-    country: 'United States',
-    countryCode: 'US',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 5,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 5.430, turns: 11, year: 2020, grade: 'Grade 2' },
-      { id: 'short', name: 'Short Course', lengthKm: 3.701, turns: 7, year: 2020 },
-      { id: 'boot', name: 'Boot', lengthKm: 4.500, turns: 9, year: 2020 },
-      { id: 'historic_1961', name: 'Historic 1961', lengthKm: 3.701, turns: 6, year: 1961 },
-      { id: 'historic_1971', name: 'Historic 1971', lengthKm: 5.435, turns: 11, year: 1971 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [3, 4, 5],
-    dlc: 'Racin USA Pt2',
+  'Watkins Glen': {
+    id: 'watkins_glen', name: 'Watkins Glen', shortName: 'Watkins Glen', officialName: 'Watkins Glen International',
+    country: 'United States', countryCode: 'US', region: 'north_america', type: 'permanent', suitableTiers: [3, 4, 5],
   },
 
   // NORTH AMERICA - CANADA
-  {
-    id: 'montreal',
-    name: 'Montréal',
-    shortName: 'Montréal',
-    officialName: 'Circuit Gilles Villeneuve',
-    country: 'Canada',
-    countryCode: 'CA',
-    region: 'north_america',
-    type: 'street',
-    layoutCount: 3,
-    layouts: [
-      { id: 'gp', name: 'Grand Prix', lengthKm: 4.361, turns: 14, year: 2020, grade: 'Grade 1' },
-      { id: 'historic', name: 'Historic', lengthKm: 4.430, turns: 15, year: 1988 },
-      { id: 'short', name: 'Short', lengthKm: 2.800, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'gp',
-    suitableTiers: [4, 5, 6],
+  'Montreal': {
+    id: 'montreal', name: 'Montréal', shortName: 'Montréal', officialName: 'Circuit Gilles Villeneuve',
+    country: 'Canada', countryCode: 'CA', region: 'north_america', type: 'street', suitableTiers: [4, 5, 6],
   },
-  {
-    id: 'mosport',
-    name: 'Mosport',
-    shortName: 'CTMP',
-    officialName: 'Canadian Tire Motorsport Park',
-    country: 'Canada',
-    countryCode: 'CA',
-    region: 'north_america',
-    type: 'permanent',
-    layoutCount: 1,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.957, turns: 10, year: 2020, grade: 'Grade 2' },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [3, 4, 5],
-    dlc: 'Racin USA Pt3',
+  'Mosport': {
+    id: 'mosport', name: 'Mosport', shortName: 'CTMP', officialName: 'Canadian Tire Motorsport Park',
+    country: 'Canada', countryCode: 'CA', region: 'north_america', type: 'permanent', suitableTiers: [3, 4, 5],
   },
 
   // SOUTH AMERICA - ECUADOR
-  {
-    id: 'ibarra',
-    name: 'Ibarra',
-    shortName: 'Ibarra',
-    officialName: 'Autódromo Internacional José Tobar',
-    country: 'Ecuador',
-    countryCode: 'EC',
-    region: 'south_america',
-    type: 'permanent',
-    layoutCount: 3,
-    layouts: [
-      { id: 'full', name: 'Full Circuit', lengthKm: 3.200, turns: 11, year: 2020 },
-      { id: 'short', name: 'Short Circuit', lengthKm: 2.200, turns: 7, year: 2020 },
-      { id: 'exterior', name: 'Exterior', lengthKm: 2.500, turns: 8, year: 2020 },
-    ],
-    defaultLayout: 'full',
-    suitableTiers: [2, 3, 4],
+  'Ibarra': {
+    id: 'ibarra', name: 'Ibarra', shortName: 'Ibarra', officialName: 'Autódromo Internacional José Tobar',
+    country: 'Ecuador', countryCode: 'EC', region: 'south_america', type: 'permanent', suitableTiers: [2, 3, 4],
+    layoutPrefixes: ['Autódromo Yahuarcocha', 'Autodromo Yahuarcocha', 'Yahuarcocha'],
   },
-]
+}
+
+// ============================================
+// LAYOUT ID GENERATION
+// ============================================
+
+function normalizeForMatch(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+}
+
+function slugify(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').replace(/_+/g, '_')
+}
+
+function generateLayoutId(trackName: string, layoutName: string, prefixes?: string[]): string {
+  const normalizedLayout = normalizeForMatch(layoutName)
+  const allPrefixes = [trackName, ...(prefixes || [])].map(normalizeForMatch)
+  allPrefixes.sort((a, b) => b.length - a.length)
+
+  for (const prefix of allPrefixes) {
+    if (normalizedLayout.startsWith(prefix)) {
+      const remainder = normalizedLayout.slice(prefix.length).trim()
+      if (remainder === '') return 'default'
+      return slugify(remainder)
+    }
+  }
+
+  return slugify(normalizedLayout)
+}
+
+// ============================================
+// BUILD FROM REFERENCE
+// ============================================
+
+function buildTracksFromReference(): AMS2Track[] {
+  const groups = new Map<string, AMS2LayoutReferenceRecord[]>()
+  for (const record of AMS2_LAYOUT_REFERENCE) {
+    const existing = groups.get(record.track) || []
+    existing.push(record)
+    groups.set(record.track, existing)
+  }
+
+  const tracks: AMS2Track[] = []
+  const unmappedTracks: string[] = []
+
+  for (const [refTrackName, records] of groups) {
+    const meta = VENUE_META[refTrackName]
+    if (!meta) {
+      unmappedTracks.push(refTrackName)
+      continue
+    }
+
+    const layoutIds = new Set<string>()
+    const layouts: TrackLayout[] = records.map(record => {
+      let id = generateLayoutId(refTrackName, record.layout, meta.layoutPrefixes)
+
+      let finalId = id
+      let suffix = 2
+      while (layoutIds.has(finalId)) {
+        finalId = `${id}_${suffix}`
+        suffix++
+      }
+      layoutIds.add(finalId)
+
+      return {
+        id: finalId,
+        name: record.layout,
+        lengthKm: typeof record.lengthKm === 'number' ? record.lengthKm : 0,
+        turns: typeof record.turns === 'number' ? record.turns : 0,
+        year: record.year,
+        grade: record.grade ?? undefined,
+        sourceLayoutName: record.layout,
+        defaultDate: record.defaultDate ?? undefined,
+        altitudeM: typeof record.altitudeM === 'number' ? record.altitudeM : undefined,
+        sourceVerified: true,
+      }
+    })
+
+    const defaultLayoutId = meta.defaultLayoutId ||
+      (layouts.find(l => l.id === 'default')?.id) ||
+      layouts[0]?.id || 'default'
+
+    const dlc = meta.dlc ?? records.find(r => r.dlc)?.dlc ?? undefined
+
+    tracks.push({
+      id: meta.id,
+      name: meta.name,
+      shortName: meta.shortName,
+      officialName: meta.officialName,
+      country: meta.country,
+      countryCode: meta.countryCode,
+      region: meta.region,
+      type: meta.type,
+      layoutCount: layouts.length,
+      layouts,
+      defaultLayout: defaultLayoutId,
+      suitableTiers: meta.suitableTiers,
+      dlc: dlc || undefined,
+      youtubeId: meta.youtubeId,
+    })
+  }
+
+  if (unmappedTracks.length > 0) {
+    console.warn(`[AMS2] Reference tracks without venue metadata: ${unmappedTracks.join(', ')}`)
+  }
+
+  return tracks
+}
+
+export const ALL_TRACKS: AMS2Track[] = buildTracksFromReference()
+
+export const AMS2_SOURCE_SYNC_AUDIT = {
+  totalLayouts: ALL_TRACKS.reduce((sum, track) => sum + track.layouts.length, 0),
+  verifiedLayouts: ALL_TRACKS.reduce(
+    (sum, track) => sum + track.layouts.filter(layout => layout.sourceVerified).length,
+    0
+  ),
+  unmatchedLayouts: ALL_TRACKS.flatMap(track =>
+    track.layouts
+      .filter(layout => !layout.sourceVerified)
+      .map(layout => `${track.id}:${layout.id}`)
+  ),
+}
 
 // ============================================
 // UTILITY FUNCTIONS
@@ -1281,29 +520,27 @@ export function getLayoutById(trackId: string, layoutId: string): TrackLayout | 
 }
 
 export function generateCalendarTracks(
-  tier: number, 
-  count: number, 
+  tier: number,
+  count: number,
   preferredRegion?: TrackRegion
 ): { trackId: string; layoutId: string; trackName: string; country: string }[] {
   let suitableTracks = getTracksForTier(tier)
-  
-  // Prefer specified region if provided, but mix in others
+
   if (preferredRegion) {
     const regionTracks = suitableTracks.filter(t => t.region === preferredRegion)
     const otherTracks = suitableTracks.filter(t => t.region !== preferredRegion)
-    // 70% from preferred region, 30% from others
     const regionCount = Math.ceil(count * 0.7)
     const otherCount = count - regionCount
-    
+
     const shuffledRegion = [...regionTracks].sort(() => Math.random() - 0.5).slice(0, regionCount)
     const shuffledOther = [...otherTracks].sort(() => Math.random() - 0.5).slice(0, otherCount)
     suitableTracks = [...shuffledRegion, ...shuffledOther].sort(() => Math.random() - 0.5)
   } else {
     suitableTracks = [...suitableTracks].sort(() => Math.random() - 0.5)
   }
-  
+
   const selected = suitableTracks.slice(0, Math.min(count, suitableTracks.length))
-  
+
   return selected.map(track => ({
     trackId: track.id,
     layoutId: track.defaultLayout,
@@ -1335,55 +572,38 @@ export const TRACK_STATS = {
 // ENHANCED CALENDAR GENERATION UTILITIES
 // ============================================
 
-/**
- * Get the highest FIA grade from a track's layouts
- * Returns the best grade available (Grade 1 > Grade 2 > Grade 3, etc.)
- */
 export function getTrackHighestGrade(track: AMS2Track): string | undefined {
   const gradeOrder = ['Grade 1', 'Grade 1T', 'Grade 2', 'Grade 3', 'Grade 4']
-  
+
   for (const grade of gradeOrder) {
     const hasGrade = track.layouts.some(layout => layout.grade === grade)
     if (hasGrade) return grade
   }
-  
-  // Return first available grade if any
+
   for (const layout of track.layouts) {
     if (layout.grade && !layout.grade.includes('Historic') && !layout.grade.includes('Off-road')) {
       return layout.grade
     }
   }
-  
+
   return undefined
 }
 
-/**
- * Filter tracks by acceptable FIA grades
- * If acceptableGrades is empty, returns all tracks (no grade restriction)
- */
 export function filterTracksByGrade(tracks: AMS2Track[], acceptableGrades: string[]): AMS2Track[] {
-  // No restriction if empty
   if (acceptableGrades.length === 0) {
     return tracks
   }
-  
+
   return tracks.filter(track => {
     const trackGrade = getTrackHighestGrade(track)
-    // Include track if it has an acceptable grade OR if it has no grade (smaller circuits)
     return trackGrade ? acceptableGrades.includes(trackGrade) : true
   })
 }
 
-/**
- * Get tracks suitable for a specific track type (permanent, street, oval, etc.)
- */
 export function getTracksByType(trackTypes: TrackType[]): AMS2Track[] {
   return ALL_TRACKS.filter(track => trackTypes.includes(track.type))
 }
 
-/**
- * Get tracks by multiple criteria
- */
 export interface TrackFilterCriteria {
   types?: TrackType[]
   regions?: TrackRegion[]
@@ -1396,48 +616,38 @@ export interface TrackFilterCriteria {
 
 export function getTracksFiltered(criteria: TrackFilterCriteria): AMS2Track[] {
   let tracks = [...ALL_TRACKS]
-  
-  // Filter by track type
+
   if (criteria.types && criteria.types.length > 0) {
     tracks = tracks.filter(t => criteria.types!.includes(t.type))
   }
-  
-  // Filter by region
+
   if (criteria.regions && criteria.regions.length > 0) {
     tracks = tracks.filter(t => criteria.regions!.includes(t.region))
   }
-  
-  // Filter by grade
+
   if (criteria.grades && criteria.grades.length > 0) {
     tracks = filterTracksByGrade(tracks, criteria.grades)
   }
-  
-  // Filter by tier suitability
+
   if (criteria.minTier !== undefined || criteria.maxTier !== undefined) {
     const minTier = criteria.minTier ?? 1
     const maxTier = criteria.maxTier ?? 6
-    tracks = tracks.filter(t => 
+    tracks = tracks.filter(t =>
       t.suitableTiers.some(tier => tier >= minTier && tier <= maxTier)
     )
   }
-  
-  // Exclude specific track IDs
+
   if (criteria.excludeIds && criteria.excludeIds.length > 0) {
     tracks = tracks.filter(t => !criteria.excludeIds!.includes(t.id))
   }
-  
-  // Filter DLC tracks if requested
+
   if (criteria.includeDLC === false) {
     tracks = tracks.filter(t => !t.dlc)
   }
-  
+
   return tracks
 }
 
-/**
- * Apply regional weighting to track selection
- * Returns tracks sorted/weighted by regional preference
- */
 export function applyRegionalWeighting(
   tracks: AMS2Track[],
   primaryRegion: TrackRegion,
@@ -1445,39 +655,33 @@ export function applyRegionalWeighting(
   secondaryRegion?: TrackRegion
 ): AMS2Track[] {
   const primaryTracks = tracks.filter(t => t.region === primaryRegion)
-  const secondaryTracks = secondaryRegion 
+  const secondaryTracks = secondaryRegion
     ? tracks.filter(t => t.region === secondaryRegion)
     : []
-  const otherTracks = tracks.filter(t => 
-    t.region !== primaryRegion && 
+  const otherTracks = tracks.filter(t =>
+    t.region !== primaryRegion &&
     (!secondaryRegion || t.region !== secondaryRegion)
   )
-  
-  // Shuffle each group
+
   const shuffledPrimary = [...primaryTracks].sort(() => Math.random() - 0.5)
   const shuffledSecondary = [...secondaryTracks].sort(() => Math.random() - 0.5)
   const shuffledOther = [...otherTracks].sort(() => Math.random() - 0.5)
-  
-  // Interleave based on weight
-  // Higher weight = more tracks from primary region appear first
+
   const result: AMS2Track[] = []
   let pIdx = 0, sIdx = 0, oIdx = 0
-  
+
   const totalTracks = tracks.length
   const primaryCount = Math.floor(totalTracks * weight)
   const secondaryCount = secondaryRegion ? Math.floor(totalTracks * (1 - weight) * 0.4) : 0
-  
-  // Add primary region tracks first (up to weight %)
+
   while (pIdx < shuffledPrimary.length && result.length < primaryCount) {
     result.push(shuffledPrimary[pIdx++])
   }
-  
-  // Add secondary region tracks
+
   while (sIdx < shuffledSecondary.length && result.length < primaryCount + secondaryCount) {
     result.push(shuffledSecondary[sIdx++])
   }
-  
-  // Fill with remaining primary, then secondary, then other
+
   while (pIdx < shuffledPrimary.length) {
     result.push(shuffledPrimary[pIdx++])
   }
@@ -1487,13 +691,10 @@ export function applyRegionalWeighting(
   while (oIdx < shuffledOther.length) {
     result.push(shuffledOther[oIdx++])
   }
-  
+
   return result
 }
 
-/**
- * Select tracks for a calendar, ensuring iconic tracks are included
- */
 export function selectTracksForCalendar(
   availableTracks: AMS2Track[],
   iconicTrackIds: string[],
@@ -1501,70 +702,120 @@ export function selectTracksForCalendar(
 ): AMS2Track[] {
   const selected: AMS2Track[] = []
   const usedIds = new Set<string>()
-  
-  // First, add iconic tracks that are available
+
   for (const iconicId of iconicTrackIds) {
     if (selected.length >= totalRounds) break
-    
+
     const track = availableTracks.find(t => t.id === iconicId)
     if (track && !usedIds.has(track.id)) {
       selected.push(track)
       usedIds.add(track.id)
     }
   }
-  
-  // Fill remaining slots with other available tracks
+
   for (const track of availableTracks) {
     if (selected.length >= totalRounds) break
-    
+
     if (!usedIds.has(track.id)) {
       selected.push(track)
       usedIds.add(track.id)
     }
   }
-  
-  // Shuffle the non-iconic tracks to add variety
-  // Keep first few iconic tracks in place, shuffle the rest
+
   const iconicCount = Math.min(iconicTrackIds.length, selected.length)
   const iconicPart = selected.slice(0, iconicCount)
   const restPart = selected.slice(iconicCount).sort(() => Math.random() - 0.5)
-  
-  // Final shuffle - mix iconic into the calendar, don't always start with them
+
   const final = [...iconicPart, ...restPart]
-  
-  // Do a light shuffle that keeps some structure but isn't fully random
-  // Swap some positions to distribute iconic tracks throughout
+
   for (let i = 0; i < Math.min(iconicCount, 3); i++) {
     const swapIdx = Math.floor(Math.random() * (final.length - 1)) + 1
     if (swapIdx !== i && swapIdx < final.length) {
       [final[i], final[swapIdx]] = [final[swapIdx], final[i]]
     }
   }
-  
+
   return final
 }
 
-/**
- * Get track types suitable for a series category
- */
-export function getTrackTypesForCategory(category: string): TrackType[] {
+export function getTrackTypesForCategory(category: string): { types: TrackType[], includeOvalRoadCourses: boolean } {
   switch (category) {
-    case 'kart': 
-      return ['kart']
-    case 'formula': 
-      return ['permanent', 'street']
-    case 'gt': 
-      return ['permanent', 'street']
-    case 'stock': 
-      return ['permanent', 'oval']
-    case 'prototype': 
-      return ['permanent']
-    case 'touring': 
-      return ['permanent', 'street']
+    case 'kart':
+      return { types: ['kart'], includeOvalRoadCourses: false }
+
+    case 'formula':
+      return { types: ['permanent', 'street'], includeOvalRoadCourses: true }
+
+    case 'gt':
+    case 'gt-sportscar':
+      return { types: ['permanent', 'street'], includeOvalRoadCourses: true }
+
+    case 'stock':
+      return { types: ['permanent'], includeOvalRoadCourses: false }
+
+    case 'stock-usa':
+      return { types: ['oval', 'permanent', 'street'], includeOvalRoadCourses: false }
+
+    case 'prototype':
+    case 'endurance':
+      return { types: ['permanent'], includeOvalRoadCourses: true }
+
+    case 'touring':
+      return { types: ['permanent', 'street'], includeOvalRoadCourses: false }
+
+    case 'spec-series':
+      return { types: ['permanent', 'street'], includeOvalRoadCourses: false }
+
     case 'rallycross':
-      return ['rallycross']
+      return { types: ['rallycross'], includeOvalRoadCourses: false }
+
     case 'other':
-    default: 
-      return ['permanent']
+    default:
+      return { types: ['permanent'], includeOvalRoadCourses: false }
   }
+}
+
+export function getTracksForCategory(
+  category: string,
+  regions?: TrackRegion[],
+  grades?: string[]
+): AMS2Track[] {
+  const { types, includeOvalRoadCourses } = getTrackTypesForCategory(category)
+
+  let tracks = ALL_TRACKS.filter(track => {
+    if (types.includes(track.type)) return true
+
+    if (includeOvalRoadCourses && track.type === 'oval') {
+      const hasRoadLayout = track.layouts.some(l =>
+        l.id === 'road' || l.id === 'gp' || l.id === 'roval' ||
+        l.id.includes('road') || l.id.includes('sports_car')
+      )
+      return hasRoadLayout
+    }
+
+    return false
+  })
+
+  if (regions && regions.length > 0) {
+    tracks = tracks.filter(t => regions.includes(t.region))
+  }
+
+  if (grades && grades.length > 0) {
+    tracks = filterTracksByGrade(tracks, grades)
+  }
+
+  return tracks
+}
+
+export function sortTracksByRegionPriority(
+  tracks: AMS2Track[],
+  primaryRegion: TrackRegion
+): AMS2Track[] {
+  const primary = tracks.filter(t => t.region === primaryRegion)
+  const others = tracks.filter(t => t.region !== primaryRegion)
+
+  const shuffledPrimary = [...primary].sort(() => Math.random() - 0.5)
+  const shuffledOthers = [...others].sort(() => Math.random() - 0.5)
+
+  return [...shuffledPrimary, ...shuffledOthers]
 }

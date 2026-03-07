@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0074",
+  "name": "Sisu Finance",
+  "category": "financial",
+  "tier": "mid",
+  "country": "Finland",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Sisu Finance is a Finnish investment firm that prides itself on resilience and determination, values they see reflected in the world of motorsport. They believe in supporting individuals who strive for excellence, and view motorsport as a platform to showcase their commitment to performance and calculated risk. Sisu seeks a partnership that demonstrates dedication and delivers results, amplifying their brand message of strategic investment and unwavering commitment.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 180000,
+      "winBonus": 75000,
+      "podiumBonus": 38000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "Finland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0074.png"
+}

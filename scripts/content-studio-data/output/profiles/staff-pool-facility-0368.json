@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Deniz Yilmaz",
+    "nationality": "Turkish",
+    "age": 35,
+    "gender": "male",
+    "role": "fabricator",
+    "bio": "Deniz discovered his passion for motorsport early, spending his youth tinkering with engines in his uncle's auto repair shop in Istanbul. He quickly developed an aptitude for precision engineering and metalwork. After completing a vocational program specializing in automotive fabrication, Deniz honed his skills in various racing teams, working on everything from Formula cars to rally vehicles. He is known for his meticulous approach to every project, ensuring that every part he creates or modifies meets the highest standards of performance and durability. His knack for innovative solutions, coupled with his unwavering loyalty to his team, makes him a highly valued asset.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly trimmed with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Well-groomed goatee",
+      "description": "Deniz is of medium build, with calloused hands that speak of years spent crafting metal."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always sharpens his pencils to a needle point before starting a new task.",
+      "Insists on using only Turkish coffee to fuel his late-night fabrication sessions.",
+      "Meticulously cleans his workspace at the end of each day, regardless of how tired he is."
+    ]
+  }
+]

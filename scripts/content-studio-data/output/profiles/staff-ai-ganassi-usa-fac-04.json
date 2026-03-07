@@ -1,0 +1,22 @@
+{
+  "name": "Javier Mendoza",
+  "nationality": "Spanish",
+  "age": 46,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Javier's passion for motorsport ignited during his childhood in Valencia, where he spent countless hours tinkering with go-karts. He pursued a degree in Electrical Engineering, specializing in embedded systems, and quickly found his way into the world of racing. His early career involved developing telemetry systems for smaller racing teams, honing his skills in data analysis and real-time diagnostics.\n\nKnown for his meticulous approach and ability to troubleshoot complex electrical issues under pressure, Javier prides himself on his ability to optimize vehicle performance through innovative electronic solutions. He joined Chip Ganassi Racing five years ago and has become an invaluable asset, consistently pushing the boundaries of what's possible in racing electronics. Javier's analytical mind and dedication to continuous improvement make him a sought-after engineer within the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Javier is of average height with a wiry build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and technical notes.",
+    "Has a peculiar habit of tapping his pen against his teeth when concentrating.",
+    "Refuses to drink coffee before analyzing data, claiming it 'skews his perception'."
+  ]
+}

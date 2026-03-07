@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 40,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Dimitri Volkov's passion for motorsport ignited during his childhood, spent tinkering with engines in his grandfather's garage near Moscow. He honed his technical skills at Bauman Moscow State Technical University, specializing in electronics and automation. After graduating, Dimitri joined a small engineering firm developing control systems for industrial machinery, but his heart remained with racing. He eventually transitioned to motorsport, working his way up through various junior formulas before joining Prema Junior. \n\nDimitri is known for his meticulous approach to data analysis and his relentless pursuit of performance gains. He believes that even the smallest adjustments to electronic systems can yield significant improvements on the track. He is not afraid to challenge conventional wisdom and is always looking for innovative solutions to complex problems. Dimitri's demanding nature pushes his team to excel, but his dedication to success has earned him the respect of his colleagues.\n\nWhile he prefers the technical nuances of wiring harnesses and sensors, Dimitri understands the importance of clear communication and team dynamics. He sees electronics engineering not just as a technical field, but as a crucial part of the overall racing strategy. He is driven by the desire to see his contributions translate into tangible results on the track, and to help Prema Junior achieve its competitive goals.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Dimitri is of average height with a sturdy build and a serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket, even to team dinners.",
+    "Insists on using a specific brand of Russian-made soldering iron.",
+    "Has a habit of muttering technical jargon in Russian when under pressure."
+  ]
+}

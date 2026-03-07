@@ -1,0 +1,22 @@
+{
+  "name": "Beatriz Oliveira",
+  "nationality": "Portuguese",
+  "age": 43,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Beatriz's journey into motorsport began unexpectedly. While studying mechanical engineering at the University of Porto, a guest lecture by a racing engineer ignited a passion she never knew she possessed. She immediately refocused her studies, seeking internships with local racing teams and immersing herself in the technical intricacies of vehicle dynamics and performance optimization.\n\nSince then, Beatriz has steadily climbed the ranks, working her way through various engineering roles before specializing as a performance engineer. Her approach is rooted in data-driven analysis and a deep understanding of vehicle behavior. She believes in clear communication and collaboration, ensuring that drivers and mechanics are aligned in the pursuit of optimal performance. Known for her meticulous preparation and unflappable demeanor under pressure, Beatriz is a valuable asset to any team. She also has a knack for spotting young talent and enjoys mentoring junior engineers.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy, often pulled back in a practical ponytail during races.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Beatriz is of average height with a focused, intelligent gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Has a specific pen she uses for marking up telemetry data.",
+    "Insists on a pre-race espresso from the same local cafe at every circuit."
+  ]
+}

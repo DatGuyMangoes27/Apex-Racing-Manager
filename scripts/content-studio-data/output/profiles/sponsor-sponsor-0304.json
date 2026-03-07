@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0304",
+  "name": "Rosneft Racing",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "Russia",
+  "description": "Powering performance, engineering excellence.",
+  "story": "Rosneft has a long history supporting motorsport in Russia and internationally. They see racing as a perfect testing ground for their advanced fuel and lubricant technologies. Rosneft seeks partnerships that demonstrate technical prowess and a commitment to pushing the boundaries of performance, while showcasing Russian innovation on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Russia"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0304.png"
+}

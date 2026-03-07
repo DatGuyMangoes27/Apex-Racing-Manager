@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Sofia Ramirez",
+    "nationality": "Mexican",
+    "age": 37,
+    "gender": "female",
+    "role": "catering_manager",
+    "bio": "Sofia Ramirez brings a vibrant and organized energy to Tickford Racing as their catering manager. Growing up in a family that ran a successful restaurant in Mexico City, Sofia learned the importance of fresh ingredients, efficient service, and creating a welcoming atmosphere. She discovered motorsport through a family friend who worked as a mechanic, and she was immediately drawn to the high-energy, team-focused environment. \n\nAfter moving to Australia, Sofia combined her love for hospitality with her newfound passion, landing a role with a smaller racing team before joining Tickford. Her approach is centered around providing nutritious and delicious meals that fuel both the body and the spirit of the team. Sofia is known for her ability to adapt to changing dietary needs and preferences, always ensuring everyone feels catered for. Her resourcefulness and calm demeanor under pressure make her an invaluable part of the Tickford crew, often improvising solutions to logistical challenges in remote locations.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair usually tied in a practical ponytail.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Sofia has a warm smile and a practical demeanor about her."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with recipes and catering ideas.",
+      "Insists on sourcing local produce whenever possible, even when traveling internationally.",
+      "Has a habit of humming quietly while she works, usually traditional Mexican folk songs."
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0128",
+  "name": "Ukhamba Tyres",
+  "category": "tires",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "South Africa's leading manufacturer of high-performance racing tyres.",
+  "story": "Ukhamba Tyres has a long history in South African motorsport, supporting local racing series for over 30 years. We believe in fostering local talent and providing racers with the best possible equipment. We seek a partnership that aligns with our values of performance, reliability, and community engagement.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0128.png"
+}

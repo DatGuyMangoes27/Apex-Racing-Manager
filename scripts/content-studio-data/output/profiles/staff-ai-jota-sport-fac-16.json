@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 49,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jean-Pierre Dubois is a seasoned catering manager with over 20 years of experience in the hospitality industry, the last 10 of which have been dedicated to motorsport. A lifelong racing enthusiast, Jean-Pierre transitioned from managing high-end restaurants in Lyon to catering for racing teams, driven by his passion for the sport and a desire to bring a touch of French culinary excellence to the paddock. He prides himself on providing nutritious and delicious meals that keep the team fueled and focused throughout grueling race weekends.\n\nJean-Pierre's approach is meticulous and detail-oriented. He believes that a well-fed team is a winning team, and he works closely with nutritionists to create menus that optimize performance. His signature dish, a hearty boeuf bourguignon, is a team favorite and a testament to his commitment to quality. What sets Jean-Pierre apart is his ability to adapt to the unique challenges of motorsport catering, from sourcing fresh ingredients in remote locations to managing logistics under tight deadlines. His demanding nature ensures that only the highest standards are met, contributing to the overall professionalism and success of the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is a man of average height with a slightly stocky build, reflecting years of enjoying his own culinary creations."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only locally sourced ingredients whenever possible, even if it means going to extreme lengths.",
+    "Has a habit of critiquing the presentation of food in unrelated situations, like team meetings.",
+    "Secretly listens to classical French music while preparing meals to maintain focus."
+  ]
+}

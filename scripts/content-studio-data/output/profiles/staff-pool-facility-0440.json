@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Souza",
+  "nationality": "Brazilian",
+  "age": 35,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Rafael's journey into motorsport began with a childhood fascination for Formula 1, fueled by Ayrton Senna's legendary performances. He pursued a technical degree specializing in composite materials, always with the dream of applying his knowledge to racing. His entry-level position is a chance to prove himself, eager to learn from senior engineers and contribute to the team's success. He believes meticulous attention to detail is crucial in composite work, ensuring the structural integrity and performance of the race car.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Rafael is of average height with a sturdy build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always brings a thermos of strong Brazilian coffee to the workshop.",
+    "Has a habit of tapping his fingers on surfaces while concentrating.",
+    "Meticulously cleans his workspace before and after each task."
+  ]
+}

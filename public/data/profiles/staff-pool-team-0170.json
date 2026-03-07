@@ -1,0 +1,22 @@
+{
+  "name": "Béla Kovács",
+  "nationality": "Hungarian",
+  "age": 44,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Béla Kovács's journey into motorsport started with a fascination for engineering and a childhood spent tinkering with engines in his father's garage. This passion led him to pursue a degree in mechanical engineering, after which he joined a small Hungarian racing team as a junior mechanic. Over the years, he steadily climbed the ranks, showcasing his technical acumen and developing a knack for team leadership. His pragmatic approach to problem-solving, combined with his relentless work ethic, allowed him to excel in various roles, eventually leading him to the position of team principal.\n\nAs a team principal, Béla is known for his data-driven decision-making and his ability to foster a collaborative environment. He believes in empowering his team members, encouraging them to take ownership of their responsibilities. While he appreciates innovation, he prioritizes reliability and consistency, always seeking to optimize performance through meticulous planning and execution. He is distinguished by his calm demeanor under pressure and his unwavering commitment to achieving team goals, even in the face of adversity.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "A stocky man with a serious demeanor, Béla always looks like he's contemplating complex equations."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting the car's setup before every race."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Jones hails from a small, windswept coastal town in Denmark, where the roar of the North Sea was his earliest soundtrack. His racing journey began, not on asphalt, but on the unforgiving sands of local beach races, piloting a beat-up kart his grandfather cobbled together from spare parts. These early experiences instilled a raw, untamed aggression in his driving style. A defining moment came at age 14 during a regional karting championship. Leading comfortably, Marco, known for his hot-headedness, collided with a lapped kart, costing him the title. This incident, while devastating, forced him to confront his impulsiveness. Now, at 17, Marco is an independent driver, battling for recognition in the fiercely competitive junior single-seater scene, hoping to catch the eye of a larger team and prove he can harness his talent and temper.",
+  "drivingStyle": "Marco's driving style is a blend of raw talent and calculated risk. He's known for his late braking and daring overtakes, often pushing the limits of his car and tires. While capable of blistering pace, his tire management is inconsistent, sometimes leading to a dramatic drop-off in performance towards the end of races. Under pressure, he can either rise to the occasion with a stunning display of control or crack completely, making rash decisions that cost him valuable points. Overall, he is a naturally aggressive driver, who is still working on refining his skills.",
+  "rivalries": [
+    {
+      "name": "Isabelle Rossi",
+      "reason": "A constant competitor from his karting days. Isabelle consistently outmaneuvers Marco with her calculated and precise driving, frustrating his aggressive style."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Kenji and Marco had an on-track incident last season that resulted in Kenji's retirement from the race. The animosity remains, with both drivers publicly trading barbs."
+    },
+    {
+      "name": "Sofia Vargas",
+      "reason": "Sofia is another independent driver struggling for funding and recognition. Both drivers are constantly trying to outperform each other on a small budget, leading to heated competition on and off the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks, which are threadbare and have holes in them.",
+    "Listens to extremely loud heavy metal music in his helmet right up until the moment the race starts.",
+    "Has a habit of fiddling with his gloves incessantly when feeling nervous."
+  ],
+  "nickname": "The Viking",
+  "famousQuote": "\"You either go flat out, or you go home. There's no in-between.\"",
+  "careerHighlight": "Winning the Danish Junior Karting Championship at age 15, a victory he dedicated to his grandfather who had passed away earlier that year.",
+  "careerLowPoint": "Crashing out of the lead in the final race of the Formula Nordic season, costing him a potential championship title and valuable points for team recognition."
+}

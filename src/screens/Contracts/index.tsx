@@ -8,16 +8,103 @@ import {
   Clock,
   DollarSign,
   ChevronRight,
+  ChevronDown,
   Check,
   X,
   AlertCircle,
+  Search,
+  Filter,
+  Zap,
+  Wallet,
+  MapPin,
+  Flag,
+  Factory,
+  Car,
+  Layers,
+  Palette,
+  Target,
+  CircleDot,
+  RefreshCw,
+  UserX,
+  AlertTriangle,
+  Newspaper,
 } from 'lucide-react'
-import { Card, CardHeader, Badge, Button, Progress } from '@/components/ui'
+import { getTeamLogo } from '@/utils/generated-assets'
 import { useCareerStore } from '@/store/careerStore'
 import { useRivalStore } from '@/store/rivalStore'
-import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
+import type { ContractTarget, ContractSeasonStats, Contract, ContractType, CurrentAssignment } from '@/store/careerStore'
+import type { ContractOffer, Team, Series } from '@/store/rivalStore'
+import {
+  generateContractTargets,
+  generateTerminationConditions,
+  generateRenewalConditions,
+  generateMediaDuties,
+  generateTeamOption,
+  generatePlayerOption,
+  DEFAULT_TEAM_SATISFACTION,
+} from '@/simulation/contracts'
+import { ConflictModal } from '@/components/ConflictModal'
+import { HERO_IMAGES } from '@/data/stock-images'
+import { routeNotification } from '@/services/notificationRouter'
 
-// Helper to get actual progress for a contract target
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FBold: React.CSSProperties = { fontFamily: "'Arial', sans-serif", fontWeight: 700 }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
+const CARD = 'bg-white border-[0.8px] border-black/20 rounded-[24px] overflow-hidden'
+const INNER = 'bg-[#f9fafb] border-[0.8px] border-black/10 rounded-[16px] p-[16px]'
+
+type SortOption = 'prestige' | 'salary_high' | 'salary_low' | 'seat_cost_low' | 'seat_cost_high' | 'duration'
+
+export default function ContractsScreen() {
+  const careerState = useCareerStore() as any
+  const {
+    contract,
+    player,
+    currentWeek,
+    currentYear,
+    pendingContractOffers = [],
+    actualSeasonStats = {} as any,
+    setContract,
+    addToast,
+    addTransaction,
+    canAffordSeat,
+    detectCalendarConflicts,
+    resolveConflict,
+    updateCareerState,
+    consumeHoursFromBudget,
+    addPersonalCalendarEntry,
+    getActivityTimeCost,
+    getContractStatus,
+    getYearsRemaining,
+    calculateReleaseClause,
+    getProgram,
+    getManufacturer,
+  } = careerState
+  const {
+    getTeamById,
+    getSeriesById,
+    getAllSeries,
+    teams,
+    series,
+    acceptContract,
+    declineContract,
+    generateContractOffers,
+  } = useRivalStore() as any
+  const [activeTab, setActiveTab] = useState('overview')
+  const [showOfferModal, setShowOfferModal] = useState(false)
+  const [selectedOffer, setSelectedOffer] = useState<any>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [seatFilter, setSeatFilter] = useState<'all' | 'paid' | 'pay_driver'>('all')
+  const [tierFilter, setTierFilter] = useState<string>('all')
+  const [affordabilityFilter, setAffordabilityFilter] = useState<'all' | 'affordable'>('all')
+  const [sortOption, setSortOption] = useState<SortOption>('prestige')
+  const [selectedSeriesIds, setSelectedSeriesIds] = useState<string[]>([])
+  const [showFilters, setShowFilters] = useState(false)
+  const [showConflictModal, setShowConflictModal] = useState(false)
+  const [detectedConflicts, setDetectedConflicts] = useState<any[]>([])
+  const [currentConflictIndex, setCurrentConflictIndex] = useState(0)
+  const effectiveReputation = careerState?.ownedTeam?.reputation ?? player?.reputation ?? 50
+
   const _getActualTargetProgress = (target: ContractTarget): number => {
     switch (target.type) {
       case 'points_minimum':
@@ -27,13 +114,10 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       case 'wins':
         return actualSeasonStats.wins
       default:
-        // For other types (championship_position, beat_teammate), use the stored value
         return target.currentProgress || 0
     }
   }
 
-  // Get enriched offers with team and series data
-  // Type guard to ensure team and series exist after filtering
   const enrichedOffers = useMemo(() => {
     return pendingContractOffers
       .map(offer => {
@@ -46,11 +130,9 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       )
   }, [pendingContractOffers, getTeamById, getSeriesById])
 
-  // Apply filters and sorting
   const filteredAndSortedOffers = useMemo(() => {
     let filtered = [...enrichedOffers]
 
-    // Search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter(({ team, series: s }) => 
@@ -60,7 +142,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       )
     }
 
-    // Seat type filter
     if (seatFilter !== 'all') {
       filtered = filtered.filter(({ offer }) => {
         if (seatFilter === 'paid') return offer.salary > 0
@@ -69,19 +150,16 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       })
     }
 
-    // Tier filter
     if (tierFilter !== 'all') {
       filtered = filtered.filter(({ series: s }) => s.tier === tierFilter)
     }
 
-    // Affordability filter
     if (affordabilityFilter === 'affordable') {
       filtered = filtered.filter(({ offer }) => 
         offer.seatCost === 0 || canAffordSeat(offer.seatCost)
       )
     }
 
-    // Sorting
     filtered.sort((a, b) => {
       switch (sortOption) {
         case 'prestige':
@@ -91,7 +169,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
         case 'salary_low':
           return a.offer.salary - b.offer.salary
         case 'seat_cost_low':
-          // Put paid seats (no cost) first, then by seat cost
           if (a.offer.seatCost === 0 && b.offer.seatCost > 0) return -1
           if (a.offer.seatCost > 0 && b.offer.seatCost === 0) return 1
           return a.offer.seatCost - b.offer.seatCost
@@ -107,7 +184,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
     return filtered
   }, [enrichedOffers, searchQuery, seatFilter, tierFilter, affordabilityFilter, sortOption, canAffordSeat])
 
-  // Get unique categories for stats
   const stats = useMemo(() => {
     const paidSeats = enrichedOffers.filter(e => e.offer.salary > 0).length
     const payDriverSeats = enrichedOffers.filter(e => e.offer.seatCost > 0).length
@@ -122,16 +198,13 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
 
   const handleViewOffer = (offer: ContractOffer) => {
     setSelectedOffer(offer)
-    // Initialize series selection with all available series
     setSelectedSeriesIds(offer.availableSeriesIds || [offer.seriesId])
     setShowOfferModal(true)
   }
   
-  // Toggle series selection for multi-series contracts
   const _handleToggleSeries = (seriesId: string) => {
     setSelectedSeriesIds(prev => {
       if (prev.includes(seriesId)) {
-        // Don't allow deselecting the last series
         if (prev.length === 1) return prev
         return prev.filter(id => id !== seriesId)
       } else {
@@ -155,7 +228,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
     
     console.log('[Contract] Processing offer:', selectedOffer.teamName)
 
-    // Check if seat requires payment (pay driver situation)
     const seatCost = selectedOffer.seatCost || 0
     if (seatCost > 0) {
       if (!canAffordSeat(seatCost)) {
@@ -167,7 +239,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
         })
         return
       }
-      // Deduct seat cost
       addTransaction({
         type: 'expense',
         category: 'seat_fee',
@@ -180,21 +251,17 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       console.log('[Contract] Deducted seat cost:', seatCost)
     }
 
-    // Use player's selected series (which may be a subset of available series)
     const finalSelectedSeries = selectedSeriesIds.length > 0 ? selectedSeriesIds : [selectedOffer.seriesId]
-    const primarySeriesId = finalSelectedSeries[0] // First selected is primary
+    const primarySeriesId = finalSelectedSeries[0]
     
-    // Determine contract type based on selection
     let contractType: ContractType = selectedOffer.contractType || 'customer'
     if (selectedOffer.contractType === 'works-full' && finalSelectedSeries.length < (selectedOffer.availableSeriesIds?.length || 1)) {
-      contractType = 'works-partial' // Player chose a subset of series
+      contractType = 'works-partial'
     }
     
-    // Build current assignment from offer
     let currentAssignment: CurrentAssignment | undefined
     
     if (selectedOffer.offerType === 'works-program' && selectedOffer.likelyAssignment) {
-      // Works program: use the likely assignment from the offer
       currentAssignment = {
         entryId: selectedOffer.likelyAssignment.entryId,
         entryName: selectedOffer.likelyAssignment.entryName,
@@ -204,7 +271,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
         seriesName: selectedOffer.likelyAssignment.seriesName
       }
     } else if (selectedOffer.fixedAssignment) {
-      // Spec series or customer: use the fixed assignment
       currentAssignment = {
         entryId: selectedOffer.fixedAssignment.entryId,
         entryName: selectedOffer.fixedAssignment.entryName,
@@ -215,7 +281,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       }
     }
     
-    // Get team tier for generating contract details
     const offeringTeam = getTeamById(selectedOffer.teamId)
     const teamTier = selectedOffer.teamTier || offeringTeam?.tier || 'semi-pro'
     const primarySeries = getSeriesById(primarySeriesId)
@@ -223,14 +288,12 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
     const gridSize = selectedOffer.gridSize || 24
     const playerReputation = player?.reputation || 50
     
-    // Determine if this is for next season
     const isForNextSeason = selectedOffer.effectiveDate === 'next_season'
     const contractStartYear = isForNextSeason 
       ? (careerState?.currentYear || new Date().getFullYear()) + 1 
       : (careerState?.currentYear || new Date().getFullYear())
     
-    // Generate enhanced contract details (with championship ID for accurate points scaling)
-    const isWorksDriver = false // TODO: Determine from offer context if available
+    const isWorksDriver = false
     const targets = selectedOffer.hasPerformanceTargets !== false 
       ? generateContractTargets(teamTier, totalRaces, gridSize, isWorksDriver, primarySeries?.championshipId) 
       : undefined
@@ -255,7 +318,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       ? generateRenewalConditions(teamTier, selectedOffer.duration) 
       : undefined
 
-    // Create contract directly from offer data (more reliable)
     const contract: Contract = {
       teamId: selectedOffer.teamId,
       teamName: selectedOffer.offerType === 'works-program' ? (selectedOffer.programName || selectedOffer.teamName) : selectedOffer.teamName,
@@ -266,26 +328,22 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       bonusPerPodium: selectedOffer.bonusPerPodium,
       startYear: contractStartYear,
       endYear: contractStartYear + selectedOffer.duration,
-      // Multi-series fields
       programId: selectedOffer.programId,
       manufacturerId: selectedOffer.manufacturerId,
       contractType,
       seriesIds: finalSelectedSeries,
       primarySeriesId,
-      // NEW: Assignment tracking
       offerType: selectedOffer.offerType,
       currentAssignment,
-      canBeReassigned: selectedOffer.offerType === 'works-program', // Only works drivers can be reassigned
-      
-      // ENHANCED CONTRACT DETAILS
+      canBeReassigned: selectedOffer.offerType === 'works-program',
       targets,
       mediaDuties,
       teamOption,
       playerOption,
       terminationConditions,
       renewalConditions,
-      teamSatisfaction: DEFAULT_TEAM_SATISFACTION, // Start at 70
-      satisfactionHistory: [], // Initialize empty history
+      teamSatisfaction: DEFAULT_TEAM_SATISFACTION,
+      satisfactionHistory: [],
       seasonStats: {
         dnfCount: 0,
         wins: 0,
@@ -301,18 +359,14 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
 
     console.log('[Contract] Creating contract with enhanced details:', contract)
     
-    // Close modal first to prevent stale state issues
     setShowOfferModal(false)
     
-    // Update stores - pass isForNextSeason to store as pending if needed
     setContract(contract, isForNextSeason)
     acceptContract(selectedOffer)
     
-    // Detect calendar conflicts for multi-series contracts
     if (finalSelectedSeries.length > 1) {
       console.log('[Contract] Detecting calendar conflicts for multi-series contract')
       
-      // Build calendars map from series data
       const calendars: Record<string, Array<{ week: number; trackId: string; trackName: string; country: string; round: number }>> = {}
       
       finalSelectedSeries.forEach(seriesId => {
@@ -328,13 +382,11 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
         }
       })
       
-      // Detect conflicts
       const conflicts = detectCalendarConflicts(finalSelectedSeries, calendars)
       
       if (conflicts.length > 0) {
         console.log(`[Contract] Found ${conflicts.length} calendar conflicts`)
         
-        // Enrich conflicts with series names and prize money
         const enrichedConflicts = conflicts.map(conflict => ({
           ...conflict,
           races: conflict.races.map(race => {
@@ -347,18 +399,15 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
           })
         }))
         
-        // Store conflicts in state for resolution
         setDetectedConflicts(enrichedConflicts)
         setCurrentConflictIndex(0)
         
-        // Update career state with pending conflicts
         if (careerState) {
           updateCareerState({
             pendingConflicts: enrichedConflicts
           })
         }
         
-        // Show conflict resolution modal after a short delay
         setTimeout(() => {
           setShowConflictModal(true)
         }, 500)
@@ -372,12 +421,10 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       }
     }
     
-    // Clear selection last
     setSelectedOffer(null)
     
     console.log('[Contract] Contract accepted successfully!')
     
-    // === TIME BUDGET + CALENDAR + NOTIFICATION INTEGRATION ===
     const contractTimeCost = getActivityTimeCost('contract_negotiation')
     if (contractTimeCost.hours > 0) {
       consumeHoursFromBudget(contractTimeCost.hours, contractTimeCost.drain, `Contract: ${selectedOffer.teamName}`, 'contract_negotiation')
@@ -400,7 +447,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       body: `Congratulations! Your ${selectedOffer.duration}-year contract with ${selectedOffer.teamName} has been finalized. Welcome aboard!`,
     })
     
-    // Show success toast
     addToast({
       type: 'success',
       title: isForNextSeason ? 'Contract Signed for Next Season!' : 'Contract Signed!',
@@ -410,7 +456,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
       duration: 5000
     })
     
-    // Show save toast
     setTimeout(() => {
       addToast({
         type: 'save',
@@ -432,18 +477,14 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
     const teamName = selectedOffer.teamName
     console.log('[Contract] Declining offer from:', teamName)
     
-    // Close modal first
     setShowOfferModal(false)
     
-    // Remove from offers
     declineContract(selectedOffer)
     
-    // Clear selection
     setSelectedOffer(null)
     
     console.log('[Contract] Offer declined successfully!')
     
-    // Show info toast
     addToast({
       type: 'info',
       title: 'Offer Declined',
@@ -454,23 +495,19 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
 
   const handleRefreshOffers = () => {
     if (player) {
-      generateContractOffers(player.id, player.reputation)
+      generateContractOffers(player.id, effectiveReputation)
     }
   }
 
-  // Handle conflict resolution
   const handleResolveConflict = (chosenSeriesId: string) => {
     const currentConflict = detectedConflicts[currentConflictIndex]
     if (!currentConflict) return
     
-    // Resolve the conflict in the store
     resolveConflict(currentConflict.id, chosenSeriesId)
     
-    // Move to next conflict or close modal
     if (currentConflictIndex < detectedConflicts.length - 1) {
       setCurrentConflictIndex(currentConflictIndex + 1)
     } else {
-      // All conflicts resolved
       setShowConflictModal(false)
       setDetectedConflicts([])
       setCurrentConflictIndex(0)
@@ -482,7 +519,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
         duration: 5000
       })
       
-      // Auto-save after resolving conflicts
       setTimeout(() => {
         addToast({
           type: 'save',
@@ -494,7 +530,6 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
     }
   }
 
-  // Build series names and colors maps for conflict modal
   const seriesNames: Record<string, string> = {}
   const seriesColors: Record<string, string> = {}
   series.forEach(s => {
@@ -506,1153 +541,1012 @@ import type { ContractTarget, ContractSeasonStats } from '@/store/careerStore'
   const selectedSeries = selectedOffer ? getSeriesById(selectedOffer.seriesId) : null
   const _selectedProgram = selectedOffer?.programId ? getProgram(selectedOffer.programId) : null
   const selectedManufacturer = selectedOffer?.manufacturerId ? getManufacturer(selectedOffer.manufacturerId) : null
-  // Get all available series for multi-series contracts
   const _availableSeries = selectedOffer?.availableSeriesIds?.map(id => getSeriesById(id)).filter(Boolean) as Series[] || []
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        title="Contracts"
-        subtitle="Manage your racing contracts and find new opportunities"
-        icon={<FileText className="w-6 h-6" />}
-      />
-
-      {/* Current Contract */}
-      <Card variant="racing" padding="none" className="overflow-hidden">
-        {/* Hero background for contracted state */}
-        {player.contract && (
-          <div className="absolute inset-0 h-48">
-            <img 
-              src={HERO_IMAGES.contracts}
-              alt=""
-              loading="lazy"
-              className="w-full h-full object-cover opacity-30"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
+    <div className="bg-white w-full h-full overflow-y-auto">
+      <div className="p-[24px] flex flex-col gap-[24px]">
+        {/* Header */}
+        <div className="flex items-center gap-[12px]">
+          <FileText className="w-[28px] h-[28px] text-[#0a0a0a]" />
+          <div>
+            <h1 className="text-[30px] text-[#0a0a0a] tracking-[-1.5px] leading-tight" style={FB}>Contracts</h1>
+            <p className="text-[14px] text-[#4a5565]" style={FR}>Manage your racing contracts and find new opportunities</p>
           </div>
-        )}
-        
-        <div className="relative p-6">
-          <CardHeader title="Current Contract" />
-          {player.contract ? (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-xl bg-accent-green/20 backdrop-blur-sm border border-accent-green/30 flex items-center justify-center">
-                    <Building2 className="w-8 h-8 text-accent-green" />
+        </div>
+
+        {/* Current Contract */}
+        <div className={`${CARD} relative`}>
+          {player.contract && (
+            <div className="absolute inset-0 h-[192px]">
+              <img 
+                src={HERO_IMAGES.contracts}
+                alt=""
+                loading="lazy"
+                className="w-full h-full object-cover opacity-20"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80" />
+            </div>
+          )}
+          
+          <div className="relative p-[24px]">
+            <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px] mb-[16px]" style={FB}>Current Contract</h3>
+            {player.contract ? (
+              <div className="flex flex-col gap-[16px]">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-[16px]">
+                    <div className="w-[64px] h-[64px] rounded-[16px] bg-[#dcfce7] border-[0.8px] border-[#00a63e]/30 flex items-center justify-center">
+                      <Building2 className="w-[32px] h-[32px] text-[#00a63e]" />
+                    </div>
+                    <div>
+                      <h3 className="text-[20px] text-[#0a0a0a]" style={FB}>{player.contract.teamName}</h3>
+                      <p className="text-[14px] text-[#4a5565]" style={FR}>{player.contract.seriesName}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display font-bold text-xl drop-shadow-lg">{player.contract.teamName}</h3>
-                    <p className="text-text-secondary">{player.contract.seriesName}</p>
+                  <div className="flex items-center gap-[8px]">
+                    {(() => {
+                      const status = getContractStatus()
+                      const yearsLeft = getYearsRemaining()
+                      if (status === 'locked') {
+                        return (
+                          <span className="flex items-center gap-[4px] px-[10px] py-[4px] bg-[#dbeafe] text-[#3b82f6] rounded-[10px] text-[12px]" style={FBold}>
+                            <Clock className="w-[12px] h-[12px]" />
+                            Locked ({yearsLeft}yr)
+                          </span>
+                        )
+                      } else if (status === 'final_year') {
+                        return (
+                          <span className="flex items-center gap-[4px] px-[10px] py-[4px] bg-[#fef3c7] text-[#b45309] rounded-[10px] text-[12px]" style={FBold}>
+                            <AlertCircle className="w-[12px] h-[12px]" />
+                            Final Year
+                          </span>
+                        )
+                      }
+                      return null
+                    })()}
+                    <span className="flex items-center gap-[4px] px-[10px] py-[4px] bg-[#dcfce7] text-[#00a63e] rounded-[10px] text-[12px]" style={FBold}>
+                      <Check className="w-[12px] h-[12px]" />
+                      Active
+                    </span>
                   </div>
                 </div>
-              <div className="flex items-center gap-2">
-                {/* Contract Status Badge */}
+            
+                <div className="grid grid-cols-5 gap-[16px] p-[16px] bg-[#f9fafb] rounded-[16px]">
+                  <div className="text-center">
+                    <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Salary/Race</p>
+                    <p className="font-mono text-[#00a63e]" style={FBold}>
+                      ${player.contract.salary.toLocaleString()}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Win Bonus</p>
+                    <p className="font-mono text-[#f59e0b]" style={FBold}>
+                      ${player.contract.bonusPerWin.toLocaleString()}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Podium Bonus</p>
+                    <p className="font-mono text-[#3b82f6]" style={FBold}>
+                      ${player.contract.bonusPerPodium.toLocaleString()}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Expires</p>
+                    <p className="font-mono text-[#0a0a0a]" style={FBold}>
+                      End of {player.contract.endYear}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Release Clause</p>
+                    <p className="font-mono text-[#ef4444]" style={FBold}>
+                      ${calculateReleaseClause().toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+            
                 {(() => {
                   const status = getContractStatus()
-                  const yearsLeft = getYearsRemaining()
                   if (status === 'locked') {
                     return (
-                      <Badge variant="blue">
-                        <Clock className="w-3 h-3 mr-1" />
-                        Locked ({yearsLeft}yr)
-                      </Badge>
+                      <div className="p-[12px] bg-[#dbeafe] border-[0.8px] border-[#3b82f6]/30 rounded-[12px]">
+                        <p className="text-[13px] text-[#3b82f6]" style={FR}>
+                          <strong style={FBold}>Contract Locked:</strong> Other teams must pay your release clause (${calculateReleaseClause().toLocaleString()}) to sign you.
+                        </p>
+                      </div>
                     )
                   } else if (status === 'final_year') {
                     return (
-                      <Badge variant="warning">
-                        <AlertCircle className="w-3 h-3 mr-1" />
-                        Final Year
-                      </Badge>
+                      <div className="p-[12px] bg-[#fef3c7] border-[0.8px] border-[#f59e0b]/30 rounded-[12px]">
+                        <p className="text-[13px] text-[#b45309]" style={FR}>
+                          <strong style={FBold}>Final Year:</strong> You can negotiate with other teams for next season. Your contract expires at the end of this year.
+                        </p>
+                      </div>
                     )
                   }
                   return null
                 })()}
-                <Badge variant="green">
-                  <Check className="w-3 h-3 mr-1" />
-                  Active
-                </Badge>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-5 gap-4 p-4 bg-surface rounded-xl">
-              <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Salary/Race</p>
-                <p className="font-mono font-bold text-status-success">
-                  ${player.contract.salary.toLocaleString()}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Win Bonus</p>
-                <p className="font-mono font-bold text-accent-gold">
-                  ${player.contract.bonusPerWin.toLocaleString()}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Podium Bonus</p>
-                <p className="font-mono font-bold text-accent-blue">
-                  ${player.contract.bonusPerPodium.toLocaleString()}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Expires</p>
-                <p className="font-mono font-bold">
-                  End of {player.contract.endYear}
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Release Clause</p>
-                <p className="font-mono font-bold text-status-error">
-                  ${calculateReleaseClause().toLocaleString()}
-                </p>
-              </div>
-            </div>
-            
-            {/* Contract Status Explanation */}
-            {(() => {
-              const status = getContractStatus()
-              if (status === 'locked') {
-                return (
-                  <div className="p-3 bg-accent-blue/10 border border-accent-blue/30 rounded-lg">
-                    <p className="text-sm text-accent-blue">
-                      <strong>Contract Locked:</strong> Other teams must pay your release clause (${calculateReleaseClause().toLocaleString()}) to sign you.
-                    </p>
-                  </div>
-                )
-              } else if (status === 'final_year') {
-                return (
-                  <div className="p-3 bg-status-warning/10 border border-status-warning/30 rounded-lg">
-                    <p className="text-sm text-status-warning">
-                      <strong>Final Year:</strong> You can negotiate with other teams for next season. Your contract expires at the end of this year.
-                    </p>
-                  </div>
-                )
-              }
-              return null
-            })()}
 
-            {/* Compact link to Garage for full details */}
-            <p className="text-xs text-text-muted text-center pt-2">
-              View full contract details, targets & stats in the Garage → Contract tab
-            </p>
-          </div>
-          ) : (
-            <div className="flex items-center gap-4 p-4 bg-status-warning/10 border border-status-warning/30 rounded-xl">
-              <AlertCircle className="w-8 h-8 text-status-warning" />
-              <div>
-                <h3 className="font-medium text-status-warning">No Active Contract</h3>
-                <p className="text-sm text-text-muted">
-                  You need to sign with a team to participate in championships. Check the offers below!
+                <p className="text-[12px] text-[#4a5565] text-center pt-[8px]" style={FR}>
+                  View full contract details, targets & stats in the Garage → Contract tab
                 </p>
               </div>
-            </div>
-          )}
-        </div>
-      </Card>
-
-      {/* Player Status */}
-      <Card variant="glass" padding="md">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div className="text-center">
-              <p className="text-xs text-text-muted mb-1">Reputation</p>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-accent-gold" />
-                <span className="font-display font-bold text-xl">{(Math.round(player.reputation * 10) / 10).toFixed(1)}</span>
-                <span className="text-text-muted">/100</span>
-              </div>
-            </div>
-            <div className="w-px h-8 bg-surface-border" />
-            <div className="text-center">
-              <p className="text-xs text-text-muted mb-1">Available Funds</p>
-              <p className="font-mono font-bold text-lg text-status-success">
-                ${(player.finances?.bankBalance ?? 0).toLocaleString()}
-              </p>
-            </div>
-            <div className="w-px h-8 bg-surface-border" />
-            <div className="flex items-center gap-4 text-sm">
-              <div className="px-3 py-1 rounded-lg bg-status-success/10 text-status-success">
-                {stats.paidSeats} paid seats
-              </div>
-              <div className="px-3 py-1 rounded-lg bg-status-warning/10 text-status-warning">
-                {stats.payDriverSeats} pay-driver
-              </div>
-              <div className="px-3 py-1 rounded-lg bg-accent-blue/10 text-accent-blue">
-                {stats.affordableSeats} affordable
-              </div>
-            </div>
-          </div>
-          <Button variant="secondary" size="sm" onClick={handleRefreshOffers}>
-            <Zap className="w-4 h-4 mr-2" />
-            Refresh Offers
-          </Button>
-        </div>
-      </Card>
-
-      {/* Mid-Season Buyout Offers */}
-      {(() => {
-        const buyoutOffers = enrichedOffers.filter(e => e.offer.isBuyoutOffer)
-        if (buyoutOffers.length === 0 || !player.contract) return null
-        
-        return (
-          <Card variant="glass" padding="lg" className="border-2 border-status-error/30">
-            <CardHeader 
-              title="Mid-Season Buyout Offers" 
-              subtitle={`${buyoutOffers.length} team${buyoutOffers.length > 1 ? 's' : ''} willing to pay your release clause`}
-            />
-            
-            <div className="mb-4 p-3 bg-status-error/10 border border-status-error/30 rounded-lg">
-              <div className="flex items-center gap-3">
-                <Wallet className="w-5 h-5 text-status-error" />
+            ) : (
+              <div className="flex items-center gap-[16px] p-[16px] bg-[#fef3c7] border-[0.8px] border-[#f59e0b]/30 rounded-[16px]">
+                <AlertCircle className="w-[32px] h-[32px] text-[#f59e0b]" />
                 <div>
-                  <p className="text-sm font-medium text-status-error">
-                    Your release clause: ${calculateReleaseClause().toLocaleString()}
-                  </p>
-                  <p className="text-xs text-text-muted">
-                    These teams are willing to pay this amount to sign you immediately
+                  <h3 className="text-[15px] text-[#b45309]" style={FBold}>No Active Contract</h3>
+                  <p className="text-[13px] text-[#4a5565]" style={FR}>
+                    You need to sign with a team to participate in championships. Check the offers below!
                   </p>
                 </div>
               </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {buyoutOffers.map(({ offer, team, series: seriesData }) => (
-                <motion.div
-                  key={`buyout-${offer.teamId}_${offer.seriesId}`}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-4 bg-surface-elevated rounded-lg border border-status-error/30 hover:border-status-error/60 transition-all cursor-pointer"
-                  onClick={() => handleViewOffer(offer)}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div 
-                        className="w-10 h-10 rounded-lg flex items-center justify-center font-display font-bold text-xs"
-                        style={{ backgroundColor: team.color + '30', color: team.color }}
-                      >
-                        {team.shortName}
-                      </div>
-                      <div>
-                        <h4 className="font-display font-semibold text-sm">{team.name}</h4>
-                        <p className="text-xs text-text-muted">{seriesData.name}</p>
-                      </div>
-                    </div>
-                    <Badge variant={seriesData.tier === 'elite' || seriesData.tier === 'pinnacle' ? 'gold' : 'blue'}>
-                      {seriesData.tier}
-                    </Badge>
-                  </div>
-                  
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-text-muted">Buyout Amount:</span>
-                      <span className="font-bold text-status-error">${offer.buyoutCost?.toLocaleString()}</span>
-                    </div>
-                    {offer.signingBonus && (
-                      <div className="flex justify-between">
-                        <span className="text-text-muted">Your Signing Bonus:</span>
-                        <span className="font-bold text-status-success">+${offer.signingBonus.toLocaleString()}</span>
-                      </div>
-                    )}
-                    <div className="flex justify-between">
-                      <span className="text-text-muted">Salary:</span>
-                      <span className="font-mono">${offer.salary.toLocaleString()}/race</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-text-muted">Duration:</span>
-                      <span>{offer.duration} year{offer.duration > 1 ? 's' : ''}</span>
-                    </div>
-                  </div>
-                  
-                  <Button 
-                    variant="primary" 
-                    size="sm" 
-                    className="w-full mt-3 bg-status-error hover:bg-status-error/80"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      handleViewOffer(offer)
-                    }}
-                  >
-                    View Offer Details
-                  </Button>
-                </motion.div>
-              ))}
-            </div>
-          </Card>
-        )
-      })()}
-
-      {/* Filters & Sort */}
-      <Card variant="glass" padding="md">
-        <div className="space-y-4">
-          {/* Search and Toggle */}
-          <div className="flex items-center gap-4">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-              <input
-                type="text"
-                placeholder="Search teams, series, or country..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-surface border border-surface-border rounded-lg text-sm focus:outline-none focus:border-accent-red transition-colors"
-              />
-            </div>
-            <Button 
-              variant={showFilters ? 'secondary' : 'ghost'} 
-              size="sm"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-              <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
-            </Button>
+            )}
           </div>
+        </div>
 
-          {/* Filter Options */}
-          {showFilters && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="grid grid-cols-4 gap-4 pt-4 border-t border-surface-border"
+        {/* Player Status */}
+        <div className={`${CARD} p-[16px]`}>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-[24px]">
+              <div className="text-center">
+                <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Team Reputation</p>
+                <div className="flex items-center gap-[8px]">
+                  <Star className="w-[16px] h-[16px] text-[#f59e0b]" />
+                  <span className="text-[20px] text-[#0a0a0a]" style={FB}>{(Math.round(effectiveReputation * 10) / 10).toFixed(1)}</span>
+                  <span className="text-[#4a5565] text-[13px]" style={FR}>/100</span>
+                </div>
+              </div>
+              <div className="w-[1px] h-[32px] bg-black/10" />
+              <div className="text-center">
+                <p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Available Funds</p>
+                <p className="font-mono text-[18px] text-[#00a63e]" style={FBold}>
+                  ${(player.finances?.bankBalance ?? 0).toLocaleString()}
+                </p>
+              </div>
+              <div className="w-[1px] h-[32px] bg-black/10" />
+              <div className="flex items-center gap-[16px] text-[13px]" style={FR}>
+                <div className="px-[12px] py-[4px] rounded-[10px] bg-[#dcfce7] text-[#00a63e]">
+                  {stats.paidSeats} paid seats
+                </div>
+                <div className="px-[12px] py-[4px] rounded-[10px] bg-[#fef3c7] text-[#b45309]">
+                  {stats.payDriverSeats} pay-driver
+                </div>
+                <div className="px-[12px] py-[4px] rounded-[10px] bg-[#dbeafe] text-[#3b82f6]">
+                  {stats.affordableSeats} affordable
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleRefreshOffers}
+              className="flex items-center gap-[8px] px-[14px] py-[10px] border-[0.8px] border-black/20 rounded-[12px] text-[13px] text-[#0a0a0a] hover:bg-[#f9fafb] transition-colors"
+              style={FBold}
             >
-              {/* Seat Type */}
-              <div>
-                <label className="text-xs text-text-muted mb-2 block font-medium">Seat Type</label>
-                <div className="flex gap-1">
-                  <FilterButton 
-                    active={seatFilter === 'all'} 
-                    onClick={() => setSeatFilter('all')}
-                  >
-                    All
-                  </FilterButton>
-                  <FilterButton 
-                    active={seatFilter === 'paid'} 
-                    onClick={() => setSeatFilter('paid')}
-                  >
-                    <DollarSign className="w-3 h-3 mr-1" />
-                    Paid
-                  </FilterButton>
-                  <FilterButton 
-                    active={seatFilter === 'pay_driver'} 
-                    onClick={() => setSeatFilter('pay_driver')}
-                  >
-                    <Wallet className="w-3 h-3 mr-1" />
-                    Pay-Driver
-                  </FilterButton>
+              <Zap className="w-[16px] h-[16px]" />
+              Refresh Offers
+            </button>
+          </div>
+        </div>
+
+        {/* Mid-Season Buyout Offers */}
+        {(() => {
+          const buyoutOffers = enrichedOffers.filter(e => e.offer.isBuyoutOffer)
+          if (buyoutOffers.length === 0 || !player.contract) return null
+          
+          return (
+            <div className={`${CARD} p-[24px] border-[2px] border-[#ef4444]/30`}>
+              <div className="mb-[16px]">
+                <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Mid-Season Buyout Offers</h3>
+                <p className="text-[13px] text-[#4a5565]" style={FR}>{buyoutOffers.length} team{buyoutOffers.length > 1 ? 's' : ''} willing to pay your release clause</p>
+              </div>
+              
+              <div className="mb-[16px] p-[12px] bg-[#fee2e2] border-[0.8px] border-[#ef4444]/30 rounded-[12px]">
+                <div className="flex items-center gap-[12px]">
+                  <Wallet className="w-[20px] h-[20px] text-[#ef4444]" />
+                  <div>
+                    <p className="text-[14px] text-[#ef4444]" style={FBold}>
+                      Your release clause: ${calculateReleaseClause().toLocaleString()}
+                    </p>
+                    <p className="text-[12px] text-[#4a5565]" style={FR}>
+                      These teams are willing to pay this amount to sign you immediately
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              {/* Tier */}
-              <div>
-                <label className="text-xs text-text-muted mb-2 block font-medium">Tier</label>
-                <div className="flex gap-1 flex-wrap">
-                  <FilterButton 
-                    active={tierFilter === 'all'} 
-                    onClick={() => setTierFilter('all')}
+              
+              <div className="grid grid-cols-2 gap-[16px]">
+                {buyoutOffers.map(({ offer, team, series: seriesData }) => (
+                  <motion.div
+                    key={`buyout-${offer.teamId}_${offer.seriesId}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className={`${INNER} cursor-pointer hover:border-[#ef4444]/40 transition-all`}
+                    onClick={() => handleViewOffer(offer)}
                   >
-                    All
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'elite'} 
-                    onClick={() => setTierFilter('elite')}
-                    variant="gold"
-                  >
-                    Elite
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'pro'} 
-                    onClick={() => setTierFilter('pro')}
-                    variant="blue"
-                  >
-                    Pro
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'professional'} 
-                    onClick={() => setTierFilter('professional')}
-                    variant="blue"
-                  >
-                    Professional
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'semi-pro'} 
-                    onClick={() => setTierFilter('semi-pro')}
-                  >
-                    Semi-Pro
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'amateur'} 
-                    onClick={() => setTierFilter('amateur')}
-                  >
-                    Amateur
-                  </FilterButton>
-                  <FilterButton 
-                    active={tierFilter === 'entry'} 
-                    onClick={() => setTierFilter('entry')}
-                  >
-                    Entry
-                  </FilterButton>
-                </div>
+                    <div className="flex items-start justify-between mb-[12px]">
+                      <div className="flex items-center gap-[12px]">
+                        <img src={getTeamLogo(team.id)} alt={team.name} className="w-[40px] h-[40px] rounded-[10px] object-contain bg-white" />
+                        <div>
+                          <h4 className="text-[14px] text-[#0a0a0a]" style={FBold}>{team.name}</h4>
+                          <p className="text-[12px] text-[#4a5565]" style={FR}>{seriesData.name}</p>
+                        </div>
+                      </div>
+                      <span className={`px-[8px] py-[2px] rounded-[8px] text-[11px] ${
+                        seriesData.tier === 'elite' || seriesData.tier === 'pinnacle' ? 'bg-[#fef3c7] text-[#b45309]' : 'bg-[#dbeafe] text-[#3b82f6]'
+                      }`} style={FBold}>{seriesData.tier}</span>
+                    </div>
+                    
+                    <div className="flex flex-col gap-[8px] text-[13px]" style={FR}>
+                      <div className="flex justify-between">
+                        <span className="text-[#4a5565]">Buyout Amount:</span>
+                        <span className="text-[#ef4444]" style={FBold}>${offer.buyoutCost?.toLocaleString()}</span>
+                      </div>
+                      {offer.signingBonus && (
+                        <div className="flex justify-between">
+                          <span className="text-[#4a5565]">Your Signing Bonus:</span>
+                          <span className="text-[#00a63e]" style={FBold}>+${offer.signingBonus.toLocaleString()}</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between">
+                        <span className="text-[#4a5565]">Salary:</span>
+                        <span className="font-mono">${offer.salary.toLocaleString()}/race</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-[#4a5565]">Duration:</span>
+                        <span>{offer.duration} year{offer.duration > 1 ? 's' : ''}</span>
+                      </div>
+                    </div>
+                    
+                    <button 
+                      className="w-full mt-[12px] px-[14px] py-[10px] bg-[#ef4444] hover:bg-[#dc2626] text-white rounded-[12px] text-[13px] transition-colors"
+                      style={FBold}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleViewOffer(offer)
+                      }}
+                    >
+                      View Offer Details
+                    </button>
+                  </motion.div>
+                ))}
               </div>
+            </div>
+          )
+        })()}
 
-              {/* Affordability */}
-              <div>
-                <label className="text-xs text-text-muted mb-2 block font-medium">Budget</label>
-                <div className="flex gap-1">
-                  <FilterButton 
-                    active={affordabilityFilter === 'all'} 
-                    onClick={() => setAffordabilityFilter('all')}
-                  >
-                    Show All
-                  </FilterButton>
-                  <FilterButton 
-                    active={affordabilityFilter === 'affordable'} 
-                    onClick={() => setAffordabilityFilter('affordable')}
-                    variant="green"
-                  >
-                    <Check className="w-3 h-3 mr-1" />
-                    Affordable
-                  </FilterButton>
-                </div>
+        {/* Filters & Sort */}
+        <div className={`${CARD} p-[16px]`}>
+          <div className="flex flex-col gap-[16px]">
+            <div className="flex items-center gap-[16px]">
+              <div className="relative flex-1 max-w-[400px]">
+                <Search className="absolute left-[12px] top-1/2 -translate-y-1/2 w-[16px] h-[16px] text-[#4a5565]" />
+                <input
+                  type="text"
+                  placeholder="Search teams, series, or country..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-[40px] pr-[16px] py-[10px] bg-[#f9fafb] border-[0.8px] border-black/10 rounded-[12px] text-[14px] text-[#0a0a0a] focus:outline-none focus:border-black/30 transition-colors"
+                  style={FR}
+                />
               </div>
-
-              {/* Sort */}
-              <div>
-                <label className="text-xs text-text-muted mb-2 block font-medium">Sort By</label>
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value as SortOption)}
-                  className="w-full px-3 py-1.5 bg-surface border border-surface-border rounded-lg text-sm focus:outline-none focus:border-accent-red transition-colors"
-                >
-                  <option value="prestige">Team Prestige (High → Low)</option>
-                  <option value="salary_high">Salary (High → Low)</option>
-                  <option value="salary_low">Salary (Low → High)</option>
-                  <option value="seat_cost_low">Seat Cost (Low → High)</option>
-                  <option value="seat_cost_high">Seat Cost (High → Low)</option>
-                  <option value="duration">Contract Length</option>
-                </select>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Active filters summary */}
-          {(seatFilter !== 'all' || tierFilter !== 'all' || affordabilityFilter !== 'all' || searchQuery) && (
-            <div className="flex items-center gap-2 pt-2">
-              <span className="text-xs text-text-muted">Active filters:</span>
-              {searchQuery && (
-                <Badge variant="default" size="sm" className="gap-1">
-                  Search: "{searchQuery}"
-                  <X className="w-3 h-3 cursor-pointer hover:text-status-danger" onClick={() => setSearchQuery('')} />
-                </Badge>
-              )}
-              {seatFilter !== 'all' && (
-                <Badge variant={seatFilter === 'paid' ? 'green' : 'orange'} size="sm" className="gap-1">
-                  {seatFilter === 'paid' ? 'Paid Seats' : 'Pay-Driver'}
-                  <X className="w-3 h-3 cursor-pointer hover:text-status-danger" onClick={() => setSeatFilter('all')} />
-                </Badge>
-              )}
-              {tierFilter !== 'all' && (
-                <Badge variant={tierFilter === 'elite' || tierFilter === 'pinnacle' ? 'gold' : tierFilter === 'professional' || tierFilter === 'pro' ? 'blue' : 'default'} size="sm" className="gap-1">
-                  {tierFilter.charAt(0).toUpperCase() + tierFilter.slice(1)}
-                  <X className="w-3 h-3 cursor-pointer hover:text-status-danger" onClick={() => setTierFilter('all')} />
-                </Badge>
-              )}
-              {affordabilityFilter !== 'all' && (
-                <Badge variant="green" size="sm" className="gap-1">
-                  Affordable Only
-                  <X className="w-3 h-3 cursor-pointer hover:text-status-danger" onClick={() => setAffordabilityFilter('all')} />
-                </Badge>
-              )}
               <button 
-                onClick={() => { setSearchQuery(''); setSeatFilter('all'); setTierFilter('all'); setAffordabilityFilter('all'); }}
-                className="text-xs text-accent-red hover:underline ml-2"
+                onClick={() => setShowFilters(!showFilters)}
+                className={`flex items-center gap-[8px] px-[14px] py-[10px] rounded-[12px] text-[13px] border-[0.8px] border-black/20 transition-colors ${
+                  showFilters ? 'bg-[#f9fafb]' : 'hover:bg-[#f9fafb]'
+                }`}
+                style={FBold}
               >
-                Clear All
+                <Filter className="w-[16px] h-[16px]" />
+                Filters
+                <ChevronDown className={`w-[16px] h-[16px] transition-transform ${showFilters ? 'rotate-180' : ''}`} />
               </button>
             </div>
-          )}
-        </div>
-      </Card>
 
-      {/* Available Offers */}
-      <Card variant="glass" padding="lg">
-        <CardHeader 
-          title="Available Opportunities" 
-          subtitle={`Showing ${filteredAndSortedOffers.length} of ${enrichedOffers.length} offers`}
-        />
-
-        {filteredAndSortedOffers.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 max-h-[600px] overflow-y-auto pr-2">
-            {filteredAndSortedOffers.map(({ offer, team, series: seriesData }, index) => (
+            {showFilters && (
               <motion.div
-                key={`${offer.teamId}_${offer.seriesId}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03 }}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="grid grid-cols-4 gap-[16px] pt-[16px] border-t border-black/10"
               >
-                <Card 
-                  variant="default" 
-                  padding="none" 
-                  hoverable 
-                  className="overflow-hidden cursor-pointer"
-                  onClick={() => handleViewOffer(offer)}
+                <div>
+                  <label className="text-[12px] text-[#4a5565] mb-[8px] block" style={FBold}>Seat Type</label>
+                  <div className="flex gap-[4px]">
+                    <FilterButton active={seatFilter === 'all'} onClick={() => setSeatFilter('all')}>All</FilterButton>
+                    <FilterButton active={seatFilter === 'paid'} onClick={() => setSeatFilter('paid')}>
+                      <DollarSign className="w-[12px] h-[12px] mr-[4px]" />Paid
+                    </FilterButton>
+                    <FilterButton active={seatFilter === 'pay_driver'} onClick={() => setSeatFilter('pay_driver')}>
+                      <Wallet className="w-[12px] h-[12px] mr-[4px]" />Pay-Driver
+                    </FilterButton>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[12px] text-[#4a5565] mb-[8px] block" style={FBold}>Tier</label>
+                  <div className="flex gap-[4px] flex-wrap">
+                    {['all', 'elite', 'pro', 'professional', 'semi-pro', 'amateur', 'entry'].map(t => (
+                      <FilterButton key={t} active={tierFilter === t} onClick={() => setTierFilter(t)}>
+                        {t === 'all' ? 'All' : t.charAt(0).toUpperCase() + t.slice(1)}
+                      </FilterButton>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[12px] text-[#4a5565] mb-[8px] block" style={FBold}>Budget</label>
+                  <div className="flex gap-[4px]">
+                    <FilterButton active={affordabilityFilter === 'all'} onClick={() => setAffordabilityFilter('all')}>Show All</FilterButton>
+                    <FilterButton active={affordabilityFilter === 'affordable'} onClick={() => setAffordabilityFilter('affordable')}>
+                      <Check className="w-[12px] h-[12px] mr-[4px]" />Affordable
+                    </FilterButton>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[12px] text-[#4a5565] mb-[8px] block" style={FBold}>Sort By</label>
+                  <select
+                    value={sortOption}
+                    onChange={(e) => setSortOption(e.target.value as SortOption)}
+                    className="w-full px-[12px] py-[8px] bg-[#f9fafb] border-[0.8px] border-black/10 rounded-[10px] text-[13px] text-[#0a0a0a] focus:outline-none focus:border-black/30 transition-colors"
+                    style={FR}
+                  >
+                    <option value="prestige">Team Prestige (High → Low)</option>
+                    <option value="salary_high">Salary (High → Low)</option>
+                    <option value="salary_low">Salary (Low → High)</option>
+                    <option value="seat_cost_low">Seat Cost (Low → High)</option>
+                    <option value="seat_cost_high">Seat Cost (High → Low)</option>
+                    <option value="duration">Contract Length</option>
+                  </select>
+                </div>
+              </motion.div>
+            )}
+
+            {(seatFilter !== 'all' || tierFilter !== 'all' || affordabilityFilter !== 'all' || searchQuery) && (
+              <div className="flex items-center gap-[8px] pt-[8px]">
+                <span className="text-[12px] text-[#4a5565]" style={FR}>Active filters:</span>
+                {searchQuery && (
+                  <span className="flex items-center gap-[4px] px-[8px] py-[3px] bg-[#f9fafb] border-[0.8px] border-black/10 rounded-[8px] text-[12px]" style={FR}>
+                    Search: "{searchQuery}"
+                    <X className="w-[12px] h-[12px] cursor-pointer hover:text-[#ef4444]" onClick={() => setSearchQuery('')} />
+                  </span>
+                )}
+                {seatFilter !== 'all' && (
+                  <span className={`flex items-center gap-[4px] px-[8px] py-[3px] rounded-[8px] text-[12px] ${
+                    seatFilter === 'paid' ? 'bg-[#dcfce7] text-[#00a63e]' : 'bg-[#fef3c7] text-[#b45309]'
+                  }`} style={FR}>
+                    {seatFilter === 'paid' ? 'Paid Seats' : 'Pay-Driver'}
+                    <X className="w-[12px] h-[12px] cursor-pointer" onClick={() => setSeatFilter('all')} />
+                  </span>
+                )}
+                {tierFilter !== 'all' && (
+                  <span className={`flex items-center gap-[4px] px-[8px] py-[3px] rounded-[8px] text-[12px] ${
+                    tierFilter === 'elite' || tierFilter === 'pinnacle' ? 'bg-[#fef3c7] text-[#b45309]' : 
+                    tierFilter === 'professional' || tierFilter === 'pro' ? 'bg-[#dbeafe] text-[#3b82f6]' : 'bg-[#f9fafb] text-[#0a0a0a]'
+                  }`} style={FR}>
+                    {tierFilter.charAt(0).toUpperCase() + tierFilter.slice(1)}
+                    <X className="w-[12px] h-[12px] cursor-pointer" onClick={() => setTierFilter('all')} />
+                  </span>
+                )}
+                {affordabilityFilter !== 'all' && (
+                  <span className="flex items-center gap-[4px] px-[8px] py-[3px] bg-[#dcfce7] text-[#00a63e] rounded-[8px] text-[12px]" style={FR}>
+                    Affordable Only
+                    <X className="w-[12px] h-[12px] cursor-pointer" onClick={() => setAffordabilityFilter('all')} />
+                  </span>
+                )}
+                <button 
+                  onClick={() => { setSearchQuery(''); setSeatFilter('all'); setTierFilter('all'); setAffordabilityFilter('all'); }}
+                  className="text-[12px] text-[#ef4444] hover:underline ml-[8px]"
+                  style={FR}
                 >
-                  {/* Header */}
+                  Clear All
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Available Offers */}
+        <div className={`${CARD} p-[24px]`}>
+          <div className="mb-[16px]">
+            <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Available Opportunities</h3>
+            <p className="text-[13px] text-[#4a5565]" style={FR}>Showing {filteredAndSortedOffers.length} of {enrichedOffers.length} offers</p>
+          </div>
+
+          {filteredAndSortedOffers.length > 0 ? (
+            <div className="grid grid-cols-2 gap-[16px] max-h-[600px] overflow-y-auto pr-[8px]">
+              {filteredAndSortedOffers.map(({ offer, team, series: seriesData }, index) => (
+                <motion.div
+                  key={`${offer.teamId}_${offer.seriesId}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.03 }}
+                  onClick={() => handleViewOffer(offer)}
+                  className={`${CARD} cursor-pointer hover:shadow-lg transition-shadow`}
+                >
                   <div 
-                    className="p-4 border-b border-surface-border"
+                    className="p-[16px] border-b border-black/10"
                     style={{ 
-                      background: `linear-gradient(135deg, ${team.color}20 0%, transparent 100%)` 
+                      background: `linear-gradient(135deg, ${team.color}15 0%, transparent 100%)` 
                     }}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div 
-                          className="w-12 h-12 rounded-lg flex items-center justify-center font-display font-bold text-sm"
-                          style={{ backgroundColor: team.color + '30', color: team.color }}
-                        >
-                          {team.shortName}
-                        </div>
+                      <div className="flex items-center gap-[12px]">
+                        <img src={getTeamLogo(team.id)} alt={team.name} className="w-[48px] h-[48px] rounded-[12px] object-contain bg-white" />
                         <div>
-                          <h3 className="font-display font-semibold">{team.name}</h3>
-                          <p className="text-sm text-text-muted">{seriesData.name}</p>
+                          <h3 className="text-[15px] text-[#0a0a0a]" style={FBold}>{team.name}</h3>
+                          <p className="text-[13px] text-[#4a5565]" style={FR}>{seriesData.name}</p>
                         </div>
                       </div>
-                      <div className="flex flex-col items-end gap-1">
-                        <Badge variant={seriesData.tier === 'elite' || seriesData.tier === 'pinnacle' ? 'gold' : seriesData.tier === 'professional' || seriesData.tier === 'pro' ? 'blue' : 'default'}>
-                          {seriesData.tier.charAt(0).toUpperCase() + seriesData.tier.slice(1)}
-                        </Badge>
+                      <div className="flex flex-col items-end gap-[4px]">
+                        <span className={`px-[8px] py-[2px] rounded-[8px] text-[11px] ${
+                          seriesData.tier === 'elite' || seriesData.tier === 'pinnacle' ? 'bg-[#fef3c7] text-[#b45309]' : 
+                          seriesData.tier === 'professional' || seriesData.tier === 'pro' ? 'bg-[#dbeafe] text-[#3b82f6]' : 'bg-[#f9fafb] text-[#4a5565]'
+                        }`} style={FBold}>{seriesData.tier.charAt(0).toUpperCase() + seriesData.tier.slice(1)}</span>
                         {offer.isBuyoutOffer && (
-                          <Badge variant="error" size="sm">Buyout Offer</Badge>
+                          <span className="px-[8px] py-[2px] bg-[#fee2e2] text-[#ef4444] rounded-[8px] text-[11px]" style={FBold}>Buyout Offer</span>
                         )}
                         {offer.effectiveDate === 'next_season' && (
-                          <Badge variant="warning" size="sm">Next Season</Badge>
+                          <span className="px-[8px] py-[2px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>Next Season</span>
                         )}
                         {offer.seatCost > 0 && (
-                          <Badge variant="orange" size="sm">Pay-Driver</Badge>
+                          <span className="px-[8px] py-[2px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>Pay-Driver</span>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Buyout Info Banner */}
                   {offer.isBuyoutOffer && offer.buyoutCost && (
-                    <div className="px-4 py-2 bg-status-error/10 border-y border-status-error/30">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-status-error font-medium">
-                          Team pays ${offer.buyoutCost.toLocaleString()} buyout to your current team
+                    <div className="px-[16px] py-[8px] bg-[#fee2e2] border-y border-[#ef4444]/30">
+                      <div className="flex items-center justify-between text-[13px]" style={FR}>
+                        <span className="text-[#ef4444]" style={FBold}>
+                          Team pays ${offer.buyoutCost.toLocaleString()} buyout
                         </span>
                         {offer.signingBonus && (
-                          <span className="text-status-success font-medium">
-                            +${offer.signingBonus.toLocaleString()} signing bonus for you
+                          <span className="text-[#00a63e]" style={FBold}>
+                            +${offer.signingBonus.toLocaleString()} signing bonus
                           </span>
                         )}
                       </div>
                     </div>
                   )}
 
-                  {/* Details */}
-                  <div className="p-4 space-y-3">
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-text-muted" />
+                  <div className="p-[16px] flex flex-col gap-[12px]">
+                    <div className="grid grid-cols-2 gap-[12px] text-[13px]" style={FR}>
+                      <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                        <Clock className="w-[16px] h-[16px] text-[#4a5565]" />
                         <span>{offer.duration} year{offer.duration > 1 ? 's' : ''}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Star className="w-4 h-4 text-text-muted" />
+                      <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                        <Star className="w-[16px] h-[16px] text-[#4a5565]" />
                         <span>Prestige: {team.prestige}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-text-muted" />
+                      <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                        <MapPin className="w-[16px] h-[16px] text-[#4a5565]" />
                         <span>{team.country}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Flag className="w-4 h-4 text-text-muted" />
+                      <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                        <Flag className="w-[16px] h-[16px] text-[#4a5565]" />
                         <span>{seriesData.gridSize} cars</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-surface-border">
+                    <div className="flex items-center justify-between pt-[8px] border-t border-black/10">
                       {offer.seatCost > 0 ? (
                         <div>
-                          <span className="text-xs text-text-muted">Seat Cost</span>
-                          <p className={`font-mono font-bold ${canAffordSeat(offer.seatCost) ? 'text-status-warning' : 'text-status-danger'}`}>
+                          <span className="text-[12px] text-[#4a5565]" style={FR}>Seat Cost</span>
+                          <p className={`font-mono ${canAffordSeat(offer.seatCost) ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`} style={FBold}>
                             -${offer.seatCost.toLocaleString()}
                           </p>
                         </div>
                       ) : (
                         <div>
-                          <span className="text-xs text-text-muted">Salary/Race</span>
-                          <p className="font-mono font-bold text-status-success">
+                          <span className="text-[12px] text-[#4a5565]" style={FR}>Salary/Race</span>
+                          <p className="font-mono text-[#00a63e]" style={FBold}>
                             ${offer.salary.toLocaleString()}
                           </p>
                         </div>
                       )}
-                      <Button variant="ghost" size="sm">
-                        View <ChevronRight className="w-4 h-4 ml-1" />
-                      </Button>
+                      <span className="flex items-center gap-[4px] text-[13px] text-[#4a5565] hover:text-[#0a0a0a]" style={FR}>
+                        View <ChevronRight className="w-[16px] h-[16px]" />
+                      </span>
                     </div>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        ) : enrichedOffers.length > 0 ? (
-          <div className="text-center py-12">
-            <Filter className="w-16 h-16 mx-auto text-text-muted mb-4" />
-            <h3 className="font-display font-semibold text-xl mb-2">No Matching Offers</h3>
-            <p className="text-text-muted max-w-md mx-auto mb-4">
-              No offers match your current filters. Try adjusting your filter criteria.
-            </p>
-            <Button 
-              variant="secondary" 
-              size="sm"
-              onClick={() => { setSearchQuery(''); setSeatFilter('all'); setTierFilter('all'); setAffordabilityFilter('all'); }}
-            >
-              Clear All Filters
-            </Button>
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <Users className="w-16 h-16 mx-auto text-text-muted mb-4" />
-            <h3 className="font-display font-semibold text-xl mb-2">No Offers Available</h3>
-            <p className="text-text-muted max-w-md mx-auto mb-4">
-              {player.reputation < 15 
-                ? 'Your reputation is too low to attract team interest. Try training or participating in lower-tier events.'
-                : 'No teams are currently interested. Try refreshing offers or waiting until next week.'}
-            </p>
-            <p className="text-sm text-text-muted">
-              Current reputation: {(Math.round(player.reputation * 10) / 10).toFixed(1)}/100
-            </p>
-          </div>
-        )}
-      </Card>
+                </motion.div>
+              ))}
+            </div>
+          ) : enrichedOffers.length > 0 ? (
+            <div className="text-center py-[48px]">
+              <Filter className="w-[64px] h-[64px] mx-auto text-[#4a5565] mb-[16px]" />
+              <h3 className="text-[20px] text-[#0a0a0a] mb-[8px]" style={FBold}>No Matching Offers</h3>
+              <p className="text-[14px] text-[#4a5565] max-w-[400px] mx-auto mb-[16px]" style={FR}>
+                No offers match your current filters. Try adjusting your filter criteria.
+              </p>
+              <button 
+                onClick={() => { setSearchQuery(''); setSeatFilter('all'); setTierFilter('all'); setAffordabilityFilter('all'); }}
+                className="px-[14px] py-[10px] border-[0.8px] border-black/20 rounded-[12px] text-[13px] text-[#0a0a0a] hover:bg-[#f9fafb] transition-colors"
+                style={FBold}
+              >
+                Clear All Filters
+              </button>
+            </div>
+          ) : (
+            <div className="text-center py-[48px]">
+              <Users className="w-[64px] h-[64px] mx-auto text-[#4a5565] mb-[16px]" />
+              <h3 className="text-[20px] text-[#0a0a0a] mb-[8px]" style={FBold}>No Offers Available</h3>
+              <p className="text-[14px] text-[#4a5565] max-w-[400px] mx-auto mb-[16px]" style={FR}>
+                {effectiveReputation < 15 
+                  ? 'Your reputation is too low to attract team interest. Try training or participating in lower-tier events.'
+                  : 'No teams are currently interested. Try refreshing offers or waiting until next week.'}
+              </p>
+              <p className="text-[13px] text-[#4a5565]" style={FR}>
+                Current team reputation: {(Math.round(effectiveReputation * 10) / 10).toFixed(1)}/100
+              </p>
+            </div>
+          )}
+        </div>
 
-      {/* Offer Detail Modal */}
-      <Modal
-        isOpen={showOfferModal}
-        onClose={() => setShowOfferModal(false)}
-        title="Contract Offer"
-        size="lg"
-      >
-        {selectedOffer && selectedTeam && selectedSeries && (
-          <div className="space-y-6">
+        {/* Offer Detail Modal */}
+        {showOfferModal && selectedOffer && selectedTeam && selectedSeries && (
+          <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-[24px]" onClick={() => setShowOfferModal(false)}>
+            <div className="bg-white rounded-[24px] w-full max-w-[720px] max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+              <div className="p-[24px] border-b border-black/10 flex items-center justify-between">
+                <h2 className="text-[22px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Contract Offer</h2>
+                <button onClick={() => setShowOfferModal(false)} className="w-[36px] h-[36px] rounded-full hover:bg-[#f9fafb] flex items-center justify-center transition-colors">
+                  <X className="w-[20px] h-[20px] text-[#4a5565]" />
+                </button>
+              </div>
+              <div className="p-[24px] flex flex-col gap-[24px]">
             
-            {/* ============================================ */}
-            {/* WORKS PROGRAM OFFER */}
-            {/* ============================================ */}
-            {selectedOffer.offerType === 'works-program' && (
-              <>
-                {/* Program Header */}
-                <div className="p-4 bg-gradient-to-r from-accent-gold/20 to-accent-gold/5 rounded-xl border border-accent-gold/30">
-                  <div className="flex items-center gap-4">
-                    <div 
-                      className="w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-display font-bold bg-accent-gold/20 text-accent-gold"
-                    >
-                      <Factory className="w-8 h-8" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-display font-bold text-xl">{selectedOffer.programName || selectedOffer.teamName}</h3>
-                        <Badge variant="gold">Works Driver</Badge>
-                      </div>
-                      <p className="text-text-muted mt-1">Factory Driver Contract</p>
-                      {selectedManufacturer && (
-                        <p className="text-sm text-accent-gold mt-1">{selectedManufacturer.name}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Your Assignment Section */}
-                {selectedOffer.likelyAssignment && (
-                  <div className="p-4 bg-surface rounded-xl border border-surface-border">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Car className="w-5 h-5 text-accent-gold" />
-                      <h4 className="font-display font-semibold">Your Assignment</h4>
-                      <span className="text-xs text-text-muted">(Team decides based on your performance)</span>
-                    </div>
-                    
-                    <div className="p-4 bg-accent-gold/10 rounded-lg border border-accent-gold/30">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-display font-bold text-lg">{selectedOffer.likelyAssignment.entryName}</p>
-                          <p className="text-accent-gold font-medium">{selectedOffer.likelyAssignment.carName}</p>
-                          <p className="text-text-muted text-sm mt-1">{selectedOffer.likelyAssignment.seriesName}</p>
+                {/* WORKS PROGRAM OFFER */}
+                {selectedOffer.offerType === 'works-program' && (
+                  <>
+                    <div className="p-[16px] bg-gradient-to-r from-[#fef3c7] to-[#fef3c7]/30 rounded-[16px] border-[0.8px] border-[#f59e0b]/30">
+                      <div className="flex items-center gap-[16px]">
+                        <div className="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center bg-[#fef3c7] text-[#f59e0b]">
+                          <Factory className="w-[32px] h-[32px]" />
                         </div>
-                        <Badge variant="gold" size="lg">Likely</Badge>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-[8px]">
+                            <h3 className="text-[20px] text-[#0a0a0a]" style={FB}>{selectedOffer.programName || selectedOffer.teamName}</h3>
+                            <span className="px-[8px] py-[2px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>Works Driver</span>
+                          </div>
+                          <p className="text-[13px] text-[#4a5565] mt-[4px]" style={FR}>Factory Driver Contract</p>
+                          {selectedManufacturer && (
+                            <p className="text-[13px] text-[#f59e0b] mt-[4px]" style={FBold}>{selectedManufacturer.name}</p>
+                          )}
+                        </div>
                       </div>
-                      {selectedOffer.likelyAssignment.reason && (
-                        <p className="text-sm text-text-muted mt-3 pt-3 border-t border-accent-gold/20">
-                          <span className="text-accent-gold">Why:</span> {selectedOffer.likelyAssignment.reason}
+                    </div>
+
+                    {selectedOffer.likelyAssignment && (
+                      <div className={INNER}>
+                        <div className="flex items-center gap-[8px] mb-[16px]">
+                          <Car className="w-[20px] h-[20px] text-[#f59e0b]" />
+                          <h4 className="text-[15px] text-[#0a0a0a]" style={FBold}>Your Assignment</h4>
+                          <span className="text-[12px] text-[#4a5565]" style={FR}>(Team decides based on your performance)</span>
+                        </div>
+                        
+                        <div className="p-[16px] bg-[#fef3c7]/50 rounded-[12px] border-[0.8px] border-[#f59e0b]/30">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="text-[17px] text-[#0a0a0a]" style={FB}>{selectedOffer.likelyAssignment.entryName}</p>
+                              <p className="text-[14px] text-[#f59e0b]" style={FBold}>{selectedOffer.likelyAssignment.carName}</p>
+                              <p className="text-[13px] text-[#4a5565] mt-[4px]" style={FR}>{selectedOffer.likelyAssignment.seriesName}</p>
+                            </div>
+                            <span className="px-[12px] py-[4px] bg-[#fef3c7] text-[#b45309] rounded-[10px] text-[13px]" style={FBold}>Likely</span>
+                          </div>
+                          {selectedOffer.likelyAssignment.reason && (
+                            <p className="text-[13px] text-[#4a5565] mt-[12px] pt-[12px] border-t border-[#f59e0b]/20" style={FR}>
+                              <span className="text-[#f59e0b]" style={FBold}>Why:</span> {selectedOffer.likelyAssignment.reason}
+                            </p>
+                          )}
+                        </div>
+                        
+                        <p className="text-[12px] text-[#4a5565] mt-[12px] flex items-center gap-[4px]" style={FR}>
+                          <AlertCircle className="w-[12px] h-[12px]" />
+                          As a works driver, the manufacturer may reassign you between entries/series between seasons.
+                        </p>
+                      </div>
+                    )}
+
+                    {selectedOffer.allProgramEntries && selectedOffer.allProgramEntries.length > 1 && (
+                      <div className={INNER}>
+                        <div className="flex items-center gap-[8px] mb-[12px]">
+                          <Layers className="w-[20px] h-[20px] text-[#4a5565]" />
+                          <h4 className="text-[14px] text-[#0a0a0a]" style={FBold}>All Program Entries</h4>
+                        </div>
+                        <div className="flex flex-col gap-[8px] max-h-[192px] overflow-y-auto">
+                          {selectedOffer.allProgramEntries.map(entry => (
+                            <div 
+                              key={entry.entryId} 
+                              className={`flex items-center justify-between p-[8px] rounded-[10px] ${
+                                entry.entryId === selectedOffer.likelyAssignment?.entryId 
+                                  ? 'bg-[#fef3c7]/50 border-[0.8px] border-[#f59e0b]/30' 
+                                  : 'bg-white'
+                              }`}
+                            >
+                              <div>
+                                <p className="text-[13px] text-[#0a0a0a]" style={FBold}>{entry.entryName}</p>
+                                <p className="text-[12px] text-[#4a5565]" style={FR}>{entry.seriesName}</p>
+                              </div>
+                              <div className="text-right">
+                                {entry.currentDriverName ? (
+                                  <p className="text-[12px] text-[#4a5565]" style={FR}>
+                                    {entry.currentDriverName} <span className="text-[#0a0a0a]/60">({entry.currentDriverRep})</span>
+                                  </p>
+                                ) : (
+                                  <span className="px-[8px] py-[2px] bg-[#dcfce7] text-[#00a63e] rounded-[8px] text-[11px]" style={FBold}>Vacant</span>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* SPEC SERIES TEAM OFFER */}
+                {selectedOffer.offerType === 'spec-series-team' && selectedOffer.fixedAssignment && (
+                  <>
+                    <div className={INNER}>
+                      <div className="flex items-center gap-[16px]">
+                        <div className="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center text-[22px]" style={{ ...FB, backgroundColor: selectedTeam.color + '30', color: selectedTeam.color }}>
+                          {selectedTeam.shortName}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-[8px]">
+                            <h3 className="text-[20px] text-[#0a0a0a]" style={FB}>{selectedTeam.name}</h3>
+                            <span className="px-[8px] py-[2px] bg-[#ede9fe] text-[#8b5cf6] rounded-[8px] text-[11px]" style={FBold}>Spec Series</span>
+                          </div>
+                          <p className="text-[13px] text-[#4a5565]" style={FR}>{selectedSeries.name}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-[16px] bg-[#ede9fe]/50 rounded-[16px] border-[0.8px] border-[#8b5cf6]/30">
+                      <div className="flex items-center gap-[8px] mb-[12px]">
+                        <Car className="w-[20px] h-[20px] text-[#8b5cf6]" />
+                        <h4 className="text-[15px] text-[#0a0a0a]" style={FBold}>Your Assignment</h4>
+                      </div>
+                      <div className="grid grid-cols-2 gap-[16px]">
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Car</p><p className="text-[#0a0a0a]" style={FB}>{selectedOffer.fixedAssignment.carName}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Series</p><p className="text-[#0a0a0a]" style={FBold}>{selectedOffer.fixedAssignment.seriesName}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Team</p><p className="text-[#0a0a0a]" style={FBold}>{selectedTeam.name}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Role</p><p className="text-[#8b5cf6]" style={FBold}>Race Driver</p></div>
+                      </div>
+                      <p className="text-[12px] text-[#4a5565] mt-[16px] pt-[12px] border-t border-[#8b5cf6]/20" style={FR}>
+                        Spec series: All cars are identical. Success comes down to pure driving skill.
+                      </p>
+                    </div>
+                  </>
+                )}
+
+                {/* CUSTOMER TEAM OFFER */}
+                {selectedOffer.offerType === 'customer-team' && selectedOffer.fixedAssignment && (
+                  <>
+                    <div className={INNER}>
+                      <div className="flex items-center gap-[16px]">
+                        <div className="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center text-[22px]" style={{ ...FB, backgroundColor: selectedTeam.color + '30', color: selectedTeam.color }}>
+                          {selectedTeam.shortName}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-[8px]">
+                            <h3 className="text-[20px] text-[#0a0a0a]" style={FB}>{selectedTeam.name}</h3>
+                            {selectedOffer.programType === 'factory-supported' ? (
+                              <span className="px-[8px] py-[2px] bg-[#dbeafe] text-[#3b82f6] rounded-[8px] text-[11px]" style={FBold}>Factory Supported</span>
+                            ) : (
+                              <span className="px-[8px] py-[2px] bg-[#f9fafb] text-[#4a5565] rounded-[8px] text-[11px]" style={FBold}>Customer Team</span>
+                            )}
+                          </div>
+                          <p className="text-[13px] text-[#4a5565]" style={FR}>{selectedSeries.name}</p>
+                          <div className="flex items-center gap-[16px] mt-[8px] text-[13px] text-[#4a5565]" style={FR}>
+                            <span className="flex items-center gap-[4px]"><MapPin className="w-[12px] h-[12px]" /> {selectedTeam.country}</span>
+                            {selectedManufacturer && (
+                              <span className="flex items-center gap-[4px]"><Factory className="w-[12px] h-[12px]" /> {selectedManufacturer.name} equipment</span>
+                            )}
+                          </div>
+                        </div>
+                        {selectedOffer.seatCost > 0 && (
+                          <span className="px-[8px] py-[2px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>Pay-Driver</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="p-[16px] bg-[#dbeafe]/30 rounded-[16px] border-[0.8px] border-[#3b82f6]/30">
+                      <div className="flex items-center gap-[8px] mb-[12px]">
+                        <Car className="w-[20px] h-[20px] text-[#3b82f6]" />
+                        <h4 className="text-[15px] text-[#0a0a0a]" style={FBold}>Your Assignment</h4>
+                      </div>
+                      <div className="grid grid-cols-2 gap-[16px]">
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Car</p><p className="text-[#0a0a0a]" style={FB}>{selectedOffer.fixedAssignment.carName}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Series</p><p className="text-[#0a0a0a]" style={FBold}>{selectedOffer.fixedAssignment.seriesName}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Entry</p><p className="text-[#0a0a0a]" style={FBold}>{selectedOffer.fixedAssignment.entryName}</p></div>
+                        <div><p className="text-[12px] text-[#4a5565] mb-[4px]" style={FR}>Role</p><p className="text-[#3b82f6]" style={FBold}>Race Driver</p></div>
+                      </div>
+                      {selectedOffer.programType === 'factory-supported' && (
+                        <p className="text-[12px] text-[#4a5565] mt-[16px] pt-[12px] border-t border-[#3b82f6]/20" style={FR}>
+                          Factory-supported: {selectedTeam.name} receives technical support from {selectedManufacturer?.name || 'the manufacturer'}.
                         </p>
                       )}
                     </div>
-                    
-                    <p className="text-xs text-text-muted mt-3 flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" />
-                      As a works driver, the manufacturer may reassign you between entries/series between seasons.
-                    </p>
-                  </div>
+                  </>
                 )}
 
-                {/* All Program Entries */}
-                {selectedOffer.allProgramEntries && selectedOffer.allProgramEntries.length > 1 && (
-                  <div className="p-4 bg-surface rounded-xl border border-surface-border">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Layers className="w-5 h-5 text-text-muted" />
-                      <h4 className="font-display font-semibold text-sm">All Program Entries</h4>
+                {/* LIVERY SELECTION */}
+                {selectedTeam.liveryNames && selectedTeam.liveryNames.length > 0 && (
+                  <div className="p-[16px] bg-[#fff7ed] border-[2px] border-[#f97316] rounded-[16px]">
+                    <div className="flex items-center gap-[8px] mb-[12px]">
+                      <Palette className="w-[20px] h-[20px] text-[#f97316]" />
+                      <h4 className="text-[15px] text-[#f97316]" style={FBold}>In-Game Livery Selection</h4>
                     </div>
-                    <div className="space-y-2 max-h-48 overflow-y-auto">
-                      {selectedOffer.allProgramEntries.map(entry => (
-                        <div 
-                          key={entry.entryId} 
-                          className={`flex items-center justify-between p-2 rounded-lg ${
-                            entry.entryId === selectedOffer.likelyAssignment?.entryId 
-                              ? 'bg-accent-gold/10 border border-accent-gold/30' 
-                              : 'bg-background'
-                          }`}
-                        >
-                          <div>
-                            <p className="text-sm font-medium">{entry.entryName}</p>
-                            <p className="text-xs text-text-muted">{entry.seriesName}</p>
-                          </div>
-                          <div className="text-right">
-                            {entry.currentDriverName ? (
-                              <p className="text-xs text-text-muted">
-                                {entry.currentDriverName} <span className="text-text-secondary">({entry.currentDriverRep})</span>
-                              </p>
-                            ) : (
-                              <Badge variant="green" size="sm">Vacant</Badge>
-                            )}
-                          </div>
+                    <p className="text-[13px] text-[#4a5565] mb-[12px]" style={FR}>
+                      Select this livery in AMS2 when starting a race:
+                    </p>
+                    <div className="flex flex-col gap-[8px]">
+                      {selectedTeam.liveryNames.map((livery, idx) => (
+                        <div key={idx} className="p-[12px] bg-white/80 rounded-[12px] border-[0.8px] border-[#f97316]/30">
+                          <p className="font-mono text-[17px] text-[#0a0a0a]" style={FBold}>{livery}</p>
                         </div>
                       ))}
                     </div>
                   </div>
                 )}
-              </>
-            )}
 
-            {/* ============================================ */}
-            {/* SPEC SERIES TEAM OFFER */}
-            {/* ============================================ */}
-            {selectedOffer.offerType === 'spec-series-team' && selectedOffer.fixedAssignment && (
-              <>
-                {/* Team Header */}
-                <div className="p-4 bg-surface rounded-xl border border-surface-border">
-                  <div className="flex items-center gap-4">
-                    <div 
-                      className="w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-display font-bold"
-                      style={{ backgroundColor: selectedTeam.color + '30', color: selectedTeam.color }}
-                    >
-                      {selectedTeam.shortName}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-display font-bold text-xl">{selectedTeam.name}</h3>
-                        <Badge variant="purple">Spec Series</Badge>
+                {/* COMMON: Contract Terms */}
+                <div className="grid grid-cols-2 gap-[24px]">
+                  <div>
+                    <h4 className="text-[13px] text-[#4a5565] mb-[12px]" style={FBold}>Contract Terms</h4>
+                    <div className="flex flex-col gap-[12px]">
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Duration</span>
+                        <span className="text-[#0a0a0a] text-[13px]" style={FBold}>{selectedOffer.duration} season{selectedOffer.duration > 1 ? 's' : ''}</span>
                       </div>
-                      <p className="text-text-muted">{selectedSeries.name}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Your Assignment (Fixed) */}
-                <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/30">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Car className="w-5 h-5 text-purple-400" />
-                    <h4 className="font-display font-semibold">Your Assignment</h4>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Car</p>
-                      <p className="font-display font-bold">{selectedOffer.fixedAssignment.carName}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Series</p>
-                      <p className="font-medium">{selectedOffer.fixedAssignment.seriesName}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Team</p>
-                      <p className="font-medium">{selectedTeam.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Role</p>
-                      <p className="font-medium text-purple-400">Race Driver</p>
-                    </div>
-                  </div>
-                  <p className="text-xs text-text-muted mt-4 pt-3 border-t border-purple-500/20">
-                    Spec series: All cars are identical. Success comes down to pure driving skill.
-                  </p>
-                </div>
-              </>
-            )}
-
-            {/* ============================================ */}
-            {/* CUSTOMER TEAM OFFER */}
-            {/* ============================================ */}
-            {selectedOffer.offerType === 'customer-team' && selectedOffer.fixedAssignment && (
-              <>
-                {/* Team Header */}
-                <div className="p-4 bg-surface rounded-xl border border-surface-border">
-                  <div className="flex items-center gap-4">
-                    <div 
-                      className="w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-display font-bold"
-                      style={{ backgroundColor: selectedTeam.color + '30', color: selectedTeam.color }}
-                    >
-                      {selectedTeam.shortName}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-display font-bold text-xl">{selectedTeam.name}</h3>
-                        {selectedOffer.programType === 'factory-supported' ? (
-                          <Badge variant="blue">Factory Supported</Badge>
-                        ) : (
-                          <Badge variant="default">Customer Team</Badge>
-                        )}
-                      </div>
-                      <p className="text-text-muted">{selectedSeries.name}</p>
-                      <div className="flex items-center gap-4 mt-2 text-sm text-text-muted">
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3" /> {selectedTeam.country}
-                        </span>
-                        {selectedManufacturer && (
-                          <span className="flex items-center gap-1">
-                            <Factory className="w-3 h-3" /> {selectedManufacturer.name} equipment
+                      {selectedOffer.seatCost > 0 ? (
+                        <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                          <span className="text-[#4a5565] text-[13px]" style={FR}>Seat Cost</span>
+                          <span className={`font-mono text-[13px] ${canAffordSeat(selectedOffer.seatCost) ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`} style={FBold}>
+                            -${selectedOffer.seatCost.toLocaleString()}/season
                           </span>
+                        </div>
+                      ) : (
+                        <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                          <span className="text-[#4a5565] text-[13px]" style={FR}>Salary</span>
+                          <span className="font-mono text-[13px] text-[#00a63e]" style={FBold}>${selectedOffer.salary.toLocaleString()}/race</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Grid Size</span>
+                        <span className="text-[#0a0a0a] text-[13px]" style={FBold}>{selectedSeries.gridSize} cars</span>
+                      </div>
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Expires In</span>
+                        <span className="text-[#0a0a0a] text-[13px]" style={FBold}>{selectedOffer.expiresWeek} weeks</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[13px] text-[#4a5565] mb-[12px]" style={FBold}>Bonuses & Prizes</h4>
+                    <div className="flex flex-col gap-[12px]">
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Win Bonus</span>
+                        <span className="font-mono text-[13px] text-[#00a63e]" style={FBold}>+${selectedOffer.bonusPerWin.toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Podium Bonus</span>
+                        <span className="font-mono text-[13px] text-[#00a63e]" style={FBold}>+${selectedOffer.bonusPerPodium.toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Race Win Prize</span>
+                        <span className="font-mono text-[13px] text-[#f59e0b]" style={FBold}>+${selectedSeries.prizeMoney.win.toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
+                        <span className="text-[#4a5565] text-[13px]" style={FR}>Podium Prize</span>
+                        <span className="font-mono text-[13px] text-[#3b82f6]" style={FBold}>+${selectedSeries.prizeMoney.podium.toLocaleString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Performance Targets */}
+                {selectedOffer.hasPerformanceTargets && selectedOffer.targetSummary && selectedOffer.targetSummary.length > 0 && (
+                  <div className="p-[16px] bg-[#fef3c7]/50 rounded-[16px] border-[0.8px] border-[#f59e0b]/30">
+                    <div className="flex items-center gap-[8px] mb-[12px]">
+                      <Target className="w-[20px] h-[20px] text-[#f59e0b]" />
+                      <h4 className="text-[15px] text-[#f59e0b]" style={FBold}>Performance Expectations</h4>
+                    </div>
+                    <ul className="flex flex-col gap-[8px]">
+                      {selectedOffer.targetSummary.map((target, idx) => (
+                        <li key={idx} className="flex items-start gap-[8px] text-[13px] text-[#0a0a0a]" style={FR}>
+                          <CircleDot className="w-[16px] h-[16px] text-[#f59e0b] mt-[2px] flex-shrink-0" />
+                          <span>{target}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-[12px] text-[#4a5565] mt-[12px] pt-[12px] border-t border-[#f59e0b]/20" style={FR}>
+                      Meeting these targets keeps the team happy and may trigger auto-renewal bonuses.
+                    </p>
+                  </div>
+                )}
+
+                {/* Contract Options & Clauses */}
+                {(selectedOffer.hasAutoRenewal || selectedOffer.hasTeamOption || selectedOffer.hasPlayerOption || selectedOffer.hasPerformanceClause) && (
+                  <div className="grid grid-cols-2 gap-[16px]">
+                    <div className="p-[16px] bg-[#ede9fe]/30 rounded-[16px] border-[0.8px] border-[#8b5cf6]/30">
+                      <div className="flex items-center gap-[8px] mb-[12px]">
+                        <RefreshCw className="w-[20px] h-[20px] text-[#8b5cf6]" />
+                        <h4 className="text-[15px] text-[#8b5cf6]" style={FBold}>Contract Options</h4>
+                      </div>
+                      <div className="flex flex-col gap-[8px] text-[13px]" style={FR}>
+                        {selectedOffer.hasAutoRenewal && selectedOffer.renewalCondition && (
+                          <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                            <Check className="w-[16px] h-[16px] text-[#8b5cf6]" />
+                            <span>Auto-renews: {selectedOffer.renewalCondition}</span>
+                          </div>
+                        )}
+                        {selectedOffer.hasTeamOption && (
+                          <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                            <Building2 className="w-[16px] h-[16px] text-[#8b5cf6]" />
+                            <span>Team has option to extend</span>
+                          </div>
+                        )}
+                        {selectedOffer.hasPlayerOption && (
+                          <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                            <Users className="w-[16px] h-[16px] text-[#8b5cf6]" />
+                            <span>You have option to extend</span>
+                          </div>
+                        )}
+                        {!selectedOffer.hasAutoRenewal && !selectedOffer.hasTeamOption && !selectedOffer.hasPlayerOption && (
+                          <div className="flex items-center gap-[8px] text-[#4a5565]">
+                            <X className="w-[16px] h-[16px]" />
+                            <span>No extension options</span>
+                          </div>
                         )}
                       </div>
                     </div>
-                    {selectedOffer.seatCost > 0 && (
-                      <Badge variant="orange">Pay-Driver</Badge>
-                    )}
-                  </div>
-                </div>
 
-                {/* Your Assignment (Fixed) */}
-                <div className="p-4 bg-accent-blue/10 rounded-xl border border-accent-blue/30">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Car className="w-5 h-5 text-accent-blue" />
-                    <h4 className="font-display font-semibold">Your Assignment</h4>
+                    <div className="p-[16px] bg-[#fee2e2]/30 rounded-[16px] border-[0.8px] border-[#ef4444]/30">
+                      <div className="flex items-center gap-[8px] mb-[12px]">
+                        <AlertTriangle className="w-[20px] h-[20px] text-[#ef4444]" />
+                        <h4 className="text-[15px] text-[#ef4444]" style={FBold}>Clauses</h4>
+                      </div>
+                      <div className="flex flex-col gap-[8px] text-[13px]" style={FR}>
+                        {selectedOffer.hasPerformanceClause && (
+                          <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                            <UserX className="w-[16px] h-[16px] text-[#ef4444]" />
+                            <span>Performance clause active</span>
+                          </div>
+                        )}
+                        {selectedOffer.dnfLimit && selectedOffer.dnfLimit < 10 && (
+                          <div className="flex items-center gap-[8px] text-[#0a0a0a]">
+                            <AlertCircle className="w-[16px] h-[16px] text-[#ef4444]" />
+                            <span>Max {selectedOffer.dnfLimit} DNFs allowed</span>
+                          </div>
+                        )}
+                        {!selectedOffer.hasPerformanceClause && (
+                          <div className="flex items-center gap-[8px] text-[#4a5565]">
+                            <Check className="w-[16px] h-[16px]" />
+                            <span>No performance clause</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Car</p>
-                      <p className="font-display font-bold">{selectedOffer.fixedAssignment.carName}</p>
+                )}
+
+                {/* Media Duties */}
+                {selectedOffer.hasMediaDuties && selectedOffer.mediaDutySummary && (
+                  <div className="p-[16px] bg-[#dbeafe]/30 rounded-[16px] border-[0.8px] border-[#3b82f6]/30">
+                    <div className="flex items-center gap-[8px] mb-[8px]">
+                      <Newspaper className="w-[20px] h-[20px] text-[#3b82f6]" />
+                      <h4 className="text-[15px] text-[#3b82f6]" style={FBold}>Media Duties Required</h4>
                     </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Series</p>
-                      <p className="font-medium">{selectedOffer.fixedAssignment.seriesName}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Entry</p>
-                      <p className="font-medium">{selectedOffer.fixedAssignment.entryName}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-muted mb-1">Role</p>
-                      <p className="font-medium text-accent-blue">Race Driver</p>
-                    </div>
-                  </div>
-                  {selectedOffer.programType === 'factory-supported' && (
-                    <p className="text-xs text-text-muted mt-4 pt-3 border-t border-accent-blue/20">
-                      Factory-supported: {selectedTeam.name} receives technical support from {selectedManufacturer?.name || 'the manufacturer'}.
+                    <p className="text-[13px] text-[#0a0a0a]" style={FR}>{selectedOffer.mediaDutySummary}</p>
+                    <p className="text-[12px] text-[#4a5565] mt-[8px]" style={FR}>
+                      Failure to complete media duties may affect team satisfaction and contract bonuses.
                     </p>
-                  )}
-                </div>
-              </>
-            )}
+                  </div>
+                )}
 
-            {/* ============================================ */}
-            {/* LIVERY SELECTION - Critical for AMS2 */}
-            {/* ============================================ */}
-            {selectedTeam.liveryNames && selectedTeam.liveryNames.length > 0 && (
-              <div className="p-4 bg-accent-orange/10 border-2 border-accent-orange rounded-xl">
-                <div className="flex items-center gap-2 mb-3">
-                  <Palette className="w-5 h-5 text-accent-orange" />
-                  <h4 className="font-display font-semibold text-accent-orange">
-                    In-Game Livery Selection
-                  </h4>
-                </div>
-                <p className="text-sm text-text-muted mb-3">
-                  Select this livery in AMS2 when starting a race:
-                </p>
-                <div className="space-y-2">
-                  {selectedTeam.liveryNames.map((livery, idx) => (
-                    <div 
-                      key={idx}
-                      className="p-3 bg-background/80 rounded-lg border border-accent-orange/30"
-                    >
-                      <p className="font-mono font-bold text-lg">{livery}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ============================================ */}
-            {/* COMMON SECTIONS (All Offer Types) */}
-            {/* ============================================ */}
-
-            {/* Contract Terms */}
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-text-muted text-sm mb-3 font-medium">Contract Terms</h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Duration</span>
-                    <span className="font-medium">{selectedOffer.duration} season{selectedOffer.duration > 1 ? 's' : ''}</span>
-                  </div>
-                  {selectedOffer.seatCost > 0 ? (
-                    <div className="flex justify-between p-3 bg-background rounded-lg">
-                      <span className="text-text-muted">Seat Cost</span>
-                      <span className={`font-mono font-bold ${canAffordSeat(selectedOffer.seatCost) ? 'text-status-warning' : 'text-status-danger'}`}>
-                        -${selectedOffer.seatCost.toLocaleString()}/season
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="flex justify-between p-3 bg-background rounded-lg">
-                      <span className="text-text-muted">Salary</span>
-                      <span className="font-mono font-bold text-status-success">
-                        ${selectedOffer.salary.toLocaleString()}/race
-                      </span>
-                    </div>
-                  )}
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Grid Size</span>
-                    <span className="font-medium">{selectedSeries.gridSize} cars</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Expires In</span>
-                    <span className="font-medium">{selectedOffer.expiresWeek} weeks</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-text-muted text-sm mb-3 font-medium">Bonuses & Prizes</h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Win Bonus</span>
-                    <span className="font-mono text-status-success">
-                      +${selectedOffer.bonusPerWin.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Podium Bonus</span>
-                    <span className="font-mono text-status-success">
-                      +${selectedOffer.bonusPerPodium.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Race Win Prize</span>
-                    <span className="font-mono text-accent-gold">
-                      +${selectedSeries.prizeMoney.win.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-background rounded-lg">
-                    <span className="text-text-muted">Podium Prize</span>
-                    <span className="font-mono text-accent-blue">
-                      +${selectedSeries.prizeMoney.podium.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ============================================ */}
-            {/* ENHANCED CONTRACT TERMS */}
-            {/* ============================================ */}
-            
-            {/* Performance Targets */}
-            {selectedOffer.hasPerformanceTargets && selectedOffer.targetSummary && selectedOffer.targetSummary.length > 0 && (
-              <div className="p-4 bg-accent-gold/10 rounded-xl border border-accent-gold/30">
-                <div className="flex items-center gap-2 mb-3">
-                  <Target className="w-5 h-5 text-accent-gold" />
-                  <h4 className="font-display font-semibold text-accent-gold">Performance Expectations</h4>
-                </div>
-                <ul className="space-y-2">
-                  {selectedOffer.targetSummary.map((target, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm">
-                      <CircleDot className="w-4 h-4 text-accent-gold mt-0.5 flex-shrink-0" />
-                      <span>{target}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-xs text-text-muted mt-3 pt-3 border-t border-accent-gold/20">
-                  Meeting these targets keeps the team happy and may trigger auto-renewal bonuses.
-                </p>
-              </div>
-            )}
-
-            {/* Contract Options & Clauses */}
-            {(selectedOffer.hasAutoRenewal || selectedOffer.hasTeamOption || selectedOffer.hasPlayerOption || selectedOffer.hasPerformanceClause) && (
-              <div className="grid grid-cols-2 gap-4">
-                {/* Renewal & Options */}
-                <div className="p-4 bg-purple-500/10 rounded-xl border border-purple-500/30">
-                  <div className="flex items-center gap-2 mb-3">
-                    <RefreshCw className="w-5 h-5 text-purple-400" />
-                    <h4 className="font-display font-semibold text-purple-400">Contract Options</h4>
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    {selectedOffer.hasAutoRenewal && selectedOffer.renewalCondition && (
-                      <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-purple-400" />
-                        <span>Auto-renews: {selectedOffer.renewalCondition}</span>
-                      </div>
-                    )}
-                    {selectedOffer.hasTeamOption && (
-                      <div className="flex items-center gap-2">
-                        <Building2 className="w-4 h-4 text-purple-400" />
-                        <span>Team has option to extend</span>
-                      </div>
-                    )}
-                    {selectedOffer.hasPlayerOption && (
-                      <div className="flex items-center gap-2">
-                        <Users className="w-4 h-4 text-purple-400" />
-                        <span>You have option to extend</span>
-                      </div>
-                    )}
-                    {!selectedOffer.hasAutoRenewal && !selectedOffer.hasTeamOption && !selectedOffer.hasPlayerOption && (
-                      <div className="flex items-center gap-2 text-text-muted">
-                        <X className="w-4 h-4" />
-                        <span>No extension options</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Termination Clauses */}
-                <div className="p-4 bg-status-error/10 rounded-xl border border-status-error/30">
-                  <div className="flex items-center gap-2 mb-3">
-                    <AlertTriangle className="w-5 h-5 text-status-error" />
-                    <h4 className="font-display font-semibold text-status-error">Clauses</h4>
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    {selectedOffer.hasPerformanceClause && (
-                      <div className="flex items-center gap-2">
-                        <UserX className="w-4 h-4 text-status-error" />
-                        <span>Performance clause active</span>
-                      </div>
-                    )}
-                    {selectedOffer.dnfLimit && selectedOffer.dnfLimit < 10 && (
-                      <div className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-status-error" />
-                        <span>Max {selectedOffer.dnfLimit} DNFs allowed</span>
-                      </div>
-                    )}
-                    {!selectedOffer.hasPerformanceClause && (
-                      <div className="flex items-center gap-2 text-text-muted">
-                        <Check className="w-4 h-4" />
-                        <span>No performance clause</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Media Duties */}
-            {selectedOffer.hasMediaDuties && selectedOffer.mediaDutySummary && (
-              <div className="p-4 bg-accent-blue/10 rounded-xl border border-accent-blue/30">
-                <div className="flex items-center gap-2 mb-2">
-                  <Newspaper className="w-5 h-5 text-accent-blue" />
-                  <h4 className="font-display font-semibold text-accent-blue">Media Duties Required</h4>
-                </div>
-                <p className="text-sm">{selectedOffer.mediaDutySummary}</p>
-                <p className="text-xs text-text-muted mt-2">
-                  Failure to complete media duties may affect team satisfaction and contract bonuses.
-                </p>
-              </div>
-            )}
-
-            {/* Team Stats */}
-            <div>
-              <h4 className="text-text-muted text-sm mb-3 font-medium">Team Rating</h4>
-              <div className="grid grid-cols-2 gap-4">
-                <StatBar label="Prestige" value={selectedTeam.prestige} maxValue={100} />
-                <StatBar 
-                  label="Facilities" 
-                  value={selectedTeam.facilities === 'elite' ? 100 : selectedTeam.facilities === 'professional' ? 75 : selectedTeam.facilities === 'standard' ? 50 : 25} 
-                  maxValue={100}
-                />
-              </div>
-            </div>
-
-            {/* Affordability Warning */}
-            {selectedOffer.seatCost > 0 && !canAffordSeat(selectedOffer.seatCost) && (
-              <div className="flex items-center gap-3 p-4 bg-status-danger/10 border border-status-danger/30 rounded-xl">
-                <AlertCircle className="w-6 h-6 text-status-danger" />
+                {/* Team Stats */}
                 <div>
-                  <p className="font-medium text-status-danger">Insufficient Funds</p>
-                  <p className="text-sm text-text-muted">
-                    You need ${selectedOffer.seatCost.toLocaleString()} to pay for this seat. 
-                    Your balance: ${(player.finances?.bankBalance ?? 0).toLocaleString()}
-                  </p>
+                  <h4 className="text-[13px] text-[#4a5565] mb-[12px]" style={FBold}>Team Rating</h4>
+                  <div className="grid grid-cols-2 gap-[16px]">
+                    <div className="p-[12px] bg-[#f9fafb] rounded-[12px]">
+                      <div className="flex justify-between mb-[6px]">
+                        <span className="text-[12px] text-[#4a5565]" style={FR}>Prestige</span>
+                        <span className="text-[12px] text-[#0a0a0a]" style={FBold}>{selectedTeam.prestige}/100</span>
+                      </div>
+                      <div className="h-[8px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                        <div className="h-full bg-black rounded-full" style={{ width: `${selectedTeam.prestige}%` }} />
+                      </div>
+                    </div>
+                    <div className="p-[12px] bg-[#f9fafb] rounded-[12px]">
+                      <div className="flex justify-between mb-[6px]">
+                        <span className="text-[12px] text-[#4a5565]" style={FR}>Facilities</span>
+                        <span className="text-[12px] text-[#0a0a0a]" style={FBold}>
+                          {selectedTeam.facilities === 'elite' ? '100' : selectedTeam.facilities === 'professional' ? '75' : selectedTeam.facilities === 'standard' ? '50' : '25'}/100
+                        </span>
+                      </div>
+                      <div className="h-[8px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                        <div className="h-full bg-black rounded-full" style={{ width: `${selectedTeam.facilities === 'elite' ? 100 : selectedTeam.facilities === 'professional' ? 75 : selectedTeam.facilities === 'standard' ? 50 : 25}%` }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Affordability Warning */}
+                {selectedOffer.seatCost > 0 && !canAffordSeat(selectedOffer.seatCost) && (
+                  <div className="flex items-center gap-[12px] p-[16px] bg-[#fee2e2] border-[0.8px] border-[#ef4444]/30 rounded-[16px]">
+                    <AlertCircle className="w-[24px] h-[24px] text-[#ef4444]" />
+                    <div>
+                      <p className="text-[14px] text-[#ef4444]" style={FBold}>Insufficient Funds</p>
+                      <p className="text-[13px] text-[#4a5565]" style={FR}>
+                        You need ${selectedOffer.seatCost.toLocaleString()} to pay for this seat. 
+                        Your balance: ${(player.finances?.bankBalance ?? 0).toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Actions */}
+                <div className="flex gap-[12px] pt-[16px] border-t border-black/10">
+                  <button
+                    type="button"
+                    className="flex-1 inline-flex items-center justify-center gap-[8px] px-[16px] py-[12px] text-[14px] rounded-[16px] border-[0.8px] border-black/20 text-[#4a5565] hover:bg-[#f9fafb] transition-all"
+                    onClick={handleDeclineOffer}
+                    style={FBold}
+                  >
+                    <X className="w-[16px] h-[16px]" />
+                    Decline
+                  </button>
+                  <button
+                    type="button"
+                    className="flex-1 inline-flex items-center justify-center gap-[8px] px-[16px] py-[12px] text-[14px] rounded-[16px] bg-black hover:bg-black/80 text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={handleAcceptOffer}
+                    disabled={(selectedOffer?.seatCost ?? 0) > 0 && !canAffordSeat(selectedOffer?.seatCost ?? 0)}
+                    style={FBold}
+                  >
+                    <Check className="w-[16px] h-[16px]" />
+                    Accept Contract
+                  </button>
                 </div>
               </div>
-            )}
-
-            {/* Actions */}
-            <div className="flex gap-3 pt-4 border-t border-surface-border">
-              <button
-                type="button"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-transparent hover:bg-surface-secondary text-text-secondary hover:text-white transition-all"
-                onClick={handleDeclineOffer}
-              >
-                <X className="w-4 h-4" />
-                Decline
-              </button>
-              <button
-                type="button"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-accent-red to-accent-red/80 hover:from-accent-redHover hover:to-accent-red text-white shadow-racing transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                onClick={handleAcceptOffer}
-                disabled={(selectedOffer?.seatCost ?? 0) > 0 && !canAffordSeat(selectedOffer?.seatCost ?? 0)}
-              >
-                <Check className="w-4 h-4" />
-                Accept Contract
-              </button>
             </div>
           </div>
         )}
-      </Modal>
 
-      {/* Calendar Conflict Resolution Modal */}
-      <ConflictModal
-        conflict={detectedConflicts[currentConflictIndex] || null}
-        isOpen={showConflictModal}
-        onClose={() => setShowConflictModal(false)}
-        onResolve={handleResolveConflict}
-        seriesNames={seriesNames}
-        seriesColors={seriesColors}
-      />
+        {/* Calendar Conflict Resolution Modal */}
+        <ConflictModal
+          conflict={detectedConflicts[currentConflictIndex] || null}
+          isOpen={showConflictModal}
+          onClose={() => setShowConflictModal(false)}
+          onResolve={handleResolveConflict}
+          seriesNames={seriesNames}
+          seriesColors={seriesColors}
+        />
+      </div>
     </div>
   )
 }
 
-// Filter Button Component
 interface FilterButtonProps {
   active: boolean
   onClick: () => void
   children: React.ReactNode
-  variant?: 'default' | 'gold' | 'blue' | 'green' | 'orange'
 }
 
-function FilterButton({ active, onClick, children, variant = 'default' }: FilterButtonProps) {
-  const variantClasses = {
-    default: active ? 'bg-text-primary text-background' : 'bg-surface hover:bg-surface-secondary',
-    gold: active ? 'bg-accent-gold text-background' : 'bg-surface hover:bg-accent-gold/20',
-    blue: active ? 'bg-accent-blue text-background' : 'bg-surface hover:bg-accent-blue/20',
-    green: active ? 'bg-status-success text-background' : 'bg-surface hover:bg-status-success/20',
-    orange: active ? 'bg-accent-orange text-background' : 'bg-surface hover:bg-accent-orange/20',
-  }
-
+function FilterButton({ active, onClick, children }: FilterButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`
-        px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center
-        ${variantClasses[variant]}
-        border border-surface-border
-      `}
+      className={`px-[12px] py-[8px] text-[12px] rounded-[10px] transition-all flex items-center border-[0.8px] ${
+        active 
+          ? 'bg-black text-white border-black' 
+          : 'bg-[#f9fafb] text-[#4a5565] border-black/10 hover:bg-[#f3f4f6]'
+      }`}
+      style={{ fontFamily: "'Arial', sans-serif", fontWeight: 700 }}
     >
       {children}
     </button>

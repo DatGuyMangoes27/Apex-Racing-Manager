@@ -1,0 +1,22 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 45,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Angus McLeod's journey into motorsport began with a childhood spent tinkering with engines in his father's outback garage. This hands-on experience ignited a passion for mechanical engineering that led him to pursue a degree in the field. After graduating, Angus honed his skills working on vehicle dynamics for a major automotive manufacturer before making the leap to motorsport. He joined Trackhouse Racing five years ago and quickly became a vital part of the simulator program.\n\nAngus's approach to simulator engineering is deeply rooted in data analysis and practical application. He believes in constantly refining the simulation models to accurately reflect real-world conditions, working closely with the drivers to gather feedback and identify areas for improvement. His meticulous attention to detail and ability to translate complex technical concepts into actionable insights have made him a highly respected figure within the team. Angus is known for his calm demeanor under pressure and his unwavering commitment to achieving optimal performance.\n\nWhat sets Angus apart is his blend of technical expertise and a deep understanding of driver psychology. He recognizes that the simulator is not just a tool for data analysis but also a crucial platform for driver development. By fostering open communication and building strong relationships with the drivers, Angus ensures that the simulator program is effectively tailored to their individual needs and preferences.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Angus is a man of medium height with a lean build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on starting every simulator session with a thorough systems check."
+  ]
+}

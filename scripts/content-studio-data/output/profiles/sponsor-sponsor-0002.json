@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0002",
+  "name": "Tyne & Wear Construction",
+  "category": "local",
+  "tier": "elite",
+  "country": "UK",
+  "description": "Building the future of the North East.",
+  "story": "Tyne & Wear Construction is a family-run firm with deep roots in the North East of England. We believe in supporting local talent and fostering excellence, and see motorsport as a perfect avenue to showcase our commitment to precision and teamwork. We aim to build brand awareness across the UK and associate our name with success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 40,
+    "seriesTiers": [],
+    "nationalities": [
+      "UK"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0002.png"
+}

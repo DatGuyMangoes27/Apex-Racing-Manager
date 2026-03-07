@@ -1,0 +1,22 @@
+{
+  "name": "Burak Demir",
+  "nationality": "Turkish",
+  "age": 55,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Burak's journey with metal began in his father's small workshop in Istanbul, where he learned the basics of shaping and molding steel. While his father focused on traditional craftsmanship, Burak was drawn to the precision and speed of motorsport. He landed his first job at a small rally team, maintaining their aging fleet of cars. The pressure to keep them running ignited a passion for pushing machines to their limits. \n\nBurak's approach is rooted in practicality and meticulous attention to detail. He believes in understanding the fundamentals before attempting any complex modifications. He is driven by a desire to improve efficiency and reliability, even if it means going against conventional wisdom. He is eager to learn from experienced engineers, though his demanding nature can sometimes rub people the wrong way. \n\nBurak dreams of one day contributing to a championship-winning team. He seeks to prove that his traditional upbringing and hands-on experience can provide a unique perspective in the fast-paced world of modern motorsport.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "thick mustache",
+    "description": "A stocky man with a strong build and calloused hands."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small piece of chalk to mark measurements.",
+    "Has a habit of tapping his wrench against metal surfaces to test their resonance.",
+    "Refuses to use digital calipers, preferring the feel of traditional tools."
+  ]
+}

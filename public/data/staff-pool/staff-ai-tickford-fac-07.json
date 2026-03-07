@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Gruber",
+  "nationality": "Austrian",
+  "age": 28,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Maximilian's journey into the fast-paced world of motorsport began unconventionally, not on the track, but behind a keyboard. Growing up in Linz, he was captivated by the intricate data analysis that underpinned F1 strategies. This fascination led him to excel in computer science, earning a degree focused on real-time data processing. Before joining Tickford Racing, Maximilian honed his skills at a tech firm specializing in predictive analytics, building systems that could forecast market trends with remarkable accuracy.\n\nAt Tickford, Maximilian is responsible for maintaining and optimizing the team's IT infrastructure, ensuring seamless data flow between the track, the factory, and the engineers. He's known for his calm demeanor under pressure and his ability to troubleshoot complex technical issues with creative solutions. His innovative approach to data management and analysis has already yielded tangible improvements in the team's performance, making him a valuable asset. \n\nMaximilian believes in constant improvement and never settles for the status quo. He's always exploring new technologies and methodologies to enhance the team's competitive edge. He's particularly interested in leveraging machine learning to extract deeper insights from the mountains of data generated during races and testing sessions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Stubble beard",
+    "description": "Maximilian is of average height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during breaks.",
+    "Has an encyclopedic knowledge of obscure coding languages.",
+    "Prefers to work standing up, even during long meetings."
+  ]
+}

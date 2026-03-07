@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0143",
+  "name": "Virtuoso Games",
+  "category": "gaming",
+  "tier": "high",
+  "country": "Italy",
+  "description": "Experience gaming redefined.",
+  "story": "Virtuoso Games is a leading Italian game developer known for pushing the boundaries of realism and immersion. We see motorsport as the ultimate test of skill, precision, and cutting-edge technology – values that align perfectly with our own. We seek a partnership that will showcase our brand to a global audience and demonstrate our commitment to innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0143.png"
+}

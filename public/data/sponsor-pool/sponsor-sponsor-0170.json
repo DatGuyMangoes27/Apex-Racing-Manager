@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0170",
+  "name": "Deutsche Präzision Finanz",
+  "category": "finance",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Precision finance for a precision world.",
+  "story": "Deutsche Präzision Finanz has a long history of supporting German engineering and innovation. Motorsports provides an ideal stage to showcase our commitment to precision and high performance. We seek a partnership that embodies our values of reliability, accuracy, and achieving peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Germany",
+      "Austria",
+      "Switzerland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0170.png"
+}

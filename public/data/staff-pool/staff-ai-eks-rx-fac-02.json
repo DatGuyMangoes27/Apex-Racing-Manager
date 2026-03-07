@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Vargas Mendoza",
+    "nationality": "Peruvian",
+    "age": 50,
+    "gender": "male",
+    "role": "composite_technician",
+    "bio": "Ricardo's journey into motorsport began unexpectedly, as a young apprentice in a Lima-based workshop repairing fiberglass fishing boats. His meticulous attention to detail and innate understanding of composite materials quickly set him apart. A chance encounter with a touring rally team led to his introduction to carbon fiber and the world of racing. For the past two decades, he has honed his skills, working with various teams, always striving for the perfect balance of strength and weight in every component he crafts.\n\nRicardo's approach is methodical and pragmatic. He believes in understanding the 'why' behind every design decision, allowing him to anticipate potential issues and offer innovative solutions. He's not afraid to challenge conventional wisdom, always seeking ways to improve performance and reliability. At EKS JC, Ricardo is valued for his calm demeanor under pressure and his ability to mentor younger technicians, sharing his vast experience and passion for precision.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Goatee",
+      "description": "A wiry man with a permanent squint from years of working under bright lights, he exudes quiet confidence."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with sketches and material notes.",
+      "Has a superstitious ritual of tapping each newly-cured composite part three times for good luck.",
+      "Refuses to work without listening to traditional Peruvian folk music at a low volume."
+    ]
+  }
+]

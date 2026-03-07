@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Lindstrom",
+  "nationality": "Swedish",
+  "age": 36,
+  "gender": "female",
+  "role": "security_chief",
+  "bio": "Astrid's journey into motorsport was unconventional, starting with a background in cybersecurity for a large corporation. Her analytical skills and attention to detail made her a natural fit for identifying vulnerabilities, which she initially applied to network security. A chance encounter with a former racing engineer sparked her interest in motorsport security, realizing the critical need to protect teams' intellectual property and ensure physical safety at races. She made the switch, leveraging her tech background to build a more robust approach to security than typical guard services provided.\n\nAt CRG Racing Team, Astrid is responsible for all aspects of security, from data protection to physical perimeter control. She takes a proactive approach, constantly assessing and mitigating potential risks, always staying one step ahead. Her innovative use of technology, combined with her no-nonsense attitude, has earned her the respect of both the team and her security staff. She is particularly focused on preventing industrial espionage, a growing concern in the competitive world of motorsport, and is known for her rigorous security audits.\n\nWhat sets Astrid apart is her blend of technical expertise and on-the-ground experience. She is equally comfortable analyzing network traffic for suspicious activity as she is coordinating security personnel at the track. Astrid's goal is to create a seamless security environment where the team can focus on racing, confident that their assets and information are safe and secure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Sleek, shoulder-length hair, often pulled back into a practical ponytail.",
+    "eyeColor": "Blue-Grey",
+    "facialHair": null,
+    "description": "Astrid has a focused gaze and a practical, no-frills appearance."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn multitool.",
+    "Has a habit of tapping her pen rapidly when concentrating.",
+    "Insists on coding security updates herself, even for minor issues."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0299",
+  "name": "AksaraTek",
+  "category": "tech",
+  "tier": "high",
+  "country": "Indonesia",
+  "description": "Innovating solutions for a connected future.",
+  "story": "AksaraTek is a leading Indonesian technology firm specializing in cloud computing and data analytics. We believe in pushing boundaries and supporting high-performance teams that embody innovation and precision. Our sponsorship of motorsport is a commitment to showcasing the power of technology in demanding environments and to inspire the next generation of Indonesian engineers.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 40,
+    "nationalities": [
+      "Indonesia"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0299.png"
+}

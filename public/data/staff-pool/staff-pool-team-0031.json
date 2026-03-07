@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Karin Baumgartner",
+    "nationality": "German",
+    "age": 47,
+    "gender": "female",
+    "role": "race_engineer",
+    "bio": "Karin's motorsport journey began with a childhood fascination for engines, fueled by her father's work as a mechanic. This passion led her to earn a degree in mechanical engineering, specializing in vehicle dynamics. Her career started in the German Touring Car Championship (DTM), where she quickly gained a reputation for her meticulous approach and ability to diagnose complex issues under pressure. After a decade in DTM, Karin transitioned to single-seater racing, contributing to multiple championship-winning campaigns.\n\nKarin's engineering philosophy centers on data-driven decision-making combined with an intuitive understanding of the driver's needs. She believes in fostering open communication within the team, ensuring that everyone feels empowered to contribute their expertise. Her ability to translate technical jargon into actionable strategies has made her a highly sought-after race engineer.\n\nWhat truly sets Karin apart is her unwavering commitment to continuous improvement. She constantly seeks out new technologies and methodologies, pushing the boundaries of what's possible on the racetrack. This relentless pursuit of excellence, coupled with her loyalty to her team, makes her an invaluable asset.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, straight, with a slight side part",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Karin is of average height with a focused, intelligent gaze."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook filled with technical diagrams.",
+      "Has a habit of tapping her pen on the table when deep in thought.",
+      "Prefers strong black coffee over energy drinks, regardless of the hour."
+    ]
+  }
+]

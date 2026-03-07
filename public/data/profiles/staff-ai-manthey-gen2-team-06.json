@@ -1,0 +1,22 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 52,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Angus McLeod's journey in motorsport began in the dusty outback tracks of Western Australia, where he honed his skills as a mechanic and engineer. He quickly rose through the ranks, demonstrating a keen eye for detail and an unwavering commitment to excellence. His career shifted from the shop floor to strategy when a mentor recognized his ability to anticipate race dynamics and optimize performance. Now, as Sporting Director at Manthey EMA, Angus brings a no-nonsense, practical approach to the team. \n\nKnown for his meticulous preparation and calm demeanor under pressure, Angus is the steady hand guiding Manthey EMA through challenging races. He fosters a culture of continuous improvement, constantly seeking innovative solutions to gain a competitive edge. His loyalty to the team is legendary, and he is fiercely protective of his crew. His perfectionist tendencies drive him to push for the highest standards in every aspect of the team's operation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly cropped",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a weathered face and piercing blue eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a well-worn notebook filled with handwritten notes and diagrams.",
+    "Has a specific ritual of cleaning his glasses before every race start.",
+    "Refuses to use digital timers, preferring an old-fashioned stopwatch."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan van der Velden",
+  "nationality": "Dutch",
+  "age": 59,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan van der Velden's motorsport journey began in his youth, tinkering with engines in his father's garage in Eindhoven. His passion quickly evolved into a career, starting as a junior mechanic for a local racing team. His meticulous approach and knack for problem-solving propelled him through the ranks. He's known for his ability to dissect complex issues and devise elegant solutions, often pushing the boundaries of existing regulations.\n\nVan der Velden joined CLRT by Almeras seeking a new challenge after years of success with smaller teams. His strategic vision focuses on maximizing performance through incremental improvements and fostering a collaborative environment. He's earned a reputation for being demanding but fair, always striving for perfection in every aspect of the car's setup and maintenance. His dedication to innovation and relentless pursuit of speed make him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with thinning on top",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of sturdy build, Jan's weathered face reflects years spent in the racing paddock, his eyes sharp and observant."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical diagrams.",
+    "Insists on using a slide rule alongside modern computer simulations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

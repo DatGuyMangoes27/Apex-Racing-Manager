@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 30,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Mads's fascination with motorsport began in his childhood, watching his father tinker with engines in their garage. This early exposure fueled his passion, leading him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, Mads honed his skills at a smaller racing team, where he gained invaluable experience in data analysis, simulation, and trackside support. He's known for his methodical approach to problem-solving and his ability to translate complex data into actionable insights. \n\nMads believes that a strong understanding of the car's behavior, combined with clear communication with the driver, is crucial for optimizing performance. He's particularly adept at identifying areas for improvement in vehicle setup and providing precise feedback to the team. His loyalty and dedication make him a valuable asset, always willing to go the extra mile to achieve the best possible results. He is particularly skilled at tire management and is obsessed with finding the optimal tire pressures in varying conditions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Mads is of average height with a lean build and a focused look."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Insists on having a specific type of Danish pastry before every race."
+  ]
+}

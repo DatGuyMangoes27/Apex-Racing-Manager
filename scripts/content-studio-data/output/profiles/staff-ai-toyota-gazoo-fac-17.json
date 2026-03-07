@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Arnesen",
+  "nationality": "Norwegian",
+  "age": 51,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Bjørn Arnesen's career began far from the roar of engines, in the quiet precision of the Norwegian military police. His meticulous nature and unflappable demeanor quickly earned him respect, and he rose through the ranks, specializing in threat assessment and risk mitigation. A chance assignment providing security for a local rally event ignited a passion for motorsport, leading him to transition his skills to the racing world.\n\nAt Toyota Gazoo Racing, Bjørn is known for his practical, no-nonsense approach. He meticulously analyzes every potential security vulnerability, from trackside incidents to data breaches, ensuring the team operates in a safe and secure environment. His dedication to detail and calm leadership are invaluable assets, earning him the trust of the entire team. He believes a proactive defense is the best defense and strives to anticipate problems before they arise.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blond",
+    "hairStyle": "Close-cropped, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Close-trimmed goatee",
+    "description": "A tall, powerfully built man with a stern but reassuring presence."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, well-worn multi-tool.",
+    "Insists on checking every lock and seal personally, regardless of who did it last.",
+    "Has an encyclopedic knowledge of security protocols and regulations, which he frequently quotes."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 31,
+  "gender": "male",
+  "contactType": "philanthropist",
+  "bio": "Li Wei is a young tech mogul who made his fortune in AI-powered logistics. Despite his relatively young age, he's known for his sharp wit, playful demeanor, and genuine gratitude for his success, which fuels his philanthropic endeavors. He approaches everything with a passionate intensity, whether it's investing in cutting-edge technology, pursuing his hobbies, or supporting charitable causes. Li Wei often supports STEM initiatives, environmental conservation, and, increasingly, innovative motorsport programs. He views motorsport as a unique intersection of engineering, human skill, and high-stakes competition.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled with a slight side part",
+    "eyeColor": "Dark brown",
+    "facialHair": "Clean shaven",
+    "description": "Li Wei has a lean build and an athletic posture. He favors tailored suits but often pairs them with stylish sneakers, reflecting his youthful energy."
+  },
+  "connectionToMotorsport": "Li Wei has recently started sponsoring a junior formula team, driven by his interest in the technological innovations within the sport and a desire to support young talent. He sees motorsport as a platform for technological advancement and human potential.",
+  "meetingContext": "The player might meet Li Wei at a motorsport charity gala, a tech conference where he's a keynote speaker, or through a mutual connection within the junior formula team he sponsors.",
+  "conversationTopics": [
+    "The future of AI and its impact on society",
+    "Vintage car restoration projects",
+    "The latest advancements in drone racing technology",
+    "His favorite hiking trails in the Himalayas",
+    "The challenges and rewards of philanthropic giving"
+  ],
+  "canHelp": [
+    "Introduce the player to key figures within the motorsport industry, including team owners and sponsors.",
+    "Provide financial backing for the player's racing career, through personal sponsorship or introductions to larger corporate sponsors.",
+    "Offer access to advanced technology and data analytics resources to improve the player's performance."
+  ],
+  "personality_summary": "A sarcastic but ultimately generous tech mogul with a passion for innovation and a desire to give back."
+}

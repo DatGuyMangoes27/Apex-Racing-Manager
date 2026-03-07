@@ -1,0 +1,22 @@
+{
+  "name": "Jan Veselý",
+  "nationality": "Czech",
+  "age": 49,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Jan Veselý's motorsport journey began unexpectedly during his engineering studies at the Czech Technical University in Prague. Initially focused on automotive design, he stumbled upon a student racing team that ignited his passion for the strategic side of racing. After graduating, he honed his skills with a smaller European racing outfit, quickly rising through the ranks to become their lead strategist. \n\nKnown for his meticulous preparation and adaptability under pressure, Jan's strength lies in his ability to analyze complex data and make split-second decisions that consistently put his team ahead. He's not afraid to challenge conventional wisdom and has a knack for identifying unconventional strategies that others overlook. His calm demeanor and clear communication style make him a valuable asset in high-stress environments. \n\nJan is particularly adept at race simulation and predictive modeling, allowing him to anticipate various scenarios and proactively adjust strategies to maximize performance. He is currently looking for a team where he can leverage his experience and contribute to achieving ambitious goals.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of average height with a focused gaze and a slight build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Drinks precisely three cups of black coffee throughout a race weekend.",
+    "Has a habit of tapping his pen rhythmically against the table when deep in thought."
+  ]
+}

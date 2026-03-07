@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0266",
+  "name": "Dragon Esports Arena",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "Hong Kong",
+  "description": "Where legends are forged in the digital arena.",
+  "story": "Dragon Esports Arena is Hong Kong's premier esports venue, hosting major tournaments and fostering the next generation of gaming talent. Recognizing the synergy between esports and motorsport, they seek to partner with a winning team to elevate their brand globally and tap into the passion of motorsport fans. They value dedication, precision, and the pursuit of excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0266.png"
+}

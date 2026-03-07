@@ -1,0 +1,31 @@
+{
+  "name": "Ingrid Larsson",
+  "nationality": "Swedish",
+  "age": 63,
+  "gender": "female",
+  "contactType": "artist",
+  "bio": "Ingrid Larsson is a self-taught sculptor known for her evocative, often abstract, pieces that explore themes of speed, motion, and the human form. While she started with more traditional materials, she gained recognition by incorporating salvaged metal, particularly parts from vintage cars and motorcycles, into her works. Her reckless approach to art, often pushing materials to their breaking point, belies a perfectionist's eye for detail, resulting in pieces that are both raw and refined.\n\nDespite her modest wealth, Ingrid's work has attracted a devoted following within the creative scene. She's humble about her success, always eager to nurture emerging artists and share her unique perspective. A racing driver might cross paths with Ingrid through charity auctions where her motorsport-themed sculptures are often featured, or perhaps through a commission to create a trophy or commemorative artwork for a racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, choppy bob",
+    "eyeColor": "Blue-grey",
+    "facialHair": null,
+    "description": "Ingrid has a kind face etched with the lines of a life spent creating. She carries herself with a quiet confidence and often wears paint-splattered overalls."
+  },
+  "connectionToMotorsport": "Ingrid incorporates salvaged automotive parts into her sculptures and has created trophies for smaller racing series, making her a respected figure within certain motorsport circles.",
+  "meetingContext": "The player might meet Ingrid at an art gallery showcasing her work, at a motorsport charity event where her art is being auctioned, or through a mutual contact in the design or automotive industry.",
+  "conversationTopics": [
+    "The beauty of salvaged materials",
+    "The thrill of speed and motion",
+    "The challenges of being a self-taught artist",
+    "Her passion for equestrianism",
+    "The importance of supporting young artists"
+  ],
+  "canHelp": [
+    "Connect the player with potential sponsors who appreciate art and motorsport",
+    "Create unique artwork or trophies for the player's team or events, enhancing their image",
+    "Offer insights on the aesthetics of speed and performance, potentially influencing car design or team branding"
+  ],
+  "personality_summary": "A humble yet passionate artist who finds beauty and inspiration in unexpected places."
+}

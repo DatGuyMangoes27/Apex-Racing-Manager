@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Meesuk",
+  "nationality": "Thai",
+  "age": 59,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Somchai's journey into motorsport began unexpectedly. A childhood fascination with tinkering led him to apprenticeships in local garages, where he quickly demonstrated an aptitude for diagnosing and resolving complex mechanical issues. He transitioned into racing through a chance encounter with a small, underfunded team, proving his worth by consistently improving performance with limited resources. \n\nSomchai's pragmatic approach is his defining characteristic. He favors practical solutions over theoretical ideals, always striving for reliability and efficiency. He possesses a deep understanding of vehicle dynamics and is adept at translating driver feedback into tangible improvements. While not always the most charismatic, his dedication to the team and unwavering commitment to performance make him a valuable asset.\n\nHis meticulous nature ensures nothing is overlooked. He believes in the power of incremental improvements, constantly seeking marginal gains that collectively make a significant difference on the track.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin mustache",
+    "description": "Somchai is a wiry man of average height with a focused gaze and perpetually grease-stained hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting every crucial component before a race."
+  ]
+}

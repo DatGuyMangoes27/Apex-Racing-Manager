@@ -1,0 +1,59 @@
+{
+  "id": "sponsor-0090",
+  "name": "Azzurro Corse",
+  "category": "apparel",
+  "tier": "elite",
+  "country": "Monaco",
+  "description": "Performance apparel engineered for speed.",
+  "story": "Azzurro Corse was founded in Monaco by former racing drivers seeking to bring cutting-edge material technology and design to motorsport apparel. We value performance, innovation, and a dedication to excellence. We seek partnerships that reflect these values and showcase our apparel in demanding, high-visibility environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Monaco",
+      "Italy",
+      "France"
+    ],
+    "minWins": 3,
+    "minPodiums": 8
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 12,
+    "requiredShoutouts": 8,
+    "requiredEvents": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0090.png"
+}

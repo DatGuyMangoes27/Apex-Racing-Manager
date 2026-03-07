@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Belgian",
+  "age": 61,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Jean-Luc Dubois is a name whispered with respect in certain circles of motorsport. Starting as a wide-eyed fan at Spa-Francorchamps, he built an empire representing a diverse portfolio of talent, from opera singers to Formula One drivers. His success stems from an uncanny ability to spot potential and nurture it, paired with a ruthless streak when negotiating contracts. \n\nDespite his age, Jean-Luc maintains a youthful energy, fueled by a diverse range of interests and a genuine love for life. He believes in holistic development, encouraging his clients to pursue passions outside their primary field. A racing driver might cross paths with Jean-Luc while seeking representation, or through shared social circles within the entertainment and high-net-worth community. He is always on the lookout for fresh talent with the 'it' factor.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Silver",
+    "hairStyle": "Neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Jean-Luc is a man who clearly takes care of himself. He possesses a lean build and carries himself with a confident, almost theatrical flair."
+  },
+  "connectionToMotorsport": "Jean-Luc has represented several successful Formula One and endurance racing drivers throughout his career. He is known for securing lucrative sponsorship deals and managing their public image.",
+  "meetingContext": "The player might meet Jean-Luc at a charity gala hosted by a luxury watch brand that sponsors a racing team, or through an introduction from another driver Jean-Luc represents.",
+  "conversationTopics": [
+    "The latest opera performance at La Monnaie",
+    "The merits of different Swiss watchmakers",
+    "His recent snowboarding trip in the Swiss Alps",
+    "The importance of mental fortitude in high-pressure situations",
+    "The up-and-coming talent in Formula 3"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals.",
+    "Provide access to influential figures in the motorsport world.",
+    "Offer guidance on public image and media relations."
+  ],
+  "personality_summary": "A playful yet calculating agent with a passion for talent and a penchant for the finer things in life."
+}

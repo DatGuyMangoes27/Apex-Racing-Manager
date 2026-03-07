@@ -1,0 +1,22 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 40,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Ivana's journey into motorsport began unexpectedly during her university years, initially sparked by a fascination with the complex algorithms that dictated race strategies. Graduating with a degree in Computer Science and a minor in Statistics, she secured a role at a smaller racing team, honing her skills in data analysis and predictive modeling. Her meticulous approach quickly earned her recognition, leading to a position at Racing Bulls. \n\nIvana excels at identifying subtle patterns in complex datasets, transforming raw numbers into actionable insights for the team. She's known for her relentless pursuit of improvement, pushing the boundaries of data-driven decision-making. Her ability to predict tire degradation based on telemetry data alone has saved the team valuable seconds on the track.\n\nWhat truly distinguishes Ivana is her innovative approach to data visualization. She has developed proprietary dashboards that allow engineers and strategists to quickly grasp critical information, fostering better communication and collaboration within the team. Her dedication to clarity and precision makes her an invaluable asset to Racing Bulls.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight, usually pulled back in a tight bun.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana is of average height with a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small, worn-out notebook filled with equations.",
+    "Insists on drinking herbal tea during races, claiming it sharpens her focus.",
+    "Has a habit of tapping her pen rhythmically when deep in thought, which can be distracting."
+  ]
+}

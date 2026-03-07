@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 55,
+  "gender": "male",
+  "role": "marketing_coordinator",
+  "bio": "Jean-Pierre joined Peugeot TotalEnergies after a long career in marketing, initially in the automotive industry. He transitioned to motorsport out of a personal passion, seeing it as a more dynamic and engaging environment to apply his skills. He is deeply committed to building strong brand awareness and fan engagement through innovative campaigns and strategic partnerships. \n\nHis approach emphasizes a deep understanding of the target audience and crafting messages that resonate with their values and interests. While not involved in the technical aspects of the team, he values the relationship between marketing and engineering to craft campaigns that reflect the team's commitment to technical excellence. Jean-Pierre distinguishes himself with his relentless pursuit of excellence and a keen eye for opportunities that can elevate the Peugeot brand in the competitive motorsport landscape.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height, Jean-Pierre has a slightly weathered face that speaks of years spent both indoors and out."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn copy of 'The Art of War' and occasionally quotes it during meetings.",
+    "Insists on having a specific type of French press coffee at exactly 10:00 AM every morning.",
+    "Keeps a meticulously organized spreadsheet of all marketing campaign metrics, updated daily."
+  ]
+}

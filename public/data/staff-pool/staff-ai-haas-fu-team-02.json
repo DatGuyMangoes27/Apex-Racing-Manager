@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 54,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Declan O'Malley's journey in motorsport began with a childhood fascination for engines and mechanics, fueled by his father's garage in rural County Cork. He earned a degree in mechanical engineering from University College Dublin, specializing in aerodynamics. His early career saw him work with several Formula 3 teams before making the leap to Formula 1 as a junior engineer with Jordan Grand Prix. He honed his skills over the years, steadily climbing the ranks at various teams, always demonstrating a knack for identifying and resolving complex technical issues. \n\nAs a technical director, Declan prioritizes a data-driven approach combined with fostering open communication within his team. He believes in empowering engineers to take ownership of their projects, creating a collaborative environment where innovative solutions can flourish. His dedication to precision and adaptability has earned him a reputation as a reliable and effective leader, qualities that are crucial in the fast-paced world of Formula 1.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey goatee",
+    "description": "A man of medium build, Declan has a kind face etched with the experience of years in the motorsport industry."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a cup of strong Irish tea precisely at 3 PM every day."
+  ]
+}

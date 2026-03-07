@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 53,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Alistair Finch is a seasoned IT professional with over 25 years of experience in managing complex systems. He began his career in telecommunications before transitioning to motorsport a decade ago, drawn by the fast-paced environment and the challenge of supporting a high-performance racing team. At Allied Racing, Alistair ensures the seamless operation of all IT infrastructure, from data acquisition systems on the track to the team's communication networks. His methodical approach and attention to detail are crucial for maintaining data integrity and preventing critical system failures. \n\nAlistair is known for his big-picture thinking, constantly seeking innovative solutions to improve the team's IT capabilities. He's always looking for ways to leverage technology to gain a competitive edge. He is a staunch advocate for robust cybersecurity measures and is committed to keeping Allied Racing's sensitive data safe and secure, believing that robust and reliable data systems are as important as a fast car.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed-back with a slight recession at the temples",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair is a man of average height with a slightly stocky build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Insists on using a mechanical keyboard with loud, clicky keys.",
+    "Has a habit of tapping his fingers on the desk when deep in thought."
+  ]
+}

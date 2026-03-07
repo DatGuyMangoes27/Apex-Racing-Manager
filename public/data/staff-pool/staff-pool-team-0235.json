@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Bjornstad",
+  "nationality": "Norwegian",
+  "age": 37,
+  "gender": "female",
+  "role": "strategist",
+  "bio": "Astrid's path into motorsport wasn't traditional. Initially drawn to applied physics, she found herself captivated by the complex interplay of engineering and real-time decision-making in Formula 1. After completing her master's degree, she worked as a data analyst for a smaller racing team, quickly proving her ability to identify crucial performance gains through meticulous data review and innovative strategy simulations.\n\nAstrid believes in a data-driven approach, meticulously analyzing every aspect of a race weekend to anticipate potential opportunities and mitigate risks. She is always looking for creative solutions and is not afraid to challenge conventional wisdom. Astrid is known for her ability to stay calm under pressure and make quick, informed decisions even in the most chaotic race scenarios. Her goal is to bring a fresh perspective to the team, pushing the boundaries of what's strategically possible.\n\nWhat sets Astrid apart is her dedication to continuous improvement. She doesn't just analyze past races; she builds predictive models based on real-world data, allowing her to develop proactive strategies that give her team a competitive edge. Furthermore, she is gifted at communicating complex strategies in a clear and concise manner, which has proven very helpful in time-sensitive situations.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, braided and pulled back into a practical bun",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a determined look with sharp, intelligent eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with racing strategy ideas.",
+    "Has a tendency to tap her pen rapidly when deep in thought.",
+    "Prefers to conduct strategy meetings standing up."
+  ]
+}

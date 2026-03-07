@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0199",
+  "name": "TechChassis Brasil",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Brazil",
+  "description": "Advanced chassis design and manufacturing.",
+  "story": "TechChassis Brasil is a leading Brazilian manufacturer of high-performance chassis components. Founded by former racing engineers, they bring cutting-edge technology to motorsport. They seek partnerships to showcase their innovation and elevate their brand recognition on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0199.png"
+}

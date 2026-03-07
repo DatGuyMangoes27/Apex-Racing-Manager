@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0038",
+  "name": "Al-Bayan Analytics",
+  "category": "tech",
+  "tier": "elite",
+  "country": "Saudi Arabia",
+  "description": "Data-driven insights for a competitive edge.",
+  "story": "Al-Bayan Analytics is a leading Saudi Arabian data analytics firm specializing in real-time performance optimization. Recognizing the parallels between motorsport and data analysis, they invest in racing to showcase their cutting-edge technology and attract top talent. They seek a partnership that demonstrates the power of data-driven decision-making in achieving peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Saudi Arabia"
+    ],
+    "minWins": 3,
+    "minPodiums": 7
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 8,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0038.png"
+}

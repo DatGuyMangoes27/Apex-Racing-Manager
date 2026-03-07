@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0194",
+  "name": "Gempak Gaming",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "Malaysia",
+  "description": "Malaysian esports platform and gaming hardware provider.",
+  "story": "Gempak Gaming aims to connect with the next generation of racers, seeing motorsport as a perfect intersection of technology and competition. They are eager to support up-and-coming talent and expand their brand recognition within the motorsport community. Gempak believes in nurturing local talent and celebrating Malaysian innovation on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15,
+    "nationalities": [
+      "Malaysia"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0194.png"
+}

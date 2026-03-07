@@ -1,0 +1,31 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 31,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Saoirse O'Malley is not your typical corporate lawyer. While she's built a formidable reputation in contract law and intellectual property, particularly within the sports and entertainment industries, her eccentric personality and sharp wit often catch clients off guard. Saoirse graduated top of her class from Trinity College Dublin and then went on to get a postgraduate degree in international sports law from a prestigious university in Switzerland. \n\nDespite her success, Saoirse remains grounded, actively pursuing her passions for sustainable living and outdoor adventures. Her connection to motorsport stems from representing several junior racing teams and individual drivers, advising them on sponsorship agreements, contract negotiations, and image rights. A racing driver seeking legal counsel, especially when navigating complex deals or protecting their brand, would undoubtedly find themselves across the table from Saoirse. She's known for her unconventional approach and unwavering dedication to her clients, making her a valuable, if somewhat unpredictable, ally.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Wavy, shoulder-length",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Saoirse has a scattering of freckles across her nose and a mischievous glint in her eyes. She typically dresses in sharp, modern business attire with a subtle, quirky twist."
+  },
+  "connectionToMotorsport": "Saoirse represents several junior racing teams and individual drivers, providing legal advice on sponsorships, contracts, and image rights. She understands the unique legal challenges faced by motorsport professionals.",
+  "meetingContext": "The player might meet Saoirse at a motorsport industry event, a networking function, or after being referred to her by another contact when needing legal representation.",
+  "conversationTopics": [
+    "The latest independent cinema releases",
+    "Sustainable farming practices in Ireland",
+    "Her disastrous attempt to build a yurt",
+    "The history of Irish rugby",
+    "The legal implications of esports"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship deals with major brands.",
+    "Protect the player's image rights and intellectual property.",
+    "Review and advise on complex racing contracts."
+  ],
+  "personality_summary": "An eccentric and charismatic lawyer with a mischievous streak and a relentless work ethic."
+}

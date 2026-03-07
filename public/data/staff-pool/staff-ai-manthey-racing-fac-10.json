@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 43,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Sophie's journey into motorsport began unexpectedly after she completed her apprenticeship in metalworking. A chance encounter with a local racing team needing urgent repairs on a damaged chassis sparked a passion she never knew she possessed. She quickly proved her skills with precision welding and problem-solving, securing a permanent role within their fabrication department. \n\nSophie is known for her adaptable approach, seamlessly transitioning between diverse projects, from crafting intricate suspension components to reinforcing roll cages. Her ability to remain calm under pressure makes her an invaluable asset during critical race preparations. While she is a team player, Sophie also values her independence and thrives when given the autonomy to tackle challenges her way. Her relentless pursuit of perfection and quiet determination set her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail during work, with a few stray strands framing her face.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Sophie is of average height with a wiry build, reflecting years spent working in demanding physical environments."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical sketches and ideas.",
+    "Has a habit of tapping her foot rhythmically when deep in concentration.",
+    "Insists on using a specific type of Belgian chocolate to clean her welding equipment – claims it leaves a better finish."
+  ]
+}

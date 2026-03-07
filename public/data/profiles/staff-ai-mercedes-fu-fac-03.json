@@ -1,0 +1,22 @@
+{
+  "name": "Luka Babić",
+  "nationality": "Croatian",
+  "age": 32,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Luka's journey into motorsport began in his grandfather's workshop, where he learned the intricacies of metalwork and engine repair. He quickly developed a knack for precision and problem-solving, skills that led him to pursue a degree in mechanical engineering. After graduating, Luka gained experience working for several small racing teams, honing his expertise in machining complex parts and diagnosing mechanical issues under pressure. \n\nHe is known for his meticulous attention to detail and his ability to adapt quickly to changing circumstances. At Mercedes-AMG, Luka is responsible for crafting and maintaining critical engine components, ensuring they meet the team's exacting standards. His innovative approach to problem-solving and his willingness to mentor junior machinists have made him a valuable asset to the team. Luka believes that every part, no matter how small, contributes to the overall performance of the car, and he approaches his work with a sense of unwavering commitment.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Luka is of average height with a sturdy build, reflecting his years of hands-on work."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting a task.",
+    "Has a collection of vintage engine blueprints hanging in his workspace.",
+    "Humming traditional Croatian folk songs while calibrating machinery."
+  ]
+}

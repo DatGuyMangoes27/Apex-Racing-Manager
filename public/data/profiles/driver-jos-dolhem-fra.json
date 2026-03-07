@@ -1,0 +1,27 @@
+{
+  "biography": "José Dolhem hails from the small town of Alès, nestled in the Cévennes mountains of France. His passion for speed ignited early, watching rally cars roar through the winding mountain roads. His father, a mechanic, nurtured this love, gifting him a kart at the age of 10. José quickly proved a natural, dominating local karting circuits. He progressed steadily through the junior formulae, catching the eye of Stevens Racing after a stunning victory at the Pau Grand Prix in Formula 3. Despite a few promising podiums, his career has been marked by flashes of brilliance rather than consistent dominance. He now faces a critical juncture, needing to translate potential into tangible results to secure his future in the sport.",
+  "drivingStyle": "Dolhem is known for his smooth, precise driving style. He prioritizes consistency and tire management over aggressive overtaking maneuvers. His approach to corners is calculated, focusing on maintaining momentum through the apex. While not the flashiest driver on the grid, Dolhem excels under pressure, rarely cracking in high-stakes situations. He's a master of defensive driving, making it notoriously difficult for rivals to pass him, especially on narrow circuits.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A long-standing rivalry from their Formula 3 days. Bellini, known for his aggressive style, frequently clashed with Dolhem on track, leading to several on-track incidents and heated exchanges off-track."
+    },
+    {
+      "driver": "Anya Petrova",
+      "reason": "Petrova, a rising star in the sport, challenged Dolhem for position in several races, resulting in some spectacular battles. They represent different generations of drivers, adding extra spice to their competition."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "Dubois, a veteran driver nearing retirement, has repeatedly criticized Dolhem's perceived lack of aggression. Their contrasting philosophies on racing have made them frequent adversaries in the media."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue wristband given to him by his grandmother before every race.",
+    "Listens to classical music, specifically Debussy, to calm his nerves before getting in the car.",
+    "Insists on personally polishing his helmet visor before each session, claiming it improves his visibility."
+  ],
+  "nickname": "The Cévennes Calm",
+  "famousQuote": "Pressure is just another corner. Take it slow, hit your apex, and accelerate out.",
+  "careerHighlight": "Winning the Pau Grand Prix in Formula 3 in 2017, a dominant performance that showcased his exceptional talent and earned him a drive with Stevens Racing.",
+  "careerLowPoint": "Crashing out of the Monaco Grand Prix in 2020 while running in a promising podium position due to a rare unforced error, costing him valuable championship points and denting his confidence."
+}

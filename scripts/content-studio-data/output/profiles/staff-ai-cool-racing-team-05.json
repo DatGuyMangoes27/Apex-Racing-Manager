@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Jovanović",
+  "nationality": "Serbian",
+  "age": 30,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Nikola's motorsport journey began with a childhood obsession with Formula 1, fueled by late-night races watched with his father. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing an internship with a small, independent racing team. There, he honed his skills in data analysis and race strategy, quickly demonstrating a knack for identifying critical moments and making calculated decisions under pressure.\n\nHis approach to strategy is rooted in a deep understanding of the technical aspects of racing, combined with an ability to anticipate the moves of rival teams. Nikola thrives in high-pressure environments, leveraging his calm demeanor and sharp analytical skills to guide his team to victory. His colleagues often remark on his innovative problem-solving and his commitment to continuous improvement, always seeking out new ways to optimize performance.\n\nNikola's distinctive edge lies in his ability to blend technical expertise with a keen understanding of driver psychology. He believes that effective communication and a strong rapport with the driver are crucial for translating data into actionable strategy, ensuring that the team is always one step ahead of the competition.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Nikola is of average height, with a focused and intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with race data and strategy notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to analyze race simulations while listening to classical music."
+  ]
+}

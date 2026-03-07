@@ -1,0 +1,27 @@
+{
+  "biography": "Zhou Nakamura's journey began not on a racetrack, but amidst the bustling marketplaces of Caracas, Venezuela. The son of a mechanic, Zhou spent his childhood immersed in the world of engines and speed. Instead of toys, he disassembled and reassembled carburetors. His break came unexpectedly at 14, when he substituted for an injured driver in a local karting event and secured a shocking victory. That day cemented his destiny. Lacking the deep pockets of many competitors, Zhou has relied on raw talent and a relentless work ethic, scraping together sponsorships from local businesses to climb the racing ladder. Now at 18, and racing independently, he's turning heads in the junior formulas with his calculated precision and unwavering focus, determined to prove that talent can triumph over financial backing.",
+  "drivingStyle": "Zhou's driving style is the antithesis of flamboyant. He is a calculating strategist, meticulously analyzing track conditions and competitor weaknesses. He favors a smooth, precise approach, prioritizing tire management and consistent lap times over outright aggression. While not afraid to engage in wheel-to-wheel combat, Zhou prefers to set up his overtakes with patient observation, pouncing only when the odds are overwhelmingly in his favor. He excels in wet conditions, where his measured inputs and superior car control give him a distinct advantage.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A clash of styles and egos. Bellini, a wealthy playboy with a reckless driving style, often dismisses Zhou's calculated approach as 'boring,' leading to several on-track altercations and off-track barbs."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A fierce but respectful rivalry born from several close finishes in the junior series. Both drivers are incredibly talented and determined, leading to intense battles for position."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka and Zhou were teammates briefly, but Tanaka was let go in favor of Zhou. Tanaka claims sabotoge by Zhou."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded Venezuelan flag wristband during races, a gift from his grandfather.",
+    "Studies the telemetry data of his competitors extensively, searching for any minuscule advantage.",
+    "Before each race, he hand-writes a list of key reference points on the track, even if he knows the circuit intimately."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about luck; it's about maximizing every opportunity and minimizing every risk.\"",
+  "careerHighlight": "Winning the Venezuelan National Karting Championship in 2021 against all odds, securing his first major sponsor and proving his potential to the world.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a Formula Regional race due to a mechanical failure, costing him a crucial championship point."
+}

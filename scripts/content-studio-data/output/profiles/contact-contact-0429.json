@@ -1,0 +1,31 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 35,
+  "gender": "male",
+  "contactType": "architect",
+  "bio": "Mateo is a rising star in Buenos Aires' architectural scene, known for his innovative and often controversial designs that push the boundaries of sustainable construction. He frequently finds himself at odds with traditionalists, leading to spirited debates and, occasionally, professional roadblocks. Beneath his argumentative exterior lies a deep-seated desire to make a positive impact, though his self-centered tendencies often overshadow his good intentions. Mateo's connection to motorsport is tangential; he designs luxury villas and high-end garages for wealthy clients, some of whom are involved in racing. A racing driver might seek him out to design a new garage, a track-side villa, or even an avant-garde team headquarters.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, slicked-back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed beard",
+    "description": "Mateo is of average height with a lean build, likely from his cycling and marathon running hobbies. His style leans towards modern and minimalist, often sporting designer glasses and tailored clothing."
+  },
+  "connectionToMotorsport": "Mateo's architectural firm occasionally designs high-end garages and track-side villas for wealthy individuals involved in motorsport. This puts him in contact with team owners, drivers, and sponsors.",
+  "meetingContext": "The player could meet Mateo at a high-society event, a charity gala, or through a mutual connection involved in real estate development near a racetrack.",
+  "conversationTopics": [
+    "Sustainable architecture",
+    "The latest trends in design",
+    "His marathon training",
+    "The flaws in the city's urban planning",
+    "Craft beer and wine pairings"
+  ],
+  "canHelp": [
+    "Design a state-of-the-art garage or personal racing facility",
+    "Introduce the player to wealthy potential sponsors through his network",
+    "Offer advice on investments in real estate or sustainable technologies"
+  ],
+  "personality_summary": "An argumentative yet ambitious architect with a passion for sustainable design and a penchant for the finer things in life."
+}

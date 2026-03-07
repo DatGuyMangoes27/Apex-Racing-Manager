@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Marco Bellini's passion for motorsport ignited during his childhood in Modena, the heart of Italian racing. Inspired by the roar of engines from the nearby Ferrari factory, he pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. After graduating, Marco honed his skills at smaller racing teams, gradually working his way up the ranks. He's known for his meticulous approach to problem-solving and his ability to extract maximum performance from the car through innovative yet practical solutions.\n\nHis calm demeanor under pressure has earned him the respect of his colleagues. Marco believes in fostering a collaborative environment where every team member feels empowered to contribute their best. He is dedicated to nurturing young talent and passing on his extensive knowledge to the next generation of engineers. Marco's focus remains on long-term reliability and performance gains, ensuring a solid foundation for success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A man of medium height with a slightly weathered face, suggesting years spent trackside."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically against his teeth when deep in thought.",
+    "Insists on having a strong espresso before every race."
+  ]
+}

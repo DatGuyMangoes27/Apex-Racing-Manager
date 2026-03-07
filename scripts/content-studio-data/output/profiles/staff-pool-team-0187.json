@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 39,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Erik Karlsson's motorsport journey began with a fascination for vehicle dynamics, stemming from his early involvement in rallycross as a teenager. He pursued a degree in mechanical engineering, specializing in vehicle design, before transitioning into a career focused on optimizing racing performance. Erik's meticulous approach and relentless pursuit of improvement quickly established him as a sought-after talent within several smaller racing teams. \n\nHis strategic vision extends beyond immediate race results; he prioritizes long-term team development and fostering a culture of continuous learning. Erik believes in empowering his team members, encouraging them to challenge conventional thinking and explore innovative solutions. He is known for his data-driven approach, using advanced analytics to identify areas for improvement in both vehicle setup and driver performance. His reputation for identifying and nurturing young talent is highly valued within the motorsport community. \n\nErik is a demanding leader, expecting the highest standards of performance from himself and his team. He is not afraid to make difficult decisions, always prioritizing the overall success of the program. This makes him a controversial figure sometimes, but his results speak for themselves.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Erik is of average height, with a lean build and intense blue eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a habit of tapping his pen rhythmically on the table when deep in thought.",
+    "Insists on having a perfectly aligned workstation, down to the millimeter."
+  ]
+}

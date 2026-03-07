@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0150",
+  "name": "Kibou Financial",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Japan",
+  "description": "Securing your future, driving your ambitions.",
+  "story": "Kibou Financial believes in investing in the future, and motorsports provides a unique opportunity to reach a passionate, global audience. As a growing financial services company in Japan, Kibou seeks to build brand awareness and associate its name with success and high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0150.png"
+}

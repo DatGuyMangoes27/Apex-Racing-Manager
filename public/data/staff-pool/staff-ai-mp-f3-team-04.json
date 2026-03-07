@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Belgian",
+  "age": 40,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Isabelle's passion for motorsport ignited during her childhood, spent watching Formula 1 races with her father. She pursued a degree in Mechanical Engineering at the University of Leuven, focusing on aerodynamics and vehicle dynamics. After graduating, she began her career at a small engineering firm specializing in race car components, where she honed her technical skills. \n\nDriven by a desire to be closer to the action, Isabelle joined MP Motorsport five years ago. Her approach to race engineering is meticulously data-driven, but also relies on a strong understanding of the driver's feedback. She's known for her innovative problem-solving and ability to extract the maximum performance from the car. Isabelle is a strong believer in fostering collaboration within the team, and her ability to mentor junior engineers has made her a valuable asset.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail during races",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is of average height with a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on listening to classical music while reviewing telemetry data."
+  ]
+}

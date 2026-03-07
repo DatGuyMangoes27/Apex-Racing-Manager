@@ -1,0 +1,22 @@
+{
+  "name": "Magnus Vestergaard",
+  "nationality": "Danish",
+  "age": 32,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Magnus's fascination with motorsport began in his youth, watching his father tinker with rally cars. He pursued a degree in mechanical engineering, specializing in aerodynamics, from the Technical University of Denmark. His early career involved a stint with a small Formula Ford team, where he quickly gained a reputation for meticulousness and innovative problem-solving. From there, he progressed to Formula Renault, contributing significantly to several race-winning campaigns. \n\nHe joined ART Grand Prix Academy five years ago, initially as a senior engineer, rapidly ascending to the role of Technical Director. Magnus is known for his data-driven approach and his ability to translate complex engineering concepts into actionable strategies for the track. He is a demanding leader, pushing his team to achieve perfection, but also fosters a culture of continuous improvement and collaborative problem-solving. His focus on marginal gains and his commitment to exploring cutting-edge technologies set him apart.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "blond",
+    "hairStyle": "short, neatly parted to the side",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A tall, lean man with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a perfectly aligned monitor setup in his office."
+  ]
+}

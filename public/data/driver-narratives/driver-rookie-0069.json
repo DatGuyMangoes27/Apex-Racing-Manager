@@ -1,0 +1,27 @@
+{
+  "biography": "Lucas Wang, the 'Celtic Calculator', hails from the quiet coastal town of Dingle, Ireland, a far cry from the roaring circuits he now frequents. His motorsport journey began unusually, not with karting prodigy status, but through obsessively playing racing simulators after a leg injury sidelined him from Gaelic football. He honed his race craft virtually, analyzing telemetry and mastering track layouts. One day, his online skills caught the eye of a local mechanic who sponsored him for a single-seater series. His breakthrough came during a rain-soaked race at Mondello Park, where, despite starting last, he carved his way through the field with unnerving precision, finishing second. Now, at 19, he's navigating the treacherous waters of Formula 4, meticulously building his reputation as a driver who leaves nothing to chance.",
+  "drivingStyle": "Wang's driving style is a study in controlled aggression. He doesn't possess the raw, flamboyant speed of some of his rivals, but he compensates with impeccable car control and an almost preternatural ability to anticipate changes in track conditions. He's known for his late-braking maneuvers and his uncanny ability to nurse his tires through long stints, often gaining positions in the closing laps when others are struggling for grip. He thrives under pressure, exhibiting a calmness that belies his age, meticulously calculating his moves with the cool detachment of a chess grandmaster.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "Dubois, known for her aggressive overtakes, clashed with Wang after a controversial incident at Brands Hatch where she forced him wide, costing him valuable championship points. The feud is built on contrasting driving styles and accusations of unsportsmanlike conduct."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a media darling with a flashy lifestyle, represents everything Wang isn't. Their rivalry is more of a media construct, fueled by their differing personalities and the fact that they are often battling for the same podium positions."
+    },
+    {
+      "driver": "Ricardo Alvarez",
+      "reason": "Alvarez and Wang were teammates last year and their relationship soured after Alvarez accused Wang of stealing his data and using it to gain an unfair advantage during qualifying."
+    }
+  ],
+  "quirks": [
+    "Always wears the same green wristband his grandmother gave him before every race.",
+    "Studies topographical maps of the circuit the night before a race.",
+    "Insists on eating exactly three bananas an hour before getting into the car."
+  ],
+  "nickname": "Celtic Calculator",
+  "famousQuote": "Racing isn't about luck; it's about probabilities. And I intend to skew those probabilities in my favor.",
+  "careerHighlight": "Securing second place in the rain-soaked Mondello Park race, his first major podium finish, after starting last, demonstrating his exceptional wet-weather driving skills and strategic thinking.",
+  "careerLowPoint": "Spinning out on the last lap of the Hockenheim race while battling for the lead, costing him his first potential victory and a significant blow to his championship hopes."
+}

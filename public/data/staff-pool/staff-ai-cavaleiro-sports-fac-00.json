@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 31,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, watching Formula 1 races with his grandfather in Santiago. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he gained experience at a local racing team, honing his skills in data analysis and simulator development.\n\nRicardo's approach to simulator engineering is meticulous and data-driven. He believes in creating a simulator environment that accurately reflects the real-world conditions, enabling drivers to push their limits and refine their techniques. He is known for his ability to identify subtle discrepancies between the simulator and track data, contributing to improved car setups. \n\nWhat distinguishes Ricardo is his unwavering commitment to accuracy and his talent for translating complex technical data into actionable insights for the drivers. He thrives in high-pressure situations and is always seeking new ways to enhance the simulator's realism.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed beard",
+    "description": "Ricardo is of average height with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a mate (tea) brewing at his desk.",
+    "Obsessively cleans his simulator rig before and after each session.",
+    "Mumbles technical jargon under his breath when deep in thought."
+  ]
+}

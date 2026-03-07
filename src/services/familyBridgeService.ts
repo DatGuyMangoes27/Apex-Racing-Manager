@@ -18,10 +18,23 @@ import type {
   PartnerOrigin, 
   PartnerCareer,
   PartnerDesires,
-  _MoodFactor,
-  _FamilyTree
+  MoodFactor,
+  FamilyTree
 } from '@/data/family-config'
 import type { Country } from '@/data/personal-finance-config'
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, value))
+}
+
+/**
+ * Update partner relationship meters and sync back to contact
+ */
+export function updatePartnerRelationship(
+  partner: Partner,
+  contact: ContactInfo,
+  changes: { happiness?: number; love?: number; trust?: number; compatibility?: number }
+): { partner: Partner; contact: ContactInfo } {
   const newPartner: Partner = {
     ...partner,
     happiness: clamp(partner.happiness + (changes.happiness || 0), 0, 100),
@@ -39,10 +52,6 @@ import type { Country } from '@/data/personal-finance-config'
   }
   
   return { partner: newPartner, contact: newContact }
-}
-
-function clamp(value: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, value))
 }
 
 // ============================================
@@ -118,6 +127,36 @@ export function isReadyToBirth(pregnancy: PregnancyState): boolean {
 // ============================================
 
 /**
+ * Check if partner can have children
+ */
+export function canHaveChild(
+  partner: Partner,
+  existingChildren: Child[],
+  pregnancy?: PregnancyState
+): {
+  canHaveChild: boolean
+  reason?: string
+} {
+  if (partner.relationshipStatus !== 'married') {
+    return { canHaveChild: false, reason: 'Must be married to have children' }
+  }
+  
+  if (pregnancy?.isPregnant) {
+    return { canHaveChild: false, reason: 'Already expecting a child' }
+  }
+  
+  if (existingChildren.length >= 6) {
+    return { canHaveChild: false, reason: 'Maximum number of children reached' }
+  }
+  
+  if (partner.age > 45) {
+    return { canHaveChild: false, reason: 'Partner age makes having children unlikely' }
+  }
+  
+  return { canHaveChild: true }
+}
+
+/**
  * Check if a contact can be promoted to partner
  */
 export function canPromoteToPartner(contact: ContactInfo): { 
@@ -165,34 +204,24 @@ export function canProposeToPartner(partner: Partner): {
   return { canPropose: true }
 }
 
+// ============================================
+// METER SYNC
+// ============================================
+
 /**
- * Check if partner can have children
+ * Sync partner relationship meters back to the contact object
  */
-export function canHaveChild(
+export function syncPartnerMetersToContact(
   partner: Partner,
-  existingChildren: Child[],
-  pregnancy?: PregnancyState
-): {
-  canHaveChild: boolean
-  reason?: string
-} {
-  if (partner.relationshipStatus !== 'married') {
-    return { canHaveChild: false, reason: 'Must be married to have children' }
+  contact: ContactInfo
+): ContactInfo {
+  return {
+    ...contact,
+    affectionMeter: partner.happiness,
+    romanceMeter: partner.loveLevel,
+    trustMeter: partner.trustLevel,
+    relationshipLevel: partner.compatibilityScore
   }
-  
-  if (pregnancy?.isPregnant) {
-    return { canHaveChild: false, reason: 'Already expecting a child' }
-  }
-  
-  if (existingChildren.length >= 6) {
-    return { canHaveChild: false, reason: 'Maximum number of children reached' }
-  }
-  
-  if (partner.age > 45) {
-    return { canHaveChild: false, reason: 'Partner age makes having children unlikely' }
-  }
-  
-  return { canHaveChild: true }
 }
 
 // ============================================

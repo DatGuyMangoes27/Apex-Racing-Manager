@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 22,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Mateo's passion for motorsport ignited at a young age, fueled by countless hours spent watching Formula 1 races with his grandfather. He earned a degree in Mechanical Engineering from the University of Buenos Aires, specializing in vehicle dynamics. Eager to translate his theoretical knowledge into practical experience, Mateo joined Peugeot TotalEnergies as a junior data analyst, quickly impressing his superiors with his sharp analytical skills and dedication. \n\nNow as Test Driver Coordinator, Mateo meticulously plans and oversees all testing activities, ensuring that every detail is accounted for, from tire pressures to aerodynamic configurations. He is known for his innovative problem-solving and his ability to extract maximum value from limited testing resources. Mateo's visionary approach involves leveraging advanced data analysis techniques to optimize testing schedules and identify critical performance bottlenecks.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "He's of average height with a lean build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas, even during lunch.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using metric measurements for everything, much to the amusement of some of the British engineers."
+  ]
+}

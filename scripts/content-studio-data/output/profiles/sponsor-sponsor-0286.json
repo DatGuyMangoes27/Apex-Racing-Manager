@@ -1,0 +1,43 @@
+{
+  "id": "sponsor-0286",
+  "name": "TorqueTech Composites",
+  "category": "equipment",
+  "tier": "entry",
+  "country": "UK",
+  "description": "Advanced composite solutions for motorsport.",
+  "story": "TorqueTech Composites is a leading UK manufacturer of carbon fiber components. Founded by a team of motorsport engineers, they are committed to pushing the boundaries of performance through lightweight and durable materials. TorqueTech seeks partnerships with teams that share their dedication to innovation and achieving peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0286.png"
+}

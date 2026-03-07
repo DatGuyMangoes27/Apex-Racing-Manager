@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 31,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mateo’s fascination with motorsport began as a child, watching Formula 1 races with his grandfather. He was captivated by the engineering and strategy, leading him to pursue a degree in statistics. After graduating, Mateo initially worked for a logistics company, but he yearned to combine his analytical skills with his passion for racing. He eventually landed an entry-level data analyst role with a small racing team, where he quickly proved his worth by identifying performance bottlenecks through meticulous data analysis.\n\nNow a free agent, Mateo is eager to contribute his expertise to a team with ambitious goals. He approaches data analysis with a relentless focus on finding actionable insights. He’s particularly skilled at identifying subtle trends and patterns that others often miss, allowing teams to make data-driven decisions and gain a competitive edge. Mateo is driven by the desire to continuously improve and push the boundaries of what's possible through data-driven strategies. What sets him apart is his ability to translate complex data into easily understandable information for engineers and drivers alike.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "A lean man of average height with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down data insights.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Insists on listening to tango music while processing large datasets."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0021",
+  "name": "Bohemia Rubber",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Czech Republic",
+  "description": "Precision-engineered performance tires for ultimate control.",
+  "story": "Bohemia Rubber has been producing high-performance rubber products for over 50 years. They entered motorsports to showcase their innovative tire technology in the most demanding conditions. They seek a partnership that can deliver consistent results and provide valuable data for future product development.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0021.png"
+}

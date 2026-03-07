@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 34,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ivan Horvat's passion for motorsport ignited during his childhood, spent watching rally races in the Croatian countryside. He pursued a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, Ivan joined a small racing team, quickly proving his aptitude for problem-solving and his meticulous approach to vehicle setup. He spent several years honing his skills before securing a position at Herberth Motorsport.\n\nAs Technical Director, Ivan focuses on optimizing vehicle performance through data analysis and innovative engineering solutions. He demands precision and collaboration from his team, believing that a unified approach is essential to success. His relentless pursuit of improvement and his ability to see the broader implications of technical adjustments make him a valuable asset to the team. He's known for his detailed pre-race briefings and his ability to quickly diagnose issues during a race.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ivan is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on having the garage floor perfectly clean before each race."
+  ]
+}

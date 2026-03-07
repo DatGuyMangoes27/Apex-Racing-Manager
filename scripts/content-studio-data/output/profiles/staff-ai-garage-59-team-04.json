@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 44,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey began in Lima, tinkering with engines in his uncle's auto repair shop. He quickly developed a knack for diagnostics and optimization, skills he honed further during his mechanical engineering studies. A fascination with motorsport led him to Europe, where he worked his way up the ranks, from junior data analyst to race engineer for various GT teams. Ricardo's strength lies in his ability to extract the maximum performance from a car, using data-driven insights and a keen understanding of vehicle dynamics. He is known for his creative solutions and unwavering commitment to pushing the boundaries of what's possible.\n\nWhile Ricardo thrives under pressure and has proven his worth in multiple racing series, his dedication to innovation sometimes leads to friction with team members. Ricardo believes in calculated risks and unconventional approaches, which doesn't always align with the more established approaches. His goal is not just to make the car faster but to redefine the way the team approaches each race weekend.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is a man of medium build, with a focused gaze and the weathered hands of someone who has spent years working with machinery."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Has a habit of muttering technical jargon to himself while analyzing data.",
+    "Insists on calibrating the tire pressure gauge himself before each session."
+  ]
+}

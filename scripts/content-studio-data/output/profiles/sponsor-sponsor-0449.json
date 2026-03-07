@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0449",
+  "name": "KreditKraft",
+  "category": "financial",
+  "tier": "entry",
+  "country": "Germany",
+  "description": "Empowering your financial future.",
+  "story": "KreditKraft is a regional German credit union focused on supporting local communities. Recognizing the widespread passion for motorsport in Germany, they see sponsoring racing teams as a way to connect with their customer base and promote financial literacy. They are looking for a team that reflects their values of reliability and community engagement.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7500,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0449.png"
+}

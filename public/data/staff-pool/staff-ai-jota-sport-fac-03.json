@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Llewellyn",
+  "nationality": "Welsh",
+  "age": 26,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Rhys's fascination with motorsport ignited during his childhood, spent tinkering with his grandfather's vintage tractor in rural Wales. This hands-on experience led him to pursue a vocational degree in mechanical engineering, where he excelled in precision machining. He joined JOTA Sport after impressing them with his meticulous approach during a university project focused on optimizing suspension components. \n\nRhys is known for his pragmatic problem-solving abilities and unwavering commitment to quality. He thrives in high-pressure environments, meticulously analyzing every component and process to ensure optimal performance and reliability. He's not one for grand pronouncements, preferring to let his craftsmanship speak for itself. He aims to refine his technical skillset and contribute to the team's success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly cropped",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Rhys is of average height with a lean build and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting a task.",
+    "Insists on using imperial measurements alongside metric, much to the annoyance of his colleagues.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy he is."
+  ]
+}

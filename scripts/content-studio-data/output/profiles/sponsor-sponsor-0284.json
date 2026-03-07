@@ -1,0 +1,58 @@
+{
+  "id": "sponsor-0284",
+  "name": "Riviera Motors",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "Monaco",
+  "description": "Experience the pinnacle of automotive performance and luxury.",
+  "story": "Riviera Motors, based in Monaco, has a long history of supporting motorsport as a proving ground for their high-performance vehicles. They believe that success on the track translates to engineering excellence and brand prestige. They seek a partnership that showcases their commitment to innovation and delivers consistent results.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Monaco",
+      "France",
+      "Italy"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0284.png"
+}

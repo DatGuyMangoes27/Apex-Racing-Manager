@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react'
+import { ReactNode, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import clsx from 'clsx'
@@ -22,6 +22,10 @@ const sizeVariants = {
   full: 'max-w-[90vw]'
 }
 
+// Tween transition for predictable exit timing (spring can overshoot or stall)
+const backdropTransition = { duration: 0.2, ease: 'easeOut' }
+const contentTransition = { type: 'spring' as const, damping: 25, stiffness: 300 }
+
 export function Modal({ 
   isOpen, 
   onClose, 
@@ -31,61 +35,85 @@ export function Modal({
   size = 'md',
   showCloseButton = true
 }: ModalProps) {
+  const backdropRef = useRef<HTMLDivElement>(null)
+  const safetyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Safety net: if AnimatePresence fails to unmount, force-hide the backdrop
+  useEffect(() => {
+    if (!isOpen) {
+      safetyTimerRef.current = setTimeout(() => {
+        if (backdropRef.current && backdropRef.current.isConnected) {
+          // Element is still in DOM after exit should have completed — force hide it
+          backdropRef.current.style.display = 'none'
+          backdropRef.current.style.pointerEvents = 'none'
+        }
+      }, 1000)
+    }
+    return () => {
+      if (safetyTimerRef.current) clearTimeout(safetyTimerRef.current)
+    }
+  }, [isOpen])
+
+  const handleBackdropClick = useCallback(() => {
+    onClose()
+  }, [onClose])
+
+  const handleCloseButtonClick = useCallback(() => {
+    onClose()
+  }, [onClose])
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <Fragment>
-          {/* Backdrop */}
+        <motion.div
+          ref={backdropRef}
+          key="modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, pointerEvents: 'auto' as const }}
+          exit={{ opacity: 0, pointerEvents: 'none' as const }}
+          transition={backdropTransition}
+          onClick={handleBackdropClick}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-          />
-          
-          {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              className={clsx(
-                'w-full bg-surface border border-surface-border rounded-2xl shadow-2xl overflow-hidden pointer-events-auto',
-                sizeVariants[size]
-              )}
-            >
-              {/* Header */}
-              {(title || showCloseButton) && (
-                <div className="flex items-start justify-between p-6 border-b border-surface-border">
-                  <div>
-                    {title && (
-                      <h2 className="font-display font-bold text-xl tracking-wide">{title}</h2>
-                    )}
-                    {subtitle && (
-                      <p className="text-sm text-text-muted mt-1">{subtitle}</p>
-                    )}
-                  </div>
-                  {showCloseButton && (
-                    <button
-                      onClick={onClose}
-                      className="p-2 rounded-lg text-text-muted hover:text-white hover:bg-surface-secondary transition-colors"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={contentTransition}
+            onClick={(e) => e.stopPropagation()}
+            className={clsx(
+              'w-full bg-surface border border-surface-border rounded-2xl shadow-2xl overflow-hidden',
+              sizeVariants[size]
+            )}
+          >
+            {/* Header */}
+            {(title || showCloseButton) && (
+              <div className="flex items-start justify-between p-6 border-b border-surface-border">
+                <div>
+                  {title && (
+                    <h2 className="font-display font-bold text-xl tracking-wide">{title}</h2>
+                  )}
+                  {subtitle && (
+                    <p className="text-sm text-text-muted mt-1">{subtitle}</p>
                   )}
                 </div>
-              )}
-              
-              {/* Content */}
-              <div className="p-6 max-h-[70vh] overflow-y-auto">
-                {children}
+                {showCloseButton && (
+                  <button
+                    onClick={handleCloseButtonClick}
+                    className="p-2 rounded-lg text-text-muted hover:text-white hover:bg-surface-secondary transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                )}
               </div>
-            </motion.div>
-          </div>
-        </Fragment>
+            )}
+            
+            {/* Content */}
+            <div className="p-6 max-h-[70vh] overflow-y-auto">
+              {children}
+            </div>
+          </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
   )

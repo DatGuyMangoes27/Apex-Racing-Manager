@@ -1,0 +1,22 @@
+{
+  "name": "Catalina Rossi",
+  "nationality": "American",
+  "age": 38,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Catalina's passion for motorsport ignited early, fueled by a childhood spent tinkering with engines alongside her father, a vintage car restorer. She earned her degree in Mechanical Engineering from MIT, specializing in simulation and modeling. After graduating, Catalina cut her teeth at a smaller racing outfit, where she honed her skills in data analysis and driver-in-the-loop simulation. She joined Sprint V8 Team three years ago, drawn to their commitment to innovation and pushing the boundaries of simulator technology.\n\nCatalina's approach to simulator engineering is rigorous and data-driven. She believes in building simulations that are not only realistic but also provide actionable insights for drivers and engineers alike. She is known for her meticulous attention to detail, her ability to identify subtle performance gains, and her unwavering commitment to accuracy. While not always the most sociable person, her contributions speak for themselves.\n\nWhat sets Catalina apart is her ability to translate complex technical data into clear, concise feedback for drivers. She has a knack for identifying areas where the simulator diverges from reality and for developing solutions to bridge the gap. She is fiercely independent and thrives in an environment where she is given the freedom to explore new ideas and push the limits of what's possible.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Catalina is of average height with a lean, athletic build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and equations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on calibrating the simulator herself before any driver session."
+  ]
+}

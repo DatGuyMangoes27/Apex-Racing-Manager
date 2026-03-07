@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 53,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. A career in electrical engineering led him to a local racing team needing someone to optimize their data acquisition systems. His knack for problem-solving and improving performance quickly transitioned him into simulator work. He thrives on creating realistic and challenging simulation environments that allow drivers to push their limits safely. \n\nRicardo's methodical approach is his trademark. He meticulously analyzes telemetry data and driver feedback to refine the simulator's algorithms. His ability to identify subtle discrepancies between the virtual and real world has earned him a reputation for accuracy. He's not afraid to challenge conventional wisdom and is always looking for innovative ways to improve the simulator's fidelity, making him a valuable asset to the Caterham Academy.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "salt and pepper",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a stocky man with a serious demeanor and a permanent air of concentration."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously recording simulator data.",
+    "Has a peculiar habit of adjusting his glasses even when they are perfectly in place.",
+    "Insists on playing classical music during simulator calibration sessions."
+  ]
+}

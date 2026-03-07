@@ -1,0 +1,31 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 40,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Kenji Tanaka is a self-made billionaire, having revolutionized the consumer electronics market with his innovative designs and aggressive marketing strategies. He's known for his eccentric personality, often mixing serious business discussions with playful banter and unexpected challenges. Despite his old-fashioned business values, he embraces modern art and pursues unusual hobbies with vigor, like his newfound passion for contemporary dance. A racing driver might cross paths with Kenji through sponsorship opportunities, as he is always looking for new and exciting avenues to promote his brand, or at exclusive motorsport events where high-net-worth individuals mingle. He's a shrewd negotiator but values loyalty and isn't afraid to take a chance on someone he believes in.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Neatly combed, slightly receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Kenji is of average height with a lean build, often seen in impeccably tailored suits that hint at his wealth. His sharp gaze and confident posture exude an aura of power."
+  },
+  "connectionToMotorsport": "Kenji's company, Tanaka Electronics, sponsors a Formula 2 team, and he occasionally attends races as a VIP guest. He sees motorsport as a platform to showcase cutting-edge technology and connect with a global audience.",
+  "meetingContext": "The player could meet Kenji at a Formula 2 race in Japan, either through an introduction from their team manager or at a corporate hospitality event.",
+  "conversationTopics": [
+    "The latest advancements in consumer electronics",
+    "His travels to exotic destinations",
+    "The philosophical implications of contemporary dance",
+    "His company's vision for the future",
+    "The beauty of the night sky through astronomy"
+  ],
+  "canHelp": [
+    "Provide a lucrative sponsorship deal for the player's racing team.",
+    "Offer valuable business advice and mentorship.",
+    "Introduce the player to other influential figures in the business world."
+  ],
+  "personality_summary": "An eccentric and driven billionaire with a soft spot for underdogs and a passion for innovation."
+}

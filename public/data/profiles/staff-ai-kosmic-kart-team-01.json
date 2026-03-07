@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 53,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jean-Pierre's journey began in the shadow of Spa-Francorchamps, where his father worked as a mechanic. The roar of engines became his lullaby, and dismantling lawnmowers his childhood pastime. He earned a degree in mechanical engineering from the University of Liège, specializing in engine dynamics. After graduating, he cut his teeth at a small Formula Ford team before moving into karting.\n\nHe's known for his meticulous approach to data analysis and his ability to quickly diagnose and resolve complex mechanical issues. Jean-Pierre is a firm believer in iterative improvements, constantly seeking marginal gains through rigorous testing and refinement. He joined Kosmic Kart five years ago, drawn by their commitment to innovation and their competitive spirit. His relentless pursuit of performance and his experience make him an invaluable asset to the team.\n\nJean-Pierre's approach to engineering is marked by a blend of old-school craftsmanship and cutting-edge technology. His understanding of the fundamentals, combined with his willingness to embrace new ideas, allows him to bridge the gap between theory and practice, ensuring that Kosmic Kart remains at the forefront of karting innovation.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "thinning, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A tall, slender man with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn copy of 'Engineering Formulas' in his briefcase.",
+    "Has a habit of muttering calculations under his breath.",
+    "Insists on using a slide rule alongside modern software for cross-referencing."
+  ]
+}

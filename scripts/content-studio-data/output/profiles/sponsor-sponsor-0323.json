@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0323",
+  "name": "Fortuna Global Investments",
+  "category": "financial",
+  "tier": "high",
+  "country": "Portugal",
+  "description": "Securing your future, one investment at a time.",
+  "story": "Fortuna Global Investments has a long history of supporting Portuguese athletes and ventures that demonstrate excellence and strategic thinking. Motorsport embodies these qualities perfectly. We seek to partner with teams that exhibit both on-track performance and a commitment to financial stability and responsible brand management.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 55,
+    "nationalities": [
+      "Portugal"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0323.png"
+}

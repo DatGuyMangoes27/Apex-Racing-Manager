@@ -1,0 +1,31 @@
+{
+  "name": "Chimamanda Okoro",
+  "nationality": "Nigerian",
+  "age": 48,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Chimamanda Okoro is a seasoned agent known for her old-school approach and keen eye for talent, particularly in niche areas. Though she primarily represents actors and musicians, her late husband was a passionate Formula 1 engineer, fostering a deep respect for the dedication and skill required in motorsport. Chimamanda's cynical yet nurturing personality makes her a formidable negotiator, always prioritizing her clients' long-term well-being over short-term gains.\n\nHer nostalgic view of the entertainment industry, coupled with her love for intellectual pursuits like philosophy and astronomy, makes her a unique figure in the fast-paced world of celebrity management. A racing driver might cross paths with Chimamanda through endorsement deals, media appearances, or perhaps even a connection to her late husband's network in the motorsport engineering world. She is hesitant to take on motorsport clients, preferring to focus on entertainment, but her genuine interest in the sport and her deep industry connections could be invaluable to the right driver.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Braided and styled into an elegant updo",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Chimamanda carries herself with grace and confidence. Her stylish attire reflects her wealth and sophistication."
+  },
+  "connectionToMotorsport": "Chimamanda's late husband was a Formula 1 engineer. This connection gives her an insider's perspective on the racing world, though she mainly operates in the entertainment sector.",
+  "meetingContext": "The player might meet Chimamanda at a charity gala related to Formula 1 or through a mutual connection in the entertainment industry who believes she could help with endorsement deals.",
+  "conversationTopics": [
+    "The golden age of Formula 1",
+    "The intersection of art and science",
+    "Ethical considerations in celebrity endorsements",
+    "The philosophy of existentialism",
+    "The latest discoveries in astronomy"
+  ],
+  "canHelp": [
+    "Securing lucrative endorsement deals with luxury brands",
+    "Negotiating media appearances and building a strong public image",
+    "Providing valuable connections within the entertainment industry"
+  ],
+  "personality_summary": "A nostalgic and cynical agent with a surprisingly nurturing side."
+}

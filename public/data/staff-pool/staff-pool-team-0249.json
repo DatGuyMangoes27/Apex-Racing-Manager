@@ -1,0 +1,22 @@
+{
+  "name": "Klara Schmidt",
+  "nationality": "German",
+  "age": 30,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Klara's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with her father. This early fascination led her to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, she landed a coveted internship with a prominent German racing team, where she quickly proved her mettle, impressing senior engineers with her meticulous approach and innovative problem-solving skills.\n\nShe rose through the ranks, gaining experience in various racing series, from GT racing to single-seaters. Klara excels at data analysis, transforming complex information into actionable insights that improve car setup and performance. Her leadership skills and ability to communicate technical concepts clearly make her an invaluable asset to any team. Klara is known for pushing boundaries and is always looking for the next technological advantage to exploit.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Klara is of average height with a lean, athletic build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Insists on having a specific type of German gummy candy available in the garage at all times.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

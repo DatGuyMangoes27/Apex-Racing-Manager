@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0350",
+  "name": "Sovereign Capital Partners",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Singapore",
+  "description": "Investing in tomorrow's leaders.",
+  "story": "Sovereign Capital Partners is a boutique investment firm based in Singapore focused on high-growth potential companies. Seeing parallels between the drive and precision required in finance and motorsport, they've begun a sponsorship program to support up-and-coming racing teams. They believe in fostering talent and achieving peak performance through calculated risk and strategic partnerships.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0350.png"
+}

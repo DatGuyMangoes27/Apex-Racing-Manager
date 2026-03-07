@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useCareerStore } from '@/store/careerStore'
 import { getActivityTimeCost, requiresOwnerTime } from '@/data/activity-time-costs'
+import { canDoActivityInCurrentPeriod } from '@/data/day-periods-config'
 import { routeNotification } from '@/services/notificationRouter'
 import type { PersonalLifeState } from '@/components/personal'
 import { createDefaultPersonalLifeState } from '@/screens/PersonalLife/usePersonalLifeState'
@@ -28,10 +29,13 @@ import {
   advancePregnancy,
   isReadyToBirth,
   syncPartnerMetersToContact,
+  canPromoteToPartner,
+  canProposeToPartner,
   type PregnancyState
 } from '@/services/familyBridgeService'
+import { hostCharityGala, resolveRivalry } from '@/simulation/personal/socialEventsManager'
 import type { Partner } from '@/data/family-config'
-import { addReputationEvent, interactWithContact, askContactForFavor } from '@/simulation/personal/lifestyleManager'
+import { addReputationEvent, addEndorsement, addMediaDeal, interactWithContact, askContactForFavor, canAffordLifestyle, getLifestyleRecommendation, calculateMonthlyCosts, giveStaffRaise, giveStaffBonus, requestStaffReferral } from '@/simulation/personal/lifestyleManager'
 import {
   generateId,
   createTransaction,
@@ -75,12 +79,17 @@ import {
   getWardrobeCatalog,
   getDietCatalog,
   setPrimaryVehicle,
+  canAffordAsset,
   type PurchaseResult,
   type SaleResult
 } from '@/simulation/personal/lifestyleAssetsManager'
 import { createDefaultLifestyleAssets, type LifestyleScoreBreakdown, type FurnishingTier } from '@/data/lifestyle-assets-config'
 import { purchaseProperty as purchasePropertyManager, sellProperty as sellPropertyManager, generatePropertyListings } from '@/simulation/investments/realEstateManager'
+import { buyStock as buyStockManager, sellStock as sellStockManager, startBusiness as startBusinessManager } from '@/simulation/investments/portfolioManager'
+import { STOCKS } from '@/data/investment-config'
+import type { BusinessType } from '@/data/investment-config'
 import { COURSE_CATALOG, type Course } from '@/data/education-config'
+import { getSocialActionById } from '@/data/social-actions-config'
 import { 
   getHobbyActivity, 
   getPetActivity, 
@@ -102,6 +111,7 @@ interface UsePersonalLifeActionsResult {
   // Finance Actions
   injectCapital: (amount: number) => { success: boolean; message: string }
   withdrawFunds: (amount: number) => { success: boolean; message: string }
+  setOwnerSalary: (monthlySalary: number) => { success: boolean; message: string }
   seekInvestors: () => { success: boolean; message: string; offer?: InvestorOffer }
   acceptInvestorOffer: (offer: InvestorOffer) => { success: boolean; message: string }
   
@@ -153,8 +163,11 @@ interface UsePersonalLifeActionsResult {
   sellOwnedWardrobeItem: (itemId: string) => SaleResult
   subscribeToDiet: (catalogId: string) => PurchaseResult
   cancelDietPlan: () => SaleResult
-  buyProperty: (listingIndex: number) => PurchaseResult
+  buyProperty: (listingIndex: number, options?: { paymentMethod: 'cash' | 'mortgage' | 'rent'; downPaymentPercent?: number; mortgageTermYears?: number }) => PurchaseResult
   sellOwnedProperty: (propertyId: string) => SaleResult
+  buyStock: (symbol: string, shares: number) => { success: boolean; message: string }
+  sellStock: (symbol: string, sharesToSell: number) => { success: boolean; message: string }
+  startPersonalBusiness: (type: BusinessType, name: string, investmentAmount: number, ownershipPercent: number, location: string) => { success: boolean; message: string }
   enrollInCourse: (catalogIndex: number) => PurchaseResult
   
   // Time-Consuming Lifestyle Activities
@@ -186,15 +199,22 @@ interface UsePersonalLifeActionsResult {
   donateToFoundation: (foundationId: string, amount: number) => { success: boolean; message: string }
   planGala: (foundationId: string, budget: number) => { success: boolean; message: string }
   respondToScandal: (scandalId: string, responseType: 'deny' | 'apologize' | 'no_comment' | 'legal_action' | 'spin') => { success: boolean; message: string }
-  scheduleEvent: (eventType: string, eventWeek: number) => { success: boolean; message: string }
+  scheduleEvent: (eventType: string, eventWeek: number, options?: { tier?: 'standard' | 'vip' | 'vip_table'; invitedContactIds?: string[] }) => { success: boolean; message: string }
   dismissEvent: (eventId: string) => { success: boolean; message: string }
   changePrivacyLevel: (newLevel: 'open_book' | 'balanced' | 'private' | 'reclusive') => { success: boolean; message: string }
   interactWithContactAction: (contactId: string, quality: 'poor' | 'neutral' | 'good' | 'excellent') => { success: boolean; message: string }
   askContactForFavorAction: (contactId: string, favorType: string) => { success: boolean; message: string; benefitValue?: number }
+  
+  // Contact Social Actions (gifts, hangouts, dates, invitations, business)
+  executeSocialAction: (contactId: string, actionId: string) => { success: boolean; message: string }
+  scheduleSocialAction: (contactId: string, actionId: string, week: number, day: number) => { success: boolean; message: string }
+  
+  // Period validation (for UI to check before showing actions)
+  checkActivityPeriod: (activityId: string) => { allowed: boolean; reason?: string }
 }
 
 export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
-  const { careerState, updateCareerState, updateOwnedTeam, player, consumeHoursFromBudget, addPersonalCalendarEntry, canAffordTime } = useCareerStore()
+  const { careerState, updateCareerState, updateOwnedTeam, player, consumeHoursFromBudget, addPersonalCalendarEntry, canAffordTime, scheduleSocialAction: storeScheduleSocialAction } = useCareerStore()
   
   const currentWeek = careerState?.currentWeek ?? 1
   const currentDay = careerState?.currentDay ?? 1
@@ -207,7 +227,8 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       hasInitialized.current = true
       const ownedTeam = careerState.ownedTeam
       const teamValue = ownedTeam?.budgets?.cash || ownedTeam?.finances?.teamValue || 2400000
-      const defaultState = createDefaultPersonalLifeState(player, teamValue, currentYear, currentWeek)
+      const bgId = (player as any).background?.type || (player as any).background?.id
+      const defaultState = createDefaultPersonalLifeState(player, teamValue, currentYear, currentWeek, bgId)
       console.log('[PersonalLifeActions] Auto-initializing personal life state')
       updateCareerState({ personalLife: defaultState })
     }
@@ -230,6 +251,19 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       personalLife: { ...current, ...updates }
     })
   }, [getPersonalLife, updateCareerState])
+  
+  // ============================================
+  // PERIOD VALIDATION HELPER
+  // ============================================
+  // Checks if an activity can be performed at the current time of day.
+  // Returns { allowed, reason } — if not allowed, reason explains when it's available.
+  
+  const checkActivityPeriod = useCallback((activityId: string): { allowed: boolean; reason?: string } => {
+    const cost = getActivityTimeCost(activityId)
+    const currentHour = careerState?.dayBudget?.currentHour ?? 7
+    const result = canDoActivityInCurrentPeriod(cost.allowedPeriods, currentHour)
+    return { allowed: result.allowed, reason: result.reason }
+  }, [careerState?.dayBudget?.currentHour])
   
   /**
    * Sync family partner meters to the messaging contact
@@ -380,6 +414,39 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
 
     return { success: true, message: `Withdrew $${amount.toLocaleString()} from the team` }
   }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear, careerState?.ownedTeam, updateOwnedTeam])
+  
+  const setOwnerSalary = useCallback((monthlySalary: number) => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    
+    if (monthlySalary < 0) return { success: false, message: 'Salary cannot be negative' }
+    
+    // Check if team can afford this salary (rough check: monthly salary vs team cash)
+    const ownedTeam = careerState?.ownedTeam
+    const teamCash = ownedTeam?.budgets?.cash ?? 0
+    const weeksOfRunway = monthlySalary > 0 ? Math.floor(teamCash / (monthlySalary / 4)) : Infinity
+    
+    let warningMessage = ''
+    if (weeksOfRunway < 12 && monthlySalary > 0) {
+      warningMessage = ` Warning: team can only sustain this salary for ~${weeksOfRunway} weeks.`
+    }
+    
+    updatePersonalLife({
+      finances: {
+        ...personalLife.finances,
+        ownerSalaryConfigured: true, // Mark that the player explicitly set their salary
+        monthlyIncome: {
+          ...personalLife.finances.monthlyIncome,
+          ownerSalary: Math.round(monthlySalary)
+        }
+      }
+    })
+    
+    return { 
+      success: true, 
+      message: `Owner salary set to $${Math.round(monthlySalary).toLocaleString()}/month.${warningMessage}` 
+    }
+  }, [getPersonalLife, updatePersonalLife, careerState?.ownedTeam])
   
   const seekInvestors = useCallback(() => {
     const personalLife = getPersonalLife()
@@ -554,6 +621,12 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       return { success: false, message: 'You need a partner first!' }
     }
     
+    // Check time-of-day period restriction
+    const periodCheck = checkActivityPeriod(`date_${dateType}`)
+    if (!periodCheck.allowed) {
+      return { success: false, message: periodCheck.reason || 'Not available at this time of day' }
+    }
+    
     // Find date cost from config
     const dateOption = DATE_OPTIONS.find(d => d.type === dateType)
     const cost = dateOption?.cost ?? 100
@@ -610,7 +683,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: dateTimeCost.hours,
       drainLevel: dateTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'romance',
       immediate: true
     })
     
@@ -636,8 +709,10 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       return { success: false, message: 'You need a partner first!' }
     }
     
-    if (personalLife.partner.relationshipStatus !== 'dating') {
-      return { success: false, message: 'You can only propose while dating' }
+    // Validate proposal eligibility using canProposeToPartner
+    const proposalCheck = canProposeToPartner(personalLife.partner)
+    if (!proposalCheck.canPropose) {
+      return { success: false, message: proposalCheck.reason || 'Cannot propose right now' }
     }
     
     // Cost of engagement ring
@@ -694,7 +769,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
         duration: proposeTimeCost.hours,
         drainLevel: proposeTimeCost.drain,
         calendarEntryType: 'personal',
-        category: 'personal',
+        category: 'romance',
         immediate: true
       })
       routeNotification({
@@ -728,7 +803,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
         duration: proposeTimeCost.hours,
         drainLevel: proposeTimeCost.drain,
         calendarEntryType: 'personal',
-        category: 'personal',
+        category: 'romance',
         immediate: true
       })
       
@@ -810,7 +885,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: weddingTimeCost.hours,
       drainLevel: weddingTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'family',
       immediate: true
     })
     
@@ -878,7 +953,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: giftTimeCost.hours,
       drainLevel: giftTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'romance',
       immediate: true
     })
     routeNotification({
@@ -898,6 +973,12 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
     
+    // Check time-of-day period restriction
+    const periodCheck = checkActivityPeriod('dating_scene')
+    if (!periodCheck.allowed) {
+      return { success: false, message: periodCheck.reason || 'Not available at this time of day' }
+    }
+    
     if (personalLife.partner) {
       return { success: false, message: 'You already have a partner!' }
     }
@@ -916,7 +997,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: datingTimeCost.hours,
       drainLevel: datingTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'romance',
       immediate: true
     })
     
@@ -981,7 +1062,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: childTimeCost.hours,
       drainLevel: childTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'family',
       immediate: true
     })
     
@@ -1062,7 +1143,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: kartTimeCost.hours,
       drainLevel: kartTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'family',
       immediate: true
     })
     routeNotification({
@@ -1247,7 +1328,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: 0,
       drainLevel: 'exhausting',
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'family',
       immediate: true
     })
     routeNotification({
@@ -1359,8 +1440,11 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: treatmentTimeCost.hours,
       drainLevel: treatmentTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'lifestyle',
-      immediate: true
+      category: 'wellness',
+      immediate: true,
+      effectsOnComplete: {
+        healthBonus: 10,
+      }
     })
     routeNotification({
       category: 'personalStaff.doctor',
@@ -1455,6 +1539,13 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     // Get activity config for time cost
     const activity = getHobbyActivity(hobbyType as HobbyType, hobby.name)
     
+    // Check time-of-day period restriction
+    const hobbyTimeCost = getActivityTimeCost(`hobby_${hobbyType}`) || getActivityTimeCost('hobby_practice')
+    const periodCheck = canDoActivityInCurrentPeriod(hobbyTimeCost.allowedPeriods, careerState?.dayBudget?.currentHour ?? 7)
+    if (!periodCheck.allowed) {
+      return { success: false, message: periodCheck.reason || 'Not available at this time of day' }
+    }
+    
     // Consume hours from the day budget
     const consumed = consumeHoursFromBudget(
       activity.hoursRequired,
@@ -1492,12 +1583,13 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     const newHobbies = [...personalLife.hobbies]
     newHobbies[hobbyIndex] = updatedHobby
     
-    // Reduce stress when practicing hobbies
+    // Reduce stress when practicing hobbies (use activity config value which varies by hobby type)
+    const stressReduction = activity.benefits.stressReduction || hobby.stressReduction || 8
     updatePersonalLife({
       hobbies: newHobbies,
       health: {
         ...personalLife.health,
-        stressLevel: clamp(personalLife.health.stressLevel - hobby.stressReduction, 0, 100)
+        stressLevel: clamp(personalLife.health.stressLevel - stressReduction, 0, 100)
       }
     })
     
@@ -1511,8 +1603,12 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: activity.hoursRequired,
       drainLevel: activity.drainLevel,
       calendarEntryType: 'personal',
-      category: 'personal',
-      immediate: true
+      category: 'hobby',
+      immediate: true,
+      effectsOnComplete: {
+        stressReduction,
+        skillProgress: activity.benefits.skillProgress || 5,
+      }
     })
     
     // === NOTIFICATION INTEGRATION ===
@@ -1549,10 +1645,10 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     // Calculate equipment refund (50% of equipment value)
     let equipmentRefund = 0
     if (hobby.equippedItemId) {
-      const { getEquipmentById } = require('@/data/lifestyle-config')
-      const equipment = getEquipmentById(hobby.equippedItemId)
-      if (equipment) {
-        equipmentRefund = Math.round(equipment.cost * 0.5)
+      // Equipment cost lookup: use the hobby template's initial investment as a proxy
+      const template = HOBBY_TEMPLATES[hobby.type as keyof typeof HOBBY_TEMPLATES]
+      if (template) {
+        equipmentRefund = Math.round(template.initialInvestment * 0.5)
       }
     }
     
@@ -1685,7 +1781,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
         liquidCash: personalLife.finances.liquidCash - severance,
         monthlyExpenses: {
           ...personalLife.finances.monthlyExpenses,
-          personalStaff: Math.max(0, (personalLife.finances.monthlyExpenses.personalStaff ?? 0) - Math.floor(staff.salary / 12))
+          personalStaff: Math.max(0, (personalLife.finances.monthlyExpenses.personalStaff ?? 0) - staff.salary) // salary is already monthly
         },
         transactions: [...personalLife.finances.transactions, transaction]
       }
@@ -1728,8 +1824,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     const staff = personalLife.staff[staffIndex]
     
-    // Use the lifestyleManager function
-    const { giveStaffRaise } = require('@/simulation/personal/lifestyleManager')
+    // Use the lifestyleManager function (imported at top of file)
     const result = giveStaffRaise(staff, percentIncrease, currentWeek, currentYear)
     
     if (!result.success) {
@@ -1741,8 +1836,8 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     newStaff[staffIndex] = result.updatedStaff
     
     // Update monthly expenses
-    const oldMonthlySalary = Math.floor(staff.salary / 12)
-    const newMonthlySalary = Math.floor(result.updatedStaff.salary / 12)
+    const oldMonthlySalary = staff.salary // salary field is already monthly
+    const newMonthlySalary = result.updatedStaff.salary
     const salaryDiff = newMonthlySalary - oldMonthlySalary
     
     updatePersonalLife({
@@ -1760,7 +1855,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     routeNotification({
       category: 'personalStaff.assistant',
       subject: `Staff Raise: ${staff.name}`,
-      body: `${staff.name}'s salary has been increased by ${percentIncrease}%. New annual salary: $${result.updatedStaff.salary.toLocaleString()}.`,
+      body: `${staff.name}'s salary has been increased by ${percentIncrease}%. New annual salary: $${(result.updatedStaff.annualSalary || result.updatedStaff.salary * 12).toLocaleString()}.`,
     })
 
     return { success: true, message: result.message }
@@ -1782,8 +1877,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       return { success: false, message: 'Insufficient funds for bonus' }
     }
     
-    // Use the lifestyleManager function
-    const { giveStaffBonus } = require('@/simulation/personal/lifestyleManager')
+    // Use the lifestyleManager function (imported at top of file)
     const result = giveStaffBonus(staff, amount, currentWeek, currentYear)
     
     if (!result.success) {
@@ -1831,8 +1925,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       return { success: false, message: 'Staff member not found' }
     }
     
-    // Use the lifestyleManager function
-    const { requestStaffReferral } = require('@/simulation/personal/lifestyleManager')
+    // Use the lifestyleManager function (imported at top of file)
     const result = requestStaffReferral(staff, roleNeeded)
     
     if (!result.success || !result.referredCandidate) {
@@ -1880,6 +1973,14 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     }
     
     const nextLevel = lifestyleLevels[currentIndex + 1]
+    
+    // Check if player can afford the next lifestyle tier
+    const netWorth = personalLife.finances.liquidCash + (personalLife.finances.totalAssets || 0)
+    const affordability = canAffordLifestyle(nextLevel, netWorth)
+    if (!affordability.canAfford) {
+      return { success: false, message: affordability.reason || 'Cannot afford this lifestyle tier' }
+    }
+    
     const newMonthlyCost = getLifestyleMonthlyCost(nextLevel)
     
     updatePersonalLife({
@@ -1895,7 +1996,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     // === NOTIFICATION INTEGRATION ===
     routeNotification({
-      category: 'finances',
+      category: 'personalStaff.assistant',
       subject: `Lifestyle Upgraded: ${nextLevel.replace(/_/g, ' ')}`,
       body: `You've upgraded your lifestyle to ${nextLevel.replace(/_/g, ' ')}. New monthly cost: $${newMonthlyCost.toLocaleString()}.`,
     })
@@ -1914,6 +2015,16 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
   const buyVehicle = useCallback((vehicleCatalogIndex: number): PurchaseResult => {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    
+    // Check affordability with reserve requirement
+    const catalog = getVehicleCatalog()
+    const entry = catalog[vehicleCatalogIndex]
+    if (entry) {
+      const affordCheck = canAffordAsset(entry.price, personalLife.finances.liquidCash)
+      if (!affordCheck.canAfford) {
+        return { success: false, message: affordCheck.reason || 'Cannot afford this vehicle' }
+      }
+    }
     
     const result = purchaseVehicleManager(
       vehicleCatalogIndex,
@@ -1972,7 +2083,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
         immediate: true
       })
       routeNotification({
-        category: 'finances',
+        category: 'personalStaff.assistant',
         subject: 'Vehicle Purchased',
         body: `${result.message}. Cost: $${result.cost!.toLocaleString()}.`,
       })
@@ -2027,9 +2138,9 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       
       // === NOTIFICATION INTEGRATION ===
       routeNotification({
-        category: 'finances',
+        category: 'personalStaff.assistant',
         subject: `Vehicle Sold: ${(vehicle as any).brand || ''} ${(vehicle as any).model || ''}`.trim(),
-        body: `${result.message}. Proceeds: $${result.proceeds.toLocaleString()}.`,
+        body: `${result.message}. Proceeds of $${result.proceeds.toLocaleString()} have been added to your account.`,
       })
     }
     
@@ -2065,6 +2176,16 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
   const buyFurnishing = useCallback((furnishingId: string, propertyId: string): PurchaseResult => {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    
+    // Check affordability with reserve requirement
+    const catalog = getFurnishingCatalog()
+    const entry = catalog.find(f => f.id === furnishingId)
+    if (entry) {
+      const affordCheck = canAffordAsset(entry.basePrice, personalLife.finances.liquidCash)
+      if (!affordCheck.canAfford) {
+        return { success: false, message: affordCheck.reason || 'Cannot afford this furnishing' }
+      }
+    }
     
     const result = purchaseFurnishingManager(
       furnishingId,
@@ -2524,61 +2645,161 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     return result
   }, [getPersonalLife, updatePersonalLife])
   
-  const buyProperty = useCallback((listingIndex: number): PurchaseResult => {
+  const buyProperty = useCallback((listingIndex: number, options?: {
+    paymentMethod: 'cash' | 'mortgage' | 'rent'
+    downPaymentPercent?: number
+    mortgageTermYears?: number
+  }): PurchaseResult => {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
     
-    const budgetMin = Math.max(100000, personalLife.finances.liquidCash * 0.1)
-    const budgetMax = personalLife.finances.liquidCash
-    const listings = generatePropertyListings(10, budgetMin, budgetMax, ['UK' as any])
+    // Generate listings the same way getPropertyListings does
+    const budgetMin = 50000
+    const budgetMax = Math.max(personalLife.finances.liquidCash * 5, 5000000)
+    const listings = generatePropertyListings(40, budgetMin, budgetMax)
     const listing = listings[listingIndex]
     if (!listing) return { success: false, message: 'Property listing not found' }
     
-    if (personalLife.finances.liquidCash < listing.listPrice) {
-      return { success: false, message: 'Insufficient funds' }
-    }
-    
     const negotiatedPrice = listing.listPrice
-    const downPaymentAmount = negotiatedPrice * 0.2 // 20% down payment
-    const property = purchasePropertyManager(listing, negotiatedPrice, downPaymentAmount, undefined, currentWeek, currentYear, false)
-    
-    const newFinances = {
-      ...personalLife.finances,
-      liquidCash: personalLife.finances.liquidCash - listing.listPrice
-    }
-    
-    // Store properties alongside other state (using personalLife extension)
+    const paymentMethod = options?.paymentMethod || 'cash'
     const currentProperties = (personalLife as any).properties || []
     
-    updatePersonalLife({
-      finances: newFinances,
-      properties: [...currentProperties, property]
-    } as any)
-    
-    // === TIME BUDGET + CALENDAR + NOTIFICATION INTEGRATION ===
-    const propertyTimeCost = getActivityTimeCost('property_viewing')
-    if (propertyTimeCost.hours > 0) {
-      consumeHoursFromBudget(propertyTimeCost.hours, propertyTimeCost.drain, `Property Purchase: ${listing.name}`, 'property_viewing')
+    if (paymentMethod === 'rent') {
+      // Rent the property - calculate monthly rent from rental yield
+      const monthlyRent = Math.round(negotiatedPrice * 0.04 / 12) // ~4% annual yield
+      const leaseMonths = 12
+      
+      const rentalProperty = {
+        ...listing.property,
+        id: `prop-rent-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        purchasePrice: 0,
+        purchaseDate: { week: currentWeek, year: currentYear },
+        lastValuationDate: { week: currentWeek, year: currentYear },
+        status: 'player_rental' as const,
+        isPlayerRental: true,
+        monthlyRent,
+        leaseMonths,
+        mortgageId: undefined,
+        rental: undefined,
+        renovation: undefined,
+      }
+      
+      updatePersonalLife({
+        finances: personalLife.finances,
+        properties: [...currentProperties, rentalProperty]
+      } as any)
+      
+      routeNotification({
+        category: 'personalStaff.assistant',
+        subject: 'Property Rented',
+        body: `You've rented ${listing.name} for $${monthlyRent.toLocaleString()}/month. Lease: ${leaseMonths} months.`,
+      })
+      
+      return { success: true, message: `Rented ${listing.name} for $${monthlyRent.toLocaleString()}/month`, cost: 0 }
+      
+    } else if (paymentMethod === 'mortgage') {
+      // Mortgage purchase - only deduct down payment
+      const downPaymentPercent = options?.downPaymentPercent || 20
+      const termYears = options?.mortgageTermYears || 25
+      const downPaymentAmount = Math.round(negotiatedPrice * (downPaymentPercent / 100))
+      
+      if (personalLife.finances.liquidCash < downPaymentAmount) {
+        return { success: false, message: `Insufficient funds for ${downPaymentPercent}% down payment ($${downPaymentAmount.toLocaleString()})` }
+      }
+      
+      // Create mortgage
+      const loanAmount = negotiatedPrice - downPaymentAmount
+      const creditScore = personalLife.finances.creditScore || 700
+      const baseRate = 0.045 // 4.5% base
+      const rateAdjust = creditScore >= 750 ? -0.005 : creditScore >= 700 ? 0 : creditScore >= 650 ? 0.01 : 0.025
+      const interestRate = baseRate + rateAdjust
+      const monthlyRate = interestRate / 12
+      const totalPayments = termYears * 12
+      const monthlyPayment = Math.round(
+        loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1)
+      )
+      
+      // Check debt-to-income ratio
+      const monthlyIncome = (personalLife.finances.monthlyIncome?.ownerSalary || 0) + 
+        (personalLife.finances.monthlyIncome?.investmentIncome || 0) +
+        (personalLife.finances.monthlyIncome?.rentalIncome || 0)
+      const existingDebt = personalLife.finances.mortgages?.reduce((sum: number, m: any) => sum + (m.monthlyPayment || 0), 0) || 0
+      const dtiRatio = monthlyIncome > 0 ? (existingDebt + monthlyPayment) / monthlyIncome : 1
+      
+      if (dtiRatio > 0.5 && monthlyIncome > 0) {
+        return { success: false, message: `Mortgage denied: debt-to-income ratio (${Math.round(dtiRatio * 100)}%) exceeds 50% maximum` }
+      }
+      
+      const mortgageId = `mort-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+      const newMortgage = {
+        id: mortgageId,
+        propertyId: `prop-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        lender: 'Premium Property Finance',
+        originalAmount: loanAmount,
+        remainingBalance: loanAmount,
+        interestRate,
+        termMonths: totalPayments,
+        monthlyPayment,
+        startDate: { week: currentWeek, year: currentYear },
+        type: 'fixed' as const,
+        status: 'active' as const,
+      }
+      
+      const property = {
+        ...listing.property,
+        id: newMortgage.propertyId,
+        purchasePrice: negotiatedPrice,
+        purchaseDate: { week: currentWeek, year: currentYear },
+        lastValuationDate: { week: currentWeek, year: currentYear },
+        status: 'primary_residence' as const,
+        mortgageId,
+        rental: undefined,
+        renovation: undefined,
+      }
+      
+      const existingMortgages = personalLife.finances.mortgages || []
+      
+      updatePersonalLife({
+        finances: {
+          ...personalLife.finances,
+          liquidCash: personalLife.finances.liquidCash - downPaymentAmount,
+          mortgages: [...existingMortgages, newMortgage],
+        },
+        properties: [...currentProperties, property]
+      } as any)
+      
+      routeNotification({
+        category: 'personalStaff.assistant',
+        subject: 'Mortgage Approved & Property Purchased',
+        body: `Mortgage approved for ${listing.name}!\n\nDown payment: $${downPaymentAmount.toLocaleString()} (${downPaymentPercent}%)\nLoan: $${loanAmount.toLocaleString()}\nRate: ${(interestRate * 100).toFixed(1)}%\nTerm: ${termYears} years\nMonthly: $${monthlyPayment.toLocaleString()}`,
+      })
+      
+      return { success: true, message: `Purchased ${listing.name} with mortgage. Down: $${downPaymentAmount.toLocaleString()}, Monthly: $${monthlyPayment.toLocaleString()}`, cost: downPaymentAmount }
+      
+    } else {
+      // Cash purchase - original flow
+      if (personalLife.finances.liquidCash < negotiatedPrice) {
+        return { success: false, message: `Insufficient cash. Need $${negotiatedPrice.toLocaleString()}, have $${personalLife.finances.liquidCash.toLocaleString()}` }
+      }
+      
+      const property = purchasePropertyManager(listing, negotiatedPrice, negotiatedPrice, undefined, currentWeek, currentYear, false)
+      
+      updatePersonalLife({
+        finances: {
+          ...personalLife.finances,
+          liquidCash: personalLife.finances.liquidCash - negotiatedPrice,
+        },
+        properties: [...currentProperties, property]
+      } as any)
+      
+      routeNotification({
+        category: 'personalStaff.assistant',
+        subject: 'Property Acquired',
+        body: `You've purchased ${listing.name} for $${negotiatedPrice.toLocaleString()} cash. Congratulations!`,
+      })
+      
+      return { success: true, message: `Purchased ${listing.name} for $${negotiatedPrice.toLocaleString()}`, cost: negotiatedPrice }
     }
-    addPersonalCalendarEntry({
-      name: `Property Purchase: ${listing.name}`,
-      description: `Purchased ${listing.name} for $${listing.listPrice.toLocaleString()}`,
-      activityId: 'property_viewing',
-      week: currentWeek,
-      day: currentDay,
-      duration: propertyTimeCost.hours,
-      drainLevel: propertyTimeCost.drain,
-      calendarEntryType: 'personal',
-      category: 'personal',
-      immediate: true
-    })
-    routeNotification({
-      category: 'finances',
-      subject: 'Property Acquired',
-      body: `You've purchased ${listing.name} for $${listing.listPrice.toLocaleString()}. Congratulations on the new property!`,
-    })
-    
-    return { success: true, message: `Purchased ${listing.name} for $${listing.listPrice.toLocaleString()}`, cost: listing.listPrice }
   }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear, currentDay, consumeHoursFromBudget, addPersonalCalendarEntry])
   
   const sellOwnedProperty = useCallback((propertyId: string): SaleResult => {
@@ -2605,14 +2826,79 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     // === NOTIFICATION INTEGRATION ===
     routeNotification({
-      category: 'finances',
+      category: 'personalStaff.assistant',
       subject: `Property Sold: ${property.name || 'Property'}`,
       body: `Your property has been sold for $${finalSalePrice.toLocaleString()}. The funds have been added to your account.`,
     })
 
     return { success: true, message: `Property sold for $${finalSalePrice.toLocaleString()}`, proceeds: finalSalePrice }
   }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
-  
+
+  const buyStock = useCallback((symbol: string, shares: number): { success: boolean; message: string } => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    const currentHoldings = (personalLife as any).stockHoldings ?? []
+    const result = buyStockManager(symbol, shares, personalLife.finances.liquidCash, currentWeek, currentYear, currentHoldings)
+    if (!result.success) return { success: false, message: result.reason ?? 'Purchase failed' }
+    const newHoldings = currentHoldings.filter((h: any) => h.stockSymbol !== symbol)
+    if (result.holding) newHoldings.push(result.holding)
+    updatePersonalLife({
+      finances: {
+        ...personalLife.finances,
+        liquidCash: personalLife.finances.liquidCash + result.transaction!.amount,
+        transactions: [...personalLife.finances.transactions, result.transaction!]
+      },
+      stockHoldings: newHoldings
+    } as any)
+    return { success: true, message: `Bought ${shares} shares of ${symbol}` }
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
+
+  const sellStock = useCallback((symbol: string, sharesToSell: number): { success: boolean; message: string } => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    const currentHoldings = (personalLife as any).stockHoldings ?? []
+    const result = sellStockManager(currentHoldings, symbol, sharesToSell, currentWeek, currentYear, STOCKS)
+    if (!result.success) return { success: false, message: result.reason ?? 'Sale failed' }
+    updatePersonalLife({
+      finances: {
+        ...personalLife.finances,
+        liquidCash: personalLife.finances.liquidCash + result.transaction!.amount,
+        transactions: [...personalLife.finances.transactions, result.transaction!]
+      },
+      stockHoldings: result.updatedHoldings
+    } as any)
+    return { success: true, message: `Sold ${sharesToSell} shares of ${symbol} for $${result.proceeds.toLocaleString()}` }
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
+
+  const startPersonalBusiness = useCallback((
+    type: BusinessType,
+    name: string,
+    investmentAmount: number,
+    ownershipPercent: number,
+    location: string
+  ): { success: boolean; message: string } => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    const rep = player?.reputation ?? 50
+    const result = startBusinessManager(type, name, investmentAmount, ownershipPercent, location, personalLife.finances.liquidCash, rep, currentWeek, currentYear)
+    if (!result.success) return { success: false, message: result.reason ?? 'Could not start business' }
+    const currentVentures = (personalLife as any).businessVentures ?? []
+    updatePersonalLife({
+      finances: {
+        ...personalLife.finances,
+        liquidCash: personalLife.finances.liquidCash - investmentAmount,
+        transactions: [...personalLife.finances.transactions, result.transaction!]
+      },
+      businessVentures: [...currentVentures, result.business!]
+    } as any)
+    routeNotification({
+      category: 'personalStaff.assistant',
+      subject: 'Business Started',
+      body: `You've started ${name} (${ownershipPercent}% ownership). Investment: $${investmentAmount.toLocaleString()}.`
+    })
+    return { success: true, message: `Started ${name}` }
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear, player?.reputation])
+
   const enrollInCourse = useCallback((catalogIndex: number): PurchaseResult => {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
@@ -2674,7 +2960,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: courseTimeCost.hours,
       drainLevel: courseTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'education',
       immediate: true
     })
     
@@ -2741,8 +3027,12 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: activity.hoursRequired,
       drainLevel: activity.drainLevel,
       calendarEntryType: 'personal',
-      category: 'personal',
-      immediate: true
+      category: 'pet',
+      immediate: true,
+      effectsOnComplete: {
+        petHappiness: activity.benefits.petHappiness || 15,
+        stressReduction: activity.benefits.stressReduction || 8,
+      }
     })
 
     return { success: true, message: `Spent quality time with ${pet.name}! (-${activity.benefits.stressReduction || 8} stress)` }
@@ -2814,8 +3104,11 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: activity.hoursRequired,
       drainLevel: activity.drainLevel,
       calendarEntryType: 'personal',
-      category: 'lifestyle',
-      immediate: true
+      category: 'education',
+      immediate: true,
+      effectsOnComplete: {
+        moduleProgress: Math.round((activity.benefits.moduleProgress || 0.15) * 100),
+      }
     })
     if (completedModule) {
       routeNotification({
@@ -2838,6 +3131,12 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     const activity = FITNESS_ACTIVITIES.find(a => a.id === fitnessActivityId)
     if (!activity) return { success: false, message: 'Fitness activity not found' }
+    
+    // Check time-of-day period restriction
+    const periodCheck = checkActivityPeriod(fitnessActivityId)
+    if (!periodCheck.allowed) {
+      return { success: false, message: periodCheck.reason || 'Not available at this time of day' }
+    }
     
     const consumed = consumeHoursFromBudget(
       activity.hoursRequired,
@@ -2895,8 +3194,13 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: activity.hoursRequired,
       drainLevel: activity.drainLevel,
       calendarEntryType: 'personal',
-      category: 'lifestyle',
-      immediate: true
+      category: 'fitness',
+      immediate: true,
+      effectsOnComplete: {
+        fitnessBonus: activity.benefits.fitnessBonus || 0,
+        healthBonus: activity.benefits.healthBonus || 0,
+        stressReduction: activity.benefits.stressReduction || 0,
+      }
     })
 
     return { 
@@ -2915,9 +3219,10 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
   const getPropertyListings = useCallback(() => {
     const personalLife = getPersonalLife()
     if (!personalLife) return []
-    const budgetMin = Math.max(100000, personalLife.finances.liquidCash * 0.1)
-    const budgetMax = personalLife.finances.liquidCash
-    return generatePropertyListings(10, budgetMin, budgetMax, ['UK' as any])
+    // Generate 40 listings across all global markets with full price range
+    const budgetMin = 50000 // Show affordable options too
+    const budgetMax = Math.max(personalLife.finances.liquidCash * 5, 5000000) // Show aspirational properties
+    return generatePropertyListings(40, budgetMin, budgetMax)
   }, [getPersonalLife])
   const getCourseCatalogFn = useCallback(() => COURSE_CATALOG, [])
   
@@ -2967,17 +3272,17 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     const endorsement = personalLife.brand.endorsements![endorsementIndex]
     
-    // Update endorsement status
-    const newEndorsements = [...(personalLife.brand.endorsements || [])]
-    newEndorsements[endorsementIndex] = { ...endorsement, status: 'active' as const }
+    // Use addEndorsement to properly update brand value and public image
+    const updatedBrand = addEndorsement(personalLife.brand, {
+      ...endorsement,
+      status: 'active' as const
+    })
     
     // Add to monthly income
     const monthlyValue = Math.floor(endorsement.annualValue / 12)
     
-    const endorsementBrand = addReputationEvent({
-      ...personalLife.brand,
-      endorsements: newEndorsements
-    }, {
+    // Also add a reputation event for signing the deal
+    const endorsementBrand = addReputationEvent(updatedBrand, {
       type: 'positive',
       category: 'business',
       description: `Signed endorsement deal with ${endorsement.brandName}`,
@@ -2998,7 +3303,38 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     })
     
     return { success: true, message: `Signed endorsement deal with ${endorsement.brandName}!` }
-  }, [getPersonalLife, updatePersonalLife])
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
+  
+  const acceptMediaDeal = useCallback((deal: { type: string; platform: string; durationWeeks: number; weeklyPay: number; brandName: string }) => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    
+    // Use addMediaDeal to properly update brand and media presence
+    const updatedBrand = addMediaDeal(personalLife.brand, {
+      type: deal.type as any,
+      platform: deal.platform,
+      title: `${deal.brandName} ${deal.type}`,
+      startDate: { week: currentWeek, year: currentYear },
+      durationWeeks: deal.durationWeeks,
+      weeklyPay: deal.weeklyPay,
+      status: 'active'
+    })
+    
+    const monthlyMediaIncome = Math.floor(deal.weeklyPay * 4)
+    
+    updatePersonalLife({
+      brand: updatedBrand,
+      finances: {
+        ...personalLife.finances,
+        monthlyIncome: {
+          ...personalLife.finances.monthlyIncome,
+          mediaDeals: (personalLife.finances.monthlyIncome.mediaDeals ?? 0) + monthlyMediaIncome
+        }
+      }
+    })
+    
+    return { success: true, message: `Signed media deal: ${deal.brandName} ${deal.type}!` }
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
   
   const startFoundation = useCallback((name: string, cause: CharityCause, initialDonation: number) => {
     const personalLife = getPersonalLife()
@@ -3102,30 +3438,36 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     
     const foundation = personalLife.foundations[foundationIndex]
     
-    // Gala increases public awareness and public image
+    // Use hostCharityGala for proper fundraising, reputation, and donor calculation
+    const guestCount = Math.max(20, Math.floor(budget / 500)) // Estimate guests from budget
+    const galaResult = hostCharityGala(foundation, budget, guestCount, currentWeek, currentYear)
+    
+    // Update foundation with gala results
     const newFoundations = [...personalLife.foundations]
     newFoundations[foundationIndex] = {
       ...foundation,
-      publicAwareness: clamp((foundation.publicAwareness ?? 0) + 10, 0, 100),
-      annualGalaDate: { week: currentWeek, year: currentYear }
+      publicAwareness: clamp((foundation.publicAwareness ?? 0) + galaResult.reputationGain, 0, 100),
+      annualGalaDate: { week: currentWeek, year: currentYear },
+      totalRaised: (foundation.totalRaised ?? 0) + galaResult.amountRaised,
+      events: [...(foundation.events ?? []), galaResult.event]
     }
     
     const transaction = createTransaction(
       'expense',
       'charity',
       budget,
-      `Charity gala for ${foundation.name}`,
+      `Charity gala for ${foundation.name} (raised $${galaResult.amountRaised.toLocaleString()})`,
       currentWeek,
       currentYear,
       { taxDeductible: true }
     )
     
-    // Galas boost public image (gradual via reputation event)
+    // Galas boost public image based on actual fundraising results
     const galaBrand = addReputationEvent(personalLife.brand, {
       type: 'positive',
       category: 'charity',
-      description: `Hosted a charity gala for ${foundation.name}`,
-      impact: 8,
+      description: `Hosted a charity gala for ${foundation.name} - raised $${galaResult.amountRaised.toLocaleString()}`,
+      impact: galaResult.reputationGain,
       date: { week: currentWeek, year: currentYear },
       decayWeeks: 10
     })
@@ -3157,7 +3499,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: galaTimeCost.hours,
       drainLevel: galaTimeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal',
+      category: 'social',
       immediate: true
     })
     
@@ -3307,7 +3649,47 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     }
   }, [getPersonalLife, updatePersonalLife, consumeHoursFromBudget, addPersonalCalendarEntry, currentWeek, currentYear, currentDay])
   
-  const scheduleEvent = useCallback((eventType: string, eventWeek: number) => {
+  const resolveRivalryAction = useCallback((
+    rivalryId: string,
+    resolution: 'reconciliation' | 'total_victory' | 'defeat' | 'fade_away'
+  ) => {
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized' }
+    
+    const rivalries = personalLife.rivalries || []
+    const rivalryIndex = rivalries.findIndex((r: any) => r.id === rivalryId)
+    if (rivalryIndex === -1) {
+      return { success: false, message: 'Rivalry not found' }
+    }
+    
+    const rivalry = rivalries[rivalryIndex]
+    const result = resolveRivalry(rivalry, resolution)
+    
+    // Update rivalries list
+    const newRivalries = [...rivalries]
+    newRivalries[rivalryIndex] = result.finalRivalry
+    
+    // Apply reputation effect
+    const updatedBrand = result.reputationEffect !== 0
+      ? addReputationEvent(personalLife.brand, {
+          type: result.reputationEffect > 0 ? 'positive' : 'negative',
+          category: 'social',
+          description: result.message,
+          impact: Math.abs(result.reputationEffect),
+          date: { week: currentWeek, year: currentYear },
+          decayWeeks: 8
+        })
+      : personalLife.brand
+    
+    updatePersonalLife({
+      rivalries: newRivalries,
+      brand: updatedBrand
+    })
+    
+    return { success: true, message: result.message }
+  }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
+  
+  const scheduleEvent = useCallback((eventType: string, eventWeek: number, options?: { tier?: 'standard' | 'vip' | 'vip_table'; invitedContactIds?: string[] }) => {
     const personalLife = getPersonalLife()
     if (!personalLife) return { success: false, message: 'Personal life not initialized' }
     
@@ -3325,13 +3707,39 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       }
     }
     
-    // Calculate cost (hosting multiplier if applicable)
-    const cost = template.isHosting && template.hostingCostMultiplier 
+    const tier = options?.tier || 'standard'
+    const invitedContactIds = options?.invitedContactIds || []
+    const tierOpts = template.tierOptions
+    
+    // Calculate base cost (hosting multiplier if applicable)
+    let baseCost = template.isHosting && template.hostingCostMultiplier 
       ? template.cost * template.hostingCostMultiplier 
       : template.cost
     
-    if (personalLife.finances.liquidCash < cost) {
-      return { success: false, message: `Insufficient funds. This event costs $${cost.toLocaleString()}` }
+    // Apply tier cost multiplier
+    if (tier === 'vip' && tierOpts) {
+      baseCost = Math.floor(baseCost * tierOpts.vipCostMultiplier)
+    } else if (tier === 'vip_table' && tierOpts) {
+      baseCost = Math.floor(baseCost * tierOpts.tableCostMultiplier)
+    }
+    
+    // Add plus-one costs
+    const plusOneCost = tierOpts?.plusOneCost || 0
+    const guestCost = invitedContactIds.length * plusOneCost
+    const totalCost = baseCost + guestCost
+    
+    // Validate max plus-ones for the tier
+    if (tierOpts && invitedContactIds.length > 0) {
+      const maxGuests = tier === 'vip_table' ? tierOpts.tableMaxPlusOnes
+        : tier === 'vip' ? tierOpts.vipMaxPlusOnes
+        : tierOpts.maxPlusOnes
+      if (invitedContactIds.length > maxGuests) {
+        return { success: false, message: `This tier allows a maximum of ${maxGuests} guests` }
+      }
+    }
+    
+    if (personalLife.finances.liquidCash < totalCost) {
+      return { success: false, message: `Insufficient funds. Total cost: $${totalCost.toLocaleString()}` }
     }
     
     // Check if already have too many events scheduled
@@ -3340,19 +3748,32 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       return { success: false, message: 'You have too many events scheduled. Attend some first before adding more.' }
     }
     
-    // Create the event
+    // Create the event with tier and invited contacts
     const newEvent: SocialEvent = {
       id: generateId(),
       ...template,
-      date: { week: eventWeek, year: currentYear }
+      date: { week: eventWeek, year: currentYear },
+      attendanceTier: tier,
+      invitedContactIds: invitedContactIds.length > 0 ? invitedContactIds : undefined
+    }
+    
+    // Build guest description for notifications
+    const guestNames: string[] = []
+    if (invitedContactIds.length > 0) {
+      const contacts = personalLife.contacts || []
+      for (const cid of invitedContactIds) {
+        const c = contacts.find((ct: any) => ct.id === cid)
+        if (c) guestNames.push(c.name)
+      }
     }
     
     // Add transaction
+    const tierLabel = tier === 'vip' ? ' (VIP)' : tier === 'vip_table' ? ' (VIP Table)' : ''
     const transaction = createTransaction(
       'expense',
       'entertainment',
-      cost,
-      `Event: ${template.name}`,
+      totalCost,
+      `Event: ${template.name}${tierLabel}`,
       currentWeek,
       currentYear
     )
@@ -3361,7 +3782,7 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       upcomingEvents: [...existingEvents, newEvent],
       finances: {
         ...personalLife.finances,
-        liquidCash: personalLife.finances.liquidCash - cost,
+        liquidCash: personalLife.finances.liquidCash - totalCost,
         transactions: [...personalLife.finances.transactions, transaction]
       }
     })
@@ -3379,20 +3800,21 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
       duration: timeCost.hours,
       drainLevel: timeCost.drain,
       calendarEntryType: 'personal',
-      category: 'personal'
+      category: 'social'
     })
     
     // Send notification via the routing system (phone from friend/event host)
+    const guestInfo = guestNames.length > 0 ? ` Guests: ${guestNames.join(', ')}.` : ''
     routeNotification({
       category: 'social_invitation',
-      subject: `${template.name} - Confirmed`,
-      body: `You're all set for ${template.name} in Week ${eventWeek}! Looking forward to seeing you there.`,
+      subject: `${template.name}${tierLabel} - Confirmed`,
+      body: `You're all set for ${template.name} in Week ${eventWeek}!${guestInfo} Looking forward to seeing you there.`,
       degradedBody: `Event confirmed for Week ${eventWeek}.`
     })
     
     return { 
       success: true, 
-      message: `Scheduled ${template.name} for Week ${eventWeek}. Cost: $${cost.toLocaleString()}` 
+      message: `Scheduled ${template.name}${tierLabel} for Week ${eventWeek}. Cost: $${totalCost.toLocaleString()}${guestNames.length > 0 ? ` (with ${guestNames.join(', ')})` : ''}` 
     }
   }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear, addPersonalCalendarEntry])
   
@@ -3533,10 +3955,299 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     return { success: result.success, message: resultMessage, benefitValue: result.benefitValue }
   }, [getPersonalLife, updatePersonalLife, currentWeek, currentYear])
   
+  // ============================================
+  // CONTACT SOCIAL ACTIONS (unified gifts/hangouts/dates/invites/business)
+  // ============================================
+  
+  const executeSocialAction = useCallback((contactId: string, actionId: string): { success: boolean; message: string } => {
+    const action = getSocialActionById(actionId)
+    if (!action) return { success: false, message: 'Unknown action.' }
+    
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized.' }
+    
+    // Find the contact
+    const messaging = careerState?.messaging
+    if (!messaging) return { success: false, message: 'Messaging not initialized.' }
+    const contact = messaging.contacts.find(c => c.id === contactId)
+    if (!contact) return { success: false, message: 'Contact not found.' }
+    
+    // Validate contact type
+    if (!action.availableFor.includes(contact.type)) {
+      return { success: false, message: 'This action isn\'t available for this contact.' }
+    }
+    
+    // Validate relationship level
+    if (action.minRelationship && contact.relationshipLevel < action.minRelationship) {
+      return { success: false, message: `Your relationship needs to be at least ${action.minRelationship}% for this.` }
+    }
+    
+    // Validate cooldown
+    if (action.cooldownWeeks) {
+      const { getSocialActionCooldown } = useCareerStore.getState()
+      const weeksSinceLast = getSocialActionCooldown(contactId, actionId)
+      if (weeksSinceLast < action.cooldownWeeks) {
+        const remaining = action.cooldownWeeks - weeksSinceLast
+        return { success: false, message: `You need to wait ${remaining} more week${remaining !== 1 ? 's' : ''} before doing this again.` }
+      }
+    }
+    
+    // Validate affordability
+    if (action.cost > 0 && personalLife.finances.liquidCash < action.cost) {
+      return { success: false, message: `You can't afford this ($${action.cost.toLocaleString()} needed).` }
+    }
+    
+    // Validate time budget (for activities, not gifts)
+    if (action.timeCost > 0 && !canAffordTime(action.timeCost)) {
+      return { success: false, message: 'You don\'t have enough free time today.' }
+    }
+    
+    // === EXECUTE ===
+    
+    // 1. Deduct cost
+    if (action.cost > 0) {
+      const transaction = createTransaction(
+        'expense',
+        'entertainment',
+        action.cost,
+        `${action.category === 'gift' ? 'Gift' : 'Social'}: ${action.name} (${contact.name})`,
+        currentWeek,
+        currentYear
+      )
+      updatePersonalLife({
+        finances: {
+          ...personalLife.finances,
+          liquidCash: personalLife.finances.liquidCash - action.cost,
+          transactions: [...personalLife.finances.transactions, transaction]
+        }
+      })
+    }
+    
+    // 2. Consume time from day budget
+    if (action.timeCost > 0) {
+      const timeCost = getActivityTimeCost(action.id)
+      consumeHoursFromBudget(
+        timeCost.hours || action.timeCost,
+        timeCost.drain || 'low',
+        `${action.name} with ${contact.name}`,
+        action.id
+      )
+    }
+    
+    // 3. Apply relationship meter effects
+    const isRomantic = contact.type === 'partner' || contact.type === 'potential_date'
+    const effects: { affection?: number; romance?: number; trust?: number } = {
+      affection: action.effects.affection || undefined,
+      trust: action.effects.trust || undefined,
+    }
+    if (isRomantic && action.effects.romance) {
+      effects.romance = action.effects.romance
+    }
+    
+    const { updateRelationshipMeters, recordSocialAction } = useCareerStore.getState()
+    updateRelationshipMeters(contactId, effects)
+    
+    // 4. Record cooldown
+    recordSocialAction(contactId, actionId)
+    
+    // 4b. Event invite integration — attach contact to next matching event
+    if (action.category === 'event_invite') {
+      const freshPersonalLife = getPersonalLife()
+      if (freshPersonalLife) {
+        const upcomingEvents = freshPersonalLife.upcomingEvents || []
+        let targetEvent = null as any
+        
+        if (actionId === 'invite_race') {
+          // Look for any upcoming event, or just record as a standalone gesture
+          targetEvent = upcomingEvents.find((e: any) => e.date?.week > currentWeek || e.date?.year > currentYear)
+        } else if (actionId === 'invite_gala') {
+          targetEvent = upcomingEvents.find((e: any) =>
+            (e.type === 'gala' || e.type === 'charity_dinner' || e.type === 'sponsor_reception' || e.type === 'networking_event') &&
+            (e.date?.week > currentWeek || e.date?.year > currentYear)
+          )
+        } else if (actionId === 'invite_charity') {
+          targetEvent = upcomingEvents.find((e: any) =>
+            (e.type === 'charity_dinner' || e.type === 'charity_event') &&
+            (e.date?.week > currentWeek || e.date?.year > currentYear)
+          )
+        }
+        
+        if (targetEvent) {
+          const existingGuests = targetEvent.invitedContactIds || []
+          if (!existingGuests.includes(contactId)) {
+            updatePersonalLife({
+              upcomingEvents: upcomingEvents.map((e: any) =>
+                e.id === targetEvent.id
+                  ? { ...e, invitedContactIds: [...existingGuests, contactId] }
+                  : e
+              )
+            })
+          }
+        }
+      }
+    }
+    
+    // 5. Add calendar entry (if time-consuming)
+    if (action.timeCost > 0) {
+      // Map social action sub-category to the appropriate ActivityCategory
+      const socialCatMap: Record<string, string> = {
+        romantic: 'romance', dining: 'social', casual: 'social',
+        gift: 'social', event_invite: 'social', professional: 'social',
+      }
+      addPersonalCalendarEntry({
+        name: `${action.name} with ${contact.name}`,
+        description: action.description,
+        activityId: action.id,
+        week: currentWeek,
+        day: currentDay,
+        duration: action.timeCost,
+        drainLevel: 'low',
+        calendarEntryType: 'personal',
+        category: (socialCatMap[action.category] || 'social') as any,
+        immediate: true
+      })
+    }
+    
+    // Build result message
+    const effectParts: string[] = []
+    if (action.effects.affection) effectParts.push(`+${action.effects.affection} Affection`)
+    if (action.effects.trust) effectParts.push(`+${action.effects.trust} Trust`)
+    if (isRomantic && action.effects.romance) effectParts.push(`+${action.effects.romance} Romance`)
+    const effectStr = effectParts.length > 0 ? ` (${effectParts.join(', ')})` : ''
+    
+    const verb = action.category === 'gift' ? 'Sent' : 'Enjoyed'
+    return {
+      success: true,
+      message: `${verb} ${action.name} with ${contact.name}!${effectStr}`
+    }
+  }, [getPersonalLife, updatePersonalLife, careerState?.messaging, currentWeek, currentYear, currentDay, consumeHoursFromBudget, addPersonalCalendarEntry, canAffordTime])
+  
+  // ============================================
+  // SCHEDULE SOCIAL ACTION (for time-consuming activities — effects apply on completion day)
+  // ============================================
+  
+  const scheduleSocialAction = useCallback((contactId: string, actionId: string, week: number, day: number): { success: boolean; message: string } => {
+    const action = getSocialActionById(actionId)
+    if (!action) return { success: false, message: 'Unknown action.' }
+    
+    const personalLife = getPersonalLife()
+    if (!personalLife) return { success: false, message: 'Personal life not initialized.' }
+    
+    // Find the contact
+    const messaging = careerState?.messaging
+    if (!messaging) return { success: false, message: 'Messaging not initialized.' }
+    const contact = messaging.contacts.find(c => c.id === contactId)
+    if (!contact) return { success: false, message: 'Contact not found.' }
+    
+    // Validate contact type
+    if (!action.availableFor.includes(contact.type)) {
+      return { success: false, message: 'This action isn\'t available for this contact.' }
+    }
+    
+    // Validate relationship level
+    if (action.minRelationship && contact.relationshipLevel < action.minRelationship) {
+      return { success: false, message: `Your relationship needs to be at least ${action.minRelationship}% for this.` }
+    }
+    
+    // Validate cooldown
+    if (action.cooldownWeeks) {
+      const { getSocialActionCooldown } = useCareerStore.getState()
+      const weeksSinceLast = getSocialActionCooldown(contactId, actionId)
+      if (weeksSinceLast < action.cooldownWeeks) {
+        const remaining = action.cooldownWeeks - weeksSinceLast
+        return { success: false, message: `You need to wait ${remaining} more week${remaining !== 1 ? 's' : ''} before doing this again.` }
+      }
+    }
+    
+    // Validate affordability (check they CAN afford it — cost deducted on completion)
+    if (action.cost > 0 && personalLife.finances.liquidCash < action.cost) {
+      return { success: false, message: `You can't afford this ($${action.cost.toLocaleString()} needed).` }
+    }
+    
+    // For gifts (no time cost), execute immediately
+    if (action.timeCost <= 0) {
+      return executeSocialAction(contactId, actionId)
+    }
+    
+    // Build romantic effects
+    const isRomantic = contact.type === 'partner' || contact.type === 'potential_date'
+    const effects: { affection?: number; trust?: number; romance?: number } = {
+      affection: action.effects.affection || undefined,
+      trust: action.effects.trust || undefined,
+    }
+    if (isRomantic && action.effects.romance) {
+      effects.romance = action.effects.romance
+    }
+    
+    // Schedule via store
+    const scheduled = storeScheduleSocialAction({
+      actionId: action.id,
+      actionName: action.name,
+      contactId,
+      contactName: contact.name,
+      description: action.description,
+      cost: action.cost,
+      timeCost: action.timeCost,
+      effects,
+      category: action.category,
+      week,
+      day,
+    })
+    
+    if (!scheduled) {
+      return { success: false, message: 'That day is too full — pick another day.' }
+    }
+    
+    // Event invite integration — still attach contact immediately for planning purposes
+    if (action.category === 'event_invite') {
+      const freshPersonalLife = getPersonalLife()
+      if (freshPersonalLife) {
+        const upcomingEvents = freshPersonalLife.upcomingEvents || []
+        let targetEvent = null as any
+        
+        if (actionId === 'invite_race') {
+          targetEvent = upcomingEvents.find((e: any) => e.date?.week > currentWeek || e.date?.year > currentYear)
+        } else if (actionId === 'invite_gala') {
+          targetEvent = upcomingEvents.find((e: any) =>
+            (e.type === 'gala' || e.type === 'charity_dinner' || e.type === 'sponsor_reception' || e.type === 'networking_event') &&
+            (e.date?.week > currentWeek || e.date?.year > currentYear)
+          )
+        } else if (actionId === 'invite_charity') {
+          targetEvent = upcomingEvents.find((e: any) =>
+            (e.type === 'charity_dinner' || e.type === 'charity_event') &&
+            (e.date?.week > currentWeek || e.date?.year > currentYear)
+          )
+        }
+        
+        if (targetEvent) {
+          const existingGuests = targetEvent.invitedContactIds || []
+          if (!existingGuests.includes(contactId)) {
+            updatePersonalLife({
+              upcomingEvents: upcomingEvents.map((e: any) =>
+                e.id === targetEvent.id
+                  ? { ...e, invitedContactIds: [...existingGuests, contactId] }
+                  : e
+              )
+            })
+          }
+        }
+      }
+    }
+    
+    // Build result message
+    const dayNames = ['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const dayLabel = dayNames[day] || `Day ${day}`
+    return {
+      success: true,
+      message: `Scheduled ${action.name} with ${contact.name} for ${dayLabel}, Week ${week}`
+    }
+  }, [getPersonalLife, updatePersonalLife, careerState?.messaging, currentWeek, currentYear, storeScheduleSocialAction, executeSocialAction])
+
   return {
     // Finance Actions
     injectCapital,
     withdrawFunds,
+    setOwnerSalary,
     seekInvestors,
     acceptInvestorOffer,
     
@@ -3590,6 +4301,9 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     cancelDietPlan,
     buyProperty,
     sellOwnedProperty,
+    buyStock,
+    sellStock,
+    startPersonalBusiness,
     enrollInCourse,
     
     // Time-Consuming Lifestyle Activities
@@ -3621,10 +4335,19 @@ export function usePersonalLifeActions(): UsePersonalLifeActionsResult {
     donateToFoundation,
     planGala,
     respondToScandal,
+    resolveRivalryAction,
     scheduleEvent,
     dismissEvent,
+    acceptMediaDeal,
     changePrivacyLevel,
     interactWithContactAction,
-    askContactForFavorAction
+    askContactForFavorAction,
+    
+    // Contact Social Actions
+    executeSocialAction,
+    scheduleSocialAction,
+    
+    // Period validation
+    checkActivityPeriod
   }
 }

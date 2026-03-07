@@ -1,0 +1,22 @@
+{
+  "name": "Ingrid Karlsson",
+  "nationality": "Swedish",
+  "age": 38,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Ingrid's journey into motorsport was somewhat unconventional, starting with a fascination for the telemetry systems used in Formula 1. A graduate of the KTH Royal Institute of Technology in Stockholm with a degree in Computer Science, she initially worked in the banking sector, quickly realizing that the fast-paced world of finance wasn't her true calling. Drawn by the intricate data analysis and technological innovation inherent in racing, she made a career change, initially volunteering at local karting events, analyzing performance data for amateur teams. This passion led to a junior role at a touring car team, then eventually to Sodi Kart, where she now manages the IT systems.\n\nIngrid is meticulous and methodical, ensuring that the team's IT infrastructure is robust, secure, and optimized for performance. She is particularly interested in how AI and machine learning can improve kart performance and strategy. Her ability to troubleshoot complex issues under pressure is highly valued, and she's known for her proactive approach to identifying potential vulnerabilities before they impact the team. What sets Ingrid apart is her deep understanding of both the technical aspects of IT and the practical needs of the racing team; she is always bridging the gap between technology and the track.\n\nHer dedication to Sodi Kart extends beyond her technical expertise; she's a firm believer in fostering a strong team environment, promoting collaboration and open communication between departments.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair often pulled back into a practical ponytail",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Ingrid has a focused look, often seen with her brow furrowed in concentration, and a practical, no-nonsense style."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a small Rubik's Cube on her desk, solving it during breaks.",
+    "Keeps a detailed log of all IT incidents and solutions, even for minor issues.",
+    "Insists on using a specific type of mechanical keyboard for its tactile feedback."
+  ]
+}

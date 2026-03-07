@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 22,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Mateo's passion for motorsport ignited at a young age, growing up near the Autódromo Juan y Oscar Gálvez in Buenos Aires. He started as a volunteer marshal, quickly developing a keen eye for safety protocols and risk assessment. This led him to pursue formal training in security management and specialized courses in motorsport safety, combining practical experience with theoretical knowledge. He believes a proactive approach to security, focusing on preventative measures and clear communication, is crucial for ensuring the safety of teams, drivers, and spectators alike. Mateo is known for his meticulousness and ability to remain calm under pressure, making him a valuable asset in high-stakes environments.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook to jot down potential security vulnerabilities.",
+    "Has a habit of pacing while deep in thought, often muttering security protocols under his breath.",
+    "Insists on conducting a thorough security briefing before every event, regardless of its size."
+  ]
+}

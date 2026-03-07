@@ -1,0 +1,31 @@
+{
+  "name": "Rafael Costa e Silva",
+  "nationality": "Brazilian",
+  "age": 23,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Rafael is a young but incredibly driven investment banker at BTG Pactual in São Paulo, already making waves in the finance world. His intellectual prowess and ambition, combined with a touch of recklessness in his investment strategies, have quickly propelled him up the ranks. He manages portfolios for several high-net-worth individuals and corporations, always looking for the next lucrative opportunity. Despite his demanding career, Rafael finds time for his diverse interests, including mastering new languages and training for marathons. \n\nGiven his client base, Rafael often attends exclusive events and social gatherings frequented by influential figures in various industries, including motorsport. A racing driver might cross paths with Rafael at a sponsorship gala, a charity auction benefiting a racing team, or even through a mutual acquaintance in the high-end automotive scene. His firm might be considering investing in a racing team or sponsoring a driver, putting him directly in the path of aspiring racers seeking funding.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Rafael has a sharp, focused gaze and a confident posture that reflects his ambition. He favors tailored suits that accentuate his athletic build."
+  },
+  "connectionToMotorsport": "Rafael's bank manages investments for several Brazilian companies, including some with ties to the motorsport industry. He's also personally interested in Formula 1 and occasionally attends the Brazilian Grand Prix.",
+  "meetingContext": "The player might meet Rafael at a networking event for young professionals in São Paulo, or perhaps at a private dinner hosted by a mutual business contact.",
+  "conversationTopics": [
+    "The latest trends in the global financial market",
+    "His training regimen for the upcoming São Paulo Marathon",
+    "His scuba diving experiences in Fernando de Noronha",
+    "The complexities of the Brazilian economy",
+    "The performance of his favorite Formula 1 team"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors and investors",
+    "Provide financial advice and guidance on managing earnings",
+    "Offer access to exclusive networking events and opportunities"
+  ],
+  "personality_summary": "An ambitious and intellectual young banker with a penchant for risk and a desire to control his environment."
+}

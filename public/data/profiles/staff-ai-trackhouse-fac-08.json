@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 38,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Rhys's journey into motorsport began unconventionally, with a fascination for aerodynamics sparked by his father's glider hobby. He pursued mechanical engineering, focusing on fluid dynamics and wind tunnel technology. After graduating, he honed his skills at a smaller racing outfit before joining Trackhouse Racing. Rhys is meticulous in his work, prioritizing data accuracy and repeatability. He believes in a holistic approach, understanding how even minor adjustments in the wind tunnel can translate to significant gains on the track. \n\nHis approach is marked by a relentless pursuit of efficiency. Rhys is known for his ability to translate raw data into actionable insights. He's always looking for innovative methods to improve testing accuracy and minimize downtime. While demanding, he's respected for his dedication and commitment to helping the team achieve its goals, offering comprehensive, well-reasoned solutions, not just isolated data points.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Rhys is of average height, with a lean build and focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with wind tunnel data and calculations.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on listening to classic rock during wind tunnel sessions."
+  ]
+}

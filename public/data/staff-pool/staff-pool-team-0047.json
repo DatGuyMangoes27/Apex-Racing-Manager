@@ -1,0 +1,22 @@
+{
+  "name": "Thanin Chaiyawat",
+  "nationality": "Thai",
+  "age": 30,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Thanin's passion for motorsport ignited during his childhood, spent helping his father repair motorcycles. This hands-on experience fueled his pursuit of engineering, leading him to graduate top of his class at Chulalongkorn University. He quickly rose through the ranks at a local tuning shop before securing a position at a smaller racing team. \n\nHis meticulous approach to problem-solving and knack for optimizing performance quickly set him apart. Thanin thrives under pressure, viewing each race as a complex puzzle waiting to be solved. He's known for his innovative solutions and his ability to extract maximum performance from limited resources. His experience in smaller teams has made him a master of resourcefulness, always seeking that extra edge.\n\nThanin believes in creating a collaborative and knowledge-sharing environment within his team. He encourages open communication and fosters a culture of continuous improvement. His leadership style, combined with his technical acumen, make him a highly sought-after technical director in the motorsport world.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "dark brown",
+    "facialHair": "trimmed goatee",
+    "description": "He has a lean build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on checking the torque settings on critical components himself."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 44,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Ricardo's journey into motorsport began unexpectedly, through a volunteer program at a local karting track. Initially, he was tasked with basic maintenance, but his keen eye for detail and natural aptitude quickly led him to specialize in composite materials. He spent years honing his skills in a small workshop, crafting bodywork and aerodynamic components for rally teams. Ricardo is known for his meticulous approach; he believes that even the smallest imperfection can compromise performance. He is a firm believer in tried-and-true methods, favoring proven techniques over untested innovations, which sometimes puts him at odds with more experimental engineers. His hands-on experience and deep understanding of material properties make him a reliable asset in any racing environment.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is of average height, with a sturdy build and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to an exact point before starting any task.",
+    "Insists on using only analog measuring tools, distrusting digital readouts.",
+    "Carries a small, worn notebook filled with handwritten material specifications."
+  ]
+}

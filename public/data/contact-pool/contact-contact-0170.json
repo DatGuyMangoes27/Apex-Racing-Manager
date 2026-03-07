@@ -1,0 +1,31 @@
+{
+  "name": "Bronte Callaghan",
+  "nationality": "Australian",
+  "age": 42,
+  "gender": "female",
+  "contactType": "athlete",
+  "bio": "Bronte Callaghan is a former Olympic swimmer, renowned for her incredible stamina and competitive spirit. After retiring from professional swimming, she's dedicated her time to philanthropy, supporting numerous youth sports programs across Australia. While known for her generosity and open-mindedness, Bronte's blunt honesty and occasional unreliability can sometimes rub people the wrong way. She's passionate about giving back to the community and exploring new challenges, currently training in mixed martial arts.\n\nBronte's involvement in motorsport stems from her sponsorship of up-and-coming athletes, including several promising young drivers. She sees similarities between swimming and racing, appreciating the dedication, precision, and mental fortitude required for success in both fields. A racing driver might cross paths with her at a charity gala, a sports foundation event, or even through mutual connections in the fitness and wellness community.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, wavy",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Bronte is athletic and toned from years of swimming. She has a friendly face with laugh lines around her eyes."
+  },
+  "connectionToMotorsport": "Bronte sponsors young drivers through her sports foundation, providing them with financial support and mentorship. She attends races occasionally to support her sponsored athletes.",
+  "meetingContext": "At a fundraising gala for a youth motorsport program, or potentially at a high-end gym or wellness retreat frequented by athletes.",
+  "conversationTopics": [
+    "Swimming",
+    "Youth sports development",
+    "Ballet (surprisingly passionate)",
+    "Her latest martial arts training",
+    "The mental toughness required for elite performance"
+  ],
+  "canHelp": [
+    "Introduce you to potential sponsors",
+    "Offer mentorship and guidance on maintaining peak physical and mental condition",
+    "Connect you with influential figures in the Australian sports scene"
+  ],
+  "personality_summary": "A generous and passionate former Olympian, whose blunt honesty can be both a blessing and a curse."
+}

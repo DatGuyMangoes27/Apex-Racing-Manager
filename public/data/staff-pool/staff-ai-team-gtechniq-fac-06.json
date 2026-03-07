@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Wei Zhang",
+    "nationality": "Chinese",
+    "age": 32,
+    "gender": "male",
+    "role": "logistics_coordinator",
+    "bio": "Wei Zhang's journey into motorsport began unexpectedly during a university internship at a local automotive parts manufacturer. Witnessing the precision and coordination required to supply components to racing teams ignited a passion for the logistical side of the sport. After graduating with a degree in supply chain management, Wei worked his way up through various roles, gaining experience in warehousing, transportation, and inventory control. His meticulous approach and ability to anticipate potential problems quickly made him an invaluable asset to his previous teams.\n\nNow at Team Gtechniq, Wei thrives on the challenges of ensuring the seamless flow of equipment and personnel across different race locations. He is known for his calm demeanor under pressure and his unwavering commitment to meeting deadlines, even under the most demanding circumstances. Wei's distinctive trait is his ability to find creative solutions to logistical bottlenecks, ensuring that the team always has what they need, when they need it.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly combed with a slight side part",
+      "eyeColor": "Brown",
+      "facialHair": "Goatee",
+      "description": "Wei is of average height and build, with a focused expression that reflects his meticulous nature."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Keeps a detailed spreadsheet of every item in the team's inventory.",
+      "Always carries a small notebook filled with logistical diagrams and contingency plans.",
+      "Has a peculiar habit of tapping his pen rhythmically when deep in thought."
+    ]
+  }
+]

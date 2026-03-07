@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Alvarez del Castillo",
+  "nationality": "Mexican",
+  "age": 60,
+  "gender": "male",
+  "contactType": "politician",
+  "bio": "Ricardo Alvarez del Castillo is a seasoned Mexican politician known for his fiery speeches and old-school approach to governance. Hailing from a prominent family with deep roots in Jalisco, he bypassed formal education, instead immersing himself in the world of business and politics from a young age. He has served multiple terms as a state senator and is currently campaigning for governor. Despite his sometimes reckless pronouncements, those who know him well appreciate his sharp wit and surprising gratitude. His passion for vintage cars often brings him into contact with the motorsport world.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Slicked back, thinning on top",
+    "eyeColor": "Brown",
+    "facialHair": "Gray mustache",
+    "description": "Ricardo has a commanding presence, accentuated by his tailored suits and well-maintained appearance. He carries himself with an air of confidence, his eyes often crinkling at the corners when he's about to deliver a witty remark."
+  },
+  "connectionToMotorsport": "Ricardo is a passionate collector of vintage racing cars and a regular attendee at motorsport events throughout Mexico and occasionally internationally. He also sponsors a small local racing team as a personal passion project.",
+  "meetingContext": "The player might meet Ricardo at a vintage car show or motorsport event in Mexico, perhaps through a mutual acquaintance in the local racing scene or if the player's team is seeking sponsorship in the region.",
+  "conversationTopics": [
+    "The golden age of motorsport",
+    "The future of Mexican politics",
+    "His vintage car collection",
+    "The latest advancements in green technology for cars",
+    "Art collecting"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorships from Mexican companies",
+    "Provide valuable introductions to influential figures in Mexican business and politics",
+    "Offer advice on navigating the Mexican racing scene"
+  ],
+  "personality_summary": "A fiery and witty old-fashioned politician with a passion for motorsport and a surprising streak of gratitude."
+}

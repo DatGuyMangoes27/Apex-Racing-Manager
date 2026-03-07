@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Keller",
+  "nationality": "Swiss",
+  "age": 45,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Hans-Peter's journey into motorsport electronics began unconventionally, stemming from a fascination with the intricate clockwork of Swiss automatons. After completing his degree in electrical engineering at ETH Zurich, he initially worked on embedded systems for industrial automation. However, the allure of high-performance racing, with its relentless pursuit of marginal gains, proved irresistible. He took a significant pay cut to join a small Formula 4 team, eager to learn the ropes and contribute to the complex electronic systems powering these machines.\n\nHans-Peter is a methodical and detail-oriented engineer, always meticulously documenting his work and striving for robust, reliable solutions. While he may lack the flashy innovation of some of his peers, his pragmatic approach and unwavering commitment to quality make him a valuable asset in any racing team. He believes firmly in the power of incremental improvements and data-driven decision-making, favoring a systematic approach over gut feelings.\n\nHis specialty lies in power management and data acquisition systems, he has an eye for detail and is also a fast learner, which is why he will be a valuable asset to any team. His career in motorsport is just beginning, and he is eager to expand his knowledge and make a name for himself.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Hans-Peter is of average height with a slightly stocky build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small Swiss Army knife, even to the office.",
+    "Drinks copious amounts of herbal tea throughout the day.",
+    "Insists on organizing his workspace with perfectly aligned tools."
+  ]
+}

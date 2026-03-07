@@ -1,0 +1,22 @@
+{
+  "name": "Branislav Ivanović",
+  "nationality": "Serbian",
+  "age": 43,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Branislav's journey into motorsport began with a childhood fascination for the intricate engineering of race cars. Growing up in Belgrade, he devoured every magazine and documentary he could find, fueling his desire to work with cutting-edge technology. After completing his degree in mechanical engineering, he landed an apprenticeship at a local tuning shop, where he honed his skills in fabrication and composite repair. His meticulous attention to detail and relentless pursuit of perfection quickly made him an invaluable asset.\n\nHe joined McLaren Racing five years ago and has since become an integral part of the composite team. Branislav's demanding nature pushes his colleagues to strive for excellence, while his innovative ideas often lead to significant performance improvements. He believes that every component, no matter how small, plays a crucial role in the overall success of the team, and he approaches each task with unwavering dedication. He is known for his ability to diagnose and resolve complex issues quickly and efficiently, often finding innovative solutions where others see only obstacles.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Branislav is a lean man of medium height with a focused gaze and strong hands."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific type of carbon fiber resin, claiming it yields superior results.",
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought."
+  ]
+}

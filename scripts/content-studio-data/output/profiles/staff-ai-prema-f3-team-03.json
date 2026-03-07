@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Swiss",
+  "age": 45,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Luc Dubois's fascination with motorsport began as a child, watching Michael Schumacher dominate the Formula 1 circuit. He pursued a degree in aeronautical engineering at ETH Zurich, excelling in fluid dynamics and aerodynamics. His career started at Sauber, where he honed his skills in wind tunnel testing and CFD analysis, contributing to several car upgrades. \n\nHe moved to Prema Racing five years ago, drawn by the team's commitment to developing young talent and its ambitious goals in Formula 2 and Formula 3. As Head of Aero, Jean-Luc is known for his meticulous approach and relentless pursuit of marginal gains. He believes in a data-driven approach, constantly analyzing performance metrics to identify areas for improvement. He is also known to foster a culture of collaboration and knowledge sharing within his team to get the best results. \n\nJean-Luc is particularly skilled at balancing theoretical models with real-world testing, often finding innovative solutions to complex aerodynamic challenges. This blend of rigor and creativity has made him a valuable asset to Prema Racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A man of medium build with an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out copy of 'Aerodynamic Theory' by Theodore von Kármán.",
+    "Drinks exactly three espressos before 9 AM every morning.",
+    "Has a habit of tapping his pen rhythmically when deep in thought during meetings."
+  ]
+}

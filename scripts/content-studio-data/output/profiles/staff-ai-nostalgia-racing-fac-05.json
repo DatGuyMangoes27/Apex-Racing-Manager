@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 37,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport started in his father's auto repair shop in Montreal. He developed a keen eye for detail, meticulously inspecting and troubleshooting engine problems. He honed his skills through vocational training and quickly found his niche in quality control. Jean-Pierre is known for his rigorous approach and unwavering commitment to ensuring that every component meets the highest standards. He's a firm believer that meticulous preparation is the key to success on the track.\n\nHis demanding nature stems from a deep-seated belief that only perfection can yield victory. He meticulously reviews data logs, scrutinizes parts, and isn't afraid to challenge engineers when something doesn't meet his exacting standards. Jean-Pierre is driven by a desire to contribute to the team's success and takes immense pride in knowing that his work helps them push the boundaries of performance. His ambition is to one day lead a quality control team for a top-tier motorsport organization.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height with a sturdy build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a miniature inspection mirror.",
+    "Has a habit of tapping his pen rhythmically when reviewing data.",
+    "Insists on using a specific brand of cleaning wipes for all parts."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 43,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's motorsport journey began in his father's auto repair shop in Montreal. Surrounded by engines and tools from a young age, he developed a knack for understanding mechanical systems. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, and landed his first job with a small Formula Ford team. His keen eye for detail and data analysis quickly made him an invaluable asset, leading him to Speed Kart Racing. \n\nJean-Pierre approaches his role with a blend of methodical precision and adaptability. He believes in building a strong rapport with the driver, understanding their feedback, and translating it into tangible improvements in the kart's setup. He constantly experiments with new strategies, always seeking that elusive competitive edge. Jean-Pierre's colleagues know him for his calm demeanor under pressure and his ability to find innovative solutions to complex problems.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a wiry build that speaks to his active lifestyle."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on a specific brand of espresso before every race."
+  ]
+}

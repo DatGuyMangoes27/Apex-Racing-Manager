@@ -1,0 +1,31 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 32,
+  "gender": "male",
+  "contactType": "tech_entrepreneur",
+  "bio": "Mateo Rossi is the founder and CEO of 'EcoCharge,' a rapidly expanding tech company specializing in sustainable energy solutions for electric vehicles, including advanced battery technology and charging infrastructure. His fiery passion for environmental sustainability, combined with a stubborn determination to disrupt traditional industries, has driven EcoCharge to become a major player in the global market. Despite his demanding career, Mateo is known for his genuine gratitude and caring nature towards his employees and loved ones. He is starting to invest in motorsport as a testing ground for his company's technology.\n\nMateo’s interest in motorsport stems from his belief that racing provides the ultimate proving ground for cutting-edge technology. He sees Formula E and other electric racing series as ideal platforms to showcase EcoCharge’s advancements in battery performance and energy management. A racing driver might cross paths with Mateo at a tech conference, a motorsport networking event, or perhaps even through mutual acquaintances in the tech or investment world.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Light stubble",
+    "description": "Mateo has a lean, athletic build from years of surfing and fitness training. He often wears stylish, modern clothing that reflects his tech-savvy personality."
+  },
+  "connectionToMotorsport": "Mateo is a new investor in a Formula E team, hoping to utilize the sport as a marketing platform and proving ground for EcoCharge's battery technology. He is also exploring opportunities to sponsor promising young drivers in other electric racing series.",
+  "meetingContext": "The player might meet Mateo at a Formula E race, through a mutual connection at a tech incubator event focused on sustainable transportation, or potentially at a high-end whiskey tasting event.",
+  "conversationTopics": [
+    "Sustainable energy and electric vehicle technology",
+    "The future of motorsport and its role in technological innovation",
+    "His company, EcoCharge, and its mission",
+    "Surfing and his favorite surf spots in Argentina",
+    "The challenges and rewards of being a tech entrepreneur"
+  ],
+  "canHelp": [
+    "Provide sponsorship opportunities through EcoCharge",
+    "Offer access to his network of investors and tech experts",
+    "Offer connections to Formula E teams"
+  ],
+  "personality_summary": "A stubborn but caring tech entrepreneur with a fiery passion for sustainable technology."
+}

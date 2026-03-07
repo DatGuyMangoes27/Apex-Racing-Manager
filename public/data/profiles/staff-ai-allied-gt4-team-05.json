@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Sophie Dubois",
+    "nationality": "French",
+    "age": 47,
+    "gender": "female",
+    "role": "strategist",
+    "bio": "Sophie Dubois's journey into motorsport began unconventionally. After earning a degree in applied mathematics, she initially worked in the aerospace industry, analyzing complex data sets for satellite launches. However, the thrill of competition drew her to Formula racing, where she saw a similar challenge – optimizing performance through rigorous data analysis. She started as a junior data analyst for a smaller team, quickly proving her worth with her ability to identify subtle performance gains others missed.\n\nSophie's strategic approach is characterized by meticulous preparation and a data-driven mindset. She believes in understanding every variable that can influence a race, from tire degradation to weather patterns. While deeply analytical, she also values the human element, working closely with drivers and engineers to translate data into actionable race strategies. Her ambition is to lead a team to a championship victory, proving that a calculated and informed approach can triumph in the high-stakes world of motorsport.\n\nWhat makes Sophie stand out is her ability to remain calm and collected under immense pressure. She has a knack for spotting opportunities that others overlook, always thinking several steps ahead. She is known to work long hours, and is a great asset to any team.",
+    "physical": {
+      "skinTone": "Light",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, neatly styled with a slight wave.",
+      "eyeColor": "Green",
+      "facialHair": null,
+      "description": "Sophie is of average height with a slender build, often seen wearing stylish glasses."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always has a meticulously organized spreadsheet for every possible race scenario.",
+      "Drinks black coffee throughout the day, no sugar.",
+      "Keeps a small, worn copy of 'The Art of War' on her desk."
+    ]
+  }
+]

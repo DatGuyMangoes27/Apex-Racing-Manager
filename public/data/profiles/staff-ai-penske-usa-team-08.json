@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Ramirez",
+  "nationality": "Mexican",
+  "age": 32,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Sofia Ramirez discovered her passion for motorsport while helping her grandfather, a mechanic, restore classic cars in Guadalajara. This early exposure ignited a fascination with engineering principles and a desire to apply them to racing. She pursued a degree in Mechanical Engineering at the Instituto Tecnológico y de Estudios Superiores de Monterrey, focusing on vehicle dynamics and simulation.\n\nSofia's career began with a Formula Ford team in Mexico, where she quickly proved her talent for data analysis and problem-solving. Her ability to translate complex technical data into actionable insights led to significant improvements in car performance. She is known for her meticulous approach to race preparation and her calm demeanor under pressure, allowing her to make critical decisions during high-stakes situations. Sofia is driven by a desire to push the boundaries of performance and contribute to a winning team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a lean build, always looking focused and ready to work."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a thermos of spiced Mexican hot chocolate at her workstation.",
+    "Obsessively cleans her laptop screen with a microfiber cloth.",
+    "Tends to doodle complex mechanical schematics during team meetings."
+  ]
+}

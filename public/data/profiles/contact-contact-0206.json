@@ -1,0 +1,31 @@
+{
+  "name": "Greta Huber",
+  "nationality": "Austrian",
+  "age": 40,
+  "gender": "female",
+  "contactType": "film_director",
+  "bio": "Greta Huber is a rising star in the independent film world, known for her visually stunning and emotionally resonant documentaries. Despite lacking formal film school training, her keen eye and natural storytelling ability have garnered her critical acclaim and several prestigious awards. Greta is known for her uncompromising artistic vision, which some see as stubbornness, but those close to her understand is driven by a deep empathy for her subjects. \n\nWhile seemingly distant from the high-octane world of motorsport, Greta is currently developing a documentary about the human cost of racing, focusing on the mechanics, engineers, and support staff who dedicate their lives to the sport. A racing driver might cross paths with Greta either by being interviewed as part of her research, or if the driver is connected to one of the support staff she is already following.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, asymmetrical bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Greta has a sharp, intense gaze and a focused expression. She favors minimalist, practical clothing, usually in dark colors."
+  },
+  "connectionToMotorsport": "Greta is directing a documentary film about the unsung heroes of motorsport: the mechanics, engineers, and support staff who keep the cars running and the teams functioning. Her film seeks to explore the dedication, sacrifices, and passion that fuel these individuals.",
+  "meetingContext": "The player could meet Greta at a pre-race interview, or at a motorsport event, if the player is associated with a team or individual who is featured in her documentary. Alternatively, they could meet her through a mutual acquaintance within the racing world.",
+  "conversationTopics": [
+    "The ethics of motorsport",
+    "The creative process in filmmaking",
+    "The challenges of documentary filmmaking",
+    "The beauty of vintage cars",
+    "The art world in Vienna"
+  ],
+  "canHelp": [
+    "Publicity and media exposure through her film",
+    "Connections to potential sponsors and investors interested in supporting her film",
+    "Provide unique insights into the human element of racing, which can help with sponsorship deals"
+  ],
+  "personality_summary": "Stubbornly empathetic film director with a keen eye for detail and a unique artistic vision."
+}

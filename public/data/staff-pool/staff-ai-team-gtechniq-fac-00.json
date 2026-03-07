@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 41,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Bjørn's fascination with motorsport began during his childhood, spent watching rally races in the Norwegian countryside. This early exposure fueled a passion for understanding the intricate mechanics and engineering behind racing vehicles. After completing his degree in mechanical engineering from the Norwegian University of Science and Technology, Bjørn sought a career that blended his technical expertise with his love for racing.\n\nHe started as a junior data analyst for a small racing team, meticulously analyzing telemetry data to optimize vehicle performance. This role provided him with invaluable insights into the dynamic interplay between driver input, vehicle setup, and track conditions. Recognizing the potential of simulator technology, Bjørn transitioned into simulator engineering, where he could leverage his analytical skills to create realistic and effective training environments for drivers. He's known for his methodical approach to problem-solving and his ability to translate complex data into actionable recommendations for drivers and engineers alike. What sets him apart is his calm demeanor under pressure and his commitment to continuous improvement, always seeking innovative ways to enhance simulator fidelity and effectiveness.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Bjørn is of average height with a slightly stocky build, reflecting his love for traditional Norwegian cuisine."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always brings a thermos of strong black coffee to the sim lab.",
+    "Has a collection of miniature rally cars on his desk.",
+    "Meticulously cleans his workstation at the end of each day, regardless of how busy he is."
+  ]
+}

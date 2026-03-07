@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 55,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Declan's journey into motorsport began unexpectedly, repairing fiberglass boats along the rugged Irish coast. His meticulous work caught the eye of a local rally team, leading him to transition his skills to composite bodywork. He quickly developed a reputation for his pragmatic approach and ability to solve complex problems under pressure. Now with Oregon Team, Declan brings decades of experience to ensure the cars are not only aerodynamically sound but also robust enough to withstand the rigors of competition. He values efficiency and precision, always seeking practical solutions over flashy innovation. His hands-on experience and deep understanding of materials make him a vital asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed gray beard",
+    "description": "A stout man with a weathered face and kind eyes."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his fingers on surfaces while deep in thought.",
+    "Refers to carbon fiber as 'black magic'."
+  ]
+}

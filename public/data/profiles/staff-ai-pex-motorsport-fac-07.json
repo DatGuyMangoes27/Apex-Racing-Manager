@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 30,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Thierry's journey into motorsport IT began with a youthful fascination for Formula 1, nurtured by countless hours spent tinkering with computers and racing simulations. He quickly realized the critical role of robust IT infrastructure in modern racing, from data analysis and telemetry to team communication and strategy development. Prior to joining PEX Motorsport, Thierry honed his skills at a technology firm specializing in high-performance computing, where he developed expertise in network optimization and data security.\n\nThierry is known for his meticulous approach and unwavering commitment to ensuring the IT systems run flawlessly. He is a firm believer in proactive maintenance and rigorous testing, aiming to anticipate and resolve issues before they impact the team's performance on the track. His demanding nature stems from a deep-seated desire for excellence and a relentless pursuit of marginal gains, ensuring PEX Motorsport always has the technological edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Thierry is a lean man with a serious expression and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a mechanical keyboard with excessively loud clicky keys.",
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has an uncanny ability to diagnose IT problems over the phone, often before even seeing the system."
+  ]
+}

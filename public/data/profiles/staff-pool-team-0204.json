@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Argentine",
+  "age": 40,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began in his youth, tinkering with engines in his family's small auto repair shop in Buenos Aires. He pursued mechanical engineering, specializing in vehicle dynamics, before landing a role with a national touring car team. There, he honed his skills, developing data-driven insights that consistently improved lap times. His approach is methodical and analytical, always seeking marginal gains through meticulous analysis and innovative solutions. Ricardo stands out for his ability to translate complex technical data into actionable strategies that drivers can readily implement on the track, bridging the gap between the engineering bay and the cockpit.\n\nAfter nearly a decade in national series, Ricardo craved a bigger challenge. He spent several years with a struggling sports car team, where he single-handedly improved their performance through innovative aerodynamic tweaks and suspension calibrations. He is known for his calm demeanor under pressure and his ability to motivate his team, even in the face of adversity. He is now eager to join a team where he can fully utilize his experience and drive to push the boundaries of performance.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Ricardo is of average height with a lean build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn leather-bound notebook filled with engineering diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a strong cup of mate before every race."
+  ]
+}

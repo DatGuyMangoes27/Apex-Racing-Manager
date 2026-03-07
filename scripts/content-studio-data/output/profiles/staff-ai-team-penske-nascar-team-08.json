@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 58,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began in Medellin, where he spent his youth tinkering with go-karts, fueled by a dream of one day working with the fastest machines on earth. After earning his engineering degree, he honed his skills in the automotive industry before making the leap to IndyCar. Ricardo believes a strong car is built on consistent, incremental improvements, meticulously analyzing data to squeeze every last drop of performance out of the engine and chassis. His calm demeanor and sharp analytical mind make him a valuable asset, especially during high-pressure situations on the pit wall.\n\nRicardo is known for his old-school approach, valuing hands-on experience and thorough preparation over relying solely on simulations. He's a firm believer in the human element of racing, emphasizing clear communication and trust between the driver and the engineering team. While he embraces new technologies, he always grounds his decisions in practical knowledge, ensuring reliability and robustness are never compromised. His colleagues appreciate his mentorship and willingness to share his vast experience.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Graying Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Thin, well-trimmed mustache",
+    "description": "Ricardo is a man of medium build with a thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn leather-bound notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking only Colombian coffee before every race."
+  ]
+}

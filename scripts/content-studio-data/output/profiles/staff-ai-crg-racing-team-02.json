@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 58,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo Velez's journey into motorsport began in the bustling streets of Bogota, tinkering with engines in his father's small garage. His passion led him to study mechanical engineering, where he excelled in fluid dynamics and materials science. After graduating, he worked his way up through several smaller racing teams, honing his skills in vehicle dynamics and trackside data analysis.\n\nKnown for his relentless pursuit of perfection, Ricardo brings a data-driven approach to his role as Technical Director. He believes that meticulous planning and unwavering attention to detail are the keys to unlocking a team's full potential. His demanding nature stems from a deep-seated desire to push boundaries and extract every last ounce of performance from both the car and the team.\n\nRicardo's distinctive characteristic is his encyclopedic knowledge of motorsport history and his ability to apply lessons learned from the past to solve modern-day challenges. He is a firm believer in continuous improvement and fosters a culture of learning and innovation within his team.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium build with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on having his coffee black, brewed exactly at 92 degrees Celsius.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Oscar Cabalén, more commonly known as Autódromo de Córdoba, has been a cornerstone of Argentine motorsport since its inauguration in 1967. Named after the prominent racing driver Oscar Cabalén, the circuit has hosted a wide array of national and international events, including Turismo Carretera, TC2000, and Formula Renault series. While the venue has seen several layout configurations over the years, the full circuit has consistently been a favorite for its demanding nature and flowing design. The track has witnessed countless battles and memorable moments, solidifying its place in Argentine racing history.",
+  "atmosphere": "The air crackles with anticipation at the Autódromo Oscar Cabalén during a race weekend. The roar of engines reverberates across the vast plains, mingling with the cheers of passionate Argentine fans. As the sun beats down, the smell of burning rubber and gasoline fills the air, creating a sensory overload that defines the motorsport experience. The grandstands are packed with families and die-hard enthusiasts, all eager to witness the spectacle unfold on the challenging full circuit. The energy is palpable, a testament to the enduring popularity of racing in Córdoba.",
+  "trackCharacter": "The full circuit at Autódromo Oscar Cabalén, with its 4km length and 12 turns, offers a balanced mix of high-speed sections and technical corners. The track rewards drivers who can maintain momentum and find the right rhythm. The layout emphasizes precision and car control, demanding a setup that is both stable in high-speed corners and nimble through the tighter sections. Unlike some other Argentine circuits, Córdoba's full layout provides a consistent flow, encouraging close racing and exciting overtaking opportunities.",
+  "nickname": "The Córdoba Gauntlet",
+  "famousCorners": [
+    {
+      "name": "Curva 1 (Tobogán)",
+      "description": "A fast, sweeping right-hander that requires commitment and precise placement. It's the first real test of courage after the start/finish straight.",
+      "challenge": "Carrying maximum speed through the corner without running wide or upsetting the car's balance."
+    },
+    {
+      "name": "Curva 3 (La Confitería)",
+      "description": "A tricky left-hander that leads onto a short straight. Maintaining momentum is crucial for a good exit.",
+      "challenge": "Finding the right braking point and apex speed to maximize acceleration onto the following straight."
+    },
+    {
+      "name": "Curva 5 (El Ombú)",
+      "description": "A medium-speed right-hander that requires a smooth entry and exit. Positioned near a prominent Ombú tree.",
+      "challenge": "Balancing entry speed with a clean exit to set up the run towards Curva 6."
+    },
+    {
+      "name": "Curva 8 (La Horquilla)",
+      "description": "A tight hairpin that offers a key overtaking opportunity. Requires heavy braking and precise steering.",
+      "challenge": "Outbraking opponents while maintaining a tight line to avoid running wide on exit."
+    },
+    {
+      "name": "Curva 12 (Final Corner)",
+      "description": "A fast right-hander that leads onto the main straight. Crucial for setting up a good lap time.",
+      "challenge": "Carrying as much speed as possible through the corner to maximize acceleration onto the start/finish straight."
+    }
+  ],
+  "keyFactors": [
+    "Braking Performance",
+    "Aerodynamic Efficiency",
+    "Mechanical Grip",
+    "Engine Power (for the long straights)",
+    "Tire Management"
+  ],
+  "overtakingSpots": [
+    "Curva 8 (La Horquilla)",
+    "Approach to Curva 3 (La Confitería)",
+    "Into Curva 1 (Tobogán) - risky but possible"
+  ],
+  "historySnippets": [
+    "Autódromo Oscar Cabalén was inaugurated in 1967.",
+    "The circuit is named after Argentine racing driver Oscar Cabalén.",
+    "The full circuit layout is 4 kilometers in length.",
+    "Córdoba has hosted numerous Turismo Carretera races.",
+    "TC2000 events are regularly held at Córdoba.",
+    "The track's design emphasizes a balance between high speed and technical sections."
+  ],
+  "weatherNotes": "The weather in Córdoba can be unpredictable, with hot summers and mild winters. Rain showers are common, especially during the summer months, which can make racing conditions treacherous. High winds can also affect the car's balance, particularly through the faster corners. Tire management is crucial, especially on hot days.",
+  "drivingAdvice": "To be quick around the full circuit at Autódromo Oscar Cabalén, focus on maintaining momentum through the corners. Smooth inputs are key to preserving tire life and maximizing grip. Be aggressive on the brakes into Curva 8 (La Horquilla) to set up an overtake, but be mindful of the exit. A good exit out of Curva 12 (the final corner) is crucial for a fast lap time.",
+  "famousRaces": [
+    "Turismo Carretera races at Córdoba are renowned for their intense battles and dramatic finishes.",
+    "TC2000 events at the track regularly draw large crowds and showcase some of Argentina's best drivers.",
+    "Historic racing events often feature classic cars and provide a nostalgic glimpse into the track's past."
+  ],
+  "localCulture": "Córdoba is a vibrant city with a rich cultural heritage. The local cuisine features hearty dishes like asado (barbecue) and empanadas. The city is known for its colonial architecture and lively nightlife. Paddock life is friendly and welcoming, with teams and fans sharing a passion for motorsport."
+}

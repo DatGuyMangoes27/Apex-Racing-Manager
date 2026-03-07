@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 51,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Mihai's journey into motorsport began in his youth, tinkering with Lada engines in his father's garage. This early fascination led him to pursue a degree in mechanical engineering, after which he joined a small rally team. Over the years, he honed his skills, working his way up to chief engineer roles in various touring car and GT outfits. He possesses a keen eye for detail and a pragmatic approach to problem-solving, always seeking incremental gains in performance.\n\nMihai is known for his adaptability and his ability to thrive under pressure. He believes in fostering a collaborative environment within his engineering team, encouraging open communication and the sharing of ideas. His approach to engineering is rooted in a deep understanding of vehicle dynamics and a commitment to continuous improvement. He’s not one for radical, untested changes, preferring to refine existing solutions to their maximum potential.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed mustache",
+    "description": "A stocky man with a kind face and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking his strong Romanian coffee from a chipped, lucky mug."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 32,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Ricardo's journey into motorsport began with a fascination for the vibrant liveries of Formula 1 cars. He spent his teenage years meticulously replicating these designs on model cars and eventually landed an apprenticeship at a local auto body shop. There, he honed his skills in painting, bodywork, and color matching, quickly becoming known for his precision and attention to detail. He joined Tony Kart Racing five years ago, drawn by the team's commitment to quality and innovation.\n\nRicardo is a firm believer that the paint job is more than just aesthetics; it's a crucial part of the kart's identity and performance. He meticulously prepares each surface, ensuring a flawless finish that minimizes drag and maximizes visual impact. While his methods might be demanding, his dedication to achieving perfection is what sets him apart. He constantly experiments with new techniques and materials to push the boundaries of what's possible in kart livery design.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a wiry build, reflecting years spent meticulously working with his hands."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears gloves, even when not painting.",
+    "Has a specific playlist of Portuguese Fado music he listens to while working.",
+    "Insists on using only a particular brand of polishing cloth."
+  ]
+}

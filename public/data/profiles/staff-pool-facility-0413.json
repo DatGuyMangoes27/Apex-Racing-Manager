@@ -1,0 +1,22 @@
+{
+  "name": "Mei Lian Tan",
+  "nationality": "Singaporean",
+  "age": 34,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Mei Lian's fascination with motorsport began during her university days, captivated by the intricate aerodynamics of Formula 1 cars. After graduating with a degree in mechanical engineering, she actively sought roles that combined her passion with her technical aptitude. She started as a junior technician at a local automotive company, quickly proving her skills in data analysis and problem-solving. Her dedication and precision eventually led her to a wind tunnel operation role, where she excels at meticulously collecting and interpreting aerodynamic data. \n\nMei Lian is known for her rigorous approach and her commitment to accuracy. She believes that even the smallest adjustments can yield significant performance gains on the track. Her ability to identify subtle airflow patterns and translate them into actionable insights makes her a valuable asset to any racing team. She is driven by a desire to improve her understanding of aerodynamics and push the boundaries of what's possible in motorsport engineering.\n\n Her particular specialty lies in correlating CFD data with real-world wind tunnel results, allowing for more accurate simulations and faster development cycles. Mei Lian is constantly seeking new ways to improve the efficiency and effectiveness of wind tunnel testing, ensuring her team always has a competitive edge.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Straight, shoulder-length hair with subtle highlights, often tied back in a practical ponytail.",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Mei Lian is of average height with a focused and analytical gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and potential solutions.",
+    "Obsessively cleans the wind tunnel control panel before each test run.",
+    "Has a collection of miniature wind turbine models on her desk."
+  ]
+}

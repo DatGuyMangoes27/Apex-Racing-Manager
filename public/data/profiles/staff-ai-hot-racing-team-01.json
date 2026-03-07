@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Davies",
+  "nationality": "British",
+  "age": 53,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair's journey into motorsport began with a childhood fascination for taking things apart and, more importantly, putting them back together. He earned his stripes in Formula Ford, meticulously tuning engines in his father's garage. The roar of the engines and the scent of gasoline became permanently etched in his memory. He climbed the ranks, working his way through various engineering roles in different racing series, each experience honing his technical expertise. \n\nAlistair is a pragmatic engineer, believing in data-driven decisions and tangible improvements. He approaches his role with a relentless focus on reliability and performance, always seeking that extra tenth of a second. He's known for his calm demeanor under pressure and his ability to troubleshoot complex problems with methodical precision. Alistair's long years in the sport has given him a deep understanding of racecraft and car setup, allowing him to bridge the gap between simulations and real-world performance, making him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed Goatee",
+    "description": "Alistair is a man of medium build with a stern face that reflects years of experience."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he uses a computer.",
+    "Has a habit of muttering calculations under his breath.",
+    "Insists on a daily cup of Earl Grey tea at precisely 10:00 AM."
+  ]
+}

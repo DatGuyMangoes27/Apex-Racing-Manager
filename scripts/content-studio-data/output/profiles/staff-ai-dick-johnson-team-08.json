@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 50,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Erik Karlsson's journey into motorsport began unexpectedly. Trained as a mechanical engineer, he initially worked in the automotive industry, focusing on vehicle dynamics. A chance encounter with a racing team during a testing session ignited his passion for pushing boundaries. He quickly transitioned into performance engineering, driven by the allure of data-driven performance optimization. \n\nAt Dick Johnson Racing, Erik thrives on extracting every last ounce of performance from the cars. His approach is meticulous and analytical, employing a combination of simulation tools and real-world data analysis. Erik is known for his adaptability, readily adjusting strategies based on race conditions and driver feedback. His focus is on the interplay between aerodynamics, suspension, and tires. He's particularly skilled at identifying subtle changes that unlock significant lap time improvements.\n\nErik distinguishes himself through his calm and pragmatic demeanor under pressure. He isn't easily flustered, a trait highly valued by the team during intense race weekends. While not the loudest voice in the garage, his insights consistently prove to be invaluable, making him a pillar of Dick Johnson Racing's engineering team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blond",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Erik is of average height with a slightly stocky build, often seen with a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and observations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking Swedish coffee at precisely 10:00 AM, no matter where he is."
+  ]
+}

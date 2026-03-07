@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 48,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in Lisbon, fueled by the roar of engines at local karting events. He pursued a degree in Electrical Engineering, specializing in embedded systems, and quickly found his way into the world of racing. Starting with Formula Ford, he honed his skills in data acquisition and analysis, eventually making the jump to GT racing before settling into Formula 3 with Academy Motorsport. \n\nRicardo's meticulous approach to electronics is renowned within the team. He believes in a data-driven methodology, meticulously analyzing sensor readings to optimize car performance and reliability. He is known for his uncanny ability to diagnose subtle electronic glitches that often elude others, ensuring the car is always performing at its peak. His ambition lies in developing innovative electronic solutions that can provide a competitive edge on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed Goatee",
+    "description": "Ricardo is of average height with a slightly stocky build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with circuit schematics and notes.",
+    "Insists on using a specific brand of soldering iron.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought."
+  ]
+}

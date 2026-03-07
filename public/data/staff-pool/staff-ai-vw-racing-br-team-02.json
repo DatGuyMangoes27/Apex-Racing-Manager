@@ -1,0 +1,22 @@
+{
+  "name": "Isla MacLeod",
+  "nationality": "Scottish",
+  "age": 30,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Isla MacLeod's passion for motorsport ignited during her childhood, spent tinkering with go-karts in her father's garage in the Scottish Highlands. This early exposure fueled her pursuit of a mechanical engineering degree, which she completed with honors. Her career began with a Formula Student team, where she quickly demonstrated an aptitude for problem-solving and team leadership. After several successful seasons, she transitioned to professional racing, gaining experience in various roles within powertrain development and vehicle dynamics. \n\nIsla's approach to her role as technical director is rooted in collaboration and data-driven decision-making. She believes in fostering a culture of open communication and empowering her team members to contribute their expertise. Her ability to remain calm under pressure and her dedication to continuous improvement make her a valuable asset to any team. Isla joined VW Racing Brasil eager to leverage her knowledge and adaptability to help the team reach new heights.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "auburn",
+    "hairStyle": "shoulder-length, wavy, often pulled back in a practical ponytail",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Isla has a focused gaze and a smattering of freckles across her nose."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool on her keychain.",
+    "Prefers to sketch out solutions on a whiteboard before using CAD software.",
+    "Has a habit of humming quietly when deeply concentrated."
+  ]
+}

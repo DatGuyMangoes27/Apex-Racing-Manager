@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 36,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Zoltán's journey into motorsport began with a childhood fascination for speed and mechanics, nurtured by his grandfather, a retired mechanic. He graduated with honors in Mechanical Engineering from the Budapest University of Technology and Economics, immediately seeking a role within a local racing team. His meticulous approach and talent for data analysis quickly propelled him through the ranks.\n\nHe spent several years honing his skills in various national series, mastering the art of vehicle dynamics and race strategy. Zoltán's pragmatic approach centers around data-driven decision-making, focusing on incremental improvements to maximize performance. He believes in clear communication and collaboration with the driver, fostering a relationship built on mutual trust and respect. His experience across multiple racing disciplines makes him highly adaptable to different racing environments, and his no-nonsense attitude ensures focus remains on the task at hand.\n\nZoltán's engineering style is very hands-on; he's not afraid to get his hands dirty and is often found tweaking settings directly in the garage. He's become known for his uncanny ability to diagnose issues simply by listening to the engine and suspension, a skill that has saved his teams valuable time on more than one occasion.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Zoltán is a stocky man of average height, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically against surfaces when deep in thought.",
+    "Insists on having a perfectly organized toolbox before each race weekend."
+  ]
+}

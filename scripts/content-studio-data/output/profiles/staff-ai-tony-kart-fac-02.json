@@ -1,0 +1,22 @@
+{
+  "name": "Arjun Verma",
+  "nationality": "Indian",
+  "age": 24,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Arjun's journey into motorsport began with a childhood fascination for Formula 1, fueled by watching races with his father. He pursued a degree in Mechanical Engineering with a specialization in composite materials, graduating top of his class. His practical experience started with an internship at a local automotive firm, where he honed his skills in carbon fiber layup and repair. This led to a junior role at a smaller racing team, before landing at Tony Kart Racing. \n\nArjun is known for his meticulous approach to composite work, believing that even the smallest imperfection can impact performance. He's particularly focused on optimizing aerodynamic components, constantly seeking marginal gains through innovative techniques and material selection. While he is demanding of himself and his colleagues, his dedication to excellence is undeniable, making him a valuable asset to the team. He aspires to lead a team of composite specialists in Formula 1 one day.",
+  "physical": {
+    "skinTone": "medium brown",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "dark brown",
+    "facialHair": "short, trimmed beard",
+    "description": "Arjun is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Insists on using a specific brand of resin for all composite repairs.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought."
+  ]
+}

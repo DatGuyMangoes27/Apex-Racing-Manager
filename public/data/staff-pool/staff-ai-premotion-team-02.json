@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 40,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jean-Pierre's journey into motorsport began in his father's garage, tinkering with snowmobiles and dreaming of Formula 1. After graduating with a degree in Mechanical Engineering from McGill University, he worked his way through the ranks of various racing teams, starting as a junior mechanic and gradually ascending to engineering roles. His meticulous attention to detail and calm demeanor under pressure quickly earned him a reputation as a reliable and effective problem-solver. \n\nAt Proton by Premotion, Jean-Pierre is responsible for overseeing all technical aspects of the team's racing program. He firmly believes in a data-driven approach, emphasizing rigorous testing and analysis to optimize performance. He fosters a collaborative environment within his team, encouraging open communication and innovative thinking. His distinctive approach lies in his ability to translate complex technical concepts into easily understandable terms for the drivers, fostering a strong working relationship based on mutual trust and understanding.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Jean-Pierre is a man of average height with a focused, intelligent gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on using a specific brand of stopwatch for timing pit stops.",
+    "Has a peculiar habit of adjusting his glasses even when they are perfectly aligned."
+  ]
+}

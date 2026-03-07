@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 44,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for the precision engineering of Swiss watches, naturally evolving into a passion for the intricate machinery of racing cars. After graduating with a degree in Mechanical Engineering from ETH Zurich, he spent several years honing his skills at a high-end automotive manufacturer before transitioning to the high-pressure world of motorsport. \n\nHis rigorous approach to quality control is legendary within racing circles. Jean-Pierre leaves no stone unturned, meticulously scrutinizing every component and process. He believes that even the smallest imperfection can have disastrous consequences on the track. While some find his intensity intimidating, his dedication to excellence is undeniable. He is driven by a desire to push boundaries and constantly seeking new ways to improve the performance and reliability of racing machinery.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back, slightly receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A man of average height with a serious demeanor, Jean-Pierre always looks impeccably dressed."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a vintage slide rule alongside modern software.",
+    "Has a specific brand of imported Swiss coffee he must drink every morning before starting work.",
+    "Always carries a small magnifying glass to inspect components."
+  ]
+}

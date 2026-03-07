@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 31,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Mads' journey into motorsport began with a childhood fascination for Lego Technic, later evolving into a passion for aerodynamics after witnessing the raw power of Formula 1 cars. He earned his degree in Aerospace Engineering from the Technical University of Denmark, focusing his thesis on boundary layer control. Before Cadillac Racing, he spent several years honing his skills at a smaller racing team, where he rapidly rose through the ranks and had a reputation for finding innovative solutions to complex aero problems.\n\nMads is known for his data-driven approach, meticulously analyzing wind tunnel results and CFD simulations to optimize aerodynamic performance. He believes in fostering a collaborative environment, encouraging open communication between engineers to spark creativity. He is often found sketching new aero concepts on his tablet during breaks.\n\nMads is respected for his ability to balance theoretical knowledge with practical application. He is particularly adept at quickly identifying the critical areas where aerodynamic improvements can yield the greatest gains on the track. This no-nonsense approach and his dedication to squeezing every last bit of performance from the car are what set him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Mads is of average height with a lean build and intense, focused blue eyes."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on having exactly three cups of black coffee before starting his workday.",
+    "Has a habit of tapping his pen against his desk when deep in thought."
+  ]
+}

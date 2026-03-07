@@ -1,0 +1,27 @@
+{
+  "biography": "Benjamin Rangel's journey began amidst the vibrant chaos of São Paulo, Brazil. Growing up near Interlagos, the roar of engines was the soundtrack to his childhood. Unlike many racers who started in karting, Benjamin's entry was unconventional. He honed his skills on the virtual circuits of sim racing, mastering braking techniques and race strategy before ever touching a real steering wheel. His breakthrough came when a local racing team, impressed by his online performances, offered him a test drive. That single opportunity led to a regional championship and ultimately, a seat with Puma P052. Now, at 29, Rangel is a seasoned competitor, known for his calculated moves and unwavering focus. While a championship title eludes him, he continues to refine his craft, ever hungry for victory. He’s a late bloomer, still impressing everyone with his speed and consistency.",
+  "drivingStyle": "Rangel is a master of defensive driving. He rarely makes flashy overtakes, instead prioritizing consistent lap times and tire conservation. His approach to corners is methodical, focusing on maximizing exit speed rather than aggressive entry. He excels under pressure, rarely cracking even when facing intense challenges from rival drivers. This calculated approach, while sometimes perceived as cautious, has earned him a reputation for reliability and consistency, qualities valued by his team.",
+  "rivalries": [
+    {
+      "driver": "Marco Silva",
+      "reason": "A heated rivalry stemming from a controversial collision during the 2022 Brazilian Grand Prix, where Rangel accused Silva of overly aggressive driving."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A strategic rivalry. Rossi’s aggressive, attacking style is the polar opposite to Rangel’s, leading to intense battles on track as they challenge each other's strengths and weaknesses."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A rivalry born from repeated on-track incidents. Tanaka’s daring maneuvers often put both drivers at risk, leading to several close calls and a mutual respect tinged with apprehension."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded 'Senna Sempre' t-shirt under his racing suit.",
+    "Listens to a specific Brazilian samba track before every race to calm his nerves.",
+    "Refuses to enter the car from the left side; always from the right."
+  ],
+  "nickname": "The Wall",
+  "famousQuote": "\"Racing isn't about being the fastest for one lap; it's about being the most consistent for every lap.\"",
+  "careerHighlight": "Winning the 2021 Interlagos Grand Prix, a home victory in front of a roaring Brazilian crowd, solidifying his place as a national hero.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the 2020 Monaco Grand Prix due to a mechanical failure, costing him a potential first Grand Prix win."
+}

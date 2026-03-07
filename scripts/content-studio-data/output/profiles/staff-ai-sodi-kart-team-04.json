@@ -1,0 +1,22 @@
+{
+  "name": "Jan de Vries",
+  "nationality": "Dutch",
+  "age": 54,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jan's journey into motorsport began with a childhood fascination for karting, tinkering with his neighbor's engine after school. He earned a degree in mechanical engineering from Delft University of Technology, specializing in vehicle dynamics. His early career saw him bouncing between junior single-seater teams, where he honed his technical skills and developed a meticulous approach to data analysis. \n\nJoining Sodi Kart Factory was a turning point, allowing Jan to apply his engineering knowledge to kart development and track performance. He believes in a data-driven approach, rigorously analyzing telemetry to optimize kart setup. Jan's ability to identify subtle performance gains through meticulous adjustments sets him apart, often pushing the boundaries of kart design and pushing his team to victory.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A tall man with a serious expression, Jan is almost always seen wearing his Sodi Kart Factory team jacket."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Constantly chews on the end of his pen during races",
+    "Insists on using a specific brand of Dutch coffee beans in the team paddock",
+    "Keeps a meticulously organized notebook filled with handwritten technical data"
+  ]
+}

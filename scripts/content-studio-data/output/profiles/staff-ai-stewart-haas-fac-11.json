@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Kenji Tanaka",
+    "nationality": "Japanese",
+    "age": 55,
+    "gender": "male",
+    "role": "test_driver_coordinator",
+    "bio": "Kenji Tanaka's journey into motorsport began unconventionally, not on the track, but in the meticulous world of automotive engineering. After graduating top of his class at the University of Tokyo with a degree in Mechanical Engineering, he spent years at Honda, honing his skills in vehicle dynamics and testing. Frustrated by the slow pace of corporate innovation, Kenji sought a more direct impact, joining Stewart-Haas Racing ten years ago. \n\nAs the Test Driver Coordinator, Kenji is known for his rigorous approach to data analysis and his uncanny ability to identify subtle flaws in vehicle setup. He believes in empowering his drivers with the knowledge to communicate technical feedback effectively, fostering a culture of continuous improvement. His hands-on approach, often found tinkering alongside the mechanics, makes him a respected and trusted figure within the team, always pushing for the next breakthrough.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Gray",
+      "hairStyle": "Short, neatly combed with a slight side part",
+      "eyeColor": "Brown",
+      "facialHair": "Thin mustache",
+      "description": "Kenji is of average height, with a wiry build and a perpetually thoughtful expression etched on his face."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a worn-out slide rule, even though he has multiple computers.",
+      "Insists on drinking green tea before every test session.",
+      "Meticulously organizes his desk by color code."
+    ]
+  }
+]

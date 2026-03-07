@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Bjørn Halvorsen",
+    "nationality": "Norwegian",
+    "age": 46,
+    "gender": "male",
+    "role": "data_analyst",
+    "bio": "Bjørn's journey into motorsport was unconventional. Initially a statistician for a national fishing federation, he discovered his knack for predictive modeling. After a chance encounter with a GCK Motorsport engineer at a conference, Bjørn was captivated by the potential of data in racing. He transitioned, bringing his rigorous analytical approach to the team.\n\nBjørn's strength lies in his ability to translate complex datasets into actionable insights. He focuses on identifying subtle performance gains, optimizing race strategy, and predicting component failures before they occur. He's known for his meticulous nature and dedication to continuous improvement, always seeking new ways to leverage data for a competitive edge.\n\nWhat sets Bjørn apart is his relentless pursuit of accuracy. He won't rest until every variable is accounted for, and every prediction is as precise as possible. His unwavering commitment to detail has made him an invaluable asset to GCK Motorsport.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Light brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline",
+      "eyeColor": "Blue",
+      "facialHair": "Trimmed goatee",
+      "description": "Bjørn is of average height with a slightly wiry build, and wears rectangular-framed glasses."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with statistical formulas.",
+      "Has a habit of tapping his pen rhythmically when deep in thought.",
+      "Insists on using a specific brand of Norwegian coffee beans."
+    ]
+  }
+]

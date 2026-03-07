@@ -1,0 +1,22 @@
+{
+  "name": "Mei Zhen Tan",
+  "nationality": "Singaporean",
+  "age": 46,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Mei Zhen's journey into motorsport began unexpectedly. Initially trained as a software engineer, she found herself drawn to the complex simulations used in Formula 1 after attending a lecture during her master's program. Intrigued by the potential to optimize car performance through meticulous data analysis, she pursued an internship with a junior racing team, quickly proving her aptitude for translating real-world physics into accurate digital models.\n\nShe joined Haas F1 Team five years ago and has become an invaluable member. Mei Zhen approaches her role with a relentless focus on precision, constantly refining the simulator to reflect the nuances of track conditions and car setup. Her dedication ensures that the drivers have the most realistic and reliable tool possible to prepare for race weekends. What sets her apart is her ability to bridge the gap between the technical complexities of the simulator and the practical needs of the drivers, fostering a collaborative environment that drives innovation.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Neatly tied back in a practical bun",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei Zhen has a focused, intelligent gaze and a slender build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with equations and notes.",
+    "Prefers to work in complete silence, using noise-cancelling headphones even when it's quiet.",
+    "Has a habit of tapping her pen against her teeth when deeply engrossed in problem-solving."
+  ]
+}

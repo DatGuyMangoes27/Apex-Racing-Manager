@@ -1,0 +1,22 @@
+{
+  "name": "Lena Schmidt",
+  "nationality": "German",
+  "age": 32,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Lena Schmidt's fascination with motorsport began during her childhood visits to the Nürburgring, where the roar of engines and the smell of burning rubber ignited a lifelong passion. She pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, at RWTH Aachen University. After graduating, Lena secured a junior engineer position with a Formula 3 team, quickly demonstrating a knack for data analysis and problem-solving under pressure. \n\nHer meticulous approach to race preparation and her ability to translate driver feedback into tangible car setup improvements have earned her a reputation as a highly competent race engineer. Lena joined Allied Racing three years ago, and her focus is on maximizing performance through relentless data analysis and iterative improvements. She's known for pushing her team to achieve peak efficiency, ensuring no stone is left unturned in the pursuit of victory. Lena is driven by a desire to extract every last tenth of a second from the car, and works tirelessly to achieve that goal.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Straight, shoulder-length, often pulled back in a practical ponytail during races.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Lena is of average height with an athletic build, reflecting her active lifestyle."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a specific ritual of tapping the car's wing three times before each race.",
+    "Insists on listening to classical music through headphones during pre-race setup."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Blake",
+  "nationality": "American",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ethan's fascination with motorsport began early, fueled by weekend races and a deep dive into the physics behind vehicle dynamics. He pursued a degree in mechanical engineering, specializing in simulation and modeling, before landing an internship at a local racing team. This experience solidified his passion and led him to Carlin Academy, where he focuses on refining the simulator to provide drivers with the most realistic and effective training environment possible.\n\nEthan's pragmatic approach centers on data analysis and continuous improvement. He believes in breaking down complex problems into manageable components and meticulously optimizing each element. He's known for his ability to translate driver feedback into tangible simulator adjustments, bridging the gap between the virtual and real worlds. Ethan's dedication to precision and his commitment to collaborative problem-solving make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A slim man with a focused gaze and a perpetual five o'clock shadow."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with equations and data points.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Refers to the simulator as \"the lab\"."
+  ]
+}

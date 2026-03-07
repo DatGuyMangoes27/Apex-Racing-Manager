@@ -1,0 +1,31 @@
+{
+  "name": "Soo-Jin Park",
+  "nationality": "South Korean",
+  "age": 23,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Soo-Jin is a rising star in the motorsport management world, known for her unwavering principles and sharp negotiating skills. Despite her young age, she's already made waves by securing lucrative endorsement deals for several up-and-coming drivers, often focusing on brands that align with her values of sustainability and ethical production. Her adventurous spirit extends beyond the boardroom; she's an avid drone racer and skier, always seeking new challenges. \n\nA racing driver might cross paths with Soo-Jin through a recommendation from a mutual contact or at an industry networking event. She actively scouts for drivers with exceptional talent and marketability, particularly those who demonstrate a commitment to social responsibility. Her growing reputation and impressive track record make her a highly sought-after agent, and securing her representation could significantly boost a driver's career.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair, often tied in a high ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Soo-Jin is of average height with an athletic build. She usually wears smart-casual attire and has a confident, approachable demeanor."
+  },
+  "connectionToMotorsport": "Soo-Jin is a motorsport agent, representing drivers and negotiating contracts with teams and sponsors. She focuses on identifying and promoting young talent in various racing series.",
+  "meetingContext": "You would likely meet Soo-Jin at a racing event, such as a Formula 4 or Formula Regional race, where she's scouting for new talent. She might also be introduced to you by a mutual acquaintance within the racing community.",
+  "conversationTopics": [
+    "The latest trends in drone racing technology",
+    "The importance of sustainability in motorsport",
+    "The nuances of Korean craft beers",
+    "Her recent ski trip to the Alps",
+    "Emerging artists in the Seoul art scene"
+  ],
+  "canHelp": [
+    "Negotiate sponsorship deals with major brands",
+    "Secure a spot with a competitive racing team",
+    "Provide guidance on media relations and public image"
+  ],
+  "personality_summary": "A principled and ambitious agent with a passion for motorsports and a keen eye for talent."
+}

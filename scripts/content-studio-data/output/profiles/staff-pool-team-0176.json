@@ -1,0 +1,22 @@
+{
+  "name": "Arun Sharma",
+  "nationality": "Indian",
+  "age": 39,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Arun Sharma's fascination with aerodynamics began during his engineering studies in Bangalore. He was captivated by the science of airflow and its impact on vehicle performance. After graduating, Arun pursued a master's degree specializing in computational fluid dynamics, which opened doors to the world of motorsports. His early career involved working with a Formula Student team, where he honed his skills in designing and optimizing aerodynamic components.\n\nOver the years, Arun gained experience in various racing categories, including GT racing and open-wheel series, contributing to significant improvements in downforce and drag reduction. He is known for his meticulous approach to data analysis and his ability to translate complex simulations into practical solutions on the track. Arun's loyalty and commitment to his team are unmatched, and he believes in fostering a collaborative environment where innovation can thrive. He approaches aero development with a holistic viewpoint, considering not just raw performance but also the overall balance and drivability of the car.\n\nArun's distinctive approach lies in his blend of theoretical knowledge and hands-on experience. He is not afraid to challenge conventional thinking and is always looking for new ways to push the boundaries of aerodynamic performance. His ability to communicate complex ideas clearly and concisely makes him a valuable asset to any team, ensuring that everyone understands the impact of aerodynamic changes on the car's behavior.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Short, well-groomed stubble",
+    "description": "Arun is of average height with a thoughtful expression etched on his face."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas, even in meetings.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a cup of chai at precisely 3:00 PM every day."
+  ]
+}

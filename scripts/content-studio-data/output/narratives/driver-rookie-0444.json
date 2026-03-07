@@ -1,0 +1,27 @@
+{
+  "biography": "Lily Martin, a name whispered with a mix of admiration and frustration in the Belgian karting scene, hails from the small town of Spa, nestled amidst the Ardennes forests. Her racing journey began almost by accident. At age 10, while accompanying her older brother to a local karting track, she badgered her father into letting her try. What started as a whim quickly became an obsession. She displayed a natural aptitude for racing, quickly mastering the technical nuances of karting. Her aggressive defensive driving style earned her both wins and detractors. Lily funded her early career through a patchwork of local sponsorships and family support, racing under the banner of 'Martin Racing.' A defining moment came at the Belgian National Karting Championship in 2022, where despite starting in last place after a mechanical failure in qualifying, she fought her way to a podium finish, showcasing her raw talent. Now at 18, she's navigating the difficult transition to single-seater racing, struggling to secure consistent funding and aiming to prove her talent against more established, wealthier rivals in a fiercely competitive environment. Lily is currently competing in the Formula Regional European Championship, trying to prove her talent.",
+  "drivingStyle": "Lily is known for her aggressively defensive driving style. She prioritizes track position above all else, often making late, daring braking maneuvers to protect her line. While exceptionally skilled at defending, she can sometimes struggle with overtaking, preferring to capitalize on the mistakes of others rather than proactively creating opportunities. Her tire management is still developing, leading to performance drop-offs in longer races. Lily thrives under pressure, often delivering her best performances in wet conditions or when starting from the back of the grid.",
+  "rivalries": [
+    {
+      "name": "Antoine Dubois",
+      "reason": "A long-standing rivalry from their karting days, fuelled by clashing driving styles and several on-track collisions. Antoine accuses Lily of being overly aggressive, while Lily considers Antoine a spoiled rich kid."
+    },
+    {
+      "name": "Sofia Rossi",
+      "reason": "Emerging rivalry in Formula Regional, with Sofia and Lily battling for the same limited sponsorship opportunities. Sofia views Lily as a threat to her own career trajectory."
+    },
+    {
+      "name": "Javier Alvarez",
+      "reason": "A heated exchange in a post-race interview after Lily blocked Javier's move for the lead in the Formula Regional race at Imola. Javier called Lily's move 'dangerous and unsportsmanlike,' while Lily defended it as 'hard but fair racing.'"
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue wristband, given to her by her grandmother before her first karting race.",
+    "Has a habit of meticulously cleaning her visor before every session, regardless of how clean it already is.",
+    "Listens to the same playlist of hard rock music before every race to get pumped up."
+  ],
+  "nickname": "The Ardennes Wall",
+  "famousQuote": "\"They can have the money, the fancy cars, the pedigree. But they can't buy heart.\"",
+  "careerHighlight": "Podium finish at the 2022 Belgian National Karting Championship after starting last due to a mechanical failure, showcasing her resilience and overtaking prowess.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a Formula Regional race at Monza due to a mechanical failure, costing her a potential first win in the series."
+}

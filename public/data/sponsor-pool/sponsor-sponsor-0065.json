@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0065",
+  "name": "Otosan Otomotiv",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Turkey",
+  "description": "Turkish-made automotive parts and accessories.",
+  "story": "Otosan Otomotiv is a leading manufacturer of automotive components in Turkey, committed to quality and performance. We believe motorsport is the perfect testing ground for our products and a fantastic way to reach a global audience. We look for partnerships that reflect our dedication to excellence and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "Turkey"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0065.png"
+}

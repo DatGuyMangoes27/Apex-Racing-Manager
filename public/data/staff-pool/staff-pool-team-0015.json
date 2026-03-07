@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 26,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Liam's passion for motorsport ignited during his childhood, spent tinkering with go-karts in his family's garage. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and data analysis. After graduating, Liam began his career as a junior data analyst for a small racing team, quickly demonstrating a knack for spotting crucial performance insights. \n\nHe thrives under pressure, meticulously analyzing race data to formulate optimal strategies. Liam believes in a data-driven approach, meticulously studying every aspect of the race to predict competitor moves and exploit weaknesses. His demanding nature pushes his team to achieve peak performance. He is known for his calm demeanor and ability to make critical decisions under intense pressure.\n\nLiam's strategic prowess lies in his ability to balance calculated risks with a deep understanding of race dynamics. He is constantly seeking innovative approaches to gain a competitive edge, always looking for the next breakthrough in race strategy.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Liam is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down observations.",
+    "Has a specific lucky pen that he insists on using during races.",
+    "Can often be found pacing the garage, muttering strategy ideas under his breath."
+  ]
+}

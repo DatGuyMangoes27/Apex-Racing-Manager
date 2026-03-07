@@ -1,0 +1,22 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 39,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Marko Kovačić's journey into motorsport began in his father's small auto repair shop in Zagreb. Tinkering with engines from a young age, he developed a keen eye for detail and a passion for engineering. He transitioned to composite materials after an apprenticeship at a local boatyard, quickly mastering the art of crafting lightweight yet durable structures. He joined Signature Racing five years ago, bringing his relentless pursuit of perfection to their composite department.\n\nMarko's approach is simple: every gram counts, and every layer must be flawless. He's known for pushing the boundaries of composite technology, constantly experimenting with new materials and techniques. His dedication to precision ensures that Signature Racing's components are not only strong but also aerodynamically optimized. What distinguishes Marko is his ability to diagnose subtle imperfections that others often miss, making him a crucial asset in ensuring the structural integrity and competitive edge of the team's vehicles.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Marko is of average height with a wiry build, reflecting his hands-on approach to his craft."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect composite layers.",
+    "Insists on using a specific type of Croatian coffee during complex lay-up procedures.",
+    "Has a habit of tapping on finished components to check for structural soundness."
+  ]
+}

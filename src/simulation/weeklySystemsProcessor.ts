@@ -8,6 +8,7 @@
  * It reads current state, runs all subsystems, and returns a bundle of effects to apply.
  */
 
+import { getStaffNameOrFallback } from '@/services/eventContentGenerator'
 import {
   calculatePressure,
   calculatePressureAIModifier,
@@ -45,6 +46,13 @@ import {
   aggregateEffects,
   type MediaEffect
 } from '@/simulation/mediaEffects'
+
+import {
+  processWeeklyPromises,
+  type PlayerPromise,
+  type PromiseEvaluationContext,
+  type PromiseProcessingResult
+} from '@/simulation/promises'
 
 // ============================================
 // TYPES
@@ -85,10 +93,23 @@ export interface WeeklyProcessingContext {
   
   // Media state
   mediaState?: any
+  upgradesMade?: string[]
+  performanceImprovement?: number
   
   // Existing states to process
   existingPressureState?: PressureState
   existingRelationshipState?: RelationshipState
+  existingInjuryState?: HealthInjuryState
+  latestRaceResult?: { position: number; expectedPosition: number; dnf?: boolean }
+  
+  // Promise system data
+  promises?: PlayerPromise[]
+  sponsorSatisfaction?: number
+  driverMorale?: number
+  fanSentiment?: number
+  recentRaceResults?: { position: number; week: number }[]
+  recentSpending?: { category: string; amount: number; week: number }[]
+  scheduledActivities?: { category: string; week: number; status: string }[]
 }
 
 export interface WeeklyProcessingResult {
@@ -116,6 +137,7 @@ export interface WeeklyProcessingResult {
   // Health system results
   injuryOccurred: boolean
   newInjury?: HealthInjuryState
+  injuryState?: HealthInjuryState
   injuryEmail?: {
     subject: string
     body: string
@@ -131,6 +153,16 @@ export interface WeeklyProcessingResult {
     fulfilled: boolean
     broken: boolean
     effects: MediaEffect[]
+  }>
+  
+  // Promise system results
+  promiseProcessingResult?: PromiseProcessingResult
+  promiseEmails: Array<{
+    subject: string
+    body: string
+    category: string
+    sender: string
+    senderRole: string
   }>
   
   // Aggregate stat changes to apply
@@ -169,8 +201,10 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
     relationshipState: ctx.existingRelationshipState || createDefaultRelationshipState(),
     relationshipEmails: [],
     injuryOccurred: false,
+    injuryState: ctx.existingInjuryState,
     mediaScoreModifier: 0,
     promiseResults: [],
+    promiseEmails: [],
     statChanges: {
       stress: 0,
       confidence: 0,
@@ -249,9 +283,16 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
     // Process weekly relationship drift
     const updatedRelationships = processWeeklyRelationships(result.relationshipState)
     result.relationshipState = updatedRelationships
+
+    if (ctx.latestRaceResult) {
+      result.relationshipState = updateTeamRelationshipFromRace(
+        result.relationshipState,
+        ctx.latestRaceResult
+      )
+    }
     
     // Check for relationship milestone emails
-    const teamRel = updatedRelationships.teamRelationship
+    const teamRel = result.relationshipState.teamRelationship
     const teamStatus = getTeamRelationshipStatus(teamRel)
     
     // Generate emails for extreme relationship states
@@ -263,7 +304,7 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
           `Effects:\n${teamStatus.effects.map(e => `- ${e.description}`).join('\n')}\n\n` +
           `Consider attending team events, providing positive feedback after races, and investing in staff welfare to improve relations.`,
         category: 'team',
-        sender: 'Team Manager',
+        sender: getStaffNameOrFallback('team_manager', 'Team Operations'),
         senderRole: 'Operations'
       })
       result.statChanges.teamMorale -= 3
@@ -277,7 +318,7 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
             `Benefits:\n${teamStatus.effects.map(e => `- ${e.description}`).join('\n')}\n\n` +
             `Your leadership and results are keeping everyone motivated. Keep it up!`,
           category: 'team',
-          sender: 'Team Manager',
+          sender: getStaffNameOrFallback('team_manager', 'Team Operations'),
           senderRole: 'Operations'
         })
         result.statChanges.teamMorale += 2
@@ -329,11 +370,16 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
   // 3. HEALTH / INJURY SYSTEM
   // ============================================
   try {
+    if (result.injuryState) {
+      result.injuryState = healthProcessInjuryHealing(result.injuryState, ctx.playerFitness)
+    }
+
     // Random injury check (0.5% base chance per week)
     const randomInjury = checkRandomInjury(ctx.playerStats)
     if (randomInjury) {
       result.injuryOccurred = true
       result.newInjury = randomInjury
+      result.injuryState = randomInjury
       
       const injuryEvent = createInjuryEvent(randomInjury, ctx.currentWeek, ctx.currentYear)
       result.injuryEmail = {
@@ -359,6 +405,7 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
       if (overtrainingInjury) {
         result.injuryOccurred = true
         result.newInjury = overtrainingInjury
+        result.injuryState = overtrainingInjury
         
         const injuryEvent = createInjuryEvent(overtrainingInjury, ctx.currentWeek, ctx.currentYear)
         result.injuryEmail = {
@@ -398,8 +445,8 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
             position: r.racePosition || 99,
             trackName: r.trackName || ''
           })),
-          upgradesMade: [], // Would need to be passed from team dev state
-          performanceImprovement: 0
+          upgradesMade: ctx.upgradesMade || [],
+          performanceImprovement: ctx.performanceImprovement || 0
         })
         
         if (fulfillmentCheck.fulfilled) {
@@ -440,6 +487,65 @@ export function processWeeklySystems(ctx: WeeklyProcessingContext): WeeklyProces
     }
   } catch (e) {
     console.warn('[WeeklySystems] Media effects system error:', e)
+  }
+  
+  // ============================================
+  // 5. PROMISE / COMMITMENT TRACKING SYSTEM
+  // ============================================
+  try {
+    const promises = ctx.promises || []
+    const activePromises = promises.filter(p => p.status === 'active' || p.status === 'expiring')
+    
+    if (activePromises.length > 0) {
+      const promiseCtx: PromiseEvaluationContext = {
+        currentWeek: ctx.currentWeek,
+        currentYear: ctx.currentYear,
+        teamMorale: ctx.teamMorale,
+        boardMood: ctx.boardMood,
+        sponsorSatisfaction: ctx.sponsorSatisfaction ?? 70,
+        reputation: ctx.playerReputation,
+        fanSentiment: ctx.fanSentiment ?? 50,
+        driverMorale: ctx.driverMorale ?? 70,
+        confidence: ctx.playerConfidence,
+        stress: ctx.playerStress,
+        recentRaceResults: ctx.recentRaceResults ?? [],
+        recentSpending: ctx.recentSpending ?? [],
+        scheduledActivities: ctx.scheduledActivities ?? []
+      }
+      
+      const promiseResult = processWeeklyPromises(promises, promiseCtx)
+      result.promiseProcessingResult = promiseResult
+      
+      // Apply promise effects to stat changes
+      if (promiseResult.effects) {
+        result.statChanges.boardMood += (promiseResult.effects as any).boardMood || 0
+        result.statChanges.teamMorale += (promiseResult.effects as any).teamMorale || 0
+        result.statChanges.reputation += (promiseResult.effects as any).reputation || 0
+        result.statChanges.fanSentiment += (promiseResult.effects as any).fanSentiment || 0
+        result.statChanges.sponsorSatisfaction += (promiseResult.effects as any).sponsorSatisfaction || 0
+        result.statChanges.confidence += (promiseResult.effects as any).confidence || 0
+        result.statChanges.stress += (promiseResult.effects as any).stress || 0
+      }
+      
+      // Collect promise emails
+      result.promiseEmails = promiseResult.emails.map(e => ({
+        subject: e.subject,
+        body: e.body,
+        sender: e.sender,
+        senderRole: e.senderRole,
+        category: e.category
+      }))
+      
+      const fulfilled = promiseResult.updatedPromises.filter(p => p.status === 'fulfilled' && p.fulfilledAtWeek === ctx.currentWeek).length
+      const broken = promiseResult.updatedPromises.filter(p => p.status === 'broken' && p.brokenAtWeek === ctx.currentWeek).length
+      const expiring = promiseResult.updatedPromises.filter(p => p.status === 'expiring' && !promises.find(op => op.id === p.id && op.status === 'expiring')).length
+      
+      if (fulfilled + broken + expiring > 0) {
+        console.log(`[WeeklySystems] Promise evaluation: ${fulfilled} fulfilled, ${broken} broken, ${expiring} expiring`)
+      }
+    }
+  } catch (e) {
+    console.warn('[WeeklySystems] Promise system error:', e)
   }
   
   return result

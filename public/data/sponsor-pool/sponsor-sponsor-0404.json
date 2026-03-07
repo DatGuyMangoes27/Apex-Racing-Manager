@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0404",
+  "name": "AvtoPromStal",
+  "category": "automotive",
+  "tier": "high",
+  "country": "Russia",
+  "description": "Forging the future of Russian automotive engineering.",
+  "story": "AvtoPromStal is a leading Russian steel manufacturer specializing in high-performance alloys for the automotive industry. With a long history of supplying materials to Russian motorsport teams, they now seek to expand their brand visibility on the international stage. They believe that a partnership with a successful racing team will demonstrate the quality and reliability of their products to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60,
+    "nationalities": [
+      "Russia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 62,
+  "imagePath": "logos/sponsors/sponsor-0404.png"
+}

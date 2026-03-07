@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 38,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Alistair's journey into motorsport began with a childhood spent tinkering in his grandfather's garage, a veritable Aladdin's cave of engines and spare parts. He honed his skills through apprenticeships at local engineering firms before landing a role with ProSport Racing five years ago. Alistair is known for his meticulous approach to his work, ensuring every component meets the highest standards of precision and reliability.\n\nHis pragmatic approach to problem-solving makes him a valuable asset in the fast-paced world of motorsport. He's not one for grand theories or radical innovation; instead, Alistair focuses on practical solutions that deliver tangible results on the track. His colleagues appreciate his calm demeanor under pressure and his unwavering commitment to getting the job done right, even when faced with tight deadlines and complex challenges. He's a true craftsman, dedicated to the art of precision engineering.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair is a stocky man with a sturdy build and calloused hands, reflecting years of working with machinery."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a needle point.",
+    "Insists on using imperial measurements alongside metric.",
+    "Has a collection of vintage spanners displayed in his workspace."
+  ]
+}

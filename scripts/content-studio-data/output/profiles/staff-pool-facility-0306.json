@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 49,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jaroslav's journey into motorsport began unexpectedly during his mandatory military service, where he honed his skills working on aircraft composite repairs. Upon leaving the service, he transitioned those skills to the world of motorsport, joining a small rally team before making his way into Formula racing. Over the years, he's developed a keen eye for detail and a knack for identifying subtle structural weaknesses that others might miss. He believes in pushing the boundaries of composite technology, always seeking innovative solutions to improve performance and safety.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A weathered face suggests a life spent outdoors, with a strong jawline that speaks of determination."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Has a habit of tapping on composite structures to assess their integrity.",
+    "Insists on using traditional Czech tools alongside modern technology."
+  ]
+}

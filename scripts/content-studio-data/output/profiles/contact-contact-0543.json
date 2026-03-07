@@ -1,0 +1,31 @@
+{
+  "name": "Zola Nkomo",
+  "nationality": "South African",
+  "age": 27,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Zola Nkomo is a rising star in the world of endurance racing, known for her aggressive driving style and unwavering confidence behind the wheel. Hailing from Johannesburg, she initially made a name for herself in local karting before transitioning to single-seaters and ultimately GT racing. Her fearless overtakes and ability to consistently push her car to the limit have earned her both admirers and detractors in equal measure.\n\nOff the track, Zola is surprisingly introspective, finding solace in poetry and music production. Despite her 'reckless' reputation, she values sincerity and isn't afraid to speak her mind, often leading to blunt but honest interactions. Her passion for vintage cars and extensive travel schedule mean she frequents many motorsport events, making her a familiar face in the paddock. Aspiring racing drivers might cross paths with Zola at a track day, a racing event, or even at a vintage car auction.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, styled afro",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zola has a lean, athletic build honed from years of racing. She usually sports a confident smile and has a small scar above her left eyebrow from a karting accident."
+  },
+  "connectionToMotorsport": "Zola is a professional GT endurance racer, currently competing in international series. Her driving talent and growing profile make her a valuable asset to any team or sponsor.",
+  "meetingContext": "You might meet Zola at a pre-season testing event, a motorsport gala, or possibly at a high-end watch auction in Monaco.",
+  "conversationTopics": [
+    "The challenges of endurance racing",
+    "Her latest music production projects",
+    "The philosophy of driving",
+    "The best road trips in South Africa",
+    "The merits of different vintage car models"
+  ],
+  "canHelp": [
+    "Provide mentorship and driving advice",
+    "Introduce you to influential team owners and sponsors",
+    "Help you find a spot in a less competitive racing series to gain experience"
+  ],
+  "personality_summary": "A confident and blunt South African racing driver with a surprising artistic side."
+}

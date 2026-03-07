@@ -1,0 +1,31 @@
+{
+  "name": "Mateo Garcia Rodriguez",
+  "nationality": "Spanish",
+  "age": 30,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dr. Mateo Garcia Rodriguez is a rising star in the field of mechanical engineering, specializing in aerodynamics and materials science. He earned his PhD from the Polytechnic University of Catalonia and now lectures at the same institution, where he leads a research team focused on innovative solutions for improving vehicle performance and efficiency. Mateo is known for his independent spirit and adventurous nature, often seeking out new challenges both in his professional and personal life, such as exploring new hiking trails or mastering a complex new brewing technique. \n\nA racing driver might cross paths with Mateo through university-sponsored motorsport events or if they were seeking expert consultation on improving their car's performance. Mateo is always eager to apply his knowledge to practical, real-world problems, and the high-stakes environment of motorsports offers the perfect testing ground for his research. He also organizes student projects involving race car design, offering drivers a chance to mentor and inspire the next generation of engineers.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Mateo has a lean build and a friendly, approachable demeanor. He often wears glasses and has a focused, intelligent gaze."
+  },
+  "connectionToMotorsport": "Mateo's research directly impacts motorsport technology, and he's involved in student racing projects. He is also an advisor to a local Formula Student team.",
+  "meetingContext": "The player could meet Mateo at a university career fair, a motorsport technology conference, or through a mutual acquaintance involved in Formula Student racing.",
+  "conversationTopics": [
+    "Aerodynamics and vehicle performance",
+    "Latest advancements in materials science",
+    "His research projects at the university",
+    "Local craft beer scene",
+    "His recent hiking trip in the Pyrenees"
+  ],
+  "canHelp": [
+    "Provide technical consultation on vehicle setup and aerodynamics.",
+    "Connect the player with engineering students for support and research.",
+    "Offer access to the university's simulation and testing facilities."
+  ],
+  "personality_summary": "An independent and ambitious professor with a passion for motorsports and a desire to help others."
+}

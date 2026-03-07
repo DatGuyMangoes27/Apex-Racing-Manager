@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
-  Heart, HeartHandshake, Baby, Crown, Users, Calendar,
+  Heart, Baby, Crown, Users, Calendar,
   Star, Trophy, Award, GraduationCap, Car, Sparkles,
-  Gift, Home, Gem, Cake, TrendingUp, UserPlus, Stethoscope
+  Home, Gem, Cake, TrendingUp, UserPlus, Stethoscope,
+  Smile, Shield, LogOut
 } from 'lucide-react'
 import { 
   Card, 
@@ -14,20 +15,23 @@ import {
   Modal,
   PortraitImage
 } from '@/components/ui'
-import { getPartnerPortrait, getChildPortrait, getRandomPartnerPortrait } from '@/utils/generated-assets'
+import { getChildPortrait } from '@/utils/generated-assets'
+import { getContactPortrait } from '@/services/contactService'
+import type { ContactInfo } from '@/types/personalLife'
 import { useToast } from '@/components/ui/Toast'
-import type { Partner, Child, FamilyTree, DateType } from '@/data/family-config'
+import type { Partner, Child, FamilyTree } from '@/data/family-config'
 import type { PersonalFinancialState } from '@/data/personal-finance-config'
 import type { PregnancyState } from '@/services/familyBridgeService'
 import { 
   PARTNER_TRAITS, 
   CHILD_TRAITS, 
   RELATIONSHIP_CONFIG,
-  DATE_OPTIONS,
   getPartnerTraitById,
   getChildTraitById
 } from '@/data/family-config'
 import { usePersonalLifeActions } from '@/hooks/usePersonalLifeActions'
+import { useCareerStore } from '@/store/careerStore'
+import { calculateDivorceSettlement, calculateSeparationDuration } from '@/simulation/personal/relationshipManager'
 
 // ============================================
 // TYPES
@@ -41,6 +45,7 @@ interface FamilyPanelProps {
   currentWeek: number
   currentYear: number
   pregnancy?: PregnancyState
+  messagingContacts?: ContactInfo[]
 }
 
 // ============================================
@@ -54,31 +59,75 @@ export function FamilyPanel({
   finances,
   currentWeek,
   currentYear,
-  pregnancy
+  pregnancy,
+  messagingContacts
 }: FamilyPanelProps) {
   const navigate = useNavigate()
   const [selectedChild, setSelectedChild] = useState<Child | null>(null)
   const [showDynasty, setShowDynasty] = useState(false)
-  const [showDateModal, setShowDateModal] = useState(false)
   const [showProposeModal, setShowProposeModal] = useState(false)
   const [showWeddingModal, setShowWeddingModal] = useState(false)
-  const [showGiftModal, setShowGiftModal] = useState(false)
   const [showPregnancyModal, setShowPregnancyModal] = useState(false)
   const [showBirthModal, setShowBirthModal] = useState(false)
+  const [showEndRelationshipModal, setShowEndRelationshipModal] = useState(false)
   const [childName, setChildName] = useState('')
   const { addToast } = useToast()
   
+  const personalLife = useCareerStore(s => s.careerState?.personalLife) as { separationProcess?: { type: string; partnerName: string; daysElapsed: number; estimatedDurationDays: number; isFinalized: boolean } } | undefined
+  const playerInitiateSeparation = useCareerStore(s => s.playerInitiateSeparation)
+  const separationProcess = personalLife?.separationProcess
+  const isPartnerInSeparation = !!partner && separationProcess && !separationProcess.isFinalized && separationProcess.partnerName === `${partner.firstName} ${partner.lastName}`
+  const canEndRelationship = !!partner && !isPartnerInSeparation && ['dating', 'engaged', 'married'].includes(partner.relationshipStatus)
+  const divorcePreview = useMemo(() => {
+    if (!showEndRelationshipModal || !partner || partner.relationshipStatus !== 'married') return null
+    const marriageYear = partner.marriageDate?.year ?? currentYear
+    const marriageDurationYears = Math.max(1, currentYear - marriageYear)
+    const childrenCount = partner.childrenIds?.length ?? 0
+    const netWorth = finances?.cachedNetWorth ?? finances?.liquidCash ?? 0
+    const settlement = calculateDivorceSettlement(partner, netWorth, marriageDurationYears, childrenCount, null)
+    return {
+      assetDivisionPercent: settlement.assetDivision,
+      estimatedAssetLoss: Math.round(netWorth * (settlement.assetDivision / 100)),
+      alimonyMonthly: settlement.alimonyMonthly,
+      childSupportMonthly: settlement.childSupportMonthly,
+      durationWeeks: Math.ceil(calculateSeparationDuration('divorce', partner) / 7),
+    }
+  }, [showEndRelationshipModal, partner, currentYear, finances?.cachedNetWorth, finances?.liquidCash])
+  
   // Personal life actions
   const {
-    planDate,
     proposeToPartner,
     planWedding,
-    giveGift,
     spendTimeWithChild,
     startChildRacing,
     announcePregnancy,
     haveChild
   } = usePersonalLifeActions()
+
+  // Stable partner portrait - look up the actual stored messaging contact (same as Phone)
+  // This ensures the Family screen shows the exact same portrait as the Phone screen
+  const partnerPortrait = useMemo(() => {
+    if (!partner) return ''
+    // Find the partner's stored contact from messaging (same source as Phone screen)
+    const partnerId = partner.id || ''
+    const storedContact = messagingContacts?.find(c => 
+      c.type === 'partner' || c.id === `partner_${partnerId}` || c.id === partnerId
+    )
+    if (storedContact) {
+      return getContactPortrait(storedContact)
+    }
+    return ''
+  }, [partner?.id, messagingContacts])
+
+  // Calculate proposal acceptance score for threshold display
+  const proposalAcceptanceScore = useMemo(() => {
+    if (!partner) return 0
+    const loveWeight = partner.loveLevel * 0.4
+    const trustWeight = partner.trustLevel * 0.3
+    const happinessWeight = partner.happiness * 0.2
+    const compatWeight = partner.compatibilityScore * 0.1
+    return Math.round(loveWeight + trustWeight + happinessWeight + compatWeight)
+  }, [partner?.loveLevel, partner?.trustLevel, partner?.happiness, partner?.compatibilityScore])
 
   const dynastyYears = familyTree 
     ? currentYear - familyTree.dynastyStartDate.year 
@@ -95,12 +144,26 @@ export function FamilyPanel({
         
         {partner ? (
           <div className="space-y-4">
+            {/* Separation in progress */}
+            {isPartnerInSeparation && separationProcess && (
+              <div className="p-3 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-200 text-sm">
+                <p className="font-semibold">
+                  {separationProcess.type === 'breakup' ? 'Breakup in progress' : 'Divorce proceedings'}
+                </p>
+                <p className="mt-1 text-text-muted">
+                  {separationProcess.type === 'breakup'
+                    ? `~${Math.max(0, separationProcess.estimatedDurationDays - separationProcess.daysElapsed)} days remaining`
+                    : `~${Math.max(0, Math.ceil((separationProcess.estimatedDurationDays - separationProcess.daysElapsed) / 7))} weeks remaining`}
+                </p>
+              </div>
+            )}
+
             {/* Partner Info */}
             <div className="p-4 bg-background rounded-xl">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-4">
                   <PortraitImage
-                    src={getPartnerPortrait(partner.id || `${partner.firstName}-${partner.lastName}`.toLowerCase()) || getRandomPartnerPortrait('female')}
+                    src={partnerPortrait}
                     name={`${partner.firstName} ${partner.lastName}`}
                     size="xl"
                     bordered
@@ -131,23 +194,53 @@ export function FamilyPanel({
                 </Badge>
               </div>
 
-              {/* Relationship Metrics */}
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <MetricBar 
-                  label="Happiness" 
-                  value={partner.happiness} 
-                  color={partner.happiness >= 70 ? 'success' : partner.happiness >= 40 ? 'warning' : 'danger'}
-                />
-                <MetricBar 
-                  label="Love" 
-                  value={partner.loveLevel} 
-                  color="pink"
-                />
-                <MetricBar 
-                  label="Trust" 
-                  value={partner.trustLevel} 
-                  color="blue"
-                />
+              {/* Relationship Metrics - matches Phone screen labels */}
+              <div className="space-y-2.5 mb-4">
+                {/* Affection (maps to partner.happiness) */}
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-text-muted flex items-center gap-1">
+                      <Smile className="w-3 h-3 text-pink-400" /> Affection
+                    </span>
+                    <span className="text-pink-400 font-medium">{partner.happiness}%</span>
+                  </div>
+                  <div className="h-2 bg-surface rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-pink-400 rounded-full transition-all"
+                      style={{ width: `${partner.happiness}%` }}
+                    />
+                  </div>
+                </div>
+                {/* Trust (maps to partner.trustLevel) */}
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-text-muted flex items-center gap-1">
+                      <Shield className="w-3 h-3 text-blue-400" /> Trust
+                    </span>
+                    <span className="text-blue-400 font-medium">{partner.trustLevel}%</span>
+                  </div>
+                  <div className="h-2 bg-surface rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-blue-400 rounded-full transition-all"
+                      style={{ width: `${partner.trustLevel}%` }}
+                    />
+                  </div>
+                </div>
+                {/* Romance (maps to partner.loveLevel) */}
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-text-muted flex items-center gap-1">
+                      <Heart className="w-3 h-3 text-red-400" /> Romance
+                    </span>
+                    <span className="text-red-400 font-medium">{partner.loveLevel}%</span>
+                  </div>
+                  <div className="h-2 bg-surface rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-red-400 rounded-full transition-all"
+                      style={{ width: `${partner.loveLevel}%` }}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Traits */}
@@ -250,15 +343,23 @@ export function FamilyPanel({
 
             {/* Actions */}
             <div className="flex flex-wrap gap-3">
-              <Button variant="primary" size="sm" onClick={() => setShowDateModal(true)}>
-                <HeartHandshake className="w-4 h-4 mr-2" />
-                Plan Date
-              </Button>
               {partner.relationshipStatus === 'dating' && (
-                <Button variant="secondary" size="sm" onClick={() => setShowProposeModal(true)}>
-                  <Gem className="w-4 h-4 mr-2" />
-                  Propose
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <Button variant="secondary" size="sm" onClick={() => setShowProposeModal(true)}>
+                    <Gem className="w-4 h-4 mr-2" />
+                    Propose
+                  </Button>
+                  <p className="text-[10px] text-text-muted">
+                    Acceptance chance: <span className={`font-bold ${
+                      proposalAcceptanceScore >= 70 ? 'text-status-success' :
+                      proposalAcceptanceScore >= 50 ? 'text-status-warning' :
+                      'text-status-danger'
+                    }`}>{proposalAcceptanceScore}%</span>
+                    {proposalAcceptanceScore < 50 && ' — Build more love & trust first'}
+                    {proposalAcceptanceScore >= 50 && proposalAcceptanceScore < 70 && ' — Could go either way'}
+                    {proposalAcceptanceScore >= 70 && ' — Looking good!'}
+                  </p>
+                </div>
               )}
               {partner.relationshipStatus === 'engaged' && (
                 <Button variant="secondary" size="sm" onClick={() => setShowWeddingModal(true)}>
@@ -266,10 +367,6 @@ export function FamilyPanel({
                   Plan Wedding
                 </Button>
               )}
-              <Button variant="ghost" size="sm" onClick={() => setShowGiftModal(true)}>
-                <Gift className="w-4 h-4 mr-2" />
-                Give Gift
-              </Button>
               {partner.relationshipStatus === 'married' && !pregnancy?.isPregnant && children.length < 6 && (
                 <Button 
                   variant="secondary" 
@@ -280,7 +377,62 @@ export function FamilyPanel({
                   Try for Baby
                 </Button>
               )}
+              {canEndRelationship && (
+                <Button 
+                  variant="danger" 
+                  size="sm" 
+                  onClick={() => setShowEndRelationshipModal(true)}
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  End Relationship
+                </Button>
+              )}
             </div>
+
+            {/* End Relationship confirmation modal */}
+            <Modal
+              isOpen={showEndRelationshipModal}
+              onClose={() => setShowEndRelationshipModal(false)}
+              title={partner.relationshipStatus === 'married' ? 'File for divorce?' : 'Break up?'}
+              size="sm"
+            >
+              <div className="text-sm text-text-secondary space-y-2">
+                {partner.relationshipStatus === 'married' ? (
+                  <>
+                    <p>Are you sure you want to file for divorce from {partner.firstName} {partner.lastName}?</p>
+                    {divorcePreview && (
+                      <div className="mt-3 p-3 rounded-lg bg-surface-dark border border-border/10 text-xs space-y-1">
+                        <p className="text-text-muted">Estimated impact:</p>
+                        <p>Asset division: {divorcePreview.assetDivisionPercent}%</p>
+                        <p>Estimated one-time loss: ${divorcePreview.estimatedAssetLoss.toLocaleString()}</p>
+                        {divorcePreview.alimonyMonthly > 0 && (
+                          <p>Alimony: ${divorcePreview.alimonyMonthly.toLocaleString()}/month</p>
+                        )}
+                        {divorcePreview.childSupportMonthly > 0 && (
+                          <p>Child support: ${divorcePreview.childSupportMonthly.toLocaleString()}/month</p>
+                        )}
+                        <p className="text-text-muted mt-1">This could take roughly {divorcePreview.durationWeeks} weeks to finalize.</p>
+                      </div>
+                    )}
+                    <p className="text-text-muted mt-2">Divorce proceedings can take several weeks to finalize depending on your situation.</p>
+                  </>
+                ) : (
+                  <p>Are you sure you want to break up with {partner.firstName} {partner.lastName}? This will take a few days to resolve.</p>
+                )}
+              </div>
+              <div className="flex gap-3 justify-end mt-6">
+                <Button variant="secondary" onClick={() => setShowEndRelationshipModal(false)}>Cancel</Button>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    const ok = playerInitiateSeparation()
+                    setShowEndRelationshipModal(false)
+                  }}
+                >
+                  {partner.relationshipStatus === 'married' ? 'File for divorce' : 'Break up'}
+                </Button>
+              </div>
+            </Modal>
           </div>
         ) : (
           <div className="text-center py-12">
@@ -503,42 +655,6 @@ export function FamilyPanel({
         )}
       </Modal>
 
-      {/* Plan Date Modal */}
-      <Modal
-        isOpen={showDateModal}
-        onClose={() => setShowDateModal(false)}
-        title="Plan a Date"
-        size="sm"
-      >
-        <div className="space-y-4">
-          <p className="text-text-secondary">
-            Plan a special date with {partner?.firstName}. This will increase relationship happiness and improve your bond.
-          </p>
-          <div className="space-y-3">
-            {DATE_OPTIONS.slice(0, 5).map((dateOption) => (
-              <button
-                key={dateOption.type}
-                className="w-full p-4 bg-surface hover:bg-surface/80 rounded-lg text-left transition-colors"
-                onClick={() => {
-                  const result = planDate(dateOption.type)
-                  addToast({
-                    type: result.success ? 'success' : 'error',
-                    title: result.success ? 'Date Planned' : 'Failed',
-                    message: result.success 
-                      ? `${dateOption.name} completed! Happiness +${result.happinessGain || 0}`
-                      : result.message
-                  })
-                  setShowDateModal(false)
-                }}
-              >
-                <p className="font-medium">{dateOption.name}</p>
-                <p className="text-sm text-text-muted">{dateOption.description} - ${dateOption.cost.toLocaleString()}</p>
-              </button>
-            ))}
-          </div>
-        </div>
-      </Modal>
-
       {/* Propose Modal */}
       <Modal
         isOpen={showProposeModal}
@@ -548,17 +664,51 @@ export function FamilyPanel({
       >
         <div className="space-y-4">
           <p className="text-text-secondary">
-            Pop the big question to {partner?.firstName}! The chance of acceptance depends on your relationship level.
+            Pop the big question to {partner?.firstName}! Acceptance depends on romance, trust, affection, and compatibility.
           </p>
-          <div className="p-4 bg-surface rounded-lg">
-            <p className="text-sm text-text-muted mb-2">Love Level</p>
-            <p className="font-mono font-bold text-2xl">{partner?.loveLevel || 0}%</p>
+          <div className="p-4 bg-surface rounded-lg space-y-3">
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-text-muted">Acceptance Chance</p>
+              <p className={`font-mono font-bold text-2xl ${
+                proposalAcceptanceScore >= 70 ? 'text-status-success' :
+                proposalAcceptanceScore >= 50 ? 'text-status-warning' :
+                'text-status-danger'
+              }`}>{proposalAcceptanceScore}%</p>
+            </div>
+            <div className="h-2 bg-surface-secondary rounded-full overflow-hidden">
+              <div 
+                className={`h-full rounded-full transition-all ${
+                  proposalAcceptanceScore >= 70 ? 'bg-status-success' :
+                  proposalAcceptanceScore >= 50 ? 'bg-status-warning' :
+                  'bg-status-danger'
+                }`}
+                style={{ width: `${proposalAcceptanceScore}%` }}
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-2 text-xs text-text-muted">
+              <div className="flex justify-between">
+                <span>Romance (40%)</span>
+                <span className="text-red-400">{partner?.loveLevel || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Trust (30%)</span>
+                <span className="text-blue-400">{partner?.trustLevel || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Affection (20%)</span>
+                <span className="text-pink-400">{partner?.happiness || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Compat. (10%)</span>
+                <span className="text-text-primary">{partner?.compatibilityScore || 0}</span>
+              </div>
+            </div>
             <p className="text-xs text-text-muted mt-1">
-              {(partner?.loveLevel || 0) >= 80 
+              {proposalAcceptanceScore >= 70 
                 ? 'Very likely to accept!' 
-                : (partner?.loveLevel || 0) >= 60
-                  ? 'Good chance of acceptance'
-                  : 'You might want to wait...'}
+                : proposalAcceptanceScore >= 50
+                  ? 'Could go either way...'
+                  : 'You should wait and build your relationship first.'}
             </p>
           </div>
           <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
@@ -635,47 +785,6 @@ export function FamilyPanel({
               >
                 <p className="font-medium">{option.name}</p>
                 <p className="text-sm text-text-muted">{option.description} - ${option.cost.toLocaleString()}</p>
-              </button>
-            ))}
-          </div>
-        </div>
-      </Modal>
-
-      {/* Give Gift Modal */}
-      <Modal
-        isOpen={showGiftModal}
-        onClose={() => setShowGiftModal(false)}
-        title="Give a Gift"
-        size="sm"
-      >
-        <div className="space-y-4">
-          <p className="text-text-secondary">
-            Show {partner?.firstName} how much you care with a thoughtful gift.
-          </p>
-          <div className="space-y-3">
-            {[
-              { type: 'flowers', name: 'Flowers', description: 'Classic and romantic', cost: 100 },
-              { type: 'jewelry', name: 'Jewelry', description: 'Something special', cost: 5000 },
-              { type: 'luxury_watch', name: 'Luxury Watch', description: 'An exclusive timepiece', cost: 25000 },
-              { type: 'car', name: 'Luxury Car', description: 'The ultimate gift', cost: 150000 }
-            ].map((gift) => (
-              <button
-                key={gift.type}
-                className="w-full p-4 bg-surface hover:bg-surface/80 rounded-lg text-left transition-colors"
-                onClick={() => {
-                  const result = giveGift(gift.type, gift.cost)
-                  addToast({
-                    type: result.success ? 'success' : 'error',
-                    title: result.success ? 'Gift Given' : 'Failed',
-                    message: result.success 
-                      ? `${gift.name} given! Happiness +${result.happinessGain || 0}`
-                      : result.message
-                  })
-                  setShowGiftModal(false)
-                }}
-              >
-                <p className="font-medium">{gift.name}</p>
-                <p className="text-sm text-text-muted">{gift.description} - ${gift.cost.toLocaleString()}</p>
               </button>
             ))}
           </div>
@@ -814,7 +923,7 @@ function MetricBar({ label, value, color }: MetricBarProps) {
     warning: 'bg-status-warning',
     danger: 'bg-status-danger',
     pink: 'bg-pink-500',
-    blue: 'bg-accent-blue'
+    blue: 'bg-blue-400'
   }
 
   return (

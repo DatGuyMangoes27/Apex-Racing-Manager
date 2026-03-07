@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Ricardo Velez",
+    "nationality": "Colombian",
+    "age": 59,
+    "gender": "male",
+    "contactType": "lawyer",
+    "bio": "Ricardo Velez is a highly respected corporate lawyer in Colombia, specializing in international business law and contract negotiations. He's known for his sharp mind, quick wit, and unwavering dedication to his clients. While not directly involved in motorsport, his firm represents several prominent Colombian businesses that sponsor racing teams and drivers, making him a familiar face in the paddock.\n\nA racing driver might cross paths with Ricardo when negotiating sponsorship deals, navigating complex contracts with teams, or seeking legal counsel regarding intellectual property rights related to their image and brand. Ricardo's expertise and connections within the Colombian business community can be invaluable for a driver looking to secure funding and navigate the legal complexities of the sport.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed goatee",
+      "description": "Ricardo has a commanding presence, often accentuated by his tailored suits. He carries himself with confidence, and his eyes twinkle with intelligence."
+    },
+    "connectionToMotorsport": "Ricardo's law firm represents several Colombian companies that are major sponsors of racing teams and individual drivers, giving him a peripheral but important role in the sport.",
+    "meetingContext": "The player might meet Ricardo at a corporate networking event hosted by a sponsor, or through a mutual acquaintance in the business world. He could also be introduced as a potential legal representative.",
+    "conversationTopics": [
+      "The intricacies of international business law",
+      "His latest watch acquisition",
+      "The benefits of mindfulness and meditation",
+      "The beauty of the Spanish language",
+      "The strategic depth of chess"
+    ],
+    "canHelp": [
+      "Negotiate favorable sponsorship contracts",
+      "Provide legal counsel on image rights and endorsements",
+      "Connect the player with potential sponsors and investors in Colombia"
+    ],
+    "personality_summary": "A sharp and supportive lawyer with a passion for both business and personal enrichment."
+  }
+]

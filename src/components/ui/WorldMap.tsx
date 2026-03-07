@@ -12,6 +12,15 @@ import {
   getFatigueColor,
   getMotorsportHubs
 } from '@/data/travel-logistics';
+import { getLocationPerk, getLocationPerkEffectsSummary } from '@/data/owner-backgrounds';
+
+interface WorldMapProps {
+  selectedCountry: string | null;
+  onSelectCountry: (country: string) => void;
+  className?: string;
+}
+
+const WORLD_MAP_URL = '/images/world-map.jpg'
 
 const COUNTRY_POSITIONS: Record<string, { x: number; y: number }> = {
   // Western Europe

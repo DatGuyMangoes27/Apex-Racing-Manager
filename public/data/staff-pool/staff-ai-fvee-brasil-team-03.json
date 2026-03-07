@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Quispe",
+  "nationality": "Peruvian",
+  "age": 41,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for the Dakar Rally, fueling a desire to understand the aerodynamics at play. He pursued Mechanical Engineering at the Pontifical Catholic University of Peru, specializing in fluid dynamics. After graduating, he spent several years working in the automotive industry, honing his skills in computational fluid dynamics and wind tunnel testing. He joined FVee Brasil five years ago as a senior aerodynamicist, quickly rising through the ranks to become head of aero. \n\nRicardo is known for his meticulous approach to aerodynamic design. He believes in a data-driven methodology, constantly analyzing performance metrics and pushing the boundaries of innovation. His demanding nature stems from a deep-seated desire to achieve optimal results, often pushing his team to explore unconventional solutions. His focus on translating simulation data into real-world improvements has been instrumental in FVee Brasil's recent successes. \n\nWhat sets Ricardo apart is his ability to synthesize theoretical knowledge with practical application. He's not just about numbers; he understands the nuances of vehicle dynamics and the impact of aerodynamic changes on driver performance. He is known for his relentless pursuit of marginal gains, a strategy that has consistently delivered competitive advantages for the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on having the wind tunnel temperature set to exactly 22 degrees Celsius.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

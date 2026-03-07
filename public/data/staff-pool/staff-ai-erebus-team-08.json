@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 41,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Adrian's journey into motorsport began with a childhood fascination for rally racing in the Carpathian Mountains. He earned a degree in Mechanical Engineering from the Technical University of Cluj-Napoca, specializing in vehicle dynamics. After graduating, he spent several years working for a small independent racing team focused on touring cars, gaining invaluable hands-on experience in data analysis, suspension tuning, and engine performance optimization. He joined Erebus Motorsport three years ago and quickly became a reliable member of the team. \n\nAdrian is known for his methodical approach to problem-solving and his ability to translate complex data into actionable insights for the drivers and the mechanics. He emphasizes the importance of clear communication and collaboration within the team. Adrian's pragmatic mindset and dedication to continuous improvement have made him a valuable asset to Erebus Motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed hair, slightly receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Adrian is of average height with a sturdy build, a focused gaze, and a calm demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses software for calculations.",
+    "Insists on having a perfectly organized toolbox.",
+    "Tends to speak in metaphors related to car parts."
+  ]
+}

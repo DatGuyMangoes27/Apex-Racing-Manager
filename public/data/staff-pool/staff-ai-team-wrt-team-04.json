@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 52,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for go-karts in Bogotá. He honed his technical skills at the Universidad Nacional de Colombia, specializing in mechanical engineering, before landing a junior role with a local racing team. His meticulous approach to data analysis and ability to quickly diagnose mechanical issues propelled him through the ranks.\n\nRicardo is known for his calm demeanor under pressure and his knack for optimizing car setups based on driver feedback. He prioritizes clear communication and fostering a collaborative environment within the engineering team. His experience with various racing series, from Formula Regional to GT racing, makes him a valuable asset to Team WRT. Ricardo is particularly skilled at adapting strategies to changing weather conditions, a trait that has earned him the respect of drivers and colleagues alike.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "graying black",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a man of medium build with a thoughtful gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a strong cup of Colombian coffee before every race."
+  ]
+}

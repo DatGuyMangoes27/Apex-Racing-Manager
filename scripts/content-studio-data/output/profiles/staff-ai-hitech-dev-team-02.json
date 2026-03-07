@@ -1,0 +1,22 @@
+{
+  "name": "Geraint Davies",
+  "nationality": "Welsh",
+  "age": 59,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Geraint's motorsport journey began in the valleys of Wales, tinkering with engines alongside his father, a former rally mechanic. He earned a degree in mechanical engineering from Cardiff University before joining a small Formula Ford team, quickly demonstrating an aptitude for problem-solving and performance optimization. His meticulous approach and understanding of vehicle dynamics led to a series of promotions, culminating in his current role as Technical Director at Hitech Development.\n\nGeraint is known for his relentless pursuit of perfection and unwavering commitment to his team. He is a strong believer in data-driven decision-making, spending countless hours analyzing telemetry and simulations to identify areas for improvement. While demanding, he fosters a culture of collaboration and open communication, valuing the input of every team member. He is particularly adept at managing projects, bringing innovative ideas to fruition within budget and on schedule. His calm demeanor under pressure makes him an invaluable asset during critical moments in the race season.\n\nGeraint's distinctive quality is his ability to translate complex technical concepts into simple, actionable instructions for the trackside team. This clear communication, combined with his deep understanding of vehicle setup, makes him a highly effective leader and problem-solver in the fast-paced world of motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly trimmed back and sides with slightly longer hair on top",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed grey beard",
+    "description": "A stocky man with a ruddy complexion and a focused gaze, hinting at years spent poring over technical schematics."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out slide rule in his pocket, even though he uses computer simulations.",
+    "Insists on drinking Earl Grey tea at precisely 10:30 AM and 3:00 PM every day.",
+    "Has a habit of tapping his pen rhythmically on the desk when deep in thought, much to the annoyance of his colleagues."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0414",
+  "name": "Grajmy Esports",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "Poland",
+  "description": "Polish leader in esports gaming and streaming equipment.",
+  "story": "Grajmy Esports is dedicated to supporting the next generation of Polish talent in all forms of competitive entertainment. Motorsport's blend of strategy, skill, and intense competition aligns perfectly with their brand. They seek to partner with a driver who embodies the spirit of Polish innovation and dedication to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 65,
+    "nationalities": [
+      "Poland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 10,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0414.png"
+}

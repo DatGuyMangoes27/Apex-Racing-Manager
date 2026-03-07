@@ -1,0 +1,31 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 50,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Klara Steiner is a seasoned motorsports journalist with over two decades of experience covering Formula 1 and GT racing for several prominent Austrian publications. Known for her sharp wit and even sharper questions, she's built a reputation for getting the real story, even if it means ruffling a few feathers. While some find her argumentative and obsessive about details, others appreciate her dedication to uncovering the truth and her surprisingly optimistic outlook on the future of motorsport, especially when it comes to sustainability.\n\nKlara is a familiar face in the paddock, often seen interviewing team principals, engineers, and drivers alike. A racing driver might cross paths with her during press conferences, post-race interviews, or even chance encounters in the hospitality areas. Her interest in sustainable living often leads her to focus on the environmental impact of motorsport, making her a key contact for drivers interested in promoting green initiatives.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blonde",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Klara has a kind face lined with the wisdom of experience. She favors practical, comfortable clothing suitable for long days at the track."
+  },
+  "connectionToMotorsport": "Klara is a respected motorsports journalist, covering Formula 1 and GT racing for various Austrian publications. She attends races, interviews drivers and team members, and writes articles and analyses.",
+  "meetingContext": "The player would most likely meet Klara in the paddock during a race weekend, either at a press conference or during a scheduled interview.",
+  "conversationTopics": [
+    "The future of sustainable fuels in motorsport",
+    "The latest F1 controversies",
+    "The best Austrian cinema",
+    "Her marathon running progress",
+    "The environmental impact of racing"
+  ],
+  "canHelp": [
+    "Provide positive media coverage and boost the player's public image.",
+    "Introduce the player to sponsors and teams focused on sustainability.",
+    "Offer opportunities to participate in interviews and features in prominent publications."
+  ],
+  "personality_summary": "A grateful, argumentative, and optimistic journalist with a keen eye for detail and a passion for sustainable motorsport."
+}

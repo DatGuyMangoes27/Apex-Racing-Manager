@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Mexican",
+  "age": 29,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Ricardo's journey into motorsport was somewhat accidental. While studying culinary arts in Mexico City, he catered a small event for a visiting Formula 1 team. The experience sparked an unexpected passion, leading him to specialize in high-performance catering, understanding the unique dietary and logistical needs of racing teams. He quickly gained a reputation for innovative menus that not only satisfied the palate but also maximized energy and focus for team members. \n\nAt Stewart-Haas Racing, Ricardo is more than just a catering manager; he's a performance enhancer. He meticulously plans meals around race schedules, considering factors like climate, stress levels, and individual dietary requirements. His commitment to quality and innovation extends beyond the food itself. He actively seeks out sustainable and locally sourced ingredients whenever possible, minimizing the team's environmental footprint while supporting local communities. Ricardo's visionary approach to catering makes him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a sturdy build and a perpetually warm smile."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Insists on using only fresh, locally sourced ingredients whenever possible, even for late-night snacks.",
+    "Always carries a small notebook filled with recipe ideas and nutritional facts.",
+    "Conducts impromptu taste tests with team members, soliciting feedback on new menu items."
+  ]
+}

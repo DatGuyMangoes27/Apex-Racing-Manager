@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 55,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Sophie Dubois brings a wealth of experience to Carlin as their Test Driver Coordinator. Her motorsport journey began unexpectedly, volunteering as a data analyst for a small Formula Renault team. Quickly demonstrating a knack for interpreting complex telemetry, she transitioned into driver performance analysis and later, team management, always with a sharp focus on maximizing track time efficiency and driver development. Sophie's methodical approach and unwavering commitment to precision have made her an invaluable asset in identifying and nurturing emerging talent. Her ability to bridge the gap between technical data and driver feedback is what sets her apart, ensuring every test session is strategically aligned with performance goals.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A petite woman with a focused gaze and a warm smile."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously detailed notes.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on calibrating all testing equipment personally before each session."
+  ]
+}

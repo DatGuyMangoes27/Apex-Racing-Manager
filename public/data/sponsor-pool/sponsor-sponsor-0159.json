@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0159",
+  "name": "Le Fleuriste Provençal",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "France",
+  "description": "Bringing the beauty of Provence to your everyday life.",
+  "story": "Le Fleuriste Provençal is a family-owned business that has been cultivating flowers in Provence for three generations. Inspired by the speed and precision of motorsport, they see a parallel to the delicate art of flower cultivation. They hope to connect with a wider audience who appreciate the finer things in life, and associate their brand with success and French elegance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 35,
+    "nationalities": [
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0159.png"
+}

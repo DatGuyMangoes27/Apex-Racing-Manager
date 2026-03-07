@@ -1,0 +1,31 @@
+{
+  "name": "Afonso Ribeiro",
+  "nationality": "Portuguese",
+  "age": 25,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Afonso is a rising star in the Lisbon legal scene, specializing in contract law and intellectual property. He graduated top of his class at the University of Lisbon and quickly made a name for himself representing several high-profile clients in the tech and entertainment industries. Despite his youth, he's known for his meticulous approach and relentless drive, often working late into the night to ensure his clients' interests are protected. He has a reputation for being both incredibly disciplined and surprisingly rebellious, willing to push boundaries to achieve the best outcome.\n\nAfonso's connection to the motorsport world is through his family; his father owns a small but successful racing team competing in national GT championships. He occasionally provides legal counsel to the team and privately dreams of becoming a driver himself. Racing drivers might seek him out for contract negotiations with teams, sponsors, or for advice on image rights and endorsements.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Afonso has a sharp, focused gaze and a lean build from his marathon training. He always dresses impeccably in tailored suits."
+  },
+  "connectionToMotorsport": "His father owns a GT racing team, and Afonso provides them with legal counsel. He also harbors a personal passion for motorsport and dreams of driving himself.",
+  "meetingContext": "At a motorsport networking event, perhaps at his father's team's hospitality suite, or through a referral from another driver or team member needing legal assistance.",
+  "conversationTopics": [
+    "The intricacies of contract law",
+    "His latest marathon training regime",
+    "The technical regulations in GT racing",
+    "Wine tasting in the Douro Valley",
+    "The latest developments in drone technology"
+  ],
+  "canHelp": [
+    "Negotiate contracts with racing teams and sponsors.",
+    "Advise on image rights and endorsement deals.",
+    "Provide legal protection for intellectual property related to racing technologies."
+  ],
+  "personality_summary": "A disciplined yet rebellious young lawyer with a hidden passion for motorsport."
+}

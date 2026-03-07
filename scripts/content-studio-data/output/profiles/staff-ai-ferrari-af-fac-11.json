@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Colombian",
+  "age": 30,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Mateo's passion for motorsport ignited during his childhood in Bogota, where he spent countless hours watching Formula 1 races with his father. This early fascination led him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, he secured an internship with a local racing team, where he quickly proved his aptitude for data analysis and vehicle setup.\n\nHis meticulous approach and knack for identifying subtle performance improvements caught the attention of Ferrari AF Corse, who recruited him to oversee their test driver program. Mateo excels at coordinating testing schedules, analyzing driver feedback, and translating data into actionable insights for the engineering team. He is known for his innovative problem-solving abilities and his relentless pursuit of performance gains, making him a valuable asset to the team. Mateo prides himself on the collaborative environment he cultivates, believing that open communication is the key to unlocking the full potential of both the drivers and the car.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Mateo is of average height with a lean, athletic build and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas and observations.",
+    "Obsessively cleans his workstation at the end of each day.",
+    "Has a habit of tapping his pen when deep in thought."
+  ]
+}

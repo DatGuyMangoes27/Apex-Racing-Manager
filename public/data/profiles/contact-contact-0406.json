@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Holmgaard",
+  "nationality": "Danish",
+  "age": 58,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Astrid Holmgaard is a leading orthopedic surgeon specializing in sports-related injuries. After graduating at the top of her class from the University of Copenhagen, she completed a prestigious fellowship at a renowned clinic in Switzerland, focusing on cutting-edge surgical techniques for athletes. Her practice, located near a popular racing circuit, caters to a clientele of professional athletes, including several prominent figures in motorsport. While outwardly compassionate, Astrid possesses a sharp, judgmental mind and a fierce ambition that has fueled her success. She also holds grudges, and perceived slights are never truly forgotten.\n\nBeyond her medical career, Astrid is a woman of refined tastes and diverse interests. She finds solace in the meditative depths of scuba diving and the intellectual stimulation of opera. She's also a passionate sports fan, closely following football, tennis, and basketball. A racing driver might cross paths with Dr. Holmgaard after sustaining an injury on the track, or through social connections within the exclusive circles she frequents.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, precisely styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a slender woman who carries herself with an air of authority. She favors tailored clothing and understated jewelry."
+  },
+  "connectionToMotorsport": "Dr. Holmgaard's clinic is the preferred medical facility for several racing teams due to her expertise in treating high-impact injuries and her proximity to the track. She also occasionally serves as a consultant for driver safety initiatives.",
+  "meetingContext": "The player might meet Astrid at her clinic after an accident, at a charity gala supporting motorsport safety, or through a mutual contact in the racing world.",
+  "conversationTopics": [
+    "The latest advances in orthopedic surgery",
+    "The merits of different scuba diving locations",
+    "The intricacies of a specific opera",
+    "Recent scandals in professional sports",
+    "The importance of mental fortitude in high-pressure situations"
+  ],
+  "canHelp": [
+    "Provide expert medical care and rehabilitation after an injury.",
+    "Offer valuable insights into the physical demands of motorsport.",
+    "Connect the player with other influential figures in the sports world."
+  ],
+  "personality_summary": "A judgmental but highly skilled surgeon with a hidden ambitious and petty streak."
+}

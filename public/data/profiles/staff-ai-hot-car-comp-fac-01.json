@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Ramirez",
+  "nationality": "Mexican",
+  "age": 25,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mateo's journey into the high-octane world of motorsport began with a childhood fascination for racing games and a natural talent for pattern recognition. He honed his analytical skills studying statistics at UNAM, quickly realizing the potential for data to revolutionize racing strategy. After graduating, he landed an internship with a smaller racing outfit, where he proved his mettle by identifying crucial areas for performance improvement using limited data sets. \n\nHis meticulous approach and knack for uncovering hidden trends caught the eye of Hot Car Competições. Now, as a data analyst, Mateo thrives on dissecting complex telemetry, weather patterns, and competitor strategies to give his team a competitive edge. He believes in the power of data-driven decision-making and is constantly seeking innovative ways to extract valuable insights, making him an invaluable asset to the team. His loyalty to Hot Car Competições is renowned, and he consistently puts the team's success above personal recognition.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Mateo is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks to 'reset' his mind.",
+    "Has a collection of racing car diecasts on his desk, each representing a significant race in history.",
+    "Insists on using a specific brand of mechanical keyboard for data input, claiming it improves his accuracy."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mei Zhang",
+  "nationality": "Chinese",
+  "age": 48,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Mei Zhang's meticulous approach to motorsport stems from a background in precision engineering. After earning her degree at Tsinghua University, she initially worked on quality control for high-performance automotive components. The allure of the racetrack proved too strong, and she transitioned into motorsport, taking a position analyzing telemetry data for a Formula 3 team. This experience revealed her knack for identifying subtle performance improvements, leading her to Eurofarma RC, where she now orchestrates the team's test driver program.\n\nHer strength lies in her ability to bridge the gap between the technical data and the driver's feedback. Mei meticulously plans testing schedules to maximize the extraction of useful data. She's known for her rigorous data analysis and concise communication, ensuring that the engineering team receives the information needed to optimize the car's setup. What distinguishes Mei is her focus on creating a supportive environment for the test drivers, recognizing that their confidence directly translates to the quality of their feedback.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly styled bob with subtle auburn highlights",
+    "eyeColor": "dark brown",
+    "facialHair": null,
+    "description": "Mei is of average height with a focused gaze, often seen with a tablet in hand."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Insists on using a mechanical keyboard for all data entry.",
+    "Drinks precisely three cups of green tea each day, timed to coincide with key testing milestones.",
+    "Always carries a small notebook filled with handwritten notes and observations."
+  ]
+}

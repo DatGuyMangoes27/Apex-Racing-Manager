@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 54,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Moira's journey into motorsport began unconventionally, not through racing, but through a fascination with the intricate electronics that powered everything. After graduating with a degree in Electrical Engineering from the University of Edinburgh, she cut her teeth in the renewable energy sector, designing control systems for wind turbines. However, the lure of speed and cutting-edge technology proved too strong, and she transitioned to motorsport a decade ago, joining a Formula E team before finding her home at Garage 59.\n\nAs an electronics engineer, Moira is meticulous and pragmatic. She believes in a data-driven approach, constantly analyzing telemetry and sensor data to optimize the car's electrical systems. Her calm demeanor under pressure is invaluable during races, allowing her to troubleshoot problems efficiently and effectively. Moira is known for her ability to find innovative solutions to complex problems, always pushing the boundaries of what's possible within the regulations.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Auburn",
+    "hairStyle": "Short, layered bob with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A slightly stout woman with a warm smile that hints at a sharp wit."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool on her keychain.",
+    "Has a habit of humming quietly while soldering.",
+    "Insists on using a specific brand of electrical tape."
+  ]
+}

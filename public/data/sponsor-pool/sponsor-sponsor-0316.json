@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0316",
+  "name": "LivsStijl",
+  "category": "lifestyle",
+  "tier": "elite",
+  "country": "Netherlands",
+  "description": "Curating unique experiences for the discerning individual.",
+  "story": "LivsStijl, born from a passion for refined living in Amsterdam, seeks to align itself with the dedication and precision of motorsport. We believe the pursuit of excellence on the track mirrors our commitment to providing exceptional lifestyle services. We seek a partnership that amplifies our brand's reach to an audience that appreciates quality and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Netherlands"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0316.png"
+}

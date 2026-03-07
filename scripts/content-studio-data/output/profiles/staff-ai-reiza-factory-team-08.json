@@ -1,0 +1,22 @@
+{
+  "name": "Zdenka Veselá",
+  "nationality": "Czech",
+  "age": 59,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Zdenka's journey into motorsport began unexpectedly, fueled by a childhood spent tinkering with her father's old Škoda. This early fascination evolved into a passion for understanding the intricate mechanics of racing machines. After graduating from the Czech Technical University in Prague with a degree in mechanical engineering, she joined a small rally team, quickly proving her aptitude for data analysis and problem-solving.\n\nHer approach to performance engineering is characterized by meticulous attention to detail and a deep understanding of driver feedback. She excels at translating complex data into actionable insights, allowing the team to optimize vehicle setup for varying track conditions. Known for her unwavering loyalty and dedication, Zdenka is a respected figure within the Reiza Studios Factory team, valued for her calm demeanor and ability to deliver results under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, practical bob with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A slightly weathered face speaks of experience."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn notebook filled with handwritten calculations.",
+    "Has a peculiar habit of adjusting her glasses when concentrating intensely.",
+    "Enjoys listening to classical music through headphones during breaks."
+  ]
+}

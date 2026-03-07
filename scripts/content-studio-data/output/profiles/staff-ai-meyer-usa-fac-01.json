@@ -1,0 +1,22 @@
+{
+  "name": "Anastasia Volkov",
+  "nationality": "Russian",
+  "age": 24,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Anastasia's fascination with motorsports began during her childhood, captivated by the intricate engineering and strategic complexities of Formula 1 races. This passion led her to pursue a degree in Data Science at Moscow State University, where she excelled in statistical modeling and predictive analytics. After graduating, she gained experience at a smaller racing team in Russia, focusing on tire degradation analysis and race strategy optimization.\n\nAnastasia is driven by a desire to uncover hidden patterns within vast datasets, translating complex information into actionable insights for the team. She believes in the power of data-driven decisions to improve performance and gain a competitive edge. At Meyer Shank Racing, she is eager to apply her expertise to contribute to the team's success. \n\nKnown for her meticulous attention to detail and unwavering focus, Anastasia brings a unique blend of analytical rigor and pragmatic problem-solving to the team. She is particularly skilled at identifying subtle trends that might be overlooked by others, making her a valuable asset in the fast-paced world of motorsports.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair often tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Anastasia is of average height with a focused, intelligent gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with statistical formulas.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work in silence and uses noise-canceling headphones even in quiet environments."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0165",
+  "name": "Volga Gas",
+  "category": "local",
+  "tier": "high",
+  "country": "Russia",
+  "description": "Fueling Russia, Powering Your Victory.",
+  "story": "Volga Gas is a leading independent producer of natural gas and oil in the Volga region. Recognizing the shared values of precision, power, and performance, Volga Gas invests in motorsport to fuel ambition and celebrate Russian engineering. They seek a partnership that showcases their commitment to excellence and connects with a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 45,
+    "nationalities": [
+      "Russia"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0165.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Prasert",
+  "nationality": "Thai",
+  "age": 52,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Somchai Prasert's journey into motorsport began unexpectedly, during his mandatory military service where he was assigned to maintain the communications equipment for a small racing team. His inherent talent for electronics quickly became apparent, leading him to pursue formal training after his service. He honed his skills at a local vocational school, specializing in automotive electronics. Somchai's meticulous approach to his work is driven by a relentless pursuit of perfection. He believes that even the smallest detail can have a significant impact on performance. \n\nNow a seasoned electronics engineer, Somchai brings a wealth of knowledge to the Junior Kart Team. He is known for his methodical troubleshooting and innovative solutions to complex electrical problems. His demanding nature pushes his colleagues to perform at their best, ensuring that every electronic component is functioning flawlessly before each race. Somchai's unique blend of technical expertise and unwavering commitment makes him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed, with a receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "thin mustache",
+    "description": "Somchai is of medium build with a serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Insists on using specific brands of electrical tape.",
+    "Meticulously cleans his tools before and after each use."
+  ]
+}

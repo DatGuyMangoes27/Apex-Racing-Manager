@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 50,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's journey into motorsport started early, tinkering with engines on his uncle's farm in rural Portugal. He quickly developed a knack for understanding and improving mechanical systems. After completing his apprenticeship, he honed his skills working in various automotive workshops before landing a role with a local racing team.\n\nHis meticulous approach and innovative thinking soon caught the attention of Target Racing, who headhunted him to join their team. Ricardo thrives on the challenge of optimizing performance and reliability, often pushing the boundaries of existing designs. He's known for his ability to diagnose complex issues quickly and devise creative solutions, making him an invaluable asset to the team. He's a firm believer that even the smallest adjustment can make a difference on the track.\n\nRicardo's dedication extends beyond the workshop; he mentors junior machinists, fostering a culture of continuous improvement within the team. His passion for motorsport and commitment to excellence are what truly set him apart.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is a stocky man with strong hands and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out copy of a vintage engineering textbook.",
+    "Drinks copious amounts of strong espresso throughout the day.",
+    "Has a habit of sketching engine modifications on napkins during lunch."
+  ]
+}

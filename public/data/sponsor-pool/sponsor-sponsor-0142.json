@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0142",
+  "name": "Crédito del Sur",
+  "category": "financial",
+  "tier": "mid",
+  "country": "Argentina",
+  "description": "Empowering your ambitions, on and off the track.",
+  "story": "Crédito del Sur is a leading Argentinian financial institution committed to supporting national talent. Motorsport represents the pinnacle of ambition and precision, values Crédito del Sur shares. They seek to partner with teams and drivers that demonstrate dedication, skill, and a commitment to excellence, both on and off the track, to elevate the Crédito del Sur brand.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0142.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Reed",
+  "nationality": "American",
+  "age": 44,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ethan Reed practically grew up in a garage, tinkering with engines alongside his father, a local mechanic in Indianapolis. This early exposure fueled his passion for motorsport, leading him to pursue a degree in Mechanical Engineering at Purdue. After graduating, Ethan joined a smaller IndyCar team, honing his skills in aerodynamics and vehicle dynamics. His relentless pursuit of performance and innovative problem-solving quickly caught the attention of larger teams. \n\nEthan joined Arrow McLaren five years ago, initially as a senior engineer. His technical acumen and ability to motivate his team led to his promotion to Chief Engineer. Ethan is known for his data-driven approach, spending hours analyzing telemetry to optimize performance. He believes in empowering his team to experiment and push boundaries, fostering a culture of innovation that sets Arrow McLaren apart. His calm demeanor under pressure and unwavering loyalty make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Ethan is of average height, with a lean build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he primarily uses software.",
+    "Has a habit of sketching out complex engineering concepts on napkins during lunch.",
+    "Insists on listening to classic rock while reviewing data."
+  ]
+}

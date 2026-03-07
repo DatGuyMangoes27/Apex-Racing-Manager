@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas",
+  "nationality": "Colombian",
+  "age": 40,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Sofia's journey into motorsport began unexpectedly. Growing up in Medellin, she initially pursued a degree in mechanical engineering, drawn to the intricate workings of machines. A chance encounter with a local racing team ignited a passion for the precision and artistry of race car fabrication. She quickly found her niche, excelling at welding, machining, and composite work. \n\nSofia's approach to fabrication is methodical and detail-oriented. She believes in understanding the 'why' behind every component, ensuring that each piece not only meets specifications but also contributes to the overall performance and reliability of the car. Her ambition drives her to constantly seek out new techniques and materials, pushing the boundaries of what's possible in the workshop. Sofia is known for her ability to solve complex problems independently, often devising innovative solutions that others overlook. She thrives in a fast-paced environment, where her dedication and skill can make a tangible difference on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair typically pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is a slender woman of average height with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a thermos of strong Colombian coffee on her workbench.",
+    "Meticulously cleans her welding mask after each use.",
+    "Has a habit of humming quietly while concentrating on intricate tasks."
+  ]
+}

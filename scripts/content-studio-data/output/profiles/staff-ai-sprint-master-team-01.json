@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 58,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey into motorsport began with a fascination for the intricate mechanics of his father's old rally car. He honed his skills at the Universidad de Chile, earning a degree in mechanical engineering before joining a local racing team. Over the years, he's developed a reputation for his sharp technical mind and relentless pursuit of performance improvements. \n\nRicardo's approach as a chief engineer is characterized by his meticulous attention to detail and his uncompromising standards. He believes in a data-driven approach, meticulously analyzing telemetry to identify areas for optimization. While some may find his demands challenging, his commitment to excellence has consistently delivered results. His innovative thinking helps bring novel solutions to persistent engineering challenges.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A stocky man with a stern face and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Insists on a specific brand of Chilean coffee before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

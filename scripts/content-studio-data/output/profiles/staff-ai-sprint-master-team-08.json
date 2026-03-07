@@ -1,0 +1,22 @@
+{
+  "name": "Antti Virtanen",
+  "nationality": "Finnish",
+  "age": 42,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Antti's journey into motorsport began with a childhood fascination for rally racing, fueled by watching the snowy stages of the Finnish Rally Championship. He pursued a degree in mechanical engineering and honed his skills in vehicle dynamics. Early in his career, Antti worked for a smaller racing outfit, gaining invaluable experience in data acquisition and analysis. He's now a performance engineer at Sprint Masters, known for his meticulous approach to optimizing car setups and pushing the boundaries of aerodynamic efficiency.\n\nAntti believes that success on the track comes from a blend of data-driven insights and a deep understanding of the driver's needs. He prides himself on his ability to translate complex technical information into actionable recommendations for the team. His dedication to precision and his relentless pursuit of marginal gains make him a valuable asset to Sprint Masters, especially in the hyper-competitive world of racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Antti is of average height with a focused gaze and a build reflecting years spent hunched over data screens."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of Finnish coffee before every race."
+  ]
+}

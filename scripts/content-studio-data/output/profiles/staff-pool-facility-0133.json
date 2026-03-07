@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 28,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Ricardo's journey into motorsport began with a childhood spent tinkering with his father's old motorcycles in their small garage outside Lisbon. This early exposure sparked a deep fascination with mechanical engineering and a desire to understand how things worked. After completing his technical degree, he sought opportunities within the local racing scene, initially volunteering with smaller teams to gain experience.\n\nHe quickly proved his aptitude for fabrication, demonstrating a keen eye for detail and a knack for problem-solving under pressure. Ricardo is known for his meticulous approach to his work, ensuring every component is crafted to the highest standard. He's particularly skilled in welding and metal shaping, and his ability to quickly adapt to new designs and challenges makes him a valuable asset to any team. \n\nRicardo’s demanding personality, while sometimes challenging, stems from his unwavering commitment to excellence. He expects the same level of dedication from his colleagues, pushing them to strive for continuous improvement and flawless execution. This dedication, combined with his calm demeanor under pressure, makes him a highly reliable and respected member of any pit crew.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "short, well-groomed stubble",
+    "description": "Ricardo has a lean build with calloused hands that speak to years of dedicated work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his pencils to an exact point before starting any task.",
+    "Insists on using only metric measurements, even when working with older equipment.",
+    "Has a habit of humming quietly while welding, often Portuguese folk songs."
+  ]
+}

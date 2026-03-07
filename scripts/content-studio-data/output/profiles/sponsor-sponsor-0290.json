@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0290",
+  "name": "KiwiCode",
+  "category": "tech",
+  "tier": "mid",
+  "country": "New Zealand",
+  "description": "Innovative software solutions for the racing industry.",
+  "story": "KiwiCode is a leading software developer based in Auckland, specializing in telemetry analysis and race strategy tools. Founded by passionate motorsport enthusiasts, they believe data-driven insights are key to success on the track. They seek partnerships with teams who embrace technology and strive for data-backed performance improvements.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "New Zealand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0290.png"
+}

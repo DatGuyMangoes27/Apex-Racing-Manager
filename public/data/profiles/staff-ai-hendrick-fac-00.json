@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 53,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Alistair's journey into motorsport began unconventionally. After earning a degree in Aeronautical Engineering, he initially worked in the aerospace industry, designing flight simulators. A chance encounter with a former Formula 1 driver sparked his interest in applying his expertise to racing. He made the switch to motorsport, starting with a small British racing team before moving to NASCAR. Alistair believes in a data-driven approach, meticulously analyzing simulator data to identify areas for improvement in vehicle setup and driver performance. His calm demeanor allows him to remain focused under pressure, ensuring that the simulator provides accurate and reliable feedback to the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Alistair is of average height with a slightly stocky build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on brewing his own tea in the simulator lab using a vintage kettle."
+  ]
+}

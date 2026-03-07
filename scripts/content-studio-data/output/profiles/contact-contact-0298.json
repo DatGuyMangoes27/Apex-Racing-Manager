@@ -1,0 +1,31 @@
+{
+  "name": "Alistair Campbell",
+  "nationality": "New Zealand",
+  "age": 49,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Alistair Campbell is a name synonymous with success in New Zealand's banking sector. Rising through the ranks at ANZ, he now heads their private wealth management division, catering to some of the wealthiest individuals and families in the country. Known for his sharp financial acumen and unwavering loyalty to his clients, Alistair is equally regarded for his philanthropic endeavors and surprisingly fiery debates on topics ranging from economics to the merits of electric vehicles. \n\nAlistair's path may cross with a racing driver due to his firm's sponsorship portfolio and his clientele's interest in motorsports, or perhaps through managing the finances of a team owner or driver. He is always on the lookout for promising investments and understands the value of brand association, making him a valuable contact for any driver seeking financial backing or sponsorship opportunities. While he presents a collected demeanor, his willingness to passionately defend his views and his careful guarding of his personal life make him an intriguing and somewhat unpredictable figure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Alistair has a commanding presence, often accentuated by his tailored suits. His piercing blue eyes and meticulously maintained goatee give him a distinguished, if slightly intimidating, appearance."
+  },
+  "connectionToMotorsport": "Alistair's bank sponsors a local racing team and he manages the financial portfolio of several high-profile motorsport figures. He also attends the New Zealand Grand Prix annually.",
+  "meetingContext": "The player might meet Alistair at a networking event hosted by his bank, through an introduction from a mutual contact within the racing community, or potentially during a financial consultation regarding team finances or personal investments.",
+  "conversationTopics": [
+    "The current state of the global economy",
+    "The latest developments in watch collecting",
+    "The challenges and rewards of philanthropic work",
+    "His recent skiing trip to the Southern Alps",
+    "The future of electric vehicles in motorsport"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with ANZ or other companies in his network.",
+    "Provide expert financial advice and investment opportunities to manage winnings and build long-term wealth.",
+    "Introduce the player to influential figures within the business world who may be interested in investing in their career."
+  ],
+  "personality_summary": "A successful banker who is caring and loyal to those he trusts, but can be argumentative and keeps his cards close to his chest."
+}

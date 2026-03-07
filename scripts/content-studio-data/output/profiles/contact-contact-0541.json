@@ -1,0 +1,31 @@
+{
+  "name": "Mei Li Tan",
+  "nationality": "Singaporean",
+  "age": 55,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Brigadier General (Retired) Mei Li Tan is a force of nature. After a distinguished career in the Singapore Armed Forces, rising through the ranks to become one of the first women to command a combat brigade, she has transitioned into the business world, currently serving on the board of several prominent Singaporean companies. Known for her decisive leadership and strategic thinking honed in the military, Mei Li brings that same intensity and focus to her civilian pursuits. Despite her formidable reputation, she possesses a genuine warmth and a knack for connecting with people from all walks of life.\n\nWhile seemingly disconnected from motorsport, Mei Li's strategic investments extend to various sectors, including technology companies involved in vehicle performance analysis and simulation. A racing driver might encounter her at a business function, a charity gala, or even through a mutual acquaintance in the high-tech or automotive industries. Her experience with cutting-edge vehicle technology from her military background makes her surprisingly knowledgeable about performance metrics.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Mei Li carries herself with an air of authority. She is of average height with a fit build, reflecting her commitment to fitness."
+  },
+  "connectionToMotorsport": "Mei Li indirectly supports motorsports through her board positions with companies developing vehicle simulation and performance analysis software used by racing teams.",
+  "meetingContext": "The player might meet Mei Li at a high-profile fundraising event for a children's hospital, which is sponsored by one of the companies she serves on the board of.",
+  "conversationTopics": [
+    "Singaporean economic development",
+    "Her military experiences and leadership philosophy",
+    "The latest advancements in vehicle technology",
+    "Marathon training and fitness regimes",
+    "Wine and food pairings"
+  ],
+  "canHelp": [
+    "Introduce the player to potential investors and sponsors in Singapore",
+    "Offer mentorship and strategic advice on career management",
+    "Provide access to advanced vehicle simulation and performance analysis technology"
+  ],
+  "personality_summary": "A confident and charismatic retired military officer with a sharp mind and a surprisingly warm heart."
+}

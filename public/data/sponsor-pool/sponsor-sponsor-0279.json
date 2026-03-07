@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0279",
+  "name": "Apex Performance Apparel",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Engineered apparel for peak performance on and off the track.",
+  "story": "Apex Performance Apparel was founded by a former racing engineer who saw a need for better-performing, more comfortable apparel in motorsports. We're dedicated to providing drivers and teams with the gear they need to perform at their best. We seek partnerships that demonstrate a commitment to excellence and a passion for pushing the limits of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "USA"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0279.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 43,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's passion for motorsport ignited during his childhood summers spent watching Formula 1 races with his grandfather. After earning a degree in Mechanical Engineering from McGill University, he initially worked as a design engineer for a small automotive firm. However, the allure of the racetrack proved too strong, and he transitioned into motorsport, starting as a data analyst for a regional racing team. His meticulous approach and knack for problem-solving quickly propelled him through the ranks, ultimately landing him a role as a race engineer. \n\n Jean-Pierre is known for his data-driven approach and his ability to translate complex technical information into actionable insights for the driver. He thrives under pressure and is always looking for innovative solutions to gain a competitive edge. His ambition is to contribute to championship-winning teams and push the boundaries of racing technology.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Hazel",
+    "facialHair": "Goatee",
+    "description": "Jean-Pierre has a focused gaze and a lean build, suggesting a disciplined lifestyle."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out copy of 'Fundamentals of Aerodynamics'",
+    "Insists on using metric units exclusively, even in the US",
+    "Meticulously cleans his workspace before and after every session"
+  ]
+}

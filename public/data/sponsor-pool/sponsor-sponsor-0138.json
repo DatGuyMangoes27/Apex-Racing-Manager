@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0138",
+  "name": "Boucherie Charolais",
+  "category": "local",
+  "tier": "high",
+  "country": "France",
+  "description": "Premium French meat products, sourced locally.",
+  "story": "Boucherie Charolais is a family-owned business with deep roots in the Burgundy region. We are passionate about quality and tradition, and see motorsport as a perfect platform to showcase our commitment to excellence. We seek a partnership that highlights French craftsmanship and resonates with our discerning clientele.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0138.png"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0479",
+  "name": "TecnoRodas",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Portugal",
+  "description": "Precision engineered wheel and suspension systems for peak performance.",
+  "story": "TecnoRodas has been a leading Portuguese manufacturer of motorsport components for over 30 years. We believe in pushing the boundaries of performance through innovation and precision engineering. Our sponsorship aims to showcase our technology on the world stage and forge partnerships that drive success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0479.png"
+}

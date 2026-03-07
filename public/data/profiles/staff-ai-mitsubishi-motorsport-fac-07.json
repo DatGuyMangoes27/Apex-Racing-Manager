@@ -1,0 +1,22 @@
+{
+  "name": "Aino Nieminen",
+  "nationality": "Finnish",
+  "age": 39,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Aino's journey into motorsport IT began unexpectedly during a university internship, where she was tasked with optimizing data analysis systems for a small rally team. Intrigued by the fast-paced environment and the critical role of technology, she transitioned from theoretical computer science to hands-on application within the racing world. Her expertise lies in creating robust and adaptable IT infrastructure that can withstand the rigors of global motorsport events. \n\nAino believes in empowering her team through knowledge sharing and mentorship, fostering a collaborative atmosphere where innovation thrives. She is known for her ability to quickly diagnose and resolve complex technical issues under pressure, ensuring that the team's data and communications remain seamless throughout race weekends. Her flexible approach and proactive problem-solving skills make her an invaluable asset to Mitsubishi Motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Shoulder-length, straight hair with a side parting.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Aino is of medium height and has a focused, intelligent gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, customized multi-tool with her.",
+    "Has a habit of sketching out network diagrams on napkins during meetings.",
+    "Insists on a weekly 'tech talk' where the IT team shares new discoveries and challenges."
+  ]
+}

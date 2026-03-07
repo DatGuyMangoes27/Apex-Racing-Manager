@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Hernandez",
+  "nationality": "Mexican",
+  "age": 54,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Ricardo's journey into motorsport began unconventionally, fixing up classic cars in his youth in Guadalajara. His knack for understanding materials and structural integrity led him to an apprenticeship with a local racing team, where he quickly specialized in composite materials. He has been with EVO Racing Team for 12 years, becoming a cornerstone of their composites department. \n\nRicardo's meticulous approach to composite design and repair is legendary within EVO. He believes in understanding the 'why' behind every resin and weave, constantly experimenting with new techniques to improve performance and durability. He's not just fixing parts; he's engineering solutions. His creative thinking extends beyond technical applications, leading to innovative approaches to workshop organization and workflow.\n\nWhat sets Ricardo apart is his ability to mentor younger technicians. He fosters a culture of learning and experimentation, pushing his team to think critically and creatively. His experience combined with his open mindedness makes him a perfect combination of experience and innovation.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "graying black",
+    "hairStyle": "short, neatly combed back with slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed mustache",
+    "description": "A sturdy man with a focused gaze, Ricardo looks like he could build anything with his hands."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with material property diagrams.",
+    "Insists on playing classical guitar music in the workshop during complex repairs.",
+    "Has a habit of explaining composite science using food analogies."
+  ]
+}

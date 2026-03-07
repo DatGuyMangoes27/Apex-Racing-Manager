@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Jones, a name whispered with both excitement and apprehension in the junior racing circuits of Spain, hails from a small coastal town near Valencia. From the moment he could walk, Marco was obsessed with speed, tearing around on a battered old go-kart his grandfather salvaged from a scrap yard. His entry into competitive racing was almost accidental; substituting for an injured driver in a local karting event at the age of 12, Marco stunned everyone by not only finishing but winning, showcasing raw talent that belied his inexperience. His aggressive style, marked by late braking and daring overtakes, quickly earned him a reputation as a 'flashy' upstart. Now, at 16, racing as an independent, Marco is determined to prove he's more than just a showman. He currently competes in the Formula Regional European Championship, fighting tooth and nail to catch the eye of a major racing academy.",
+  "drivingStyle": "Marco's driving style is characterized by aggressive, late-braking maneuvers and a relentless pursuit of every available inch of track. He's known for his daring overtakes, often pushing the limits of adhesion and leaving little room for error. While his raw speed is undeniable, tire management remains a work in progress. Under pressure, Marco tends to become even more aggressive, sometimes leading to costly mistakes, but also to spectacular comebacks. He thrives on the adrenaline of close battles and isn't afraid to take risks to gain an advantage.",
+  "rivalries": [
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A heated on-track clash at the Spanish Karting Championship, resulting in both drivers crashing out, ignited a fierce rivalry fueled by mutual accusations of reckless driving."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "Dubois, a product of a prestigious racing academy, represents the established order that Marco is desperate to disrupt. Their contrasting backgrounds and driving philosophies create a natural tension."
+    },
+    {
+      "driver": "Anya Petrova",
+      "reason": "Petrova consistently outpaces Marco in qualifying, forcing him to take greater risks in the races to catch up, often leading to spectacular but occasionally disastrous results."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks his grandmother knitted for him before every race.",
+    "Listens to a specific heavy metal song, 'Highway to Hell', on repeat in the garage before getting into his car.",
+    "Has a habit of meticulously cleaning his helmet visor, even when it's already spotless, as a way to calm his nerves."
+  ],
+  "nickname": "The Valencia Viper",
+  "famousQuote": "Second place is just the first loser. Out there, it's all or nothing.",
+  "careerHighlight": "Winning the Valencian Karting Grand Prix in his debut season, showcasing his raw talent and fearless driving style, instantly making him a local hero.",
+  "careerLowPoint": "Spinning out of the lead on the final lap of the Formula Regional race at Imola due to over-aggression, costing him a potential breakthrough victory and severely denting his confidence."
+}

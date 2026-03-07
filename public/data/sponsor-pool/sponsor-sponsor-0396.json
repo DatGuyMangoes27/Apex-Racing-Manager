@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0396",
+  "name": "Tiempo Relojes",
+  "category": "watches",
+  "tier": "entry",
+  "country": "Spain",
+  "description": "Spanish watchmaker, precision and style.",
+  "story": "Tiempo Relojes is a family-owned watchmaker from Valencia, Spain, committed to craftsmanship and the pursuit of excellence. They see motorsport as the perfect arena to showcase their dedication to precision and timing. A partnership with a promising team will help Tiempo Relojes expand its brand recognition beyond Spain.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 25,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0396.png"
+}

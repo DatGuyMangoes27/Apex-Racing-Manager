@@ -1,0 +1,27 @@
+{
+  "biography": "James 'Jamie' Hunt, born in the quaint village of Oakhaven, England, wasn't destined for the racetrack. His father, a renowned physicist, envisioned a similar academic path for his son. However, a fateful trip to Brands Hatch at the age of 12 ignited a passion that burned brighter than any equation. He started tinkering with go-karts in his neighbor's garage, transforming them into makeshift racing machines. His raw talent quickly became apparent, leading to local karting championships. A defining moment came at the '79 Oakhaven Grand Prix when a daring last-lap overtake secured his first major victory. Now at the peak of his career, Jamie consistently challenges for podiums, balancing a calculated approach with the occasional flash of brilliance that reminds everyone of his inherent racing instincts.",
+  "drivingStyle": "Hunt's driving style is a study in controlled aggression. He's known for his meticulous preparation, studying telemetry data exhaustively to identify optimal braking points and cornering lines. Unlike some of his more flamboyant rivals, Jamie favors a smooth, efficient approach, prioritizing tire preservation and minimizing unnecessary risks. He excels in wet conditions, where his precise inputs and keen understanding of grip levels give him a distinct advantage. When under pressure, he maintains a remarkable composure, rarely cracking under the strain of a close battle.",
+  "rivalries": [
+    {
+      "driver": "Marco 'The Meteor' Rossi",
+      "reason": "A fierce on-track rivalry fueled by several near-miss collisions and accusations of overly aggressive tactics. Their contrasting driving styles often lead to spectacular battles."
+    },
+    {
+      "driver": "Isabelle 'Ice Queen' Dubois",
+      "reason": "A strategic rivalry based on calculated plays during races. They respect each other but play each other to gain advantage."
+    },
+    {
+      "driver": "Ricardo 'El Fuego' Alvarez",
+      "reason": "A long-standing rivalry stemming from a controversial championship decider in '82, where Hunt was accused of blocking Alvarez, costing him the title."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, no matter how worn.",
+    "Listens to classical music precisely 30 minutes before every race to center himself.",
+    "Carries a small, worn photograph of his childhood go-kart in his race suit."
+  ],
+  "nickname": "The Oak",
+  "famousQuote": "\"Racing isn't about taking risks; it's about managing them. The difference is everything.\"",
+  "careerHighlight": "Winning the '81 Silverstone Grand Prix in front of his home crowd, overcoming a late-race mechanical issue with a display of sheer determination and skill.",
+  "careerLowPoint": "Crashing out of the lead at the '80 Monaco Grand Prix due to a rare lapse in concentration, costing him valuable championship points and denting his confidence."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Lujain Abdullah Al Saud",
+  "nationality": "Saudi",
+  "age": 39,
+  "gender": "female",
+  "contactType": "yacht_captain",
+  "bio": "Lujain is no ordinary yacht captain; she commands one of the most luxurious vessels in the Red Sea, often chartered by Saudi royalty and international dignitaries. Her obsessive attention to detail and fiery temperament have earned her both respect and a reputation for being demanding. Originally trained in maritime trades, she quickly rose through the ranks, displaying an uncanny ability to navigate complex situations, both at sea and in the equally treacherous waters of high society. Lujain's dry humor and surprising knowledge of obscure topics make her a captivating conversationalist, and her connections within the upper echelons of Saudi society could prove invaluable to a rising motorsport star. Many sponsors and team owners enjoy using yachts for events, making her a very useful connection.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Sleek, shoulder-length bob",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Lujain carries herself with an air of quiet confidence, her dark eyes constantly scanning her surroundings. Her style is understated elegance, favoring tailored linen pants and crisp white shirts, often accessorized with a high-end timepiece."
+  },
+  "connectionToMotorsport": "Lujain's yacht is a popular venue for pre- and post-race celebrations during the Saudi Arabian Grand Prix. She has personally hosted several team principals and drivers, giving her insights into the inner workings of the racing world.",
+  "meetingContext": "The player might meet Lujain at a private party aboard her yacht during the Saudi Arabian Grand Prix weekend, or through a mutual connection at a high-society event.",
+  "conversationTopics": [
+    "The latest advancements in yacht technology",
+    "The challenges of navigating the Red Sea",
+    "Her extensive watch collection",
+    "The intersection of luxury and sustainability",
+    "The nuances of Arabic poetry"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors from Saudi Arabia's elite.",
+    "Provide access to exclusive events and networking opportunities.",
+    "Offer advice on navigating the cultural landscape of the Middle East."
+  ],
+  "personality_summary": "Humorous but fiercely protective yacht captain with connections to Saudi high society."
+}

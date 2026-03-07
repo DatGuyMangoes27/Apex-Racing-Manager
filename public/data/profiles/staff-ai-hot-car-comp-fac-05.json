@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 23,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jan's passion for motorsport ignited early, fueled by countless hours spent watching rally races with his father in the Bohemian countryside. After earning a degree in mechanical engineering, he sought an opportunity to combine his technical skills with his love for racing. He joined Hot Car Competições eager to contribute to a team striving for excellence.\n\nAs a quality control specialist, Jan is meticulous in his approach. He believes that even the smallest detail can impact performance on the track. He meticulously inspects components, analyzes data, and identifies potential issues before they become critical problems. Jan is always looking for ways to improve processes and ensure the highest standards of quality are maintained.\n\nWhat sets Jan apart is his ability to think outside the box. He's not content with simply following procedures; he actively seeks innovative solutions to enhance performance and reliability. Although he works well independently, his insights have proven invaluable to the team's overall strategy.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Clean shaven",
+    "description": "Jan is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas.",
+    "Has a habit of tapping his pen against his desk when deep in thought.",
+    "Insists on using a specific brand of Czech-made calipers for precision measurements."
+  ]
+}

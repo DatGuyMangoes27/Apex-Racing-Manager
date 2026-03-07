@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0004",
+  "name": "DanaRaya Investama",
+  "category": "finance",
+  "tier": "elite",
+  "country": "Indonesia",
+  "description": "Investing in Indonesia's future, one race at a time.",
+  "story": "DanaRaya Investama is a leading Indonesian investment firm focused on growth and innovation. They see motorsport as a platform to showcase Indonesian talent on the global stage and drive brand awareness among a high-net-worth audience. They seek a partnership that delivers consistent performance and aligns with their values of excellence and integrity.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Indonesia"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 8,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0004.png"
+}

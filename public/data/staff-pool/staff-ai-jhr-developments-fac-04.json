@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 24,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Kenji Tanaka's fascination with motorsport began during his childhood, captivated by the intricate engineering of Formula One cars. He pursued a degree in Electrical Engineering, specializing in embedded systems and signal processing, driven by a desire to contribute to the cutting edge of motorsport technology. After graduating, Kenji gained experience in consumer electronics, but quickly pivoted to motorsport by joining JHR Developments, where he now applies his skills to optimize vehicle performance through advanced electronic systems.\n\nKenji is known for his systematic approach to problem-solving and his meticulous attention to detail, ensuring that every component of the electronic system functions flawlessly. He is particularly interested in data analysis and predictive modeling, using telemetry data to identify areas for improvement and enhance the car's overall performance. While he's a relatively new member of the team, Kenji's dedication and enthusiasm make him a valuable asset. He distinguishes himself with his drive to find innovative solutions for any issue.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly parted on the left with a slight wave",
+    "eyeColor": "dark brown",
+    "facialHair": "slight stubble",
+    "description": "Kenji is of average height with a lean build and focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Prefers to work with classical music playing softly in the background.",
+    "Has a habit of double-checking every connection before signing off on a task."
+  ]
+}

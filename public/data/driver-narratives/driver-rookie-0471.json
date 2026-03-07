@@ -1,0 +1,27 @@
+{
+  "biography": "Born in Melbourne to a Chinese immigrant family, Alex Wang's introduction to racing was unconventional. It wasn't go-karts that ignited his passion but illegal street races in the industrial outskirts of the city. His raw talent for car control and fearless overtaking maneuvers quickly gained him notoriety in the underground scene. A chance encounter with a retired racing engineer who saw his potential led him away from the streets and into a proper racing school. Despite his late start, Alex quickly caught up, showcasing an innate ability to push cars to their absolute limit. Currently, he's navigating the fiercely competitive world of Formula 3, scraping together funding from independent sponsors and relying on his sheer grit to make his mark. His aggressive style has won him fans but also drawn criticism, a constant balancing act for the young Aussie.",
+  "drivingStyle": "Wang's driving style is a high-risk, high-reward approach characterized by late braking and aggressive corner entries. He's known for his uncanny ability to find grip where others can't, often carrying more speed through corners than his competitors deem possible. He favors a slightly oversteer setup, allowing him to rotate the car quickly and make daring overtaking maneuvers. While his tire management can be inconsistent, his relentless pressure on opponents often forces them into mistakes. He thrives under pressure, often delivering his best performances when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "Rossi, a veteran of the F3 circuit, publicly criticized Wang's driving as 'reckless and dangerous' after a controversial collision at Monza. Their on-track battles are always intense and filled with close calls."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a highly funded protégé from a rival team, represents the 'establishment' that Wang is constantly fighting against. Their contrasting backgrounds and racing styles make them natural adversaries."
+    },
+    {
+      "driver": "Marcus 'The Viking' Lindstrom",
+      "reason": "Lindstrom and Wang have a rivalry that started due to the pure aggression displayed by both drivers. Neither is willing to give an inch to the other, leading to multiple on-track incidents that have resulted in penalties for both drivers over the course of a season."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of blue socks, regardless of the weather.",
+    "Listens to a specific AC/DC track ('Thunderstruck') exactly three times before every race.",
+    "Spends 10 minutes visualizing the first lap of the race, focusing on key overtaking opportunities."
+  ],
+  "nickname": "The Outback Outlaw",
+  "famousQuote": "\"They say I drive on the edge? I say the view from the edge is the best.\"",
+  "careerHighlight": "Winning the reverse-grid feature race at Spa-Francorchamps in torrential rain, starting from P10 and overtaking the entire field with a series of audacious moves.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Macau Grand Prix due to a mechanical failure, costing him a potential championship victory."
+}

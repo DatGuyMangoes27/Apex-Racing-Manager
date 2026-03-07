@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas Castillo",
+  "nationality": "Peruvian",
+  "age": 23,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Mateo's passion for motorsport ignited during his childhood, fueled by watching Formula 1 races with his grandfather. He pursued a degree in Mechanical Engineering, focusing on simulation and modeling. After graduating, he gained experience in a small sim racing company, honing his skills in creating realistic and immersive racing environments. Mateo is driven by a desire to push the boundaries of simulator technology, constantly seeking new ways to improve driver training and vehicle development. He is known for his methodical approach to problem-solving and his ability to quickly adapt to new challenges.\n\nAt Target Racing, Mateo plays a pivotal role in optimizing the simulator for driver feedback and car setup development. He is meticulous in ensuring the accuracy of the simulated environment, striving to replicate real-world conditions as closely as possible. He believes that a well-calibrated simulator is crucial for driver confidence and performance, allowing them to push their limits without the risks associated with on-track testing. Mateo is committed to providing the team with the best possible simulation tools to achieve their competitive goals.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of average height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a small bag of coca leaves on his desk for altitude sickness, even at low altitudes.",
+    "Meticulously organizes his digital workspace, using color-coded folders and a strict naming convention.",
+    "Has a habit of humming quietly while debugging code."
+  ]
+}

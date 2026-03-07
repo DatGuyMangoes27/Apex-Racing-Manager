@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 38,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Marco Bellini's journey into motorsport began with a childhood fascination for Formula 1, fueled by the roaring engines and cutting-edge technology. After completing his degree in Computer Science from the University of Bologna, Marco initially worked in the banking sector, but the allure of racing proved too strong. He took a significant pay cut to join a small Italian GT team, where he honed his skills in managing and optimizing the team's IT infrastructure. \n\nMarco's approach to IT systems management is characterized by meticulous planning and a relentless pursuit of efficiency. He believes that even marginal gains in data processing and communication can provide a competitive edge on the track. He's known for his ability to troubleshoot complex technical issues under pressure and his dedication to ensuring the team's systems are always running at peak performance. He stands out due to his proactive approach to identifying and mitigating potential risks before they impact race operations.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "A stocky man with a focused gaze and a perpetually stressed expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific brand of Italian espresso beans for his morning coffee.",
+    "Always carries a small notebook filled with handwritten code snippets.",
+    "Has a habit of tapping his pen rapidly on his desk when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Angus McMillan",
+  "nationality": "Australian",
+  "age": 39,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Angus McMillan's journey into motorsport began with a childhood fascination with V8 Supercars. He started out volunteering at local races, quickly absorbing everything he could about race strategy and car setup. After completing a degree in mechanical engineering, Angus joined a smaller team as a data analyst before moving into a strategist role. He's known for his data-driven approach and his ability to make quick, decisive calls under pressure. \n\nAngus prides himself on his ability to anticipate the moves of rival teams and exploit any weaknesses in their strategies. He believes that attention to detail and a thorough understanding of the regulations are crucial for success. His demanding nature stems from a deep-seated desire to win and a belief that every member of the team must be performing at their best. He's driven by the thrill of competition and the satisfaction of seeing a well-executed strategy pay off on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Angus is of average height with a lean build, often seen sporting a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a specific brand of Australian coffee before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 46,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Angus McLeod's journey into motorsport began with a childhood spent tinkering with engines in his father's outback garage. This hands-on experience sparked a lifelong fascination with the mechanics of speed. After earning a degree in Statistics, Angus combined his analytical skills with his passion for racing, landing a role as a data analyst for a smaller Australian racing team. He quickly proved his worth, developing innovative strategies that led to improved performance on the track.\n\nNow at VW Racing Brasil, Angus is responsible for analyzing vast datasets of telemetry, weather patterns, and competitor performance. His pragmatic approach focuses on extracting actionable insights that can give the team a competitive edge. While he’s not always the loudest voice in the room, his recommendations are always data-driven and meticulously researched. He is known for his ability to identify subtle trends that others often miss, making him a valuable asset to the team. He is always striving for perfection in his work.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "Angus is of average height and build, with a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, worn notebook filled with racing statistics.",
+    "Sharpens his pencils to an almost absurd point before every race debrief.",
+    "Has a lucky pen that he uses for signing off on critical reports."
+  ]
+}

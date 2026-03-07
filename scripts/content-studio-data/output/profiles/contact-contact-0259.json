@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Brazilian",
+  "age": 61,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Ricardo Oliveira is a self-made man, rising from humble beginnings in São Paulo to become a prominent, albeit somewhat notorious, sports agent. His success is largely attributed to his keen eye for talent and his relentless pursuit of lucrative deals, even if it means bending the rules a little. His reputation is a mixed bag; while he's known for securing excellent contracts for his clients, he's also gained a reputation for unreliability and a penchant for overlooking details, often requiring damage control from his associates. \n\nDespite his flaws, Oliveira's connections within the motorsport world are extensive. A racing driver might cross paths with him while seeking representation, sponsorship opportunities, or advice on navigating the complex world of motorsports contracts. Oliveira's love for the finer things in life, from opera to art collecting, often leads him to events where he scouts for new talent and maintains relationships with influential figures, making him a valuable, if somewhat risky, contact.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying black",
+    "hairStyle": "Slicked back with gel",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper goatee",
+    "description": "Ricardo is a well-dressed man, favoring tailored suits and expensive watches. He carries himself with a confident swagger, despite a slight paunch that hints at his love for gourmet food and fine wine."
+  },
+  "connectionToMotorsport": "Ricardo represents several up-and-coming drivers in various racing series across South America and Europe. He specializes in securing sponsorship deals and managing contract negotiations, often leveraging his extensive network of contacts in the entertainment and business sectors.",
+  "meetingContext": "The player would likely meet Ricardo at a motorsport event, such as a Formula 3 race or a karting competition, where he is scouting for new talent. Alternatively, the player could be introduced to him through a mutual contact in the racing community.",
+  "conversationTopics": [
+    "The latest opera performance at the Teatro Municipal",
+    "The rising prices in the art market",
+    "The poor performance of his favorite basketball team",
+    "The interior design of his penthouse apartment",
+    "His recent skiing trip to the Swiss Alps"
+  ],
+  "canHelp": [
+    "Negotiate more favorable contracts with racing teams.",
+    "Secure lucrative sponsorship deals with prominent brands.",
+    "Provide introductions to influential figures in the motorsport industry."
+  ],
+  "personality_summary": "A forgiving yet materialistic agent with a nose for talent but a reputation for unreliability."
+}

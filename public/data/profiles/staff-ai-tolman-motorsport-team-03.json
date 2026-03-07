@@ -1,0 +1,22 @@
+{
+  "name": "Kari Nieminen",
+  "nationality": "Finnish",
+  "age": 47,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Kari's journey into motorsport began with a fascination for Finnish rally racing, a passion ignited by his father, a mechanic. He earned his degree in aeronautical engineering from Helsinki University of Technology, specializing in fluid dynamics and aerodynamics. After graduating, Kari spent several years at a small engineering firm designing components for commercial aircraft, honing his skills in CAD and computational fluid dynamics. He transitioned to motorsport eight years ago, initially working as an aerodynamicist for a smaller Formula team before joining Tolman Motorsport. \n\nAs Head of Aero, Kari emphasizes a data-driven approach, meticulously analyzing wind tunnel results and track data to optimize aerodynamic performance. He fosters a collaborative environment within his team, valuing input from all members, from seasoned engineers to junior aerodynamicists. His pragmatic nature ensures that designs are not only innovative but also reliable and easily manufacturable, a crucial aspect in the fast-paced world of motorsport. He's known for his ability to simplify complex problems and find practical solutions under pressure.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "short, trimmed goatee",
+    "description": "Kari is a man of medium height with a sturdy build and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on drinking black coffee at precisely 10:00 AM and 3:00 PM every day.",
+    "Has a habit of tapping his pen against the table when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Tan Wei Liang",
+  "nationality": "Singaporean",
+  "age": 47,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Tan Wei Liang’s passion for motorsport ignited during Singapore's inaugural F1 night race. Captivated by the precision and technology, he transitioned from a software engineering background to the world of racing simulation. He began by developing custom telemetry analysis tools for local racing teams, quickly gaining a reputation for his sharp analytical skills and innovative solutions. His journey led him to Toyota Gazoo Racing BR, where he now plays a crucial role in optimizing car performance through rigorous simulator testing.\n\nWei Liang is driven by a relentless pursuit of realism in the simulator environment. He meticulously analyzes real-world track data, driver feedback, and vehicle dynamics to create highly accurate simulations. He believes that the simulator is more than just a training tool; it's a virtual laboratory where engineers can push boundaries and explore new possibilities without the risks associated with on-track testing. His perfectionism ensures that every detail, from tire grip models to weather conditions, is faithfully replicated.\n\nHis colleagues value his ability to translate complex technical data into actionable insights for drivers and engineers. Wei Liang fosters a collaborative environment, encouraging open communication and knowledge sharing. This holistic approach allows the team to extract maximum value from simulator sessions, contributing significantly to Toyota Gazoo Racing BR's competitive edge.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Tan is a man of medium build with a focused gaze and a warm smile."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations and diagrams.",
+    "Has a habit of pacing while deep in thought, often muttering technical jargon.",
+    "Refuses to drink anything other than strong kopi-o (black coffee) during simulator sessions."
+  ]
+}

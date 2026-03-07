@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 59,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo Alonso's journey into motorsport began with a childhood fascination for mechanics and a local rally team. He climbed the ranks from a garage assistant to a seasoned race engineer, known for his methodical approach. Throughout his career, Ricardo has always prioritized data analysis and preparation, believing that meticulous planning is the cornerstone of success. He thrives in high-pressure environments, able to quickly assess situations and devise effective solutions.\n\nRicardo joined ROWE Racing ten years ago and quickly became a cornerstone of the team. He is renowned for his ability to mentor junior engineers and his unwavering commitment to the team's success. While his management skills might not be his strongest suit, his technical acumen and steadfast loyalty make him an invaluable asset.\n\nWhat sets Ricardo apart is his calm demeanor, even in the face of adversity. He's the guy you want in your ear when the clock is ticking and everything is on the line. His meticulous note-taking and deep understanding of vehicle dynamics have saved races on more than one occasion.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A stout man with a weathered face that speaks of countless hours spent in the pit lane."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn notebook and meticulously records data.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on drinking the same brand of strong, black coffee before every race."
+  ]
+}

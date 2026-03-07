@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0233",
+  "name": "PetroGlide Lubricants",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "USA",
+  "description": "Superior performance, mile after mile.",
+  "story": "PetroGlide Lubricants is a family-owned American company dedicated to providing high-quality synthetic motor oils. We've been supporting local grassroots racing for years and are now looking to expand our reach into more prominent motorsport series. We value partnerships that demonstrate reliability, consistency, and a commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0233.png"
+}

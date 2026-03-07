@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0227",
+  "name": "Alfaiate Racing",
+  "category": "apparel",
+  "tier": "high",
+  "country": "Portugal",
+  "description": "Performance apparel engineered for the demands of motorsport.",
+  "story": "Alfaiate Racing was born from a desire to bring the precision of Portuguese tailoring to the high-octane world of racing. We believe in pushing boundaries, both in design and performance, and see motorsport as the perfect proving ground for our innovative apparel. We seek partnerships that reflect our commitment to excellence and a shared passion for achieving peak performance under pressure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0227.png"
+}

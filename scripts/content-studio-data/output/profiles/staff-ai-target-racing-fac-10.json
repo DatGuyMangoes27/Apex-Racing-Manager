@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 42,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jean-Pierre's journey into motorsport began in his father's machine shop in Montreal, where he spent countless hours tinkering with engines and learning the intricacies of metalwork. He quickly developed a knack for fabrication, mastering welding, machining, and composite materials. After honing his skills on local racing teams, Jean-Pierre joined Target Racing five years ago, where he's become an indispensable part of the team.\n\nHe's known for his meticulous approach and unwavering commitment to quality. Jean-Pierre demands perfection from himself and others, pushing the boundaries of what's possible in vehicle construction. While some find his intensity challenging, his dedication to crafting race-winning components is undeniable. He prides himself on the structural integrity and aerodynamic efficiency of his work.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A powerfully built man with calloused hands and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a Gauloises cigarette tucked behind his ear, even though he rarely lights it.",
+    "Sharpens his welding tools obsessively before each project.",
+    "Speaks fluent French when under stress."
+  ]
+}

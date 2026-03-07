@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Vasiliou",
+  "nationality": "Greek",
+  "age": 22,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitrios's journey into motorsport started with a fascination for Formula 1 simulators. He spent countless hours dissecting car setups and analyzing telemetry data, fueled by a desire to understand the intricate dance between driver input and vehicle performance. After excelling in local sim racing competitions, he pursued a degree in Mechanical Engineering, specializing in vehicle dynamics. Dimitrios secured an internship at a smaller racing outfit, quickly proving his worth by developing innovative simulator configurations that significantly improved driver training.\n\nHis approach to simulator engineering is methodical and data-driven, yet infused with a creative flair. He constantly seeks new ways to enhance the realism of the simulator, pushing the boundaries of what's possible. At JOTA Sport, Dimitrios is focused on optimizing the simulator to provide drivers with the most accurate and immersive experience possible, allowing them to fine-tune their skills and strategies before hitting the track. His demanding nature pushes both himself and his colleagues to strive for excellence.\n\nWhat sets Dimitrios apart is his ability to translate complex technical concepts into actionable insights for drivers. He possesses a knack for identifying subtle nuances in driving style and correlating them to specific simulator settings, enabling drivers to adapt and improve their performance. His commitment to continuous improvement and relentless pursuit of perfection make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Dimitrios is of average height, with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with simulator setup ideas and calculations.",
+    "Has a specific playlist of electronic music he listens to while calibrating the simulator.",
+    "Insists on meticulously cleaning the simulator cockpit before each session."
+  ]
+}

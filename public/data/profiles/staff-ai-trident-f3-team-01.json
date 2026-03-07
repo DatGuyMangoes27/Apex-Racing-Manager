@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Dimitrios's journey into motorsport began in his youth, captivated by the precision and innovation of Formula 1. He earned a degree in Mechanical Engineering from the National Technical University of Athens, followed by a stint at a local automotive manufacturer, before setting his sights on racing. Dimitrios joined a small GT team, quickly rising through the ranks. His keen eye for detail and ability to translate data into tangible improvements have made him an invaluable asset. \n\nAs a chief engineer, Dimitrios prioritizes a holistic approach, seeing the car as a complete system rather than a collection of isolated components. He emphasizes clear communication within the engineering team and with the drivers, ensuring everyone is aligned on the goals and strategy. While he's not afraid to push boundaries, Dimitrios always prioritizes reliability and data-driven decision-making. What sets him apart is his ability to remain calm and focused under pressure, a trait that has proven crucial in countless high-stakes situations.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back, with slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build, Dimitrios always has a thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and notes.",
+    "Has a habit of adjusting his glasses even when they are perfectly positioned.",
+    "Insists on starting every race weekend with a traditional Greek coffee."
+  ]
+}

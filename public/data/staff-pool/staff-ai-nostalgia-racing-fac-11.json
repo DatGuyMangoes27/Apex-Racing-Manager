@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McTavish",
+  "nationality": "Scottish",
+  "age": 31,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Alistair's journey into motorsport began with a childhood spent tinkering with engines in his grandfather's garage in the Scottish Highlands. After graduating with a degree in mechanical engineering, he spent several years working as a data analyst for a small racing team, where he quickly developed a knack for identifying areas for improvement in vehicle performance. This led him to Nostalgia Racing, where he now coordinates test driver activities, ensuring that all data is accurately collected and analyzed to optimize vehicle setup. \n\nAlistair is known for his meticulous approach and his ability to build strong relationships with the drivers. He firmly believes that a well-coordinated testing program is essential for success on the track, and he is always looking for new ways to improve the efficiency and effectiveness of the team's testing efforts. His ambition and drive make him a valuable asset to Nostalgia Racing, pushing the team to continually strive for excellence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Alistair is of average height with a sturdy build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every testing session with a traditional Scottish good luck charm."
+  ]
+}

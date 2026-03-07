@@ -1,0 +1,31 @@
+{
+  "name": "Isabel Oliveira",
+  "nationality": "Portuguese",
+  "age": 37,
+  "gender": "female",
+  "contactType": "philanthropist",
+  "bio": "Isabel Oliveira is a self-made billionaire, having built her fortune through strategic investments in renewable energy and sustainable technologies. Known for her intense focus and unwavering reliability, Isabel approaches every venture with optimism and a deep sense of empathy. While she lacks formal education, her astute business acumen and dedication to social causes have earned her respect in high society and beyond. \n\nIsabel's connection to motorsport is tangential but significant. She views racing as a platform to promote innovation and sustainability. She sponsors initiatives that explore eco-friendly fuels and technologies in the racing world, viewing it as an accelerant for technological advancements applicable to everyday life. A driver striving for a greener image or seeking funding for sustainable racing technology might find themselves seeking Isabel's support.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a sophisticated ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabel possesses a striking presence with sharp features and an athletic build. She often wears tailored clothing that emphasizes her power and sophistication."
+  },
+  "connectionToMotorsport": "Isabel sponsors green initiatives within motorsport, providing funding and support for teams and technologies focused on sustainability. She sees racing as a proving ground for eco-friendly innovations.",
+  "meetingContext": "The player might meet Isabel at a charity gala focused on environmental sustainability, where she is a key speaker or donor. Alternatively, they could be introduced through a mutual contact within the motorsport industry who is also working on green technologies.",
+  "conversationTopics": [
+    "Renewable energy investments",
+    "The future of sustainable technology",
+    "Her charitable projects in Portugal",
+    "The importance of ethical business practices",
+    "The potential for motorsport to drive innovation"
+  ],
+  "canHelp": [
+    "Provide sponsorship for a racing team or driver committed to sustainable practices",
+    "Connect the player with influential figures in the renewable energy sector",
+    "Offer guidance on developing a personal brand focused on environmental responsibility"
+  ],
+  "personality_summary": "An intense and empathetic self-made billionaire dedicated to sustainable technologies and philanthropic endeavors."
+}

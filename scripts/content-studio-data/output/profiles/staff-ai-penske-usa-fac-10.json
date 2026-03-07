@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 50,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jean-Pierre discovered his passion for motorsport early, spending weekends at local karting events, mesmerized by the engineering. He started his career as an apprentice at a small garage in Brussels, learning the fundamentals of automotive repair before transitioning to a local racing team. There, he honed his skills in fabrication, specializing in chassis modifications and suspension setups. His meticulous approach and ability to diagnose complex mechanical issues quickly earned him a reputation for excellence.\n\nAfter years of dedication, Jean-Pierre's expertise caught the attention of Team Penske, where he's been a valued fabricator for the past decade. He prides himself on precision and durability, always striving to build parts that exceed expectations. While his demanding nature can sometimes ruffle feathers, his unwavering commitment to performance ensures the team is always equipped with top-tier components. Jean-Pierre's deep understanding of material science and his innovative problem-solving make him an indispensable asset to the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stout man with calloused hands and a focused gaze, evidence of years spent crafting metal."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Insists on using only metric measurements, even when others are using imperial.",
+    "Has a lucky wrench that he refuses to let anyone else use."
+  ]
+}

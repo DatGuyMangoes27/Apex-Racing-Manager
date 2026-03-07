@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 43,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan Kovář's journey into motorsport began with a fascination for engineering and a childhood spent tinkering with engines. He pursued a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, Jan started his career at a small engineering firm working on aftermarket performance parts for rally cars. His dedication and innovative solutions quickly caught the attention of Signature Racing, where he was offered a position in their engineering department. Over the years, he steadily climbed the ranks, proving his technical acumen and leadership skills. \n\nJan's approach to his role as Technical Director is characterized by meticulous planning and a data-driven approach. He believes in fostering a collaborative environment where engineers can freely exchange ideas and push the boundaries of innovation. He is known for his calm demeanor under pressure, a trait that has proven invaluable during tense race weekends. What sets Jan apart is his ability to translate complex technical concepts into clear and concise explanations, making him an effective communicator and leader.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build, Jan has a focused gaze and often sports a thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a specific brand of herbal tea before every race."
+  ]
+}

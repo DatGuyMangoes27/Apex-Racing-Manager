@@ -16,8 +16,9 @@ import {
   OwnedTeam,
   TeamSponsorDeal
 } from '@/store/careerStore'
-import { Sponsor, SPONSORS } from '@/data/sponsors'
-import { TEAM_SPONSOR_TIERS, getTeamSponsorTierForReputation } from '@/data/financial-config'
+import type { Sponsor } from '@/data/sponsors'
+import { getTeamSponsorTierForReputation, getSponsorWeeklyPortfolioCap } from '@/data/financial-config'
+import { getSponsorById, getSponsors } from '@/services/preGeneratedContentService'
 
 // ============================================
 // CONSTANTS
@@ -28,6 +29,45 @@ export const NEGOTIATION_CONFIG = {
   walkawayChancePerRound: 0.05,  // 5% base chance per round
   maxRounds: 5
 } as const
+
+/** How many weeks a declined sponsor is on cooldown before re-approach */
+export const DECLINE_COOLDOWN_WEEKS = 8
+
+/**
+ * Reputation penalty for declining sponsors.
+ */
+export function getSponsorDeclinePenalty(sponsorTier: string): number {
+  switch (sponsorTier) {
+    case 'elite': return 3
+    case 'high': return 2
+    case 'mid': return 1
+    case 'entry': return 0
+    default: return 1
+  }
+}
+
+/**
+ * Returns response delay in weeks based on sponsor characteristics.
+ */
+export function getResponseDelay(
+  sponsor: { tier: string; personality?: string; patience?: number },
+  responseType: 'outreach' | 'counter'
+): number {
+  const tierDelays: Record<string, { outreach: [number, number]; counter: [number, number] }> = {
+    entry: { outreach: [1, 1], counter: [1, 1] },
+    mid: { outreach: [1, 2], counter: [1, 1] },
+    high: { outreach: [2, 3], counter: [1, 2] },
+    elite: { outreach: [3, 4], counter: [2, 3] }
+  }
+
+  const [min, max] = tierDelays[sponsor.tier]?.[responseType] ?? [1, 2]
+  let delay = min + Math.floor(Math.random() * (max - min + 1))
+
+  if (sponsor.personality === 'corporate') delay += 1
+  if (sponsor.personality === 'casual') delay = Math.max(1, delay - 1)
+
+  return Math.max(1, delay)
+}
 
 // ============================================
 // HELPER FUNCTIONS
@@ -281,6 +321,134 @@ export function acceptNegotiation(
   }
 }
 
+function getSlotMultiplier(slot: TeamSponsorSlot): number {
+  switch (slot) {
+    case 'title': return 2.2
+    case 'primary': return 1.25
+    case 'secondary': return 0.9
+    case 'associate': return 0.35
+    default: return 1.0
+  }
+}
+
+function determineNegotiationSlot(team: OwnedTeam, tierName: string): TeamSponsorSlot {
+  const sponsors = team.finances?.sponsors ?? []
+  const active = sponsors.filter(s => s.active)
+
+  const hasTitle = active.some(s => s.slot === 'title')
+  if (!hasTitle && tierName === 'global') return 'title'
+
+  const primaryCount = active.filter(s => s.slot === 'primary').length
+  if (primaryCount < 2 && (tierName === 'global' || tierName === 'international')) return 'primary'
+
+  const secondaryCount = active.filter(s => s.slot === 'secondary').length
+  if (secondaryCount < 3 && tierName !== 'local') return 'secondary'
+
+  return 'associate'
+}
+
+function buildInitialOffer(team: OwnedTeam, slot: TeamSponsorSlot): SponsorOffer {
+  const tier = getTeamSponsorTierForReputation(team.reputation ?? 0)
+  const duration = Math.floor(Math.random() * 3) + 1
+  const mult = getSlotMultiplier(slot)
+
+  const monthlyPayment = Math.round(
+    lerp(tier.monthlyPaymentRange.min, tier.monthlyPaymentRange.max, Math.random()) * mult
+  )
+  const winBonus = Math.round(
+    lerp(tier.winBonusRange.min, tier.winBonusRange.max, Math.random()) * mult
+  )
+  const podiumBonus = Math.round(
+    lerp(tier.podiumBonusRange.min, tier.podiumBonusRange.max, Math.random()) * mult
+  )
+
+  const currentActiveWeekly = (team.finances?.sponsors || [])
+    .filter(s => s.active)
+    .reduce((sum, s) => sum + Math.round((s.monthlyPayment || 0) / 4), 0)
+  const weeklyPortfolioCap = getSponsorWeeklyPortfolioCap(team.reputation ?? 0)
+  const remainingWeeklyHeadroom = Math.max(0, weeklyPortfolioCap - currentActiveWeekly)
+  const maxMonthlyByHeadroom = remainingWeeklyHeadroom * 4
+  const boundedMonthly = maxMonthlyByHeadroom > 0
+    ? Math.min(monthlyPayment, maxMonthlyByHeadroom)
+    : monthlyPayment
+
+  const championshipBonus = tier.tier === 'global'
+    ? Math.round(boundedMonthly * 12)
+    : tier.tier === 'international'
+      ? Math.round(boundedMonthly * 6)
+      : 0
+
+  const targets: TeamSponsorTarget[] = [{
+    id: `target_races_${Date.now()}`,
+    type: 'races_entered',
+    targetValue: 8 * duration,
+    currentValue: 0,
+    description: `Enter at least ${8 * duration} races`,
+    met: false,
+    exceeded: false
+  }]
+
+  return {
+    slot,
+    monthlyPayment: boundedMonthly,
+    winBonus,
+    podiumBonus,
+    championshipBonus,
+    duration,
+    targets
+  }
+}
+
+function createNegotiation(
+  sponsor: Sponsor,
+  team: OwnedTeam,
+  initiatedBy: 'team' | 'sponsor',
+  currentWeek: number,
+  currentYear: number
+): SponsorNegotiation {
+  const tier = getTeamSponsorTierForReputation(team.reputation ?? 0)
+  const slot = determineNegotiationSlot(team, tier.tier)
+  const initialOffer = buildInitialOffer(team, slot)
+  const patience = sponsor.tier === 'elite' ? 4 : sponsor.tier === 'high' ? 4 : sponsor.tier === 'mid' ? 3 : 2
+  const maxRounds = Math.min(5, Math.max(3, patience + 1))
+  const expiresWeekNorm = ((currentWeek + 8 - 1) % 52) + 1
+  const expiresYearNorm = currentWeek + 8 > 52 ? currentYear + 1 : currentYear
+
+  const personality: SponsorPersonalityType =
+    sponsor.category === 'financial' || sponsor.category === 'finance'
+      ? 'corporate'
+      : sponsor.category === 'lifestyle' || sponsor.category === 'apparel'
+        ? 'casual'
+        : sponsor.tier === 'elite'
+          ? 'demanding'
+          : 'formal'
+
+  const status: NegotiationStatus = initiatedBy === 'team' ? 'outreach_sent' : 'reviewing_offer'
+
+  return {
+    id: `sponsor_neg_${Date.now()}_${sponsor.id}`,
+    sponsorId: sponsor.id,
+    sponsorName: sponsor.name,
+    sponsorCategory: sponsor.category,
+    sponsorTier: sponsor.tier,
+    initiatedBy,
+    status,
+    personality,
+    patience,
+    currentOffer: { ...initialOffer },
+    initialOffer: { ...initialOffer },
+    rounds: [],
+    maxRounds,
+    startedWeek: currentWeek,
+    startedYear: currentYear,
+    expiresWeek: expiresWeekNorm,
+    expiresYear: expiresYearNorm,
+    lastActivityWeek: currentWeek,
+    lastActivityYear: currentYear,
+    lastEmailId: ''
+  }
+}
+
 // ============================================
 // SPONSOR APPROACH (INCOMING)
 // ============================================
@@ -362,7 +530,7 @@ export function generateWeeklySponsorApproaches(
   const marketingBudget = team.budgets?.marketingBudget || 0
   
   // Shuffle sponsors for randomness
-  const shuffledSponsors = [...SPONSORS].sort(() => Math.random() - 0.5)
+  const shuffledSponsors = [...getSponsors()].sort(() => Math.random() - 0.5)
   
   for (const sponsor of shuffledSponsors) {
     if (approaches.length >= maxApproaches) break
@@ -461,7 +629,7 @@ export function processOutreachResponse(
   negotiation: SponsorNegotiation
   response: 'interested' | 'soft_decline' | 'hard_decline'
 } {
-  const sponsor = SPONSORS.find(s => s.id === negotiation.sponsorId)
+  const sponsor = getSponsorById(negotiation.sponsorId)
   if (!sponsor) {
     return {
       negotiation: { ...negotiation, status: 'declined' },
@@ -848,10 +1016,5 @@ export function processWeeklyNegotiations(
   }
 }
 
-// ============================================
-// EXPORTS
-// ============================================
+export { validateCounterOffer as isCounterAcceptable }
 
-export {
-  SPONSORS
-} from '@/data/sponsors'

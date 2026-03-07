@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0126",
+  "name": "Apex Performance Tires",
+  "category": "tires",
+  "tier": "elite",
+  "country": "USA",
+  "description": "The ultimate grip for ultimate performance.",
+  "story": "Apex Performance Tires has been at the forefront of tire technology for over 40 years. Founded by a former race engineer, Apex is dedicated to providing racers with the competitive edge they need to win. We seek partnerships with teams who share our commitment to innovation and pushing the limits of performance on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "USA",
+      "Canada"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0126.png"
+}

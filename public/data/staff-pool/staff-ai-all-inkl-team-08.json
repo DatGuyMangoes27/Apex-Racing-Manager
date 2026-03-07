@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Chilean",
+  "age": 53,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began unexpectedly after a career in aerospace engineering. He transitioned to motorsport in his late 20s, drawn by the challenge of applying advanced engineering principles in a high-pressure, dynamic environment. Ricardo is known for his meticulous approach to data analysis, focusing on extracting every last bit of performance from the car through detailed simulations and real-world testing.\n\nHis focus as a performance engineer is on the interplay between driver feedback and technical data. He has a knack for translating complex data into actionable insights for the driver, ensuring they're equipped with the knowledge to optimize their driving style. Ricardo is a strong believer in continuous improvement and constantly explores innovative solutions to gain a competitive edge. His loyalty to his team is unwavering, and he's known for going the extra mile to achieve team goals.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is of medium build with a focused gaze, often seen with a thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out notebook filled with hand-drawn diagrams.",
+    "Insists on wearing a specific pair of lucky socks on race days.",
+    "Has a habit of muttering engineering calculations under his breath."
+  ]
+}

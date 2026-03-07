@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0301",
+  "name": "Rodamientos Iberia",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Spain",
+  "description": "Precision bearings for high-performance motorsport applications.",
+  "story": "Rodamientos Iberia has been supplying high-quality bearings to the automotive industry for over 40 years. Recognizing the extreme demands of motorsport, they seek to showcase their products' durability and performance. They are committed to supporting Spanish talent and innovation in racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Spain"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0301.png"
+}

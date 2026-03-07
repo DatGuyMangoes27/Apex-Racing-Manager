@@ -1,0 +1,27 @@
+{
+  "biography": "Don Yenko, a name synonymous with Chevrolet muscle, didn't just race cars, he embodied them. Born in Canonsburg, Pennsylvania, Yenko's destiny was intertwined with engines from the start. His father, a Chevy dealer, instilled in him a love for speed and precision. Don's racing career ignited in the early '60s, initially behind the wheel of Corvettes and then, famously, the Camaros and Novas he meticulously tuned himself. A defining moment arrived at the 1966 SCCA National Championship Runoffs at Riverside, where Yenko, in a Corvette, battled wheel-to-wheel with established names, proving his mettle. Though victory eluded him that day, the performance solidified his reputation as a force to be reckoned with. Now, at the peak of his abilities, Yenko continues to campaign in various series, always pushing the limits of both man and machine, forever seeking that elusive championship title. He’s known to spend hours poring over telemetry data, searching for any edge, any advantage that can translate into tenths of a second on the track.",
+  "drivingStyle": "Yenko's driving style is best described as calculated aggression. He's not one for flamboyant displays of oversteer or daring dives into corners. Instead, he focuses on precision, consistency, and tire management. His defensive style often frustrates rivals, as he masterfully positions his car to protect his line. He excels at maintaining momentum through corners, sacrificing entry speed for a faster exit and optimal acceleration. Tire conservation is paramount to his strategy, allowing him to maintain a competitive pace throughout the entire race, often gaining positions in the closing laps as others struggle with worn rubber.",
+  "rivalries": [
+    {
+      "driver": "Rex 'The Wrecker' Thomson",
+      "reason": "A long-standing feud stemming from a controversial collision at the 1967 Daytona 24 Hours, where Thomson’s aggressive driving took Yenko out of the race."
+    },
+    {
+      "driver": "Gina 'The Hurricane' Hernandez",
+      "reason": "Their contrasting driving styles – Yenko's calculated precision versus Hernandez's all-out aggression – often lead to tense battles on the track."
+    },
+    {
+      "driver": "Bart 'The Professor' Collins",
+      "reason": "Bart's technical expertise clashes directly with Yenko's more intuitive, seat-of-the-pants feel for the car, leading to debates in the paddock and fierce on-track competition."
+    }
+  ],
+  "quirks": [
+    "Always polishes his racing helmet with a specific brand of wax before each race.",
+    "Carries a lucky silver dollar, given to him by his father, in his driving suit pocket.",
+    "Refuses to start a race without listening to a specific blues song in the paddock."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "It's not about who's fastest for one lap; it's about who's fastest for every lap.",
+  "careerHighlight": "Winning the 1969 Trans-Am race at Watkins Glen after a brilliant display of fuel management and tire conservation, outsmarting the competition.",
+  "careerLowPoint": "Spinning out of the lead on the final lap of the 1968 Sebring 12 Hours due to a mechanical failure, costing him and his co-drivers a certain victory."
+}

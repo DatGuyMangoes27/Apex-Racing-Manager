@@ -1,0 +1,22 @@
+{
+  "name": "Aroha Kōtare",
+  "nationality": "New Zealand",
+  "age": 36,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Aroha's passion for motorsport ignited during her childhood, watching her father tinker with classic cars in their garage. She excelled in mechanical engineering at university, earning top marks in thermodynamics and vehicle dynamics. After graduating, she landed a junior role at a local racing team, quickly proving her aptitude for data analysis and performance optimization. \n\nKnown for her meticulous attention to detail and ability to translate complex data into actionable insights, Aroha has steadily climbed the ranks. She joined Signature Racing three years ago, where her focus has been on optimizing the car's setup for varying track conditions. Her innovative approach to problem-solving and calm demeanor under pressure make her a valuable asset to the team. Aroha's dedication extends beyond the racetrack; she mentors young female engineers, encouraging them to pursue careers in motorsport.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Aroha has a strong, athletic build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on brewing her own special blend of coffee before every race."
+  ]
+}

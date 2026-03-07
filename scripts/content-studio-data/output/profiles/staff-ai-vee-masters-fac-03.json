@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 39,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Saoirse's journey into motorsport started unexpectedly. After completing her apprenticeship in precision engineering, she found herself drawn to the high-stakes environment of racing. A chance encounter at a local rally event led to an opportunity with a small racing outfit, and she hasn't looked back since. She quickly proved her worth, showcasing a knack for problem-solving and an unwavering attention to detail.\n\nSaoirse thrives in a team environment, readily sharing her knowledge and mentoring younger mechanics. Her approach to machining is characterized by a blend of traditional techniques and innovative solutions. She has an uncanny ability to see the bigger picture, understanding how each component contributes to the overall performance of the car. She is particularly adept at adapting to unexpected challenges and finding creative ways to overcome them, making her an invaluable asset to the Vee Masters team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, wavy, often tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A sturdy woman with kind eyes and a smattering of freckles across her nose."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn book of machining formulas.",
+    "Has a habit of humming Irish folk tunes while working.",
+    "Keeps a lucky shamrock keychain attached to her toolbox."
+  ]
+}

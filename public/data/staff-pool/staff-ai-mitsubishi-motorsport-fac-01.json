@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 47,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Elise Dubois is a data analyst with over 15 years of experience in motorsport. After graduating with a degree in Statistics from ETH Zurich, she started her career at Sauber, analyzing telemetry data to improve car performance. Her meticulous approach and ability to identify subtle patterns quickly made her an invaluable asset to the team.\n\nDriven by a desire to apply her skills to a wider range of challenges, Elise joined Mitsubishi Motorsport five years ago. She is responsible for interpreting complex data sets, providing insights that inform strategic decisions across engineering, race strategy, and driver development. Her dedication to precision and her relentless pursuit of improvement are hallmarks of her work.\n\nElise’s keen understanding of the interplay between mechanical, aerodynamic, and human factors sets her apart. She has a knack for translating raw data into actionable recommendations, consistently pushing the boundaries of what's achievable on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, neatly styled in a classic bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise is a woman of average height with a thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with statistical formulas.",
+    "Insists on using a vintage mechanical keyboard for all data entry.",
+    "Has a lucky charm: a small, polished stone, that she keeps on her desk."
+  ]
+}

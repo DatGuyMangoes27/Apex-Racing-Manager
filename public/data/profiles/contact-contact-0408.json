@@ -1,0 +1,31 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 34,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Isabela Oliveira is a renowned sports medicine physician specializing in high-performance athlete care. With a PhD in biomechanics, she's published extensively on the physiological demands of motorsport and injury prevention in racing. While her demeanor can come across as dismissive to some, it stems from a deep confidence in her expertise and a desire to quickly assess and address critical issues. Her elegant style and sharp wit are often on display at academic conferences and high-profile sporting events.\n\nIsabela's path intersects with motorsport due to her work consulting for several racing teams, focusing on driver fitness and injury recovery protocols. She's known for her cutting-edge rehabilitation techniques and uncompromising approach to ensuring athletes are in peak condition. A racing driver might cross paths with her if they're seeking the best possible care after an injury or aiming to optimize their physical performance through rigorous scientific analysis.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, sleek ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabela has a striking presence, often accentuated by her fashionable attire. She carries herself with an air of sophistication, reflecting her refined tastes."
+  },
+  "connectionToMotorsport": "Isabela consults with racing teams, providing expertise in driver fitness, injury prevention, and rehabilitation. She also conducts research on the physiological demands of motorsport.",
+  "meetingContext": "The player might meet Isabela at a motorsport medical conference, at a team physical assessment, or after sustaining an injury requiring specialist attention.",
+  "conversationTopics": [
+    "The latest advancements in sports medicine",
+    "The biomechanics of high-speed cornering",
+    "The benefits of craft beer after intense physical activity",
+    "Her recent hiking trip in the Andes",
+    "The challenges of balancing academic research with practical application"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for injuries",
+    "Optimize driver fitness and performance through personalized training programs",
+    "Offer access to cutting-edge rehabilitation techniques"
+  ],
+  "personality_summary": "A dismissive but highly skilled sports medicine physician with a passion for motorsports and a penchant for perfection."
+}

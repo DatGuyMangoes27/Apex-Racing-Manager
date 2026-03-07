@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas Mendoza",
+  "nationality": "Peruvian",
+  "age": 46,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's fascination with motorsport began in his youth, watching rally races snaking through the Andes. This passion led him to pursue a degree in mechanical engineering, where he specialized in vehicle dynamics and simulation. He started his career working on flight simulators before transitioning to motorsport, seeking the thrill of pushing vehicles to their limits, albeit virtually. \n\nRicardo approaches simulator engineering with a meticulous eye, believing that a realistic simulation is crucial for driver development and car setup. He is known for his ability to diagnose subtle discrepancies between the simulated environment and real-world track data. His colleagues value his calm demeanor and his ability to translate complex technical issues into actionable insights for the drivers and engineers. He strives to bridge the gap between the virtual and the real, contributing to improved performance on the track.\n\nHe is a highly sought-after free agent given his dual abilities in both management and the technical side of simulator work.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of medium build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using metric units for everything, even when working with teams that primarily use imperial."
+  ]
+}

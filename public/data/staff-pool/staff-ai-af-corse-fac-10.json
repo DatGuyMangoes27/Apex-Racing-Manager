@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 51,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Marco Bellini's journey into motorsport began in his father's small auto repair shop in Modena, the heart of Italian racing. From a young age, he was fascinated by the intricate workings of engines and the meticulous craftsmanship required to keep them running. After completing his apprenticeship, Marco honed his skills working on classic Italian sports cars, developing an exceptional eye for detail and a deep understanding of mechanical systems. He joined AF Corse 15 years ago, initially focusing on chassis fabrication before specializing in the intricate composite work required for modern GT cars. Marco's pragmatic approach ensures that every component meets the highest standards of quality and reliability, crucial for success on the track. He is known for his ability to troubleshoot complex problems quickly and efficiently, making him an invaluable asset to the team.\n\nMarco's dedication to his craft is unwavering. He believes that a well-fabricated part is not just functional, but also a work of art. He is always eager to learn new techniques and technologies, but he also values the time-tested methods that have served him well throughout his career. Marco is a quiet and unassuming presence in the garage, but his expertise and experience are highly respected by his colleagues.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed mustache",
+    "description": "A sturdy man with calloused hands and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a needle point before starting a new task.",
+    "Insists on using only Italian-made tools.",
+    "Leaves a small, hand-written note with the part number on every fabricated piece."
+  ]
+}

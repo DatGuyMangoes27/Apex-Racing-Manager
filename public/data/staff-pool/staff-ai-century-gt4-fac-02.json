@@ -1,0 +1,22 @@
+{
+  "name": "Stjepan Kovačić",
+  "nationality": "Croatian",
+  "age": 53,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Stjepan's journey into motorsport began unexpectedly during his mandatory military service, where he was assigned to maintain vehicles. His natural aptitude for mechanics led him to evening classes in composite materials, a field then nascent but clearly the future of automotive engineering. After his service, he joined a small Croatian rally team, quickly becoming indispensable due to his innovative repairs and modifications.\n\nHe approaches his work with a meticulous eye, blending theoretical knowledge with practical improvisation. Stjepan believes in the relentless pursuit of lightness and strength, constantly experimenting with new resins and layering techniques. What sets him apart is his ability to visualize stress points and reinforce them with unconventional materials, often salvaged from other industries. His dedication to perfection is only matched by his quiet, unwavering loyalty to his team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Close-cropped, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed grey beard",
+    "description": "Stjepan is a wiry man with calloused hands and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with material strength calculations.",
+    "Refuses to use digital calipers, preferring traditional analog instruments.",
+    "Has a habit of humming quietly while meticulously layering carbon fiber."
+  ]
+}

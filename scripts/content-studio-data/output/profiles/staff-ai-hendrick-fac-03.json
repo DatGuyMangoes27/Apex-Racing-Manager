@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 24,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Dimitri's journey into motorsport began in his grandfather's workshop, where he spent countless hours disassembling and reassembling engines from old Lada cars. This hands-on experience ignited a passion for precision and mechanics that led him to pursue a degree in mechanical engineering. After graduating, he honed his skills at a local racing team, specializing in engine tuning and chassis setup. \n\nDimitri is known for his meticulous approach to his work. He believes that even the smallest detail can make a significant difference in performance. His demanding nature pushes him to achieve perfection in every task, striving for optimal results. At Hendrick Motorsports, Dimitri aims to use his expertise to contribute to the team's success, focusing on innovation and efficient execution.\n\nHe's particularly driven by the challenge of optimizing engine performance under the extreme conditions of motorsport. His ability to quickly diagnose mechanical issues and implement effective solutions makes him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short goatee",
+    "description": "Dimitri is of average height, with a lean build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas.",
+    "Insists on using his own set of specialized tools.",
+    "Has a habit of meticulously cleaning his workspace multiple times a day."
+  ]
+}

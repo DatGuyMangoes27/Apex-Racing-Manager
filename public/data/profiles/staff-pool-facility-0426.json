@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Davies",
+  "nationality": "British",
+  "age": 25,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Eleanor's journey into motorsport began with a childhood obsession with engines, fueled by her father's weekend tinkering in their garage. She pursued a degree in Mechanical Engineering, specializing in advanced materials and manufacturing processes. After graduating, she honed her skills at a small, independent racing team, gaining hands-on experience in chassis fabrication and composite repairs.\n\nEleanor is meticulous and fiercely independent. She prides herself on her ability to troubleshoot complex issues and devise innovative solutions under pressure. Her demanding nature stems from a deep commitment to quality and a refusal to accept anything less than perfection. She excels in environments where she can work autonomously and is driven by the challenge of pushing the boundaries of performance.\n\nHer specialty lies in optimizing chassis rigidity and aerodynamic efficiency through careful material selection and precise fabrication techniques. She is known for her ability to identify and rectify subtle flaws that others might overlook, ensuring that every component meets her exacting standards.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, braided and usually tucked under a cap",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Lean and wiry, Eleanor's hands are always smudged with grease."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only imperial measurements, despite the team's preference for metric.",
+    "Always wears noise-canceling headphones while working, even when it's quiet.",
+    "Has a superstitious habit of tapping every newly fabricated part three times before installation."
+  ]
+}

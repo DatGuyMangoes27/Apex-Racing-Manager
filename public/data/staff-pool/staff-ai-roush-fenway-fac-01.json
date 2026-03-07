@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 48,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Thabo's journey into motorsport began unconventionally, not on the track, but behind a computer screen analyzing telemetry data for a local racing team in Johannesburg. Armed with a degree in Statistics, he quickly realized the power of data-driven decisions in optimizing performance. His meticulous approach and knack for spotting hidden trends led to significant improvements for the team, catching the eye of a talent scout.\n\nHe prides himself on his ability to translate raw data into actionable insights, empowering race engineers and drivers to make informed choices. Thabo believes that the smallest detail, when properly analyzed, can be the difference between victory and defeat. Now at RFK Racing, he's eager to apply his experience and contribute to the team's success. His dedication to precision and his ability to remain calm under pressure make him a valuable asset.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Black",
+    "hairStyle": "Close-cropped with a receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "Thabo is a man of average height with a focused, intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of South African Rooibos tea during race weekends."
+  ]
+}

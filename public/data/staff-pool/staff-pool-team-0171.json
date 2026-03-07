@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 38,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Rhys grew up around speed, his father a mechanic for a local rally team. From a young age, he was fascinated by how the cars worked and spent countless hours in the garage, learning the ins and outs of engines and chassis. After earning his engineering degree, Rhys worked for a small engineering firm before landing a role with a Formula Ford team, quickly proving his aptitude for problem-solving and optimization. \n\nHe's known for his methodical approach to engineering challenges, meticulously analyzing data and exploring every possible solution. Rhys believes in fostering a collaborative environment, where team members feel empowered to share ideas and contribute to the overall success of the team. He's driven by a relentless pursuit of performance, always pushing the boundaries of what's possible.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "Rhys is of average height, with a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen.",
+    "Prefers to work late into the night when the garage is quiet.",
+    "Has a habit of tapping his fingers on the table when deep in thought."
+  ]
+}

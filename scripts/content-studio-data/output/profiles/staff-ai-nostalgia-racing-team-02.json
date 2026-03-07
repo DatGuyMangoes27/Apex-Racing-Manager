@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Lindstrom",
+  "nationality": "Swedish",
+  "age": 45,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Bjorn Lindstrom's journey into motorsport began in his youth, tinkering with engines in his father's garage in Gothenburg. This early fascination led him to pursue a degree in mechanical engineering, after which he landed a role as a junior engineer with a local racing team. His keen eye for detail and dedication to problem-solving quickly propelled him through the ranks.\n\nNow as Technical Director for Nostalgia Racing, Bjorn champions a data-driven approach, meticulously analyzing performance metrics to identify areas for improvement. He believes in fostering a collaborative environment where engineers can freely exchange ideas and push the boundaries of innovation. His loyalty to the team and relentless pursuit of perfection have made him a highly valued asset.\n\nBjorn is known for his dedication to methodical testing and refining components, sometimes spending hours scrutinizing telemetry data. This dedication to precision, combined with his understanding of the human element within the team, has helped Nostalgia Racing secure consistent results.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "blond",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Bjorn is a man of average height, with a lean build and an intense gaze that reflects his focused nature."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out slide rule, despite having access to advanced software.",
+    "Insists on personally inspecting every component before it's fitted to the car.",
+    "Has a habit of humming Swedish folk tunes when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Zdeněk Veselý",
+  "nationality": "Czech",
+  "age": 58,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Zdeněk's journey into motorsport began with a childhood fascination for aircraft design, fueled by his father's stories of working at a local aviation factory. He initially pursued a degree in Aerospace Engineering, but quickly became captivated by the application of aerodynamic principles to racing cars. After graduating, he started in Formula Student, designing aero packages for his university team. \n\nHis career took off when he joined a small IndyCar team in the US, where he honed his skills in CFD and wind tunnel testing. He became known for his meticulous approach to data analysis and his ability to find marginal gains in even the most refined aerodynamic designs. His move to AF Corse was motivated by the opportunity to lead a larger team and tackle the complex aerodynamic challenges presented by GT racing. Zdeněk is driven by a desire to create the most aerodynamically efficient race cars possible, pushing the boundaries of what's achievable within the regulations. He believes that a strong team dynamic and a culture of continuous improvement are critical for success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on having the wind tunnel temperature set to precisely 22 degrees Celsius.",
+    "Has a habit of tapping his pen rhythmically when contemplating complex problems."
+  ]
+}

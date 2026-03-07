@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0359",
+  "name": "Stjärnurmakarna",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "Sweden",
+  "description": "Precision timekeeping, crafted in Sweden.",
+  "story": "Stjärnurmakarna, a family-owned Swedish watchmaker, has a long history of supporting precision engineering. They believe motorsport embodies the same dedication to excellence and are looking to build brand awareness in a new market. They seek a partnership that reflects their commitment to quality and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Sweden"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0359.png"
+}

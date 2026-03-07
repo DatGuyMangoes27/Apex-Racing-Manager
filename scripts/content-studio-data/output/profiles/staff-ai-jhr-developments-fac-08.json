@@ -1,0 +1,22 @@
+{
+  "name": "Jussi Kärkinen",
+  "nationality": "Finnish",
+  "age": 40,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jussi's journey into motorsport began unconventionally, not through racing dreams, but a fascination with fluid dynamics sparked during his engineering studies at Tampere University. He quickly realized that the principles he was learning could be applied to optimizing aerodynamic performance in racing. After graduating, he sought an entry-level position at a small Finnish rally team, honing his skills in data analysis and wind tunnel testing.\n\nHe joined JHR Developments five years ago, bringing with him a meticulous approach and a knack for identifying subtle airflow improvements. Jussi believes that the key to success in the wind tunnel is not just collecting data, but understanding the underlying physics and translating those insights into tangible improvements on the track. His colleagues value his ability to visualize complex airflow patterns and suggest innovative solutions.\n\nKnown for his big picture thinking, Jussi is focused on the overall aerodynamic profile of the car, and how each adjustment affects the whole. He's not one to get bogged down in the minutiae, instead focusing on the most effective solutions that yield the greatest results.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "light brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jussi is a lean man with a focused gaze and a quiet demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Prefers to listen to classical music while analyzing wind tunnel data."
+  ]
+}

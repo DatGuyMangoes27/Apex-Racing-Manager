@@ -1,0 +1,31 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 40,
+  "gender": "female",
+  "contactType": "diplomat",
+  "bio": "Saoirse O'Malley is a whirlwind of energy disguised as a diplomat. Educated at Trinity College and the London School of Economics, she's spent the last fifteen years navigating the complex world of international relations, with postings in Brussels, Washington D.C., and now Geneva. While her official role involves trade negotiations, Saoirse's true passion lies in connecting people and fostering collaboration, often through less conventional channels.\n\nHer penchant for impulsive decisions and relentless pursuit of novelty often leads her into unexpected circles. A racing driver might cross paths with Saoirse through a high-society charity event she's organizing, or perhaps at a jazz club in Monaco, where she frequently escapes to unwind. Despite her unreliable reputation, she is fiercely loyal to those who earn her respect and is always willing to leverage her extensive network for those she believes in. Saoirse's ability to bridge the gap between the elite and the everyday makes her a valuable, if somewhat unpredictable, ally.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, often styled in loose waves",
+    "eyeColor": "Emerald Green",
+    "facialHair": null,
+    "description": "Saoirse has a smattering of freckles across her nose and a perpetually amused expression. She favors tailored suits with a splash of color, reflecting her vibrant personality."
+  },
+  "connectionToMotorsport": "Saoirse's family owns a small stake in a Formula 3 team, mostly as a passion project. She occasionally attends races and networking events related to the sport, though she's more interested in the social aspects than the technical details.",
+  "meetingContext": "The player could meet Saoirse at a charity gala held during a Grand Prix weekend, or through a mutual connection at a high-end equestrian event.",
+  "conversationTopics": [
+    "The latest developments in coffee roasting techniques",
+    "The intricacies of Irish history",
+    "The best jazz clubs in Europe",
+    "Her latest marathon time",
+    "Upcoming equestrian events"
+  ],
+  "canHelp": [
+    "Introducing the player to wealthy sponsors and investors.",
+    "Leveraging her diplomatic connections to smooth out bureaucratic hurdles (e.g., visa issues for international races).",
+    "Providing access to exclusive events and networking opportunities."
+  ],
+  "personality_summary": "A fiery and unpredictable diplomat with a penchant for high society and a hidden soft spot for those she believes in."
+}

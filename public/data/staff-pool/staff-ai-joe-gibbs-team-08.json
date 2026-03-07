@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 55,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Dimitrios has spent decades immersed in the world of motorsport, tracing his fascination back to watching rally races in his youth. He started his career in Europe, honing his skills in data analysis and vehicle dynamics before transitioning to NASCAR. Known for his meticulous approach and ability to translate complex data into actionable insights, Dimitrios prides himself on fostering open communication within his team. He believes a collaborative environment is essential for extracting maximum performance from both the car and the drivers. While some might call him old-school, his experience and deep understanding of racing principles make him an invaluable asset.\n\nHis career highlights include contributing to championship-winning teams and consistently improving lap times through innovative engineering solutions. At Joe Gibbs Racing, Dimitrios is determined to bring his expertise to bear, focusing on optimizing aerodynamics and suspension setup. He's not afraid to challenge conventional wisdom, always pushing the boundaries of what's possible while remaining grounded in the practical realities of racing. He is known to have a uncanny ability to quickly identify the root cause of mechanical issues based on driver feedback and telemetry data.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed salt and pepper beard.",
+    "description": "A stocky man with a weathered face that hints at years spent under the sun and in the garage."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten formulas and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking strong Greek coffee before every race."
+  ]
+}

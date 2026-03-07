@@ -1,0 +1,22 @@
+{
+  "name": "Isabel Allende Silva",
+  "nationality": "Chilean",
+  "age": 54,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Isabel's journey into motorsport began unconventionally, not through racing herself, but through a deep fascination with the technology that underpinned it. After earning her engineering degree at the University of Chile, she specialized in simulation technology, initially working in aerospace before finding her true calling in motorsports. The precision and constant innovation demanded by racing resonated with her inherent need for perfection. \n\nAt Akkodis ASP Team, Isabel meticulously analyzes telemetry data and driver feedback to refine the simulator's accuracy. She believes the simulator isn't just a training tool, but a virtual laboratory, where they can safely push the boundaries of car setup and driving technique. Her demanding nature pushes the drivers and other engineers to rigorously test and validate every change, ensuring optimal performance on the track. Her colleagues appreciate her sharp eye for detail and unwavering commitment to excellence, even if it comes with high expectations.\n\nIsabel is known for her methodical approach and ability to troubleshoot complex issues quickly. Her ambition drives her to constantly seek improvements, often experimenting with novel algorithms and data analysis techniques to enhance the simulator's realism.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Neatly tied back in a practical bun, with a few grey strands escaping around her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "A woman of medium height with a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a small cup of strong black coffee on her desk, refilled constantly.",
+    "Insists on using a specific brand of ergonomic keyboard to prevent wrist strain.",
+    "Has a habit of tapping her pen rapidly when deep in thought, driving some colleagues crazy."
+  ]
+}

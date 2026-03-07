@@ -30,11 +30,14 @@ let volume = 0.8 // 0.0 to 1.0
 let tempDir: string = ''
 let selectedDeviceId: string = '' // Empty = default device
 let availableDevices: AudioDevice[] = []
+let lastDeviceRefresh = 0
 
 // Per-voice volume boosts (multipliers)
 // Crofty v2 is quieter than Vicky, so we boost his volume
 const voiceVolumeBoosts: Record<string, number> = {
-  'KYXXenFO8IFao5NWmALZ': 1.4, // Crofty v2 - needs 40% boost to match Vicky's level
+  'byILgTtsBg1jwbuvslb2': 1.2, // Crofty V3
+  'cmPhBFoVi6Q3CAWAx2Gr': 1.0, // Brundle
+  'KYXXenFO8IFao5NWmALZ': 1.4, // Crofty v2 - needs 40% boost
   'CeyZm7wQSjZcnhOrE9l8': 1.3, // Original Crofty - needs 30% boost
 }
 
@@ -70,6 +73,12 @@ export async function initAudioPlayer(): Promise<void> {
  * Uses Windows PnP to get audio endpoints (speakers, headphones, USB devices like SteelSeries)
  */
 export async function refreshAudioDevices(): Promise<AudioDevice[]> {
+  const now = Date.now()
+  if (availableDevices.length > 1 && now - lastDeviceRefresh < 30_000) {
+    return availableDevices
+  }
+  lastDeviceRefresh = now
+
   // Start with system default
   availableDevices = [{ id: 'default', name: 'System Default', isDefault: true }]
   

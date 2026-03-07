@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Llewellyn",
+  "nationality": "Welsh",
+  "age": 35,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Rhys Llewellyn's journey into motorsport began with a childhood fascination for rallying in the Welsh valleys. He pursued a degree in electrical engineering, focusing on embedded systems and data analysis. After graduating, Rhys honed his skills at a local automotive firm before transitioning to Lechner Racing five years ago. He prides himself on his meticulous approach to electronics, ensuring optimal performance and reliability. He has a reputation for being direct and demanding, but it stems from his unwavering commitment to achieving the best possible results. Rhys's knack for quickly diagnosing and resolving complex electrical issues makes him an invaluable asset to the team, especially under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Rhys is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has an uncanny ability to remember obscure electrical component codes.",
+    "Insists on drinking only Welsh tea during race weekends."
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Sofia Ramirez",
+    "nationality": "Chilean",
+    "age": 36,
+    "gender": "female",
+    "role": "electronics_engineer",
+    "bio": "Sofia's journey into motorsport began with a childhood fascination for the intricate workings of machines. Growing up in Santiago, she spent hours tinkering with electronics, eventually earning a degree in electrical engineering from the Universidad de Chile. Her passion for motorsport ignited after attending a local rally race, leading her to pursue opportunities within the industry. Sofia joined Sprint Masters three years ago and has rapidly become a key asset, known for her meticulous approach to diagnostics and problem-solving. She believes in constantly pushing the boundaries of electronic systems to gain a competitive edge, always seeking innovative solutions to improve performance and reliability.\n\nSofia approaches her work with a blend of precision and creativity. She is particularly adept at analyzing complex data sets to identify subtle performance bottlenecks and devising innovative solutions to overcome them. Her calm demeanor under pressure makes her an invaluable asset during high-stakes races, allowing her to troubleshoot issues quickly and effectively. Her colleagues often praise her collaborative spirit and willingness to share her knowledge, fostering a positive and productive team environment.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair, often pulled back into a practical ponytail during work.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Sofia is of average height with a slender build and a focused expression."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a small notebook filled with circuit diagrams and technical notes.",
+      "Has a habit of humming softly while concentrating on complex problems.",
+      "Insists on using a specific brand of soldering iron, claiming it provides the most precise results."
+    ]
+  }
+]

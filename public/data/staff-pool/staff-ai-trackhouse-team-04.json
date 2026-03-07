@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Larsson",
+  "nationality": "Swedish",
+  "age": 54,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Bjorn's journey into motorsport began in his youth, tinkering with his father's old Volvo in their garage outside Gothenburg. That early fascination with mechanics led him to pursue an engineering degree, specializing in vehicle dynamics. After graduating, he cut his teeth in the Swedish Touring Car Championship, quickly earning a reputation for his methodical approach and ability to diagnose complex issues. His keen eye for detail and insistence on data-driven decisions have consistently delivered performance gains for his teams.\n\nHe made the jump to international racing a decade ago, bringing his expertise to various teams across Europe before joining Trackhouse Racing. Bjorn's pragmatic nature means he's not one for radical, untested changes; he prefers a steady, incremental improvement strategy based on rigorous analysis. He is known for his calm demeanor under pressure and his ability to clearly communicate technical information to drivers, fostering a collaborative environment that produces consistent results. His loyalty to Trackhouse is well-known, as is his dedication to continual improvement.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying Blond",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed mustache",
+    "description": "A man of average height with a solid build, Bjorn always looks like he's ready to get to work."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical notes.",
+    "Insists on drinking exactly one cup of strong black coffee before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

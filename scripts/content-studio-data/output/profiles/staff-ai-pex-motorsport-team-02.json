@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 36,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering, specializing in aerodynamics. After graduating, he started his career in a junior formula team, quickly rising through the ranks thanks to his keen eye for detail and ability to translate data into tangible performance gains. Ricardo's approach to technical direction emphasizes a holistic understanding of the car, focusing on maximizing the synergy between all components.\n\nHe joined PEX Motorsport three years ago, initially as a senior engineer, and was recently promoted to Technical Director. Ricardo distinguishes himself with his collaborative leadership style, fostering a culture of open communication and continuous improvement within the team. He believes that a strong team dynamic is just as crucial as technical prowess in achieving success on the track. He aims to develop a technical strategy that will allow PEX to compete with bigger teams with more resources.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is of average height with a focused look and a warm smile."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Prefers to conduct team meetings standing up to keep everyone engaged."
+  ]
+}

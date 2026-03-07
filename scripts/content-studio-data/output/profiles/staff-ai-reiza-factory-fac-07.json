@@ -1,0 +1,22 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 42,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Angus McGregor's journey into the high-stakes world of motorsport IT began unexpectedly after a career in enterprise-level server management. Burned out by the corporate grind, he took a sabbatical which included volunteering at a local race track, managing their timing and scoring systems. The thrill of the track, combined with his technical expertise, sparked a new passion. \n\nAt Reiza Studios Factory team, Angus thrives on the challenges of maintaining and innovating the team's crucial IT infrastructure. He's a firm believer in robust, scalable systems and is constantly exploring new technologies to give the team a competitive edge. His dedication ensures seamless data flow, critical for race strategy and performance analysis, even when things get hairy on the track. Angus is known for his calm demeanor under pressure, a trait highly valued in the fast-paced motorsport environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "A man of average height with a slightly weathered face from years spent outdoors."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a collection of vintage racing posters in his office.",
+    "Insists on using a mechanical keyboard for all his work."
+  ]
+}

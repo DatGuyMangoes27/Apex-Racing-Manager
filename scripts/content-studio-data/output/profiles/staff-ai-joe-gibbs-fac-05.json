@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 34,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jan's journey into motorsport wasn't straightforward. He initially pursued a degree in mechanical engineering, focusing on material science and stress testing. After graduating, he worked for a manufacturing company, but his passion for racing led him to volunteer at local rally events, offering his technical expertise. His meticulous attention to detail and ability to identify subtle flaws caught the eye of a smaller racing team, where he honed his skills in quality control for several years.\n\nJan's approach is characterized by his systematic and data-driven methodology. He believes that quality control is not just about identifying problems but also about preventing them. He meticulously analyzes data, identifies trends, and implements preventative measures. He is a strong believer in continuous improvement and regularly seeks out new techniques and technologies to enhance the team's quality control processes. His pragmatic approach ensures that quality is maintained without sacrificing performance or efficiency.\n\nWhat sets Jan apart is his almost uncanny ability to detect minute imperfections that others often miss. This, combined with his calm demeanor under pressure, makes him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed, slightly receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a lean build, always looking focused and attentive."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and observations.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on calibrating his own measuring tools before each session, regardless of who used them last."
+  ]
+}

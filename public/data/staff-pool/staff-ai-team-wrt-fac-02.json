@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "Belgian",
+  "age": 22,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Antoine's fascination with motorsport began during his childhood, watching the Spa 24 Hours with his father. He was instantly captivated by the speed and precision of the cars, and the skilled craftsmanship involved in their construction. After graduating from a technical college with a specialization in composite materials, Antoine quickly sought an opportunity to work in racing. He secured an apprenticeship at a small GT team before moving to Team WRT, where he has quickly become a valuable member of the composite repair team.\n\nAntoine approaches his work with meticulous attention to detail, understanding that even the smallest flaw in a composite component can have significant consequences on track. His experience has taught him to remain calm and focused under pressure, allowing him to consistently deliver high-quality repairs and modifications. While he enjoys collaborating with his colleagues, Antoine is also comfortable working independently, often preferring to immerse himself in the task at hand to ensure perfection.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed, with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Antoine is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and measurements.",
+    "Has a habit of tapping his fingers on surfaces when concentrating.",
+    "Insists on cleaning his workspace thoroughly at the end of each day."
+  ]
+}

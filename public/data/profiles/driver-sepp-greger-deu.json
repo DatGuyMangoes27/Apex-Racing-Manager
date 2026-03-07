@@ -1,0 +1,27 @@
+{
+  "biography": "Sepp Greger, a name whispered with a mix of reverence and apprehension in the Porsche paddock, hails from the small Bavarian town of Rosenheim. His racing journey began not on a kart track, but amidst the roaring engines of his father's autobahn repair shop. Young Sepp, barely tall enough to see over the hood, spent his days mesmerized by the mechanics coaxing life back into mangled machines. His first taste of speed came illegally, joyriding a customer's '67 911 late one night – an experience that cemented his destiny. He honed his skills in local hill climbs, his aggressive style quickly earning him a reputation. His big break came in '74, securing a spot with a privateer Porsche team. After initial struggles to tame the 911 RSR, a podium finish at the Nürburgring 1000km proved his potential. Now at 31, Greger is considered to be in his prime, battling for podiums at every race.",
+  "drivingStyle": "Greger's driving style is characterized by relentless aggression and a borderline reckless disregard for tire conservation. He attacks corners with unmatched ferocity, often pushing the car beyond its limits in qualifying to secure a front-row start. While this approach can lead to spectacular overtakes and blistering lap times, it also results in frequent tire degradation and the occasional off-track excursion. His approach is high-risk, high-reward, often leaving rivals shaking their heads in disbelief and admiration.",
+  "rivalries": [
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "A long-standing rivalry fueled by contrasting styles. Dubois, a meticulous and calculated driver, often criticizes Greger's aggressive tactics as reckless and dangerous."
+    },
+    {
+      "driver": "Hans-Joachim Stuck",
+      "reason": "A battle of German pride. Stuck, the established veteran, sees Greger as a brash upstart trying to steal his thunder."
+    },
+    {
+      "driver": "Helmut Fath",
+      "reason": "A clash of generations and differing racing philosophies, Helmut Fath is from the old guard of drivers who believe racing is about endurance and the car while Greger believes it is about pushing the envelope and the driver."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue driving gloves, claiming they bring him luck.",
+    "Refuses to speak to anyone for 30 minutes before a race, meditating in the back of his transporter.",
+    "Has a small, hand-carved wooden eagle that he keeps in his cockpit, a gift from his grandfather."
+  ],
+  "nickname": "The Bavarian Berserker",
+  "famousQuote": "Second place is just the first loser. I race to win, or I crash trying.",
+  "careerHighlight": "Winning the 1976 Spa-Francorchamps 1000km in a thrilling last-lap overtake after starting from the back of the grid due to a mechanical issue in qualifying.",
+  "careerLowPoint": "Crashing out of the lead at the 1975 Le Mans 24 Hours with only two hours remaining, costing his team a guaranteed victory."
+}

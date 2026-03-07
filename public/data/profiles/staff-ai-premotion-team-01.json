@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Kovačić",
+  "nationality": "Croatian",
+  "age": 46,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ivan's journey in motorsport began in his youth, tinkering with go-karts in his father's garage. He honed his skills at the University of Zagreb, earning a degree in Mechanical Engineering before joining a small rally team. From there, his passion for precision and problem-solving led him to circuit racing. He is dedicated to optimizing every aspect of the car's performance, ensuring that the team has the tools and information needed to gain a competitive edge.\n\nHis approach to the chief engineer role is both analytical and collaborative. He believes in fostering open communication between the engineering team and the drivers, using their feedback to fine-tune the car's setup. Ivan's ability to translate complex data into actionable strategies, combined with his unwavering loyalty to the team, makes him a valuable asset to Proton by Premotion. He's known for his relentless pursuit of perfection, often working late into the night analyzing telemetry data.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ivan is a man of medium height with a focused gaze and a wiry build, often seen wearing his Proton team jacket."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer simulations.",
+    "Insists on drinking strong black coffee at precisely 3:00 PM every day.",
+    "Has a habit of muttering calculations under his breath, often unintelligibly."
+  ]
+}

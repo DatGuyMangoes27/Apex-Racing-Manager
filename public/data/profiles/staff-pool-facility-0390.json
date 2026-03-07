@@ -1,0 +1,22 @@
+{
+  "name": "Cillian Murphy",
+  "nationality": "Irish",
+  "age": 23,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Cillian's journey into motorsport began with a childhood fascination for rally racing, fueled by stories from his grandfather, a former mechanic. After studying engineering, he channeled his technical aptitude towards optimizing testing procedures. His meticulous approach and keen eye for detail make him a valuable asset in identifying subtle performance gains. He believes strongly in fostering open communication between drivers and engineers to ensure efficient data analysis, and this collaborative philosophy sets him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Green",
+    "facialHair": "Stubble",
+    "description": "Cillian has a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen for quick notes.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Drinks copious amounts of green tea throughout the day."
+  ]
+}

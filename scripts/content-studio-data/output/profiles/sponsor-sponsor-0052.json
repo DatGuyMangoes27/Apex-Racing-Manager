@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0052",
+  "name": "Volkov Gaming Systems",
+  "category": "gaming",
+  "tier": "high",
+  "country": "Russia",
+  "description": "High-performance gaming PCs and peripherals, designed for champions.",
+  "story": "Volkov Gaming Systems was founded by esports enthusiasts with a passion for providing top-tier equipment. Recognizing the similarities between virtual and real-world competition, they expanded into motorsport sponsorship to showcase the precision and reliability of their products under extreme conditions. They seek a partnership with a team that embodies excellence and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Russia"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0052.png"
+}

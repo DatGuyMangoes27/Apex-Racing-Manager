@@ -1,0 +1,31 @@
+{
+  "name": "Jian Hao Lim",
+  "nationality": "Singaporean",
+  "age": 48,
+  "gender": "male",
+  "contactType": "diplomat",
+  "bio": "Jian Hao Lim is a seasoned diplomat within Singapore's Ministry of Foreign Affairs, specializing in international trade and cultural exchange programs. Known for his reserved demeanor and elegant presence, he has cultivated strong relationships with key figures across various industries. Despite his demanding career, Jian Hao is deeply interested in motorsport, viewing it as a unique intersection of technology, strategy, and international collaboration. He sees the sport's global reach as a powerful tool for fostering relationships and promoting innovation, which is why he occasionally attends races as a representative of Singaporean interests. A racing driver might cross paths with Jian Hao at a networking event during a Grand Prix weekend or through introductions from sponsors seeking to expand their presence in the Southeast Asian market.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with slight receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Clean Shaven",
+    "description": "Jian Hao is of average height with a lean build, reflecting his dedication to cycling and meditation. He typically dresses in tailored suits, projecting an image of quiet authority."
+  },
+  "connectionToMotorsport": "Jian Hao views motorsport as a platform for international cooperation and technological advancement, occasionally attending races in his capacity as a diplomat to foster relationships and explore potential collaborations within the industry.",
+  "meetingContext": "The player would likely meet Jian Hao at a high-profile Formula 1 event in Singapore, or at an exclusive gala hosted by a team sponsor.",
+  "conversationTopics": [
+    "The future of sustainable technologies in motorsport",
+    "The role of Formula 1 in promoting international relations",
+    "Singapore's economic development and its interest in fostering innovation",
+    "The latest developments in audio production and podcasting",
+    "Mindfulness and meditation techniques for managing high-pressure situations"
+  ],
+  "canHelp": [
+    "Facilitate introductions to potential sponsors or investors in the Southeast Asian market.",
+    "Provide insights into navigating the complex regulatory landscape in Singapore and surrounding countries.",
+    "Offer guidance on building strong relationships with key stakeholders in the region."
+  ],
+  "personality_summary": "A reserved and elegant diplomat with a hidden passion for motorsport and a nurturing desire to foster international collaborations."
+}

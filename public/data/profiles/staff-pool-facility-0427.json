@@ -1,0 +1,22 @@
+{
+  "name": "Zola Mabena",
+  "nationality": "South African",
+  "age": 37,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Zola's journey into motorsport started unexpectedly. Growing up in Johannesburg, she excelled in technical subjects, leading her to study mechanical engineering. While working on a project car with friends, she discovered her passion for precision and the intricate mechanics of racing engines. This led her to internships with local racing teams, quickly establishing herself as a skilled machinist.\n\nZola is known for her meticulous approach and unwavering dedication to quality. She approaches every task with a big-picture mindset, understanding how each component contributes to overall performance. Her ability to quickly identify and rectify mechanical issues, coupled with her management skills, makes her an invaluable asset to any team. She is driven by the desire to push boundaries and contribute to cutting-edge innovations in motorsport engineering, striving for perfection in every detail.\n\nBeyond technical skills, Zola is a natural leader and a highly effective communicator. She thrives in collaborative environments and believes in empowering team members to reach their full potential. Her ambition extends beyond personal achievements; she is determined to inspire the next generation of female engineers in motorsport.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, natural afro with subtle auburn highlights.",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Zola is of average height with a strong build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens her pencils to a perfect point before starting any task.",
+    "Has a specific playlist of South African house music she listens to while calibrating machinery.",
+    "Keeps a small succulent on her workbench for good luck."
+  ]
+}

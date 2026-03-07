@@ -1,0 +1,31 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 41,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Kenji Tanaka is a prominent lawyer specializing in corporate law and intellectual property, particularly within the automotive and motorsport industries. A graduate of the University of Tokyo's prestigious law program, he's built a reputation for aggressive negotiation and securing favorable outcomes for his clients, often blurring ethical lines in the pursuit of victory. His clients range from small aftermarket parts manufacturers to major racing teams, making him a powerful figure behind the scenes.\n\nBeneath his polished exterior lies a complex individual. Kenji is passionate about motorsports and sees racing as the ultimate proving ground for innovation and technology. He is extremely charismatic and knows how to get people on his side. However, he is also known to be manipulative, viewing people as tools to achieve his own goals. A racing driver might need Kenji's legal expertise to navigate complex contract negotiations, endorsement deals, or intellectual property disputes, putting them directly in his orbit.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Dark Brown",
+    "facialHair": "A thin, meticulously groomed mustache",
+    "description": "Kenji is of average height with a lean build, accentuated by his expensive tailored suits. He carries himself with an air of confidence and always maintains impeccable grooming."
+  },
+  "connectionToMotorsport": "Kenji represents several racing teams and motorsport-related businesses, handling everything from sponsorship agreements to intellectual property protection for innovative racing technologies. He also sits on the board of directors for a smaller team, giving him a voice in some racing decisions.",
+  "meetingContext": "You might meet Kenji through a mutual acquaintance at a motorsport industry event, or perhaps when seeking legal representation for a contract dispute or endorsement deal.",
+  "conversationTopics": [
+    "The latest Formula 1 race",
+    "The nuances of Japanese business culture",
+    "The history of motorsport technology",
+    "His recent trip to Europe",
+    "The complexities of IP law"
+  ],
+  "canHelp": [
+    "Negotiating lucrative sponsorship deals",
+    "Providing legal protection for your brand and image",
+    "Connecting you with influential figures in the motorsport world"
+  ],
+  "personality_summary": "A charismatic but manipulative lawyer with a passion for motorsport and a penchant for winning, no matter the cost."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Kiara Virtanen",
+  "nationality": "Finnish",
+  "age": 28,
+  "gender": "female",
+  "contactType": "celebrity",
+  "bio": "Kiara Virtanen is a celebrated opera singer, known for her powerful soprano voice and captivating stage presence. Her performances have graced some of the world's most prestigious opera houses, earning her critical acclaim and a dedicated fanbase. Despite her demanding career, Kiara maintains a balanced lifestyle, indulging in passions like snowboarding in the Finnish Lapland and exploring antique shops for hidden treasures. \n\nKiara's connection to motorsport is surprisingly close. Her family owns a significant share in a prominent Finnish engineering firm that supplies components to several Formula 1 teams. She often attends races as a guest of one of these teams, using the opportunity to unwind and support Finnish talent in the racing world. A racing driver might cross paths with her at these events or perhaps through shared connections within the high-society circles she frequents.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Long, wavy, often styled in elegant updos",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Kiara is strikingly beautiful, with a classic Nordic look. She carries herself with a poised elegance that reflects her profession and upbringing."
+  },
+  "connectionToMotorsport": "Kiara's family owns a significant share in an engineering firm that supplies components to Formula 1 teams. She occasionally attends races as a VIP guest.",
+  "meetingContext": "The player could meet Kiara at a Formula 1 race in the paddock, at a charity gala she is performing at, or through a mutual acquaintance in the racing industry.",
+  "conversationTopics": [
+    "Opera",
+    "Marathon training",
+    "Antique furniture",
+    "Finnish culture",
+    "Snowboarding in Lapland"
+  ],
+  "canHelp": [
+    "Provide introductions to sponsors",
+    "Offer endorsements",
+    "Facilitate introductions to influential figures in the motorsport industry"
+  ],
+  "personality_summary": "A calculating and intense celebrity, but surprisingly forgiving and humble."
+}

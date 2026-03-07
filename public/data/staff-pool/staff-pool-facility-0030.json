@@ -1,0 +1,22 @@
+{
+  "name": "Kimi Järvinen",
+  "nationality": "Finnish",
+  "age": 34,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Kimi's journey into motorsport began not on the track, but in the intricate world of engineering. After graduating with honors in automotive technology, he quickly found himself drawn to the analytical side of racing. He started as a data analyst for a small rally team, meticulously dissecting performance metrics and identifying areas for improvement. His keen eye for detail and ability to translate complex data into actionable strategies soon caught the attention of a Formula racing team, where he transitioned into test driver support. \n\nAs a Test Driver Coordinator, Kimi excels at bridging the gap between the driver's subjective feedback and the engineering team's objective data. He's known for his calm demeanor under pressure and his ability to foster collaboration between departments. Kimi is passionate about uncovering the hidden potential in every car and driver combination, pushing the boundaries of performance through rigorous testing and continuous improvement. He is driven by the belief that the smallest adjustment can make the biggest difference on the track.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "blonde",
+    "hairStyle": "short, neatly combed to the side",
+    "eyeColor": "blue",
+    "facialHair": "light stubble",
+    "description": "Kimi is of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and notes.",
+    "Has a peculiar habit of tapping his pen on the desk when deep in thought.",
+    "Insists on having a perfectly organized workspace, with every tool and document in its designated place."
+  ]
+}

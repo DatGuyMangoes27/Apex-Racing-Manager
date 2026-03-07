@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 38,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitrios' journey into motorsport began with a childhood fascination for Formula 1, fueled by late-night races broadcast across Europe. He pursued a degree in Mechanical Engineering at the National Technical University of Athens, specializing in simulation and modeling. After graduation, he honed his skills at a local engineering firm, developing simulations for various industries. However, his passion remained with motorsport, leading him to seek a role within the sport. He joined Sprint Masters three years ago, quickly establishing himself as a dependable simulator engineer. His methodical approach to data analysis and his ability to translate real-world issues into actionable simulator adjustments make him a valuable asset to the team. Dimitrios is known for his calm demeanor and his commitment to continuous improvement, always seeking ways to enhance the realism and effectiveness of the team's simulator sessions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Dimitrios has a strong build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on brewing his own strong Greek coffee before every simulator session.",
+    "Has a habit of tapping his pen rhythmically when analyzing data."
+  ]
+}

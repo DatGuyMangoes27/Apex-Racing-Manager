@@ -1,0 +1,22 @@
+{
+  "name": "Angus Campbell",
+  "nationality": "Australian",
+  "age": 41,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Angus's journey in motorsport began with a childhood obsession with V8 Supercars, fueled by attending races at Bathurst with his family. He pursued a degree in Mechanical Engineering at the University of Melbourne, specializing in fluid dynamics. After graduating, Angus landed a junior aerodynamicist role at a local racing team before moving to Europe to work in Formula 3, gaining experience with cutting-edge wind tunnel techniques.\n\nHe is meticulous and detail-oriented, believing that marginal gains in aerodynamic performance can translate into significant advantages on the track. Angus's management style is collaborative, valuing input from all members of his team. He is known for his ability to bridge the gap between theoretical simulations and practical on-track applications. His experience in a variety of racing environments has given him the ability to adapt quickly to any problem.\n\nAngus's unique strength lies in his ability to balance incremental improvements with radical innovation. He is not afraid to challenge conventional thinking, yet remains grounded in the realities of resource constraints and technical feasibility. This approach has earned him a reputation as a valuable asset to any racing program.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Angus has a stocky build and a focused, intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Drinks copious amounts of strong coffee throughout the day."
+  ]
+}

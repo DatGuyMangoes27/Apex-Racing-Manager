@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 39,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Kenji Tanaka's fascination with motorsport began in his youth, captivated by the roar of engines at Suzuka Circuit. After graduating with a degree in mechanical engineering from Kyoto University, he pursued his passion by joining Toyota Gazoo Racing's simulator program. He quickly distinguished himself with his meticulous approach to data analysis and his ability to translate real-world car behavior into accurate and immersive simulations.\n\nKenji's dedication to realism is what sets him apart. He meticulously calibrates the simulator's parameters, ensuring that drivers experience the nuances of each track and car setup. He believes that a well-tuned simulator is crucial for driver development and race strategy optimization. Kenji is a strong believer in team work and is always looking for ways to improve the simulation environment.\n\nBeyond his technical expertise, Kenji's quiet dedication and unwavering loyalty make him an invaluable asset to the team. He is always willing to go the extra mile to support his colleagues and contribute to the team's success, often staying late to fine-tune the simulator or analyze driver feedback.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Kenji is of average height, with a wiry build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on drinking green tea from a specific ceramic cup during simulation sessions.",
+    "Has a habit of meticulously cleaning his workspace before and after each session."
+  ]
+}

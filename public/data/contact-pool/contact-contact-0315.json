@@ -1,0 +1,31 @@
+{
+  "name": "Mateo Ramirez",
+  "nationality": "Mexican",
+  "age": 22,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Mateo Ramirez is a rising star at Grupo Financiero Inbursa, already making waves in the private wealth management division despite his young age. He's known for his sharp financial acumen and an uncanny ability to spot lucrative investment opportunities, a skill honed through rigorous study and a natural inclination towards risk assessment. While outwardly driven and ambitious, those who know him well see a deeply caring and adventurous soul, seeking balance through meditation and adrenaline rushes through climbing.\n\nHis family has a long history with motorsport, though mostly as avid spectators and occasional sponsors of local racing events. Mateo himself isn't a driver, but his banking clients include several prominent figures in the Mexican racing scene, from team owners to up-and-coming drivers. A racing driver seeking financial backing or investment advice might find themselves sitting across from Mateo in his polished Mexico City office, or perhaps meeting him at a polo match after a race weekend.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Neatly styled with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Mateo has a strong jawline and a confident smile. He is always impeccably dressed in tailored suits."
+  },
+  "connectionToMotorsport": "Mateo manages the finances of several high-profile individuals and teams within the Mexican motorsport scene, providing investment advice and securing sponsorships.",
+  "meetingContext": "The player might meet Mateo at a charity gala sponsored by Inbursa, or through an introduction from another contact within the racing community seeking investment opportunities.",
+  "conversationTopics": [
+    "The latest trends in global finance",
+    "His favorite sculpture artists",
+    "The challenges of balancing a demanding career with personal passions",
+    "His recent climbing expeditions",
+    "The future of motorsport in Mexico"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals",
+    "Provide sound financial advice and investment opportunities",
+    "Introduce the player to other high-net-worth individuals and potential investors"
+  ],
+  "personality_summary": "A driven and intelligent banker with a surprising adventurous side."
+}

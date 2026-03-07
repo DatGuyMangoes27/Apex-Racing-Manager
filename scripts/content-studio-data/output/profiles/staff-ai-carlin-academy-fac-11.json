@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas",
+  "nationality": "Colombian",
+  "age": 31,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Sofia's passion for motorsport ignited during her childhood in Bogota, watching Formula 1 races with her father. She pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, from the Universidad Nacional de Colombia. After graduating, she started as a data analyst for a local racing team, quickly impressing everyone with her ability to identify performance bottlenecks and suggest innovative solutions.\n\nHer keen eye for talent and analytical skills led her to Carlin Academy, where she now coordinates the test driver program. Sofia is known for her meticulous approach to data analysis and her dedication to helping young drivers reach their full potential. She believes in fostering a collaborative environment where drivers and engineers can openly exchange ideas and push the boundaries of performance. Sofia is highly respected for her ability to translate complex technical data into actionable insights for the drivers.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a lean athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a lucky racing charm she keeps on her desk.",
+    "Prefers to conduct meetings standing up."
+  ]
+}

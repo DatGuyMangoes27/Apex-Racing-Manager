@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 33,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport started early, fueled by a childhood spent watching Ayrton Senna dominate Formula 1. He pursued a degree in Mechanical Engineering at the Universidade de São Paulo, specializing in vehicle dynamics. After graduating, he gained experience working with a local racing team, fine-tuning their suspension setups and engine performance. His meticulous approach and data-driven insights quickly made him an invaluable asset.\n\nJoining Allied Racing was a significant step up. Ricardo thrives on the challenge of extracting every last bit of performance from the car. He is known for his ability to quickly identify and address issues, often proposing innovative solutions that others might overlook. His calm demeanor and collaborative spirit make him a respected and trusted member of the team. Ricardo believes that a strong team is key to success, and he actively fosters a positive and supportive environment.\n\nRicardo stands out because of his ability to blend technical expertise with a genuine understanding of the drivers' needs. He prioritizes communication and ensures that the car's performance is tailored to the driver's specific style and preferences.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has a strong build and a focused gaze, often seen with a slight smile."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Has a habit of tapping his pen against his chin when deep in thought.",
+    "Prefers to work standing up, even when sitting is an option."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 44,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for mechanics, fueled by his father's garage. He pursued mechanical engineering, quickly specializing in aerodynamics and vehicle dynamics. His meticulous approach and knack for problem-solving landed him roles with several racing teams, progressing from data analysis to race engineer before ultimately becoming a chief engineer. \n\nJean-Pierre believes in a data-driven approach, meticulously analyzing every aspect of the car's performance to optimize setup and strategy. He's known for his calm demeanor under pressure and his ability to clearly communicate technical details to drivers and mechanics alike. His focus on practical solutions and unwavering attention to detail makes him a valuable asset in any racing organization, ensuring that every decision is grounded in solid analysis and sound engineering principles.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously jotting down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific brand of coffee, brewed at a precise temperature, before starting any major task."
+  ]
+}

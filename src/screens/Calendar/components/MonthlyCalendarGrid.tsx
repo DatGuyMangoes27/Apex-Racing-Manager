@@ -1,6 +1,7 @@
 /**
  * MonthlyCalendarGrid
- * Full monthly calendar view with day cells and activity indicators
+ * Full monthly calendar view matching the Figma Schedule design
+ * Clean grid with colored event pills and legend bar
  */
 
 import { useState, useMemo } from 'react'
@@ -11,84 +12,99 @@ import {
   Calendar as CalendarIcon,
   Flag,
   AlertTriangle,
-  _Plus
+  Plus,
+  AlertCircle,
+  Wrench,
+  Users,
+  Settings
 } from 'lucide-react'
-import { Card, Button, Badge } from '@/components/ui'
 import { 
   ScheduledActivity, 
   getDayName 
 } from '@/store/careerStore'
 import { RaceEvent } from '@/store/rivalStore'
 import { CalendarDayCell } from './CalendarDayCell'
-import { calculateWeekNumber } from '@/utils/calendar'
+import { calculateWeekNumber, getGameWeekAndDayFromDate } from '@/utils/calendar'
+
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FBold: React.CSSProperties = { fontFamily: "'Arial', sans-serif", fontWeight: 700 }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
 
 interface MonthlyCalendarGridProps {
   currentWeek: number
   currentDay: number
   currentYear: number
-  calendar: RaceEvent[]  // Race events
+  calendar: RaceEvent[]
   scheduledActivities: ScheduledActivity[]
   mandatoryActivities: ScheduledActivity[]
   onDayClick: (week: number, day: number) => void
   onAddActivity: (week: number, day: number) => void
 }
 
-// Helper to convert week/day to month info
 function getMonthFromWeek(week: number, startYear: number): { month: number; year: number } {
-  // Assuming week 1 starts in January
   const totalDays = (week - 1) * 7
   const date = new Date(startYear, 0, 1 + totalDays)
   return { month: date.getMonth(), year: date.getFullYear() }
 }
 
-// Get all days in a month with their week numbers
-function getMonthDays(year: number, month: number, startYear: number): Array<{
+export type MonthDayInfo = {
   day: number
   week: number
   dayOfWeek: number
+  gameWeek: number
+  gameDay: number
   isCurrentMonth: boolean
-}> {
-  const days: Array<{ day: number; week: number; dayOfWeek: number; isCurrentMonth: boolean }> = []
+}
+
+// Sunday-first calendar grid
+function getMonthDays(year: number, month: number, startYear: number): MonthDayInfo[] {
+  const days: MonthDayInfo[] = []
   
-  // First day of the month
   const firstDay = new Date(year, month, 1)
   const lastDay = new Date(year, month + 1, 0)
   
-  // Fill in days from previous month to complete first week
-  const firstDayOfWeek = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1 // Monday = 0
+  // Sunday = 0, so getDay() gives correct offset for Sunday-first
+  const firstDayOfWeek = firstDay.getDay()
   for (let i = firstDayOfWeek - 1; i >= 0; i--) {
     const date = new Date(year, month, -i)
     const week = calculateWeekNumber(date, startYear)
+    const { week: gameWeek, day: gameDay } = getGameWeekAndDayFromDate(date, startYear)
     days.push({
       day: date.getDate(),
       week,
-      dayOfWeek: date.getDay() === 0 ? 7 : date.getDay(), // Sunday = 7
+      dayOfWeek: date.getDay() === 0 ? 7 : date.getDay(),
+      gameWeek,
+      gameDay,
       isCurrentMonth: false
     })
   }
   
-  // Fill in days of the month
   for (let d = 1; d <= lastDay.getDate(); d++) {
     const date = new Date(year, month, d)
     const week = calculateWeekNumber(date, startYear)
+    const { week: gameWeek, day: gameDay } = getGameWeekAndDayFromDate(date, startYear)
     days.push({
       day: d,
       week,
       dayOfWeek: date.getDay() === 0 ? 7 : date.getDay(),
+      gameWeek,
+      gameDay,
       isCurrentMonth: true
     })
   }
   
-  // Fill in days from next month to complete last week
   const remainingDays = 7 - (days.length % 7)
   if (remainingDays < 7) {
     for (let i = 1; i <= remainingDays; i++) {
       const date = new Date(year, month + 1, i)
       const week = calculateWeekNumber(date, startYear)
+      const { week: gameWeek, day: gameDay } = getGameWeekAndDayFromDate(date, startYear)
       days.push({
         day: i,
         week,
         dayOfWeek: date.getDay() === 0 ? 7 : date.getDay(),
+        gameWeek,
+        gameDay,
         isCurrentMonth: false
       })
     }
@@ -102,7 +118,7 @@ const MONTH_NAMES = [
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
-const DAY_HEADERS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const DAY_HEADERS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
 export function MonthlyCalendarGrid({
   currentWeek,
@@ -114,32 +130,26 @@ export function MonthlyCalendarGrid({
   onDayClick,
   onAddActivity
 }: MonthlyCalendarGridProps) {
-  // Calculate which month to show based on current week
   const initialMonth = getMonthFromWeek(currentWeek, currentYear)
   const [displayMonth, setDisplayMonth] = useState(initialMonth.month)
   const [displayYear, setDisplayYear] = useState(initialMonth.year)
   
-  // Get days for the displayed month
   const monthDays = useMemo(() => 
     getMonthDays(displayYear, displayMonth, currentYear),
     [displayYear, displayMonth, currentYear]
   )
   
-  // Create a map of activities by week/day (includes all days for multi-day activities)
   const activityMap = useMemo(() => {
     const map: Record<string, ScheduledActivity[]> = {}
     scheduledActivities.forEach(activity => {
       const spanDays = activity.spanDays || 1
-      // Add activity to all days it spans
       for (let d = 0; d < spanDays; d++) {
         const dayNum = activity.scheduledDay + d
-        // Handle week overflow (activity spanning into next week)
         const weekNum = dayNum > 7 ? activity.scheduledWeek + 1 : activity.scheduledWeek
         const actualDay = dayNum > 7 ? dayNum - 7 : dayNum
         
         const key = `${weekNum}-${actualDay}`
         if (!map[key]) map[key] = []
-        // Mark if this is a continuation day (not the start)
         const activityWithPosition = {
           ...activity,
           _isSpanContinuation: d > 0,
@@ -152,7 +162,6 @@ export function MonthlyCalendarGrid({
     return map
   }, [scheduledActivities])
   
-  // Create a map of races by week
   const raceMap = useMemo(() => {
     const map: Record<number, RaceEvent> = {}
     calendar.forEach(race => {
@@ -161,7 +170,6 @@ export function MonthlyCalendarGrid({
     return map
   }, [calendar])
   
-  // Navigate months
   const prevMonth = () => {
     if (displayMonth === 0) {
       setDisplayMonth(11)
@@ -180,13 +188,6 @@ export function MonthlyCalendarGrid({
     }
   }
   
-  const goToToday = () => {
-    const today = getMonthFromWeek(currentWeek, currentYear)
-    setDisplayMonth(today.month)
-    setDisplayYear(today.year)
-  }
-  
-  // Group days into weeks for grid display
   const weeks = useMemo(() => {
     const result: typeof monthDays[] = []
     for (let i = 0; i < monthDays.length; i += 7) {
@@ -195,83 +196,44 @@ export function MonthlyCalendarGrid({
     return result
   }, [monthDays])
   
-  // Get unique week numbers for the row labels
-  const _weekNumbers = useMemo(() => {
-    const numbers = new Set<number>()
-    monthDays.forEach(d => {
-      if (d.isCurrentMonth) numbers.add(d.week)
-    })
-    return Array.from(numbers).sort((a, b) => a - b)
-  }, [monthDays])
+  // Check if prev month is before the season start
+  const isPrevDisabled = displayYear < currentYear || (displayYear === currentYear && displayMonth === 0)
 
   return (
-    <Card variant="glass" padding="lg" className="overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-accent-blue/20 flex items-center justify-center">
-            <CalendarIcon className="w-5 h-5 text-accent-blue" />
-          </div>
-          <div>
-            <h2 className="text-xl font-display font-bold">
-              {MONTH_NAMES[displayMonth]} {displayYear}
-            </h2>
-            <p className="text-sm text-text-muted">
-              Week {currentWeek} • {getDayName(currentDay)}
-            </p>
-          </div>
-        </div>
+    <div className="flex flex-col gap-[16px]">
+      {/* Month Navigation */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={prevMonth}
+          disabled={isPrevDisabled}
+          className={`h-[43px] px-[20px] bg-[rgba(255,255,255,0.8)] border-[1.6px] border-black rounded-[16px] text-[12px] text-black transition-opacity ${isPrevDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white cursor-pointer'}`}
+          style={FB}
+        >
+          ← PREV MONTH
+        </button>
         
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={goToToday}>
-            Today
-          </Button>
-          <div className="flex items-center gap-1">
-            <Button variant="ghost" size="sm" onClick={prevMonth}>
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm" onClick={nextMonth}>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
+        <span className="text-[14px] text-black" style={FB}>
+          {MONTH_NAMES[displayMonth]} {displayYear}
+        </span>
+        
+        <button
+          onClick={nextMonth}
+          className="h-[43px] px-[20px] bg-[rgba(255,255,255,0.8)] border-[1.6px] border-black rounded-[16px] text-[12px] text-black hover:bg-white cursor-pointer transition-opacity"
+          style={FB}
+        >
+          NEXT MONTH →
+        </button>
       </div>
       
-      {/* Legend */}
-      <div className="flex items-center gap-4 mb-4 text-xs text-text-muted flex-wrap">
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-accent-red/30" />
-          <span>Race Week</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-accent-blue/30" />
-          <span>Today</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-accent-orange/30" />
-          <span>Mandatory</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-accent-purple/30 border-l-2 border-accent-purple" />
-          <span>Multi-day</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <Badge variant="default" className="h-4 text-[10px] px-1">3</Badge>
-          <span>Activities</span>
-        </div>
-      </div>
-      
-      {/* Calendar Grid */}
-      <div className="border border-surface-secondary rounded-xl overflow-hidden">
+      {/* Calendar Card */}
+      <div className="bg-[rgba(255,255,255,0.8)] border-[1.6px] border-black rounded-[16px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] overflow-hidden">
         {/* Day Headers */}
-        <div className="grid grid-cols-[60px_repeat(7,1fr)] bg-surface-secondary/50">
-          <div className="p-2 text-center text-xs font-medium text-text-muted border-r border-surface-secondary">
-            Week
-          </div>
-          {DAY_HEADERS.map(day => (
+        <div className="grid grid-cols-7 bg-[#e5e7eb] border-b-[1.6px] border-black">
+          {DAY_HEADERS.map((day, i) => (
             <div 
               key={day}
-              className="p-2 text-center text-xs font-medium text-text-muted border-r border-surface-secondary last:border-r-0"
+              className={`py-[14px] text-center text-[12px] text-black ${i < 6 ? 'border-r-[1.6px] border-black' : ''}`}
+              style={FB}
             >
               {day}
             </div>
@@ -288,46 +250,37 @@ export function MonthlyCalendarGrid({
             transition={{ duration: 0.2 }}
           >
             {weeks.map((weekDays, weekIndex) => {
-              // Get the week number from the first day that's in current month
-              const weekNum = weekDays.find(d => d.isCurrentMonth)?.week || weekDays[0].week
+              const weekNum = weekDays.find(d => d.isCurrentMonth && d.gameWeek > 0)?.gameWeek
+                ?? weekDays.find(d => d.gameWeek > 0)?.gameWeek
+                ?? weekDays.find(d => d.isCurrentMonth)?.week
+                ?? weekDays[0].week
               const race = raceMap[weekNum]
-              const isCurrentWeekRow = weekNum === currentWeek
               
               return (
                 <div 
                   key={weekIndex}
-                  className={`
-                    grid grid-cols-[60px_repeat(7,1fr)] border-t border-surface-secondary
-                    ${isCurrentWeekRow ? 'bg-accent-blue/5' : ''}
-                  `}
+                  className="grid grid-cols-7"
                 >
-                  {/* Week Number */}
-                  <div className={`
-                    p-2 text-center border-r border-surface-secondary flex flex-col items-center justify-center
-                    ${isCurrentWeekRow ? 'bg-accent-blue/10' : 'bg-surface-secondary/30'}
-                  `}>
-                    <span className={`text-sm font-mono font-bold ${isCurrentWeekRow ? 'text-accent-blue' : 'text-text-muted'}`}>
-                      {weekNum}
-                    </span>
-                    {race && (
-                      <Flag className="w-3 h-3 text-accent-red mt-1" />
-                    )}
-                  </div>
-                  
-                  {/* Day Cells */}
                   {weekDays.map((dayInfo, dayIndex) => {
-                    const isToday = dayInfo.week === currentWeek && dayInfo.dayOfWeek === currentDay
-                    const isPast = dayInfo.week < currentWeek || 
-                      (dayInfo.week === currentWeek && dayInfo.dayOfWeek < currentDay)
-                    const activities = activityMap[`${dayInfo.week}-${dayInfo.dayOfWeek}`] || []
+                    const isToday = dayInfo.gameWeek === currentWeek && dayInfo.gameDay === currentDay
+                    const isPast = dayInfo.gameWeek > 0 && (
+                      dayInfo.gameWeek < currentWeek ||
+                      (dayInfo.gameWeek === currentWeek && dayInfo.gameDay < currentDay)
+                    )
+                    const activities = dayInfo.gameWeek > 0
+                      ? (activityMap[`${dayInfo.gameWeek}-${dayInfo.gameDay}`] || [])
+                      : []
                     const hasMandatory = activities.some(a => a.mandatory)
-                    const dayRace = dayInfo.dayOfWeek >= 5 && dayInfo.dayOfWeek <= 7 ? race : undefined // Races typically Fri-Sun
+                    const dayRace = dayInfo.dayOfWeek >= 5 && dayInfo.dayOfWeek <= 7 ? race : undefined
+                    
+                    // Determine if this column is even/odd for checkerboard coloring
+                    const isEvenCol = dayIndex % 2 === 0
                     
                     return (
                       <CalendarDayCell
                         key={dayIndex}
                         day={dayInfo.day}
-                        week={dayInfo.week}
+                        week={dayInfo.gameWeek}
                         dayOfWeek={dayInfo.dayOfWeek}
                         isCurrentMonth={dayInfo.isCurrentMonth}
                         isToday={isToday}
@@ -335,8 +288,11 @@ export function MonthlyCalendarGrid({
                         activities={activities}
                         race={dayRace}
                         hasMandatory={hasMandatory}
-                        onClick={() => onDayClick(dayInfo.week, dayInfo.dayOfWeek)}
-                        onAddActivity={() => onAddActivity(dayInfo.week, dayInfo.dayOfWeek)}
+                        isEvenCol={isEvenCol}
+                        isLastRow={weekIndex === weeks.length - 1}
+                        isLastCol={dayIndex === 6}
+                        onClick={() => onDayClick(dayInfo.gameWeek, dayInfo.gameDay)}
+                        onAddActivity={() => onAddActivity(dayInfo.gameWeek, dayInfo.gameDay)}
                       />
                     )
                   })}
@@ -347,27 +303,41 @@ export function MonthlyCalendarGrid({
         </AnimatePresence>
       </div>
       
-      {/* Quick Stats */}
-      <div className="mt-4 flex items-center justify-between text-sm">
-        <div className="flex items-center gap-4">
-          <span className="text-text-muted">
-            {scheduledActivities.filter(a => a.status === 'scheduled').length} scheduled activities
-          </span>
-          {mandatoryActivities.length > 0 && (
-            <span className="text-accent-orange flex items-center gap-1">
-              <AlertTriangle className="w-4 h-4" />
-              {mandatoryActivities.length} mandatory
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {calendar.filter(r => r.week >= currentWeek).slice(0, 3).map(race => (
-            <Badge key={race.id} variant="red" className="text-xs">
-              R{race.round}: Week {race.week}
-            </Badge>
-          ))}
+      {/* Legend Bar */}
+      <div className="bg-[rgba(255,255,255,0.8)] border-[1.6px] border-black rounded-[16px] shadow-[0px_10px_15px_0px_rgba(0,0,0,0.1),0px_4px_6px_0px_rgba(0,0,0,0.1)] px-[18px] py-[16px]">
+        <div className="flex items-center justify-center gap-[24px]">
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[16px] h-[16px] rounded-[4px] bg-black flex items-center justify-center">
+              <Flag className="w-[12px] h-[12px] text-white" />
+            </div>
+            <span className="text-[12px] text-black uppercase" style={FB}>Race</span>
+          </div>
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[16px] h-[16px] rounded-[4px] bg-[#e7000b] flex items-center justify-center">
+              <AlertCircle className="w-[12px] h-[12px] text-white" />
+            </div>
+            <span className="text-[12px] text-black uppercase" style={FB}>Deadline</span>
+          </div>
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[16px] h-[16px] rounded-[4px] bg-[#d08700] flex items-center justify-center">
+              <Wrench className="w-[12px] h-[12px] text-white" />
+            </div>
+            <span className="text-[12px] text-black uppercase" style={FB}>Maintenance</span>
+          </div>
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[16px] h-[16px] rounded-[4px] bg-[#155dfc] flex items-center justify-center">
+              <Users className="w-[12px] h-[12px] text-white" />
+            </div>
+            <span className="text-[12px] text-black uppercase" style={FB}>Meeting</span>
+          </div>
+          <div className="flex items-center gap-[8px]">
+            <div className="w-[16px] h-[16px] rounded-[4px] bg-[#9810fa] flex items-center justify-center">
+              <Settings className="w-[12px] h-[12px] text-white" />
+            </div>
+            <span className="text-[12px] text-black uppercase" style={FB}>Development</span>
+          </div>
         </div>
       </div>
-    </Card>
+    </div>
   )
 }

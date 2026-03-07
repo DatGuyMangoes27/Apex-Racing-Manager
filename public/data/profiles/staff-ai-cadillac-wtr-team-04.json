@@ -1,0 +1,22 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 43,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Klara's journey into motorsport began unexpectedly, fueled by a fascination with the intricate mechanics of her father's vintage rally car. She pursued mechanical engineering, specializing in vehicle dynamics, and quickly landed a role with a small Austrian racing team. Her meticulous approach and keen eye for detail allowed her to rapidly climb the ranks, optimizing car setups and troubleshooting complex issues with impressive efficiency.\n\nAfter several successful seasons, Klara transitioned to sports car racing, drawn by the longer race formats and the strategic depth required. Her ability to analyze data under pressure and communicate effectively with drivers has made her a valuable asset to Cadillac Racing. Klara stands out for her relentless pursuit of perfection and her quiet confidence in the face of adversity, earning her the respect of her colleagues and competitors alike. She focuses on data driven decisions, always willing to test a new setup to chase marginal gains.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "straight, shoulder-length hair, usually pulled back in a practical ponytail",
+    "eyeColor": "blue",
+    "facialHair": null,
+    "description": "She has a focused gaze and a practical demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical diagrams.",
+    "Has a peculiar habit of tapping her pen rhythmically when analyzing telemetry data.",
+    "Insists on having a perfectly organized toolbox, with each tool in its designated spot."
+  ]
+}

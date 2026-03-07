@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Humphrey",
+  "nationality": "British",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Alistair's journey into motorsport began later in life, after a successful career in aerospace engineering. He always harbored a passion for racing, and a chance encounter with a team principal at a local pub led to an opportunity to apply his technical skills to Formula racing. Alistair's approach centers around data analysis and methodical problem-solving. \n\nHe believes in understanding the car as a complete system, rather than focusing solely on individual components. This big-picture perspective, combined with his years of experience, allows him to identify subtle performance gains that others might miss. While not the most innovative, Alistair excels at refining existing technologies and ensuring consistent, reliable performance. He is particularly adept at working with drivers to translate their feedback into tangible improvements.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed-over with a receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey moustache",
+    "description": "Alistair is a stocky man with a kind face and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a peculiar habit of tapping his pen against his teeth when concentrating.",
+    "Insists on drinking Earl Grey tea from a specific mug during race weekends."
+  ]
+}

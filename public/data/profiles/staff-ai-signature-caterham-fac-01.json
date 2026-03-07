@@ -1,0 +1,22 @@
+{
+  "name": "Eira Davies",
+  "nationality": "Welsh",
+  "age": 37,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Eira Davies's journey into motorsport data analysis began unconventionally, with a deep dive into statistical modelling for her local rugby club. Her knack for spotting hidden patterns quickly caught the attention of a Formula 3 team, where she honed her skills in race strategy and performance optimization. She joined Signature Racing three years ago, bringing a rigorous, evidence-based approach to their data analysis pipeline. \n\nEira is known for her relentless pursuit of marginal gains. She believes that even the smallest data points can unlock significant performance improvements. Her demanding nature pushes her team to constantly question assumptions and explore new analytical techniques. What sets her apart is her innovative application of machine learning algorithms to predict tire degradation and optimize pit stop strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy, often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eira is of average height with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn copy of 'Statistical Inference' by Casella and Berger.",
+    "Insists on using a mechanical keyboard for optimal tactile feedback.",
+    "Has a habit of doodling complex data visualizations during team meetings."
+  ]
+}

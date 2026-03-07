@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 54,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Jean-Pierre's journey into motorsport IT began unexpectedly. After a solid career in corporate infrastructure, a chance encounter with a racing team owner at a tech conference sparked a new passion. He was immediately captivated by the blend of high-stakes competition and cutting-edge technology. He brings a meticulous and structured approach to managing EVO Racing Team's IT infrastructure. \n\nKnown for his efficiency and problem-solving skills, Jean-Pierre ensures the team's data and communication systems are always operating at peak performance. His demanding nature ensures standards are always high, and that no stone is left unturned when resolving a technical issue. He's a staunch believer in preventative maintenance and robust security protocols, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A slightly portly man with a serious demeanor and a penchant for perfectly pressed shirts."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on backing up all data thrice, even for non-critical systems.",
+    "Always carries a small multi-tool, just in case.",
+    "Has a whiteboard filled with network diagrams he updates obsessively."
+  ]
+}

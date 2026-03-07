@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0307",
+  "name": "Cotswold Ales",
+  "category": "local",
+  "tier": "entry",
+  "country": "UK",
+  "description": "The taste of the Cotswolds, brewed with passion.",
+  "story": "Cotswold Ales is a family-run brewery proud to represent the region's heritage. We believe in supporting local talent and see motorsport as a thrilling way to connect with our community. We are looking for a team that shares our passion for excellence and commitment to quality.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0307.png"
+}

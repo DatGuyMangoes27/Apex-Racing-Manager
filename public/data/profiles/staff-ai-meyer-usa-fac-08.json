@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Australian",
+  "age": 31,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Liam's fascination with motorsport began early, fueled by his father's involvement in local rally racing. He pursued a degree in Mechanical Engineering, focusing on aerodynamics and fluid dynamics, before landing an internship at a small wind tunnel facility. His meticulous nature and knack for identifying subtle airflow anomalies quickly made him indispensable. Liam joined Meyer Shank Racing three years ago, initially assisting with data analysis before transitioning into a full-time operator role. He's known for his systematic approach, always double-checking every calibration and measurement, ensuring the team receives the most accurate data possible. Liam's perfectionist tendencies sometimes lead to long hours, but he believes that even the smallest improvement in aerodynamic efficiency can make a significant difference on the track.\n\nHe's passionate about correlating wind tunnel data with on-track performance, often spending his free time analyzing race footage and telemetry to identify areas for improvement. His deep understanding of both the theoretical and practical aspects of aerodynamics makes him a valuable asset to the team. Liam is driven by a desire to push the boundaries of what's possible, constantly seeking new ways to optimize the car's performance through innovative wind tunnel testing techniques.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Liam is of average height with a lean build, always wearing practical work attire."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Insists on using a specific brand of masking tape for wind tunnel models.",
+    "Has a habit of humming quietly while running simulations."
+  ]
+}

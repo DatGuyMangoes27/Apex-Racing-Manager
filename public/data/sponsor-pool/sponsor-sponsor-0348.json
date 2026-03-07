@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0348",
+  "name": "Emerald Fuel",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Ireland",
+  "description": "Powering performance, refined in Ireland.",
+  "story": "Emerald Fuel is a family-owned Irish company with a long history in motorsport. We started supplying local rally teams and have since expanded to develop high-performance fuels for various racing disciplines. We seek partnerships that showcase our commitment to quality and innovation on the world stage, and value teams that demonstrate consistent performance and professionalism.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 45,
+    "nationalities": [
+      "Ireland"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0348.png"
+}

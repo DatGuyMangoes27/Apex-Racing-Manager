@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 45,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's motorsport journey began in the frigid workshops of Quebec, tinkering with snowmobiles before transitioning to Formula Ford racing. After graduating with an engineering degree from McGill, he spent several years honing his craft in various junior racing series across North America. His meticulous approach to data analysis and uncanny ability to diagnose mechanical issues quickly earned him a reputation as a reliable and resourceful engineer. \n\nJean-Pierre joined VW Racing Brasil five years ago, attracted by their commitment to innovation and the vibrant racing culture. He thrives under pressure, meticulously logging every performance detail. He believes in empowering his drivers with clear, concise feedback, fostering a collaborative environment where they can push the limits of both car and driver. His calm demeanor and problem-solving skills make him a valuable asset to the team, especially during high-stakes situations. \n\nHis distinctive trait is his unwavering focus on data-driven decisions and his commitment to continuously improving performance through incremental adjustments. He is the one always looking for a tenth of a second.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Goatee",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Canadian maple syrup in his coffee every morning."
+  ]
+}

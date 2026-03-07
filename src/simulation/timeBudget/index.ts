@@ -32,10 +32,13 @@ export const TIME_BUDGET_CONFIG = {
   RED_PENALTY_PER_HOUR: 0.5,
 
   /** If you end the day with fewer than this many hours used, you get rest recovery */
-  REST_RECOVERY_THRESHOLD: 8,
+  REST_RECOVERY_THRESHOLD: 10,
 
   /** Hours of fatigue debt recovered on a rest day */
-  REST_RECOVERY_AMOUNT: 2,
+  REST_RECOVERY_AMOUNT: 3,
+
+  /** Hours of fatigue debt recovered per restorative hour spent */
+  RESTORATIVE_DEBT_RECOVERY_PER_HOUR: 0.25,
 
   /** Maximum fatigue debt that can accumulate (caps how bad it gets) */
   MAX_FATIGUE_DEBT: 6,
@@ -73,7 +76,7 @@ export function calculateFatigueZone(hoursUsed: number): FatigueZone {
 export function getFatigueZoneInfo(zone: FatigueZone): { label: string; color: string; description: string } {
   switch (zone) {
     case 'green':
-      return { label: 'Comfortable', color: 'text-status-success', description: 'No fatigue penalty' }
+      return { label: 'Comfortable', color: 'text-status-success', description: 'Fatigue recovery active' }
     case 'yellow':
       return { label: 'Pushing It', color: 'text-accent-orange', description: 'Minor fatigue carry-over tomorrow' }
     case 'red':
@@ -154,6 +157,7 @@ export function consumeHours(
     ...dayBudget,
     hoursUsed: dayBudget.hoursUsed + hours,
     hoursRemaining: Math.max(0, dayBudget.hoursRemaining - hours),
+    currentHour: Math.min(23, (dayBudget.currentHour ?? 7) + hours),  // Advance the clock
     dayLog: [...dayBudget.dayLog, newEntry],
     activitiesCompletedToday: activityId
       ? [...dayBudget.activitiesCompletedToday, activityId]
@@ -218,14 +222,29 @@ export function calculateFatigueCarryOver(dayLog: DayLogEntry[]): number {
 /**
  * Calculates fatigue debt recovery for ending the day early (rest bonus).
  * If the player used fewer than REST_RECOVERY_THRESHOLD hours, they get recovery.
+ * Recovery scales smoothly: fewer hours used = more debt cleared.
  */
 export function calculateRestRecovery(hoursUsed: number): number {
-  if (hoursUsed < TIME_BUDGET_CONFIG.REST_RECOVERY_THRESHOLD) {
+  if (hoursUsed <= TIME_BUDGET_CONFIG.REST_RECOVERY_THRESHOLD) {
     // More rest = more recovery, scaled from 0 to REST_RECOVERY_AMOUNT
     const restRatio = 1 - (hoursUsed / TIME_BUDGET_CONFIG.REST_RECOVERY_THRESHOLD)
     return Math.round(TIME_BUDGET_CONFIG.REST_RECOVERY_AMOUNT * restRatio * 4) / 4
   }
   return 0
+}
+
+/**
+ * Calculates how much fatigue debt is directly recovered by restorative activities.
+ * Restorative activities (spa, gym, rest day, walks) actively heal existing debt.
+ */
+export function calculateRestorativeDebtRecovery(dayLog: DayLogEntry[]): number {
+  const restorativeHours = dayLog
+    .filter(entry => entry.drainLevel === 'restorative')
+    .reduce((sum, entry) => sum + entry.hoursSpent, 0)
+  
+  // Each restorative hour recovers 0.25h of existing fatigue debt
+  const recovery = restorativeHours * TIME_BUDGET_CONFIG.RESTORATIVE_DEBT_RECOVERY_PER_HOUR
+  return Math.round(recovery * 4) / 4
 }
 
 // ============================================
@@ -250,7 +269,8 @@ export function resetDayBudget(
     fatigueDebt: previousFatigueDebt,
     jetLagPenalty,
     activitiesCompletedToday: [],
-    dayLog: []
+    dayLog: [],
+    currentHour: 7  // Day starts at 7 AM
   }
 }
 
@@ -261,13 +281,24 @@ export function resetDayBudget(
 /**
  * Calculates how the day's time usage should affect the existing mentalState.fatigue (0-100).
  * This connects the new time budget system to the existing race performance fatigue stat.
+ * 
+ * Green zone recovery is now graduated:
+ *   0-3h used  → -8 (full rest day, strong recovery)
+ *   3-6h used  → -5 (light day, good recovery)
+ *   6-10h used → -2 (moderate day, slight recovery)
+ * Yellow zone (10-13h) → +5 (busy day, slight fatigue increase)
+ * Red zone (13+h) → +15 (exhausting day, heavy fatigue increase)
  */
 export function calculateMentalFatigueImpact(hoursUsed: number): number {
   const zone = calculateFatigueZone(hoursUsed)
   switch (zone) {
-    case 'green': return -5   // Light day = slight fatigue recovery
-    case 'yellow': return 5   // Busy day = slight fatigue increase
-    case 'red': return 15     // Exhausting day = heavy fatigue increase
+    case 'green':
+      // Graduated recovery within green zone
+      if (hoursUsed <= 3) return -8    // Full rest day = strong recovery
+      if (hoursUsed <= 6) return -5    // Light day = good recovery
+      return -2                         // Moderate day = slight recovery
+    case 'yellow': return 5            // Busy day = slight fatigue increase
+    case 'red': return 15              // Exhausting day = heavy fatigue increase
   }
 }
 
@@ -283,7 +314,8 @@ export function getDaySummary(dayBudget: DayBudgetState) {
   const zoneInfo = getFatigueZoneInfo(zone)
   const carryOver = calculateFatigueCarryOver(dayBudget.dayLog)
   const restRecovery = calculateRestRecovery(dayBudget.hoursUsed)
-  const netFatigueChange = carryOver - restRecovery
+  const restorativeRecovery = calculateRestorativeDebtRecovery(dayBudget.dayLog)
+  const netFatigueChange = carryOver - restRecovery - restorativeRecovery
   const projectedFatigueDebt = Math.min(
     TIME_BUDGET_CONFIG.MAX_FATIGUE_DEBT,
     Math.max(0, dayBudget.fatigueDebt + netFatigueChange)
@@ -299,6 +331,7 @@ export function getDaySummary(dayBudget: DayBudgetState) {
     zoneInfo,
     carryOver,
     restRecovery,
+    restorativeRecovery,
     netFatigueChange,
     currentFatigueDebt: dayBudget.fatigueDebt,
     projectedFatigueDebt,

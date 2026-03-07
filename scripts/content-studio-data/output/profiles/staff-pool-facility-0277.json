@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Davies",
+  "nationality": "British",
+  "age": 26,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Eleanor's journey into motorsport began unexpectedly. Initially pursuing a fine arts degree with a focus on sculpture, she discovered a passion for composite materials during a project exploring lightweight structural forms. Recognizing the parallels between artistic expression and the precise engineering required in motorsport, she pivoted, securing an apprenticeship with a small Formula Ford team. \n\nSince then, Eleanor has honed her skills in composite design, fabrication, and repair. She is known for her meticulous attention to detail and her ability to creatively solve problems on the fly. Her approach blends a rigorous understanding of material properties with an artist's eye for aesthetics, ensuring that every component she works on is both structurally sound and visually appealing. Eleanor is driven by a desire to push the boundaries of performance through innovative composite solutions, making her a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A petite woman with a focused gaze and hands perpetually stained with resin."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sketches potential composite designs on coffee shop napkins.",
+    "Has a lucky set of miniature sculpting tools she uses for delicate repairs.",
+    "Prefers listening to classical music while working to maintain focus."
+  ]
+}

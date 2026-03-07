@@ -1,0 +1,63 @@
+{
+  "history": "The Autodromo Internazionale Enzo e Dino Ferrari, more commonly known as Imola, is steeped in motorsport history. Built in the early 1950s, it quickly became a favorite among drivers and fans alike. While primarily known for hosting Formula 1's San Marino Grand Prix for many years, Imola has also been a regular fixture on the MotoGP calendar since the early 2000s. The 'Moto' layout, closely resembling the Grand Prix layout, is specifically designed for motorcycle racing, incorporating minor modifications for safety and flow. The track has witnessed countless thrilling battles and memorable moments across various racing disciplines, solidifying its place as an iconic venue in motorsport. It was renamed in honor of Enzo and Dino Ferrari after Enzo's death in 1988.",
+  "atmosphere": "Standing trackside at Imola during a MotoGP race on the 'Moto' configuration is an assault on the senses. The air crackles with anticipation as the riders line up on the grid, the roar of the engines echoing through the Emilia-Romagna hills. The scent of burning rubber and high-octane fuel fills the air as the bikes scream through the corners, their riders mere inches from the tarmac. The Italian fans, passionate and vocal, create an electric atmosphere, their cheers and chants adding to the drama and excitement of the race. The undulating terrain provides excellent viewing opportunities, allowing spectators to witness the riders' skill and bravery as they navigate the challenging circuit.",
+  "trackCharacter": "The 'Moto' layout at Imola is a fast and flowing circuit that rewards precision and bravery. Its blend of high-speed straights, sweeping curves, and tight chicanes demands a well-rounded machine and a rider willing to push the limits. The track's narrow width and limited run-off areas add to the challenge, punishing even the slightest mistake. Unlike some more modern circuits, Imola retains a classic feel, with its close proximity to the barriers creating a sense of danger and excitement. It is a track that demands respect and rewards those who master its nuances.",
+  "nickname": "The Mini-Nürburgring",
+  "famousCorners": [
+    {
+      "name": "Tamburello",
+      "description": "A legendary left-hander, infamous for its high speeds and tragic history. Although modified since Ayrton Senna's accident, it remains a daunting corner that tests a rider's nerve.",
+      "challenge": "Maintaining corner speed and precision placement to maximize exit speed onto the next straight."
+    },
+    {
+      "name": "Villeneuve",
+      "description": "Another fast left-hander immediately following Tamburello, this corner is a crucial setup for the run down to Tosa. It demands commitment and precise positioning.",
+      "challenge": "Carrying maximum speed through while setting up the ideal line for the Tosa hairpin."
+    },
+    {
+      "name": "Tosa",
+      "description": "A tight, uphill hairpin that presents a prime overtaking opportunity. Getting the braking point and turn-in right is crucial for a clean exit.",
+      "challenge": "Braking late and precisely while managing the uphill gradient to avoid running wide on exit."
+    },
+    {
+      "name": "Piratella",
+      "description": "A fast, downhill right-hander that requires immense courage and commitment. It's a true test of a rider's skill and bravery.",
+      "challenge": "Maintaining control and carrying maximum speed through the downhill apex, trusting the bike's grip."
+    },
+    {
+      "name": "Acque Minerali",
+      "description": "A tricky complex of turns with significant elevation changes, demanding a well-balanced bike and a precise riding style.",
+      "challenge": "Negotiating the sequence of turns while maintaining momentum and avoiding running wide on the exits."
+    }
+  ],
+  "keyFactors": [
+    "Braking stability for Tosa and Rivazza",
+    "Mid-corner speed through Piratella and Acque Minerali",
+    "Traction control management out of the slower corners",
+    "Engine performance on the run to Tamburello and the back straight",
+    "Aerodynamic efficiency for stability in the faster sections"
+  ],
+  "overtakingSpots": [
+    "Tosa hairpin: A classic braking zone opportunity.",
+    "Variante Bassa: A tight chicane offering a chance for a late lunge.",
+    "Into Rivazza: A brave move on the brakes into the final complex.",
+    "Acque Minerali: If a rider can carry more corner speed through the complex, they can set up a move down the hill"
+  ],
+  "historySnippets": [
+    "Imola is one of the few major circuits to run in an anti-clockwise direction.",
+    "The circuit has undergone several modifications over the years to improve safety.",
+    "Imola briefly returned to the Formula 1 calendar in 2020 as the Emilia Romagna Grand Prix.",
+    "The circuit is named after Enzo and Dino Ferrari, father and son.",
+    "Imola has hosted World Superbike races in addition to MotoGP and F1.",
+    "Ayrton Senna and Roland Ratzenberger both tragically lost their lives at Imola during the 1994 San Marino Grand Prix."
+  ],
+  "weatherNotes": "Imola's location in the Emilia-Romagna region means that it can experience a wide range of weather conditions. Spring and autumn can be particularly unpredictable, with rain showers often affecting track conditions. The summer months tend to be hot and dry, while the winter can be cold and wet. The track's proximity to the Apennine Mountains can also lead to localized weather patterns, making tire choice and strategy crucial.",
+  "drivingAdvice": "To master the 'Moto' layout at Imola, focus on maintaining momentum through the fast corners like Piratella and Acque Minerali. Be precise with your braking into Tosa and Rivazza, as these are key overtaking opportunities. Use the kerbs to your advantage, but be mindful of the track limits, which are strictly enforced. A smooth and flowing riding style is essential for a fast lap time.",
+  "famousRaces": [
+    "1999 World Superbike Race 2: Colin Edwards and Noriyuki Haga engaged in an epic battle, swapping the lead multiple times in a thrilling display of riding skill.",
+    "2006 MotoGP: Valentino Rossi dominated the San Marino Grand Prix, much to the delight of the home crowd.",
+    "2020 Emilia Romagna Grand Prix (F1): Lewis Hamilton won a chaotic race that saw several retirements and safety car periods, marking F1's return to Imola after a 14-year absence.",
+    "2022 Emilia Romagna Grand Prix (F1): Max Verstappen dominated the wet-dry race to take victory in dominant fashion."
+  ],
+  "localCulture": "Imola is a charming Italian town steeped in history and culture. The local cuisine is renowned for its rich flavors and fresh ingredients, with pasta dishes like tagliatelle al ragu and tortellini being local specialties. The region is also famous for its production of balsamic vinegar and Parmigiano-Reggiano cheese. The town itself is home to several historical landmarks, including the Rocca Sforzesca, a medieval fortress. Paddock life at Imola is relaxed and friendly, with teams and drivers enjoying the warm hospitality of the local people."
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Bernard Darniche, a name whispered with respect and a hint of fear in the French motorsport scene, hails from the small village of Gannat. His passion ignited not in a karting track but on the winding mountain roads surrounding his home, delivering his father's bread in a battered Citroen 2CV. He learned car control out of necessity, skillfully navigating hairpin turns and icy patches before he even reached driving age. This early mastery led him to rallycross, where he quickly dominated local competitions. A pivotal moment came during the 1975 Tour de Corse, when, driving an underfunded Chevrolet, he wrestled the lead away from the factory-backed Alpine team, only to be cruelly denied victory by a mechanical failure in the final stage. Now, at 32, Darniche is at his peak, a fiercely determined privateer battling against the giants of motorsport.",
+  "drivingStyle": "Darniche's driving style is a blend of raw aggression and calculated precision. He's known for his late braking and willingness to push his car to the absolute limit, often flirting with disaster. While some see him as reckless, Darniche meticulously studies stage notes, memorizing every bump and camber change. He possesses an uncanny ability to extract maximum performance from his tires, nursing them through long stages while still maintaining a blistering pace. Under pressure, Darniche becomes even more focused, his calculating mind dissecting the challenge ahead with ruthless efficiency.",
+  "rivalries": [
+    {
+      "driver": "Jean-Pierre Moreau",
+      "reason": "A long-standing feud stemming from a controversial collision at the 1974 Rallye Monte Carlo, where both drivers blamed the other for causing their retirement."
+    },
+    {
+      "driver": "Isabelle 'Izzy' Laurent",
+      "reason": "A fierce on-track rivalry fueled by mutual respect and a constant battle for supremacy in French rallying. Their battles are legendary, often decided by mere seconds."
+    },
+    {
+      "driver": "Ricardo 'El Fuego' Alvarez",
+      "reason": "A clash of styles and personalities. Alvarez, known for his flamboyant showmanship, often clashes with Darniche's more reserved and pragmatic approach."
+    }
+  ],
+  "quirks": [
+    "Always carries a small piece of his father's 2CV dashboard as a good luck charm.",
+    "Refuses to wear any racing suit that isn't dark blue, believing it brings him better fortune.",
+    "Studies weather patterns obsessively before each race, scribbling detailed forecasts into a worn leather notebook."
+  ],
+  "nickname": "Le Calculateur (The Calculator)",
+  "famousQuote": "Racing isn't just about speed; it's about solving a complex equation at 200 kilometers per hour.",
+  "careerHighlight": "Winning the 1976 Tour de Corse in a privately entered Chevrolet, beating the might of the factory-backed teams against all odds.",
+  "careerLowPoint": "Crashing out of the lead on the final stage of the 1975 Tour de Corse due to a mechanical failure, losing a seemingly certain victory."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 45,
+  "gender": "female",
+  "role": "strategist",
+  "bio": "Sophie Dubois discovered her passion for motorsport while studying engineering in Paris. Attending Le Mans as a student ignited a desire to combine her analytical skills with the high-octane world of racing. She began her career as a data analyst for a smaller Formula team, quickly proving her ability to translate complex data into actionable race strategies. Her keen eye for detail and calm demeanor under pressure led to her promotion to race strategist.\n\nSophie's approach to strategy is rooted in meticulous preparation and a deep understanding of the car's capabilities. She excels at identifying opportunities others might miss, often exploiting unexpected weather patterns or competitor weaknesses. Known for her pragmatic decision-making, Sophie is a valuable asset to MP Motorsport, ensuring the team consistently maximizes its performance on the track. She values precision and clarity in her communication, ensuring the driver and pit crew are always aligned with the overall strategy.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight hair usually tied back in a low ponytail to keep it out of her face.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie has a focused gaze and a no-nonsense demeanor, making her presence known in any room."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on drinking Earl Grey tea before every race.",
+    "Tends to tap her pen rhythmically when deep in thought."
+  ]
+}

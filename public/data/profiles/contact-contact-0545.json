@@ -1,0 +1,31 @@
+{
+  "name": "Bronte Callaghan",
+  "nationality": "Australian",
+  "age": 52,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Bronte Callaghan is a name whispered with a mix of respect and resentment in aviation circles. A former RAAF fighter pilot with over 3,000 hours in the air, Bronte transitioned to commercial flying but found it too tame. Now, she runs a high-end private charter service, catering to wealthy clients who demand discretion and speed. Her reputation for meticulous preparation and unflappable composure is well-earned, though her sharp wit often comes across as condescending, especially to those she deems less experienced. \n\nHer connection to the motorsport world is multifaceted. She regularly flies team owners, sponsors, and even drivers to races across the globe, often landing at private airfields near circuits. Many in the racing community appreciate her precision and reliability, qualities that resonate strongly with their own pursuits. Bronte's sophisticated demeanor and love for the finer things in life also make her a regular guest at exclusive paddock club events.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Steel blue",
+    "facialHair": null,
+    "description": "Bronte is of average height, with a lean build honed from years in the military and a dedication to martial arts. Her piercing blue eyes convey a sense of unwavering confidence and quiet observation."
+  },
+  "connectionToMotorsport": "Bronte flies team owners, sponsors and occasionally drivers to various race locations. She also frequents paddock club events, making her a familiar face in the VIP areas.",
+  "meetingContext": "You might encounter Bronte while waiting for a private charter flight to a race, or at a high-end motorsport gala where she is a guest.",
+  "conversationTopics": [
+    "The latest advancements in aviation technology",
+    "Her experiences as a fighter pilot",
+    "The nuances of various Australian craft beers",
+    "The discipline and mental fortitude required for martial arts",
+    "The logistical challenges of coordinating private air travel"
+  ],
+  "canHelp": [
+    "Provide exclusive transportation deals and preferential scheduling for race travel",
+    "Offer introductions to wealthy sponsors and team owners within her clientele",
+    "Share valuable insights into risk assessment and decision-making under pressure, relevant to racing strategy"
+  ],
+  "personality_summary": "A calculating and sophisticated pilot who isn't afraid to let you know she's the best in the sky."
+}

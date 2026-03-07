@@ -7,6 +7,14 @@ import {
   SeriesCategory,
   SERIES_PROFILES
 } from '../../src/data/series-commentary'
+import { getCommentaryEntityState, upsertCommentaryEntityState } from '../db/database'
+import {
+  buildPromptPacket,
+  buildThreadCallbackGuide,
+  buildThreadContinuitySummary,
+  getCoverageHistorySnapshot,
+  setCoverageHistorySnapshot,
+} from './promptPacket'
 
 /**
  * Script Generator
@@ -16,6 +24,64 @@ import {
  * Includes career context for personalized commentary.
  * Features anti-repetition system and energy level awareness.
  */
+
+const PROMPT_MAX_CHARS = 24000
+const COVERAGE_HISTORY_STATE_KEY = 'coverage_lane_history'
+let coverageHistoryLoadedForSeries: string | null = null
+
+function getSeriesCoverageEntityId(context: EventContext): string {
+  return `coverage:${context.seriesName || context.seriesShortName || 'global'}`
+}
+
+function ensureCoverageHistoryLoaded(context: EventContext): void {
+  const entityId = getSeriesCoverageEntityId(context)
+  if (coverageHistoryLoadedForSeries === entityId) return
+
+  const existing = getCommentaryEntityState('series', entityId)
+  if (existing.success && existing.data) {
+    const state = existing.data.find((item) => item.stateKey === COVERAGE_HISTORY_STATE_KEY)
+    if (state && Array.isArray(state.value)) {
+      setCoverageHistorySnapshot(state.value as any)
+    }
+  }
+  coverageHistoryLoadedForSeries = entityId
+}
+
+function persistCoverageHistory(context: EventContext): void {
+  const entityId = getSeriesCoverageEntityId(context)
+  upsertCommentaryEntityState({
+    entityType: 'series',
+    entityId,
+    stateKey: COVERAGE_HISTORY_STATE_KEY,
+    value: getCoverageHistorySnapshot(),
+    roundUpdated: context.currentRound,
+  })
+}
+
+function clampPromptLength(prompt: string): string {
+  if (prompt.length <= PROMPT_MAX_CHARS) return prompt
+  const trimmed = `${prompt.slice(0, PROMPT_MAX_CHARS)}\n\n[Prompt truncated for token safety.]`
+  commentaryLog.error('PROMPT_TRUNCATED', {
+    originalLength: prompt.length,
+    trimmedLength: trimmed.length,
+    maxChars: PROMPT_MAX_CHARS,
+  })
+  return trimmed
+}
+
+function evaluateThreadResolutionQuality(event: CommentaryEvent, script: string): void {
+  if (!['RACE_WIN', 'PODIUM_FINISH', 'RACE_FINISH', 'SESSION_END'].includes(event.type)) return
+  const threads = event.context.narrativeThreads || []
+  if (!threads.length) return
+  const lower = script.toLowerCase()
+  const payoffKeywords = ['payoff', 'finally', 'delivered', 'sealed', 'completed', 'came together',
+    'answered', 'verdict', 'resolved', 'proved', 'statement', 'chapter closes']
+  const cooldownKeywords = ['settled', 'reset', 'regroup', 'pressure off', 'next chapter', 'looking ahead',
+    'wait for', 'next round', 'remains to be seen', 'cliffhanger', 'unfinished business']
+  const hasPayoffSignal = payoffKeywords.some((k) => lower.includes(k))
+  const hasCooldownSignal = cooldownKeywords.some((k) => lower.includes(k))
+  commentaryLog.threadResolutionQuality(event.type, hasPayoffSignal, hasCooldownSignal)
+}
 
 /**
  * Remove any self-references that slip through the AI prompts
@@ -138,11 +204,13 @@ function getSafeDriverName(name: string | undefined, fallback: string = 'the dri
 type NarrativeTheme = 
   | 'TECHNICAL'        // Car health, temps, mechanical
   | 'CAREER'           // Rookie status, age, background story
+  | 'DRIVER_BACKGROUND' // Rich driver lore/background packet
   | 'STANDINGS'        // Championship points, live standings
   | 'RIVALRY'          // Head-to-head with specific drivers
   | 'TRACK'            // Circuit character, weather, venue
   | 'STRATEGY'         // Momentum, deltas, tire management
   | 'EXPECTATION'      // Team tier, over/underachieving
+  | 'TEAM_INFO'        // Team lore/culture/trajectory packet
   | 'PSYCHOLOGY'       // Pressure, mental game, nerves
   | 'TRACK_HISTORY'    // Historical record at this specific track
   | 'RECORD_CHASING'   // Chasing historical records, GOAT progress
@@ -284,14 +352,17 @@ function getTopicForEvent(eventType: CommentaryEventType, context: EventContext)
         const earlyQualiTopics: CommentaryTopic[] = ['PSYCHOLOGY_DRAMA', 'STRATEGY_PIT', 'GENERAL_COLOR']
         return earlyQualiTopics[Math.floor(Math.random() * earlyQualiTopics.length)]
       }
-      // Early Practice - track talk, general color, no performance topics
-      // Only include weather if there's ACTUAL weather to discuss (rain, changing conditions)
+      // Early Practice - varied mix of topics for engaging broadcasts
       const hasActualWeather = (context.rainDensity !== undefined && context.rainDensity > 0) ||
                                (context.weatherCondition && context.weatherCondition !== 'dry')
-      const earlyPracticeTopics: CommentaryTopic[] = hasActualWeather 
-        ? ['GENERAL_COLOR', 'WEATHER_CONDITIONS']
-        : ['GENERAL_COLOR', 'TECHNICAL_CAR', 'MEDIA_PADDOCK']
-      return earlyPracticeTopics[Math.floor(Math.random() * earlyPracticeTopics.length)]
+      const earlyPracticeTopics: CommentaryTopic[] = [
+        'GENERAL_COLOR', 'TECHNICAL_CAR', 'PACE_TREND',
+        'PSYCHOLOGY_DRAMA', 'MEDIA_PADDOCK',
+      ]
+      if (hasActualWeather) earlyPracticeTopics.push('WEATHER_CONDITIONS')
+      const filtered = earlyPracticeTopics.filter(t => !recentTopics.slice(-4).includes(t))
+      const pool = filtered.length >= 2 ? filtered : earlyPracticeTopics
+      return pool[Math.floor(Math.random() * pool.length)]
     }
     
     // LATE SESSION - Build tension, championship implications
@@ -345,18 +416,20 @@ function getTopicForEvent(eventType: CommentaryEventType, context: EventContext)
       return 'PSYCHOLOGY_DRAMA'
     }
     
-    // Priority 5: Clear air / stable running - mix it up
+    // Priority 5: Clear air / stable running - wide variety
     const stableTopics: CommentaryTopic[] = [
       'PACE_TREND',        // Talk about consistency, lap times
       'GENERAL_COLOR',     // General observations
-      'STANDINGS_POINTS',  // Championship context (if relevant)
+      'TECHNICAL_CAR',     // Car performance
+      'PSYCHOLOGY_DRAMA',  // Driver mindset
+      'MEDIA_PADDOCK',     // Paddock stories
     ]
-    // Add championship talk if in contention
     if (context.championshipPosition && context.championshipPosition <= 5) {
       stableTopics.push('STANDINGS_POINTS')
     }
-    
-    return stableTopics[Math.floor(Math.random() * stableTopics.length)]
+    const stableFiltered = stableTopics.filter(t => !recentTopics.slice(-4).includes(t))
+    const stablePool = stableFiltered.length >= 2 ? stableFiltered : stableTopics
+    return stablePool[Math.floor(Math.random() * stablePool.length)]
   }
 
   return 'GENERAL_COLOR'
@@ -781,6 +854,13 @@ function buildFinishPrompt(
     prompt += '\n\nSTORY CALLBACKS (weave these in naturally if they fit):\n'
     prompt += callbacks.map(c => `- ${c}`).join('\n')
     prompt += '\n\nMake the finish commentary tell the STORY of the race - not just the result!'
+  }
+
+  const finishEventType: CommentaryEventType =
+    type === 'win' ? 'RACE_WIN' : type === 'podium' ? 'PODIUM_FINISH' : 'RACE_FINISH'
+  const threadGuide = buildThreadCallbackGuide(finishEventType, context, 3)
+  if (threadGuide) {
+    prompt += `\n\n${threadGuide}`
   }
   
   return prompt
@@ -1463,6 +1543,37 @@ export function trackRecentLine(line: string): void {
 }
 
 /**
+ * Trigram overlap check — returns true if the candidate is too similar to any recent line.
+ * Prevents verbatim or near-verbatim repeats that sound unnatural on broadcast.
+ */
+function isTooSimilarToRecent(candidate: string, threshold = 0.45): boolean {
+  if (recentLines.length === 0) return false
+  const candidateTrigrams = extractTrigrams(candidate)
+  if (candidateTrigrams.size === 0) return false
+
+  for (const recent of recentLines.slice(-15)) {
+    const recentTrigrams = extractTrigrams(recent)
+    if (recentTrigrams.size === 0) continue
+    let overlap = 0
+    for (const tri of candidateTrigrams) {
+      if (recentTrigrams.has(tri)) overlap++
+    }
+    const similarity = overlap / Math.min(candidateTrigrams.size, recentTrigrams.size)
+    if (similarity >= threshold) return true
+  }
+  return false
+}
+
+function extractTrigrams(text: string): Set<string> {
+  const words = text.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/).filter(w => w.length > 2)
+  const trigrams = new Set<string>()
+  for (let i = 0; i <= words.length - 3; i++) {
+    trigrams.add(`${words[i]} ${words[i + 1]} ${words[i + 2]}`)
+  }
+  return trigrams
+}
+
+/**
  * Clear recent lines and theme history (e.g., on session change)
  */
 export function clearRecentLines(): void {
@@ -1643,6 +1754,7 @@ ${antiRepetition}${recentTopicList}`
   // ===== 8-THEME CONTEXT ROTATION =====
   // Select ONE narrative theme to focus on - prevents repetitive mentions
   const selectedTheme = selectNarrativeTheme(type, context)
+  const promptPacket = buildPromptPacket(type, context, { theme: selectedTheme, topic: topicForThisLine })
   
   // Log context fields being used
   const usedContextFields: string[] = []
@@ -1668,13 +1780,31 @@ ${antiRepetition}${recentTopicList}`
   if (context.broadcastPhase) contextDetails.push(`phase=${context.broadcastPhase}`)
   
   // Career/narrative context
-  if (context.careerWins) contextDetails.push('careerData')
+  if (context.totalWins !== undefined) contextDetails.push('careerData')
   if (context.teamSatisfactionStatus) contextDetails.push('teamPressure')
   if (context.sponsorPressureLevel) contextDetails.push('sponsorPressure')
   if (context.recentPressClippings?.length) contextDetails.push('mediaHeadlines')
+  if (context.narrativeThreads && context.narrativeThreads.length > 0) contextDetails.push(`threads=${context.narrativeThreads.length}`)
+  if (promptPacket.coverageLane) contextDetails.push(`coverage=${promptPacket.coverageLane}`)
+  if (promptPacket.coverageTarget) contextDetails.push(`coverageTarget=${promptPacket.coverageTarget}`)
   
   if (contextDetails.length > 0) {
     commentaryLog.contextUsed(contextDetails, { eventType: type, theme: selectedTheme })
+  }
+  commentaryLog.coverageLaneSelected(promptPacket.coverageLane, promptPacket.coverageTarget)
+  commentaryLog.threadCallbackGuide({
+    eventType: type,
+    hasGuide: promptPacket.threadTelemetry.hasGuide,
+    activeStates: promptPacket.threadTelemetry.activeStates,
+    stateCounts: promptPacket.threadTelemetry.stateCounts,
+    finishResolutionRule: promptPacket.threadTelemetry.finishResolutionRule,
+  })
+  if (promptPacket.threadTelemetry.finishResolutionRule) {
+    commentaryLog.threadResolutionRule(
+      type,
+      promptPacket.threadTelemetry.activePayoff,
+      promptPacket.threadTelemetry.activeCooldown
+    )
   }
   
   // ===== SESSION CONTEXT (CRITICAL - tells AI what session type this is) =====
@@ -1806,6 +1936,15 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
       contextStr += narrativeStr
     }
   }
+
+  // Persisted cross-race continuity threads from commentary memory.
+  const threadSummary = buildThreadContinuitySummary(context)
+  if (threadSummary) {
+    contextStr += `\n${threadSummary}\n`
+  }
+
+  // Relevance-layer packet keeps the model focused on live-appropriate context.
+  contextStr += `\n${promptPacket.packet}`
   
   // Reputation summary (brief, only for narrative modes)
   if (lengthConfig.mode !== 'quick' && context.reputation !== undefined) {
@@ -1840,15 +1979,20 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
       driversToInclude.forEach(d => {
         contextStr += `\n  * ${d.name}`
         if (d.nationality) contextStr += ` (${d.nationality})`
-        if (d.careerStage === 'rising_star') contextStr += ` - Rising star`
+        if (d.nickname) contextStr += ` "${d.nickname}"`
+        if (d.careerStage === 'rising') contextStr += ` - Rising star`
         else if (d.careerStage === 'veteran') contextStr += ` - Veteran campaigner`
-        if (d.styleDescription) contextStr += `: ${d.styleDescription}`
+        else if (d.careerStage === 'peak') contextStr += ` - In their prime`
+        if (d.drivingStyle) contextStr += ` | Style: ${d.drivingStyle}`
         if (d.championships && d.championships > 0) contextStr += ` | ${d.championships}x champion`
-        if (d.realDriverInfo?.knownFor) contextStr += ` | Known for: ${d.realDriverInfo.knownFor}`
-        // Add ONE random anecdote if available
-        if (d.anecdotes && d.anecdotes.length > 0) {
-          const randomAnecdote = d.anecdotes[Math.floor(Math.random() * d.anecdotes.length)]
-          contextStr += `\n    Anecdote: "${randomAnecdote}"`
+        if (d.careerHighlight) contextStr += `\n    Career highlight: ${d.careerHighlight}`
+        if (d.famousQuote) contextStr += `\n    Quote: "${d.famousQuote}"`
+        if (d.quirks && d.quirks.length > 0) {
+          const randomQuirk = d.quirks[Math.floor(Math.random() * d.quirks.length)]
+          contextStr += `\n    Fun fact: ${randomQuirk}`
+        }
+        if (d.rivalries && d.rivalries.length > 0) {
+          contextStr += `\n    Rivalries: ${d.rivalries.slice(0, 2).join(', ')}`
         }
       })
     }
@@ -1865,14 +2009,13 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
       contextStr += `\n- OTHER TEAMS ON GRID (use for diverse commentary):`
       shuffledTeams.forEach(t => {
         contextStr += `\n  * ${t.name}`
-        if (t.culturalIdentity) contextStr += ` - ${t.culturalIdentity}`
-        if (t.titleCount && t.titleCount > 0) contextStr += ` | ${t.titleCount}x champions`
-        if (t.currentTrajectory) contextStr += ` | ${t.currentTrajectory}`
-        // Add ONE random anecdote if available
-        if (t.anecdotes && t.anecdotes.length > 0) {
-          const randomAnecdote = t.anecdotes[Math.floor(Math.random() * t.anecdotes.length)]
-          contextStr += `\n    Anecdote: "${randomAnecdote}"`
+        if (t.reputation) contextStr += ` - ${t.reputation}`
+        if (t.teamPrincipal) contextStr += ` | Boss: ${t.teamPrincipal}`
+        if (t.headquarters) contextStr += ` | Based: ${t.headquarters}`
+        if (t.achievements && t.achievements.length > 0) {
+          contextStr += `\n    Achievement: ${t.achievements[0]}`
         }
+        if (t.fanBase) contextStr += `\n    Fans: ${t.fanBase}`
       })
     }
   }
@@ -1889,7 +2032,7 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
     : ''
   
   // Event-specific prompts
-  const eventPrompts: Record<CommentaryEventType, string> = {
+  const eventPrompts: Partial<Record<CommentaryEventType, string>> = {
     // Race events
     RACE_START: `RACE START ${trackDesc}! The lights have gone out! Generate exciting "lights out and away we go" style opening. Mention the track name (${context.trackName}) and starting position P${context.playerPosition}.`,
     
@@ -2143,7 +2286,7 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
             // Early/mid qualifying - observations
             randomDriver ? `${randomDriver.name} has put in a solid banker lap! ${randomDriver.drivingStyle ? `That ${randomDriver.drivingStyle} approach` : 'Smart'} - get a time on the board, then improve.` : `Banker laps going in across the field. Get a time, build confidence, then push.`,
             randomDriver ? `Interesting strategy from ${randomDriver.name}! They're ${Math.random() > 0.5 ? 'sitting in the garage, waiting for track evolution' : 'out early, getting laps in'}. Different approaches to the same problem.` : `Different teams, different strategies. Some out early, some waiting. Who's got it right?`,
-            randomTeam ? `The ${randomTeam.name} car looked mighty quick on that run! ${randomTeam.technicalReputation || 'They\'ve clearly found something.'} One to watch for pole!` : `Some cars looking seriously quick! The grid is taking shape.`,
+            randomTeam ? `The ${randomTeam.name} car looked mighty quick on that run! ${randomTeam.reputation || 'They\'ve clearly found something.'} One to watch for pole!` : `Some cars looking seriously quick! The grid is taking shape.`,
             `The qualifying order is starting to form. Watch who's sandbagging, who's showing their hand early...`,
           ]
           return otherDriverQualiPrompts[Math.floor(Math.random() * otherDriverQualiPrompts.length)]
@@ -2204,11 +2347,11 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
             randomDriver ? `${randomDriver.name} is looking really sharp out there! ${randomDriver.drivingStyle ? `That ${randomDriver.drivingStyle} style` : 'Their approach'} seems to suit this circuit. One to watch this weekend!` : `Someone's found some pace out there! A quick lap from one of the field - they're looking confident.`,
             randomDriver ? `Interesting to see ${randomDriver.name} exploring different lines through that section. ${randomDriver.careerStage === 'veteran' ? 'Experience showing there.' : 'Learning the track quickly.'}` : `Different approaches to that corner complex - some going wide, some hugging the apex.`,
             // Team observations
-            randomTeam ? `The ${randomTeam.name} car looks well planted. ${randomTeam.technicalReputation || 'They know what they\'re doing.'} Could be a strong weekend for them.` : `Some teams looking more settled than others early on. The setup work begins in earnest.`,
+            randomTeam ? `The ${randomTeam.name} car looks well planted. ${randomTeam.reputation || 'They know what they\'re doing.'} Could be a strong weekend for them.` : `Some teams looking more settled than others early on. The setup work begins in earnest.`,
             randomTeam ? `${randomTeam.name} - ${randomTeam.origin || 'a well-established outfit'}. ${randomTeam.philosophy || 'They always bring competitive machinery.'} Let's see what they've got this weekend.` : `Teams spreading out on track, each doing their own program. The data gathering is crucial.`,
             // Driver backgrounds
-            randomDriver?.anecdotes?.[0] ? `Did you know about ${randomDriver.name}? ${randomDriver.anecdotes[0]}` : `Great to see such a diverse grid assembled here. Experience mixing with youth, proven winners with hungry newcomers.`,
-            randomDriver?.breakoutMoment ? `${randomDriver.name} - remember when ${randomDriver.breakoutMoment}? That's the kind of driver they are. Determined.` : `Some serious talent in this paddock. Every session is a statement.`,
+            randomDriver?.quirks?.[0] ? `Did you know about ${randomDriver.name}? ${randomDriver.quirks[0]}` : `Great to see such a diverse grid assembled here. Experience mixing with youth, proven winners with hungry newcomers.`,
+            randomDriver?.careerHighlight ? `${randomDriver.name} - remember when ${randomDriver.careerHighlight}? That's the kind of driver they are. Determined.` : `Some serious talent in this paddock. Every session is a statement.`,
             // Comparisons
             `The gap between the quick runners is already appearing. Watch how the different teams approach this circuit - some aggressive, some conservative.`,
             `Battles will form later, but you can already see who's comfortable. Some cars dancing through the corners, others looking for grip.`,
@@ -2282,16 +2425,16 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
         // Actually USE the narrative data we have about other drivers!
         const driverInfo: string[] = []
         if (randomOtherDriver.nationality) driverInfo.push(`${randomOtherDriver.nationality}`)
-        if (randomOtherDriver.careerStage === 'rising_star') driverInfo.push('rising star')
+        if (randomOtherDriver.careerStage === 'rising') driverInfo.push('rising star')
         if (randomOtherDriver.careerStage === 'veteran') driverInfo.push('veteran campaigner')
         if (randomOtherDriver.championships && randomOtherDriver.championships > 0) driverInfo.push(`${randomOtherDriver.championships}x champion`)
         
         const prompts = [
-          randomOtherDriver.styleDescription 
-            ? `Keep an eye on ${randomOtherDriver.name} out there! ${randomOtherDriver.styleDescription}. Watch how they attack this track!`
+          randomOtherDriver.drivingStyle 
+            ? `Keep an eye on ${randomOtherDriver.name} out there! ${randomOtherDriver.drivingStyle}. Watch how they attack this track!`
             : `${randomOtherDriver.name} is having a busy session! Tell us about their approach to this circuit.`,
-          randomOtherDriver.anecdotes?.[0]
-            ? `Interesting fact about ${randomOtherDriver.name}: ${randomOtherDriver.anecdotes[0]} - That's the kind of driver they are!`
+          randomOtherDriver.quirks?.[0]
+            ? `Interesting fact about ${randomOtherDriver.name}: ${randomOtherDriver.quirks[0]} - That's the kind of driver they are!`
             : `${randomOtherDriver.name} is a fascinating driver to watch. Comment on their racing style.`,
           driverInfo.length > 0
             ? `${randomOtherDriver.name} - ${driverInfo.join(', ')}. One of the more interesting drivers in this field!`
@@ -2353,26 +2496,19 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
         : null
       
       if (focusMode === 'other-drivers' && randomOtherTeam) {
-        // Talk about another team from the grid!
         const teamInfo: string[] = []
         if (randomOtherTeam.origin) teamInfo.push(randomOtherTeam.origin)
         if (randomOtherTeam.philosophy) teamInfo.push(randomOtherTeam.philosophy)
-        if (randomOtherTeam.titleCount && randomOtherTeam.titleCount > 0) {
-          teamInfo.push(`${randomOtherTeam.titleCount}x championship winners`)
+        if (randomOtherTeam.teamPrincipal) teamInfo.push(`Run by ${randomOtherTeam.teamPrincipal}`)
+        if (randomOtherTeam.headquarters) teamInfo.push(`Based in ${randomOtherTeam.headquarters}`)
+        if (randomOtherTeam.achievements && randomOtherTeam.achievements.length > 0) {
+          teamInfo.push(randomOtherTeam.achievements[0])
         }
-        if (randomOtherTeam.famousAlumni && randomOtherTeam.famousAlumni.length > 0) {
-          teamInfo.push(`Launched careers of ${randomOtherTeam.famousAlumni.slice(0, 2).join(' and ')}`)
-        }
-        if (randomOtherTeam.currentTrajectory) teamInfo.push(randomOtherTeam.currentTrajectory)
-        
-        const anecdote = randomOtherTeam.anecdotes?.length 
-          ? randomOtherTeam.anecdotes[Math.floor(Math.random() * randomOtherTeam.anecdotes.length)]
-          : null
         
         const prompts = [
-          `Let's talk about ${randomOtherTeam.name}! ${teamInfo.slice(0, 2).join('. ')}. Tell us about this team.${anecdote ? ` Did you know: ${anecdote}` : ''}`,
-          `${randomOtherTeam.name} - ${randomOtherTeam.culturalIdentity || 'a fascinating outfit'}. ${randomOtherTeam.technicalReputation || 'Building their program'}.`,
-          `Eyes on ${randomOtherTeam.name} today! ${randomOtherTeam.recentForm || 'Competitive season so far'}. ${randomOtherTeam.paddockStanding || 'Respected in the paddock'}.`,
+          `Let's talk about ${randomOtherTeam.name}! ${teamInfo.slice(0, 2).join('. ')}. Tell us about this team.`,
+          `${randomOtherTeam.name} - ${randomOtherTeam.reputation || 'a fascinating outfit'}. ${randomOtherTeam.philosophy || 'Building their program'}.`,
+          `Eyes on ${randomOtherTeam.name} today! ${randomOtherTeam.fanBase || 'Great support behind them'}. ${randomOtherTeam.reputation || 'Respected in the paddock'}.`,
         ]
         return prompts[Math.floor(Math.random() * prompts.length)]
       }
@@ -2477,9 +2613,10 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
         
         if (randomDriver) {
           const info: string[] = []
-          if (randomDriver.origin) info.push(randomDriver.origin)
-          if (randomDriver.breakoutMoment) info.push(`Breakout moment: ${randomDriver.breakoutMoment}`)
-          if (randomDriver.anecdotes?.length) info.push(randomDriver.anecdotes[0])
+          if (randomDriver.biography) info.push(randomDriver.biography.split('.').slice(0, 2).join('.') + '.')
+          if (randomDriver.careerHighlight) info.push(`Career highlight: ${randomDriver.careerHighlight}`)
+          if (randomDriver.quirks?.length) info.push(randomDriver.quirks[0])
+          if (randomDriver.famousQuote) info.push(`They once said: "${randomDriver.famousQuote}"`)
           
           return `Tell us about ${randomDriver.name}! ${info.slice(0, 2).join(' ')} Share a fact or observation about this driver.`
         }
@@ -2507,7 +2644,16 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
     // ===== PRACTICE/QUALIFYING SPECIFIC (NEW) =====
     OTHER_DRIVER_HOTLAP: `One of the other ${context.carClass || ''} runners has just improved their time ${trackDesc}! The competition is heating up. Brief observation about the competitive field.`,
     
-    TRACK_EVOLUTION: `The track is coming to us now ${trackDesc}. Times dropping across the board as more rubber goes down. Comment on improving conditions.`,
+    TRACK_EVOLUTION: (() => {
+      const variants = [
+        `The track is really coming alive now ${trackDesc}. More rubber going down, grip levels rising — everyone gaining confidence.`,
+        `Lap times tumbling across the board ${trackDesc} — the surface evolution is in full swing. This is when the real pace emerges.`,
+        `You can see the track surface improving ${trackDesc}. Drivers pushing harder now the grip's coming to them.`,
+        `${trackDesc} — the circuit's maturing nicely. Track temperatures up, rubber embedded, and the times are reflecting that.`,
+        `Interesting phase of the session ${trackDesc} — track evolution meaning everyone's finding time, but not everyone equally.`,
+      ]
+      return variants[Math.floor(Math.random() * variants.length)]
+    })(),
     
     SECTOR_COMPARISON: `${context.playerName} looking ${Math.random() < 0.5 ? 'strong' : 'competitive'} through sector ${context.sectorNumber || '1'} ${trackDesc}. Brief sector-specific observation.`,
     
@@ -2541,7 +2687,7 @@ PRODUCER'S NOTES (Live Briefing - do NOT list these as variables!):
           : null
         
         if (randomDriver) {
-          const styleNote = randomDriver.styleDescription || randomDriver.drivingStyle
+          const styleNote = randomDriver.drivingStyle
           return `Eyes on ${randomDriver.name} out there at ${context.trackName}. ${styleNote ? `Known for being ${styleNote}.` : ''} Brief observation about their approach through this section.`
         }
         
@@ -2603,22 +2749,22 @@ Keep it grounded in what the telemetry shows.`
         // 60% chance to pick a driver, 40% chance to pick a team
         if (Math.random() < 0.6 && otherDrivers.length > 0) {
           const randomDriver = otherDrivers[Math.floor(Math.random() * otherDrivers.length)]
-          const anecdote = randomDriver.anecdotes?.length 
-            ? randomDriver.anecdotes[Math.floor(Math.random() * randomDriver.anecdotes.length)]
+          const quirk = randomDriver.quirks?.length 
+            ? randomDriver.quirks[Math.floor(Math.random() * randomDriver.quirks.length)]
             : null
           
-          if (anecdote) {
-            return `Did you know about ${randomDriver.name}? ${anecdote} Share this interesting fact about the driver.`
+          if (quirk) {
+            return `Did you know about ${randomDriver.name}? ${quirk} Share this interesting fact about the driver.`
           }
-          return `Let's talk about ${randomDriver.name}! ${randomDriver.breakoutMoment || randomDriver.origin || 'An interesting character in this paddock'}. Brief driver trivia.`
+          if (randomDriver.famousQuote) {
+            return `${randomDriver.name} once said: "${randomDriver.famousQuote}". Tell us more about this driver's character!`
+          }
+          return `Let's talk about ${randomDriver.name}! ${randomDriver.careerHighlight || randomDriver.nickname || 'An interesting character in this paddock'}. Brief driver trivia.`
         } else if (otherTeams.length > 0) {
           const randomTeam = otherTeams[Math.floor(Math.random() * otherTeams.length)]
-          const anecdote = randomTeam.anecdotes?.length 
-            ? randomTeam.anecdotes[Math.floor(Math.random() * randomTeam.anecdotes.length)]
-            : null
           
-          if (anecdote) {
-            return `Here's a fun fact about ${randomTeam.name}: ${anecdote} Share this team trivia!`
+          if (randomTeam.teamPrincipal) {
+            return `Here's a fun fact about ${randomTeam.name}: Led by ${randomTeam.teamPrincipal}, ${randomTeam.reputation || 'a fascinating outfit'}. Share this team trivia!`
           }
           return `Did you know ${randomTeam.name}? ${randomTeam.origin || randomTeam.philosophy || 'An interesting team'}. Brief team trivia.`
         }
@@ -2863,6 +3009,7 @@ export async function generateCommentary(
   }
   
   // Calculate energy level for this event
+  ensureCoverageHistoryLoaded(event.context)
   const energyLevel = calculateEnergyLevel(event.context)
   
   // Log energy level decision
@@ -2872,7 +3019,8 @@ export async function generateCommentary(
     'standard racing'
   commentaryLog.energyLevel(energyLevel, energyReason)
   
-  const prompt = buildPrompt(event, energyLevel)
+  const prompt = clampPromptLength(buildPrompt(event, energyLevel))
+  persistCoverageHistory(event.context)
   
   // Dynamic temperature based on energy level and randomness
   const baseTemp = {
@@ -2944,13 +3092,16 @@ export async function generateCommentary(
       return getFallbackLine(event.type)
     }
     
-    // Clean up any quotes that might have been added and remove self-references
     let cleanScript = script.replace(/^["']|["']$/g, '')
     cleanScript = removeSelfReferences(cleanScript)
     
-    // Track this line for anti-repetition
+    if (isTooSimilarToRecent(cleanScript)) {
+      console.log(`[ScriptGenerator] Rejected near-duplicate line: "${cleanScript.slice(0, 60)}..."`)
+      return getFallbackLine(event.type)
+    }
     trackRecentLine(cleanScript)
     trackRecentTopic(getTopicForEvent(event.type, event.context))
+    evaluateThreadResolutionQuality(event, cleanScript)
     
     console.log(`[ScriptGenerator] Final script (${cleanScript.length} chars): "${cleanScript}"`)
     commentaryLog.scriptGenerated('Lead', cleanScript.length)
@@ -2979,8 +3130,10 @@ export async function generateCommentaryStream(
     return fallback
   }
 
+  ensureCoverageHistoryLoaded(event.context)
   const energyLevel = calculateEnergyLevel(event.context)
-  const prompt = buildPrompt(event, energyLevel)
+  const prompt = clampPromptLength(buildPrompt(event, energyLevel))
+  persistCoverageHistory(event.context)
   const baseTemp = { calm: 0.7, building: 0.8, intense: 0.9, celebration: 0.95 }[energyLevel]
   const temperature = Math.min(1.0, baseTemp + (Math.random() * 0.1))
   const systemPrompt = CROFTY_SYSTEM_PROMPTS[Math.floor(Math.random() * CROFTY_SYSTEM_PROMPTS.length)]
@@ -3011,6 +3164,11 @@ export async function generateCommentaryStream(
 
     if (!response.ok || !response.body) {
       console.error('[ScriptGenerator] Stream request failed:', response.status)
+      commentaryLog.error('LEAD_STREAM_REQUEST_FAILED', {
+        status: response.status,
+        statusText: response.statusText,
+        eventType: event.type,
+      })
       const fallback = getFallbackLine(event.type)
       onFragment(fallback)
       return fallback
@@ -3069,12 +3227,22 @@ export async function generateCommentaryStream(
 
     let cleanFull = fullScript.trim().replace(/^["']|["']$/g, '')
     cleanFull = removeSelfReferences(cleanFull)
+    if (isTooSimilarToRecent(cleanFull)) {
+      console.log(`[ScriptGenerator] Rejected near-duplicate streamed line: "${cleanFull.slice(0, 60)}..."`)
+      return ''
+    }
     trackRecentLine(cleanFull)
     trackRecentTopic(getTopicForEvent(event.type, event.context))
+    evaluateThreadResolutionQuality(event, cleanFull)
+    commentaryLog.scriptGenerated('Lead (stream)', cleanFull.length)
     return cleanFull
 
   } catch (error) {
     console.error('[ScriptGenerator] Stream error:', error)
+    commentaryLog.error('LEAD_STREAM_ERROR', {
+      eventType: event.type,
+      message: (error as Error)?.message || String(error),
+    })
     const fallback = getFallbackLine(event.type)
     onFragment(fallback)
     return fallback
@@ -3103,6 +3271,8 @@ export async function generateCoCommentaryStream(
   const ryanAntiRepetition = recentLines.length > 0 ? `\nAVOID phrases similar to: ${recentLines.slice(-3).join(', ')}` : ''
   const shuffledPhrases = [...VICKY_CO_CATCHPHRASES].sort(() => Math.random() - 0.5).slice(0, 4)
   const ryanLength = getRyanResponseLength(leadScript, type)
+  const threadSummary = buildThreadContinuitySummary(context)
+  const threadCallbacks = buildThreadCallbackGuide(type, context, 2)
   const ryanTemp = Math.min(1.0, 0.8 + (Math.random() * 0.15))
   const systemPrompt = VICKY_CO_SYSTEM_PROMPTS[Math.floor(Math.random() * VICKY_CO_SYSTEM_PROMPTS.length)]
 
@@ -3114,6 +3284,9 @@ ${shouldDisagree ? 'BANTER MODE: Offer an alternative perspective or playful cou
 ENERGY: ${energyLevel.toUpperCase()}
 CONTEXT: ${context.playerName}, P${context.playerPosition}, ${context.trackName}
 DATA RULES: Never invent driver names. If Crofty mentioned a suspicious name (looks like a team/manufacturer), don't repeat it - use "that driver" instead.
+THREAD CONTINUITY:
+${threadSummary || '- No active long-term threads available right now.'}
+${threadCallbacks || ''}
 ${ryanAntiRepetition}
 PHRASES: ${shuffledPhrases.join(' / ')}
 GENERATE: Response. No quotes.`
@@ -3143,6 +3316,11 @@ GENERATE: Response. No quotes.`
     })
 
     if (!response.ok || !response.body) {
+      commentaryLog.error('CO_STREAM_REQUEST_FAILED', {
+        status: response.status,
+        statusText: response.statusText,
+        eventType: event.type,
+      })
       const fallback = getCoFallbackLine(event.type)
       onFragment(fallback)
       return fallback
@@ -3197,11 +3375,20 @@ GENERATE: Response. No quotes.`
 
     let cleanFull = fullScript.trim().replace(/^["']|["']$/g, '')
     cleanFull = removeSelfReferences(cleanFull)
+    if (isTooSimilarToRecent(cleanFull)) {
+      console.log(`[ScriptGenerator] Rejected near-duplicate co-commentary: "${cleanFull.slice(0, 60)}..."`)
+      return ''
+    }
     trackRecentLine(cleanFull)
+    commentaryLog.scriptGenerated('Co (stream)', cleanFull.length)
     return cleanFull
 
   } catch (error) {
     console.error('[ScriptGenerator] Vicky co-commentator stream error:', error)
+    commentaryLog.error('CO_STREAM_ERROR', {
+      eventType: event.type,
+      message: (error as Error)?.message || String(error),
+    })
     const fallback = getCoFallbackLine(event.type)
     onFragment(fallback)
     return fallback
@@ -3359,6 +3546,8 @@ export async function generateCoCommentaryResponse(
   
   // Get variable response length based on what Crofty said
   const ryanLength = getRyanResponseLength(leadScript, type)
+  const threadSummary = buildThreadContinuitySummary(context)
+  const threadCallbacks = buildThreadCallbackGuide(type, context, 2)
 
   const prompt = `You are Vicky, a professional and articulate British female co-commentator.
 
@@ -3387,6 +3576,8 @@ QUICK CONTEXT:
 ${context.gapAhead ? `- ${context.gapAhead.toFixed(1)}s to car ahead` : ''}
 ${context.lastRaceResult ? `- Last race: P${context.lastRaceResult}` : ''}
 ${context.currentStreak ? `- Form: ${context.currentStreak}` : ''}
+${threadSummary ? threadSummary.trim() : '- SEASON CONTINUITY THREADS: none active'}
+${threadCallbacks || ''}
 ${ryanAntiRepetition}
 
 DATA ACCURACY: Never invent driver names. If Crofty mentioned a name that sounds like a team or manufacturer, don't repeat it - use "that driver" or "the car ahead" instead.

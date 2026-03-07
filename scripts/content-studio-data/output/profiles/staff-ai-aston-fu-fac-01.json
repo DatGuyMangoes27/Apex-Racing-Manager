@@ -1,0 +1,22 @@
+{
+  "name": "Dmitri Volkov",
+  "nationality": "Russian",
+  "age": 34,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Dmitri's path to motorsport was unconventional, beginning with a degree in applied mathematics and a fascination with complex systems. He cut his teeth analyzing financial market trends before realizing his analytical skills could be applied to the high-stakes world of racing. He joined a smaller Formula 3 team, quickly proving his worth by developing predictive models that improved race strategy. \n\nNow at Aston Martin, Dmitri excels at sifting through vast datasets to identify marginal gains. His approach is highly pragmatic; he focuses on actionable insights rather than theoretical perfection. He's known for his ability to translate complex data into easily understandable recommendations for the engineering and strategy teams. Dmitri's meticulous nature and experience with real-world applications make him a valuable asset, bridging the gap between data and performance on the track.\n\nBeyond the numbers, Dmitri has a quiet passion for karting, often spending weekends at local tracks honing his own driving skills, providing him with a driver's insight into the data he analyzes.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted on the side",
+    "eyeColor": "hazel",
+    "facialHair": "short, trimmed beard",
+    "description": "Dmitri has a serious demeanor and a focused gaze, reflecting his analytical mind."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Drinks copious amounts of black tea throughout the day."
+  ]
+}

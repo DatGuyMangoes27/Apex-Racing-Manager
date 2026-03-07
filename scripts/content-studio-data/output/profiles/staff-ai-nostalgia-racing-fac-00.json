@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas Mendoza",
+  "nationality": "Peruvian",
+  "age": 27,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Mateo's journey into motorsport began unconventionally, sparked by a childhood fascination with flight simulators rather than racing itself. He earned a degree in aerospace engineering from the Universidad Nacional de Ingeniería, quickly realizing his passion lay in applying simulation technology to improve performance in high-pressure environments. His initial work focused on optimizing aerodynamic models, but he soon transitioned to the world of racing, drawn by the immediate feedback loop and the tangible impact of his work. \n\nAt Nostalgia Racing, Mateo meticulously crafts simulations to prepare drivers for every track, weather condition, and race scenario. He believes in a holistic approach, integrating driver feedback, telemetry data, and cutting-edge software to create a truly immersive and informative experience. His dedication to bridging the gap between virtual and real-world racing sets him apart, constantly pushing the boundaries of what's possible within the team's simulator program. \n\nMateo's innovative approach to simulator engineering, coupled with his sharp analytical skills and unwavering commitment to precision, makes him an invaluable asset to Nostalgia Racing. He's not just building simulations; he's crafting a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "He has a focused gaze and a slender build, often seen sporting a headset in the simulator room."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with equations and circuit diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to work in near-total darkness to better simulate race conditions."
+  ]
+}

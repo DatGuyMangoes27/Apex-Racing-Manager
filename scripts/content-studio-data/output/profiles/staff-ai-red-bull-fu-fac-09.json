@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 24,
+  "gender": "female",
+  "role": "paint_shop_specialist",
+  "bio": "Valentina's passion for motorsport ignited during her childhood in Buenos Aires, watching Turismo Carretera races with her grandfather. She pursued a degree in automotive engineering, specializing in materials science and surface coatings. After graduating, she honed her skills at a local auto body shop before earning a coveted position at Red Bull Racing. Valentina is known for her meticulous attention to detail and her relentless pursuit of perfection in paint application, ensuring that every car leaves the shop with a flawless finish. She is also known for her innovative approach to paint techniques, always seeking ways to improve the aerodynamics and aesthetic appeal of the race cars.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair pulled back into a high ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is a petite woman with a focused gaze and a determined expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears gloves, even when not working with paint.",
+    "Has a collection of miniature race cars on her desk.",
+    "Obsessively cleans her workspace at the end of each day."
+  ]
+}

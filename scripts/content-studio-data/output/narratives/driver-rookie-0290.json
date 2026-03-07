@@ -1,0 +1,27 @@
+{
+  "biography": "Kimi Martin hails from a small coastal town in Denmark, where the roar of engines from local karting tracks was the soundtrack to her childhood. Unlike many racers groomed from a young age, Kimi's entry into motorsport was almost accidental. At 14, while tagging along with a friend to a karting event, she impulsively entered a novice race and, to everyone's surprise, won. The thrill of speed and the raw competition ignited a passion she never knew existed. Lacking the financial backing of established racing families, Kimi's journey has been a constant uphill battle, piecing together sponsorships and relying on sheer talent. A defining moment came in the Formula Nordic series, where, despite driving an underpowered car, she secured multiple podium finishes, showcasing her exceptional car control in wet conditions. Currently, Kimi is making waves in the Formula Regional European Championship, consistently outperforming expectations with an independent team, proving that passion and skill can overcome significant obstacles. However, her inconsistency often leaves her team and fans frustrated, as brilliance is frequently followed by unforced errors.",
+  "drivingStyle": "Kimi's driving style is a fascinating blend of aggression and finesse. She's known for her late-braking maneuvers and daring overtakes, often pushing the limits of the car and track. While undeniably quick, her aggressive style also leads to tire degradation, forcing her to manage races carefully in the latter stages. In high-pressure situations, Kimi tends to become either exceptionally brilliant or self-destructively reckless, highlighting the inconsistent nature that defines her career so far. Her car control, especially in adverse weather, is exceptional, allowing her to extract maximum performance when others struggle.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "A bitter rivalry sparked in Formula Nordic after a controversial collision that cost Kimi a championship win. The two have traded barbs and aggressive moves on track ever since."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "Isabelle, driving for a factory-backed team, represents everything Kimi has to fight against: wealth and privilege. Their battles are often seen as a symbolic clash between the establishment and the underdog."
+    },
+    {
+      "driver": "Javier Hernandez",
+      "reason": "Javier is a methodical and consistent driver, the antithesis of Kimi's impulsive style. Their contrasting approaches often lead to intense strategic battles on track, with Javier usually edging ahead in the long run."
+    }
+  ],
+  "quirks": [
+    "Always wears the same worn-out lucky bracelet her grandmother gave her before every race.",
+    "Listens to a specific Danish punk rock song precisely three times before getting into the car.",
+    "Refuses to look at the weather forecast before a race, believing it jinxes her performance."
+  ],
+  "nickname": "The Viking Tempest",
+  "famousQuote": "\"Racing isn't about being perfect; it's about being fearless enough to make mistakes.\"",
+  "careerHighlight": "Winning the Formula Nordic race at Mantorp Park in torrential rain, overtaking three cars in the final lap to secure her first major victory.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Formula Regional race at Monza due to a self-admitted lapse in concentration."
+}

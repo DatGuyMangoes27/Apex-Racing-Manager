@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 44,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Isabelle's motorsport journey began unexpectedly. While pursuing a mechanical engineering degree at McGill, a weekend volunteering at a local Formula Ford team ignited a passion that rerouted her career entirely. She quickly rose through the ranks, proving her aptitude for problem-solving and her calm demeanor under pressure. Before joining MP Motorsport, she spent several years with smaller racing teams, gaining experience in a wide variety of racing series and engine types.\n\nAs Chief Engineer, Isabelle emphasizes data-driven decision-making and clear communication. Her focus is on optimizing the car's performance through meticulous analysis and systematic improvement. She's known for her ability to quickly diagnose issues and devise practical solutions, often thinking outside the box while remaining grounded in engineering principles. Her pragmatic approach ensures that resources are allocated effectively, maximizing the team's chances for success. Isabelle fosters a collaborative environment where every team member feels empowered to contribute their expertise.\n\nWhat sets Isabelle apart is her deep understanding of both the technical aspects of the car and the human element of racing. She excels at translating driver feedback into concrete adjustments, bridging the gap between the driver's experience and the engineering data. Her ability to connect with the drivers on a personal level allows her to extract valuable insights, leading to better car setups and improved performance on the track.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail during races.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is of average height with a lean build, her intense focus often visible in her sharp gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, preferring handwritten notes to digital devices in the garage.",
+    "Insists on a pre-race ritual of calibrating the tire pressures herself, believing it brings good luck.",
+    "Has a habit of humming quietly while analyzing telemetry data, a sign that she's deep in thought."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Marcus Hayes",
+  "nationality": "American",
+  "age": 33,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Marcus Hayes is a former NFL quarterback, renowned for his incredible arm strength and tactical mind. He led his team to a Super Bowl victory before a career-ending shoulder injury forced his retirement at the peak of his career. Despite the abrupt end to his football journey, Marcus has embraced a diverse range of interests, from the precision of fencing to the artistry of ballet. His principled nature and humble demeanor have made him a respected figure both on and off the field. \n\nSince retiring, Marcus has become an avid motorsports enthusiast, drawn to the high-stakes competition and the engineering marvels of Formula 1 and IndyCar. He's been spotted at several races, often in the VIP sections, and has expressed admiration for the skill and dedication required to succeed in the sport. His connections within the sports and business world mean he could be a valuable ally for a rising racing star.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Marcus is tall and athletic, with broad shoulders and a commanding presence. His eyes are warm and intelligent, reflecting his sharp mind and thoughtful nature."
+  },
+  "connectionToMotorsport": "Marcus is a passionate motorsports fan and investor, attending races regularly and exploring potential partnerships between his foundation and racing teams.",
+  "meetingContext": "The player might meet Marcus at a charity event hosted by a racing team or at a VIP lounge during a major race weekend.",
+  "conversationTopics": [
+    "The strategy behind a successful football play vs. race strategy",
+    "The parallels between the physical demands of football and racing",
+    "His philanthropic work with youth sports programs",
+    "The mental fortitude required to overcome adversity in sports",
+    "His love for ballet and the precision involved"
+  ],
+  "canHelp": [
+    "Provide valuable connections to potential sponsors and investors.",
+    "Offer mentorship on handling media pressure and public image.",
+    "Facilitate introductions to other influential figures in the sports world."
+  ],
+  "personality_summary": "A romantic, principled, and humble former NFL star with a passion for motorsport."
+}

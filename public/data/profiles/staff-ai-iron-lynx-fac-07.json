@@ -1,0 +1,22 @@
+{
+  "name": "Björn Lindström",
+  "nationality": "Swedish",
+  "age": 41,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Björn Lindström's path to motorsport IT management was unconventional. After graduating with a degree in computer science, he spent several years developing software for the banking sector. While financially rewarding, the work lacked the passion Björn craved. A lifelong motorsport enthusiast, he volunteered at local rally events, eventually offering his IT expertise to improve timing and data analysis. This led to a role with a smaller racing team, where he honed his skills in a high-pressure environment. \n\nNow at Iron Lynx, Björn is responsible for maintaining the team's complex IT infrastructure, ensuring seamless data flow between trackside operations, the factory, and partners. He takes a methodical and results-oriented approach, prioritizing system stability and security. Björn's ability to troubleshoot under pressure and his deep understanding of motorsport data make him a valuable asset to the team. He is known for his insistence on rigorous testing and documentation, ensuring the team is always prepared for unexpected challenges.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Björn has a focused gaze and a slightly weathered face from spending time outdoors."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Insists on backing up all data at least twice.",
+    "Has a collection of vintage circuit board components on his desk."
+  ]
+}

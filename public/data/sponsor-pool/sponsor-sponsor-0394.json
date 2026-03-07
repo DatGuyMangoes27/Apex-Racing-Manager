@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0394",
+  "name": "PetroLux UK",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "UK",
+  "description": "Powering performance, engineered for excellence.",
+  "story": "PetroLux UK is a leading independent lubricant and fuel additive manufacturer. We're passionate about British motorsport and believe in supporting emerging talent. We are looking for a team that values reliability and performance under pressure, mirroring our own commitment to quality.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0394.png"
+}

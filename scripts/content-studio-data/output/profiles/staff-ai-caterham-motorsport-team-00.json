@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 46,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Flores' journey into motorsport began with a fascination for engineering and a deep love for Formula 1. Growing up in Monterrey, he spent countless hours tinkering with engines and studying race strategies. After earning a degree in mechanical engineering from the Instituto Tecnológico de Monterrey, he worked his way up through various racing teams, starting as a junior mechanic and eventually becoming a race engineer. His keen eye for detail and pragmatic approach to problem-solving quickly earned him a reputation as a reliable and effective team member.\n\nFlores joined Caterham Motorsport three years ago, initially as head of engineering. He spearheaded several successful upgrades to the team's car, demonstrating both his technical acumen and his ability to inspire his team. When the previous team principal stepped down, Flores was the natural choice to take over, given his deep understanding of the team's dynamics and his commitment to achieving sustainable success. He is known for his data-driven decision-making and his emphasis on fostering a collaborative environment where every team member feels valued and empowered. Ricardo is particularly distinctive for his ability to translate complex technical concepts into actionable strategies that the entire team can understand.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A man of medium height with a focused gaze and a strong build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with race data and handwritten notes",
+    "Has a habit of tapping his pen against his teeth when deep in thought",
+    "Insists on personally checking the tire pressures before every race"
+  ]
+}

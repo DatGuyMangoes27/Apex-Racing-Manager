@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 35,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Zoltán's passion for aerodynamics began in his youth, fueled by a fascination with flight and a deep appreciation for the technical precision of motorsports. After graduating with honors in Mechanical Engineering from the Budapest University of Technology and Economics, he immersed himself in the world of Formula Student, leading his team to several national victories with his innovative wing designs. \n\nHis career trajectory led him to a prominent role at a leading European racing team, where he honed his expertise in computational fluid dynamics (CFD) and wind tunnel testing. Zoltán's meticulous approach to data analysis, coupled with his innate ability to identify untapped aerodynamic potential, has resulted in substantial performance gains for the teams he has served. He is driven by a desire to push the boundaries of aerodynamic development and is known for his ability to inspire and motivate his team to achieve exceptional results.\n\n Zoltán stands out due to his relentless pursuit of perfection and a unique talent for bridging the gap between theoretical calculations and real-world track performance. His unwavering dedication to innovation and his commitment to fostering a collaborative and intellectually stimulating work environment makes him a highly sought-after Head of Aero.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back, with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Zoltán is of average height with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen rhythmically when deeply focused.",
+    "Insists on having a perfectly organized workspace, even on race weekends."
+  ]
+}

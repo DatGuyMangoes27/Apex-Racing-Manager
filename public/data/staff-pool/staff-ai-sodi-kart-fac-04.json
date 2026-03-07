@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 30,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Elena's fascination with electronics started early, disassembling old radios and rebuilding them (mostly) correctly. This passion led her to a degree in Electrical Engineering from the Technical University of Cluj-Napoca. She entered motorsport after volunteering at a local rally event, where she quickly impressed the team with her diagnostic skills. Now at Sodi Kart Factory, Elena thrives on the challenge of optimizing kart electronics for peak performance. Her meticulous nature and commitment to precision make her a valuable asset in squeezing every last bit of power from the kart's electrical systems. She is constantly looking for innovative ways to improve efficiency and reliability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back into a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is of average height and build, with a focused, intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multimeter in her backpack.",
+    "Has a habit of humming quietly while soldering delicate components.",
+    "Insists on using a specific brand of heat shrink tubing, claiming it provides better insulation."
+  ]
+}

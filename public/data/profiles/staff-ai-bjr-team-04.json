@@ -1,0 +1,22 @@
+{
+  "name": "Aino Nieminen",
+  "nationality": "Finnish",
+  "age": 60,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Aino Nieminen's journey in motorsport began unexpectedly. While studying mechanical engineering in Helsinki, she volunteered at a local rally event and was instantly captivated by the intricate dance of engineering and speed. After graduating, she worked in the automotive industry before landing a role with a Finnish rally team, where she honed her skills in vehicle dynamics and data analysis.\n\nHer approach to race engineering is rooted in meticulous preparation and a deep understanding of the car's behavior. She believes in fostering open communication with the driver and the rest of the engineering team, ensuring everyone is aligned on the strategy. Aino's ability to anticipate potential issues and devise innovative solutions has earned her a reputation as a valuable asset in any racing environment. Her calm demeanor under pressure allows her to make calculated decisions even in the heat of competition, making her a truly distinctive presence in the pit lane.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Aino is a woman of medium height with a thoughtful gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of humming quietly while analyzing telemetry data.",
+    "Insists on having a specific type of Finnish licorice in the pit box during races."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 50,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bjørn Halvorsen's journey in motorsport began, unexpectedly, with a fascination for the intricate mechanics of snowmobiles in his youth. This early passion fueled his academic pursuits, leading to a degree in Mechanical Engineering. He transitioned into karting, drawn by the raw, unfiltered competition, and quickly established himself as a keen problem solver. Bjørn's methodical approach and ability to diagnose issues under pressure made him a valuable asset to several karting teams before joining the Junior Kart Team.\n\nAs a performance engineer, Bjørn believes in a data-driven approach, meticulously analyzing telemetry and driver feedback to optimize kart setup. He is a firm believer in continuous improvement, constantly seeking innovative solutions to gain a competitive edge. His calm demeanor and clear communication style make him a trusted figure within the team, particularly with younger drivers.\n\nBjørn distinguishes himself through his relentless pursuit of perfection and his ability to translate complex technical concepts into easily understandable terms for the drivers. He's known for his unwavering dedication and his knack for finding that last tenth of a second on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Bjørn is a sturdy man of average height with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool, even when not in the garage.",
+    "Drinks black coffee exclusively, regardless of the weather.",
+    "Has a habit of muttering technical jargon under his breath while analyzing data."
+  ]
+}

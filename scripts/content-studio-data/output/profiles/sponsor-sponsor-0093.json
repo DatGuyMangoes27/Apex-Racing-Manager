@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0093",
+  "name": "DataSur SRL",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Argentina",
+  "description": "Data-driven solutions for the connected world.",
+  "story": "DataSur SRL is an Argentine IT company specializing in data analytics and cloud solutions. They see motorsport as a perfect testing ground for their real-time data processing capabilities. They aim to improve their brand recognition within Argentina and internationally, hoping to attract new clients and talent.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10,
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0093.png"
+}

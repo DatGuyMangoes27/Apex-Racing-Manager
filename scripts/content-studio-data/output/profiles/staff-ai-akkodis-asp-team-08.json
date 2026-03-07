@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 31,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Liam's journey into motorsport began with a childhood obsession with rally cars tearing through the Irish countryside. He honed his analytical skills at Dublin Institute of Technology, graduating with a degree in mechanical engineering before landing a junior role at a small Formula Ford team. He quickly proved his worth, developing innovative suspension setups that helped the team punch above their weight. \n\nLiam's pragmatic approach centers on data-driven decision-making. He excels at identifying critical performance bottlenecks and implementing practical solutions. While he respects cutting-edge research, he prioritizes reliable, proven technologies that deliver consistent results. His time with Akkodis ASP Team has been marked by a steady stream of incremental improvements that have helped the team stay competitive. Liam is a firm believer in simple solutions and never overcomplicates things.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Green",
+    "facialHair": "Short, trimmed beard",
+    "description": "Liam is of average height, with a focused, intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on having his workstation perfectly organized before starting any task.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

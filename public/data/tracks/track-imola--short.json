@@ -1,0 +1,61 @@
+{
+  "history": "The Autodromo Internazionale Enzo e Dino Ferrari, more commonly known as Imola, boasts a rich history dating back to its construction in the early 1950s. Originally conceived as a semi-permanent venue, it quickly evolved into a dedicated racing circuit, hosting its first motorcycle race in 1953 and its first Formula 1 event in 1963 as a non-championship race. Its challenging layout and picturesque setting have made it a favorite among drivers and fans alike. While the Grand Prix layout is the most famous, the shorter configurations, including the 2.8km 'Short' layout, have hosted various national racing series and testing sessions, offering a different kind of challenge compared to the full circuit.",
+  "atmosphere": "Standing trackside at Imola during a race on the 'Short' configuration is an intimate experience. The roar of engines echoes through the Emilia-Romagna countryside, amplified by the close proximity of the grandstands and the surrounding landscape. The air crackles with anticipation as cars hurtle towards the tight corners, the smell of burning rubber and high-octane fuel filling your nostrils. The relatively compact nature of the 'Short' layout means the action is almost constant, with cars visible for a large portion of the lap, creating a frenetic and exciting spectacle.",
+  "trackCharacter": "The 'Short' layout at Imola is a compact and demanding circuit that prioritizes agility and precision over outright speed. With only 2.8 kilometers and 10 turns, it emphasizes quick acceleration, braking efficiency, and nimble handling. The constant sequence of corners leaves little room for error, demanding that drivers maintain focus and rhythm throughout the lap. Its reduced length makes it ideal for sprint races and testing, offering a condensed version of the challenges presented by the full Grand Prix circuit.",
+  "nickname": "'Imola Mini'",
+  "famousCorners": [
+    {
+      "name": "Variante Bassa",
+      "description": "A tight chicane at the end of the main straight, crucial for setting up overtaking maneuvers.",
+      "challenge": "Precise braking and a quick change of direction are essential to avoid compromising exit speed."
+    },
+    {
+      "name": "Piratella",
+      "description": "A fast, flowing right-hander that requires commitment and courage.",
+      "challenge": "Maintaining momentum through the corner while staying close to the apex curb."
+    },
+    {
+      "name": "Acque Minerali",
+      "description": "A complex series of turns that demand a good balance in the car.",
+      "challenge": "Finding the right line through the undulating section to maintain speed and avoid upsetting the car's balance."
+    },
+    {
+      "name": "Villeneuve",
+      "description": "A right-hand corner that leads onto the short back straight.",
+      "challenge": "Getting a good exit to maximize speed onto the straight."
+    },
+    {
+      "name": "Tosa",
+      "description": "A hairpin bend which requires heavy braking and a good turn-in.",
+      "challenge": "Braking late but accurately to set up the corner exit."
+    }
+  ],
+  "keyFactors": [
+    "Braking efficiency",
+    "Quick acceleration",
+    "Agility and handling",
+    "Corner exit speed",
+    "Traction control"
+  ],
+  "overtakingSpots": [
+    "Variante Bassa (after the main straight)",
+    "Tosa hairpin",
+    "Into Acque Minerali (difficult but possible)"
+  ],
+  "historySnippets": [
+    "Imola is named after Enzo and Dino Ferrari, the founder and his son.",
+    "The track runs in an anti-clockwise direction, one of the few to do so.",
+    "Imola hosted the San Marino Grand Prix for many years.",
+    "The circuit is known for its challenging and technical layout.",
+    "The 'Short' layout is often used for testing and national racing series.",
+    "Ayrton Senna and Roland Ratzenberger tragically lost their lives at Imola during the 1994 San Marino Grand Prix."
+  ],
+  "weatherNotes": "Imola's location in the Emilia-Romagna region of Italy means it experiences a temperate climate with distinct seasons. Summers are hot and dry, potentially leading to high track temperatures that affect tire performance. Spring and autumn can be unpredictable, with rain showers a common occurrence. The 'Short' layout, with its shorter lap time, means that even a brief shower can have a significant impact on race strategy and performance.",
+  "drivingAdvice": "On the 'Short' layout at Imola, maintaining momentum is crucial. Focus on maximizing corner exit speed, particularly out of Villeneuve and Acque Minerali, to carry speed onto the straights. Be aggressive but precise with your braking into Variante Bassa and Tosa, as these are your best overtaking opportunities. Pay close attention to tire management, as the constant acceleration and braking can quickly wear them down. A well-balanced car that responds quickly to changes in direction is essential for navigating the tight and twisty sections of the circuit.",
+  "famousRaces": [
+    "While specific famous races on the 'Short' layout are limited, it is frequently used as a test track for various racing teams.",
+    "The venue has hosted many high-profile Formula 3000 races on various layouts.",
+    "Numerous national touring car and GT series have featured races on the shorter Imola configurations."
+  ],
+  "localCulture": "Imola is located in the heart of the Emilia-Romagna region, known for its rich culinary heritage and passionate motorsport fans. The area is famous for its pasta dishes, such as tortellini and tagliatelle, as well as its balsamic vinegar and Parmesan cheese. The local culture is deeply intertwined with motorsport, with many residents having a lifelong passion for racing. The paddock at Imola has a relaxed and friendly atmosphere, with teams and drivers often interacting with fans and sharing their love of the sport."
+}

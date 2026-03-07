@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Albuquerque",
+  "nationality": "Brazilian",
+  "age": 62,
+  "gender": "male",
+  "contactType": "journalist",
+  "bio": "Ricardo Albuquerque is a seasoned motorsport journalist with over three decades of experience covering Formula 1 and IndyCar for major Brazilian news outlets. Known for his optimistic outlook and intellectual approach to racing analysis, Ricardo possesses a keen ability to identify and nurture emerging talent. Despite his friendly demeanor, he is intensely private and protective of his sources, earning him a reputation for keeping secrets and playing his cards close to the vest. \n\nWhile he enjoys the glitz and glamour of the racing world, Ricardo is also deeply invested in sustainable living and frequently writes about the environmental impact of motorsport. He sees the future of racing intertwined with technological advancements and environmental responsibility. A racing driver might cross paths with Ricardo during press conferences, interviews, or informal gatherings at race events, where his insightful questions and genuine interest in the sport make him a valuable connection.\n\nOutside of motorsport, he is a dedicated cyclist and enjoys spending time with his family playing board games.",
+  "physical": {
+    "skinTone": "Light brown",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper mustache",
+    "description": "Ricardo is a distinguished-looking man with a warm smile and a thoughtful gaze. He carries himself with an air of quiet confidence, often sporting a blazer and a press badge."
+  },
+  "connectionToMotorsport": "Ricardo is a well-respected journalist who covers Formula 1 and IndyCar, offering coverage and commentary through his articles, interviews, and occasional TV appearances. He is a familiar face in the paddock and a trusted source of information for many in the industry.",
+  "meetingContext": "The player would likely meet Ricardo in the paddock during a race weekend, at a press conference, or at a networking event organized for media and team personnel.",
+  "conversationTopics": [
+    "The future of sustainable fuels in motorsport",
+    "The best up-and-coming drivers in Formula 3",
+    "The strategic brilliance of Ayrton Senna",
+    "His latest surfing trip in Florianópolis",
+    "The complex rules of modern Formula 1"
+  ],
+  "canHelp": [
+    "Provide positive media coverage to boost the player's profile.",
+    "Introduce the player to influential figures within the Brazilian motorsport scene.",
+    "Offer insightful advice on how to navigate the media landscape and build a strong personal brand."
+  ],
+  "personality_summary": "An optimistic and intellectual journalist with a knack for uncovering hidden talent and keeping secrets close to his chest."
+}

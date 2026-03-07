@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 55,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo Flores' journey in motorsport began in the dusty karting tracks of Guadalajara, fueled by a childhood passion for speed and engineering. He initially worked as a junior mechanic for a local racing team, quickly demonstrating an aptitude for problem-solving and a keen understanding of vehicle dynamics. Over the years, Ricardo transitioned into team management, honing his skills in strategic planning and driver development. \n\nRicardo joined Blau Motorsport a decade ago, bringing his experience and drive to the team. As Sporting Director, he oversees all aspects of the team's racing operations, from race strategy to technical development. His leadership style emphasizes clear communication and collaboration, fostering a positive and productive environment within the team. He's known for his ability to identify and nurture young talent, and his strategic thinking has been instrumental in the team's recent successes. His innovative approach to race management distinguishes him from others.\n\n Despite his success, Ricardo remains grounded and committed to the sport. He spends his free time mentoring young engineers and advocating for greater accessibility to motorsport in Mexico.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium height with a sturdy build, reflecting years spent in the demanding environment of motorsport."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with racing statistics.",
+    "Has a lucky racing cap that he wears during every race weekend.",
+    "Prefers to communicate via face-to-face meetings rather than emails."
+  ]
+}

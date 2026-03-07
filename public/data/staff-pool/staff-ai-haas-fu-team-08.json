@@ -1,0 +1,22 @@
+{
+  "name": "Jan de Vries",
+  "nationality": "Dutch",
+  "age": 34,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jan's fascination with motorsport began during his childhood, spent watching Formula 1 races with his father. This passion led him to pursue a degree in Mechanical Engineering at Delft University of Technology, where he specialized in vehicle dynamics and control systems. After graduating, Jan secured a junior role at a smaller racing team, quickly proving his aptitude for data analysis and performance optimization.\n\nHe joined Haas F1 Team three years ago, steadily climbing the ranks to become a key member of the performance engineering team. Jan's pragmatic approach to problem-solving and his meticulous attention to detail make him an invaluable asset. He focuses on translating complex data into actionable insights for the drivers and race engineers, striving to bridge the gap between simulation and on-track performance. His dedication to continuous improvement and his ability to work effectively under pressure define his approach.\n\nJan has a knack for identifying subtle aerodynamic inefficiencies and mechanical imbalances that others might miss. He's also known for his ability to clearly communicate technical information to both technical and non-technical personnel, fostering a collaborative environment within the team. He is a valuable team player but also an innovator with a keen eye on the latest technologies and their potential to enhance the team's performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Jan is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having his workstation organized in a very specific manner."
+  ]
+}

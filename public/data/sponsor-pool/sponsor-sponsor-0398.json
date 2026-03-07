@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0398",
+  "name": "SoftGear Solutions",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Poland",
+  "description": "Driving innovation, powering performance.",
+  "story": "SoftGear Solutions is a Polish software development firm specializing in real-time data analytics and performance optimization. Recognizing the parallels between motorsport and their own pursuit of cutting-edge technology, SoftGear seeks a partnership that showcases their capabilities and reinforces their brand as a leader in high-performance computing. They want to be involved with a team that values data and uses it to improve their performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 95000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 275000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0398.png"
+}

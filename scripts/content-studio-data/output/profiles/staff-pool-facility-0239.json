@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo López",
+    "nationality": "Mexican",
+    "age": 41,
+    "gender": "male",
+    "role": "catering_manager",
+    "bio": "Ricardo's journey into motorsport catering began unexpectedly. After years managing a traditional family-owned taqueria in Guadalajara, he saw an opportunity to bring authentic Mexican flavors to the local racing scene. His ability to rapidly scale operations to meet the demands of hungry race teams and fans quickly caught the attention of larger organizations.\n\nRicardo prides himself on delivering quality, consistency, and efficiency under pressure. He understands the importance of providing not just food, but a positive and reliable experience for every team and spectator. His pragmatic approach focuses on minimizing waste, maximizing resources, and adapting menus to suit specific dietary needs and preferences, all while maintaining a high standard of hygiene and safety.\n\nWhat sets Ricardo apart is his unwavering dedication to introducing the vibrant and diverse flavors of Mexican cuisine to the often-homogenous world of motorsport catering. He believes a good meal can be a powerful morale booster, and he strives to ensure that every bite reflects the warmth and hospitality of his culture.",
+    "physical": {
+      "skinTone": "tan",
+      "hairColor": "dark brown",
+      "hairStyle": "short, neatly combed back",
+      "eyeColor": "brown",
+      "facialHair": "trimmed goatee",
+      "description": "Ricardo has a sturdy build and a kind, welcoming face."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small bottle of homemade hot sauce.",
+      "Has a habit of whistling while preparing meals.",
+      "Insists on using fresh, locally sourced ingredients whenever possible."
+    ]
+  }
+]

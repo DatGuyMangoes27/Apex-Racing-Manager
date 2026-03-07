@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Thibaut Dubois",
+    "nationality": "Belgian",
+    "age": 35,
+    "gender": "male",
+    "role": "it_systems_manager",
+    "bio": "Thibaut's passion for motorsport ignited during his university days, attending countless races at Spa-Francorchamps. After graduating with a degree in Computer Science, he initially worked in corporate IT, but the allure of the racetrack proved too strong. He joined Akkodis ASP Team five years ago, initially focusing on network infrastructure. His analytical approach and problem-solving skills quickly led to him taking on a management role, overseeing all IT systems. He thrives on the fast-paced environment and the constant need for innovation in modern racing, always looking for ways to leverage technology to improve team performance. Thibaut is known for his calm demeanor under pressure and his ability to translate complex technical issues into understandable terms for the rest of the team. He is particularly interested in data analytics and telemetry systems, always looking for marginal gains.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly trimmed with a slight side part.",
+      "eyeColor": "Blue",
+      "facialHair": "Short boxed beard",
+      "description": "A man of average height with a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook for jotting down ideas.",
+      "Has a habit of tapping his pen when deep in thought.",
+      "Drinks copious amounts of herbal tea during race weekends."
+    ]
+  }
+]

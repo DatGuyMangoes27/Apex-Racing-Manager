@@ -1,0 +1,57 @@
+{
+  "history": "Snetterton Circuit, located in Norfolk, England, has a rich history dating back to its establishment on a former RAF airfield in 1951. Initially used for motorcycle racing, it quickly gained popularity and became a prominent venue for various motorsport disciplines. Over the years, Snetterton has undergone several modifications and upgrades, resulting in the creation of multiple track configurations. The 200 Circuit, a 3.218km layout, offers a condensed and challenging experience. While the full 300 Circuit hosts larger national and international events, the 200 Circuit provides a popular option for club racing, track days, and testing. The British Racing and Sports Car Club (BRSCC) and other club-level organizations frequently host events utilizing the 200 layout.",
+  "atmosphere": "The air crackles with anticipation as a gaggle of tin-tops screams into Sear corner, the unmistakable scent of burning rubber and high-octane fuel filling the air. Standing on the banking near the infield, the entire 200 Circuit unfolds before you, a tapestry of asphalt, vibrant team colors, and the roar of engines echoing across the Norfolk countryside. The relative intimacy of the 200 layout enhances the feeling of being close to the action, every braking maneuver and gear change amplified by the focused nature of this configuration.",
+  "trackCharacter": "The Snetterton 200 Circuit is a fast and flowing layout that rewards precision and momentum. Its combination of medium-speed corners and short straights demands a car that handles well and carries speed through the bends. Unlike the longer 300 Circuit, the 200 configuration emphasizes rhythm and consistency, with little room for error. Drivers must master the art of maintaining momentum while positioning their car perfectly for the next corner. The track's relatively flat topography and absence of particularly slow corners make it a favorite among drivers who appreciate a smooth, flowing driving experience.",
+  "nickname": "The Momentum Master",
+  "famousCorners": [
+    {
+      "name": "Sear",
+      "description": "A fast right-hander that is taken flat-out in many cars, requiring commitment and precision.",
+      "challenge": "Maintaining the optimum line through Sear is crucial for carrying speed onto the following section. Too much or too little angle can ruin the exit."
+    },
+    {
+      "name": "Bombhole",
+      "description": "A deceptively tricky left-hander leading onto the back straight. Tricky camber changes can upset the balance of the car.",
+      "challenge": "Getting the entry speed correct and managing the car's balance through the off-camber section is vital for a good exit and run down the straight."
+    },
+    {
+      "name": "Coram",
+      "description": "A long, sweeping right-hander that tests a car's aerodynamic grip and a driver's bravery.",
+      "challenge": "Maintaining a consistent line through Coram requires a delicate balance between speed and grip. Overdriving can lead to understeer or a slide."
+    },
+    {
+      "name": "Murrays",
+      "description": "A tight right-hand hairpin that is a prime overtaking opportunity and requires heavy braking.",
+      "challenge": "Nailing the braking point and apex speed is crucial for a good exit. It's also the best place to try a late-braking pass."
+    }
+  ],
+  "keyFactors": [
+    "Mid-corner speed",
+    "Braking consistency",
+    "Traction out of slow corners",
+    "Aerodynamic efficiency",
+    "Momentum maintenance"
+  ],
+  "overtakingSpots": [
+    "Murrays hairpin",
+    "Under braking for Bombhole",
+    "Into Brundle",
+    "The entry to Sear (for the brave!)"
+  ],
+  "historySnippets": [
+    "Snetterton was built on the site of a former RAF bomber base.",
+    "The circuit hosted its first race in 1951.",
+    "Several configurations exist including the 300, 200, and 100 layouts.",
+    "The 200 Circuit offers a condensed racing experience.",
+    "Snetterton is a popular venue for club racing and track days.",
+    "The circuit has undergone several renovations and upgrades over the years."
+  ],
+  "weatherNotes": "Norfolk is known for its unpredictable weather, and Snetterton is no exception. Rain showers can quickly appear and disappear, making tire choice a crucial factor. The track can also be quite windy, especially in exposed sections, which can affect car handling and aerodynamics. During the summer months, track temperatures can soar, leading to increased tire wear and altered car balance.",
+  "drivingAdvice": "On the Snetterton 200 Circuit, maintaining momentum is key. Focus on smooth transitions between corners and avoid scrubbing speed. The run from Coram through Murrays is particularly crucial, as a good exit from Coram sets you up for a strong run down the short straight and into the braking zone for Murrays. Be prepared to adjust your braking points as track conditions change, and don't be afraid to experiment with different lines to find the quickest way around.",
+  "famousRaces": [
+    "British GT Championship races often feature thrilling battles on the Snetterton 300 circuit, showcasing high-performance GT cars and skilled drivers.",
+    "The British Touring Car Championship (BTCC) has a long history at Snetterton, delivering close racing and dramatic moments for touring car enthusiasts.",
+    "Club-level races on the 200 Circuit provide a platform for amateur and semi-professional drivers to hone their skills and compete in a variety of classes."
+  ],
+  "localCulture": "Norfolk is a county steeped in history and agricultural heritage. The local cuisine features fresh seafood, locally grown produce, and traditional pub fare. The paddock atmosphere at Snetterton is typically friendly and welcoming, with teams and drivers often mingling and sharing stories. The nearby town of Norwich offers a range of attractions, including a cathedral, museums, and shops."
+}

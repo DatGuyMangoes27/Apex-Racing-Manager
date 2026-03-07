@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0017",
+  "name": "Gaucho Gaming",
+  "category": "gaming",
+  "tier": "high",
+  "country": "Argentina",
+  "description": "Level up your game with Gaucho Gaming.",
+  "story": "Gaucho Gaming is Argentina's leading esports platform, dedicated to fostering competitive gaming talent. We see motorsport as the ultimate proving ground for skill, precision, and teamwork, values we deeply admire. A partnership allows us to connect with a wider audience who appreciate dedication and peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Argentina"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0017.png"
+}

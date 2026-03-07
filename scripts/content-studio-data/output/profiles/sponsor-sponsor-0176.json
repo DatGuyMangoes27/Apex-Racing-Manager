@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0176",
+  "name": "SibTyre",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Russia",
+  "description": "Durable and reliable tires for any road.",
+  "story": "SibTyre has been manufacturing tires in Siberia for over 30 years, known for their resilience in harsh conditions. They're looking to enter motorsport to prove their tires can perform under extreme stress and gain international recognition. They value partnerships that demonstrate durability and consistent performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15,
+    "nationalities": [
+      "Russia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0176.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Zoran Kovačić",
+  "nationality": "Croatian",
+  "age": 53,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Zoran's journey into motorsport began unexpectedly, fueled by a lifelong fascination with mechanical systems and a chance encounter with a local racing team. He transitioned from a background in automotive engineering to honing his skills in performance optimization. His practical approach and meticulous nature quickly made him an asset, known for identifying subtle but critical adjustments that squeezed every last bit of performance from the car. He values data-driven decisions and believes in a collaborative yet focused working environment.\n\nAfter years of working with various teams, from Formula 3 to GT racing, Zoran joined Williams Racing. His experience spans diverse racing disciplines. He is particularly adept at translating complex technical data into actionable insights, bridging the gap between the drivers and the engineering team. Zoran has cultivated a reputation for reliability and delivering consistent results, even under pressure.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a serious demeanor, Zoran always looks like he's deep in thought."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and calculations.",
+    "Insists on using a specific type of mechanical stopwatch for timing critical tests.",
+    "Has a collection of vintage racing posters in his workspace."
+  ]
+}

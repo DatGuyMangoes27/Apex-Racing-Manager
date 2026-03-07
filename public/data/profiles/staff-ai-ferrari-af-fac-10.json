@@ -1,0 +1,22 @@
+{
+  "name": "Klaus Richter",
+  "nationality": "Austrian",
+  "age": 41,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Klaus's journey into motorsport began with a fascination for the intricate mechanics of vintage motorcycles, meticulously restoring them in his father's workshop in the Austrian Alps. This hands-on experience ignited a passion for precision engineering and problem-solving, leading him to pursue a degree in Mechanical Engineering. After graduating, he honed his skills at a smaller racing outfit, specializing in chassis fabrication before catching the eye of Ferrari AF Corse.\n\nNow, as a fabricator for Ferrari AF Corse, Klaus is known for his meticulous attention to detail and his ability to adapt quickly to the ever-changing demands of the track. He takes immense pride in his work, ensuring that every component meets the highest standards of performance and reliability. What sets Klaus apart is his uncanny ability to diagnose structural weaknesses in designs and propose innovative solutions, often drawing inspiration from unconventional sources.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Klaus is a man of medium build, with a focused gaze and hands that show the signs of years spent working with metal."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and ideas.",
+    "Has a habit of tapping his fingers on any surface when concentrating.",
+    "Insists on calibrating his tools every morning, regardless of whether they need it."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0011",
+  "name": "Quantum Leap Studios",
+  "category": "tech_gaming",
+  "tier": "elite",
+  "country": "Hungary",
+  "description": "Innovating the future of immersive gaming.",
+  "story": "Quantum Leap Studios, based in Budapest, is a leading developer of cutting-edge virtual reality and augmented reality gaming experiences. Founded by avid motorsports enthusiasts, they see a natural synergy between the precision engineering and adrenaline-fueled excitement of racing and their own pursuit of technological excellence. They seek a partnership that showcases their brand to a global audience and provides valuable data for enhancing their racing simulation games.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Hungary"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 10,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0011.png"
+}

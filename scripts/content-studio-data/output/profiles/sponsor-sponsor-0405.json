@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0405",
+  "name": "Rivazza Energy",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "Monaco",
+  "description": "Fueling performance, Rivazza Energy: Unleash your potential.",
+  "story": "Rivazza Energy was founded in Monaco by former racing drivers looking for a competitive edge. They understand the demands of motorsport and seek partnerships with teams and drivers who share their passion for speed and innovation. Rivazza aims to be synonymous with peak performance on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 85000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 175000
+    },
+    "elite": {
+      "monthly": 95000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0405.png"
+}

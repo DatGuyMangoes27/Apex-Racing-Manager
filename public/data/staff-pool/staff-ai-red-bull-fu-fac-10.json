@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 34,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Bjørn grew up in a small town in Norway, surrounded by snowmobiles and a culture that prized mechanical ingenuity. From a young age, he was fascinated by how things worked, spending hours tinkering with engines and disassembling anything he could get his hands on. His passion led him to pursue a degree in Mechanical Engineering, specializing in advanced materials and manufacturing processes. After graduating, Bjørn worked for a local engineering firm, but his heart was always set on motorsport. \n\nHe joined Red Bull Racing five years ago, starting as a junior fabricator and quickly proving his worth. Bjørn's meticulous attention to detail and ability to troubleshoot complex problems have made him an invaluable asset to the team. He takes immense pride in his work, ensuring every component he fabricates meets the highest standards of performance and reliability. Bjørn's dedication and unwavering commitment to excellence are what set him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Bjørn is of average height with a sturdy build, reflecting years of hands-on work."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool, even outside of work.",
+    "Has a habit of humming quietly while concentrating on intricate tasks.",
+    "Insists on cleaning his workstation thoroughly at the end of each day."
+  ]
+}

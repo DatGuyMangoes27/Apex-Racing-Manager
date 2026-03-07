@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Sofia Ramirez",
+  "nationality": "Mexican",
+  "age": 54,
+  "gender": "female",
+  "contactType": "professor",
+  "bio": "Dr. Sofia Ramirez is a tenured professor of Mechanical Engineering at the Universidad Nacional Autónoma de México (UNAM). Highly respected in her field, she specializes in fluid dynamics and advanced materials, publishing several seminal papers on aerodynamic efficiency. Despite her academic focus, Sofia harbors a rebellious streak, often challenging conventional thinking and pushing the boundaries of research. She keeps her personal life intensely private, fueled by a past she rarely discusses. \n\nA racing driver might cross paths with Sofia if they are seeking advanced knowledge or consulting on optimizing their car's aerodynamics or material science, perhaps during university-sponsored research or workshops. Her expertise in these fields is highly sought after, even in the high-stakes world of motorsport. She is also involved in the university's Formula SAE team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Neatly styled bob, often with a few strands escaping",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Sofia has a serious, focused gaze, often accentuated by her frameless glasses. She carries herself with an air of quiet confidence and intellectual intensity."
+  },
+  "connectionToMotorsport": "Dr. Ramirez consults with a few Formula SAE teams and has connections to some smaller racing teams in Mexico, offering her expertise on aerodynamics and material science. She also mentors students who sometimes pursue careers in motorsport engineering.",
+  "meetingContext": "The player might meet Dr. Ramirez while attending an engineering seminar at UNAM or through a connection within a Formula SAE team. Alternatively, they might be referred to her by another engineer for specialized consultation.",
+  "conversationTopics": [
+    "The latest advancements in fluid dynamics",
+    "The challenges of balancing tradition and innovation in engineering",
+    "The importance of ethical considerations in technological development",
+    "Her latest research project",
+    "Classical music and its mathematical underpinnings"
+  ],
+  "canHelp": [
+    "Provide expert advice on aerodynamic optimization for the player's car",
+    "Connect the player with engineering students looking for internship opportunities on a racing team",
+    "Offer insights into advanced materials that could improve vehicle performance and safety"
+  ],
+  "personality_summary": "Reserved but brilliant professor, hiding a rebellious spirit behind a wall of intellect."
+}

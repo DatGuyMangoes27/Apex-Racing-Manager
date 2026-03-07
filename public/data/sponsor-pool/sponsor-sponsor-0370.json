@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0370",
+  "name": "Umzansi Tyres",
+  "category": "tires",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "Performance tyres for the modern racer.",
+  "story": "Umzansi Tyres was founded in Durban in 1985, quickly becoming a popular choice among local racing enthusiasts. They believe in supporting South African motorsport and seek to partner with teams that demonstrate a commitment to excellence and innovation, both on and off the track. They aim to increase brand awareness globally through motorsport partnerships.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0370.png"
+}

@@ -2,8 +2,9 @@ import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { 
   Wallet, TrendingUp, TrendingDown, Building2, Home, Briefcase,
-  DollarSign, PiggyBank, CreditCard, Landmark, ChevronRight,
-  ArrowUpRight, ArrowDownRight, BarChart3, PieChart, X
+  DollarSign, PiggyBank, Landmark, ChevronRight,
+  ArrowUpRight, ArrowDownRight, BarChart3, PieChart, X,
+  Pencil, Check, AlertTriangle
 } from 'lucide-react'
 import { 
   Card, 
@@ -14,6 +15,8 @@ import {
 } from '@/components/ui'
 import { useToast } from '@/components/ui/Toast'
 import type { PersonalFinancialState, TeamEquityStake, PersonalTransaction } from '@/data/personal-finance-config'
+import { calculateNetWorth } from '@/data/personal-finance-config'
+import type { StockHolding, BusinessVenture } from '@/data/investment-config'
 
 // ============================================
 // TYPES
@@ -29,6 +32,10 @@ interface WealthOverviewProps {
   onInjectCapital?: (amount: number) => void
   onWithdrawFunds?: (amount: number) => void
   onSeekInvestors?: () => void
+  onSetOwnerSalary?: (monthlySalary: number) => { success: boolean; message: string }
+  stockHoldings?: StockHolding[]
+  businessVentures?: BusinessVenture[]
+  properties?: Array<{ currentValue?: number }>
 }
 
 // ============================================
@@ -44,7 +51,11 @@ export function WealthOverview({
   currentYear,
   onInjectCapital,
   onWithdrawFunds,
-  onSeekInvestors
+  onSeekInvestors,
+  onSetOwnerSalary,
+  stockHoldings = [],
+  businessVentures = [],
+  properties = []
 }: WealthOverviewProps) {
   const maxWithdrawal = Math.floor(teamBalance * 0.5) // Can only withdraw up to 50% of team balance
   const [showTransactions, setShowTransactions] = useState(false)
@@ -52,6 +63,8 @@ export function WealthOverview({
   const [showWithdrawModal, setShowWithdrawModal] = useState(false)
   const [showInvestorsModal, setShowInvestorsModal] = useState(false)
   const [capitalAmount, setCapitalAmount] = useState(100000)
+  const [editingSalary, setEditingSalary] = useState(false)
+  const [salaryInput, setSalaryInput] = useState(finances.monthlyIncome.ownerSalary || 0)
   const { addToast } = useToast()
 
   // Calculate totals
@@ -65,10 +78,13 @@ export function WealthOverview({
 
   const totalExpenses = useMemo(() => {
     const expenses = finances.monthlyExpenses
-    return (expenses.lifestyle || 0) + (expenses.personalStaff || 0) +
-           (expenses.mortgagePayments || 0) + (expenses.insurance || 0) +
+    return (expenses.personalStaff || 0) +
+           (expenses.mortgagePayments || 0) +
            (expenses.familyExpenses || 0) + (expenses.hobbies || 0) +
            (expenses.loanPayments || 0) + (expenses.philanthropy || 0) +
+           (expenses.services || 0) + (expenses.dietPlan || 0) +
+           (expenses.petUpkeep || 0) + (expenses.vehicleCosts || 0) +
+           (expenses.membershipFees || 0) + (expenses.rent || 0) +
            (expenses.other || 0)
   }, [finances.monthlyExpenses])
 
@@ -81,6 +97,27 @@ export function WealthOverview({
     const mortgageDebt = finances.mortgages.reduce((sum, m) => sum + m.remainingBalance, 0)
     return loanDebt + mortgageDebt
   }, [finances.personalLoans, finances.mortgages])
+
+  // Dynamic net worth calculation as safety net (recalculated from actual values)
+  const dynamicNetWorth = useMemo(() => {
+    if (!teamEquity) return finances.cachedNetWorth
+    
+    const propertyValues = properties.reduce((sum, p) => sum + (p.currentValue || 0), 0)
+    const stockValues = stockHoldings.reduce((sum, h) => sum + h.currentValue, 0)
+    const bizValues = businessVentures.reduce(
+      (sum, b) => sum + b.currentValuation * (b.ownershipPercent / 100), 0
+    )
+    const investmentValues = stockValues + bizValues
+    
+    return calculateNetWorth(finances, teamEquity, propertyValues, investmentValues)
+  }, [finances, teamEquity, stockHoldings, businessVentures, properties])
+
+  // Salary affordability check
+  const salaryWeeksOfRunway = useMemo(() => {
+    const weeklySalary = salaryInput / 4
+    if (weeklySalary <= 0) return Infinity
+    return Math.floor(teamBalance / weeklySalary)
+  }, [salaryInput, teamBalance])
 
   const recentTransactions = finances.transactions.slice(-10).reverse()
 
@@ -95,10 +132,10 @@ export function WealthOverview({
           />
           <div className="p-6 bg-background rounded-xl text-center">
             <p className="font-mono font-bold text-5xl text-accent-gold">
-              ${finances.cachedNetWorth.toLocaleString()}
+              ${dynamicNetWorth.toLocaleString()}
             </p>
             <p className="text-sm text-text-muted mt-2">
-              Last updated: Week {currentWeek}, Year {currentYear}
+              Week {currentWeek}, Year {currentYear}
             </p>
           </div>
           
@@ -171,11 +208,96 @@ export function WealthOverview({
             icon={<TrendingUp className="w-5 h-5 text-status-success" />}
           />
           <div className="space-y-3">
-            <IncomeRow 
-              label="Owner Salary" 
-              amount={finances.monthlyIncome.ownerSalary || 0}
-              icon={<Briefcase className="w-4 h-4" />}
-            />
+            {/* Owner Salary - Editable */}
+            {editingSalary ? (
+              <div className="p-3 bg-background/50 rounded-lg border border-accent-blue/40">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-status-success/20 flex items-center justify-center text-status-success">
+                    <Briefcase className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm font-medium">Set Owner Salary</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-text-muted text-sm">$</span>
+                  <input
+                    type="number"
+                    value={salaryInput}
+                    onChange={(e) => setSalaryInput(Math.max(0, parseInt(e.target.value) || 0))}
+                    className="flex-1 px-3 py-1.5 bg-background border border-surface-border rounded-lg font-mono text-sm focus:outline-none focus:border-accent-blue"
+                    min={0}
+                    step={1000}
+                  />
+                  <span className="text-text-muted text-xs">/mo</span>
+                  <button
+                    onClick={() => {
+                      if (onSetOwnerSalary) {
+                        const result = onSetOwnerSalary(salaryInput)
+                        if (result.success) {
+                          addToast({ type: 'success', title: 'Salary Updated', message: result.message })
+                        } else {
+                          addToast({ type: 'error', title: 'Failed', message: result.message })
+                        }
+                      }
+                      setEditingSalary(false)
+                    }}
+                    className="p-1.5 rounded-lg bg-status-success/20 text-status-success hover:bg-status-success/30 transition-colors"
+                  >
+                    <Check className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSalaryInput(finances.monthlyIncome.ownerSalary || 0)
+                      setEditingSalary(false)
+                    }}
+                    className="p-1.5 rounded-lg bg-status-danger/20 text-status-danger hover:bg-status-danger/30 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+                {salaryWeeksOfRunway < 12 && salaryInput > 0 && (
+                  <div className="flex items-center gap-1.5 mt-2 text-xs text-status-warning">
+                    <AlertTriangle className="w-3 h-3" />
+                    Team can only sustain this for ~{salaryWeeksOfRunway} weeks
+                  </div>
+                )}
+                <div className="grid grid-cols-4 gap-1 mt-2">
+                  {[0, 5000, 10000, 15000, 25000, 50000, 75000, 100000].map(preset => (
+                    <button
+                      key={preset}
+                      onClick={() => setSalaryInput(preset)}
+                      className={`text-xs px-2 py-1 rounded font-mono transition-colors ${
+                        salaryInput === preset 
+                          ? 'bg-accent-blue/30 text-accent-blue' 
+                          : 'bg-surface hover:bg-surface-secondary text-text-muted'
+                      }`}
+                    >
+                      {preset === 0 ? '$0' : `$${(preset / 1000)}k`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div 
+                className="flex items-center justify-between p-3 bg-background/50 rounded-lg group cursor-pointer hover:bg-background/70 transition-colors"
+                onClick={() => {
+                  setSalaryInput(finances.monthlyIncome.ownerSalary || 0)
+                  setEditingSalary(true)
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-status-success/20 flex items-center justify-center text-status-success">
+                    <Briefcase className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm">Owner Salary</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono font-bold text-status-success">
+                    +${(finances.monthlyIncome.ownerSalary || 0).toLocaleString()}
+                  </span>
+                  <Pencil className="w-3 h-3 text-text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            )}
             <IncomeRow 
               label="Dividends" 
               amount={finances.monthlyIncome.dividends || 0}
@@ -212,10 +334,6 @@ export function WealthOverview({
             icon={<TrendingDown className="w-5 h-5 text-status-danger" />}
           />
           <div className="space-y-3">
-            <ExpenseRow 
-              label="Lifestyle" 
-              amount={finances.monthlyExpenses.lifestyle || 0}
-            />
             {(finances.monthlyExpenses.personalStaff || 0) > 0 && (
               <ExpenseRow 
                 label="Personal Staff" 
@@ -228,10 +346,6 @@ export function WealthOverview({
                 amount={finances.monthlyExpenses.mortgagePayments || 0}
               />
             )}
-            <ExpenseRow 
-              label="Insurance" 
-              amount={finances.monthlyExpenses.insurance || 0}
-            />
             {(finances.monthlyExpenses.loanPayments || 0) > 0 && (
               <ExpenseRow 
                 label="Loan Payments" 
@@ -256,9 +370,45 @@ export function WealthOverview({
                 amount={finances.monthlyExpenses.philanthropy || 0}
               />
             )}
+            {(finances.monthlyExpenses.services || 0) > 0 && (
+              <ExpenseRow 
+                label="Services" 
+                amount={finances.monthlyExpenses.services || 0}
+              />
+            )}
+            {(finances.monthlyExpenses.dietPlan || 0) > 0 && (
+              <ExpenseRow 
+                label="Diet Plan" 
+                amount={finances.monthlyExpenses.dietPlan || 0}
+              />
+            )}
+            {(finances.monthlyExpenses.petUpkeep || 0) > 0 && (
+              <ExpenseRow 
+                label="Pet Care" 
+                amount={finances.monthlyExpenses.petUpkeep || 0}
+              />
+            )}
+            {(finances.monthlyExpenses.vehicleCosts || 0) > 0 && (
+              <ExpenseRow 
+                label="Vehicle Costs" 
+                amount={finances.monthlyExpenses.vehicleCosts || 0}
+              />
+            )}
+            {(finances.monthlyExpenses.membershipFees || 0) > 0 && (
+              <ExpenseRow 
+                label="Memberships" 
+                amount={finances.monthlyExpenses.membershipFees || 0}
+              />
+            )}
+            {(finances.monthlyExpenses.rent || 0) > 0 && (
+              <ExpenseRow 
+                label="Rent" 
+                amount={finances.monthlyExpenses.rent || 0}
+              />
+            )}
             {(finances.monthlyExpenses.other || 0) > 0 && (
               <ExpenseRow 
-                label="Other" 
+                label="Security" 
                 amount={finances.monthlyExpenses.other || 0}
               />
             )}
@@ -417,9 +567,9 @@ export function WealthOverview({
                 className="p-4 bg-background rounded-lg flex items-center justify-between"
               >
                 <div>
-                  <p className="font-medium">Mortgage - {mortgage.propertyId}</p>
+                  <p className="font-medium">Mortgage - {mortgage.propertyName || mortgage.propertyId}</p>
                   <p className="text-sm text-text-muted">
-                    {mortgage.interestRate}% APR • {mortgage.yearsRemaining * 12} months remaining
+                    {mortgage.interestRate}% APR • {Math.max(0, Math.round((mortgage.yearsRemaining || 0) * 12))} months remaining
                   </p>
                 </div>
                 <div className="text-right">
@@ -454,53 +604,13 @@ export function WealthOverview({
         <div className="space-y-2">
           {recentTransactions.length > 0 ? (
             recentTransactions.map((tx, index) => (
-              <TransactionRow key={tx.id} transaction={tx} index={index} />
+              <TransactionRow key={`${tx.id}_${index}`} transaction={tx} index={index} />
             ))
           ) : (
             <p className="text-center py-8 text-text-muted">
               No transactions yet
             </p>
           )}
-        </div>
-      </Card>
-
-      {/* Credit Score */}
-      <Card variant="glass" padding="lg">
-        <CardHeader 
-          title="Credit Profile" 
-          icon={<CreditCard className="w-5 h-5" />}
-        />
-        <div className="grid grid-cols-3 gap-4">
-          <div className="p-4 bg-background rounded-lg text-center">
-            <p className="text-sm text-text-muted mb-2">Credit Score</p>
-            <p className={`font-mono font-bold text-4xl ${
-              finances.creditScore >= 750 ? 'text-status-success' :
-              finances.creditScore >= 650 ? 'text-status-warning' : 'text-status-danger'
-            }`}>
-              {finances.creditScore}
-            </p>
-            <p className="text-xs text-text-muted mt-1">
-              {finances.creditScore >= 750 ? 'Excellent' :
-               finances.creditScore >= 700 ? 'Good' :
-               finances.creditScore >= 650 ? 'Fair' : 'Poor'}
-            </p>
-          </div>
-          <div className="p-4 bg-background rounded-lg">
-            <p className="text-sm text-text-muted mb-2">Tax Residency</p>
-            <p className="font-medium">{finances.taxResidency}</p>
-            <p className="text-xs text-text-muted mt-1">
-              Taxes paid this year: ${finances.taxesPaidThisYear.toLocaleString()}
-            </p>
-          </div>
-          <div className="p-4 bg-background rounded-lg">
-            <p className="text-sm text-text-muted mb-2">Personal Guarantees</p>
-            <p className="font-mono font-bold text-xl">
-              {finances.personalGuarantees.length}
-            </p>
-            <p className="text-xs text-text-muted mt-1">
-              Total liability: ${finances.personalGuarantees.reduce((sum, g) => sum + g.maxLiability, 0).toLocaleString()}
-            </p>
-          </div>
         </div>
       </Card>
 

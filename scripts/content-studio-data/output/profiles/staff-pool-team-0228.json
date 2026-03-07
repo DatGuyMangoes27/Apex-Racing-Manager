@@ -1,0 +1,22 @@
+{
+  "name": "Aino Nieminen",
+  "nationality": "Finnish",
+  "age": 27,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Aino's fascination with motorsport began in her childhood, fueled by watching Kimi Räikkönen's Formula 1 victories. She pursued a degree in mechanical engineering at the Tampere University of Technology, specializing in vehicle dynamics and data analysis. After graduating, she interned at a rally team, where she gained invaluable experience in real-world performance optimization. Aino is driven by a relentless pursuit of incremental gains, meticulously analyzing telemetry data to unlock hidden performance potential. She believes that strong communication and collaboration are essential for success, fostering a positive and productive team environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Aino is a petite woman with a focused gaze and a perpetually determined expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on listening to Finnish folk music while reviewing race data."
+  ]
+}

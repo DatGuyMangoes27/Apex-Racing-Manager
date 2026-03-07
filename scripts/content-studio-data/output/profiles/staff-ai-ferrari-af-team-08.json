@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 50,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Eleanor Vance's journey into motorsport began unconventionally, fueled by a childhood spent tinkering with her father's vintage cars in their rural Oxfordshire garage. This hands-on experience ignited a passion for mechanical engineering, leading her to pursue a degree at Imperial College London, specializing in aerodynamics. After graduating, Eleanor gained invaluable experience in Formula Student, designing and optimizing race car performance. \n\nHer meticulous approach and sharp analytical skills quickly caught the attention of a leading Formula 1 team, where she honed her expertise in data analysis and vehicle dynamics. She then moved to Ferrari AF Corse to broaden her horizons, focusing on GT racing and endurance events. Eleanor is known for her relentless pursuit of perfection, pushing both the car and the team to their absolute limits. She believes that every fraction of a second counts and strives to extract every last bit of performance. Her demanding nature is balanced by a deep commitment to her team and a desire to foster innovation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly bobbed",
+    "eyeColor": "blue",
+    "facialHair": null,
+    "description": "A stern-looking woman with a focused gaze and practical, no-nonsense appearance."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a miniature slide rule.",
+    "Insists on using metric measurements exclusively, even when others use imperial.",
+    "Has a habit of tapping her pen rapidly when concentrating."
+  ]
+}

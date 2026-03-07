@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 48,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo's motorsport journey began in karting, fueled by a childhood spent tinkering with engines in his grandfather's garage. He quickly rose through the ranks, showcasing an innate ability to dissect vehicle dynamics and optimize performance. After a brief stint as a race engineer in Formula 3, Ricardo transitioned into team management, realizing his true passion lay in orchestrating the complex interplay of technical prowess and strategic decision-making. \n\nAs sporting director, Ricardo is known for his meticulous approach and unwavering commitment to excellence. He fosters a culture of continuous improvement within his team, constantly pushing the boundaries of what's possible. His discerning eye for talent and ability to extract maximum performance from his staff make him a valuable asset. Ricardo's distinctive trait is his ability to anticipate potential problems before they arise, allowing him to proactively implement solutions and maintain a competitive edge. He joined Nostalgia Racing hoping to revive their legacy.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo has a serious demeanor etched on his face, reflecting his intense focus and dedication."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of espresso prepared for him every morning at 9:00 AM sharp."
+  ]
+}

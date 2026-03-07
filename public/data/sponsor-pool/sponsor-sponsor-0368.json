@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0368",
+  "name": "Adrenaline Rush",
+  "category": "energy_drinks",
+  "tier": "elite",
+  "country": "UAE",
+  "description": "Unleash your potential with Adrenaline Rush.",
+  "story": "Adrenaline Rush, a leading energy drink brand based in the UAE, has a long history of supporting extreme sports. They believe in pushing boundaries and celebrating human achievement. In motorsport, they seek to partner with teams and drivers who embody their values of speed, precision, and relentless pursuit of victory, enhancing brand visibility in high-performance environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0368.png"
+}

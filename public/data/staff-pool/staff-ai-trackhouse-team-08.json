@@ -1,0 +1,22 @@
+{
+  "name": "Elena Rodriguez",
+  "nationality": "Spanish",
+  "age": 40,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Elena's passion for motorsport ignited during her childhood in Barcelona, watching Formula 1 races with her father. She pursued a degree in mechanical engineering, specializing in vehicle dynamics, and quickly found her niche in performance engineering. Her early career involved stints with smaller racing teams, where she honed her skills in data analysis and vehicle setup. She is known for her meticulous approach, tirelessly analyzing telemetry to extract every last bit of performance. \n\nElena joined Trackhouse Racing five years ago and has become an invaluable asset to the team. She thrives on the challenge of optimizing car performance under pressure and is dedicated to providing drivers with the competitive edge they need. Her colleagues respect her deep technical knowledge and unwavering loyalty. She is always willing to go the extra mile to ensure the team's success. \n\nHer distinctive ability lies in translating complex data into actionable insights for the drivers, empowering them to push the limits with confidence.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "A slender woman with an intense gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work late at night, when the garage is quiet and she can focus without distractions."
+  ]
+}

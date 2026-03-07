@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 53,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Jaroslav Novák's journey into motorsport began unexpectedly after a career in corporate IT. Dissatisfied with the rigid structure, he sought a field where rapid technological advancements directly impacted performance. He initially volunteered at local rallies, optimizing data acquisition systems for smaller teams before his knack for streamlining processes caught the eye of ART Grand Prix Academy. Jaroslav approaches his role with a holistic view, understanding that every line of code and every server configuration ultimately contributes to the car's speed. His ability to anticipate technological needs and proactively implement solutions sets him apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed gray mustache",
+    "description": "Jaroslav is a man of medium build with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Insists on using a mechanical keyboard with distinct clicky keys, even in meetings.",
+    "Always carries a small notebook filled with diagrams of complex network architectures.",
+    "Has a collection of vintage computer parts displayed in his office."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Akari Tanaka",
+  "nationality": "Japanese",
+  "age": 65,
+  "gender": "female",
+  "contactType": "tech_entrepreneur",
+  "bio": "Akari Tanaka is a titan in the tech world, having founded and led several successful companies focused on sustainable energy solutions. Known for her astute business acumen and unwavering vision, she has become a significant investor in various cutting-edge technologies. While she presents a reserved and thoughtful demeanor in public, those who know her well are aware of her dramatic flair and controlling nature, particularly when it comes to her passions. She enjoys the finer things in life, indulging in wine tasting and ballet, and is equally enthusiastic about podcasts and the electrifying energy of football.\n\nHer interest in sustainable living has led her to explore the application of electric technologies within motorsport. She sees racing as an ideal test bed for pushing the boundaries of electric vehicle performance. This is why she is now exploring sponsoring teams and drivers who share her commitment to eco-friendly racing solutions. A driver aiming for sponsorships with forward-thinking tech companies might find themselves seeking her support.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant bob, slightly waved",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Akari maintains a polished appearance. She carries herself with a quiet confidence, her silver hair impeccably styled."
+  },
+  "connectionToMotorsport": "Akari is exploring opportunities to invest in and sponsor electric motorsport teams as part of her broader commitment to sustainable technology. She believes motorsport can be a powerful platform for showcasing advancements in electric vehicle technology.",
+  "meetingContext": "The player might meet Akari at a tech conference focusing on sustainable transportation, or through an introduction by a mutual acquaintance in the electric vehicle industry.",
+  "conversationTopics": [
+    "The future of electric vehicle technology",
+    "Sustainable living and innovative solutions",
+    "The merits of different wines",
+    "The latest developments in the tech world",
+    "Her philanthropic endeavors"
+  ],
+  "canHelp": [
+    "Provide significant sponsorship funding for the player's racing career",
+    "Offer networking opportunities within the tech and sustainable energy sectors",
+    "Connect the player with engineers and technicians specializing in electric vehicle performance"
+  ],
+  "personality_summary": "A reserved but dramatic tech mogul with a passion for sustainability and a keen eye for talent."
+}

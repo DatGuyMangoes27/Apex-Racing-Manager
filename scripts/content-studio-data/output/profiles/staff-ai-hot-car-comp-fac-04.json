@@ -1,0 +1,22 @@
+{
+  "name": "Bruce McKenzie",
+  "nationality": "Australian",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Bruce McKenzie is a seasoned electronics engineer with over 25 years of experience, the last 15 of which have been dedicated to motorsport. His path began with a fascination for radio-controlled cars as a child, evolving into a deep understanding of automotive electronics. Bruce's meticulous approach and innate problem-solving skills quickly made him an invaluable asset in various racing teams.\n\nBruce joined Hot Car Competições five years ago, where he's responsible for the intricate electronic systems that keep the team's vehicles performing at their peak. He is renowned for his ability to diagnose and rectify complex electrical faults quickly, minimizing downtime during crucial race weekends. His demanding nature pushes his team to maintain the highest standards, reflecting his belief that attention to detail is the key to success. Bruce is driven by a deep-seated competitive spirit and a desire to contribute to the team's overall performance, and he is not afraid to challenge the status quo in the pursuit of innovation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a weathered face and a perpetually focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-meter in his pocket.",
+    "Insists on using only metric measurements.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

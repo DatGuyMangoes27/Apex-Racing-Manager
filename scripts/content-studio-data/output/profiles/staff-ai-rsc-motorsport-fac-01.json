@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 43,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mihai's journey into motorsport was unconventional, sparked by a fascination with telemetry data during his engineering studies at the University of Bucharest. He initially worked in the automotive industry, analyzing vehicle performance data for a major manufacturer. The allure of Formula racing proved too strong, and he transitioned to motorsport, initially as a junior analyst for a smaller team. Mihai's pragmatic approach to data analysis focuses on actionable insights. He excels at identifying performance bottlenecks and proposing data-driven solutions. His creativity lies in finding novel ways to extract meaningful information from complex datasets, often surprising his colleagues with unexpected correlations. \n\nAt RSC Motorsport, Mihai is known for his meticulous work and ability to remain calm under pressure. He believes in clear communication and strives to present his findings in a way that is easily understood by engineers and drivers alike. While he's a strong independent worker, his insights are highly valued within the team, making him a key contributor to their competitive edge.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Mihai is of average height with a slightly athletic build, often seen wearing glasses and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to analyze data in a quiet, dimly lit room."
+  ]
+}

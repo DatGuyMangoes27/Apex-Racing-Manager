@@ -1,0 +1,22 @@
+{
+  "name": "Vlad Popescu",
+  "nationality": "Romanian",
+  "age": 43,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Vlad Popescu's journey in motorsport began in his late teens, volunteering at local rally events in Romania. His keen eye for detail and organizational skills quickly propelled him into team management roles. He spent several years honing his abilities within smaller racing outfits, learning the ropes of logistics, strategy, and driver relations. \n\nPopescu is known for his relentless pursuit of excellence, demanding peak performance from his team. While some find his approach intense, it stems from a deep-seated belief in the potential of every individual. His hands-on approach and dedication to fostering a collaborative environment have garnered respect throughout the paddock. He believes in data-driven decision making and constantly innovating to gain a competitive edge, although sometimes his perfectionism can lead to bottlenecks.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Vlad is a man of medium build with sharp, focused eyes that convey his intensity."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a meticulously organized notebook filled with race data and team schedules.",
+    "Has a habit of tapping his pen rapidly when under pressure or deep in thought.",
+    "Insists on reviewing every telemetry report personally, regardless of the hour."
+  ]
+}

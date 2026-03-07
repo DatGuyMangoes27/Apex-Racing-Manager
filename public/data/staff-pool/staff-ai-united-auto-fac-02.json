@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Mexican",
+  "age": 41,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination with the sounds and smells of the local go-kart track near his hometown. He honed his skills in structural composite repair at a regional automotive factory, before seeking opportunities in racing. His meticulous nature and dedication to precision quickly earned him recognition. Over the years, he's worked with several smaller racing outfits, steadily building his expertise in carbon fiber and other advanced materials. \n\nRicardo is known for his relentless pursuit of perfection. He believes that even the smallest imperfection can compromise performance, and he strives to create parts that are not only structurally sound but also aesthetically flawless. His demanding nature pushes his team to achieve the highest standards, ensuring that every component meets his exacting specifications. He's always looking for innovative approaches to composite design and repair, constantly researching new materials and techniques.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache and goatee",
+    "description": "Ricardo is of average height with a wiry build, betraying years of detailed and physical work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and measurements.",
+    "Refuses to use power tools on delicate carbon fiber, preferring hand tools.",
+    "Insists on inspecting every finished part under a specific angle of light to reveal imperfections."
+  ]
+}

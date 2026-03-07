@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0303",
+  "name": "Rivazza Tyres",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Monaco",
+  "description": "Precision engineered tyres for ultimate performance.",
+  "story": "Rivazza Tyres was founded in Monaco with a vision to bring Formula 1 level tyre technology to all forms of motorsport. We believe in pushing the limits of grip and durability. Our sponsorships are designed to help promising teams achieve their peak performance, while showcasing our brand on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0303.png"
+}

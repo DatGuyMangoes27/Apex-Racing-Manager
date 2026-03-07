@@ -1,0 +1,22 @@
+{
+  "name": "Lena Bauer",
+  "nationality": "German",
+  "age": 27,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Lena's fascination with aerodynamics began during her childhood, watching F1 races with her father. This interest led her to pursue a degree in mechanical engineering at RWTH Aachen University, specializing in fluid dynamics. After graduating, she secured an internship at a small aerospace firm, where she gained hands-on experience with wind tunnel testing. Eager to apply her knowledge to motorsport, Lena joined Sodi Kart Factory three years ago, quickly establishing herself as a reliable and meticulous operator. She is known for her thorough data analysis and her ability to identify subtle improvements in kart performance through wind tunnel simulations. Lena is committed to continuous learning and stays abreast of the latest advancements in CFD and wind tunnel technology. She is dedicated to helping Sodi Kart Factory achieve aerodynamic excellence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Lena is of average height with a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and observations.",
+    "Meticulously cleans the wind tunnel control panel before and after each session.",
+    "Prefers to listen to classical music through headphones while analyzing data."
+  ]
+}

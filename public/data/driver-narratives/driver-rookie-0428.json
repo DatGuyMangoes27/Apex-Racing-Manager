@@ -1,0 +1,27 @@
+{
+  "biography": "Oscar Mueller, a name whispered with quiet anticipation in Swiss motorsport circles, hails from the serene, lakeside town of Zug. Unlike many racers groomed from karting infancy, Oscar's entry into the sport was almost accidental. At 12, he accompanied his father, a watchmaker, to a vintage car rally where he was captivated by the raw mechanical symphony of a 1960s Formula Vee. He badgered his parents relentlessly until they relented, enrolling him in a local karting school. His progress was steady rather than meteoric, but his dedication and meticulous approach quickly set him apart. Lacking the deep pockets of some competitors, Oscar and his father built their kart from salvaged parts, a testament to their resourcefulness. His current independent status reflects this 'underdog' spirit, relying on skill and grit to climb the ranks. He's currently competing in the Swiss Formula Regional series, aiming to prove his worth to bigger teams.",
+  "drivingStyle": "Oscar's driving style mirrors his personality: steady, calculated, and remarkably mature for his age. He's not one for flamboyant overtakes or reckless dives into corners. Instead, he focuses on maximizing the car's potential through smooth inputs, precise braking, and meticulous tire management. He excels in endurance races, where his consistency and ability to maintain a consistent pace under pressure become valuable assets. He meticulously studies telemetry data, identifying areas for improvement with an almost obsessive attention to detail.",
+  "rivalries": [
+    {
+      "name": "Nico Dubois",
+      "reason": "A constant thorn in Oscar's side since their karting days, Nico's aggressive driving style clashes sharply with Oscar's measured approach, leading to several on-track collisions and heated exchanges."
+    },
+    {
+      "name": "Lena Hartmann",
+      "reason": "Lena's family backing provides her with superior equipment, creating a David-and-Goliath dynamic in their races. Oscar sees her as a symbol of privilege that he must overcome."
+    },
+    {
+      "name": "Marco Rossi",
+      "reason": "Marco's raw speed often puts him ahead in qualifying, but his inconsistency in race conditions provides an opportunity for Oscar to overtake him."
+    }
+  ],
+  "quirks": [
+    "Always polishes his racing helmet with a special chamois cloth his grandfather gave him.",
+    "Listens to classical music (specifically Bach) before every race to calm his nerves.",
+    "Carries a small, worn Swiss Army knife in his race suit pocket for 'good luck'."
+  ],
+  "nickname": "The Watchmaker",
+  "famousQuote": "\"Racing isn't about who's fastest for a lap; it's about who's the most consistent over a race.\"",
+  "careerHighlight": "Winning the Swiss Karting Championship in his third year of competition, beating several drivers with significantly more experience and resources.",
+  "careerLowPoint": "Crashing out of the lead in his debut Formula Regional race due to a sudden downpour, losing a potential victory."
+}

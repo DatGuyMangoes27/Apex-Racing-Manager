@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 39,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Marco's journey into motorsport began with a childhood fascination for Formula 1, fueled by watching races with his father. After completing his degree in Material Engineering at the Politecnico di Milano, he landed a role at a small composite manufacturing company supplying parts to various racing teams. He quickly developed a reputation for meticulous work and an ability to troubleshoot complex issues. His competence and experience led him to the Hot Racing Team where he specializes in composite repairs and optimization.\n\nMarco is known for his hands-on approach and his ability to think laterally when faced with a challenge. He’s not afraid to experiment with new techniques, always seeking ways to improve the performance and durability of the composite components. He believes that a strong team is built on clear communication and mutual respect, and he strives to create a positive and collaborative work environment. Marco's eye for detail is unmatched.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Marco is of average height, with a slightly muscular build from years of working with composite materials."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and notes on composite designs.",
+    "Has a habit of whistling Italian opera tunes while working.",
+    "Insists on cleaning his workspace meticulously at the end of each day."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan de Vries",
+  "nationality": "Dutch",
+  "age": 46,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jan's meticulous nature led him from precision engineering to motorsport. After graduating with honors in mechanical engineering from Delft University, he spent several years in the aerospace industry, ensuring the reliability of critical flight systems. A lifelong motorsport enthusiast, Jan transitioned to racing, bringing his uncompromising standards to Toyota Gazoo Racing. \n\nHe believes deeply in a data-driven approach to quality control, constantly seeking ways to optimize processes and identify potential weaknesses before they impact performance on the track. Jan's dedication extends beyond the technical aspects; he fosters a culture of continuous improvement and collaborative problem-solving within his team, always striving for perfection.\n\nWhat sets Jan apart is his ability to see the bigger picture. He understands how each component, from the smallest bolt to the most complex electronic system, contributes to the overall performance of the car and the team's success. He isn't just fixing things; he's engineering victory.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jan is a man of average height with a sturdy build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and meticulously records observations.",
+    "Has a habit of cleaning his glasses even when they appear spotless.",
+    "Insists on using a specific brand of Dutch coffee beans in the team's coffee machine."
+  ]
+}

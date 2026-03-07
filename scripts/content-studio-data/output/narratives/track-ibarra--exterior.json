@@ -1,0 +1,62 @@
+{
+  "history": "Autódromo Internacional José Tobar, commonly known as Ibarra, has been a cornerstone of Ecuadorian motorsport since its inception. While the full circuit has hosted numerous national and international events, the Exterior layout provides a unique challenge and has been used for regional races and driver training. The track's history is intertwined with the growth of motorsport in Ecuador, serving as a vital proving ground for local talent and a popular venue for various racing disciplines. The Exterior layout allows for shorter, more accessible events, fostering grassroots racing and providing a stepping stone for drivers aiming for higher levels of competition.\n\nOver the years, Ibarra has seen everything from national touring car series to motorcycle championships. The Exterior configuration, in particular, has been a favorite for karting and smaller displacement races due to its compact and technical nature. Although it might not host the headline events that the full circuit does, its role in developing local motorsport talent is undeniable. It's a venue where up-and-coming drivers hone their skills, learning the nuances of racecraft on a challenging and rewarding circuit.",
+  "atmosphere": "Standing at the edge of the track during a race on the Exterior layout at Ibarra is an experience filled with the raw energy of motorsport. The roar of engines echoes off the surrounding hills, creating a sonic landscape that vibrates through your chest. The smell of burning rubber and high-octane fuel hangs heavy in the air, a potent cocktail that ignites the senses. The crowds, a mix of seasoned veterans and wide-eyed newcomers, are passionate and vocal, their cheers and gasps punctuating every overtake and close call. The compact nature of the Exterior layout brings the action close, making every lap feel like a high-speed ballet performed inches from your face.",
+  "trackCharacter": "The Exterior layout at Ibarra is a challenging and technical circuit that demands precision and finesse. Its shorter length and tighter corners favor nimble handling and responsive engines over outright power. The flowing nature of the design encourages drivers to maintain momentum, rewarding those who can string together a series of smooth, clean lines. This layout tests a driver's ability to adapt to changing conditions and to manage tire wear over the course of a race.",
+  "nickname": "The Snail",
+  "famousCorners": [
+    {
+      "name": "Turn 1",
+      "description": "A fast, sweeping right-hander that immediately tests a driver's commitment and courage.",
+      "challenge": "Requires pinpoint accuracy and a willingness to carry maximum speed through the apex."
+    },
+    {
+      "name": "Turns 2 & 3",
+      "description": "A quick chicane that demands rapid changes of direction and precise throttle control.",
+      "challenge": "Maintaining balance and avoiding excessive scrubbing of tires."
+    },
+    {
+      "name": "Turn 4",
+      "description": "A medium-speed left-hander leading onto the back straight, crucial for setting up an overtaking opportunity.",
+      "challenge": "Getting a good exit speed is paramount for maximizing acceleration down the straight."
+    },
+    {
+      "name": "Turn 6",
+      "description": "A tight hairpin bend which needs heavy braking",
+      "challenge": "Braking late and accurately, without locking the wheels."
+    },
+    {
+      "name": "Turn 8",
+      "description": "A long right hander that leads back to the start/finish line. A good exit is crucial for maximum speed",
+      "challenge": "Maintaining momentum through the long corner"
+    }
+  ],
+  "keyFactors": [
+    "Precise car placement",
+    "Tire management",
+    "Braking accuracy",
+    "Smooth corner exits",
+    "Maintaining momentum"
+  ],
+  "overtakingSpots": [
+    "Turn 1 (under braking)",
+    "Turn 4 (exit onto the back straight)",
+    "Turn 6 (hairpin)",
+    "Turn 8 (into turn 1)"
+  ],
+  "historySnippets": [
+    "The track is named after José Tobar, a significant figure in Ecuadorian motorsport.",
+    "The Exterior layout is often used for driver training programs.",
+    "Ibarra is located in a scenic valley surrounded by mountains.",
+    "The track has undergone several renovations to improve safety and facilities.",
+    "Local teams frequently test and develop their cars at Ibarra.",
+    "Ibarra's altitude can affect engine performance and aerodynamics."
+  ],
+  "weatherNotes": "Ibarra experiences a temperate climate with distinct wet and dry seasons. Rain showers are common, particularly during the afternoon, which can quickly change track conditions and make tire choice a critical factor. The high altitude can also lead to cooler temperatures and thinner air, affecting engine performance and aerodynamic grip.",
+  "drivingAdvice": "On the Exterior layout, focus on maintaining momentum through the corners. Smooth, precise inputs are key to maximizing speed and minimizing tire wear. The back straight offers a good overtaking opportunity, but setting up the move through Turn 4 is essential. Be patient and avoid overdriving the car, as mistakes can be costly on this technical circuit.",
+  "famousRaces": [
+    "National Touring Car Championship races: Thrilling battles have been seen at the track between local drivers",
+    "Regional Karting Events: Many young drivers have made a name for themselves at this layout.",
+    "Endurance races: The track has hosted several endurance races, pushing drivers and machines to their limits."
+  ],
+  "localCulture": "Ibarra is a charming city known for its friendly locals, vibrant markets, and rich cultural heritage. The food scene is a delightful mix of traditional Ecuadorian dishes and international cuisine. Be sure to try the local empanadas and fritada. Paddock life is relaxed and welcoming, with teams and drivers often mingling with fans and sharing stories. The surrounding area offers stunning natural beauty, including mountains, lakes, and waterfalls, making it a perfect destination for a motorsport-themed getaway."
+}

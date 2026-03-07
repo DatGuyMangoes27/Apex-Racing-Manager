@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Adrian's passion for motorsport ignited during his university days, fueled by late-night races and countless hours spent tinkering with simulations. He earned a degree in Mechanical Engineering from the Polytechnic University of Bucharest, specializing in computational fluid dynamics. After graduation, Adrian gained experience building and tuning simulator rigs at a local sim racing center before joining Crown Racing. He's meticulous in his approach, constantly refining the simulator's parameters to perfectly mirror real-world conditions.\n\nAdrian's focus is bridging the gap between the virtual and the physical, ensuring that the drivers can use the simulator as a valuable tool for car development and race preparation. He's known for his patience and his ability to explain complex technical details in a clear, understandable manner. Adrian strives to create an immersive and realistic simulation experience that will contribute to the team's success on the track. He’s a firm believer in evidence-based decision making.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Adrian is of average height and build, with a focused and intelligent look."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations.",
+    "Has a particular preference for a specific brand of keyboard for simulator tuning.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 43,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Elise Dubois' journey into motorsport began unexpectedly. Initially trained as a watchmaker in the Jura mountains, her precision and meticulous nature caught the attention of a local racing team needing someone to rebuild damaged components. She quickly transitioned to full-time fabrication, excelling at complex repairs and finding innovative solutions to improve vehicle performance. \n\nDubois is known for her unconventional approach, often sketching designs on napkins and using unconventional materials to prototype parts. Her focus isn't just on fixing what's broken, but on identifying weaknesses and finding ways to enhance the structural integrity of components. This dedication to innovation and her keen eye for detail have made her a valuable asset to Arrow McLaren, where she's now pushing the boundaries of composite material application in chassis construction.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, choppy bob with subtle red highlights",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise is of average height, with a lean build and intense, focused eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a Swiss Army knife, even in the workshop.",
+    "Mumbles technical specs to herself while working.",
+    "Insists on using traditional hand tools for certain delicate fabrication processes."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 32,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Marco Bellini's journey into motorsport began in his childhood, captivated by the roaring engines and strategic complexities of Formula 1 races broadcasted on Italian television. After excelling in mechanical engineering at the Politecnico di Milano, he pursued internships with smaller racing teams, rapidly absorbing knowledge about vehicle dynamics and data analysis. His meticulous approach and dedication to optimization quickly earned him a reputation for identifying critical performance gains. \n\nBefore joining Walkenhorst Motorsport, Marco honed his skills in GT racing, focusing on maximizing tire performance and aerodynamic efficiency. He thrives on collaborative problem-solving and isn't afraid to challenge conventional wisdom. Marco distinguishes himself by his ability to translate complex data into actionable insights, empowering drivers to push their limits on the track. He is particularly passionate about simulation work and using advanced modeling techniques to prepare for each race weekend.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard.",
+    "description": "Marco is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks espresso every two hours, without fail."
+  ]
+}

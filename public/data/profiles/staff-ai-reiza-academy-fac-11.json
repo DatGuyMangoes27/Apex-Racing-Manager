@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "French",
+  "age": 41,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Thierry's motorsport journey began with a childhood obsession with rally racing, fueled by watching the legendary Group B cars tear through the French countryside. Lacking the resources to pursue driving himself, he channeled his passion into engineering, earning a degree in mechanical engineering and quickly finding a role within a small Formula Renault team. There, he learned the value of data-driven decision making and the critical link between vehicle dynamics and driver performance.\n\nHis meticulous approach and keen eye for detail led him to Reiza Racing Academy, where he excels at coordinating test programs, analyzing driver feedback, and translating technical data into actionable insights for the team's young drivers. Thierry believes in fostering a collaborative environment where drivers feel empowered to experiment and push the limits, always prioritizing safety and continuous improvement. He distinguishes himself with his unwavering dedication and ability to identify even the most subtle performance gains.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Thierry is of average height with a lean build, a testament to his active lifestyle."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen, even to meetings.",
+    "Insists on using metric measurements exclusively.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

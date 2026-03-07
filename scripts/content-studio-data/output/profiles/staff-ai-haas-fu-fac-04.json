@@ -1,0 +1,22 @@
+{
+  "name": "Luka Marić",
+  "nationality": "Croatian",
+  "age": 31,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Luka's fascination with motorsport began in his youth, fueled by watching Formula 1 races with his father. This passion led him to pursue a degree in electrical engineering, specializing in embedded systems and control algorithms. After graduating, Luka gained experience at a smaller racing team, where he honed his skills in data acquisition and analysis. He joined Haas F1 Team three years ago, quickly establishing himself as a reliable and resourceful engineer. He is known for his methodical approach to problem-solving and his ability to remain calm under pressure.\n\nLuka is a firm believer in continuous learning and improvement. He regularly attends industry workshops and conferences to stay abreast of the latest advancements in electronics and motorsport technology. His dedication to precision and performance makes him a valuable asset to the team. Luka's ambition extends beyond his technical expertise; he aspires to take on a leadership role within the team, driving innovation and contributing to the team's long-term success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Luka has a focused gaze and a strong, athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Croatian coffee before every race weekend."
+  ]
+}

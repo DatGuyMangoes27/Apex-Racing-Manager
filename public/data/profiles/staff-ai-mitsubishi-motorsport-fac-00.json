@@ -1,0 +1,22 @@
+{
+  "name": "Raúl Quispe Mendoza",
+  "nationality": "Peruvian",
+  "age": 38,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Raúl's fascination with motorsport began in his youth, tinkering with go-karts in the dusty outskirts of Lima. He channeled this passion into a degree in mechanical engineering, specializing in vehicle dynamics. He quickly realized the potential of simulation to improve racing car performance. His career began with a small racing team in Peru, before being scouted by Mitsubishi Motorsport. \n\nRaúl is known for his meticulous approach to simulator engineering. He believes in constantly refining the simulation model to precisely reflect the real-world vehicle characteristics. He pushes drivers to their limits, demanding accurate feedback to improve simulation fidelity. A keen observer, he can diagnose issues within the simulator based on driver performance and data logs, often identifying subtle discrepancies other engineers miss. He is a staunch advocate for data-driven decision-making in the simulator program.\n\nRaúl's demanding nature stems from his unwavering commitment to excellence. He believes that pushing boundaries is the only way to achieve victory. His colleagues, though sometimes intimidated by his high expectations, acknowledge his invaluable contribution to the team.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Raúl is of average height, with a wiry build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations during simulator sessions.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific brand of Peruvian coffee available in the simulator room."
+  ]
+}

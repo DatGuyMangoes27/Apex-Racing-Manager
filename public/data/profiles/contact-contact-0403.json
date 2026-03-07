@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Eleanor Vance",
+  "nationality": "British",
+  "age": 45,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Eleanor Vance is a highly respected sports medicine physician with a PhD in Kinesiology and a specialization in motorsport injuries. She's known for her meticulous approach to diagnosis and rehabilitation, combining traditional medicine with innovative techniques. Despite her demanding career, Eleanor is a surprisingly creative individual, finding outlets in dramatic arts and a passion for strategic board games. She values genuine connections and appreciates the dedication required to excel in competitive fields. \n\nEleanor's path crosses with racing drivers due to her work as a consultant for several motorsport teams, focusing on performance optimization and injury prevention. Drivers might seek her expertise after an accident or for specialized training programs designed to enhance physical and mental resilience. Her grateful nature makes her a reliable ally, and her forgiving spirit allows her to see the best in people, even under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eleanor has a warm, intelligent face framed by dark, wavy hair. She carries herself with a quiet confidence, often wearing practical yet stylish attire."
+  },
+  "connectionToMotorsport": "Dr. Vance serves as a medical consultant for several Formula racing teams, providing expertise in injury prevention, rehabilitation, and performance optimization through sports science. She also conducts research on the physiological demands of motorsport on drivers.",
+  "meetingContext": "You might meet Dr. Vance at a team physical assessment, a motorsport medical conference, or perhaps after an on-track incident where she's part of the medical response team.",
+  "conversationTopics": [
+    "The latest advances in sports medicine",
+    "The physical and mental demands of motorsport",
+    "The importance of data-driven performance enhancement",
+    "Local Football team",
+    "Her fencing hobby"
+  ],
+  "canHelp": [
+    "Provide expert medical evaluations and treatment for injuries.",
+    "Offer performance-enhancing training programs tailored to motorsport demands.",
+    "Introduce you to other specialists in sports medicine and performance coaching."
+  ],
+  "personality_summary": "A disciplined and creative doctor dedicated to sports medicine, with a surprising appreciation for the dramatic arts and strategic games."
+}

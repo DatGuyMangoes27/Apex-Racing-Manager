@@ -1,0 +1,22 @@
+{
+  "name": "Iker Valdés",
+  "nationality": "Spanish",
+  "age": 30,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Iker's fascination with motorsport began during his childhood in Valencia, captivated by the roar of engines at the Circuit Ricardo Tormo. He pursued a degree in Aerospace Engineering, specializing in aerodynamics, and quickly found himself drawn to the competitive world of Formula racing. His meticulous approach and sharp analytical skills landed him a junior position at a smaller racing outfit, where he honed his expertise in wind tunnel testing and CFD analysis.\n\nAfter several years of dedicated work, Iker joined Cavaleiro Sports, drawn to their commitment to innovation and their pursuit of excellence. As head of aero, he oversees all aspects of aerodynamic development, from initial concept design to trackside optimization. He is known for his data-driven approach, his ability to identify subtle performance gains, and his relentless pursuit of aerodynamic efficiency. His loyalty to the team and his determination to push the boundaries of what's possible make him an invaluable asset.\n\nIker brings a unique blend of theoretical knowledge and practical experience to the team, always striving to find that extra edge that will make the difference on the track. His dedication to his work sometimes means long hours, but his passion for motorsport keeps him motivated and focused.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Iker is of average height with a lean build, perpetually looking focused and intense."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Insists on having a perfectly organized workspace.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0048",
+  "name": "Švec Racing Apparel",
+  "category": "apparel",
+  "tier": "entry",
+  "country": "Czech Republic",
+  "description": "High-performance racing apparel, engineered for speed.",
+  "story": "Švec Racing Apparel is a family-owned Czech company with a passion for motorsport. Founded by a former rally driver, the company aims to provide affordable, quality racing gear to up-and-coming drivers. They seek a partnership that demonstrates the durability and performance of their products on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0048.png"
+}

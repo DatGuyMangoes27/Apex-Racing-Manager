@@ -1,0 +1,31 @@
+{
+  "name": "Karim Nassar",
+  "nationality": "Lebanese",
+  "age": 25,
+  "gender": "male",
+  "contactType": "diplomat",
+  "bio": "Karim Nassar is a rising star in Lebanese diplomacy, already making waves despite his young age. Known for his sharp intellect and unwavering loyalty to his principles, he navigates complex international relations with a calculated precision that belies his youthful appearance. He holds a postgraduate degree in International Relations and moves comfortably within high society circles, cultivating relationships with influential figures across various sectors. Karim's connection to motorsport is indirect but significant: his family has a long history of supporting Lebanese athletes, and he occasionally attends high-profile racing events as a representative of his government, seeking to attract international investment and promote Lebanon on the global stage. A racing driver might cross paths with him at a charity gala, a government-sponsored event, or even through mutual high-society connections.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly groomed with a slight fade",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Light stubble",
+    "description": "Karim is of average height with a lean build. He always dresses impeccably, favoring tailored suits that accentuate his confident demeanor."
+  },
+  "connectionToMotorsport": "Karim attends high-profile races as a representative of the Lebanese government, seeking to attract international investment and promote Lebanese tourism. He also views supporting motorsport as a way to boost national pride and foster international relationships.",
+  "meetingContext": "The player could meet Karim at a charity event hosted by a wealthy motorsport sponsor, or at a government-sponsored reception following a major race in the Middle East. Alternatively, a mutual contact from the high-society social scene could introduce them.",
+  "conversationTopics": [
+    "Lebanese culture and history",
+    "International politics and current events",
+    "Marathon running and fitness",
+    "The role of sports in promoting international relations",
+    "Upcoming diplomatic initiatives in the Middle East"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy sponsors and investors from the Middle East.",
+    "Facilitate meetings with government officials in various countries to secure endorsements or racing licenses.",
+    "Offer advice on navigating complex political landscapes in international racing events."
+  ],
+  "personality_summary": "A loyal and calculating diplomat with a mysterious intensity."
+}

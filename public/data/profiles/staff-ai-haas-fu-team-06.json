@@ -1,0 +1,22 @@
+{
+  "name": "Ante Kovačić",
+  "nationality": "Croatian",
+  "age": 50,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ante Kovačić's journey in motorsport began in his youth, fueled by a passion for engineering and racing. He earned a degree in mechanical engineering from the University of Zagreb before dedicating himself to a career in motorsport. Ante started in junior formulas, working his way up through the ranks, gaining experience in vehicle dynamics and race strategy, and eventually becoming a sporting director.\n\nHis approach to the role is characterized by a commitment to precision and efficiency. He believes that success in motorsport hinges on meticulous planning and seamless execution, and he is driven to foster a culture of excellence within his team. Ante is known for his analytical skills and his ability to make critical decisions under pressure. He has a track record of success in competitive environments and is known for his unwavering dedication to the team's goals. He's a firm believer in data-driven decisions, and is rarely swayed by emotion.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Ante is of average height with a slightly athletic build, and carries himself with a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out timing sheet from a past race, claiming it brings him luck.",
+    "Has a specific brand of coffee he insists on having before every race.",
+    "Muttering race strategy scenarios under his breath when nervous"
+  ]
+}

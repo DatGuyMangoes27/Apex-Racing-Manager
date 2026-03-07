@@ -1,0 +1,31 @@
+{
+  "name": "Karim Haddad",
+  "nationality": "Lebanese",
+  "age": 51,
+  "gender": "male",
+  "contactType": "artist",
+  "bio": "Karim Haddad is a self-taught Lebanese artist known for his striking, large-format photography, often capturing the raw beauty and decay of Beirut's urban landscape. His stubborn dedication to his craft and uncompromising vision have earned him both critical acclaim and a reputation for being difficult to work with. Beneath his sometimes condescending exterior lies a sharp wit and a surprising generosity toward those he respects. \n\nWhile Karim's primary focus isn't motorsport, he's been commissioned to capture promotional images for the prestigious Rally of Lebanon. His artistic eye and ability to find beauty in grit make him a sought-after photographer for capturing the speed, danger, and glamour of the racing world. A driver might cross paths with Karim during a photoshoot or at a charity event related to the rally.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Slicked back with a slight wave",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Karim has a lean build and carries himself with an air of artistic confidence. His sharp features are accentuated by his designer glasses, and he often wears a well-tailored, if slightly rumpled, linen suit."
+  },
+  "connectionToMotorsport": "Karim is commissioned to photograph events such as the Rally of Lebanon, providing him with a direct link to the racing world. His photos are used for promotional materials and media coverage.",
+  "meetingContext": "The player might meet Karim at a pre-rally press event, a promotional photoshoot, or an art gallery showcasing his work.",
+  "conversationTopics": [
+    "The artistic merit of car design",
+    "The Rally of Lebanon and its impact on the region",
+    "The challenges of being an artist in Lebanon",
+    "His latest photography projects",
+    "The importance of capturing the 'soul' of a subject"
+  ],
+  "canHelp": [
+    "Provide high-quality photographs for the player's promotional materials.",
+    "Introduce the player to influential figures in the Lebanese media scene.",
+    "Offer insights into the cultural significance of racing in the Middle East."
+  ],
+  "personality_summary": "A stubborn and witty artist with a sharp eye and an even sharper tongue."
+}

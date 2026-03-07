@@ -1,0 +1,31 @@
+{
+  "name": "Enrico 'Eric' de la Cruz",
+  "nationality": "Filipino",
+  "age": 40,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Enrico, affectionately known as Eric, is a prominent corporate lawyer in Manila, specializing in contract law and intellectual property. He's known for his meticulous attention to detail and his unwavering commitment to his clients, which range from established corporations to up-and-coming startups. Despite his demanding career, Eric is a deeply caring individual who values relationships and cherishes memories. He approaches every case with a blend of legal expertise and genuine empathy, making him a trusted advisor and confidante. \n\nEric's connection to motorsport is rooted in his lifelong passion for Formula 1, inherited from his father. He's a keen follower of racing and has represented several small racing teams and individual drivers in contract negotiations and sponsorship deals. A young, promising driver might cross paths with Eric when seeking legal counsel for their burgeoning career, perhaps needing help with endorsement agreements or team contracts. He's always willing to help young talents navigate the complex legal landscape of the sport.",
+  "physical": {
+    "skinTone": "Light brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin mustache",
+    "description": "Eric has a warm, approachable face, often sporting a friendly smile. He is of average height with a lean build, reflective of his active lifestyle."
+  },
+  "connectionToMotorsport": "Eric is a Formula 1 enthusiast and has represented small racing teams and individual drivers in legal matters.",
+  "meetingContext": "The player might meet Eric through an introduction from a mutual business contact, or at a local motorsports event where Eric is networking.",
+  "conversationTopics": [
+    "The history of Formula 1",
+    "His latest scuba diving trip",
+    "The intricacies of contract law",
+    "His photography projects",
+    "His volunteer work with underprivileged children"
+  ],
+  "canHelp": [
+    "Negotiate favorable endorsement deals with sponsors.",
+    "Review and draft team contracts to ensure the player's best interests are protected.",
+    "Provide legal advice on intellectual property rights related to the player's brand."
+  ],
+  "personality_summary": "A caring and passionate lawyer with a soft spot for motorsport and a desire to help young talent."
+}

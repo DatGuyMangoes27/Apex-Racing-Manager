@@ -1,0 +1,31 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 29,
+  "gender": "male",
+  "contactType": "pilot",
+  "bio": "Li Wei is a rising star in the world of GT racing, known for his aggressive driving style and meticulous preparation. He comes from a wealthy background, affording him opportunities many aspiring drivers can only dream of, but he's worked hard to prove he's more than just a 'pay driver.' While principled and passionate about motorsport, he can sometimes come across as condescending, a trait stemming from his privileged upbringing and unwavering confidence in his abilities. He enjoys crafting his own music in his downtime and is a devotee of classical music, a surprising contrast to his high-octane career.\n\nLi Wei's path often crosses with other drivers and team owners as he participates in various GT championships globally. He's also a prominent figure in the motorsport social scene, attending parties and events where networking is key. His success and connections make him a valuable acquaintance for any ambitious driver looking to climb the ranks.",
+  "physical": {
+    "skinTone": "Light Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Clean Shaven",
+    "description": "Li Wei has a strong, athletic build and a focused gaze. He always presents himself impeccably, reflecting his attention to detail."
+  },
+  "connectionToMotorsport": "Li Wei is a professional GT racing driver currently competing in the GT World Challenge Asia. He's aiming for a championship win to elevate his career to the next level.",
+  "meetingContext": "You'd likely meet Li Wei at a motorsport event, either in the paddock during a race weekend or at an exclusive after-party.",
+  "conversationTopics": [
+    "The latest GT racing regulations and car setups",
+    "The merits of different racing lines and braking techniques",
+    "His polo team and recent matches",
+    "His experience with music production software",
+    "The nuances of classical music composition"
+  ],
+  "canHelp": [
+    "Provide insider information about specific racing teams and their strategies",
+    "Offer a recommendation or introduction to a team owner or sponsor",
+    "Mentor the player on advanced driving techniques, particularly in GT cars"
+  ],
+  "personality_summary": "A talented but sometimes arrogant GT racing driver with a passion for music and polo."
+}

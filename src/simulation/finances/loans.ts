@@ -66,20 +66,6 @@ export function calculateCreditScore(
   return Math.max(CREDIT_SCORE_FACTORS.minScore, Math.min(CREDIT_SCORE_FACTORS.maxScore, score))
 }
 
-export function updateCreditScoreOnPayment(currentScore: number, onTime: boolean): number {
-  const delta = onTime 
-    ? CREDIT_SCORE_FACTORS.onTimePayment 
-    : CREDIT_SCORE_FACTORS.latePayment
-  return Math.max(
-    CREDIT_SCORE_FACTORS.minScore, 
-    Math.min(CREDIT_SCORE_FACTORS.maxScore, currentScore + delta)
-  )
-}
-
-export function updateCreditScoreOnLoanPaidOff(currentScore: number): number {
-  return Math.min(CREDIT_SCORE_FACTORS.maxScore, currentScore + CREDIT_SCORE_FACTORS.loanPaidOff)
-}
-
 // ============================================
 // BANK LOAN FUNCTIONS
 // ============================================
@@ -90,6 +76,8 @@ export interface LoanApplicationResult {
   loan?: BankLoan
   offeredRate?: number
   offeredAmount?: number
+  /** When not approved, bank may offer a smaller amount / higher rate */
+  counterOffer?: { offeredAmount: number; offeredRate: number }
 }
 
 export function applyForBankLoan(
@@ -144,29 +132,57 @@ export function applyForBankLoan(
     }
   }
 
-  // Debt to cash ratio check
+  // Calculate interest rate (base rate adjusted by credit score)
+  // Better credit = lower rate
+  const creditAdjustment = (creditScore - 650) / 100 * -0.5  // ±0.5% per 100 points from 650
+  const baseRate = Math.max(2, terms.baseInterestRate + creditAdjustment)
+
+  // Debt to cash ratio check: if over limit, return counter-offer (reduced amount at +1% rate)
   const projectedDebt = currentDebt + requestedAmount
+  const maxNewDebt = Math.max(0, currentCash * 3 - currentDebt)
   if (projectedDebt > currentCash * 3) {
+    const counterAmount = Math.min(requestedAmount, maxNewDebt)
+    if (counterAmount >= terms.minAmount) {
+      const counterRate = baseRate + 1
+      const counterWeeklyPayment = calculateLoanWeeklyPayment(counterAmount, counterRate, termWeeks)
+      const counterLoan: BankLoan = {
+        id: generateLoanId('bank_loan'),
+        type: 'bank',
+        lender: getRandomLenderName(),
+        principal: counterAmount,
+        interestRate: counterRate,
+        remainingBalance: counterAmount,
+        weeklyPayment: counterWeeklyPayment,
+        totalWeeks: termWeeks,
+        weeksRemaining: termWeeks,
+        startWeek: currentWeek || 1,
+        startYear: currentYear || 2025,
+        status: 'active',
+        collateral
+      }
+      return {
+        approved: false,
+        reason: 'Your debt-to-cash ratio would be too high for the full amount.',
+        counterOffer: {
+          loan: counterLoan,
+          message: `Bank offers $${counterAmount.toLocaleString()} at ${counterRate.toFixed(1)}% APR (reduced amount due to debt-to-cash limits).`
+        }
+      }
+    }
     return {
       approved: false,
       reason: 'Your debt-to-cash ratio would be too high. Pay down existing debt first.'
     }
   }
 
-  // Calculate interest rate (base rate adjusted by credit score)
-  // Better credit = lower rate
-  const creditAdjustment = (creditScore - 650) / 100 * -0.5  // ±0.5% per 100 points from 650
-  const offeredRate = Math.max(2, terms.baseInterestRate + creditAdjustment)
-
-  // Calculate weekly payment
-  const weeklyPayment = calculateLoanWeeklyPayment(requestedAmount, offeredRate, termWeeks)
+  const weeklyPayment = calculateLoanWeeklyPayment(requestedAmount, baseRate, termWeeks)
 
   const loan: BankLoan = {
     id: generateLoanId('bank_loan'),
     type: 'bank',
     lender: getRandomLenderName(),
     principal: requestedAmount,
-    interestRate: offeredRate,
+    interestRate: baseRate,
     remainingBalance: requestedAmount,
     weeklyPayment,
     totalWeeks: termWeeks,
@@ -180,7 +196,7 @@ export function applyForBankLoan(
   return {
     approved: true,
     loan,
-    offeredRate,
+    offeredRate: baseRate,
     offeredAmount: requestedAmount
   }
 }
@@ -239,12 +255,15 @@ export function processWeeklyLoanPayment(
   return { updatedLoan, transaction, missedPayment: false }
 }
 
+/**
+ * Pay off a bank loan early (remaining balance).
+ * @returns updatedLoan, transaction, and totalPaid
+ */
 export function payOffLoanEarly(
   loan: BankLoan,
   week: number,
   year: number
 ): { updatedLoan: BankLoan; transaction: TeamTransaction; totalPaid: number } {
-  // Early payoff - no penalty, just pay remaining balance
   const totalPaid = loan.remainingBalance
 
   const updatedLoan: BankLoan = {
@@ -281,7 +300,8 @@ export function applyForCreditLine(
   tier: TeamTier,
   creditScore: number,
   currentWeek: number,
-  currentYear: number
+  currentYear: number,
+  requestedLimit?: number
 ): CreditLineApplicationResult {
   const config = CREDIT_LINE_TERMS_BY_TIER[tier]
 
@@ -292,14 +312,19 @@ export function applyForCreditLine(
     }
   }
 
+  // Clamp requested limit to tier max; if not provided, use full tier max
+  const maxCredit = requestedLimit != null
+    ? Math.min(config.maxCredit, Math.max(config.minCredit ?? 0, requestedLimit))
+    : config.maxCredit
+
   const creditLine: CreditLine = {
     id: generateLoanId('credit_line'),
     type: 'credit_line',
     lender: getRandomLenderName(),
-    maxCredit: config.maxCredit,
+    maxCredit,
     currentDrawn: 0,
     interestRate: config.interestRate,
-    maintenanceFee: calculateCreditLineMaintenanceFee(config.maxCredit, config.maintenanceFeePercent),
+    maintenanceFee: calculateCreditLineMaintenanceFee(maxCredit, config.maintenanceFeePercent),
     status: 'available',
     approvedWeek: currentWeek,
     approvedYear: currentYear
@@ -420,13 +445,23 @@ export interface InvestorOfferResult {
   milestones: InvestorMilestone[]
 }
 
+/** Counter-offer: investor offers less money or higher equity than requested */
+export interface InvestorCounterOffer {
+  investmentAmount: number
+  equityOffered: number
+  investor: PrivateInvestor
+  milestones: InvestorMilestone[]
+  message: string
+}
+
 export function generateInvestorOffer(
   tier: TeamTier,
   teamReputation: number,
   requestedAmount: number,
   currentWeek: number,
-  currentYear: number
-): InvestorOfferResult | { error: string } {
+  currentYear: number,
+  options?: { currentDebt?: number; currentCash?: number }
+): InvestorOfferResult | InvestorCounterOffer | { error: string } {
   const config = PRIVATE_INVESTOR_CONFIG_BY_TIER[tier]
 
   if (requestedAmount < config.minInvestment) {
@@ -437,14 +472,41 @@ export function generateInvestorOffer(
     return { error: `Maximum investment at your tier is $${config.maxInvestment.toLocaleString()}.` }
   }
 
-  // Calculate equity based on amount and reputation
-  // Higher reputation = investor accepts less equity
-  const reputationFactor = Math.max(0.5, 1 - (teamReputation - 50) / 200)  // 0.5x to 1.25x
-  const baseEquityPercent = (requestedAmount / config.maxInvestment) * config.maxEquityPercent
-  const equityOffered = Math.max(
-    config.minEquityPercent,
-    Math.min(config.maxEquityPercent, baseEquityPercent * reputationFactor)
+  // Rejection chance: low reputation or high debt-to-cash
+  const debt = options?.currentDebt ?? 0
+  const cash = options?.currentCash ?? 1
+  const debtRatio = cash > 0 ? debt / cash : 1
+  const rejectionChance = Math.min(0.35,
+    (50 - teamReputation) / 200 +  // up to 0.25 from low rep
+    (debtRatio > 2 ? 0.15 : debtRatio > 1 ? 0.08 : 0)
   )
+  if (rejectionChance > 0 && Math.random() < rejectionChance) {
+    return { error: 'The investor has declined. Try a smaller amount or improve team reputation and financials.' }
+  }
+
+  // Counter-offer chance: offer less money or higher equity
+  const counterChance = 0.25
+  const doCounter = Math.random() < counterChance
+  let effectiveAmount = requestedAmount
+  let equityMultiplier = 1
+
+  if (doCounter) {
+    if (Math.random() < 0.5) {
+      effectiveAmount = Math.round(requestedAmount * (0.6 + Math.random() * 0.25))  // 60–85% of requested
+      equityMultiplier = requestedAmount / effectiveAmount  // Higher equity for less cash
+    } else {
+      equityMultiplier = 1.1 + Math.random() * 0.2  // 10–30% more equity for same amount
+    }
+  }
+
+  // Calculate equity based on amount and reputation
+  const reputationFactor = Math.max(0.5, 1 - (teamReputation - 50) / 200)
+  const baseEquityPercent = (effectiveAmount / config.maxInvestment) * config.maxEquityPercent
+  let equityOffered = Math.max(
+    config.minEquityPercent,
+    Math.min(config.maxEquityPercent, baseEquityPercent * reputationFactor * equityMultiplier)
+  )
+  if (equityOffered > config.maxEquityPercent) equityOffered = config.maxEquityPercent
 
   // Generate milestones
   const milestones: InvestorMilestone[] = []
@@ -463,25 +525,24 @@ export function generateInvestorOffer(
     milestones.push({
       id: `milestone_${Date.now()}_${i}`,
       description,
-      targetWeek: 52,  // End of season
-      targetYear: currentYear + Math.floor(i / 2),  // Stagger over years
+      targetWeek: 52,
+      targetYear: currentYear + Math.floor(i / 2),
       completed: false,
-      penalty: Math.round(requestedAmount * 0.05)  // 5% of investment as penalty
+      penalty: Math.round(effectiveAmount * 0.05)
     })
   })
 
-  // Calculate buyback multiple
-  const buybackMultiple = config.buybackMultipleRange[0] + 
+  const buybackMultiple = config.buybackMultipleRange[0] +
     Math.random() * (config.buybackMultipleRange[1] - config.buybackMultipleRange[0])
 
   const investor: PrivateInvestor = {
     id: generateLoanId('investor'),
     type: 'private_investor',
     investorName: getRandomInvestorName(),
-    investmentAmount: requestedAmount,
+    investmentAmount: effectiveAmount,
     equityStake: equityOffered,
     milestones,
-    boardSeatGranted: equityOffered >= 20,  // Board seat if significant equity
+    boardSeatGranted: equityOffered >= 20,
     exitClause: {
       year: currentYear + 5,
       buybackMultiple: Math.round(buybackMultiple * 100) / 100
@@ -491,10 +552,23 @@ export function generateInvestorOffer(
     investedYear: currentYear
   }
 
+  if (doCounter) {
+    const message = effectiveAmount < requestedAmount
+      ? `Investor will invest $${effectiveAmount.toLocaleString()} (${equityOffered.toFixed(1)}% equity) instead of the requested amount.`
+      : `Investor requests ${equityOffered.toFixed(1)}% equity for $${effectiveAmount.toLocaleString()}.`
+    return {
+      investmentAmount: effectiveAmount,
+      equityOffered,
+      investor,
+      milestones,
+      message
+    }
+  }
+
   return {
     investor,
     equityOffered,
-    investmentAmount: requestedAmount,
+    investmentAmount: effectiveAmount,
     milestones
   }
 }
@@ -539,8 +613,8 @@ export function processInvestorMilestones(
       return { ...milestone, completed: true }
     }
 
-    // Apply penalty if past deadline and not completed
-    if (isPastDeadline && milestone.penalty) {
+    // Apply penalty once if past deadline and not completed
+    if (isPastDeadline && milestone.penalty && !milestone.penaltyApplied) {
       penalties.push(createTeamTransaction(
         'expense',
         'investor_milestone_penalty',
@@ -550,6 +624,7 @@ export function processInvestorMilestones(
         currentYear,
         { countsTowardCostCap: false }
       ))
+      return { ...milestone, penaltyApplied: true }
     }
 
     return milestone
@@ -561,26 +636,28 @@ export function processInvestorMilestones(
   }
 }
 
+/**
+ * Buy out a private investor's equity stake.
+ * Uses exit clause buyback multiple if within period, else 1.5x base.
+ * @returns buyoutCost and transaction
+ */
 export function buyoutInvestor(
   investor: PrivateInvestor,
   currentYear: number,
   week: number,
   year: number
 ): { buyoutCost: number; transaction: TeamTransaction } {
-  // Calculate buyout cost
   let buyoutCost = investor.investmentAmount
 
-  // Apply buyback multiple if within exit clause period
   if (investor.exitClause && currentYear <= investor.exitClause.year) {
     buyoutCost = Math.round(investor.investmentAmount * investor.exitClause.buybackMultiple)
   } else {
-    // After exit clause, negotiate (1.5x base)
     buyoutCost = Math.round(investor.investmentAmount * 1.5)
   }
 
   const transaction = createTeamTransaction(
     'expense',
-    'equity_sale',  // Buying back equity
+    'equity_sale',
     buyoutCost,
     `Buyout of ${investor.investorName}'s ${investor.equityStake.toFixed(1)}% stake`,
     week,
@@ -687,6 +764,18 @@ export function processWeeklyLoans(
     remainingCash -= result.totalCharges
   })
 
+  // High credit line utilization hurts score
+  const totalCreditLimit = loansState.creditLines
+    .filter(cl => cl.status === 'available')
+    .reduce((sum, cl) => sum + cl.maxCredit, 0)
+  const totalDrawn = loansState.creditLines
+    .filter(cl => cl.status === 'available')
+    .reduce((sum, cl) => sum + cl.currentDrawn, 0)
+  const utilization = totalCreditLimit > 0 ? totalDrawn / totalCreditLimit : 0
+  if (utilization > CREDIT_SCORE_FACTORS.highUtilizationThreshold) {
+    creditScoreChange += CREDIT_SCORE_FACTORS.highUtilizationCreditDelta
+  }
+
   // Calculate new credit score
   const newCreditScore = Math.max(
     CREDIT_SCORE_FACTORS.minScore,
@@ -706,6 +795,7 @@ export function processWeeklyLoans(
     bankLoans: updatedBankLoans,
     creditLines: updatedCreditLines,
     creditScore: newCreditScore,
+    lastWeekCreditChange: creditScoreChange,
     ...totals
   }
 

@@ -20,10 +20,38 @@ import {
   Loader2,
   DollarSign
 } from 'lucide-react';
+import { Modal, Button, Card, Badge, Progress } from '@/components/ui'
+import { useCareerStore } from '@/store/careerStore'
+import type { MediaTone } from '@/store/careerStore'
+import { generateInterviewQuestions, calculateInterviewOutcome } from '@/services/mediaAI'
+import type { GeneratedQuestion } from '@/services/mediaAI'
+
+type InterviewOutcome = 'success' | 'neutral' | 'disaster'
+type InterviewTier = 'local' | 'regional' | 'national' | 'international' | 'global'
+
+export interface InterviewResult {
+  responses: Array<{
+    questionId: string
+    optionId: string
+    tone: string
+    hiddenEffects?: Record<string, unknown>
+  }>
   outcome: InterviewOutcome
   bonusMultiplier: number
   headline: string
   finalPayment: number
+}
+
+interface InterviewModalProps {
+  isOpen: boolean
+  onClose: () => void
+  onComplete: (result: InterviewResult) => void
+  context: {
+    tier: InterviewTier
+    outletName: string
+    [key: string]: unknown
+  }
+  payment: number
 }
 
 const TIER_CONFIG: Record<InterviewTier, { 

@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 53,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Astrid's journey into motorsport began unconventionally, not through racing, but through a fascination with the intricate engineering behind it. After a degree in Mechanical Engineering from the Technical University of Denmark, she found herself drawn to the world of simulation, recognizing its potential to bridge the gap between theoretical models and real-world performance. She started in aerospace, but the pull of Formula 1 was too great, and she made the jump to motorsport after a few years.\n\nAt Praga Racing, Astrid thrives on the challenge of creating realistic and informative simulator environments. Her methodical approach ensures that every detail, from tire grip to aerodynamic effects, is meticulously modeled. She believes that the simulator is not just a training tool, but a laboratory for innovation, allowing drivers and engineers to explore new possibilities without the constraints of the track. While not the most outspoken, Astrid's insightful observations and data analysis are highly valued by the team. \n\nAstrid stands out for her unwavering dedication to accuracy and her ability to translate complex data into actionable insights for the drivers. She also has an uncanny ability to identify inconsistencies in the simulator setup that others often miss, leading to significant improvements in performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly styled bob, slightly wavy",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a woman of medium height with a thoughtful expression and kind eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a peculiar habit of tapping her pen against her teeth when deeply focused.",
+    "Insists on using a specific brand of Danish coffee in the simulator lab, claiming it improves concentration."
+  ]
+}

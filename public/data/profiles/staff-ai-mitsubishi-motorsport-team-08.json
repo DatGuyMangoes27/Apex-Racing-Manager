@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Obregón",
+  "nationality": "Mexican",
+  "age": 53,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey began in the bustling workshops of Guadalajara, where he tinkered with engines from a young age. He secured a degree in mechanical engineering before transitioning to motorsports, first as a data analyst, then quickly progressing to performance engineering. His meticulous approach and deep understanding of vehicle dynamics made him a valuable asset to smaller racing teams across Latin America. \n\nRicardo thrives on extracting every last bit of performance from a vehicle, driven by a relentless pursuit of perfection. He's known for his detailed simulations and tireless work ethic, often pushing himself and his team to the limit. A mentor to younger engineers, Ricardo fosters a collaborative environment while maintaining a demanding standard of excellence. He joined Mitsubishi Motorsport hoping to prove himself on a global stage, seeking the challenge of pushing the limits of rally car performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed back with slight recession at the temples.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a determined expression and a permanent smudge of grease on his forehead."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and diagrams.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating his own equipment, regardless of who else is available."
+  ]
+}

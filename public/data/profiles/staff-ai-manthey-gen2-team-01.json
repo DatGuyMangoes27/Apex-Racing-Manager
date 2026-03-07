@@ -1,0 +1,22 @@
+{
+  "name": "Jari Mäkinen",
+  "nationality": "Finnish",
+  "age": 50,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jari's motorsport journey began in his youth, tinkering with engines in his father's garage near Jyväskylä. His passion led him to study mechanical engineering, after which he quickly immersed himself in the world of rally racing, initially as a junior mechanic before transitioning to engineering roles. He has a knack for optimizing performance through meticulous data analysis and practical problem-solving. Jari values clear communication and a collaborative team environment, believing that the best solutions arise from diverse perspectives. His experience across various racing disciplines, from rally to GT racing, gives him a uniquely adaptable perspective.\n\nJari joined Manthey EMA three years ago, bringing a pragmatic approach to problem-solving and a dedication to continuous improvement. He's known for his ability to quickly identify critical areas for development and implement effective solutions under pressure. While not afraid to push boundaries, Jari's focus remains on reliability and consistency, ensuring the team's cars are always prepared to perform at their best. He is respected for his calm demeanor and ability to mentor junior engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A sturdy man with a focused gaze, Jari carries himself with quiet confidence."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific brand of Finnish coffee in the garage."
+  ]
+}

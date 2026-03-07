@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 36,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Marco's journey into motorsport began with a childhood fascination for engines, meticulously dismantling and reassembling his father's old Vespa. After earning a degree in mechanical engineering from the Polytechnic University of Turin, he joined Ferrari's engine department, contributing to their F1 power unit development. Later, he transitioned to IndyCar, seeking a new challenge and broader responsibilities. \n\nAs a quality control specialist, Marco is meticulous and driven by a relentless pursuit of perfection. He believes that every component, no matter how small, plays a crucial role in overall performance and reliability. His analytical mindset allows him to quickly identify potential issues and propose effective solutions. He's known for his unwavering commitment to maintaining the highest standards, even under immense pressure.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Marco is of average height, with a wiry build and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Insists on personally inspecting all critical components before a race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

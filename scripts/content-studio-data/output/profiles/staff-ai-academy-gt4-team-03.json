@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 56,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began unexpectedly. While studying mechanical engineering at the Universidad de Chile, he became fascinated by the application of aerodynamics to racing. He started volunteering at a local racing team, quickly proving his aptitude for understanding airflow and downforce. His dedication and innovative thinking led to a full-time position, where he honed his skills in wind tunnel testing and computational fluid dynamics. \n\nRicardo is now the Head of Aero at Academy Motorsport. He believes in a data-driven approach, combined with intuitive understanding. He's known for his meticulous attention to detail and his ability to translate complex scientific principles into practical, race-winning solutions. Ricardo is particularly proud of his work on developing adaptive aerodynamic systems, always striving for the perfect balance of speed and stability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is a man of medium build, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on using a specific type of Chilean coffee bean for his morning brew.",
+    "Often mutters aerodynamic equations under his breath when observing the cars."
+  ]
+}

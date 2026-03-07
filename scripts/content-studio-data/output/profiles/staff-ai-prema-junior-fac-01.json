@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 44,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Valentina's journey into motorsport began unconventionally. Initially a statistician for an agricultural cooperative in the Pampas, she discovered her talent for predictive modeling could be applied to racing. A chance encounter with a touring car team ignited her passion, leading her to self-study race engineering principles and data analysis techniques.\n\nAt Prema Junior, Valentina thrives on uncovering hidden performance advantages within complex datasets. She believes in a holistic approach, integrating track data with driver feedback and environmental factors to build accurate simulations and refine race strategies. Her visionary perspective often challenges conventional wisdom, pushing the team to explore innovative solutions.\n\nValentina's dedication goes beyond the numbers; she’s committed to empowering the drivers with actionable insights they can trust. Her unique combination of statistical rigor and genuine enthusiasm makes her a valuable asset, bridging the gap between technology and on-track performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair, usually pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is a petite woman with a focused gaze and a warm smile that rarely fades."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a mate gourd and thermos of hot water, offering it to anyone who looks stressed.",
+    "Has a habit of muttering race strategies in Spanish while reviewing data.",
+    "Insists on using a specific brand of Argentine coffee beans in the team's coffee machine."
+  ]
+}

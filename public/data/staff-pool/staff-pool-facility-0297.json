@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Arnesen",
+  "nationality": "Norwegian",
+  "age": 49,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Bjørn Arnesen's journey in motorsport began with a childhood fascination for aerodynamics, sparked by watching ski jumpers defy gravity. He pursued a degree in mechanical engineering, specializing in fluid dynamics, before landing his first role at a small motorsport engineering firm. His meticulous approach and knack for identifying subtle airflow improvements quickly made him an invaluable asset. Bjørn's distinctive contribution lies in his ability to translate complex data into actionable insights for vehicle setup, extracting maximum performance from every wind tunnel session. He is known for pushing boundaries and demanding excellence, believing that marginal gains can make all the difference on race day. He has previously worked for multiple F1 teams, and brings an unparalleled level of experience to the role.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Blonde",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Bjørn is a man of medium build with a focused expression, always seeming to analyze the airflow around him."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on precisely calibrating the wind tunnel instrumentation before each session, even if it was calibrated the day before.",
+    "Keeps a small, well-worn copy of 'Introduction to Aerodynamics' on his desk, referencing it frequently.",
+    "Has a particular fondness for strong black coffee, consuming multiple cups throughout the day"
+  ]
+}

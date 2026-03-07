@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0481",
+  "name": "Rang Rangeela",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "India",
+  "description": "Celebrate life in vibrant color.",
+  "story": "Rang Rangeela, a purveyor of high-end Indian textiles and home goods, seeks to broaden its brand recognition among a global audience. Motorsports provides a platform to showcase the artistry and craftsmanship inherent in their products. They are particularly interested in partnering with drivers who embody the energy and passion of Indian culture.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 65,
+    "nationalities": [
+      "India"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0481.png"
+}

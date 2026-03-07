@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0234",
+  "name": "Ubuntu Life",
+  "category": "lifestyle",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "Embrace community. Live Ubuntu.",
+  "story": "Ubuntu Life is a South African lifestyle brand focused on promoting community and shared values. Rooted in the philosophy of 'I am because we are,' they believe in supporting initiatives that bring people together. Motorsport, with its blend of teamwork and individual skill, resonates with their core message and offers a dynamic platform to reach a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 3,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0234.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Nkosi",
+  "nationality": "South African",
+  "age": 52,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Thabo Nkosi is a seasoned data analyst with a passion for motorsport that ignited during his university days, fueled by late nights studying telemetry data from Formula 1 races. After earning his degree in statistics, he initially worked in the finance sector, but the pull of motorsport proved too strong. He volunteered at local racing events, offering his data analysis skills to smaller teams before landing a full-time position with a touring car team. His meticulous approach to data interpretation and ability to identify subtle performance gains quickly made him a valuable asset. \n\nThabo thrives on extracting actionable insights from complex datasets. He believes in a holistic approach, combining statistical rigor with a deep understanding of vehicle dynamics. His experience in various racing disciplines has equipped him with a unique perspective, allowing him to anticipate potential issues and proactively suggest improvements. Now at Tickford Racing, Thabo is eager to contribute to the team's ongoing success, driven by a desire to leave a lasting mark on the sport he loves.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly cropped, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard, mostly grey",
+    "description": "A stocky man with a serious demeanor, Thabo always seems to be deep in thought."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn copy of 'Statistical Methods for Racing' with him.",
+    "Has a habit of tapping his pen rapidly when he's concentrating.",
+    "Prefers to work late at night when the office is quiet."
+  ]
+}

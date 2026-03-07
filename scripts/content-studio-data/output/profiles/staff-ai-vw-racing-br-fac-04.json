@@ -1,0 +1,22 @@
+{
+  "name": "Maria Rodriguez",
+  "nationality": "American",
+  "age": 50,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Maria's journey in motorsport began unconventionally, not on the track, but in a university lab. While pursuing her electrical engineering degree, she became fascinated by the intricate electronic systems within race cars. This fascination led her to VW Racing Brasil two decades ago, where she quickly proved her mettle, troubleshooting complex electrical issues and implementing innovative solutions to improve performance. \n\nMaria approaches her role with a blend of meticulous precision and practical ingenuity. She believes in data-driven decision-making, constantly analyzing sensor data to identify areas for improvement. Her colleagues often describe her as a 'wizard with wires,' capable of diagnosing and fixing problems that stump others. What sets Maria apart is her relentless pursuit of perfection, always pushing the boundaries of what's possible within the regulations.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Maria is of average height with a thoughtful expression and a permanent smudge of grease somewhere on her person."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-meter in her purse.",
+    "Has a habit of talking to the car's ECU as if it were a person.",
+    "Insists on using only analog clocks, claiming digital ones are 'too unreliable.'"
+  ]
+}

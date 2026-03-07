@@ -1,0 +1,31 @@
+{
+  "name": "Araya Srisawat",
+  "nationality": "Thai",
+  "age": 37,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Araya Srisawat is a highly respected sports medicine physician specializing in trauma and rehabilitation. After completing her postgraduate studies at Chulalongkorn University, she pursued further training in sports-related injuries in Germany. Known for her quick thinking and innovative treatment plans, Araya has helped numerous athletes recover from career-threatening injuries. \n\nDespite her demanding profession, Araya maintains a vibrant personal life. Her friends know her as spontaneous and mischievous, always up for an adventure. She's an avid scuba diver and cyclist, and is often seen listening to podcasts or attending classical music concerts. A racing driver might cross paths with Dr. Srisawat either as a personal physician or if needing specialized care after an accident at a high-profile race in Southeast Asia.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Long, often pulled back in a neat ponytail",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Araya is of average height with an athletic build. She carries herself with a quiet confidence, often with a warm, genuine smile."
+  },
+  "connectionToMotorsport": "Dr. Srisawat is a consulting physician for several motorsport teams competing in Southeast Asia, providing medical support at races and developing injury prevention programs. She also volunteers at local racing events, ensuring the safety of drivers and spectators.",
+  "meetingContext": "The player might meet Dr. Srisawat at a race event where she's providing medical support, or perhaps through a referral from another driver or team member after sustaining an injury.",
+  "conversationTopics": [
+    "The latest advancements in sports medicine",
+    "Her scuba diving trips in the Andaman Sea",
+    "The challenges of balancing a demanding career with personal passions",
+    "The importance of mental health and well-being for athletes",
+    "Classical music and opera performances"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for injuries.",
+    "Offer insights into optimizing physical and mental performance.",
+    "Connect the player with other professionals in the sports and medical fields."
+  ],
+  "personality_summary": "A reliable and intellectual doctor with a spontaneous side."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Mexican",
+  "age": 38,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Ricardo's journey into motorsport was unexpected. A classically trained chef, he initially envisioned a career in Michelin-starred restaurants. However, a chance encounter catering a small event for a local racing team ignited a passion for the high-octane world of motorsports. He quickly realized the crucial role nutrition and morale played in a team's performance and shifted his focus entirely.\n\nNow the Catering Manager for CRG Racing Team, Ricardo runs a tight ship. He believes that a well-fed team is a winning team, and he meticulously plans every meal to optimize performance, considering nutritional needs and individual preferences. He’s known for his demanding standards and unwavering commitment to quality, but his team respects his dedication and the tangible impact he has on their well-being and race results. Ricardo is adamant that every member of the team deserves the very best fuel to perform, from the drivers to the mechanics.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "Ricardo has a sturdy build and carries himself with an air of quiet confidence."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only locally sourced ingredients, even when traveling internationally.",
+    "Always has a notepad and pen handy to jot down meal ideas or dietary requirements.",
+    "Secretly judges the quality of coffee at every racetrack."
+  ]
+}

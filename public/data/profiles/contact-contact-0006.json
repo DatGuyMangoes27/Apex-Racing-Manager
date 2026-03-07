@@ -1,0 +1,31 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "French",
+  "age": 39,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Jean-Luc Dubois is a self-made billionaire, having built his fortune in the luxury goods sector. Known for his relentless drive and keen eye for emerging trends, he's successfully launched and scaled several highly profitable brands. While demanding and often impatient, Jean-Luc is also known for his generosity towards those who impress him and his unwavering optimism in the face of challenges. He values sophistication and appreciates those who exhibit both talent and ambition. \n\nJean-Luc's connection to motorsport is through sponsorship and personal enjoyment. He owns a minority stake in a Formula 2 team and is a regular attendee at the Monaco Grand Prix. A racing driver might cross paths with him at exclusive parties during race weekends, or perhaps through an introduction facilitated by a mutual business acquaintance. He is always looking for the next exciting venture and talented individuals to support.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped beard",
+    "description": "Jean-Luc is a well-dressed man of average height, with a lean build and an air of quiet confidence. His sharp features and piercing gaze suggest both intelligence and intensity."
+  },
+  "connectionToMotorsport": "Jean-Luc owns a small stake in a Formula 2 team and regularly attends high-profile races like the Monaco Grand Prix.",
+  "meetingContext": "The player might meet Jean-Luc at a VIP party during a Formula 1 or Formula 2 race weekend, or through a mutual connection within the business world.",
+  "conversationTopics": [
+    "The latest trends in luxury goods",
+    "The future of drone racing",
+    "His art collection and recent acquisitions",
+    "The nuances of fine whiskey",
+    "The challenges of building a successful brand"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal for the player's racing team",
+    "Introduce the player to other influential figures in the business world",
+    "Provide valuable business advice and mentorship"
+  ],
+  "personality_summary": "An impatient but generous billionaire with a keen eye for talent and a passion for all things luxurious and fast."
+}

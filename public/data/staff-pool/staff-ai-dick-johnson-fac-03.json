@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 44,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jan Novák's journey into motorsport began in his youth, tinkering with engines on his family's farm in rural Czech Republic. This early exposure ignited a passion that led him to pursue a degree in mechanical engineering, specializing in precision manufacturing. After graduating, Jan honed his skills in various machine shops before finding his niche in racing, drawn by the high-stakes environment and the constant push for innovation.\n\nJoining Dick Johnson Racing was a dream come true for Jan. He approaches his role with meticulous precision, ensuring every component he fabricates meets the team's exacting standards. His colleagues appreciate his problem-solving abilities and dedication to quality, making him a reliable asset in the garage. Jan's focus on continual improvement and adaptability makes him a valuable contributor to the team's pursuit of success. \n\nWhat sets Jan apart is his ability to blend traditional machining techniques with modern technologies. His experience in creating parts with both manual and CNC machines gives him a unique perspective when facing complex challenges. He's particularly adept at optimizing the manufacturing process, leading to efficiency gains and improved part quality.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a sturdy build, reflecting years of working with heavy machinery."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a habit of whistling classic Czech folk songs while working.",
+    "Meticulously cleans his tools at the end of each day, regardless of how late it is."
+  ]
+}

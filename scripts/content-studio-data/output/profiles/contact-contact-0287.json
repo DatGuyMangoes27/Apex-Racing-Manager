@@ -1,0 +1,31 @@
+{
+  "name": "Alessia Romano",
+  "nationality": "Italian",
+  "age": 22,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Alessia is a bright, young lawyer making waves in the Italian business world. Fresh out of a prestigious postgraduate program in Milan, she's already gained a reputation for her sharp legal mind and tenacious advocacy, particularly in contract law. Her spontaneous nature often leads her down unexpected paths, both professionally and personally, and she's not afraid to challenge the status quo, even if it means a heated debate. While fiercely independent, Alessia holds a deep nostalgia for her family's history, valuing tradition and loyalty above all else.\n\nThough relatively new to the legal scene, Alessia represents a growing number of young professionals involved in motorsports. Drivers, teams, and sponsors all need legal counsel, and Alessia's firm is actively seeking to expand its footprint in this high-stakes arena. A racing driver might encounter her when negotiating contracts, dealing with sponsorship agreements, or navigating legal disputes related to the sport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a messy bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Alessia has a petite frame but carries herself with confidence. She favors tailored, modern clothing that reflects her professional status, but with a hint of Italian flair."
+  },
+  "connectionToMotorsport": "Alessia's law firm represents several smaller racing teams and individual drivers competing in Italian motorsport leagues. She is starting to build her portfolio in the motorsports world, focusing on contract law.",
+  "meetingContext": "You might meet Alessia at a networking event hosted by a motorsport trade organization, or perhaps through an introduction from a mutual acquaintance within the racing community.",
+  "conversationTopics": [
+    "The latest developments in contract law",
+    "Her recent scuba diving trip to Sardinia",
+    "The best espresso in Milan",
+    "Italian poetry, especially Leopardi",
+    "Sailing in the Mediterranean"
+  ],
+  "canHelp": [
+    "Negotiate favorable contract terms with teams and sponsors.",
+    "Provide legal advice on intellectual property rights related to your racing career.",
+    "Help resolve legal disputes or breaches of contract."
+  ],
+  "personality_summary": "A sharp and passionate lawyer, Alessia is fiercely independent and values loyalty above all else."
+}

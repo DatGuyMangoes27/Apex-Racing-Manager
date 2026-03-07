@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 35,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Thabo's fascination with motorsport began early, fueled by weekend trips to local karting tracks with his father. He pursued an electrical engineering degree at the University of Cape Town, specializing in embedded systems. After graduating, he spent several years honing his skills in the automotive industry before making the jump to motorsport. He joined Triple Eight Race Engineering three years ago and has quickly become an invaluable member of the team, known for his methodical approach to problem-solving and his ability to quickly diagnose and resolve complex electrical issues.\n\nThabo's pragmatic nature means he prioritizes reliability and efficiency. He is constantly seeking innovative solutions to improve the performance of the team's electronics systems, focusing on optimizing data acquisition and control systems. His perfectionist tendencies drive him to ensure every component is operating at its peak, contributing significantly to the team's competitive edge. He is particularly adept at integrating new technologies into existing systems, bridging the gap between cutting-edge research and practical application on the racetrack.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly cropped afro",
+    "eyeColor": "Brown",
+    "facialHair": "Short, boxed beard",
+    "description": "Thabo is of average height and build, with a focused and intelligent gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas and observations.",
+    "Tidies up his workspace meticulously before leaving for the day, no matter how late it is.",
+    "Has a habit of tapping his pen against his teeth when deeply engrossed in a problem."
+  ]
+}

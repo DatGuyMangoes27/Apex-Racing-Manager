@@ -1,0 +1,27 @@
+{
+  "biography": "Benoît Semoulin, born in the Ardennes region of Belgium, wasn't raised in a racing family. His passion ignited unexpectedly during a visit to Spa-Francorchamps as a child. The roar of the engines and the blur of colors left an indelible mark. He started karting relatively late, at 16, but his natural talent for defensive driving quickly became apparent. Early on, lacking the funds for cutting-edge equipment, Benoît learned to extract every ounce of performance from what he had, a skill that would serve him well later. A defining moment was his unexpected victory at a rain-soaked Formula Ford race at Zolder, proving his mettle in challenging conditions. Now, at 37, Semoulin finds himself in his peak, racing for Rosso Efesto, striving to prove that consistency and grit can triumph over raw speed.",
+  "drivingStyle": "Semoulin's driving style is best described as meticulously defensive. He rarely makes rash overtakes, preferring to capitalize on opponents' mistakes and consistently maintain strong lap times. He's a master of tire management, nursing his rubber through long stints. He excels under pressure, often delivering his best performances when the stakes are highest. His cornering technique prioritizes stability and minimizing risk, trading ultimate speed for predictability and consistency.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "A long-standing rivalry dating back to their Formula 3 days. Rossi, known for his aggressive overtaking, often clashed with Semoulin's defensive style, leading to several on-track incidents."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A more recent rivalry based on team dynamics. Dubois and Semoulin are teammates at Rosso Efesto and there is constant tension in the garage as they each fight to be the lead driver."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "The rivalry with Tanaka is one of respect. Tanaka is a master of qualifying and Semoulin always has to fight extra hard to maintain his position."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks, even if they are full of holes.",
+    "Must eat a specific type of Belgian waffle – Liège waffle with powdered sugar – before every race.",
+    "Refuses to look at the weather forecast before a race, believing it jinxes his chances."
+  ],
+  "nickname": "The Ardennes Wall",
+  "famousQuote": "Racing isn't about being the fastest for a single lap; it's about being consistently fast for every lap.",
+  "careerHighlight": "Winning the 24 Hours of Spa in a nail-biting finish after starting from the back of the grid due to a qualifying penalty.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Monaco Grand Prix due to a mechanical failure, costing him his first Grand Prix victory."
+}

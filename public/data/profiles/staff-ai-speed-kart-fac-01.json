@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 30,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Valentina's journey into motorsport data analysis began unconventionally. Initially pursuing a degree in astrophysics, she found herself increasingly drawn to the predictive modeling challenges presented by racing. Leaving academia, Valentina taught herself coding and statistical analysis, landing her first motorsport role with a small karting team in Buenos Aires.\n\nHer approach to data is meticulous and thorough. She believes that even the smallest details can unlock significant performance gains. Valentina is known for her ability to translate complex data sets into actionable insights for drivers and engineers alike. Her demanding nature stems from a deep-seated desire for continuous improvement and a refusal to accept mediocrity. She's particularly adept at identifying subtle patterns in driver telemetry that others often miss, providing a crucial edge in race strategy and car setup.\n\nWhat sets Valentina apart is her capacity to visualize data in three dimensions, a skill honed during her astrophysics studies. She's able to mentally map racing circuits and driver behavior, creating dynamic simulations that reveal optimal racing lines and braking points. Her colleagues often joke that she sees the track as a living, breathing entity, constantly evolving and presenting new challenges.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair usually tied back in a high ponytail during work, with a few loose strands framing her face.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Valentina is of average height with a lean, athletic build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sips mate from a traditional gourd during important data reviews.",
+    "Insists on organizing her workspace with extreme precision, everything must be perfectly aligned.",
+    "Has a habit of muttering mathematical equations under her breath when analyzing complex data."
+  ]
+}

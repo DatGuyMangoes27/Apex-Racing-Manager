@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 31,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Ivan Horvat discovered his passion for motorsport through a chance encounter at a local rally event in his youth. Captivated by the energy and precision, he sought a way to contribute. His culinary journey began in his grandmother's kitchen, where he learned the value of fresh ingredients and careful preparation. He honed his skills at a top Zagreb restaurant before transitioning to the fast-paced world of motorsport catering. Ivan believes that a well-fed team is a high-performing team.\n\nAt Signature Racing, Ivan takes a meticulous approach to menu planning, considering the nutritional needs of the drivers and crew. His dedication to quality and efficiency has earned him the respect of his colleagues. Ivan is a firm believer in sourcing locally and minimizing waste, aligning his catering practices with the team's commitment to sustainability. His knack for creating delicious and healthy meals under pressure makes him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Ivan is of average height, with a sturdy build and a kind face."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with recipe ideas.",
+    "Obsessively cleans his workstation before and after each meal service.",
+    "Has a habit of humming traditional Croatian folk songs while preparing food."
+  ]
+}

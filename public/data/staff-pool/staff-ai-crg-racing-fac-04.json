@@ -1,0 +1,22 @@
+{
+  "name": "Angus McMillan",
+  "nationality": "Australian",
+  "age": 48,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Angus's journey into motorsport began with a childhood fascination for disassembling and reassembling anything with a motor. He excelled in electrical engineering at university, drawn to the intricate dance of electrons that brought machines to life. After graduating, he spent several years in the automotive industry, honing his skills in diagnostics and repair before a chance encounter at a local race event ignited his passion for competitive racing.\n\nHe joined CRG Racing Team a decade ago, quickly becoming a key member of the electronics team. Angus is known for his meticulous approach to problem-solving, his ability to remain calm under pressure, and his deep understanding of the complex electrical systems that underpin modern racing cars. While he may not be the loudest voice in the garage, his technical expertise and unwavering loyalty make him a valued asset to the team.\n\nAngus's knack for identifying subtle electrical gremlins that others miss, coupled with his quiet dedication, makes him a distinct force within the CRG Racing Team, ensuring their cars stay competitive on the track.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Angus is of average height with a slightly weathered face that reflects years spent working on cars."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a habit of humming quietly while troubleshooting electrical systems.",
+    "Insists on using a specific type of solder for all electrical connections."
+  ]
+}

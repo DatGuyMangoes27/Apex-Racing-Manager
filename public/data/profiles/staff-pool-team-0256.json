@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 44,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Bjorn's passion for motorsport ignited during his childhood, fueled by countless hours spent tinkering with engines in his father's workshop. He pursued a degree in mechanical engineering and quickly found his niche in racing. Bjorn's career began in Formula Ford, where he honed his skills optimizing car setups for diverse track conditions. He steadily climbed the ranks, working with various racing teams in touring cars and GT racing, always prioritizing data analysis and driver feedback to achieve optimal performance.\n\nBjorn believes that a collaborative environment is crucial for success. He values open communication with drivers and mechanics, fostering a team dynamic where everyone feels empowered to contribute their expertise. His approach to race engineering is rooted in a deep understanding of vehicle dynamics combined with a relentless pursuit of marginal gains. He is known for his calm demeanor under pressure and his ability to quickly diagnose and resolve complex technical issues.\n\nWhat sets Bjorn apart is his innovative approach to problem-solving. He's not afraid to challenge conventional wisdom and explore unconventional solutions to gain a competitive edge. This, combined with his natural leadership skills, makes him a highly sought-after race engineer in the motorsport world.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Bjorn has a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten engineering notes.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of Swedish coffee before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hamiora Te Kanawa",
+  "nationality": "New Zealand",
+  "age": 51,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Hamiora's fascination with motorsport began as a child, tinkering with go-karts in his family's garage in Rotorua. He pursued a degree in electrical engineering at the University of Auckland, focusing on control systems and data acquisition. After graduating, he spent several years developing engine management systems for a local performance tuning shop before landing a role with a Supercars team in Australia. His meticulous approach to data analysis and his ability to quickly diagnose and resolve electrical gremlins made him a valuable asset. \n\nHe joined Target Racing five years ago, drawn by their commitment to innovation and their willingness to embrace cutting-edge technology. Hamiora is known for his ability to optimize complex electrical systems for maximum performance and reliability. His colleagues appreciate his calm demeanor under pressure and his knack for explaining technical concepts in a clear and concise manner. Hamiora is also known for his creative solutions, finding unique ways to improve performance through unconventional methods.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A sturdy build with a focused gaze and a permanent tan from years spent trackside."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Insists on using imperial measurements alongside metric.",
+    "Taps his pen rhythmically when analyzing data."
+  ]
+}

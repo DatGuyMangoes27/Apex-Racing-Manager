@@ -1,0 +1,31 @@
+{
+  "name": "Mei-Ling Chen",
+  "nationality": "Chinese",
+  "age": 63,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Mei-Ling Chen is a renowned orthopedic surgeon specializing in sports-related injuries, particularly those affecting the spine and limbs. After earning her PhD from Peking University, she completed fellowships at prestigious institutions across Europe and North America. While brilliant, Dr. Chen is known for her demanding and somewhat self-centered demeanor, often prioritizing her own research and recognition. Her connections to motorsport stem from her work treating injured athletes, including several high-profile racing drivers who seek her expertise for specialized care. A racing driver might cross paths with Dr. Chen after a serious accident requiring orthopedic intervention, or as a preventative measure to assess and strengthen their physical resilience.",
+  "physical": {
+    "skinTone": "Light Tan",
+    "hairColor": "Black",
+    "hairStyle": "Elegant, neatly styled bob with subtle graying at the temples",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Dr. Chen carries herself with an air of sophistication, often seen in designer attire. Her sharp gaze and meticulous grooming suggest a detail-oriented and demanding personality."
+  },
+  "connectionToMotorsport": "Dr. Chen is sought after by racing teams and drivers for her expertise in treating complex orthopedic injuries sustained during races. She also provides consultations on driver ergonomics and injury prevention strategies.",
+  "meetingContext": "The player might meet Dr. Chen at a high-end rehabilitation clinic or hospital specializing in sports medicine, following an accident or during a pre-season physical assessment.",
+  "conversationTopics": [
+    "The latest advancements in orthopedic surgery",
+    "The importance of physical conditioning for athletes",
+    "Her extensive travels and experiences at international medical conferences",
+    "The intricacies of ballet technique and performance",
+    "The parallels between surgical precision and culinary arts"
+  ],
+  "canHelp": [
+    "Provide expert medical consultation and treatment for injuries",
+    "Offer insights into optimizing physical performance and injury prevention",
+    "Connect the player with a network of other medical professionals and specialists"
+  ],
+  "personality_summary": "A brilliant but self-absorbed surgeon who is at the top of her field and knows it."
+}

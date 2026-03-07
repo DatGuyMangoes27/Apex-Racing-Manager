@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Belgian",
+  "age": 43,
+  "gender": "female",
+  "contactType": "influencer",
+  "bio": "Isabelle Dubois is a prominent Belgian socialite and online influencer known for her eclectic interests and philanthropic endeavors. Coming from a wealthy family with deep roots in Belgian history, she initially pursued a career in historical preservation before transitioning into the digital sphere. Her unique blend of old-world charm and modern sensibilities has garnered her a significant following, making her a sought-after collaborator for luxury brands and cultural initiatives.\n\nWhile seemingly distant from the racing world, Isabelle's family owns a significant stake in a high-end automotive manufacturer that occasionally sponsors motorsport events. Her interest in the intersection of technology, design, and performance often draws her to these events, where she uses her platform to showcase the artistry and engineering behind racing. A driver might cross paths with her at a VIP lounge during a race or at a charity gala supporting young drivers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Elegant chignon",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Isabelle has a classic beauty that is both striking and refined. Her expressive green eyes and carefully styled auburn hair frame a face that speaks of intelligence and compassion."
+  },
+  "connectionToMotorsport": "Isabelle's family owns shares in a prestigious automotive company involved in motorsport sponsorship and she appreciates the technical aspects and design of racing cars.",
+  "meetingContext": "The player could meet Isabelle at a motorsport-related charity event, or in the VIP area of a major race where her family's automotive brand is a sponsor.",
+  "conversationTopics": [
+    "Historical preservation",
+    "Ballet and performing arts",
+    "The future of luxury brands",
+    "Philanthropic initiatives",
+    "Cricket"
+  ],
+  "canHelp": [
+    "Provide introductions to high-net-worth individuals and potential sponsors",
+    "Increase public awareness and improve the driver's image through social media",
+    "Offer access to exclusive events and opportunities"
+  ],
+  "personality_summary": "A compassionate and open-minded influencer blending old-world charm with modern sensibilities."
+}

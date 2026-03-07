@@ -1,0 +1,22 @@
+{
+  "name": "Elena Rodriguez Garcia",
+  "nationality": "Spanish",
+  "age": 50,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Elena's journey into motorsport was somewhat accidental. Originally trained as an aeronautical engineer, she found herself drawn to the fast-paced world of Formula 1 after attending a race with a friend. Intrigued by the complex composite structures, she transitioned her skills, quickly establishing herself as a reliable and creative technician. Her meticulous approach and ability to remain calm under pressure have earned her the respect of her colleagues.\n\nElena's expertise lies in her ability to diagnose and repair composite damage swiftly and effectively. She's known for her resourcefulness, often finding innovative solutions to complex problems. While she may not be the loudest voice in the garage, her contributions are invaluable, ensuring the car is always in top condition. She is particularly proud of her work reinforcing the chassis after a particularly nasty crash at Silverstone in 2022, which allowed the driver to compete the following week.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, neatly tied back in a practical ponytail with a few strands escaping to frame her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is of average height with a sturdy build, reflecting years of hands-on work."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and personal sketches.",
+    "Has a habit of tapping her pen rhythmically when concentrating on a problem.",
+    "Insists on using a specific brand of carbon fiber repair resin, claiming it's 'the only one that truly bonds'."
+  ]
+}

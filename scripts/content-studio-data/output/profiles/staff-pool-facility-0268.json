@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 24,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for Formula 1, watching races with his grandfather and dreaming of contributing to the sport. He pursued a degree in mechanical engineering, specializing in composite materials. His first role was with a small racing team in Mexico, where he quickly proved his aptitude for composite repair and manufacturing. He's now eager to apply his skills at a higher level. \n\nRicardo is a meticulous technician, known for his attention to detail and his ability to diagnose and solve complex composite issues. He strives to improve the performance of the car through the use of advanced materials and construction techniques. His ambition is not just to perform well in his role, but also to contribute to the overall success of the team.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a lean, athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always meticulously cleans his workspace before starting any task.",
+    "Has a collection of miniature racing helmets on his desk.",
+    "Listens to classic rock music while working to focus."
+  ]
+}

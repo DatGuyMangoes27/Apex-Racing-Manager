@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0475",
+  "name": "BergWerk Tools",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Austria",
+  "description": "Precision tools for peak performance.",
+  "story": "BergWerk Tools is an Austrian manufacturer of high-performance hand and power tools, known for their precision and durability. They sponsor motorsport to showcase the reliability and quality of their tools under extreme conditions. They seek a partnership that highlights the precision and engineering required for success in racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Austria"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0475.png"
+}

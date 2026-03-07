@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Valenzuela",
+  "nationality": "Chilean",
+  "age": 36,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Valenzuela's journey in motorsport began not on the track, but in the garage. Growing up in Santiago, he spent countless hours tinkering with engines alongside his father, a local mechanic. This hands-on experience instilled in him a deep appreciation for the technical intricacies of racing. While he initially pursued a degree in engineering, the allure of the pit lane proved too strong, and he transitioned into team management. \n\nHis pragmatic approach to leadership is rooted in data analysis and calculated risks. Ricardo believes in empowering his team, fostering a collaborative environment where every voice is heard. He's known for his meticulous planning and ability to remain calm under pressure, a trait that has earned him the respect of his colleagues and competitors alike. Ricardo's ambition isn't just about winning races, it's about building a sustainable and successful racing program, instilling a culture of excellence throughout the entire organization.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is a man of medium build with a serious, focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on personally inspecting the car before every race."
+  ]
+}

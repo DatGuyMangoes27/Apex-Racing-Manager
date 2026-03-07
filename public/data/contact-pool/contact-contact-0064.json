@@ -1,0 +1,31 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 25,
+  "gender": "male",
+  "contactType": "tech_entrepreneur",
+  "bio": "Jan Kolář is the founder of SecurePass, a revolutionary cybersecurity firm that has quickly become a global leader in data protection. Entirely self-taught in computer science, Jan's relentless drive and unwavering principles have earned him both immense wealth and the respect of his peers. Despite his demanding career, Jan maintains a keen interest in motorsport, viewing the strategic elements and high-pressure environment as parallels to the tech world. He sees the sport as a meritocracy where raw talent and calculated risk-taking are rewarded. \n\nHe's always been fascinated by the engineering and technological aspects of racing, often attending races and following the careers of young drivers. He appreciates the blend of human skill and advanced technology required for success. A racing driver might cross paths with Jan at a technology conference where he's a keynote speaker, or perhaps at a motorsport event where he's exploring potential sponsorship opportunities for his company.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled",
+    "eyeColor": "Hazel",
+    "facialHair": "Light stubble",
+    "description": "Jan has a sharp, intelligent look. His intense gaze and focused expression often convey his deep concentration."
+  },
+  "connectionToMotorsport": "Jan is considering sponsoring a racing team to increase brand awareness for SecurePass and has been attending races to scout potential partnerships. He also views motorsport as an environment where innovative technology can be showcased and tested.",
+  "meetingContext": "The player could meet Jan at a tech conference where Jan is a speaker, or at a high-profile motorsport event like a Formula 1 race, potentially in a VIP hospitality suite.",
+  "conversationTopics": [
+    "The latest cybersecurity threats",
+    "The parallels between racing strategy and business strategy",
+    "The history of data encryption",
+    "His favorite wines from Moravia",
+    "The application of AI in motorsport"
+  ],
+  "canHelp": [
+    "Provide sponsorship or investment for the player's racing career.",
+    "Offer valuable connections within the tech and business world.",
+    "Mentor the player on the importance of data security and brand management."
+  ],
+  "personality_summary": "A principled and loyal tech entrepreneur with a fiery passion for innovation and a surprising interest in motorsport."
+}

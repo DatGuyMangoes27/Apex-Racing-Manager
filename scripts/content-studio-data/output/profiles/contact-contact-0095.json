@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Alonso Ferrer",
+  "nationality": "Spanish",
+  "age": 58,
+  "gender": "male",
+  "contactType": "actor",
+  "bio": "Ricardo Alonso Ferrer is a celebrated Spanish actor, known for his dramatic roles in both film and theatre. He has a reputation for being a principled and elegant man, often seen attending high-society events with a classic, old-fashioned charm. While perceived by some as gossipy, those close to him see him as possessing a sharp wit and a deep loyalty to his friends. He is, however, very protective of his image and dislikes being caught in unflattering situations. His connection to the racing world stems from his friendship with several prominent team owners and his occasional attendance at Formula 1 races, often as a guest of honor in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying Black",
+    "hairStyle": "Neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Well-groomed goatee",
+    "description": "Ricardo is a tall and slender man with a distinguished air. He favors tailored suits and classic accessories, accentuating his refined appearance."
+  },
+  "connectionToMotorsport": "Ricardo is a known motorsport enthusiast, often seen in the paddock at Formula 1 races. He also has close personal ties to several team owners and sponsors through his social circle.",
+  "meetingContext": "The player might meet Ricardo at a VIP event during a Grand Prix weekend, or perhaps at a charity gala related to motorsport.",
+  "conversationTopics": [
+    "The latest opera performance",
+    "His vintage watch collection",
+    "Political gossip",
+    "The art of acting",
+    "His fitness routine"
+  ],
+  "canHelp": [
+    "Introduce the player to influential team owners and sponsors",
+    "Offer acting lessons to improve the player's public speaking and media presence",
+    "Provide access to exclusive social events frequented by high-profile individuals"
+  ],
+  "personality_summary": "A gossipy but principled and elegant actor with old-fashioned charm."
+}

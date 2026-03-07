@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alistair MacLeod",
+    "nationality": "Scottish",
+    "age": 53,
+    "gender": "male",
+    "role": "electronics_engineer",
+    "bio": "Alistair's journey into motorsport began in his youth, tinkering with engines and electronics in his father's garage in the Highlands. He honed his skills through apprenticeships with local engineering firms before transitioning to motorsport, initially working with smaller racing teams before joining Opala Legends. He is known for his meticulous approach to problem-solving and his ability to quickly diagnose and repair complex electronic systems.\n\nAlistair's pragmatic nature makes him a valuable asset to the team. He's less interested in theoretical innovation and more focused on ensuring the reliability and performance of existing systems. His experience and calm demeanor under pressure make him a respected figure in the pit lane. He values precision and data-driven decisions, constantly seeking to optimize the car's electronic performance.",
+    "physical": {
+      "skinTone": "fair",
+      "hairColor": "gray",
+      "hairStyle": "short, neatly trimmed",
+      "eyeColor": "blue",
+      "facialHair": "trimmed mustache",
+      "description": "Alistair is a man of medium build with a serious but kind face."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a multi-tool.",
+      "Meticulously organizes his workspace.",
+      "Prefers to communicate via email rather than in person."
+    ]
+  }
+]

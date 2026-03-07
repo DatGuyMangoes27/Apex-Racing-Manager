@@ -1,0 +1,22 @@
+{
+  "name": "Liam Baker",
+  "nationality": "New Zealand",
+  "age": 26,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Liam's passion for motorsport ignited during his childhood, spent watching his father compete in local rally events. He excelled in mathematics and computer science, earning a degree focused on statistical modeling. Liam's early career involved developing predictive algorithms for financial markets, but his true calling lay in applying those skills to racing. He joined Team Penske after showcasing his capabilities in a series of open-source motorsport analytics projects.\n\nLiam is known for his meticulous data mining and his ability to translate complex datasets into actionable insights for the team's engineers and drivers. He is especially adept at identifying subtle performance trends and predicting the impact of setup changes. His pragmatic approach to problem-solving, coupled with his drive for perfection, makes him a valuable asset to the team's strategic decision-making process.\n\nLiam brings a fresh perspective to Team Penske, blending his analytical skills with a deep understanding of racing dynamics. He is determined to leverage data to push the boundaries of performance and contribute to the team's continued success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "None",
+    "description": "Liam is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Obsessively cleans his workstation every morning before starting work.",
+    "Tends to speak in data-driven analogies, comparing racing situations to statistical models."
+  ]
+}

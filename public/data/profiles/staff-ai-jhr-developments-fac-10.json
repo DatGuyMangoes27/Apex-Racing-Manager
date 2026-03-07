@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 50,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jean-Pierre's journey into motorsport began in his father's small garage in Liège, where he spent his youth tinkering with engines and learning the intricacies of mechanical engineering. His meticulous nature and knack for problem-solving quickly made him an invaluable asset to local racing teams. After years of honing his skills, he found his calling as a fabricator, specializing in creating bespoke components for high-performance vehicles.\n\nJean-Pierre approaches his role with unwavering dedication, meticulously crafting each piece with precision and care. His ability to quickly grasp complex designs and translate them into tangible creations has earned him a reputation for excellence. He is known for his innovative solutions and his ability to adapt to the ever-evolving demands of the motorsport industry. Although he prefers to work independently, he is always willing to share his expertise and contribute to the team's success. Jean-Pierre's ambition drives him to continually improve his craft and remain at the forefront of fabrication technology.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build with a focused gaze and strong hands."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his tools to an almost dangerous degree.",
+    "Insists on using only metric measurements, even when others use imperial.",
+    "Mumbles technical jargon to himself while working."
+  ]
+}

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Users2, Cog, Flag, User, AlertTriangle, Battery, Smile } from 'lucide-react'
-import { Card, CardHeader, Badge } from '@/components/ui'
+import { Card, CardHeader, Badge, StaffPortrait } from '@/components/ui'
+import { getStaffPortrait, getRandomStaffPortraitByRole, getPortraitByManifestId, getFallbackPortrait } from '@/utils/generated-assets'
 import { useCareerStore, TeamStaffRole } from '@/store/careerStore'
 
 interface StaffStatusWidgetProps {
@@ -111,7 +112,16 @@ export function StaffStatusWidget({ compact = false }: StaffStatusWidgetProps) {
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <RoleIcon className="w-4 h-4 text-accent-blue" />
+                  <StaffPortrait
+                    src={
+                      member.portraitId
+                        ? (getPortraitByManifestId(member.portraitId) || getFallbackPortrait(member.gender || 'male'))
+                        : (getStaffPortrait(member.id) || getRandomStaffPortraitByRole(member.role))
+                    }
+                    name={member.name}
+                    role={roleLabels[member.role]}
+                    size="sm"
+                  />
                   <div>
                     <span className="font-medium text-sm">{member.name}</span>
                     <span className="text-xs text-text-muted ml-2">

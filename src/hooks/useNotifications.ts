@@ -129,6 +129,97 @@ export function useNotifications() {
       })
     }
 
+    // ============================================
+    // Phone: Unread messages
+    // ============================================
+    const messaging = careerState.messaging
+    if (messaging) {
+      const nowYear = careerState.currentYear
+      const nowWeek = careerState.currentWeek
+      const nowDay = careerState.currentDay ?? 1
+      const nowHour = careerState.dayBudget?.currentHour ?? 23
+
+      const isDeliveredNow = (msg: any): boolean => {
+        if (!msg?.timestamp) return true
+        const ts = msg.timestamp
+        const msgYear = ts.year ?? nowYear
+        const msgWeek = ts.week ?? nowWeek
+        const msgDay = ts.day ?? nowDay
+        const msgHour = ts.hour ?? 0
+
+        if (msgYear < nowYear) return true
+        if (msgYear > nowYear) return false
+        if (msgWeek < nowWeek) return true
+        if (msgWeek > nowWeek) return false
+        if (msgDay < nowDay) return true
+        if (msgDay > nowDay) return false
+        return msgHour <= nowHour
+      }
+
+      // Derive unread from unread, deliverable messages instead of trusting
+      // cached unread counters. This prevents future-hour queued messages from
+      // surfacing early as "unread now".
+      const totalUnread = Object.values(messaging.conversations || {}).reduce((sum, conv: any) => {
+        const messages = Array.isArray(conv?.messages) ? conv.messages : []
+        const unreadVisible = messages.filter((m: any) => !(m?.isRead || m?.read) && isDeliveredNow(m)).length
+        return sum + unreadVisible
+      }, 0)
+      
+      if (totalUnread > 0) {
+        notifs.push({
+          id: 'unread-messages',
+          screen: '/phone',
+          type: 'action',
+          message: `${totalUnread} unread message${totalUnread > 1 ? 's' : ''}`,
+          priority: 60
+        })
+      }
+      
+      // Pending contact requests (gameplay action needed)
+      const pendingRequests = messaging.pendingRequests?.filter(
+        (r: any) => r.status === 'pending'
+      ) || []
+      if (pendingRequests.length > 0) {
+        notifs.push({
+          id: 'contact-requests',
+          screen: '/phone',
+          type: 'action',
+          message: `${pendingRequests.length} request${pendingRequests.length > 1 ? 's' : ''} from contacts`,
+          priority: 55
+        })
+      }
+      
+      // Group chat unread
+      const groupUnread = Object.values(messaging.groupConversations || {}).reduce(
+        (sum, gc: any) => sum + (gc?.unreadCount || 0), 0
+      )
+      if (groupUnread > 0) {
+        notifs.push({
+          id: 'group-unread',
+          screen: '/phone',
+          type: 'info',
+          message: `${groupUnread} group message${groupUnread > 1 ? 's' : ''}`,
+          priority: 40
+        })
+      }
+      
+      // Partner ghosting warning
+      const partner = messaging.contacts?.find((c: any) => c.type === 'partner')
+      if (partner) {
+        const partnerConvId = `conv_${partner.id}`
+        const partnerConv = messaging.conversations?.[partnerConvId] as any
+        if (partnerConv?.playerGhostedDays && partnerConv.playerGhostedDays >= 3) {
+          notifs.push({
+            id: 'partner-ghosting',
+            screen: '/phone',
+            type: 'warning',
+            message: `${partner.name} hasn't heard from you!`,
+            priority: 75
+          })
+        }
+      }
+    }
+
     // Sort by priority (highest first)
     return notifs.sort((a, b) => b.priority - a.priority)
   }, [player, careerState, getSeriesById, hasUnresolvedConflicts])

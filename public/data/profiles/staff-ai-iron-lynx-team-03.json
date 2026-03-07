@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Swiss",
+  "age": 53,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Isabelle Dubois is a seasoned Head of Aerodynamics with a career spanning over two decades in motorsport. Her passion ignited during her engineering studies at ETH Zurich, where she specialized in fluid dynamics. She started her career at Sauber, working her way up from a junior engineer to a senior aerodynamicist before joining Iron Lynx. Isabelle is known for her meticulous approach to aero development, emphasizing data-driven decisions and rigorous testing.\n\nHer leadership style focuses on fostering a collaborative environment while maintaining high standards. She's dedicated to pushing the boundaries of aerodynamic performance through innovative solutions and continuous improvement. Isabelle believes that a strong team, combined with cutting-edge technology, is essential for success in the highly competitive world of motorsport. She is respected for her ability to translate complex aerodynamic concepts into practical, track-ready solutions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly styled bob with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is a woman of medium height with a strong, determined gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Insists on a specific type of Swiss chocolate being available in the aero department's break room.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

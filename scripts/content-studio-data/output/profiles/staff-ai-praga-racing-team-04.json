@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 53,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Adrian's motorsport journey began in his youth, tinkering with Ladas in his father's garage. This hands-on experience ignited a passion that led him to pursue a degree in mechanical engineering. After graduating, he secured a position with a small rally team, where he quickly distinguished himself with his ability to diagnose and resolve complex mechanical issues under pressure. His career progressed through various racing series, including touring cars and Formula Renault, honing his skills in optimizing vehicle performance and managing race strategy. \n\nAdrian's approach to race engineering is firmly rooted in pragmatism and data analysis. He believes in making evidence-based decisions and prioritizing reliability. While always open to new ideas, he emphasizes the importance of proven solutions and incremental improvements. Known for his calm demeanor and clear communication, Adrian excels at bridging the gap between drivers and mechanics, fostering a collaborative environment that yields consistent results. His years of experience make him a valuable asset to any racing team.\n\n At Praga Racing, Adrian is known for his meticulous attention to detail and his ability to quickly adapt to changing track conditions. He is particularly adept at fine-tuning suspension setups and optimizing tire management, ensuring that his drivers have the best possible chance of success.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Adrian is a man of medium build with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he has a laptop.",
+    "Insists on drinking strong black coffee at precisely 3:00 PM every day.",
+    "Has a habit of muttering technical jargon to himself while analyzing data."
+  ]
+}

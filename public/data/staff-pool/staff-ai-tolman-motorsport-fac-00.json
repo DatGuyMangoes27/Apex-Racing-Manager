@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 38,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Astrid's journey into motorsport started unconventionally. Growing up in a small Norwegian town, her fascination with engineering began with tinkering with old snowmobiles. This passion led her to pursue a degree in mechanical engineering, where she specialized in simulation and modeling. After graduation, she worked for several years in the aerospace industry, developing flight simulators before making the leap to motorsport. \n\nAt Tolman Motorsport, Astrid is responsible for developing and maintaining the team's cutting-edge simulator. Her pragmatic approach focuses on data-driven improvements and ensuring the simulator accurately reflects real-world conditions. She believes in constant iteration and collaboration with the drivers to refine the simulator experience. What sets Astrid apart is her ability to translate complex technical data into actionable insights for the drivers, helping them extract maximum performance on track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool in her pocket.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work in complete silence, using noise-canceling headphones."
+  ]
+}

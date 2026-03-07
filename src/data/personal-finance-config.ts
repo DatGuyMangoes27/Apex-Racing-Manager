@@ -18,6 +18,14 @@ export type Country =
   | 'Australia'
   | 'Monaco'
   | 'Switzerland'
+  | 'Spain'
+  | 'Portugal'
+  | 'United Arab Emirates'
+  | 'Singapore'
+  | 'Canada'
+  | 'Mexico'
+  | 'South Africa'
+  | 'Austria'
 
 // ============================================
 // PERSONAL FINANCIAL STATE
@@ -34,6 +42,10 @@ export interface PersonalFinancialState {
   
   // Income tracking (per month for display, processed weekly)
   monthlyIncome: PersonalIncomeBreakdown
+  
+  // Whether the player has explicitly configured their owner salary
+  // If false/undefined, salary defaults to $0 (migration for old saves that had $15,000)
+  ownerSalaryConfigured?: boolean
   
   // Expense tracking
   monthlyExpenses: PersonalExpenseBreakdown
@@ -93,6 +105,12 @@ export interface PersonalExpenseBreakdown {
   propertyMaintenance?: number  // Property upkeep
   childSupport?: number      // Child support payments
   alimony?: number           // Alimony payments
+  services: number           // Luxury services (chef, driver, security, etc.)
+  dietPlan: number           // Diet plan costs
+  petUpkeep: number          // Pet food, vet, grooming
+  vehicleCosts: number       // Maintenance + insurance
+  membershipFees: number     // Club memberships
+  rent: number               // Rental property costs
   other: number
 }
 
@@ -600,6 +618,167 @@ export const TAX_CONFIGS: Record<string, CountryTaxConfig> = {
     charitableDeductionLimit: 0.20,
     mortgageInterestDeductible: true,
     description: 'Low federal rates (cantonal taxes vary) with no capital gains tax'
+  },
+  'Spain': {
+    country: 'Spain',
+    name: 'Spanish Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 12450, rate: 0.19, baseAmount: 0 },
+      { minIncome: 12450, maxIncome: 20200, rate: 0.24, baseAmount: 2366 },
+      { minIncome: 20200, maxIncome: 35200, rate: 0.30, baseAmount: 4226 },
+      { minIncome: 35200, maxIncome: 60000, rate: 0.37, baseAmount: 8726 },
+      { minIncome: 60000, maxIncome: 300000, rate: 0.45, baseAmount: 17902 },
+      { minIncome: 300000, maxIncome: Infinity, rate: 0.47, baseAmount: 125902 }
+    ],
+    capitalGainsShortRate: 0.23,
+    capitalGainsLongRate: 0.23,
+    dividendRate: 0.23,
+    standardDeduction: 5550,
+    charitableDeductionLimit: 0.15,
+    mortgageInterestDeductible: false,
+    description: 'Progressive rates with flat savings income tax'
+  },
+  'Portugal': {
+    country: 'Portugal',
+    name: 'Portuguese Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 7703, rate: 0.1325, baseAmount: 0 },
+      { minIncome: 7703, maxIncome: 11623, rate: 0.18, baseAmount: 1021 },
+      { minIncome: 11623, maxIncome: 16472, rate: 0.23, baseAmount: 1727 },
+      { minIncome: 16472, maxIncome: 21321, rate: 0.26, baseAmount: 2843 },
+      { minIncome: 21321, maxIncome: 27146, rate: 0.3275, baseAmount: 4104 },
+      { minIncome: 27146, maxIncome: 39791, rate: 0.37, baseAmount: 6012 },
+      { minIncome: 39791, maxIncome: 51997, rate: 0.435, baseAmount: 10690 },
+      { minIncome: 51997, maxIncome: 81199, rate: 0.45, baseAmount: 16000 },
+      { minIncome: 81199, maxIncome: Infinity, rate: 0.48, baseAmount: 29141 }
+    ],
+    capitalGainsShortRate: 0.28,
+    capitalGainsLongRate: 0.28,
+    dividendRate: 0.28,
+    standardDeduction: 4104,
+    charitableDeductionLimit: 0.15,
+    mortgageInterestDeductible: false,
+    description: 'Progressive system with NHR regime for new residents'
+  },
+  'United Arab Emirates': {
+    country: 'United Arab Emirates',
+    name: 'UAE Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: Infinity, rate: 0, baseAmount: 0 }
+    ],
+    capitalGainsShortRate: 0,
+    capitalGainsLongRate: 0,
+    dividendRate: 0,
+    standardDeduction: 0,
+    charitableDeductionLimit: 0,
+    mortgageInterestDeductible: false,
+    description: 'No personal income tax - attractive for high earners'
+  },
+  'Singapore': {
+    country: 'Singapore',
+    name: 'Singapore Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 20000, rate: 0, baseAmount: 0 },
+      { minIncome: 20000, maxIncome: 30000, rate: 0.02, baseAmount: 0 },
+      { minIncome: 30000, maxIncome: 40000, rate: 0.035, baseAmount: 200 },
+      { minIncome: 40000, maxIncome: 80000, rate: 0.07, baseAmount: 550 },
+      { minIncome: 80000, maxIncome: 120000, rate: 0.115, baseAmount: 3350 },
+      { minIncome: 120000, maxIncome: 160000, rate: 0.15, baseAmount: 7950 },
+      { minIncome: 160000, maxIncome: 200000, rate: 0.18, baseAmount: 13950 },
+      { minIncome: 200000, maxIncome: 240000, rate: 0.19, baseAmount: 21150 },
+      { minIncome: 240000, maxIncome: 280000, rate: 0.195, baseAmount: 28750 },
+      { minIncome: 280000, maxIncome: 320000, rate: 0.20, baseAmount: 36550 },
+      { minIncome: 320000, maxIncome: Infinity, rate: 0.22, baseAmount: 44550 }
+    ],
+    capitalGainsShortRate: 0,
+    capitalGainsLongRate: 0,
+    dividendRate: 0,
+    standardDeduction: 0,
+    charitableDeductionLimit: 0.25,
+    mortgageInterestDeductible: false,
+    description: 'Low progressive rates with no capital gains tax'
+  },
+  'Canada': {
+    country: 'Canada',
+    name: 'Canadian Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 55867, rate: 0.15, baseAmount: 0 },
+      { minIncome: 55867, maxIncome: 111733, rate: 0.205, baseAmount: 8380 },
+      { minIncome: 111733, maxIncome: 154906, rate: 0.26, baseAmount: 19832 },
+      { minIncome: 154906, maxIncome: 220000, rate: 0.29, baseAmount: 31057 },
+      { minIncome: 220000, maxIncome: Infinity, rate: 0.33, baseAmount: 49934 }
+    ],
+    capitalGainsShortRate: 0.265,
+    capitalGainsLongRate: 0.265,
+    dividendRate: 0.33,
+    standardDeduction: 15705,
+    charitableDeductionLimit: 0.75,
+    mortgageInterestDeductible: false,
+    description: 'Progressive federal rates plus provincial rates on top'
+  },
+  'Mexico': {
+    country: 'Mexico',
+    name: 'Mexican Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 8952, rate: 0.0192, baseAmount: 0 },
+      { minIncome: 8952, maxIncome: 75984, rate: 0.064, baseAmount: 172 },
+      { minIncome: 75984, maxIncome: 133536, rate: 0.1088, baseAmount: 4462 },
+      { minIncome: 133536, maxIncome: 155229, rate: 0.16, baseAmount: 10724 },
+      { minIncome: 155229, maxIncome: 185852, rate: 0.1792, baseAmount: 14194 },
+      { minIncome: 185852, maxIncome: 374837, rate: 0.2136, baseAmount: 19682 },
+      { minIncome: 374837, maxIncome: 590796, rate: 0.2352, baseAmount: 60049 },
+      { minIncome: 590796, maxIncome: 1127926, rate: 0.30, baseAmount: 110842 },
+      { minIncome: 1127926, maxIncome: 1503902, rate: 0.32, baseAmount: 271982 },
+      { minIncome: 1503902, maxIncome: 4511707, rate: 0.34, baseAmount: 392294 },
+      { minIncome: 4511707, maxIncome: Infinity, rate: 0.35, baseAmount: 1414947 }
+    ],
+    capitalGainsShortRate: 0.10,
+    capitalGainsLongRate: 0.10,
+    dividendRate: 0.10,
+    standardDeduction: 0,
+    charitableDeductionLimit: 0.07,
+    mortgageInterestDeductible: true,
+    description: 'Many brackets with low capital gains rate'
+  },
+  'South Africa': {
+    country: 'South Africa',
+    name: 'South African Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 237100, rate: 0.18, baseAmount: 0 },
+      { minIncome: 237100, maxIncome: 370500, rate: 0.26, baseAmount: 42678 },
+      { minIncome: 370500, maxIncome: 512800, rate: 0.31, baseAmount: 77362 },
+      { minIncome: 512800, maxIncome: 673000, rate: 0.36, baseAmount: 121475 },
+      { minIncome: 673000, maxIncome: 857900, rate: 0.39, baseAmount: 179147 },
+      { minIncome: 857900, maxIncome: 1817000, rate: 0.41, baseAmount: 251258 },
+      { minIncome: 1817000, maxIncome: Infinity, rate: 0.45, baseAmount: 644489 }
+    ],
+    capitalGainsShortRate: 0.18,
+    capitalGainsLongRate: 0.18,
+    dividendRate: 0.20,
+    standardDeduction: 0,
+    charitableDeductionLimit: 0.10,
+    mortgageInterestDeductible: false,
+    description: 'Progressive rates with inclusion-based capital gains'
+  },
+  'Austria': {
+    country: 'Austria',
+    name: 'Austrian Tax System',
+    incomeBrackets: [
+      { minIncome: 0, maxIncome: 11693, rate: 0, baseAmount: 0 },
+      { minIncome: 11693, maxIncome: 19134, rate: 0.20, baseAmount: 0 },
+      { minIncome: 19134, maxIncome: 32075, rate: 0.30, baseAmount: 1488 },
+      { minIncome: 32075, maxIncome: 62080, rate: 0.40, baseAmount: 5371 },
+      { minIncome: 62080, maxIncome: 93120, rate: 0.48, baseAmount: 17373 },
+      { minIncome: 93120, maxIncome: 1000000, rate: 0.50, baseAmount: 32272 },
+      { minIncome: 1000000, maxIncome: Infinity, rate: 0.55, baseAmount: 485712 }
+    ],
+    capitalGainsShortRate: 0.275,
+    capitalGainsLongRate: 0.275,
+    dividendRate: 0.275,
+    standardDeduction: 11693,
+    charitableDeductionLimit: 0.10,
+    mortgageInterestDeductible: false,
+    description: 'Progressive rates with flat 27.5% on investment income'
   }
 }
 
@@ -990,14 +1169,14 @@ export function createDefaultPersonalFinances(
     },
     
     monthlyExpenses: {
-      lifestyle: LIFESTYLE_CONFIGS.comfortable.monthlyBaseCost,
+      lifestyle: 0,
       mortgagePayments: 0,
       loanPayments: 0,
       familyExpenses: 0,
       personalStaff: 0,
       hobbies: 0,
       philanthropy: 0,
-      insurance: 2000,
+      insurance: 0,
       other: 0
     },
     

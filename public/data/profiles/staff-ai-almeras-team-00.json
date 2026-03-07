@@ -1,0 +1,22 @@
+{
+  "name": "Giovanni Rossi",
+  "nationality": "Italian",
+  "age": 45,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Giovanni Rossi's journey in motorsport began in his youth, fueled by his father's passion for Ferrari and a local karting track near his hometown. He started as a mechanic's apprentice, quickly absorbing the intricacies of race car engineering. His meticulous attention to detail and knack for problem-solving led to opportunities to work with various racing teams, from Formula 3 to GT racing. \n\nRossi's career pivoted from the garage to the pit wall when his leadership potential was recognized. His approach to team leadership is centered around clear communication, rigorous data analysis, and fostering a culture of accountability. He believes in empowering his team members while maintaining high standards. He is known for his ability to make crucial strategic decisions under pressure, earning him a reputation as a demanding but effective team principal. His distintive trait is his analytical approach, always dissecting the race into probabilities and possibilities.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Giovanni is of average height with a lean build, often seen wearing tailored suits even in the paddock."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a ritual of drinking a double espresso exactly one hour before each race.",
+    "Insists on personally checking the tire pressures before qualifying."
+  ]
+}

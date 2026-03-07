@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 36,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Nikola's passion for motorsport ignited early, fueled by watching Formula 1 races with his father in Belgrade. He pursued mechanical engineering, specializing in vehicle dynamics, before landing an internship at a small racing outfit. His analytical mind and ability to quickly diagnose issues impressed his superiors, leading to a full-time role. Nikola honed his skills at various levels of motorsport before joining Crown Racing.\n\nHe is a meticulous and demanding engineer, known for his relentless pursuit of performance gains. Nikola believes in a data-driven approach, but also values the driver's feedback. His ability to translate complex data into actionable insights, coupled with his unwavering commitment to perfection, makes him a valuable asset to any team. He strives for excellence, always looking for innovative solutions to push the boundaries of performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave on top.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Nikola is of medium build with a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a perfectly organized workspace, even at the track."
+  ]
+}

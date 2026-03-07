@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Weber",
+  "nationality": "German",
+  "age": 26,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Maximilian's passion for motorsport ignited early, fueled by countless hours spent tinkering with go-karts in his father's garage. He pursued a degree in mechanical engineering, specializing in simulation and modeling, at RWTH Aachen University. Following graduation, he honed his skills at a smaller Formula 3 team before landing a coveted role at Team Penske. Maximilian's approach to simulator engineering is meticulous and data-driven, believing that every millisecond gained in the virtual world translates to tangible performance on the track.\n\nHe is known for his ability to translate complex data into actionable insights for drivers and engineers alike. Maximilian's dedication to continuous improvement and his relentless pursuit of optimal simulator performance set him apart. His calm demeanor and ability to handle pressure make him a valuable asset during intense race weekends, ensuring the simulation environment accurately reflects real-world conditions.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Maximilian is of average height with a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music while calibrating the simulator."
+  ]
+}

@@ -5,24 +5,79 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, ChevronDown, ChevronUp, Calendar, DollarSign, ArrowUpDown, Download, X } from 'lucide-react';
+import { Search, Filter, ChevronDown, ChevronUp, Calendar, DollarSign, ArrowUpDown, Download, X, Tag, ArrowUpCircle, ArrowDownCircle } from 'lucide-react';
 import { Card, CardHeader, Badge, Button } from '@/components/ui';
 import { useCareerStore } from '@/store/careerStore';
 
 type SortField = 'date' | 'amount' | 'category' | 'type';
 type SortDirection = 'asc' | 'desc';
+type FilterType = 'all' | 'income' | 'expense';
+type TeamTransactionCategory = string;
+
+const CATEGORY_LABELS: Record<string, string> = {
+  salary: 'Salary',
+  bonus: 'Bonus',
+  sponsor: 'Sponsor',
+  prize: 'Prize Money',
+  operations: 'Operations',
+  staff: 'Staff',
+  parts: 'Parts',
+  travel: 'Travel',
+  marketing: 'Marketing',
+  facilities: 'Facilities',
+  development: 'Development',
+  entry_fee: 'Entry Fee',
+  misc: 'Miscellaneous',
+  transfer: 'Transfer'
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  salary: 'text-accent-blue',
+  bonus: 'text-accent-gold',
+  sponsor: 'text-status-success',
+  prize: 'text-status-success',
+  operations: 'text-status-warning',
+  staff: 'text-purple-400',
+  parts: 'text-orange-400',
+  travel: 'text-cyan-400',
+  marketing: 'text-pink-400',
+  facilities: 'text-indigo-400',
+  development: 'text-teal-400',
+  entry_fee: 'text-status-danger',
+  misc: 'text-text-muted',
+  transfer: 'text-accent-blue'
+}
+
+function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Math.abs(amount))
+}
 
 interface TransactionHistoryProps {
   currentWeek: number;
   currentYear: number;
+  transactions?: Array<{
+    id: string;
+    week: number;
+    year: number;
+    type: 'income' | 'expense';
+    category: string;
+    description: string;
+    amount: number;
+  }>;
 }
 
-export function TransactionHistory({ currentWeek, currentYear }: TransactionHistoryProps) {
+export function TransactionHistory({ currentWeek, currentYear, transactions: propTransactions }: TransactionHistoryProps) {
+  const store = useCareerStore()
+  const transactions = propTransactions || store.careerState?.ownedTeam?.finances?.transactions || []
+  
   const [weekRange, setWeekRange] = useState<{ start: number; end: number }>({
     start: 1, 
     end: currentWeek 
   })
   const [yearFilter, setYearFilter] = useState<number>(currentYear)
+  const [typeFilter, setTypeFilter] = useState<FilterType>('all')
+  const [categoryFilter, setCategoryFilter] = useState<TeamTransactionCategory | 'all'>('all')
+  const [searchQuery, setSearchQuery] = useState('')
   
   // Sort state
   const [sortField, setSortField] = useState<SortField>('date')
@@ -357,7 +412,7 @@ export function TransactionHistory({ currentWeek, currentYear }: TransactionHist
         ) : (
           paginatedTransactions.map((tx, idx) => (
             <motion.div
-              key={tx.id}
+              key={`${tx.id}_${idx}`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.02 }}

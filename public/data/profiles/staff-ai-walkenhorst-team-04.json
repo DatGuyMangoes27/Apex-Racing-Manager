@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Alvarez",
+  "nationality": "Argentine",
+  "age": 30,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Mateo's passion for motorsport ignited in his childhood, fueled by watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering at the University of Buenos Aires, focusing on vehicle dynamics and aerodynamics. After graduating, Mateo gained practical experience working with a local touring car team before making the leap to international competition. He joined Walkenhorst Motorsport two years ago, quickly establishing himself as a reliable and adaptable engineer. \n\nMateo excels at translating driver feedback into tangible improvements in car setup. He believes in a collaborative approach, fostering open communication between the driver, mechanics, and other engineers. Mateo's analytical skills and attention to detail enable him to identify subtle performance gains, while his big-picture thinking helps him strategize effectively during races. He's known for his calm demeanor under pressure and his ability to adapt to changing track conditions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of medium build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas.",
+    "Has a lucky keyring with a miniature model of a race car.",
+    "Prefers to listen to tango music while analyzing data."
+  ]
+}

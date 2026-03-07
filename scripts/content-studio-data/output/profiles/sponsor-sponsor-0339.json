@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0339",
+  "name": "Apex Digital",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Monaco",
+  "description": "Driving innovation in data analytics.",
+  "story": "Apex Digital is a burgeoning data analytics firm based in Monaco, specializing in real-time data processing and visualization. Recognizing the data-driven nature of modern motorsport, Apex seeks to leverage the sport's high-performance environment to showcase their capabilities. They aim to forge a mutually beneficial partnership, providing teams with advanced analytics tools in exchange for brand exposure and valuable case studies.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0339.png"
+}

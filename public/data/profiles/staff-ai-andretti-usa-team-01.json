@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 53,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jan's journey into motorsport began with a fascination for the intricate mechanics of go-karts in his youth. After excelling in mechanical engineering at Delft University, he quickly found his niche within the high-pressure world of racing. His meticulous approach and keen eye for detail made him a valuable asset to several smaller racing teams before he caught the attention of Andretti Global.\n\nAs Chief Engineer, Jan is known for his data-driven decision-making and his ability to foster a collaborative environment within the engineering team. He firmly believes in empowering his team members to take ownership of their work, fostering a culture of continuous improvement and innovation. What sets Jan apart is his knack for identifying subtle performance enhancements that others often overlook, often turning marginal gains into significant advantages on the track.\n\nHis loyalty to Andretti Global is unwavering, and he is determined to lead the team to championship glory.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A tall, slender man with a focused gaze and a perpetual air of contemplation."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Dutch licorice readily available in his office."
+  ]
+}

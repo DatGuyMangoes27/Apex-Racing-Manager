@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Gruber",
+  "nationality": "Austrian",
+  "age": 28,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Maximilian's passion for motorsport ignited at a young age, tinkering with go-karts in his family's garage. He pursued a degree in Electrical Engineering, specializing in embedded systems and control algorithms. After graduating, he honed his skills in Formula 3, optimizing engine control units and data acquisition systems. His relentless pursuit of performance improvements and ability to quickly diagnose complex electrical issues earned him a reputation as a rising star. He joined Richard Childress Racing to apply his expertise at the highest level of stock car competition. \n\nMaximilian is known for his methodical approach and unwavering commitment to precision. He thrives under pressure and excels at finding innovative solutions to challenging technical problems. His ambition drives him to push the boundaries of what's possible in race car electronics, aiming to extract every last ounce of performance. He believes that a deep understanding of the underlying physics combined with meticulous attention to detail is the key to success in motorsport. He is determined to contribute to RCR's future victories.\n\nMaximilian's meticulous nature extends beyond the garage; he is a keen observer and analyst, constantly seeking to refine his understanding of the complex interplay between driver, car, and track. He believes that the key to unlocking ultimate performance lies in the subtle nuances of data, and he dedicates himself to extracting every valuable insight.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly styled with a slight side part",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Maximilian is of average height with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and technical notes.",
+    "Has a peculiar habit of tapping his pen rhythmically when analyzing data.",
+    "Insists on using a specific brand of German-made multimeter for all electrical measurements."
+  ]
+}

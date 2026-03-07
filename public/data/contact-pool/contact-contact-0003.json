@@ -1,0 +1,30 @@
+{
+  "name": "Maximilian Schuster",
+  "nationality": "German",
+  "age": 24,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Maximilian Schuster is the young, intensely private heir to the Schuster AG empire, a multi-billion euro conglomerate with interests spanning renewable energy, luxury automotive components, and cutting-edge material sciences. Though only 24, Maximilian has already proven himself a shrewd and forward-thinking businessman, spearheading several successful ventures into disruptive technologies. He's known for his reserved demeanor in public, but those close to him describe a nurturing and fiercely loyal nature. \n\nWhile Schuster AG doesn't directly sponsor racing teams, they are a major supplier of advanced materials used in Formula 1 and endurance racing, making Maximilian a key figure in the technological advancements of motorsport. A racing driver might cross paths with Maximilian at exclusive industry events, product launches, or even through mutual connections in the world of luxury automotive design, as Schuster AG often collaborates with high-end car manufacturers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Steel blue",
+    "facialHair": "Clean shaven",
+    "description": "Maximilian is tall and athletic, with a physique honed by rigorous training. He favors tailored suits that emphasize his broad shoulders and commanding presence."
+  },
+  "connectionToMotorsport": "Schuster AG supplies advanced materials used in Formula 1 and endurance racing, making Maximilian a key figure in motorsport technology and innovation. He attends select races to network with clients and assess the performance of Schuster AG materials in demanding racing environments.",
+  "meetingContext": "The player could meet Maximilian at an exclusive motorsport industry event, such as a launch party for a new high-performance automotive component, or through a shared connection, perhaps a mutual acquaintance in the luxury watch collecting scene.",
+  "conversationTopics": [
+    "The future of sustainable materials",
+    "The latest in luxury watchmaking",
+    "Competitive Polo",
+    "The impact of technology on sports"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors and investors",
+    "Provide access to cutting-edge material technologies to improve car performance",
+    "Offer mentorship and business advice"
+  ],
+  "personality_summary": "An intense, private, but secretly nurturing young mogul with a passion for cutting-edge technology and traditional luxury."
+}

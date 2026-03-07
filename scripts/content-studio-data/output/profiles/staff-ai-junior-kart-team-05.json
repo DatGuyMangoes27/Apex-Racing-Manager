@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Izquierdo",
+  "nationality": "Colombian",
+  "age": 51,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Ricardo's motorsport journey began unexpectedly. Initially trained as a mechanical engineer, he found himself drawn to the tactical challenges presented by racing. He started as a data analyst for a small karting team, quickly proving his knack for identifying crucial performance gains through meticulous analysis. His ability to dissect complex data sets and translate them into actionable strategies earned him a reputation as a rising star.\n\nRicardo is known for his methodical approach to race strategy, meticulously planning every scenario and contingency. His calm demeanor under pressure and dedication to the team make him a valued asset. While not the most outwardly innovative strategist, his deep technical understanding and commitment to proven methodologies provide a solid foundation for success. He believes in incremental improvements and data-driven decisions, ensuring a consistent and reliable performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo has a focused gaze and a perpetually serious expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a specific ritual of cleaning his glasses before every major race decision.",
+    "Insists on drinking only Colombian coffee, regardless of location."
+  ]
+}

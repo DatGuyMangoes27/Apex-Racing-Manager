@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novotný",
+  "nationality": "Czech",
+  "age": 46,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Jan's journey into motorsport data analysis began unconventionally, with a background in theoretical physics. After completing his doctorate, Jan found himself drawn to the fast-paced, data-rich environment of racing. He started as a volunteer analyst for a small rally team, quickly proving his aptitude for extracting meaningful insights from complex datasets. His knack for identifying subtle performance gains led him to Caterham Academy.\n\nJan approaches data analysis with a meticulous eye, believing that every detail, no matter how small, can hold the key to unlocking improvements. He's known for his ability to translate complex statistical models into actionable recommendations for drivers and engineers. What sets Jan apart is his relentless pursuit of perfection, often spending hours poring over data until he's satisfied he's uncovered every possible advantage.\n\nHis dedication to optimizing performance through data has made him a valuable asset to the Caterham Academy. He strives to ensure that every decision made by the team is backed by solid evidence, enhancing their chances of success on the track. Jan firmly believes that data-driven strategy is the future of motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Jan has a lean build and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with hand-written equations.",
+    "Insists on using a specific brand of mechanical pencil for all his calculations.",
+    "Has a habit of muttering probabilities under his breath during races."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0345",
+  "name": "Al-Nisr Timepieces",
+  "category": "watches",
+  "tier": "mid",
+  "country": "Saudi Arabia",
+  "description": "Precision engineering, timeless design.",
+  "story": "Al-Nisr Timepieces, a Saudi Arabian luxury watchmaker, seeks to elevate its brand awareness on the global stage. Motorsport aligns with their values of precision, performance, and craftsmanship. They aim to associate their brand with the thrill and prestige of racing, targeting a discerning, high-net-worth audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 0,
+    "minPodiums": 0
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0345.png"
+}

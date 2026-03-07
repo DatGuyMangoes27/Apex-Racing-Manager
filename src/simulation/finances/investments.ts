@@ -10,12 +10,12 @@ import {
   TeamEquitySale,
   InvestmentsState,
   TeamTransaction,
-  _OwnedTeam,
-  _RiskLevel,
+  OwnedTeam,
+  RiskLevel,
   PropertyType,
   SideBusinessType
 } from '@/store/careerStore'
-import { INDEX_FUND_TEMPLATES, RealEstateTemplate, REAL_ESTATE_TEMPLATES } from '@/data/financial-extended-config'
+import { INDEX_FUND_TEMPLATES, RealEstateTemplate, REAL_ESTATE_TEMPLATES, SIDE_BUSINESS_TEMPLATES, SideBusinessTemplate } from '@/data/financial-extended-config'
 import { createTeamTransaction } from './teamFinances'
 
 let investmentIdCounter = 0

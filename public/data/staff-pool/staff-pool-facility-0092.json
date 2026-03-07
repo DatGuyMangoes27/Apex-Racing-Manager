@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 38,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Mateo's journey into the world of motorsport IT began unexpectedly during a university internship at a local racing event. Initially tasked with mundane data entry, he quickly identified inefficiencies in their data management system and proposed solutions that streamlined race results processing. This sparked a passion for leveraging technology to enhance performance and reliability in high-pressure environments. Over the years, he has honed his skills in system architecture, cybersecurity, and data analytics, always striving to implement robust and scalable solutions.\n\nAs an IT Systems Manager, Mateo believes in a proactive and preventative approach. He prioritizes building resilient infrastructure that can withstand the demands of the motorsport industry. His pragmatic mindset ensures that technology investments align with tangible business outcomes. Mateo distinguishes himself through his unwavering commitment to data integrity and his ability to translate complex technical concepts into easily understandable terms for non-technical stakeholders. His talent for data-driven decisions makes him an invaluable asset.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "A man of average height, Mateo carries himself with a quiet confidence and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a backup USB drive with critical system recovery tools.",
+    "Insists on using a mechanical keyboard for optimal tactile feedback.",
+    "Has a habit of drawing network diagrams on napkins during meetings."
+  ]
+}

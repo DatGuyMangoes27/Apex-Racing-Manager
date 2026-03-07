@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 38,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Declan's passion for motorsport ignited at a young age, fueled by countless hours spent tinkering with engines alongside his father, a seasoned mechanic. This hands-on experience led him to pursue a degree in mechanical engineering, where he specialized in simulation and modeling. He began his career in Formula Student, designing and optimizing vehicle dynamics before transitioning to professional motorsport. \n\nAt EKS JC, Declan thrives on the challenge of translating real-world data into accurate and insightful simulator experiences. He's known for his methodical approach to problem-solving and his ability to quickly identify and address performance bottlenecks. Declan believes the simulator is a crucial tool for driver development and car setup, and he's dedicated to pushing the boundaries of its capabilities. He is particularly proud of his ability to correlate simulation results with on-track performance, a skill that sets him apart from his peers. \n\nOutside of the simulator lab, Declan is a keen cyclist and enjoys exploring the rugged Irish countryside. This appreciation for precision and endurance translates directly into his work, where he relentlessly strives for perfection.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed beard",
+    "description": "Declan has a lean build and a focused gaze, often seen with a thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to traditional Irish music while calibrating the simulator."
+  ]
+}

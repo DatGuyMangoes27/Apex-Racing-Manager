@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0261",
+  "name": "Jeonju Motors",
+  "category": "local",
+  "tier": "mid",
+  "country": "South Korea",
+  "description": "The heart of Jeonju, powering your journey.",
+  "story": "Jeonju Motors is a regional automotive dealership group dedicated to serving the Jeonbuk province. Recognizing the passion for motorsport in the community, they're investing in local racing talent. They seek to build brand recognition and showcase their commitment to performance and community engagement.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 20,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 0,
+    "minPodiums": 0
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0261.png"
+}

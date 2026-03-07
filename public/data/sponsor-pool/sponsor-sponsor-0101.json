@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0101",
+  "name": "SveaFinans Motorsport",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Sweden",
+  "description": "Driving financial performance, on and off the track.",
+  "story": "SveaFinans, a leading Swedish financial services group, has a long history of supporting high-performance endeavors. Recognizing the parallels between precision engineering in motorsport and meticulous financial planning, they see motorsport as an ideal platform to showcase their commitment to excellence and innovation. They seek a partnership that reflects their values of reliability, strategic thinking, and achieving peak performance under pressure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Sweden",
+      "Finland",
+      "Norway",
+      "Denmark"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0101.png"
+}

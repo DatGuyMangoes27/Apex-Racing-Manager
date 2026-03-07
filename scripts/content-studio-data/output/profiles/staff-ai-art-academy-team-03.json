@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre Dubois's journey into motorsport began not in the grandstands, but in his father's small engineering workshop in Lyon. There, amidst the clang of metal and the scent of oil, he developed a fascination with the science of speed. He studied aerospace engineering, focusing on fluid dynamics, before landing a role at a small wind tunnel facility catering to local racing teams.\n\nOver the years, Jean-Pierre honed his expertise, working with several junior formula teams and eventually finding his niche in aerodynamics. His approach is rooted in pragmatism and a deep understanding of the regulations. He believes in incremental improvements and data-driven decisions, always seeking to extract maximum performance within the constraints of the rules. He joined ART Grand Prix Academy three years ago, to lead their aero program.\n\nWhat sets Jean-Pierre apart is his ability to see the big picture. He doesn't get bogged down in minor details, instead focusing on the overall aerodynamic concept and how it interacts with other aspects of the car's performance. He's known for his calm demeanor under pressure and his ability to explain complex concepts in a clear and concise manner.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "thinning, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height with a serious demeanor, he always looks like he is deep in thought."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a well-worn slide rule, despite having access to advanced simulation software.",
+    "Has a peculiar habit of tapping his pen against his teeth when contemplating a problem.",
+    "Insists on drinking espresso from a specific vintage porcelain cup every morning."
+  ]
+}

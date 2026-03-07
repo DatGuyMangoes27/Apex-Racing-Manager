@@ -15,7 +15,8 @@ import type {
   ContactInfo,
   PotentialDate
 } from '@/types/personalLife'
-import type { Partner } from '@/data/family-config'
+import type { Partner, DealBreakerGameState, MoodFactor } from '@/data/family-config'
+import { findDealBreakerMapping } from '@/data/family-config'
 
 // ============================================
 // POOL MANAGEMENT
@@ -201,6 +202,21 @@ export function checkMilestoneUnlocks(
   }
   
   return unlocked
+}
+
+// ============================================
+// ROMANTIC SPARK CHECK (for emergent romance from friends)
+// ============================================
+
+/**
+ * Check if a romanticEligible friend contact should trigger the "romantic spark" transition.
+ * Called from weekly processing for each romanticEligible contact.
+ */
+export function shouldTriggerRomanticSpark(
+  romanceMeter: number,
+  affectionMeter: number
+): boolean {
+  return romanceMeter >= 25 && affectionMeter >= 40
 }
 
 // ============================================
@@ -432,13 +448,16 @@ export function shouldTriggerArgument(
 }
 
 /**
- * Generate an argument event
+ * Generate an argument event with trait-weighted topics
  */
 export function generateArgument(
   currentWeek: number,
-  currentYear: number
+  currentYear: number,
+  partnerTraits: string[] = []
 ): RelationshipEvent {
-  const trigger = ARGUMENT_TRIGGERS[Math.floor(Math.random() * ARGUMENT_TRIGGERS.length)]
+  const trigger = partnerTraits.length > 0
+    ? pickTraitWeightedArgumentTrigger(partnerTraits)
+    : ARGUMENT_TRIGGERS[Math.floor(Math.random() * ARGUMENT_TRIGGERS.length)]
   
   return {
     id: `argument_${currentWeek}_${currentYear}_${Date.now()}`,
@@ -489,18 +508,36 @@ export interface BreakupCondition {
 
 /**
  * Check conditions for AI-initiated breakup
- * Returns warning signs if breakup is approaching
+ * Returns warning signs if breakup is approaching.
+ * Now trait-aware: partner traits shift thresholds.
  */
 export function checkBreakupConditions(
   partnerHappiness: number,
   trustLevel: number,
   romanceLevel: number,
   unresolvedConflicts: number,
-  weeksSinceLastInteraction: number
+  weeksSinceLastInteraction: number,
+  partnerTraits: string[] = [],
+  dealBreakerViolationTotal: number = 0
 ): BreakupCondition[] {
   const conditions: BreakupCondition[] = []
   
-  if (partnerHappiness < 25) {
+  // Trait modifiers for thresholds
+  const isForgiving = partnerTraits.includes('forgiving') || partnerTraits.includes('patient')
+  const isSupportive = partnerTraits.includes('supportive') || partnerTraits.includes('nurturing')
+  const isJealous = partnerTraits.includes('jealous') || partnerTraits.includes('possessive')
+  const isMaterialistic = partnerTraits.includes('materialistic') || partnerTraits.includes('high_maintenance')
+  const isCommitmentPhobic = partnerTraits.includes('commitment_phobic')
+  const isDramatic = partnerTraits.includes('dramatic')
+  
+  // Forgiving/patient partners tolerate more; dramatic/jealous partners tolerate less
+  const happinessThreshold = isForgiving ? 15 : (isDramatic || isJealous ? 35 : 25)
+  const trustThreshold = isForgiving ? 12 : (isJealous ? 28 : 20)
+  const conflictThreshold = (isSupportive || isForgiving) ? 6 : (isDramatic ? 3 : 4)
+  const neglectThreshold = (partnerTraits.includes('independent')) ? 10 : (isJealous || partnerTraits.includes('possessive') ? 4 : 6)
+  const romanceThreshold = isCommitmentPhobic ? 25 : 15
+  
+  if (partnerHappiness < happinessThreshold) {
     conditions.push({
       type: 'low_happiness',
       severity: Math.max(0, 100 - partnerHappiness * 4),
@@ -508,7 +545,7 @@ export function checkBreakupConditions(
     })
   }
   
-  if (trustLevel < 20) {
+  if (trustLevel < trustThreshold) {
     conditions.push({
       type: 'low_trust',
       severity: Math.max(0, 100 - trustLevel * 5),
@@ -516,7 +553,7 @@ export function checkBreakupConditions(
     })
   }
   
-  if (unresolvedConflicts >= 4) {
+  if (unresolvedConflicts >= conflictThreshold) {
     conditions.push({
       type: 'too_many_conflicts',
       severity: Math.min(100, unresolvedConflicts * 20),
@@ -524,7 +561,7 @@ export function checkBreakupConditions(
     })
   }
   
-  if (weeksSinceLastInteraction > 6) {
+  if (weeksSinceLastInteraction > neglectThreshold) {
     conditions.push({
       type: 'neglect',
       severity: Math.min(100, weeksSinceLastInteraction * 10),
@@ -532,11 +569,22 @@ export function checkBreakupConditions(
     })
   }
   
-  if (romanceLevel < 15 && partnerHappiness < 40) {
+  if (romanceLevel < romanceThreshold && partnerHappiness < 40) {
     conditions.push({
       type: 'incompatible',
       severity: Math.max(0, 80 - romanceLevel - partnerHappiness / 2),
-      description: 'The spark seems to have completely died'
+      description: isCommitmentPhobic
+        ? 'They feel trapped and the relationship feels wrong'
+        : 'The spark seems to have completely died'
+    })
+  }
+  
+  // Deal breaker violations compound into breakup risk
+  if (dealBreakerViolationTotal >= 8) {
+    conditions.push({
+      type: 'incompatible',
+      severity: Math.min(100, dealBreakerViolationTotal * 8),
+      description: 'Too many deal breakers have been crossed'
     })
   }
   
@@ -713,6 +761,353 @@ export function generateAnniversaryEvent(
 }
 
 // ============================================
+// DEAL BREAKER VIOLATION SYSTEM
+// ============================================
+
+export interface DealBreakerViolation {
+  dealBreaker: string
+  trustDamage: number
+  romanceDamage: number
+  warningMessage: string
+  violationCount: number       // Total violations for this deal breaker
+  isUltimatumTrigger: boolean  // True if this violation triggers an ultimatum
+}
+
+/**
+ * Evaluate all deal breakers for a partner against current game state.
+ * Returns violations found this check.
+ */
+export function evaluateDealBreakerViolations(
+  partnerDealBreakers: string[],
+  gameState: DealBreakerGameState,
+  currentViolationCounts: Record<string, number>,
+  warningsAlreadyGiven: string[]
+): DealBreakerViolation[] {
+  const violations: DealBreakerViolation[] = []
+  
+  for (const db of partnerDealBreakers) {
+    const mapping = findDealBreakerMapping(db)
+    if (!mapping) continue
+    
+    if (mapping.check(gameState)) {
+      const currentCount = (currentViolationCounts[db] || 0) + 1
+      const isUltimatum = currentCount >= mapping.ultimatumAfter && !warningsAlreadyGiven.includes(db)
+      
+      violations.push({
+        dealBreaker: db,
+        trustDamage: mapping.trustDamage,
+        romanceDamage: mapping.romanceDamage,
+        warningMessage: mapping.warningMessage,
+        violationCount: currentCount,
+        isUltimatumTrigger: isUltimatum
+      })
+    }
+  }
+  
+  return violations
+}
+
+/**
+ * Generate an ultimatum event when a deal breaker has been violated too many times.
+ */
+export function generateUltimatumEvent(
+  dealBreaker: string,
+  partnerName: string,
+  currentWeek: number,
+  currentYear: number
+): RelationshipEvent {
+  return {
+    id: `ultimatum_${currentWeek}_${currentYear}_${Date.now()}`,
+    type: 'ultimatum',
+    title: 'Serious Talk',
+    description: `${partnerName} sits you down for a serious conversation. They say they can't keep ignoring this: "${dealBreaker}". Something needs to change.`,
+    choices: [
+      {
+        id: 'promise_change',
+        label: 'Promise to change and mean it',
+        effects: { happinessChange: 5, trustChange: 8, conflictResolved: true },
+        tone: 'supportive'
+      },
+      {
+        id: 'acknowledge',
+        label: 'Acknowledge the issue but make no promises',
+        effects: { happinessChange: -3, trustChange: -2 },
+        tone: 'practical'
+      },
+      {
+        id: 'dismiss',
+        label: 'Tell them they\'re overreacting',
+        effects: { happinessChange: -15, trustChange: -12, romanceChange: -8, stressChange: 10 },
+        tone: 'confrontational'
+      },
+      {
+        id: 'deflect',
+        label: 'Change the subject',
+        effects: { happinessChange: -8, trustChange: -8, romanceChange: -3 },
+        tone: 'dismissive'
+      }
+    ],
+    week: currentWeek,
+    year: currentYear,
+    resolved: false
+  }
+}
+
+/**
+ * Apply deal breaker violations to a partner's state.
+ * Returns updated partner and any mood factors added.
+ */
+export function applyDealBreakerViolations(
+  partner: Partner,
+  violations: DealBreakerViolation[]
+): { updatedPartner: Partner; moodFactors: MoodFactor[] } {
+  if (violations.length === 0) {
+    return { updatedPartner: partner, moodFactors: [] }
+  }
+  
+  let trustDelta = 0
+  let loveDelta = 0
+  const moodFactors: MoodFactor[] = []
+  const updatedCounts = { ...partner.dealBreakerViolationCount }
+  const updatedWarnings = [...partner.dealBreakerWarningsGiven]
+  
+  for (const v of violations) {
+    trustDelta += v.trustDamage
+    loveDelta += v.romanceDamage
+    updatedCounts[v.dealBreaker] = v.violationCount
+    
+    if (v.isUltimatumTrigger) {
+      updatedWarnings.push(v.dealBreaker)
+    }
+    
+    moodFactors.push({
+      reason: `${partner.firstName} ${v.warningMessage}`,
+      impact: v.trustDamage + v.romanceDamage,
+      weeksRemaining: 4,
+      category: 'relationship'
+    })
+  }
+  
+  return {
+    updatedPartner: {
+      ...partner,
+      trustLevel: Math.max(0, Math.min(100, partner.trustLevel + trustDelta)),
+      loveLevel: Math.max(0, Math.min(100, partner.loveLevel + loveDelta)),
+      dealBreakerViolationCount: updatedCounts,
+      dealBreakerWarningsGiven: updatedWarnings,
+      recentMoodFactors: [...partner.recentMoodFactors, ...moodFactors]
+    },
+    moodFactors
+  }
+}
+
+// ============================================
+// TRAIT-WEIGHTED ARGUMENT TOPICS
+// ============================================
+
+const TRAIT_ARGUMENT_TOPICS: Record<string, { topics: string[]; weight: number }> = {
+  jealous: {
+    topics: ['jealousy over someone at the paddock', 'you spending time with attractive colleagues', 'a flirty comment on social media'],
+    weight: 0.6
+  },
+  possessive: {
+    topics: ['you not replying to their texts fast enough', 'you going out without telling them', 'how much time you spend with your team'],
+    weight: 0.6
+  },
+  materialistic: {
+    topics: ['not spending enough on them', 'wanting a more luxurious lifestyle', 'comparing themselves to other partners in the paddock'],
+    weight: 0.5
+  },
+  controlling: {
+    topics: ['career decisions you made without consulting them', 'who you spend your free time with', 'your schedule being out of their control'],
+    weight: 0.5
+  },
+  dramatic: {
+    topics: ['something minor that got blown out of proportion', 'a misunderstood text message', 'feeling like you don\'t care enough'],
+    weight: 0.5
+  },
+  high_maintenance: {
+    topics: ['the quality of your date night not being good enough', 'not meeting their expectations', 'a gift they found disappointing'],
+    weight: 0.4
+  },
+  workaholic: {
+    topics: ['you never prioritizing the relationship', 'canceling plans for work again', 'feeling like you\'re married to your career'],
+    weight: 0.4
+  },
+  passive_aggressive: {
+    topics: ['something they won\'t directly tell you about', 'a build-up of small resentments', 'a sarcastic comment that went too far'],
+    weight: 0.4
+  },
+  self_centered: {
+    topics: ['you not listening when they talk', 'making everything about your racing', 'forgetting something important to them'],
+    weight: 0.4
+  },
+  secretive: {
+    topics: ['them hiding something from you', 'feeling like you don\'t really know them', 'a mysterious phone call they won\'t explain'],
+    weight: 0.3
+  },
+  commitment_phobic: {
+    topics: ['where the relationship is heading', 'future plans they keep avoiding', 'meeting each other\'s families'],
+    weight: 0.3
+  },
+  party_animal: {
+    topics: ['them coming home too late', 'their drinking habits', 'embarrassing behavior at a public event'],
+    weight: 0.3
+  }
+}
+
+/**
+ * Pick an argument trigger weighted by partner traits.
+ * Falls back to the generic pool for traits without specific topics.
+ */
+function pickTraitWeightedArgumentTrigger(partnerTraits: string[]): string {
+  // Build a weighted pool of trait-specific topics
+  const weightedTopics: Array<{ topic: string; weight: number }> = []
+  
+  for (const trait of partnerTraits) {
+    const config = TRAIT_ARGUMENT_TOPICS[trait]
+    if (config) {
+      for (const topic of config.topics) {
+        weightedTopics.push({ topic, weight: config.weight })
+      }
+    }
+  }
+  
+  // If we have trait-specific topics, use them with high probability
+  if (weightedTopics.length > 0 && Math.random() < 0.7) {
+    // Weighted random selection
+    const totalWeight = weightedTopics.reduce((sum, t) => sum + t.weight, 0)
+    let roll = Math.random() * totalWeight
+    for (const wt of weightedTopics) {
+      roll -= wt.weight
+      if (roll <= 0) return wt.topic
+    }
+    return weightedTopics[0].topic
+  }
+  
+  // Fallback to generic triggers
+  return ARGUMENT_TRIGGERS[Math.floor(Math.random() * ARGUMENT_TRIGGERS.length)]
+}
+
+// ============================================
+// DESIRE-BASED EVENT TRIGGERS
+// ============================================
+
+export interface DesirePressureEvent {
+  type: 'marriage_pressure' | 'children_pressure'
+  trustDecay: number
+  happinessDecay: number
+  message: string
+  triggerConversation: boolean
+}
+
+/**
+ * Check if partner desires are creating pressure events.
+ * Called weekly after the main relationship check.
+ */
+export function checkDesirePressure(
+  partner: Partner,
+  weeksInRelationship: number,
+  currentWeek: number,
+  currentYear: number
+): DesirePressureEvent | null {
+  const desires = partner.desires
+  
+  // Marriage pressure: dating 2+ years, wants marriage, not yet engaged/married
+  if (desires.wantsMarriage &&
+      (partner.relationshipStatus === 'dating') &&
+      weeksInRelationship >= 104) { // ~2 years
+    
+    const yearsWaiting = Math.floor((weeksInRelationship - 104) / 52)
+    const trustDecay = -1 - yearsWaiting // Gets worse each year
+    const shouldTriggerConvo = weeksInRelationship % 26 === 0 // Every ~6 months
+    
+    return {
+      type: 'marriage_pressure',
+      trustDecay: Math.max(-4, trustDecay),
+      happinessDecay: -2,
+      message: `${partner.firstName} has been hinting about the future of your relationship`,
+      triggerConversation: shouldTriggerConvo
+    }
+  }
+  
+  // Children pressure: married 2+ years, wants children, no children yet
+  if (desires.wantsChildren &&
+      partner.relationshipStatus === 'married' &&
+      partner.marriageDate &&
+      partner.childrenIds.length < desires.desiredChildrenCount) {
+    
+    const marriageWeeks = (currentYear - partner.marriageDate.year) * 52 +
+      (currentWeek - partner.marriageDate.week)
+    
+    if (marriageWeeks >= 104) { // 2+ years married
+      const yearsWaiting = Math.floor((marriageWeeks - 104) / 52)
+      const shouldTriggerConvo = marriageWeeks % 26 === 0
+      
+      return {
+        type: 'children_pressure',
+        trustDecay: -1,
+        happinessDecay: Math.max(-3, -1 - yearsWaiting),
+        message: `${partner.firstName} has brought up starting a family again`,
+        triggerConversation: shouldTriggerConvo
+      }
+    }
+  }
+  
+  return null
+}
+
+/**
+ * Generate a "where is this going?" conversation event for desire pressure.
+ */
+export function generateDesirePressureEvent(
+  pressure: DesirePressureEvent,
+  partnerName: string,
+  currentWeek: number,
+  currentYear: number
+): RelationshipEvent {
+  const isMarriage = pressure.type === 'marriage_pressure'
+  
+  return {
+    id: `desire_pressure_${currentWeek}_${currentYear}_${Date.now()}`,
+    type: 'milestone',
+    title: isMarriage ? 'Where Is This Going?' : 'Starting a Family',
+    description: isMarriage
+      ? `${partnerName} asks you where this relationship is heading. They clearly want to talk about the future.`
+      : `${partnerName} brings up the topic of children again. They clearly want to start a family.`,
+    choices: [
+      {
+        id: 'commit',
+        label: isMarriage ? 'Reassure them you\'re thinking about it' : 'Tell them you want that too',
+        effects: { happinessChange: 10, trustChange: 8, romanceChange: 5, conflictResolved: true },
+        tone: 'supportive'
+      },
+      {
+        id: 'honest_unsure',
+        label: 'Be honest that you\'re not sure yet',
+        effects: { happinessChange: -5, trustChange: 3, romanceChange: -3 },
+        tone: 'practical'
+      },
+      {
+        id: 'deflect',
+        label: 'Change the subject',
+        effects: { happinessChange: -10, trustChange: -8, romanceChange: -5 },
+        tone: 'dismissive'
+      },
+      {
+        id: 'reject',
+        label: isMarriage ? 'Tell them you\'re not interested in marriage' : 'Say you don\'t want children',
+        effects: { happinessChange: -20, trustChange: -10, romanceChange: -15, stressChange: 10 },
+        tone: 'confrontational'
+      }
+    ],
+    week: currentWeek,
+    year: currentYear,
+    resolved: false
+  }
+}
+
+// ============================================
 // EXPORTS
 // ============================================
 
@@ -721,6 +1116,7 @@ export {
   NEGATIVE_EVENTS,
   NEUTRAL_EVENTS,
   ARGUMENT_TRIGGERS,
+  TRAIT_ARGUMENT_TOPICS,
   MAX_CONTACTS,
   MAX_POTENTIAL_DATES,
   STALENESS_THRESHOLD_WEEKS

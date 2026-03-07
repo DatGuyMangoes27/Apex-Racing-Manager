@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 39,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Alistair's journey into motorsport began with a childhood fascination with aerodynamics, fueled by watching Formula 1 races with his father. He pursued a degree in Mechanical Engineering, specializing in fluid dynamics, at the University of Edinburgh. After graduating, he landed a junior role at a small aerospace firm, but his heart remained set on motorsport. He jumped at the opportunity to join a Formula 3 team as a data analyst, quickly demonstrating an aptitude for interpreting wind tunnel data and translating it into tangible performance gains on the track.\n\nFor the past 8 years, Alistair has honed his skills as a wind tunnel operator, first with a British touring car team, and now with Hot Car Competições. He's known for his meticulous attention to detail and his ability to identify subtle airflow patterns that others often miss. Alistair is driven by a deep desire to push the boundaries of aerodynamic performance and is committed to providing the team with the best possible data to inform their development decisions. He believes in a collaborative approach, working closely with engineers and drivers to ensure that the wind tunnel results translate effectively to the real world.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Alistair is of average height, with a wiry build and an intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of muttering aerodynamic principles under his breath when analyzing data.",
+    "Insists on listening to bagpipe music (at low volume) during long wind tunnel sessions."
+  ]
+}

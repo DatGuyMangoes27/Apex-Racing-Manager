@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 32,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Marco's journey into motorsport started in his grandfather's workshop in Modena, surrounded by the roar of engines and the smell of oil. He spent his childhood tinkering with engines, learning the fundamentals of mechanics from a master craftsman. After graduating from a technical institute, Marco pursued an apprenticeship with a local racing team, where he honed his skills in precision machining and fabrication.\n\nMarco's approach to his role is meticulous and methodical. He believes in getting the details right, ensuring that every component meets the highest standards of quality and performance. While still developing his technical expertise, his innovative mindset consistently finds novel solutions to challenges. He is eager to learn and contribute to a team's success, aiming to reach the pinnacle of motorsport engineering. His dedication and drive makes him a valuable asset, ready to learn the ropes and put his stamp on the sport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "He has a strong build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his tools before starting any task.",
+    "Insists on using only Italian-made tools whenever possible.",
+    "Keeps a small espresso maker in his workspace."
+  ]
+}

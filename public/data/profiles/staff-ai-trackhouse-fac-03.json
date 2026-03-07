@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 39,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's journey into motorsport began in his childhood, tinkering with go-karts in his hometown of São Paulo. He honed his skills at a local technical college, specializing in precision machining and fabrication. After graduating, he worked for several years at a small engineering firm, gaining experience in various manufacturing processes. Eager to apply his expertise to racing, he joined a Brazilian stock car team, where he quickly proved his worth as a meticulous and resourceful machinist. His reputation for problem-solving and dedication to quality led to opportunities in international racing, eventually landing him a coveted position with Trackhouse Racing.\n\nRicardo approaches his role with a blend of technical precision and creative problem-solving. He's known for his ability to diagnose and repair complex mechanical issues quickly, often devising innovative solutions to improve performance. He's a firm believer in teamwork and open communication, always willing to share his knowledge and collaborate with other members of the pit crew. What sets Ricardo apart is his unwavering commitment to excellence and his relentless pursuit of improvement, ensuring that every component he works on meets the highest standards of quality and performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a sturdy build, suggesting strength and endurance."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always polishes his tools before and after each use.",
+    "Has a lucky wrench he's used since his first race.",
+    "Prefers to listen to Brazilian samba music while working."
+  ]
+}

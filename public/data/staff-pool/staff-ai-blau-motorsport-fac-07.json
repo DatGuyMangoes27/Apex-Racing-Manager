@@ -1,0 +1,22 @@
+{
+  "name": "Tereza Novotná",
+  "nationality": "Czech",
+  "age": 30,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Tereza discovered her passion for motorsport through online racing simulations, which sparked an interest in the technical aspects underpinning race performance. She transitioned from a junior developer role at a tech startup to motorsport, initially volunteering at local rallies to gain experience. Her dedication and knack for problem-solving led to a full-time position managing IT infrastructure for a smaller racing team before Blau Motorsport recognized her potential.\n\nTereza is meticulous in her approach, ensuring every system functions flawlessly to provide real-time data and analytics to the engineering and strategy teams. Her focus is on system resilience and innovation, constantly seeking ways to improve data processing and security. She's not afraid to challenge the status quo, pushing for upgrades and new technologies that give Blau Motorsport a competitive edge, even if it ruffles a few feathers along the way.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight hair with a side parting",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Tereza is of average height with a slender build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Insists on using a mechanical keyboard with loud clicky keys.",
+    "Prefers to communicate via encrypted messaging apps, even for casual conversations."
+  ]
+}

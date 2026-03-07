@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0267",
+  "name": "Maple Leaf Construction",
+  "category": "local",
+  "tier": "elite",
+  "country": "Canada",
+  "description": "Building Canada, one project at a time.",
+  "story": "Maple Leaf Construction has been a cornerstone of Canadian infrastructure for over 50 years. As a family-owned business committed to excellence and community, they see motorsport as a perfect platform to showcase Canadian talent and innovation. They seek a partnership that reflects their values of hard work, dedication, and a commitment to achieving ambitious goals.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Canada"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0267.png"
+}

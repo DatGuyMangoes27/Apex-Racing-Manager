@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Dimitri's journey into motorsport began unexpectedly. While serving in the Russian army, he developed a knack for repairing complex communication systems, a skill that caught the eye of a local racing team's engineer. He quickly transitioned from military tech to racing electronics, finding the high-stakes environment exhilarating. He's known for his calm demeanor under pressure and his ability to diagnose problems quickly using a methodical, data-driven approach.\n\nAt ART Grand Prix Academy, Dimitri focuses on optimizing the performance and reliability of the team's electrical systems, from sensors to ECU. He prefers working independently, meticulously analyzing data logs and wiring diagrams to identify areas for improvement. While not a natural innovator, Dimitri excels at refining existing technologies and ensuring they perform flawlessly, often exceeding expectations through sheer dedication and attention to detail. He is currently working on improving the data acquisition system for the junior drivers.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back, thinning on top",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Dimitri is a man of medium height with a slightly stooped posture and a focused gaze behind his wire-rimmed glasses."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with circuit diagrams and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of Russian-made soldering iron, claiming it's the only one that provides a 'perfect' connection."
+  ]
+}

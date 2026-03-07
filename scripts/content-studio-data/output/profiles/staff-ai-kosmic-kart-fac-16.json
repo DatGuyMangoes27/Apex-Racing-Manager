@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 40,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jan Novák's journey into motorsport catering began unexpectedly. Initially a chef at a traditional Czech restaurant, he catered a small event for a local karting team. His knack for creating hearty, satisfying meals that fueled the drivers and crew impressed Kosmic Kart's manager, who promptly offered him the role of catering manager. \n\nSince then, Jan has become an integral part of the Kosmic Kart team. He believes that good food is crucial for team morale and performance, ensuring everyone is well-fed and energized. His innovative takes on classic Czech dishes, adapted for the fast-paced motorsport environment, have made him a firm favorite among the team. Jan strives to create a welcoming and supportive atmosphere in the catering area, ensuring it's a place where the team can relax and recharge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Jan is a stocky man with a friendly face and a warm smile."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always hums traditional Czech folk songs while cooking.",
+    "Insists on using only fresh, locally sourced ingredients whenever possible.",
+    "Carries a small notebook filled with innovative recipe ideas and meal plans."
+  ]
+}

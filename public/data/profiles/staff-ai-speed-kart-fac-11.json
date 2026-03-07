@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Nikola Stojiljković",
+    "nationality": "Serbian",
+    "age": 31,
+    "gender": "male",
+    "role": "test_driver_coordinator",
+    "bio": "Nikola's journey into motorsport began unexpectedly. While studying mechanical engineering at the University of Belgrade, he volunteered at a local karting track to gain practical experience. He quickly realized his passion lay not just in the mechanics, but in optimizing performance through meticulous testing and analysis.\n\nAfter graduation, Nikola joined Speed Kart Racing as a junior technician, rapidly proving his ability to identify crucial areas for improvement during testing sessions. His knack for understanding driver feedback and translating it into actionable technical adjustments led to his promotion to Test Driver Coordinator. Nikola prides himself on fostering a collaborative environment, ensuring both drivers and engineers are aligned in their pursuit of speed. His focus on data-driven decision making, combined with his innate understanding of kart dynamics, sets him apart.\nNow, he is looking to elevate Speed Kart Racing to the next level.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed back with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-trimmed goatee",
+      "description": "Nikola is of average height with a focused and intense gaze."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook filled with testing notes.",
+      "Has a habit of tapping his pen rhythmically when deep in thought.",
+      "Insists on drinking herbal tea before every test session."
+    ]
+  }
+]

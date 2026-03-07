@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 37,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Mihai's journey into motorsport began unconventionally, not on the track, but in his grandfather's workshop meticulously restoring vintage Dacias. This instilled in him a deep appreciation for precision and the importance of every component. After completing his engineering degree at the Technical University of Cluj-Napoca, he gained experience in automotive manufacturing before making the leap to Formula 1.\n\nAt McLaren Racing, Mihai applies his pragmatic approach to quality control, ensuring that every part meets stringent specifications. He is known for his meticulousness and ability to identify potential issues early in the production process, preventing costly failures on the track. Mihai's strength lies in his capacity to balance theoretical knowledge with practical experience, making him a valuable asset to the team. He believes in continuous improvement and is always looking for ways to enhance the reliability and performance of the car.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mihai is of medium build, with a focused and attentive demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously documenting observations.",
+    "Has a peculiar habit of tapping his fingers on surfaces when deep in thought.",
+    "Insists on using a traditional micrometer over digital alternatives for certain measurements."
+  ]
+}

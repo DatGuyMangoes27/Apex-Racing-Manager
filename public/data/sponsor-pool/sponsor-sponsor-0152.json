@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0152",
+  "name": "Polski Kapital",
+  "category": "finance",
+  "tier": "high",
+  "country": "Poland",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Polski Kapital is a leading Polish investment firm dedicated to fostering growth and opportunity. Recognizing the parallels between the precision and calculated risk of motorsport and the world of finance, Polski Kapital seeks to support ambitious teams and drivers who demonstrate dedication and strategic thinking. We believe a partnership with a winning team will enhance our brand recognition and showcase our commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "nationalities": [
+      "Poland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0152.png"
+}

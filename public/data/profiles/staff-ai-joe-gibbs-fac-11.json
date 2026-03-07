@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 54,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Ricardo's journey in motorsport began in the dusty karting tracks of Santiago, where he honed his skills both as a driver and a mechanic. While his driving career plateaued, his knack for understanding vehicle dynamics and driver feedback quickly set him apart. He transitioned into a support role, initially managing data acquisition for a local rally team before moving to the US and working his way up the ladder in stock car racing.\n\nAt Joe Gibbs Racing, Ricardo excels at bridging the gap between the engineers in the simulator and the drivers on the track. He's known for his meticulous preparation, his ability to extract honest feedback from even the most reticent drivers, and his insistence on rigorous testing protocols. He believes that a well-coordinated test program is essential for championship success and isn't afraid to push the team to achieve that.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A sturdy man with a focused gaze and hands calloused from years of working on race cars."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out notebook filled with handwritten notes.",
+    "Insists on starting every testing session with a detailed weather report, even if it's sunny.",
+    "Has a habit of tapping his pen rhythmically when deep in thought, a sound that can drive some engineers crazy."
+  ]
+}

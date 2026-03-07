@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Oscar Cabalén, more commonly known as the Córdoba circuit, has been a cornerstone of Argentinian motorsport since its inauguration in 1967. Named after local racing hero Oscar Cabalén, the circuit has hosted a wide variety of national and international events, including Turismo Carretera, Formula Two, and various touring car championships. The 'Historic' layout, a longer configuration at 4.2km, recalls the circuit's earlier days, retaining some of the original track design elements that have since been modified or removed in other layouts. It represents a tangible link to the golden age of Argentinian racing, when daring drivers and rudimentary safety standards combined to create a uniquely challenging environment.",
+  "atmosphere": "Standing on the banks of the Autódromo Oscar Cabalén during a race on the Historic layout is like stepping back in time. The air crackles with the raw, unfiltered sound of engines echoing off the aged grandstands. The smell of high-octane fuel mixes with the dust kicked up by the cars as they navigate the long sweeping corners. The atmosphere is palpably intense, a reminder of a time when racing was less sanitised and more visceral. The cheers of the crowd, fueled by passion and tradition, add to the overall sensory overload, making it an unforgettable experience.",
+  "trackCharacter": "The Historic layout at Córdoba presents a unique blend of high-speed sections and challenging corners. The extended layout rewards bravery and commitment, demanding that drivers carry speed through the flowing sections and maintain precision in the tighter turns. Unlike the shorter, more modern layouts, the Historic configuration emphasizes rhythm and flow, requiring drivers to string together a series of corners to maintain momentum. The bumpy surface and older asphalt add an extra layer of challenge, demanding a car setup that prioritises compliance and traction over outright stiffness.",
+  "nickname": "The Classic Córdoba",
+  "famousCorners": [
+    {
+      "name": "Curva 1 (Ascari)",
+      "description": "A fast, sweeping right-hander taken at high speed. It requires commitment and a good exit to maintain momentum onto the following straight.",
+      "challenge": "Demands bravery and precision, as it's easy to run wide and lose time. Getting the correct entry speed is crucial."
+    },
+    {
+      "name": "Curva 3 (La Confitería)",
+      "description": "A medium-speed left-hander that tightens on exit, requiring a delicate touch on the throttle.",
+      "challenge": "Maintaining a tight line through the corner is key, as running wide can compromise the following section."
+    },
+    {
+      "name": "Curva 7 (La Recta Larga's kink)",
+      "description": "A slight kink on the long back straight, taken flat-out in modern cars. Its undulations can unsettle the car.",
+      "challenge": "Requires absolute commitment and trust in the car's stability. A momentary lapse in concentration can have severe consequences."
+    },
+    {
+      "name": "Curva 9 (El Ombú)",
+      "description": "A tight, technical right-hander that requires a late apex and precise braking.",
+      "challenge": "Overbraking is a common mistake, as is carrying too much speed into the corner. A clean exit is essential for a good run onto the next straight."
+    },
+    {
+      "name": "Curva 14 (the final turn)",
+      "description": "A long, drawn-out right-hander that leads onto the main straight, rewarding a good exit speed.",
+      "challenge": "Maintaining a tight line and maximizing exit speed are crucial for a good lap time. It's important to be patient and avoid scrubbing off speed."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical grip: The bumpy surface and older asphalt demand a compliant suspension setup.",
+    "Braking stability: Precise braking is essential for navigating the many tight corners.",
+    "Corner exit speed: Maintaining momentum through the flowing sections is crucial for a fast lap time.",
+    "Traction: Maximising traction on corner exits is key to accelerating onto the straights.",
+    "Aerodynamic efficiency: While downforce is important, minimizing drag is also crucial for top speed on the long straights."
+  ],
+  "overtakingSpots": [
+    "Into Curva 1 (Ascari): A brave move down the inside is possible for skilled drivers.",
+    "Into Curva 3 (La Confitería): A late braking maneuver can set up an overtake.",
+    "Into Curva 9 (El Ombú): A classic overtaking spot due to the tight nature of the corner."
+  ],
+  "historySnippets": [
+    "The circuit is named after Oscar Cabalén, a prominent Argentinian racing driver.",
+    "The Historic layout retains elements of the original 1967 circuit design.",
+    "Córdoba has hosted numerous national and international racing events.",
+    "Turismo Carretera, Argentina's premier touring car series, is a regular visitor.",
+    "The circuit's undulations and camber changes add to the challenge for drivers.",
+    "The Classic layout is known for its blend of high-speed sections and tight corners."
+  ],
+  "weatherNotes": "The Córdoba region experiences a range of weather conditions, from hot and dry summers to mild and wet winters. Rain can make the Historic layout particularly challenging, as the older asphalt offers less grip than modern surfaces. Strong winds can also affect car handling, especially on the long straights. Temperature fluctuations can significantly impact tyre performance, requiring teams to carefully monitor tyre pressures and wear.",
+  "drivingAdvice": "On the Historic layout at Córdoba, it's crucial to find a good rhythm and maintain momentum through the flowing sections. Avoid overdriving the car, as the bumpy surface and older asphalt can punish aggressive driving. Focus on maximising corner exit speed, as this will pay dividends on the long straights. Pay close attention to tyre management, as tyre degradation can significantly impact performance over a race distance. Be patient in traffic, as overtaking opportunities are limited and risky.",
+  "famousRaces": [
+    "Turismo Carretera races: These races are famous for their fierce competition and passionate fan base.",
+    "Argentine Formula Two Championship: These races showcased emerging talents from South America.",
+    "TC2000 Championship races: Argentina's premier touring car series always delivers exciting battles on the Historic layout."
+  ],
+  "localCulture": "Córdoba is a vibrant city with a rich cultural heritage. The local cuisine is known for its hearty meat dishes and empanadas. The people are passionate about motorsport and provide a warm welcome to visitors. Paddock life at the Autódromo Oscar Cabalén is characterised by a friendly and relaxed atmosphere, with teams and drivers often mingling with fans. The sound of tango music can often be heard drifting from nearby cafes, adding to the unique atmosphere."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Zofia Nowak",
+  "nationality": "Polish",
+  "age": 31,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Zofia's fascination with motorsport began during her childhood in Krakow, where she spent countless hours tinkering with her father's old Lada. This early exposure ignited a passion for mechanical engineering, leading her to pursue a degree in Automotive Engineering at the Krakow University of Technology. After graduating, Zofia honed her skills as a junior engineer for a regional rally team, quickly earning a reputation for her meticulous attention to detail and problem-solving abilities.\n\nShe believes in a collaborative approach to engineering, fostering open communication and knowledge sharing within her team. Zofia is known for her ability to dissect complex engineering problems into manageable components, implementing innovative solutions to optimize car performance. Her dedication to continuous improvement and her unwavering commitment to pushing the boundaries of engineering excellence make her a valuable asset to any team. Zofia's perfectionism is both a strength and a challenge, driving her to achieve the highest standards but sometimes causing delays as she meticulously refines every detail.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Zofia is a slender woman with a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with engineering sketches and calculations.",
+    "Has a peculiar habit of tapping her pen against her teeth when deeply concentrated.",
+    "Insists on using metric measurements exclusively, even when collaborating with teams accustomed to imperial units."
+  ]
+}

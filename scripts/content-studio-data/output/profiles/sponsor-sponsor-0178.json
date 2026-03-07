@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0178",
+  "name": "Banco Austral",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Argentina",
+  "description": "Argentina's leading private investment bank.",
+  "story": "Banco Austral has a long history of supporting Argentine talent, and motorsport represents the pinnacle of dedication and precision. We see a partnership with a winning team as an investment in the future and a reflection of our commitment to excellence. We seek to align our brand with a team that embodies Argentinian pride and ambition.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0178.png"
+}

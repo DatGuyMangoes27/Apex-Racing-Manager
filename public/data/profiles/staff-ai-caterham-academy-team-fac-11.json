@@ -1,0 +1,22 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 35,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Isabela's journey into motorsport wasn't a conventional one. Originally a mechanical engineer with a passion for data analysis, she found herself drawn to the intricate world of vehicle dynamics and performance optimization. After graduating top of her class from the University of São Paulo, she joined a local racing team as a data analyst, quickly proving her ability to translate raw data into actionable insights for the drivers. \n\nHer approach to coordinating test drivers is highly methodical. Isabela meticulously plans each test session, ensuring every parameter is precisely measured and analyzed. She's known for her ability to bridge the gap between the engineering team and the drivers, translating complex technical jargon into clear, concise feedback. Her loyalty to Caterham Academy is unwavering, and she takes immense pride in nurturing young talent. What sets her apart is her big-picture thinking; she always considers the long-term impact of testing decisions on the team's overall strategy.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back into a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Isabela has a focused look with an athletic build from her early years playing volleyball."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with data points and hand-drawn diagrams.",
+    "Has a peculiar habit of tapping her pen against the table when deep in thought.",
+    "Insists on having a specific brand of Brazilian coffee available in the garage during test sessions."
+  ]
+}

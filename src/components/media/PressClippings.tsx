@@ -88,7 +88,18 @@ export function PressClippings({ clippings, maxDisplay = 5 }: PressClippingsProp
                   ${config.bgColor} ${config.borderColor}
                 `}
               >
-                <div className="flex items-start gap-3">
+                {/* Headline Image */}
+              {clipping.imageDataUrl && (
+                <div className="-mx-3 -mt-3 mb-3 overflow-hidden rounded-t-lg">
+                  <img 
+                    src={clipping.imageDataUrl} 
+                    alt={clipping.headline}
+                    className="w-full aspect-[3/2] object-cover"
+                  />
+                </div>
+              )}
+              
+              <div className="flex items-start gap-3">
                   <Icon className={`w-4 h-4 mt-0.5 flex-shrink-0 ${config.color}`} />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm leading-tight mb-1">
@@ -165,6 +176,17 @@ export function HeadlinePopup({
         ${config.bgColor} ${config.borderColor}
       `}
     >
+      {/* Headline Image in Popup */}
+      {clipping.imageDataUrl && (
+        <div className="-mx-4 -mt-4 mb-3 overflow-hidden rounded-t-xl">
+          <img 
+            src={clipping.imageDataUrl}
+            alt={clipping.headline}
+            className="w-full aspect-[3/2] object-cover"
+          />
+        </div>
+      )}
+      
       <div className="flex items-start gap-3">
         <div className={`w-10 h-10 rounded-lg ${config.bgColor} flex items-center justify-center flex-shrink-0`}>
           <Icon className={`w-5 h-5 ${config.color}`} />

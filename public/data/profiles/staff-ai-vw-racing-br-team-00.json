@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Herrera",
+  "nationality": "Chilean",
+  "age": 58,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Herrera's journey in motorsport began in the dusty backroads of Chile, where he tinkered with engines alongside his father, a local mechanic. This early exposure ignited a passion that led him to pursue a degree in mechanical engineering and eventually landed him a role as a junior engineer with a small rallying team. Over the years, Ricardo honed his skills, moving from technical roles to team management, always with a keen eye for innovation. He believes in fostering a culture of relentless improvement and data-driven decision-making, pushing his team to constantly explore new avenues for performance gains.\n\nNow at the helm of VW Racing Brasil, Ricardo brings a blend of technical expertise and demanding leadership. He is known for his meticulous attention to detail and his unwavering commitment to achieving victory. While some may find his methods intense, Ricardo's track record speaks for itself – he has consistently delivered results, transforming underperforming teams into championship contenders. He is respected, if not always liked, by his staff.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a man of medium height with a stern, focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out spark plug as a good luck charm.",
+    "Insists on personally reviewing all telemetry data after each session.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

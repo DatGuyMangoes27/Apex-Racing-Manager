@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Valentina Reyes Sandoval",
+    "nationality": "Chilean",
+    "age": 38,
+    "gender": "female",
+    "role": "head_of_aero",
+    "bio": "Valentina's fascination with motorsport began during her university days, while studying mechanical engineering in Santiago. She was captivated by the intricate dance between aerodynamics and vehicle performance, leading her to specialize in computational fluid dynamics. After graduating, she joined a small Chilean racing team, honing her skills in wind tunnel testing and CFD simulations. \n\nDriven by a desire to work at the highest levels, Valentina moved to Europe and quickly gained experience with several Formula teams. She is a strong believer in data-driven decision-making, using simulation and real-world testing to optimize aerodynamic performance. Her pragmatic approach and ability to deliver results under pressure have earned her a reputation as a rising star in the field. Valentina is now relishing the challenge of leading the aero department at United Autosports, aiming to push the team to new heights of aerodynamic efficiency.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair often pulled back into a practical ponytail during work hours.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Valentina has a focused gaze and a no-nonsense demeanor, reflecting her pragmatic personality."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic calculations.",
+      "Has a habit of tapping her pen against her teeth when deep in thought.",
+      "Drinks mate tea throughout the day, brewed in a traditional gourd."
+    ]
+  }
+]

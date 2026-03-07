@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 54,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's motorsport journey began in his late teens, tinkering with engines in his father's garage in Lisbon. He transitioned from amateur racing to a degree in Mechanical Engineering, quickly finding his niche in simulation technology. He spent years honing his skills at smaller racing outfits before landing a role at Team WRT. Ricardo believes a robust simulation environment is crucial, not just for driver training but also for proactively identifying and mitigating potential mechanical issues before they arise on the track. His deep understanding of vehicle dynamics and his ability to translate real-world data into accurate simulation models makes him a valuable asset.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "A stocky man with a permanent furrow in his brow, as if constantly contemplating complex equations."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams.",
+    "Has a habit of tapping his fingers on the table while deep in thought.",
+    "Insists on drinking espresso from a specific mug with a picture of Ayrton Senna."
+  ]
+}

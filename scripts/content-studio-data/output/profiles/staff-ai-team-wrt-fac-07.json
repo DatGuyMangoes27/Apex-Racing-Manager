@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 34,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ivan's journey into motorsport began unconventionally. While studying computer science at the University of Zagreb, a chance encounter with a local racing team needing help with data analysis ignited a passion he never knew he possessed. He quickly realized the vital role of IT in modern racing, from telemetry analysis to simulation software. After graduating, Ivan dedicated himself to learning the intricacies of motorsport IT, working his way up through smaller teams before landing a position at Team WRT. \n\nIvan's approach is methodical and collaborative. He believes in building robust systems that not only meet the team's current needs but are also scalable and adaptable to future technological advancements. He is particularly adept at troubleshooting complex issues under pressure, ensuring that the team's critical data infrastructure remains operational even in the most demanding race environments. What sets Ivan apart is his ability to bridge the gap between the technical and the practical, translating complex IT concepts into actionable insights for the engineers and drivers.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ivan is of average height with a slightly athletic build, often seen with a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during breaks.",
+    "Has a collection of vintage circuit board components on his desk.",
+    "Insists on using a mechanical keyboard with loud clicky switches."
+  ]
+}

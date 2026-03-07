@@ -1,0 +1,22 @@
+{
+  "name": "Cenk Yilmaz",
+  "nationality": "Turkish",
+  "age": 42,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Cenk's journey into motorsport began with a fascination for aerodynamics, nurtured by his early experiences building model airplanes and studying engineering principles. He started his career as a junior technician at a local automotive research facility, quickly demonstrating a natural aptitude for wind tunnel operations and data analysis. Driven by a desire to apply his skills in a more dynamic environment, Cenk transitioned to motorsport, joining Kart Academy five years ago. \n\nAt Kart Academy, Cenk is valued for his meticulous approach and ability to identify subtle aerodynamic improvements. He's known for his dedication, often working late to analyze data and ensure the team has the best possible setup for each race. While he's deeply technical, he also understands the bigger picture, consistently seeking ways to improve the entire aerodynamic development process, making him a valuable asset in the team's continuous pursuit of performance gains.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee.",
+    "description": "Cenk has a sturdy build and a focused expression, indicative of his technical mindset."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of humming quietly while analyzing wind tunnel data.",
+    "Insists on using a specific brand of Turkish coffee during long shifts."
+  ]
+}

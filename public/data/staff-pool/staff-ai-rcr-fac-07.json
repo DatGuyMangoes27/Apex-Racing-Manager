@@ -1,0 +1,22 @@
+{
+  "name": "Owain Llewellyn",
+  "nationality": "Welsh",
+  "age": 51,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Owain's journey into motorsports began unconventionally, through his passion for optimizing data acquisition systems. Starting in the Welsh valleys repairing agricultural machinery, he quickly realized his knack for troubleshooting complex electronics. He transitioned to IT, eventually landing a role providing network support for a small rally team. This sparked his interest in the unique IT challenges presented by motorsport.\n\nAt Richard Childress Racing, Owain is responsible for maintaining the crucial IT infrastructure that supports everything from telemetry analysis to simulations. He's known for his exacting standards and relentless pursuit of efficiency. He believes that a robust and innovative IT system is critical to gaining a competitive edge on the track. His colleagues value his experience, even when he's being demanding.\n\nOwain is particularly proud of implementing a custom-built data mirroring system that significantly reduced downtime during crucial race weekends. He's always looking for ways to improve the team's technological capabilities, often pushing the boundaries of what's possible within the team's budget.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed grey beard",
+    "description": "A stocky build with a slightly ruddy complexion."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multi-tool",
+    "Insists on using exclusively open-source software where possible",
+    "Drinks copious amounts of strong tea throughout the day"
+  ]
+}

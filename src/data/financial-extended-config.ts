@@ -98,19 +98,20 @@ export const BANK_LOAN_TERMS_BY_TIER: Record<TeamTier, LoanTermsConfig> = {
 // Credit line terms by tier
 export interface CreditLineConfig {
   maxCredit: number
+  minCredit?: number          // Optional minimum for a single line (default 0)
   interestRate: number         // Annual % on drawn amount
   maintenanceFeePercent: number // Weekly % of max credit
   approvalThreshold: number
 }
 
 export const CREDIT_LINE_TERMS_BY_TIER: Record<TeamTier, CreditLineConfig> = {
-  entry: { maxCredit: 50000, interestRate: 15, maintenanceFeePercent: 0.05, approvalThreshold: 620 },
-  amateur: { maxCredit: 150000, interestRate: 12, maintenanceFeePercent: 0.04, approvalThreshold: 600 },
-  'semi-pro': { maxCredit: 400000, interestRate: 10, maintenanceFeePercent: 0.035, approvalThreshold: 580 },
-  professional: { maxCredit: 1000000, interestRate: 8, maintenanceFeePercent: 0.03, approvalThreshold: 560 },
-  pro: { maxCredit: 3000000, interestRate: 6.5, maintenanceFeePercent: 0.025, approvalThreshold: 540 },
-  elite: { maxCredit: 10000000, interestRate: 5, maintenanceFeePercent: 0.02, approvalThreshold: 520 },
-  pinnacle: { maxCredit: 30000000, interestRate: 4, maintenanceFeePercent: 0.015, approvalThreshold: 500 }
+  entry: { maxCredit: 50000, minCredit: 10000, interestRate: 15, maintenanceFeePercent: 0.05, approvalThreshold: 620 },
+  amateur: { maxCredit: 150000, minCredit: 25000, interestRate: 12, maintenanceFeePercent: 0.04, approvalThreshold: 600 },
+  'semi-pro': { maxCredit: 400000, minCredit: 50000, interestRate: 10, maintenanceFeePercent: 0.035, approvalThreshold: 580 },
+  professional: { maxCredit: 1000000, minCredit: 100000, interestRate: 8, maintenanceFeePercent: 0.03, approvalThreshold: 560 },
+  pro: { maxCredit: 3000000, minCredit: 250000, interestRate: 6.5, maintenanceFeePercent: 0.025, approvalThreshold: 540 },
+  elite: { maxCredit: 10000000, minCredit: 500000, interestRate: 5, maintenanceFeePercent: 0.02, approvalThreshold: 520 },
+  pinnacle: { maxCredit: 30000000, minCredit: 1000000, interestRate: 4, maintenanceFeePercent: 0.015, approvalThreshold: 500 }
 }
 
 // Bank/Lender names for variety
@@ -178,6 +179,10 @@ export const CREDIT_SCORE_FACTORS = {
   highDebtRatio: -10,      // If debt/equity > 0.5
   profitableSeason: 10,    // Season with profit
   unprofitableSeason: -5,  // Season with loss
+  /** When total drawn / total credit limit > this (0–1), apply highUtilizationCreditDelta weekly */
+  highUtilizationThreshold: 0.75,
+  /** Weekly credit delta when utilization is above threshold */
+  highUtilizationCreditDelta: -2,
   minScore: 300,
   maxScore: 850
 }
@@ -518,6 +523,16 @@ export const STORE_CONFIGS: Record<StoreType, StoreConfig> = {
     setupCost: 10000
   }
 }
+
+// Predefined store locations for physical / popup / event stores (no free-text)
+export const STORE_LOCATION_OPTIONS: { value: string; label: string }[] = [
+  { value: 'hq_lobby', label: 'HQ Lobby' },
+  { value: 'track_shop', label: 'Track Shop' },
+  { value: 'partner_retailer', label: 'Partner Retailer' },
+  { value: 'event_booth', label: 'Event Booth' },
+  { value: 'paddock_store', label: 'Paddock Store' },
+  { value: 'fan_zone', label: 'Fan Zone' }
+]
 
 // Collection themes and their sales multipliers
 export const COLLECTION_THEME_CONFIG: Record<CollectionTheme, { salesMultiplier: number; durationWeeks: number; marketingMultiplier: number; description: string }> = {

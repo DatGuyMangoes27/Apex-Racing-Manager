@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0349",
+  "name": "Starlight Gaming",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "South Africa",
+  "description": "Level up your game with Starlight Gaming peripherals.",
+  "story": "Starlight Gaming is a proudly South African brand dedicated to providing high-quality, affordable gaming peripherals. We believe in supporting local talent and fostering a vibrant gaming community. Motorsport offers a unique platform to showcase our brand's commitment to precision, performance, and the thrill of competition.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0349.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 34,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Dimitri's fascination with motorsport began during his childhood, watching Formula 1 races with his father. He pursued electrical engineering at Moscow State Technical University, specializing in advanced control systems. After graduating, he worked for a robotics firm, honing his skills in data analysis and system optimization. He then transitioned to motorsport, initially working for a smaller racing team before joining Reiza Racing Academy. Dimitri is known for his methodical approach to problem-solving and his ability to extract maximum performance from complex electronic systems.\n\nAt Reiza, Dimitri focuses on optimizing the car's electronic control units (ECUs) and developing innovative data logging solutions. He believes that a deep understanding of the data is crucial for improving lap times and reliability. Dimitri is always looking for new ways to leverage technology to gain a competitive edge. His pragmatic approach ensures that solutions are not only innovative but also reliable and cost-effective. He is a firm believer in teamwork and fostering a collaborative environment within the electronics department.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "short boxed beard",
+    "description": "Dimitri has a focused gaze and a lean build, reflecting his dedication to his work."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a vintage oscilloscope for certain diagnostics."
+  ]
+}

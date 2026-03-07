@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0180",
+  "name": "Deutsche Finanz Gruppe (DFG)",
+  "category": "financial",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Securing your financial future with German precision.",
+  "story": "DFG has a long history of supporting German innovation and engineering. Motorsport represents the pinnacle of both, and DFG views its partnerships as investments in cutting-edge technology and global brand visibility. They are seeking a team that embodies precision, reliability, and a commitment to excellence, values that align with DFG's core principles.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Germany"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0180.png"
+}

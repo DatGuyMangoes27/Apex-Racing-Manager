@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 37,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jean-Pierre's journey into motorsport began unconventionally, not on the track but in his grandfather's machine shop in rural France. There, he learned the intricacies of metalwork, spending countless hours crafting and repairing farm equipment. This practical experience instilled in him a deep understanding of mechanics and a passion for precision. After completing his apprenticeship, he sought out opportunities in racing, quickly proving his worth with his meticulous attention to detail and ability to diagnose and solve complex mechanical problems.\n\nJean-Pierre joined Team WRT five years ago and is known for his unwavering dedication and resourceful approach to problem-solving. He thrives under pressure, often working late into the night to ensure the cars are race-ready. What sets him apart is his ability to blend traditional machining techniques with modern technology, constantly seeking ways to improve performance and reliability. His loyalty to the team and his commitment to excellence make him an invaluable asset.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is a man of average height with a sturdy build, reflecting years spent working with heavy machinery."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to an almost dangerous point.",
+    "Has a specific wrench he calls 'Le Patron' that he uses for critical tasks.",
+    "Mumbles calculations to himself while working, often in a mix of French and technical jargon."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0081",
+  "name": "Eireann Motor Components",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Ireland",
+  "description": "Precision engineered automotive components, built to last.",
+  "story": "Eireann Motor Components has a long history of supporting Irish motorsport. Founded by a racing enthusiast, EMC believes in fostering local talent and pushing the boundaries of automotive engineering. They seek a partnership that demonstrates the reliability and performance of their components in demanding racing conditions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Ireland",
+      "United Kingdom"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0081.png"
+}

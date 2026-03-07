@@ -1,0 +1,22 @@
+{
+  "name": "Jari Mäkinen",
+  "nationality": "Finnish",
+  "age": 40,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jari's journey into motorsport began in his teens, captivated by the engineering marvels of rally cars. After completing his studies in composite materials, he dove headfirst into the world of competitive racing. He honed his skills initially at a small privateer team, learning the ropes of fabrication and repair under immense pressure. Jari is methodical and detail-oriented, known for his ability to diagnose and rectify composite failures quickly and efficiently.\n\nHis experience covers everything from designing new aerodynamic components to repairing crash damage on carbon fiber chassis. He has a particular knack for optimizing composite layups to maximize strength while minimizing weight. Jari thrives in environments that demand precision and innovation. While he isn't one for the spotlight, his reliability and consistent performance make him an invaluable asset to any team looking for an edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Jari is of average height with a lean, wiry build, reflecting years of focused work in the garage."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils before starting a task, even digital ones.",
+    "Has a meticulously organized toolbox, where every tool has its designated place.",
+    "Listens to classical music while working to maintain focus."
+  ]
+}

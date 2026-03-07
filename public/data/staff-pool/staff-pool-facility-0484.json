@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Ivan Kovačić",
+    "nationality": "Croatian",
+    "age": 52,
+    "gender": "male",
+    "role": "quality_control",
+    "bio": "Ivan's journey into motorsport began later in life, after a career in mechanical engineering focused on precision manufacturing. Dissatisfied with the repetitive nature of his previous work, he sought a more dynamic and challenging environment. He saw the opportunity to apply his meticulous attention to detail in the fast-paced world of racing and joined a local racing team to learn the ropes. While he is new to the specific demands of motorsport quality control, Ivan compensates with an unwavering dedication to accuracy and a deep understanding of mechanical principles.\n\nHis approach to quality control is methodical and thorough, emphasizing preventative measures over reactive fixes. He believes that by identifying and addressing potential issues early on, he can minimize costly errors and contribute to the team's overall performance. Ivan is a perfectionist, sometimes to a fault, but his commitment to excellence is undeniable. He is eager to learn from experienced colleagues and contribute his skills to a winning team.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and Pepper",
+      "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed goatee",
+      "description": "Ivan is of average height, with a sturdy build and a focused expression."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook and pen to jot down observations.",
+      "Has a habit of meticulously cleaning his workspace, even during busy periods.",
+      "Asks a lot of clarifying questions to ensure he understands the task at hand."
+    ],
+    "skills": {
+      "Technical": 22,
+      "Management": 48,
+      "Innovation": 44
+    },
+    "traits": [
+      "perfectionist"
+    ],
+    "availableForHire": true,
+    "experienceLevel": "entry-level, developing"
+  }
+]

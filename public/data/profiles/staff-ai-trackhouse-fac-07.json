@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 34,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Sophie's journey into motorsport was somewhat unconventional, starting with a degree in Computer Science and a fascination with data analysis. She initially worked in the finance sector, but the allure of Formula 1's telemetry and complex simulations proved too strong to resist. She started as a junior data analyst at a smaller team, rapidly progressing to managing IT infrastructure due to her innate problem-solving skills and ability to remain calm under pressure.\n\nAt Trackhouse Racing, Sophie is responsible for ensuring that all IT systems are running smoothly, from race simulations to data acquisition systems during races. She believes in a proactive approach, anticipating potential problems before they arise and implementing robust backup and security measures. Sophie's dedication to her role and her unwavering focus on reliability make her an invaluable asset to the team.\n\nWhat sets Sophie apart is her ability to translate complex technical jargon into easily understandable terms for the entire team. She fosters a collaborative environment where everyone feels comfortable asking questions, leading to improved communication and efficiency across the organization.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy hair, often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie has a focused gaze and a practical air about her, often seen with a tablet in hand."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a supply of Belgian chocolates in her desk drawer.",
+    "Prefers to communicate through detailed, well-structured emails, even for minor requests.",
+    "Has an encyclopedic knowledge of obscure server error codes."
+  ]
+}

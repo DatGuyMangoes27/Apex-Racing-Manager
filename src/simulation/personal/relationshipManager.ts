@@ -24,6 +24,12 @@ import type { PersonalFinancialState, PersonalTransaction } from '../../data/per
 import type { SocialBio } from '@/types/personalLife'
 import { generateSocialBio, generateFallbackSocialBio } from '@/services/dialogueAI'
 import type { SocialBioContext } from '@/services/dialogueAI'
+import {
+  getRandomPartnerByGender,
+  extractPartnerBio,
+  isContentLoaded,
+  type PreGenPartnerProfile
+} from '@/services/preGeneratedContentService'
 
 // ============================================
 // PARTNER GENERATION
@@ -46,41 +52,182 @@ const LAST_NAMES = [
   'Thompson', 'White', 'Robinson', 'Clark', 'Lewis', 'Walker', 'Hall'
 ]
 
+/**
+ * Map pre-generated career string to game's PartnerCareer type.
+ */
+function mapPreGenCareer(careerStr: string): PartnerCareer {
+  const mapping: Record<string, PartnerCareer> = {
+    model: 'model', athlete: 'athlete', business_exec: 'business_exec',
+    doctor: 'doctor', lawyer: 'lawyer', entrepreneur: 'entrepreneur',
+    artist: 'artist', journalist: 'journalist', scientist: 'scientist',
+    socialite: 'socialite', racing_driver: 'racing_driver',
+    engineer: 'engineer', team_staff: 'team_staff',
+    // Content Studio aliases
+    fashion_designer: 'artist', actor: 'socialite', musician: 'artist',
+    tech_entrepreneur: 'entrepreneur', banker: 'business_exec',
+    professor: 'scientist', architect: 'engineer', chef: 'entrepreneur',
+    influencer: 'socialite', philanthropist: 'socialite',
+    pilot: 'athlete', diplomat: 'business_exec'
+  }
+  return mapping[careerStr] || 'entrepreneur'
+}
+
+/**
+ * Map pre-generated meeting context string to game's PartnerOrigin type.
+ */
+function mapMeetingContextToOrigin(context: string, fallbackOrigin: PartnerOrigin): PartnerOrigin {
+  if (!context) return fallbackOrigin
+  const lower = context.toLowerCase()
+  if (lower.includes('paddock') || lower.includes('race') || lower.includes('motorsport') || lower.includes('track')) return 'racing_paddock'
+  if (lower.includes('business') || lower.includes('corporate') || lower.includes('gala')) return 'business_event'
+  if (lower.includes('friend') || lower.includes('social') || lower.includes('party')) return 'social_circle'
+  if (lower.includes('media') || lower.includes('interview') || lower.includes('press')) return 'media_appearance'
+  if (lower.includes('charity') || lower.includes('fundrais') || lower.includes('foundation')) return 'charity_event'
+  if (lower.includes('childhood') || lower.includes('grew up') || lower.includes('school')) return 'childhood_friend'
+  return fallbackOrigin
+}
+
+/**
+ * Build a Partner from a pre-generated profile.
+ */
+function buildPartnerFromPreGen(
+  preGen: PreGenPartnerProfile,
+  origin: PartnerOrigin,
+  wealthLevel: number
+): Partner {
+  // Split name into first/last
+  const nameParts = preGen.name.split(' ')
+  const firstName = nameParts[0]
+  const lastName = nameParts.slice(1).join(' ') || 'Unknown'
+
+  // Map career from pre-gen data or derive from origin
+  const career = preGen.career ? mapPreGenCareer(preGen.career) : generateCareerForOrigin(origin, wealthLevel)
+  const careerIncome = getCareerIncome(career)
+
+  // Use pre-gen traits if available, otherwise generate
+  const traitCount = 2 + Math.floor(Math.random() * 2)
+  const shuffledTraits = [...PARTNER_TRAITS].sort(() => Math.random() - 0.5)
+  const traits = shuffledTraits.slice(0, traitCount).map(t => t.id)
+
+  // Map origin from pre-gen meeting context
+  const mappedOrigin = mapMeetingContextToOrigin(preGen.meetingContext, origin)
+
+  // Build desires from pre-gen data or generate from traits
+  let desires: Partner['desires']
+  if (preGen.desires) {
+    desires = {
+      wantsChildren: preGen.desires.wantsChildren,
+      desiredChildrenCount: preGen.desires.desiredChildrenCount,
+      wantsMarriage: preGen.desires.wantsMarriage,
+      lifestyleExpectations: mapWealthToLifestyle(preGen.wealthLevel || 'comfortable'),
+      qualityTimeImportance: preGen.desires.qualityTimeImportance ?? 5,
+      careerSupportImportance: preGen.desires.careerSupportImportance ?? 5,
+      socialLifeImportance: preGen.desires.socialLifeImportance ?? 5,
+      privacyImportance: preGen.desires.privacyImportance ?? 5
+    }
+  } else {
+    desires = generateDesires(traits, wealthLevel)
+  }
+
+  // Extract bio from pre-generated data
+  const preGenBio = extractPartnerBio(preGen)
+  const bio: SocialBio = {
+    background: preGenBio.background,
+    careerNarrative: preGenBio.careerNarrative,
+    anecdotes: preGenBio.anecdotes,
+    personalityDescription: preGenBio.personalityDescription,
+    lifeSituation: preGenBio.lifeSituation
+  }
+
+  // Appearance from pre-gen physical description
+  const appearance = preGen.physical ? {
+    hairColor: preGen.physical.hairColor || 'brown',
+    eyeColor: preGen.physical.eyeColor || 'brown',
+    style: mapStyleToAppearance(preGen.style)
+  } : undefined
+
+  return {
+    id: preGen.id,
+    firstName,
+    lastName,
+    age: preGen.age,
+    nationality: preGen.nationality as any,
+    origin: mappedOrigin,
+    career,
+    careerIncome,
+    traits,
+    bio,
+    relationshipStatus: 'single',
+    happiness: 70,
+    loveLevel: 30 + Math.floor(Math.random() * 20),
+    trustLevel: 40 + Math.floor(Math.random() * 20),
+    compatibilityScore: 50,
+    recentMoodFactors: [],
+    childrenIds: [],
+    desires,
+    dealBreakerViolationCount: {},
+    dealBreakerWarningsGiven: [],
+    appearance
+  }
+}
+
+function mapWealthToLifestyle(wealth: string): 'modest' | 'comfortable' | 'affluent' | 'luxury' | 'ultra_luxury' {
+  const map: Record<string, 'modest' | 'comfortable' | 'affluent' | 'luxury' | 'ultra_luxury'> = {
+    modest: 'modest', comfortable: 'comfortable', wealthy: 'affluent', ultra_wealthy: 'ultra_luxury'
+  }
+  return map[wealth] || 'comfortable'
+}
+
+function mapStyleToAppearance(style: string): 'elegant' | 'casual' | 'sporty' | 'glamorous' | 'bohemian' {
+  if (!style) return 'elegant'
+  const lower = style.toLowerCase()
+  if (lower.includes('elegant') || lower.includes('classic') || lower.includes('refined')) return 'elegant'
+  if (lower.includes('casual') || lower.includes('relaxed') || lower.includes('laid-back')) return 'casual'
+  if (lower.includes('sporty') || lower.includes('athletic') || lower.includes('active')) return 'sporty'
+  if (lower.includes('glamorous') || lower.includes('bold') || lower.includes('luxurious')) return 'glamorous'
+  if (lower.includes('bohemian') || lower.includes('creative') || lower.includes('artistic')) return 'bohemian'
+  return 'elegant'
+}
+
 export function generatePotentialPartner(
   playerAge: number,
   origin: PartnerOrigin,
   wealthLevel: number
 ): Partner {
+  // ── Try pre-generated pool first ──
+  if (isContentLoaded()) {
+    const gender = Math.random() > 0.5 ? 'female' : 'male'
+    const preGen = getRandomPartnerByGender(gender)
+    if (preGen) {
+      return buildPartnerFromPreGen(preGen, origin, wealthLevel)
+    }
+  }
+
+  // ── Fallback: runtime generation (original logic) ──
   const isFemale = Math.random() > 0.5
   const firstName = isFemale
     ? FIRST_NAMES_FEMALE[Math.floor(Math.random() * FIRST_NAMES_FEMALE.length)]
     : FIRST_NAMES_MALE[Math.floor(Math.random() * FIRST_NAMES_MALE.length)]
   const lastName = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)]
   
-  // Age within reasonable range of player (±10 years, min 21)
   const ageOffset = Math.floor(Math.random() * 20) - 10
   const age = Math.max(21, Math.min(55, playerAge + ageOffset))
   
-  // Select 2-3 random traits
   const traitCount = 2 + Math.floor(Math.random() * 2)
   const shuffledTraits = [...PARTNER_TRAITS].sort(() => Math.random() - 0.5)
   const traits = shuffledTraits.slice(0, traitCount).map(t => t.id)
   
-  // Career based on origin and wealth
   const career = generateCareerForOrigin(origin, wealthLevel)
   const careerIncome = getCareerIncome(career)
   
-  // Nationality
   const nationalities = [
     'United Kingdom', 'Germany', 'Italy', 'France', 'United States',
     'Brazil', 'Australia', 'Netherlands', 'Japan', 'Monaco', 'Switzerland'
   ] as const
   const nationality = nationalities[Math.floor(Math.random() * nationalities.length)]
   
-  // Generate desires based on traits
   const desires = generateDesires(traits, wealthLevel)
   
-  // Generate template-based bio immediately (sync)
   const bioContext: SocialBioContext = {
     name: `${firstName} ${lastName}`,
     age,
@@ -106,12 +253,14 @@ export function generatePotentialPartner(
     bio,
     relationshipStatus: 'single',
     happiness: 70,
-    loveLevel: 30 + Math.floor(Math.random() * 20), // Start with some attraction
+    loveLevel: 30 + Math.floor(Math.random() * 20),
     trustLevel: 40 + Math.floor(Math.random() * 20),
-    compatibilityScore: 50, // Will be calculated properly
+    compatibilityScore: 50,
     recentMoodFactors: [],
     childrenIds: [],
-    desires
+    desires,
+    dealBreakerViolationCount: {},
+    dealBreakerWarningsGiven: []
   }
 }
 
@@ -210,7 +359,8 @@ function generateDesires(traits: string[], wealthLevel: number): Partner['desire
 export function goOnDate(
   partner: Partner,
   dateOption: DateOption,
-  finances: PersonalFinancialState
+  finances: PersonalFinancialState,
+  contactContext?: { loveLanguage?: string; interests?: string[] }
 ): {
   updatedPartner: Partner
   transaction: PersonalTransaction
@@ -220,6 +370,7 @@ export function goOnDate(
     happinessGained: number
     loveGained: number
     trustGained: number
+    bonusApplied?: string  // Description of any bonus applied
   }
 } {
   // Calculate base gains
@@ -232,6 +383,38 @@ export function goOnDate(
     const bonus = dateOption.traitBonuses?.[traitId] || 0
     happinessGain += bonus
     loveGain += bonus * 0.5
+  }
+  
+  // Apply love language bonus (+50% if matching)
+  let bonusApplied: string | undefined
+  if (contactContext?.loveLanguage && dateOption.loveLanguageTag) {
+    const normalized = contactContext.loveLanguage.toLowerCase().replace(/[\s-]+/g, '_')
+    if (normalized === dateOption.loveLanguageTag || 
+        normalized.includes(dateOption.loveLanguageTag.split('_')[0])) {
+      happinessGain = Math.round(happinessGain * 1.5)
+      loveGain = Math.round(loveGain * 1.5)
+      trustGain = Math.round(trustGain * 1.5)
+      bonusApplied = 'love language match'
+    }
+  }
+  
+  // Apply shared interest bonus (+30% per match, cap +100%)
+  if (contactContext?.interests && dateOption.interestTags) {
+    const normalizedInterests = contactContext.interests.map(i => i.toLowerCase().replace(/[\s-]+/g, '_'))
+    let matchCount = 0
+    for (const tag of dateOption.interestTags) {
+      if (normalizedInterests.some(interest => interest.includes(tag) || tag.includes(interest))) {
+        matchCount++
+      }
+    }
+    if (matchCount > 0) {
+      const interestMultiplier = Math.min(2.0, 1.0 + matchCount * 0.3)
+      happinessGain = Math.round(happinessGain * interestMultiplier)
+      loveGain = Math.round(loveGain * interestMultiplier)
+      bonusApplied = bonusApplied 
+        ? `${bonusApplied} + shared interests`
+        : 'shared interests'
+    }
   }
   
   // Random variance (±20%)
@@ -274,10 +457,13 @@ export function goOnDate(
     transaction,
     outcome: {
       success: true,
-      message: `Had a wonderful ${dateOption.name} with ${partner.firstName}!`,
+      message: bonusApplied
+        ? `Had an amazing ${dateOption.name} with ${partner.firstName}! (${bonusApplied} bonus)`
+        : `Had a wonderful ${dateOption.name} with ${partner.firstName}!`,
       happinessGained: happinessGain,
       loveGained: loveGain,
-      trustGained: trustGain
+      trustGained: trustGain,
+      bonusApplied
     }
   }
 }
@@ -311,7 +497,21 @@ export function proposeToPartner(
   const happinessWeight = partner.happiness * 0.2
   const compatWeight = partner.compatibilityScore * 0.1
   
-  const acceptanceScore = loveWeight + trustWeight + happinessWeight + compatWeight
+  let acceptanceScore = loveWeight + trustWeight + happinessWeight + compatWeight
+  
+  // Trait modifiers for proposal acceptance
+  if (partner.traits.includes('commitment_phobic')) {
+    acceptanceScore -= 30 // Major penalty
+  }
+  if (!partner.desires.wantsMarriage) {
+    acceptanceScore -= 25 // They don't want marriage at all
+  }
+  if (partner.traits.includes('romantic') || partner.traits.includes('nurturing')) {
+    acceptanceScore += 10 // More receptive to commitment
+  }
+  if (partner.traits.includes('independent')) {
+    acceptanceScore -= 10 // Values freedom
+  }
   
   // Need at least 70 score, with some randomness
   const roll = Math.random() * 100
@@ -451,22 +651,72 @@ export function processWeeklyRelationship(
   partner: Partner,
   playerAttentionGiven: boolean,
   playerTravelingAway: boolean,
-  playerStressLevel: number
+  playerStressLevel: number,
+  context?: {
+    recentMediaScandals?: number
+    publicSocialMediaPosts?: number
+    socialEventsAttended?: number
+    socialEventsDeclined?: number
+    // Conversation activity data
+    messagesSentThisWeek?: number
+    messagesReceivedThisWeek?: number
+    playerGhostedDays?: number
+    conversationStage?: string
+  }
 ): Partner {
   const config = RELATIONSHIP_CONFIG
+  const desires = partner.desires
   
   let happinessChange = 0
   let loveChange = 0
   let trustChange = 0
   
-  // Natural decay if no attention
-  if (!playerAttentionGiven) {
-    happinessChange -= config.weeklyBondDecay
-    loveChange -= config.weeklyBondDecay * 0.5
+  // ── Desire-scaled decay when not given attention ──
+  // qualityTimeImportance (0-100) scales the decay: 90 = -3/week, 30 = -0.5/week
+  const qualityDecayFactor = desires?.qualityTimeImportance
+    ? 0.5 + (desires.qualityTimeImportance / 100) * 2.5 // 0.5 to 3.0
+    : config.weeklyBondDecay
+  
+  // Consider messaging activity as a form of attention
+  const msgsSent = context?.messagesSentThisWeek ?? 0
+  const hasConversationActivity = msgsSent >= 2
+  const effectiveAttention = playerAttentionGiven || hasConversationActivity
+  
+  if (!effectiveAttention) {
+    happinessChange -= qualityDecayFactor
+    loveChange -= qualityDecayFactor * 0.5
   } else {
     happinessChange += config.qualityTimeBonus
     loveChange += 1
     trustChange += 0.5
+    
+    // Extra bonus for active messaging (on top of base attention bonus)
+    if (msgsSent >= 5) {
+      happinessChange += 2
+      loveChange += 0.5
+      trustChange += 0.5
+    } else if (msgsSent >= 3) {
+      happinessChange += 1
+      trustChange += 0.25
+    }
+  }
+  
+  // ── Ghosting penalty: partner feels neglected when ignored ──
+  const ghostedDays = context?.playerGhostedDays ?? 0
+  if (ghostedDays >= 5) {
+    happinessChange -= 4
+    trustChange -= 2
+    loveChange -= 1
+  } else if (ghostedDays >= 3) {
+    happinessChange -= 2
+    trustChange -= 1
+  }
+  
+  // ── Stale conversation penalty: relationship withers without contact ──
+  if (context?.conversationStage === 'stale') {
+    happinessChange -= 3
+    loveChange -= 1
+    trustChange -= 0.5
   }
   
   // Being away hurts relationship
@@ -476,6 +726,11 @@ export function processWeeklyRelationship(
       happinessChange -= 3
       trustChange -= 2
     }
+    // Possessive partners also suffer more
+    if (partner.traits.includes('possessive')) {
+      happinessChange -= 2
+      trustChange -= 1
+    }
   }
   
   // High player stress affects partner
@@ -483,6 +738,30 @@ export function processWeeklyRelationship(
     happinessChange -= 2
     if (partner.traits.includes('supportive')) {
       happinessChange += 3 // Supportive partners help
+    }
+  }
+  
+  // ── socialLifeImportance: scales gains/losses from social events ──
+  if (context && desires?.socialLifeImportance) {
+    const socialFactor = desires.socialLifeImportance / 100 // 0 to 1
+    if (context.socialEventsAttended && context.socialEventsAttended > 0) {
+      happinessChange += context.socialEventsAttended * socialFactor * 2
+    }
+    if (context.socialEventsDeclined && context.socialEventsDeclined > 0) {
+      happinessChange -= context.socialEventsDeclined * socialFactor * 2
+      trustChange -= context.socialEventsDeclined * socialFactor * 0.5
+    }
+  }
+  
+  // ── privacyImportance: high-privacy partners lose happiness from media/scandals ──
+  if (context && desires?.privacyImportance) {
+    const privacyFactor = desires.privacyImportance / 100 // 0 to 1
+    if (context.recentMediaScandals && context.recentMediaScandals > 0) {
+      happinessChange -= context.recentMediaScandals * privacyFactor * 5
+      trustChange -= context.recentMediaScandals * privacyFactor * 2
+    }
+    if (context.publicSocialMediaPosts && context.publicSocialMediaPosts > 2) {
+      happinessChange -= (context.publicSocialMediaPosts - 2) * privacyFactor * 1.5
     }
   }
   
@@ -504,7 +783,6 @@ export function processWeeklyRelationship(
     }
   }
   
-  // Age partner
   const updatedPartner: Partner = {
     ...partner,
     happiness: Math.max(0, Math.min(100, partner.happiness + happinessChange)),
@@ -648,6 +926,62 @@ export function processDivorce(
         : undefined
     }
   }
+}
+
+// ============================================
+// SEPARATION DURATION CALCULATION
+// ============================================
+
+/**
+ * Calculate how long a breakup or divorce takes based on relationship health.
+ * Breakups: 2-4 days. Divorces: 4-16 weeks (28-112 days).
+ * Good relationships take longer (contested); bad ones resolve quickly.
+ */
+export function calculateSeparationDuration(
+  type: 'breakup' | 'divorce',
+  partner: Partner
+): number {
+  if (type === 'breakup') {
+    // Base: 3 days
+    let days = 3
+    
+    // Good health = harder to let go (+1 day)
+    if (partner.happiness > 60 && partner.loveLevel > 60) {
+      days += 1
+    }
+    // Bad health = quick and clean (-1 day)
+    if (partner.happiness < 30 && partner.loveLevel < 30) {
+      days -= 1
+    }
+    
+    return Math.max(2, Math.min(4, days))
+  }
+  
+  // Divorce
+  let weeks = 8 // Base: 8 weeks
+  
+  // Good relationship health: contested, takes longer
+  if (partner.happiness > 50 && partner.loveLevel > 50 && partner.trustLevel > 50) {
+    weeks += 4 + Math.floor(Math.random() * 5) // +4 to +8 weeks
+  }
+  // Bad relationship health: both want out, goes fast
+  else if (partner.happiness < 25 && partner.loveLevel < 25) {
+    weeks -= 2 + Math.floor(Math.random() * 3) // -2 to -4 weeks
+  }
+  
+  // Trait modifiers
+  const traits = partner.traits || []
+  if (traits.includes('dramatic')) weeks += 2
+  if (traits.includes('materialistic') || traits.includes('high_maintenance')) weeks += 3
+  if (traits.includes('forgiving') || traits.includes('practical')) weeks -= 2
+  
+  // Children add custody negotiation time
+  const childrenCount = partner.childrenIds?.length || 0
+  weeks += childrenCount * 2
+  
+  // Clamp to 4-16 weeks range, convert to days
+  weeks = Math.max(4, Math.min(16, weeks))
+  return weeks * 7
 }
 
 // ============================================

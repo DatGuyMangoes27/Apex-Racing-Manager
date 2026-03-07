@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 46,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's passion for electronics sparked during his childhood in Medellin, tinkering with radios and taking apart anything he could get his hands on. This curiosity led him to pursue a degree in electrical engineering, where he specialized in embedded systems. After graduating, he spent several years working on industrial automation projects, honing his skills in circuit design and software integration. However, the roar of engines always echoed in his heart, drawing him to motorsport. \n\nHe transitioned to the racing world through a local racing team, initially volunteering his expertise. Ricardo's approach is methodical and detail-oriented; he thrives on solving complex problems and optimizing performance through data analysis. While relatively new to the high-pressure environment of professional racing, his dedication and innovative mindset make him a valuable asset. He brings a fresh perspective and a hunger to prove himself in the competitive world of motorsport electronics.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of medium build, with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Insists on using metric measurements only.",
+    "Has a habit of muttering calculations under his breath."
+  ]
+}

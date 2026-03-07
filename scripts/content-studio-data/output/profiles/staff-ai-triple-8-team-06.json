@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 48,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Jean-Pierre's journey into motorsport began as a teenager, spending countless hours tinkering with go-karts at his local club. He quickly developed a knack for understanding the intricacies of vehicle dynamics and race strategy. After earning a degree in mechanical engineering, he honed his skills as a race engineer for a smaller team, before catching the eye of Triple Eight Race Engineering.\n\nAs Sporting Director, Jean-Pierre brings a unique blend of technical expertise and managerial acumen. He's known for his ability to identify and nurture emerging talent within the team, fostering a collaborative environment where innovation thrives. His commitment to a holistic approach, considering every facet of the team's performance from the garage to the pit wall, sets him apart. Jean-Pierre believes in empowering his team and providing them with the resources and support to push boundaries and achieve excellence on the track.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "Short, neatly cropped, with a slight receding hairline.",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A man of medium build, Jean-Pierre always has a thoughtful expression, as if constantly analyzing data."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten race strategy notes.",
+    "Has a habit of tapping his pen rhythmically against his desk when deep in thought.",
+    "Insists on having a specific type of French roast coffee before every race."
+  ]
+}

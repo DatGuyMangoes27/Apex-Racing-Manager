@@ -1,0 +1,31 @@
+{
+  "name": "Jaime Fabregas",
+  "nationality": "Filipino",
+  "age": 62,
+  "gender": "male",
+  "contactType": "celebrity",
+  "bio": "Jaime Fabregas is a highly celebrated Filipino actor, composer, and musical director. Known for his sharp wit and demanding standards, he has shaped the landscape of Filipino cinema and theater for decades. While seemingly distant from the racing world, Jaime is a fervent supporter of local charities, some of which are sponsored by racing teams and drivers. His attendance at fundraising galas and motorsport-adjacent events creates an opportunity for ambitious drivers to connect with him. He is rumored to be difficult to impress, but he is also known to be fiercely loyal to those who earn his respect.",
+  "physical": {
+    "skinTone": "Brown",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper goatee",
+    "description": "Jaime has a commanding presence despite his average height. His eyes are sharp and intelligent, often conveying a sense of amusement or critical assessment."
+  },
+  "connectionToMotorsport": "Jaime supports several charities connected to local racing teams and drivers. He attends fundraising events and occasionally participates in promotional activities for these causes.",
+  "meetingContext": "The player might meet Jaime at a charity gala hosted by a racing team, or at a theater production where he is either performing or supporting.",
+  "conversationTopics": [
+    "The state of Filipino cinema",
+    "The importance of arts education",
+    "His latest musical projects",
+    "The challenges facing local charities",
+    "His volunteer work"
+  ],
+  "canHelp": [
+    "Introduce the player to influential figures in the entertainment industry who may be interested in sponsoring a driver.",
+    "Raise the player's profile through endorsements and social media mentions, increasing their visibility to potential sponsors.",
+    "Offer guidance on public speaking and media appearances."
+  ],
+  "personality_summary": "A sarcastic perfectionist with a creative soul, often dismissive of those he deems unworthy."
+}

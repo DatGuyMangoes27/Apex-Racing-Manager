@@ -1,0 +1,21 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 33,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Angus McLeod's path to motorsport strategy began not on the track, but in the classroom, fuelled by a fascination with data analysis and predictive modelling. After graduating with a degree in engineering, he initially worked in aerospace, applying his skills to optimise aircraft performance. The lure of motorsport, however, proved too strong. He took a calculated risk and transitioned to racing, cutting his teeth in junior formulas before landing a role at Reiza Racing Academy. \n\nAngus is known for his meticulous preparation and ability to adapt strategies on the fly. He thrives under pressure, using real-time data to anticipate changing track conditions and competitor tactics. His approach is collaborative, fostering open communication with engineers and drivers. He stands out for his knack of finding marginal gains that collectively make a significant difference, a trait he attributes to his perfectionist nature honed in aerospace.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Angus is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten race simulations",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought"
+  ]
+}

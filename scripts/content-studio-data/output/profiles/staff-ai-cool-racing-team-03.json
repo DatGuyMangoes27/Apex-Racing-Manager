@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 40,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Rhys Williams is a seasoned aerodynamicist with a passion for motorsport instilled in him from a young age, watching Kiwi legends dominate the world stage. After graduating from the University of Auckland with a degree in Mechanical Engineering, Rhys quickly found his niche in aerodynamics, initially cutting his teeth in V8 Supercars before making the jump to single-seaters. His meticulous approach to data analysis and relentless pursuit of marginal gains have earned him a reputation as a highly effective, if somewhat demanding, leader.\n\nAt Cool Racing, Rhys is focused on optimizing the car's airflow characteristics to maximize downforce and minimize drag. He believes in a collaborative approach, encouraging his team to challenge conventional wisdom and explore innovative solutions. While he's not afraid to push boundaries, he always prioritizes reliability and consistency, understanding that even the smallest aerodynamic advantage can make the difference between winning and losing. His ultimate goal is to create a car that is not only fast but also predictable and easy to drive, giving the team's drivers the confidence to push their limits.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, slightly receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "Rhys is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Has a peculiar habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having his workstation meticulously organized, down to the precise angle of his monitor."
+  ]
+}

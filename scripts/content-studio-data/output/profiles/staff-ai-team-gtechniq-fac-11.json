@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Wei Jian Tan",
+    "nationality": "Singaporean",
+    "age": 22,
+    "gender": "male",
+    "role": "test_driver_coordinator",
+    "bio": "Wei Jian's passion for motorsport ignited during his early childhood, fueled by attending the Singapore Grand Prix every year with his father. He pursued a degree in mechanical engineering, focusing on vehicle dynamics, and secured an internship with a local racing team where he gained hands-on experience in data analysis and performance optimization. His meticulous approach and sharp analytical skills quickly impressed his superiors, leading him to his current role at Team Gtechniq. \n\nAs a test driver coordinator, Wei Jian is responsible for planning and executing testing programs, ensuring that all test drivers are well-prepared and that all relevant data is collected and analyzed effectively. He is known for his rigorous standards and his unwavering commitment to extracting maximum performance from the team's testing efforts. Wei Jian believes in fostering a collaborative environment where every team member feels valued and empowered to contribute their best.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly styled with a slight side part.",
+      "eyeColor": "Dark brown",
+      "facialHair": "Clean shaven",
+      "description": "Wei Jian is of average height with a lean build and a focused gaze."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always carries a small notebook and pen to jot down observations.",
+      "Has a specific playlist of electronic music he listens to before every test session.",
+      "Insists on double-checking all data logs personally before submitting them."
+    ]
+  }
+]

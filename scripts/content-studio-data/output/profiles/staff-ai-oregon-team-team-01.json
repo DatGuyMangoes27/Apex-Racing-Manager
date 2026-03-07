@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 31,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jan's fascination with motorsport began early, fueled by watching Formula 1 races with his father. He excelled in mechanical engineering at Delft University, specializing in vehicle dynamics and aerodynamics. After graduating, he joined a small Dutch racing team, quickly proving his aptitude for problem-solving and performance optimization. \n\nHe emphasizes a data-driven approach, meticulously analyzing telemetry and simulations to identify areas for improvement. Jan joined Oregon Team three years ago, bringing with him a reputation for reliability and a talent for seeing the big picture. He has quickly become an invaluable member of the team, known for his calm demeanor and ability to keep the team focused under pressure. His ambition is to guide the team to a championship victory, solidifying his legacy as a top engineer.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly parted to the side",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Jan is a lean man of average height, with a focused and intelligent gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen.",
+    "Tends to over-explain complex technical issues.",
+    "Drinks black coffee exclusively, regardless of the time of day."
+  ]
+}

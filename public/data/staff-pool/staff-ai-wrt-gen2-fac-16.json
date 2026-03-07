@@ -1,0 +1,22 @@
+{
+  "name": "Eszter Kovács",
+  "nationality": "Hungarian",
+  "age": 42,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Eszter's journey into motorsport was unexpected. After years managing restaurants in Budapest, she found herself catering a small event for a local racing team. Her meticulous planning and ability to handle dietary restrictions impressed the team manager, who offered her a position. Eszter brings a 'no-nonsense' approach to catering, ensuring the team is fueled with healthy, nutritious meals that meet their specific needs. She believes in minimizing waste and maximizing efficiency, a philosophy that stems from her family's history of running a small farm. \n\nHer focus on practical solutions extends beyond the kitchen. Eszter is a keen observer of team dynamics and often offers insightful advice on team morale, earning her the respect of drivers and mechanics alike. While not a gearhead herself, she understands the importance of peak performance and sees her role as integral to achieving it. Her dedication to providing exceptional service and creating a positive atmosphere sets her apart.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical bun or ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eszter is a woman of medium height with a sturdy build and a warm, approachable face."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Insists on using only locally sourced ingredients whenever possible.",
+    "Always carries a small notebook to jot down menu ideas and dietary requests.",
+    "Has a habit of humming traditional Hungarian folk songs while preparing food."
+  ]
+}

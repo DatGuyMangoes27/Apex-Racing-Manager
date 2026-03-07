@@ -21,6 +21,10 @@ export type SeriesCategory =
   | 'prototype'     // LMP2, P3, P4
   | 'historic'      // Classic cars, Group C
   | 'entry-level'   // Copa series, beginner championships
+  | 'karting'       // Kart racing (rental, 4T, 125cc, shifter)
+  | 'rallycross'    // Rallycross, off-road, trophy trucks
+  | 'stock-usa'     // NASCAR-style American stock car racing
+  | 'club'          // Club/amateur track day events
 
 export interface SeriesTerminology {
   overtake: string[]      // Words for passing
@@ -136,6 +140,62 @@ const SPEC_TERMINOLOGY: SeriesTerminology = {
   pit: ['pits', 'pit lane'],
   start: ['lights out', 'green flag'],
   finish: ['checkered flag', 'takes the win', 'first across the line']
+}
+
+const KARTING_TERMINOLOGY: SeriesTerminology = {
+  overtake: ['dives inside', 'sends it up the inside', 'gets underneath', 'switches back', 'outbrakes'],
+  battle: ['kart-to-kart', 'nose-to-tail', 'side-by-side', 'slipstreaming', 'a freight train of karts'],
+  leader: ['leader', 'race leader', 'the kart at the front'],
+  gap: ['margin', 'gap', 'a kart-length', 'bumper-to-bumper'],
+  speed: ['pace', 'momentum', 'carrying speed', 'exit speed'],
+  driver: ['karter', 'driver', 'young talent', 'rising star'],
+  mistake: ['drops a wheel off', 'runs wide', 'locks up', 'gets sideways'],
+  weather: ['grip', 'wet track', 'slippery conditions'],
+  pit: ['grid', 'pit area', 'dummy grid'],
+  start: ['lights out', 'green flag', 'standing start'],
+  finish: ['checkered flag', 'takes the win', 'crosses first', 'photo finish']
+}
+
+const RALLYCROSS_TERMINOLOGY: SeriesTerminology = {
+  overtake: ['barges past', 'goes around the outside on dirt', 'cuts inside', 'takes the position'],
+  battle: ['door-to-door', 'sideways and side-by-side', 'scrapping on the loose surface'],
+  leader: ['leader', 'race leader', 'the car at the front'],
+  gap: ['margin', 'gap', 'distance'],
+  speed: ['pace', 'speed', 'commitment', 'attack'],
+  driver: ['driver', 'pilot', 'competitor'],
+  mistake: ['goes off', 'loses the rear end', 'hits the barrier', 'drops it on the dirt'],
+  weather: ['surface conditions', 'dust', 'mud', 'loose gravel'],
+  pit: ['service area', 'joker lap'],
+  start: ['lights out', 'the gate drops', 'race start'],
+  finish: ['checkered flag', 'wins the final', 'takes the heat']
+}
+
+const STOCK_USA_TERMINOLOGY: SeriesTerminology = {
+  overtake: ['gets around', 'makes the pass', 'slides by', 'slingshots past', 'drafts past'],
+  battle: ['side-by-side', 'three-wide', 'trading paint', 'rubbing is racing', 'pack racing'],
+  leader: ['leader', 'race leader', 'the leader of the pack'],
+  gap: ['margin', 'gap', 'lead', 'car-lengths'],
+  speed: ['speed', 'pace', 'flat out', 'wide open'],
+  driver: ['driver', 'wheelman', 'competitor'],
+  mistake: ['gets loose', 'gets tight', 'scrubs the wall', 'goes up the track'],
+  weather: ['track temperature', 'grip levels', 'conditions'],
+  pit: ['pit road', 'pit stop', 'green flag stops', 'fuel window'],
+  start: ['green flag', 'rolling start', 'restart'],
+  finish: ['checkered flag', 'wins the race', 'takes the trophy', 'victory lane']
+}
+
+const CLUB_TERMINOLOGY: SeriesTerminology = {
+  overtake: ['gets by', 'makes the move', 'finds a way through'],
+  battle: ['close racing', 'fun battle', 'friendly dice'],
+  leader: ['leader', 'race leader'],
+  gap: ['margin', 'gap'],
+  speed: ['pace', 'speed'],
+  driver: ['driver', 'racer', 'competitor', 'club member'],
+  mistake: ['runs wide', 'small error', 'slight moment'],
+  weather: ['grip', 'conditions'],
+  pit: ['pits', 'pit lane'],
+  start: ['green flag', 'lights out'],
+  finish: ['checkered flag', 'takes the win', 'finishes first']
 }
 
 // ============================================
@@ -514,6 +574,168 @@ export const SERIES_PROFILES: Record<SeriesCategory, SeriesCommentaryProfile> = 
       'Community and friendship',
       'Budget constraints and creativity',
       'Dreams of moving up'
+    ]
+  },
+
+  'karting': {
+    category: 'karting',
+    displayName: 'Karting',
+    hasDRS: false,
+    hasPushToPass: false,
+    hasBoostButton: false,
+    hasClassRacing: false,
+    hasDriverChanges: false,
+    hasBalanceOfPerformance: false,
+    terminology: KARTING_TERMINOLOGY,
+    broadcasterStyles: [
+      'Enthusiastic karting commentator',
+      'Former karting champion turned broadcaster',
+      'Animated grassroots racing host',
+      'Kart racing specialist'
+    ],
+    energyLevel: 'high',
+    avoidTerms: [
+      'DRS',
+      'push-to-pass',
+      'factory team',
+      'pit strategy',
+      'driver change',
+      'tire degradation'
+    ],
+    preferredTerms: [
+      'slipstream', 'switchback',
+      'exit speed', 'momentum',
+      'nose-to-tail', 'kart-to-kart',
+      'future star', 'raw talent'
+    ],
+    culturalContext: 'The purest form of racing. Where champions are forged. Raw skill, no electronics, no excuses. The closest racing you will ever see.',
+    keyNarratives: [
+      'Future champions starting here',
+      'Pure driver skill on display',
+      'Incredibly close slipstream battles',
+      'Family teams and shoestring budgets',
+      'Gateway to professional racing'
+    ]
+  },
+
+  'rallycross': {
+    category: 'rallycross',
+    displayName: 'Rallycross',
+    hasDRS: false,
+    hasPushToPass: false,
+    hasBoostButton: false,
+    hasClassRacing: false,
+    hasDriverChanges: false,
+    hasBalanceOfPerformance: false,
+    terminology: RALLYCROSS_TERMINOLOGY,
+    broadcasterStyles: [
+      'Energetic rallycross commentator',
+      'Off-road racing enthusiast',
+      'Action-sports broadcaster',
+      'Dirt racing specialist'
+    ],
+    energyLevel: 'high',
+    avoidTerms: [
+      'DRS',
+      'push-to-pass',
+      'factory GT',
+      'endurance strategy',
+      'driver change',
+      'tire compound'
+    ],
+    preferredTerms: [
+      'joker lap', 'loose surface',
+      'sideways', 'commitment',
+      'attack mode', 'dirt',
+      'mixed surface', 'gravel'
+    ],
+    culturalContext: 'Mixed-surface mayhem. Short intense heats leading to a dramatic final. Joker laps add tactical intrigue. Spectacular sideways action.',
+    keyNarratives: [
+      'Mixed surface mastery',
+      'Joker lap strategy',
+      'Spectacular sideways action',
+      'Heat-to-final drama',
+      'All-weather bravery'
+    ]
+  },
+
+  'stock-usa': {
+    category: 'stock-usa',
+    displayName: 'American Stock Car Racing',
+    hasDRS: false,
+    hasPushToPass: false,
+    hasBoostButton: false,
+    hasClassRacing: false,
+    hasDriverChanges: false,
+    hasBalanceOfPerformance: false,
+    terminology: STOCK_USA_TERMINOLOGY,
+    broadcasterStyles: [
+      'American motorsport broadcaster',
+      'Oval racing specialist',
+      'Southern-style racing commentator',
+      'Stock car racing veteran'
+    ],
+    energyLevel: 'high',
+    avoidTerms: [
+      'DRS',
+      'undercut',
+      'factory GT',
+      'manufacturer programme',
+      'Balance of Performance'
+    ],
+    preferredTerms: [
+      'draft', 'slingshot',
+      'three-wide', 'pack racing',
+      'rubbing is racing', 'trade paint',
+      'victory lane', 'green flag stops'
+    ],
+    culturalContext: 'America\'s most popular motorsport. Pack racing, drafting, and door-to-door action on iconic ovals and road courses. Rich heritage and passionate fans.',
+    keyNarratives: [
+      'Pack racing and drafting battles',
+      'Superspeedway strategy',
+      'Short track aggression',
+      'Fuel strategy and pit road gambles',
+      'Playoff drama and championship chase'
+    ]
+  },
+
+  'club': {
+    category: 'club',
+    displayName: 'Club Racing',
+    hasDRS: false,
+    hasPushToPass: false,
+    hasBoostButton: false,
+    hasClassRacing: false,
+    hasDriverChanges: false,
+    hasBalanceOfPerformance: false,
+    terminology: CLUB_TERMINOLOGY,
+    broadcasterStyles: [
+      'Friendly club racing commentator',
+      'Local track announcer',
+      'Supportive amateur racing host',
+      'Weekend warrior enthusiast'
+    ],
+    energyLevel: 'high',
+    avoidTerms: [
+      'DRS',
+      'factory team',
+      'works driver',
+      'big-money',
+      'world championship'
+    ],
+    preferredTerms: [
+      'club racing', 'fun',
+      'weekend warrior', 'track day',
+      'gentleman driver', 'amateur',
+      'community', 'passion'
+    ],
+    culturalContext: 'Racing for the love of it. Weekend warriors and gentleman drivers enjoying short seasons. Community spirit, shared garages, and post-race barbecues.',
+    keyNarratives: [
+      'Racing for passion not money',
+      'Community and camaraderie',
+      'Short season excitement',
+      'Gentleman driver heroics',
+      'Fun above all else'
     ]
   }
 }

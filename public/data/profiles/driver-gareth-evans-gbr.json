@@ -1,0 +1,27 @@
+{
+  "biography": "Gareth Evans, a name synonymous with audacious overtakes and the roar of turbochargers, hails from a small Welsh village where sheep outnumbered cars ten to one. His motorsport journey began, not in a go-kart, but behind the wheel of his grandfather's battered Land Rover, navigating treacherous mountain tracks. It was there, amidst the mud and the mist, that he honed his uncanny car control. A chance encounter with a retired racing engineer at a local pub led to a scholarship at a racing academy. Evans quickly rose through the ranks, his raw talent tempered by a relentless drive to win. His defining moment came at the 24 Hours of Le Mans, where, despite a gearbox failure in the final hour, he coaxed his Lola B05/40 Turbo across the finish line, securing a hard-fought podium. Now, at 28, Evans is at the peak of his powers, a force to be reckoned with in the world of endurance racing. While his rivals may have better funded teams, they lack his raw, unpredictable style, making him a constant threat on the track.",
+  "drivingStyle": "Evans' driving style is best described as 'controlled aggression'. He attacks corners with a ferocity that belies his relatively low overall skill level, often pushing the limits of grip to the absolute maximum. While this can lead to spectacular overtakes, it also results in costly mistakes. He is known for his late-braking maneuvers and his uncanny ability to sense the limits of his tires. In high-pressure situations, Evans tends to thrive, channeling his nervous energy into focused aggression on the track.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A clash of personalities and on-track incidents have fueled a bitter rivalry between Evans and Rossi. Their contrasting styles—Rossi's calculated precision versus Evans' raw aggression—often lead to thrilling battles, and occasional collisions."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a master of fuel-efficient driving, represents everything Evans isn't. Their rivalry stems from a fundamental disagreement on racing philosophy: Evans believes in pushing to the limit every lap, while Tanaka favors a more strategic, conservative approach."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "Dubois accused Evans of dangerous driving after an aggressive overtake at Spa resulted in Dubois spinning off the track. The animosity is palpable whenever they share the same tarmac."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky red socks during races.",
+    "Refuses to eat anything green the day before a race.",
+    "Listens to a specific Welsh folk song on repeat in the hour leading up to the start."
+  ],
+  "nickname": "The Welsh Whirlwind",
+  "famousQuote": "\"Second place is just the first loser. You race to win, or you don't race at all.\"",
+  "careerHighlight": "Securing a podium finish at the 24 Hours of Le Mans in 2022, despite a failing gearbox in the final hour, showcasing his incredible determination and mechanical sympathy.",
+  "careerLowPoint": "Crashing out of the lead at the 6 Hours of Silverstone in 2021, due to a misjudgment in wet conditions, costing his team valuable championship points."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 27,
+  "gender": "male",
+  "role": "logistics_coordinator",
+  "bio": "Thierry's organizational skills were honed early, managing his family's small hardware store in Bruges. Though surrounded by nuts and bolts, his true passion lay in the precision and speed of motorsport. He volunteered at local rally events, quickly becoming indispensable for his ability to anticipate needs and resolve logistical challenges with a calm demeanor. \n\nHe sees his role as a logistics coordinator as more than just moving parts; it's about enabling the team to perform at its peak. He's meticulous in his planning, always seeking ways to optimize routes, minimize downtime, and ensure that the right resources are available at the right time. While still developing his technical knowledge, Thierry's ambition and dedication make him a valuable asset to any team.\n\n Thierry is a bit of a data hound, always tracking metrics and looking for patterns to improve efficiency, and he prides himself on never missing a detail.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly parted on the side",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Thierry is of average height, with a slightly wiry build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with logistical charts and calculations.",
+    "Has a peculiar habit of tapping his pen against surfaces when deep in thought.",
+    "Insists on organizing the team's equipment crates by color and size."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 43,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Nikola Petrović's journey into motorsport began unexpectedly. After earning a degree in Statistics, he found himself working in the financial sector, but his passion always lay with racing. A chance encounter with a small, struggling racing team needing data analysis skills led him to a complete career change. Nikola thrives on uncovering hidden patterns within complex datasets, believing that every millisecond on the track can be gained through meticulous analysis.\n\nHe's known for his relentless pursuit of accuracy and his ability to translate raw data into actionable insights for the drivers and engineers. While some find his methods unorthodox, often involving late-night number crunching fueled by strong coffee, his dedication is undeniable. His distinct approach to data interpretation, combining statistical rigor with intuitive understanding of racing dynamics, sets him apart from his peers, making him a valuable asset to any team striving for a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Nikola is a man of medium build with a focused intensity in his eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks.",
+    "Insists on using a mechanical keyboard for all data entry.",
+    "Drinks an excessive amount of espresso throughout the day."
+  ]
+}

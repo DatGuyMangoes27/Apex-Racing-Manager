@@ -1,0 +1,31 @@
+{
+  "name": "Layla Khalil",
+  "nationality": "Lebanese",
+  "age": 45,
+  "gender": "female",
+  "contactType": "musician",
+  "bio": "Layla Khalil is a celebrated Lebanese oud player and composer, known for her haunting melodies and innovative fusion of traditional Arabic music with contemporary jazz. Her albums have received international acclaim, and she frequently performs at prestigious festivals and concert halls worldwide. While seemingly distant from the roar of engines, Layla's passion for vintage cars and motorsport stems from her late father, a rally driver. She attends select races and is drawn to the craftsmanship and engineering of racing machines. A driver might cross paths with Layla at a high-end motorsport event or a charity gala where she is performing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a loose bun",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Layla possesses a striking beauty, accentuated by her high cheekbones and piercing gaze. She often favors elegant, flowing dresses that reflect her artistic sensibilities."
+  },
+  "connectionToMotorsport": "Layla is an avid fan of vintage racing and appreciates the artistry and engineering involved in motorsports, a passion inherited from her father.",
+  "meetingContext": "The player could meet Layla at a classic car show, a Formula 1 race in the Middle East, or a private fundraising event for a motorsport charity.",
+  "conversationTopics": [
+    "Oud music and composition",
+    "Vintage car restoration",
+    "The cultural scene in Beirut",
+    "Photography techniques",
+    "Her father's rally career"
+  ],
+  "canHelp": [
+    "Introduce the player to high-profile sponsors and investors within her social circle.",
+    "Help the player improve their public image and cultivate a more sophisticated brand.",
+    "Offer access to exclusive events and networking opportunities."
+  ],
+  "personality_summary": "A calculating and driven artist with a reserved demeanor, Layla nurtures those she deems worthy while remaining impatient with mediocrity."
+}

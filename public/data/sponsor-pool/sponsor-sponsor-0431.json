@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0431",
+  "name": "PneuVitesse",
+  "category": "tires",
+  "tier": "entry",
+  "country": "France",
+  "description": "Engineered for performance, driven by passion.",
+  "story": "PneuVitesse is a relative newcomer to the tire market, founded in Lyon in 2010. While they focus on consumer tires, they see motorsport as a critical testbed and marketing opportunity to prove their performance credentials. They seek a team that can consistently perform and provide valuable data for their engineers.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0431.png"
+}

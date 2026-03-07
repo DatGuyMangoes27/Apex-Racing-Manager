@@ -1,0 +1,27 @@
+{
+  "biography": "Aldo Piedade Jr. hails from the vibrant motorsport heartland of Brazil, his passion ignited by watching Ayrton Senna replays with his grandfather. Unlike many who start in karts, Aldo's entry was unconventional. He honed his skills drifting souped-up pickup trucks on dusty backroads, a formative experience that instilled a unique car control. His professional break came unexpectedly when he filled in for an injured driver in a local Formula Vee race, stunning everyone with a podium finish. The Sigma P1 team took notice, bringing him into their development program. After a few seasons in feeder series, he graduated to the top-tier Sigma P1 G5 team, where he currently holds a solid midfield position, consistently racking up points. His steady progress and unwavering determination make him a driver to watch in the coming years.",
+  "drivingStyle": "Aldo is a master of controlled aggression. He doesn't overdrive the car, instead focusing on smooth inputs and precise placement. He excels in tire management, often running longer stints than his rivals. His cornering style is characterized by a late apex, allowing him to carry maximum speed onto the straights. While not the flashiest driver, Aldo's consistency and ability to perform under pressure make him a formidable competitor, especially in endurance races.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A longstanding rivalry from their Formula Vee days, marked by several on-track collisions and intense battles for championship points."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A strategic rivalry. Kenji and Aldo are often battling for the same midfield positions, resulting in intense tactical gameplay."
+    },
+    {
+      "driver": "Viktor Orlov",
+      "reason": "Viktor is a very aggressive driver, often colliding with Aldo and causing damages to Aldo's cars. Aldo openly criticised him in the press after multiple occurences."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks his grandmother knitted for him.",
+    "Listens to a specific samba track before every race to calm his nerves.",
+    "Meticulously polishes his helmet visor before each session, regardless of weather."
+  ],
+  "nickname": "The Samba Serpent",
+  "famousQuote": "\"Racing isn't just about speed; it's about rhythm. Find your rhythm, and the speed will follow.\"",
+  "careerHighlight": "Securing a surprise podium finish at the Interlagos Grand Prix in front of his home crowd, after starting from the back of the grid due to a mechanical failure in qualifying.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the prestigious Monaco Grand Prix due to a sudden rain shower, costing him his first potential victory."
+}

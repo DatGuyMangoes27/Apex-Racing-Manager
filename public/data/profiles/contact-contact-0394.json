@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Wei Lim",
+  "nationality": "Singaporean",
+  "age": 45,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dr. Wei Lim is a tenured professor of Mechanical Engineering at the National University of Singapore, specializing in fluid dynamics and aerodynamics. Known for his open-minded and principled approach to research, he's earned a reputation as a demanding but fair mentor to his students. While seemingly distant from motorsport, his expertise in aerodynamics and vehicle dynamics makes him an invaluable resource for understanding and optimizing racing car performance.\n\nA racing driver might cross paths with Dr. Lim through a university-sponsored engineering project aimed at improving fuel efficiency in race cars, or perhaps as a guest lecturer at a motorsport academy. His sophisticated and calculating nature means he values data and demonstrable results, so impressing him requires more than just raw talent.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin goatee",
+    "description": "Dr. Lim maintains a trim physique, suggesting a dedication to personal fitness. He often wears tailored shirts and slacks, projecting an image of understated professionalism."
+  },
+  "connectionToMotorsport": "Dr. Lim consults on a part-time basis for a Formula 4 team, providing aerodynamic analysis and optimization strategies. He sees motorsport as a practical application of his theoretical research.",
+  "meetingContext": "The player could meet Dr. Lim while participating in a university-sponsored racing technology workshop or as a guest speaker at a motorsport engineering seminar.",
+  "conversationTopics": [
+    "The latest advancements in aerodynamic research",
+    "The application of computational fluid dynamics (CFD) in motorsport",
+    "The importance of data analysis in optimizing vehicle performance",
+    "The intersection of engineering and athletic performance",
+    "His latest hiking trip"
+  ],
+  "canHelp": [
+    "Provide advanced insights into vehicle aerodynamics and dynamics.",
+    "Offer access to university resources for data analysis and simulations.",
+    "Potentially connect the player with engineering students for race support."
+  ],
+  "personality_summary": "An open-minded and sophisticated professor with a sharp mind and a warm, but principled demeanor."
+}

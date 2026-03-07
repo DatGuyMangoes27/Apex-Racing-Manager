@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0204",
+  "name": "Vanguard Investments",
+  "category": "financial",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Vanguard Investments believes in calculated risks and long-term growth. Motorsport provides an exciting platform to showcase their commitment to performance and precision. They seek a partnership that reflects their values of discipline, strategy, and achieving excellence in a competitive environment.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0204.png"
+}

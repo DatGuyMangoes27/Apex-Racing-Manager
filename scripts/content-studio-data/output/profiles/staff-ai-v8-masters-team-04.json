@@ -1,0 +1,22 @@
+{
+  "name": "Irina Volkov",
+  "nationality": "Russian",
+  "age": 30,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Irina Volkov’s passion for motorsport ignited during her childhood visits to local rally events outside Moscow. Witnessing the intricate dance between driver and machine sparked a fascination that led her to pursue a degree in mechanical engineering. After graduating, she gained experience in a Formula 3 team, honing her skills in data analysis and vehicle dynamics.\n\nIrina is known for her meticulous approach to race engineering. She believes in a data-driven strategy, meticulously analyzing telemetry to optimize car setup and driver performance. While demanding, she fosters a collaborative environment, encouraging open communication between the driver and the mechanics. Her innovative approach to problem-solving, combined with her deep understanding of vehicle dynamics, makes her a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail during races.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Irina has a focused and intense gaze, reflecting her dedication to her work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a lucky wrench that belonged to her grandfather.",
+    "Insists on using a specific brand of Russian tea during race weekends.",
+    "Has a habit of muttering complex calculations under her breath."
+  ]
+}

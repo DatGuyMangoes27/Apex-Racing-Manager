@@ -22,7 +22,7 @@ export interface VoicePersona {
   elevenLabsVoiceId: string
   
   // Content routing
-  contentTypes: CommentaryEventType[]
+  contentTypes: string[]
   contentCategories: ContentCategory[]
   
   // Speaking share (0-1, must sum to 1 across all personas)
@@ -56,7 +56,7 @@ export const LEAD_COMMENTATOR: VoicePersona = {
   description: 'Excitable lead commentator who calls the action',
   role: 'Play-by-play, action calls, race excitement',
   
-  elevenLabsVoiceId: 'KYXXenFO8IFao5NWmALZ', // Default - configurable
+  elevenLabsVoiceId: 'byILgTtsBg1jwbuvslb2', // Crofty V3 - configurable
   
   contentTypes: [
     // High-action events - always Lead
@@ -89,7 +89,13 @@ export const LEAD_COMMENTATOR: VoicePersona = {
   contentCategories: [
     'track_atmosphere',
     'corner_callout',
-    'position_battle'
+    'position_battle',
+    // New rich categories - dramatic/emotional content for Lead
+    'underdog_moment',
+    'career_milestone',
+    'pressure_narrative',
+    'season_arc',
+    'player_track_history',
   ],
   
   speakingShare: 0.6, // 60% of total commentary
@@ -107,11 +113,11 @@ export const LEAD_COMMENTATOR: VoicePersona = {
  */
 export const ANALYST_COMMENTATOR: VoicePersona = {
   id: 'analyst',
-  name: 'Ryan',
+  name: 'Brundle',
   description: 'Analytical co-commentator who provides insight',
   role: 'Strategy analysis, driver insight, technical explanation',
   
-  elevenLabsVoiceId: 'cN8QEG2nMvJGkXYcFPLz', // Default - configurable
+  elevenLabsVoiceId: 'cmPhBFoVi6Q3CAWAx2Gr', // Brundle - configurable
   
   contentTypes: [
     // Analysis events - always Analyst
@@ -145,7 +151,13 @@ export const ANALYST_COMMENTATOR: VoicePersona = {
     'weather_observation',
     'gap_analysis',
     'sector_observation',
-    'track_history'
+    'track_history',
+    // New rich categories - analytical/factual content for Analyst
+    'team_dynamics',
+    'financial_drama',
+    'qualifying_callback',
+    'form_narrative',
+    'head_to_head',
   ],
   
   speakingShare: 0.35, // 35% of total commentary (reduced to make room for pit reporter)
@@ -183,6 +195,10 @@ export const PIT_REPORTER: VoicePersona = {
     'grid_walk' as ContentCategory,
     'pit_lane_report' as ContentCategory,
     'post_race' as ContentCategory,
+    // New rich categories - paddock/personal content for Pit Reporter
+    'pit_reporter_insight' as ContentCategory,
+    'personal_color' as ContentCategory,
+    'world_context' as ContentCategory,
   ],
   
   speakingShare: 0.05, // 5% of total commentary (rare but impactful)
@@ -386,9 +402,9 @@ let configuredAnalystVoiceId = ANALYST_COMMENTATOR.elevenLabsVoiceId
  * Configure ElevenLabs voice IDs
  */
 export function setVoiceIds(leadVoiceId: string, analystVoiceId: string): void {
-  configuredLeadVoiceId = leadVoiceId
-  configuredAnalystVoiceId = analystVoiceId
-  console.log(`[Voices] Configured: Lead=${leadVoiceId.slice(0, 8)}..., Analyst=${analystVoiceId.slice(0, 8)}...`)
+  configuredLeadVoiceId = leadVoiceId || LEAD_COMMENTATOR.elevenLabsVoiceId
+  configuredAnalystVoiceId = analystVoiceId || ANALYST_COMMENTATOR.elevenLabsVoiceId
+  console.log(`[Voices] Configured: Lead=${configuredLeadVoiceId ? configuredLeadVoiceId.slice(0, 8) + '...' : 'default'}, Analyst=${configuredAnalystVoiceId ? configuredAnalystVoiceId.slice(0, 8) + '...' : 'default'}`)
 }
 
 /**

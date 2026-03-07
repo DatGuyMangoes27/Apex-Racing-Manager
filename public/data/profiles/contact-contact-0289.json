@@ -1,0 +1,31 @@
+{
+  "name": "Maria Elena Rodriguez",
+  "nationality": "Filipino",
+  "age": 43,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Maria Elena Rodriguez is a prominent figure in Manila's legal circles, specializing in contract law and intellectual property. After graduating top of her class from the University of the Philippines College of Law, she pursued postgraduate studies abroad, honing her expertise in international business law. Beyond her sharp legal mind, Maria Elena is known for her generous spirit, often providing pro bono services to artists and community initiatives. She has a deep love for the arts, frequently attending theater performances and supporting local jazz musicians. \n\nWhile her practice primarily focuses on corporate clients, Maria Elena's competitive nature extends to her personal life. Her family has a long history in motorsports as sponsors and owners of a local racing team, and she often provides legal counsel to up-and-coming Filipino drivers. A rising racing driver might cross paths with Maria Elena while seeking legal advice regarding sponsorship deals, team contracts, or intellectual property protection for their brand.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, styled in soft waves",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Maria Elena has a warm, approachable face with high cheekbones and a radiant smile. She favors tailored business attire with elegant jewelry, reflecting her professional success and sophisticated taste."
+  },
+  "connectionToMotorsport": "Maria Elena's family owns a moderately successful racing team competing in regional touring car championships. She also provides legal counsel to several local racing drivers.",
+  "meetingContext": "You would most likely meet Maria Elena at a networking event for motorsports professionals or through a mutual contact within the local racing scene.",
+  "conversationTopics": [
+    "Recent theater productions",
+    "The latest legal developments in motorsports",
+    "The intricacies of jazz music",
+    "Her family's racing history",
+    "Filipino poetry"
+  ],
+  "canHelp": [
+    "Review and negotiate contracts with racing teams and sponsors",
+    "Provide advice on intellectual property protection for your brand",
+    "Introduce you to potential sponsors and investors within her network"
+  ],
+  "personality_summary": "A generous and competitive lawyer with a passion for the arts and a hidden connection to the racing world."
+}

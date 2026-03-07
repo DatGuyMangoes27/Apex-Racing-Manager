@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0192",
+  "name": "Pneus Campeão",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Brazil",
+  "description": "Your winning edge on any circuit.",
+  "story": "Pneus Campeão is a Brazilian tire manufacturer focused on providing reliable and durable tires for everyday drivers. With a growing presence in the domestic market, they seek to boost brand awareness by partnering with up-and-coming motorsport teams. They believe in supporting local talent and associating their brand with the pursuit of excellence and high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0192.png"
+}

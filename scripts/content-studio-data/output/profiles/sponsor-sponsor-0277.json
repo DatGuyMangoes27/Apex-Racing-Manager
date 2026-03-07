@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0277",
+  "name": "O'Malley's Butchers",
+  "category": "local",
+  "tier": "entry",
+  "country": "Ireland",
+  "description": "Finest quality meats, locally sourced.",
+  "story": "O'Malley's Butchers has been a family-run business in County Cork for three generations. We are passionate about supporting local talent and see motorsport as a thrilling way to connect with our community. We're looking for a driven driver to represent our brand with pride.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 7500,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "events",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0277.png"
+}

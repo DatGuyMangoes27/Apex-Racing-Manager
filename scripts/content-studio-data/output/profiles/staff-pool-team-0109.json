@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 35,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Mateo's passion for motorsport ignited during his childhood summers spent watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering, focusing his studies on aerodynamics and vehicle dynamics. His entry into the professional realm started with an internship at a local racing team, where he quickly demonstrated a knack for data analysis and identifying performance bottlenecks. \n\nAs a performance engineer, Mateo is driven by a desire to push the boundaries of innovation. He believes in a holistic approach, considering not only the technical aspects but also the driver's feedback and the overall team strategy. He's always eager to experiment with new ideas and find unconventional solutions to gain a competitive edge. Mateo is known for his ability to translate complex data into actionable insights, making him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Mateo is of average height with a lean build and an intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to tango music during pre-race preparations."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0276",
+  "name": "Helvetia Racing Tech",
+  "category": "equipment",
+  "tier": "entry",
+  "country": "Switzerland",
+  "description": "Precision-engineered components for motorsport performance.",
+  "story": "Helvetia Racing Tech was founded by a group of Swiss motorsport enthusiasts seeking to improve component reliability and performance. We believe in supporting grassroots racing talent and aim to partner with teams who share our dedication to precision and innovation. We're looking to increase our brand awareness within the racing community and showcase the durability of our products.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0276.png"
+}

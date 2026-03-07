@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0112",
+  "name": "TurboGaz",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "Turkey",
+  "description": "Fuel your drive with TurboGaz!",
+  "story": "TurboGaz is Turkey's leading energy drink, and we are passionate about supporting motorsport talent. We see a natural alignment between the high-energy demands of racing and our brand values. We aim to boost brand recognition internationally through successful partnerships.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 35,
+    "nationalities": [
+      "Turkey"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0112.png"
+}

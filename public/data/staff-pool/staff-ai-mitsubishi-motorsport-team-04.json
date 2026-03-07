@@ -1,0 +1,22 @@
+{
+  "name": "Park Jae-Hyun",
+  "nationality": "South Korean",
+  "age": 39,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Park Jae-Hyun's fascination with motorsport began in his youth, captivated by the engineering feats displayed during Formula 1 races. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing a junior role at a local racing team. His meticulous attention to detail and knack for problem-solving quickly propelled him up the ranks. \n\nPark joined Mitsubishi Motorsport five years ago, quickly becoming an invaluable asset due to his analytical abilities and adaptability. He excels at fine-tuning car setups based on driver feedback and telemetry data, always seeking that extra tenth of a second. Known for his calm demeanor under pressure and innovative solutions, he's respected by both drivers and mechanics alike. His strength is finding innovative solutions that deliver a competitive edge.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "A man of average height with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas, even during meals.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to work late into the night when the garage is quiet and undisturbed."
+  ]
+}

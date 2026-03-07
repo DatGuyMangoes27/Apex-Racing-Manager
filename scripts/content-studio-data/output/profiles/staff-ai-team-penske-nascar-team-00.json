@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 34,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Kenji Tanaka's passion for motorsport ignited during his childhood, captivated by the raw power and intricate engineering of Formula One cars. He pursued a degree in mechanical engineering at the University of Tokyo, specializing in aerodynamics. After graduation, Kenji joined a small GT racing team as a junior engineer, quickly rising through the ranks due to his meticulous attention to detail and innovative problem-solving skills.\n\nHis ability to streamline pit stop strategies and optimize car setups caught the attention of Team Penske, who headhunted him to lead their IndyCar program. Kenji's calm and analytical approach to pressure situations, combined with a genuine commitment to fostering a collaborative team environment, has already yielded significant improvements in team performance. Kenji is known for his hands-on approach, often found analyzing telemetry data alongside his engineers late into the night, always striving for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "A thin, well-groomed mustache.",
+    "description": "Kenji has a lean build and sharp, focused eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn copy of 'The Art of War'.",
+    "Insists on drinking a specific brand of green tea before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

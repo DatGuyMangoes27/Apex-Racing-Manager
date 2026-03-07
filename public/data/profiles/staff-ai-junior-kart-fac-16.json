@@ -1,0 +1,22 @@
+{
+  "name": "Helmut Gruber",
+  "nationality": "Austrian",
+  "age": 46,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Helmut's journey into the culinary world began in his grandmother's Gasthaus in the Austrian Alps, where he learned the secrets of traditional cuisine. His passion for motorsport ignited during a local hill climb event, sparking a desire to combine his culinary skills with his love for racing. After years of honing his craft in various restaurants and catering companies, Helmut found his niche in motorsport, providing nourishing and delicious meals to racing teams.\n\nHis approach to catering is all about efficiency and adaptability. He understands the demanding schedule of a racing team and strives to provide meals that are both satisfying and quick to prepare. Helmut prides himself on his ability to source fresh, local ingredients, ensuring that the team members receive the nutrients they need to perform at their best. What sets Helmut apart is his calm demeanor under pressure and his knack for creating a welcoming atmosphere in the paddock, even amidst the chaos of race day.\n\nHelmut is known for his famous Kaiserschmarrn which he cooks on race days, always brings an Austrian flag with him and proudly displays it in the catering tent.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Full beard, neatly trimmed",
+    "description": "A stout man with a warm smile and kind eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always hums traditional Austrian folk songs while cooking",
+    "Insists on using his grandmother's old wooden spoon for certain recipes",
+    "Has a lucky schnitzel recipe that he makes before important races"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Arno Baumgartner",
+  "nationality": "Swiss",
+  "age": 28,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Arno's passion for motorsport ignited during his childhood, spent watching his father, a local rally driver, compete in regional events. He pursued a degree in mechanical engineering, focusing on vehicle dynamics, before transitioning into a performance engineer role within a small Swiss touring car team. His meticulous approach and data-driven decision-making quickly earned him recognition. After several successful seasons, he joined Mitsubishi Motorsport as a junior engineer, steadily climbing the ranks due to his technical aptitude and leadership potential. Arno believes in fostering a culture of continuous improvement, pushing his team to analyze every detail and optimize performance at every stage. He is determined to bring Mitsubishi back to the top.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Hazel",
+    "facialHair": "Clean shaven",
+    "description": "Arno is of average height with a slender build and intense eyes that reflect his focused nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously jotting down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every team meeting precisely on time, regardless of who's late."
+  ]
+}

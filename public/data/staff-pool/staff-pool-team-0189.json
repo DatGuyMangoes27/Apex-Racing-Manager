@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 54,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood obsession with Formula 1, fuelled by watching legends race at Spa-Francorchamps. After graduating with a degree in aerospace engineering, he quickly immersed himself in the world of aerodynamics, spending years honing his skills in wind tunnels and CFD simulations. Before joining the current team, Jean-Pierre spent over two decades at a rival outfit, leading their aero department through multiple championship wins. \n\nHe is known for his meticulous approach and unwavering demand for perfection. Jean-Pierre believes that success in motorsport hinges on the relentless pursuit of marginal gains, ensuring that every detail, no matter how small, is optimized for maximum performance. His relentless drive and deep understanding of airflow dynamics make him a formidable force in any racing organization. Jean-Pierre's management style may be demanding, but it's always focused on achieving excellence and improving the team's overall performance.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build, Jean-Pierre often sports a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on all aerodynamic data being presented in a specific, proprietary format.",
+    "Has a habit of tapping his pen against his teeth when deep in thought, often driving colleagues crazy."
+  ]
+}

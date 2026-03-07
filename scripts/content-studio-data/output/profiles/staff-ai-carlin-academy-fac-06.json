@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 46,
+  "gender": "male",
+  "role": "logistics_coordinator",
+  "bio": "Declan O'Malley arrived in motorsport via a rather circuitous route, initially working as a supply chain manager for a large manufacturing firm in Dublin. A chance encounter with a former rally driver at a local pub sparked his interest, and he began volunteering at local racing events. He quickly realized his organizational skills were ideally suited to the logistical demands of racing. He brings a no-nonsense approach to the role, prioritizing efficiency and accuracy above all else. Declan's meticulous planning and insistence on preparedness have earned him a reputation as a reliable, if somewhat demanding, member of the team.\n\nHis tenure at Carlin Academy has been marked by a significant reduction in logistical errors, streamlining the transport of equipment and personnel between races. He thrives under pressure and is known for his ability to solve problems quickly and effectively. While not always the most sociable member of the crew, his dedication to ensuring everything runs smoothly is undeniable.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "A stocky man with a weathered face and piercing blue eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a meticulously organized notebook filled with logistics schedules and contingency plans.",
+    "Insists on drinking precisely three cups of strong black coffee before each race weekend.",
+    "Has a habit of muttering to himself while checking inventory."
+  ]
+}

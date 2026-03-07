@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0049",
+  "name": "Al-Nayla Timepieces",
+  "category": "watches",
+  "tier": "high",
+  "country": "Saudi Arabia",
+  "description": "Precision engineered timepieces, crafted for champions.",
+  "story": "Al-Nayla has a long history of supporting Saudi excellence and innovation. Motorsport represents the pinnacle of precision engineering and human skill, values deeply aligned with our brand. We seek a partnership that reflects our commitment to excellence and elevates our brand on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Saudi Arabia"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0049.png"
+}

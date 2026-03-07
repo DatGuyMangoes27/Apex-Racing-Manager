@@ -15,11 +15,21 @@ import {
   User,
   ChevronDown,
   Flame,
+  Crown,
+  Activity,
 } from 'lucide-react'
-import { Card, CardHeader, Badge, Button, Progress } from '@/components/ui'
 import { useCareerStore } from '@/store/careerStore'
 import { useRivalStore } from '@/store/rivalStore'
 import type { RivalDriver, RivalStats } from '@/store/rivalStore'
+import type { RaceResult, TrackHistory } from '@/store/careerStore'
+import type { SeasonStanding } from '@/store/rivalStore'
+import { normalizeTrackName } from '@/data/track-aliases'
+
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FBold: React.CSSProperties = { fontFamily: "'Arial', sans-serif", fontWeight: 700 }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
+const CARD = 'bg-white border-[0.8px] border-black/20 rounded-[24px] overflow-hidden'
+const INNER = 'bg-[#f9fafb] border-[0.8px] border-black/10 rounded-[16px] p-[16px]'
 
 interface TimelineItemProps {
   year: number
@@ -29,33 +39,33 @@ interface TimelineItemProps {
 }
 
 function TimelineItem({ year, title, description, type }: TimelineItemProps) {
-  const typeConfig: Record<typeof type, { color: string; icon: typeof Trophy }> = {
-    race: { color: 'bg-status-info', icon: Flag },
-    milestone: { color: 'bg-accent-red', icon: Target },
-    achievement: { color: 'bg-accent-gold', icon: Star },
-    contract: { color: 'bg-accent-orange', icon: Calendar },
-    championship: { color: 'bg-gradient-to-br from-accent-gold to-accent-orange', icon: Crown }
+  const typeConfig: Record<typeof type, { bg: string; icon: typeof Trophy }> = {
+    race: { bg: 'bg-[#3b82f6]', icon: Flag },
+    milestone: { bg: 'bg-[#ef4444]', icon: Target },
+    achievement: { bg: 'bg-[#f59e0b]', icon: Star },
+    contract: { bg: 'bg-[#f97316]', icon: Calendar },
+    championship: { bg: 'bg-gradient-to-br from-[#f59e0b] to-[#f97316]', icon: Crown }
   }
 
   const config = typeConfig[type]
   const IconComponent = config.icon
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-[16px]">
       <div className="relative">
-        <div className={`w-12 h-12 rounded-full ${config.color} flex items-center justify-center z-10 shadow-lg`}>
-          <IconComponent className="w-5 h-5 text-white" />
+        <div className={`w-[48px] h-[48px] rounded-full ${config.bg} flex items-center justify-center z-10 shadow-lg`}>
+          <IconComponent className="w-[20px] h-[20px] text-white" />
         </div>
       </div>
-      <div className="flex-1 pt-1">
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-xs text-text-muted">{year}</span>
+      <div className="flex-1 pt-[4px]">
+        <div className="flex items-center gap-[8px]">
+          <span className="font-mono text-[12px] text-[#4a5565]">{year}</span>
           {type === 'championship' && (
-            <Badge variant="gold" size="sm">Champion</Badge>
+            <span className="px-[8px] py-[2px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>Champion</span>
           )}
         </div>
-        <h4 className="font-medium">{title}</h4>
-        <p className="text-sm text-text-muted">{description}</p>
+        <h4 className="text-[15px] text-[#0a0a0a]" style={FBold}>{title}</h4>
+        <p className="text-[13px] text-[#4a5565]" style={FR}>{description}</p>
       </div>
     </div>
   )
@@ -69,17 +79,16 @@ interface RecordItemProps {
 
 function RecordItem({ label, value, track }: RecordItemProps) {
   return (
-    <div className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
+    <div className="flex items-center justify-between p-[12px] bg-[#f9fafb] rounded-[12px]">
       <div>
-        <p className="text-text-secondary">{label}</p>
-        {track && <p className="text-xs text-text-muted">{track}</p>}
+        <p className="text-[14px] text-[#0a0a0a]" style={FR}>{label}</p>
+        {track && <p className="text-[12px] text-[#4a5565]" style={FR}>{track}</p>}
       </div>
-      <span className="font-mono font-bold text-xl">{value}</span>
+      <span className="font-mono text-[20px] text-[#0a0a0a]" style={FBold}>{value}</span>
     </div>
   )
 }
 
-// Enhanced Timeline with full career events
 function EnhancedTimeline({ 
   player, 
   careerState, 
@@ -89,7 +98,6 @@ function EnhancedTimeline({
   careerState: any; 
   getSeriesById: (id: string) => any;
 }) {
-  // Build timeline events from career data
   const events: Array<{
     year: number;
     type: 'milestone' | 'achievement' | 'race' | 'contract' | 'championship';
@@ -98,7 +106,6 @@ function EnhancedTimeline({
     icon?: any;
   }> = []
 
-  // Career start
   events.push({
     year: player.careerStartYear || careerState.currentYear,
     type: 'milestone',
@@ -106,7 +113,6 @@ function EnhancedTimeline({
     description: `Began racing career at age ${player.careerStartAge}`,
   })
 
-  // First race (if any)
   const raceHistory = player.raceHistory || []
   if (raceHistory.length > 0) {
     const firstRace = raceHistory[0]
@@ -118,7 +124,6 @@ function EnhancedTimeline({
     })
   }
 
-  // First win (if any)
   const firstWin = raceHistory.find((r: RaceResult) => r.racePosition === 1)
   if (firstWin) {
     events.push({
@@ -129,7 +134,6 @@ function EnhancedTimeline({
     })
   }
 
-  // First pole (if any)
   const firstPole = raceHistory.find((r: RaceResult) => r.qualifyingPosition === 1)
   if (firstPole) {
     events.push({
@@ -140,7 +144,6 @@ function EnhancedTimeline({
     })
   }
 
-  // Championship wins from career events
   const careerEvents = player.careerEvents || []
   careerEvents
     .filter((e: any) => e.type === 'championship_won' || e.type === 'achievement')
@@ -153,7 +156,6 @@ function EnhancedTimeline({
       })
     })
 
-  // Contracts signed
   if (player.contractHistory) {
     player.contractHistory.forEach((contract: any) => {
       events.push({
@@ -165,7 +167,6 @@ function EnhancedTimeline({
     })
   }
 
-  // GOAT milestones unlocked
   if (player.goatProgress?.milestones) {
     Object.values(player.goatProgress.milestones as Record<string, any>)
       .filter((m: any) => m.unlocked && m.unlockedDate)
@@ -179,23 +180,17 @@ function EnhancedTimeline({
       })
   }
 
-  // Sort by year descending (most recent first)
   events.sort((a, b) => b.year - a.year)
-
-  // Limit to most recent 10 events
   const displayEvents = events.slice(0, 10)
 
   return (
     <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-surface-border" />
-      
-      {/* Timeline items */}
-      <div className="space-y-4">
+      <div className="absolute left-[24px] top-0 bottom-0 w-[2px] bg-black/10" />
+      <div className="flex flex-col gap-[16px]">
         {displayEvents.length === 0 ? (
-          <div className="text-center py-8 text-text-muted">
-            <Calendar className="w-12 h-12 mx-auto mb-3 opacity-50" />
-            <p className="text-sm">Your journey begins...</p>
+          <div className="text-center py-[32px] text-[#4a5565]">
+            <Calendar className="w-[48px] h-[48px] mx-auto mb-[12px] opacity-50" />
+            <p className="text-[14px]" style={FR}>Your journey begins...</p>
           </div>
         ) : (
           displayEvents.map((event, index) => (
@@ -217,8 +212,8 @@ function EnhancedTimeline({
       </div>
 
       {events.length > 10 && (
-        <div className="mt-4 text-center">
-          <p className="text-xs text-text-muted">
+        <div className="mt-[16px] text-center">
+          <p className="text-[12px] text-[#4a5565]" style={FR}>
             +{events.length - 10} more events in your career
           </p>
         </div>
@@ -227,20 +222,16 @@ function EnhancedTimeline({
   )
 }
 
-// Track Mastery Tab - shows performance at each track
 function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<string, TrackHistory>; raceHistory?: RaceResult[] }) {
-  // If trackHistory is empty but we have raceHistory, rebuild it on the fly
   const computedTrackHistory = React.useMemo(() => {
     if (trackHistory && Object.keys(trackHistory).length > 0) {
       return trackHistory
     }
     
-    // Rebuild from raceHistory if available
     if (!raceHistory || raceHistory.length === 0) return {}
     
     const rebuilt: Record<string, TrackHistory> = {}
     
-    // Sort by date
     const sortedRaces = [...raceHistory].sort((a, b) => 
       new Date(a.date).getTime() - new Date(b.date).getTime()
     )
@@ -279,7 +270,6 @@ function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<s
       th.visits++
       th.lastResult = race.racePosition
       
-      // Track series raced here
       if (race.seriesId && !th.seriesRacedHere.includes(race.seriesId)) {
         th.seriesRacedHere.push(race.seriesId)
       }
@@ -298,7 +288,6 @@ function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<s
         lastWinPerTrack[trackId] = false
       }
       
-      // Consecutive visits without DNF
       if (!race.dnf) {
         if (!lastDnfPerTrack[trackId]) {
           th.consecutiveVisits++
@@ -334,77 +323,65 @@ function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<s
   
   if (tracks.length === 0) {
     return (
-      <Card variant="glass" padding="lg">
-        <CardHeader 
-          title="Track Mastery" 
-          subtitle="Your performance at each circuit"
-        />
-        <div className="text-center py-12">
-          <MapPin className="w-16 h-16 mx-auto text-text-muted mb-4" />
-          <h3 className="font-display font-semibold text-xl mb-2">No Track Data Yet</h3>
-          <p className="text-text-muted">
+      <div className={`${CARD} p-[24px]`}>
+        <div className="mb-[16px]">
+          <h3 className="text-[20px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Track Mastery</h3>
+          <p className="text-[13px] text-[#4a5565]" style={FR}>Your performance at each circuit</p>
+        </div>
+        <div className="text-center py-[48px]">
+          <MapPin className="w-[64px] h-[64px] mx-auto text-[#4a5565] mb-[16px]" />
+          <h3 className="text-[20px] text-[#0a0a0a] mb-[8px]" style={FBold}>No Track Data Yet</h3>
+          <p className="text-[14px] text-[#4a5565]" style={FR}>
             Complete races to build your track history
           </p>
         </div>
-      </Card>
+      </div>
     )
   }
 
-  // Sort tracks by visits (most visited first)
   const sortedTracks = [...tracks].sort((a, b) => b.visits - a.visits)
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-[24px]">
       {/* Summary Cards */}
-      <div className="grid grid-cols-4 gap-4">
-        <Card variant="glass" padding="md" className="text-center">
-          <p className="text-3xl font-display font-bold text-accent-red">{tracks.length}</p>
-          <p className="text-sm text-text-muted">Tracks Visited</p>
-        </Card>
-        <Card variant="glass" padding="md" className="text-center">
-          <p className="text-3xl font-display font-bold text-accent-gold">
-            {tracks.filter(t => t.wins > 0).length}
-          </p>
-          <p className="text-sm text-text-muted">Tracks Won At</p>
-        </Card>
-        <Card variant="glass" padding="md" className="text-center">
-          <p className="text-3xl font-display font-bold text-status-info">
-            {Math.max(...tracks.map(t => t.maxConsecutiveWins || 0))}
-          </p>
-          <p className="text-sm text-text-muted">Best Win Streak</p>
-        </Card>
-        <Card variant="glass" padding="md" className="text-center">
-          <p className="text-3xl font-display font-bold text-status-success">
-            {(tracks.reduce((sum, t) => sum + t.avgFinish, 0) / tracks.length || 0).toFixed(1)}
-          </p>
-          <p className="text-sm text-text-muted">Avg Finish</p>
-        </Card>
+      <div className="grid grid-cols-4 gap-[16px]">
+        {[
+          { value: tracks.length, label: 'Tracks Visited', color: '#ef4444' },
+          { value: tracks.filter(t => t.wins > 0).length, label: 'Tracks Won At', color: '#f59e0b' },
+          { value: Math.max(...tracks.map(t => t.maxConsecutiveWins || 0)), label: 'Best Win Streak', color: '#3b82f6' },
+          { value: (tracks.reduce((sum, t) => sum + t.avgFinish, 0) / tracks.length || 0).toFixed(1), label: 'Avg Finish', color: '#00a63e' },
+        ].map((stat) => (
+          <div key={stat.label} className={`${CARD} p-[16px] text-center`}>
+            <p className="text-[28px] tracking-[-1px]" style={{ ...FB, color: stat.color }}>{stat.value}</p>
+            <p className="text-[13px] text-[#4a5565]" style={FR}>{stat.label}</p>
+          </div>
+        ))}
       </div>
 
       {/* Track List */}
-      <Card variant="glass" padding="lg">
-        <CardHeader 
-          title="Track Performance" 
-          subtitle="Your results at each circuit"
-        />
-        <div className="space-y-3 mt-4">
+      <div className={`${CARD} p-[24px]`}>
+        <div className="mb-[16px]">
+          <h3 className="text-[20px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Track Performance</h3>
+          <p className="text-[13px] text-[#4a5565]" style={FR}>Your results at each circuit</p>
+        </div>
+        <div className="flex flex-col gap-[12px] mt-[16px]">
           {sortedTracks.map((track, index) => (
             <motion.div
               key={track.trackId}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.03 }}
-              className="p-4 bg-background/50 rounded-lg hover:bg-background/70 transition-colors"
+              className="p-[16px] bg-[#f9fafb] rounded-[16px] hover:bg-[#f3f4f6] transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-accent-red/20 flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-accent-red" />
+                  <div className="flex items-center gap-[12px]">
+                    <div className="w-[40px] h-[40px] rounded-[12px] bg-[#fef2f2] flex items-center justify-center">
+                      <MapPin className="w-[20px] h-[20px] text-[#ef4444]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">{track.trackName}</h4>
-                      <p className="text-xs text-text-muted">
+                      <h4 className="text-[15px] text-[#0a0a0a]" style={FBold}>{track.trackName}</h4>
+                      <p className="text-[12px] text-[#4a5565]" style={FR}>
                         {track.visits} visit{track.visits !== 1 ? 's' : ''} • 
                         First: {track.firstVisitYear} • 
                         Last: {track.lastVisitYear}
@@ -413,34 +390,32 @@ function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<s
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6 text-center">
+                <div className="flex items-center gap-[24px] text-center">
                   <div>
-                    <p className="font-display font-bold text-accent-gold">{track.wins}</p>
-                    <p className="text-xs text-text-muted">Wins</p>
+                    <p className="text-[16px] text-[#f59e0b]" style={FB}>{track.wins}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Wins</p>
                   </div>
                   <div>
-                    <p className="font-display font-bold text-accent-orange">{track.podiums}</p>
-                    <p className="text-xs text-text-muted">Podiums</p>
+                    <p className="text-[16px] text-[#f97316]" style={FB}>{track.podiums}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Podiums</p>
                   </div>
                   <div>
-                    <p className="font-display font-bold text-status-info">{track.poles}</p>
-                    <p className="text-xs text-text-muted">Poles</p>
+                    <p className="text-[16px] text-[#3b82f6]" style={FB}>{track.poles}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Poles</p>
                   </div>
                   <div>
-                    <p className="font-display font-bold">P{track.bestFinish}</p>
-                    <p className="text-xs text-text-muted">Best</p>
+                    <p className="text-[16px] text-[#0a0a0a]" style={FB}>P{track.bestFinish}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Best</p>
                   </div>
                   <div>
-                    <p className="font-display font-bold text-text-secondary">
-                      {track.avgFinish.toFixed(1)}
-                    </p>
-                    <p className="text-xs text-text-muted">Avg</p>
+                    <p className="text-[16px] text-[#4a5565]" style={FB}>{track.avgFinish.toFixed(1)}</p>
+                    <p className="text-[11px] text-[#4a5565]" style={FR}>Avg</p>
                   </div>
                   {track.maxConsecutiveWins > 1 && (
                     <div>
-                      <Badge variant="gold" size="sm">
+                      <span className="px-[8px] py-[3px] bg-[#fef3c7] text-[#b45309] rounded-[8px] text-[11px]" style={FBold}>
                         {track.maxConsecutiveWins}x streak
-                      </Badge>
+                      </span>
                     </div>
                   )}
                 </div>
@@ -448,14 +423,12 @@ function TrackMasteryTab({ trackHistory, raceHistory }: { trackHistory: Record<s
             </motion.div>
           ))}
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
 
-// Calculate records from race history
 function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
-  // Group races by series (season)
   const racesBySeries: Record<string, RaceResult[]> = {}
   raceHistory.forEach(race => {
     const key = race.seriesId
@@ -463,11 +436,8 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
     racesBySeries[key].push(race)
   })
 
-  // Calculate best championship position (we'd need standings data, estimate from results)
-  // For now, estimate based on race finishes
   let _bestChampionshipPosition = '-'
   
-  // Calculate most wins in a season
   let mostWinsInSeason = 0
   let mostWinsSeriesId = ''
   Object.entries(racesBySeries).forEach(([seriesId, races]) => {
@@ -478,7 +448,6 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
     }
   })
 
-  // Calculate best win streak (consecutive wins)
   let currentStreak = 0
   let bestWinStreak = 0
   let streakTrack = ''
@@ -497,7 +466,6 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
     }
   })
 
-  // Calculate most podiums in a season
   let mostPodiumsInSeason = 0
   let mostPodiumsSeriesId = ''
   Object.entries(racesBySeries).forEach(([seriesId, races]) => {
@@ -508,22 +476,18 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
     }
   })
 
-  // Get track records (best lap times per track)
   const _trackBestLaps: Record<string, { time: number; date: string; position: number }> = {}
   raceHistory.forEach(_race => {
-    // Note: bestLapTime might not be stored - this is a placeholder
-    // In future, we could store and track best laps per track
   })
 
-  // Calculate points finishes
   const pointsFinishes = raceHistory.filter(r => r.racePosition <= 10 && !r.dnf).length
   const fastestLaps = raceHistory.filter(r => r.fastestLap).length
 
   return (
-    <div className="grid grid-cols-2 gap-6">
-      <Card variant="glass" padding="lg">
-        <CardHeader title="Personal Records" />
-        <div className="space-y-4">
+    <div className="grid grid-cols-2 gap-[24px]">
+      <div className={`${CARD} p-[24px]`}>
+        <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px] mb-[16px]" style={FB}>Personal Records</h3>
+        <div className="flex flex-col gap-[16px]">
           <RecordItem
             label="Most Wins in a Season"
             value={mostWinsInSeason > 0 ? String(mostWinsInSeason) : '-'}
@@ -545,11 +509,11 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
             track=""
           />
         </div>
-      </Card>
+      </div>
 
-      <Card variant="glass" padding="lg">
-        <CardHeader title="Career Milestones" />
-        <div className="space-y-4">
+      <div className={`${CARD} p-[24px]`}>
+        <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px] mb-[16px]" style={FB}>Career Milestones</h3>
+        <div className="flex flex-col gap-[16px]">
           <RecordItem
             label="Total Points Finishes"
             value={String(pointsFinishes)}
@@ -571,12 +535,11 @@ function RecordsTab({ raceHistory }: { raceHistory: RaceResult[] }) {
             track={`${raceHistory.length > 0 ? Math.round((raceHistory.filter(r => r.dnf).length / raceHistory.length) * 100) : 0}% of races`}
           />
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
 
-// Rival Comparison Tab
 interface RivalComparisonTabProps {
   player: any
   careerState: any
@@ -596,11 +559,9 @@ function RivalComparisonTab({
 }: RivalComparisonTabProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
-  // Get standings from player's current series
-  const currentSeriesId = player?.currentContract?.seriesId
+  const currentSeriesId = player?.currentSeriesId || player?.contract?.seriesId || careerState?.seriesEntries?.[0]?.seriesId
   const standings = currentSeriesId ? getStandings(currentSeriesId) : []
   
-  // Filter rivals in current championship (exclude player)
   const rivalsInChampionship = useMemo(() => {
     if (!standings.length) return []
     
@@ -619,7 +580,6 @@ function RivalComparisonTab({
       .sort((a, b) => a.position - b.position)
   }, [standings, rivals])
 
-  // Get selected rival's full data
   const selectedRival = useMemo(() => {
     if (!selectedRivalId) return null
     
@@ -632,10 +592,8 @@ function RivalComparisonTab({
     }
   }, [selectedRivalId, rivalsInChampionship])
 
-  // Get player's standing in current championship
   const playerStanding = standings.find(s => s.isPlayer)
 
-  // Calculate head-to-head record
   const headToHead = useMemo(() => {
     if (!selectedRival || !player?.raceHistory) {
       return { playerWins: 0, rivalWins: 0, ties: 0, total: 0 }
@@ -646,22 +604,15 @@ function RivalComparisonTab({
     let rivalWins = 0
     let ties = 0
 
-    // For actual head-to-head, we'd need race-by-race positions for both drivers
-    // Since we only have player's race history, we'll estimate based on standings
-    // A more accurate version would track race results for all drivers
-    
     const racesCompleted = Math.min(
       playerStanding?.races || 0,
       selectedRival.standing.races
     )
 
-    // Calculate wins against each other based on their race counts
-    // This is an approximation - in a full implementation, you'd track individual race results
     if (racesCompleted > 0 && playerStanding) {
       const playerWinRate = playerStanding.avgFinish
       const rivalWinRate = selectedRival.standing.avgFinish
       
-      // Driver with better avg finish "wins" more head-to-heads
       if (playerWinRate < rivalWinRate) {
         playerWins = Math.round(racesCompleted * 0.6)
         rivalWins = racesCompleted - playerWins
@@ -677,7 +628,6 @@ function RivalComparisonTab({
     return { playerWins, rivalWins, ties, total: racesCompleted }
   }, [selectedRival, player, playerStanding])
 
-  // Generate radar data for comparison
   const playerStats = player?.stats || {}
   const playerRadarStats = [
     { label: 'Race', value: playerStats.racecraft ?? 50 },
@@ -690,7 +640,6 @@ function RivalComparisonTab({
 
   const rivalRadarStats = useMemo(() => {
     if (!selectedRival?.driver?.stats) {
-      // Generate estimated stats from performance
       const standing = selectedRival?.standing
       if (!standing) return playerRadarStats.map(s => ({ ...s, value: 50 }))
       
@@ -709,82 +658,78 @@ function RivalComparisonTab({
     }
     
     const stats = selectedRival.driver.stats
-    // Map RivalStats to match player stats structure
-    // RivalStats uses raceSkill (0-1), we need to convert to 0-100 scale
     return [
       { label: 'Race', value: Math.round((stats.raceSkill ?? 0.5) * 100) },
       { label: 'Cons', value: Math.round((stats.consistency ?? 0.5) * 100) },
       { label: 'Wet', value: Math.round((stats.wetSkill ?? 0.5) * 100) },
       { label: 'Tire', value: Math.round((stats.tireManagement ?? 0.5) * 100) },
-      { label: 'Tech', value: Math.round((stats.raceSkill ?? 0.5) * 100) }, // Use raceSkill as proxy for technical feedback
-      { label: 'Mental', value: Math.round((stats.consistency ?? 0.5) * 100) }, // Use consistency as proxy for mental strength
+      { label: 'Tech', value: Math.round((stats.raceSkill ?? 0.5) * 100) },
+      { label: 'Mental', value: Math.round((stats.consistency ?? 0.5) * 100) },
     ]
   }, [selectedRival, playerRadarStats])
 
-  // No standings/rivals available
   if (!currentSeriesId || rivalsInChampionship.length === 0) {
     return (
-      <Card variant="glass" padding="lg">
-        <CardHeader 
-          title="Rival Comparison" 
-          subtitle="Compare your stats with other drivers"
-        />
-        <div className="text-center py-12">
-          <Users className="w-16 h-16 mx-auto text-text-muted mb-4" />
-          <h3 className="font-display font-semibold text-xl mb-2">No Rivals Found</h3>
-          <p className="text-text-muted max-w-md mx-auto">
+      <div className={`${CARD} p-[24px]`}>
+        <div className="mb-[16px]">
+          <h3 className="text-[20px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Rival Comparison</h3>
+          <p className="text-[13px] text-[#4a5565]" style={FR}>Compare your stats with other drivers</p>
+        </div>
+        <div className="text-center py-[48px]">
+          <Users className="w-[64px] h-[64px] mx-auto text-[#4a5565] mb-[16px]" />
+          <h3 className="text-[20px] text-[#0a0a0a] mb-[8px]" style={FBold}>No Rivals Found</h3>
+          <p className="text-[14px] text-[#4a5565] max-w-[400px] mx-auto" style={FR}>
             Complete races in a championship to compare yourself against other drivers
           </p>
         </div>
-      </Card>
+      </div>
     )
   }
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-[24px]">
       {/* Rival Selector */}
-      <Card variant="glass" padding="lg">
+      <div className={`${CARD} p-[24px]`}>
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-display font-semibold text-lg">Select a Rival</h3>
-            <p className="text-sm text-text-muted">Choose a driver to compare your performance</p>
+            <h3 className="text-[18px] text-[#0a0a0a]" style={FBold}>Select a Rival</h3>
+            <p className="text-[13px] text-[#4a5565]" style={FR}>Choose a driver to compare your performance</p>
           </div>
           
           <div className="relative">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-3 px-4 py-3 bg-surface-secondary hover:bg-surface-secondary/80 
-                         rounded-lg border border-surface-border transition-colors min-w-[280px]"
+              className="flex items-center gap-[12px] px-[16px] py-[12px] bg-[#f9fafb] hover:bg-[#f3f4f6] rounded-[16px] border-[0.8px] border-black/10 transition-colors min-w-[280px]"
+              style={FR}
             >
               {selectedRival ? (
                 <>
-                  <div className="w-10 h-10 rounded-full bg-accent-red/20 flex items-center justify-center">
-                    <User className="w-5 h-5 text-accent-red" />
+                  <div className="w-[40px] h-[40px] rounded-full bg-[#fef2f2] flex items-center justify-center">
+                    <User className="w-[20px] h-[20px] text-[#ef4444]" />
                   </div>
                   <div className="flex-1 text-left">
-                    <p className="font-medium">{selectedRival.standing.driverName}</p>
-                    <p className="text-xs text-text-muted">
+                    <p className="text-[14px] text-[#0a0a0a]" style={FBold}>{selectedRival.standing.driverName}</p>
+                    <p className="text-[12px] text-[#4a5565]">
                       P{selectedRival.standing.position} • {selectedRival.standing.points} pts
                     </p>
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="w-10 h-10 rounded-full bg-surface-secondary flex items-center justify-center">
-                    <Users className="w-5 h-5 text-text-muted" />
+                  <div className="w-[40px] h-[40px] rounded-full bg-[#f3f4f6] flex items-center justify-center">
+                    <Users className="w-[20px] h-[20px] text-[#4a5565]" />
                   </div>
-                  <span className="flex-1 text-left text-text-muted">Select a rival...</span>
+                  <span className="flex-1 text-left text-[#4a5565] text-[14px]">Select a rival...</span>
                 </>
               )}
-              <ChevronDown className={`w-5 h-5 text-text-muted transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-[20px] h-[20px] text-[#4a5565] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isDropdownOpen && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute top-full left-0 right-0 mt-2 bg-surface-primary rounded-lg border border-surface-border 
-                           shadow-xl z-50 max-h-[400px] overflow-y-auto"
+                className="absolute top-full left-0 right-0 mt-[8px] bg-white rounded-[16px] border-[0.8px] border-black/20 shadow-xl z-50 max-h-[400px] overflow-y-auto"
               >
                 {rivalsInChampionship.map((rival) => (
                   <button
@@ -793,20 +738,23 @@ function RivalComparisonTab({
                       setSelectedRivalId(rival.driverId)
                       setIsDropdownOpen(false)
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-surface-secondary/50 transition-colors
-                               ${selectedRivalId === rival.driverId ? 'bg-accent-red/10' : ''}`}
+                    className={`w-full flex items-center gap-[12px] px-[16px] py-[12px] hover:bg-[#f9fafb] transition-colors ${
+                      selectedRivalId === rival.driverId ? 'bg-[#fef2f2]' : ''
+                    }`}
+                    style={FR}
                   >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
-                                   ${rival.position <= 3 ? 'bg-accent-gold/20 text-accent-gold' : 'bg-surface-secondary text-text-muted'}`}>
+                    <div className={`w-[32px] h-[32px] rounded-full flex items-center justify-center text-[13px] ${
+                      rival.position <= 3 ? 'bg-[#fef3c7] text-[#b45309]' : 'bg-[#f3f4f6] text-[#4a5565]'
+                    }`} style={FBold}>
                       {rival.position}
                     </div>
                     <div className="flex-1 text-left">
-                      <p className="font-medium">{rival.driverName}</p>
-                      <p className="text-xs text-text-muted">{rival.teamName}</p>
+                      <p className="text-[14px] text-[#0a0a0a]" style={FBold}>{rival.driverName}</p>
+                      <p className="text-[12px] text-[#4a5565]">{rival.teamName}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-mono font-medium">{rival.points} pts</p>
-                      <p className="text-xs text-text-muted">{rival.wins}W {rival.podiums}P</p>
+                      <p className="font-mono text-[14px] text-[#0a0a0a]" style={FBold}>{rival.points} pts</p>
+                      <p className="text-[12px] text-[#4a5565]">{rival.wins}W {rival.podiums}P</p>
                     </div>
                   </button>
                 ))}
@@ -814,176 +762,128 @@ function RivalComparisonTab({
             )}
           </div>
         </div>
-      </Card>
+      </div>
 
       {selectedRival && playerStanding && (
         <>
           {/* Main Comparison Grid */}
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-[24px]">
             {/* Season Stats Side-by-Side */}
-            <Card variant="racing" padding="lg" className="col-span-2">
-              <CardHeader 
-                title="Season Statistics" 
-                subtitle="Current championship performance"
-              />
+            <div className={`${CARD} p-[24px] col-span-2`}>
+              <div className="mb-[16px]">
+                <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Season Statistics</h3>
+                <p className="text-[13px] text-[#4a5565]" style={FR}>Current championship performance</p>
+              </div>
               
-              <div className="mt-6">
+              <div className="mt-[24px]">
                 {/* Driver Headers */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-status-info/20 flex items-center justify-center">
-                      <User className="w-6 h-6 text-status-info" />
+                <div className="grid grid-cols-3 gap-[16px] mb-[24px]">
+                  <div className="flex items-center gap-[12px]">
+                    <div className="w-[48px] h-[48px] rounded-full bg-[#dbeafe] flex items-center justify-center">
+                      <User className="w-[24px] h-[24px] text-[#3b82f6]" />
                     </div>
                     <div>
-                      <p className="font-display font-semibold">{player.name}</p>
-                      <p className="text-xs text-text-muted">You</p>
+                      <p className="text-[15px] text-[#0a0a0a]" style={FBold}>{player.name}</p>
+                      <p className="text-[12px] text-[#4a5565]" style={FR}>You</p>
                     </div>
                   </div>
                   <div className="flex items-center justify-center">
-                    <Swords className="w-6 h-6 text-accent-red" />
+                    <Swords className="w-[24px] h-[24px] text-[#ef4444]" />
                   </div>
-                  <div className="flex items-center gap-3 justify-end">
+                  <div className="flex items-center gap-[12px] justify-end">
                     <div className="text-right">
-                      <p className="font-display font-semibold">{selectedRival.standing.driverName}</p>
-                      <p className="text-xs text-text-muted">{selectedRival.standing.teamName}</p>
+                      <p className="text-[15px] text-[#0a0a0a]" style={FBold}>{selectedRival.standing.driverName}</p>
+                      <p className="text-[12px] text-[#4a5565]" style={FR}>{selectedRival.standing.teamName}</p>
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-accent-red/20 flex items-center justify-center">
-                      <User className="w-6 h-6 text-accent-red" />
+                    <div className="w-[48px] h-[48px] rounded-full bg-[#fef2f2] flex items-center justify-center">
+                      <User className="w-[24px] h-[24px] text-[#ef4444]" />
                     </div>
                   </div>
                 </div>
 
-                {/* Stats Comparison Rows */}
-                <div className="space-y-3">
-                  <ComparisonRow 
-                    label="Position" 
-                    playerValue={playerStanding.position} 
-                    rivalValue={selectedRival.standing.position}
-                    format="position"
-                    lowerIsBetter
-                  />
-                  <ComparisonRow 
-                    label="Points" 
-                    playerValue={playerStanding.points} 
-                    rivalValue={selectedRival.standing.points}
-                  />
-                  <ComparisonRow 
-                    label="Wins" 
-                    playerValue={playerStanding.wins} 
-                    rivalValue={selectedRival.standing.wins}
-                  />
-                  <ComparisonRow 
-                    label="Podiums" 
-                    playerValue={playerStanding.podiums} 
-                    rivalValue={selectedRival.standing.podiums}
-                  />
-                  <ComparisonRow 
-                    label="Poles" 
-                    playerValue={playerStanding.poles} 
-                    rivalValue={selectedRival.standing.poles}
-                  />
-                  <ComparisonRow 
-                    label="Avg Finish" 
-                    playerValue={playerStanding.avgFinish} 
-                    rivalValue={selectedRival.standing.avgFinish}
-                    format="decimal"
-                    lowerIsBetter
-                  />
-                  <ComparisonRow 
-                    label="Best Finish" 
-                    playerValue={playerStanding.bestFinish} 
-                    rivalValue={selectedRival.standing.bestFinish}
-                    format="position"
-                    lowerIsBetter
-                  />
-                  <ComparisonRow 
-                    label="DNFs" 
-                    playerValue={playerStanding.dnfs} 
-                    rivalValue={selectedRival.standing.dnfs}
-                    lowerIsBetter
-                  />
+                <div className="flex flex-col gap-[12px]">
+                  <ComparisonRow label="Position" playerValue={playerStanding.position} rivalValue={selectedRival.standing.position} format="position" lowerIsBetter />
+                  <ComparisonRow label="Points" playerValue={playerStanding.points} rivalValue={selectedRival.standing.points} />
+                  <ComparisonRow label="Wins" playerValue={playerStanding.wins} rivalValue={selectedRival.standing.wins} />
+                  <ComparisonRow label="Podiums" playerValue={playerStanding.podiums} rivalValue={selectedRival.standing.podiums} />
+                  <ComparisonRow label="Poles" playerValue={playerStanding.poles} rivalValue={selectedRival.standing.poles} />
+                  <ComparisonRow label="Avg Finish" playerValue={playerStanding.avgFinish} rivalValue={selectedRival.standing.avgFinish} format="decimal" lowerIsBetter />
+                  <ComparisonRow label="Best Finish" playerValue={playerStanding.bestFinish} rivalValue={selectedRival.standing.bestFinish} format="position" lowerIsBetter />
+                  <ComparisonRow label="DNFs" playerValue={playerStanding.dnfs} rivalValue={selectedRival.standing.dnfs} lowerIsBetter />
                 </div>
               </div>
-            </Card>
+            </div>
 
             {/* Head-to-Head & Rivalry */}
-            <div className="space-y-6">
-              {/* Head-to-Head Record */}
-              <Card variant="glass" padding="lg">
-                <CardHeader title="Head-to-Head" />
-                <div className="mt-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-center">
-                      <p className="text-3xl font-display font-bold text-status-info">{headToHead.playerWins}</p>
-                      <p className="text-xs text-text-muted">Your Wins</p>
-                    </div>
-                    <div className="text-center px-4">
-                      <p className="text-lg font-display text-text-muted">vs</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-3xl font-display font-bold text-accent-red">{headToHead.rivalWins}</p>
-                      <p className="text-xs text-text-muted">Their Wins</p>
-                    </div>
+            <div className="flex flex-col gap-[24px]">
+              <div className={`${CARD} p-[24px]`}>
+                <h3 className="text-[16px] text-[#0a0a0a] mb-[16px]" style={FB}>Head-to-Head</h3>
+                <div className="flex items-center justify-between mb-[16px]">
+                  <div className="text-center">
+                    <p className="text-[28px] text-[#3b82f6]" style={FB}>{headToHead.playerWins}</p>
+                    <p className="text-[12px] text-[#4a5565]" style={FR}>Your Wins</p>
                   </div>
-                  
-                  {/* Win Rate Bar */}
-                  <div className="h-3 rounded-full bg-surface-secondary overflow-hidden flex">
-                    {headToHead.total > 0 && (
-                      <>
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${(headToHead.playerWins / headToHead.total) * 100}%` }}
-                          transition={{ duration: 0.8, ease: 'easeOut' }}
-                          className="bg-status-info"
-                        />
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${(headToHead.rivalWins / headToHead.total) * 100}%` }}
-                          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-                          className="bg-accent-red"
-                        />
-                      </>
-                    )}
+                  <div className="text-center px-[16px]">
+                    <p className="text-[16px] text-[#4a5565]" style={FB}>vs</p>
                   </div>
-                  <p className="text-xs text-text-muted text-center mt-2">
-                    {headToHead.total} race{headToHead.total !== 1 ? 's' : ''} together
-                  </p>
+                  <div className="text-center">
+                    <p className="text-[28px] text-[#ef4444]" style={FB}>{headToHead.rivalWins}</p>
+                    <p className="text-[12px] text-[#4a5565]" style={FR}>Their Wins</p>
+                  </div>
                 </div>
-              </Card>
+                
+                <div className="h-[12px] rounded-full bg-[#f3f4f6] overflow-hidden flex">
+                  {headToHead.total > 0 && (
+                    <>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(headToHead.playerWins / headToHead.total) * 100}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        className="bg-[#3b82f6]"
+                      />
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(headToHead.rivalWins / headToHead.total) * 100}%` }}
+                        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+                        className="bg-[#ef4444]"
+                      />
+                    </>
+                  )}
+                </div>
+                <p className="text-[12px] text-[#4a5565] text-center mt-[8px]" style={FR}>
+                  {headToHead.total} race{headToHead.total !== 1 ? 's' : ''} together
+                </p>
+              </div>
 
-              {/* Rivalry Intensity */}
-              <Card variant="glass" padding="lg">
-                <CardHeader title="Rivalry" />
-                <div className="mt-4">
-                  <RivalryMeter 
-                    intensity={selectedRival.driver?.rivalryIntensity ?? calculateRivalryIntensity(playerStanding, selectedRival.standing)}
-                  />
-                  <div className="mt-4 space-y-2">
-                    {selectedRival.driver?.relationshipWithPlayer !== undefined && (
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-text-muted">Relationship</span>
-                        <span className={selectedRival.driver.relationshipWithPlayer > 0 ? 'text-status-success' : 
-                                        selectedRival.driver.relationshipWithPlayer < 0 ? 'text-accent-red' : 'text-text-muted'}>
-                          {selectedRival.driver.relationshipWithPlayer > 20 ? 'Friendly' :
-                           selectedRival.driver.relationshipWithPlayer > 0 ? 'Respectful' :
-                           selectedRival.driver.relationshipWithPlayer > -20 ? 'Neutral' :
-                           selectedRival.driver.relationshipWithPlayer > -50 ? 'Tense' : 'Hostile'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+              <div className={`${CARD} p-[24px]`}>
+                <h3 className="text-[16px] text-[#0a0a0a] mb-[16px]" style={FB}>Rivalry</h3>
+                <RivalryMeter 
+                  intensity={selectedRival.driver?.rivalryIntensity ?? calculateRivalryIntensity(playerStanding, selectedRival.standing)}
+                />
+                <div className="mt-[16px] flex flex-col gap-[8px]">
+                  {selectedRival.driver?.relationshipWithPlayer !== undefined && (
+                    <div className="flex items-center justify-between text-[14px]" style={FR}>
+                      <span className="text-[#4a5565]">Relationship</span>
+                      <span style={{ color: selectedRival.driver.relationshipWithPlayer > 0 ? '#00a63e' : selectedRival.driver.relationshipWithPlayer < 0 ? '#ef4444' : '#4a5565' }}>
+                        {selectedRival.driver.relationshipWithPlayer > 20 ? 'Friendly' :
+                         selectedRival.driver.relationshipWithPlayer > 0 ? 'Respectful' :
+                         selectedRival.driver.relationshipWithPlayer > -20 ? 'Neutral' :
+                         selectedRival.driver.relationshipWithPlayer > -50 ? 'Tense' : 'Hostile'}
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
 
           {/* Skill Radar Comparison */}
-          <Card variant="glass" padding="lg">
-            <CardHeader 
-              title="Skill Comparison" 
-              subtitle="Overlaid driver ability profiles"
-            />
-            <div className="flex items-center justify-center py-6">
+          <div className={`${CARD} p-[24px]`}>
+            <div className="mb-[16px]">
+              <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Skill Comparison</h3>
+              <p className="text-[13px] text-[#4a5565]" style={FR}>Overlaid driver ability profiles</p>
+            </div>
+            <div className="flex items-center justify-center py-[24px]">
               <ComparisonRadar 
                 playerStats={playerRadarStats}
                 rivalStats={rivalRadarStats}
@@ -992,59 +892,33 @@ function RivalComparisonTab({
                 size={320}
               />
             </div>
-            <div className="flex justify-center gap-8 mt-4">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-status-info/60" />
-                <span className="text-sm text-text-muted">You</span>
+            <div className="flex justify-center gap-[32px] mt-[16px]">
+              <div className="flex items-center gap-[8px]">
+                <div className="w-[16px] h-[16px] rounded-[4px] bg-[#3b82f6]/60" />
+                <span className="text-[13px] text-[#4a5565]" style={FR}>You</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-accent-red/60" />
-                <span className="text-sm text-text-muted">{selectedRival.standing.driverName}</span>
+              <div className="flex items-center gap-[8px]">
+                <div className="w-[16px] h-[16px] rounded-[4px] bg-[#ef4444]/60" />
+                <span className="text-[13px] text-[#4a5565]" style={FR}>{selectedRival.standing.driverName}</span>
               </div>
             </div>
-          </Card>
+          </div>
 
           {/* Career Comparison */}
           {selectedRival.driver && (
-            <Card variant="glass" padding="lg">
-              <CardHeader 
-                title="Career Comparison" 
-                subtitle="Lifetime achievements and experience"
-              />
-              <div className="grid grid-cols-5 gap-4 mt-6">
-                <CareerStatCard 
-                  label="Total Races"
-                  playerValue={player.raceHistory?.length || 0}
-                  rivalValue={selectedRival.driver.totalRaces}
-                  icon={Flag}
-                />
-                <CareerStatCard 
-                  label="Total Wins"
-                  playerValue={player.raceHistory?.filter((r: RaceResult) => r.racePosition === 1).length || 0}
-                  rivalValue={selectedRival.driver.totalWins}
-                  icon={Trophy}
-                />
-                <CareerStatCard 
-                  label="Podiums"
-                  playerValue={player.raceHistory?.filter((r: RaceResult) => r.racePosition <= 3).length || 0}
-                  rivalValue={selectedRival.driver.totalPodiums}
-                  icon={Award}
-                />
-                <CareerStatCard 
-                  label="Championships"
-                  playerValue={player.championships || 0}
-                  rivalValue={selectedRival.driver.championships}
-                  icon={Crown}
-                />
-                <CareerStatCard 
-                  label="Experience"
-                  playerValue={careerState.currentYear - (player.careerStartYear || careerState.currentYear)}
-                  rivalValue={selectedRival.driver.age - 18}
-                  icon={Activity}
-                  suffix=" yrs"
-                />
+            <div className={`${CARD} p-[24px]`}>
+              <div className="mb-[16px]">
+                <h3 className="text-[18px] text-[#0a0a0a] tracking-[-0.5px]" style={FB}>Career Comparison</h3>
+                <p className="text-[13px] text-[#4a5565]" style={FR}>Lifetime achievements and experience</p>
               </div>
-            </Card>
+              <div className="grid grid-cols-5 gap-[16px] mt-[24px]">
+                <CareerStatCard label="Total Races" playerValue={player.raceHistory?.length || 0} rivalValue={selectedRival.driver.totalRaces} icon={Flag} />
+                <CareerStatCard label="Total Wins" playerValue={player.raceHistory?.filter((r: RaceResult) => r.racePosition === 1).length || 0} rivalValue={selectedRival.driver.totalWins} icon={Trophy} />
+                <CareerStatCard label="Podiums" playerValue={player.raceHistory?.filter((r: RaceResult) => r.racePosition <= 3).length || 0} rivalValue={selectedRival.driver.totalPodiums} icon={Award} />
+                <CareerStatCard label="Championships" playerValue={player.championships || 0} rivalValue={selectedRival.driver.championships} icon={Crown} />
+                <CareerStatCard label="Experience" playerValue={careerState.currentYear - (player.careerStartYear || careerState.currentYear)} rivalValue={selectedRival.driver.age - 18} icon={Activity} suffix=" yrs" />
+              </div>
+            </div>
           )}
         </>
       )}
@@ -1052,19 +926,15 @@ function RivalComparisonTab({
   )
 }
 
-// Helper: Calculate rivalry intensity from standings
 function calculateRivalryIntensity(playerStanding: SeasonStanding, rivalStanding: SeasonStanding): number {
   const posDiff = Math.abs(playerStanding.position - rivalStanding.position)
   const ptsDiff = Math.abs(playerStanding.points - rivalStanding.points)
   
-  // Closer in standings = higher rivalry
   let intensity = 100 - (posDiff * 15)
   
-  // Close points battle intensifies rivalry
   if (ptsDiff < 50) intensity += 20
   else if (ptsDiff < 100) intensity += 10
   
-  // Both fighting for top positions
   if (playerStanding.position <= 3 && rivalStanding.position <= 3) {
     intensity += 25
   }
@@ -1072,7 +942,6 @@ function calculateRivalryIntensity(playerStanding: SeasonStanding, rivalStanding
   return Math.max(0, Math.min(100, intensity))
 }
 
-// Comparison Row Component
 interface ComparisonRowProps {
   label: string
   playerValue: number
@@ -1093,50 +962,38 @@ function ComparisonRow({ label, playerValue, rivalValue, format = 'number', lowe
   const tied = playerValue === rivalValue
 
   return (
-    <div className="grid grid-cols-3 gap-4 items-center py-2 border-b border-surface-border/50 last:border-0">
-      <div className={`text-right font-mono font-bold text-lg ${playerBetter ? 'text-status-info' : tied ? 'text-text-muted' : 'text-text-secondary'}`}>
+    <div className="grid grid-cols-3 gap-[16px] items-center py-[8px] border-b border-black/5 last:border-0">
+      <div className={`text-right font-mono text-[16px] ${playerBetter ? 'text-[#3b82f6]' : tied ? 'text-[#4a5565]' : 'text-[#0a0a0a]/60'}`} style={FBold}>
         {formatValue(playerValue)}
-        {playerBetter && <span className="ml-2 text-xs">▲</span>}
+        {playerBetter && <span className="ml-[8px] text-[11px]">▲</span>}
       </div>
-      <div className="text-center text-sm text-text-muted">{label}</div>
-      <div className={`text-left font-mono font-bold text-lg ${rivalBetter ? 'text-accent-red' : tied ? 'text-text-muted' : 'text-text-secondary'}`}>
-        {rivalBetter && <span className="mr-2 text-xs">▲</span>}
+      <div className="text-center text-[13px] text-[#4a5565]" style={FR}>{label}</div>
+      <div className={`text-left font-mono text-[16px] ${rivalBetter ? 'text-[#ef4444]' : tied ? 'text-[#4a5565]' : 'text-[#0a0a0a]/60'}`} style={FBold}>
+        {rivalBetter && <span className="mr-[8px] text-[11px]">▲</span>}
         {formatValue(rivalValue)}
       </div>
     </div>
   )
 }
 
-// Rivalry Meter Component
 function RivalryMeter({ intensity }: { intensity: number }) {
   const getIntensityLabel = () => {
-    if (intensity >= 80) return { label: 'Fierce Rivalry', color: 'text-accent-red' }
-    if (intensity >= 60) return { label: 'Strong Rivalry', color: 'text-accent-orange' }
-    if (intensity >= 40) return { label: 'Competitive', color: 'text-accent-gold' }
-    if (intensity >= 20) return { label: 'Respectful', color: 'text-status-info' }
-    return { label: 'Minimal', color: 'text-text-muted' }
+    if (intensity >= 80) return { label: 'Fierce Rivalry', color: '#ef4444' }
+    if (intensity >= 60) return { label: 'Strong Rivalry', color: '#f97316' }
+    if (intensity >= 40) return { label: 'Competitive', color: '#f59e0b' }
+    if (intensity >= 20) return { label: 'Respectful', color: '#3b82f6' }
+    return { label: 'Minimal', color: '#4a5565' }
   }
 
   const { label, color } = getIntensityLabel()
 
   return (
     <div className="text-center">
-      <div className="relative w-24 h-24 mx-auto mb-3">
+      <div className="relative w-[96px] h-[96px] mx-auto mb-[12px]">
         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity={0.1}
-            strokeWidth="12"
-          />
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="12" />
           <motion.circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
+            cx="50" cy="50" r="40" fill="none"
             stroke="url(#rivalryGradient)"
             strokeWidth="12"
             strokeLinecap="round"
@@ -1146,22 +1003,21 @@ function RivalryMeter({ intensity }: { intensity: number }) {
           />
           <defs>
             <linearGradient id="rivalryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#FF8000" />
-              <stop offset="100%" stopColor="#E10600" />
+              <stop offset="0%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#ef4444" />
             </linearGradient>
           </defs>
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <Flame className={`w-8 h-8 ${intensity >= 60 ? 'text-accent-red' : 'text-text-muted'}`} />
+          <Flame className={`w-[32px] h-[32px] ${intensity >= 60 ? 'text-[#ef4444]' : 'text-[#4a5565]'}`} />
         </div>
       </div>
-      <p className={`font-display font-semibold ${color}`}>{label}</p>
-      <p className="text-xs text-text-muted">{intensity}% intensity</p>
+      <p className="text-[15px]" style={{ ...FBold, color }}>{label}</p>
+      <p className="text-[12px] text-[#4a5565]" style={FR}>{intensity}% intensity</p>
     </div>
   )
 }
 
-// Comparison Radar Chart
 interface ComparisonRadarProps {
   playerStats: { label: string; value: number }[]
   rivalStats: { label: string; value: number }[]
@@ -1194,69 +1050,35 @@ function ComparisonRadar({ playerStats, rivalStats, _playerName, _rivalName, siz
 
   return (
     <svg width={size} height={size} className="overflow-visible">
-      {/* Background grid circles */}
       {[0.25, 0.5, 0.75, 1].map((scale) => (
-        <circle
-          key={scale}
-          cx={center}
-          cy={center}
-          r={radius * scale}
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity={0.1}
-        />
+        <circle key={scale} cx={center} cy={center} r={radius * scale} fill="none" stroke="#e5e7eb" strokeWidth={1} />
       ))}
       
-      {/* Axis lines */}
       {playerStats.map((_, i) => (
-        <line
-          key={i}
-          x1={center}
-          y1={center}
+        <line key={i} x1={center} y1={center}
           x2={center + radius * Math.cos(i * angleStep - Math.PI / 2)}
           y2={center + radius * Math.sin(i * angleStep - Math.PI / 2)}
-          stroke="currentColor"
-          strokeOpacity={0.1}
+          stroke="#e5e7eb" strokeWidth={1}
         />
       ))}
       
-      {/* Rival area (behind) */}
-      <motion.path
-        d={rivalPath}
-        fill="rgba(225, 6, 0, 0.2)"
-        stroke="#E10600"
-        strokeWidth={2}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        style={{ transformOrigin: 'center' }}
+      <motion.path d={rivalPath} fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" strokeWidth={2}
+        initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }} style={{ transformOrigin: 'center' }}
       />
       
-      {/* Player area (front) */}
-      <motion.path
-        d={playerPath}
-        fill="rgba(59, 130, 246, 0.2)"
-        stroke="#3B82F6"
-        strokeWidth={2}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        style={{ transformOrigin: 'center' }}
+      <motion.path d={playerPath} fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" strokeWidth={2}
+        initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }} style={{ transformOrigin: 'center' }}
       />
       
-      {/* Labels */}
       {playerStats.map((stat, i) => {
         const angle = i * angleStep - Math.PI / 2
         const labelX = center + (radius + 20) * Math.cos(angle)
         const labelY = center + (radius + 20) * Math.sin(angle)
         return (
-          <text
-            key={i}
-            x={labelX}
-            y={labelY}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="text-xs fill-text-muted"
+          <text key={i} x={labelX} y={labelY} textAnchor="middle" dominantBaseline="middle"
+            className="text-[12px]" fill="#4a5565"
           >
             {stat.label}
           </text>
@@ -1266,7 +1088,6 @@ function ComparisonRadar({ playerStats, rivalStats, _playerName, _rivalName, siz
   )
 }
 
-// Career Stat Card
 interface CareerStatCardProps {
   label: string
   playerValue: number
@@ -1283,21 +1104,35 @@ function CareerStatCard({ label, playerValue, rivalValue, icon: Icon, suffix = '
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-surface-secondary/50 rounded-lg p-4 text-center"
+      className={INNER + ' text-center'}
     >
-      <div className="w-10 h-10 mx-auto rounded-lg bg-accent-red/20 flex items-center justify-center text-accent-red mb-3">
-        <Icon className="w-5 h-5" />
+      <div className="w-[40px] h-[40px] mx-auto rounded-[12px] bg-[#fef2f2] flex items-center justify-center text-[#ef4444] mb-[12px]">
+        <Icon className="w-[20px] h-[20px]" />
       </div>
-      <p className="text-xs text-text-muted mb-2">{label}</p>
-      <div className="flex items-center justify-center gap-3">
-        <span className={`font-mono font-bold ${playerBetter ? 'text-status-info' : 'text-text-secondary'}`}>
+      <p className="text-[12px] text-[#4a5565] mb-[8px]" style={FR}>{label}</p>
+      <div className="flex items-center justify-center gap-[12px]">
+        <span className={`font-mono text-[15px] ${playerBetter ? 'text-[#3b82f6]' : 'text-[#0a0a0a]/60'}`} style={FBold}>
           {playerValue}{suffix}
         </span>
-        <span className="text-text-muted text-xs">vs</span>
-        <span className={`font-mono font-bold ${rivalBetter ? 'text-accent-red' : 'text-text-secondary'}`}>
+        <span className="text-[12px] text-[#4a5565]" style={FR}>vs</span>
+        <span className={`font-mono text-[15px] ${rivalBetter ? 'text-[#ef4444]' : 'text-[#0a0a0a]/60'}`} style={FBold}>
           {rivalValue}{suffix}
         </span>
       </div>
     </motion.div>
+  )
+}
+
+export default function Stats() {
+  return (
+    <div className="bg-white w-full h-full overflow-y-auto">
+      <div className="p-[24px] flex flex-col gap-[24px]">
+        <div className="flex items-center gap-[12px]">
+          <BarChart3 className="w-[28px] h-[28px] text-[#0a0a0a]" />
+          <h1 className="text-[30px] text-[#0a0a0a] tracking-[-1.5px] leading-tight" style={FB}>Stats</h1>
+        </div>
+        <p className="text-[14px] text-[#4a5565]" style={FR}>Stats screen</p>
+      </div>
+    </div>
   )
 }

@@ -1,0 +1,22 @@
+{
+  "name": "Adéla Horáková",
+  "nationality": "Czech",
+  "age": 24,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Adéla's passion for motorsport ignited during her university days, where she excelled in mechanical engineering. Inspired by the precision and data-driven nature of racing, she sought opportunities to combine her technical skills with her love for speed. After graduating, she secured a junior role at a smaller racing team, quickly proving her aptitude for simulator technology. There, she honed her skills in data analysis and driver feedback integration, becoming adept at translating virtual performance into real-world improvements. \n\nAdéla joined Andretti Global to contribute to a top-tier team and push the boundaries of simulation. Her pragmatic approach means she focuses on identifying actionable insights and implementing solutions that deliver tangible results. She is driven by the challenge of optimizing every aspect of the simulator, ensuring it provides drivers with the most realistic and beneficial training experience possible. She's known for her meticulous attention to detail and her ability to communicate complex technical information clearly to both engineers and drivers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually pulled back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Adéla has a focused gaze and a slender build, often seen with a tablet in hand."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping her pen when deep in thought.",
+    "Insists on a specific type of herbal tea before every simulator session."
+  ]
+}

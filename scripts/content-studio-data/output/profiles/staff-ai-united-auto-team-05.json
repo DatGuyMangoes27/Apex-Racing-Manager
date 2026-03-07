@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 45,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Ricardo's journey into motorsport began with a childhood obsession with Formula 1, fueled by watching legends like Juan Manuel Fangio. He started his career in data analysis for a small Argentine racing team, quickly demonstrating an aptitude for identifying strategic advantages through meticulous data interpretation. His move to Europe was driven by a desire to compete at the highest levels of motorsport.\n\nRicardo's approach to strategy is deeply rooted in pragmatism. He prioritizes maximizing points through calculated risk assessment and adapting to changing race conditions. He's known for his ability to remain calm under pressure, a trait honed through years of experience making critical calls during intense races. His colleagues often remark on his 'old-school' approach, relying on experience and intuition alongside data-driven insights, setting him apart from more statistically-focused strategists.\n\nAt United Autosports, Ricardo is tasked with ensuring race strategies are robust and adaptable. He prides himself on anticipating competitor moves and exploiting any advantage available. He is a well-respected figure in the paddock known for his dedication to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is a man of medium height with a serious, focused demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn copy of Sun Tzu's 'The Art of War'.",
+    "Insists on drinking mate tea before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

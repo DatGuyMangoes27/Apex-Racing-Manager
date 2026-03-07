@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0014",
+  "name": "Throttle Up Energy",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Unleash your inner horsepower with Throttle Up!",
+  "story": "Throttle Up Energy was founded by a former amateur racer who needed a reliable boost during long race weekends. We're passionate about supporting up-and-coming talent in motorsports. We seek partnerships that deliver both on-track performance and engaging media content that showcases our brand's high-octane spirit.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": null,
+    "minPodiums": null
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": null,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0014.png"
+}

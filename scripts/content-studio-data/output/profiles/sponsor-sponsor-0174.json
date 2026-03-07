@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0174",
+  "name": "Hayat Tarzı Dergisi",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Turkey",
+  "description": "Turkey's premier lifestyle magazine, celebrating the best in Turkish culture and living.",
+  "story": "Hayat Tarzı Dergisi seeks to connect with a passionate and driven audience. Motorsport embodies the pursuit of excellence and the thrill of competition, values that align perfectly with our brand. We aim to increase brand awareness among a younger demographic and showcase the vibrant lifestyle associated with motorsports.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Turkey"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0174.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 40,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Jean-Pierre's journey into motorsport began with a fascination for the technical intricacies of racing engines, fueled by his father's work as a mechanic. After graduating from engineering school, he started his career as a junior technician at a small touring car team, quickly proving his meticulous nature and keen eye for detail. His reputation for identifying and resolving subtle mechanical issues earned him a move to ART Grand Prix Academy. \n\nJean-Pierre approaches quality control with an unwavering commitment to precision. He believes in a proactive approach, emphasizing preventative maintenance and rigorous testing to identify potential problems before they manifest on the track. He values teamwork and open communication, fostering a collaborative environment where mechanics and engineers can freely share insights. What sets him apart is his ability to diagnose complex issues by listening to the subtle sounds of the engine, a skill he honed over years of experience.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "A well-trimmed goatee",
+    "description": "Jean-Pierre is of average height with a slightly stocky build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on personally inspecting every component before it's installed on the car."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Elin Rhys",
+  "nationality": "Welsh",
+  "age": 33,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Elin's passion for motorsport ignited early, fueled by countless hours spent tinkering with engines alongside her grandfather in their rural Welsh village. She excelled academically, earning a degree in Mechanical Engineering from Cardiff University, before diving headfirst into the world of racing. Her career began in Formula Ford, quickly progressing through the ranks to Formula 3 and eventually landing a coveted position with a prominent Formula 1 team as a junior engineer. \n\nElin's strength lies in her ability to see the bigger picture, anticipating potential problems and developing innovative solutions. She is meticulous in her approach, demanding precision and accuracy from her team, while also fostering a collaborative and supportive environment. Elin is known for her relentless pursuit of perfection and her ability to unlock hidden performance gains through clever engineering and data analysis, making her a highly sought-after chief engineer.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair often pulled back into a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Elin is of average height, with a focused and intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn copy of 'Engineering Thermodynamics' in her bag.",
+    "Has a habit of sketching engineering concepts on napkins during meetings.",
+    "Only drinks herbal tea, specifically chamomile, before a race."
+  ]
+}

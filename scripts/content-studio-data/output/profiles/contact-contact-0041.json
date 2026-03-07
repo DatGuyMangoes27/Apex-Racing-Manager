@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 25,
+  "gender": "female",
+  "contactType": "tech_entrepreneur",
+  "bio": "Isabelle Dubois is the founder and CEO of 'Synapse Solutions,' a cutting-edge AI firm specializing in predictive analytics. Her company has revolutionized data processing across multiple industries, and she's become a celebrated figure in the tech world. Isabelle is known for her exacting standards and unwavering ambition, which some perceive as entitlement. Despite this, she possesses a surprisingly forgiving nature, though professional jealousy is something she privately struggles with. A racing driver might cross paths with Isabelle at exclusive networking events frequented by tech investors or through potential sponsorship opportunities for their team, as Synapse Solutions is always seeking innovative marketing strategies.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a sleek ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is petite but carries herself with a commanding presence. Her sharp features are softened by her warm, expressive eyes."
+  },
+  "connectionToMotorsport": "Isabelle's company, Synapse Solutions, is exploring potential applications of their AI technology in motorsport analytics, specifically for race strategy and driver performance optimization. She also occasionally attends Formula 1 races as a guest of corporate sponsors.",
+  "meetingContext": "The player could meet Isabelle at a high-profile technology conference where she is a keynote speaker, or at a charity gala that both attend.",
+  "conversationTopics": [
+    "The future of AI and its impact on society",
+    "The challenges of leading a rapidly growing tech company",
+    "Her latest yoga retreat experience",
+    "The importance of sustainable business practices",
+    "New developments in classical music composition"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal for the team with Synapse Solutions.",
+    "Provide access to advanced AI-powered analytics to improve race strategy.",
+    "Connect the player with other influential figures in the tech and business world."
+  ],
+  "personality_summary": "A brilliant but demanding tech CEO with a surprisingly forgiving side."
+}

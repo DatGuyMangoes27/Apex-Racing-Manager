@@ -1,0 +1,22 @@
+{
+  "name": "Raquel Oliveira",
+  "nationality": "Brazilian",
+  "age": 40,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Raquel Oliveira's motorsport journey began in the bustling karting tracks of São Paulo. Even as a child, she displayed a keen understanding of vehicle dynamics and a remarkable ability to translate driver feedback into tangible mechanical adjustments. After earning a degree in mechanical engineering, she quickly rose through the ranks, working as a data analyst and eventually a performance engineer for several Brazilian touring car teams.\n\nAt ALL-INKL.COM Münnich Motorsport, Raquel coordinates the team's extensive test driver program. She possesses a rare ability to identify and nurture talent, meticulously analyzing telemetry data to pinpoint areas for improvement. Raquel's methodical approach and unwavering commitment to precision make her an invaluable asset, ensuring the team's cars are always at the cutting edge of performance. Her knack for innovative problem-solving has earned her the respect of both drivers and engineers alike.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy, usually tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Raquel has a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and observations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on starting every test session with a detailed weather report and track condition analysis, even if it's already been provided."
+  ]
+}

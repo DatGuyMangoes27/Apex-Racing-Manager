@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Hayes",
+  "nationality": "American",
+  "age": 36,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ethan Hayes's path to motorsports began not on the track, but in the classroom, poring over engineering textbooks. His fascination with the mechanics of speed led him to internships with smaller racing teams, eventually landing him a junior role at RFK Racing. He quickly proved his worth, demonstrating a keen eye for detail and a knack for problem-solving under pressure. Ethan rose through the ranks, his pragmatic approach and clear communication style earning him the respect of drivers and crew alike.\n\nEthan's philosophy centers around data-driven decision-making. He meticulously analyzes every aspect of the car's performance, seeking marginal gains that can translate into competitive advantages. He's known for his ability to distill complex information into actionable insights, enabling the team to make informed choices during races. His commitment to continuous improvement and collaborative spirit make him a valuable asset to RFK Racing.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Ethan is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of coffee during race weekends, claiming it enhances his focus."
+  ]
+}

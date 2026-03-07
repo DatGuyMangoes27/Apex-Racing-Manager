@@ -1,0 +1,27 @@
+{
+  "biography": "Peter Gregg, a 26-year-old American with a calculating mind and a burning ambition, is quickly making a name for himself in the world of motorsport. Born into a modest family in Jacksonville, Florida, Peter's passion for racing ignited at a young age, spending countless hours tinkering with go-karts in his backyard. His entry into professional racing was unconventional; initially a mechanic for a local Porsche team, Gregg impressed the team owner with his meticulous understanding of the cars and his surprisingly quick lap times during shakedown runs. This led to an unexpected opportunity behind the wheel. A defining moment came at Sebring in '73, when, after a series of mechanical failures plagued the team, Peter, starting from the back, skillfully navigated the chaos and secured a podium finish. Now driving a Porsche 911 RSR 74, Gregg continues his upward trajectory, proving to be a formidable competitor in every race.",
+  "drivingStyle": "Gregg's driving style is a masterclass in controlled aggression. He's known for his precise braking and calculated corner entries, prioritizing consistency over flamboyant maneuvers. He possesses an uncanny ability to manage tire wear, often maintaining a steady pace in the early stages of a race before unleashing his full potential in the final laps. Under pressure, Gregg remains remarkably composed, making him a dangerous opponent in wheel-to-wheel combat.",
+  "rivalries": [
+    {
+      "driver": "Enzo Vasari",
+      "reason": "A clash of styles; Vasari is known for his daring, aggressive moves, directly contrasting Gregg's calculated approach, leading to several on-track incidents and heated exchanges."
+    },
+    {
+      "driver": "Magnus Eriksson",
+      "reason": "Eriksson, a seasoned veteran, views Gregg as an upstart threatening his legacy. Their rivalry is fueled by a generational divide and constant battles for championship points."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "Dubois consistently challenges Gregg, proving to be a tough competitor on the track. Their professional rivalry is built on mutual respect and intense competition for podium finishes."
+    }
+  ],
+  "quirks": [
+    "Always polishes his driving gloves exactly 30 minutes before a race.",
+    "Refuses to start a race without wearing a specific lucky pair of socks, regardless of the weather.",
+    "Meticulously analyzes telemetry data from past races on the same track, even if conditions are vastly different."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't just about speed; it's about understanding the equation of risk and reward.\"",
+  "careerHighlight": "His podium finish at Sebring in '73, driving a barely functional car from the back of the grid, proved his resilience and cemented his reputation as a rising star.",
+  "careerLowPoint": "Crashing out of the lead at Daytona in '74 due to a rare lapse in concentration, costing him a potential victory and damaging his confidence."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Karim Nassar",
+  "nationality": "Lebanese",
+  "age": 37,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Karim Nassar is a Lebanese businessman who made his fortune in real estate development and luxury goods. Known for his sharp business acumen and relentless drive, he's expanded his empire across the Middle East and Europe. Despite his demanding schedule, Karim cultivates a sophisticated persona, indulging in hobbies like polo and fine whiskey collecting. Drivers might cross paths with Karim at high-profile motorsport events, as he is known to host exclusive parties and network with influential figures in the automotive industry, always looking for potential investment opportunities and brand endorsements.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly groomed with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained beard",
+    "description": "Karim possesses a commanding presence, often seen in tailored suits. His sharp eyes convey both intelligence and a hint of impatience."
+  },
+  "connectionToMotorsport": "Karim owns a significant share in a Formula 2 team and is rumored to be considering a move into Formula 1 as a team owner or major sponsor. He uses motorsport events as networking opportunities and enjoys the thrill of high-speed racing.",
+  "meetingContext": "The player could meet Karim at an exclusive after-party following a Grand Prix race in Abu Dhabi or Bahrain, where he is hosting a gathering of influential figures.",
+  "conversationTopics": [
+    "Luxury real estate",
+    "Fine whiskey and spirits",
+    "The future of automotive technology",
+    "Historical empires and leadership",
+    "His polo ponies"
+  ],
+  "canHelp": [
+    "Provide a lucrative sponsorship deal",
+    "Introduce the player to other influential business leaders",
+    "Offer investment opportunities in his various ventures, increasing the player's personal wealth"
+  ],
+  "personality_summary": "An impatient and ambitious mogul who values elegance and achievement."
+}

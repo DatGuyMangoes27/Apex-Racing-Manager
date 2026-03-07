@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Colombian",
+  "age": 36,
+  "gender": "male",
+  "role": "logistics_coordinator",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in Bogota, where he'd spend hours watching Formula 1 races with his grandfather. He holds a degree in Logistics and Supply Chain Management and initially worked for a large international shipping company. However, the allure of racing proved too strong, and he transitioned to motorsport five years ago, starting as a junior coordinator before quickly rising through the ranks. His meticulous approach ensures that every component, from tires to telemetry equipment, arrives at the track precisely when and where it's needed, minimizing delays and maximizing performance. He believes that flawless logistics are the unsung heroes of any successful racing team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height, with a strong build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas, even during meals.",
+    "Insists on double-checking every manifest and inventory list, regardless of who prepared it.",
+    "Has a peculiar habit of tapping his fingers in a rhythmic pattern when under pressure."
+  ]
+}

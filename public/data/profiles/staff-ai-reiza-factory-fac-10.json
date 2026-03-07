@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 23,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Bjørn grew up in a small town near Oslo, surrounded by snowmobiles and a surprising number of amateur racing teams. He was always fascinated by how things worked, spending hours tinkering with engines and building makeshift race cars with his friends. This passion led him to pursue a degree in mechanical engineering, where he honed his skills in fabrication and design.\n\nHe joined Reiza Studios Factory straight out of university, eager to apply his knowledge to a real racing environment. Bjørn is known for his methodical approach to problem-solving and his ability to find creative solutions under pressure. He believes that attention to detail is paramount in ensuring the reliability and performance of racing components. His colleagues often remark on his calm demeanor and unwavering focus, even in the most chaotic situations, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly trimmed sides with slightly longer hair on top, often styled back.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained stubble",
+    "description": "Bjørn is of average height with a lean build, often seen wearing safety glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always double-checks his measurements, even if he's confident.",
+    "Has a habit of humming quietly while working on intricate parts.",
+    "Insists on using only metric tools."
+  ]
+}

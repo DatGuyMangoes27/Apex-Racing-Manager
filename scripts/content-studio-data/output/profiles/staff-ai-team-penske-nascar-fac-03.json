@@ -1,0 +1,22 @@
+{
+  "name": "Ingrid Karlsson",
+  "nationality": "Swedish",
+  "age": 46,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Ingrid's journey into motorsport began unexpectedly. Originally trained in precision engineering, she found herself drawn to the high-stakes world of racing after a chance encounter at a local track. The intricate machinery and relentless pursuit of performance improvement immediately captivated her. She quickly transitioned from general machining to specializing in motorsport components, where tolerances are measured in microns. \n\nAt Team Penske, Ingrid is known for her meticulous approach and unwavering commitment to quality. She believes that even the smallest part can make a significant difference on the track, and she approaches every task with a perfectionist's eye. Ingrid is particularly adept at diagnosing and resolving complex mechanical issues, often finding solutions that others have overlooked. Her innovative problem-solving skills and dedication to excellence have earned her the respect of her colleagues and the trust of the drivers.\n\nBeyond her technical expertise, Ingrid is a keen observer of team dynamics. She understands that a well-coordinated pit crew is essential for success and she is always looking for ways to improve communication and efficiency. She's not afraid to challenge conventional wisdom and is a strong advocate for continuous improvement.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Neatly braided, often tucked under a cap",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A tall, lean woman with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of humming quietly while working on intricate parts.",
+    "Insists on using a specific type of Swedish steel for certain critical components."
+  ]
+}

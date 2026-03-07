@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alistair MacLeod",
+    "nationality": "Scottish",
+    "age": 22,
+    "gender": "male",
+    "role": "fabricator",
+    "bio": "Alistair's passion for motorsport ignited during his childhood, spent tinkering with engines alongside his grandfather, a retired mechanic. He honed his skills through a rigorous apprenticeship at a local engineering firm, where he specialized in precision fabrication and welding. Alistair is driven by a relentless pursuit of perfection in every component he crafts, believing that even the smallest detail can make a difference on the track.\n\nHe's eager to contribute his expertise and learn from experienced professionals in a high-performance environment. Alistair is known for his meticulous approach to problem-solving and his ability to adapt to changing circumstances. He's particularly interested in the integration of advanced materials and manufacturing techniques in motorsport, believing that innovation is crucial for achieving competitive advantage.",
+    "physical": {
+      "skinTone": "fair",
+      "hairColor": "ginger",
+      "hairStyle": "short, neatly trimmed beard",
+      "eyeColor": "blue",
+      "facialHair": "short, neatly trimmed beard",
+      "description": "Alistair is of average height with a lean build and a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always sharpens his pencils to a perfect point before starting a task.",
+      "Meticulously cleans his workspace at the end of each day, regardless of workload.",
+      "Humming Scottish folk tunes while working on complex fabrication tasks."
+    ]
+  }
+]

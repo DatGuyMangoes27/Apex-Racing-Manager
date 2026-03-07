@@ -1,0 +1,27 @@
+{
+  "biography": "Pedro Thomas, a name whispered with anticipation in Polish motorsport circles, hails from the small town of Kazimierz Dolny. Karting wasn't a birthright; his family ran a modest bakery. But the roar of engines from a nearby amateur track ignited a passion within him. He spent hours watching, memorizing lines, and badgering his parents for a chance to try. His break came when a local mechanic, impressed by Pedro's relentless questioning and keen eye, offered him a shot in a battered kart. His raw talent was immediately apparent, and he quickly rose through the karting ranks, funded by his parents' tireless work and local sponsorships. Now, at 18, Pedro's making waves in the Formula 4 series, a privateer battling against factory-backed teams. His calculating approach and unwavering focus have earned him both admiration and a few raised eyebrows in the paddock. He's a diamond in the rough, patiently waiting for the right opportunity to shine.",
+  "drivingStyle": "Pedro's driving style is best described as clinical. He's not one for flamboyant overtakes or dramatic slides. Instead, he meticulously analyzes the track, searching for the optimal line and braking points. His tire management is exceptional for his age, and he rarely makes mistakes under pressure. He prefers a car that's stable and predictable, allowing him to consistently deliver fast lap times. While some might call his style conservative, it's undeniably effective, and his consistency often sees him capitalize on the errors of his more aggressive rivals.",
+  "rivalries": [
+    {
+      "name": "Nikodem 'Niko' Urban",
+      "reason": "A fellow Polish driver with factory backing. Niko represents the established order Pedro is trying to disrupt."
+    },
+    {
+      "name": "Isabelle 'Izzy' Rossi",
+      "reason": "They clashed repeatedly in karting. Izzy is aggressive and fearless, a direct contrast to Pedro's calculated approach."
+    },
+    {
+      "name": "Kenji 'The Silent Storm' Tanaka",
+      "reason": "Both are known for tire management. Their battles always come down to strategies, and are the most calculating on the grid."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks gifted by his grandmother before every race.",
+    "Studies telemetry data obsessively, often spending hours analyzing the smallest details.",
+    "Refuses to eat anything other than a plain cheese sandwich on race days."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about bravery; it's about precision. You win by making fewer mistakes, not by taking unnecessary risks.\"",
+  "careerHighlight": "Winning the Polish National Karting Championship in his final year of karting, beating several drivers with significantly more funding.",
+  "careerLowPoint": "Crashing out of the lead in a Formula 4 race due to a mechanical failure, costing him valuable championship points."
+}

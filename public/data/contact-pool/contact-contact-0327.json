@@ -1,0 +1,31 @@
+{
+  "name": "Akari Tanaka",
+  "nationality": "Japanese",
+  "age": 53,
+  "gender": "female",
+  "contactType": "sponsor_exec",
+  "bio": "Akari Tanaka is the Chief Marketing Officer for a major automotive parts manufacturer, Koyo Technologies. Her career began in product development, but her sharp eye for market trends and ruthless negotiation skills quickly propelled her through the ranks. While publicly she presents a humble and elegant demeanor, those who work closely with her know she's a calculating and argumentative force to be reckoned with.\n\nTanaka-san's passion extends beyond the boardroom; she secretly enjoys competitive online gaming and meticulously plans exotic sailing trips. As CMO, she oversees Koyo's extensive motorsports sponsorships, including Formula racing and various GT series. A racing driver seeking sponsorship or endorsement deals would almost certainly need to impress Tanaka-san.",
+  "physical": {
+    "skinTone": "Warm ivory",
+    "hairColor": "Dark brown",
+    "hairStyle": "Sleek, chin-length bob with subtle waves",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Akari has a poised, almost regal bearing. She favors minimalist, high-end fashion that accentuates her slender frame."
+  },
+  "connectionToMotorsport": "As CMO of Koyo Technologies, Akari oversees all motorsports sponsorships, making her a key decision-maker for funding and endorsement opportunities.",
+  "meetingContext": "The player would likely meet Akari at a corporate event, a press conference related to a Koyo-sponsored racing team, or perhaps during a formal meeting at Koyo Technologies headquarters.",
+  "conversationTopics": [
+    "The latest advancements in automotive technology",
+    "The strategic value of motorsports marketing",
+    "The challenges and opportunities of the global market",
+    "Her recent sailing trip to the Mediterranean",
+    "The intricacies of eSports and online gaming"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal with Koyo Technologies",
+    "Provide access to Koyo's cutting-edge technology and R&D resources",
+    "Offer valuable insights into the business side of motorsports"
+  ],
+  "personality_summary": "A seemingly humble executive with a calculating mind and a hidden competitive streak."
+}

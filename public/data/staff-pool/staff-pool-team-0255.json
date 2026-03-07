@@ -1,0 +1,22 @@
+{
+  "name": "Robert 'Bob' McKinley",
+  "nationality": "American",
+  "age": 59,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Robert, known to everyone as 'Bob,' has spent his entire life immersed in motorsports. Growing up near Indianapolis, he practically lived at the speedway. He started as a mechanic's assistant, quickly demonstrating a knack for understanding the intricacies of race car engineering. He honed his skills working on various racing series before landing a role as a junior engineer, steadily climbing the ranks. \n\nBob's approach is rooted in data-driven analysis and practical problem-solving. He believes in building a strong team and fostering open communication, prioritizing the best possible solutions regardless of their origin. His pragmatic nature allows him to remain calm under pressure and make critical decisions in high-stakes situations. He's known for his ability to quickly diagnose problems and find innovative, yet reliable, solutions, often combining cutting-edge technology with time-tested techniques. His detail-oriented approach ensures no stone is left unturned in the pursuit of performance gains.\n\nThroughout his career, Bob has consistently demonstrated a rare ability to inspire his team to push the boundaries of engineering excellence. He's not afraid to challenge conventional wisdom, making him a valuable asset to any racing organization. He is looking to leave a legacy by mentoring the next generation of engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed gray goatee",
+    "description": "A stocky man with a permanent squint from years spent staring at engines."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he owns several high-tech calculators.",
+    "Has a habit of sketching engine diagrams on napkins during team meetings.",
+    "Insists on personally inspecting every component before a race, no matter how small."
+  ]
+}

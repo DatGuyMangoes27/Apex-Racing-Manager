@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhao",
+  "nationality": "Singaporean",
+  "age": 22,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Wei's fascination with motorsport began during his national service, where he served as a technician maintaining light vehicles. This sparked an interest in vehicle dynamics and aerodynamics, eventually leading him to pursue a diploma in mechanical engineering. He excelled in fluid dynamics and computational modeling, which positioned him perfectly for a role in wind tunnel operation. \n\nWei is meticulously focused on data integrity and repeatability in wind tunnel testing. He sees the wind tunnel not just as a tool, but as a critical bridge between theoretical design and on-track performance. His demanding nature stems from a deep commitment to accuracy and a belief that even the smallest details can significantly impact a race team's success. He's constantly pushing for refined testing methodologies and more comprehensive data analysis.\n\nWei is an advocate for incorporating innovative data visualization techniques to better understand aerodynamic phenomena. His ability to translate complex data into actionable insights sets him apart. Wei is a rising talent within the team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Dark brown",
+    "facialHair": "Goatee",
+    "description": "He is of average height with a lean build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations during wind tunnel runs.",
+    "Has a habit of meticulously cleaning the wind tunnel equipment after each session.",
+    "Insists on using a specific type of pen for data logging, claiming it improves accuracy."
+  ]
+}

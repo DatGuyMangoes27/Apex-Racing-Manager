@@ -24,6 +24,7 @@ export function PersonalLifeFamily() {
         currentWeek={careerState.currentWeek}
         currentYear={careerState.currentYear}
         pregnancy={(personalLifeState as any).pregnancy}
+        messagingContacts={careerState.messaging?.contacts}
       />
     </div>
   )

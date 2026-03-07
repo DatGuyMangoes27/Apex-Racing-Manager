@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Rossi",
+  "nationality": "Argentine",
+  "age": 26,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Valentina's passion for motorsport ignited early, fueled by her grandfather's stories of racing in Argentina. She pursued a degree in engineering, focusing on vehicle dynamics, before landing an internship at a local racing team. Her keen eye for detail and ability to translate technical data into actionable insights quickly made her an invaluable asset. Recognizing her potential, Meyer Shank Racing recruited her to coordinate their test driver program. \n\nValentina excels at identifying the right test drivers for specific development programs and managing their feedback effectively. She fosters open communication between the drivers, engineers, and team management, ensuring that everyone is aligned on the team's goals. Her 'big picture' approach allows her to see how individual tests contribute to the overall performance of the car and the team's long-term strategy. She is known for her calm demeanor under pressure, a crucial trait in the high-stakes world of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail during work.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of medium height with a lean, athletic build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a mate gourd and thermos.",
+    "Has a habit of sketching potential aerodynamic improvements during meetings.",
+    "Insists on having a whiteboard filled with technical diagrams in her office."
+  ]
+}

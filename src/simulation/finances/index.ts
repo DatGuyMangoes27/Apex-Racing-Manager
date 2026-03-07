@@ -2,11 +2,20 @@
 import { PlayerDriver, PlayerBackground } from '@/store/careerStore'
 import { Series } from '@/store/rivalStore'
 import {
-  SPONSORS,
   Sponsor,
   SponsorPayment,
   calculatePaymentWithBonus
-} from '@/data/sponsors';
+} from '@/data/sponsors'
+import { getSponsors } from '@/services/preGeneratedContentService'
+import {
+  calculateBackgroundSponsorBonus,
+  hasCorporateNetwork,
+  hasTechPartners,
+  hasGrassrootsSupport,
+  applySponsorPerk,
+  applyOperationalCostPerk
+} from '@/simulation/perkSystem'
+import { generateSponsorTargets, DEFAULT_SATISFACTION } from '@/simulation/sponsors/targets'
 
 type SponsorType = 'performance' | 'lifestyle' | 'traditional' | 'fan_focused'
 
@@ -352,7 +361,7 @@ export function getAllSponsorsWithEligibility(
   manufacturerId?: string,
   seriesCategory?: string
 ): SponsorEligibility[] {
-  return SPONSORS.map(sponsor => 
+  return getSponsors().map(sponsor =>
     getSponsorEligibility(sponsor, player, currentSeriesTier, manufacturerId, seriesCategory)
   )
 }
@@ -835,3 +844,19 @@ export * from './teamSponsors'
 
 export * from './personalFinances'
 export * from './equityManager'
+
+// ============================================
+// SPONSOR PERSONALITY
+// ============================================
+
+export type SponsorPersonality = 'aggressive' | 'conservative' | 'balanced' | 'flashy' | 'analytical'
+
+export function getSponsorPersonality(sponsorType: string): SponsorPersonality {
+  switch (sponsorType) {
+    case 'performance': return 'aggressive'
+    case 'lifestyle': return 'flashy'
+    case 'traditional': return 'conservative'
+    case 'tech': return 'analytical'
+    default: return 'balanced'
+  }
+}

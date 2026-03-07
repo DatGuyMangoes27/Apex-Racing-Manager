@@ -1,0 +1,31 @@
+{
+  "name": "Ayşe Demir",
+  "nationality": "Turkish",
+  "age": 65,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Ayşe Demir is a retired General in the Turkish Armed Forces, having served with distinction for over 40 years. Known for her strategic brilliance and unwavering dedication, she rose through the ranks, commanding troops in challenging environments and earning the respect of her peers. While her military career was paramount, Ayşe also cultivated a deep appreciation for precision engineering and the pursuit of excellence, qualities she sees mirrored in motorsport. A perfectionist at heart, she throws herself into hobbies with the same intensity she approached her military career. She has been seen at several Formula 1 races as a guest of a sponsor, and the racing driver may cross paths with her at a high-end charity event or a corporate function where she's a guest speaker.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Ayşe is a woman of strong posture and presence. Her sharp features and piercing eyes reflect a life of command and discipline."
+  },
+  "connectionToMotorsport": "Ayşe admires the strategic thinking and technical skill involved in racing, drawing parallels to military strategy. She occasionally attends races as a VIP guest through connections with defense contractors who sponsor racing teams.",
+  "meetingContext": "The player might meet Ayşe at a gala dinner hosted by a major motorsport sponsor, or perhaps at a high-profile charity auction.",
+  "conversationTopics": [
+    "The importance of discipline and strategic thinking",
+    "Her experiences in the military",
+    "The parallels between military strategy and racing strategy",
+    "Her art collection and favorite artists",
+    "The nuances of Turkish wines"
+  ],
+  "canHelp": [
+    "Introduce the player to influential business leaders and potential sponsors.",
+    "Offer mentorship and guidance on strategic decision-making.",
+    "Provide access to exclusive events and networking opportunities."
+  ],
+  "personality_summary": "A disciplined and intense retired General with a surprising appreciation for the finer things in life."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jari Mäkinen",
+  "nationality": "Finnish",
+  "age": 54,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Jari Mäkinen's journey into motorsport data analysis began unexpectedly after a career in forestry engineering. Frustrated with the limitations of traditional surveying methods, he began experimenting with sensor data and predictive modeling to optimize timber harvesting. His success caught the eye of a local rally team owner, who saw the potential for applying similar techniques to race performance. Jari quickly adapted his skills, developing sophisticated algorithms to analyze telemetry data, predict tire degradation, and optimize race strategy.\n\nHis approach is methodical and rigorous, always seeking to extract actionable insights from the vast amounts of data generated during testing and races. He is known for his ability to identify subtle patterns that others miss, often leading to significant performance gains. While respected for his technical acumen, Jari's demanding personality and unwavering focus on detail can sometimes create friction within the team, but his contributions are undeniable. He believes in delivering results and does not tolerate sloppy work or excuses. His particular focus lies on pre-emptive issue prediction, striving to see issues before they even present.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A tall, lean man with a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on using a specific brand of Finnish coffee beans in the team's espresso machine.",
+    "Has a habit of muttering to himself while analyzing data."
+  ]
+}

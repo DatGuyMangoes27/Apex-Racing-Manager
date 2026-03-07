@@ -4,12 +4,32 @@
 // Main dashboard for viewing and managing spare parts inventory
 
 import React from 'react'
+import { motion } from 'framer-motion'
+import { Gauge, Car, CircleDot, ArrowUpDown, Cog, Package, AlertTriangle, CheckCircle, TrendingUp, TrendingDown, Plus, Minus, Settings, Factory, Warehouse, MapPin, Truck, ArrowRight, Clock } from 'lucide-react'
+import { Card, CardHeader, CardContent, Badge, Button, Progress } from '@/components/ui'
+import { getManufacturingImage } from '@/utils/generated-assets'
+
+// CardTitle component - simple wrapper for card titles
+const CardTitle = ({ children, className = '', ...props }: { children: React.ReactNode; className?: string; [key: string]: unknown }) => (
+  <h3 className={`font-semibold text-text-primary ${className}`} {...props}>{children}</h3>
+)
+import { useCareerStore } from '@/store/careerStore'
+import type { SparePartsState } from '@/data/facility-config'
+import { SPARE_PART_TYPES, SPARE_PART_NAMES, getQualityColorClass } from '@/data/spare-parts-config'
+import type { SparePartType } from '@/data/spare-parts-config'
+import { getTotalInventorySummary, getHQCapacityInfo, getInventorySummary, getActiveWarehouses } from '@/simulation/logistics/partsInventory'
+import { getShipmentsSummary, getOrdersSummary } from '@/simulation/logistics/partsShipping'
+import { getManufacturingQueueStatus } from '@/simulation/logistics/partsManufacturing'
+import { getRegionDisplayName } from '@/data/travel-logistics'
+
+function PartTypeIcon({ type, className }: { type: string; className: string }): React.ReactElement | null {
   switch (type) {
     case 'engine': return <Gauge className={className} />
     case 'chassis': return <Car className={className} />
     case 'brakes': return <CircleDot className={className} />
     case 'suspension': return <ArrowUpDown className={className} />
     case 'gearbox': return <Cog className={className} />
+    default: return <Cog className={className} />
   }
 }
 
@@ -91,12 +111,23 @@ const HQStorageCard: React.FC<HQStorageCardProps> = ({ state, manufacturingLevel
   const capacityPercent = Math.round((hqCapacity.current / hqCapacity.max) * 100)
   
   return (
-    <Card className="bg-surface-dark border-border-subtle">
-      <CardHeader className="pb-2">
+    <Card className="bg-surface-dark border-border-subtle overflow-hidden">
+      {/* Facility Level Image */}
+      <div className="h-24 overflow-hidden relative">
+        <img
+          src={getManufacturingImage(manufacturingLevel)}
+          alt={`Level ${manufacturingLevel} facility`}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface-dark to-transparent" />
+      </div>
+      <CardHeader className="pb-2 -mt-4 relative">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
             <Factory className="w-5 h-5 text-accent-orange" />
-            HQ Storage
+            HQ Storage (Lv.{manufacturingLevel})
           </CardTitle>
           {onManageClick && (
             <Button variant="ghost" size="sm" onClick={onManageClick}>

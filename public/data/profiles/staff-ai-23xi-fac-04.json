@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alistair Finch",
+    "nationality": "British",
+    "age": 43,
+    "gender": "male",
+    "role": "electronics_engineer",
+    "bio": "Alistair's journey into motorsport began with a childhood obsession with Formula 1, meticulously studying telemetry data and dreaming of designing cutting-edge systems. He honed his skills through a degree in Electrical Engineering from Imperial College London, followed by a stint in the aerospace industry where he worked on flight control systems. Yearning for the adrenaline and innovation of racing, he transitioned to motorsport, initially working in a smaller team before landing a coveted position at 23XI Racing. \n\nAlistair is known for his meticulous attention to detail and his ability to quickly diagnose and resolve complex electrical issues under pressure. He thrives in the fast-paced environment of the pit lane and is always looking for ways to optimize the car's performance through innovative electronic solutions. His ambition is to one day lead the electronics department and contribute to a championship-winning season.\n\nWhat sets Alistair apart is his unorthodox approach to problem-solving. He often relies on a blend of theoretical knowledge and practical intuition, combined with a relentless pursuit of understanding the underlying principles of every system. He has a knack for identifying unexpected correlations in the data and translating them into tangible improvements on the track.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly parted with a slight receding hairline.",
+      "eyeColor": "Blue",
+      "facialHair": "Trimmed goatee",
+      "description": "Alistair is of average height with a lean build, often seen wearing his 23XI Racing team jacket."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a multi-tool on his belt.",
+      "Has a habit of humming quietly while deep in thought.",
+      "Insists on using a specific brand of soldering iron."
+    ]
+  }
+]

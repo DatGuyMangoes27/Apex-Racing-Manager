@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Larsson",
+  "nationality": "Swedish",
+  "age": 31,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Bjorn's fascination with motorsport began in his youth, tinkering with go-karts in his family's garage. This early exposure fueled his passion, leading him to pursue a degree in mechanical engineering. After graduating, he quickly immersed himself in the racing world, starting as a data analyst for a smaller racing team before progressing to a race engineer role. Bjorn is a data-driven engineer who believes in a systematic and structured approach to problem-solving. He's particularly skilled at identifying subtle performance gains through meticulous analysis of telemetry data.\n\nBjorn prides himself on his ability to remain calm under pressure and maintain a clear head during critical moments. He's known for his methodical nature and attention to detail, which allows him to quickly diagnose issues and implement effective solutions. While he enjoys innovation, he always prioritizes proven strategies and reliable performance. His pragmatic approach makes him a valuable asset to any race team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Bjorn is a lean man of average height, with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on having a perfectly clean and organized workspace."
+  ]
+}

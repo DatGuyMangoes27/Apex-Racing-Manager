@@ -1,0 +1,31 @@
+{
+  "name": "Tunku Iskandar Shah",
+  "nationality": "Malaysian",
+  "age": 48,
+  "gender": "male",
+  "contactType": "philanthropist",
+  "bio": "Tunku Iskandar Shah is a prominent Malaysian philanthropist and businessman, descended from royalty. He made his fortune in sustainable energy investments after completing his undergraduate degree in Economics from University of Cambridge. Tunku Iskandar is known for his direct and unwavering nature, often making bold decisions that reflect his independent spirit. Despite his wealth, he actively participates in various charitable endeavors, primarily focused on environmental conservation and educational initiatives. He is also a published author of historical fiction, and a keen polo player. \n\nHis presence in the motorsport world is tangential but significant. He sponsors a young driver development program focused on nurturing talent from Southeast Asia. A rising star in the racing world might encounter Tunku Iskandar at a charity gala, a polo match he's participating in, or through introductions from mutual high-society connections seeking funding.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Tunku Iskandar carries himself with an air of quiet confidence. He is of average height, but his tailored suits and sophisticated demeanor make him stand out in any crowd."
+  },
+  "connectionToMotorsport": "Tunku Iskandar sponsors a driver development program focused on young Southeast Asian talents, providing financial support and mentorship to promising racers.",
+  "meetingContext": "The player could meet Tunku Iskandar at a high-profile charity event, a polo match, or through a mutual contact within the racing or business community.",
+  "conversationTopics": [
+    "Sustainable energy and its impact on the environment",
+    "The challenges and opportunities in Southeast Asian economies",
+    "His latest book project and historical research",
+    "The importance of education and mentorship for young people",
+    "Polo and equestrian sports"
+  ],
+  "canHelp": [
+    "Provide significant financial sponsorship for the player's racing career.",
+    "Offer access to a network of influential business leaders and motorsport executives.",
+    "Introduce the player to experienced mentors and coaches within the Southeast Asian racing scene."
+  ],
+  "personality_summary": "A blunt and independent philanthropist with a passion for adventure and a commitment to supporting young talent."
+}

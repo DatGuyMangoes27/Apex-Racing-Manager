@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0306",
+  "name": "Casa Vieja Tequila",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Mexico",
+  "description": "Authentic Mexican tequila, crafted with tradition.",
+  "story": "Casa Vieja is a family-owned tequila distillery with a rich heritage. We believe in celebrating passion and precision, values we see reflected in motorsport. We aim to connect with a new generation of consumers through the excitement and prestige of racing, while also supporting Mexican talent on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 35000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0306.png"
+}

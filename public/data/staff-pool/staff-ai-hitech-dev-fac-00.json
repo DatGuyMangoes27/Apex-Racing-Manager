@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "American",
+  "age": 50,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Eleanor Vance's journey into motorsport began unconventionally, not on the track, but deep within the simulations that power the modern sport. After a successful career in aerospace engineering, she found herself drawn to the intricate data and complex systems that underpin racing simulation. Her background in fluid dynamics and control systems proved invaluable, and she quickly became a sought-after expert.\n\nAt Hitech Development, Eleanor is known for her pragmatic approach to problem-solving. She focuses on identifying the core issues that impact performance and devising practical solutions that can be implemented quickly and effectively. She believes in the power of data-driven decision-making and is always looking for new ways to leverage simulation to improve the team's performance. Eleanor's unique blend of theoretical knowledge and hands-on experience makes her a vital asset to the team.\n\nWhat sets Eleanor apart is her understanding of the interplay between the virtual and real worlds. She doesn't just see the simulator as a training tool; she sees it as a laboratory for innovation and a critical bridge between design and execution on the track. She is always pushing the boundaries of what is possible with simulation technology, and her insights have helped Hitech Development gain a competitive edge.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, layered bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eleanor is of medium height with a sturdy build, reflecting years spent hunched over computer screens."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas.",
+    "Insists on using a mechanical keyboard with clicky keys.",
+    "Has a habit of tapping her fingers when deep in thought."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Park Seo-joon",
+  "nationality": "South Korean",
+  "age": 57,
+  "gender": "male",
+  "contactType": "actor",
+  "bio": "Park Seo-joon is a celebrated actor in South Korea, known for his captivating performances in both film and television. His career spans over three decades, earning him numerous accolades and a dedicated global fanbase. While primarily known for his dramatic and comedic roles, Park is also known for his flamboyant personality and penchant for stirring up playful arguments amongst his inner circle. His love for vintage cars and high-end technology often lands him at exclusive events that sometimes overlap with the motorsport world. A racing driver might cross paths with Park at a promotional event, a charity gala, or even a vintage car rally.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly combed back",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Light stubble",
+    "description": "Park has a commanding presence with a sharp, expressive face. He favors tailored suits that accentuate his confident demeanor."
+  },
+  "connectionToMotorsport": "Park Seo-joon is a passionate collector of vintage and high-performance cars. He often attends exclusive motorsport events as a VIP guest and has been known to sponsor smaller, local racing teams.",
+  "meetingContext": "The player could meet Park at a launch event for a new line of luxury vehicles, where Park is invited as a celebrity guest.",
+  "conversationTopics": [
+    "The artistry of classic car restoration",
+    "The latest advancements in drone racing technology",
+    "His experiences filming action sequences in his movies",
+    "The best vineyards in Napa Valley",
+    "The philosophical benefits of meditation"
+  ],
+  "canHelp": [
+    "Provide introductions to wealthy sponsors in the entertainment industry.",
+    "Offer valuable media exposure through interviews and social media campaigns.",
+    "Connect the player with high-end car collectors and enthusiasts"
+  ],
+  "personality_summary": "An elegant and playful actor who is known for his dramatic flair and argumentative nature."
+}

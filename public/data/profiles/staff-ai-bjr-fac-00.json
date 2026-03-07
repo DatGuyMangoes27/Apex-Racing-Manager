@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 35,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Isabelle's journey into motorsport began unconventionally, fueled by a passion for complex systems and a knack for problem-solving honed during her engineering studies at McGill University. While her peers were engrossed in traditional automotive design, Isabelle found herself drawn to the intricacies of simulation technology. She saw its potential to not only improve driver performance but also to push the boundaries of vehicle development. \n\nAfter graduation, Isabelle pursued opportunities in the defense sector, working on flight simulators before transitioning to racing. Her methodical approach, combined with her visionary mindset, allows her to translate real-world racing challenges into precise and effective simulation models. Isabelle is known for her ability to identify subtle discrepancies between the simulator and the track, enabling drivers to fine-tune their skills and strategies with unparalleled accuracy.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair pulled back into a practical ponytail during work hours.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle has a focused intensity that is immediately apparent."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Drinks herbal tea exclusively, and always has a different blend each week."
+  ]
+}

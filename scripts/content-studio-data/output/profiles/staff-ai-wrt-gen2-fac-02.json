@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas Mendoza",
+  "nationality": "Peruvian",
+  "age": 30,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Sofia's journey into motorsport began with a fascination for aerodynamics and material science, fueled by Peru's burgeoning racing scene. After completing her engineering degree at the Universidad Nacional de Ingeniería, she honed her skills in composite repair and fabrication at a local automotive workshop. Her meticulous approach and problem-solving abilities quickly caught the attention of a racing team competing in regional championships. \n\nShe relocated to Europe several years ago, seeking to broaden her experience and work with cutting-edge technology. Before joining Team WRT, Sofia worked with smaller GT racing teams, where she was responsible for everything from carbon fiber repair to designing and implementing aerodynamic upgrades. Her deep understanding of materials and her ability to quickly adapt to demanding situations make her a valuable asset. Sofia prides herself on her commitment to quality and precision, always striving to push the boundaries of performance and durability in composite design.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a high ponytail during work, with a few strands framing her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is petite but athletic, with a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with material properties and stress calculations.",
+    "Has a specific playlist of Peruvian cumbia music she listens to while working to improve focus.",
+    "Insists on calibrating her tools every morning, even if they were already calibrated the day before."
+  ]
+}

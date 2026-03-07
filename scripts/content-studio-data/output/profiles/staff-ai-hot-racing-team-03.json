@@ -1,0 +1,22 @@
+{
+  "name": "Mei Fong",
+  "nationality": "Singaporean",
+  "age": 36,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Mei Fong's journey into motorsport began unconventionally, fueled by a childhood fascination with complex machines and a natural aptitude for problem-solving. After graduating top of her class from the National University of Singapore with a degree in Mechanical Engineering, she quickly found her calling in aerodynamics. Her initial work at a local engineering firm laid the groundwork for her understanding of airflow dynamics, and it was here she realized her passion lay in applying this knowledge to the high-stakes world of racing. \n\nJoining Hot Racing Team was a pivotal moment. Mei approaches her role with a blend of calculated precision and innovative thinking, constantly pushing the boundaries of what's aerodynamically possible. Known for her meticulous attention to detail and relentless pursuit of marginal gains, she firmly believes that even the smallest aerodynamic improvement can translate into significant performance gains on the track. Her ambition is infectious, driving her team to strive for excellence in every aspect of aero development, from wind tunnel testing to computational fluid dynamics.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Long, straight hair, often pulled back into a neat ponytail during work hours.",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei is of average height, with a focused intensity in her dark eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with aerodynamic equations and sketches.",
+    "Has a habit of tapping her pen rapidly when deeply engrossed in thought.",
+    "Insists on having a specific type of Singaporean coffee delivered to her desk every morning at precisely 9:00 AM."
+  ]
+}

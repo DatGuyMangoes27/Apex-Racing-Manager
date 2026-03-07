@@ -1,0 +1,22 @@
+{
+  "name": "Irina Volkov",
+  "nationality": "Russian",
+  "age": 54,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Irina Volkov's journey into motorsport began with a childhood fascination for the intricate workings of Soviet-era Lada engines. While her peers dreamt of becoming ballerinas, Irina spent hours tinkering in her grandfather's garage, developing a deep understanding of mechanical systems. This early passion led her to pursue a degree in Mechanical Engineering, followed by a decade in the Russian space program where she honed her skills in data analysis and performance optimization.\n\nDissatisfied with the bureaucracy, Irina transitioned to motorsport, bringing her analytical rigor and relentless pursuit of perfection. She views the race car as a complex system, meticulously analyzing every parameter to extract maximum performance. Her demanding nature pushes her team to excel, and her innovative ideas have consistently improved lap times. Irina's holistic approach, combining technical expertise with a 'big picture' understanding, makes her an invaluable asset to any team.\n\nNow at Sprint V8 Team, she's focused on extracting that extra tenth of a second from their powertrain unit through detailed simulation and real-world testing.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "Short, neatly bobbed hair with subtle highlights, often pulled back with a practical clip.",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Irina has a strong, determined face with deep-set eyes that hint at her intense focus."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small, well-worn slide rule and refers to it, even when using computer simulations.",
+    "Insists on drinking her tea from a specific chipped mug she's had for decades.",
+    "Has an uncanny ability to diagnose mechanical problems by simply listening to the engine."
+  ]
+}

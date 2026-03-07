@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 57,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Alistair McGregor hails from a small village in the Scottish Highlands, where his fascination with engines began by tinkering with his father's old tractor. He earned his degree in Mechanical Engineering from the University of Edinburgh and quickly found his way into motorsport, starting in Formula Ford before transitioning to stock car racing. Alistair's strength lies in his meticulous attention to detail and his ability to diagnose complex mechanical issues quickly. \n\nHis approach as a chief engineer emphasizes data analysis and continuous improvement. He believes in empowering his team to experiment and innovate, while maintaining a laser focus on reliability and performance. While he is not the most extroverted individual, Alistair commands respect through his deep technical knowledge and unwavering commitment to excellence. Alistair is known for his uncanny ability to predict component failures, earning him the nickname \"The Prognosticator\" among some of his colleagues.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Alistair is a lean man of average height with a perpetually thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Insists on drinking strong black coffee at precisely 10:00 AM every day.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 41,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bjørn's passion for motorsport ignited during his childhood, fueled by watching rally races in the Norwegian countryside. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and data analysis. After graduating, he started his career in a smaller racing team, honing his skills in optimizing car setups and analyzing performance data. His meticulous approach and ability to translate complex data into actionable insights quickly made him a valuable asset.\n\nBjørn is known for his rigorous and detail-oriented work ethic. He believes that every fraction of a second counts and leaves no stone unturned in his pursuit of performance gains. He emphasizes clear communication and expects the same level of commitment from his team members. While demanding, he's respected for his deep technical knowledge and unwavering dedication to achieving the best possible results.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly trimmed hair, receding slightly at the temples",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A tall, lean man with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations, even during meetings.",
+    "Has a specific playlist of electronic music he listens to while analyzing data.",
+    "Insists on having his workstation meticulously organized, with tools and equipment in their designated places."
+  ]
+}

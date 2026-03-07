@@ -1,0 +1,22 @@
+{
+  "name": "Arjun Verma",
+  "nationality": "Indian",
+  "age": 24,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Arjun's journey into motorsport began with a fascination for the intricate mechanics of engines. Growing up in Mumbai, he spent hours tinkering with his uncle's motorcycle, developing a keen eye for detail and a deep understanding of how things work. After earning a degree in Mechanical Engineering, Arjun dedicated himself to quality control, driven by a desire to ensure perfection in every aspect of performance.\n\nHe is known for his rigorous approach and unwavering commitment to upholding the highest standards. Arjun believes that even the smallest flaw can have significant consequences on the track, and he is determined to prevent any errors from slipping through. He views quality control as a critical component of a team's success, and he strives to contribute his expertise and passion to achieve victory. Arjun's methodical nature and sharp analytical skills make him a valuable asset, capable of identifying and resolving issues with precision and efficiency.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a slight fade",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Arjun is of average height with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only calibrated tools.",
+    "Carries a small notebook to document every inspection.",
+    "Always arrives 15 minutes early to assess the work environment."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 56,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jean-Pierre Dubois's passion for motorsport ignited during his childhood, spent watching Formula 1 races with his father. He pursued a degree in mechanical engineering, specializing in aerodynamics, and began his career at Renault, where he honed his skills in vehicle dynamics and performance optimization. He later transitioned to endurance racing, working with Peugeot and contributing to their Le Mans program. \n\nDubois is known for his meticulous approach to problem-solving and his ability to identify subtle yet crucial improvements in vehicle setup. He believes in fostering a collaborative environment where engineers are encouraged to challenge conventional wisdom and push the boundaries of innovation. His experience and visionary insights have earned him a reputation as a valuable asset to any racing team. He is joining Chip Ganassi Racing to bring a fresh perspective to their technical direction.\n\nJean-Pierre's ability to blend theoretical knowledge with practical application sets him apart. He is a relentless pursuer of excellence, always striving to find the 'next level' in performance.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back with receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is a man of medium height with a lean build and a thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Insists on using a slide rule for initial calculations before using software.",
+    "Has a habit of pacing while deep in thought, often muttering technical jargon."
+  ]
+}

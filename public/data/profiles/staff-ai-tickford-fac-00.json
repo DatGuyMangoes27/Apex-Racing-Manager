@@ -1,0 +1,22 @@
+{
+  "name": "Hinemoa Rangi",
+  "nationality": "New Zealand",
+  "age": 49,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Hinemoa Rangi’s journey into motorsport began not on the track, but in a university lab, where she honed her skills in computational fluid dynamics. After graduating with honors in mechanical engineering, she spent several years in the aerospace industry, working on flight simulators. A lifelong motorsport enthusiast, she eventually transitioned to racing, drawn by the challenge of applying her expertise in a high-pressure, constantly evolving environment. \n\nAt Tickford Racing, Hinemoa focuses on developing and refining the team's simulator models, ensuring they accurately reflect real-world conditions. Her pragmatic approach emphasizes rigorous testing and data analysis, prioritizing tangible improvements over theoretical perfection. She's known for her ability to translate complex data into actionable insights for the drivers, helping them optimize their performance on race day.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Hinemoa has a warm, friendly face framed by her practical hairstyle and a no-nonsense demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and simulator data.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on drinking green tea from a specific chipped mug."
+  ]
+}

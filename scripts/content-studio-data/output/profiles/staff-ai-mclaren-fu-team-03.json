@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 48,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Saoirse O'Malley's journey into motorsport began unexpectedly, fueled by a childhood fascination with aircraft design and a serendipitous encounter with a local karting team needing aerodynamic assistance. She quickly realized the principles were strikingly similar and embarked on a path that led her through university and into Formula Student, where she honed her skills in a competitive environment. Saoirse's approach to aerodynamics is deeply rooted in data analysis and simulation, but she also values the hands-on experience of wind tunnel testing and trackside observation. Her ability to translate complex data into tangible improvements on the car, coupled with her unwavering dedication to pushing the boundaries of performance, sets her apart. She's known for her sharp eye for detail and a relentless pursuit of aerodynamic efficiency.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, wavy, often tied back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Saoirse has a determined look with her bright green eyes that hint at her focused intellect."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Constantly chews on the end of a pen during meetings, even if it's a digital stylus.",
+    "Has a collection of miniature wind turbines on her desk.",
+    "Always arrives at the track with a detailed, color-coded spreadsheet of aerodynamic targets."
+  ]
+}

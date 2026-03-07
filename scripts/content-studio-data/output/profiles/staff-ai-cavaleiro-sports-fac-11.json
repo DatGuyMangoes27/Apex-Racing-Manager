@@ -1,0 +1,22 @@
+{
+  "name": "Seamus O'Connell",
+  "nationality": "Irish",
+  "age": 54,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Seamus O'Connell's motorsport journey began in the garages of rural County Cork, tinkering with engines alongside his father. He quickly developed a keen understanding of mechanical systems and a knack for identifying subtle performance improvements. While a racing career eluded him, Seamus found his niche in test coordination, where his meticulous nature and practical problem-solving skills shone.\n\nHe joined Cavaleiro Sports fifteen years ago and has become an indispensable part of the team. Seamus approaches his role with an unwavering focus on data accuracy and efficient scheduling, ensuring that every test session maximizes track time and delivers actionable insights. He is known for his ability to remain calm and collected under pressure, a trait that has earned him the respect of drivers and engineers alike. Seamus's distinctive quality lies in his ability to translate complex technical data into clear and concise recommendations, bridging the gap between the lab and the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed gray hair, receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed salt and pepper mustache.",
+    "description": "A stocky build, with a weathered face hinting at years spent under the harsh Irish sun."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in the digital age.",
+    "Has a specific brand of tea he insists on having brewed at precisely 9:00 AM each morning.",
+    "Meticulously cleans his workstation every Friday afternoon, regardless of its current state."
+  ]
+}

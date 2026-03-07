@@ -1,0 +1,22 @@
+{
+  "name": "Björn Ström",
+  "nationality": "Swedish",
+  "age": 55,
+  "gender": "male",
+  "role": "finance_controller",
+  "bio": "Björn Ström's career began in traditional banking, but his passion for motorsport always simmered beneath the surface. After years of managing corporate finances, he transitioned to the motorsport world, seeking a more dynamic environment. He believes in meticulous financial planning and rigorous cost control, essential for success on and off the track. His meticulous approach, honed over decades, ensures financial stability and allows teams to focus on performance, confident in the security of their financial foundation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Björn is a man of medium build with a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a meticulously organized spreadsheet printout.",
+    "Insists on using a vintage calculator for spot checks.",
+    "Has a habit of tapping his pen when reviewing financial reports."
+  ]
+}

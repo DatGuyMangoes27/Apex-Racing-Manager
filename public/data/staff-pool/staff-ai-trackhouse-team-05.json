@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 40,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Marco Bellini's path to motorsport was unconventional, starting with a deep fascination for data analysis and a near-obsessive interest in F1 races he watched with his grandfather. After graduating with a degree in engineering, he cut his teeth as a junior analyst for a small Italian racing team, quickly rising through the ranks due to his uncanny ability to predict tire degradation and optimal pit stop windows. His pragmatic approach, focusing on maximizing gains from every strategic decision, earned him a reputation as a reliable and effective strategist.\n\nBellini joined Trackhouse Racing after years of honing his skills in various European racing series. He prefers a data-driven approach, meticulously analyzing simulations and past race data to formulate race strategies. While he values teamwork, his focus remains on maximizing the team's performance through calculated risk-taking and shrewd decision-making. His colleagues appreciate his calm demeanor under pressure, making him a valuable asset during chaotic race situations.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Marco is of average height with a wiry build and intense, focused eyes."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically on the table when deep in thought.",
+    "Insists on having a double espresso before every race strategy meeting."
+  ]
+}

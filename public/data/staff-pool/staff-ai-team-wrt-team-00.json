@@ -1,0 +1,22 @@
+{
+  "name": "Bronte Hughes",
+  "nationality": "Australian",
+  "age": 45,
+  "gender": "female",
+  "role": "team_principal",
+  "bio": "Bronte Hughes practically grew up at Mount Panorama, Bathurst, wrenching on her father's Holden Commodore race car every weekend. While she never pursued driving herself, her passion for motorsport burned brightly. After completing a degree in mechanical engineering, she quickly climbed the ranks at Walkinshaw Racing, demonstrating a sharp eye for detail and an uncanny ability to identify even the smallest performance gains. Her relentless work ethic and commitment to innovation caught the attention of Team WRT, who headhunted her to lead their GT program.\n\nBronte is known for her hands-on approach, often found in the garage late into the night, poring over telemetry data with her engineers. She believes in fostering a culture of continuous improvement and empowering her team to take calculated risks. While some might find her demanding, those who work closely with her know that her high expectations are ultimately driven by a desire to win and a genuine belief in their potential. Her ability to blend cutting-edge technology with traditional motorsport values is what sets her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Bronte is of average height with a lean, athletic build and a perpetually focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multi-tool on her keychain.",
+    "Has a habit of tapping her pen rapidly when deep in thought.",
+    "Insists on personally signing off on every setup change before a race."
+  ]
+}

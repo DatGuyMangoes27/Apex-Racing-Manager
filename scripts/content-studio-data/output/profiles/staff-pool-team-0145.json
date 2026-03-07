@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 45,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo Vargas's journey into motorsport began in his youth, tinkering with go-karts in Lima. His passion led him to pursue a degree in mechanical engineering, after which he dove headfirst into the world of professional racing. He started as a junior mechanic for a small touring car team, quickly proving his aptitude for diagnosing and solving complex mechanical issues. His methodical approach and keen eye for detail earned him a promotion to race engineer within a few seasons.\n\nVargas is known for his pragmatic approach to race engineering. He prioritizes data-driven decisions and believes in building a strong rapport with the driver to maximize performance. He's not afraid to challenge conventional wisdom, often finding innovative solutions to optimize car setup and strategy. His calm demeanor under pressure makes him a valuable asset in high-stakes race situations. Vargas seeks to work with a team where precision and meticulousness are valued.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is of average height with a wiry build and intense, focused eyes."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on calibrating his own tools before each session.",
+    "Drinks a strong cup of coffee every two hours, precisely timed."
+  ]
+}

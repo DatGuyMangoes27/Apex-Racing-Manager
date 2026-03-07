@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 35,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Thierry's passion for motorsport ignited during his childhood, spent glued to the television watching Formula 1 races. After graduating with a degree in Mechanical Engineering from the Université catholique de Louvain, he began his career as a data analyst for a small GT team. This experience provided him with a solid foundation in understanding race telemetry and vehicle dynamics. \n\nHis strategic approach is methodical and data-driven, always seeking to identify opportunities for improvement. He's known for his calm demeanor under pressure and his ability to make quick decisions based on real-time information. Thierry joined Manthey EMA after demonstrating his strategic acumen, keen eye for detail, and uncanny ability to predict competitor strategies during his time with a rival Porsche outfit.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Thierry is of average height with a slender build, often seen wearing glasses."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with racing statistics.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific brand of Belgian chocolate at every race."
+  ]
+}

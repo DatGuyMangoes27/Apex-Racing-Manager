@@ -1,0 +1,61 @@
+{
+  "history": "Kouvola Circuit, affectionately known as Tykki, has been a cornerstone of Finnish motorsport since its inception, primarily serving as a rallycross venue. While the circuit's various layouts cater to different disciplines, the Snow configuration offers a unique challenge, transforming the familiar gravel and asphalt into a winter wonderland. The original circuit was built with rallycross in mind, and the Snow layout capitalizes on Finland's harsh winters, providing a thrilling spectacle for both drivers and spectators. Although not as widely known internationally as some other rallycross circuits, Kouvola's Snow layout holds a special place in the hearts of Finnish motorsport enthusiasts, often hosting national and regional rallycross events during the winter months.",
+  "atmosphere": "Imagine standing trackside at Kouvola's Snow layout, the crisp Finnish air biting at your cheeks. The roar of engines echoes through the snow-covered forest as rallycross cars, studded tires churning, battle for position. A plume of snow erupts with every aggressive turn and jump, creating a mesmerizing ballet of speed and control. The smell of burning rubber and high-octane fuel mixes with the pine-scented air, while the enthusiastic cheers of the crowd add to the electric atmosphere. The winter sun, low on the horizon, casts long shadows across the track, enhancing the drama of each race.",
+  "trackCharacter": "The Snow layout at Kouvola is a test of skill and bravery. The slippery surface demands precision and car control, rewarding drivers who can maintain momentum and find grip where others can't. The flowing corners and short straights favor nimble cars and decisive driving, while the ice and snow banks lining the track offer little margin for error. It's a layout that levels the playing field, where raw talent often triumphs over sheer horsepower. This specific layout is all about mastering the art of driving on the edge, balancing aggression with finesse to conquer the treacherous conditions.",
+  "nickname": "The Ice Cannon",
+  "famousCorners": [
+    {
+      "name": "Snow Bank Bend",
+      "description": "A high-speed sweeper where drivers need to use the snow banks to their advantage, bouncing off them to maintain speed and direction.",
+      "challenge": "Judging the angle and force required to carry speed through the corner without losing control."
+    },
+    {
+      "name": "Frozen Jumps",
+      "description": "A series of jumps covered in snow and ice, requiring drivers to maintain control while airborne.",
+      "challenge": "Landing smoothly and maintaining traction immediately after landing."
+    },
+    {
+      "name": "Ice Hairpin",
+      "description": "A tight hairpin corner covered in ice, demanding precise braking and steering.",
+      "challenge": "Finding the grip on the ice and preventing the car from sliding wide."
+    },
+    {
+      "name": "Snowy Esses",
+      "description": "A quick succession of left-right turns where maintaining momentum is crucial.",
+      "challenge": "Threading the car through the esses without losing speed or control."
+    },
+    {
+      "name": "Lake Jump",
+      "description": "The track briefly crosses a frozen lake, featuring a small jump off the ice back onto the snow-covered track.",
+      "challenge": "Maintaining a straight line and preparing for the change in surface conditions."
+    }
+  ],
+  "keyFactors": [
+    "Studded tire management",
+    "Weight transfer control",
+    "Braking precision on ice",
+    "Line selection in snowy conditions",
+    "Cold start engine performance"
+  ],
+  "overtakingSpots": [
+    "Into the Ice Hairpin (requires aggressive braking)",
+    "After the Frozen Jumps (capitalizing on landing errors)",
+    "Through the Snowy Esses (requires close following and good momentum)"
+  ],
+  "historySnippets": [
+    "Kouvola's Snow layout is a favourite among Finnish rallycross drivers.",
+    "The track is prepared by specialized snow grooming equipment.",
+    "The Snow layout often features temporary spectator areas built from snow.",
+    "Local volunteers play a vital role in track preparation and maintenance.",
+    "The frozen lake section adds a unique element to the racing.",
+    "The Snow layout is typically only used during the winter months."
+  ],
+  "weatherNotes": "Weather conditions at Kouvola during winter are unpredictable. Temperatures can range from -20°C to 0°C, and snowfall is common. Changing snow conditions can drastically affect grip levels, requiring drivers to adapt their driving style throughout a race. Visibility can also be a challenge during heavy snowfall.",
+  "drivingAdvice": "On Kouvola's Snow layout, finesse is key. Avoid sudden movements and try to maintain a smooth, consistent driving style. Use the studded tires to your advantage, but be mindful of their wear rate. Experiment with different lines to find the optimal grip. Practice weight transfer techniques to help rotate the car through corners. Be prepared for sudden changes in grip levels due to varying snow and ice conditions. Use the snowbanks to your advantage, but always be aware of the risk of getting stuck.",
+  "famousRaces": [
+    "The Finnish National Rallycross Championship often features a round at Kouvola's Snow layout, showcasing the best local talent.",
+    "Regional rallycross events at Kouvola's Snow layout attract a large number of amateur and semi-professional drivers.",
+    "Ice racing events have also been held on modified versions of the Snow layout, featuring cars with specialized ice racing tires."
+  ],
+  "localCulture": "Kouvola is a city in southeastern Finland, known for its industrial heritage and its proximity to nature. The local cuisine features hearty dishes such as Karelian stew and salmon soup. The Finnish people are known for their love of motorsports and their passion for rallycross. Paddock life at Kouvola is relaxed and friendly, with a strong sense of community among the drivers and teams. Visitors can experience the Finnish sauna culture and enjoy the beautiful winter landscapes."
+}

@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0438",
+  "name": "Pivovar Zlatá",
+  "category": "local",
+  "tier": "high",
+  "country": "Czech Republic",
+  "description": "The golden standard in Czech beer.",
+  "story": "Pivovar Zlatá, a family-owned brewery with a rich history dating back to the 1800s, sees motorsport as a thrilling platform to connect with passionate fans. They value precision, dedication, and the pursuit of excellence, mirroring their own brewing philosophy. They seek a partnership that amplifies their brand presence and showcases the spirit of Czech craftsmanship on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0438.png"
+}

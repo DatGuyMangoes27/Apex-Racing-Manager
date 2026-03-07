@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Swiss",
+  "age": 50,
+  "gender": "female",
+  "contactType": "business_mogul",
+  "bio": "Isabelle Dubois is a self-made billionaire, having built her empire from the ground up in the luxury goods sector. Known for her shrewd business acumen and unwavering dedication to quality, she commands respect in the cutthroat world of high finance. Despite her demanding career, Isabelle is a passionate romantic with a deep appreciation for the arts and intellectual pursuits. She is known to be blunt but fair, and her perfectionist tendencies extend to all aspects of her life. Her connection to motorsport stems from her sponsorship of a Formula 1 team, driven by a desire to support Swiss talent on the world stage. A driver might cross paths with Isabelle at a charity gala, a corporate event hosted by her company, or even through a mutual contact within the racing community.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brunette",
+    "hairStyle": "Elegant bob with subtle waves",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle possesses a commanding presence with sharp features and an air of sophistication. Her impeccable style reflects her attention to detail and appreciation for luxury."
+  },
+  "connectionToMotorsport": "Isabelle Dubois sponsors the Sauber Formula 1 team and occasionally attends races, particularly those in Europe.",
+  "meetingContext": "The player might meet Isabelle at a high-profile Formula 1 after-party or at a charity event benefiting underprivileged youth, which she frequently supports.",
+  "conversationTopics": [
+    "The nuances of single-malt Scotch whisky",
+    "The philosophy of Alain de Botton",
+    "The latest advancements in sustainable luxury manufacturing",
+    "Her experiences volunteering in developing countries",
+    "The thrill of a perfectly executed polo match"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with luxury brands",
+    "Provide access to a network of influential business leaders",
+    "Offer mentorship and guidance on financial management and investment strategies"
+  ],
+  "personality_summary": "A sharp, sophisticated, and demanding businesswoman with a hidden romantic streak."
+}

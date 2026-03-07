@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kiss",
+  "nationality": "Hungarian",
+  "age": 27,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Zoltán's fascination with motorsport began in his youth, attending local rally events with his father. This early exposure ignited a passion for the technical intricacies of racing. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and data analysis. After graduating, he gained experience in a smaller racing team before seeking opportunities at a higher level.\n\nZoltán is a meticulous engineer, known for his rigorous data analysis and ability to translate complex data into actionable insights. He's dedicated to optimizing car performance, and his work ethic is relentless. He thrives in high-pressure environments, remaining calm and focused even when faced with tight deadlines. Zoltán is eager to contribute to a team where his dedication and technical expertise can make a significant difference.\n\nHe is a very loyal member of any team he joins.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "light stubble",
+    "description": "Zoltán is of average height, with a focused and intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a Rubik's Cube on his desk and solves it during short breaks.",
+    "Prefers to analyze data with classical music playing softly in the background.",
+    "Keeps a detailed notebook of every adjustment made to the car and its impact on performance."
+  ]
+}

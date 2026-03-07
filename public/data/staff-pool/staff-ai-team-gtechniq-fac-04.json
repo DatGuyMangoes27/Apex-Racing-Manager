@@ -1,0 +1,22 @@
+{
+  "name": "Pieter Vermeer",
+  "nationality": "Dutch",
+  "age": 47,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Pieter's journey into motorsport began unexpectedly. A keen interest in electronics from a young age led him to pursue a degree in electrical engineering at Delft University of Technology. While initially considering a career in consumer electronics, a chance encounter with a Formula Student team ignited his passion for racing. He joined their electronics sub-team, quickly becoming indispensable due to his meticulous approach and problem-solving skills.\n\nAfter graduating, Pieter landed a role at a small racing team, where he honed his skills in data acquisition, sensor calibration, and ECU tuning. He's known for his ability to quickly diagnose and resolve complex electrical issues, often under immense pressure. Now at Team Gtechniq, he brings his experience to bear, ensuring the car's electronic systems perform flawlessly. Pieter’s demanding nature pushes his team to achieve the highest standards, although it can occasionally lead to friction. His reputation for precision and unwavering dedication, however, generally wins people over.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Pieter is of average height with a lean build, often seen wearing safety glasses perched on his forehead."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Insists on using specific brands of electrical tape and connectors.",
+    "Has a habit of humming quietly while troubleshooting complex circuits."
+  ]
+}

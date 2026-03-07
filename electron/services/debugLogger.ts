@@ -254,6 +254,42 @@ export const commentaryLog = {
   
   contextUsed: (contextFields: string[], details?: Record<string, any>) => 
     logCommentaryDecision('CONTEXT_USED', contextFields.join(', '), { fields: contextFields, ...details }),
+
+  coverageLaneSelected: (lane: string, target?: string) =>
+    logCommentaryDecision(
+      'COVERAGE_LANE_SELECTED',
+      target ? `${lane} -> ${target}` : lane,
+      { lane, target }
+    ),
+
+  threadCallbackGuide: (details: {
+    eventType: string
+    hasGuide: boolean
+    activeStates: string[]
+    stateCounts: Record<string, number>
+    finishResolutionRule: boolean
+  }) =>
+    logCommentaryDecision(
+      'THREAD_CALLBACK_GUIDE',
+      details.hasGuide
+        ? `${details.eventType}: ${details.activeStates.join(', ') || 'none'}`
+        : `${details.eventType}: none`,
+      details
+    ),
+
+  threadResolutionRule: (eventType: string, activePayoff: number, activeCooldown: number) =>
+    logCommentaryDecision(
+      'THREAD_RESOLUTION_RULE',
+      `${eventType}: payoff=${activePayoff}, cooldown=${activeCooldown}`,
+      { eventType, activePayoff, activeCooldown }
+    ),
+
+  threadResolutionQuality: (eventType: string, payoffSignal: boolean, cooldownSignal: boolean) =>
+    logCommentaryDecision(
+      'THREAD_RESOLUTION_QUALITY',
+      `${eventType}: payoffSignal=${payoffSignal ? 1 : 0}, cooldownSignal=${cooldownSignal ? 1 : 0}`,
+      { eventType, payoffSignal, cooldownSignal }
+    ),
   
   historyRef: (description: string, count?: number) => 
     logCommentaryDecision('HISTORY_REF', description, { count }),

@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0358",
+  "name": "Pneumatiques Leclerc",
+  "category": "tires",
+  "tier": "elite",
+  "country": "France",
+  "description": "Precision engineered tires for peak performance.",
+  "story": "Pneumatiques Leclerc has been a leader in tire technology for over 60 years, driven by a passion for innovation and a commitment to pushing the boundaries of performance. Motorsport is the ultimate proving ground for our technology, allowing us to refine our designs and deliver unparalleled grip and durability to drivers worldwide. We seek partnerships with teams that share our dedication to excellence and demonstrate a relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0358.png"
+}

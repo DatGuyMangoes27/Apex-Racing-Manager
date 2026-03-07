@@ -1,0 +1,31 @@
+{
+  "name": "Lee Mei-Ling",
+  "nationality": "Singaporean",
+  "age": 64,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Lee Mei-Ling is a prominent figure in Singaporean politics, known for her unwavering dedication to public service and her occasionally controversial stances. Rising through the ranks, she has championed initiatives focused on sustainable development and technological innovation, often clashing with established norms. Despite her no-nonsense demeanor, she is known for her genuine concern for her constituents and a surprising rebellious streak that occasionally surfaces. \n\nHer connection to motorsport is indirect but significant. She sits on the board overseeing major infrastructure projects, including the Marina Bay Street Circuit, and is a vocal advocate for the economic benefits that the Singapore Grand Prix brings to the nation. A racing driver might cross paths with her at fundraising events, government receptions, or during discussions regarding the environmental impact of motorsport events within Singapore.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly bobbed",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Lee Mei-Ling is a woman of commanding presence. She maintains a professional and put-together look, often seen in tailored suits."
+  },
+  "connectionToMotorsport": "As a key political figure, Lee Mei-Ling is tangentially connected to motorsport through her involvement in approving infrastructure projects like the Marina Bay Street Circuit and supporting the economic impact of the Singapore Grand Prix.",
+  "meetingContext": "The player might meet Lee Mei-Ling at a charity gala for a cause she supports, or at a government event related to the Singapore Grand Prix.",
+  "conversationTopics": [
+    "The economic impact of Formula 1",
+    "Sustainable development in Singapore",
+    "The future of Singapore's infrastructure",
+    "The importance of technological innovation",
+    "Her love for ballet and classical music"
+  ],
+  "canHelp": [
+    "Granting access to influential business leaders within her network",
+    "Facilitating introductions to potential sponsors in Singapore",
+    "Providing insights into upcoming government regulations affecting motorsport events"
+  ],
+  "personality_summary": "A sincere but occasionally dismissive politician who is both reliable and arrogant."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 37,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Declan's journey into motorsport began unexpectedly. Initially trained as a shipwright in Galway, his expertise in composite materials soon attracted the attention of a local rally team struggling with bodywork repairs. He quickly adapted his skills to the fast-paced world of racing, discovering a passion for the precision and innovation required. \n\nAt Eurofarma RC, Declan is known for his meticulous approach and his dedication to finding marginal gains. He believes that even the smallest improvements in aerodynamics and weight distribution can make a significant difference on the track. While not the loudest member of the team, Declan's quiet confidence and unwavering reliability make him a cornerstone of the engineering department.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Ginger",
+    "hairStyle": "Short, neatly trimmed with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained beard",
+    "description": "A stocky man with a weathered face and kind eyes, Declan always looks like he's about to crack a joke."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical drawings and calculations.",
+    "Has a peculiar habit of tapping his wrench against metal surfaces to check for structural integrity.",
+    "Insists on using a specific type of Irish linen cloth for polishing composite surfaces."
+  ]
+}

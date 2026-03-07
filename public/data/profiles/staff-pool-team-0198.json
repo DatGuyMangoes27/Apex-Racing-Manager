@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 49,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jean-Pierre's motorsport journey began in the Swiss Alps, tinkering with his father's rally car. He honed his skills at ETH Zurich, focusing on computational fluid dynamics and vehicle dynamics. A decade spent with Sauber honed his race engineering expertise, followed by a shorter stint at a smaller team where he developed innovative suspension setups. He prides himself on his ability to translate complex data into actionable insights for the drivers, creating a seamless feedback loop for performance improvement. He is known for his calm demeanor under pressure and his unflinching dedication to extracting every last tenth of a second from the car.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of average height with a focused gaze, Jean-Pierre exudes an aura of quiet competence."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a Swiss Army knife, even at the track.",
+    "Methodically cleans his workspace at the end of each day, regardless of the hour.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

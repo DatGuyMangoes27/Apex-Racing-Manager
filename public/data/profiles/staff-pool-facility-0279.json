@@ -1,0 +1,22 @@
+{
+  "name": "Arjun Verma",
+  "nationality": "Indian",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Arjun's journey into motorsport began with a childhood fascination for the intricate mechanics of his grandfather's auto-rickshaw. He honed his skills at a local engineering college, specializing in materials science. After graduation, he gained valuable experience at a small motorsport workshop in Coimbatore, working on rally cars and honing his fabrication skills. He's known for his meticulous attention to detail and his ability to find practical solutions to complex engineering problems.\n\nArjun's pragmatic approach makes him a valuable asset to any team. He believes in maximizing efficiency and reliability, always seeking to optimize performance through robust design and precise execution. He thrives in collaborative environments, readily sharing his knowledge and expertise with his colleagues. Arjun is driven by a desire to push the boundaries of performance while maintaining the highest standards of safety and durability.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed beard",
+    "description": "Arjun is of medium build with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always uses a specific type of wrench for tightening bolts, believing it provides better torque feedback.",
+    "Keeps a small notebook filled with sketches and calculations related to ongoing projects.",
+    "Insists on cleaning his workspace meticulously at the end of each day."
+  ]
+}

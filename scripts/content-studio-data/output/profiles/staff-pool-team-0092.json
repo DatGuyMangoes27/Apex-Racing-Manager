@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 54,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo Velez’s motorsport journey began in the bustling streets of Medellin, where he tinkered with engines in his father's auto repair shop. His passion led him to pursue engineering at the National University of Colombia, specializing in aerodynamics. He quickly rose through the ranks, working with several prominent South American racing teams before making his mark in European Formula racing.\n\nKnown for his meticulous approach and ability to extract maximum performance from existing designs, Ricardo is a master of optimization. He believes in fostering a collaborative environment, encouraging his team to push boundaries while maintaining a steadfast focus on reliability. His calm demeanor under pressure and his knack for identifying crucial performance gains set him apart.\n\nRicardo's commitment to data analysis and his unwavering dedication to continuous improvement make him a valuable asset to any racing team. He is driven by a desire to win, but also by a deep respect for the sport and the people who make it possible.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is a man of medium build with a thoughtful expression and kind eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches.",
+    "Has a lucky wrench he's had since his early racing days.",
+    "Insists on having a cup of strong black coffee before every race."
+  ]
+}

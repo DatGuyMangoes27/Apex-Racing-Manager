@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Rudolf Keller",
+  "nationality": "Swiss",
+  "age": 46,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Hans-Rudolf discovered his love for motorsport at a young age, spending weekends tinkering with go-karts at the local track. He pursued a degree in electrical engineering, focusing on embedded systems and signal processing. After graduating, he worked for a precision instrumentation company, developing sensors for industrial applications. He transitioned to motorsport five years ago, initially working for a smaller team before joining Allied Racing. \n\nHans-Rudolf excels in diagnosing and resolving complex electrical issues quickly, ensuring the car's electronic systems perform optimally. He takes a methodical approach to problem-solving, carefully analyzing data and collaborating with other team members to find effective solutions. His calm demeanor under pressure is invaluable during race weekends, allowing him to maintain focus and make critical decisions in high-stress situations. He is known for his meticulous attention to detail and his ability to optimize electronic systems for peak performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a habit of humming while soldering.",
+    "Drinks herbal tea instead of coffee."
+  ]
+}

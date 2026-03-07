@@ -60,7 +60,32 @@ export interface TextMessage {
   hasInvitation?: boolean
   invitationId?: string
   hasPhoto?: boolean
+  
+  // Photo attachment details (when hasPhoto is true)
+  photoUrl?: string                // Resolved image path
+  photoCategory?: PhotoMessageCategory
+  photoCaption?: string            // Text that accompanies the photo (shown as message content)
+  photoContactPortrait?: boolean   // True if the photo is a selfie using the contact's portrait
+  
+  // Session tracking
+  isSessionEnd?: boolean           // True if this message ends a conversation session
 }
+
+// ============================================
+// PHOTO MESSAGE TYPES
+// ============================================
+
+export type PhotoMessageCategory =
+  | 'selfie'           // Contact sends a selfie (uses their portrait)
+  | 'scenery'          // Travel/scenic "saw this, thought of you"
+  | 'kids'             // Photos of children (uses child portrait)
+  | 'food'             // Restaurant/cooking pics
+  | 'activity'         // Hobby/workout/outing pics
+  | 'couple_memory'    // Old photo together, throwback
+  | 'pet'              // Pet pictures
+  | 'work'             // At work/career achievements
+  | 'event'            // Party/social event pics
+  | 'race_day'         // At the track, watching the race
 
 // ============================================
 // CONVERSATIONS
@@ -88,6 +113,48 @@ export interface Conversation {
   currentTopic?: string
   awaitingResponse: boolean     // Is NPC expecting a reply
   conversationStage: 'new' | 'ongoing' | 'cooling_off' | 'stale'
+  
+  // ── Topic history (conversation memory) ──
+  topicHistory?: Array<{
+    topic: string              // e.g., 'finances', 'spa_race', 'relationship'
+    week: number
+    year: number
+    sentiment: 'positive' | 'neutral' | 'negative'
+    summary?: string           // Brief summary for AI context
+  }>
+  
+  // ── Session tracking (time cost & limits) ──
+  exchangesToday?: number       // Exchanges in current day (for session limits)
+  lastExchangeDay?: number      // Day of last exchange
+  totalExchanges?: number       // All-time exchange count
+  
+  // ── NPC follow-up tracking ──
+  npcFollowUpPending?: boolean  // NPC wants to follow up
+  playerGhostedDays?: number    // How many days since player last replied
+  nudgeSent?: boolean           // Has NPC already sent a nudge for ghosting
+  
+  // ── Pinned status ──
+  isPinned?: boolean
+  
+  // ── Cached AI-generated message choices ──
+  // Prevents regeneration on component remount / app refresh
+  cachedChoices?: {
+    choices: Array<{
+      id: string
+      category: string
+      preview: string
+      fullMessage: string
+      tone: string
+      intentTag?: string
+      riskLevel: string
+      couldBackfire?: boolean
+      expectedEffects?: Record<string, unknown>
+      likelyResponses?: string[]
+    }>
+    generatedForDay: { week: number; day: number; year: number }
+    afterMessageId: string  // ID of last message when choices were generated
+    isAIGenerated?: boolean  // Whether choices came from AI (true) or template fallback (false/undefined)
+  }
 }
 
 export interface NpcMood {
@@ -119,6 +186,10 @@ export interface MessageChoice {
   fullMessage: string           // What gets "sent"
   tone: MessageTone
   
+  // Intent tag — visible label so the player knows the purpose of this reply
+  // Optional for backward compat with cached/template choices; UI derives it from category+tone when missing.
+  intentTag?: MessageIntentTag
+  
   // Requirements
   requiresRelationshipLevel?: number
   requiresTrust?: number
@@ -140,6 +211,21 @@ export interface MessageChoice {
   likelyResponses: string[]     // Categories of likely NPC responses
 }
 
+// Intent tags — high-level labels shown on reply choices so players
+// can clearly see what pursuing each option signals.
+export type MessageIntentTag =
+  | 'flirting'            // Actively flirting / showing romantic interest
+  | 'romance'             // Deepening an existing romantic relationship
+  | 'friendly'            // General friendly chat
+  | 'supportive'          // Offering emotional support / encouragement
+  | 'professional'        // Business / work-related
+  | 'banter'              // Playful teasing / joking around
+  | 'confrontational'     // Picking a fight / calling someone out
+  | 'apologetic'          // Apologising / making amends
+  | 'planning'            // Making plans / scheduling
+  | 'curious'             // Asking questions / showing interest in them
+  | 'news'                // Sharing or reacting to news
+
 export type MessageChoiceCategory = 
   | 'greeting'
   | 'small_talk'
@@ -157,6 +243,7 @@ export type MessageChoiceCategory =
   | 'question'
   | 'share_news'
   | 'make_plans'
+  | 'decline'
 
 // ============================================
 // CONVERSATION CONTEXT
@@ -227,8 +314,24 @@ export interface NpcResponse {
   suggestedFollowUp?: string    // "Ask about their day", "Apologize"
   wantsToMeetUp: boolean        // Suggesting a date/meetup
   
+  // Conversation flow control
+  shouldEndConversation?: boolean  // AI thinks this is a natural stopping point
+  
+  // Topic tracking (from AI)
+  topicTag?: string             // Extracted topic tag for conversation memory e.g. "race_results", "relationship_future"
+  
   // Emotional state
   emotionalReaction: 'delighted' | 'happy' | 'pleased' | 'neutral' | 'disappointed' | 'upset' | 'angry'
+  
+  // Action request (NPC offers an invite, favor, introduction, etc.)
+  actionRequest?: {
+    type: 'social_invite' | 'dinner_invite' | 'date_request' | 'introduction' | 'sponsor_appearance' | 'career_favor' | 'race_tickets' | 'advice' | 'media_request' | 'charity_ask'
+    description: string
+    timeCost?: number
+    moneyCost?: number
+    suggestedDay?: number         // 1-7 (Mon-Sun) - when the event should happen
+    relationshipReward?: number
+  } | null
 }
 
 // ============================================
@@ -488,6 +591,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'Share the victory!',
         fullMessage: 'We did it! Won the race today! Wish you could have been there to celebrate!',
         tone: 'excited',
+        intentTag: 'news',
         expectedEffects: { affection: 3, mood: 'happy' },
         riskLevel: 'safe',
         couldBackfire: false,
@@ -498,6 +602,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'First thought was you',
         fullMessage: 'Crossed the finish line and my first thought was of you. This win is for us.',
         tone: 'romantic',
+        intentTag: 'romance',
         requiresRelationshipLevel: 60,
         expectedEffects: { affection: 8, romance: 5 },
         riskLevel: 'safe',
@@ -515,6 +620,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'Reach out for support',
         fullMessage: 'Tough day at the track. Could use some cheering up if you\'re free to talk.',
         tone: 'casual',
+        intentTag: 'supportive',
         expectedEffects: { trust: 2 },
         riskLevel: 'safe',
         couldBackfire: false,
@@ -531,6 +637,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'Hey stranger',
         fullMessage: 'Hey stranger! Been a while. How have you been?',
         tone: 'friendly',
+        intentTag: 'friendly',
         expectedEffects: { affection: 1 },
         riskLevel: 'safe',
         couldBackfire: false,
@@ -541,6 +648,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'Sorry for being distant',
         fullMessage: 'I\'m sorry I\'ve been so distant. Racing season has been crazy but that\'s no excuse. I miss talking to you.',
         tone: 'apologetic',
+        intentTag: 'apologetic',
         expectedEffects: { trust: 3, affection: 2 },
         riskLevel: 'mild',
         couldBackfire: true,
@@ -557,6 +665,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'I\'ve been terrible...',
         fullMessage: 'I know I\'ve been terrible at keeping in touch. Life got crazy but that\'s not fair to you. Can we start fresh?',
         tone: 'apologetic',
+        intentTag: 'apologetic',
         expectedEffects: { trust: -2, affection: 1 },
         riskLevel: 'risky',
         couldBackfire: true,
@@ -573,6 +682,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'I can tell something\'s wrong',
         fullMessage: 'I can tell something\'s bothering you. I\'m here if you want to talk about it.',
         tone: 'supportive',
+        intentTag: 'supportive',
         expectedEffects: { trust: 3, affection: 2 },
         riskLevel: 'safe',
         couldBackfire: false,
@@ -583,6 +693,7 @@ export const CONVERSATION_STARTERS: ConversationStarter[] = [
         preview: 'Let me cheer you up',
         fullMessage: 'You seem down. Let me take you out and cheer you up. Anywhere you want to go.',
         tone: 'supportive',
+        intentTag: 'planning',
         expectedEffects: { affection: 4, mood: 'better' },
         riskLevel: 'mild',
         couldBackfire: true,
@@ -625,12 +736,30 @@ export const MESSAGING_CONFIG = {
   maxMessagesPerDay: 10,          // Don't spam
   optimalMessagesPerWeek: 5,      // Sweet spot for relationship
   
+  // ── Time costs ──
+  timeCostPerExchange: 0.25,      // Hours (15 min) per exchange (your msg + their reply)
+  maxExchangesPerSession: 6,      // NPC wraps up after this many exchanges per day
+  
   // Response times
   npcResponseDelayMinutes: { min: 5, max: 120 },
   
   // Relationship effects
   noContactDecayDays: 7,          // Start losing points after this
   decayPerWeek: 2,                // Affection loss per week of no contact
+  
+  // ── Ghosting consequences ──
+  ghostingThresholds: {
+    partner: { warnDays: 2, trustDropPerDay: 2 },
+    family: { warnDays: 4, trustDropPerDay: 1 },
+    friend: { warnDays: 5, trustDropPerDay: 0.5 },
+    team_staff: { warnDays: 3, trustDropPerDay: 1 },
+    business: { warnDays: 5, trustDropPerDay: 0.5 },
+    rival_driver: { warnDays: 999, trustDropPerDay: 0 },  // Rivals don't care
+    sponsor_rep: { warnDays: 3, trustDropPerDay: 1 },
+    team_principal: { warnDays: 7, trustDropPerDay: 0.3 },
+    rival: { warnDays: 999, trustDropPerDay: 0 },
+    potential_date: { warnDays: 3, trustDropPerDay: 1.5 },
+  } as Record<string, { warnDays: number; trustDropPerDay: number }>,
   
   // Conversation stages
   staleConversationDays: 14,      // When conversation becomes "stale"
@@ -645,7 +774,167 @@ export const MESSAGING_CONFIG = {
   
   // Trust building
   trustGainPerPositiveConvo: 2,
-  trustLossPerNegativeConvo: 5
+  trustLossPerNegativeConvo: 5,
+  
+  // ── NPC check-in frequency by contact type (weekly probability) ──
+  checkInChance: {
+    partner: 0.60,
+    family: 0.50,
+    friend: 0.20,       // 40% if relationship > 70
+    business: 0.10,
+    rival: 0.05,
+    potential_date: 0.15,
+    team_staff: 0.25,
+    rival_driver: 0.15,
+    sponsor_rep: 0.10,
+    team_principal: 0.05,
+  } as Record<string, number>,
+  
+  // ── Reputation-gated contact tiers ──
+  reputationContactTiers: [
+    { minRep: 0,  maxRep: 25,  contactTypes: ['friend', 'business'], wealthLevels: ['modest', 'comfortable'] },
+    { minRep: 25, maxRep: 50,  contactTypes: ['friend', 'business'], wealthLevels: ['comfortable', 'affluent'] },
+    { minRep: 50, maxRep: 75,  contactTypes: ['friend', 'business'], wealthLevels: ['affluent', 'wealthy'] },
+    { minRep: 75, maxRep: 100, contactTypes: ['friend', 'business'], wealthLevels: ['wealthy', 'elite'] },
+  ],
+}
+
+// ============================================
+// PERSONALITY → MESSAGING BEHAVIOR MAP
+// ============================================
+
+export interface MessagingBehavior {
+  frequency: 'very_low' | 'low' | 'medium' | 'high' | 'very_high'
+  messageLength: 'very_short' | 'short' | 'medium' | 'long' | 'very_long'
+  emojiUsage: 'none' | 'rare' | 'moderate' | 'frequent' | 'excessive'
+  responseSpeed: 'instant' | 'fast' | 'normal' | 'slow' | 'very_slow'
+  formality: 'very_formal' | 'formal' | 'casual' | 'very_casual' | 'slang'
+}
+
+/**
+ * Map pre-gen personality traits to texting behavior.
+ * Traits from the contact's `traits[]` array are looked up here.
+ * Multiple traits are merged (later traits override earlier ones).
+ */
+export const PERSONALITY_MESSAGING_MAP: Record<string, Partial<MessagingBehavior>> = {
+  // Frequency
+  extrovert:        { frequency: 'high', messageLength: 'medium', emojiUsage: 'frequent' },
+  introvert:        { frequency: 'low', messageLength: 'long', emojiUsage: 'rare' },
+  social_butterfly: { frequency: 'very_high', messageLength: 'short', emojiUsage: 'excessive' },
+  reserved:         { frequency: 'very_low', messageLength: 'medium', emojiUsage: 'none' },
+  outgoing:         { frequency: 'high', emojiUsage: 'moderate' },
+  shy:              { frequency: 'low', responseSpeed: 'slow' },
+  
+  // Response speed
+  anxious:          { responseSpeed: 'instant', frequency: 'high' },
+  busy:             { responseSpeed: 'very_slow', frequency: 'low' },
+  laid_back:        { responseSpeed: 'slow', formality: 'very_casual' },
+  impatient:        { responseSpeed: 'fast', messageLength: 'very_short' },
+  patient:          { responseSpeed: 'normal', messageLength: 'long' },
+  
+  // Message style
+  formal:           { formality: 'formal', emojiUsage: 'none', messageLength: 'medium' },
+  casual:           { formality: 'casual', emojiUsage: 'moderate' },
+  dramatic:         { messageLength: 'very_long', emojiUsage: 'frequent', frequency: 'high' },
+  brief:            { messageLength: 'very_short', emojiUsage: 'none' },
+  verbose:          { messageLength: 'very_long', emojiUsage: 'rare' },
+  witty:            { messageLength: 'medium', formality: 'casual' },
+  serious:          { formality: 'formal', emojiUsage: 'none', messageLength: 'medium' },
+  
+  // Personality-driven
+  supportive:       { frequency: 'medium', messageLength: 'medium', responseSpeed: 'fast' },
+  ambitious:        { formality: 'formal', messageLength: 'short', responseSpeed: 'slow' },
+  romantic:         { emojiUsage: 'frequent', messageLength: 'long', frequency: 'high' },
+  independent:      { frequency: 'low', responseSpeed: 'slow', messageLength: 'short' },
+  practical:        { messageLength: 'short', formality: 'casual', emojiUsage: 'rare' },
+  glamorous:        { emojiUsage: 'frequent', formality: 'casual', frequency: 'medium' },
+  private:          { frequency: 'very_low', messageLength: 'short', emojiUsage: 'none' },
+  adventurous:      { frequency: 'medium', emojiUsage: 'moderate', formality: 'very_casual' },
+  nurturing:        { frequency: 'high', messageLength: 'long', responseSpeed: 'fast' },
+  jealous:          { frequency: 'very_high', responseSpeed: 'instant', messageLength: 'medium' },
+  materialistic:    { formality: 'casual', emojiUsage: 'frequent' },
+  controlling:      { frequency: 'very_high', responseSpeed: 'instant', messageLength: 'long' },
+  secretive:        { frequency: 'very_low', messageLength: 'very_short', emojiUsage: 'none' },
+  
+  // Age/style-driven (for general contacts)
+  young:            { emojiUsage: 'excessive', formality: 'slang', messageLength: 'short' },
+  mature:           { emojiUsage: 'rare', formality: 'formal', messageLength: 'medium' },
+  professional:     { formality: 'formal', emojiUsage: 'none', responseSpeed: 'normal' },
+  creative:         { messageLength: 'long', formality: 'casual', emojiUsage: 'moderate' },
+}
+
+/**
+ * Compute the messaging style for a contact based on their traits.
+ */
+export function computeMessagingStyle(traits: string[]): MessagingBehavior {
+  const defaults: MessagingBehavior = {
+    frequency: 'medium',
+    messageLength: 'medium',
+    emojiUsage: 'moderate',
+    responseSpeed: 'normal',
+    formality: 'casual',
+  }
+  
+  const merged = { ...defaults }
+  for (const trait of traits) {
+    const behavior = PERSONALITY_MESSAGING_MAP[trait.toLowerCase().replace(/\s+/g, '_')]
+    if (behavior) {
+      Object.assign(merged, behavior)
+    }
+  }
+  return merged
+}
+
+// ============================================
+// NPC SESSION FAREWELL TEMPLATES
+// ============================================
+
+export const SESSION_FAREWELL_TEMPLATES: Record<string, string[]> = {
+  partner: [
+    "I should let you focus. Talk later? ❤️",
+    "Gotta run, but thinking of you!",
+    "Love chatting but I need to head out. Miss you!",
+  ],
+  family: [
+    "Alright, I'll let you get back to it. Take care!",
+    "Should go - talk soon! Love you.",
+    "Okay, enough chatting! Go win some races!",
+  ],
+  friend: [
+    "Gotta bounce! Catch up later?",
+    "I should get back to work 😅 Chat soon!",
+    "This was fun! Let's grab drinks sometime.",
+  ],
+  business: [
+    "I have a meeting shortly. Let's continue this later.",
+    "Good catching up. I'll be in touch.",
+    "Thanks for the chat. Talk soon.",
+  ],
+  team_staff: [
+    "Back to the factory floor! We'll pick this up later.",
+    "Good chat, boss. I'll get on that.",
+    "Right, better get back to work. Cheers!",
+  ],
+  rival_driver: [
+    "Save it for the track 😏",
+    "Gotta go, my trainer's here. See you out there.",
+    "Later. Don't get too comfortable up there.",
+  ],
+  sponsor_rep: [
+    "Great chatting! I'll follow up with the team.",
+    "Need to jump on another call. Let's reconnect soon.",
+    "Thanks for your time. The board will be pleased.",
+  ],
+  team_principal: [
+    "My engineers are waiting. Good talk.",
+    "I should go manage my own circus. Talk soon.",
+    "Interesting chat. Let's keep the lines open.",
+  ],
+  default: [
+    "I should go! Talk later!",
+    "Gotta run. Chat soon!",
+    "Nice chatting. Catch you later!",
+  ],
 }
 
 // ============================================

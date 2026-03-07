@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0037",
+  "name": "KiwiKraft Performance",
+  "category": "equipment",
+  "tier": "high",
+  "country": "New Zealand",
+  "description": "Precision engineered motorsport components from New Zealand.",
+  "story": "KiwiKraft Performance has been crafting high-performance racing parts since 1985, initially focusing on rally components before expanding into circuit racing. They are driven by a passion for innovation and pushing the limits of motorsport technology. KiwiKraft seeks partnerships with teams demonstrating similar dedication to performance and a desire to showcase their components on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "New Zealand"
+    ],
+    "minPodiums": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0037.png"
+}

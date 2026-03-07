@@ -1,0 +1,22 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 38,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Marko's journey into motorsport began unexpectedly during his university days, fueled by late-night engineering projects and a burgeoning fascination with aerodynamics. After graduating with honors in mechanical engineering from the University of Zagreb, he spent several years honing his skills in the European touring car scene, rapidly rising through the ranks. He moved to NASCAR six years ago, drawn to the raw power and technical challenges. \n\nMarko is known for his meticulous approach to data analysis and his ability to quickly identify areas for improvement. He thrives under pressure, consistently delivering innovative solutions that squeeze every last ounce of performance from the car. His collaborative spirit and unwavering dedication make him a valuable asset to any team. What sets Marko apart is his uncanny knack for predicting track conditions and adjusting the car's setup accordingly, often giving his driver a crucial edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Marko has a focused gaze and a lean build, suggesting a life dedicated to precision and performance."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on listening to classical music while reviewing race data."
+  ]
+}

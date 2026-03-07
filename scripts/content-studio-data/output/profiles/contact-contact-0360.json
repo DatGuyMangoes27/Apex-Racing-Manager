@@ -1,0 +1,31 @@
+{
+  "name": "Alistair Beaumont",
+  "nationality": "Australian",
+  "age": 23,
+  "gender": "male",
+  "contactType": "politician",
+  "bio": "Alistair Beaumont is a rising star in Australian politics, representing a newly formed youth-focused party. Despite his young age, Alistair has already made a name for himself advocating for sustainable development and technological innovation. He's known for his passionate speeches and commitment to his constituents, but also for his somewhat impulsive decisions and surprisingly romantic gestures in his personal life. \n\nWhile seemingly distant from the roar of engines, Alistair's focus on technological advancement and sustainable energy solutions places him squarely in the path of motorsport. He believes in pushing the boundaries of what's possible, and sees motorsport as a potential testing ground for future technologies. A racing driver might cross paths with him at a technology conference or during discussions regarding government funding for motorsport research and development.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Neatly parted and slightly wavy",
+    "eyeColor": "Hazel",
+    "facialHair": "Clean shaven",
+    "description": "Alistair has a youthful, almost boyish face, but his sharp eyes convey a sense of ambition. He typically dresses in well-tailored suits that accentuate his slim build."
+  },
+  "connectionToMotorsport": "Alistair believes motorsport can be a valuable platform for showcasing innovative technologies and promoting sustainability within the automotive industry. He is interested in supporting research and development that aligns with his environmental policy goals.",
+  "meetingContext": "The player might meet Alistair at a fundraising gala for a local environmental charity or at a press conference announcing government support for a new racing technology initiative.",
+  "conversationTopics": [
+    "Renewable Energy",
+    "The Future of Transportation",
+    "Drone Racing",
+    "Ballet",
+    "Australian Politics"
+  ],
+  "canHelp": [
+    "Offer government endorsements for sponsorships",
+    "Connect the player with investors interested in sustainable racing technologies",
+    "Lobby for favorable regulations for the team's racing division"
+  ],
+  "personality_summary": "A young, idealistic politician with a romantic streak and a passion for innovation."
+}

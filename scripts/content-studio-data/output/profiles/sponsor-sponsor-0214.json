@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0214",
+  "name": "Kahu Gaming",
+  "category": "tech_gaming",
+  "tier": "high",
+  "country": "New Zealand",
+  "description": "Level up your game with Kahu Gaming's innovative peripherals.",
+  "story": "Kahu Gaming, a New Zealand-based tech company, has rapidly ascended in the gaming hardware market. They see motorsport as an ideal proving ground for the precision and reliability of their products, mirroring the intense demands faced by gamers. Kahu seeks a partnership that highlights their commitment to peak performance and cutting-edge technology, aligning with drivers who demonstrate similar values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "nationalities": [
+      "New Zealand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0214.png"
+}

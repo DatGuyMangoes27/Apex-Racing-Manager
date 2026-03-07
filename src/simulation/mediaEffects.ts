@@ -13,6 +13,9 @@ import {
   TeamMediaState
 } from '../store/careerStore'
 
+// Re-export type for consumers
+export type { MediaEffect }
+
 /**
  * Check if a media duty option triggers controversy
  */

@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Gruber",
+  "nationality": "Austrian",
+  "age": 31,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Maximilian's passion for motorsport ignited during his childhood in the Austrian Alps, where he spent countless hours tinkering with engines and building makeshift go-karts. He honed his skills at a local technical college, specializing in precision engineering. After graduating, he worked for a small automotive workshop before landing a coveted position with Speed Kart Racing.\n\nMaximilian approaches his role as a fabricator with meticulous precision and an unwavering commitment to quality. He thrives under pressure and is known for his ability to find innovative solutions to complex engineering challenges. His demanding nature pushes his colleagues to strive for excellence, ensuring that every component meets the highest standards. He aims to be the best fabricator in the Speed Kart Racing Team, no matter the cost.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Maximilian has a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only metric tools, even when working with international components.",
+    "Always has a small notebook and pen in his pocket to jot down ideas and measurements.",
+    "Has an odd habit of whistling classical music while welding."
+  ]
+}

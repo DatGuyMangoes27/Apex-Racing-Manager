@@ -1,0 +1,54 @@
+{
+  "id": "sponsor-0470",
+  "name": "Forgács Gumi",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Hungary",
+  "description": "Precision engineered tires for peak performance.",
+  "story": "Forgács Gumi has been a leading tire manufacturer in Hungary for over 50 years, initially focusing on industrial applications before expanding into motorsports. They believe in pushing the boundaries of tire technology and see motorsport as the ultimate testing ground. They seek a partnership that delivers consistent performance and brand exposure on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Hungary"
+    ],
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0470.png"
+}

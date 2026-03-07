@@ -1,0 +1,31 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 35,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Priya Sharma is a rising star in motorsport journalism, known for her insightful articles and compassionate interviews. After completing her postgraduate degree in journalism, she quickly made a name for herself covering the Indian racing scene before expanding her reach to international circuits. Her writing style blends technical analysis with human-interest stories, making her work accessible to both hardcore fans and casual observers. \n\nA racing driver might cross paths with Priya at press conferences, paddock interviews, or exclusive events. She's always looking for the next compelling narrative, and drivers who are open, articulate, and willing to share their experiences are prime candidates for her articles. She values authenticity and is drawn to drivers with strong personalities and compelling backstories. Priya's adventurous spirit and open-mindedness also makes her receptive to new perspectives and innovative ideas within the sport.",
+  "physical": {
+    "skinTone": "Warm brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Priya has a warm and friendly face, often accentuated by her bright eyes and genuine smile. She favors practical and comfortable clothing suitable for the often-demanding environments of racing circuits."
+  },
+  "connectionToMotorsport": "Priya is a journalist covering Formula 1, Formula E, and various other racing series, providing insightful analysis and exclusive interviews for leading motorsport publications and online platforms.",
+  "meetingContext": "You would most likely meet Priya in the media scrum after a race or during a scheduled interview session in the paddock.",
+  "conversationTopics": [
+    "The future of electric racing and sustainability in motorsport",
+    "The challenges and triumphs of young drivers breaking into the sport",
+    "The role of technology in improving driver safety and performance",
+    "Her latest snowboarding trip in the Himalayas",
+    "The latest astronomy discoveries"
+  ],
+  "canHelp": [
+    "Provide positive media coverage, enhancing your public image.",
+    "Introduce you to other key figures in the motorsport media landscape.",
+    "Offer insights into the public perception of drivers and teams."
+  ],
+  "personality_summary": "A humble and compassionate journalist always looking for a compelling story."
+}

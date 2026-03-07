@@ -1,0 +1,27 @@
+{
+  "biography": "Alfredo Menezes, born in the heart of São Paulo, carries the spirit of Brazilian motorsport in his blood. Unlike many who began karting in their youth, Alfredo's passion ignited later, witnessing Ayrton Senna's legendary battles on a battered television. He began his racing career with autocross, hustling a heavily modified Volkswagen Beetle around dirt tracks, learning car control and racecraft the hard way. His raw talent and aggressive style quickly caught the attention of a local racing team, providing the opportunity to transition to single-seaters. A defining moment came at Interlagos during the Brazilian Formula 3 championship. Down on power, Alfredo deployed a daring overtake around the outside of Junqueira at the Senna 'S', securing a podium and announcing his arrival on the national stage. Now at the peak of his career, Alfredo meticulously prepares for each race, seeking to add to his legacy.",
+  "drivingStyle": "Alfredo's driving style is best described as calculated aggression. He's not one for flamboyant displays of speed; instead, he prefers to methodically dissect a race, conserving tires and observing opponents' weaknesses. He is exceptional at braking late and carrying speed through the apex, often catching rivals off guard. He thrives under pressure, rarely cracking even in the most intense situations. His tire management is a key strength, allowing him to push hard in the closing stages when others are struggling for grip.",
+  "rivalries": [
+    {
+      "name": "Ricardo Vargas",
+      "reason": "A long-standing rivalry stemming from their Formula 3 days, fueled by contrasting driving styles and several on-track collisions."
+    },
+    {
+      "name": "Isabela Oliveira",
+      "reason": "A more recent rivalry, emerging from intense battles for championship points in the touring car series, characterized by close racing and strategic gamesmanship."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "A professional respect that often boils over on track. Their battles are fiercely contested but always clean, pushing each other to the limit."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of worn-out driving gloves, believing they bring him good luck.",
+    "Listens to a specific track of Brazilian samba music before every race to calm his nerves.",
+    "Studies detailed track maps the night before a race, visualizing every corner and braking point."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about being the fastest for a lap, it's about being the smartest for a race.\"",
+  "careerHighlight": "Winning the Brazilian Touring Car Championship after a season-long battle, securing the title at the final race with a perfectly executed strategic move.",
+  "careerLowPoint": "Crashing out of the lead at the Interlagos 1000km due to mechanical failure, costing his team a likely victory and a significant championship advantage."
+}

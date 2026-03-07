@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 28,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Sophie's fascination with motorsport began in her childhood, watching Formula 1 races with her father. This passion led her to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, she gained experience working with smaller racing teams, quickly demonstrating a knack for problem-solving and data analysis. Sophie is known for her meticulous approach to race preparation, believing that success hinges on understanding every nuance of the car and track conditions. She's driven by a desire to push the boundaries of performance through innovative engineering solutions.\n\nHer ability to quickly adapt to new challenges and her keen understanding of driver feedback have made her a valuable asset to any team. While she thrives in a collaborative environment, she's also comfortable working independently, often spending late nights analyzing data and fine-tuning simulations. She is always looking for opportunities to use new technologies to improve the car's performance.\n\n Sophie's colleagues admire her dedication to precision and her analytical approach to problem solving, but also her leadership skills and her ability to bring the best out of her team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair often pulled back into a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Sophie is of average height with a lean, athletic build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with engineering diagrams and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on having a specific brand of Belgian chocolate in the garage during race weekends."
+  ]
+}

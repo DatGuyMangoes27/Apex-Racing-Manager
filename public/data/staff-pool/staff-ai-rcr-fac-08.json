@@ -1,0 +1,22 @@
+{
+  "name": "Jameson Blake",
+  "nationality": "American",
+  "age": 48,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jameson's fascination with motorsport began as a child, watching NASCAR races with his grandfather. He pursued a degree in mechanical engineering, specializing in aerodynamics, with the explicit goal of working in racing. After graduating, he started in an entry-level data analysis role at a smaller team, diligently learning the intricacies of wind tunnel testing. His meticulous nature and keen eye for detail quickly made him an asset. \n\nHe transitioned to Richard Childress Racing eight years ago, where he has consistently improved the team's aerodynamic performance. Jameson is known for his relentless pursuit of marginal gains, meticulously analyzing data and collaborating with engineers to optimize vehicle design. His colleagues appreciate his straightforward approach and dedication to the team's success. He believes in a data-driven approach, always prioritizing tangible results over gut feelings, and is driven to deliver the best car possible to the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jameson is a man of average height with a sturdy build, reflecting years spent hunched over data screens."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a lucky tie he wears on race days.",
+    "Needs complete silence when analyzing wind tunnel data."
+  ]
+}

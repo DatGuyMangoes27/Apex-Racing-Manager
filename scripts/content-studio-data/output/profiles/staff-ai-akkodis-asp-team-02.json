@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 33,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Jan Kolář's motorsport journey began with dismantling and reassembling his father's Škoda Favorit in their garage. This early fascination evolved into a passion for engineering, leading him to pursue a degree in mechanical engineering at the Czech Technical University in Prague. After graduating, Jan joined a small GT racing team, quickly demonstrating an aptitude for problem-solving and optimization.\n\nHis meticulous approach and ability to identify crucial performance gains caught the attention of Akkodis ASP Team. As Technical Director, Jan emphasizes data-driven decision-making and fosters a culture of continuous improvement within the team. He is known for his ability to translate complex technical information into actionable strategies for the track, ensuring the team maximizes its potential at every race.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is a man of medium height with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, even on race day.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on performing a final systems check himself before every race, regardless of the hour."
+  ]
+}

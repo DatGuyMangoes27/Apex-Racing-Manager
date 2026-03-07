@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Riley",
+  "nationality": "Australian",
+  "age": 31,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ethan Riley's motorsport journey began in rural New South Wales, tinkering with go-karts on his family's farm. This hands-on experience ignited a passion that led him to pursue a mechanical engineering degree, specializing in vehicle dynamics. After graduating, he joined a small V8 Supercar team as a data analyst, quickly proving his aptitude for translating technical data into actionable race strategies. \n\nHis pragmatic approach, combined with a knack for identifying performance bottlenecks, propelled him through the ranks. Ethan prioritizes clear communication and data-driven decision-making, fostering a collaborative environment where every team member's input is valued. His ability to remain calm under pressure and make critical adjustments during a race has earned him a reputation as a highly effective sporting director. He stands out for his unconventional approach to pit stop strategy, often taking calculated risks to gain track position.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed to the side",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "Ethan is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of coffee brewed at a precise temperature before every race."
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Kazimierz Lewandowski",
+    "nationality": "Polish",
+    "age": 40,
+    "gender": "male",
+    "role": "machinist",
+    "bio": "Kazimierz's journey into motorsport began with a fascination for finely crafted machinery. Growing up on a farm, he learned early on how to maintain and repair complex agricultural equipment. This practical experience led him to pursue a degree in mechanical engineering, where he excelled in precision machining. After graduating, he joined a small racing team, where his meticulous approach and innovative problem-solving skills quickly made him indispensable.\n\nKazimierz believes that the key to success in motorsport machining is a blend of technical expertise and artistic sensibility. He is known for his unwavering attention to detail, spending hours perfecting each component. His colleagues appreciate his loyalty and dedication, but also recognize his perfectionist tendencies. He is always striving to find innovative solutions to improve performance, whether it's tweaking existing designs or exploring new materials. He brings a unique blend of old-world craftsmanship and cutting-edge technology to his work.",
+    "physical": {
+      "skinTone": "Light olive",
+      "hairColor": "Dark brown",
+      "hairStyle": "Short, neatly combed back with a slight wave",
+      "eyeColor": "Hazel",
+      "facialHair": "Trimmed goatee",
+      "description": "Kazimierz is a solidly built man with a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always sharpens his pencils to a needle point.",
+      "Insists on using a specific brand of Polish coffee beans.",
+      "Constantly polishes his tools, even during downtime."
+    ]
+  }
+]

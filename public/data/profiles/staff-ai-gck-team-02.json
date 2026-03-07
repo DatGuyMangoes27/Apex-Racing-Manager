@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 44,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Erik Karlsson's motorsport journey began in his youth, fueled by a fascination with engineering and speed. He honed his skills through years of dedicated work, starting as a junior engineer at a small rally team and working his way up through the ranks. Erik's keen eye for detail and innovative approach to problem-solving quickly made him a valuable asset to any team.\n\nAt GCK Motorsport, Erik is known for his unwavering commitment to pushing the boundaries of technical innovation. He firmly believes that a combination of meticulous planning and creative thinking is essential for success. His demanding nature ensures that every member of his team strives for excellence, contributing to a culture of continuous improvement and performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly parted to the side with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Erik has a lean build and intense, focused eyes that reflect his dedication to his work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Constantly adjusts his glasses, even when they are perfectly aligned.",
+    "Has a habit of sketching technical diagrams on napkins during lunch.",
+    "Always arrives exactly 15 minutes early for meetings."
+  ]
+}

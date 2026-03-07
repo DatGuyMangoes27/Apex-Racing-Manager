@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 33,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Marco's passion for motorsport ignited during his childhood spent watching Formula 1 races with his father. He quickly became fascinated by the tactical nuances of the sport, spending hours analyzing race strategies and car setups. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and performance optimization, before joining Tony Kart Racing as a junior strategist. \n\n Over the years, Marco honed his skills by working alongside seasoned strategists, absorbing their knowledge and developing his own unique approach. He's known for his ability to anticipate changing race conditions and make split-second decisions that can significantly impact the team's performance. Marco’s detail-oriented nature, coupled with his visionary outlook, allows him to identify opportunities that others might miss, making him a valuable asset to the team. He firmly believes in data-driven decision-making, but balances this with an intuitive understanding of driver behavior and track conditions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Marco has a lean build and a focused expression, often seen with a slight furrow in his brow when deep in thought."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen against his teeth when formulating a plan.",
+    "Prefers to pace back and forth when discussing strategy with the team."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0211",
+  "name": "Longxing Precision Timepieces",
+  "category": "watches",
+  "tier": "mid",
+  "country": "China",
+  "description": "Precision engineered watches, inspired by speed.",
+  "story": "Longxing has been crafting high-end timepieces in China for over 50 years. They see motorsport as the perfect proving ground for their dedication to precision and reliability. Longxing seeks a partnership that elevates their brand on the global stage and showcases their commitment to cutting-edge engineering.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 180000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 600000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "China"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0211.png"
+}

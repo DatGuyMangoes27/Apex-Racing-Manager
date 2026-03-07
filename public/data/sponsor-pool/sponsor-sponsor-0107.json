@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0107",
+  "name": "La Maison du Chocolat",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Belgium",
+  "description": "Indulge in the finest Belgian chocolate.",
+  "story": "La Maison du Chocolat is a family-owned chocolatier with a passion for craftsmanship and excellence. We believe in supporting local talent and share the values of precision, dedication, and the pursuit of perfection with motorsport. We seek to build brand awareness among a discerning audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0107.png"
+}

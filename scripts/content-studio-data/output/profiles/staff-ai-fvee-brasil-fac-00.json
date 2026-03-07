@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 45,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jean-Pierre’s journey into motorsport began unconventionally, not through karting or a family connection, but via a fascination with flight simulators. His expertise in modelling and simulation software, honed during a brief stint designing training programs for the Canadian Air Force, proved surprisingly transferable to the world of racing. He quickly recognized the potential of applying advanced simulation techniques to vehicle dynamics and driver training.\n\nAfter a few years consulting for various racing teams, Jean-Pierre joined FVee Brasil, attracted by their commitment to innovation despite operating on a smaller budget. He approaches simulator engineering with a uniquely pragmatic mindset, prioritizing realistic feedback and tangible improvements to driver performance over purely theoretical optimization. He prides himself on creating simulations that accurately reflect the nuances of each track and car, allowing drivers to fine-tune their skills with maximum effectiveness. Jean-Pierre's knack for distilling complex data into practical insights makes him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Jean-Pierre is of average height with a slightly stocky build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn schematics.",
+    "Has a peculiar habit of adjusting the simulator seat even when no one is using it.",
+    "Insists on drinking black coffee out of a thermos he claims is from his grandfather."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "history": "The Autódromo Internacional Ayrton Senna, commonly known as Goiânia, was inaugurated in 1974 and named in honor of the legendary Brazilian driver following his death. While it has hosted various national racing series since its inception, including Brazilian Stock Car and Formula Truck, it's also seen international competition, most notably rounds of the FIA GT Championship in the early 2000s. The Full Circuit layout, with its blend of fast straights and technical corners, has been the preferred configuration for many of these major events, showcasing the track's overall versatility. Goiânia has undergone several renovations over the years to meet evolving safety standards, solidifying its position as a key motorsport venue in Brazil.",
+  "atmosphere": "Stepping into Goiânia during a Brazilian Stock Car race on the Full Circuit is an experience. The roar of the V8 engines echoes against the stands, filled with passionate fans waving flags and chanting. The air is thick with anticipation as the cars navigate the circuit, the aroma of Brazilian barbeque wafting from the vendors creating a truly immersive and uniquely Brazilian motorsport spectacle.",
+  "trackCharacter": "The Full Circuit layout at Goiânia is a balanced test of power and handling. Its long straights demand strong engines and efficient aerodynamics, while the infield section requires precise car control and setup. The track flows nicely, rewarding drivers who can maintain momentum and find the right rhythm. It is a layout that favors a car that is stable under braking and can carry speed through the corners.",
+  "nickname": "The Cerrado Speedbowl",
+  "famousCorners": [
+    {
+      "name": "Curva 1 (Primeira)",
+      "description": "A fast, sweeping right-hander immediately after the start/finish line. It's crucial to get a good exit for the long run down to Turn 2.",
+      "challenge": "Maintaining speed and carrying momentum through the corner without running wide, especially on the opening lap."
+    },
+    {
+      "name": "Curva 2",
+      "description": "A tight right-hand hairpin at the end of the main straight. One of the primary overtaking spots on the circuit.",
+      "challenge": "Braking late and precisely to set up an overtaking opportunity, while defending the inside line."
+    },
+    {
+      "name": "Curva do Lixo",
+      "description": "A long, gradual left-hander that requires commitment and a well-balanced car.",
+      "challenge": "Maintaining consistent speed and tire temperature through the extended corner, avoiding understeer."
+    },
+    {
+      "name": "Curva da Mata",
+      "description": "A fast right-hand kink.",
+      "challenge": "Requires high speed commitment and stability to avoid unsettling the car."
+    },
+    {
+      "name": "Curva do Contorno",
+      "description": "A medium-speed right-hand corner that leads onto the back straight.",
+      "challenge": "Maximising exit speed to gain an advantage on the run to Turn 9."
+    }
+  ],
+  "keyFactors": [
+    "Engine Power",
+    "Aerodynamic Efficiency",
+    "Braking Stability",
+    "Tire Management",
+    "Mechanical Grip in the Infield"
+  ],
+  "overtakingSpots": [
+    "Turn 2 (end of the main straight)",
+    "Turn 6 (tight right-hander after the back straight)",
+    "Into Turn 11 (last corner before the main straight)"
+  ],
+  "historySnippets": [
+    "Goiânia was inaugurated in 1974.",
+    "The track is named after Ayrton Senna.",
+    "Goiânia has hosted FIA GT Championship races.",
+    "Brazilian Stock Car races are a staple event at Goiânia.",
+    "The Full Circuit layout is 3.835 km long.",
+    "The circuit features 11 turns."
+  ],
+  "weatherNotes": "Goiânia experiences a tropical savanna climate with distinct wet and dry seasons. During the wet season (October to April), heavy rainfall can lead to standing water on the track, significantly impacting grip levels. The dry season (May to September) is characterized by hot and sunny conditions, which can cause tire degradation to become a major factor.",
+  "drivingAdvice": "The key to a fast lap around the Full Circuit at Goiânia is finding the right balance between aggression and smoothness. Be aggressive on the straights and braking zones, but smooth and precise through the infield section. Focus on maximizing exit speed from the final corner (Turn 11) to carry momentum onto the main straight. Protecting your tires during the race is crucial, particularly in hot weather.",
+  "famousRaces": [
+    "FIA GT Championship races in the early 2000s showcased international talent and machinery on the Full Circuit.",
+    "Brazilian Stock Car races at Goiânia are known for their intense competition and dramatic finishes.",
+    "Formula Truck events provide a spectacle of powerful trucks battling it out on the track."
+  ],
+  "localCulture": "Goiânia is a modern and vibrant city known for its parks, art deco architecture, and strong agricultural economy. Local cuisine features hearty Brazilian dishes such as feijoada and churrasco. Paddock life is characterized by a relaxed and friendly atmosphere, with teams and drivers enjoying the hospitality and enthusiasm of the local fans."
+}

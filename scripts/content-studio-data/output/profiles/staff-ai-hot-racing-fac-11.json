@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alessia Bellini",
+    "nationality": "Italian",
+    "age": 52,
+    "gender": "female",
+    "role": "test_driver_coordinator",
+    "bio": "Alessia Bellini's journey into motorsport began unexpectedly, after a career as a vehicle dynamics engineer for a prominent automotive manufacturer. Frustrated with the glacial pace of innovation in mass-market vehicles, she sought a more dynamic environment. She transitioned to motorsport, drawn by the relentless pursuit of performance and the constant need to adapt. Her technical acumen quickly made her an invaluable asset to several racing teams.\n\nAlessia's approach to test driver coordination is meticulous and data-driven. She insists on rigorous testing protocols and precise data analysis, believing that even the smallest detail can make the difference on the track. She is respected, if not always liked, for her unwavering commitment to excellence. Her distinctive skill lies in her ability to translate complex engineering data into actionable feedback for drivers, bridging the gap between the garage and the cockpit.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Shoulder-length, styled in a practical, no-nonsense manner.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Alessia is a woman of average height with a stern but intelligent face, reflecting years of focused dedication."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten notes and observations.",
+      "Insists on using metric measurements exclusively, even when others use imperial.",
+      "Has a tendency to correct people's grammar during technical briefings."
+    ]
+  }
+]

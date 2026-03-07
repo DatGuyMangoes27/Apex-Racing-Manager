@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0340",
+  "name": "Seng Huat Construction",
+  "category": "local",
+  "tier": "high",
+  "country": "Singapore",
+  "description": "Building Singapore, Brick by Brick.",
+  "story": "Seng Huat Construction has been a pillar of Singapore's development for three generations. As a family-owned business, they believe in supporting local talent and fostering ambition. They see motorsport as a powerful platform to showcase Singaporean excellence on a global stage and inspire the next generation of builders and innovators.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Singapore"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0340.png"
+}

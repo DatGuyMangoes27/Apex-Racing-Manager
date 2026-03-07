@@ -1,0 +1,29 @@
+{
+  "name": "Taika Cohen",
+  "nationality": "New Zealand",
+  "age": 31,
+  "gender": "male",
+  "contactType": "celebrity",
+  "bio": "Taika is a celebrated actor and comedian known for his sharp wit and nuanced performances in several acclaimed films. While he's built a career on his comedic talent, behind the scenes he's known for his incredible work ethic and patience, qualities that have allowed him to achieve great success. He has a passion for the arts and sciences, reflected in his varied hobbies and interests.\n\nHis connection to motorsport is tangential but growing. He's a rising star and often attends high-profile events, including those sponsored by luxury automotive brands. A driver might cross paths with him at a gala, a promotional event, or even through mutual connections in the entertainment industry, where sponsorships and collaborations are common.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed beard",
+    "description": "Taika has a friendly face and a confident smile. He dresses smartly, often opting for tailored suits with a modern edge."
+  },
+  "connectionToMotorsport": "Taika is often invited to high-profile motorsport events as a celebrity guest and has expressed interest in learning more about racing technology.",
+  "meetingContext": "The player could meet Taika at a motorsport-themed charity gala or a sponsored event where he is a guest of honor.",
+  "conversationTopics": [
+    "His latest film projects",
+    "The beauty of contemporary dance",
+    "The latest discoveries in astronomy",
+    "His volunteer work at a local youth center"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors in the entertainment and luxury goods industries",
+    "Increase the player's public profile through social media mentions and event appearances"
+  ],
+  "personality_summary": "A driven and witty celebrity with a passive-aggressive streak."
+}

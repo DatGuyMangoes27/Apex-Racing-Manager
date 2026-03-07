@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Llewellyn",
+  "nationality": "Welsh",
+  "age": 44,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Rhys's journey into motorsport started unconventionally, fueled by a fascination with the precision engineering showcased in rallying events across Wales. He initially trained as a mechanical engineer, specializing in simulation and modeling. His early career involved developing training simulators for heavy machinery, but his passion for racing led him to pursue opportunities in Formula 1. He joined Scuderia Ferrari five years ago, bringing a methodical approach to enhancing the realism and effectiveness of their driver-in-the-loop simulator.\n\nRhys is known for his relentless pursuit of accuracy. He meticulously analyzes telemetry data and driver feedback to fine-tune the simulator's physics engine. He believes that a simulator is only as good as its ability to replicate the nuances of real-world track conditions and car behavior. This dedication has earned him the respect of drivers and engineers alike. His demanding nature stems from his unwavering commitment to achieving the highest standards, pushing the team to constantly improve and refine their simulation capabilities.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Rhys is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations during simulator sessions.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific brand of Welsh tea in the simulator engineering office."
+  ]
+}

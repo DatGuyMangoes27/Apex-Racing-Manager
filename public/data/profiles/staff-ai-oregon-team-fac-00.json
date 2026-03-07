@@ -1,0 +1,22 @@
+{
+  "name": "Zola Nkomo",
+  "nationality": "South African",
+  "age": 37,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Zola's journey into motorsport began unconventionally, sparked by a childhood fascination with flight simulators rather than cars. After completing her engineering degree at the University of Cape Town, she sought opportunities to apply her skills in realistic virtual environments. This led her to the world of racing simulators, where she quickly realized the potential to improve driver performance and vehicle dynamics. She thrives on the challenge of creating highly accurate and immersive simulations that closely mirror real-world conditions.\n\nZola is known for her meticulous approach and dedication to detail. She believes that a successful simulator engineer must possess both technical expertise and a deep understanding of racing strategy and driver psychology. She's not afraid to push boundaries and experiment with new technologies to enhance the realism and effectiveness of the simulator, always striving to provide drivers with the best possible training tool. She particularly excels at fine-tuning force feedback systems to accurately replicate the sensations of driving a real race car.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled afro with subtle auburn highlights.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zola is of average height with a focused, intelligent gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always drinks rooibos tea during simulator sessions.",
+    "Meticulously organizes her workstation, color-coding every cable.",
+    "Speaks in racing metaphors even outside of work."
+  ]
+}

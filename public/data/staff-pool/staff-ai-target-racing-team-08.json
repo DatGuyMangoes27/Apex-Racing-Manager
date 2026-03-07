@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 33,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Marco's passion for motorsport ignited during his childhood in Modena, the heart of Italian racing. Weekends spent at the local go-kart track fueled his desire to understand the intricate mechanics behind speed and performance. After graduating with a degree in Mechanical Engineering from the University of Bologna, he joined a small Formula 3 team, where he honed his skills in data analysis and vehicle dynamics. \n\nHe quickly gained a reputation for his meticulous approach and ability to identify crucial areas for improvement. Marco's philosophy revolves around relentless optimization, constantly seeking marginal gains that can translate to significant advantages on the track. He believes in fostering open communication within the team, ensuring that driver feedback is seamlessly integrated into the engineering process. His dedication and analytical prowess make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Marco is of average height with a lean build and an intense, focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against his teeth when deeply focused.",
+    "Insists on drinking espresso from the same specific mug before every race."
+  ]
+}

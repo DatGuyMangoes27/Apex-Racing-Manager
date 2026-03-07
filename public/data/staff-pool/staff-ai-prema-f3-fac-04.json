@@ -1,0 +1,22 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 55,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Priya's journey into motorsport began unconventionally. Initially on track to become an academic, she found herself captivated by the intricate electronics within a rally car during a university project. Abandoning academia, she pursued a career in automotive engineering, quickly specializing in race electronics. Her meticulous approach and ability to diagnose complex electrical issues made her a sought-after engineer, leading her through various race teams before joining Prema Racing. \n\nPriya is known for her relentless pursuit of perfection. She believes that even the smallest electrical glitch can cost a team a race, and her dedication to preemptive diagnostics is unparalleled. While her demanding nature can sometimes ruffle feathers, her colleagues respect her expertise and recognize her unwavering commitment to the team's success. Her experience with a variety of racing formulas, including Formula E, has given her a broad perspective and an adaptable skillset.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly braided and pulled back into a practical bun",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Priya is a petite woman with a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-meter in her handbag.",
+    "Insists on using a specific brand of soldering iron.",
+    "Drinks copious amounts of chai throughout the day, precisely brewed."
+  ]
+}

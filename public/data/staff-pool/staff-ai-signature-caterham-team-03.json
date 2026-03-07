@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 28,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Mads's passion for motorsport ignited early, fueled by countless hours spent dissecting Formula 1 races with his father. He earned a master's degree in aerospace engineering from the Technical University of Denmark, specializing in computational fluid dynamics. Before joining Signature Racing, Mads honed his skills at a smaller outfit, where he quickly rose through the ranks due to his sharp analytical abilities and unwavering dedication to improving aerodynamic performance.\n\nMads is known for his pragmatic approach to problem-solving. He believes in data-driven decisions and eschews overly complex solutions in favor of practical, effective designs. He values clear communication and collaboration, fostering a team environment where every member feels empowered to contribute their best work. Mads's dedication to finding marginal gains, combined with his ability to translate complex data into actionable strategies, makes him a valuable asset to any racing team.\n\nHis colleagues note his capacity to identify subtle aerodynamic improvements others often miss. He has an uncanny ability to visualize airflow and identify areas for optimization, a talent that has already yielded significant performance gains for Signature Racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mads has a focused gaze and a slender build, reflecting his intense dedication to his work."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Drinks an absurd amount of strong black coffee.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Dimitra Vlahos",
+  "nationality": "Greek",
+  "age": 40,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Dimitra's journey into motorsport began unexpectedly. Originally training as a mechanical engineer, a university project involving vehicle dynamics sparked an insatiable curiosity about performance optimization. After graduating top of her class, she joined a small racing team, quickly rising through the ranks from data analyst to junior engineer. Her knack for interpreting complex telemetry and translating it into actionable feedback caught the eye of Sauber scouts. \n\nShe joined Sauber's test program several years ago, initially focusing on simulation development. Dimitra's pragmatic approach and sharp eye for detail proved invaluable in bridging the gap between virtual testing and real-world performance. She has since become a key liaison between the test drivers and the engineering team, ensuring seamless communication and efficient testing schedules. She is known for her calm demeanor under pressure and her ability to quickly identify and resolve technical issues during testing sessions. Her strong ability to handle many drivers makes her invaluable.\n\nWhat sets Dimitra apart is her ability to build rapport with the drivers, fostering a collaborative environment where they feel comfortable providing honest feedback. She believes that a successful test program hinges on trust and clear communication. Her technical understanding is impeccable, which is what makes her such a valuable asset.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, subtly wavy, often pulled back into a low ponytail during testing.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Dimitra has a focused gaze and a no-nonsense demeanor, softened by a warm smile."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a particular fondness for strong Greek coffee and always brings a thermos to the track.",
+    "Insists on reviewing every piece of test data herself, even if it means staying late."
+  ]
+}

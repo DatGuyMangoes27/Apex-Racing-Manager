@@ -1,0 +1,31 @@
+{
+  "name": "Omar Hassan Khalil",
+  "nationality": "Egyptian",
+  "age": 57,
+  "gender": "male",
+  "contactType": "yacht_captain",
+  "bio": "Captain Omar Hassan Khalil has spent over 30 years navigating the world's oceans, captaining luxury yachts for some of the wealthiest individuals on the planet. Renowned for his unflappable demeanor in the face of maritime challenges and his unwavering commitment to his passengers' safety and comfort, Omar has earned a reputation as one of the most sought-after captains in the industry. He is known to be fiery when challenged, but also deeply compassionate towards those in need and steadfastly principled in his dealings. \n\nHis line of work often brings him into contact with influential figures, including motorsport team owners and sponsors who appreciate the exclusivity and prestige associated with yachting. A racing driver might encounter Captain Khalil at a Monaco Grand Prix after-party hosted aboard a superyacht, or perhaps while vacationing in the Red Sea, where Omar frequently navigates for prominent clients.",
+  "physical": {
+    "skinTone": "Medium-tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Dark brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Omar is a man of medium build, with a weathered face that speaks of years spent under the sun. He carries himself with an air of quiet authority and maintains excellent posture."
+  },
+  "connectionToMotorsport": "Captain Khalil often ferries wealthy motorsport sponsors and team owners on his yacht. He's also known to be a casual motorsports fan and follows Formula 1.",
+  "meetingContext": "At a high-end party hosted on a yacht during a Grand Prix weekend, or potentially while the player is vacationing in a luxury resort frequented by yacht owners.",
+  "conversationTopics": [
+    "The latest independent films",
+    "His favourite board game strategies",
+    "The appeal of true crime podcasts",
+    "The challenges and rewards of marathon running",
+    "The best gardening techniques for Mediterranean climates"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors who frequent his yacht.",
+    "Offer the player a luxurious vacation, providing respite from the pressures of racing and networking opportunities with other wealthy guests.",
+    "Provide valuable insights into navigating high-society circles, which could improve the player's reputation and appeal to sponsors."
+  ],
+  "personality_summary": "A fiery but principled yacht captain who is a reliable friend and confidant."
+}

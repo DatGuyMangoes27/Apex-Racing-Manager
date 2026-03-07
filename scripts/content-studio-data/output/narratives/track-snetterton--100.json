@@ -1,0 +1,57 @@
+{
+  "history": "Snetterton, built on the site of a former World War II airfield, first opened its gates as a racing circuit in 1953. Originally a high-speed venue dominated by long straights and fast corners, it quickly became a popular destination for club racing and national championships. Over the years, Snetterton has undergone several revisions, including the introduction of multiple layout configurations to cater to different types of racing and testing. The '100 Circuit' layout, at just over a mile long, is the shortest of these configurations and is primarily used for testing, track days, and entry-level motorsport events. While not hosting major national championships on its own, it forms an integral part of the larger circuit's operations and provides a valuable training ground for aspiring racers. The circuit has hosted major motorsport events through the decades, including British Touring Car Championship races on the full layout.",
+  "atmosphere": "Imagine standing at the start-finish line of the Snetterton 100 Circuit. The air crackles with anticipation as a grid of novice racers prepares to unleash their machinery. The relatively short lap means the roar of engines is almost constant, punctuated by the squeal of tires and the enthusiastic cheers of friends and family lining the track. The close proximity to the action creates an intimate atmosphere, allowing spectators to fully appreciate the skill and determination of the drivers as they navigate the tight and technical layout. The smell of burning rubber and high-octane fuel fills the air, a sensory reminder of the raw energy and passion that defines grassroots motorsport.",
+  "trackCharacter": "The Snetterton 100 Circuit is a tight and technical layout that prioritizes precise car control and quick acceleration. With only six turns packed into its short length, there's little opportunity to relax. Success on this circuit hinges on maximizing corner exit speed and maintaining momentum throughout the lap. The configuration favors nimble, well-balanced cars and rewards drivers who can master the art of late braking and smooth transitions. It's a fantastic layout for honing fundamental driving skills and building confidence behind the wheel, but the lack of long straights means straight-line speed is less critical than on Snetterton's longer configurations.",
+  "nickname": "The Sprint",
+  "famousCorners": [
+    {
+      "name": "Riches",
+      "description": "The first corner, a right-hander taken at speed, requires commitment and precision.",
+      "challenge": "Getting the braking point correct to carry maximum speed through the apex and onto the short straight."
+    },
+    {
+      "name": "Sears",
+      "description": "A quick left-hand kink that requires a lift, testing the balance of the car.",
+      "challenge": "Maintaining momentum and not scrubbing off too much speed, setting up well for the following corner."
+    },
+    {
+      "name": "Coram",
+      "description": "A long, sweeping right-hander that demands a smooth and progressive throttle application.",
+      "challenge": "Finding the limit of grip and carrying as much speed as possible through the corner without running wide."
+    },
+    {
+      "name": "Murrays",
+      "description": "A tight right-hand hairpin, the slowest corner on the circuit and a prime overtaking spot.",
+      "challenge": "Braking late and positioning the car for a clean exit to maximize acceleration onto the start/finish straight."
+    }
+  ],
+  "keyFactors": [
+    "Braking Efficiency",
+    "Corner Exit Speed",
+    "Momentum Management",
+    "Traction Control",
+    "Precise Car Placement"
+  ],
+  "overtakingSpots": [
+    "Murrays hairpin (into Turn 4)",
+    "Into Riches (Turn 1)",
+    "Under braking for Coram (Turn 3)"
+  ],
+  "historySnippets": [
+    "Snetterton was built on a former RAF bomber base.",
+    "The circuit has hosted various forms of motorsport, including Formula 3 and GT racing.",
+    "Several layout configurations exist at Snetterton, each offering a unique challenge.",
+    "The 100 Circuit is the shortest layout, ideal for testing and beginner events.",
+    "Snetterton is a popular venue for track days and driver training.",
+    "The circuit has undergone several renovations and upgrades throughout its history."
+  ],
+  "weatherNotes": "Snetterton, located in Norfolk, England, is prone to unpredictable weather conditions. Rain is a common occurrence, which can significantly impact grip levels and braking distances on the 100 Circuit. Cold temperatures can also affect tire performance, making it crucial to manage tire temperatures effectively. Wind can be a factor, especially at exposed sections of the track, influencing car balance and handling. Sunny days can lead to high track temperatures, affecting tire wear and engine performance.",
+  "drivingAdvice": "On the Snetterton 100 Circuit, focus on maximizing corner exit speed and maintaining momentum. Brake late but smoothly into Murrays hairpin, ensuring a clean exit to capitalize on the acceleration onto the start/finish straight. Carry as much speed as possible through Riches and Sears, using the full width of the track to optimize your line. Smooth throttle application is key through Coram to avoid wheelspin and maintain traction. Be mindful of track limits, as exceeding them can result in penalties. Consistency and precision are crucial for a fast lap time.",
+  "famousRaces": [
+    "While the 100 Circuit rarely hosts standalone races, it is often used as part of larger events incorporating the full circuit.",
+    "Club-level championships frequently utilize the 100 Circuit for sprint races and time trials, providing a platform for amateur racers to showcase their skills.",
+    "Testing days for various racing teams sometimes utilize the 100 circuit for component testing.",
+    "Driver training events are very common, and the 100 circuit is perfect for practicing fundamentals."
+  ],
+  "localCulture": "Snetterton is located in the heart of Norfolk, a region known for its picturesque countryside, charming villages, and rich agricultural heritage. The local cuisine features fresh seafood and locally sourced produce. Paddock life at Snetterton is generally relaxed and friendly, with a strong sense of community among racers and spectators. Visitors can explore the nearby market towns, enjoy scenic walks in the surrounding countryside, and sample the local ales at traditional pubs. The area offers a variety of accommodations, ranging from cozy bed and breakfasts to modern hotels."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jameson 'Jim' Riley",
+  "nationality": "American",
+  "age": 56,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jim Riley is a motorsports veteran through and through. Born and raised in Indianapolis, the roar of engines at the Speedway was the soundtrack of his childhood. He started his career wrenching on IndyCars before transitioning to NASCAR, where he spent nearly two decades honing his craft. A master of problem-solving, Jim has a knack for diagnosing even the most elusive mechanical gremlins. \n\nHe believes in a data-driven approach, meticulously analyzing telemetry to squeeze every last bit of performance from the car. His calm demeanor and clear communication style make him a valuable asset to any team. Jim joined Walkinshaw Andretti United seeking a new challenge and the opportunity to apply his expertise in a different racing environment. He's known for his dedication and old-school work ethic, often the last one to leave the garage.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed grey goatee",
+    "description": "A stout man with a permanent crease of concentration etched between his brows."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out multi-tool in his pocket.",
+    "Insists on using analog gauges alongside digital displays.",
+    "Has a habit of whistling old blues tunes while working."
+  ]
+}

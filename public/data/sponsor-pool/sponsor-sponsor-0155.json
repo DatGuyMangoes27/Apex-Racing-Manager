@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0155",
+  "name": "PixelPunch Studios",
+  "category": "gaming",
+  "tier": "entry",
+  "country": "Portugal",
+  "description": "Level up your game with PixelPunch Studios.",
+  "story": "PixelPunch Studios is a burgeoning game development company based in Lisbon, focused on creating innovative and engaging mobile gaming experiences. They see motorsport sponsorship as a way to reach a broader audience of tech-savvy individuals and showcase their commitment to high performance and cutting-edge technology. They are particularly interested in partnering with teams that demonstrate a drive to succeed and resonate with a younger demographic.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0155.png"
+}

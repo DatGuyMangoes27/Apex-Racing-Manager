@@ -1,0 +1,22 @@
+{
+  "name": "Branislav Jovanović",
+  "nationality": "Serbian",
+  "age": 43,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Branislav's journey into motorsport was somewhat accidental. Originally a computer science graduate from the University of Belgrade, he found himself drawn to the high-stakes, data-driven world of racing after helping a local rally team troubleshoot their telemetry systems. He quickly realized the importance of robust IT infrastructure for competitive success.\n\nAt Team WRT, Branislav oversees all aspects of the team's IT systems, from data acquisition to communication networks. He believes in a proactive approach, constantly seeking innovative solutions to improve data analysis and communication efficiency. His ability to quickly adapt to changing requirements and provide effective solutions has made him an invaluable asset to the team. Branislav is known for his creative problem-solving skills and his dedication to ensuring the team's IT infrastructure is always running smoothly, allowing engineers and drivers to focus on performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee.",
+    "description": "Branislav is of average height with a thoughtful, focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool with him.",
+    "Has a habit of explaining technical issues using motorsport analogies.",
+    "Refuses to use cloud storage, preferring physical servers."
+  ]
+}

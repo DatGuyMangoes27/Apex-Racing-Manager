@@ -1,0 +1,27 @@
+{
+  "biography": "Carlos Neto, born and raised amidst the vibrant chaos of São Paulo, Brazil, discovered his passion for speed not on the football pitch, but amidst the roaring engines of local karting tracks. His father, a mechanic, instilled in him a deep understanding of machinery, while his mother, a fiery artist, nurtured his competitive spirit. Neto's early career was marked by breathtaking overtakes and equally spectacular crashes – a testament to his raw talent and untamed aggression. A defining moment came at the Brazilian National Karting Championship, where he clinched victory after starting from the back of the grid due to a qualifying mishap, showcasing his resilience and determination. Transitioning to single-seaters, Neto quickly climbed the ranks, securing multiple podiums and victories. Currently, at 36, Neto finds himself in his peak, driving for his own eponymous team, ‘Carlos Neto’. Though known for flashes of brilliance, consistency remains his Achilles' heel, leaving many wondering if he'll ever fully realize his potential.",
+  "drivingStyle": "Neto's driving style is a high-risk, high-reward approach characterized by late braking and aggressive corner entries. He's known for pushing his car to the absolute limit, often flirting with the edge of control. Tire management isn't his strongest suit, as he tends to overwork the tires early in a stint in pursuit of immediate gains. Under pressure, Neto can either deliver a masterclass or crack completely, making him an unpredictable force on the track.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Esteves",
+      "reason": "A long-standing feud dating back to their karting days, fueled by numerous on-track collisions and off-track barbs."
+    },
+    {
+      "driver": "Sofia Vargas",
+      "reason": "A clash of styles; Vargas' calculated precision constantly contrasted by Neto's more visceral style, creating tension on and off the track."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Both drivers are known for taking huge risks, and have taken each other out of races many times."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded lucky t-shirt under his race suit.",
+    "Listens to a specific playlist of Brazilian samba music before every race.",
+    "Refuses to walk under ladders, even in the paddock."
+  ],
+  "nickname": "The Samba Storm",
+  "famousQuote": "\"Racing is not about being safe, it's about being alive!\"",
+  "careerHighlight": "Winning the Interlagos Grand Prix in front of his home crowd after a thrilling last-lap overtake, a moment he describes as \"pure magic\".",
+  "careerLowPoint": "Crashing out of the lead in the final race of a championship season due to a misjudgment, costing him the title."
+}

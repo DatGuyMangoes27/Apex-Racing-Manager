@@ -1,0 +1,22 @@
+{
+  "name": "Anneliese Gruber",
+  "nationality": "German",
+  "age": 32,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Anneliese discovered her passion for motorsport during her mechanical engineering studies at RWTH Aachen University, where she specialized in aerodynamics. Her fascination with airflow and vehicle dynamics led her to an internship at a Formula 1 team, solidifying her desire to work in the field. After graduating, she joined Herberth Motorsport, initially assisting with data analysis before transitioning to a dedicated wind tunnel operator role. Anneliese approaches her work with meticulous precision, believing that even the smallest adjustments can make a significant difference on the track. She is known for her data-driven insights and ability to translate complex aerodynamic concepts into practical solutions for the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight with a slight wave, usually tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Anneliese has a focused gaze and a practical demeanor that reflects her dedication to her work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a cup of black coffee at her workstation, regardless of the time.",
+    "Uses a vintage slide rule alongside modern software for double-checking calculations.",
+    "Insists on complete silence during critical wind tunnel runs."
+  ]
+}

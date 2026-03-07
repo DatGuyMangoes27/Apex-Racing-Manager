@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0474",
+  "name": "Bharati Dynamics",
+  "category": "tech",
+  "tier": "entry",
+  "country": "India",
+  "description": "Powering the future with innovative sensor technology.",
+  "story": "Bharati Dynamics is a leading Indian manufacturer of advanced sensor solutions for industrial applications. As a young company, we are looking to boost brand awareness and demonstrate the reliability of our tech in demanding environments. Motorsport provides the perfect testing ground and marketing platform.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20,
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0474.png"
+}

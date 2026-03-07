@@ -1,0 +1,31 @@
+{
+  "name": "Layla Al-Faisal",
+  "nationality": "Saudi",
+  "age": 39,
+  "gender": "female",
+  "contactType": "business_mogul",
+  "bio": "Layla Al-Faisal is a force to be reckoned with in the Saudi business world. Having taken over her family's substantial real estate holdings and diversified into tech investments, she's known for her sharp intellect, aggressive negotiation tactics, and an uncanny ability to spot emerging trends. Despite her demanding professional life, Layla indulges in a wide range of hobbies, from scaling desert peaks to curating a collection of rare timepieces. Those who underestimate her playful, almost mischievous side often find themselves outmaneuvered. \n\nLayla's involvement in motorsport stems from her passion for vintage cars and a growing interest in sustainable racing technologies. She's been quietly investing in several teams, focusing on the technology side of the sport. A racing driver seeking funding, sponsorship, or access to cutting-edge research and development might find themselves vying for Layla's attention – and her substantial resources.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, sleek, often pulled back in a high ponytail",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Layla carries herself with an air of confidence. Her sharp features are often accentuated by designer glasses and a meticulously chosen outfit."
+  },
+  "connectionToMotorsport": "Layla is a quiet investor in several motorsport technology companies and racing teams, with a particular interest in sustainable racing technologies and electric vehicle development.",
+  "meetingContext": "The player might meet Layla at a high-profile motorsport event, a technology conference showcasing advancements in racing, or through an introduction from a mutual business contact.",
+  "conversationTopics": [
+    "Vintage car restoration",
+    "The future of sustainable racing",
+    "Art collecting as an investment",
+    "The challenges of doing business in the Middle East",
+    "Hiking in remote locations"
+  ],
+  "canHelp": [
+    "Provide substantial financial backing for the player's racing career",
+    "Connect the player with influential figures in the motorsport industry",
+    "Offer access to cutting-edge racing technology and engineering expertise"
+  ],
+  "personality_summary": "A shrewd and influential businesswoman with a penchant for calculated risks and a playful, mischievous side."
+}

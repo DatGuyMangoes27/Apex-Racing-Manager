@@ -1,0 +1,22 @@
+{
+  "name": "Fiona MacLeod",
+  "nationality": "Scottish",
+  "age": 44,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Fiona's journey into motorsport began unconventionally, fueled by a childhood fascination with disassembling and reassembling radios. After earning a degree in Electrical Engineering from the University of Edinburgh, she initially worked in the aerospace industry, honing her skills in precision electronics and problem-solving. However, the allure of speed and innovation drew her to motorsport. \n\nShe thrives on the dynamic challenges presented by racing, particularly the real-time diagnostics and rapid adjustments required in the pit lane. Fiona's approach is characterized by meticulous attention to detail and a knack for identifying subtle electrical anomalies that can impact performance. Her lone wolf nature allows her to focus intensely on the task at hand, making her a valuable asset in high-pressure situations. She enjoys working independently, but will readily provide insight to others when asked.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Fiona has a slender build and a focused, intelligent gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even outside the garage.",
+    "Has a habit of humming quietly while soldering or diagnosing complex circuits.",
+    "Drinks copious amounts of strong Earl Grey tea."
+  ]
+}

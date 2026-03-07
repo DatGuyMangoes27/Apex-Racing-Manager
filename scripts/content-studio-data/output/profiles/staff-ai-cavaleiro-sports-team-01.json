@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 39,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Liam's journey into motorsport began with a childhood obsession with rallying, fueled by watching grainy VHS tapes of Colin McRae. He honed his skills through years of competitive karting, eventually transitioning to engineering at a local racing team. From there, he rapidly ascended the ranks, demonstrating a knack for identifying and resolving technical bottlenecks. \n\nHis approach to chief engineering is rooted in a blend of data-driven analysis and gut instinct. Liam emphasizes fostering a collaborative environment where every team member feels empowered to contribute their expertise. He believes that innovation thrives when diverse perspectives are encouraged and rigorously tested. What sets Liam apart is his relentless pursuit of perfection and his ability to translate complex technical concepts into actionable strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Liam is of average height, with a wiry build suggesting a lifetime spent tinkering with machinery."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn copy of Carroll Smith's 'Tune to Win'.",
+    "Tends to doodle technical diagrams during meetings, even if unrelated to the topic.",
+    "Has a specific brand of Irish Breakfast tea he insists on having at the track."
+  ]
+}

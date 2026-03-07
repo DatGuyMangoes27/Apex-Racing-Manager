@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Alistair's journey into motorsport began unconventionally, initially repairing radios in the highlands before progressing to automotive electronics. A chance encounter with a touring car team at Knockhill sparked his passion, and he hasn't looked back since. He prides himself on his methodical approach to problem-solving, often favoring tried-and-true methods over untested innovations. His deep understanding of legacy systems and his ability to coax the last ounce of performance from them makes him an invaluable asset, especially when dealing with older or underfunded teams.\n\nAlistair is a firm believer in continuous learning, dedicating his evenings to studying the latest advancements in electronics. However, he remains skeptical of overly complex solutions, always seeking the simplest and most reliable approach. He joined Brasil Racing hoping to apply his expertise to a team with ambitious goals, bringing stability and predictability to their electronic systems. While he appreciates collaboration, he's most effective when left to his own devices, meticulously analyzing data and refining systems in his own time.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed grey goatee",
+    "description": "Alistair is a stocky man with a weathered face, suggesting years spent tinkering under all sorts of conditions."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool, even when he's not working.",
+    "Muttering technical jargon under his breath when troubleshooting.",
+    "Insisting on using a vintage oscilloscope for certain diagnoses."
+  ]
+}

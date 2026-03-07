@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 38,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Nikola's motorsport journey began in Belgrade, tinkering with Lada engines in his uncle's garage. He quickly discovered a knack for understanding the intricate mechanics of racing machines. After completing his engineering degree, he joined a local rally team, honing his skills in the demanding world of off-road racing. His meticulous approach and problem-solving abilities soon caught the eye of scouts from the Hot Racing Team.\n\nAt Hot Racing, Nikola has proven himself to be a reliable and insightful engineer. He focuses on extracting maximum performance from the car through data analysis and precise adjustments. His pragmatic nature allows him to remain calm under pressure, making him a valuable asset during tense race weekends. He believes in a collaborative approach, working closely with drivers and mechanics to achieve optimal results. Nikola is known for his ability to diagnose and resolve complex mechanical issues quickly, often finding solutions that others have overlooked. His detail-oriented mindset ensures that every aspect of the car is carefully considered, contributing to the team's overall success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Nikola is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to communicate technical details through diagrams rather than lengthy explanations."
+  ]
+}

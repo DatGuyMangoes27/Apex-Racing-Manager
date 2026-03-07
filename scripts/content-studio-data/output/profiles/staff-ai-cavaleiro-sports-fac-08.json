@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 53,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jean-Pierre's journey into motorsport began unexpectedly. Originally trained as an aerospace engineer, he found himself drawn to the intricate dance between aerodynamics and speed. A chance encounter with a former Formula 1 aerodynamicist during a university lecture sparked a passion that rerouted his career. He joined Cavaleiro Sports after years at a smaller racing outfit, eager to apply his detailed understanding of airflow to a team with serious ambitions.\n\nJean-Pierre's approach to wind tunnel operation is methodical and data-driven. He believes in pushing the boundaries of current designs while meticulously documenting every change and its impact. He's known for his rigorous testing protocols and his ability to identify subtle aerodynamic inefficiencies that others might miss. Jean-Pierre's innovative ideas and dedication to improvement has solidified his reputation as a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule, even though he uses computer simulations.",
+    "Insists on listening to classical music while calibrating the wind tunnel.",
+    "Meticulously cleans the wind tunnel viewing window multiple times a day."
+  ]
+}

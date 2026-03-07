@@ -1,0 +1,27 @@
+{
+  "biography": "David Robinson, a name whispered with a mix of admiration and caution in the Caterham Superlight paddock, hails from a small village in the Cotswolds. Unlike most racers who grew up karting, David's first taste of speed came from navigating the winding country lanes on his family's farm. He converted an old tractor into a makeshift go-kart. This raw, uncontrolled environment instilled in him a unique sense of car control. He was accepted into the Caterham academy following a surprise podium at a national amateur race. His breakthrough year came in 2021, securing three wins and narrowly missing the championship. Now, at 26, Robinson is entering his peak, a seasoned strategist known for his ruthless efficiency and ice-cold demeanor under pressure. He is determined to claim the championship that narrowly eluded him years ago.",
+  "drivingStyle": "Robinson's driving style is a masterclass in calculated aggression. He's not the flashiest driver, but he is relentlessly consistent. He meticulously analyses telemetry data, identifying the smallest margins for improvement. His corner entry is precise, prioritizing mid-corner speed and smooth exits to preserve tire life. He is known for his defensive driving, often frustrating rivals with his uncanny ability to place his car in the perfect position, making overtaking nearly impossible. He's a master of tire management, often running longer stints than his competitors, a strategy that has won him several races.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A fierce rivalry stemming from a controversial collision at Silverstone in 2022, where Bellini accused Robinson of deliberately blocking him."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A tactical battle of wits, with Dubois, known for her aggressive overtakes, constantly trying to break Robinson's composed driving style."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A budding rivalry born from several close finishes. Both drivers pushing their cars to the absolute limit, creating electrifying moments."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks on race day, claiming they bring him good fortune.",
+    "Spends exactly 15 minutes in complete silence before each race, visualizing every corner and potential scenario.",
+    "Refuses to eat anything but a plain cheese sandwich on the morning of a race."
+  ],
+  "nickname": "The Iceman",
+  "famousQuote": "\"Racing isn't about taking risks, it's about calculating them.\"",
+  "careerHighlight": "Winning the Spa-Francorchamps race in 2021, starting from P8 and executing a flawless strategy to secure the victory in the final lap, passing two cars in the process.",
+  "careerLowPoint": "Crashing out of the lead at the Brands Hatch finale in 2020, costing him the championship by a single point."
+}

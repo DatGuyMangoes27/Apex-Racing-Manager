@@ -1,0 +1,27 @@
+{
+  "biography": "Isabella Tanaka's journey from the dusty karting tracks of Soweto to the cusp of international motorsport is a testament to her raw talent and unwavering determination. Growing up in a vibrant community where motorsport was a distant dream, Isabella discovered her passion while tinkering with her grandfather's old motorbike. At 12, she entered her first karting race, using a borrowed kart and finishing a surprising third place. This ignited a fire within her. Lacking resources, Isabella and her family tirelessly sought sponsorships and support, often facing closed doors. A pivotal moment came during a regional karting championship where, despite a mechanical failure in the final race, her sheer speed and tactical brilliance caught the eye of a small, independent racing team. Now at 18, racing under her own banner, Isabella is battling against considerable odds to prove she belongs among the racing elite. Each race is a fight for survival and a chance to show the world what South African talent can achieve.",
+  "drivingStyle": "Isabella's driving style is characterized by a cold, calculating precision. She's not one for flamboyant overtakes or unnecessary risks. Instead, she meticulously studies track data and opponent behavior, identifying weaknesses and exploiting them with surgical precision. Her cornering technique is smooth and efficient, prioritizing maintaining momentum and minimizing tire wear. Under pressure, Isabella remains remarkably composed, able to deliver consistent lap times even when battling for position. She possesses an uncanny ability to anticipate her rivals' moves, often setting them up for strategic passes that appear almost effortless. She focuses on tire management and extracting every last bit of performance from her car.",
+  "rivalries": [
+    {
+      "driver": "Marco Rossi",
+      "reason": "A clash of styles and egos. Rossi is known for his aggressive, risk-taking maneuvers, directly opposing Isabella's calculated approach, causing on-track collisions and heated exchanges."
+    },
+    {
+      "driver": "Anya Petrova",
+      "reason": "A battle for recognition and sponsorships. Both rising stars, they are constantly vying for the same opportunities, creating a fierce competitive dynamic both on and off the track."
+    },
+    {
+      "driver": "Kenji Sato",
+      "reason": "Tactical disagreements during a joint practice session led to a public argument, highlighting their differing philosophies on race strategy and teamwork."
+    }
+  ],
+  "quirks": [
+    "Always wears the same beaded bracelet given to her by her grandmother before every race.",
+    "Studies the entire track layout in virtual reality for hours the night before a race.",
+    "Never celebrates a good qualifying result, believing it jinxes her for the actual race."
+  ],
+  "nickname": "The Calculating Queen",
+  "famousQuote": "\"Racing isn't about brute force; it's about strategic brilliance. Every move must be calculated, every risk assessed. Only then can you truly conquer the track.\"",
+  "careerHighlight": "Winning the Regional Karting Championship against all odds in 2021, securing a crucial sponsorship that allowed her to move into single-seater racing.",
+  "careerLowPoint": "Suffering a mechanical failure in the final lap of a crucial Formula 4 race while leading, costing her a potential championship title and significant career momentum."
+}

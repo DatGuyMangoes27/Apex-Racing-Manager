@@ -1,0 +1,22 @@
+{
+  "name": "Ingrid Karlsson",
+  "nationality": "Swedish",
+  "age": 54,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Ingrid's meticulous approach to composite work stems from her early career in aerospace, where precision was paramount. Dissatisfied with the slow pace of civilian projects, she transitioned to motorsport, drawn by the relentless pursuit of performance. She joined Birel ART a decade ago and quickly became an indispensable part of the team, known for her unwavering standards and ability to coax the maximum performance from every composite component. Ingrid believes that every gram counts, and she's relentless in her quest for perfection. \n\nHer experience spans everything from chassis repairs to aerodynamic upgrades, and she has a knack for identifying weaknesses in existing designs and proposing innovative solutions. While some may find her directness intimidating, her colleagues respect her deep knowledge and commitment to excellence. Ingrid's sharp eye for detail has saved the team from potential disasters on more than one occasion, making her a valuable asset both in the workshop and at the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly bobbed, with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A woman of medium height, she has a sturdy build and a no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a small, antique pocketknife for trimming carbon fiber.",
+    "Insists on using only Swedish-made tools.",
+    "Listens to classical music on noise-canceling headphones while working."
+  ]
+}

@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, BookOpen, Lightbulb, ArrowRight, ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -19,28 +18,27 @@ export function HelpModal({ isOpen, onClose, content }: HelpModalProps) {
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => console.log('[HelpModal] AnimatePresence onExitComplete fired')}
+    >
       {isOpen && (
-        <Fragment>
-          {/* Backdrop */}
+        <motion.div
+          key="help-modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          onAnimationComplete={(def) => console.log('[HelpModal] Backdrop animation COMPLETE:', def)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-          />
-          
-          {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-2xl bg-surface border border-surface-border rounded-2xl shadow-2xl overflow-hidden pointer-events-auto"
-            >
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl bg-surface border border-surface-border rounded-2xl shadow-2xl overflow-hidden"
+          >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-surface-border bg-gradient-to-r from-accent-orange/10 to-transparent">
                 <div className="flex items-center gap-3">
@@ -160,8 +158,7 @@ export function HelpModal({ isOpen, onClose, content }: HelpModalProps) {
                 </button>
               </div>
             </motion.div>
-          </div>
-        </Fragment>
+        </motion.div>
       )}
     </AnimatePresence>
   )

@@ -11,7 +11,8 @@ import type {
   CollectionsState,
   ExpandedSocialMediaState,
   TravelState,
-  ExtendedRetirementState
+  ExtendedRetirementState,
+  SeparationProcess
 } from '@/types/personalLife'
 import {
   createDefaultMessagingState,
@@ -31,6 +32,7 @@ import { getWeeksInYear, getLastWeekLength, advanceDayInWeekSystem } from '@/uti
 import { 
   calculateFatigueCarryOver, 
   calculateRestRecovery, 
+  calculateRestorativeDebtRecovery,
   calculateMentalFatigueImpact, 
   resetDayBudget, 
   TIME_BUDGET_CONFIG 
@@ -38,6 +40,7 @@ import {
 import { MANUFACTURERS, type ManufacturerPartsCosts } from '@/data/manufacturers'
 import type { TelemetryParticipant, ProgramEntryInfo, MidSeasonReassignment, TeamTier } from './rivalStore'
 import { getPointsSystem, getPointsForPosition } from '@/data/points-systems'
+import { getSocialActionById, getCombinedBonusMultiplier } from '@/data/social-actions-config'
 import { getChampionshipById, getSeriesMaxTeamCars } from '@/data/championships'
 import { 
   calculateRaceXP, 
@@ -55,6 +58,15 @@ import { SponsorDeal, processWeeklyExpenses, generateSponsorOffers as generateSp
 import { generateSponsorTargets } from '@/simulation/sponsors'
 import { ALL_ACTIVITY_TRIGGERS, TriggerContext, evaluateTriggerConditions, createActivityFromTrigger } from '@/simulation/activities'
 import { getActivityTimeCost } from '@/data/activity-time-costs'
+import { canDoActivityInCurrentPeriod, isContactInResponseWindow, getPeriodForHour, getHoursRemainingInPeriod, DAY_PERIODS, DAY_PERIOD_ORDER, type DayPeriod } from '@/data/day-periods-config'
+import { 
+  calculateGuestEffects, 
+  calculateAcceptanceRate, 
+  rollActualAttendance,
+  type VIPGuestType,
+  type MediaInviteType
+} from '@/data/guest-effects-config'
+import { getVenueById, getEffectiveVenueCapacity } from '@/data/venues'
 import { routeNotification } from '@/services/notificationRouter'
 import { 
   MANDATORY_ACTIVITY_TEMPLATES,
@@ -62,6 +74,14 @@ import {
   createMandatoryActivity,
   calculateDeadline
 } from '@/simulation/activities/mandatoryActivities'
+import type { PlayerPromise } from '@/simulation/promises'
+import { getOnboardingMandatoryForDay, ONBOARDING_MANDATORY_SCHEDULE } from '@/simulation/onboardingMandatorySchedule'
+import { getStaffNameOrFallback } from '@/services/eventContentGenerator'
+import { createPostCarPurchaseActivities, createPostSeriesEntryActivities } from '@/simulation/activities/contextTriggeredActivities'
+import { createRivalry } from '@/simulation/personal/socialEventsManager'
+import { createDefaultPersonalLifeState } from '@/screens/PersonalLife/usePersonalLifeState'
+import { createRaceWeekendExpectedActivities } from '@/simulation/activities/raceWeekendExpectedSchedule'
+import { calculateDayEffectiveHours, wouldExceedDayLimit, MAX_HOURS_PER_DAY as OVERHEAD_MAX_HOURS, type EffectiveHoursBreakdown } from '@/simulation/activities/schedulingOverhead'
 import {
   processTeamSponsorPayments,
   processWeeklyFacilityCosts,
@@ -86,14 +106,27 @@ import {
   calculateDynamicFacilityCosts,
   processRacePrizeIncome,
   processRaceTravelCosts,
-  processCarRepair
+  processCarRepair,
+  generateBudgetWarnings,
+  checkAutoContingency,
+  acceptSponsorRenewal,
+  declineSponsorRenewal,
+  processMultipleTransactions,
+  processEnforcedExpense,
+  processMarketingSpend,
+  normalizeSponsorDealForTeamReputation,
+  normalizeTeamSponsorsForCurrentEconomy,
+  getSponsorPaymentModifier
 } from '@/simulation/finances/teamFinances'
-import { processWeeklyLoans } from '@/simulation/finances/loans'
+import { generateTeamSponsorOffers, selectEventSponsors, getSuggestedSponsorsForSlot, acceptSponsorOffer as acceptTeamSponsorOfferSim, checkSponsorTermination, isSlotAvailable } from '@/simulation/finances/teamSponsors'
+import { processWeeklyLoans, calculateCreditScore } from '@/simulation/finances/loans'
+import { generateAIPoachingAttempt, calculatePlayerPoachingOffer } from '@/services/worldContactService'
 import { triggerPersonalGuarantee } from '@/simulation/finances/equityManager'
 import { 
   applyStaffCostPerk,
   applyFanEngagementPerk,
-  applyMediaCoveragePerk
+  applyMediaCoveragePerk,
+  getBoardPatienceModifier
 } from '@/simulation/perkSystem'
 import { 
   calculateRaceSatisfactionChange as calculateContractSatisfactionChange,
@@ -101,12 +134,33 @@ import {
   updateSeasonStats as updateContractSeasonStats,
   DEFAULT_TEAM_SATISFACTION,
   RaceResultForContract,
-  evaluateContractRenewal
+  evaluateContractRenewal,
+  SATISFACTION_WARNING_THRESHOLD,
+  SATISFACTION_FINAL_WARNING_THRESHOLD,
+  SATISFACTION_TERMINATION_THRESHOLD
 } from '@/simulation/contracts'
 import { processWeeklyInvestments } from '@/simulation/finances/investments'
-import { processWeeklySales, SalesContext } from '@/simulation/finances/merchandise'
-import { processWeeklyPersonalFinances, processAnnualTaxes } from '@/simulation/finances/personalFinances'
+import { getContractModifierFromRelationships, updateTeamRelationshipFromRace } from '@/simulation/relationships'
+import { checkCrashInjury, checkTrainingAccident } from '@/simulation/health'
+import {
+  processWeeklySales,
+  SalesContext,
+  createProduct as createMerchProduct,
+  createCollection as createMerchCollection,
+  openStore as openMerchStore,
+  updateProductPrice as updateMerchProductPrice,
+  discontinueProduct as discontinueMerchProduct,
+  updateStoreProducts as updateMerchStoreProducts
+} from '@/simulation/finances/merchandise'
+import type { CreateProductParams, CreateCollectionParams } from '@/simulation/finances/merchandise'
+import { processWeeklyPersonalFinances, processAnnualTaxes, syncMonthlyIncome, recalculateNetWorth } from '@/simulation/finances/personalFinances'
+import { processDividends, updateStockPricesForHoldings, processMonthlyBusiness } from '@/simulation/investments/portfolioManager'
+import { STOCKS } from '@/data/investment-config'
 import { processWeeklySpareParts, calculateWeeklySparePartsCosts } from '@/simulation/logistics/weeklyProcessing'
+import { activateWarehouse, addParts, createSparePart } from '@/simulation/logistics/partsInventory'
+import { queueManufacturingJob } from '@/simulation/logistics/partsManufacturing'
+import { placePartOrder } from '@/simulation/logistics/partsShipping'
+import { getLogisticsHubById } from '@/data/travel-logistics'
 import {
   processWeeklyHealth,
   processWeeklyBrand,
@@ -117,17 +171,22 @@ import {
   processAnnualHobby,
   addReputationEvent,
   createSocialContact,
-  processAnnualEndorsements
+  processAnnualEndorsements,
+  calculateMonthlyCosts
 } from '@/simulation/personal/lifestyleManager'
 import {
   processWeeklyAssets,
-  calculateLifestyleScore
+  calculateLifestyleScore,
+  processWeeklyLifestyleBonuses,
+  type WeeklyLifestyleBonuses
 } from '@/simulation/personal/lifestyleAssetsManager'
 import { createDefaultLifestyleAssets } from '@/data/lifestyle-assets-config'
 import { getLifestyleTier } from '@/data/lifestyle-config'
 import {
   attendSocialEvent,
+  attendSocialEventWithEncounters,
   hostSocialEvent,
+  processInvitedContacts,
   processWeeklyRivalries,
   processRivalryEvent,
   processScandalWeek,
@@ -135,7 +194,8 @@ import {
   createScandal,
   processAnnualPhilanthropy
 } from '@/simulation/personal/socialEventsManager'
-import { processWeeklyRelationship, calculateDivorceSettlement, processDivorce } from '@/simulation/personal/relationshipManager'
+import { processWeeklyRelationship, calculateDivorceSettlement, processDivorce, calculateCombinedTraitEffects, calculateSeparationDuration } from '@/simulation/personal/relationshipManager'
+import { shouldTriggerRomanticSpark } from '@/simulation/personal/relationshipEvents'
 import { processWeeklyFamily } from '@/simulation/personal/familyManager'
 import {
   SOCIAL_EVENT_TEMPLATES,
@@ -144,11 +204,11 @@ import {
 } from '@/data/social-events-config'
 import type { ScandalType } from '@/data/social-events-config'
 import { 
-  SPONSORS, 
   SponsorPriority, 
   SponsorPriorityType, 
   SponsorExpectations 
 } from '@/data/sponsors'
+import { getSponsorById, ensureContentLoaded } from '@/services/preGeneratedContentService'
 import { 
   checkWorksReassignment, 
   generateReassignmentEvent, 
@@ -165,6 +225,9 @@ import {
   processNegotiationRound,
   calculateCandidateImpact as calculateCandidateImpactSimulation
 } from '@/simulation/staffMarket'
+import { processWeeklyDelegation, type DelegationResult } from '@/simulation/staffDelegation'
+import { checkDramaticEvents } from '@/simulation/dramaticEvents'
+import { generateDailyBriefing, type DailyBriefingContent } from '@/simulation/dailyBriefing'
 import { 
   calculateRaceSatisfactionChange, 
   updateTargetProgress, 
@@ -180,8 +243,18 @@ import {
   finalizeSeasonTargets,
   DEFAULT_SATISFACTION,
   SponsorTarget,
-  processWeeklyNegotiations
+  processWeeklyNegotiations,
+  initiateOutreach as initiateSponsorOutreach,
+  canApproachSponsor
 } from '@/simulation/sponsors'
+import {
+  generateOutreachResponseEmail,
+  generateCounterResponseEmail,
+  generateInitialOfferEmail,
+  generateFallbackEmail as generateNegotiationFallbackEmail,
+  buildEmailContext as buildNegotiationEmailContext,
+  isNegotiationAIAvailable
+} from '@/services/sponsorNegotiationAI'
 import {
   RPGState,
   MilestoneProgress,
@@ -223,7 +296,6 @@ import {
   FACILITY_NAMES,
   getFacilityLevelConfig,
   calculateUpgradeCost,
-  calculateUpgradeDuration,
   calculateFacilityWeeklyCost,
   canUpgradeFacility,
   getFacilitySummary,
@@ -234,7 +306,14 @@ import {
   calculateStaffEffectivenessBonus,
   calculateTotalFacilityWeeklyCosts,
   getAllFacilityTypes,
-  MAX_FACILITY_LEVEL
+  MAX_FACILITY_LEVEL,
+  getMaxFacilityStaff,
+  getMaxConcurrentUpgrades,
+  getNextFacilityGrade,
+  getFacilityRebuildConfig,
+  calculateFacilityRebuildCost,
+  FACILITY_GRADE_BONUSES,
+  FACILITY_GRADE_ORDER
 } from '@/data/facility-config'
 import {
   FacilityStaffMember,
@@ -245,10 +324,20 @@ import {
   generateFacilityStaff,
   generateTeamStaff,
   calculateContractCost,
-  generateWorldStaffPool
+  generateWorldStaffPool,
+  calculateFacilityEffectiveness,
+  enrichStaffBios,
+  TRAIT_EFFECTS,
+  ROLES_CAN_CONDUCT_INTERVIEWS,
+  AI_TEAM_NAMES_FALLBACK,
+  STAFF_ROLE_NAMES,
+  TEAM_STAFF_ROLE_NAMES,
+  STAFF_DELEGATION_MAP,
+  type StaffRole as ConfigStaffRole,
+  type StaffPreGenBioSnapshot
 } from '@/data/facility-staff-config'
 import { inferGenderFromName } from '@/data/staff-names'
-import { getPortraitIdByGender } from '@/utils/generated-assets'
+import { getPortraitIdByGender, initPortraitRegistry } from '@/utils/generated-assets'
 import { generateFallbackSocialBio } from '@/services/dialogueAI'
 import { processWeeklySystems, type WeeklyProcessingContext } from '@/simulation/weeklySystemsProcessor'
 import { generateAllFeedback, type FeedbackContext } from '@/simulation/feedbackLoops'
@@ -300,6 +389,30 @@ function getSalaryRangeForTierLocal(tier: TeamTier): { min: number; max: number 
     case 'pinnacle': return { min: 500000, max: 3000000 }
     default: return { min: 0, max: 0 }
   }
+}
+
+/**
+ * Get team names from the rival store's game-world teams.
+ * Returns unique team names, or the fallback list if no teams exist yet.
+ */
+function getGameWorldTeamNames(): string[] {
+  try {
+    const teams = useRivalStore.getState().teams
+    if (teams && teams.length > 0) {
+      // Deduplicate and filter empty names
+      const names = [...new Set(teams.map(t => t.name).filter(Boolean))]
+      if (names.length > 0) return names
+    }
+  } catch { /* rival store not ready yet */ }
+  return [...AI_TEAM_NAMES_FALLBACK]
+}
+
+/**
+ * Pick a random team name from the game world (for AI hiring events).
+ */
+function getRandomGameTeamName(): string {
+  const names = getGameWorldTeamNames()
+  return names[Math.floor(Math.random() * names.length)]
 }
 
 // Simple hash function for consistent randomness
@@ -381,9 +494,21 @@ import {
   generateSponsorWarningEmail,
   generateBoardWarningEmail,
   generateWelcomeEmail,
-  generateWeeklySummaryEmail
+  generateWeeklySummaryEmail,
+  generateWeeklyPlanningEmail,
+  generateTeamSponsorOfferEmail
 } from '@/simulation/emailGeneration'
 import { generateRivalDrama } from '@/simulation/rivals/rivalDrama'
+import { processOnboardingGuidance } from '@/simulation/onboardingGuidance'
+import { tryGenerateMerchandiseProposal } from '@/simulation/merchandiseProposals'
+import {
+  loadAllPreGeneratedContent,
+  isContentLoaded as isPreGenContentLoaded,
+  getUsedIds as getPreGenUsedIds,
+  restoreUsedIds as restorePreGenUsedIds,
+  getRandomPartnersForFriendSeeding
+} from '@/services/preGeneratedContentService'
+import { buildFriendFromPartnerPool } from '@/services/contactService'
 import { 
   GOATProgress, 
   GOATTier,
@@ -462,7 +587,6 @@ import type {
   TeamEquityStake,
   LifestyleLevel
 } from '@/data/personal-finance-config'
-import { LIFESTYLE_CONFIGS } from '@/data/personal-finance-config'
 
 export interface FinancialTransaction {
   id: string
@@ -903,6 +1027,24 @@ export interface StaffNegotiation {
   expiresWeek: number          // Negotiation has a time limit
 }
 
+// Delegated recruitment shortlist (staff find candidates, owner approves one)
+export interface DelegatedShortlistCandidate {
+  id: string
+  name: string
+  role: string
+  salary: number
+  reputation: number
+}
+export interface DelegatedShortlist {
+  id: string
+  role: string
+  facilityType?: FacilityType
+  requestedWeek: number
+  shortlist: DelegatedShortlistCandidate[]
+  delegateStaffId: string
+  delegateStaffName: string
+}
+
 // Impact preview when considering hiring a candidate
 export interface StaffImpactPreview {
   developmentBonus: {
@@ -1283,6 +1425,7 @@ export interface MarketplaceListing {
 export interface TeamCar {
   carId: string
   seriesId?: string         // Optional - car may not be assigned to a series yet
+  seriesIds?: string[]      // Multi-series assignment (seriesId stays as primary for compatibility)
   chassisId: string
   engineId: string
   liveryName?: string       // AMS2 livery assignment
@@ -1484,6 +1627,8 @@ export interface TeamFinancialState {
   transactions: TeamTransaction[]
   sponsors: TeamSponsorDeal[]
   pendingSponsorOffers: TeamSponsorDeal[]
+  /** When seeking by slot, lists sponsor IDs open to an approach (no contract yet). */
+  suggestedSponsorsForSlot?: { slot: TeamSponsorSlot; sponsorIds: string[] } | null
   // Active negotiations
   activeNegotiations: SponsorNegotiation[]
   // Monthly summaries for reports
@@ -1500,6 +1645,8 @@ export interface TeamFinancialState {
   
   // Team valuation
   teamValue?: number
+  /** Declined sponsor cooldowns: sponsorId -> absolute week number when cooldown expires */
+  declinedSponsorCooldowns?: Record<string, number>
 }
 
 // ============================================
@@ -1577,12 +1724,19 @@ export interface SponsorNegotiation {
 // Individual facility state
 export interface FacilityState {
   level: number                    // 1-5
+  grade: TeamTier                  // Facility's own tier/grade (independent of racing tier)
   upgradeInProgress: boolean
   upgradeStartWeek?: number
   upgradeStartYear?: number
   upgradeCompletionWeek?: number
   upgradeCompletionYear?: number
-  assignedStaff: string[]          // Staff IDs assigned to this facility
+  rebuildInProgress?: boolean      // True when facility is being rebuilt to next grade
+  rebuildTargetGrade?: TeamTier    // The grade being rebuilt to
+  assignedStaff: string[]          // Staff IDs assigned to this facility (deprecated — kept for save compat)
+  notBuilt?: boolean               // True when facility has never been constructed; bonuses inactive until built
+  buildInProgress?: boolean        // True when facility is being constructed for the first time
+  buildCompletionWeek?: number
+  buildCompletionYear?: number
 }
 
 // All team facilities
@@ -1596,23 +1750,46 @@ export interface TeamFacilities {
 }
 
 // Helper to create default facility state
-export function createDefaultFacilityState(level: number = 1): FacilityState {
+export function createDefaultFacilityState(level: number = 1, grade: TeamTier = 'amateur'): FacilityState {
   return {
     level,
+    grade,
     upgradeInProgress: false,
     assignedStaff: []
   }
 }
 
-// Helper to create default facilities
-export function createDefaultFacilities(): TeamFacilities {
+// Helper to create default facilities — sim and marketing start as unbuilt for new teams
+export function createDefaultFacilities(grade: TeamTier = 'amateur'): TeamFacilities {
   return {
-    aero: createDefaultFacilityState(),
-    chassis: createDefaultFacilityState(),
-    engine: createDefaultFacilityState(),
-    sim: createDefaultFacilityState(),
-    manufacturing: createDefaultFacilityState(),
-    marketing: createDefaultFacilityState()
+    aero: createDefaultFacilityState(1, grade),
+    chassis: createDefaultFacilityState(1, grade),
+    engine: createDefaultFacilityState(1, grade),
+    sim: { ...createDefaultFacilityState(1, grade), notBuilt: true },
+    manufacturing: createDefaultFacilityState(1, grade),
+    marketing: { ...createDefaultFacilityState(1, grade), notBuilt: true },
+  }
+}
+
+function getCarSeriesAssignments(car: TeamCar): string[] {
+  const ids = Array.isArray(car.seriesIds) ? car.seriesIds.filter(Boolean) : []
+  if (ids.length > 0) return Array.from(new Set(ids))
+  return car.seriesId ? [car.seriesId] : []
+}
+
+/** Normalize a facility state, adding grade if missing (backward compat) */
+export function normalizeFacilityState(facility: any, fallbackGrade: TeamTier = 'amateur'): FacilityState {
+  if (typeof facility === 'number') {
+    return { level: facility, grade: fallbackGrade, upgradeInProgress: false, assignedStaff: [] }
+  }
+  return {
+    ...facility,
+    grade: facility?.grade || fallbackGrade,
+    level: facility?.level ?? 1,
+    upgradeInProgress: facility?.upgradeInProgress ?? false,
+    assignedStaff: facility?.assignedStaff || [],
+    notBuilt: facility?.notBuilt ?? false,
+    buildInProgress: facility?.buildInProgress ?? false,
   }
 }
 
@@ -1692,6 +1869,38 @@ export interface OwnedTeam {
   // Team metrics
   teamMorale?: number            // Overall team morale (0-100)
   developmentSpeedModifier?: number  // Modifier for development speed (1.0 = normal, < 1.0 = slower)
+  
+  // Staff delegation system - which domains are auto-managed
+  delegationFlags?: Record<string, boolean>  // domain -> enabled (e.g., { logistics: true, rnd_focus: false })
+  lastDelegationReport?: DelegationReport[]  // Last week's delegation results for summary email
+  pendingDelegationApprovals?: PendingDelegationApproval[]  // Delegation actions awaiting owner approval
+  lastScoutingSearchWeek?: number  // Tracks when scouting last triggered a delegated search
+}
+
+/** A delegation action queued for owner approval via email */
+export interface PendingDelegationApproval {
+  id: string
+  domain: string
+  staffName: string
+  staffRole: string
+  description: string
+  cost?: number
+  action: Record<string, unknown>  // The DelegationGameAction payload to execute if approved
+  emailId: string
+  createdWeek: number
+  createdYear: number
+  expiresWeek: number
+  expiresYear: number
+}
+
+/** Summary of what a delegated staff member did this week */
+export interface DelegationReport {
+  domain: string
+  staffName: string
+  staffRole: string
+  quality: number              // 0-1 quality score
+  actions: string[]            // List of actions taken
+  effects: Record<string, number>  // Effects applied (e.g., { reputation: 2, budgetImpact: -5000 })
 }
 
 // ============================================
@@ -1699,8 +1908,9 @@ export interface OwnedTeam {
 // ============================================
 
 export type TeamPostType = 
-  | 'race_result' | 'race_preview' | 'qualifying_result'
+  | 'race_result' | 'race_preview' | 'qualifying_result' | 'practice_update'
   | 'driver_spotlight' | 'driver_signing' | 'driver_birthday'
+  | 'staff_appreciation' | 'new_signing'
   | 'sponsor_highlight' | 'sponsor_activation'
   | 'development_update' | 'upgrade_reveal'
   | 'behind_scenes' | 'factory_tour' | 'team_photo'
@@ -1708,8 +1918,11 @@ export type TeamPostType =
   | 'fan_engagement' | 'poll' | 'qa_session'
   | 'controversial_take' | 'rivalry_post'
   | 'charity' | 'community'
+  | 'championship_push'
   // Merchandise posts
   | 'merch_drop' | 'collection_launch' | 'store_opening' | 'limited_edition' | 'merch_restock'
+  // Activity-linked posts
+  | 'activity_recap' | 'team_introduction' | 'journey_begins' | 'hiring_call' | 'underdog_story' | 'sponsor_search'
 
 export type TeamPostTone = 'professional' | 'exciting' | 'humble' | 'defiant' | 'controversial' | 'confident' | 'aggressive' | 'diplomatic'
 
@@ -1731,7 +1944,25 @@ export type DriverMediaPersonality = 'reserved' | 'professional' | 'charismatic'
 
 export type JournalistSpecialty = 'technical' | 'business' | 'drama' | 'general' | 'investigative'
 
-export type PressReleaseType = 'announcement' | 'statement' | 'apology' | 'celebration' | 'teaser' | 'crisis_response'
+export type PressReleaseType = 
+  | 'race_recap'
+  | 'driver_signing'
+  | 'sponsor_announcement'
+  | 'development_update'
+  | 'season_preview'
+  | 'season_review'
+  | 'partnership'
+  | 'milestone'
+  | 'apology'
+  | 'general_statement'
+  | 'incident_response'
+  | 'championship_update'
+  | 'facility_expansion'
+  | 'merchandise_launch'
+  | 'staff_announcement'
+  | 'testing_report'
+  // Legacy types (kept for backward compat with older saves)
+  | 'announcement' | 'statement' | 'celebration' | 'teaser' | 'crisis_response'
 
 export type PressConferenceType = 
   | 'pre_race' | 'post_race' | 'season_launch' | 'mid_season'
@@ -1773,6 +2004,8 @@ export interface TeamPost {
   effects: MediaEffect[]
   scheduledFor?: number           // Week if scheduled
   posted: boolean
+  imageDataUrl?: string           // AI-generated post image (Nano Banana Pro)
+  followerGain?: number           // Actual followers gained/lost from this post
 }
 
 export interface ScheduledPost {
@@ -1817,6 +2050,9 @@ export interface PressRelease {
   tone: TeamPostTone
   embargoUntil?: number           // Week to release
   released: boolean
+  imageDataUrl?: string           // AI-generated press release image
+  quote?: string                  // Featured quote from team principal
+  formalityLevel?: 'high' | 'medium' | 'casual'
   coverage: {
     reach: MediaReachTier
     outlets: number
@@ -2083,6 +2319,8 @@ export interface LoansState {
   weeklyDebtService: number
   debtToEquityRatio: number
   creditScore: number            // 300-850, affects loan approval and rates
+  /** Last week's credit score change (from payments, utilization, etc.) for UI */
+  lastWeekCreditChange?: number
 }
 
 // ============================================
@@ -2237,10 +2475,39 @@ export interface MerchStore {
   active: boolean
 }
 
+// Staff proposals for owner approval (e.g. from Marketing Manager)
+export interface PendingProductProposal {
+  id: string
+  templateId: string
+  basePrice: number
+  rarity: MerchRarity
+  initialStock: number
+  weeklyProduction: number
+  reorderPoint: number
+  proposedByStaffId: string
+  proposedWeek: number
+  proposedYear: number
+}
+
+export interface PendingCollectionProposal {
+  id: string
+  name: string
+  description: string
+  theme: CollectionTheme
+  productIds: string[]
+  exclusiveToMembers: boolean
+  marketingBudget: number
+  proposedByStaffId: string
+  proposedWeek: number
+  proposedYear: number
+}
+
 export interface MerchandiseFullState {
   products: MerchProduct[]
   collections: MerchCollection[]
   stores: MerchStore[]
+  pendingProductProposals: PendingProductProposal[]
+  pendingCollectionProposals: PendingCollectionProposal[]
   // Analytics
   totalRevenue: number
   totalCosts: number
@@ -2302,6 +2569,8 @@ export function createDefaultExtendedFinancialState(): ExtendedFinancialState {
         products: [],
         active: true
       }],
+      pendingProductProposals: [],
+      pendingCollectionProposals: [],
       totalRevenue: 0,
       totalCosts: 0,
       weeklyRevenue: 0,
@@ -2633,13 +2902,43 @@ export interface Email {
     | 'opportunity_media'    // Media appearance opportunity
     | 'opportunity_manufacturer'  // Manufacturer program opportunity
     | 'opportunity_special'  // Special event opportunity
+    | 'open_shortlist'       // Open delegated recruitment shortlist
+    | 'merchandise_proposal_product'   // Approve/reject product proposal from staff
+    | 'merchandise_proposal_collection' // Approve/reject collection proposal from staff
+    | 'auto_schedule'             // PA weekly planner auto-schedule button
+    | 'delegation_approval'       // Staff delegation action awaiting owner approval
   actionData?: Record<string, unknown> & {
     negotiationId?: string   // ID of active negotiation
     sponsorId?: string       // Sponsor being negotiated with
     offerTerms?: SponsorOffer // Current offer terms
+    shortlistId?: string     // Delegated shortlist to open
+    proposalId?: string      // Merchandise proposal ID
+    proposalType?: 'product' | 'collection'
+    delegationApprovalId?: string  // Pending delegation approval ID
   }
   expiresWeek?: number       // For time-sensitive items
   expiresYear?: number       // Year for expiry
+  // Interruption + inbox relevance model
+  requiresAction?: boolean
+  interruptClass?: 'critical' | 'important' | 'digest'
+  digestMode?: 'immediate' | 'digest'
+  relevanceScore?: number
+}
+
+export interface MissedNotification {
+  id: string
+  category: string
+  subject: string
+  body: string
+  channel: 'phone' | 'email'
+  missingRoleLabel?: string
+  staffRoleKey?: string
+  personalLifeField?: string
+  timestamp: {
+    week: number
+    day: number
+    year: number
+  }
 }
 
 // Day name helpers
@@ -2662,7 +2961,16 @@ export type ActivityCategory =
   | 'personal'      // Training, rest, personal time
   | 'race'          // Race weekends (auto-generated)
   | 'maintenance'   // Car maintenance, service
-  | 'lifestyle'     // Hobbies, pets, education, fitness
+  | 'lifestyle'     // Hobbies, pets, education, fitness (legacy — prefer specific categories below)
+  // Specific personal-life categories for better calendar differentiation
+  | 'social'        // Contact interactions (dining, hangouts, gifts, networking)
+  | 'romance'       // Romantic activities (dates, proposals, weddings)
+  | 'family'        // Family time (parenting, family activities, milestones)
+  | 'fitness'       // Physical training (gym, yoga, running, swimming)
+  | 'wellness'      // Health & recovery (spa, therapy, medical, checkups)
+  | 'education'     // Learning (courses, exams, study, reading)
+  | 'hobby'         // Hobbies (golf, piano, photography, cooking)
+  | 'pet'           // Pet care activities
 
 export type ActivityStatus = 'scheduled' | 'completed' | 'missed' | 'cancelled'
 
@@ -2695,6 +3003,7 @@ export interface DayBudgetState {
   jetLagPenalty: number                 // Hours lost from recent travel
   activitiesCompletedToday: string[]    // IDs of completed activities
   dayLog: DayLogEntry[]                 // What was done today (for summary screen)
+  currentHour: number                   // Current time of day (starts at 7 = 7 AM, advances as activities consume time)
 }
 
 /** Creates a fresh day budget state */
@@ -2709,7 +3018,8 @@ export function createDefaultDayBudgetState(fatigueDebt: number = 0, jetLagPenal
     fatigueDebt,
     jetLagPenalty,
     activitiesCompletedToday: [],
-    dayLog: []
+    dayLog: [],
+    currentHour: 7  // Day starts at 7 AM
   }
 }
 
@@ -2731,10 +3041,94 @@ export interface ActivityEffect {
   fitness?: number             // +/- driver fitness
   marketability?: number       // +/- marketability
   mentalStrength?: number      // +/- mental strength
+  budgetImpact?: number        // +/- team budget cash (from gameplay choices)
+  // Social/media effects
+  teamFollowers?: number          // +/- team social media followers
+  personalFollowers?: number      // +/- personal social media followers
+  // Sponsor pipeline
+  sponsorLeadsGenerated?: number  // Number of sponsor leads to generate (triggers sponsor offer generation)
   // Special effects
   unlocksSponsorBonus?: boolean
   reducesMaintenanceCost?: boolean
   preventsBreakdown?: boolean
+}
+
+// Soft-stat rewards were climbing too quickly from non-race content.
+// Apply a global dampener to positive gains while keeping penalties intact.
+const SOFT_STAT_REWARD_SCALE = 0.4
+const SOFT_STAT_REWARD_KEYS: (keyof ActivityEffect)[] = [
+  'reputation',
+  'boardMood',
+  'teamMorale',
+  'fanSentiment',
+  'sponsorSatisfaction',
+  'confidence',
+  'driverMorale'
+]
+
+const scalePositiveSoftStatReward = (value: number): number => {
+  if (value <= 0) return value
+  return Math.round(value * SOFT_STAT_REWARD_SCALE)
+}
+
+const tunePositiveSoftStatRewards = (effects: ActivityEffect): ActivityEffect => {
+  const tuned: ActivityEffect = { ...effects }
+  for (const key of SOFT_STAT_REWARD_KEYS) {
+    const value = tuned[key]
+    if (typeof value === 'number') {
+      tuned[key] = scalePositiveSoftStatReward(value) as any
+    }
+  }
+  return tuned
+}
+
+const clampReputationValue = (value: number): number =>
+  Math.round(Math.max(0, Math.min(100, value)) * 10) / 10
+
+/**
+ * Team-owner careers treat reputation as a team progression stat.
+ * We mirror driver reputation to team reputation for compatibility with
+ * older systems that still read player.reputation.
+ */
+const applyReputationDeltaToPrimaryContext = (
+  player: PlayerDriver,
+  careerState: CareerState | null | undefined,
+  delta: number
+): { updatedPlayer: PlayerDriver; updatedCareerState: CareerState | null | undefined } => {
+  if (!delta) {
+    return { updatedPlayer: player, updatedCareerState: careerState }
+  }
+
+  if (careerState?.ownedTeam) {
+    const baseTeamRep = typeof careerState.ownedTeam.reputation === 'number'
+      ? careerState.ownedTeam.reputation
+      : (player.reputation || 50)
+    const nextRep = clampReputationValue(baseTeamRep + delta)
+    return {
+      updatedPlayer: { ...player, reputation: nextRep },
+      updatedCareerState: {
+        ...careerState,
+        ownedTeam: {
+          ...careerState.ownedTeam,
+          reputation: nextRep
+        }
+      }
+    }
+  }
+
+  return {
+    updatedPlayer: { ...player, reputation: clampReputationValue((player.reputation || 50) + delta) },
+    updatedCareerState: careerState
+  }
+}
+
+const getCanonicalReputation = (
+  player: PlayerDriver | null | undefined,
+  careerState: CareerState | null | undefined
+): number => {
+  const teamRep = careerState?.ownedTeam?.reputation
+  if (typeof teamRep === 'number') return teamRep
+  return player?.reputation ?? 50
 }
 
 // ============================================
@@ -2754,6 +3148,7 @@ export interface MediaInvite {
   type: 'local_press' | 'national_media' | 'international' | 'influencers'
   count: number
   exclusiveAccess: boolean  // Higher cost, better coverage
+  acceptedCount?: number    // Actual attendees after acceptance roll (set on activity completion)
 }
 
 export interface FanAttendees {
@@ -2765,6 +3160,7 @@ export interface FanAttendees {
 export interface VIPGuest {
   type: 'board_members' | 'potential_sponsors' | 'celebrities' | 'officials' | 'drivers'
   count: number
+  acceptedCount?: number    // Actual attendees after acceptance roll (set on activity completion)
 }
 
 export interface ActivityGuests {
@@ -2854,6 +3250,10 @@ export type ActivityTriggerSource =
   | 'crisis_management'
   | 'manual'  // User scheduled
   | 'mandatory'
+  | 'onboarding'  // First-few-weeks onboarding schedule
+  | 'after_car_purchase'   // After buying a car
+  | 'after_series_entry'   // After entering a series
+  | 'race_weekend_expected'  // Race week: sponsor hospitality, fan meet, etc. (skip with consequence)
   | 'travel'
 
 // Miss consequences for mandatory activities
@@ -2887,6 +3287,8 @@ export interface ScheduledActivity {
   status: ActivityStatus
   completedWeek?: number
   completedDay?: number
+  /** For multi-day activities: 1-based day indices within the span that have been attended (e.g. [1, 2] when both days done) */
+  completedDays?: number[]
   
   // Effects
   effectsOnComplete: ActivityEffect
@@ -2916,6 +3318,14 @@ export interface ScheduledActivity {
   expectedOutcome?: ActivityEffect       // Predicted based on config
   actualOutcome?: ActivityEffect         // After completion
   
+  // Guest attendance tracking (set on activity completion)
+  actualAttendees?: {
+    vipGuests?: Array<{ type: string; invited: number; accepted: number }>
+    mediaInvites?: Array<{ type: string; invited: number; accepted: number }>
+    totalInvited: number
+    totalAccepted: number
+  }
+  
   // Trigger system for auto-generated activities
   triggeredBy?: ActivityTriggerSource    // What caused this activity
   triggerData?: {                        // Additional trigger context
@@ -2923,6 +3333,8 @@ export interface ScheduledActivity {
     sponsorId?: string
     staffId?: string
     relatedEventId?: string
+    interviewCandidateId?: string
+    conductedBy?: string
   }
   autoScheduled?: boolean                // System placed it
   suggestedWeek?: number                 // Recommended timing (if flexible)
@@ -2941,6 +3353,17 @@ export interface ScheduledActivity {
   // Time Budget System fields
   drainLevel?: DrainLevel                // How tiring this activity is (affects fatigue carry-over)
   calendarEntryType?: CalendarEntryType  // How this displays on the calendar (personal/team/mandatory/travel)
+  scheduledPeriod?: import('@/data/day-periods-config').DayPeriod  // When during the day this should happen (morning/afternoon/evening/night)
+  
+  // Social interaction scheduling (relationship effects applied on completion)
+  socialActionMeta?: {
+    contactId: string
+    actionId: string
+    contactName: string
+    effects: { affection?: number; trust?: number; romance?: number }
+    cost: number                         // Deducted on completion, not on scheduling
+    category: string                     // 'gift' | 'casual' | 'dining' | etc.
+  }
 }
 
 // Activity templates - predefined activities that can be scheduled
@@ -2972,6 +3395,10 @@ export interface ActivityTemplate {
   // Availability
   requiresSponsor?: boolean    // Only available if have sponsors
   requiresStaff?: boolean      // Only if have staff hired
+  requiresCar?: boolean        // Only if player owns at least one car
+  requiresSeriesEntry?: boolean // Only if entered in a series
+  requiresTeam?: boolean       // Only if player owns a team
+  requiresDriverHired?: boolean // Only if at least one hired driver exists
   
   // === NEW: Configuration Options ===
   // Venue requirements
@@ -3151,9 +3578,9 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     duration: 8,
     baseCost: 3000,
     defaultEffectsOnComplete: {
-      teamMorale: 15,
-      driverMorale: 10,
-      boardMood: 3
+      teamMorale: 6,
+      driverMorale: 4,
+      boardMood: 1
     },
     defaultEffectsOnMiss: {
       teamMorale: -10
@@ -3180,6 +3607,291 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     canCustomizeName: true
   },
   {
+    id: 'team_lunch',
+    name: 'Team Lunch',
+    description: 'Informal team lunch to boost morale and team bonding. Quick and cost-effective.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 1,
+    baseCost: 200,
+    defaultEffectsOnComplete: {
+      teamMorale: 4,
+      driverMorale: 2,
+      stress: -2
+    },
+    defaultEffectsOnMiss: {
+      teamMorale: -3
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 1,
+    // Simple activity — not configurable
+    supportedVenueTypes: ['restaurant', 'team_hq'],
+    preferredVenueType: 'restaurant',
+    requiresCatering: false,
+    isConfigurable: false
+  },
+  {
+    id: 'workshop_maintenance',
+    name: 'Workshop Maintenance',
+    description: 'Clean and recalibrate workshop equipment. Keeps engineers happy and work accurate.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 2,
+    baseCost: 3000,
+    defaultEffectsOnComplete: {
+      teamMorale: 3,
+      boardMood: 1
+    },
+    defaultEffectsOnMiss: {
+      teamMorale: -2
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    requiresStaff: true,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'workshop_upgrade',
+    name: 'Workshop Equipment Upgrade',
+    description: 'Upgrade calibration and workshop equipment. Expensive but boosts development accuracy.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 4,
+    baseCost: 8000,
+    defaultEffectsOnComplete: {
+      developmentPoints: 3,
+      teamMorale: 2,
+      boardMood: 2
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 8,
+    maxPerSeason: 3,
+    requiresStaff: true,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'driver_debrief',
+    name: 'Driver Debrief Session',
+    description: 'Structured debrief with the driver to review performance and plan improvements.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 2,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      driverMorale: 3,
+      developmentPoints: 2,
+      confidence: 2
+    },
+    defaultEffectsOnMiss: {
+      driverMorale: -2
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'charity_appearance',
+    name: 'Charity Appearance',
+    description: 'Attend a local charity event on behalf of the team. Great for reputation and community goodwill.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 3,
+    baseCost: 500,
+    defaultEffectsOnComplete: {
+      reputation: 3,
+      fanSentiment: 4,
+      driverMorale: 2,
+      teamFollowers: 500
+    },
+    defaultEffectsOnMiss: {
+      reputation: -2,
+      fanSentiment: -3
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    maxPerSeason: 6,
+    isConfigurable: false
+  },
+  {
+    id: 'factory_tour_media',
+    name: 'Factory Tour (Media)',
+    description: 'Host a journalist or content creator for a factory walkthrough. Good exposure with minimal disruption.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 2,
+    baseCost: 300,
+    defaultEffectsOnComplete: {
+      reputation: 2,
+      fanSentiment: 3,
+      sponsorSatisfaction: 2,
+      teamFollowers: 1000,
+      personalFollowers: 400
+    },
+    defaultEffectsOnMiss: {
+      reputation: -1
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 3,
+    maxPerSeason: 8,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'school_visit',
+    name: 'Local School Visit',
+    description: 'Visit a local school to talk about motorsport careers. Great for community engagement.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 2,
+    baseCost: 200,
+    defaultEffectsOnComplete: {
+      reputation: 2,
+      fanSentiment: 5,
+      driverMorale: 3,
+      stress: -3,
+      teamFollowers: 300
+    },
+    defaultEffectsOnMiss: {
+      reputation: -1,
+      fanSentiment: -2
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 6,
+    maxPerSeason: 4,
+    isConfigurable: false
+  },
+  {
+    id: 'safety_briefing',
+    name: 'Team Safety Briefing',
+    description: 'Quick safety review and protocol update with the team. Important for compliance.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 1,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      teamMorale: 1,
+      boardMood: 3
+    },
+    defaultEffectsOnMiss: {
+      boardMood: -5,
+      teamMorale: -2
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 4,
+    requiresStaff: true,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'data_analysis_session',
+    name: 'Data Analysis Deep Dive',
+    description: 'Detailed analysis session reviewing telemetry and performance data with engineers.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 3,
+    baseCost: 500,
+    defaultEffectsOnComplete: {
+      developmentPoints: 4,
+      teamMorale: 1,
+      confidence: 2
+    },
+    defaultEffectsOnMiss: {
+      developmentPoints: -1
+    },
+    requiresDriver: false,
+    requiresStaffRole: 'chief_engineer',
+    requiresSeriesEntry: true,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'investor_coffee',
+    name: 'Investor Coffee Meeting',
+    description: 'Casual coffee meeting with a potential investor. Low-key but could lead to opportunities.',
+    category: 'sponsor',
+    budgetCategory: 'marketing',
+    duration: 1,
+    baseCost: 50,
+    defaultEffectsOnComplete: {
+      boardMood: 3,
+      reputation: 1,
+      cash: 0
+    },
+    defaultEffectsOnMiss: {
+      boardMood: -2,
+      reputation: -1
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 3,
+    isConfigurable: false
+  },
+  {
+    id: 'paddock_public_lunch',
+    name: 'Public Paddock Lunch',
+    description: 'A visible lunch meeting with a rival team principal in a public venue. Networking upside, but still political.',
+    category: 'social',
+    budgetCategory: 'marketing',
+    duration: 1,
+    baseCost: 120,
+    defaultEffectsOnComplete: {
+      reputation: 1,
+      confidence: 1,
+      stress: 1
+    },
+    defaultEffectsOnMiss: {
+      reputation: -1
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    isConfigurable: false
+  },
+  {
+    id: 'team_photo_session',
+    name: 'Team Photo Session',
+    description: 'Official team photo and headshots. Good for branding and sponsor materials.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 2,
+    baseCost: 1000,
+    defaultEffectsOnComplete: {
+      teamMorale: 2,
+      fanSentiment: 2,
+      sponsorSatisfaction: 2,
+      teamFollowers: 600
+    },
+    defaultEffectsOnMiss: {
+      teamMorale: -1
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 8,
+    maxPerSeason: 3,
+    requiresStaff: true,
+    isConfigurable: false
+  },
+  {
     id: 'staff_review',
     name: 'Staff Performance Review',
     description: 'Conduct performance reviews with key staff members.',
@@ -3188,8 +3900,8 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     duration: 4,
     baseCost: 0,
     defaultEffectsOnComplete: {
-      teamMorale: 3,
-      boardMood: 5
+      teamMorale: 1,
+      boardMood: 2
     },
     defaultEffectsOnMiss: {
       teamMorale: -8,
@@ -3225,6 +3937,8 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
       cash: -5000 // Cancellation fee
     },
     requiresDriver: true,
+    requiresCar: true,
+    requiresSeriesEntry: true,
     canScheduleOnRaceWeek: false,
     maxPerSeason: 8,
     cooldownWeeks: 3,
@@ -3254,6 +3968,7 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
+    requiresSeriesEntry: true,
     canScheduleOnRaceWeek: true,
     cooldownWeeks: 1,
     // Configuration - HQ-based
@@ -3279,6 +3994,7 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     },
     requiresDriver: false,
     requiresStaffRole: 'chief_engineer',
+    requiresSeriesEntry: true,
     canScheduleOnRaceWeek: false,
     cooldownWeeks: 2,
     requiresStaff: true,
@@ -3301,7 +4017,10 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
       reputation: 5,
       fanSentiment: 8,
       driverFatigue: 20,
-      sponsorSatisfaction: 5
+      sponsorSatisfaction: 5,
+      teamFollowers: 2000,
+      personalFollowers: 1500,
+      marketability: 2
     },
     defaultEffectsOnMiss: {
       reputation: -3,
@@ -3339,7 +4058,9 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     defaultEffectsOnComplete: {
       reputation: 2,
       fanSentiment: 5,
-      driverFatigue: 5
+      driverFatigue: 5,
+      teamFollowers: 800,
+      personalFollowers: 500
     },
     defaultEffectsOnMiss: {
       reputation: -1
@@ -3365,7 +4086,9 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
       fanSentiment: 12,
       reputation: 2,
       driverFatigue: 15,
-      driverMorale: 5
+      driverMorale: 5,
+      teamFollowers: 1500,
+      personalFollowers: 1000
     },
     defaultEffectsOnMiss: {
       fanSentiment: -8
@@ -3401,7 +4124,8 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     baseCost: 0,
     defaultEffectsOnComplete: {
       driverFatigue: -25,
-      driverMorale: 10
+      driverMorale: 10,
+      stress: -10
     },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
@@ -3417,7 +4141,8 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     baseCost: 500,
     defaultEffectsOnComplete: {
       driverFatigue: 15, // Tiring but beneficial
-      driverMorale: 5
+      driverMorale: 5,
+      fitness: 3
     },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
@@ -3434,7 +4159,9 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     baseCost: 2000,
     defaultEffectsOnComplete: {
       driverMorale: 15,
-      driverFatigue: -5
+      driverFatigue: -5,
+      mentalStrength: 3,
+      confidence: 5
     },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
@@ -3460,6 +4187,7 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
       boardMood: -5
     },
     requiresDriver: false,
+    requiresCar: true,
     canScheduleOnRaceWeek: false,
     cooldownWeeks: 4
   },
@@ -3471,9 +4199,12 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'contingency',
     duration: 2,
     baseCost: 1500,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      preventsBreakdown: true
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: false,
+    requiresCar: true,
     canScheduleOnRaceWeek: true
   },
   
@@ -3522,7 +4253,8 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     baseCost: 1500,
     defaultEffectsOnComplete: {
       reputation: 3,
-      boardMood: 3
+      boardMood: 3,
+      sponsorLeadsGenerated: 1
     },
     defaultEffectsOnMiss: {
       reputation: -2,
@@ -3608,7 +4340,10 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     defaultEffectsOnComplete: {
       fanSentiment: 15,
       reputation: 4,
-      sponsorSatisfaction: 5
+      sponsorSatisfaction: 5,
+      teamFollowers: 5000,
+      personalFollowers: 2000,
+      marketability: 3
     },
     defaultEffectsOnMiss: {
       fanSentiment: -5,
@@ -3753,7 +4488,9 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     defaultEffectsOnComplete: {
       fanSentiment: 10,
       reputation: 3,
-      teamMorale: 5
+      teamMorale: 5,
+      teamFollowers: 1000,
+      personalFollowers: 500
     },
     defaultEffectsOnMiss: {
       fanSentiment: -5,
@@ -3784,7 +4521,11 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'personal',
     duration: 2,
     baseCost: 200,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      fitness: 3,
+      driverFatigue: 5,
+      stress: -3
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
     canScheduleOnRaceWeek: true,
@@ -3798,7 +4539,11 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'personal',
     duration: 3,
     baseCost: 500,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      driverMorale: 8,
+      stress: -5,
+      driverFatigue: -5
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
     canScheduleOnRaceWeek: false,
@@ -3812,7 +4557,11 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'personal',
     duration: 4,
     baseCost: 2000,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      reputation: 1,
+      boardMood: 2,
+      mentalStrength: 2
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
     canScheduleOnRaceWeek: false,
@@ -3826,7 +4575,11 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'personal',
     duration: 6,
     baseCost: 300,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      driverMorale: 10,
+      stress: -8,
+      driverFatigue: -10
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
     canScheduleOnRaceWeek: false,
@@ -3840,10 +4593,429 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     budgetCategory: 'personal',
     duration: 8,
     baseCost: 3000,
-    defaultEffectsOnComplete: {},
+    defaultEffectsOnComplete: {
+      driverFatigue: -20,
+      driverMorale: 12,
+      stress: -10,
+      fitness: 2
+    },
     defaultEffectsOnMiss: {},
     requiresDriver: true,
     canScheduleOnRaceWeek: false,
+    isConfigurable: false
+  },
+
+  // === NEW SPONSOR ACTIVITIES ===
+  {
+    id: 'sponsor_scouting',
+    name: 'Sponsor Research Day',
+    description: 'Research and identify potential sponsors. Builds a pipeline for future deals.',
+    category: 'sponsor',
+    budgetCategory: 'marketing',
+    duration: 3,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      reputation: 1,
+      boardMood: 2,
+      sponsorLeadsGenerated: 2
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 3,
+    isConfigurable: false
+  },
+  {
+    id: 'networking_dinner',
+    name: 'Industry Networking Dinner',
+    description: 'Attend a motorsport industry dinner. Build connections with team principals, engineers, and sponsors.',
+    category: 'sponsor',
+    budgetCategory: 'marketing',
+    duration: 4,
+    baseCost: 1500,
+    defaultEffectsOnComplete: {
+      reputation: 3,
+      boardMood: 2,
+      sponsorSatisfaction: 3,
+      sponsorLeadsGenerated: 1,
+      personalFollowers: 200
+    },
+    defaultEffectsOnMiss: {
+      reputation: -1
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    supportedVenueTypes: ['restaurant', 'hotel_conference'],
+    preferredVenueType: 'restaurant',
+    requiresCatering: true,
+    minCateringTier: 'premium',
+    isConfigurable: false
+  },
+
+  // === NEW TEAM ACTIVITIES ===
+  {
+    id: 'driver_debrief',
+    name: 'Driver Performance Debrief',
+    description: 'Review telemetry data and race footage with your driver. Identify areas for improvement.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 3,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      driverMorale: 5,
+      teamMorale: 3,
+      developmentPoints: 2
+    },
+    defaultEffectsOnMiss: {
+      driverMorale: -5,
+      teamMorale: -2
+    },
+    requiresDriver: true,
+    requiresDriverHired: true,
+    requiresSeriesEntry: true,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'staff_training',
+    name: 'Staff Skills Workshop',
+    description: 'Organize a training day to upskill your team. Improves staff performance over time.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 6,
+    baseCost: 2000,
+    defaultEffectsOnComplete: {
+      teamMorale: 8,
+      boardMood: 3
+    },
+    defaultEffectsOnMiss: {
+      teamMorale: -3
+    },
+    requiresDriver: false,
+    requiresStaff: true,
+    canScheduleOnRaceWeek: false,
+    maxPerSeason: 6,
+    cooldownWeeks: 6,
+    supportedVenueTypes: ['team_hq', 'hotel_conference'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'safety_briefing',
+    name: 'Safety & Compliance Review',
+    description: 'Regulatory and safety briefing with staff. Ensures your team meets series requirements.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 3,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      boardMood: 3,
+      teamMorale: 2
+    },
+    defaultEffectsOnMiss: {
+      boardMood: -5
+    },
+    requiresDriver: false,
+    requiresSeriesEntry: true,
+    canScheduleOnRaceWeek: false,
+    maxPerSeason: 4,
+    cooldownWeeks: 8,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'contract_negotiations',
+    name: 'Contract Review Session',
+    description: 'Review and negotiate driver, staff, or supplier contracts. Important for team stability.',
+    category: 'team',
+    budgetCategory: 'operations',
+    duration: 4,
+    baseCost: 500,
+    defaultEffectsOnComplete: {
+      boardMood: 4,
+      teamMorale: 2
+    },
+    defaultEffectsOnMiss: {
+      boardMood: -3
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    supportedVenueTypes: ['team_hq', 'hotel_conference'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+
+  // === NEW DEVELOPMENT ACTIVITIES ===
+  {
+    id: 'wind_tunnel_session',
+    name: 'Wind Tunnel Test',
+    description: 'Book wind tunnel time to develop and validate aerodynamic concepts. Expensive but highly effective.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 6,
+    baseCost: 10000,
+    defaultEffectsOnComplete: {
+      developmentPoints: 8,
+      boardMood: 3
+    },
+    defaultEffectsOnMiss: {
+      cash: -3000,
+      boardMood: -3
+    },
+    requiresDriver: false,
+    requiresCar: true,
+    requiresFacilityLevel: { type: 'aero', minLevel: 2 },
+    canScheduleOnRaceWeek: false,
+    maxPerSeason: 6,
+    cooldownWeeks: 4,
+    isConfigurable: false
+  },
+  {
+    id: 'data_analysis',
+    name: 'Race Data Analysis',
+    description: 'Deep dive into telemetry and race data from recent events. Helps identify setup improvements.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 4,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      developmentPoints: 3,
+      teamMorale: 2,
+      confidence: 3
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    requiresSeriesEntry: true,
+    requiresStaff: true,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'parts_procurement',
+    name: 'Parts Sourcing Meeting',
+    description: 'Meet with parts suppliers to source better components and negotiate pricing.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 3,
+    baseCost: 500,
+    defaultEffectsOnComplete: {
+      boardMood: 2,
+      developmentPoints: 1,
+      reducesMaintenanceCost: true
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    supportedVenueTypes: ['team_hq', 'hotel_conference'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'car_shakedown',
+    name: 'Car Shakedown Run',
+    description: 'Short shakedown run to verify new parts or setup changes before a race weekend.',
+    category: 'development',
+    budgetCategory: 'development',
+    duration: 4,
+    baseCost: 5000,
+    defaultEffectsOnComplete: {
+      developmentPoints: 4,
+      driverFatigue: 10,
+      driverMorale: 3,
+      confidence: 3
+    },
+    defaultEffectsOnMiss: {
+      cash: -2000
+    },
+    requiresDriver: true,
+    requiresCar: true,
+    requiresSeriesEntry: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 3,
+    supportedVenueTypes: ['track_facility'],
+    preferredVenueType: 'track_facility',
+    isConfigurable: false
+  },
+
+  // === NEW MEDIA ACTIVITIES ===
+  {
+    id: 'social_media_content',
+    name: 'Social Media Content Day',
+    description: 'Create engaging content for team social channels. Behind-the-scenes footage, driver Q&As, and more.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 3,
+    baseCost: 500,
+    defaultEffectsOnComplete: {
+      fanSentiment: 8,
+      reputation: 2,
+      sponsorSatisfaction: 2,
+      teamFollowers: 1200,
+      personalFollowers: 800
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    canScheduleOnRaceWeek: true,
+    cooldownWeeks: 2,
+    isConfigurable: false
+  },
+  {
+    id: 'charity_event',
+    name: 'Charity Karting Event',
+    description: 'Host a charity karting day. Great for PR, community relations, and team bonding.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 6,
+    baseCost: 3000,
+    defaultEffectsOnComplete: {
+      fanSentiment: 15,
+      reputation: 4,
+      teamMorale: 8,
+      driverMorale: 5,
+      sponsorSatisfaction: 3,
+      teamFollowers: 3000,
+      personalFollowers: 2000
+    },
+    defaultEffectsOnMiss: {
+      fanSentiment: -5,
+      reputation: -2
+    },
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    maxPerSeason: 3,
+    cooldownWeeks: 8,
+    supportedVenueTypes: ['track_facility'],
+    preferredVenueType: 'track_facility',
+    allowsSponsorGuests: true,
+    allowsMediaGuests: true,
+    allowsFanAttendees: true,
+    allowsMediaCoverage: true,
+    isConfigurable: true,
+    canCustomizeName: true
+  },
+  {
+    id: 'documentary_filming',
+    name: 'Behind The Scenes Filming',
+    description: 'Allow a film crew access to document the team. Boosts visibility and fan engagement.',
+    category: 'media',
+    budgetCategory: 'marketing',
+    duration: 4,
+    baseCost: 2000,
+    defaultEffectsOnComplete: {
+      fanSentiment: 12,
+      reputation: 3,
+      sponsorSatisfaction: 4,
+      teamFollowers: 2500,
+      personalFollowers: 1500
+    },
+    defaultEffectsOnMiss: {
+      reputation: -1
+    },
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    maxPerSeason: 4,
+    cooldownWeeks: 6,
+    minReputation: 25,
+    isConfigurable: false
+  },
+
+  // === NEW PERSONAL ACTIVITIES ===
+  {
+    id: 'networking_event',
+    name: 'Industry Networking Event',
+    description: 'Attend a motorsport industry conference or meet. Build your personal network and reputation.',
+    category: 'personal',
+    budgetCategory: 'personal',
+    duration: 3,
+    baseCost: 1000,
+    defaultEffectsOnComplete: {
+      reputation: 3,
+      driverFatigue: 8,
+      personalFollowers: 300,
+      marketability: 1
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    isConfigurable: false
+  },
+  {
+    id: 'leadership_coaching',
+    name: 'Leadership Coaching Session',
+    description: 'Work with a leadership coach to improve your team management and decision-making skills.',
+    category: 'personal',
+    budgetCategory: 'personal',
+    duration: 3,
+    baseCost: 2500,
+    defaultEffectsOnComplete: {
+      boardMood: 5,
+      teamMorale: 3,
+      driverMorale: 3,
+      mentalStrength: 3
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    minReputation: 20,
+    isConfigurable: false
+  },
+
+  // === NEW MAINTENANCE ACTIVITIES ===
+  {
+    id: 'transport_logistics',
+    name: 'Transport & Logistics Planning',
+    description: 'Plan the logistics for transporting cars, equipment, and staff to upcoming race venues.',
+    category: 'maintenance',
+    budgetCategory: 'contingency',
+    duration: 3,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      boardMood: 3,
+      teamMorale: 2,
+      reducesMaintenanceCost: true
+    },
+    defaultEffectsOnMiss: {
+      boardMood: -3
+    },
+    requiresDriver: false,
+    requiresSeriesEntry: true,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
+    isConfigurable: false
+  },
+  {
+    id: 'equipment_inventory',
+    name: 'Equipment Inventory Check',
+    description: 'Audit spare parts, tools, and equipment. Ensures nothing is missing before race weekends.',
+    category: 'maintenance',
+    budgetCategory: 'contingency',
+    duration: 3,
+    baseCost: 0,
+    defaultEffectsOnComplete: {
+      boardMood: 2,
+      teamMorale: 1,
+      preventsBreakdown: true
+    },
+    defaultEffectsOnMiss: {},
+    requiresDriver: false,
+    canScheduleOnRaceWeek: false,
+    cooldownWeeks: 4,
+    supportedVenueTypes: ['team_hq'],
+    preferredVenueType: 'team_hq',
     isConfigurable: false
   }
 ]
@@ -4070,6 +5242,7 @@ export interface PressClipping {
   sentiment: 'positive' | 'neutral' | 'negative' | 'controversial'
   relatedEventId?: string
   rivalResponse?: string  // If rival responded to your statement
+  imageDataUrl?: string  // AI-generated headline image (Nano Banana Pro)
 }
 
 // ============================================
@@ -4100,6 +5273,7 @@ export interface SocialPost {
   type: string  // 'training_update', 'race_photo', etc.
   tone: MediaTone
   content: string  // Generated post text
+  imageDataUrl?: string  // AI-generated image as data:image/png;base64,... (Nano Banana Pro)
   engagement: {
     likes: number
     comments: number
@@ -4292,6 +5466,7 @@ export interface CareerState {
   pendingSponsorOffers: SponsorDeal[]
   lastSponsorGenerationWeek: number  // Track when offers were last generated
   lastSeasonSponsorReviews?: SponsorSeasonReview[]  // Results from end-of-season sponsor evaluation
+  contactedSponsorIds: string[]  // Sponsor IDs the player has contacted (unlocks visibility for unlock_after_contact)
   // RPG System
   rpgState: RPGState
   // Career Events
@@ -4340,6 +5515,7 @@ export interface CareerState {
   
   // Email System
   emails: Email[]
+  missedNotifications: MissedNotification[]
   
   // Scheduled Activities System
   scheduledActivities: ScheduledActivity[]
@@ -4364,10 +5540,21 @@ export interface CareerState {
   // World Staff Pool - persistent pool of all known staff in the game world
   worldStaffPool: WorldStaffMember[]
   
+  // Staff recruitment: interviewed candidates (for interview-before-offer flow)
+  staffInterviewedCandidateIds: string[]
+  staffInterviewConductedBy: Record<string, string>  // candidateId -> 'owner' | staffId
+  
+  // Delegated recruitment shortlists (staff find candidates, owner approves one)
+  delegatedShortlists: DelegatedShortlist[]
+  
   // Tutorial/Onboarding System
   tutorialCompleted: boolean              // Whether the first-time tutorial has been completed
   visitedScreens: string[]                // Track which screens the player has visited
   helpDismissedScreens: string[]          // Screens where help has been dismissed
+  
+  // Onboarding Guidance System (daily emails/messages in first 8 weeks)
+  sentGuidanceIds: string[]               // Track which onboarding guidance steps have been sent
+  onboardingComplete: boolean             // Set true when onboarding sequence is finished
   
   // Personal Life System (Team Owner mode)
   personalLife?: PersonalLifeState        // Personal finances, family, lifestyle, and social management
@@ -4375,17 +5562,92 @@ export interface CareerState {
   
   // Extended Life Simulation Systems
   messaging?: MessagingState              // Phone, conversations, dating
+  datingPreference?: 'men' | 'women' | 'both' | 'none'  // Orientation for romanceable contacts
   expandedHobbies?: ExpandedHobbiesState  // Deep hobby system with skill progression
   collections?: CollectionsState          // Cars, watches, art, wine collections
   socialMediaExpanded?: ExpandedSocialMediaState  // Full social media simulation
   travel?: TravelState                    // Vacations and travel
   retirement?: ExtendedRetirementState    // Retirement planning
   
+  // Queued sponsor offer emails (delivered after a delay from activity completion)
+  pendingSponsorOfferEmails?: Array<{
+    offer: TeamSponsorDeal
+    deliveryDay: number
+    deliveryWeek: number
+    deliveryYear: number
+  }>
+  
   // Time Budget System (Hour Pool + Fatigue)
   dayBudget: DayBudgetState              // Current day's time budget, fatigue debt, and activity log
+  fastForward?: FastForwardState
   
   // Persistent weekend session history (practice/qualifying results kept across weeks)
   weekendSessionHistory?: WeekendSessionHistory[]
+  
+  // Recent completed activities (rolling window for social media post suggestions)
+  recentCompletedActivities?: RecentCompletedActivity[]
+  // Core loop simplification mode: prioritize race-to-race progression
+  coreLoopMode?: boolean
+}
+
+export interface RecentCompletedActivity {
+  templateId: string
+  name: string
+  description?: string
+  category: string
+  completedWeek: number
+  completedDay: number
+}
+
+export type FastForwardStopReason =
+  | 'none'
+  | 'completed'
+  | 'critical_event'
+  | 'manual'
+  | 'no_upcoming_race'
+  | 'invalid_state'
+
+export interface FastForwardConfig {
+  autoAcceptSchedule: boolean     // Auto-accept Julia's weekly schedule suggestions
+  stopOnUrgentEmails: boolean     // Stop for accept/decline, review_counter etc.
+  stopOnStarredEmails: boolean    // Stop for starred emails
+  stopOnCalendarConflict: boolean // Stop for pending calendar conflicts
+  stopOnNegativeCash: boolean     // Stop when personal or team cash goes negative
+}
+
+export const DEFAULT_FAST_FORWARD_CONFIG: FastForwardConfig = {
+  autoAcceptSchedule: true,
+  stopOnUrgentEmails: true,
+  stopOnStarredEmails: false,
+  stopOnCalendarConflict: false,
+  stopOnNegativeCash: true
+}
+
+export interface FastForwardState {
+  isActive: boolean
+  mode: 'to_race'
+  rewardMultiplier: number
+  config: FastForwardConfig
+  targetWeek: number | null
+  targetDay: number | null
+  targetYear: number | null
+  startedWeek: number
+  startedDay: number
+  startedYear: number
+  startedPersonalCash: number
+  startedTeamCash: number
+  startedReputation: number
+  startedFatigue: number
+  skippedDays: number
+  lastStopReason: FastForwardStopReason
+  lastStopMessage?: string
+  lastSummary?: {
+    skippedDays: number
+    personalCashDelta: number
+    teamCashDelta: number
+    reputationDelta: number
+    fatigueDelta: number
+  }
 }
 
 interface CareerStore {
@@ -4393,18 +5655,44 @@ interface CareerStore {
   hasActiveCareer: boolean
   player: PlayerDriver | null
   careerState: CareerState | null
+  /** Set when pre-generated content (sponsors, staff, etc.) has been loaded; used so UI can refetch. */
+  preGenContentLoaded: boolean
   
   // Actions
-  createCareer: (player: PlayerDriver) => void
+  createCareer: (player: PlayerDriver, personalLifeSetup?: {
+    starterContacts?: ContactInfo[]
+    starterConversations?: Record<string, import('@/data/messaging-config').Conversation>
+    starterPartner?: import('@/data/family-config').Partner
+  }) => void
   updatePlayer: (updates: Partial<PlayerDriver>) => void
   updateStats: (updates: Partial<DriverStats>) => void
   updateMentalState: (updates: Partial<DriverMentalState>) => void
   updateFinances: (updates: Partial<DriverFinances>) => void
   addTransaction: (transaction: Omit<FinancialTransaction, 'id'>) => void
   updateCareerState: (updates: Partial<CareerState>) => void
+  addMissedNotification: (notification: MissedNotification) => void
   // Team ownership setters
   setOwnedTeam: (team: OwnedTeam) => void
   updateOwnedTeam: (updates: Partial<OwnedTeam>) => void
+  rentSparePartsWarehouse: (hubId: string) => boolean
+  addMerchandiseProduct: (params: CreateProductParams) => { success: boolean; error?: string }
+  createMerchandiseCollection: (params: CreateCollectionParams) => { success: boolean; error?: string }
+  openMerchandiseStore: (type: StoreType, customName?: string, location?: string, productIds?: string[]) => { success: boolean; error?: string }
+  updateMerchandiseProductPrice: (productId: string, newPrice: number) => { success: boolean; error?: string }
+  discontinueMerchandiseProduct: (productId: string) => void
+  updateMerchandiseStoreProducts: (storeId: string, productIds: string[]) => void
+  approveMerchandiseProductProposal: (proposalId: string) => { success: boolean; error?: string }
+  approveMerchandiseCollectionProposal: (proposalId: string) => { success: boolean; error?: string }
+  rejectMerchandiseProposal: (proposalId: string, type: 'product' | 'collection') => void
+  generateTeamSponsorOffersForSlot: (slot: TeamSponsorSlot) => void | Promise<void>
+  /** Seek sponsors open to an approach for a slot (shows list to approach, does not create offers). */
+  seekSponsorsBySlot: (slot: TeamSponsorSlot) => void | Promise<void>
+  clearSuggestedSponsorsForSlot: () => void
+  acceptTeamSponsorOffer: (dealId: string) => boolean
+  declineTeamSponsorOffer: (dealId: string) => void
+  acceptTeamSponsorRenewal: (sponsorId: string, offer: any) => boolean
+  declineTeamSponsorRenewal: (sponsorId: string) => void
+  startTeamSponsorNegotiation: (sponsorId: string, desiredSlot?: TeamSponsorSlot) => SponsorNegotiation | null
   setSeriesEntries: (entries: TeamSeriesEntry[]) => void
   upsertSeriesEntry: (entry: TeamSeriesEntry) => void
   setCars: (cars: TeamCar[]) => void
@@ -4414,7 +5702,7 @@ interface CareerStore {
   
   // Series Entry & Car Acquisition (Owner mode)
   enterSeries: (seriesId: string, seriesName: string, entryFee: number, manufacturerId?: string) => boolean
-  purchaseCar: (seriesId: string, liveryName: string, chassisId: string, engineId: string, cost: number, seriesName?: string, entryFee?: number) => boolean
+  purchaseCar: (seriesId: string, liveryName: string, chassisId: string, engineId: string, cost: number, seriesName?: string, entryFee?: number, liveryPath?: string) => boolean
   sellCar: (carId: string, refundAmount: number) => void
   withdrawFromSeries: (seriesId: string) => void
   
@@ -4445,6 +5733,8 @@ interface CareerStore {
   
   // Facility Management
   upgradeFacility: (facilityType: FacilityType) => { success: boolean; error?: string; duration?: number }
+  buildFacility: (facilityType: FacilityType) => { success: boolean; error?: string; duration?: number }
+  rebuildFacility: (facilityType: FacilityType) => { success: boolean; error?: string; duration?: number }
   completeUpgrade: (facilityType: FacilityType) => void
   assignStaffToFacility: (staffId: string, facilityType: FacilityType) => { success: boolean; error?: string }
   removeStaffFromFacility: (staffId: string) => void
@@ -4462,12 +5752,18 @@ interface CareerStore {
   getStaffByRole: (role: TeamStaffRole) => TeamStaff | undefined
   advanceWeek: () => void
   advanceDay: () => void
+  startFastForwardToRaceWeek: (config?: Partial<FastForwardConfig>) => { success: boolean; reason?: string }
+  stopFastForward: (reason?: FastForwardStopReason, message?: string) => void
+  runFastForwardStep: () => void
+  updateFastForwardConfig: (config: Partial<FastForwardConfig>) => void
   
   // Time Budget System
   consumeHoursFromBudget: (hours: number, drainLevel: DrainLevel, activityName: string, activityId?: string) => boolean
   getHoursRemaining: () => number
   getFatigueZone: () => 'green' | 'yellow' | 'red'
   canAffordTime: (hours: number) => boolean
+  fastForwardPeriod: () => void
+  reassignActivityTimeslots: () => number
   addPersonalCalendarEntry: (entry: {
     name: string
     description?: string
@@ -4478,14 +5774,38 @@ interface CareerStore {
     drainLevel: DrainLevel
     calendarEntryType: CalendarEntryType
     category?: ActivityCategory
+    preferredPeriod?: DayPeriod
     immediate?: boolean  // true = mark as completed right away (for "did it now" actions)
+    effectsOnComplete?: Record<string, number>  // Stat effects to display in outcome modal
+    socialActionMeta?: {  // For contact-initiated invitations — wires up relationship effects on completion
+      contactId: string
+      actionId: string
+      contactName: string
+      effects: { affection?: number; trust?: number; romance?: number }
+      cost: number
+      category: string
+    }
   }) => void
+  scheduleSocialAction: (params: {
+    actionId: string
+    actionName: string
+    contactId: string
+    contactName: string
+    description: string
+    cost: number
+    timeCost: number
+    effects: { affection?: number; trust?: number; romance?: number }
+    category: string
+    week: number
+    day: number
+  }) => ScheduledActivity | null
   
   // Team Media System
   initializeTeamMedia: (teamName: string) => void
   updateTeamMediaState: (updates: Partial<TeamMediaState>) => void
   addTeamPost: (post: Omit<TeamPost, 'id'>) => void
   addTeamHeadline: (headline: Omit<TeamHeadline, 'id'>) => void
+  addPressClipping: (clipping: Omit<PressClipping, 'id'>) => void
   addPressRelease: (release: Omit<PressRelease, 'id'>) => void
   addControversy: (controversy: Omit<Controversy, 'id'>) => void
   respondToControversy: (controversyId: string, responseType: ControversyResponseType) => void
@@ -4518,7 +5838,7 @@ interface CareerStore {
   toggleEmailStarred: (emailId: string) => void
   archiveEmail: (emailId: string) => void
   deleteEmail: (emailId: string) => void
-  getUnreadEmailCount: () => number
+  getUnreadEmailCount: (mode?: 'action' | 'all') => number
   getEmailsByCategory: (category: EmailCategory) => Email[]
   setContract: (contract: Contract, isForNextSeason?: boolean) => void
   activatePendingContract: () => void  // Activate pending contract at season start
@@ -4536,6 +5856,7 @@ interface CareerStore {
     oldBalance: number
     newBalance: number
   }
+  repairPhoneMessages: () => { conversationsFixed: number; queuedFixed: number; pendingRepliesFixed: number; queuedDelivered: number }
   recalculateReputation: () => { oldRep: number; newRep: number }
   recalculateTeamReputation: () => { oldRep: number; newRep: number }
   recalculateMarketability: () => { oldMarketability: number; newMarketability: number }
@@ -4554,6 +5875,15 @@ interface CareerStore {
     seatFeeDifference: number
     message: string
   }
+  normalizeCurrentCareerEconomy: () => {
+    sponsorsAdjusted: number
+    pendingOffersAdjusted: number
+    sponsorsDeactivatedForSlotCap: number
+    weeklyIncomeBefore: number
+    weeklyIncomeAfter: number
+    weeklyCap: number
+    message: string
+  }
   upgradeContractsAndSponsors: () => { 
     contractsUpgraded: number
     sponsorsKept: number
@@ -4565,6 +5895,12 @@ interface CareerStore {
     oldPointsTarget: number | null
     newPointsTarget: number | null
     scaleFactor: number
+    message: string
+  }
+  reassignStaffPortraits: () => {
+    totalStaff: number
+    reassigned: number
+    duplicatesFixed: number
     message: string
   }
   
@@ -4619,6 +5955,8 @@ interface CareerStore {
   // Race Weekend Progress
   updateRaceWeekendProgress: (updates: Partial<RaceWeekendProgress>) => void
   clearRaceWeekendProgress: () => void
+  /** Silently complete routine post-race activities (debrief, damage check) so they don't clutter the calendar */
+  autoCompletePostRaceActivities: () => void
   
   // GOAT Progress System
   updateGOATProgress: () => { newMilestones: string[]; newTripleCrownLegs: string[]; newRecordsBroken: string[] }
@@ -4639,17 +5977,21 @@ interface CareerStore {
   isInvitationalWeek: () => boolean
   
   // Team Opportunities System
-  acceptOpportunity: (opportunityId: string, scheduledWeek: number, scheduledDay: number) => TeamOpportunity | null
+  acceptOpportunity: (opportunityId: string, scheduledWeek: number, scheduledDay: number, scheduledPeriod?: import('@/data/day-periods-config').DayPeriod) => TeamOpportunity | null
   declineOpportunity: (opportunityId: string) => { success: boolean; consequences: TeamOpportunity['consequences'] | null }
   completeOpportunityEvent: (opportunityId: string, performanceMultiplier?: number) => { success: boolean; rewards: TeamOpportunity['rewards'] | null }
   getPendingOpportunities: () => TeamOpportunity[]
   getAcceptedOpportunities: () => TeamOpportunity[]
   
+  // Quick Decision System
+  applyQuickDecisionEffects: (decisionId: string, optionId: string, effects: ActivityEffect, decisionTitle: string, optionText: string, scheduleActivityId?: string) => { scheduled: boolean; activityName?: string; effectsSummary: string[] }
+  
   // Scheduled Activities System
-  scheduleActivity: (templateId: string, week: number, day: number, sponsorId?: string) => ScheduledActivity | null
+  scheduleActivity: (templateId: string, week: number, day: number, sponsorId?: string, period?: import('@/data/day-periods-config').DayPeriod) => ScheduledActivity | null
   cancelActivity: (activityId: string) => boolean
   rescheduleActivity: (activityId: string, newWeek: number, newDay: number) => boolean
   completeActivity: (activityId: string, effectsOverride?: ActivityEffect) => ActivityEffect | null
+  markScheduledActivityCompleted: (activityId: string) => boolean
   missActivity: (activityId: string) => ActivityEffect | null
   getScheduledActivities: (week?: number) => ScheduledActivity[]
   getActivityHistory: () => ScheduledActivity[]
@@ -4669,12 +6011,24 @@ interface CareerStore {
     templateId: string, 
     week: number, 
     day: number, 
-    configuration: ActivityConfiguration
+    configuration: ActivityConfiguration,
+    period?: import('@/data/day-periods-config').DayPeriod
   ) => ScheduledActivity | null
   generateTriggeredActivities: (raceResult?: 'win' | 'podium' | 'points' | 'dnf' | null) => ScheduledActivity[]
   generateActivityReminders: () => void  // Generate email reminders for upcoming activities
   generateMandatoryActivities: () => void  // Check and create mandatory activities based on triggers
+  generateOnboardingMandatoryActivities: () => void  // Create onboarding schedule activities (weeks 1-3)
+  ensureRaceWeekendActivitiesForSeason: () => void  // Pre-fill race weekend activities for all race weeks
+  generateRaceWeekendExpectedActivities: () => void  // Backfill current day race weekend activities
   processOverspendConsequences: () => void  // Apply penalties for budget overspending
+  
+  // Promise/Commitment Tracking System
+  addPromise: (promise: PlayerPromise) => void
+  updatePromiseStatus: (promiseId: string, status: PlayerPromise['status'], resolvedWeek?: number) => void
+  getActivePromises: () => PlayerPromise[]
+  setPromises: (promises: PlayerPromise[]) => void
+  queueFeedbackEmail: (email: Omit<Email, 'id' | 'read' | 'starred' | 'archived'>) => void
+  deliverPendingFeedbackEmails: () => void
   
   // Driver/Owner Conflict System
   hasReserveDriver: () => boolean  // Check if team has a reserve driver on staff
@@ -4690,6 +6044,8 @@ interface CareerStore {
     conflictType?: 'driver' | 'owner' | 'both'
     conflictingActivities: ScheduledActivity[]
     canResolveWithReserve: boolean
+    // Effective hours breakdown
+    breakdown?: EffectiveHoursBreakdown
   }
   
   // Car Marketplace System
@@ -4711,12 +6067,33 @@ interface CareerStore {
   
   // Facility Staff Management
   refreshFacilityStaffMarket: () => void
-  hireFacilityStaff: (staffId: string) => { success: boolean; error?: string; staff?: HiredFacilityStaff }
+  attachStaffPreGenBio: (staffId: string, snapshot: StaffPreGenBioSnapshot) => void
+  hireFacilityStaff: (staffId: string, negotiatedTerms?: { salary: number; signingBonus: number; contractLength: number; performanceBonus?: number }) => { success: boolean; error?: string; staff?: HiredFacilityStaff }
   fireFacilityStaff: (staffId: string) => { success: boolean; error?: string }
+  markInterviewCompleted: (candidateId: string, conductedBy?: 'owner' | string) => void
+  isCandidateInterviewed: (candidateId: string) => boolean
+  removeFromShortlist: (candidateId: string) => void
+  getInterviewedCandidates: () => StaffMember[]
+  getInterviewEligibleStaff: () => HiredFacilityStaff[]
+  scheduleStaffInterview: (candidateId: string, week: number, day: number, conductedBy: 'owner' | string) => string | null
+  markCandidateSignedElsewhere: (staffId: string) => void
+  requestDelegatedSearch: (role: import('@/data/facility-staff-config').StaffRole, facilityType?: FacilityType) => string | null
+  resolveShortlist: (shortlistId: string, approveCandidateId: string | null) => StaffMember | null
+  getDelegatedShortlist: (shortlistId: string) => DelegatedShortlist | null
+  setPendingShortlistId: (id: string | null) => void
+  // Delegation system
+  toggleDelegation: (domain: string, enabled: boolean) => void
+  getDelegationFlags: () => Record<string, boolean>
+  getLastDelegationReport: () => DelegationResult[]
+  approveDelegationAction: (approvalId: string) => boolean
+  declineDelegationAction: (approvalId: string) => boolean
   assignFacilityStaffToFacility: (staffId: string, facilityType: FacilityType) => { success: boolean; error?: string }
   unassignFacilityStaffFromFacility: (staffId: string) => { success: boolean; error?: string }
   getFacilityStaffMarket: () => FacilityStaffMember[]
   getHiredFacilityStaff: () => HiredFacilityStaff[]
+  getTeamStaffRoster: (teamName: string) => WorldStaffMember[]
+  poachAIStaff: (staffId: string, offeredSalary: number) => { success: boolean; error?: string; hired?: boolean; counterOffer?: boolean; message?: string; buyoutCost?: number; offeredSalary?: number }
+  confirmPoachHire: (staffId: string, offeredSalary: number) => { success: boolean; error?: string; message?: string }
   
   // Tutorial/Onboarding System
   markTutorialComplete: () => void
@@ -4733,13 +6110,26 @@ interface CareerStore {
   addContact: (contact: ContactInfo) => void
   removeContact: (contactId: string) => void
   updateContact: (contactId: string, updates: Partial<ContactInfo>) => void
-  addMessage: (conversationId: string, message: { content: string; isPlayer: boolean }) => void
+  addMessage: (conversationId: string, message: { content: string; isPlayer: boolean; isSessionEnd?: boolean }) => void
+  sendPlayerMessageAndQueueReply: (conversationId: string, playerMessage: string, messageCategory: string) => void
+  deliverReadyQueuedMessages: () => number  // Deliver queued NPC messages whose scheduled time has arrived; returns count delivered
+  deliverPendingNpcReply: (conversationId: string) => boolean  // Returns true if a reply was delivered
+  getConversationNpcTyping: (conversationId: string) => boolean
+  cacheMessageChoices: (conversationId: string, choices: any[], afterMessageId: string, isAIGenerated?: boolean) => void
+  clearCachedChoices: (conversationId: string) => void
   markConversationRead: (conversationId: string) => void
+  updateConversationSession: (conversationId: string, updates: { exchangesToday?: number; lastExchangeDay?: number; conversationStage?: string }) => void
   startConversation: (contactId: string) => string  // Returns conversation ID
   sendGift: (contactId: string, giftName: string, giftValue: number) => void
   sendDateInvite: (contactId: string, dateType: string, location: string, week: number) => void
   processDateInviteResponse: (inviteId: string, accepted: boolean) => void
   updateRelationshipMeters: (contactId: string, changes: { affection?: number; romance?: number; trust?: number }) => void
+  playerInitiateSeparation: () => boolean  // Start breakup/divorce process; returns true if started
+  setDatingPreference: (pref: 'men' | 'women' | 'both' | 'none') => void
+  replaceContactsWithPartnerPool: (contactIds: string[]) => { replaced: number; error?: string }  // Replace selected contacts; orientation-aware
+  migrateExistingInvitations: () => Promise<number>  // Scans existing messages for invitations using AI, returns count of new requests created
+  recordSocialAction: (contactId: string, actionId: string) => void
+  getSocialActionCooldown: (contactId: string, actionId: string) => number  // weeks since last use (999 = never used)
   generatePotentialDate: () => PotentialDate | null
   
   // Expanded Hobbies System
@@ -4803,6 +6193,7 @@ const initialCareerState: CareerState = {
   resolvedConflicts: [],
   pendingSponsorOffers: [],
   lastSponsorGenerationWeek: 0,
+  contactedSponsorIds: [],
   ownedTeam: null,
   seriesEntries: [],
   cars: [],
@@ -4841,6 +6232,7 @@ const initialCareerState: CareerState = {
   eventHistory: [],
   // Email System
   emails: [],
+  missedNotifications: [],
   // Scheduled Activities System
   scheduledActivities: [],
   activityHistory: [],
@@ -4856,10 +6248,19 @@ const initialCareerState: CareerState = {
   facilityStaffMarketLastRefreshYear: 0,
   // World Staff Pool
   worldStaffPool: [],
+  // Staff recruitment (interviewed candidates)
+  staffInterviewedCandidateIds: [],
+  staffInterviewConductedBy: {},
+  // Delegated shortlists
+  delegatedShortlists: [],
+  pendingShortlistId: null,
   // Tutorial/Onboarding System
   tutorialCompleted: false,
   visitedScreens: [],
   helpDismissedScreens: [],
+  // Onboarding Guidance System
+  sentGuidanceIds: [],
+  onboardingComplete: false,
   // Extended Life Simulation Systems
   messaging: createDefaultMessagingState(),
   expandedHobbies: createDefaultExpandedHobbiesState(),
@@ -4868,7 +6269,26 @@ const initialCareerState: CareerState = {
   travel: createDefaultTravelState(),
   retirement: createDefaultRetirementState(),
   // Time Budget System
-  dayBudget: createDefaultDayBudgetState()
+  dayBudget: createDefaultDayBudgetState(),
+  coreLoopMode: true,
+  fastForward: {
+    isActive: false,
+    mode: 'to_race',
+    rewardMultiplier: 0.6,
+    config: { ...DEFAULT_FAST_FORWARD_CONFIG },
+    targetWeek: null,
+    targetDay: null,
+    targetYear: null,
+    startedWeek: 1,
+    startedDay: 1,
+    startedYear: 2024,
+    startedPersonalCash: 0,
+    startedTeamCash: 0,
+    startedReputation: 0,
+    startedFatigue: 0,
+    skippedDays: 0,
+    lastStopReason: 'none'
+  }
 }
 
 // ============================================
@@ -5060,6 +6480,71 @@ export function migratePlayerData(player: PlayerDriver): PlayerDriver {
   return migrated
 }
 
+function migrateScheduledActivitiesForRescheduling(activities: ScheduledActivity[] | undefined): {
+  activities: ScheduledActivity[]
+  changed: number
+} {
+  if (!activities || activities.length === 0) {
+    return { activities: activities || [], changed: 0 }
+  }
+
+  let changed = 0
+  const updated = activities.map((activity) => {
+    let next = activity
+    let updatedThisActivity = false
+
+    // Backfill older mandatory activities so they can be moved with a fee.
+    if (activity.mandatory && activity.canReschedule !== true) {
+      next = { ...next, canReschedule: true }
+      updatedThisActivity = true
+    }
+
+    if (activity.mandatory && (activity.rescheduleCost == null || activity.rescheduleCost <= 0)) {
+      const baseCost = activity.requiredCash ?? activity.totalCost ?? 0
+      const rescheduleCost = baseCost > 0 ? Math.floor(baseCost * 0.35) : 500
+      next = { ...next, rescheduleCost }
+      updatedThisActivity = true
+    }
+
+    // Older onboarding entries used same-day deadlines, making "move to tomorrow" impossible.
+    if (activity.triggeredBy === 'onboarding') {
+      const graceDeadline = calculateDeadline(activity.scheduledWeek, activity.scheduledDay, 1)
+      const hasSameDayDeadline = !!activity.deadline &&
+        activity.deadline.week === activity.scheduledWeek &&
+        activity.deadline.day === activity.scheduledDay
+      const hasNoDeadline = !activity.deadline
+      if (hasSameDayDeadline || hasNoDeadline) {
+        next = {
+          ...next,
+          deadline: { week: graceDeadline.week, day: graceDeadline.day }
+        }
+        updatedThisActivity = true
+      }
+    }
+
+    // Staff interviews should allow paid rescheduling and have a short validity window.
+    if (activity.templateId === 'staff_interview') {
+      if (activity.canReschedule !== true) {
+        next = { ...next, canReschedule: true }
+        updatedThisActivity = true
+      }
+      if (activity.rescheduleCost == null || activity.rescheduleCost <= 0) {
+        next = { ...next, rescheduleCost: 500 }
+        updatedThisActivity = true
+      }
+      if (activity.rescheduleDeadline == null) {
+        next = { ...next, rescheduleDeadline: activity.scheduledWeek + 1 }
+        updatedThisActivity = true
+      }
+    }
+
+    if (updatedThisActivity) changed++
+    return next
+  })
+
+  return { activities: updated, changed }
+}
+
 /**
  * Migrate career state to ensure new fields exist for backwards compatibility
  * Called during career load
@@ -5069,6 +6554,11 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
   
   let migrated = { ...careerState }
   let needsUpdate = false
+
+  if (typeof migrated.coreLoopMode !== 'boolean') {
+    migrated.coreLoopMode = true
+    needsUpdate = true
+  }
   
   // Migrate ownedTeam to include drivers array
   if (migrated.ownedTeam && !migrated.ownedTeam.drivers) {
@@ -5076,6 +6566,17 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
     migrated.ownedTeam = {
       ...migrated.ownedTeam,
       drivers: []
+    }
+    needsUpdate = true
+  }
+
+  if (migrated.ownedTeam && !migrated.ownedTeam.delegationFlags) {
+    migrated.ownedTeam = {
+      ...migrated.ownedTeam,
+      delegationFlags: {
+        mandatory_scheduling: true,
+        logistics: true
+      }
     }
     needsUpdate = true
   }
@@ -5093,6 +6594,12 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
       }
       return car
     })
+    // Also fix saves where all cars are 'unassigned' but none is 'owner'
+    const hasOwnerCar = migratedCars.some(c => c.driverType === 'owner')
+    if (!hasOwnerCar && migratedCars.length > 0) {
+      console.log('[Migration] No owner car found, assigning first car as owner:', migratedCars[0].carId)
+      migratedCars[0] = { ...migratedCars[0], driverType: 'owner' as const }
+    }
     if (migratedCars.some((c, i) => c !== migrated.cars![i])) {
       migrated.cars = migratedCars
       needsUpdate = true
@@ -5113,6 +6620,47 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
     console.log('[Migration] Adding manufacturer relationships')
     migrated.manufacturerRelationships = {}
     needsUpdate = true
+  }
+
+  // Migrate missed notifications tracking
+  if (!migrated.missedNotifications) {
+    console.log('[Migration] Adding missed notifications log')
+    migrated.missedNotifications = []
+    needsUpdate = true
+  }
+
+  if (Array.isArray(migrated.emails) && migrated.emails.length > 0) {
+    let emailUpdated = false
+    migrated.emails = migrated.emails.map((email) => {
+      const normalized: Email = {
+        ...email,
+        requiresAction: email.requiresAction ?? (email.actionType ? ACTION_REQUIRED_TYPES.has(email.actionType) : false),
+        interruptClass: email.interruptClass ?? deriveEmailInterruptClass(email),
+        digestMode: email.digestMode ?? 'immediate',
+        relevanceScore: email.relevanceScore ?? getEmailRelevanceScore(email),
+      }
+      if (
+        normalized.requiresAction !== email.requiresAction ||
+        normalized.interruptClass !== email.interruptClass ||
+        normalized.digestMode !== email.digestMode ||
+        normalized.relevanceScore !== email.relevanceScore
+      ) {
+        emailUpdated = true
+      }
+      return normalized
+    })
+    if (emailUpdated) {
+      needsUpdate = true
+      console.log('[Migration] Normalized email interruption metadata')
+    }
+  }
+
+  // Backfill legacy scheduled activities with reschedule metadata and onboarding grace deadlines.
+  const scheduledMigration = migrateScheduledActivitiesForRescheduling(migrated.scheduledActivities)
+  if (scheduledMigration.changed > 0) {
+    migrated.scheduledActivities = scheduledMigration.activities
+    needsUpdate = true
+    console.log(`[Migration] Backfilled ${scheduledMigration.changed} scheduled activities for rescheduling`)
   }
   
   // Migrate extended life simulation systems
@@ -5193,8 +6741,85 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
     console.log('[Migration] Initializing world staff pool')
     const currentYear = migrated.currentYear || new Date().getFullYear()
     const tier = migrated.ownedTeam?.tier || 'amateur'
-    migrated.worldStaffPool = generateWorldStaffPool(currentYear, tier)
+    migrated.worldStaffPool = generateWorldStaffPool(currentYear, tier, getGameWorldTeamNames())
     needsUpdate = true
+  }
+
+  // Migrate staff employedBy from real-world F1 team names to game-world team names
+  if (migrated.worldStaffPool && migrated.worldStaffPool.length > 0) {
+    const REAL_WORLD_NAMES = new Set([
+      'Red Bull Racing', 'Mercedes AMG', 'McLaren', 'Ferrari', 'Aston Martin',
+      'Alpine', 'Williams', 'AlphaTauri', 'Alfa Romeo', 'Haas F1',
+      'Porsche Motorsport', 'BMW Motorsport', 'Toyota Gazoo Racing',
+      'Penske Racing', 'Andretti Autosport', 'Chip Ganassi Racing'
+    ])
+    const gameTeams = getGameWorldTeamNames()
+    let remappedCount = 0
+    migrated.worldStaffPool = migrated.worldStaffPool.map((m: any) => {
+      if (m.employedBy && REAL_WORLD_NAMES.has(m.employedBy)) {
+        remappedCount++
+        return { ...m, employedBy: gameTeams[Math.floor(Math.random() * gameTeams.length)] }
+      }
+      return m
+    })
+    if (remappedCount > 0) {
+      console.log(`[Migration] Re-mapped ${remappedCount} staff from real-world team names to game-world teams`)
+      needsUpdate = true
+    }
+  }
+
+  // Staff recruitment interview state (for interview-before-offer flow)
+  if (!Array.isArray(migrated.staffInterviewedCandidateIds)) {
+    migrated.staffInterviewedCandidateIds = []
+    needsUpdate = true
+  }
+  if (!migrated.staffInterviewConductedBy || typeof migrated.staffInterviewConductedBy !== 'object') {
+    migrated.staffInterviewConductedBy = {}
+    needsUpdate = true
+  }
+  if (!Array.isArray(migrated.delegatedShortlists)) {
+    migrated.delegatedShortlists = []
+    needsUpdate = true
+  }
+
+  // Merchandise: ensure pending proposal arrays exist
+  const ext = migrated.ownedTeam?.finances?.extended
+  if (ext?.merchandise) {
+    const m = ext.merchandise as MerchandiseFullState
+    if (!Array.isArray(m.pendingProductProposals) || !Array.isArray(m.pendingCollectionProposals)) {
+      migrated = {
+        ...migrated,
+        ownedTeam: migrated.ownedTeam
+          ? {
+              ...migrated.ownedTeam,
+              finances: {
+                ...migrated.ownedTeam.finances,
+                extended: {
+                  ...ext,
+                  merchandise: {
+                    ...m,
+                    pendingProductProposals: m.pendingProductProposals ?? [],
+                    pendingCollectionProposals: m.pendingCollectionProposals ?? []
+                  }
+                }
+              }
+            }
+          : undefined
+      }
+      needsUpdate = true
+    }
+  }
+
+  // Initialize portrait registry from all existing staff before any new portrait assignment.
+  // This ensures that migration backfills and new staff generation avoid duplicating
+  // portraits that are already assigned in this career save.
+  {
+    const existingPortraitIds: string[] = []
+    migrated.ownedTeam?.staff?.forEach((s: any) => s.portraitId && existingPortraitIds.push(s.portraitId))
+    migrated.ownedTeam?.facilityStaff?.forEach((s: any) => s.portraitId && existingPortraitIds.push(s.portraitId))
+    migrated.worldStaffPool?.forEach((m: any) => m.staff?.portraitId && existingPortraitIds.push(m.staff.portraitId))
+    migrated.facilityStaffMarket?.forEach((s: any) => s.portraitId && existingPortraitIds.push(s.portraitId))
+    initPortraitRegistry(existingPortraitIds)
   }
 
   // Migrate existing facility staff to include gender and portraitId
@@ -5306,11 +6931,623 @@ export function migrateCareerState(careerState: CareerState | null): CareerState
     needsUpdate = true
   }
 
+  // Migrate scheduled activity categories from generic 'personal'/'lifestyle' to specific categories
+  if (migrated.scheduledActivities && migrated.scheduledActivities.length > 0) {
+    let activityMigrationCount = 0
+    
+    // Maps templateId prefixes / patterns to their correct new category
+    const templateCategoryMap: Record<string, ActivityCategory> = {
+      // Romance
+      'date_': 'romance',
+      'propose': 'romance',
+      'dating_scene': 'romance',
+      'gift_shopping': 'romance',
+      'romantic_': 'romance',
+      // Family
+      'quality_time_child': 'family',
+      'family_activity': 'family',
+      'child_racing_session': 'family',
+      'wedding_day': 'family',
+      'wedding_planning': 'family',
+      'family_event': 'family',
+      'announce_pregnancy': 'family',
+      // Hobby
+      'hobby_': 'hobby',
+      // Fitness
+      'fitness_': 'fitness',
+      'gym_exercise': 'fitness',
+      // Wellness
+      'treatment_session': 'wellness',
+      'medical_appointment': 'wellness',
+      'therapy_session': 'wellness',
+      'health_checkup': 'wellness',
+      'spa_visit': 'wellness',
+      // Education
+      'study_session_': 'education',
+      'course_session': 'education',
+      'exam_': 'education',
+      'book_reading': 'education',
+      // Pet
+      'pet_': 'pet',
+      // Social
+      'social_event_': 'social',
+      'gala': 'social',
+      'charity_event': 'social',
+      'networking_event': 'social',
+      // Social actions (gifts, hangouts, dining, etc.)
+      'gift_': 'social',
+      'casual_': 'social',
+      'dining_': 'social',
+      'invite_': 'social',
+      'professional_': 'social',
+    }
+    
+    migrated.scheduledActivities = migrated.scheduledActivities.map(activity => {
+      // Skip activities that already have a specific category
+      if (activity.category !== 'personal' && activity.category !== 'lifestyle') {
+        return activity
+      }
+      
+      // Social actions with socialActionMeta get mapped by their sub-category
+      if ((activity as any).socialActionMeta) {
+        const meta = (activity as any).socialActionMeta
+        const socialCatMap: Record<string, ActivityCategory> = {
+          romantic: 'romance', dining: 'social', casual: 'social',
+          gift: 'social', event_invite: 'social', professional: 'social',
+        }
+        const newCat = socialCatMap[meta.category] || 'social'
+        if (newCat !== activity.category) {
+          activityMigrationCount++
+          return { ...activity, category: newCat }
+        }
+        return activity
+      }
+      
+      // Match by templateId prefix
+      const templateId = activity.templateId || ''
+      for (const [prefix, newCategory] of Object.entries(templateCategoryMap)) {
+        if (templateId.startsWith(prefix)) {
+          activityMigrationCount++
+          return { ...activity, category: newCategory }
+        }
+      }
+      
+      // Match by activity name patterns as fallback
+      const name = (activity.name || '').toLowerCase()
+      if (name.includes('hobby:')) return (activityMigrationCount++, { ...activity, category: 'hobby' as ActivityCategory })
+      if (name.includes('workout:')) return (activityMigrationCount++, { ...activity, category: 'fitness' as ActivityCategory })
+      if (name.includes('pet time:')) return (activityMigrationCount++, { ...activity, category: 'pet' as ActivityCategory })
+      if (name.includes('study:') || name.includes('course:')) return (activityMigrationCount++, { ...activity, category: 'education' as ActivityCategory })
+      if (name.includes('date:') || name.includes('dating')) return (activityMigrationCount++, { ...activity, category: 'romance' as ActivityCategory })
+      if (name.includes('quality time:') || name.includes('kart setup:') || name.includes('welcome ')) return (activityMigrationCount++, { ...activity, category: 'family' as ActivityCategory })
+      if (name.includes('health treatment:')) return (activityMigrationCount++, { ...activity, category: 'wellness' as ActivityCategory })
+      if (name.includes('charity gala:')) return (activityMigrationCount++, { ...activity, category: 'social' as ActivityCategory })
+      
+      return activity
+    })
+    
+    if (activityMigrationCount > 0) {
+      console.log(`[Migration] Re-categorized ${activityMigrationCount} scheduled activities from generic personal/lifestyle to specific categories`)
+      needsUpdate = true
+    }
+
+    // Sync stored category with template category for existing activities.
+    // Fixes historic quick-decision mis-tags (e.g. investor meetings marked as team).
+    let templateCategorySyncCount = 0
+    const templateCategoryById = new Map(
+      ACTIVITY_TEMPLATES.map(t => [t.id, t.category] as const)
+    )
+    migrated.scheduledActivities = migrated.scheduledActivities.map(activity => {
+      const templateId = activity.templateId || ''
+      const templateCategory = templateCategoryById.get(templateId)
+      if (!templateCategory || activity.category === templateCategory) return activity
+      templateCategorySyncCount++
+      return { ...activity, category: templateCategory }
+    })
+    if (templateCategorySyncCount > 0) {
+      console.log(`[Migration] Synced ${templateCategorySyncCount} scheduled activity categories to template defaults`)
+      needsUpdate = true
+    }
+  }
+
+  // Fix Week 1 message timestamps:
+  // 1) day=1 (Monday) was used instead of the actual starting day of the year (e.g. Thu=4 for 2026)
+  // 2) hours >= 7 on the starting day showed future times (game day starts at 7 AM)
+  if (migrated.messaging?.conversations) {
+    const jan1 = new Date(migrated.currentYear, 0, 1)
+    const jan1Dow = jan1.getDay() === 0 ? 7 : jan1.getDay() // 1=Mon … 7=Sun
+    let fixedMsgCount = 0
+    const fixedConversations = { ...migrated.messaging.conversations }
+    for (const [convId, conv] of Object.entries(fixedConversations)) {
+      if (!conv || !conv.messages) continue
+      let convChanged = false
+      const fixedMessages = (conv as any).messages.map((msg: any) => {
+        if (!msg.timestamp || msg.timestamp.week !== 1) return msg
+        let fixed = { ...msg.timestamp }
+        let changed = false
+        // Fix impossible day (before Jan 1's weekday)
+        if (jan1Dow > 1 && fixed.day < jan1Dow) {
+          fixed.day = jan1Dow
+          changed = true
+        }
+        // Fix future hours: initial messages on the starting day should be before 7 AM
+        // Only fix NPC messages (sender !== 'player') with hours >= 7 that are clearly
+        // auto-generated at career start (week 1, starting day)
+        if (fixed.day === jan1Dow && msg.sender !== 'player' && fixed.hour >= 7) {
+          fixed.hour = 6 + Math.random() * 0.75  // 6:00 AM - 6:45 AM
+          changed = true
+        }
+        if (changed) {
+          fixedMsgCount++
+          convChanged = true
+          return { ...msg, timestamp: fixed }
+        }
+        return msg
+      })
+      if (convChanged) {
+        const convObj = conv as any
+        const lastTime = convObj.lastMessageTime
+        const fixedLastTime = (lastTime?.week === 1 && lastTime?.day < jan1Dow)
+          ? { ...lastTime, day: jan1Dow }
+          : lastTime
+        fixedConversations[convId] = { ...convObj, messages: fixedMessages, lastMessageTime: fixedLastTime }
+      }
+    }
+    if (fixedMsgCount > 0) {
+      console.log(`[Migration] Fixed ${fixedMsgCount} Week 1 message timestamps (day/hour corrections)`)
+      migrated.messaging = { ...migrated.messaging, conversations: fixedConversations }
+      needsUpdate = true
+    }
+  }
+
+  // Normalize conversation keys: rename any conv-xxx to conv_xxx for consistency
+  if (migrated.messaging?.conversations) {
+    const convs = migrated.messaging.conversations
+    const convKeys = Object.keys(convs)
+    const hyphenKeys = convKeys.filter(k => k.startsWith('conv-'))
+    if (hyphenKeys.length > 0) {
+      const normalizedConversations: typeof convs = {}
+      for (const key of convKeys) {
+        if (key.startsWith('conv-')) {
+          const normalizedKey = `conv_${key.slice(5)}`
+          if (convs[normalizedKey]) {
+            // Both keys exist — merge messages from both conversations (dedup by message id)
+            const existing = convs[normalizedKey]
+            const hyphen = convs[key]
+            const existingIds = new Set(existing.messages.map(m => m.id))
+            const mergedMessages = [
+              ...existing.messages,
+              ...hyphen.messages.filter(m => !existingIds.has(m.id))
+            ]
+            // Sort by timestamp for proper ordering
+            mergedMessages.sort((a, b) => {
+              const ta = a.timestamp; const tb = b.timestamp
+              const scoreA = (ta.year ?? 0) * 100000 + (ta.week ?? 0) * 1000 + (ta.day ?? 0) * 100 + (ta.hour ?? 0)
+              const scoreB = (tb.year ?? 0) * 100000 + (tb.week ?? 0) * 1000 + (tb.day ?? 0) * 100 + (tb.hour ?? 0)
+              return scoreA - scoreB
+            })
+            const mergedUnread = (existing.unreadCount || 0) + (hyphen.unreadCount || 0)
+            normalizedConversations[normalizedKey] = {
+              ...existing,
+              id: normalizedKey,
+              messages: mergedMessages,
+              unreadCount: mergedUnread,
+              lastMessageTime: mergedMessages.length > 0 ? mergedMessages[mergedMessages.length - 1].timestamp : existing.lastMessageTime,
+              awaitingResponse: existing.awaitingResponse || hyphen.awaitingResponse,
+            }
+            console.log(`[Migration] Merged conv- and conv_ for ${normalizedKey}: ${existing.messages.length} + ${hyphen.messages.length} → ${mergedMessages.length} messages`)
+          } else {
+            normalizedConversations[normalizedKey] = { ...convs[key], id: normalizedKey }
+          }
+        } else {
+          normalizedConversations[key] = convs[key]
+        }
+      }
+      console.log(`[Migration] Normalized ${hyphenKeys.length} conversation key(s) from conv- to conv_ format`)
+      migrated.messaging = { ...migrated.messaging, conversations: normalizedConversations }
+      needsUpdate = true
+    }
+  }
+
+  // Also normalize queued messages' conversationIds
+  if (migrated.messaging?.queuedMessages) {
+    const queue = migrated.messaging.queuedMessages
+    const fixedQueue = queue.map(q => {
+      if (q.conversationId.startsWith('conv-')) {
+        return { ...q, conversationId: `conv_${q.conversationId.slice(5)}` }
+      }
+      return q
+    })
+    const fixedCount = fixedQueue.filter((q, i) => q !== queue[i]).length
+    if (fixedCount > 0) {
+      console.log(`[Migration] Normalized ${fixedCount} queued message conversationId(s)`)
+      migrated.messaging = { ...migrated.messaging, queuedMessages: fixedQueue }
+      needsUpdate = true
+    }
+  }
+
+  if (!migrated.fastForward) {
+    migrated.fastForward = {
+      isActive: false,
+      mode: 'to_race',
+      rewardMultiplier: 0.6,
+      config: { ...DEFAULT_FAST_FORWARD_CONFIG },
+      targetWeek: null,
+      targetDay: null,
+      targetYear: null,
+      startedWeek: migrated.currentWeek || 1,
+      startedDay: migrated.currentDay || 1,
+      startedYear: migrated.currentYear || new Date().getFullYear(),
+      startedPersonalCash: 0,
+      startedTeamCash: 0,
+      startedReputation: 0,
+      startedFatigue: 0,
+      skippedDays: 0,
+      lastStopReason: 'none'
+    }
+    needsUpdate = true
+  } else if (migrated.fastForward.isActive) {
+    // Never resume in-flight fast-forward across reloads/hydration.
+    migrated.fastForward = {
+      ...migrated.fastForward,
+      config: migrated.fastForward.config ?? { ...DEFAULT_FAST_FORWARD_CONFIG },
+      isActive: false,
+      lastStopReason: 'manual',
+      lastStopMessage: 'Fast forward was stopped after reload.'
+    }
+    needsUpdate = true
+  } else {
+    const ff = migrated.fastForward as any
+    const normalized = {
+      rewardMultiplier: typeof ff.rewardMultiplier === 'number' ? ff.rewardMultiplier : 0.6,
+      startedPersonalCash: typeof ff.startedPersonalCash === 'number' ? ff.startedPersonalCash : 0,
+      startedTeamCash: typeof ff.startedTeamCash === 'number' ? ff.startedTeamCash : 0,
+      startedReputation: typeof ff.startedReputation === 'number' ? ff.startedReputation : 0,
+      startedFatigue: typeof ff.startedFatigue === 'number' ? ff.startedFatigue : 0
+    }
+    // Ensure config exists on existing saves
+    if (!ff.config) {
+      migrated.fastForward = {
+        ...migrated.fastForward,
+        config: { ...DEFAULT_FAST_FORWARD_CONFIG },
+        ...normalized
+      }
+      needsUpdate = true
+    } else if (
+      ff.rewardMultiplier !== normalized.rewardMultiplier ||
+      ff.startedPersonalCash !== normalized.startedPersonalCash ||
+      ff.startedTeamCash !== normalized.startedTeamCash ||
+      ff.startedReputation !== normalized.startedReputation ||
+      ff.startedFatigue !== normalized.startedFatigue
+    ) {
+      migrated.fastForward = {
+        ...migrated.fastForward,
+        ...normalized
+      }
+      needsUpdate = true
+    }
+  }
+
   if (needsUpdate) {
     console.log('[Migration] Career state migrated')
   }
   
   return migrated
+}
+
+// Helper: recalculate ownedTeam.teamMorale from individual staff morale values (single source of truth)
+function recalcTeamMorale(team: OwnedTeam): OwnedTeam {
+  if (!team.staff || team.staff.length === 0) return team
+  const avg = team.staff.reduce((sum, s) => sum + (s.morale || 70), 0) / team.staff.length
+  return { ...team, teamMorale: Math.round(avg * 10) / 10 }
+}
+
+// Helper: apply a teamMorale delta to all individual staff, then recalculate the team-level field
+function applyTeamMoraleDelta(team: OwnedTeam, delta: number): OwnedTeam {
+  const updated = {
+    ...team,
+    staff: team.staff.map(s => ({
+      ...s,
+      morale: Math.max(0, Math.min(100, (s.morale || 70) + delta))
+    }))
+  }
+  return recalcTeamMorale(updated)
+}
+
+// Helper: check if an email's delivery date has been reached
+function isEmailDelivered(email: Email, currentDay: number, currentWeek: number, currentYear: number): boolean {
+  if (email.receivedYear < currentYear) return true
+  if (email.receivedYear > currentYear) return false
+  if (email.receivedWeek < currentWeek) return true
+  if (email.receivedWeek > currentWeek) return false
+  return email.receivedDay <= currentDay
+}
+
+// Only truly contractual/time-critical decisions stop auto-play.
+// Opportunistic emails (media appearances, manufacturer programs,
+// merchandise proposals, shortlists) sit in the inbox and are handled
+// manually — they no longer interrupt the simulation.
+const ACTION_REQUIRED_TYPES = new Set<NonNullable<Email['actionType']>>([
+  'accept_decline',       // Contract / sponsor offers
+  'review_counter',       // Sponsor negotiation counter-offers
+  'delegation_approval',  // Critical staff delegation needing sign-off
+  'negotiate_sponsor',    // Active sponsor negotiation in progress
+  'opportunity_special',  // One-off special events (rare)
+])
+
+const IMPORTANT_TYPES = new Set<NonNullable<Email['actionType']>>([
+  'activity_today',
+  'auto_schedule',
+  'mandatory_activity',
+  'navigate',
+])
+
+const EMAIL_RELEVANCE_CONFIG = {
+  standaloneThreshold: 45,
+  maxCriticalPerDay: 6,
+  maxImportantPerDay: 10,
+  maxDigestEntriesPerDay: 24,
+  duplicateCooldownDays: 2,
+} as const
+
+const normalizeEmailSubject = (subject: string): string =>
+  subject.toLowerCase().replace(/\d+/g, '#').replace(/\s+/g, ' ').trim()
+
+function isSponsorDecisionEmail(email: Pick<Email, 'category' | 'subject' | 'actionData' | 'actionType'>): boolean {
+  if (email.category !== 'sponsor') return false
+  if (email.actionType === 'accept_decline' || email.actionType === 'review_counter' || email.actionType === 'negotiate_sponsor') {
+    return true
+  }
+
+  const actionData = (email.actionData || {}) as Record<string, unknown>
+  const actionDataType = typeof actionData.type === 'string' ? actionData.type : ''
+
+  if (actionDataType === 'sponsor_offer' || actionDataType === 'team_sponsor_offer') return true
+  if (typeof actionData.sponsorId === 'string' || typeof actionData.negotiationId === 'string') return true
+
+  const subject = (email.subject || '').toLowerCase()
+  return subject.includes('sponsorship proposal') || subject.includes('partnership proposal')
+}
+
+function getEmailRelevanceScore(email: Omit<Email, 'id'>): number {
+  let score = 20
+
+  if (email.actionType && ACTION_REQUIRED_TYPES.has(email.actionType)) score += 60
+  else if (email.actionType && IMPORTANT_TYPES.has(email.actionType)) score += 30
+  else if (email.actionType === 'acknowledge') score += 10
+  if (isSponsorDecisionEmail(email)) score += 40
+
+  if (email.starred) score += 20
+  if (email.category === 'contract' || email.category === 'board') score += 25
+  if (email.category === 'sponsor' || email.category === 'team') score += 10
+  if (typeof email.expiresWeek === 'number') score += 20
+
+  return Math.max(0, Math.min(100, score))
+}
+
+function deriveEmailInterruptClass(email: Omit<Email, 'id'>): Email['interruptClass'] {
+  if (email.interruptClass) return email.interruptClass
+  if (email.requiresAction) return 'critical'
+  if (isSponsorDecisionEmail(email)) return 'critical'
+  if (email.actionType && ACTION_REQUIRED_TYPES.has(email.actionType)) return 'critical'
+  if (email.actionType && IMPORTANT_TYPES.has(email.actionType)) return 'important'
+  if (email.starred || email.category === 'board' || email.category === 'contract') return 'important'
+  return 'digest'
+}
+
+function shouldInterruptFastForward(email: Email): boolean {
+  if (email.read || email.archived) return false
+  if (email.interruptClass === 'critical') return true
+  if (isSponsorDecisionEmail(email)) return true
+  return !!(email.requiresAction || (email.actionType && ACTION_REQUIRED_TYPES.has(email.actionType)))
+}
+
+function isCoreLoopModeEnabled(state: CareerState | null | undefined): boolean {
+  return state?.coreLoopMode ?? true
+}
+
+let fastForwardTimer: ReturnType<typeof setTimeout> | null = null
+// Slightly slower than 200ms to reduce UI jank while keeping fast-forward snappy.
+const FAST_FORWARD_TICK_MS = 300
+const FAST_FORWARD_DAYS_PER_STEP = 3
+
+function clearFastForwardTimer() {
+  if (fastForwardTimer) {
+    clearTimeout(fastForwardTimer)
+    fastForwardTimer = null
+  }
+}
+
+function getFastForwardRaceTarget(careerState: CareerState, player: PlayerDriver): { week: number; day: number; year: number } | null {
+  const resolvedSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+  if (!resolvedSeriesId) return null
+
+  const series = useRivalStore.getState().getSeriesById(resolvedSeriesId)
+  const calendar = series?.calendar || []
+  if (calendar.length === 0) return null
+
+  const getRaceWeekendStartDay = (event: { sessions?: { practice?: boolean; qualifying?: boolean; race?: boolean } }): number => {
+    const sessionDays: number[] = []
+    if (event.sessions?.practice) sessionDays.push(5)
+    if (event.sessions?.qualifying) sessionDays.push(6)
+    if (event.sessions?.race) sessionDays.push(7)
+    return sessionDays.length > 0 ? Math.min(...sessionDays) : 7
+  }
+
+  const { currentWeek, currentDay, currentYear } = careerState
+  const currentWeekRace = calendar.find(event => event.week === currentWeek)
+
+  // If race is this week and we are before race weekend start, stop at first session day.
+  if (currentWeekRace) {
+    const raceWeekendStartDay = getRaceWeekendStartDay(currentWeekRace)
+    if (currentDay < raceWeekendStartDay) {
+      return { week: currentWeek, day: raceWeekendStartDay, year: currentYear }
+    }
+  }
+
+  // Otherwise jump to the first session day of the next race week.
+  const nextRace = calendar.find(event => event.week > currentWeek)
+  if (!nextRace) return null
+  return { week: nextRace.week, day: getRaceWeekendStartDay(nextRace), year: currentYear }
+}
+
+function getFastForwardCriticalStopReason(careerState: CareerState, player: PlayerDriver, config?: FastForwardConfig): string | null {
+  const cfg = config ?? careerState.fastForward?.config ?? DEFAULT_FAST_FORWARD_CONFIG
+
+  if (cfg.stopOnCalendarConflict && (careerState.pendingConflicts?.length ?? 0) > 0) {
+    return 'Calendar conflict needs your input.'
+  }
+
+  if (cfg.stopOnUrgentEmails || cfg.stopOnStarredEmails) {
+    const urgentUnreadEmails = (careerState.emails || []).some(email =>
+      shouldInterruptFastForward(email) || (cfg.stopOnStarredEmails && !email.read && !email.archived && email.starred)
+    )
+    if (urgentUnreadEmails) return 'Critical decision requires your attention.'
+  }
+
+  if (cfg.stopOnNegativeCash) {
+    const personalLife = (careerState as any).personalLife
+    const personalCash = personalLife?.finances?.liquidCash ?? player.finances?.bankBalance ?? 0
+    const teamCash = careerState.ownedTeam?.budgets?.cash ?? 0
+    if (personalCash < 0 || teamCash < 0) {
+      return 'Critical cash threshold reached.'
+    }
+  }
+
+  return null
+}
+
+function generateFastForwardBlockerAdvice(careerState: CareerState, player: PlayerDriver): Omit<Email, 'id'> | null {
+  // Don't spam — skip if a PA skip-blocker email already exists for today
+  const alreadySent = (careerState.emails || []).some(e =>
+    e.category === 'system' &&
+    e.senderRole === 'Personal Assistant' &&
+    (e.subject.includes('blocking skip') || e.subject.includes('skip ahead')) &&
+    e.receivedWeek === careerState.currentWeek &&
+    e.receivedDay === (careerState.currentDay ?? 1)
+  )
+  if (alreadySent) return null
+
+  // Use personalLife.finances.liquidCash (canonical personal cash) with bankBalance as fallback
+  const personalLife = (careerState as any).personalLife
+  const personalCash = personalLife?.finances?.liquidCash ?? player.finances?.bankBalance ?? 0
+  const teamCash = careerState.ownedTeam?.budgets?.cash ?? 0
+
+  // Resolve PA name — check personalLife.staff first, then expandedPersonalLife
+  const personalStaffArr = Array.isArray(personalLife?.staff)
+    ? personalLife.staff
+    : Array.isArray((careerState as any).expandedPersonalLife?.personalStaff)
+      ? (careerState as any).expandedPersonalLife.personalStaff
+      : []
+  const paStaff = personalStaffArr.find((s: any) => s.role === 'personal_assistant')
+  const paName = (paStaff?.name as string) || 'Julia Green'
+
+  let subject = ''
+  let body = ''
+  let actionType: Email['actionType'] = 'navigate'
+  let actionData: Record<string, unknown> = {}
+
+  if (careerState.pendingConflicts?.length) {
+    subject = 'Calendar conflict before we can skip ahead'
+    body = `Boss, I tried to clear your schedule for the skip but there's a calendar conflict that needs your call first.\n\nHead to the Calendar and resolve the scheduling conflict, then we can fast-forward to race week.`
+    actionData = { screen: '/calendar' }
+  } else {
+    // Check for urgent emails
+    const urgentEmails = (careerState.emails || []).filter(email =>
+      shouldInterruptFastForward(email) || (!email.read && !email.archived && email.starred)
+    )
+
+    if (urgentEmails.length > 0) {
+      const emailCount = urgentEmails.length
+      const categories = [...new Set(urgentEmails.map(e => e.category))]
+      const categoryHints = categories.slice(0, 3).join(', ')
+
+      subject = `${emailCount} pending item${emailCount > 1 ? 's' : ''} blocking skip`
+      body = `Boss, you've got ${emailCount} unread message${emailCount > 1 ? 's' : ''} that need${emailCount === 1 ? 's' : ''} a decision before I can fast-forward.\n\nCategories: ${categoryHints}\n\nYou can read them, respond, or archive them — then try skipping again.`
+      actionData = { screen: '/emails' }
+    } else if (personalCash < 0 || teamCash < 0) {
+      const issues: string[] = []
+      const tips: string[] = []
+      let navigateTo = '/finances'
+
+      if (personalCash < 0) {
+        issues.push(`your personal bank balance is $${personalCash.toLocaleString()} (check Personal Life → Wealth)`)
+        tips.push('• Take out a personal loan (Loans screen)')
+        tips.push('• Negotiate a higher salary from the board')
+        tips.push('• Sell investments or assets on the Wealth screen')
+        navigateTo = '/finances'
+      }
+      if (teamCash < 0) {
+        issues.push(`the team budget is $${teamCash.toLocaleString()} (check Team Finances)`)
+        tips.push('• Take out a team loan (Loans screen)')
+        tips.push('• Sign a new sponsor deal for upfront cash')
+        tips.push('• Cut facility or staff costs')
+        navigateTo = '/finances'
+      }
+
+      subject = 'Cash crisis — can\'t skip ahead safely'
+      body = `Boss, we can't fast-forward right now because ${issues.join(', and ')}.\n\nNote: your personal finances and team finances are separate accounts.\n\nA few options:\n${tips.join('\n')}\n\nOnce the balance is back above zero, we can skip to race week.`
+      actionData = { screen: navigateTo }
+    } else {
+      return null
+    }
+  }
+
+  return {
+    category: 'system',
+    subject,
+    sender: paName,
+    senderRole: 'Personal Assistant',
+    preview: body.slice(0, 100),
+    body,
+    receivedDay: careerState.currentDay ?? 1,
+    receivedWeek: careerState.currentWeek,
+    receivedYear: careerState.currentYear,
+    read: false,
+    starred: true,
+    archived: false,
+    actionType,
+    actionData
+  }
+}
+
+function applyFastForwardRewardScaling(effects: ActivityEffect, multiplier: number): ActivityEffect {
+  if (multiplier >= 1) return effects
+
+  const scaled = { ...effects }
+  const rewardKeys: Array<keyof ActivityEffect> = [
+    'reputation',
+    'cash',
+    'budgetImpact',
+    'boardMood',
+    'teamMorale',
+    'fanSentiment',
+    'sponsorSatisfaction',
+    'developmentPoints',
+    'confidence',
+    'driverMorale',
+    'fitness',
+    'marketability',
+    'mentalStrength',
+    'teamFollowers',
+    'personalFollowers',
+    'sponsorLeadsGenerated'
+  ]
+
+  for (const key of rewardKeys) {
+    const value = scaled[key]
+    if (typeof value === 'number' && value > 0) {
+      scaled[key] = Math.max(1, Math.round(value * multiplier)) as never
+    }
+  }
+
+  return scaled
+}
+
+function isDelegatedRoutineMandatory(activity: ScheduledActivity): boolean {
+  // These are team-operational tasks that can be handled in the background.
+  // Keep owner/driver-required items manual so key decisions still surface.
+  return !!activity.mandatory && !activity.requiresOwner && !activity.requiresDriver
 }
 
 export const useCareerStore = create<CareerStore>()(
@@ -5319,32 +7556,365 @@ export const useCareerStore = create<CareerStore>()(
       hasActiveCareer: false,
       player: null,
       careerState: null,
-      
+      preGenContentLoaded: false,
+
       // Staff Job Market state
       staffJobMarket: [],
       activeNegotiations: [],
       lastMarketRefresh: 0,
 
-      createCareer: (player) => {
+      createCareer: (player, personalLifeSetup) => {
         console.log('[CareerStore] Creating career for', player.firstName, player.lastName)
+        clearFastForwardTimer()
         const startYear = new Date().getFullYear()
         // Calculate what day of week January 1st is (1=Mon, 7=Sun)
         const jan1 = new Date(startYear, 0, 1)
         const jan1DayOfWeek = jan1.getDay() === 0 ? 7 : jan1.getDay()
         
+        // Initialize owned team for team_owner scenario
+        let ownedTeam: OwnedTeam | null = null
+        if (player.scenario === 'team_owner') {
+          const bgData = player.background as Record<string, unknown> | undefined
+          const selectedRealTeamId = bgData?.selectedRealTeamId as string | undefined
+
+          if (selectedRealTeamId) {
+            // ── Choose Team flow: initialize from real AMS2 team data ──
+            const { getTeamById } = require('@/data/ams2-teams-real')
+            const realTeam = getTeamById(selectedRealTeamId)
+
+            if (realTeam) {
+              // Map budget level to starting cash
+              const budgetToCash: Record<string, number> = {
+                low: 250000,
+                medium: 500000,
+                high: 1000000,
+                factory: 2000000,
+              }
+              const startingCash = budgetToCash[realTeam.budget] || 350000
+
+              // Map real team tier to OwnedTeam tier
+              const tierMap: Record<string, TeamTier> = {
+                entry: 'amateur',
+                amateur: 'amateur',
+                'semi-pro': 'semi-pro',
+                professional: 'professional',
+                pro: 'professional',
+                elite: 'professional',
+                pinnacle: 'professional',
+              }
+
+              ownedTeam = {
+                id: `team-${Date.now()}`,
+                name: realTeam.name,
+                baseCountry: realTeam.country,
+                reputation: realTeam.prestige || 40,
+                fanSentiment: 50 + Math.round(realTeam.prestige / 5),
+                boardMood: typeof bgData?.initialBoardMood === 'number' ? bgData.initialBoardMood : 65,
+                tier: (tierMap[realTeam.tier] || 'amateur') as TeamTier,
+                budgets: createDefaultTeamBudgets(startingCash),
+                facilities: createDefaultFacilities(),
+                staff: [],
+                facilityStaff: [],
+                drivers: [],
+                finances: createDefaultTeamFinancialState(),
+                spareParts: createDefaultSparePartsState(1),
+                teamMorale: 60,
+                developmentSpeedModifier: 1.0,
+                delegationFlags: {
+                  mandatory_scheduling: true,
+                  logistics: true
+                },
+              }
+
+              // Override player finances to match team budget level
+              if (player.finances) {
+                player.finances.balance = startingCash
+              }
+
+              console.log('[CareerStore] Initialized ownedTeam from real team:', realTeam.name, 'tier:', realTeam.tier, 'budget:', realTeam.budget, 'cash:', startingCash)
+            }
+          }
+
+          if (!ownedTeam) {
+            // ── Create Team flow: original initialization ──
+            const teamName = player.background?.teamName || `${player.firstName} Racing`
+            const teamCountry = player.background?.teamCountry || 'United Kingdom'
+            const startingCash = player.finances?.balance || 350000
+
+            ownedTeam = {
+              id: `team-${Date.now()}`,
+              name: teamName,
+              baseCountry: teamCountry,
+              reputation: player.reputation || 20,
+              fanSentiment: 50 + (typeof bgData?.fanSentimentBonus === 'number' ? bgData.fanSentimentBonus : 0),
+              boardMood: typeof bgData?.initialBoardMood === 'number' ? bgData.initialBoardMood : 65,
+              tier: 'amateur' as TeamTier,
+              budgets: createDefaultTeamBudgets(startingCash),
+              facilities: createDefaultFacilities(),
+              staff: [],
+              facilityStaff: [],
+              drivers: [],
+              finances: createDefaultTeamFinancialState(),
+              spareParts: createDefaultSparePartsState(1),
+              teamMorale: 60,
+              developmentSpeedModifier: 1.0,
+              delegationFlags: {
+                mandatory_scheduling: true,
+                logistics: true
+              },
+            }
+            console.log('[CareerStore] Initialized ownedTeam:', teamName, 'in', teamCountry, 'with cash:', startingCash)
+          }
+        }
+
+        // Build messaging state with starter contacts
+        const starterMessaging = createDefaultMessagingState()
+        if (personalLifeSetup?.starterContacts?.length) {
+          starterMessaging.contacts = personalLifeSetup.starterContacts
+          starterMessaging.unreadTotal = personalLifeSetup.starterContacts.length
+          console.log('[CareerStore] Populated starter contacts:', personalLifeSetup.starterContacts.length)
+        }
+        if (personalLifeSetup?.starterConversations) {
+          starterMessaging.conversations = personalLifeSetup.starterConversations
+          console.log('[CareerStore] Populated starter conversations:', Object.keys(personalLifeSetup.starterConversations).length)
+        }
+
+        // Initialize teamMediaState alongside ownedTeam so it exists from career start
+        const teamMediaState = ownedTeam ? createDefaultTeamMediaState(ownedTeam.name) : undefined
+
+        const newCareerState: CareerState = {
+          ...initialCareerState,
+          currentYear: startYear,
+          currentDay: jan1DayOfWeek,  // Start on actual Jan 1st weekday
+          ownedTeam,
+          teamMediaState,
+          messaging: starterMessaging,
+        }
+
         set({
           hasActiveCareer: true,
           player,
-          careerState: {
-            ...initialCareerState,
-            currentYear: startYear,
-            currentDay: jan1DayOfWeek  // Start on actual Jan 1st weekday
-          }
+          careerState: newCareerState
         })
+
+        // Always eagerly initialize personalLife (contains PA staff, finances, etc.)
+        // Previously this only ran when a starter partner was selected, which meant
+        // the PA contact (Julia Green) was never created without a partner.
+        {
+          const currentState = get().careerState
+          if (currentState) {
+            // createDefaultPersonalLifeState is imported at the top of the file.
+            // The circular dependency with usePersonalLifeState is safe because
+            // both modules only reference each other inside runtime functions, not at init time.
+            const teamValue = ownedTeam?.budgets?.cash || 350000
+            const bgId = (player.background as any)?.type || (player.background as any)?.id
+            const defaultPL = createDefaultPersonalLifeState(player, teamValue, startYear, 1, bgId)
+            
+            if (personalLifeSetup?.starterPartner) {
+              const partnerData = personalLifeSetup.starterPartner
+              set({
+                careerState: {
+                  ...currentState,
+                  personalLife: {
+                    ...defaultPL,
+                    partner: partnerData,
+                    family: {
+                      partner: partnerData,
+                      children: [],
+                      familyTree: undefined,
+                    }
+                  }
+                }
+              })
+              console.log('[CareerStore] Set starter partner:', partnerData.firstName, partnerData.lastName)
+            } else {
+              set({
+                careerState: {
+                  ...currentState,
+                  personalLife: defaultPL
+                }
+              })
+            }
+            console.log('[CareerStore] Initialized personalLife (PA staff, finances, lifestyle)')
+          }
+        }
+
+        // Pre-fill calendar with all onboarding activities for weeks 1–3 (so calendar is not bare)
+        // Convert schedule (week, linear day 1–7) to (week, calendar weekday) so Jan 1 = first day aligns
+        {
+          const state = get().careerState
+          if (state) {
+            const jan1 = new Date(startYear, 0, 1)
+            const jan1DayOfWeek = jan1.getDay() === 0 ? 7 : jan1.getDay()
+            // Filter out activities that require resources the new team doesn't have yet
+            const hasStaffAtCreation = false  // Brand new team has no staff
+            const hasDriversAtCreation = false  // Brand new team has no drivers
+            const hasSponsorsAtCreation = false  // Brand new team has no sponsors
+            const eligibleTemplates = ONBOARDING_MANDATORY_SCHEDULE.filter(t => {
+              if (t.requiresStaff && !hasStaffAtCreation) return false
+              if (t.requiresDriver && !hasDriversAtCreation) return false
+              if (t.requiresSponsors && !hasSponsorsAtCreation) return false
+              return true
+            })
+            const prefillActivities: ScheduledActivity[] = eligibleTemplates.map((template, i) => {
+              const cost = getActivityTimeCost(template.id)
+              const scheduledDay =
+                template.week === 1
+                  ? ((template.day - 1 + (jan1DayOfWeek - 1)) % 7) + 1
+                  : template.day
+              const onboardingDeadline = calculateDeadline(template.week, scheduledDay, 1)
+              const onboardingRescheduleCost = template.baseCost > 0
+                ? Math.floor(template.baseCost * 0.35)
+                : 500
+              return {
+                id: `onboarding_${template.id}_${template.week}_${template.day}_${i}_${Date.now()}`,
+                templateId: template.id,
+                name: template.name,
+                description: template.description,
+                category: template.category,
+                scheduledWeek: template.week,
+                scheduledDay,
+                duration: template.duration,
+                spanDays: 1,
+                status: 'scheduled',
+                requiredCash: template.baseCost,
+                triggeredBy: 'onboarding',
+                mandatory: true,
+                canReschedule: true,
+                rescheduleCost: onboardingRescheduleCost,
+                deadline: { week: onboardingDeadline.week, day: onboardingDeadline.day },
+                effectsOnComplete: template.effectsOnComplete,
+                effectsOnMiss: template.effectsOnMiss,
+                requiresDriver: template.requiresDriver,
+                requiresOwner: template.requiresOwner,
+                urgencyLevel: template.urgencyLevel,
+                drainLevel: (cost?.drain ?? 'normal') as DrainLevel,
+                calendarEntryType: (cost?.calendarType ?? template.calendarEntryType) as CalendarEntryType,
+                scheduledPeriod: cost?.preferredPeriod || cost?.allowedPeriods?.[0],
+              } as ScheduledActivity
+            })
+            set({
+              careerState: {
+                ...state,
+                scheduledActivities: prefillActivities,
+              },
+            })
+            console.log('[CareerStore] Pre-filled onboarding activities:', prefillActivities.length)
+          }
+        }
+
+        // Welcome email suppressed — career intro is handled via onboarding phone messages
+
+        // Generate PA weekly planning email for the very first week
+        // (advanceWeek() only fires from week 2 onward, so we need this here for week 1)
+        {
+          const freshState = get().careerState
+          const freshPlayer = get().player
+          if (freshState && freshPlayer) {
+            const planningEmail = generateWeeklyPlanningEmail(
+              freshState,
+              freshPlayer as unknown as Record<string, unknown>
+            )
+            if (planningEmail) {
+              set({
+                careerState: {
+                  ...freshState,
+                  emails: [
+                    { ...planningEmail, id: `email_pa_planner_w${freshState.currentWeek}_${freshState.currentYear}` },
+                    ...(freshState.emails || [])
+                  ]
+                }
+              })
+              console.log(`[CareerStore] PA planning email generated for career start (Week ${freshState.currentWeek})`)
+            }
+          }
+        }
+
+        // Fire Day 1 onboarding guidance (phone intro only — emails suppressed to keep inbox clean)
+        {
+          const { careerState: freshState, player: freshPlayer } = get()
+          if (freshState && freshPlayer && !freshState.onboardingComplete) {
+            const guidanceResult = processOnboardingGuidance(freshState, freshPlayer)
+            if (guidanceResult.phoneMessages.length > 0 || guidanceResult.newSentIds.length > 0) {
+              // Guidance emails are intentionally not added to inbox — phone messages only
+              const guidanceEmails: Email[] = []
+
+              // Handle phone messages for Day 1
+              // Queue for scheduled delivery instead of injecting immediately.
+              let updatedMessaging = freshState.messaging
+              for (const phoneMsg of guidanceResult.phoneMessages) {
+                if (!updatedMessaging) break
+                const contacts = updatedMessaging.contacts ?? []
+                let contact = undefined as (typeof contacts)[number] | undefined
+
+                // Resolve onboarding phone sender by semantic role, not just contact.type.
+                // "personal_assistant" guidance should ONLY go to the PA contact and never
+                // fall back to partner/friend/business contacts.
+                if (phoneMsg.contactType === 'personal_assistant') {
+                  contact = contacts.find(c =>
+                    (c as any).staffRole === 'personal_assistant' ||
+                    c.id.startsWith('pa_') ||
+                    (c.occupation || '').toLowerCase() === 'personal assistant'
+                  )
+                } else if (phoneMsg.contactType === 'partner') {
+                  contact = contacts.find(c => c.type === 'partner')
+                } else if (phoneMsg.contactType === 'friend') {
+                  contact = contacts.find(c => c.type === 'friend' || c.type === 'social')
+                } else {
+                  contact = contacts.find(c => c.type === phoneMsg.contactType)
+                }
+                if (contact) {
+                  const convId = `conv_${contact.id}`
+                  const deliveryHour = 9
+                  const scheduledMessage = {
+                    id: `msg_guidance_1_1_${Math.random().toString(36).substr(2, 9)}`,
+                    conversationId: convId,
+                    sender: 'npc' as const,
+                    content: phoneMsg.message,
+                    tone: 'friendly' as const,
+                    timestamp: { week: 1, day: freshState.currentDay, hour: deliveryHour, year: freshState.currentYear },
+                    isRead: false
+                  }
+                  updatedMessaging = {
+                    ...updatedMessaging,
+                    queuedMessages: [
+                      ...(updatedMessaging.queuedMessages || []),
+                      {
+                        id: `queued_guidance_1_1_${Math.random().toString(36).substr(2, 9)}`,
+                        conversationId: convId,
+                        contactId: contact.id,
+                        message: scheduledMessage,
+                        scheduledDeliveryHour: deliveryHour,
+                        scheduledDeliveryDay: freshState.currentDay,
+                        scheduledDeliveryWeek: 1,
+                        scheduledDeliveryYear: freshState.currentYear,
+                        delivered: false,
+                      }
+                    ]
+                  }
+                }
+              }
+
+              set({
+                careerState: {
+                  ...freshState,
+                  emails: [...guidanceEmails, ...(freshState.emails || [])],
+                  sentGuidanceIds: [...(freshState.sentGuidanceIds ?? []), ...guidanceResult.newSentIds],
+                  ...(updatedMessaging !== freshState.messaging ? { messaging: updatedMessaging } : {})
+                }
+              })
+              console.log(`[CareerStore] Day 1 onboarding: ${guidanceResult.emails.length} emails, ${guidanceResult.phoneMessages.length} phone messages`)
+            }
+          }
+        }
+
+        // Generate onboarding mandatory activities for today (week 1, first day)
+        get().generateOnboardingMandatoryActivities()
+
         // Save to native database for reliable persistence
         setTimeout(() => {
           const state = useCareerStore.getState()
-          console.log('[CareerStore] After createCareer:', { hasActiveCareer: state.hasActiveCareer })
+          console.log('[CareerStore] After createCareer:', { hasActiveCareer: state.hasActiveCareer, hasTeam: !!state.careerState?.ownedTeam })
           saveToNativeDB()
         }, 100)
       },
@@ -5427,19 +7997,23 @@ export const useCareerStore = create<CareerStore>()(
         }
       },
 
+      addMissedNotification: (notification) => {
+        const { careerState } = get()
+        if (careerState) {
+          const existing = careerState.missedNotifications ?? []
+          set({
+            careerState: {
+              ...careerState,
+              missedNotifications: [...existing, notification]
+            }
+          })
+        }
+      },
+
       setOwnedTeam: (team) => {
         const { careerState } = get()
         if (careerState) {
-          // Generate welcome email for new team
-          const welcomeEmail = generateWelcomeEmail(team.name, careerState)
-          
-          set({ 
-            careerState: { 
-              ...careerState, 
-              ownedTeam: team,
-              emails: [{ ...welcomeEmail, id: `email_welcome_${team.id}` }, ...(careerState.emails || [])]
-            } 
-          })
+          set({ careerState: { ...careerState, ownedTeam: team } })
         }
       },
 
@@ -5449,6 +8023,389 @@ export const useCareerStore = create<CareerStore>()(
           const current = careerState.ownedTeam || null
           set({ careerState: { ...careerState, ownedTeam: current ? { ...current, ...updates } : { ...(updates as OwnedTeam) } } })
         }
+      },
+
+      addMerchandiseProduct: (params) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return { success: false, error: 'No team or finances' }
+        const extended = team.finances.extended || createDefaultExtendedFinancialState()
+        const merch = extended.merchandise
+        const week = careerState?.currentWeek ?? 1
+        const year = careerState?.currentYear ?? 2024
+        const result = createMerchProduct({ ...params, currentWeek: week, currentYear: year })
+        if ('error' in result) return { success: false, error: result.error }
+        const newProducts = [...merch.products, result.product]
+        const newMerch = { ...merch, products: newProducts }
+        const tx = result.transaction
+        const newCash = (team.budgets?.cash ?? 0) - tx.amount
+        const newTransactions = [...(team.finances.transactions || []), tx]
+        get().updateOwnedTeam({
+          finances: { ...team.finances, extended: { ...extended, merchandise: newMerch }, transactions: newTransactions },
+          budgets: { ...team.budgets, cash: newCash }
+        })
+        return { success: true }
+      },
+
+      createMerchandiseCollection: (params) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return { success: false, error: 'No team or finances' }
+        const extended = team.finances.extended || createDefaultExtendedFinancialState()
+        const merch = extended.merchandise
+        const week = careerState?.currentWeek ?? 1
+        const year = careerState?.currentYear ?? 2024
+        const result = createMerchCollection({ ...params, currentWeek: week, currentYear: year })
+        if ('error' in result) return { success: false, error: result.error }
+        const newCollections = [...merch.collections, result.collection]
+        const newMerch = { ...merch, collections: newCollections }
+        let newCash = team.budgets?.cash ?? 0
+        let newTransactions = team.finances.transactions || []
+        if (result.transaction) {
+          newCash -= result.transaction.amount
+          newTransactions = [...newTransactions, result.transaction]
+        }
+        get().updateOwnedTeam({
+          finances: { ...team.finances, extended: { ...extended, merchandise: newMerch }, transactions: newTransactions },
+          budgets: { ...team.budgets, cash: newCash }
+        })
+        return { success: true }
+      },
+
+      openMerchandiseStore: (type, customName, location, productIds = []) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return { success: false, error: 'No team or finances' }
+        const extended = team.finances.extended || createDefaultExtendedFinancialState()
+        const merch = extended.merchandise
+        const week = careerState?.currentWeek ?? 1
+        const year = careerState?.currentYear ?? 2024
+        const result = openMerchStore(type, customName, location, productIds, week, year)
+        if ('error' in result) return { success: false, error: result.error }
+        const newStores = [...merch.stores, result.store]
+        const newMerch = { ...merch, stores: newStores }
+        const tx = result.transaction
+        const newCash = (team.budgets?.cash ?? 0) - tx.amount
+        const newTransactions = [...(team.finances.transactions || []), tx]
+        get().updateOwnedTeam({
+          finances: { ...team.finances, extended: { ...extended, merchandise: newMerch }, transactions: newTransactions },
+          budgets: { ...team.budgets, cash: newCash }
+        })
+        return { success: true }
+      },
+
+      updateMerchandiseProductPrice: (productId, newPrice) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return { success: false, error: 'No extended finances' }
+        const merch = team.finances.extended.merchandise
+        const product = merch.products.find(p => p.id === productId)
+        if (!product) return { success: false, error: 'Product not found' }
+        const result = updateMerchProductPrice(product, newPrice)
+        if ('error' in result) return { success: false, error: result.error }
+        const newProducts = merch.products.map(p => p.id === productId ? result as MerchProduct : p)
+        get().updateOwnedTeam({
+          finances: {
+            ...team.finances,
+            extended: { ...team.finances.extended!, merchandise: { ...merch, products: newProducts } }
+          }
+        })
+        return { success: true }
+      },
+
+      discontinueMerchandiseProduct: (productId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return
+        const merch = team.finances.extended.merchandise
+        const product = merch.products.find(p => p.id === productId)
+        if (!product) return
+        const week = careerState?.currentWeek ?? 1
+        const updated = discontinueMerchProduct(product, week)
+        const newProducts = merch.products.map(p => p.id === productId ? updated : p)
+        get().updateOwnedTeam({
+          finances: {
+            ...team.finances,
+            extended: { ...team.finances.extended!, merchandise: { ...merch, products: newProducts } }
+          }
+        })
+      },
+
+      updateMerchandiseStoreProducts: (storeId, productIds) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return
+        const merch = team.finances.extended.merchandise
+        const store = merch.stores.find(s => s.id === storeId)
+        if (!store) return
+        const updated = updateMerchStoreProducts(store, productIds)
+        const newStores = merch.stores.map(s => s.id === storeId ? updated : s)
+        get().updateOwnedTeam({
+          finances: {
+            ...team.finances,
+            extended: { ...team.finances.extended!, merchandise: { ...merch, stores: newStores } }
+          }
+        })
+      },
+
+      approveMerchandiseProductProposal: (proposalId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return { success: false, error: 'No extended finances' }
+        const merch = team.finances.extended.merchandise
+        const pending = (merch as MerchandiseFullState).pendingProductProposals ?? []
+        const proposal = pending.find(p => p.id === proposalId)
+        if (!proposal) return { success: false, error: 'Proposal not found' }
+        const week = careerState?.currentWeek ?? 1
+        const year = careerState?.currentYear ?? 2024
+        const result = get().addMerchandiseProduct({
+          templateId: proposal.templateId,
+          basePrice: proposal.basePrice,
+          rarity: proposal.rarity,
+          initialStock: proposal.initialStock,
+          weeklyProduction: proposal.weeklyProduction,
+          reorderPoint: proposal.reorderPoint,
+          currentWeek: week,
+          currentYear: year
+        })
+        if (!result.success) return result
+        const { careerState: afterState } = get()
+        const teamAfter = afterState?.ownedTeam
+        const merchAfter = teamAfter?.finances?.extended?.merchandise
+        if (teamAfter?.finances?.extended && merchAfter) {
+          const newPending = ((merchAfter as MerchandiseFullState).pendingProductProposals ?? []).filter(p => p.id !== proposalId)
+          get().updateOwnedTeam({
+            finances: {
+              ...teamAfter.finances,
+              extended: {
+                ...teamAfter.finances.extended,
+                merchandise: { ...merchAfter, pendingProductProposals: newPending }
+              }
+            }
+          })
+        }
+        return { success: true }
+      },
+
+      approveMerchandiseCollectionProposal: (proposalId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return { success: false, error: 'No extended finances' }
+        const merch = team.finances.extended.merchandise
+        const pending = (merch as MerchandiseFullState).pendingCollectionProposals ?? []
+        const proposal = pending.find(p => p.id === proposalId)
+        if (!proposal) return { success: false, error: 'Proposal not found' }
+        const week = careerState?.currentWeek ?? 1
+        const year = careerState?.currentYear ?? 2024
+        const result = get().createMerchandiseCollection({
+          name: proposal.name,
+          description: proposal.description,
+          theme: proposal.theme,
+          productIds: proposal.productIds,
+          exclusiveToMembers: proposal.exclusiveToMembers,
+          marketingBudget: proposal.marketingBudget,
+          currentWeek: week,
+          currentYear: year
+        })
+        if (!result.success) return result
+        const after = get().careerState?.ownedTeam?.finances?.extended?.merchandise
+        const afterPending = (after as MerchandiseFullState | undefined)?.pendingCollectionProposals ?? []
+        get().updateOwnedTeam({
+          finances: {
+            ...get().careerState!.ownedTeam!.finances!,
+            extended: {
+              ...get().careerState!.ownedTeam!.finances!.extended!,
+              merchandise: { ...after, pendingCollectionProposals: afterPending.filter(p => p.id !== proposalId) }
+            }
+          }
+        })
+        return { success: true }
+      },
+
+      rejectMerchandiseProposal: (proposalId, type) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances?.extended) return
+        const merch = team.finances.extended.merchandise
+        if (type === 'product') {
+          const pending = (merch as MerchandiseFullState).pendingProductProposals ?? []
+          get().updateOwnedTeam({
+            finances: {
+              ...team.finances,
+              extended: {
+                ...team.finances.extended!,
+                merchandise: { ...merch, pendingProductProposals: pending.filter(p => p.id !== proposalId) }
+              }
+            }
+          })
+        } else {
+          const pending = (merch as MerchandiseFullState).pendingCollectionProposals ?? []
+          get().updateOwnedTeam({
+            finances: {
+              ...team.finances,
+              extended: {
+                ...team.finances.extended!,
+                merchandise: { ...merch, pendingCollectionProposals: pending.filter(p => p.id !== proposalId) }
+              }
+            }
+          })
+        }
+      },
+
+      rentSparePartsWarehouse: (hubId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.spareParts) return false
+        const hub = getLogisticsHubById(hubId)
+        if (!hub) return false
+        const currentWeek = careerState.currentWeek ?? 1
+        const currentYear = careerState.currentYear ?? new Date().getFullYear()
+        const updatedSpareParts = activateWarehouse(
+          team.spareParts,
+          hub.id,
+          hub.name,
+          hub.region,
+          hub.country,
+          hub.rentalCostPerWeek,
+          currentWeek,
+          currentYear
+        )
+        get().updateOwnedTeam({ spareParts: updatedSpareParts })
+        return true
+      },
+
+      generateTeamSponsorOffersForSlot: async (slot) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!careerState || !team?.finances) return
+        // Ensure sponsor content is loaded before generating offers
+        await ensureContentLoaded()
+        const currentYear = careerState.currentYear ?? new Date().getFullYear()
+        const contactedSponsorIds = careerState.contactedSponsorIds ?? []
+        const newOffers = generateTeamSponsorOffers(team, currentYear, 3, slot, contactedSponsorIds)
+        if (newOffers.length === 0) return
+        const existingPending = team.finances.pendingSponsorOffers || []
+        const updatedFinances = {
+          ...team.finances,
+          pendingSponsorOffers: [...existingPending, ...newOffers]
+        }
+        get().updateOwnedTeam({ finances: updatedFinances })
+      },
+
+      seekSponsorsBySlot: async (slot) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!careerState || !team?.finances) return
+        // Ensure sponsor content is loaded before seeking
+        await ensureContentLoaded()
+        const contactedSponsorIds = careerState.contactedSponsorIds ?? []
+        const suggested = getSuggestedSponsorsForSlot(team, slot, 5, contactedSponsorIds)
+        const sponsorIds = suggested.map(s => s.id)
+        const updatedFinances = {
+          ...team.finances,
+          suggestedSponsorsForSlot: sponsorIds.length > 0 ? { slot, sponsorIds } : null
+        }
+        get().updateOwnedTeam({ finances: updatedFinances })
+      },
+
+      clearSuggestedSponsorsForSlot: () => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return
+        const updatedFinances = { ...team.finances, suggestedSponsorsForSlot: null }
+        get().updateOwnedTeam({ finances: updatedFinances })
+      },
+
+      acceptTeamSponsorOffer: (dealId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return false
+        const pending = team.finances.pendingSponsorOffers || []
+        const offer = pending.find(d => d.id === dealId)
+        if (!offer) return false
+        if (!isSlotAvailable(team, offer.slot)) {
+          return false
+        }
+        const activeDeal = acceptTeamSponsorOfferSim(offer)
+        const currentYear = careerState?.currentYear ?? new Date().getFullYear()
+        const dealWithYear = { ...activeDeal, startYear: currentYear }
+        const updatedSponsors = [...(team.finances.sponsors || []), dealWithYear]
+        const updatedFinances = {
+          ...team.finances,
+          sponsors: updatedSponsors,
+          pendingSponsorOffers: pending.filter(d => d.id !== dealId)
+        }
+        get().updateOwnedTeam({ finances: updatedFinances })
+        return true
+      },
+
+      declineTeamSponsorOffer: (dealId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return
+        const pending = team.finances.pendingSponsorOffers || []
+        const updatedFinances = {
+          ...team.finances,
+          pendingSponsorOffers: pending.filter(d => d.id !== dealId)
+        }
+        get().updateOwnedTeam({ finances: updatedFinances })
+      },
+
+      acceptTeamSponsorRenewal: (sponsorId, offer) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return false
+        const currentYear = careerState?.currentYear ?? new Date().getFullYear()
+        const sponsors = team.finances.sponsors || []
+        const existing = sponsors.find(s => s.id === sponsorId)
+        if (!existing) return false
+        const renewed = acceptSponsorRenewal(existing, offer, currentYear)
+        const updatedSponsors = sponsors.map(s => s.id === sponsorId ? renewed : s)
+        get().updateOwnedTeam({
+          finances: { ...team.finances, sponsors: updatedSponsors }
+        })
+        console.log(`[Sponsor Renewal] Accepted renewal from ${existing.sponsorName}`)
+        return true
+      },
+
+      declineTeamSponsorRenewal: (sponsorId) => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances) return
+        const sponsors = team.finances.sponsors || []
+        const existing = sponsors.find(s => s.id === sponsorId)
+        if (!existing) return
+        const declined = declineSponsorRenewal(existing)
+        const updatedSponsors = sponsors.map(s => s.id === sponsorId ? declined : s)
+        get().updateOwnedTeam({
+          finances: { ...team.finances, sponsors: updatedSponsors }
+        })
+        console.log(`[Sponsor Renewal] Declined renewal from ${existing.sponsorName}`)
+      },
+
+      startTeamSponsorNegotiation: (sponsorId, desiredSlot) => {
+        const { careerState, addEmail } = get()
+        const team = careerState?.ownedTeam
+        if (!team?.finances || !careerState) return null
+        const sponsor = getSponsorById(sponsorId)
+        if (!sponsor) return null
+        const { canApproach, reason } = canApproachSponsor(sponsor, team)
+        if (!canApproach) return null
+        const currentWeek = careerState.currentWeek ?? 1
+        const currentYear = careerState.currentYear ?? new Date().getFullYear()
+        const currentDay = careerState.currentDay ?? 1
+        const negotiation = initiateSponsorOutreach(sponsor, team, currentWeek, currentYear, desiredSlot)
+        if (!negotiation) return null
+        const existing = team.finances.activeNegotiations || []
+        const updatedFinances = {
+          ...team.finances,
+          activeNegotiations: [...existing, negotiation]
+        }
+        get().updateOwnedTeam({ finances: updatedFinances })
+
+        // No inbox email — sponsor response will arrive as a real email when they reply
+
+        return negotiation
       },
 
       setSeriesEntries: (entries) => {
@@ -5484,7 +8441,11 @@ export const useCareerStore = create<CareerStore>()(
         const updated = idx >= 0
           ? existing.map(c => c.carId === car.carId ? { ...c, ...car } : c)
           : [...existing, car]
-        set({ careerState: { ...careerState, cars: updated } })
+        const updatedEntries = (careerState.seriesEntries || []).map(entry => ({
+          ...entry,
+          carCount: updated.filter(c => getCarSeriesAssignments(c).includes(entry.seriesId)).length
+        }))
+        set({ careerState: { ...careerState, cars: updated, seriesEntries: updatedEntries } })
       },
 
       setBoardTargets: (targets) => {
@@ -5573,55 +8534,67 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         console.log('[enterSeries] Entered series:', seriesName, 'Fee:', entryFee)
+
+        // Schedule mandatory post-entry activities (series briefing, entry paperwork)
+        const stateAfterEntry = get().careerState
+        if (stateAfterEntry) {
+          const newActivities = createPostSeriesEntryActivities(
+            stateAfterEntry.currentWeek,
+            stateAfterEntry.currentDay ?? 1
+          )
+          set({
+            careerState: {
+              ...stateAfterEntry,
+              scheduledActivities: [...(stateAfterEntry.scheduledActivities || []), ...newActivities],
+            },
+          })
+        }
+        // Ensure the joined series has a concrete runtime calendar before pre-filling.
+        // Some series can display generated rounds in UI without being persisted in rivalStore.
+        try {
+          const rivalStore = useRivalStore.getState()
+          const existingSeries = rivalStore.getSeriesById(seriesId)
+          const hasCalendar = Array.isArray((existingSeries as any)?.calendar) && ((existingSeries as any)?.calendar?.length || 0) > 0
+          if (!hasCalendar) {
+            const repaired = rivalStore.repairSeriesCalendar(seriesId, careerState.currentYear)
+            if ((repaired?.length || 0) > 0) {
+              console.log(`[enterSeries] Repaired runtime series calendar for ${seriesName}: ${repaired.length} rounds`)
+            }
+          }
+        } catch (e) {
+          console.warn('[enterSeries] Could not repair runtime series calendar:', e)
+        }
+        // Pre-fill calendar with race weekend activities for the new series
+        get().ensureRaceWeekendActivitiesForSeason()
         return true
       },
       
-      purchaseCar: (seriesId, liveryName, chassisId, engineId, cost, seriesName?: string, entryFee?: number) => {
+      purchaseCar: (seriesId, liveryName, chassisId, engineId, cost, seriesName?: string, entryFee?: number, liveryPath?: string) => {
         const { careerState } = get()
         if (!careerState?.ownedTeam) return false
         
-        // Check if series entry exists
-        let seriesEntry = (careerState.seriesEntries || []).find(e => e.seriesId === seriesId)
-        const needsNewEntry = !seriesEntry
-        
-        // Calculate total cost (car + entry fee if new entry needed)
-        const actualEntryFee = needsNewEntry ? (entryFee || 0) : 0
-        const totalCost = cost + actualEntryFee
-        
-        // Check budget for total cost
-        if (careerState.ownedTeam.budgets.cash < totalCost) {
-          console.log('[purchaseCar] Insufficient funds:', careerState.ownedTeam.budgets.cash, '<', totalCost)
+        // Charge only car cost; no series entry or entry fee (player assigns car via Assign Car modal)
+        if (careerState.ownedTeam.budgets.cash < cost) {
+          console.log('[purchaseCar] Insufficient funds:', careerState.ownedTeam.budgets.cash, '<', cost)
           return false
         }
         
-        // Check if already at max cars for this series
-        const existingCarsInSeries = (careerState.cars || []).filter(c => c.seriesId === seriesId)
-        const maxCarsForSeries = getSeriesMaxTeamCars(seriesId)
-        if (existingCarsInSeries.length >= maxCarsForSeries) {
-          console.log('[purchaseCar] Max cars reached for series:', seriesId, `(${maxCarsForSeries} max)`)
-          return false
-        }
-        
-        // Deduct total cost
         const updatedBudgets = {
           ...careerState.ownedTeam.budgets,
-          cash: careerState.ownedTeam.budgets.cash - totalCost
+          cash: careerState.ownedTeam.budgets.cash - cost
         }
         
-        // Determine if this is car #1 (owner) or car #2 (for hired driver)
-        const isFirstCar = existingCarsInSeries.length === 0
+        // Auto-assign to owner if no owner car exists yet; otherwise unassigned
+        const existingOwnerCar = (careerState.cars || []).some(c => c.driverType === 'owner')
         
-        // Create car with full marketplace-compatible structure
         const newCar: TeamCar = {
           carId: `car_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          seriesId,
           chassisId,
           engineId,
           liveryName,
-          performance: 100,     // New car = full performance
-          reliability: 100,     // New car = full reliability
-          
-          // Part wear (new car = minimal)
+          liveryPath,
+          performance: 100,
+          reliability: 100,
           partWear: {
             engine: 0,
             chassis: 0,
@@ -5630,43 +8603,14 @@ export const useCareerStore = create<CareerStore>()(
             suspension: 0
           },
           mileage: 0,
-          
-          // Service & maintenance
           serviceHistory: [],
           installedUpgrades: [],
           upgradeQueue: [],
-          
-          // Purchase info
           purchasePrice: cost,
           purchaseType: 'new' as const,
           purchaseWeek: careerState.currentWeek,
           purchaseYear: careerState.currentYear,
-          
-          // Driver assignment
-          driverType: isFirstCar ? 'owner' : 'unassigned'
-        }
-        
-        // Create or update series entry
-        let updatedEntries: TeamSeriesEntry[]
-        if (needsNewEntry) {
-          // Create new series entry
-          const newEntry: TeamSeriesEntry = {
-            seriesId,
-            seriesName: seriesName || seriesId,
-            carCount: 1,
-            entryFee: actualEntryFee,
-            worksCustomer: 'customer',
-            status: 'active'
-          }
-          updatedEntries = [...(careerState.seriesEntries || []), newEntry]
-          console.log('[purchaseCar] Created new series entry:', seriesName || seriesId)
-        } else {
-          // Update existing entry car count
-          updatedEntries = (careerState.seriesEntries || []).map(e => 
-            e.seriesId === seriesId 
-              ? { ...e, carCount: e.carCount + 1 }
-              : e
-          )
+          driverType: existingOwnerCar ? 'unassigned' : 'owner'
         }
         
         const existingCars = careerState.cars || []
@@ -5675,12 +8619,10 @@ export const useCareerStore = create<CareerStore>()(
           careerState: {
             ...careerState,
             ownedTeam: { ...careerState.ownedTeam, budgets: updatedBudgets },
-            seriesEntries: updatedEntries,
             cars: [...existingCars, newCar]
           }
         })
         
-        // Add transaction for car purchase
         get().addTransaction({
           type: 'expense',
           category: 'equipment',
@@ -5691,26 +8633,46 @@ export const useCareerStore = create<CareerStore>()(
           year: careerState.currentYear
         })
         
-        // Add separate transaction for entry fee if applicable
-        if (needsNewEntry && actualEntryFee > 0) {
-          get().addTransaction({
-            type: 'expense',
-            category: 'other',
-            amount: actualEntryFee,
-            description: `Series entry fee: ${seriesName || seriesId}`,
-            date: new Date().toISOString(),
-            week: careerState.currentWeek,
-            year: careerState.currentYear
+        console.log(`[purchaseCar] Purchased car (${existingOwnerCar ? 'unassigned' : 'owner'}):`, liveryName, 'Cost:', cost)
+
+        // Schedule mandatory post-purchase activities (car handover, technical briefing)
+        const stateAfterPurchase = get().careerState
+        if (stateAfterPurchase) {
+          const newActivities = createPostCarPurchaseActivities(
+            stateAfterPurchase.currentWeek,
+            stateAfterPurchase.currentDay ?? 1
+          )
+          set({
+            careerState: {
+              ...stateAfterPurchase,
+              scheduledActivities: [...(stateAfterPurchase.scheduledActivities || []), ...newActivities],
+            },
           })
         }
         
-        console.log('[purchaseCar] Purchased car:', liveryName, 'Cost:', cost, needsNewEntry ? `+ Entry fee: ${actualEntryFee}` : '', 'Driver type:', newCar.driverType)
+        // Time budget + calendar: car purchase deducts time (same as Marketplace path)
+        const purchaseTimeCost = getActivityTimeCost('car_shopping')
+        const { consumeHoursFromBudget, addPersonalCalendarEntry } = get()
+        if (purchaseTimeCost.hours > 0) {
+          consumeHoursFromBudget(purchaseTimeCost.hours, purchaseTimeCost.drain, `Car Purchase: ${liveryName}`, 'car_shopping')
+        }
+        addPersonalCalendarEntry({
+          name: `Car Purchase: ${liveryName}`,
+          description: `Purchased ${liveryName}. Assign to a series from Series Entry when ready.`,
+          activityId: 'car_shopping',
+          week: careerState.currentWeek,
+          day: careerState.currentDay ?? 1,
+          duration: purchaseTimeCost.hours,
+          drainLevel: purchaseTimeCost.drain,
+          calendarEntryType: 'personal',
+          category: 'team',
+          immediate: true
+        })
         
-        // === NOTIFICATION INTEGRATION ===
         routeNotification({
           category: 'team_manager',
           subject: `New Car Acquired: ${liveryName}`,
-          body: `A new car has been purchased for the team.\n\nChassis: ${chassisId}\nCost: $${cost.toLocaleString()}${needsNewEntry ? `\nEntry fee: $${actualEntryFee.toLocaleString()}` : ''}`,
+          body: `A new car has been purchased for the team.\n\nChassis: ${chassisId}\nCost: $${cost.toLocaleString()}\nAssign it to a series from Series Entry when ready.`,
           emailCategory: 'team',
         })
         return true
@@ -5731,12 +8693,11 @@ export const useCareerStore = create<CareerStore>()(
         // Remove car
         const updatedCars = (careerState.cars || []).filter(c => c.carId !== carId)
         
-        // Update series entry car count
-        const updatedEntries = (careerState.seriesEntries || []).map(e => 
-          e.seriesId === car.seriesId 
-            ? { ...e, carCount: Math.max(0, e.carCount - 1) }
-            : e
-        )
+        // Recalculate series entry car counts from remaining cars
+        const updatedEntries = (careerState.seriesEntries || []).map(entry => ({
+          ...entry,
+          carCount: updatedCars.filter(c => getCarSeriesAssignments(c).includes(entry.seriesId)).length
+        }))
         
         // Add refund
         const updatedBudgets = {
@@ -5781,12 +8742,18 @@ export const useCareerStore = create<CareerStore>()(
       withdrawFromSeries: (seriesId) => {
         const { careerState } = get()
         if (!careerState) return
-        
-        // Remove all cars for this series
-        const carsInSeries = (careerState.cars || []).filter(c => c.seriesId === seriesId)
-        for (const car of carsInSeries) {
-          get().sellCar(car.carId, 0) // No refund for withdrawal
-        }
+
+        // Unassign this series from cars (do not auto-sell cars)
+        const updatedCars = (careerState.cars || []).map(car => {
+          const assignedSeriesIds = getCarSeriesAssignments(car)
+          if (!assignedSeriesIds.includes(seriesId)) return car
+          const remaining = assignedSeriesIds.filter(id => id !== seriesId)
+          return {
+            ...car,
+            seriesId: remaining[0],
+            seriesIds: remaining.length > 0 ? remaining : undefined
+          }
+        })
         
         // Remove series entry
         const updatedEntries = (careerState.seriesEntries || []).filter(e => e.seriesId !== seriesId)
@@ -5794,6 +8761,7 @@ export const useCareerStore = create<CareerStore>()(
         set({
           careerState: {
             ...careerState,
+            cars: updatedCars,
             seriesEntries: updatedEntries
           }
         })
@@ -6609,10 +9577,8 @@ export const useCareerStore = create<CareerStore>()(
         
         let facility = careerState.ownedTeam.facilities?.[facilityType]
         
-        // Handle legacy format where facility might be just a number
-        if (typeof facility === 'number') {
-          facility = { level: facility, upgradeInProgress: false, assignedStaff: [] }
-        }
+        // Handle legacy format and ensure grade exists (backward compat)
+        facility = normalizeFacilityState(facility, careerState.ownedTeam.tier || 'amateur')
         
         if (!facility) return { success: false, error: 'Facility not found' }
         
@@ -6620,16 +9586,36 @@ export const useCareerStore = create<CareerStore>()(
         const currentLevel = facility.level ?? 1
         
         if (facility.upgradeInProgress) {
-          return { success: false, error: 'Upgrade already in progress' }
+          return { success: false, error: 'Upgrade already in progress for this facility' }
         }
         
         if (currentLevel >= MAX_FACILITY_LEVEL) {
           return { success: false, error: 'Facility already at maximum level' }
         }
         
-        const tier = careerState.ownedTeam.tier || 'amateur'
-        const upgradeCost = calculateFacilityUpgradeCost(facilityType, currentLevel, tier)
-        const duration = getUpgradeDuration(facilityType, currentLevel)
+        const teamTier = careerState.ownedTeam.tier || 'amateur'
+        const facilityGrade = facility.grade || teamTier
+        
+        // Check concurrent upgrade limit (uses team tier for construction crew capacity)
+        const maxConcurrent = getMaxConcurrentUpgrades(teamTier)
+        const facilities = careerState.ownedTeam.facilities || {}
+        const currentUpgrades = Object.values(facilities).filter(
+          (f: any) => f && typeof f === 'object' && (f.upgradeInProgress || f.rebuildInProgress)
+        ).length
+        if (currentUpgrades >= maxConcurrent) {
+          return { 
+            success: false, 
+            error: `Maximum concurrent upgrades reached (${maxConcurrent} for ${teamTier} tier). Wait for a current upgrade to finish.` 
+          }
+        }
+        
+        // Use facility grade (not team tier) for cost/duration calculations
+        let upgradeCost = calculateFacilityUpgradeCost(facilityType, currentLevel, facilityGrade)
+        const creditScore = careerState.ownedTeam.finances?.extended?.loans?.creditScore ?? 650
+        if (creditScore < 580) upgradeCost = Math.round(upgradeCost * 1.12)
+        else if (creditScore < 620) upgradeCost = Math.round(upgradeCost * 1.06)
+        else if (creditScore >= 750) upgradeCost = Math.round(upgradeCost * 0.98)
+        const duration = getUpgradeDuration(facilityType, currentLevel, facilityGrade)
         
         // Validate that costs are valid numbers
         if (isNaN(upgradeCost) || upgradeCost <= 0) {
@@ -6637,10 +9623,25 @@ export const useCareerStore = create<CareerStore>()(
           return { success: false, error: 'Unable to calculate upgrade cost' }
         }
         
-        // Check if team can afford it (using budgets.cash, not finances.balance)
-        const currentCash = careerState.ownedTeam.budgets?.cash ?? 0
-        if (currentCash < upgradeCost) {
-          return { success: false, error: `Insufficient funds. Need $${upgradeCost.toLocaleString()}, have $${currentCash.toLocaleString()}` }
+        // Use processEnforcedExpense for proper budget validation + contingency fallback
+        const teamTierForUpgrade: TeamTier = careerState.ownedTeam.tier || 'amateur'
+        const expenseResult = processEnforcedExpense(
+          careerState.ownedTeam,
+          teamTierForUpgrade,
+          'development',
+          upgradeCost,
+          `${facilityType.charAt(0).toUpperCase() + facilityType.slice(1)} facility upgrade (Level ${currentLevel} → ${currentLevel + 1})`,
+          careerState.currentWeek,
+          careerState.currentYear,
+          true // Use contingency if needed
+        )
+        
+        if (!expenseResult.transaction) {
+          return { success: false, error: expenseResult.validation.reason || `Insufficient funds. Need $${upgradeCost.toLocaleString()}` }
+        }
+        
+        if (expenseResult.contingencyUsed > 0) {
+          console.log(`[upgradeFacility] Used $${expenseResult.contingencyUsed.toLocaleString()} from contingency fund`)
         }
         
         // Deduct cost and start upgrade
@@ -6651,6 +9652,7 @@ export const useCareerStore = create<CareerStore>()(
         // Create updated facility state (ensure proper FacilityState structure)
         const updatedFacility: FacilityState = {
           level: currentLevel,
+          grade: facilityGrade,
           upgradeInProgress: true,
           upgradeStartWeek: careerState.currentWeek,
           upgradeStartYear: careerState.currentYear,
@@ -6664,17 +9666,11 @@ export const useCareerStore = create<CareerStore>()(
           [facilityType]: updatedFacility
         }
         
+        const currentCash = careerState.ownedTeam.budgets?.cash ?? 0
         const newCash = currentCash - upgradeCost
-        
-        // Add transaction record using createTeamTransaction
-        const transaction = createTeamTransaction(
-          'expense',
-          'facilities',
-          upgradeCost,
-          `${facilityType.charAt(0).toUpperCase() + facilityType.slice(1)} facility upgrade (Level ${currentLevel} → ${currentLevel + 1})`,
-          careerState.currentWeek,
-          careerState.currentYear
-        )
+        const newContingency = expenseResult.contingencyUsed > 0
+          ? (careerState.ownedTeam.budgets?.contingencyBudget || 0) - expenseResult.contingencyUsed
+          : careerState.ownedTeam.budgets?.contingencyBudget
         
         set({
           careerState: {
@@ -6684,11 +9680,12 @@ export const useCareerStore = create<CareerStore>()(
               facilities: updatedFacilities,
               budgets: {
                 ...careerState.ownedTeam.budgets,
-                cash: newCash
+                cash: newCash,
+                contingencyBudget: newContingency
               },
               finances: {
                 ...careerState.ownedTeam.finances!,
-                transactions: [...(careerState.ownedTeam.finances?.transactions ?? []), transaction]
+                transactions: [...(careerState.ownedTeam.finances?.transactions ?? []), expenseResult.transaction]
               }
             }
           }
@@ -6697,13 +9694,117 @@ export const useCareerStore = create<CareerStore>()(
         console.log(`[upgradeFacility] Started upgrade for ${facilityType}: Level ${currentLevel} → ${currentLevel + 1}, Cost: $${upgradeCost}, Duration: ${duration} weeks`)
         return { success: true, duration }
       },
-      
+
+      buildFacility: (facilityType) => {
+        const { careerState } = get()
+        if (!careerState?.ownedTeam) return { success: false, error: 'No team found' }
+
+        let facility = careerState.ownedTeam.facilities?.[facilityType]
+        facility = normalizeFacilityState(facility, careerState.ownedTeam.tier || 'amateur')
+
+        if (!facility?.notBuilt) return { success: false, error: 'Facility already exists' }
+        if (facility.buildInProgress) return { success: false, error: 'Construction already in progress' }
+
+        const teamTier = careerState.ownedTeam.tier || 'amateur'
+        const buildCost = calculateFacilityUpgradeCost(facilityType, 0, teamTier)
+        const duration = getUpgradeDuration(facilityType, 0, teamTier)
+
+        const expenseResult = processEnforcedExpense(
+          careerState.ownedTeam,
+          teamTier,
+          'development',
+          buildCost,
+          `${facilityType.charAt(0).toUpperCase() + facilityType.slice(1)} facility construction`,
+          careerState.currentWeek,
+          careerState.currentYear,
+          true
+        )
+
+        if (!expenseResult.transaction) {
+          return { success: false, error: expenseResult.validation.reason || `Insufficient funds. Need $${buildCost.toLocaleString()}` }
+        }
+
+        const completionWeek = careerState.currentWeek + duration
+        const completionYear = careerState.currentYear + Math.floor((careerState.currentWeek + duration - 1) / 52)
+        const adjustedCompletionWeek = ((completionWeek - 1) % 52) + 1
+
+        const updatedFacility: FacilityState = {
+          level: 1,
+          grade: teamTier,
+          upgradeInProgress: false,
+          assignedStaff: [],
+          notBuilt: true,
+          buildInProgress: true,
+          buildCompletionWeek: adjustedCompletionWeek,
+          buildCompletionYear: completionYear,
+        }
+
+        const currentCash = careerState.ownedTeam.budgets?.cash ?? 0
+        const newCash = currentCash - buildCost
+        const newContingency = expenseResult.contingencyUsed > 0
+          ? (careerState.ownedTeam.budgets?.contingencyBudget || 0) - expenseResult.contingencyUsed
+          : careerState.ownedTeam.budgets?.contingencyBudget
+
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...careerState.ownedTeam,
+              facilities: { ...careerState.ownedTeam.facilities, [facilityType]: updatedFacility },
+              budgets: { ...careerState.ownedTeam.budgets, cash: newCash, contingencyBudget: newContingency },
+              finances: {
+                ...careerState.ownedTeam.finances!,
+                transactions: [...(careerState.ownedTeam.finances?.transactions ?? []), expenseResult.transaction]
+              }
+            }
+          }
+        })
+
+        console.log(`[buildFacility] Started construction for ${facilityType}: Cost $${buildCost}, Duration: ${duration} weeks`)
+        return { success: true, duration }
+      },
+
       completeUpgrade: (facilityType) => {
         const { careerState } = get()
         if (!careerState?.ownedTeam?.facilities) return
         
         const facility = careerState.ownedTeam.facilities[facilityType]
-        if (!facility || !facility.upgradeInProgress) return
+        if (!facility) return
+        
+        // Handle rebuild completion (grade transition)
+        if (facility.rebuildInProgress && facility.rebuildTargetGrade) {
+          const updatedFacilities = {
+            ...careerState.ownedTeam.facilities,
+            [facilityType]: {
+              ...facility,
+              level: 1,  // Reset to L1 of new grade
+              grade: facility.rebuildTargetGrade,
+              upgradeInProgress: false,
+              rebuildInProgress: false,
+              rebuildTargetGrade: undefined,
+              upgradeStartWeek: undefined,
+              upgradeStartYear: undefined,
+              upgradeCompletionWeek: undefined,
+              upgradeCompletionYear: undefined
+            }
+          }
+          
+          set({
+            careerState: {
+              ...careerState,
+              ownedTeam: {
+                ...careerState.ownedTeam,
+                facilities: updatedFacilities
+              }
+            }
+          })
+          
+          console.log(`[completeUpgrade] ${facilityType} rebuilt to ${facility.rebuildTargetGrade} grade (Level 1)`)
+          return
+        }
+        
+        // Handle normal level upgrade completion
+        if (!facility.upgradeInProgress) return
         
         const updatedFacilities = {
           ...careerState.ownedTeam.facilities,
@@ -6731,6 +9832,129 @@ export const useCareerStore = create<CareerStore>()(
         console.log(`[completeUpgrade] ${facilityType} upgraded to Level ${facility.level + 1}`)
       },
       
+      // Rebuild a facility to the next grade (resets to L1 of higher grade)
+      rebuildFacility: (facilityType: FacilityType) => {
+        const { careerState } = get()
+        if (!careerState?.ownedTeam) return { success: false, error: 'No team found' }
+        
+        let facility = careerState.ownedTeam.facilities?.[facilityType]
+        const teamTier = careerState.ownedTeam.tier || 'amateur'
+        facility = normalizeFacilityState(facility, teamTier)
+        
+        if (!facility) return { success: false, error: 'Facility not found' }
+        
+        // Must be at max level to rebuild
+        if (facility.level < MAX_FACILITY_LEVEL) {
+          return { success: false, error: `Facility must be at Level ${MAX_FACILITY_LEVEL} to rebuild to next grade` }
+        }
+        
+        if (facility.upgradeInProgress || facility.rebuildInProgress) {
+          return { success: false, error: 'An upgrade or rebuild is already in progress for this facility' }
+        }
+        
+        // Get next grade
+        const currentGrade = facility.grade || 'amateur'
+        const nextGrade = getNextFacilityGrade(currentGrade)
+        if (!nextGrade) {
+          return { success: false, error: 'Facility is already at the highest grade (pinnacle)' }
+        }
+        
+        // Get rebuild config
+        const rebuildConfig = getFacilityRebuildConfig(nextGrade)
+        if (!rebuildConfig) {
+          return { success: false, error: `No rebuild configuration available for ${nextGrade} grade` }
+        }
+        
+        // Check reputation requirement
+        const reputation = careerState.ownedTeam.reputation ?? 0
+        if (reputation < rebuildConfig.minReputation) {
+          return { 
+            success: false, 
+            error: `Need reputation ${rebuildConfig.minReputation} to rebuild to ${nextGrade} grade (current: ${reputation})` 
+          }
+        }
+        
+        // Check concurrent upgrade limit (rebuilds count too)
+        const maxConcurrent = getMaxConcurrentUpgrades(teamTier)
+        const facilities = careerState.ownedTeam.facilities || {}
+        const currentUpgrades = Object.values(facilities).filter(
+          (f: any) => f && typeof f === 'object' && (f.upgradeInProgress || f.rebuildInProgress)
+        ).length
+        if (currentUpgrades >= maxConcurrent) {
+          return { 
+            success: false, 
+            error: `Maximum concurrent upgrades reached (${maxConcurrent}). Wait for a current project to finish.` 
+          }
+        }
+        
+        // Calculate rebuild cost (with per-facility multiplier)
+        const rebuildCost = calculateFacilityRebuildCost(facilityType, nextGrade)
+        
+        // Check funds
+        const currentCash = careerState.ownedTeam.budgets?.cash ?? 0
+        if (currentCash < rebuildCost) {
+          return { success: false, error: `Insufficient funds. Need $${rebuildCost.toLocaleString()}, have $${currentCash.toLocaleString()}` }
+        }
+        
+        // Calculate completion timing
+        const duration = rebuildConfig.durationWeeks
+        const completionWeek = careerState.currentWeek + duration
+        const completionYear = careerState.currentYear + Math.floor((careerState.currentWeek + duration - 1) / 52)
+        const adjustedCompletionWeek = ((completionWeek - 1) % 52) + 1
+        
+        // Create updated facility state
+        const updatedFacility: FacilityState = {
+          level: facility.level,
+          grade: currentGrade,
+          upgradeInProgress: false,
+          rebuildInProgress: true,
+          rebuildTargetGrade: nextGrade,
+          upgradeStartWeek: careerState.currentWeek,
+          upgradeStartYear: careerState.currentYear,
+          upgradeCompletionWeek: adjustedCompletionWeek,
+          upgradeCompletionYear: completionYear,
+          assignedStaff: facility.assignedStaff || []
+        }
+        
+        const updatedFacilities = {
+          ...careerState.ownedTeam.facilities,
+          [facilityType]: updatedFacility
+        }
+        
+        const newCash = currentCash - rebuildCost
+        
+        // Add transaction record
+        const transaction = createTeamTransaction(
+          'expense',
+          'facilities',
+          rebuildCost,
+          `${facilityType.charAt(0).toUpperCase() + facilityType.slice(1)} facility rebuild to ${nextGrade} grade`,
+          careerState.currentWeek,
+          careerState.currentYear
+        )
+        
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...careerState.ownedTeam,
+              facilities: updatedFacilities,
+              budgets: {
+                ...careerState.ownedTeam.budgets,
+                cash: newCash
+              },
+              finances: {
+                ...careerState.ownedTeam.finances!,
+                transactions: [...(careerState.ownedTeam.finances?.transactions ?? []), transaction]
+              }
+            }
+          }
+        })
+        
+        console.log(`[rebuildFacility] Started rebuild for ${facilityType}: ${currentGrade} → ${nextGrade}, Cost: $${rebuildCost.toLocaleString()}, Duration: ${duration} weeks`)
+        return { success: true, duration }
+      },
+      
       assignStaffToFacility: (staffId, facilityType) => {
         const { careerState } = get()
         if (!careerState?.ownedTeam) return { success: false, error: 'No team found' }
@@ -6746,8 +9970,8 @@ export const useCareerStore = create<CareerStore>()(
           return { success: false, error: 'Staff already assigned to a facility. Remove them first.' }
         }
         
-        // Check if facility has room
-        const maxSlots = getFacilityStaffSlots(facility.level)
+        // Check if facility has room (per-facility overrides + grade bonus)
+        const maxSlots = getFacilityStaffSlots(facility.level, facilityType, facility.grade)
         if (facility.assignedStaff.length >= maxSlots) {
           return { success: false, error: `Facility full. Max ${maxSlots} staff at level ${facility.level}` }
         }
@@ -6823,9 +10047,9 @@ export const useCareerStore = create<CareerStore>()(
         if (!careerState?.ownedTeam?.facilities) return 0
         
         const facility = careerState.ownedTeam.facilities[facilityType]
-        if (!facility) return 0
+        if (!facility || facility.notBuilt) return 0
         
-        return getFacilityRDBonus(facility.level)
+        return getFacilityRDBonus(facility.level, facilityType, facility.grade)
       },
       
       getFacilityEffectiveBonus: (facilityType) => {
@@ -6833,24 +10057,10 @@ export const useCareerStore = create<CareerStore>()(
         if (!careerState?.ownedTeam?.facilities) return 0
         
         const facility = careerState.ownedTeam.facilities[facilityType]
-        if (!facility) return 0
+        if (!facility || facility.notBuilt) return 0
         
-        const baseBonus = getFacilityRDBonus(facility.level)
-        
-        // Calculate staff contribution
-        const assignedStaff = facility.assignedStaff
-          .map(staffId => careerState.ownedTeam!.staff.find(s => s.id === staffId))
-          .filter((s): s is NonNullable<typeof s> => !!s)
-          .map(s => ({
-            skills: s.skills,
-            specializations: s.specializations,
-            experience: s.experience
-          }))
-        
-        const staffBonus = calculateStaffEffectivenessBonus(facilityType, assignedStaff)
-        
-        // Staff bonus is additive to the base bonus
-        return baseBonus + staffBonus
+        // Passive bonus from level/grade only — staff assignment no longer used
+        return getFacilityRDBonus(facility.level, facilityType, facility.grade)
       },
       
       calculateTotalFacilityOperationalCosts: () => {
@@ -6871,8 +10081,43 @@ export const useCareerStore = create<CareerStore>()(
         
         for (const facilityType of facilityTypes) {
           const facility = careerState.ownedTeam.facilities[facilityType]
+          
+          // Check for rebuild completion (grade transition)
+          if (facility?.rebuildInProgress) {
+            const isComplete = 
+              (careerState.currentYear > (facility.upgradeCompletionYear ?? 0)) ||
+              (careerState.currentYear === facility.upgradeCompletionYear && 
+               careerState.currentWeek >= (facility.upgradeCompletionWeek ?? 0))
+            
+            if (isComplete) {
+              const targetGrade = facility.rebuildTargetGrade || 'amateur'
+              completeUpgrade(facilityType)
+              console.log(`[processFacilityUpgrades] Completed rebuild for ${facilityType} to ${targetGrade} grade`)
+              routeNotification({
+                category: 'facility',
+                subject: `Facility Rebuild Complete: ${facilityType}`,
+                body: `Your ${facilityType} facility has been rebuilt to ${targetGrade} grade! It's now a Level 1 ${targetGrade}-grade facility with significantly improved baseline capabilities.`,
+                emailCategory: 'team'
+              })
+              const { addPersonalCalendarEntry } = get()
+              addPersonalCalendarEntry({
+                name: `Rebuild Complete: ${facilityType} → ${targetGrade}`,
+                description: `${facilityType} facility rebuilt to ${targetGrade} grade`,
+                activityId: 'facility_upgrade_progress',
+                week: careerState.currentWeek,
+                day: careerState.currentDay ?? 1,
+                duration: 0,
+                drainLevel: 'normal',
+                calendarEntryType: 'team',
+                category: 'team',
+                immediate: true
+              })
+            }
+            continue // Don't check for level upgrades on a rebuilding facility
+          }
+          
+          // Check for normal level upgrade completion
           if (facility?.upgradeInProgress) {
-            // Check if upgrade is complete
             const isComplete = 
               (careerState.currentYear > (facility.upgradeCompletionYear ?? 0)) ||
               (careerState.currentYear === facility.upgradeCompletionYear && 
@@ -6881,7 +10126,6 @@ export const useCareerStore = create<CareerStore>()(
             if (isComplete) {
               completeUpgrade(facilityType)
               console.log(`[processFacilityUpgrades] Completed upgrade for ${facilityType}`)
-              // === NOTIFICATION + CALENDAR INTEGRATION ===
               routeNotification({
                 category: 'facility',
                 subject: `Facility Upgrade Complete: ${facilityType}`,
@@ -6900,6 +10144,42 @@ export const useCareerStore = create<CareerStore>()(
                 calendarEntryType: 'team',
                 category: 'team',
                 immediate: true
+              })
+            }
+          }
+
+          // Check for new facility build completion
+          if (facility?.buildInProgress) {
+            const isComplete =
+              (careerState.currentYear > (facility.buildCompletionYear ?? 0)) ||
+              (careerState.currentYear === facility.buildCompletionYear &&
+               careerState.currentWeek >= (facility.buildCompletionWeek ?? 0))
+
+            if (isComplete) {
+              const { careerState: cs } = get()
+              if (!cs?.ownedTeam) return
+              const completedFacility: FacilityState = {
+                ...facility,
+                notBuilt: false,
+                buildInProgress: false,
+                buildCompletionWeek: undefined,
+                buildCompletionYear: undefined,
+              }
+              set({
+                careerState: {
+                  ...cs,
+                  ownedTeam: {
+                    ...cs.ownedTeam,
+                    facilities: { ...cs.ownedTeam.facilities, [facilityType]: completedFacility }
+                  }
+                }
+              })
+              console.log(`[processFacilityUpgrades] Completed construction of ${facilityType}`)
+              routeNotification({
+                category: 'facility',
+                subject: `New Facility Open: ${facilityType}`,
+                body: `Your new ${facilityType} facility has been constructed and is now fully operational. Bonuses are now active.`,
+                emailCategory: 'team'
               })
             }
           }
@@ -6941,7 +10221,17 @@ export const useCareerStore = create<CareerStore>()(
       
       getStaffByRole: (role) => {
         const { careerState } = get()
-        return careerState?.ownedTeam?.staff.find(s => s.role === role)
+        if (!careerState?.ownedTeam) return undefined
+
+        // Prefer legacy staff[] first, then fall back to facilityStaff[] where
+        // team/race roles (e.g., Technical Director) are commonly stored.
+        const legacyMatch = careerState.ownedTeam.staff.find(s => s.role === role)
+        if (legacyMatch) return legacyMatch
+
+        const facilityMatch = (careerState.ownedTeam.facilityStaff || []).find(
+          s => s.role === role
+        )
+        return facilityMatch as unknown as TeamStaff | undefined
       },
 
       advanceWeek: () => {
@@ -6952,12 +10242,17 @@ export const useCareerStore = create<CareerStore>()(
           let newAge = player.age
           let updatedPlayer = { ...player }
           let updatedCareerState = { ...careerState }
+          const coreLoopMode = isCoreLoopModeEnabled(updatedCareerState)
+          
+          // Deferred delegation actions that need store methods (populated during delegation processing, executed after state commit)
+          const deferredDelegationActions: { type: string; role?: string }[] = []
           
           // ============================================
           // Process Weekly Expenses
           // ============================================
-          const currentSeries = player.currentSeriesId 
-            ? useRivalStore.getState().getSeriesById(player.currentSeriesId)
+          const resolvedSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+          const currentSeries = resolvedSeriesId 
+            ? useRivalStore.getState().getSeriesById(resolvedSeriesId)
             : undefined
           
           const expenseTransactions = processWeeklyExpenses(
@@ -7212,7 +10507,7 @@ export const useCareerStore = create<CareerStore>()(
             const weeklyAllocation = updatedCareerState.teamDevelopment?.budget?.weeklyAllocation
             const devIntensity = weeklyAllocation && weeklyAllocation > 0
               ? Math.min(2.0, Math.max(0.5, weeklyAllocation / 50000)) // Normalize to 0.5-2x based on allocation
-              : 1.0
+              : 0  // No R&D cost if no allocation is set
             const devCost = processWeeklyDevelopmentCosts(team, teamTier, devIntensity, careerState.currentWeek, careerState.currentYear)
             teamTransactions.push(devCost)
             
@@ -7309,9 +10604,10 @@ export const useCareerStore = create<CareerStore>()(
                   
                   if (travelCost && travelCost.amount > 0) {
                     // Factor in car count - multiply by number of cars in this series
-                    const carsInSeries = (updatedCareerState.cars || []).filter(
-                      c => c.seriesId === entry.seriesId
-                    ).length
+                    const carsInSeries = (updatedCareerState.cars || []).filter(c => {
+                      const assignedSeriesIds = getCarSeriesAssignments(c)
+                      return assignedSeriesIds.includes(entry.seriesId)
+                    }).length
                     if (carsInSeries > 1) {
                       travelCost.amount = Math.round(travelCost.amount * (1 + (carsInSeries - 1) * 0.6))
                       travelCost.description += ` (${carsInSeries} cars)`
@@ -7324,10 +10620,17 @@ export const useCareerStore = create<CareerStore>()(
               }
             }
             
-            // Apply all transactions to budget
-            for (const tx of teamTransactions) {
-              updatedTeamBudgets = updateTeamBudgets(updatedTeamBudgets, tx)
-            }
+            // Apply all transactions to budget using batch processor
+            updatedTeamBudgets = processMultipleTransactions(updatedTeamBudgets, teamTransactions)
+            
+            // Check for sponsor terminations due to low satisfaction
+            const updatedSponsorsAfterTermination = sponsorResult.updatedSponsors.map(sponsor => {
+              if (sponsor.active && checkSponsorTermination(sponsor)) {
+                console.log(`[Sponsor Termination] ${sponsor.sponsorName} has terminated their deal (satisfaction: ${sponsor.satisfaction})`)
+                return { ...sponsor, active: false }
+              }
+              return sponsor
+            })
             
             // Update team state
             updatedCareerState = {
@@ -7338,7 +10641,7 @@ export const useCareerStore = create<CareerStore>()(
                 finances: {
                   ...team.finances,
                   transactions: [...team.finances.transactions, ...teamTransactions],
-                  sponsors: sponsorResult.updatedSponsors
+                  sponsors: updatedSponsorsAfterTermination
                 }
               }
             }
@@ -7379,6 +10682,77 @@ export const useCareerStore = create<CareerStore>()(
               
               // Apply loan expenses to budget
               updatedBudgets.cash -= loansResult.totalExpenses
+              
+              // 1b. Process investor milestones (penalties and completion)
+              const rivalStore = useRivalStore.getState()
+              const seriesEntriesForMilestones = updatedCareerState.seriesEntries || []
+              const playerForMilestones = updatedPlayer
+              const checkMilestoneCompletion = (milestone: InvestorMilestone): boolean => {
+                const desc = milestone.description.toLowerCase()
+                if (desc.includes('top 10') && desc.includes('championship')) {
+                  for (const entry of seriesEntriesForMilestones) {
+                    const standings = rivalStore.getStandings(entry.seriesId) || []
+                    const ourStanding = standings.find((s: { isPlayer?: boolean; teamName?: string }) => s.isPlayer || (team?.name && s.teamName === team.name))
+                    if (ourStanding && ourStanding.position <= 10) return true
+                  }
+                  return false
+                }
+                if (desc.includes('major sponsor')) {
+                  const sponsors = team.finances?.sponsors || []
+                  const major = sponsors.some((s: { monthlyPayment?: number }) => (s.monthlyPayment || 0) >= 50000)
+                  return major
+                }
+                if (desc.includes('win') && desc.includes('one race')) {
+                  const history = playerForMilestones?.raceHistory || []
+                  const winsInPeriod = history.filter((r: { racePosition?: number; date?: string }) =>
+                    r.racePosition === 1 && (r.date ? new Date(r.date).getFullYear() === newYear : false)
+                  )
+                  return winsInPeriod.length >= 1
+                }
+                if (desc.includes('top 5') && desc.includes('season')) {
+                  for (const entry of seriesEntriesForMilestones) {
+                    const standings = rivalStore.getStandings(entry.seriesId) || []
+                    const ourStanding = standings.find((s: { isPlayer?: boolean; teamName?: string }) => s.isPlayer || (team?.name && s.teamName === team.name))
+                    if (ourStanding && ourStanding.position <= 5) return true
+                  }
+                  return false
+                }
+                if (desc.includes('second series') || desc.includes('expand')) {
+                  return seriesEntriesForMilestones.length >= 2
+                }
+                return false
+              }
+              let updatedInvestors = updatedExtended.loans.privateInvestors || []
+              let totalMilestonePenalties = 0
+              for (let i = 0; i < updatedInvestors.length; i++) {
+                const investor = updatedInvestors[i]
+                if (investor.status !== 'active') continue
+                const { updatedInvestor, penalties } = processInvestorMilestones(
+                  investor,
+                  newWeek,
+                  newYear,
+                  checkMilestoneCompletion
+                )
+                updatedInvestors = updatedInvestors.map(inv => inv.id === investor.id ? updatedInvestor : inv)
+                extendedTransactions.push(...penalties)
+                const penaltySum = penalties.reduce((s, t) => s + t.amount, 0)
+                if (penaltySum > 0) {
+                  totalMilestonePenalties += penaltySum
+                  updatedBudgets.cash -= penaltySum
+                }
+              }
+              updatedExtended.loans = {
+                ...updatedExtended.loans,
+                privateInvestors: updatedInvestors
+              }
+              if (totalMilestonePenalties > 0) {
+                routeNotification({
+                  category: 'finances',
+                  subject: 'Investor milestone penalty',
+                  body: `Your team missed one or more investor milestones. Total penalties: $${totalMilestonePenalties.toLocaleString()}.`,
+                  emailCategory: 'team'
+                })
+              }
               
               if (loansResult.missedPayments > 0) {
                 console.log(`[Loans] Week ${newWeek}: WARNING - ${loansResult.missedPayments} missed payment(s)!`)
@@ -7453,7 +10827,7 @@ export const useCareerStore = create<CareerStore>()(
             }
             
             // 2. Process Investments (market updates, rental income, business revenue)
-            if (extended.investments) {
+            if (extended.investments && !coreLoopMode) {
               const investmentsResult = processWeeklyInvestments(
                 extended.investments,
                 newWeek,
@@ -7472,7 +10846,7 @@ export const useCareerStore = create<CareerStore>()(
             }
             
             // 3. Process Merchandise (sales, production, store costs)
-            if (extended.merchandise) {
+            if (extended.merchandise && !coreLoopMode) {
               // Build sales context from current state
               const teamMediaStateForMerch = updatedCareerState.teamMediaState
               const socialFollowers = teamMediaStateForMerch?.teamSocial?.followers || 1000
@@ -7541,6 +10915,94 @@ export const useCareerStore = create<CareerStore>()(
           }
           
           // ============================================
+          // Budget Warnings & Auto-Contingency
+          // ============================================
+          if (updatedCareerState.ownedTeam) {
+            const budgetTeam = updatedCareerState.ownedTeam
+            const budgetTier: TeamTier = budgetTeam.tier || 'amateur'
+            
+            // Generate budget warnings and log them
+            const budgetWarnings = generateBudgetWarnings(budgetTeam, budgetTier, newWeek, newYear)
+            for (const warning of budgetWarnings) {
+              console.log(`[Budget Warning] ${warning.severity}: ${warning.message}`)
+            }
+            
+            // Auto-contingency: withdraw from contingency if cash critically low
+            const weeklyBurnEstimate = (budgetTeam.budgets?.totalBudget || 0) / 52
+            const contingencyResult = checkAutoContingency(budgetTeam, budgetTier, weeklyBurnEstimate)
+            if (contingencyResult) {
+              console.log(`[Auto-Contingency] Emergency withdrawal of $${contingencyResult.amountWithdrawn.toLocaleString()} from contingency fund`)
+              updatedCareerState = {
+                ...updatedCareerState,
+                ownedTeam: {
+                  ...updatedCareerState.ownedTeam!,
+                  budgets: {
+                    ...updatedCareerState.ownedTeam!.budgets,
+                    cash: (updatedCareerState.ownedTeam!.budgets?.cash || 0) + contingencyResult.amountWithdrawn,
+                    contingencyBudget: (updatedCareerState.ownedTeam!.budgets?.contingencyBudget || 0) - contingencyResult.amountWithdrawn
+                  }
+                }
+              }
+            }
+          }
+          
+          // ============================================
+          // AI Staff Poaching Attempts (Weekly)
+          // ============================================
+          if (updatedCareerState.ownedTeam?.facilityStaff && updatedCareerState.ownedTeam.facilityStaff.length > 0) {
+            const poachTeam = updatedCareerState.ownedTeam
+            const playerStaffForPoaching = poachTeam.facilityStaff.map(s => ({
+              id: s.id,
+              name: s.name,
+              role: s.role,
+              salary: s.salary,
+              satisfaction: s.satisfaction ?? 70,
+              loyalty: s.loyalty ?? 50
+            }))
+            
+            // Pick a random AI team name for the poaching attempt
+            const aiTeamNames = ['Apex Racing', 'Veloce Motorsport', 'Aurora Racing', 'Phoenix Dynamics', 'Titan Racing']
+            const poachingTeamName = aiTeamNames[Math.floor(Math.random() * aiTeamNames.length)]
+            
+            const poachingAttempt = generateAIPoachingAttempt(
+              playerStaffForPoaching,
+              poachingTeamName,
+              60 + Math.floor(Math.random() * 30), // AI team reputation 60-90
+              poachTeam.reputation || 50,
+              newWeek,
+              newYear
+            )
+            
+            if (poachingAttempt) {
+              console.log(`[AI Poaching] ${poachingTeamName} is trying to poach ${poachingAttempt.staffName} (${poachingAttempt.chanceOfLeaving}% chance of leaving)`)
+              
+              // Generate warning email about poaching attempt
+              const poachEmail = {
+                id: `poach_warning_${poachingAttempt.id}`,
+                category: 'team' as const,
+                subject: `Staff Poaching Alert: ${poachingAttempt.staffName}`,
+                sender: 'Team Operations',
+                senderRole: 'HR Department',
+                preview: `${poachingTeamName} is trying to recruit your ${poachingAttempt.staffRole}...`,
+                body: `We've received intelligence that ${poachingTeamName} has made an approach to ${poachingAttempt.staffName}, your ${poachingAttempt.staffRole}.\n\nThey are reportedly offering $${poachingAttempt.offeredSalary.toLocaleString()}/year (compared to their current $${poachingAttempt.currentSalary.toLocaleString()}/year).\n\nBased on our assessment, there is a ${poachingAttempt.chanceOfLeaving}% chance they may leave if we don't take action. Consider offering a raise or improving their working conditions.`,
+                receivedDay: 1,
+                receivedWeek: newWeek,
+                receivedYear: newYear,
+                read: false,
+                starred: false,
+                archived: false,
+                actionType: 'acknowledge' as const
+              }
+              
+              const currentEmails = updatedCareerState.emails || []
+              updatedCareerState = {
+                ...updatedCareerState,
+                emails: [...currentEmails, poachEmail]
+              }
+            }
+          }
+          
+          // ============================================
           // Process Sponsor Negotiations (Weekly)
           // ============================================
           if (updatedCareerState.ownedTeam?.finances) {
@@ -7562,71 +11024,80 @@ export const useCareerStore = create<CareerStore>()(
               teamSponsors.push(deal)
             }
             
-            // Generate emails for negotiation events
+            // Generate emails for negotiation events using rich personality-aware templates
             const newEmails: Email[] = []
             for (const emailEvent of negotiationResult.emailsToGenerate) {
               const negot = emailEvent.negotiation
-              let subject = ''
-              let body = ''
+              const emailContext = buildNegotiationEmailContext(
+                negot,
+                updatedCareerState.ownedTeam,
+                newWeek,
+                newYear
+              )
+              let emailContent: { subject: string; sender: string; senderRole: string; preview: string; body: string } | null = null
               let actionType: Email['actionType'] = undefined
               
               switch (emailEvent.type) {
                 case 'outreach_response':
+                  emailContent = generateNegotiationFallbackEmail(
+                    'outreach_response',
+                    emailContext,
+                    emailEvent.response as 'interested' | 'soft_decline' | 'hard_decline'
+                  )
                   if (emailEvent.response === 'interested') {
-                    subject = `RE: Partnership Inquiry - ${negot.sponsorName}`
-                    body = `Thank you for your interest in partnering with ${negot.sponsorName}.\n\nWe have reviewed your proposal and would like to discuss a potential partnership further. Please find attached our initial offer for consideration.\n\nWe look forward to your response.`
                     actionType = 'negotiate_sponsor'
-                  } else {
-                    subject = `RE: Partnership Inquiry - ${negot.sponsorName}`
-                    body = `Thank you for reaching out about a potential partnership with ${negot.sponsorName}.\n\nAfter careful consideration, we have decided not to pursue a partnership at this time. ${
-                      emailEvent.response === 'soft_decline' 
-                        ? 'We may reconsider in the future as your team continues to grow.'
-                        : 'We wish you the best of luck in your endeavors.'
-                    }`
                   }
                   break
                   
                 case 'counter_response':
-                  if (emailEvent.response === 'accept') {
-                    subject = `Partnership Agreement Confirmed - ${negot.sponsorName}`
-                    body = `We are pleased to confirm our partnership agreement!\n\nThe terms have been finalized and the contract is ready for signatures. Welcome to the ${negot.sponsorName} family.\n\nWe look forward to a successful partnership.`
-                  } else if (emailEvent.response === 'counter') {
-                    subject = `RE: Partnership Terms - ${negot.sponsorName}`
-                    body = `Thank you for your counter proposal.\n\nAfter internal discussions, we have prepared an updated offer for your consideration. Please review the attached terms and let us know your decision.\n\nWe remain interested in reaching an agreement.`
+                  emailContent = generateNegotiationFallbackEmail(
+                    'counter_response',
+                    { ...emailContext, newOffer: negot.currentOffer },
+                    emailEvent.response as 'accept' | 'counter' | 'withdraw'
+                  )
+                  if (emailEvent.response === 'counter') {
                     actionType = 'review_counter'
-                  } else {
-                    subject = `Partnership Discussions Concluded - ${negot.sponsorName}`
-                    body = `Unfortunately, we have been unable to reach mutually agreeable terms for a partnership.\n\nWe appreciate the time you have invested in these discussions and wish your team success in the upcoming season.`
                   }
                   break
                   
                 case 'sponsor_approach':
-                  subject = `Partnership Interest - ${negot.sponsorName}`
-                  body = `${negot.sponsorName} has been following your team's progress and we are impressed with your performance.\n\nWe would like to discuss a potential sponsorship partnership. Please find attached our initial proposal for your consideration.\n\nWe hope to hear from you soon.`
+                  emailContent = generateNegotiationFallbackEmail(
+                    'offer',
+                    { ...emailContext, offer: negot.currentOffer, initiatedBy: 'sponsor', roundNumber: 1 }
+                  )
                   actionType = 'negotiate_sponsor'
                   break
                   
                 case 'negotiation_expired':
-                  subject = `Partnership Inquiry Expired - ${negot.sponsorName}`
-                  body = `The negotiation window for our partnership discussions has closed.\n\nIf you are still interested in partnering with ${negot.sponsorName}, please reach out again in the future.`
+                  emailContent = {
+                    subject: `Partnership Inquiry Expired - ${negot.sponsorName}`,
+                    sender: 'Partnership Team',
+                    senderRole: `Partnerships, ${negot.sponsorName}`,
+                    preview: `The negotiation window for our partnership discussions has closed.`,
+                    body: `The negotiation window for our partnership discussions has closed.\n\nIf you are still interested in partnering with ${negot.sponsorName}, please reach out again in the future.`
+                  }
                   break
               }
               
-              if (subject && body) {
+              if (emailContent) {
+                const emailId = `email_neg_${negot.id}_${newWeek}_${Date.now()}`
+                const isOffer = !!actionType && ACTION_REQUIRED_TYPES.has(actionType)
                 newEmails.push({
-                  id: `email_neg_${negot.id}_${newWeek}_${Date.now()}`,
+                  id: emailId,
                   category: 'sponsor',
-                  subject,
-                  sender: negot.sponsorName,
-                  senderRole: 'Sponsorship Manager',
-                  preview: body.substring(0, 100),
-                  body,
+                  subject: emailContent.subject,
+                  sender: emailContent.sender,
+                  senderRole: emailContent.senderRole,
+                  preview: emailContent.preview,
+                  body: emailContent.body,
                   receivedDay: 1,  // Monday
                   receivedWeek: newWeek,
                   receivedYear: newYear,
                   read: false,
                   starred: false,
                   archived: false,
+                  requiresAction: isOffer,
+                  interruptClass: isOffer ? 'critical' : undefined,
                   actionType,
                   actionData: actionType ? {
                     negotiationId: negot.id,
@@ -7634,9 +11105,25 @@ export const useCareerStore = create<CareerStore>()(
                     offerTerms: negot.currentOffer
                   } : undefined
                 })
+                
+                // Link email back to negotiation
+                const negIdx = allNegotiations.findIndex(n => n.id === negot.id)
+                if (negIdx >= 0) {
+                  allNegotiations[negIdx] = { ...allNegotiations[negIdx], lastEmailId: emailId }
+                }
               }
             }
             
+            // Clean up expired decline cooldowns
+            const currentAbsoluteWeek = ((newYear - 1) * 52) + newWeek
+            const existingCooldowns = updatedCareerState.ownedTeam.finances.declinedSponsorCooldowns ?? {}
+            const activeCooldowns: Record<string, number> = {}
+            for (const [sponsorId, expiryWeek] of Object.entries(existingCooldowns)) {
+              if (expiryWeek > currentAbsoluteWeek) {
+                activeCooldowns[sponsorId] = expiryWeek
+              }
+            }
+
             // Update the owned team
             updatedCareerState = {
               ...updatedCareerState,
@@ -7645,7 +11132,8 @@ export const useCareerStore = create<CareerStore>()(
                 finances: {
                   ...updatedCareerState.ownedTeam.finances,
                   activeNegotiations: allNegotiations,
-                  sponsors: teamSponsors
+                  sponsors: teamSponsors,
+                  declinedSponsorCooldowns: Object.keys(activeCooldowns).length > 0 ? activeCooldowns : undefined
                 }
               },
               emails: [...newEmails, ...(updatedCareerState.emails || [])]
@@ -7713,40 +11201,17 @@ export const useCareerStore = create<CareerStore>()(
               upcomingRacesForParts
             )
             
-            // Calculate costs and deduct from team budget
+            // Calculate costs and deduct from team budget using proper financial transactions
             const sparePartsCosts = calculateWeeklySparePartsCosts(sparePartsResult)
             
             let updatedTeamBudgetsForParts = { ...team.budgets }
-            const sparePartsTransactions: TeamTransaction[] = []
+            // Use the financial transactions generated by the logistics cost functions
+            const sparePartsTransactions: TeamTransaction[] = sparePartsResult.financialTransactions || []
             
-            if (sparePartsCosts.warehouseRental > 0) {
-              updatedTeamBudgetsForParts.cash -= sparePartsCosts.warehouseRental
-              sparePartsTransactions.push({
-                id: `spare_warehouse_${newWeek}_${newYear}`,
-                type: 'expense',
-                category: 'facilities',
-                amount: sparePartsCosts.warehouseRental,
-                description: 'Warehouse rental costs',
-                week: newWeek,
-                year: newYear,
-                date: new Date().toISOString(),
-                countsTowardCostCap: true
-              } as TeamTransaction)
-            }
-            
-            if (sparePartsCosts.autoOrders > 0) {
-              updatedTeamBudgetsForParts.cash -= sparePartsCosts.autoOrders
-              sparePartsTransactions.push({
-                id: `spare_orders_${newWeek}_${newYear}`,
-                type: 'expense',
-                category: 'car_maintenance',
-                amount: sparePartsCosts.autoOrders,
-                description: 'Spare parts auto-reorder costs',
-                week: newWeek,
-                year: newYear,
-                date: new Date().toISOString(),
-                countsTowardCostCap: true
-              } as TeamTransaction)
+            // Deduct total costs from cash
+            const totalSparePartsCostThisWeek = sparePartsCosts.warehouseRental + sparePartsCosts.autoOrders
+            if (totalSparePartsCostThisWeek > 0) {
+              updatedTeamBudgetsForParts.cash -= totalSparePartsCostThisWeek
             }
             
             updatedCareerState = {
@@ -7775,9 +11240,13 @@ export const useCareerStore = create<CareerStore>()(
           // ============================================
           // Process Personal Life (Weekly)
           // ============================================
-          if (updatedCareerState.personalLife) {
+          if (!coreLoopMode && updatedCareerState.personalLife) {
             const personalLife = updatedCareerState.personalLife
             let updatedPersonalLife = { ...personalLife }
+            let updatedMessaging = updatedCareerState.messaging
+              ? { ...updatedCareerState.messaging, contacts: [...(updatedCareerState.messaging.contacts || [])] }
+              : undefined
+            let messagingChanged = false
             
             // 1. Process Weekly Health
             // Estimate work hours based on activities (base ~45 hours, more during race weeks)
@@ -7820,10 +11289,11 @@ export const useCareerStore = create<CareerStore>()(
             }
             
             // 2. Process Weekly Personal Finances
-            // Map lifestyle level to finance config compatible type (frugal -> modest)
-            const financeLifestyleLevel = personalLife.lifestyleLevel === 'frugal' 
-              ? 'modest' 
-              : personalLife.lifestyleLevel as 'modest' | 'comfortable' | 'affluent' | 'luxury' | 'ultra_luxury'
+            // Map lifestyle level to finance config compatible type (object.tier or string)
+            const rawTier = typeof personalLife.lifestyleLevel === 'object' && personalLife.lifestyleLevel !== null && 'tier' in personalLife.lifestyleLevel
+              ? (personalLife.lifestyleLevel as { tier: string }).tier
+              : (personalLife.lifestyleLevel as unknown as string)
+            const financeLifestyleLevel = rawTier === 'frugal' ? 'modest' : (rawTier as 'modest' | 'comfortable' | 'affluent' | 'luxury' | 'ultra_luxury')
             const financeResult = processWeeklyPersonalFinances(
               personalLife.finances,
               careerState.currentWeek,
@@ -7837,17 +11307,34 @@ export const useCareerStore = create<CareerStore>()(
               newLiquidCash += tx.amount // amount is negative for expenses
             }
             
-            // Also deduct personal staff salaries (weekly portion)
-            const totalWeeklyStaffCost = personalLife.staff.reduce((sum, s) => sum + Math.floor(s.salary / 4), 0)
-            newLiquidCash -= totalWeeklyStaffCost
+            // Deduct personal staff, hobby, and healthcare costs (weekly portion of monthly)
+            const monthlyCosts = calculateMonthlyCosts(
+              personalLife.lifestyleLevel,
+              personalLife.staff,
+              personalLife.hobbies,
+              personalLife.health
+            )
+            const totalWeeklyStaffCost = Math.floor(monthlyCosts.staffSalaries / 4)
+            const totalWeeklyHobbyCost = Math.floor(monthlyCosts.hobbyCosts / 4)
+            const weeklyHealthcareCost = Math.floor(monthlyCosts.healthcareCosts / 4)
+            newLiquidCash -= totalWeeklyStaffCost + totalWeeklyHobbyCost + weeklyHealthcareCost
             
-            // Deduct hobby costs (weekly portion of monthly)
-            const totalWeeklyHobbyCost = personalLife.hobbies.reduce((sum, h) => sum + Math.floor((h.currentMonthlyCost || h.annualCost / 12) / 4), 0)
-            newLiquidCash -= totalWeeklyHobbyCost
+            // Deduct luxury service subscription costs (weekly portion of monthly)
+            const lifestyleAssets = updatedPersonalLife.lifestyleAssets || updatedPersonalLife.assets
+            const totalWeeklyServiceCost = ((lifestyleAssets as any)?.services || [])
+              .filter((s: any) => s.isActive)
+              .reduce((sum: number, s: any) => sum + Math.floor((s.monthlyFee || 0) / 4), 0)
+            newLiquidCash -= totalWeeklyServiceCost
             
-            // Deduct healthcare costs (weekly portion of annual)
-            const weeklyHealthcareCost = Math.floor(personalLife.health.annualHealthcareCost / 52)
-            newLiquidCash -= weeklyHealthcareCost
+            // Deduct diet plan costs (weekly portion of monthly)
+            const activeDietPlan = (lifestyleAssets as any)?.dietPlan
+            const weeklyDietCost = activeDietPlan?.isActive ? Math.floor((activeDietPlan.monthlyFee || 0) / 4) : 0
+            newLiquidCash -= weeklyDietCost
+            
+            // Deduct pet upkeep costs (weekly portion of monthly)
+            const totalWeeklyPetCost = ((lifestyleAssets as any)?.pets || [])
+              .reduce((sum: number, p: any) => sum + Math.floor((p.monthlyUpkeep || 0) / 4), 0)
+            newLiquidCash -= totalWeeklyPetCost
             
             // Deduct privacy/security costs (weekly portion of monthly)
             const rawPrivacyForCost = updatedPersonalLife.brand.privacyLevel || 'balanced'
@@ -7855,6 +11342,41 @@ export const useCareerStore = create<CareerStore>()(
             const privacyCostConfig = getPrivacyLevelConfig(validPrivacyForCost)
             const weeklyPrivacyCost = Math.floor(privacyCostConfig.monthlySecurityCost / 4)
             newLiquidCash -= weeklyPrivacyCost
+            
+            // Deduct rental property costs (weekly portion of monthly rent)
+            const weeklyRent = (updatedPersonalLife.properties || [])
+              .filter((p: any) => p.isPlayerRental)
+              .reduce((sum: number, p: any) => sum + Math.floor((p.monthlyRent || 0) / 4), 0)
+            newLiquidCash -= weeklyRent
+            
+            // ============================================
+            // 2e. Process Personal Investments (dividends, stock prices, businesses)
+            // ============================================
+            const investmentTransactions: typeof financeResult.transactions = []
+            let updatedStockHoldings: any[] = (personalLife as any).stockHoldings ?? []
+            let updatedBusinessVentures: any[] = (personalLife as any).businessVentures ?? []
+            if (updatedStockHoldings.length > 0) {
+              const dividendResult = processDividends(updatedStockHoldings, STOCKS, newWeek, careerState.currentYear)
+              updatedStockHoldings = dividendResult.updatedHoldings
+              for (const tx of dividendResult.transactions) {
+                investmentTransactions.push(tx as any)
+                newLiquidCash += tx.amount
+              }
+              updatedStockHoldings = updateStockPricesForHoldings(updatedStockHoldings, STOCKS)
+            }
+            if (updatedBusinessVentures.length > 0 && newWeek % 4 === 1) {
+              const nextVentures: any[] = []
+              for (const biz of updatedBusinessVentures) {
+                const bizResult = processMonthlyBusiness(biz, newWeek, careerState.currentYear)
+                if (bizResult.transaction) {
+                  investmentTransactions.push(bizResult.transaction as any)
+                  newLiquidCash += bizResult.transaction.amount
+                }
+                const closed = bizResult.event?.includes('failed and will be closed')
+                if (!closed) nextVentures.push(bizResult.updatedBusiness)
+              }
+              updatedBusinessVentures = nextVentures
+            }
             
             // ============================================
             // 2f. Process Personal INCOME (weekly portion of monthly income)
@@ -8023,9 +11545,9 @@ export const useCareerStore = create<CareerStore>()(
               })
             }
             
-            const totalWeeklyExpenses = totalWeeklyStaffCost + totalWeeklyHobbyCost + weeklyHealthcareCost
+            const totalWeeklyExpenses = totalWeeklyStaffCost + totalWeeklyHobbyCost + weeklyHealthcareCost + totalWeeklyServiceCost + weeklyDietCost + totalWeeklyPetCost
             if (totalWeeklyExpenses > 0) {
-              console.log(`[Personal Life] Week ${careerState.currentWeek}: Personal expenses -$${totalWeeklyExpenses.toLocaleString()} (Staff: $${totalWeeklyStaffCost}, Hobbies: $${totalWeeklyHobbyCost}, Healthcare: $${weeklyHealthcareCost})`)
+              console.log(`[Personal Life] Week ${careerState.currentWeek}: Personal expenses -$${totalWeeklyExpenses.toLocaleString()} (Staff: $${totalWeeklyStaffCost}, Hobbies: $${totalWeeklyHobbyCost}, Healthcare: $${weeklyHealthcareCost}, Services: $${totalWeeklyServiceCost}, Diet: $${weeklyDietCost}, Pets: $${totalWeeklyPetCost})`)
             }
             
             // 2g. Process Divorce Obligations (alimony + child support, weekly portion)
@@ -8103,9 +11625,26 @@ export const useCareerStore = create<CareerStore>()(
             }
             
             // Log asset events
-            assetResult.events.forEach(event => {
+            assetResult.events.forEach((event: string) => {
               console.log(`[Personal Life] ${event}`)
             })
+            
+            // Monthly property value appreciation
+            if (isMonthEnd && (updatedPersonalLife.properties || []).length > 0) {
+              const updatedProperties = (updatedPersonalLife.properties as any[]).map((prop: any) => {
+                if (!prop.currentValue || prop.isPlayerRental) return prop
+                const annualRate = prop.appreciationRate || 0.03
+                const monthlyRate = annualRate / 12
+                // +/-15% random variance per property per month
+                const variance = 0.85 + Math.random() * 0.30
+                const newValue = Math.round(prop.currentValue * (1 + monthlyRate * variance))
+                return { ...prop, currentValue: newValue, lastValuationDate: { week: newWeek, year: newYear } }
+              })
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                properties: updatedProperties
+              }
+            }
             
             // 2c. Calculate Lifestyle Score from Assets
             // Estimate primary residence value from furnishings (real estate system not fully integrated yet)
@@ -8141,15 +11680,85 @@ export const useCareerStore = create<CareerStore>()(
             // Calculate total bonuses from hobbies
             const hobbyBenefits = calculateHobbyBenefits(personalLife.hobbies)
             
-            // Apply stress reduction from staff
-            if (staffBenefits.stressReduction > 0) {
+            // ============================================
+            // 3b. AGGREGATE ALL LIFESTYLE ASSET BONUSES
+            // Reads stressReduction, prestigeBonus, networkingBonus, confidenceBoost,
+            // timeFreedPerWeek, energyBonus, healthBonus, fitnessBonus from ALL owned
+            // assets (services, diets, memberships, wardrobe, vehicles, furnishings,
+            // collectibles, pets, experiences) and applies them to gameplay.
+            // ============================================
+            const lifestyleBonuses = processWeeklyLifestyleBonuses(assetResult.updatedAssets)
+            
+            // --- Partner trait bonuses (sponsorAttractionBonus, socialEventBonus, stressReliefBonus) ---
+            const partnerTraitEffects = updatedPersonalLife.partner
+              ? calculateCombinedTraitEffects(updatedPersonalLife.partner)
+              : { socialEventBonus: 0, sponsorAttractionBonus: 0, stressReliefBonus: 0, familyHappinessBonus: 0, publicImageBonus: 0, expenseModifier: 0, careerSupportBonus: 0 }
+            
+            // --- Apply combined stress reduction (staff + lifestyle assets + partner) ---
+            const totalWeeklyStressReduction = 
+              (staffBenefits.stressReduction * 0.2) + 
+              (lifestyleBonuses.totalStressReduction * 0.25) + 
+              (partnerTraitEffects.stressReliefBonus * 0.1)
+            
+            if (totalWeeklyStressReduction > 0) {
               updatedPersonalLife = {
                 ...updatedPersonalLife,
                 health: {
                   ...updatedPersonalLife.health,
-                  stressLevel: Math.max(0, updatedPersonalLife.health.stressLevel - staffBenefits.stressReduction * 0.2)
+                  stressLevel: Math.max(0, updatedPersonalLife.health.stressLevel - totalWeeklyStressReduction)
                 }
               }
+            }
+            
+            // --- Apply health & fitness bonuses from diet plans and services ---
+            if (lifestyleBonuses.totalHealthBonus > 0 || lifestyleBonuses.totalFitnessBonus > 0) {
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                health: {
+                  ...updatedPersonalLife.health,
+                  physicalHealth: Math.min(100, (updatedPersonalLife.health.physicalHealth || 80) + lifestyleBonuses.totalHealthBonus * 0.05),
+                  fitness: Math.min(100, (updatedPersonalLife.health.fitness || 50) + lifestyleBonuses.totalFitnessBonus * 0.05)
+                }
+              }
+            }
+            
+            // --- Apply energy bonus: reduces fatigue debt carry-over ---
+            // This is stored on personalLife and read by the day budget system
+            if (lifestyleBonuses.totalEnergyBonus > 0 || lifestyleBonuses.timeFreedPerWeek > 0) {
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                lifestyleFatigueReduction: lifestyleBonuses.totalEnergyBonus * 0.1, // Reduces fatigue debt by this amount per day
+                lifestyleBonusHours: lifestyleBonuses.timeFreedPerWeek / 7 // Extra hours per day from services
+              }
+            } else {
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                lifestyleFatigueReduction: 0,
+                lifestyleBonusHours: 0
+              }
+            }
+            
+            // --- Apply passive happiness from pets ---
+            if (lifestyleBonuses.totalHappinessBoost > 0 && updatedPersonalLife.partner) {
+              // Pet happiness also subtly helps partner mood
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                partner: {
+                  ...updatedPersonalLife.partner,
+                  happiness: Math.min(100, updatedPersonalLife.partner.happiness + lifestyleBonuses.totalHappinessBoost * 0.1)
+                }
+              }
+            }
+            
+            // --- Store aggregated bonuses for use by other systems (negotiations, social events) ---
+            updatedPersonalLife = {
+              ...updatedPersonalLife,
+              lifestylePrestigeBonus: lifestyleBonuses.totalPrestigeBonus,
+              lifestyleConfidenceBonus: lifestyleBonuses.totalConfidenceBoost,
+              lifestyleNetworkingBonus: lifestyleBonuses.totalNetworkingBonus,
+              partnerSponsorAttractionBonus: partnerTraitEffects.sponsorAttractionBonus,
+              partnerSocialEventBonus: partnerTraitEffects.socialEventBonus,
+              partnerPublicImageBonus: partnerTraitEffects.publicImageBonus
             }
             
             // 4. Process Weekly Brand (decay old reputation events)
@@ -8160,7 +11769,13 @@ export const useCareerStore = create<CareerStore>()(
             )
             
             // Apply lifestyle and hobby public image bonuses (gradual effect)
-            const targetImageBonus = (lifestyleTier?.publicImageBonus || 0) + hobbyBenefits.totalPublicImageBonus + staffBenefits.publicImageBonus
+            // NOW includes prestige from ALL lifestyle assets + partner traits
+            const targetImageBonus = 
+              ((lifestyleTier as { publicImageBonus?: number })?.publicImageBonus || 0) + 
+              hobbyBenefits.totalPublicImageBonus + 
+              staffBenefits.publicImageBonus +
+              (lifestyleBonuses.totalPrestigeBonus * 0.05) + // Prestige from assets contributes to public image
+              (partnerTraitEffects.publicImageBonus * 0.1)    // Partner's public image contribution
             const currentImage = updatedBrand.publicImage
             const imageAdjustment = Math.sign(targetImageBonus) * Math.min(0.5, Math.abs(targetImageBonus) * 0.02) // Gradual change
             
@@ -8229,6 +11844,7 @@ export const useCareerStore = create<CareerStore>()(
               
               for (const event of eventsThisWeek) {
                 const partnerPresent = !!updatedPersonalLife.partner
+                let lastEventOutcomeType: 'positive' | 'neutral' | 'negative' = 'neutral'
                 
                 if (event.isHosting) {
                   // Host the event
@@ -8269,16 +11885,61 @@ export const useCareerStore = create<CareerStore>()(
                     totalEventCosts += hostingCost
                   }
                   
+                  lastEventOutcomeType = hostResult.success ? 'positive' : 'negative'
                   console.log(`[Social Events] Hosted ${event.name}: ${hostResult.message} (Cost: $${hostingCost.toLocaleString()})`)
                   pushLog('event_attended', `Hosted: ${event.name}`, hostResult.message, hostResult.success ? 'positive' : 'negative')
                 } else {
-                  // Attend the event
+                  // Attend the event (sync base result + async encounter system)
                   const attendResult = attendSocialEvent(
                     event,
                     eventBrandUpdates.publicImage,
                     eventBrandUpdates,
-                    partnerPresent
+                    partnerPresent,
+                    updatedPersonalLife.lifestyleNetworkingBonus || 0,
+                    updatedPersonalLife.lifestylePrestigeBonus || 0,
+                    updatedPersonalLife.partnerSocialEventBonus || 0
                   )
+                  
+                  // Fire off encounter system async (results handled via side-effect)
+                  const encounterContext = {
+                    eventType: event.type,
+                    playerFame: eventBrandUpdates.publicImage,
+                    playerPublicImage: eventBrandUpdates.publicImage,
+                    hasPartner: partnerPresent,
+                    playerAge: updatedPlayer.age || 25,
+                    currentWeek: newWeek,
+                    currentYear: careerState.currentYear
+                  }
+                  // Encounter contacts are added asynchronously after the week advances
+                  attendSocialEventWithEncounters(event, eventBrandUpdates.publicImage, eventBrandUpdates, partnerPresent, encounterContext)
+                    .then(enhancedResult => {
+                      if (enhancedResult.encounters.length > 0) {
+                        const encounterContacts = enhancedResult.encounters
+                          .filter(e => e.contact)
+                          .map(e => {
+                            const contactType = (e.contact!.type || 'business_mogul') as any
+                            const newContact = createSocialContact(contactType, e.contact!.name, 30)
+                            newContact.lastInteraction = { week: newWeek, year: careerState.currentYear }
+                            return newContact
+                          })
+                        if (encounterContacts.length > 0) {
+                          const currentState = get().careerState
+                          if (currentState?.personalLife) {
+                            set({
+                              careerState: {
+                                ...currentState,
+                                personalLife: {
+                                  ...currentState.personalLife,
+                                  contacts: [...(currentState.personalLife.contacts || []), ...encounterContacts]
+                                }
+                              }
+                            })
+                            console.log(`[Social Events] ${encounterContacts.length} encounter contact(s) added from ${event.name}`)
+                          }
+                        }
+                      }
+                    })
+                    .catch(err => console.error('[Social Events] Encounter processing error:', err))
                   
                   // Add reputation event instead of direct image change (gradual)
                   eventBrandUpdates = addReputationEvent(eventBrandUpdates, {
@@ -8290,7 +11951,7 @@ export const useCareerStore = create<CareerStore>()(
                     decayWeeks: 6
                   })
                   
-                  // Generate contacts from outcome
+                  // Generate contacts from base outcome
                   for (const contact of attendResult.newContacts) {
                     const contactType = (contact.type || 'business_mogul') as any
                     const newContact = createSocialContact(contactType, contact.name, 30)
@@ -8307,14 +11968,68 @@ export const useCareerStore = create<CareerStore>()(
                     }
                   }
                   
+                  // Apply reputation change from social event to team/primary reputation
+                  if (attendResult.reputationChange !== 0) {
+                    const repApplied = applyReputationDeltaToPrimaryContext(
+                      updatedPlayer,
+                      updatedCareerState,
+                      Math.round(attendResult.reputationChange * 0.5)
+                    )
+                    updatedPlayer = repApplied.updatedPlayer
+                    if (repApplied.updatedCareerState) {
+                      updatedCareerState = repApplied.updatedCareerState
+                    }
+                  }
+                  
                   // Deduct attendance costs
                   const attendanceCost = event.cost || 0
                   if (attendanceCost > 0) {
                     totalEventCosts += attendanceCost
                   }
                   
+                  lastEventOutcomeType = attendResult.outcome.type
                   console.log(`[Social Events] Attended ${event.name}: ${attendResult.outcome.description} (Cost: $${attendanceCost.toLocaleString()})`)
                   pushLog('event_attended', `Attended: ${event.name}`, attendResult.outcome.description, attendResult.reputationChange >= 0 ? 'positive' : 'negative')
+                }
+                
+                // Process invited contacts — relationship boosts
+                if (event.invitedContactIds && event.invitedContactIds.length > 0) {
+                  const outcomeType = lastEventOutcomeType
+                  const inviteResults = processInvitedContacts(
+                    event.invitedContactIds,
+                    updatedPersonalLife.contacts || [],
+                    outcomeType as any,
+                    event.name,
+                    !!updatedPersonalLife.partner,
+                    updatedPersonalLife.partner?.id
+                  )
+                  
+                  // Apply relationship boosts to existing contacts
+                  const updatedContacts = [...(updatedPersonalLife.contacts || [])]
+                  for (const result of inviteResults) {
+                    const idx = updatedContacts.findIndex((c: any) => c.id === result.contactId)
+                    if (idx !== -1) {
+                      const c = updatedContacts[idx] as any
+                      updatedContacts[idx] = {
+                        ...c,
+                        relationshipLevel: Math.min(100, (c.relationshipLevel || 50) + result.relationshipBoost),
+                        trustLevel: Math.min(100, (c.trustLevel || 50) + result.trustBoost),
+                        lastInteraction: { week: newWeek, year: careerState.currentYear }
+                      }
+                    }
+                    
+                    // Add bonus contacts from introductions
+                    if (result.bonusContact) {
+                      const contactType = (result.bonusContact.type || 'business_mogul') as any
+                      const bonusC = createSocialContact(contactType, result.bonusContact.name, 20)
+                      bonusC.lastInteraction = { week: newWeek, year: careerState.currentYear }
+                      newContactsFromEvents.push(bonusC)
+                    }
+                    
+                    pushLog('event_attended', result.logMessage, `Relationship +${result.relationshipBoost}`, 'positive')
+                  }
+                  
+                  updatedPersonalLife = { ...updatedPersonalLife, contacts: updatedContacts }
                 }
               }
               
@@ -8355,21 +12070,39 @@ export const useCareerStore = create<CareerStore>()(
               }
             }
             
-            // 7. Automatic Event Invitation Generation
-            // Every 2-4 weeks, roll for event invitations based on public image
+            // 7. Automatic Event Invitation Generation (with seasonal context)
+            // Every 1-3 weeks, roll for event invitations based on public image
             const publicImage = updatedPersonalLife.brand.publicImage || 35
             const brandValue = updatedPersonalLife.brand.brandValue || 25
             const invitationChance = (publicImage / 100) * 0.4 + (brandValue / 100) * 0.2 // 10-60% chance per week
             
-            if (Math.random() < invitationChance && (updatedPersonalLife.upcomingEvents || []).length < 5 && newWeek % 2 === 0) {
-              // Filter templates by reputation requirements
+            if (Math.random() < invitationChance && (updatedPersonalLife.upcomingEvents || []).length < 5) {
+              // Determine season context
+              const isPreSeason = newWeek <= 6
+              const isPostSeason = newWeek >= 46
+              const isMidSeason = !isPreSeason && !isPostSeason
+              
+              // Filter templates by reputation and seasonal context
               const eligibleTemplates = SOCIAL_EVENT_TEMPLATES.filter(t => {
                 const minRep = t.minimumReputation || 0
-                return publicImage >= minRep * 0.8 // Can attend if within 80% of requirement
+                if (publicImage < minRep * 0.8) return false
+                
+                // Check seasonal context for invitation relevance
+                const ctx = t.seasonalContext
+                if (!ctx) return true
+                const inviteMinRep = ctx.minReputationForInvite || 0
+                if (publicImage < inviteMinRep) return false
+                
+                // Season filter — boost contextually relevant events
+                if (ctx.seasonTrigger === 'pre_season' && !isPreSeason) return Math.random() < 0.3
+                if (ctx.seasonTrigger === 'post_season' && !isPostSeason) return Math.random() < 0.3
+                if (ctx.seasonTrigger === 'mid_season' && !isMidSeason) return Math.random() < 0.3
+                
+                return true
               })
               
               if (eligibleTemplates.length > 0) {
-                // Bias toward better events with higher image
+                // Weighted pick: higher-rep-requirement events are rarer
                 const template = eligibleTemplates[Math.floor(Math.random() * eligibleTemplates.length)]
                 const eventWeek = newWeek + 1 + Math.floor(Math.random() * 3) // 1-3 weeks ahead
                 const eventYear = eventWeek > 52 ? careerState.currentYear + 1 : careerState.currentYear
@@ -8387,8 +12120,25 @@ export const useCareerStore = create<CareerStore>()(
                   upcomingEvents: [...(updatedPersonalLife.upcomingEvents || []), newEvent]
                 }
                 
+                // Send invitation email
+                const dressLabel = (template.dresscode || 'business').replace(/_/g, ' ')
+                const costLabel = template.cost > 0 ? `$${template.cost.toLocaleString()}` : 'Complimentary'
+                const plusOneInfo = template.tierOptions?.maxPlusOnes ? ' You may bring a guest.' : ''
+                const vipInfo = template.tierOptions && template.tierOptions.vipCostMultiplier > 1 ? ' VIP upgrades available.' : ''
+                
+                try {
+                  routeNotification({
+                    category: 'social_invitation',
+                    subject: `You're Invited: ${newEvent.name} — Week ${adjustedWeek}`,
+                    body: `You've received an exclusive invitation to ${newEvent.name} in Week ${adjustedWeek}.\n\nDress code: ${dressLabel}\nCost: ${costLabel}${plusOneInfo}${vipInfo}\n\n${template.description}`,
+                    degradedBody: `Invitation to ${newEvent.name} in Week ${adjustedWeek}.`
+                  })
+                } catch (e) {
+                  // Notification routing may fail silently if no sender available
+                }
+                
                 console.log(`[Social Events] Received invitation to ${newEvent.name} (Week ${adjustedWeek})`)
-                pushLog('invitation', `Invitation: ${newEvent.name}`, `You've been invited to ${newEvent.name} in Week ${adjustedWeek}`, 'neutral')
+                pushLog('invitation', `Invitation: ${newEvent.name}`, `You've been invited to ${newEvent.name} in Week ${adjustedWeek}. Dress code: ${dressLabel}`, 'neutral')
               }
             }
             
@@ -8547,11 +12297,32 @@ export const useCareerStore = create<CareerStore>()(
               const partnerAttentionGiven = qualityTimeHours > 3 // Based on quality time
               const partnerTravelAway = isRaceWeekForHealth // Simplified: race weeks = travel
               
+              // Gather messaging context for the partner
+              const weeklyMsgState = get().careerState?.messaging
+              const partnerContact = weeklyMsgState?.contacts?.find(c => c.type === 'partner')
+              let partnerMsgContext: { messagesSentThisWeek?: number; messagesReceivedThisWeek?: number; playerGhostedDays?: number; conversationStage?: string } | undefined
+              if (partnerContact && weeklyMsgState) {
+                const partnerConvId = `conv_${partnerContact.id}`
+                const partnerConv = weeklyMsgState.conversations?.[partnerConvId] as any
+                if (partnerConv) {
+                  const msgs = partnerConv.messages || []
+                  const sentThisWeek = msgs.filter((m: any) => m.isPlayer !== false && m.sender === 'player' && m.timestamp?.week === newWeek).length
+                  const receivedThisWeek = msgs.filter((m: any) => m.sender === 'npc' && m.timestamp?.week === newWeek).length
+                  partnerMsgContext = {
+                    messagesSentThisWeek: sentThisWeek,
+                    messagesReceivedThisWeek: receivedThisWeek,
+                    playerGhostedDays: partnerConv.playerGhostedDays || 0,
+                    conversationStage: partnerConv.conversationStage,
+                  }
+                }
+              }
+              
               const updatedPartner = processWeeklyRelationship(
                 updatedPersonalLife.partner,
                 partnerAttentionGiven,
                 partnerTravelAway,
-                updatedPersonalLife.health.stressLevel
+                updatedPersonalLife.health.stressLevel,
+                partnerMsgContext
               )
               
               updatedPersonalLife = {
@@ -8936,11 +12707,6 @@ export const useCareerStore = create<CareerStore>()(
             // Sync Monthly Expense Tracking (for UI display and financial summary)
             // ============================================
             {
-              const lifestyleConfig = LIFESTYLE_CONFIGS[
-                (updatedPersonalLife.lifestyleLevel === 'frugal' ? 'modest' : updatedPersonalLife.lifestyleLevel) as keyof typeof LIFESTYLE_CONFIGS
-              ]
-              
-              const lifestyleMonthlyCost = lifestyleConfig?.monthlyBaseCost || 2000
               const loanPayments = updatedPersonalLife.finances.personalLoans
                 .filter(l => l.remainingBalance > 0)
                 .reduce((sum, l) => sum + l.monthlyPayment, 0)
@@ -8950,7 +12716,7 @@ export const useCareerStore = create<CareerStore>()(
               const hobbyExpenses = updatedPersonalLife.hobbies
                 .reduce((sum, h) => sum + (h.currentMonthlyCost || h.annualCost / 12), 0)
               const staffExpenses = updatedPersonalLife.staff
-                .reduce((sum, s) => sum + Math.floor(s.salary / 12), 0)
+                .reduce((sum, s) => sum + s.salary, 0) // salary field is already monthly
               const foundationExpenses = (updatedPersonalLife.foundations || [])
                 .reduce((sum: number, f) => sum + Math.floor((f.annualBudget || 0) / 12), 0)
               const healthcareMonthly = Math.floor(updatedPersonalLife.health.annualHealthcareCost / 12)
@@ -8974,27 +12740,253 @@ export const useCareerStore = create<CareerStore>()(
                 finances: {
                   ...updatedPersonalLife.finances,
                   monthlyExpenses: {
-                    lifestyle: Math.round(lifestyleMonthlyCost),
+                    lifestyle: 0,
                     loanPayments: Math.round(loanPayments),
                     mortgagePayments: Math.round(mortgagePayments),
                     familyExpenses: Math.round(childMonthlyExpenses),
                     personalStaff: Math.round(staffExpenses),
                     hobbies: Math.round(hobbyExpenses),
                     philanthropy: Math.round(foundationExpenses),
-                    insurance: Math.round(healthcareMonthly),
+                    insurance: 0,
+                    services: Math.round(totalWeeklyServiceCost * 4),
+                    dietPlan: Math.round(weeklyDietCost * 4),
+                    petUpkeep: Math.round(totalWeeklyPetCost * 4),
+                    vehicleCosts: Math.round((assetResult?.costBreakdown?.vehicleMaintenance || 0) * 4 + (assetResult?.costBreakdown?.vehicleInsurance || 0) * 4),
+                    membershipFees: Math.round((assetResult?.costBreakdown?.membershipFees || 0) * 4),
+                    rent: Math.round(
+                      (updatedPersonalLife.properties || [])
+                        .filter((p: any) => p.isPlayerRental)
+                        .reduce((sum: number, p: any) => sum + (p.monthlyRent || 0), 0)
+                    ),
                     other: Math.round(securityMonthly)
                   }
                 }
               }
             }
             
+            // ============================================
+            // Sync Monthly Income Tracking (for UI display and financial summary)
+            // Mirrors the expense sync above - recalculates income from actual game state
+            // ============================================
+            {
+              // Migration for existing saves: if player never explicitly configured
+              // their salary, reset the old $15,000 default to $0.
+              // Owner withdraws funds when needed, not via automatic salary.
+              let ownerSalaryAmount = updatedPersonalLife.finances.monthlyIncome.ownerSalary ?? 0
+              if (!updatedPersonalLife.finances.ownerSalaryConfigured) {
+                ownerSalaryAmount = 0
+              }
+              
+              const playerProperties = (updatedPersonalLife.properties || []) as Array<{
+                monthlyRentalIncome?: number
+                monthlyExpenses?: number
+                occupancyRate?: number
+                currentValue?: number
+              }>
+              const playerStocks = updatedPersonalLife.stockHoldings || []
+              const playerBusinesses = updatedPersonalLife.businessVentures || []
+              
+              // Get team annual revenue for dividend calculation
+              const teamForIncome = updatedCareerState.ownedTeam
+              const teamAnnualRevenue = teamForIncome 
+                ? (teamForIncome.finances?.weeklyRevenue || 0) * 52
+                : 0
+              
+              const syncedIncome = syncMonthlyIncome({
+                currentIncome: updatedPersonalLife.finances.monthlyIncome,
+                ownerSalary: ownerSalaryAmount,
+                stockHoldings: playerStocks,
+                businessVentures: playerBusinesses,
+                properties: playerProperties,
+                teamEquity: updatedPersonalLife.teamEquity,
+                teamAnnualRevenue
+              })
+              
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                finances: {
+                  ...updatedPersonalLife.finances,
+                  monthlyIncome: syncedIncome
+                }
+              }
+            }
+            
+            // ============================================
+            // Recalculate Net Worth (from actual asset values)
+            // ============================================
+            {
+              const playerProperties = (updatedPersonalLife.properties || []) as Array<{ currentValue?: number }>
+              const playerStocks = updatedPersonalLife.stockHoldings || []
+              const playerBusinesses = updatedPersonalLife.businessVentures || []
+              const teamEquityForNW = updatedPersonalLife.teamEquity || {
+                ownershipPercent: 100,
+                sharesOwned: 1000,
+                totalShares: 1000,
+                totalInvested: 0,
+                investmentHistory: [],
+                currentValuation: updatedCareerState.ownedTeam?.budgets?.cash || 0,
+                lastValuationDate: { week: newWeek, year: newYear },
+                valuationMethod: 'revenue_multiple' as const,
+                unrealizedGain: 0,
+                totalDividendsReceived: 0,
+                externalInvestors: [],
+                dividendPolicy: { enabled: false, frequency: 'annually' as const, percentOfProfit: 0, minimumCashReserve: 500000 }
+              }
+              
+              const netWorthResult = recalculateNetWorth({
+                finances: updatedPersonalLife.finances,
+                teamEquity: teamEquityForNW,
+                stockHoldings: playerStocks,
+                businessVentures: playerBusinesses,
+                properties: playerProperties,
+                currentWeek: newWeek
+              })
+              
+              updatedPersonalLife = {
+                ...updatedPersonalLife,
+                finances: {
+                  ...updatedPersonalLife.finances,
+                  cachedNetWorth: netWorthResult.cachedNetWorth,
+                  lastNetWorthUpdate: netWorthResult.lastNetWorthUpdate
+                }
+              }
+            }
+            
+            // ============================================
+            // Romantic spark: romanticEligible friends -> potential_date when romance/affection thresholds met
+            // ============================================
+            if (updatedMessaging?.contacts?.length) {
+              for (let i = 0; i < updatedMessaging.contacts.length; i++) {
+                const c = updatedMessaging.contacts[i]
+                if (
+                  c.type === 'friend' &&
+                  (c as any).romanticEligible === true &&
+                  shouldTriggerRomanticSpark(c.romanceMeter ?? 0, c.affectionMeter ?? 0)
+                ) {
+                  updatedMessaging.contacts[i] = {
+                    ...c,
+                    type: 'potential_date',
+                    datingStatus: 'acquaintance',
+                  }
+                  messagingChanged = true
+                  const name = c.name
+                  routeNotification({
+                    category: 'friends',
+                    subject: 'Something has changed',
+                    body: `${name}'s feelings toward you seem to have changed...`,
+                  })
+                  pushLog('event_attended', `${name}`, `Something has shifted between you and ${name}.`, 'positive')
+                  console.log(`[Personal Life] Romantic spark: ${name} is now a potential date`)
+                }
+              }
+            }
+            
+            // ============================================
+            // Separation process tick (player-initiated breakup/divorce)
+            // ============================================
+            const sep = (updatedPersonalLife as any).separationProcess
+            if (sep && !sep.isFinalized) {
+              const daysElapsed = (sep.daysElapsed || 0) + 7
+              const estimatedDays = sep.estimatedDurationDays ?? 7
+              
+              if (daysElapsed >= estimatedDays) {
+                // Finalize
+                if (sep.type === 'breakup') {
+                  updatedPersonalLife = {
+                    ...updatedPersonalLife,
+                    partner: undefined,
+                    health: {
+                      ...updatedPersonalLife.health,
+                      stressLevel: Math.min(100, updatedPersonalLife.health.stressLevel + 5),
+                    },
+                  } as any
+                  delete (updatedPersonalLife as any).separationProcess
+                  if (updatedMessaging?.contacts) {
+                    const partnerContact = updatedMessaging.contacts.find((c: any) => c.type === 'partner')
+                    if (partnerContact) {
+                      const idx = updatedMessaging.contacts.indexOf(partnerContact)
+                      updatedMessaging.contacts[idx] = { ...partnerContact, type: 'friend' }
+                      messagingChanged = true
+                    }
+                  }
+                  routeNotification({
+                    category: 'partner',
+                    subject: 'Over',
+                    body: `Your breakup with ${sep.partnerName || 'your partner'} is complete.`,
+                  })
+                  pushLog('event_attended', 'Breakup', `Your breakup with ${sep.partnerName || 'your partner'} is complete.`, 'neutral')
+                } else {
+                  // Divorce: apply settlement (use full settlement stored at initiation)
+                  const partner = updatedPersonalLife.partner
+                  const settlement = (sep as any).settlement
+                  if (partner && settlement) {
+                    const divorceResult = processDivorce(
+                      partner,
+                      settlement,
+                      newWeek,
+                      careerState.currentYear
+                    )
+                    const assetLoss = Math.round(updatedPersonalLife.finances.liquidCash * divorceResult.oneTimeAssetLoss)
+                    updatedPersonalLife = {
+                      ...updatedPersonalLife,
+                      partner: undefined,
+                      separationProcess: undefined,
+                      finances: {
+                        ...updatedPersonalLife.finances,
+                        liquidCash: updatedPersonalLife.finances.liquidCash - assetLoss,
+                        divorceObligations: {
+                          alimony: divorceResult.monthlyObligations.alimony,
+                          childSupport: divorceResult.monthlyObligations.childSupport,
+                          endDate: divorceResult.monthlyObligations.endDate,
+                        },
+                      },
+                      health: {
+                        ...updatedPersonalLife.health,
+                        stressLevel: Math.min(100, updatedPersonalLife.health.stressLevel + 10),
+                      },
+                    } as any
+                    delete (updatedPersonalLife as any).separationProcess
+                    if (updatedMessaging?.contacts) {
+                      const partnerContact = updatedMessaging.contacts.find((c: any) => c.type === 'partner')
+                      if (partnerContact) {
+                        const idx = updatedMessaging.contacts.indexOf(partnerContact)
+                        updatedMessaging.contacts[idx] = { ...partnerContact, type: 'friend' }
+                        messagingChanged = true
+                      }
+                    }
+                    routeNotification({
+                      category: 'partner',
+                      subject: 'Divorce finalized',
+                      body: `Your divorce from ${sep.partnerName || partner.firstName} has been finalized.`,
+                    })
+                    pushLog('event_attended', 'Divorce', `Your divorce from ${sep.partnerName || partner.firstName} has been finalized.`, 'neutral')
+                  } else {
+                    (updatedPersonalLife as any).separationProcess = undefined
+                  }
+                }
+              } else {
+                (updatedPersonalLife as any).separationProcess = {
+                  ...sep,
+                  daysElapsed,
+                }
+                updatedPersonalLife = {
+                  ...updatedPersonalLife,
+                  health: {
+                    ...updatedPersonalLife.health,
+                    stressLevel: Math.min(100, updatedPersonalLife.health.stressLevel + (sep.type === 'breakup' ? 3 : 5)),
+                  },
+                } as any
+              }
+            }
+            
             // Update personal life state
             updatedCareerState = {
               ...updatedCareerState,
-              personalLife: updatedPersonalLife
+              personalLife: updatedPersonalLife,
+              ...(messagingChanged && updatedMessaging ? { messaging: updatedMessaging } : {}),
             }
             
-            console.log(`[Personal Life] Week ${careerState.currentWeek}: Health ${updatedPersonalLife.health.physicalHealth}%, Stress ${updatedPersonalLife.health.stressLevel}%, Cash $${updatedPersonalLife.finances.liquidCash.toLocaleString()}`)
+            console.log(`[Personal Life] Week ${careerState.currentWeek}: Health ${updatedPersonalLife.health.physicalHealth}%, Stress ${updatedPersonalLife.health.stressLevel}%, Cash $${updatedPersonalLife.finances.liquidCash.toLocaleString()}, Net Worth $${updatedPersonalLife.finances.cachedNetWorth.toLocaleString()}`)
           }
           
           // ============================================
@@ -9047,6 +13039,44 @@ export const useCareerStore = create<CareerStore>()(
               declinedOpportunitiesThisSeason: [],
               acceptedOpportunitiesThisSeason: [],
               // lastOpportunityOfferWeeks is preserved for cooldown tracking
+            }
+            
+            // ============================================
+            // Seasonal credit score update (team loans)
+            // ============================================
+            const teamAfterRoll = updatedCareerState.ownedTeam
+            const extendedAfterRoll = teamAfterRoll?.finances?.extended
+            if (extendedAfterRoll?.loans && teamAfterRoll) {
+              const completedYear = newYear - 1
+              const teamTx = teamAfterRoll.finances?.transactions || []
+              const seasonIncome = teamTx
+                .filter((t: TeamTransaction) => t.year === completedYear && t.type === 'income')
+                .reduce((sum: number, t: TeamTransaction) => sum + t.amount, 0)
+              const seasonExpense = teamTx
+                .filter((t: TeamTransaction) => t.year === completedYear && t.type === 'expense')
+                .reduce((sum: number, t: TeamTransaction) => sum + t.amount, 0)
+              const seasonProfitable = seasonIncome >= seasonExpense
+              const newCreditScore = calculateCreditScore(
+                extendedAfterRoll.loans,
+                teamAfterRoll,
+                seasonProfitable
+              )
+              updatedCareerState = {
+                ...updatedCareerState,
+                ownedTeam: {
+                  ...teamAfterRoll,
+                  finances: {
+                    ...teamAfterRoll.finances,
+                    extended: {
+                      ...extendedAfterRoll,
+                      loans: {
+                        ...extendedAfterRoll.loans,
+                        creditScore: newCreditScore
+                      }
+                    }
+                  }
+                }
+              }
             }
             
             // ============================================
@@ -9248,16 +13278,13 @@ export const useCareerStore = create<CareerStore>()(
               })
               
               // 4. Simulate AI hiring: some available high-reputation staff get hired by AI teams
-              const aiTeams = ['Red Bull Racing', 'Mercedes AMG', 'McLaren', 'Ferrari', 'Aston Martin',
-                             'Alpine', 'Williams', 'AlphaTauri', 'Alfa Romeo', 'Haas F1',
-                             'Porsche Motorsport', 'BMW Motorsport', 'Toyota Gazoo Racing']
               seasonalPool = seasonalPool.map(member => {
                 if (member.status === 'available' && member.staff.reputation > 65 && Math.random() < 0.25) {
                   aiHiredCount++
                   return { 
                     ...member, 
                     status: 'employed_ai' as const, 
-                    employedBy: aiTeams[Math.floor(Math.random() * aiTeams.length)] 
+                    employedBy: getRandomGameTeamName() 
                   }
                 }
                 return member
@@ -9331,8 +13358,8 @@ export const useCareerStore = create<CareerStore>()(
               console.log(`[CareerStore] Regenerating performance targets for ${validSponsors.length} sponsor(s)`)
               
               validSponsors = validSponsors.map(sponsor => {
-                // Look up sponsor tier from SPONSORS database or default to 'mid'
-                const sponsorData = SPONSORS.find(s => s.id === sponsor.sponsorId)
+                // Look up sponsor tier from pre-generated sponsor pool or default to 'mid'
+                const sponsorData = getSponsorById(sponsor.sponsorId)
                 const sponsorTier = sponsorData?.tier || 'mid' as const
                 
                 // Generate fresh targets for new season
@@ -9530,19 +13557,17 @@ export const useCareerStore = create<CareerStore>()(
               // Sync teammate knowledge for new team
               const pendingRivalStore = useRivalStore.getState()
               const pendingTeam = pendingRivalStore.getTeamById(updatedPlayer.pendingContract.teamId)
-              if (pendingTeam && pendingTeam.drivers.length > 0) {
-                const teammateIds = pendingTeam.drivers
+              const driverIds = (pendingTeam?.drivers ?? []) as unknown as string[]
+              if (pendingTeam && driverIds.length > 0) {
                 const teammateNames: Record<string, string> = {}
-                
-                teammateIds.forEach(driverId => {
+                driverIds.forEach((driverId: string) => {
                   const driver = pendingRivalStore.rivals.find(r => r.id === driverId)
                   if (driver) {
                     teammateNames[driverId] = `${driver.firstName} ${driver.lastName}`
                   }
                 })
-                
                 const scoutingStore = useScoutingStore.getState()
-                scoutingStore.syncTeammateKnowledge(teammateIds, teammateNames)
+                scoutingStore.syncTeammateKnowledge(driverIds, teammateNames)
               }
               
               // Activate the pending contract
@@ -9617,9 +13642,9 @@ export const useCareerStore = create<CareerStore>()(
           // ============================================
           // Process Messaging Events (weekly NPC messages)
           // ============================================
-          if (updatedCareerState.messaging && updatedCareerState.messaging.contacts.length > 0) {
+          if (!coreLoopMode && updatedCareerState.messaging && updatedCareerState.messaging.contacts.length > 0) {
             // Import dynamically to avoid circular dependency
-            import('@/services/messagingEvents').then(({ processWeeklyMessagingEvents }) => {
+            import('@/services/messagingEvents').then(async ({ processWeeklyMessagingEvents, generateWeeklyContactRequests, calculateMessagingImpact }) => {
               const currentMessaging = get().careerState?.messaging
               if (!currentMessaging) return
               
@@ -9646,47 +13671,107 @@ export const useCareerStore = create<CareerStore>()(
                 }
               }
               
-              // Generate NPC messages based on events
-              const generatedMessages = processWeeklyMessagingEvents(
+              // Build player context for AI-generated messages
+              const childrenData = (updatedCareerState.personalLife?.children || []).map((c: any) => ({
+                id: c.id,
+                firstName: c.firstName,
+                portraitId: c.portraitId || c.id,
+                age: c.age,
+              }))
+              const playerCtx = {
+                playerName: `${updatedPlayer.firstName} ${updatedPlayer.lastName}`,
+                recentRaceResult: lastRace ? (lastRace.racePosition === 1 ? 'win' : lastRace.racePosition <= 3 ? 'podium' : lastRace.dnfReason ? 'DNF' : `P${lastRace.racePosition}`) : undefined,
+                teamName: updatedCareerState.ownedTeam?.name,
+                championshipPosition: (updatedCareerState as any).seriesEntries?.[0]?.standings?.position,
+                currentWeek: newWeek,
+                currentDay: 1,
+                children: childrenData,
+                hasChildren: childrenData.length > 0,
+              }
+              
+              // Generate NPC messages based on events (now async, uses Gemini AI with template fallback)
+              const generatedMessages = await processWeeklyMessagingEvents(
                 currentMessaging,
                 newWeek,
                 newYear,
-                recentEvents
+                recentEvents,
+                playerCtx
               )
               
               if (generatedMessages.length > 0) {
-                console.log(`[Messaging] Week ${newWeek}: Generated ${generatedMessages.length} NPC message(s)`)
+                console.log(`[Messaging] Week ${newWeek}: Generated ${generatedMessages.length} NPC message(s) — staggering delivery`)
                 
-                // Add messages to conversations
+                // Stagger messages across the week instead of delivering all at once
+                // Some messages arrive on day 1 (immediate reactions), others are scattered
+                const immediateMessages: typeof generatedMessages = []
+                const queuedForLater: Array<{ msg: typeof generatedMessages[0]; deliveryDay: number; deliveryHour: number }> = []
+                
+                for (let i = 0; i < generatedMessages.length; i++) {
+                  const genMsg = generatedMessages[i]
+                  const contact = currentMessaging.contacts.find(c => c.id === genMsg.contactId)
+                  
+                  // Race-related messages arrive immediately (people react right away)
+                  const isUrgent = genMsg.message.content?.includes('race') || genMsg.message.content?.includes('crash') || genMsg.message.content?.includes('win')
+                  // Partner/family messages also tend to come quickly
+                  const isPriority = contact?.type === 'partner' || contact?.type === 'family'
+                  
+                  if (isUrgent || isPriority || i === 0) {
+                    // Deliver immediately
+                    immediateMessages.push(genMsg)
+                  } else {
+                    // Schedule for later in the week (day 2-6, random hour 8-21)
+                    const deliveryDay = 2 + Math.floor(Math.random() * 5) // Day 2-6
+                    const deliveryHour = 8 + Math.floor(Math.random() * 13) // 8am-9pm
+                    queuedForLater.push({ msg: genMsg, deliveryDay, deliveryHour })
+                  }
+                }
+                
+                // Deliver immediate messages now
                 const updatedConversations = { ...currentMessaging.conversations }
                 let totalNewUnread = 0
+                const newPendingRequests: Array<any> = []
+                const currentHourForDelivery = get().careerState?.dayBudget?.currentHour ?? 7
                 
-                for (const genMsg of generatedMessages) {
-                  const existingConv = updatedConversations[genMsg.conversationId]
+                for (const genMsg of immediateMessages) {
+                  const canonicalConvId = genMsg.conversationId.startsWith('conv-')
+                    ? `conv_${genMsg.conversationId.slice(5)}`
+                    : genMsg.conversationId
+                  const altConvId = canonicalConvId.startsWith('conv_')
+                    ? `conv-${canonicalConvId.slice(5)}`
+                    : canonicalConvId
+                  const existingConv = updatedConversations[canonicalConvId] || updatedConversations[altConvId]
+                  const deliveredMessage = {
+                    ...genMsg.message,
+                    conversationId: canonicalConvId,
+                    timestamp: { week: newWeek, day: 1, hour: currentHourForDelivery, year: newYear },
+                    isRead: false,
+                    read: false,
+                  }
                   
                   if (existingConv) {
-                    // Add to existing conversation
-                    updatedConversations[genMsg.conversationId] = {
+                    if (!updatedConversations[canonicalConvId] && updatedConversations[altConvId]) {
+                      delete updatedConversations[altConvId]
+                    }
+                    updatedConversations[canonicalConvId] = {
                       ...existingConv,
-                      messages: [...existingConv.messages, genMsg.message],
+                      messages: [...existingConv.messages, deliveredMessage],
                       unreadCount: existingConv.unreadCount + 1,
-                      lastMessageTime: genMsg.message.timestamp,
+                      lastMessageTime: deliveredMessage.timestamp,
                       awaitingResponse: true
                     }
                   } else {
-                    // Create new conversation
                     const contact = currentMessaging.contacts.find(c => c.id === genMsg.contactId)
                     if (contact) {
-                      updatedConversations[genMsg.conversationId] = {
-                        id: genMsg.conversationId,
+                      updatedConversations[canonicalConvId] = {
+                        id: canonicalConvId,
                         contactId: genMsg.contactId,
                         contactName: contact.name,
                         contactType: contact.type === 'partner' || contact.type === 'potential_date' ? 'romantic' : 
                                      contact.type === 'family' ? 'family' : 'social',
                         isActive: true,
-                        lastMessageTime: genMsg.message.timestamp,
+                        lastMessageTime: deliveredMessage.timestamp,
                         unreadCount: 1,
-                        messages: [genMsg.message],
+                        messages: [deliveredMessage],
                         relationshipLevel: contact.relationshipLevel,
                         currentMood: contact.currentMood,
                         awaitingResponse: true,
@@ -9695,20 +13780,206 @@ export const useCareerStore = create<CareerStore>()(
                     }
                   }
                   totalNewUnread++
+                  
+                  // Process actionRequest from NPC-initiated messages (e.g., partner dinner invite)
+                  if (genMsg.actionRequest && genMsg.actionRequest.type && genMsg.actionRequest.description) {
+                    const validTypes = ['social_invite', 'dinner_invite', 'date_request', 'introduction', 'sponsor_appearance', 'career_favor', 'race_tickets', 'advice', 'media_request', 'charity_ask']
+                    if (validTypes.includes(genMsg.actionRequest.type)) {
+                      newPendingRequests.push({
+                        id: `req_npc_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                        contactId: genMsg.contactId,
+                        type: genMsg.actionRequest.type,
+                        description: genMsg.actionRequest.description,
+                        timeCost: genMsg.actionRequest.timeCost ?? undefined,
+                        moneyCost: genMsg.actionRequest.moneyCost ?? undefined,
+                        suggestedDay: genMsg.actionRequest.suggestedDay ?? undefined,
+                        suggestedWeek: genMsg.actionRequest.suggestedWeek ?? undefined,
+                        eventName: genMsg.actionRequest.eventName ?? undefined,
+                        venue: genMsg.actionRequest.venue ?? undefined,
+                        relationshipReward: 5,
+                        expiresWeek: newWeek + 2,
+                        expiresYear: newYear,
+                        status: 'pending' as const,
+                      })
+                      console.log(`[Messaging] Created pending request from NPC-initiated message: ${genMsg.actionRequest.type} from ${genMsg.contactId}`)
+                    }
+                  }
+                }
+                
+                // Queue non-urgent messages for delivery later in the week
+                // (actionRequests from queued messages are processed at delivery time)
+                const newQueuedMessages: import('@/types/personalLife').QueuedNpcMessage[] = queuedForLater.map(({ msg, deliveryDay, deliveryHour }) => ({
+                  id: `queued_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                  conversationId: msg.conversationId.startsWith('conv-') ? `conv_${msg.conversationId.slice(5)}` : msg.conversationId,
+                  contactId: msg.contactId,
+                  message: {
+                    ...msg.message,
+                    conversationId: msg.conversationId.startsWith('conv-') ? `conv_${msg.conversationId.slice(5)}` : msg.conversationId,
+                    timestamp: { week: newWeek, day: deliveryDay, hour: deliveryHour, year: newYear },
+                    isRead: false,
+                    read: false,
+                  },
+                  actionRequest: msg.actionRequest ?? undefined,
+                  scheduledDeliveryHour: deliveryHour,
+                  scheduledDeliveryDay: deliveryDay,
+                  scheduledDeliveryWeek: newWeek,
+                  scheduledDeliveryYear: newYear,
+                  delivered: false,
+                }))
+                
+                if (queuedForLater.length > 0) {
+                  console.log(`[Messaging] Queued ${queuedForLater.length} message(s) for staggered delivery this week`)
                 }
                 
                 // Update messaging state
+                const updatedMessaging = {
+                  ...currentMessaging,
+                  conversations: updatedConversations,
+                  unreadTotal: currentMessaging.unreadTotal + totalNewUnread,
+                  lastMessageTime: { week: newWeek, day: 1, year: newYear },
+                  queuedMessages: [
+                    ...(currentMessaging.queuedMessages || []),
+                    ...newQueuedMessages,
+                  ],
+                  pendingRequests: [
+                    ...(currentMessaging.pendingRequests || []),
+                    ...newPendingRequests,
+                  ],
+                }
+                
                 set({
                   careerState: {
                     ...get().careerState!,
-                    messaging: {
-                      ...currentMessaging,
-                      conversations: updatedConversations,
-                      unreadTotal: currentMessaging.unreadTotal + totalNewUnread,
-                      lastMessageTime: { week: newWeek, day: 1, year: newYear }
-                    }
+                    messaging: updatedMessaging
                   }
                 })
+              }
+              
+              // ── Generate contact-initiated gameplay requests ──
+              const latestMessaging = get().careerState?.messaging
+              if (latestMessaging) {
+                try {
+                  const newRequests = generateWeeklyContactRequests(
+                    latestMessaging.contacts || [],
+                    newWeek,
+                    newYear,
+                    latestMessaging.pendingRequests || []
+                  )
+                  
+                  if (newRequests.length > 0) {
+                    console.log(`[Messaging] Week ${newWeek}: Generated ${newRequests.length} contact request(s)`)
+                    set({
+                      careerState: {
+                        ...get().careerState!,
+                        messaging: {
+                          ...get().careerState!.messaging!,
+                          pendingRequests: [
+                            ...(get().careerState!.messaging!.pendingRequests || []),
+                            ...newRequests
+                          ]
+                        }
+                      }
+                    })
+                  }
+                } catch (reqErr) {
+                  console.error('[Messaging] Failed to generate contact requests:', reqErr)
+                }
+                
+                // ── Calculate messaging impact on stats ──
+                try {
+                  const impactMessaging = get().careerState?.messaging
+                  if (impactMessaging) {
+                    const impact = calculateMessagingImpact(impactMessaging, newWeek, newYear)
+                    
+                    if (impact.reasons.length > 0) {
+                      console.log(`[Messaging] Stat effects:`, impact.reasons.join('; '))
+                      
+                      // Apply stress/morale/reputation changes
+                      const currentPlayer = get().player
+                      if (currentPlayer && (impact.stressChange || impact.moraleChange || impact.reputationChange)) {
+                        const baseUpdatedPlayer = {
+                          ...currentPlayer,
+                          mentalState: {
+                            ...currentPlayer.mentalState,
+                            stress: Math.max(0, Math.min(100, currentPlayer.mentalState.stress + impact.stressChange)),
+                            morale: Math.max(0, Math.min(100, (currentPlayer.mentalState.morale || 50) + impact.moraleChange)),
+                          }
+                        }
+                        const repApplied = applyReputationDeltaToPrimaryContext(
+                          baseUpdatedPlayer,
+                          get().careerState,
+                          impact.reputationChange || 0
+                        )
+                        set({
+                          player: repApplied.updatedPlayer,
+                          ...(repApplied.updatedCareerState ? { careerState: repApplied.updatedCareerState } : {})
+                        })
+                      }
+                      
+                      // Apply partner happiness change
+                      if (impact.partnerHappinessChange) {
+                        const curMessaging = get().careerState?.messaging
+                        if (curMessaging) {
+                          const partnerContact = curMessaging.contacts.find(c => c.type === 'partner')
+                          if (partnerContact) {
+                            const updatedContacts = curMessaging.contacts.map(c =>
+                              c.id === partnerContact.id
+                                ? {
+                                    ...c,
+                                    affectionMeter: Math.max(0, Math.min(100, (c.affectionMeter || 50) + impact.partnerHappinessChange)),
+                                  }
+                                : c
+                            )
+                            set({
+                              careerState: {
+                                ...get().careerState!,
+                                messaging: {
+                                  ...curMessaging,
+                                  contacts: updatedContacts,
+                                }
+                              }
+                            })
+                          }
+                        }
+                        
+                        // Also update partner happiness in personalLife family
+                        const curPersonal = get().careerState?.personalLife
+                        if (curPersonal?.family?.partner) {
+                          const curPartner = curPersonal.family.partner
+                          const newHappiness = Math.max(0, Math.min(100, (curPartner.happiness || 50) + impact.partnerHappinessChange))
+                          set({
+                            careerState: {
+                              ...get().careerState!,
+                              personalLife: {
+                                ...curPersonal,
+                                family: {
+                                  ...curPersonal.family,
+                                  partner: {
+                                    ...curPartner,
+                                    happiness: newHappiness,
+                                  }
+                                }
+                              }
+                            }
+                          })
+                        }
+                      }
+                      
+                      // Apply team morale change (propagate to individual staff + recalc average)
+                      if (impact.teamMoraleChange && get().careerState?.ownedTeam) {
+                        const curTeam = get().careerState!.ownedTeam!
+                        set({
+                          careerState: {
+                            ...get().careerState!,
+                            ownedTeam: applyTeamMoraleDelta(curTeam, impact.teamMoraleChange),
+                          }
+                        })
+                      }
+                    }
+                  }
+                } catch (impactErr) {
+                  console.error('[Messaging] Failed to calculate messaging impact:', impactErr)
+                }
               }
             }).catch(err => {
               console.error('[Messaging] Failed to process weekly messages:', err)
@@ -9812,39 +14083,8 @@ export const useCareerStore = create<CareerStore>()(
             }
           }
 
-          // ============================================
-          // Process Injury Healing
-          // ============================================
-          if (updatedCareerState.rpgState.injury.injured) {
-            const injury = updatedCareerState.rpgState.injury
-            const fitnessModifier = updatedPlayer.stats.fitness / 100
-            const healingRate = 0.5 + (fitnessModifier * 0.5)
-            const weeksHealed = Math.ceil(healingRate)
-            const newRecoveryWeeks = Math.max(0, injury.recoveryWeeksRemaining - weeksHealed)
-
-            if (newRecoveryWeeks <= 0) {
-              console.log('[CareerStore] Injury healed!')
-              updatedCareerState = {
-                ...updatedCareerState,
-                rpgState: {
-                  ...updatedCareerState.rpgState,
-                  injury: createDefaultInjuryState()
-                }
-              }
-            } else {
-              updatedCareerState = {
-                ...updatedCareerState,
-                rpgState: {
-                  ...updatedCareerState.rpgState,
-                  injury: {
-                    ...injury,
-                    recoveryWeeksRemaining: newRecoveryWeeks
-                  }
-                }
-              }
-              console.log(`[CareerStore] Injury recovery: ${newRecoveryWeeks} weeks remaining`)
-            }
-          }
+          let completedUpgradesThisWeek: string[] = []
+          let teamDevPerformanceImprovement = 0
 
           // ============================================
           // Update Team Development (Legacy - from technical feedback)
@@ -9911,12 +14151,65 @@ export const useCareerStore = create<CareerStore>()(
                 emailCategory: 'team'
               })
             }
+
+            completedUpgradesThisWeek = devResult.completedUpgrades.map(u => u.name)
+            const totalDevPointsGained = Object.values(devResult.pointsGained).reduce(
+              (sum, points) => sum + points,
+              0
+            )
+            teamDevPerformanceImprovement = Math.round(totalDevPointsGained * 10) / 10
           }
           
           // Update AI team development
           const aiDevEvents = rivalStore.updateAllTeamDevelopment(newWeek)
           if (aiDevEvents.length > 0) {
             console.log(`[AI Team Dev] ${aiDevEvents.length} team events this week`)
+            
+            // Surface breakthrough events as scouting intel emails
+            const playerSeriesIds = new Set(
+              (updatedCareerState.seriesEntries || []).map(e => e.seriesId)
+            )
+            const relevantEvents = aiDevEvents.filter(evt => {
+              if (!evt.teamId) return false
+              const team = rivalStore.getTeamById(evt.teamId)
+              return team && playerSeriesIds.has(team.seriesId)
+            })
+            
+            for (const evt of relevantEvents) {
+              const team = rivalStore.getTeamById(evt.teamId!)
+              if (!team) continue
+              const areaLabel = evt.area
+                ? evt.area.charAt(0).toUpperCase() + evt.area.slice(1)
+                : 'General'
+              const isPositive = evt.type === 'rival_upgrade' || evt.type === 'breakthrough'
+              
+              get().addEmail({
+                category: 'team',
+                subject: isPositive
+                  ? `Intel: ${team.name} Development Breakthrough`
+                  : `Intel: ${team.name} Suffers Setback`,
+                sender: 'Technical Department',
+                senderRole: 'Engineering Intelligence',
+                preview: isPositive
+                  ? `Our engineers report that ${team.name} have made significant progress in ${areaLabel.toLowerCase()}.`
+                  : `Sources indicate ${team.name} have experienced a setback in their ${areaLabel.toLowerCase()} programme.`,
+                body: isPositive
+                  ? `Team Principal,\n\nOur technical scouts have identified a notable development at ${team.name}. They appear to have made a breakthrough in their ${areaLabel.toLowerCase()} programme this week.\n\n${evt.description}\n\nThis could improve their competitiveness in upcoming races. You may want to consider accelerating your own development in response.\n\nRegards,\nTechnical Department`
+                  : `Team Principal,\n\nOur intelligence suggests ${team.name} have hit a problem with their ${areaLabel.toLowerCase()} development. ${evt.description}\n\nThis could slow their progress, giving us an opportunity to close the gap.\n\nRegards,\nTechnical Department`,
+                receivedDay: 1,
+                receivedWeek: newWeek,
+                receivedYear: newYear,
+                read: false,
+                starred: false,
+                archived: false,
+                actionType: 'acknowledge',
+                interruptClass: 'digest',
+                digestMode: 'digest'
+              })
+            }
+            if (relevantEvents.length > 0) {
+              console.log(`[AI Team Dev] Generated ${relevantEvents.length} intel email(s) for player's series`)
+            }
           }
           
           // ============================================
@@ -10031,7 +14324,7 @@ export const useCareerStore = create<CareerStore>()(
           // Invitational Events - Check for New Invitations
           // ============================================
           // Only check on non-race weeks when player has a contract
-          if (!nextWeekIsRaceWeek && updatedPlayer.contract && updatedPlayer.reputation >= 30) {
+          if (!coreLoopMode && !nextWeekIsRaceWeek && updatedPlayer.contract && updatedPlayer.reputation >= 30) {
             // Calculate how many weeks until next race
             const weeksUntilNextRace = currentSeriesForWeek?.calendar
               ?.filter(e => e.week > newWeek)
@@ -10124,44 +14417,55 @@ export const useCareerStore = create<CareerStore>()(
           // Generate Team Opportunities (weekly)
           // Non-racing opportunities like media, manufacturer programs, special events
           // ============================================
-          if (updatedCareerState.ownedTeam) {
+          if (!coreLoopMode && updatedCareerState.ownedTeam) {
             // Build generation context
             // Get recent races from raceHistory - use date string to filter for current year
             const recentRaces = (updatedPlayer.raceHistory || [])
               .filter(r => r.date && new Date(r.date).getFullYear() === updatedCareerState.currentYear)
               .slice(-5)
             
-            const generationContext: OpportunityGenerationContext = {
-              reputation: updatedPlayer.reputation,
-              teamName: updatedCareerState.ownedTeam.name,
-              playerNationality: updatedPlayer.nationality,
-              recentResults: {
-                wins: recentRaces.filter(r => r.racePosition === 1).length,
-                podiums: recentRaces.filter(r => r.racePosition <= 3).length,
-                races: recentRaces.length
-              },
-              hasWonChampionship: (updatedPlayer.championships || 0) > 0,
-              manufacturerRelationships: updatedCareerState.manufacturerRelationships || {},
-              activeSponsors: (updatedCareerState.ownedTeam.finances?.sponsors || []) as unknown as SponsorDeal[],
+            const generationContext = {
+              teamReputation: updatedPlayer.reputation,
+              recentResults: recentRaces.map((r: { racePosition: number; points?: number }) => ({ position: r.racePosition, points: r.points ?? 0 })),
               currentWeek: newWeek,
               currentYear: newYear,
-              teamAge: 1, // Default to 1 season as team age tracking isn't in OwnedTeam
-              acceptedOpportunitiesThisSeason: updatedCareerState.acceptedOpportunitiesThisSeason || [],
-              declinedOpportunitiesThisSeason: updatedCareerState.declinedOpportunitiesThisSeason || [],
-              lastOpportunityWeeks: updatedCareerState.lastOpportunityOfferWeeks || {},
-              pendingOpportunities: updatedCareerState.pendingOpportunities || []
-            }
+              existingOpportunities: updatedCareerState.pendingOpportunities || [],
+              teamTier: updatedCareerState.ownedTeam?.tier ?? 'amateur'
+            } as OpportunityGenerationContext
             
-            // Generate opportunities
+            // Generate opportunities (returns TeamOpportunity[])
             const opportunityResult = generateWeeklyOpportunities(generationContext)
             
-            if (opportunityResult.opportunities.length > 0) {
+            if (opportunityResult.length > 0) {
               // Create emails and update state for each opportunity
               const newOpportunityEmails: Email[] = []
               const newPendingOpportunities = [...(updatedCareerState.pendingOpportunities || [])]
               const updatedLastOfferWeeks = { ...(updatedCareerState.lastOpportunityOfferWeeks || {}) }
               
-              for (const opportunity of opportunityResult.opportunities) {
+              // Build template replacement context for opportunities
+              const teamName = updatedCareerState.ownedTeam?.name || 'the team'
+              const manufacturerId = (updatedCareerState as any).cars?.[0]?.manufacturerId || updatedPlayer.contract?.manufacturerId
+              const manufacturerName = manufacturerId ? (MANUFACTURERS[manufacturerId]?.name || manufacturerId) : 'the manufacturer'
+              const playerName = `${updatedPlayer.firstName} ${updatedPlayer.lastName}`
+              
+              const replaceTemplateVars = (text: string): string => {
+                return text
+                  .replace(/\{\{manufacturerName\}\}/g, manufacturerName)
+                  .replace(/\{\{teamName\}\}/g, teamName)
+                  .replace(/\{\{playerName\}\}/g, playerName)
+                  .replace(/\{\{sponsorName\}\}/g, 'our sponsor')
+              }
+              
+              for (const opportunity of opportunityResult) {
+                // Replace template variables in all text fields
+                opportunity.emailSubjectTemplate = replaceTemplateVars(opportunity.emailSubjectTemplate)
+                opportunity.emailBodyTemplate = replaceTemplateVars(opportunity.emailBodyTemplate)
+                opportunity.organizerName = replaceTemplateVars(opportunity.organizerName)
+                opportunity.name = replaceTemplateVars(opportunity.name)
+                if (opportunity.description) {
+                  opportunity.description = replaceTemplateVars(opportunity.description)
+                }
+                
                 // Determine email action type based on category
                 let actionType: Email['actionType'] = 'opportunity_special'
                 if (opportunity.category === 'media_appearance') {
@@ -10215,7 +14519,7 @@ export const useCareerStore = create<CareerStore>()(
             
             // Expire old opportunities
             const validPendingOpportunities = (updatedCareerState.pendingOpportunities || []).filter(
-              opp => !hasOpportunityExpired(opp, newWeek, newYear)
+              opp => !hasOpportunityExpired(opp, newWeek)
             )
             if (validPendingOpportunities.length !== (updatedCareerState.pendingOpportunities || []).length) {
               const expiredOppCount = (updatedCareerState.pendingOpportunities || []).length - validPendingOpportunities.length
@@ -10498,10 +14802,16 @@ export const useCareerStore = create<CareerStore>()(
             const isFinanciallyHealthy = teamCash > 0
             
             let boardMoodChange = 0
+            // Board patience perk: extra weeks of patience reduce negative mood decay
+            const boardPatienceWeeks = getBoardPatienceModifier()
+            const patienceDamper = boardPatienceWeeks > 0 ? Math.max(0.4, 1 - boardPatienceWeeks * 0.1) : 1
+            
             if (currentBoardMood > 60 && !isFinanciallyHealthy) {
-              boardMoodChange = -1 // Board unhappy about finances
+              boardMoodChange = -2.5 * patienceDamper // Board unhappy about finances (patience reduces this)
+            } else if (currentBoardMood > 70) {
+              boardMoodChange = -2.0 * patienceDamper // High board mood decays faster
             } else if (currentBoardMood > 55) {
-              boardMoodChange = -0.3 // Natural slow decay when high
+              boardMoodChange = -1.0 * patienceDamper // Natural decay when above neutral
             } else if (currentBoardMood < 40 && isFinanciallyHealthy) {
               boardMoodChange = 0.5 // Recovering if finances are OK
             } else if (currentBoardMood < 30) {
@@ -10513,6 +14823,23 @@ export const useCareerStore = create<CareerStore>()(
                 ...ownedTeam, 
                 boardMood: Math.round(Math.max(0, Math.min(100, currentBoardMood + boardMoodChange)) * 10) / 10 
               }
+            }
+            
+            // Team morale: natural weekly decay when high (staff complacency / expectations rise)
+            const avgStaffMorale = ownedTeam.staff.length > 0
+              ? ownedTeam.staff.reduce((sum, s) => sum + (s.morale || 70), 0) / ownedTeam.staff.length
+              : 70
+            let staffMoraleDecay = 0
+            if (avgStaffMorale > 75) {
+              staffMoraleDecay = -1.5 // High morale naturally drifts down
+            } else if (avgStaffMorale > 60) {
+              staffMoraleDecay = -0.5 // Moderate decay above neutral
+            }
+            if (staffMoraleDecay !== 0) {
+              ownedTeam = applyTeamMoraleDelta(ownedTeam, staffMoraleDecay)
+            } else {
+              // Even with no decay, ensure teamMorale is synced with staff average
+              ownedTeam = recalcTeamMorale(ownedTeam)
             }
             
             updatedCareerState = {
@@ -10615,9 +14942,45 @@ export const useCareerStore = create<CareerStore>()(
           }
           
           // ============================================
+          // Generate PA Weekly Planning Email
+          // ============================================
+          {
+            const planningEmail = generateWeeklyPlanningEmail(
+              updatedCareerState,
+              updatedPlayer as unknown as Record<string, unknown>
+            )
+            
+            if (planningEmail) {
+              const paEmail: Email = {
+                ...planningEmail,
+                id: `email_pa_planner_w${newWeek}_${newYear}`
+              }
+              
+              updatedCareerState = {
+                ...updatedCareerState,
+                emails: [paEmail, ...(updatedCareerState.emails || [])]
+              }
+              
+              console.log(`[CareerStore] PA weekly planning email generated for Week ${newWeek}`)
+            }
+          }
+          
+          // ============================================
           // Process Orphaned Simulation Systems (Pressure, Relationships, Health, Media)
           // ============================================
           try {
+            const raceProgress = updatedCareerState.raceWeekendProgress
+            const lastRaceWasThisWeek = !!raceProgress?.race?.completed
+              && raceProgress.week === (newWeek - 1)
+              && raceProgress.year === newYear
+            const latestRace = updatedPlayer.raceHistory?.[updatedPlayer.raceHistory.length - 1]
+            const standingsForExpectations = useRivalStore.getState().getStandings(updatedPlayer.currentSeriesId || '')
+            const playerStanding = standingsForExpectations.find(s => s.isPlayer)
+            const expectedPosition = playerStanding?.position || 10
+            const latestRaceResult = lastRaceWasThisWeek && latestRace
+              ? { position: latestRace.racePosition, expectedPosition, dnf: latestRace.dnf }
+              : undefined
+
             const weeklySystemsCtx: WeeklyProcessingContext = {
               playerReputation: updatedPlayer.reputation,
               playerFatigue: updatedPlayer.mentalState.fatigue,
@@ -10628,24 +14991,45 @@ export const useCareerStore = create<CareerStore>()(
               playerNationality: updatedPlayer.nationality,
               playerBackground: updatedPlayer.background,
               playerStats: updatedPlayer.stats,
-              championshipPosition: updatedCareerState.championshipPosition || 10,
-              pointsToLeader: updatedCareerState.pointsToLeader || 0,
-              roundsRemaining: updatedCareerState.roundsRemaining || 20,
-              totalRounds: updatedCareerState.totalRounds || 20,
+              championshipPosition: ((updatedCareerState as Record<string, unknown>).championshipPosition as number | undefined) ?? 10,
+              pointsToLeader: ((updatedCareerState as Record<string, unknown>).pointsToLeader as number | undefined) ?? 0,
+              roundsRemaining: ((updatedCareerState as Record<string, unknown>).roundsRemaining as number | undefined) ?? 20,
+              totalRounds: ((updatedCareerState as Record<string, unknown>).totalRounds as number | undefined) ?? 20,
               isHomeRace: false,
               isContractYear: updatedPlayer.contract?.endYear === newYear,
               recentResults: updatedPlayer.raceHistory?.slice(-5) || [],
               hasOwnedTeam: !!updatedCareerState.ownedTeam,
               boardMood: updatedCareerState.ownedTeam?.boardMood ?? 50,
-              teamMorale: updatedCareerState.ownedTeam?.morale ?? 50,
+              teamMorale: updatedCareerState.ownedTeam?.teamMorale ?? 50,
               teamCash: updatedCareerState.ownedTeam?.budgets?.cash ?? 0,
               staffCount: updatedCareerState.ownedTeam?.staff?.length ?? 0,
               currentWeek: newWeek,
               currentYear: newYear,
               isRaceWeek: nextWeekIsRaceWeek,
               mediaState: updatedCareerState.teamMediaState,
-              existingPressureState: updatedCareerState.pressureState,
-              existingRelationshipState: updatedCareerState.relationshipState
+              upgradesMade: completedUpgradesThisWeek,
+              performanceImprovement: teamDevPerformanceImprovement,
+              existingPressureState: (updatedCareerState as Record<string, unknown>).pressureState as unknown,
+              existingRelationshipState: (updatedCareerState as Record<string, unknown>).relationshipState as never,
+              existingInjuryState: updatedCareerState.rpgState?.injury,
+              latestRaceResult,
+              // Promise system data
+              promises: updatedCareerState.promises || [],
+              sponsorSatisfaction: updatedCareerState.ownedTeam?.finances?.sponsors?.reduce(
+                (sum: number, s: any) => sum + (s.satisfaction || 70), 0
+              ) / Math.max(1, updatedCareerState.ownedTeam?.finances?.sponsors?.length || 1) || 70,
+              driverMorale: updatedPlayer.mentalState.morale || 70,
+              fanSentiment: updatedCareerState.ownedTeam?.fanSentiment ?? 50,
+              recentRaceResults: (updatedPlayer.raceHistory || []).slice(-5).map((r: any) => ({
+                position: r.position ?? 99,
+                week: r.week ?? 0
+              })),
+              recentSpending: [],  // Could be populated from transaction history if available
+              scheduledActivities: (updatedCareerState.scheduledActivities || []).map((a: any) => ({
+                category: a.category || 'team',
+                week: a.scheduledWeek || 0,
+                status: a.status || 'scheduled'
+              }))
             }
             
             const weeklyResult = processWeeklySystems(weeklySystemsCtx)
@@ -10657,15 +15041,22 @@ export const useCareerStore = create<CareerStore>()(
                 ...updatedPlayer.mentalState,
                 stress: Math.max(0, Math.min(100, (updatedPlayer.mentalState.stress || 0) + weeklyResult.statChanges.stress)),
                 confidence: Math.max(0, Math.min(100, updatedPlayer.mentalState.confidence + weeklyResult.statChanges.confidence))
-              },
-              reputation: Math.max(0, Math.min(100, updatedPlayer.reputation + weeklyResult.statChanges.reputation))
+              }
+            }
+            const weeklyRepApplied = applyReputationDeltaToPrimaryContext(
+              updatedPlayer,
+              updatedCareerState,
+              weeklyResult.statChanges.reputation
+            )
+            updatedPlayer = weeklyRepApplied.updatedPlayer
+            if (weeklyRepApplied.updatedCareerState) {
+              updatedCareerState = weeklyRepApplied.updatedCareerState
             }
             
-            // Store pressure and relationship states
+            // Store pressure and relationship states, plus pressure AI modifier for race calculations
             updatedCareerState = {
               ...updatedCareerState,
-              pressureState: weeklyResult.pressureState,
-              relationshipState: weeklyResult.relationshipState
+              ...(({ pressureState: weeklyResult.pressureState, relationshipState: weeklyResult.relationshipState, pressureAIModifier: weeklyResult.pressureEffect?.aiModifier ?? 0 } as Partial<typeof updatedCareerState>))
             }
             
             // Apply board mood changes
@@ -10678,6 +15069,14 @@ export const useCareerStore = create<CareerStore>()(
                     (updatedCareerState.ownedTeam.boardMood ?? 50) + weeklyResult.statChanges.boardMood
                   ))
                 }
+              }
+            }
+            
+            // Apply team morale changes from weekly subsystems (propagate to individual staff + recalc average)
+            if (updatedCareerState.ownedTeam && weeklyResult.statChanges.teamMorale !== 0) {
+              updatedCareerState = {
+                ...updatedCareerState,
+                ownedTeam: applyTeamMoraleDelta(updatedCareerState.ownedTeam, weeklyResult.statChanges.teamMorale)
               }
             }
             
@@ -10720,17 +15119,691 @@ export const useCareerStore = create<CareerStore>()(
               } as Email)
             }
             
-            // Apply injury if one occurred
-            if (weeklyResult.injuryOccurred && weeklyResult.newInjury) {
+            // Promise system emails
+            for (const promEmail of (weeklyResult.promiseEmails || [])) {
+              subsystemEmails.push({
+                ...promEmail,
+                id: `email_promise_w${newWeek}_${newYear}_${Math.random().toString(36).substr(2, 6)}`,
+                receivedDay: 1,
+                receivedWeek: newWeek,
+                receivedYear: newYear,
+                read: false,
+                starred: false,
+                archived: false
+              } as Email)
+            }
+            
+            // Update promises from weekly evaluation
+            if (weeklyResult.promiseProcessingResult) {
+              updatedCareerState = {
+                ...updatedCareerState,
+                promises: weeklyResult.promiseProcessingResult.updatedPromises
+              }
+            }
+
+            // ============================================
+            // STAFF DELEGATION PROCESSING
+            // ============================================
+            // Process auto-managed decisions from delegated staff roles
+            if (updatedCareerState.ownedTeam?.delegationFlags) {
+              const delegationFlags = coreLoopMode
+                ? Object.fromEntries(
+                    Object.entries(updatedCareerState.ownedTeam.delegationFlags).map(([domain, enabled]) => [
+                      domain,
+                      (domain === 'mandatory_scheduling' || domain === 'logistics') ? enabled : false
+                    ])
+                  )
+                : updatedCareerState.ownedTeam.delegationFlags
+              const hasActiveDelegation = Object.values(delegationFlags).some(v => v)
+              
+              if (hasActiveDelegation) {
+                // Build staff info from BOTH team staff and facility staff arrays
+                // (hired team staff like Technical Director are stored in facilityStaff)
+                const allDelegationStaff = [
+                  ...(updatedCareerState.ownedTeam.staff || []),
+                  ...(updatedCareerState.ownedTeam.facilityStaff || [])
+                ]
+                const staffInfo = allDelegationStaff.map((s: any) => ({
+                  name: s.name || 'Staff',
+                  role: s.role || 'team_manager',
+                  skill: s.skills
+                    ? Math.max(
+                        s.skills.technical || 0,
+                        s.skills.management || 0,
+                        s.skills.innovation || 0,
+                        s.skills.reliability || 0,
+                        s.skills.communication || 0
+                      )
+                    : 50,
+                  experience: s.experience || 1,
+                  secondarySkill: s.skills
+                    ? Math.round(
+                        Object.values(s.skills as Record<string, number>).reduce((a: number, b: number) => a + b, 0) / 
+                        Math.max(1, Object.keys(s.skills).length)
+                      )
+                    : undefined
+                }))
+                
+                // ── Build enriched delegation context ──
+                const spareParts = updatedCareerState.ownedTeam.spareParts
+                const sparePartsCount = spareParts?.inventory?.length ?? 0
+                const partsInManufacturing = spareParts?.manufacturingQueue?.filter((j: any) => j.status === 'in_progress').length ?? 0
+                
+                // R&D areas + research projects
+                const devAreas: Record<string, number> = {}
+                const devCurrentResearch: Record<string, string | null> = {}
+                let devAvailableUpgrades: { id: string; name: string; area: string; cost: number; tier: number }[] = []
+                if (updatedCareerState.teamDevelopment?.areas) {
+                  const areas = updatedCareerState.teamDevelopment.areas as unknown as Record<string, { points: number; currentUpgradeId: string | null; completedUpgrades: string[] }>
+                  for (const [area, data] of Object.entries(areas)) {
+                    devAreas[area] = data?.points ?? 0
+                    devCurrentResearch[area] = data?.currentUpgradeId ?? null
+                  }
+                  // Get available upgrades using the imported function
+                  const devAreaKeys: DevelopmentArea[] = ['aerodynamics', 'chassis', 'powertrain', 'electronics']
+                  for (const area of devAreaKeys) {
+                    const available = getAvailableUpgrades(updatedCareerState.teamDevelopment, area)
+                    devAvailableUpgrades.push(...available.map(u => ({
+                      id: u.id,
+                      name: u.name,
+                      area: u.area,
+                      cost: u.researchCost,
+                      tier: u.tier
+                    })))
+                  }
+                }
+                
+                // Media state
+                const teamSocial = updatedCareerState.teamMediaState?.teamSocial
+                const socialFollowers = teamSocial?.followers ?? 0
+                const lastPostWeek = teamSocial?.postHistory?.[0]?.week ?? 0
+                
+                // Pending mandatory activities
+                const pendingMandatory = (updatedCareerState.scheduledActivities || []).filter(
+                  (a: any) => a.mandatory && a.status === 'scheduled'
+                )
+                
+                // Vacant team roles (for scouting delegation)
+                const filledRoles = new Set(allDelegationStaff.map((s: any) => s.role))
+                const allTeamRoles = ['chief_engineer', 'technical_director', 'strategist', 'race_engineer', 'crew_chief', 'team_manager', 'pr_manager', 'data_analyst', 'performance_engineer']
+                const vacantRoles = allTeamRoles.filter(r => !filledRoles.has(r))
+                
+                const delegationCtx = {
+                  teamCash: updatedCareerState.ownedTeam.budgets?.cash ?? 0,
+                  teamReputation: updatedCareerState.ownedTeam.reputation,
+                  boardMood: updatedCareerState.ownedTeam.boardMood,
+                  teamMorale: updatedCareerState.ownedTeam.teamMorale || 70,
+                  sparePartsCount,
+                  manufacturingQueueLength: spareParts?.manufacturingQueue?.length ?? 0,
+                  upcomingRaceWeeks: nextWeekIsRaceWeek ? 0 : 2,
+                  currentWeek: newWeek,
+                  currentYear: newYear,
+                  isRaceWeek: nextWeekIsRaceWeek,
+                  // Enriched context
+                  devAreas,
+                  devCurrentFocus: updatedCareerState.teamDevelopment?.budget?.focusArea ?? 'balanced',
+                  devCurrentResearch,
+                  devAvailableUpgrades,
+                  socialFollowers,
+                  lastPostWeek,
+                  teamName: updatedCareerState.ownedTeam.name,
+                  manufacturingFacilityLevel: updatedCareerState.ownedTeam.facilities?.manufacturing?.level ?? 1,
+                  partsInManufacturing,
+                  marketingBudget: updatedCareerState.ownedTeam.budgets?.marketingBudget ?? 0,
+                  merchProductCount: updatedCareerState.ownedTeam.finances?.extended?.merchandise?.products?.length ?? 0,
+                  pendingMandatoryCount: pendingMandatory.length,
+                  scheduledActivityCount: (updatedCareerState.scheduledActivities || []).length,
+                  scoutingBudgetRemaining: 0, // Scouting budget not tracked separately
+                  vacantRoles,
+                  lastScoutingSearchWeek: updatedCareerState.ownedTeam.lastScoutingSearchWeek,
+                  teamTier: updatedCareerState.ownedTeam.tier,
+                  ownerName: `${updatedPlayer.firstName} ${updatedPlayer.lastName}`
+                }
+                
+                const delegationResults = processWeeklyDelegation(delegationFlags, staffInfo, delegationCtx)
+                
+                // Apply delegation effects and execute game actions
+                for (const delResult of delegationResults) {
+                  // Apply budget impacts
+                  if (delResult.effects.budgetImpact && updatedCareerState.ownedTeam) {
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: {
+                        ...updatedCareerState.ownedTeam,
+                        budgets: {
+                          ...updatedCareerState.ownedTeam.budgets,
+                          cash: (updatedCareerState.ownedTeam.budgets.cash ?? 0) + delResult.effects.budgetImpact
+                        }
+                      }
+                    }
+                  }
+                  
+                  // Apply reputation changes
+                  if (delResult.effects.reputation) {
+                    const delegatedRepApplied = applyReputationDeltaToPrimaryContext(
+                      updatedPlayer,
+                      updatedCareerState,
+                      delResult.effects.reputation
+                    )
+                    updatedPlayer = delegatedRepApplied.updatedPlayer
+                    if (delegatedRepApplied.updatedCareerState) {
+                      updatedCareerState = delegatedRepApplied.updatedCareerState
+                    }
+                  }
+                  
+                  // Apply team morale changes (propagate to individual staff + recalc average)
+                  if (delResult.effects.teamMorale && updatedCareerState.ownedTeam) {
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: applyTeamMoraleDelta(updatedCareerState.ownedTeam, delResult.effects.teamMorale)
+                    }
+                  }
+                  
+                  // ── EXECUTE GAME ACTIONS ──
+                  for (const action of (delResult.gameActions || [])) {
+                    switch (action.type) {
+                      case 'set_dev_focus': {
+                        // Set R&D development focus area
+                        if (updatedCareerState.teamDevelopment) {
+                          updatedCareerState = {
+                            ...updatedCareerState,
+                            teamDevelopment: {
+                              ...updatedCareerState.teamDevelopment,
+                              budget: {
+                                ...updatedCareerState.teamDevelopment.budget,
+                                focusArea: action.area as any
+                              }
+                            }
+                          }
+                        }
+                        break
+                      }
+                      
+                      case 'start_research': {
+                        // Start a specific research project via the TD delegation
+                        if (updatedCareerState.teamDevelopment) {
+                          const newDevState = startUpgradeResearch(updatedCareerState.teamDevelopment, action.upgradeId)
+                          if (newDevState) {
+                            updatedCareerState = {
+                              ...updatedCareerState,
+                              teamDevelopment: newDevState
+                            }
+                          }
+                        }
+                        break
+                      }
+                      
+                      case 'add_spare_parts': {
+                        // Use real logistics functions to add parts
+                        if (updatedCareerState.ownedTeam?.spareParts) {
+                          if (action.source === 'purchased') {
+                            // Place a real part order using placePartOrder (creates pending order with lead time)
+                            const partTypes: import('@/data/spare-parts-config').SparePartType[] = ['engine', 'chassis', 'brakes', 'suspension', 'gearbox']
+                            const partType = partTypes[Math.floor(Math.random() * partTypes.length)]
+                            const manufacturerId = (updatedCareerState as any).cars?.[0]?.manufacturerId || 'generic'
+                            const unitCost = 3000 + Math.floor(Math.random() * 2000)
+                            
+                            const orderResult = placePartOrder(
+                              updatedCareerState.ownedTeam.spareParts,
+                              partType,
+                              action.count,
+                              manufacturerId,
+                              'hq',
+                              false, // not rush
+                              unitCost,
+                              newWeek,
+                              newYear
+                            )
+                            updatedCareerState = {
+                              ...updatedCareerState,
+                              ownedTeam: {
+                                ...updatedCareerState.ownedTeam,
+                                spareParts: orderResult.state,
+                                budgets: {
+                                  ...updatedCareerState.ownedTeam.budgets,
+                                  cash: (updatedCareerState.ownedTeam.budgets.cash ?? 0) - orderResult.cost
+                                }
+                              }
+                            }
+                          } else {
+                            // Queue a real manufacturing job
+                            const partTypes: import('@/data/spare-parts-config').SparePartType[] = ['engine', 'chassis', 'brakes', 'suspension', 'gearbox']
+                            const partType = partTypes[Math.floor(Math.random() * partTypes.length)]
+                            const manufacturerId = (updatedCareerState as any).cars?.[0]?.manufacturerId || 'generic'
+                            const facilityLevel = updatedCareerState.ownedTeam.facilities?.manufacturing?.level ?? 1
+                            
+                            const mfgResult = queueManufacturingJob(
+                              updatedCareerState.ownedTeam.spareParts,
+                              partType,
+                              action.count,
+                              facilityLevel,
+                              newWeek,
+                              newYear,
+                              manufacturerId
+                            )
+                            updatedCareerState = {
+                              ...updatedCareerState,
+                              ownedTeam: {
+                                ...updatedCareerState.ownedTeam,
+                                spareParts: mfgResult.state,
+                                budgets: {
+                                  ...updatedCareerState.ownedTeam.budgets,
+                                  cash: (updatedCareerState.ownedTeam.budgets.cash ?? 0) - mfgResult.cost
+                                }
+                              }
+                            }
+                          }
+                        }
+                        break
+                      }
+                      
+                      case 'add_social_post': {
+                        // Create an actual social media post via addTeamPost after the weekly update
+                        // We queue this as an email-adjacent operation since addTeamPost requires fresh state
+                        const viralRoll = Math.random()
+                        const wentViral = viralRoll < action.viralChance
+                        const sentiment = wentViral ? 80 : (action.viralChance > 0.1 ? 60 : 40)
+                        const postEntry = {
+                          week: newWeek,
+                          year: newYear,
+                          type: 'team_update' as const,
+                          content: action.content,
+                          tone: (action.tone || 'professional') as any,
+                          engagement: {
+                            likes: Math.floor(Math.random() * (wentViral ? 5000 : 500)) + 50,
+                            shares: Math.floor(Math.random() * (wentViral ? 1000 : 100)) + 10,
+                            comments: Math.floor(Math.random() * (wentViral ? 200 : 50)) + 5,
+                            sentiment
+                          },
+                          wentViral,
+                          hadBacklash: false,
+                          effects: [] as any[],
+                          posted: true,
+                          followerGain: wentViral ? Math.floor(Math.random() * 3000) + 500 : Math.floor(Math.random() * 150) + 20
+                        }
+                        // Apply post to teamMediaState
+                        if (updatedCareerState.teamMediaState?.teamSocial) {
+                          const ts = updatedCareerState.teamMediaState.teamSocial
+                          updatedCareerState = {
+                            ...updatedCareerState,
+                            teamMediaState: {
+                              ...updatedCareerState.teamMediaState,
+                              teamSocial: {
+                                ...ts,
+                                followers: Math.max(0, ts.followers + (postEntry.followerGain ?? 0)),
+                                totalPosts: ts.totalPosts + 1,
+                                viralPosts: ts.viralPosts + (wentViral ? 1 : 0),
+                                postHistory: [{ ...postEntry, id: `post_del_${newWeek}_${newYear}` } as any, ...ts.postHistory].slice(0, 100)
+                              },
+                              seasonViralPosts: (updatedCareerState.teamMediaState.seasonViralPosts || 0) + (wentViral ? 1 : 0)
+                            }
+                          }
+                        }
+                        break
+                      }
+                      
+                      case 'schedule_mandatory': {
+                        // Queue scheduling via real scheduleActivity (deferred to after state commit)
+                        // Find unscheduled mandatory activities and schedule them
+                        const pendingMandatories = (updatedCareerState.scheduledActivities || []).filter(
+                          (a: any) => a.mandatory && a.status === 'pending' && !a.scheduledDay
+                        )
+                        if (pendingMandatories.length > 0) {
+                          // Schedule the first pending mandatory activity for the specified day
+                          deferredDelegationActions.push({
+                            type: 'schedule_mandatory',
+                            role: pendingMandatories[0].templateId || action.activityTemplateId
+                          })
+                        } else {
+                          // If no pending mandatories to schedule, use scheduleActivity to create from template
+                          deferredDelegationActions.push({
+                            type: 'schedule_mandatory',
+                            role: action.activityTemplateId
+                          })
+                        }
+                        break
+                      }
+                      
+                      case 'run_marketing_campaign': {
+                        // Use real processMarketingSpend for proper costs, transactions, and effects
+                        if (updatedCareerState.ownedTeam) {
+                          const teamTier = (updatedCareerState.ownedTeam.tier || 'amateur') as TeamTier
+                          const result = processMarketingSpend(
+                            updatedCareerState.ownedTeam,
+                            teamTier,
+                            action.campaignType,
+                            newWeek,
+                            newYear
+                          )
+                          if (result) {
+                            // Apply the transaction (deduct cost)
+                            updatedCareerState = {
+                              ...updatedCareerState,
+                              ownedTeam: {
+                                ...updatedCareerState.ownedTeam,
+                                budgets: {
+                                  ...updatedCareerState.ownedTeam.budgets,
+                                  cash: (updatedCareerState.ownedTeam.budgets.cash ?? 0) - result.transaction.amount
+                                },
+                                finances: {
+                                  ...updatedCareerState.ownedTeam.finances,
+                                  transactions: [...(updatedCareerState.ownedTeam.finances?.transactions || []), result.transaction]
+                                }
+                              }
+                            }
+                            // Apply sponsor interest and media effects
+                            const marketingRepApplied = applyReputationDeltaToPrimaryContext(
+                              updatedPlayer,
+                              updatedCareerState,
+                              Math.floor(result.mediaExposureGain / 5)
+                            )
+                            updatedPlayer = marketingRepApplied.updatedPlayer
+                            if (marketingRepApplied.updatedCareerState) {
+                              updatedCareerState = marketingRepApplied.updatedCareerState
+                            }
+                          }
+                        }
+                        break
+                      }
+                      
+                      case 'request_delegated_search': {
+                        // Track when scouting last ran a search + queue for post-processing
+                        if (updatedCareerState.ownedTeam) {
+                          updatedCareerState = {
+                            ...updatedCareerState,
+                            ownedTeam: {
+                              ...updatedCareerState.ownedTeam,
+                              lastScoutingSearchWeek: newWeek
+                            }
+                          }
+                          // Queue the actual search to run after state is committed
+                          deferredDelegationActions.push({ type: 'request_delegated_search', role: action.role })
+                        }
+                        break
+                      }
+                      
+                      case 'approval_request': {
+                        // Create a PendingDelegationApproval and send an email with accept/decline
+                        const approvalEmailId = `email_delapproval_${action.id}_w${newWeek}_${newYear}`
+                        const pendingApproval: PendingDelegationApproval = {
+                          id: action.id,
+                          domain: action.approvalDomain,
+                          staffName: delResult.staffName,
+                          staffRole: delResult.staffRole,
+                          description: action.description,
+                          cost: action.cost,
+                          action: action.payload as any,
+                          emailId: approvalEmailId,
+                          createdWeek: newWeek,
+                          createdYear: newYear,
+                          expiresWeek: newWeek + 2,
+                          expiresYear: newYear
+                        }
+                        
+                        // Add to pending approvals
+                        if (updatedCareerState.ownedTeam) {
+                          updatedCareerState = {
+                            ...updatedCareerState,
+                            ownedTeam: {
+                              ...updatedCareerState.ownedTeam,
+                              pendingDelegationApprovals: [
+                                ...(updatedCareerState.ownedTeam.pendingDelegationApprovals || []),
+                                pendingApproval
+                              ]
+                            }
+                          }
+                        }
+                        
+                        // Send approval email
+                        const roleLabel = (TEAM_STAFF_ROLE_NAMES as Record<string, string>)[delResult.staffRole] || (STAFF_ROLE_NAMES as Record<string, string>)[delResult.staffRole] || delResult.staffRole
+                        subsystemEmails.push({
+                          id: approvalEmailId,
+                          category: 'team',
+                          subject: `Approval needed: ${action.description.split('.')[0]}`,
+                          sender: delResult.staffName,
+                          senderRole: roleLabel,
+                          preview: action.description,
+                          body: `Boss,\n\nI need your approval on the following:\n\n**${action.description}**\n\n${action.cost ? `Estimated cost: $${action.cost.toLocaleString()}\n\n` : ''}Please accept or decline. If I don't hear back within 2 weeks, I'll assume it's a no.\n\nRegards,\n${delResult.staffName}\n${roleLabel}`,
+                          receivedDay: 1,
+                          receivedWeek: newWeek,
+                          receivedYear: newYear,
+                          read: false,
+                          starred: true,
+                          archived: false,
+                          actionType: 'delegation_approval',
+                          actionData: { delegationApprovalId: action.id },
+                          expiresWeek: newWeek + 2,
+                          expiresYear: newYear
+                        } as Email)
+                        break
+                      }
+                    }
+                  }
+                  
+                  // Generate delegation report emails
+                  for (const email of delResult.emails) {
+                    subsystemEmails.push({
+                      ...email,
+                      id: `email_delegation_${delResult.domain}_w${newWeek}_${newYear}`,
+                      receivedDay: 1,
+                      receivedWeek: newWeek,
+                      receivedYear: newYear,
+                      read: false,
+                      starred: false,
+                      archived: false
+                    } as Email)
+                  }
+                }
+                
+                // Expire old pending approvals
+                if (updatedCareerState.ownedTeam?.pendingDelegationApprovals) {
+                  const notExpired = updatedCareerState.ownedTeam.pendingDelegationApprovals.filter(
+                    (a: PendingDelegationApproval) => !(a.expiresYear < newYear || (a.expiresYear === newYear && a.expiresWeek <= newWeek))
+                  )
+                  if (notExpired.length !== updatedCareerState.ownedTeam.pendingDelegationApprovals.length) {
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: {
+                        ...updatedCareerState.ownedTeam,
+                        pendingDelegationApprovals: notExpired
+                      }
+                    }
+                  }
+                }
+                
+                // Store delegation report on team
+                if (updatedCareerState.ownedTeam) {
+                  updatedCareerState = {
+                    ...updatedCareerState,
+                    ownedTeam: {
+                      ...updatedCareerState.ownedTeam,
+                      lastDelegationReport: delegationResults.map(r => ({
+                        domain: r.domain,
+                        staffName: r.staffName,
+                        staffRole: r.staffRole,
+                        quality: r.quality,
+                        actions: r.actions,
+                        effects: r.effects
+                      }))
+                    }
+                  }
+                }
+              }
+            }
+
+            // Merchandise staff proposals (Marketing Manager proposes products/collections for approval)
+            try {
+              const merchProposal = tryGenerateMerchandiseProposal(updatedCareerState)
+              if (merchProposal) {
+                const team = updatedCareerState.ownedTeam
+                const extended = team?.finances?.extended
+                const merch = extended?.merchandise
+                if (team?.finances?.extended && merch) {
+                  if (merchProposal.type === 'product') {
+                    const pending = ((merch as MerchandiseFullState).pendingProductProposals ?? []).concat(merchProposal.proposal as PendingProductProposal)
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: {
+                        ...team,
+                        finances: {
+                          ...team.finances,
+                          extended: {
+                            ...extended,
+                            merchandise: { ...merch, pendingProductProposals: pending }
+                          }
+                        }
+                      }
+                    }
+                  } else {
+                    const pending = ((merch as MerchandiseFullState).pendingCollectionProposals ?? []).concat(merchProposal.proposal as PendingCollectionProposal)
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: {
+                        ...team,
+                        finances: {
+                          ...team.finances,
+                          extended: {
+                            ...extended,
+                            merchandise: { ...merch, pendingCollectionProposals: pending }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  subsystemEmails.push({
+                    ...merchProposal.email,
+                    id: `email_merch_proposal_${merchProposal.proposal.id}`
+                  } as Email)
+                }
+              }
+            } catch (e) {
+              console.warn('[CareerStore] Merchandise proposal generation error:', e)
+            }
+            
+            if (weeklyResult.injuryState) {
               updatedCareerState = {
                 ...updatedCareerState,
                 rpgState: {
                   ...updatedCareerState.rpgState,
-                  injury: weeklyResult.newInjury as any
+                  injury: weeklyResult.injuryState as any
                 }
               }
             }
             
+            // ============================================
+            // DRAMATIC EVENTS - State-triggered narrative peaks
+            // ============================================
+            try {
+              const firedDramaticEvents = (updatedCareerState as any).firedDramaticEvents || []
+              const dramaticPayloads = checkDramaticEvents(updatedCareerState, updatedPlayer, firedDramaticEvents)
+              
+              for (const payload of dramaticPayloads) {
+                // Add the email
+                subsystemEmails.push({
+                  ...payload.email,
+                  id: `email_dramatic_${payload.triggerId}_w${newWeek}_${newYear}`,
+                  receivedDay: 1,
+                  receivedWeek: newWeek,
+                  receivedYear: newYear,
+                  read: false,
+                  starred: payload.email.priority === 'critical',
+                  archived: false
+                } as Email)
+                
+                // Apply immediate effects
+                if (payload.immediateEffects) {
+                  if (payload.immediateEffects.stress && updatedPlayer.mentalState) {
+                    updatedPlayer.mentalState = {
+                      ...updatedPlayer.mentalState,
+                      stress: Math.max(0, Math.min(100, (updatedPlayer.mentalState.stress || 0) + payload.immediateEffects.stress))
+                    }
+                  }
+                  if (payload.immediateEffects.confidence && updatedPlayer.mentalState) {
+                    updatedPlayer.mentalState = {
+                      ...updatedPlayer.mentalState,
+                      confidence: Math.max(0, Math.min(100, updatedPlayer.mentalState.confidence + payload.immediateEffects.confidence))
+                    }
+                  }
+                  if (payload.immediateEffects.reputation) {
+                    const dramaticRepApplied = applyReputationDeltaToPrimaryContext(
+                      updatedPlayer,
+                      updatedCareerState,
+                      payload.immediateEffects.reputation
+                    )
+                    updatedPlayer = dramaticRepApplied.updatedPlayer
+                    if (dramaticRepApplied.updatedCareerState) {
+                      updatedCareerState = dramaticRepApplied.updatedCareerState
+                    }
+                  }
+                  if (payload.immediateEffects.teamMorale && updatedCareerState.ownedTeam) {
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: applyTeamMoraleDelta(updatedCareerState.ownedTeam, payload.immediateEffects.teamMorale)
+                    }
+                  }
+                  if (payload.immediateEffects.boardMood && updatedCareerState.ownedTeam) {
+                    updatedCareerState = {
+                      ...updatedCareerState,
+                      ownedTeam: {
+                        ...updatedCareerState.ownedTeam,
+                        boardMood: Math.max(0, Math.min(100, (updatedCareerState.ownedTeam.boardMood ?? 50) + payload.immediateEffects.boardMood))
+                      }
+                    }
+                  }
+                }
+                
+                // Schedule activity if specified
+                if (payload.activity) {
+                  const dramaticTimeCost = getActivityTimeCost(`dramatic_${payload.triggerId}`)
+                  const newActivity: ScheduledActivity = {
+                    id: `dramatic_${payload.triggerId}_w${newWeek}_${newYear}`,
+                    templateId: `dramatic_${payload.triggerId}`,
+                    name: payload.activity.name,
+                    description: payload.activity.description,
+                    category: payload.activity.category,
+                    scheduledWeek: newWeek,
+                    scheduledDay: 2, // Schedule for day 2 of the week
+                    duration: payload.activity.duration,
+                    spanDays: 1,
+                    status: 'scheduled',
+                    triggeredBy: 'dramatic_event',
+                    mandatory: true,
+                    deadline: {
+                      week: newWeek + Math.ceil(payload.activity.deadlineDays / 7),
+                      day: payload.activity.deadlineDays % 7 || 7
+                    },
+                    effectsOnComplete: payload.activity.effectsOnComplete,
+                    effectsOnMiss: payload.activity.effectsOnMiss,
+                    urgencyLevel: payload.activity.urgencyLevel,
+                    requiresOwner: true,
+                    drainLevel: 'normal' as any,
+                    calendarEntryType: 'mandatory' as any,
+                    scheduledPeriod: dramaticTimeCost?.preferredPeriod || dramaticTimeCost?.allowedPeriods?.[0] || 'morning',
+                  } as ScheduledActivity
+                  
+                  updatedCareerState = {
+                    ...updatedCareerState,
+                    scheduledActivities: [...(updatedCareerState.scheduledActivities || []), newActivity]
+                  }
+                }
+                
+                // Record the event as fired
+                firedDramaticEvents.push({
+                  triggerId: payload.triggerId,
+                  week: newWeek,
+                  year: newYear
+                })
+              }
+              
+              // Store updated fired events
+              if (dramaticPayloads.length > 0) {
+                (updatedCareerState as any).firedDramaticEvents = firedDramaticEvents
+                console.log(`[DramaticEvents] Fired ${dramaticPayloads.length} dramatic events:`, dramaticPayloads.map(p => p.triggerId))
+              }
+            } catch (e) {
+              console.warn('[CareerStore] Dramatic events processing error:', e)
+            }
+
             if (subsystemEmails.length > 0) {
               updatedCareerState = {
                 ...updatedCareerState,
@@ -10744,6 +15817,19 @@ export const useCareerStore = create<CareerStore>()(
             console.warn('[CareerStore] Weekly systems processing error:', e)
           }
           
+          if (updatedCareerState.raceWeekendProgress) {
+            const progress = updatedCareerState.raceWeekendProgress
+            const shouldClear =
+              progress.year < newYear ||
+              (progress.year === newYear && progress.week < newWeek)
+            if (shouldClear) {
+              updatedCareerState = {
+                ...updatedCareerState,
+                raceWeekendProgress: undefined
+              }
+            }
+          }
+
           // ============================================
           // Weather Forecast (race weeks)
           // ============================================
@@ -10755,7 +15841,7 @@ export const useCareerStore = create<CareerStore>()(
                 const weatherEmail = generateWeatherForecastEmail(forecast)
                 updatedCareerState = {
                   ...updatedCareerState,
-                  currentWeatherForecast: forecast,
+                  ...({ currentWeatherForecast: forecast } as Partial<typeof updatedCareerState>),
                   emails: [{
                     ...weatherEmail,
                     id: `email_weather_w${newWeek}_${newYear}`,
@@ -10782,7 +15868,7 @@ export const useCareerStore = create<CareerStore>()(
               const regEmail = generateRegulationEmail(directive)
               updatedCareerState = {
                 ...updatedCareerState,
-                regulationChanges: [...(updatedCareerState.regulationChanges || []), directive],
+                ...({ regulationChanges: [...((updatedCareerState as Record<string, unknown>).regulationChanges as unknown[] || []), directive] } as Partial<typeof updatedCareerState>),
                 emails: [{
                   ...regEmail,
                   id: `email_reg_w${newWeek}_${newYear}`,
@@ -10903,11 +15989,10 @@ export const useCareerStore = create<CareerStore>()(
                 skill: s.skill || 50
               })),
               teamDevPoints: updatedCareerState.teamDevelopment?.totalPoints ?? updatedCareerState.rpgState?.teamDevelopment?.points ?? 0,
-              activeResearch: (updatedCareerState.teamDevelopment?.activeResearch || []).map((r: any) => ({
-                name: r.name || 'Research',
-                progress: r.progress || 0,
-                total: r.totalWeeks || 10
-              })),
+              activeResearch: ((updatedCareerState.teamDevelopment as Record<string, unknown> | undefined)?.activeResearch as unknown[] || []).map((r: unknown) => {
+                const row = r as { name?: string; progress?: number; totalWeeks?: number }
+                return { name: row.name || 'Research', progress: row.progress || 0, total: row.totalWeeks || 10 }
+              }),
               completedUpgrades: [],
               facilities: {},
               sponsors: (updatedCareerState.ownedTeam?.finances?.sponsors || []).map((s: any) => ({
@@ -10958,21 +16043,44 @@ export const useCareerStore = create<CareerStore>()(
             player: updatedPlayer
           })
           
+          // Execute deferred delegation actions (these need store methods which use get())
+          if (deferredDelegationActions.length > 0) {
+            for (const deferred of deferredDelegationActions) {
+              try {
+                if (deferred.type === 'request_delegated_search' && deferred.role) {
+                  get().requestDelegatedSearch(deferred.role as ConfigStaffRole)
+                } else if (deferred.type === 'schedule_mandatory' && deferred.role) {
+                  // Use the real scheduleActivity store method
+                  get().scheduleActivity(deferred.role, newWeek + 1, 2) // Schedule for next week, day 2
+                }
+              } catch (e) {
+                console.warn('[Delegation] Deferred action failed:', e)
+              }
+            }
+          }
+          
           // Simulate races in other championships for this week
           // This keeps the "world" progressing even when player isn't racing
-          useRivalStore.getState().simulateOtherSeries(newWeek, player.currentSeriesId || null)
+          const excludedSeriesIds = [
+            ...(updatedCareerState.seriesEntries || []).map((e: any) => e.seriesId),
+            ...(player.currentSeriesId ? [player.currentSeriesId] : [])
+          ].filter(Boolean)
+          useRivalStore.getState().simulateOtherSeries(newWeek, excludedSeriesIds)
           
-          // Process weekly media decay (controversy resolution, media score recalc)
-          get().processWeeklyMediaDecay()
-          
-          // Process weekly social media (follower growth, engagement, trolls)
-          get().processWeeklySocialMedia()
+          if (!coreLoopMode) {
+            // Process weekly media decay (controversy resolution, media score recalc)
+            get().processWeeklyMediaDecay()
+            
+            // Process weekly social media (follower growth, engagement, trolls)
+            get().processWeeklySocialMedia()
+          }
         }
       },
 
       advanceDay: () => {
         const { careerState, player } = get()
         if (!careerState || !player) return
+        const coreLoopMode = isCoreLoopModeEnabled(careerState)
         
         // ============================================
         // TIME BUDGET: Process end-of-day fatigue before advancing
@@ -10982,22 +16090,35 @@ export const useCareerStore = create<CareerStore>()(
         // Calculate fatigue carry-over from today's activities
         const carryOver = calculateFatigueCarryOver(currentDayBudget.dayLog)
         const restRecovery = calculateRestRecovery(currentDayBudget.hoursUsed)
-        const netFatigueChange = carryOver - restRecovery
+        // Restorative activities (spa, gym, rest day, walks) directly pay down existing fatigue debt
+        const restorativeDebtRecovery = calculateRestorativeDebtRecovery(currentDayBudget.dayLog)
+        const netFatigueChange = carryOver - restRecovery - restorativeDebtRecovery
+        
+        // Apply lifestyle fatigue reduction (from diet plans, luxury services)
+        const personalLifeState = (careerState as any).expandedPersonalLife
+        const lifestyleFatigueReduction = personalLifeState?.lifestyleFatigueReduction || 0
+        const lifestyleBonusHoursPerDay = personalLifeState?.lifestyleBonusHours || 0
+        
         const newFatigueDebt = Math.min(
           TIME_BUDGET_CONFIG.MAX_FATIGUE_DEBT,
-          Math.max(0, currentDayBudget.fatigueDebt + netFatigueChange)
+          Math.max(0, currentDayBudget.fatigueDebt + netFatigueChange - lifestyleFatigueReduction)
         )
         
         // Update mentalState.fatigue based on how hard today was
         const mentalFatigueImpact = calculateMentalFatigueImpact(currentDayBudget.hoursUsed)
         const updatedMentalFatigue = Math.min(100, Math.max(0, player.mentalState.fatigue + mentalFatigueImpact))
         
-        // Create fresh day budget for tomorrow
+        // Create fresh day budget for tomorrow (with lifestyle bonus hours)
         const newDayBudget = resetDayBudget(newFatigueDebt, 0) // jet lag handled separately
+        // Apply lifestyle bonus hours from services (e.g., personal assistant frees up time)
+        if (lifestyleBonusHoursPerDay > 0) {
+          newDayBudget.totalHours = Math.min(18, newDayBudget.totalHours + lifestyleBonusHoursPerDay) // Cap at 18h
+          newDayBudget.hoursRemaining = newDayBudget.totalHours
+        }
         
         // Log the end-of-day summary
         if (currentDayBudget.dayLog.length > 0) {
-          console.log(`[TimeBudget] End of day: ${currentDayBudget.hoursUsed}h used, carry-over: ${carryOver}h, rest recovery: ${restRecovery}h, new fatigue debt: ${newFatigueDebt}h, tomorrow pool: ${newDayBudget.totalHours}h`)
+          console.log(`[TimeBudget] End of day: ${currentDayBudget.hoursUsed}h used, carry-over: ${carryOver}h, rest recovery: ${restRecovery}h, restorative recovery: ${restorativeDebtRecovery}h, new fatigue debt: ${newFatigueDebt}h, tomorrow pool: ${newDayBudget.totalHours}h`)
         }
         
         // ============================================
@@ -11062,6 +16183,110 @@ export const useCareerStore = create<CareerStore>()(
             }
           }
         })
+
+        // ============================================
+        // DAILY BRIEFING: Generate morning content for the new day
+        // ============================================
+        try {
+          const { careerState: dayState, player: dayPlayer } = get()
+          if (dayState && dayPlayer) {
+            const briefing = generateDailyBriefing(dayState, dayPlayer)
+            
+            // Add briefing email
+            if (briefing.briefingEmail) {
+              const briefingEmails: Email[] = [{
+                ...briefing.briefingEmail,
+                id: `email_briefing_w${newWeek}d${newDay}_${careerState.currentYear}`,
+                receivedDay: newDay,
+                receivedWeek: newWeek,
+                receivedYear: careerState.currentYear,
+                read: false,
+                starred: false,
+                archived: false
+              } as Email]
+              
+              set({
+                careerState: {
+                  ...dayState,
+                  emails: [...briefingEmails, ...(dayState.emails || [])],
+                  // Store quick decisions and news for UI consumption
+                  dailyBriefing: {
+                    quickDecision: coreLoopMode ? null : (briefing.quickDecision || null),
+                    newsHeadlines: briefing.newsHeadlines || [],
+                    generatedForDay: newDay,
+                    generatedForWeek: newWeek
+                  }
+                }
+              })
+            }
+          }
+        } catch (e) {
+          console.warn('[CareerStore] Daily briefing generation error:', e)
+        }
+
+        // Deliver queued feedback emails from yesterday's activities
+        get().deliverPendingFeedbackEmails()
+        
+        // Deliver queued sponsor offer emails that are due today
+        {
+          const latestState = get().careerState
+          if (latestState) {
+            const queue = latestState.pendingSponsorOfferEmails || []
+            if (queue.length > 0) {
+              const newDay = latestState.currentDay
+              const newWeek = latestState.currentWeek
+              const newYear = latestState.currentYear
+              const due = queue.filter(entry => {
+                if (entry.deliveryYear < newYear) return true
+                if (entry.deliveryYear > newYear) return false
+                if (entry.deliveryWeek < newWeek) return true
+                if (entry.deliveryWeek > newWeek) return false
+                return entry.deliveryDay <= newDay
+              })
+              if (due.length > 0) {
+                const remaining = queue.filter(entry => !due.includes(entry))
+                const team = latestState.ownedTeam
+                if (team?.finances) {
+                  const existingPending = team.finances.pendingSponsorOffers || []
+                  const newOffers = due.map(entry => entry.offer)
+                  // Add offers to pending sponsor offers
+                  get().updateOwnedTeam({
+                    finances: { ...team.finances, pendingSponsorOffers: [...existingPending, ...newOffers] }
+                  })
+                  // Generate and add an email for each offer
+                  for (const entry of due) {
+                    const emailData = generateTeamSponsorOfferEmail(
+                      entry.offer,
+                      entry.deliveryDay,
+                      entry.deliveryWeek,
+                      entry.deliveryYear
+                    )
+                    get().addEmail(emailData)
+                  }
+                  console.log(`[SponsorOffers] Delivered ${due.length} queued sponsor offer email(s) and added to pending offers`)
+                }
+                // Update queue in state
+                set({
+                  careerState: {
+                    ...get().careerState!,
+                    pendingSponsorOfferEmails: remaining
+                  }
+                })
+              }
+            }
+          }
+        }
+        
+        // Clear missed notifications from the day that just ended
+        const { careerState: refreshedState } = get()
+        if (refreshedState?.missedNotifications?.length) {
+          set({
+            careerState: {
+              ...refreshedState,
+              missedNotifications: []
+            }
+          })
+        }
         
         // Process missed media duties for the day that just ended
         // Duties that were available yesterday but not completed are now missed
@@ -11096,19 +16321,627 @@ export const useCareerStore = create<CareerStore>()(
           }
         }
         
+        // Generate mandatory activities FIRST so they exist when processing scheduled activities
+        get().generateMandatoryActivities()
+        
         // Process any scheduled activities that were missed
         get().processScheduledActivities()
         
         // Generate activity reminders for upcoming events
         get().generateActivityReminders()
+        // Onboarding mandatory schedule (weeks 1-3): create today's activities
+        get().generateOnboardingMandatoryActivities()
+        // Pre-fill race weekend activities for all race weeks in the season, then backfill today
+        get().ensureRaceWeekendActivitiesForSeason()
+        get().generateRaceWeekendExpectedActivities()
         
-        // Check for any mandatory activities that should be triggered
-        get().generateMandatoryActivities()
+        // ============================================
+        // Onboarding Guidance (phone messages only — emails suppressed to keep inbox clean)
+        // ============================================
+        if (!coreLoopMode) {
+          const { careerState: guidanceState, player: guidancePlayer } = get()
+          if (guidanceState && guidancePlayer && !guidanceState.onboardingComplete) {
+            const guidanceResult = processOnboardingGuidance(guidanceState, guidancePlayer)
+            
+            if (guidanceResult.phoneMessages.length > 0 || guidanceResult.newSentIds.length > 0) {
+              // Guidance emails intentionally not added to inbox — phone messages only
+              const guidanceEmails: Email[] = []
+              
+              // Send phone messages via messaging state
+              // Queue for scheduled delivery instead of injecting immediately.
+              let updatedMessaging = guidanceState.messaging
+              for (const phoneMsg of guidanceResult.phoneMessages) {
+                if (!updatedMessaging) break
+                
+                // Find a suitable contact for this message type
+                const contacts = updatedMessaging.contacts ?? []
+                let contact = contacts.find(c => c.type === phoneMsg.contactType)
+                
+                // Fallback: try partner, then any friend, then any business contact
+                if (!contact) {
+                  contact = contacts.find(c => c.type === 'partner') 
+                    || contacts.find(c => c.type === 'friend') 
+                    || contacts.find(c => c.type === 'business')
+                }
+                
+                if (contact) {
+                  const convId = `conv_${contact.id}`
+                  const deliveryHour = 9
+                  const scheduledMessage = {
+                    id: `msg_guidance_${guidanceState.currentWeek}_${guidanceState.currentDay}_${Math.random().toString(36).substr(2, 9)}`,
+                    conversationId: convId,
+                    sender: 'npc' as const,
+                    content: phoneMsg.message,
+                    tone: 'friendly' as const,
+                    timestamp: {
+                      week: guidanceState.currentWeek,
+                      day: guidanceState.currentDay ?? 1,
+                      hour: 9,
+                      year: guidanceState.currentYear
+                    },
+                    isRead: false
+                  }
+                  
+                  updatedMessaging = {
+                    ...updatedMessaging,
+                    queuedMessages: [
+                      ...(updatedMessaging.queuedMessages || []),
+                      {
+                        id: `queued_guidance_${guidanceState.currentWeek}_${guidanceState.currentDay}_${Math.random().toString(36).substr(2, 9)}`,
+                        conversationId: convId,
+                        contactId: contact.id,
+                        message: scheduledMessage,
+                        scheduledDeliveryHour: deliveryHour,
+                        scheduledDeliveryDay: guidanceState.currentDay ?? 1,
+                        scheduledDeliveryWeek: guidanceState.currentWeek,
+                        scheduledDeliveryYear: guidanceState.currentYear,
+                        delivered: false,
+                      }
+                    ]
+                  }
+                } else {
+                  // No suitable phone contact found — deliver as email fallback
+                  guidanceEmails.push({
+                    ...{
+                      category: 'team' as EmailCategory,
+                      subject: 'Personal Tip',
+                      sender: 'Team Manager',
+                      senderRole: 'Team Operations',
+                      preview: phoneMsg.message.substring(0, 120).replace(/\n/g, ' '),
+                      body: phoneMsg.message,
+                      receivedDay: guidanceState.currentDay ?? 1,
+                      receivedWeek: guidanceState.currentWeek,
+                      receivedYear: guidanceState.currentYear,
+                      read: false,
+                      starred: false,
+                      archived: false,
+                      actionType: 'acknowledge' as const,
+                    },
+                    id: `email_guidance_phone_fallback_${guidanceState.currentWeek}_${guidanceState.currentDay}_${Math.random().toString(36).substr(2, 9)}`
+                  })
+                }
+              }
+              
+              // Apply all guidance updates
+              set({
+                careerState: {
+                  ...guidanceState,
+                  emails: [...guidanceEmails, ...(guidanceState.emails || [])],
+                  sentGuidanceIds: [...(guidanceState.sentGuidanceIds ?? []), ...guidanceResult.newSentIds],
+                  onboardingComplete: guidanceResult.markComplete || guidanceState.onboardingComplete,
+                  ...(updatedMessaging !== guidanceState.messaging ? { messaging: updatedMessaging } : {})
+                }
+              })
+              
+              console.log(`[CareerStore] Onboarding guidance: ${guidanceResult.emails.length} emails, ${guidanceResult.phoneMessages.length} phone messages sent on Day ${guidanceState.currentDay}, Week ${guidanceState.currentWeek}`)
+            }
+          }
+        }
         
         // Apply weekly overspend consequences (processed on day 1)
         get().processOverspendConsequences()
         
+        // ============================================
+        // Deliver queued NPC messages (staggered delivery)
+        // Respects scheduled hour — only delivers if game clock has passed the scheduled time.
+        // Messages from past days/weeks are always delivered. Same-day messages wait for their hour.
+        // ============================================
+        const msgState = get().careerState?.messaging
+        if (!coreLoopMode && msgState?.queuedMessages && msgState.queuedMessages.length > 0) {
+          const currentState = get().careerState!
+          const currentHour = currentState.dayBudget?.currentHour ?? 7
+          const deliverableMessages = msgState.queuedMessages.filter(q => {
+            if (q.delivered) return false
+            // Past year — always deliver
+            if (q.scheduledDeliveryYear < currentState.currentYear) return true
+            // Past week — always deliver
+            if (q.scheduledDeliveryYear === currentState.currentYear && q.scheduledDeliveryWeek < currentState.currentWeek) return true
+            // Same week, past day — always deliver
+            if (q.scheduledDeliveryWeek === currentState.currentWeek && q.scheduledDeliveryDay < newDay) return true
+            // Same week, same day — only deliver if the scheduled hour has passed
+            if (q.scheduledDeliveryWeek === currentState.currentWeek && q.scheduledDeliveryDay === newDay) {
+              return (q.scheduledDeliveryHour ?? 0) <= currentHour
+            }
+            return false
+          })
+          
+          if (deliverableMessages.length > 0) {
+            const updatedConvs = { ...msgState.conversations }
+            let newUnread = 0
+            const queuedPendingRequests: Array<any> = []
+            
+            for (const qMsg of deliverableMessages) {
+              const canonicalConvId = qMsg.conversationId.startsWith('conv-')
+                ? `conv_${qMsg.conversationId.slice(5)}`
+                : qMsg.conversationId
+              const altConvId = canonicalConvId.startsWith('conv_')
+                ? `conv-${canonicalConvId.slice(5)}`
+                : canonicalConvId
+              const existingConv = updatedConvs[canonicalConvId] || updatedConvs[altConvId]
+              const deliveredMessage = {
+                ...qMsg.message,
+                conversationId: canonicalConvId,
+                timestamp: {
+                  week: qMsg.scheduledDeliveryWeek,
+                  day: qMsg.scheduledDeliveryDay,
+                  hour: qMsg.scheduledDeliveryHour,
+                  year: qMsg.scheduledDeliveryYear,
+                },
+                isRead: false,
+                read: false,
+              }
+              let deliveredIntoConversation = false
+              if (existingConv) {
+                if (!updatedConvs[canonicalConvId] && updatedConvs[altConvId]) {
+                  delete updatedConvs[altConvId]
+                }
+                updatedConvs[canonicalConvId] = {
+                  ...existingConv,
+                  messages: [...existingConv.messages, deliveredMessage],
+                  unreadCount: existingConv.unreadCount + 1,
+                  lastMessageTime: deliveredMessage.timestamp || { week: currentState.currentWeek, day: newDay, year: currentState.currentYear },
+                  awaitingResponse: true,
+                }
+                deliveredIntoConversation = true
+              } else {
+                const contact = msgState.contacts.find(c => c.id === qMsg.contactId)
+                if (contact) {
+                  updatedConvs[canonicalConvId] = {
+                    id: canonicalConvId,
+                    contactId: qMsg.contactId,
+                    contactName: contact.name,
+                    contactType: contact.type === 'partner' || contact.type === 'potential_date' ? 'romantic' : 
+                                 contact.type === 'family' ? 'family' : 'social',
+                    isActive: true,
+                    lastMessageTime: { week: currentState.currentWeek, day: newDay, year: currentState.currentYear },
+                    unreadCount: 1,
+                    messages: [deliveredMessage],
+                    relationshipLevel: contact.relationshipLevel,
+                    currentMood: contact.currentMood,
+                    awaitingResponse: true,
+                    conversationStage: 'ongoing',
+                  } as import('@/data/messaging-config').Conversation
+                  deliveredIntoConversation = true
+                }
+              }
+              if (deliveredIntoConversation) {
+                newUnread++
+              }
+              
+              // Process actionRequests from queued NPC-initiated messages
+              const qAction = (qMsg as any).actionRequest
+              if (qAction && qAction.type && qAction.description) {
+                const validTypes = ['social_invite', 'dinner_invite', 'date_request', 'introduction', 'sponsor_appearance', 'career_favor', 'race_tickets', 'advice', 'media_request', 'charity_ask']
+                if (validTypes.includes(qAction.type)) {
+                  queuedPendingRequests.push({
+                    id: `req_npc_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                    contactId: qMsg.contactId,
+                    type: qAction.type,
+                    description: qAction.description,
+                    timeCost: qAction.timeCost ?? undefined,
+                    moneyCost: qAction.moneyCost ?? undefined,
+                    suggestedDay: qAction.suggestedDay ?? undefined,
+                    suggestedWeek: qAction.suggestedWeek ?? undefined,
+                    eventName: qAction.eventName ?? undefined,
+                    venue: qAction.venue ?? undefined,
+                    relationshipReward: 5,
+                    expiresWeek: currentState.currentWeek + 2,
+                    expiresYear: currentState.currentYear,
+                    status: 'pending' as const,
+                  })
+                  console.log(`[Messaging] Created pending request from queued message: ${qAction.type} from ${qMsg.contactId}`)
+                }
+              }
+            }
+            
+            // Mark delivered and clean up old delivered messages
+            const updatedQueue = msgState.queuedMessages.map(q =>
+              deliverableMessages.some(d => d.id === q.id) ? { ...q, delivered: true } : q
+            ).filter(q => !q.delivered) // Remove delivered ones
+            
+            set({
+              careerState: {
+                ...get().careerState!,
+                messaging: {
+                  ...get().careerState!.messaging!,
+                  conversations: updatedConvs,
+                  unreadTotal: (get().careerState!.messaging!.unreadTotal || 0) + newUnread,
+                  queuedMessages: updatedQueue,
+                  pendingRequests: [
+                    ...(get().careerState!.messaging!.pendingRequests || []),
+                    ...queuedPendingRequests,
+                  ],
+                }
+              }
+            })
+            
+            console.log(`[Messaging] Delivered ${deliverableMessages.length} queued message(s) on Day ${newDay}${queuedPendingRequests.length > 0 ? ` (${queuedPendingRequests.length} new request(s))` : ''}`)
+          }
+        }
+        
+        // ============================================
+        // Deliver any pending NPC replies (from active conversations)
+        // ============================================
+        // When advancing the day, all pending NPC replies should be delivered
+        // (the contact has had plenty of time to respond!)
+        const pendingState = get().careerState?.messaging
+        if (!coreLoopMode && pendingState?.pendingNpcReplies && Object.keys(pendingState.pendingNpcReplies).length > 0) {
+          for (const convId of Object.keys(pendingState.pendingNpcReplies)) {
+            const pending = pendingState.pendingNpcReplies[convId]
+            if (pending.status === 'ready' && pending.generatedResponse) {
+              get().deliverPendingNpcReply(convId)
+            }
+          }
+          // Clean up any stale 'generating' entries (AI generation that never completed)
+          const finalPending = get().careerState?.messaging?.pendingNpcReplies
+          if (finalPending) {
+            const cleaned: Record<string, any> = {}
+            for (const [k, v] of Object.entries(finalPending)) {
+              if (v.status !== 'generating' || (Date.now() - v.queuedAt) < 30000) {
+                cleaned[k] = v  // Keep if not generating, or if generating and < 30s old
+              }
+            }
+            if (Object.keys(cleaned).length !== Object.keys(finalPending).length) {
+              set({
+                careerState: {
+                  ...get().careerState!,
+                  messaging: {
+                    ...get().careerState!.messaging!,
+                    pendingNpcReplies: cleaned,
+                  }
+                }
+              })
+            }
+          }
+        }
+        
+        // ============================================
+        // MESSAGING: Daily ghosting & staleness processing
+        // ============================================
+        if (!coreLoopMode) {
+          const latestMsg = get().careerState?.messaging
+          if (latestMsg) {
+            const conversations = latestMsg.conversations || {}
+            let conversationsChanged = false
+            const updatedConvs = { ...conversations }
+            
+            for (const [convId, conv] of Object.entries(conversations)) {
+              const anyConv = conv as any
+              let changed = false
+              const updates: any = {}
+              
+              // ── Increment playerGhostedDays for conversations awaiting player response ──
+              if (anyConv.awaitingResponse) {
+                const currentGhosted = anyConv.playerGhostedDays || 0
+                updates.playerGhostedDays = currentGhosted + 1
+                changed = true
+              }
+              
+              // ── Transition cooling_off → stale after 14 days of inactivity ──
+              if (anyConv.conversationStage === 'cooling_off' || anyConv.conversationStage === 'ongoing') {
+                const lastMsgTime = anyConv.lastMessageTime
+                if (lastMsgTime) {
+                  // Calculate days since last message  
+                  const currentTotalDays = (careerState.currentYear * 52 * 7) + (careerState.currentWeek * 7) + newDay
+                  const lastTotalDays = ((lastMsgTime.year || careerState.currentYear) * 52 * 7) + ((lastMsgTime.week || 1) * 7) + (lastMsgTime.day || 1)
+                  const daysSinceLastMessage = currentTotalDays - lastTotalDays
+                  
+                  if (daysSinceLastMessage >= 14 && anyConv.conversationStage !== 'stale') {
+                    updates.conversationStage = 'stale'
+                    changed = true
+                  }
+                }
+              }
+              
+              if (changed) {
+                updatedConvs[convId] = { ...anyConv, ...updates }
+                conversationsChanged = true
+              }
+            }
+            
+            if (conversationsChanged) {
+              set({
+                careerState: {
+                  ...get().careerState!,
+                  messaging: {
+                    ...get().careerState!.messaging!,
+                    conversations: updatedConvs as any,
+                  }
+                }
+              })
+            }
+          }
+        }
+        
         console.log(`[CareerStore] Day advanced to ${getDayName(newDay)} (Day ${newDay}), Week ${careerState.currentWeek}`)
+        
+        // Persist after manual day advance (skip during fast-forward — saved on FF stop)
+        if (!get().careerState?.fastForward?.isActive) {
+          saveToNativeDB()
+        }
+      },
+
+      startFastForwardToRaceWeek: (configOverrides) => {
+        const { careerState, player } = get()
+        if (!careerState || !player) {
+          return { success: false, reason: 'No active career state.' }
+        }
+
+        if (careerState.fastForward?.isActive) {
+          return { success: false, reason: 'Fast forward is already running.' }
+        }
+
+        // First-career mode may relax convenience stops, but urgent decision emails
+        // (e.g., sponsorship proposals) must always pause simulation.
+        const hasCompletedRaces = (player.raceHistory?.length ?? 0) > 0
+        const firstCareerRelaxedConfig: Partial<FastForwardConfig> = !hasCompletedRaces
+          ? { stopOnCalendarConflict: false, stopOnStarredEmails: false }
+          : {}
+
+        // Merge config: saved config → first-career overrides → caller overrides
+        const savedConfig = careerState.fastForward?.config ?? DEFAULT_FAST_FORWARD_CONFIG
+        const config: FastForwardConfig = {
+          ...savedConfig,
+          ...firstCareerRelaxedConfig,
+          ...(configOverrides ?? {})
+        }
+
+        const target = getFastForwardRaceTarget(careerState, player)
+        if (!target) {
+          set({
+            careerState: {
+              ...careerState,
+              fastForward: {
+                ...(careerState.fastForward || initialCareerState.fastForward!),
+                config,
+                isActive: false,
+                lastStopReason: 'no_upcoming_race',
+                lastStopMessage: 'No upcoming race was found in your current calendar.'
+              }
+            }
+          })
+          return { success: false, reason: 'No upcoming race was found in your current calendar.' }
+        }
+
+        // Auto-accept Julia's schedule suggestions before starting
+        if (config.autoAcceptSchedule) {
+          const autoScheduleEmails = (careerState.emails || []).filter(e =>
+            !e.archived && e.actionType === 'auto_schedule' && e.actionData?.suggestions
+          )
+          for (const email of autoScheduleEmails) {
+            const suggestions = email.actionData!.suggestions as Array<{ templateId: string; suggestedDay: number }>
+            for (const s of suggestions) {
+              get().scheduleActivity(s.templateId, careerState.currentWeek, s.suggestedDay)
+            }
+            // Mark as read and archived so it doesn't block
+            get().markEmailRead(email.id)
+            get().archiveEmail(email.id)
+          }
+        }
+
+        // Re-fetch state after auto-accept may have modified it
+        const freshState = get().careerState!
+        const freshPlayer = get().player!
+
+        // Pre-check: would the first tick immediately stop?
+        // If so, send a PA email with advice on how to resolve the blocker.
+        const criticalBlocker = getFastForwardCriticalStopReason(freshState, freshPlayer, config)
+        if (criticalBlocker) {
+          set({
+            careerState: {
+              ...freshState,
+              fastForward: {
+                ...(freshState.fastForward || initialCareerState.fastForward!),
+                config,
+                isActive: false,
+                lastStopReason: 'critical_event',
+                lastStopMessage: criticalBlocker
+              }
+            }
+          })
+
+          // Generate a PA advisory email with specific guidance
+          const paAdvice = generateFastForwardBlockerAdvice(freshState, freshPlayer)
+          if (paAdvice) {
+            get().addEmail(paAdvice)
+          }
+
+          return { success: false, reason: criticalBlocker }
+        }
+
+        set({
+          careerState: {
+            ...freshState,
+            fastForward: {
+              isActive: true,
+              mode: 'to_race',
+              rewardMultiplier: 0.6,
+              config,
+              targetWeek: target.week,
+              targetDay: target.day,
+              targetYear: target.year,
+              startedWeek: freshState.currentWeek,
+              startedDay: freshState.currentDay,
+              startedYear: freshState.currentYear,
+              startedPersonalCash: (freshState as any).personalLife?.finances?.liquidCash ?? freshPlayer.finances?.bankBalance ?? 0,
+              startedTeamCash: freshState.ownedTeam?.budgets?.cash ?? 0,
+              startedReputation: freshPlayer.reputation ?? 0,
+              startedFatigue: freshPlayer.mentalState?.fatigue ?? 0,
+              skippedDays: 0,
+              lastStopReason: 'none',
+              lastStopMessage: undefined,
+              lastSummary: undefined
+            }
+          }
+        })
+
+        clearFastForwardTimer()
+        fastForwardTimer = setTimeout(() => {
+          get().runFastForwardStep()
+        }, FAST_FORWARD_TICK_MS)
+
+        return { success: true }
+      },
+
+      stopFastForward: (reason = 'manual', message) => {
+        clearFastForwardTimer()
+        const snapshot = get()
+        const currentCareer = snapshot.careerState
+        const currentPlayer = snapshot.player
+        set((state) => {
+          if (!state.careerState || !currentCareer || !currentPlayer) return state
+          const ff = state.careerState.fastForward || initialCareerState.fastForward!
+          const summary = {
+            skippedDays: ff.skippedDays || 0,
+            personalCashDelta: ((currentCareer as any).personalLife?.finances?.liquidCash ?? currentPlayer.finances?.bankBalance ?? 0) - (ff.startedPersonalCash ?? 0),
+            teamCashDelta: (currentCareer.ownedTeam?.budgets?.cash ?? 0) - (ff.startedTeamCash ?? 0),
+            reputationDelta: (currentPlayer.reputation ?? 0) - (ff.startedReputation ?? 0),
+            fatigueDelta: (currentPlayer.mentalState?.fatigue ?? 0) - (ff.startedFatigue ?? 0),
+          }
+          return {
+            careerState: {
+              ...state.careerState,
+              fastForward: {
+                ...ff,
+                isActive: false,
+                lastStopReason: reason,
+                lastStopMessage: message,
+                lastSummary: summary
+              }
+            }
+          }
+        })
+        saveToNativeDB()
+      },
+
+      runFastForwardStep: () => {
+        clearFastForwardTimer()
+        const { careerState, player } = get()
+        if (!careerState || !player || !careerState.fastForward?.isActive) return
+        let advancedDays = 0
+        for (let i = 0; i < FAST_FORWARD_DAYS_PER_STEP; i++) {
+          const iterState = get().careerState
+          const iterPlayer = get().player
+          if (!iterState || !iterPlayer || !iterState.fastForward?.isActive) break
+
+          const ff = iterState.fastForward
+          const config = ff.config ?? DEFAULT_FAST_FORWARD_CONFIG
+          const targetYear = ff.targetYear ?? iterState.currentYear
+          const targetWeek = ff.targetWeek ?? iterState.currentWeek
+          const targetDay = ff.targetDay ?? 1
+
+          // Stop once we have reached or passed the intended target date.
+          const reachedTarget =
+            iterState.currentYear > targetYear ||
+            (iterState.currentYear === targetYear && iterState.currentWeek > targetWeek) ||
+            (iterState.currentYear === targetYear && iterState.currentWeek === targetWeek && iterState.currentDay >= targetDay)
+
+          if (reachedTarget) {
+            get().stopFastForward('completed', 'Reached target race period.')
+            return
+          }
+
+          // Auto-accept any PA schedule emails that appeared since last tick
+          if (config.autoAcceptSchedule) {
+            const freshState = get().careerState!
+            const autoScheduleEmails = (freshState.emails || []).filter(e =>
+              !e.archived && e.actionType === 'auto_schedule' && e.actionData?.suggestions
+            )
+            for (const email of autoScheduleEmails) {
+              const suggestions = email.actionData!.suggestions as Array<{ templateId: string; suggestedDay: number }>
+              for (const s of suggestions) {
+                get().scheduleActivity(s.templateId, freshState.currentWeek, s.suggestedDay)
+              }
+              get().markEmailRead(email.id)
+              get().archiveEmail(email.id)
+            }
+
+            // Auto-accept routine media/manufacturer opportunities — PA handles them in the background.
+            // Player receives a confirmation notification (result email) rather than an invitation.
+            const routineOpps = (get().careerState!.pendingOpportunities || []).filter(opp =>
+              opp.status === 'pending' &&
+              (opp.category === 'media_appearance' || opp.category === 'manufacturer_program')
+            )
+            for (const opp of routineOpps) {
+              const state = get().careerState!
+              // Schedule for a couple days from now so it lands within the FF window
+              const schedDay = Math.min(7, (state.currentDay ?? 1) + 2)
+              get().acceptOpportunity(opp.instanceId, state.currentWeek, schedDay)
+              // Archive the invitation email so inbox stays clean
+              const inviteEmail = (get().careerState?.emails || []).find(e =>
+                !e.archived && e.actionData?.opportunityId === opp.instanceId
+              )
+              if (inviteEmail) {
+                get().markEmailRead(inviteEmail.id)
+                get().archiveEmail(inviteEmail.id)
+              }
+            }
+          }
+
+          const criticalStopReason = getFastForwardCriticalStopReason(get().careerState!, get().player!, config)
+          if (criticalStopReason) {
+            get().stopFastForward('critical_event', criticalStopReason)
+            return
+          }
+
+          get().advanceDay()
+          advancedDays += 1
+        }
+
+        if (advancedDays > 0) {
+          set((state) => {
+            if (!state.careerState?.fastForward) return state
+            return {
+              careerState: {
+                ...state.careerState,
+                fastForward: {
+                  ...state.careerState.fastForward,
+                  skippedDays: state.careerState.fastForward.skippedDays + advancedDays
+                }
+              }
+            }
+          })
+        }
+
+        fastForwardTimer = setTimeout(() => {
+          get().runFastForwardStep()
+        }, FAST_FORWARD_TICK_MS)
+      },
+
+      updateFastForwardConfig: (configUpdates) => {
+        set((state) => {
+          if (!state.careerState) return state
+          const currentConfig = state.careerState.fastForward?.config ?? DEFAULT_FAST_FORWARD_CONFIG
+          return {
+            careerState: {
+              ...state.careerState,
+              fastForward: {
+                ...(state.careerState.fastForward || initialCareerState.fastForward!),
+                config: { ...currentConfig, ...configUpdates }
+              }
+            }
+          }
+        })
       },
 
       // ============================================
@@ -11148,20 +16981,28 @@ export const useCareerStore = create<CareerStore>()(
           ...dayBudget,
           hoursUsed: dayBudget.hoursUsed + hours,
           hoursRemaining: dayBudget.hoursRemaining - hours,
+          currentHour: Math.min(23, (dayBudget.currentHour ?? 7) + hours),  // Advance the clock
           dayLog: [...dayBudget.dayLog, newEntry],
           activitiesCompletedToday: activityId 
             ? [...dayBudget.activitiesCompletedToday, activityId]
             : dayBudget.activitiesCompletedToday
         }
         
-        set({
-          careerState: {
-            ...careerState,
-            dayBudget: updatedBudget
+        set((state) => {
+          if (!state.careerState) return state
+          return {
+            careerState: {
+              ...state.careerState,
+              dayBudget: updatedBudget
+            }
           }
         })
         
-        console.log(`[TimeBudget] Consumed ${hours}h (${drainLevel} drain) for "${activityName}" - ${updatedBudget.hoursRemaining}h remaining`)
+        console.log(`[TimeBudget] Consumed ${hours}h (${drainLevel} drain) for "${activityName}" - ${updatedBudget.hoursRemaining}h remaining (now ${updatedBudget.currentHour.toFixed(1)}h)`)
+        
+        // ── Deliver queued NPC messages whose scheduled hour has now arrived ──
+        get().deliverReadyQueuedMessages()
+        
         return true
       },
       
@@ -11181,6 +17022,93 @@ export const useCareerStore = create<CareerStore>()(
       canAffordTime: (hours: number) => {
         const { careerState } = get()
         return (careerState?.dayBudget?.hoursRemaining ?? 16) >= hours
+      },
+      
+      fastForwardPeriod: () => {
+        const { careerState } = get()
+        if (!careerState?.dayBudget) return
+        
+        const dayBudget = careerState.dayBudget
+        const currentHour = dayBudget.currentHour ?? 7
+        const currentPeriod = getPeriodForHour(currentHour)
+        
+        // Don't fast-forward during night -- End Day handles that
+        if (currentPeriod === 'night') return
+        
+        const hoursToSkip = getHoursRemainingInPeriod(currentHour)
+        if (hoursToSkip <= 0) return
+        
+        // Find the next period
+        const currentIdx = DAY_PERIOD_ORDER.indexOf(currentPeriod)
+        const nextPeriod = currentIdx < DAY_PERIOD_ORDER.length - 1 ? DAY_PERIOD_ORDER[currentIdx + 1] : 'night'
+        const nextPeriodConfig = DAY_PERIODS[nextPeriod]
+        
+        // Consume the skipped hours (no bonus, just lost time)
+        const newHoursUsed = dayBudget.hoursUsed + hoursToSkip
+        const newHoursRemaining = Math.max(0, dayBudget.hoursRemaining - hoursToSkip)
+        const newCurrentHour = nextPeriodConfig.startHour
+        
+        // Add a log entry
+        const newEntry = {
+          activityId: `fast_forward_${Date.now()}`,
+          name: `Skipped to ${nextPeriodConfig.shortLabel}`,
+          hoursSpent: hoursToSkip,
+          drainLevel: 'low' as const,
+          effectiveHours: hoursToSkip * 0.8,
+          timestamp: dayBudget.dayLog.length + 1
+        }
+        
+        set({
+          careerState: {
+            ...careerState,
+            dayBudget: {
+              ...dayBudget,
+              hoursUsed: newHoursUsed,
+              hoursRemaining: newHoursRemaining,
+              currentHour: newCurrentHour,
+              dayLog: [...dayBudget.dayLog, newEntry]
+            }
+          }
+        })
+        
+        console.log(`[TimeBudget] Fast-forwarded ${hoursToSkip}h from ${currentPeriod} to ${nextPeriod} (now ${newCurrentHour}h, ${newHoursRemaining}h remaining)`)
+        
+        // Deliver any queued NPC messages whose scheduled hour has now arrived
+        get().deliverReadyQueuedMessages()
+      },
+      
+      reassignActivityTimeslots: () => {
+        const { careerState } = get()
+        if (!careerState) return 0
+        
+        const activities = careerState.scheduledActivities || []
+        let reassigned = 0
+        
+        const updated = activities.map(a => {
+          // Skip activities that already have a scheduledPeriod
+          if (a.scheduledPeriod) return a
+          // Skip completed/missed activities
+          if (a.status === 'completed' || a.status === 'missed') return a
+          
+          const tc = getActivityTimeCost(a.templateId || a.id)
+          const period = tc.preferredPeriod || tc.allowedPeriods?.[0]
+          if (period) {
+            reassigned++
+            return { ...a, scheduledPeriod: period }
+          }
+          return a
+        })
+        
+        if (reassigned > 0) {
+          set({
+            careerState: {
+              ...careerState,
+              scheduledActivities: updated
+            }
+          })
+          console.log(`[TimeBudget] Reassigned ${reassigned} activities to proper time slots`)
+        }
+        return reassigned
       },
       
       addPersonalCalendarEntry: (entry) => {
@@ -11208,8 +17136,15 @@ export const useCareerStore = create<CareerStore>()(
           triggeredBy: 'manual',
           requiresOwner: true,
           requiresDriver: false,
-          effectsOnComplete: {} as any,
+          effectsOnComplete: (entry.effectsOnComplete || {}) as any,
           effectsOnMiss: {} as any,
+          ...(entry.socialActionMeta ? { socialActionMeta: entry.socialActionMeta } : {}),
+          // Day period scheduling from activity time cost config
+          scheduledPeriod: (() => {
+            if (entry.preferredPeriod) return entry.preferredPeriod
+            const tc = getActivityTimeCost(entry.activityId)
+            return tc.preferredPeriod || tc.allowedPeriods?.[0]
+          })(),
         }
         
         set({
@@ -11221,25 +17156,215 @@ export const useCareerStore = create<CareerStore>()(
         
         console.log(`[Calendar] Added entry: "${entry.name}" on W${entry.week}D${entry.day} (${entry.calendarEntryType}, ${entry.drainLevel}, ${entry.duration}h)`)
       },
+      
+      scheduleSocialAction: (params) => {
+        const { careerState } = get()
+        if (!careerState) return null
+        
+        // Check for time conflicts on the target day
+        const existingActivities = careerState.scheduledActivities || []
+        const dayActivities = existingActivities.filter(
+          a => a.scheduledWeek === params.week && a.scheduledDay === params.day && a.status === 'scheduled'
+        )
+        
+        // Calculate total hours already scheduled on that day
+        const scheduledHours = dayActivities.reduce((sum, a) => sum + (a.duration || 0), 0)
+        if (scheduledHours + params.timeCost > 16) {
+          console.warn(`[Social] Day W${params.week}D${params.day} is too full for "${params.actionName}" (${scheduledHours}h scheduled + ${params.timeCost}h needed > 16h)`)
+          return null
+        }
+        
+        // Map social action sub-category to the appropriate ActivityCategory
+        const socialCategoryMap: Record<string, ActivityCategory> = {
+          romantic: 'romance',
+          dining: 'social',
+          casual: 'social',
+          gift: 'social',
+          event_invite: 'social',
+          professional: 'social',
+        }
+        const activityCategory: ActivityCategory = socialCategoryMap[params.category || ''] || 'social'
+        
+        const activity: ScheduledActivity = {
+          id: `social_${params.actionId}_${params.week}_${params.day}_${Date.now()}`,
+          templateId: params.actionId,
+          name: `${params.actionName} with ${params.contactName}`,
+          description: params.description,
+          category: activityCategory,
+          scheduledWeek: params.week,
+          scheduledDay: params.day,
+          duration: params.timeCost,
+          spanDays: 1,
+          status: 'scheduled',
+          mandatory: false,
+          canReschedule: true,
+          drainLevel: 'low',
+          calendarEntryType: 'personal',
+          autoScheduled: false,
+          triggeredBy: 'manual',
+          requiresOwner: true,
+          requiresDriver: false,
+          effectsOnComplete: {
+            ...(params.effects.affection ? { affection: params.effects.affection } : {}),
+            ...(params.effects.trust ? { trust: params.effects.trust } : {}),
+            ...(params.effects.romance ? { romance: params.effects.romance } : {}),
+          } as any,
+          effectsOnMiss: {} as any,
+          socialActionMeta: {
+            contactId: params.contactId,
+            actionId: params.actionId,
+            contactName: params.contactName,
+            effects: params.effects,
+            cost: params.cost,
+            category: params.category,
+          },
+          // Day period scheduling from activity time cost config
+          scheduledPeriod: (() => {
+            const tc = getActivityTimeCost(params.actionId)
+            return tc.preferredPeriod || tc.allowedPeriods?.[0]
+          })(),
+        }
+        
+        set({
+          careerState: {
+            ...careerState,
+            scheduledActivities: [...existingActivities, activity]
+          }
+        })
+        
+        console.log(`[Social] Scheduled: "${activity.name}" for W${params.week}D${params.day} (${params.timeCost}h, $${params.cost})`)
+        return activity
+      },
 
       // Email System Actions
       addEmail: (emailData) => {
         const { careerState } = get()
         if (!careerState) return
-        
-        const newEmail: Email = {
+
+        const incoming: Omit<Email, 'id'> = {
           ...emailData,
-          id: `email_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+          requiresAction: emailData.requiresAction ?? (emailData.actionType ? ACTION_REQUIRED_TYPES.has(emailData.actionType) : false),
         }
-        
+
+        const relevanceScore = incoming.relevanceScore ?? getEmailRelevanceScore(incoming)
+        let interruptClass = deriveEmailInterruptClass(incoming)
+        let digestMode: Email['digestMode'] = incoming.digestMode ?? 'immediate'
+
+        if (interruptClass !== 'critical' && relevanceScore < EMAIL_RELEVANCE_CONFIG.standaloneThreshold) {
+          interruptClass = 'digest'
+          digestMode = 'digest'
+        }
+
+        const sameDayEmails = (careerState.emails || []).filter(e =>
+          e.receivedDay === incoming.receivedDay &&
+          e.receivedWeek === incoming.receivedWeek &&
+          e.receivedYear === incoming.receivedYear &&
+          !e.archived
+        )
+        const criticalToday = sameDayEmails.filter(e => e.interruptClass === 'critical').length
+        const importantToday = sameDayEmails.filter(e => e.interruptClass === 'important').length
+
+        if (interruptClass === 'important' && importantToday >= EMAIL_RELEVANCE_CONFIG.maxImportantPerDay) {
+          interruptClass = 'digest'
+          digestMode = 'digest'
+        }
+        if (interruptClass === 'critical' && !incoming.requiresAction && criticalToday >= EMAIL_RELEVANCE_CONFIG.maxCriticalPerDay) {
+          interruptClass = 'important'
+        }
+
+        const normalizedSubject = normalizeEmailSubject(incoming.subject)
+        const duplicateRecent = (careerState.emails || []).some(e => {
+          if (e.interruptClass === 'critical') return false
+          const daysDiff = ((incoming.receivedYear - e.receivedYear) * 52 * 7) + ((incoming.receivedWeek - e.receivedWeek) * 7) + (incoming.receivedDay - e.receivedDay)
+          return daysDiff >= 0 &&
+            daysDiff <= EMAIL_RELEVANCE_CONFIG.duplicateCooldownDays &&
+            normalizeEmailSubject(e.subject) === normalizedSubject
+        })
+        if (duplicateRecent && interruptClass !== 'critical') {
+          interruptClass = 'digest'
+          digestMode = 'digest'
+        }
+
+        if (digestMode === 'digest' || interruptClass === 'digest') {
+          const existingDigest = (careerState.emails || []).find(e =>
+            !e.archived &&
+            e.category === 'system' &&
+            e.subject === `Daily Operations Digest — Week ${incoming.receivedWeek} Day ${incoming.receivedDay}`
+          )
+          const digestLine = `- ${incoming.sender}: ${incoming.subject}`
+
+          if (existingDigest) {
+            const existingLines = existingDigest.body.split('\n').filter(line => line.trim().startsWith('- '))
+            if (existingLines.length >= EMAIL_RELEVANCE_CONFIG.maxDigestEntriesPerDay) {
+              console.log('[CareerStore] Email suppressed by digest cap:', incoming.subject)
+              return
+            }
+            const updatedBody = `${existingDigest.body}\n${digestLine}`
+            set({
+              careerState: {
+                ...careerState,
+                emails: (careerState.emails || []).map(e =>
+                  e.id === existingDigest.id
+                    ? {
+                        ...e,
+                        preview: `Digest updated with ${existingLines.length + 1} item(s).`,
+                        body: updatedBody
+                      }
+                    : e
+                )
+              }
+            })
+            console.log(`[CareerStore] Email digested into existing daily digest: ${incoming.subject}`)
+            return
+          }
+
+          const digestEmail: Email = {
+            id: `email_digest_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            category: 'system',
+            subject: `Daily Operations Digest — Week ${incoming.receivedWeek} Day ${incoming.receivedDay}`,
+            sender: 'Operations Assistant',
+            senderRole: 'Automation Summary',
+            preview: 'Routine updates were grouped into this digest.',
+            body: `The following updates were grouped to keep your inbox focused on high-impact decisions:\n\n${digestLine}`,
+            receivedDay: incoming.receivedDay,
+            receivedWeek: incoming.receivedWeek,
+            receivedYear: incoming.receivedYear,
+            read: false,
+            starred: false,
+            archived: false,
+            actionType: 'acknowledge',
+            requiresAction: false,
+            interruptClass: 'digest',
+            digestMode: 'digest',
+            relevanceScore: Math.max(20, relevanceScore),
+          }
+
+          set({
+            careerState: {
+              ...careerState,
+              emails: [digestEmail, ...(careerState.emails || [])]
+            }
+          })
+          console.log(`[CareerStore] Email digested: ${incoming.subject}`)
+          return
+        }
+
+        const newEmail: Email = {
+          ...incoming,
+          id: `email_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+          interruptClass,
+          digestMode,
+          relevanceScore
+        }
+
         set({
           careerState: {
             ...careerState,
             emails: [newEmail, ...(careerState.emails || [])]  // New emails at the top
           }
         })
-        
-        console.log(`[CareerStore] Email added: ${newEmail.subject} from ${newEmail.sender}`)
+
+        console.log(`[CareerStore] Email added (${interruptClass}, score ${relevanceScore}): ${newEmail.subject} from ${newEmail.sender}`)
       },
 
       markEmailRead: (emailId) => {
@@ -11310,16 +17435,34 @@ export const useCareerStore = create<CareerStore>()(
         })
       },
 
-      getUnreadEmailCount: () => {
+      getUnreadEmailCount: (mode = 'action') => {
         const { careerState } = get()
         if (!careerState || !careerState.emails) return 0
-        return careerState.emails.filter(e => !e.read && !e.archived).length
+        const cd = careerState.currentDay ?? 1
+        const cw = careerState.currentWeek
+        const cy = careerState.currentYear
+        return careerState.emails.filter(e => 
+          !e.read &&
+          !e.archived &&
+          isEmailDelivered(e, cd, cw, cy) &&
+          (
+            mode === 'all' ||
+            e.interruptClass === 'critical' ||
+            !!e.requiresAction ||
+            !!(e.actionType && ACTION_REQUIRED_TYPES.has(e.actionType))
+          )
+        ).length
       },
 
       getEmailsByCategory: (category) => {
         const { careerState } = get()
         if (!careerState || !careerState.emails) return []
-        return careerState.emails.filter(e => e.category === category && !e.archived)
+        const cd = careerState.currentDay ?? 1
+        const cw = careerState.currentWeek
+        const cy = careerState.currentYear
+        return careerState.emails.filter(e => 
+          e.category === category && !e.archived && isEmailDelivered(e, cd, cw, cy)
+        )
       },
 
       // ============================================
@@ -11360,7 +17503,10 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         const teamSocial = careerState.teamMediaState.teamSocial
-        const newFollowers = teamSocial.followers + (post.wentViral ? Math.floor(Math.random() * 5000) + 1000 : Math.floor(Math.random() * 200) + 50)
+        const followerGainAmount = post.followerGain ?? (post.wentViral
+          ? Math.floor(Math.random() * 5000) + 1000
+          : Math.floor(Math.random() * 200) + 50)
+        const newFollowers = Math.max(0, teamSocial.followers + followerGainAmount)
         
         set({
           careerState: {
@@ -11396,6 +17542,23 @@ export const useCareerStore = create<CareerStore>()(
               ...careerState.teamMediaState,
               teamHeadlines: [newHeadline, ...careerState.teamMediaState.teamHeadlines].slice(0, 100)
             }
+          }
+        })
+      },
+      
+      addPressClipping: (clipping) => {
+        const { careerState } = get()
+        if (!careerState) return
+        
+        const newClipping: PressClipping = {
+          ...clipping,
+          id: `clipping_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+        }
+        
+        set({
+          careerState: {
+            ...careerState,
+            pressClippings: [newClipping, ...(careerState.pressClippings || [])].slice(0, 200)
           }
         })
       },
@@ -11754,6 +17917,24 @@ export const useCareerStore = create<CareerStore>()(
             }
           }
         })
+
+        // Emit email notification so player can navigate to /media for their race weekend duties
+        if (filteredNewDuties.length > 0) {
+          const { addEmail } = get()
+          const preRaceCount = filteredNewDuties.filter(d => d.type === 'pre_race' || d.type === 'pre_qualifying' || d.type === 'pre_practice').length
+          const totalCount = filteredNewDuties.length
+          addEmail({
+            id: `media-duties-${week}-${year}`,
+            from: 'FIA Media Officer',
+            subject: `Race weekend media duties — ${trackName}`,
+            body: `Your media obligations for the ${trackName} race weekend (Week ${week}) have been scheduled.\n\n${totalCount} duties this weekend, including ${preRaceCount} pre-session statement${preRaceCount !== 1 ? 's' : ''} and a post-race reaction. Completing all duties maintains sponsor satisfaction and avoids fines.\n\nOpen the Media screen to complete your interviews when prompted.`,
+            category: 'media',
+            actionType: 'navigate',
+            actionData: { screen: '/media' },
+            timestamp: Date.now(),
+            read: false,
+          })
+        }
       },
 
       setDutyOptions: (dutyId, options) => {
@@ -12211,21 +18392,17 @@ export const useCareerStore = create<CareerStore>()(
             const scoutingStore = useScoutingStore.getState()
             const team = rivalStore.getTeamById(contract.teamId)
             
-            if (team && team.drivers.length > 0) {
-              // Get all teammates (other drivers on the same team)
-              const teammateIds = team.drivers
+            const driverIdsList = (team?.drivers ?? []) as unknown as string[]
+            if (team && driverIdsList.length > 0) {
               const teammateNames: Record<string, string> = {}
-              
-              teammateIds.forEach(driverId => {
+              driverIdsList.forEach((driverId: string) => {
                 const driver = rivalStore.rivals.find(r => r.id === driverId)
                 if (driver) {
                   teammateNames[driverId] = `${driver.firstName} ${driver.lastName}`
                 }
               })
-              
-              // Sync teammate knowledge to complete level
-              scoutingStore.syncTeammateKnowledge(teammateIds, teammateNames)
-              console.log(`[CareerStore] Synced teammate knowledge for ${teammateIds.length} drivers`)
+              scoutingStore.syncTeammateKnowledge(driverIdsList, teammateNames)
+              console.log(`[CareerStore] Synced teammate knowledge for ${driverIdsList.length} drivers`)
             }
             
             // Initialize team development for the new contract
@@ -12257,19 +18434,17 @@ export const useCareerStore = create<CareerStore>()(
           const scoutingStore = useScoutingStore.getState()
           const team = rivalStore.getTeamById(pendingContract.teamId)
           
-          if (team && team.drivers.length > 0) {
-            const teammateIds = team.drivers
+          const driverIdsActivate = (team?.drivers ?? []) as unknown as string[]
+          if (team && driverIdsActivate.length > 0) {
             const teammateNames: Record<string, string> = {}
-            
-            teammateIds.forEach(driverId => {
+            driverIdsActivate.forEach((driverId: string) => {
               const driver = rivalStore.rivals.find(r => r.id === driverId)
               if (driver) {
                 teammateNames[driverId] = `${driver.firstName} ${driver.lastName}`
               }
             })
-            
-            scoutingStore.syncTeammateKnowledge(teammateIds, teammateNames)
-            console.log(`[CareerStore] Synced teammate knowledge for ${teammateIds.length} drivers at new team`)
+            scoutingStore.syncTeammateKnowledge(driverIdsActivate, teammateNames)
+            console.log(`[CareerStore] Synced teammate knowledge for ${driverIdsActivate.length} drivers at new team`)
           }
           
           set({
@@ -12384,8 +18559,32 @@ export const useCareerStore = create<CareerStore>()(
           return { points: 0, prizeMoney: 0, repChange: 0 }
         }
         
+        // Resolve the actual raced series (supports multi-series weeks).
+        // Prefer matching entered-series calendar by week + track, fallback to player's currentSeriesId.
+        const rivalStoreState = useRivalStore.getState()
+        const normalizedTelemetryTrack = normalizeTrackName(telemetryResult.trackName)
+        const enteredSeriesIds = (careerState.seriesEntries || []).map(e => e.seriesId)
+        const enteredSeries = enteredSeriesIds
+          .map(id => rivalStoreState.getSeriesById(id))
+          .filter(Boolean) as any[]
+        const matchedByWeekAndTrack = enteredSeries.find((s) => {
+          const evt = (s.calendar || []).find((e: any) => e.week === careerState.currentWeek)
+          if (!evt) return false
+          const eventTrackNorm = normalizeTrackName(evt.trackName || evt.trackId || '')
+          return eventTrackNorm === normalizedTelemetryTrack
+        })
+        const matchedByWeek = enteredSeries.find((s) =>
+          (s.calendar || []).some((e: any) => e.week === careerState.currentWeek)
+        )
+        const resolvedSeriesId =
+          matchedByWeekAndTrack?.id ||
+          matchedByWeek?.id ||
+          player.currentSeriesId ||
+          enteredSeries[0]?.id ||
+          ''
+        
         // Get the correct round number from the calendar based on current week
-        const currentSeries = useRivalStore.getState().getSeriesById(player.currentSeriesId || '')
+        const currentSeries = useRivalStore.getState().getSeriesById(resolvedSeriesId)
         const calendarEvent = currentSeries?.calendar?.find(
           event => event.week === careerState.currentWeek
         )
@@ -12393,10 +18592,10 @@ export const useCareerStore = create<CareerStore>()(
         
         // Check if we already processed this week's race (prevent duplicates)
         const existingRaceThisWeek = player.raceHistory.find(
-          r => r.seriesId === player.currentSeriesId && r.round === calendarRound
+          r => r.seriesId === resolvedSeriesId && r.round === calendarRound
         )
         if (existingRaceThisWeek) {
-          console.log(`[CareerStore] Race already processed for ${player.currentSeriesId} Round ${calendarRound} - skipping duplicate`)
+          console.log(`[CareerStore] Race already processed for ${resolvedSeriesId} Round ${calendarRound} - skipping duplicate`)
           return { points: 0, prizeMoney: 0, repChange: 0 }
         }
         
@@ -12446,7 +18645,8 @@ export const useCareerStore = create<CareerStore>()(
         
         // Try to get the series tier from rival store
         const currentSeriesData = useRivalStore.getState().getSeriesById(player.currentSeriesId || '')
-        const seriesTier = currentSeriesData?.tier || 'amateur'
+        const currentSeriesDataResolved = useRivalStore.getState().getSeriesById(resolvedSeriesId)
+        const seriesTier = currentSeriesDataResolved?.tier || currentSeriesData?.tier || 'amateur'
         const tierMultiplier = seriesTierMultipliers[seriesTier] || 1.0
         
         // Base reputation gains (REDUCED from original)
@@ -12504,7 +18704,7 @@ export const useCareerStore = create<CareerStore>()(
         
         // Create the race result using calendar-based round
         const raceResult: Omit<RaceResult, 'id'> = {
-          seriesId: player.currentSeriesId || 'unknown',
+          seriesId: resolvedSeriesId || 'unknown',
           round: calendarRound,
           trackId: canonicalTrackId,
           trackName: trackDisplayName,
@@ -12530,7 +18730,7 @@ export const useCareerStore = create<CareerStore>()(
             trackName: trackDisplayName,
             week: careerState.currentWeek,
             year: careerState.currentYear,
-            seriesId: player.currentSeriesId || 'unknown',
+            seriesId: resolvedSeriesId || 'unknown',
             practicePosition: weekendProgress.practice?.position,
             practiceBestLap: weekendProgress.practice?.bestLapTime,
             qualifyingPosition: weekendProgress.qualifying?.position,
@@ -12547,11 +18747,14 @@ export const useCareerStore = create<CareerStore>()(
         // Apply the tier-adjusted reputation change from above calculation
         const playerAfterResult = get().player
         if (playerAfterResult && repChange !== 0) {
+          const repApplied = applyReputationDeltaToPrimaryContext(
+            playerAfterResult,
+            get().careerState,
+            repChange
+          )
           set({
-            player: {
-              ...playerAfterResult,
-              reputation: Math.round(Math.min(100, Math.max(0, playerAfterResult.reputation + repChange)) * 10) / 10
-            }
+            player: repApplied.updatedPlayer,
+            ...(repApplied.updatedCareerState ? { careerState: repApplied.updatedCareerState } : {})
           })
         }
         
@@ -12580,7 +18783,7 @@ export const useCareerStore = create<CareerStore>()(
         
         // Get existing series list
         const existingSeriesHere = existingHistory?.seriesRacedHere || []
-        const currentSeriesId = player.currentSeriesId || 'unknown'
+        const currentSeriesId = resolvedSeriesId || player.currentSeriesId || 'unknown'
         const updatedSeriesHere = existingSeriesHere.includes(currentSeriesId)
           ? existingSeriesHere
           : [...existingSeriesHere, currentSeriesId]
@@ -12623,6 +18826,112 @@ export const useCareerStore = create<CareerStore>()(
             }
           })
           console.log(`[CareerStore] Updated track history for ${trackDisplayName}: ${updatedTrackHistory.visits} visits, ${updatedTrackHistory.wins} wins`)
+        }
+        
+        // ============================================
+        // Check for crash injury on DNF
+        // ============================================
+        if (dnf) {
+          const playerForInjury = get().player
+          if (playerForInjury && playerForInjury.stats) {
+            const crashInjury = checkCrashInjury(playerForInjury.stats, {
+              position,
+              dnf: true,
+              dnfReason: telemetryResult.dnfReason || 'mechanical',
+              seriesId: resolvedSeriesId || playerForInjury.currentSeriesId || '',
+              week: careerState.currentWeek,
+              year: careerState.currentYear,
+            } as any)
+            if (crashInjury) {
+              set({
+                player: {
+                  ...get().player!,
+                  injury: crashInjury
+                }
+              })
+              get().addEmail({
+                category: 'personal',
+                subject: `Injury Report: ${crashInjury.type?.replace(/_/g, ' ') || 'Injury'}`,
+                sender: 'Medical Team',
+                senderRole: 'Team Doctor',
+                preview: `You sustained a ${crashInjury.severity} injury...`,
+                body: `Following your DNF, the medical team has diagnosed a **${crashInjury.severity} ${crashInjury.type?.replace(/_/g, ' ') || 'injury'}**.\n\n${crashInjury.description || ''}\n\nEstimated recovery: **${crashInjury.recoveryWeeksRemaining} weeks**.\n\nPlease take care and follow the recovery plan.`,
+                receivedDay: careerState.currentDay,
+                receivedWeek: careerState.currentWeek,
+                receivedYear: careerState.currentYear,
+                read: false,
+                starred: false,
+                archived: false,
+                actionType: 'acknowledge'
+              })
+              console.log(`[CareerStore] Crash injury: ${crashInjury.severity} ${crashInjury.type} — ${crashInjury.recoveryWeeksRemaining} weeks recovery`)
+            }
+          }
+        }
+        
+        // ============================================
+        // Rivalry Creation from Race Incidents
+        // ============================================
+        {
+          const personalLife = get().careerState?.personalLife
+          if (personalLife && telemetryResult.driverResults && telemetryResult.driverResults.length > 0) {
+            // Check for close battles or incidents that could spawn a rivalry
+            const nearbyDrivers = telemetryResult.driverResults.filter(
+              (d: any) => Math.abs(d.position - position) <= 2 && d.driverId !== 'player'
+            )
+            
+            // 10% chance of rivalry forming from a close battle
+            if (nearbyDrivers.length > 0 && Math.random() < 0.10) {
+              const rivalDriver = nearbyDrivers[Math.floor(Math.random() * nearbyDrivers.length)]
+              const existingRivalries = personalLife.rivalries || []
+              const alreadyRival = existingRivalries.some((r: any) => r.rivalId === rivalDriver.driverId && r.isActive)
+              
+              if (!alreadyRival) {
+                const origin = dnf 
+                  ? `Race incident at ${calendarEvent?.trackName || 'unknown track'}`
+                  : `Close battle at ${calendarEvent?.trackName || 'unknown track'} (P${position} vs P${rivalDriver.position})`
+                
+                const newRivalry = createRivalry(
+                  rivalDriver.driverId,
+                  rivalDriver.driverName || 'Unknown Driver',
+                  'rival_driver',
+                  dnf ? 'hostile' : 'competitive',
+                  origin,
+                  careerState.currentWeek,
+                  careerState.currentYear
+                )
+                
+                set({
+                  careerState: {
+                    ...get().careerState!,
+                    personalLife: {
+                      ...get().careerState!.personalLife!,
+                      rivalries: [...existingRivalries, newRivalry]
+                    }
+                  }
+                })
+                
+                console.log(`[Rivalry] New rivalry with ${rivalDriver.driverName}: ${origin}`)
+              }
+            }
+          }
+        }
+        
+        // ============================================
+        // Update team relationship immediately after race
+        // ============================================
+        {
+          const currentRelState = (get().careerState as any)?.relationshipState
+          if (currentRelState) {
+            const expectedPos = Math.min(15, Math.max(1, Math.round((get().careerState?.ownedTeam?.staff?.length ?? 3) * 2)))
+            const updatedRelState = updateTeamRelationshipFromRace(currentRelState, { position, expectedPosition: expectedPos, dnf })
+            set({
+              careerState: {
+                ...get().careerState!,
+                relationshipState: updatedRelState
+              }
+            })
+          }
         }
         
         // ============================================
@@ -12767,7 +19076,7 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Update championship standings with ALL participant results
-        if (player.currentSeriesId && telemetryResult.allParticipants.length > 0) {
+        if (resolvedSeriesId && telemetryResult.allParticipants.length > 0) {
           const playerFullName = `${player.firstName} ${player.lastName}`
           
           // Convert telemetry participants to the format needed by rivalStore
@@ -12781,13 +19090,13 @@ export const useCareerStore = create<CareerStore>()(
           
           // Update standings in rival store (pass session type to ensure only races count)
           useRivalStore.getState().updateStandingsFromRace(
-            player.currentSeriesId,
+            resolvedSeriesId,
             raceParticipants,
             playerFullName,
             'Race' // Explicitly mark as race session
           )
           
-          console.log(`[CareerStore] Updated standings for ${player.currentSeriesId} with ${raceParticipants.length} participants`)
+          console.log(`[CareerStore] Updated standings for ${resolvedSeriesId} with ${raceParticipants.length} participants`)
         }
         
         // ============================================
@@ -12961,7 +19270,7 @@ export const useCareerStore = create<CareerStore>()(
               position,
               teamTierForPrize,
               telemetryResult.totalParticipants,
-              player.currentSeriesId || '',
+              resolvedSeriesId || '',
               seriesNameForPrize,
               careerState.currentWeek,
               careerState.currentYear
@@ -13005,11 +19314,8 @@ export const useCareerStore = create<CareerStore>()(
             )
             
             if (sponsorRaceBonusResult.transactions.length > 0) {
-              // Apply sponsor bonuses using updateTeamBudgets for proper yearToDate/costCap tracking
-              let updatedSponsorBudgets = { ...teamForSponsorBonus.budgets }
-              for (const tx of sponsorRaceBonusResult.transactions) {
-                updatedSponsorBudgets = updateTeamBudgets(updatedSponsorBudgets, tx)
-              }
+              // Apply sponsor bonuses using batch processor for proper yearToDate/costCap tracking
+              const updatedSponsorBudgets = processMultipleTransactions({ ...teamForSponsorBonus.budgets }, sponsorRaceBonusResult.transactions)
               const totalTeamSponsorBonus = sponsorRaceBonusResult.transactions.reduce((sum, tx) => sum + tx.amount, 0)
               
               set({
@@ -13056,7 +19362,7 @@ export const useCareerStore = create<CareerStore>()(
         
         // Calculate what race number this is in the season
         const seasonRaces = player.raceHistory.filter(r => 
-          r.seriesId === player.currentSeriesId
+          r.seriesId === resolvedSeriesId
         )
         const raceNumber = seasonRaces.length + 1
         
@@ -13255,15 +19561,20 @@ export const useCareerStore = create<CareerStore>()(
           
           const playerAfterTerminations = get().player
           if (playerAfterTerminations) {
+            const repApplied = applyReputationDeltaToPrimaryContext(
+              playerAfterTerminations,
+              get().careerState,
+              repPenalty
+            )
             set({
               player: {
-                ...playerAfterTerminations,
-                reputation: Math.round(Math.max(0, playerAfterTerminations.reputation + repPenalty) * 10) / 10,
+                ...repApplied.updatedPlayer,
                 stats: {
-                  ...playerAfterTerminations.stats,
-                  marketability: Math.max(0, playerAfterTerminations.stats.marketability + marketabilityPenalty)
+                  ...repApplied.updatedPlayer.stats,
+                  marketability: Math.max(0, repApplied.updatedPlayer.stats.marketability + marketabilityPenalty)
                 }
-              }
+              },
+              ...(repApplied.updatedCareerState ? { careerState: repApplied.updatedCareerState } : {})
             })
             console.log(`[CareerStore] Reputation penalty: ${repPenalty}, Marketability penalty: ${marketabilityPenalty}`)
           }
@@ -13306,45 +19617,51 @@ export const useCareerStore = create<CareerStore>()(
             seasonYear: careerState.currentYear
           }
           
+          const currentSatisfaction = contract.teamSatisfaction ?? DEFAULT_TEAM_SATISFACTION
+          const totalDrivers = telemetryResult.totalParticipants
           const contractRaceResult: RaceResultForContract = {
             position,
-            isDNF: dnf,
-            gridSize: telemetryResult.totalParticipants,
-            isPointsFinish: !dnf && position <= 10,
-            raceNumber: seasonStats.racesCompleted + 1,
-            pointsScored: points,
-            beatTeammate: false, // Will be determined by teammate comparison
-            teammatePosition: undefined
+            totalDrivers,
+            points,
+            dnf,
+            fastestLap: fastestLap ?? false,
+            positionsGained: 0,
+            gridPosition: position
           }
           
-          // Check teammate comparison if available
+          // Check teammate comparison if available (drivers may be string ids or AMS2Driver)
           const playerTeam = useRivalStore.getState().getTeamById(playerForContract.currentTeamId || '')
           if (playerTeam && telemetryResult.allParticipants.length > 0) {
             const playerFullName = `${playerForContract.firstName} ${playerForContract.lastName}`
             const teammateResult = telemetryResult.allParticipants.find(p => 
               !p.isPlayer && p.name !== playerFullName && 
-              playerTeam.drivers.some(d => {
-                const rivalDriver = useRivalStore.getState().rivals.find(r => r.id === d)
+              (playerTeam.drivers ?? []).some(d => {
+                const driverId = typeof d === 'string' ? d : (d as { name: string }).name
+                const rivalDriver = useRivalStore.getState().rivals.find(r => r.id === driverId)
                 return rivalDriver && `${rivalDriver.firstName} ${rivalDriver.lastName}` === p.name
               })
             )
             if (teammateResult) {
-              contractRaceResult.teammatePosition = teammateResult.position
-              contractRaceResult.beatTeammate = position < teammateResult.position
+              const ext = contractRaceResult as unknown as Record<string, unknown>
+              ext.teammatePosition = teammateResult.position
+              ext.beatTeammate = position < teammateResult.position
             }
           }
           
-          const maxDNFsBeforeWarning = contract.terminationConditions?.maxDNFsBeforeWarning || 5
-          const contractSatisfactionUpdate = calculateContractSatisfactionChange(
-            contract.teamSatisfaction ?? DEFAULT_TEAM_SATISFACTION,
-            contractRaceResult,
-            seasonStats.dnfCount + (dnf ? 1 : 0),
-            maxDNFsBeforeWarning
-          )
+          const change = calculateContractSatisfactionChange(contractRaceResult, contract, currentSatisfaction)
+          const newSatisfaction = Math.max(0, Math.min(100, currentSatisfaction + change))
+          const contractSatisfactionUpdate = {
+            newSatisfaction,
+            change,
+            reason: change >= 0 ? 'Result met expectations' : 'Below expectations',
+            triggeredWarning: newSatisfaction <= SATISFACTION_WARNING_THRESHOLD && currentSatisfaction > SATISFACTION_WARNING_THRESHOLD,
+            triggeredFinalWarning: newSatisfaction <= SATISFACTION_FINAL_WARNING_THRESHOLD && currentSatisfaction > SATISFACTION_FINAL_WARNING_THRESHOLD,
+            triggeredTermination: newSatisfaction <= SATISFACTION_TERMINATION_THRESHOLD
+          }
           
           // Update contract targets
           const updatedTargets = contract.targets 
-            ? updateContractTargets(contract.targets, contractRaceResult)
+            ? updateContractTargets(contract.targets, contractRaceResult, seasonStats)
             : undefined
           
           // Update season stats
@@ -13600,9 +19917,9 @@ export const useCareerStore = create<CareerStore>()(
         const currentCareerState = get().careerState
         if (currentCareerState?.ownedTeam && currentCareerState.cars && currentCareerState.cars.length > 0) {
           // Find the car being raced (owner's car in the current series)
-          const currentSeriesIdForWear = player.currentSeriesId
+          const currentSeriesIdForWear = resolvedSeriesId || player.currentSeriesId
           const racedCarIndex = currentCareerState.cars.findIndex(
-            c => c.seriesId === currentSeriesIdForWear && c.driverType === 'owner'
+            c => getCarSeriesAssignments(c).includes(currentSeriesIdForWear) && c.driverType === 'owner'
           )
           
           if (racedCarIndex !== -1) {
@@ -13775,7 +20092,7 @@ export const useCareerStore = create<CareerStore>()(
           const tierForProj: TeamTier = teamForProj.tier || 'amateur'
           
           // Calculate races remaining in season
-          const seriesForProj = useRivalStore.getState().getSeriesById(player.currentSeriesId || '')
+          const seriesForProj = useRivalStore.getState().getSeriesById(resolvedSeriesId || '')
           const currentWeekForProj = latestCareerStateForProjections.currentWeek
           const racesRemainingForProj = seriesForProj?.calendar?.filter(
             (r: { week: number }) => r.week > currentWeekForProj
@@ -13785,14 +20102,14 @@ export const useCareerStore = create<CareerStore>()(
           ) || 48
           
           // Get current championship position estimate
-          const standings = useRivalStore.getState().getStandings(player.currentSeriesId || '')
+          const standings = useRivalStore.getState().getStandings(resolvedSeriesId || '')
           const playerStanding = standings.find(s => s.isPlayer)
           const expectedPosition = playerStanding?.position || 10
           
           // Get development intensity
           const devIntensity = latestCareerStateForProjections.teamDevelopment?.budget?.weeklyAllocation
             ? Math.min(2.0, Math.max(0.5, latestCareerStateForProjections.teamDevelopment.budget.weeklyAllocation / 50000))
-            : 1.0
+            : 0  // No R&D cost if no allocation is set
           
           // Update projections
           const updatedBudgetsWithProjections = updateTeamProjections(
@@ -13830,11 +20147,164 @@ export const useCareerStore = create<CareerStore>()(
       },
 
       resetCareer: () => {
+        clearFastForwardTimer()
         set({
           hasActiveCareer: false,
           player: null,
           careerState: null
         })
+      },
+
+      repairPhoneMessages: () => {
+        const { careerState } = get()
+        if (!careerState?.messaging) {
+          return { conversationsFixed: 0, queuedFixed: 0, pendingRepliesFixed: 0, queuedDelivered: 0 }
+        }
+        
+        const messaging = careerState.messaging
+        let conversationsFixed = 0
+        let queuedFixed = 0
+        let pendingRepliesFixed = 0
+        let queuedDelivered = 0
+        
+        // 1. Fix conversation keys: rename conv- to conv_, merging messages if both exist
+        const convs = messaging.conversations
+        const normalizedConversations: typeof convs = {}
+        for (const key of Object.keys(convs)) {
+          if (key.startsWith('conv-')) {
+            const normalizedKey = `conv_${key.slice(5)}`
+            if (convs[normalizedKey]) {
+              // Both keys exist — merge messages from both conversations (dedup by id)
+              const existing = convs[normalizedKey]
+              const hyphen = convs[key]
+              const existingIds = new Set(existing.messages.map(m => m.id))
+              const mergedMessages = [
+                ...existing.messages,
+                ...hyphen.messages.filter(m => !existingIds.has(m.id))
+              ]
+              mergedMessages.sort((a, b) => {
+                const ta = a.timestamp; const tb = b.timestamp
+                const scoreA = (ta.year ?? 0) * 100000 + (ta.week ?? 0) * 1000 + (ta.day ?? 0) * 100 + (ta.hour ?? 0)
+                const scoreB = (tb.year ?? 0) * 100000 + (tb.week ?? 0) * 1000 + (tb.day ?? 0) * 100 + (tb.hour ?? 0)
+                return scoreA - scoreB
+              })
+              const mergedUnread = (existing.unreadCount || 0) + (hyphen.unreadCount || 0)
+              normalizedConversations[normalizedKey] = {
+                ...existing,
+                id: normalizedKey,
+                messages: mergedMessages,
+                unreadCount: mergedUnread,
+                lastMessageTime: mergedMessages.length > 0 ? mergedMessages[mergedMessages.length - 1].timestamp : existing.lastMessageTime,
+                awaitingResponse: existing.awaitingResponse || hyphen.awaitingResponse,
+              }
+              console.log(`[RepairMessages] Merged conv- and conv_ for ${normalizedKey}: ${existing.messages.length} + ${hyphen.messages.length} → ${mergedMessages.length} messages`)
+            } else {
+              normalizedConversations[normalizedKey] = { ...convs[key], id: normalizedKey }
+            }
+            conversationsFixed++
+          } else {
+            normalizedConversations[key] = convs[key]
+          }
+        }
+        
+        // 2. Fix queued message conversationIds AND force-deliver all queued messages now
+        const undelivered = (messaging.queuedMessages || []).filter(q => !q.delivered)
+        let newUnread = 0
+        
+        for (const qMsg of undelivered) {
+          // Normalize conversationId
+          const convId = qMsg.conversationId.startsWith('conv-') 
+            ? `conv_${qMsg.conversationId.slice(5)}` 
+            : qMsg.conversationId
+          if (qMsg.conversationId.startsWith('conv-')) queuedFixed++
+          
+          // Force-deliver into conversations
+          const altConvId = convId.startsWith('conv_') ? `conv-${convId.slice(5)}` : convId
+          const existingConv = normalizedConversations[convId] || normalizedConversations[altConvId]
+          const deliveredMessage = {
+            ...qMsg.message,
+            conversationId: convId,
+            timestamp: {
+              week: qMsg.scheduledDeliveryWeek,
+              day: qMsg.scheduledDeliveryDay,
+              hour: qMsg.scheduledDeliveryHour,
+              year: qMsg.scheduledDeliveryYear,
+            },
+            isRead: false,
+            read: false,
+          }
+          let deliveredIntoConversation = false
+          if (existingConv) {
+            if (!normalizedConversations[convId] && normalizedConversations[altConvId]) {
+              delete normalizedConversations[altConvId]
+            }
+            normalizedConversations[convId] = {
+              ...existingConv,
+              messages: [...existingConv.messages, deliveredMessage],
+              unreadCount: existingConv.unreadCount + 1,
+              lastMessageTime: deliveredMessage.timestamp || { week: careerState.currentWeek, day: careerState.currentDay, year: careerState.currentYear },
+              awaitingResponse: true,
+            }
+            deliveredIntoConversation = true
+          } else {
+            const contact = messaging.contacts.find(c => c.id === qMsg.contactId)
+            if (contact) {
+              normalizedConversations[convId] = {
+                id: convId,
+                contactId: qMsg.contactId,
+                contactName: contact.name,
+                contactType: contact.type === 'partner' || contact.type === 'potential_date' ? 'romantic' : 
+                             contact.type === 'family' ? 'family' : 'social',
+                isActive: true,
+                lastMessageTime: deliveredMessage.timestamp || { week: careerState.currentWeek, day: careerState.currentDay, year: careerState.currentYear },
+                unreadCount: 1,
+                messages: [deliveredMessage],
+                relationshipLevel: contact.relationshipLevel,
+                currentMood: contact.currentMood,
+                awaitingResponse: true,
+                conversationStage: 'ongoing',
+              } as import('@/data/messaging-config').Conversation
+              deliveredIntoConversation = true
+            }
+          }
+          if (deliveredIntoConversation) {
+            newUnread++
+          }
+          queuedDelivered++
+        }
+        
+        // 3. Fix pending NPC reply keys
+        const fixedPendingReplies: typeof messaging.pendingNpcReplies = {}
+        if (messaging.pendingNpcReplies) {
+          for (const key of Object.keys(messaging.pendingNpcReplies)) {
+            if (key.startsWith('conv-')) {
+              const normalizedKey = `conv_${key.slice(5)}`
+              fixedPendingReplies[normalizedKey] = messaging.pendingNpcReplies[key]
+              pendingRepliesFixed++
+            } else {
+              fixedPendingReplies[key] = messaging.pendingNpcReplies[key]
+            }
+          }
+        }
+        
+        // Apply fixes — clear the queue since everything was delivered
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...messaging,
+              conversations: normalizedConversations,
+              queuedMessages: [], // All delivered, clear the queue
+              pendingNpcReplies: fixedPendingReplies,
+              unreadTotal: (messaging.unreadTotal || 0) + newUnread,
+            }
+          }
+        })
+        
+        const total = conversationsFixed + queuedFixed + pendingRepliesFixed + queuedDelivered
+        console.log(`[RepairMessages] Fixed ${total} item(s): ${conversationsFixed} conv keys, ${queuedFixed} conv IDs fixed, ${queuedDelivered} queued messages delivered, ${pendingRepliesFixed} pending replies`)
+        
+        return { conversationsFixed, queuedFixed, pendingRepliesFixed, queuedDelivered }
       },
 
       repairCareerData: () => {
@@ -13889,7 +20359,8 @@ export const useCareerStore = create<CareerStore>()(
         // 2. RENUMBER ROUNDS BASED ON CALENDAR ORDER
         // ============================================
         // After removing duplicates, fix the round numbers to match calendar
-        const currentSeries = useRivalStore.getState().getSeriesById(player.currentSeriesId || '')
+        const calendarSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId || ''
+        const currentSeries = useRivalStore.getState().getSeriesById(calendarSeriesId)
         const calendar = currentSeries?.calendar || []
         
         // Create a map of trackId -> round number from calendar
@@ -14031,15 +20502,17 @@ export const useCareerStore = create<CareerStore>()(
         // 9. FIX RIVAL STANDINGS RACE COUNTS
         // ============================================
         let standingsFixed = false
-        const seriesId = player.currentSeriesId
-        if (seriesId) {
-          const rivalStore = useRivalStore.getState()
-          const actualRaceCount = fixedRaceHistory.length
-          
+        const rivalStore = useRivalStore.getState()
+        const raceCountsBySeries = new Map<string, number>()
+        fixedRaceHistory.forEach((race) => {
+          raceCountsBySeries.set(race.seriesId, (raceCountsBySeries.get(race.seriesId) || 0) + 1)
+        })
+        raceCountsBySeries.forEach((actualRaceCount, seriesId) => {
+          if (!seriesId) return
           console.log(`[Repair] Fixing standings race count for ${seriesId} to ${actualRaceCount}`)
           rivalStore.resetStandingsRaceCount(seriesId, actualRaceCount)
           standingsFixed = true
-        }
+        })
 
         console.log(`[CareerStore] Career data repair complete!`)
         console.log(`  - Duplicate races removed: ${duplicateRacesRemoved}`)
@@ -14306,13 +20779,13 @@ export const useCareerStore = create<CareerStore>()(
         const team = careerState.ownedTeam
         const oldRep = team.reputation
         
-        // Start from the player reputation as the primary driver of team rep
-        // Team reputation tracks player rep but is influenced by team-specific factors
-        const playerRep = player?.reputation || 30
+        // Team reputation is canonical in owner mode.
+        // Use current team rep as the anchor; player reputation is legacy mirror only.
+        const teamRepAnchor = team.reputation ?? player?.reputation ?? 30
         
         // Base: weighted blend of player rep and current team rep
         // Team rep follows player rep but changes more gradually
-        let calculatedRep = playerRep * 0.5
+        let calculatedRep = teamRepAnchor * 0.5
         
         // === RACE PERFORMANCE (current season) ===
         const currentYear = careerState.currentYear
@@ -14370,12 +20843,18 @@ export const useCareerStore = create<CareerStore>()(
         const newRep = Math.round(Math.min(100, Math.max(0, calculatedRep)) * 10) / 10
         
         console.log(`[CareerStore] Recalculating team reputation: ${oldRep} -> ${newRep}`)
-        console.log(`  - Player rep contribution: ${(playerRep * 0.5).toFixed(1)}`)
+        console.log(`  - Team rep anchor contribution: ${(teamRepAnchor * 0.5).toFixed(1)}`)
         console.log(`  - Tier baseline: ${tierBaselines[team.tier] || 10}`)
         console.log(`  - Season races: ${currentSeasonRaces.length}`)
         
-        // Update the owned team
+        // Update team rep and keep player rep mirrored for legacy reads.
         set({
+          ...(player ? {
+            player: {
+              ...player,
+              reputation: newRep
+            }
+          } : {}),
           careerState: {
             ...careerState,
             ownedTeam: {
@@ -14619,7 +21098,8 @@ export const useCareerStore = create<CareerStore>()(
           const tierSalaryRange = calculateSalaryRangeWithVariationLocal(currentTeam.tier, currentTeam.prestige)
           
           // Calculate new salary based on player reputation within range
-          const salaryFactor = Math.min(1, (player.reputation || 50) / 100)
+          const effectiveReputation = getCanonicalReputation(player, careerState)
+          const salaryFactor = Math.min(1, effectiveReputation / 100)
           const calculatedSalary = Math.round(tierSalaryRange.min + (tierSalaryRange.max - tierSalaryRange.min) * salaryFactor)
           
           // For pay-driver tiers, salary should be 0
@@ -14692,6 +21172,123 @@ export const useCareerStore = create<CareerStore>()(
         return { teamsUpdated, oldSeatCost, newSeatCost, oldSalary, newSalary, seatFeeDifference, message }
       },
 
+      normalizeCurrentCareerEconomy: () => {
+        const { careerState } = get()
+        const team = careerState?.ownedTeam
+        if (!careerState || !team?.finances) {
+          return {
+            sponsorsAdjusted: 0,
+            pendingOffersAdjusted: 0,
+            sponsorsDeactivatedForSlotCap: 0,
+            weeklyIncomeBefore: 0,
+            weeklyIncomeAfter: 0,
+            weeklyCap: 0,
+            message: 'No active owned team found.'
+          }
+        }
+
+        const result = normalizeTeamSponsorsForCurrentEconomy(
+          team,
+          team.finances.sponsors || [],
+          { applyPortfolioScaleToDeals: true }
+        )
+
+        const previousSponsors = team.finances.sponsors || []
+        const scaledByCap = result.portfolioScale < 1
+        let adjustedSponsors = result.normalizedSponsors
+        const baseAdjustedCount = adjustedSponsors.filter((s, idx) => {
+          const prev = previousSponsors[idx]
+          return prev && (
+            s.monthlyPayment !== prev.monthlyPayment ||
+            s.winBonus !== prev.winBonus ||
+            s.podiumBonus !== prev.podiumBonus ||
+            (s.championshipBonus || 0) !== (prev.championshipBonus || 0)
+          )
+        }).length
+
+        // Normalize pending offers as well so legacy queued offers are aligned with the current economy.
+        const previousPendingOffers = team.finances.pendingSponsorOffers || []
+        const normalizedPendingOffers = previousPendingOffers.map(offer =>
+          normalizeSponsorDealForTeamReputation(offer, team.reputation ?? 0)
+        )
+        const pendingOffersAdjusted = normalizedPendingOffers.filter((offer, idx) => {
+          const prev = previousPendingOffers[idx]
+          return prev && (
+            offer.monthlyPayment !== prev.monthlyPayment ||
+            offer.winBonus !== prev.winBonus ||
+            offer.podiumBonus !== prev.podiumBonus ||
+            (offer.championshipBonus || 0) !== (prev.championshipBonus || 0)
+          )
+        }).length
+
+        // Enforce slot caps on existing active deals for legacy saves.
+        const slotLimits: Record<TeamSponsorSlot, number> = {
+          title: 1,
+          primary: 2,
+          secondary: 3,
+          associate: 4
+        }
+        const deactivatedSponsorIds = new Set<string>()
+        ;(Object.keys(slotLimits) as TeamSponsorSlot[]).forEach(slot => {
+          const activeInSlot = adjustedSponsors
+            .filter(s => s.active && s.slot === slot)
+            .sort((a, b) => b.monthlyPayment - a.monthlyPayment)
+          if (activeInSlot.length <= slotLimits[slot]) return
+          activeInSlot
+            .slice(slotLimits[slot])
+            .forEach(s => deactivatedSponsorIds.add(s.id))
+        })
+        const sponsorsDeactivatedForSlotCap = deactivatedSponsorIds.size
+        if (sponsorsDeactivatedForSlotCap > 0) {
+          adjustedSponsors = adjustedSponsors.map(s =>
+            deactivatedSponsorIds.has(s.id)
+              ? { ...s, active: false, warningIssued: true, finalWarningIssued: true }
+              : s
+          )
+        }
+
+        const calculateWeekly = (sponsors: TeamSponsorDeal[]): number =>
+          sponsors
+            .filter(s => s.active)
+            .reduce((sum, s) => {
+              const weeklyPayment = Math.round(s.monthlyPayment / 4)
+              const adjustedPayment = Math.round(weeklyPayment * getSponsorPaymentModifier(s.satisfaction))
+              return sum + adjustedPayment
+            }, 0)
+
+        const weeklyIncomeBefore = calculateWeekly(previousSponsors)
+        const weeklyIncomeAfter = calculateWeekly(adjustedSponsors)
+        const adjustedCount = baseAdjustedCount + sponsorsDeactivatedForSlotCap
+
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...team,
+              finances: {
+                ...team.finances,
+                sponsors: adjustedSponsors,
+                pendingSponsorOffers: normalizedPendingOffers
+              }
+            }
+          }
+        })
+
+        const message = adjustedCount > 0
+          ? `Adjusted ${adjustedCount} active sponsor deal(s), ${pendingOffersAdjusted} pending offer(s)${sponsorsDeactivatedForSlotCap > 0 ? `, and deactivated ${sponsorsDeactivatedForSlotCap} over-cap sponsor(s)` : ''}${scaledByCap ? ` (weekly cap ${result.weeklyCap.toLocaleString()})` : ''}.`
+          : 'No sponsor adjustments were needed.'
+
+        return {
+          sponsorsAdjusted: adjustedCount,
+          pendingOffersAdjusted,
+          sponsorsDeactivatedForSlotCap,
+          weeklyIncomeBefore,
+          weeklyIncomeAfter,
+          weeklyCap: result.weeklyCap,
+          message
+        }
+      },
+
       /**
        * Upgrade existing contracts and sponsors to include new media system features
        * This ALWAYS resets/overwrites media data (not just when missing)
@@ -14709,7 +21306,7 @@ export const useCareerStore = create<CareerStore>()(
         const removedNames: string[] = []
 
         // Get player's current stats for eligibility check
-        const playerReputation = player.reputation
+        const playerReputation = getCanonicalReputation(player, careerState)
         const playerMarketability = player.stats.marketability
         
         // Get current time for payment calculations
@@ -14767,8 +21364,8 @@ export const useCareerStore = create<CareerStore>()(
         const keptSponsorDeals: SponsorDeal[] = []
         
         for (const deal of player.finances.sponsorDeals) {
-          // Look up original sponsor in the SPONSORS database
-          const originalSponsor = SPONSORS.find(s => s.id === deal.sponsorId)
+          // Look up original sponsor in the pre-generated sponsor pool
+          const originalSponsor = getSponsorById(deal.sponsorId)
           
           // Get requirements - prefer from deal, fallback to original sponsor
           const minReputation = deal.minReputation
@@ -14953,6 +21550,105 @@ export const useCareerStore = create<CareerStore>()(
       },
 
       /**
+       * Reassign unique staff portraits across ALL staff in the career.
+       * Deduplicates by staff ID first so the same person appearing in multiple
+       * arrays (worldStaffPool + facilityStaffMarket) gets ONE portrait assigned
+       * once, then synced everywhere they appear.
+       */
+      reassignStaffPortraits: () => {
+        const { careerState } = get()
+        if (!careerState) {
+          return { totalStaff: 0, reassigned: 0, duplicatesFixed: 0, message: 'No active career found' }
+        }
+
+        // 1. Build a deduplicated map: staffId -> { gender, name, oldPortraitId }
+        //    so each person is only assigned ONE portrait regardless of how many
+        //    arrays they appear in.
+        const uniqueStaff = new Map<string, { gender: 'male' | 'female'; name: string; oldPortraitId: string }>()
+
+        const collectStaff = (staff: any) => {
+          if (!staff?.id) return
+          if (uniqueStaff.has(staff.id)) return
+          const gender: 'male' | 'female' = staff.gender || inferGenderFromName(staff.name?.split(' ')[0] || 'Unknown')
+          uniqueStaff.set(staff.id, {
+            gender,
+            name: staff.name || 'Unknown',
+            oldPortraitId: staff.portraitId || ''
+          })
+        }
+
+        ;(careerState.ownedTeam?.staff ?? []).forEach(collectStaff)
+        ;(careerState.ownedTeam?.facilityStaff ?? []).forEach(collectStaff)
+        ;(careerState.worldStaffPool ?? []).forEach((m: any) => collectStaff(m.staff))
+        ;(careerState.facilityStaffMarket ?? []).forEach(collectStaff)
+
+        const totalUniqueStaff = uniqueStaff.size
+        if (totalUniqueStaff === 0) {
+          return { totalStaff: 0, reassigned: 0, duplicatesFixed: 0, message: 'No staff found to reassign' }
+        }
+
+        // Count current portrait duplicates (across unique staff only)
+        const beforeIds = [...uniqueStaff.values()].map(s => s.oldPortraitId).filter(Boolean)
+        const beforeUnique = new Set(beforeIds).size
+        const duplicatesBefore = beforeIds.length - beforeUnique
+
+        // 2. Clear the registry and assign one unique portrait per person
+        initPortraitRegistry([])
+
+        let reassigned = 0
+        const portraitByStaffId = new Map<string, string>() // staffId -> new portraitId
+
+        for (const [staffId, info] of uniqueStaff) {
+          const newPortraitId = getPortraitIdByGender(info.gender, staffId)
+          portraitByStaffId.set(staffId, newPortraitId)
+          if (newPortraitId && newPortraitId !== info.oldPortraitId) {
+            reassigned++
+          }
+        }
+
+        // 3. Apply the portraits everywhere each staff member appears
+        const applyPortrait = (staff: any): any => {
+          if (!staff?.id) return staff
+          const newPortrait = portraitByStaffId.get(staff.id)
+          const gender = staff.gender || inferGenderFromName(staff.name?.split(' ')[0] || 'Unknown')
+          return { ...staff, portraitId: newPortrait || staff.portraitId, gender }
+        }
+
+        const updatedTeamStaff = (careerState.ownedTeam?.staff ?? []).map(applyPortrait)
+        const updatedFacilityStaff = (careerState.ownedTeam?.facilityStaff ?? []).map(applyPortrait)
+        const updatedWorldStaffPool = (careerState.worldStaffPool ?? []).map((m: any) => ({
+          ...m,
+          staff: applyPortrait(m.staff)
+        }))
+        const updatedFacilityStaffMarket = (careerState.facilityStaffMarket ?? []).map(applyPortrait)
+
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: careerState.ownedTeam ? {
+              ...careerState.ownedTeam,
+              staff: updatedTeamStaff,
+              facilityStaff: updatedFacilityStaff
+            } : careerState.ownedTeam,
+            worldStaffPool: updatedWorldStaffPool,
+            facilityStaffMarket: updatedFacilityStaffMarket
+          }
+        })
+
+        const duplicatesFixed = Math.max(0, duplicatesBefore)
+        console.log(`[Settings] Reassigned staff portraits: ${reassigned} changed out of ${totalUniqueStaff} unique staff, ${duplicatesFixed} duplicates fixed`)
+
+        return {
+          totalStaff: totalUniqueStaff,
+          reassigned,
+          duplicatesFixed,
+          message: reassigned > 0
+            ? `Reassigned ${reassigned} portraits across ${totalUniqueStaff} unique staff members. ${duplicatesFixed} duplicates eliminated.`
+            : `All ${totalUniqueStaff} staff portraits are already unique.`
+        }
+      },
+
+      /**
        * Recalculate contract points targets based on series-specific point system
        * Call this after updating series data to fix existing contracts
        */
@@ -15039,26 +21735,40 @@ export const useCareerStore = create<CareerStore>()(
 
       checkSeasonComplete: () => {
         const { player, careerState } = get()
-        if (!player?.currentSeriesId || !careerState) return false
-        
-        const currentSeries = useRivalStore.getState().getSeriesById(player.currentSeriesId)
+        if (!careerState || !player) return false
+        const rivalStore = useRivalStore.getState()
+        const activeSeriesEntries = (careerState.seriesEntries || []).filter(e => e.status !== 'inactive')
+
+        // Owner / multi-series flow: season is complete only when ALL entered series are complete.
+        if (activeSeriesEntries.length > 0) {
+          return activeSeriesEntries.every((entry) => {
+            const series = rivalStore.getSeriesById(entry.seriesId)
+            const totalRounds = series?.calendar?.length || 0
+            if (totalRounds <= 0) return false
+            const completedRounds = player.raceHistory.filter(r => r.seriesId === entry.seriesId).length
+            return completedRounds >= totalRounds
+          })
+        }
+
+        // Driver / single-series fallback.
+        const resolvedSeriesId = player.currentSeriesId
+        if (!resolvedSeriesId) return false
+        const currentSeries = rivalStore.getSeriesById(resolvedSeriesId)
         if (!currentSeries?.calendar) return false
-        
         const totalRounds = currentSeries.calendar.length
-        const completedRounds = player.raceHistory.filter(
-          r => r.seriesId === player.currentSeriesId
-        ).length
-        
+        const completedRounds = player.raceHistory.filter(r => r.seriesId === resolvedSeriesId).length
         return completedRounds >= totalRounds
       },
 
       endSeason: () => {
         const { player, careerState } = get()
-        if (!player?.currentSeriesId || !careerState) return null
+        if (!player || !careerState) return null
+        const resolvedSeriesId = careerState.seriesEntries?.[0]?.seriesId || player.currentSeriesId
+        if (!resolvedSeriesId) return null
         
         const rivalStore = useRivalStore.getState()
-        const currentSeries = rivalStore.getSeriesById(player.currentSeriesId)
-        const standings = rivalStore.getStandings(player.currentSeriesId)
+        const currentSeries = rivalStore.getSeriesById(resolvedSeriesId)
+        const standings = rivalStore.getStandings(resolvedSeriesId)
         
         if (!currentSeries) return null
         
@@ -15067,7 +21777,7 @@ export const useCareerStore = create<CareerStore>()(
         const playerStanding = standings.find(s => s.isPlayer || s.driverName === playerFullName)
         
         // Calculate season stats from race history
-        const seasonRaces = player.raceHistory.filter(r => r.seriesId === player.currentSeriesId)
+        const seasonRaces = player.raceHistory.filter(r => r.seriesId === resolvedSeriesId)
         const totalPrizeMoney = seasonRaces.reduce((sum, r) => sum + r.prizeMoney, 0)
         const wins = seasonRaces.filter(r => r.racePosition === 1).length
         const podiums = seasonRaces.filter(r => r.racePosition <= 3).length
@@ -15118,20 +21828,24 @@ export const useCareerStore = create<CareerStore>()(
             'professional': 8, 'pro': 8, 'elite': 12, 'pinnacle': 15
           }
           const champRepBonus = CHAMP_BONUS_BY_TIER[currentSeries.tier] || 5
-          const newRep = Math.min(100, playerAfterSeasonMark.reputation + champRepBonus)
           console.log(`[CareerStore] Championship bonus: +${champRepBonus} rep (tier: ${currentSeries.tier})`)
           // Track championship in seriesChampionships history
           const updatedChampionships = [...(playerAfterSeasonMark.seriesChampionships || [])]
-          if (!updatedChampionships.includes(player.currentSeriesId!)) {
-            updatedChampionships.push(player.currentSeriesId!)
+          if (!updatedChampionships.includes(resolvedSeriesId)) {
+            updatedChampionships.push(resolvedSeriesId)
           }
+          const champRepApplied = applyReputationDeltaToPrimaryContext(
+            playerAfterSeasonMark,
+            get().careerState,
+            champRepBonus
+          )
           set({
             player: {
-              ...playerAfterSeasonMark,
-              reputation: newRep,
-              championships: playerAfterSeasonMark.championships + 1,
+              ...champRepApplied.updatedPlayer,
+              championships: champRepApplied.updatedPlayer.championships + 1,
               seriesChampionships: updatedChampionships
-            }
+            },
+            ...(champRepApplied.updatedCareerState ? { careerState: champRepApplied.updatedCareerState } : {})
           })
           
           // Championship win: Major boost to personal brand (Team Owner mode)
@@ -15268,19 +21982,24 @@ export const useCareerStore = create<CareerStore>()(
           })
           
           // Apply reputation/marketability changes
+          const sponsorReviewRepApplied = applyReputationDeltaToPrimaryContext(
+            currentPlayer,
+            get().careerState,
+            totalRepChange
+          )
           set({
             player: {
-              ...currentPlayer,
-              reputation: Math.max(0, Math.min(100, currentPlayer.reputation + totalRepChange)),
+              ...sponsorReviewRepApplied.updatedPlayer,
               stats: {
-                ...currentPlayer.stats,
-                marketability: Math.max(0, Math.min(100, currentPlayer.stats.marketability + totalMarketabilityChange))
+                ...sponsorReviewRepApplied.updatedPlayer.stats,
+                marketability: Math.max(0, Math.min(100, sponsorReviewRepApplied.updatedPlayer.stats.marketability + totalMarketabilityChange))
               },
               finances: {
-                ...currentPlayer.finances,
+                ...sponsorReviewRepApplied.updatedPlayer.finances,
                 sponsorDeals: updatedSponsorDeals
               }
-            }
+            },
+            ...(sponsorReviewRepApplied.updatedCareerState ? { careerState: sponsorReviewRepApplied.updatedCareerState } : {})
           })
           
           // Store sponsor reviews for the SeasonEnd screen to display
@@ -15307,24 +22026,28 @@ export const useCareerStore = create<CareerStore>()(
           
           // Evaluate renewal if contract is expiring
           if (isLastYear && contract.targets) {
-            const renewalResult = evaluateContractRenewal(
-              contract,
-              contract.targets,
-              summary.finalPosition,
-              careerState.currentYear
-            )
+            const defaultStats: ContractSeasonStats = { racesCompleted: 0, wins: 0, podiums: 0, points: 0, dnfCount: 0, teammateBattleWins: 0, teammateBattleLosses: 0, warningsIssued: 0, seasonYear: careerState.currentYear }
+            const seasonStats = contract.seasonStats || defaultStats
+            const renewalResult = evaluateContractRenewal(contract, contract.teamSatisfaction ?? 50, seasonStats) as { shouldRenew: boolean; reason: string; newEndYear?: number; newSalary?: number; newBonusPerWin?: number; newBonusPerPodium?: number }
             
             if (renewalResult.shouldRenew) {
               console.log(`[CareerStore] Contract auto-renewed: ${renewalResult.reason}`)
+              // Apply relationship modifier to renewal salary
+              const teamRelationship = (careerState as any).relationshipState?.teamRelationship ?? 50
+              const playerMarketability = get().player?.stats?.marketability ?? 50
+              const { salaryModifier } = getContractModifierFromRelationships(teamRelationship, playerMarketability)
+              const baseSalary = renewalResult.newSalary ?? contract.salary
+              const adjustedSalary = Math.round(baseSalary * (1 + salaryModifier))
+              
               set({
                 player: {
                   ...get().player!,
                   contract: {
                     ...get().player!.contract!,
-                    endYear: renewalResult.newEndYear || contract.endYear + 1,
-                    salary: renewalResult.newSalary || contract.salary,
-                    bonusPerWin: renewalResult.newBonusPerWin || contract.bonusPerWin,
-                    bonusPerPodium: renewalResult.newBonusPerPodium || contract.bonusPerPodium,
+                    endYear: renewalResult.newEndYear ?? contract.endYear + 1,
+                    salary: adjustedSalary,
+                    bonusPerWin: renewalResult.newBonusPerWin ?? contract.bonusPerWin,
+                    bonusPerPodium: renewalResult.newBonusPerPodium ?? contract.bonusPerPodium,
                     teamSatisfaction: DEFAULT_TEAM_SATISFACTION, // Reset for new period
                     warningIssued: false,
                     finalWarningIssued: false
@@ -15337,14 +22060,14 @@ export const useCareerStore = create<CareerStore>()(
                 subject: 'Contract Renewed!',
                 sender: contract.teamName,
                 senderRole: 'Team Principal',
-                preview: `Great news! Your contract has been renewed...`,
-                body: `Congratulations!\n\n${renewalResult.reason}\n\nYour contract with **${contract.teamName}** has been extended.\n\nNew salary: $${(renewalResult.newSalary || contract.salary).toLocaleString()}/year\n\nRegards,\n${contract.teamName} Management`,
+                preview: `Your contract with ${contract.teamName} has been extended.`,
+                body: `Congratulations!\n\n${renewalResult.reason}\n\nYour contract with **${contract.teamName}** has been extended.\n\nNew salary: $${(renewalResult.newSalary ?? contract.salary).toLocaleString()}/year\n\nRegards,\n${contract.teamName} Management`,
                 receivedDay: careerState.currentDay,
                 receivedWeek: careerState.currentWeek,
                 receivedYear: careerState.currentYear,
-                read: false,
+                read: true,
                 starred: false,
-                archived: false,
+                archived: true,
                 actionType: 'acknowledge'
               })
             } else {
@@ -15376,10 +22099,63 @@ export const useCareerStore = create<CareerStore>()(
           }
         }
         
+        // ============================================
+        // SEASON END: Process Expired Staff Contracts
+        // ============================================
+        {
+          const teamForContracts = get().careerState?.ownedTeam
+          if (teamForContracts?.staff && teamForContracts.staff.length > 0) {
+            const currentYear = careerState.currentYear
+            const expiredStaff = teamForContracts.staff.filter(
+              s => s.contractEndYear && s.contractEndYear <= currentYear
+            )
+            
+            if (expiredStaff.length > 0) {
+              const remainingStaff = teamForContracts.staff.filter(
+                s => !s.contractEndYear || s.contractEndYear > currentYear
+              )
+              
+              set({
+                careerState: {
+                  ...get().careerState!,
+                  ownedTeam: {
+                    ...get().careerState!.ownedTeam!,
+                    staff: remainingStaff
+                  }
+                }
+              })
+              
+              // Staff departures logged silently — visible in Staff Market but don't clutter inbox
+              for (const staff of expiredStaff) {
+                get().addEmail({
+                  category: 'team',
+                  subject: `Staff Departure: ${staff.name}`,
+                  sender: 'HR Department',
+                  senderRole: 'HR Manager',
+                  preview: `${staff.name}'s contract expired at season end.`,
+                  body: `${staff.name} (${(staff.role || 'Staff').replace(/_/g, ' ')}) has left the team as their contract expired at the end of the season.\n\nYou may want to look for a replacement on the staff market.`,
+                  receivedDay: careerState.currentDay,
+                  receivedWeek: careerState.currentWeek,
+                  receivedYear: careerState.currentYear,
+                  read: true,
+                  starred: false,
+                  archived: true,
+                  actionType: 'navigate',
+                  actionData: { screen: '/staff-market' }
+                })
+              }
+              
+              console.log(`[CareerStore] ${expiredStaff.length} staff contracts expired: ${expiredStaff.map(s => s.name).join(', ')}`)
+            }
+          }
+        }
+        
         // Recalculate reputation and marketability at season end for consistency
         setTimeout(() => {
           get().recalculateReputation()
           get().recalculateMarketability()
+          // Update GOAT progress at season end to catch career milestones
+          get().updateGOATProgress()
         }, 200)
         
         // === NEW: Trigger end-of-season driver updates and transfers ===
@@ -15470,7 +22246,7 @@ export const useCareerStore = create<CareerStore>()(
           }))
           
           const reassignment = checkWorksReassignment(
-            player.reputation,
+            getCanonicalReputation(player, careerState),
             player.contract.currentAssignment?.entryId || player.contract.teamId,
             entriesForCheck,
             playerStanding?.position || standings.length,
@@ -15635,6 +22411,8 @@ export const useCareerStore = create<CareerStore>()(
                 read: false,
                 starred: true,
                 archived: false,
+                requiresAction: true,
+                interruptClass: 'critical',
                 actionType: 'negotiate_sponsor' as const,
                 actionData: {
                   negotiationId: `renewal_${offer.sponsorId}`,
@@ -15692,7 +22470,8 @@ export const useCareerStore = create<CareerStore>()(
 
       getUpcomingRace: () => {
         const { player, careerState } = get()
-        if (!player?.currentSeriesId || !careerState) return null
+        const resolvedSeriesId = player?.currentSeriesId || careerState?.seriesEntries?.[0]?.seriesId
+        if (!resolvedSeriesId || !careerState) return null
         
         // This would query the rivalStore for the calendar
         // For now return null - will be implemented with the calendar screen
@@ -15833,8 +22612,9 @@ export const useCareerStore = create<CareerStore>()(
         if (!player || !careerState) return []
         
         // Get current series info for sponsor generation
-        const currentSeries = player.currentSeriesId 
-          ? useRivalStore.getState().getSeriesById(player.currentSeriesId)
+        const resolvedSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+        const currentSeries = resolvedSeriesId 
+          ? useRivalStore.getState().getSeriesById(resolvedSeriesId)
           : undefined
         
         // Get manufacturer from contract if available
@@ -16031,25 +22811,28 @@ export const useCareerStore = create<CareerStore>()(
         const currentWeek = careerState.currentWeek
         const currentYear = careerState.currentYear
         
-        // Get facility levels for R&D bonuses
+        // Get facility levels for R&D bonuses (0 if notBuilt — facility not yet constructed)
         const facilityLevels = careerState.ownedTeam?.facilities ? {
-          aero: careerState.ownedTeam.facilities.aero?.level || 1,
-          chassis: careerState.ownedTeam.facilities.chassis?.level || 1,
-          engine: careerState.ownedTeam.facilities.engine?.level || 1,
-          sim: careerState.ownedTeam.facilities.sim?.level || 1,
-          manufacturing: careerState.ownedTeam.facilities.manufacturing?.level || 1,
-          marketing: careerState.ownedTeam.facilities.marketing?.level || 1
+          aero: careerState.ownedTeam.facilities.aero?.notBuilt ? 0 : (careerState.ownedTeam.facilities.aero?.level || 1),
+          chassis: careerState.ownedTeam.facilities.chassis?.notBuilt ? 0 : (careerState.ownedTeam.facilities.chassis?.level || 1),
+          engine: careerState.ownedTeam.facilities.engine?.notBuilt ? 0 : (careerState.ownedTeam.facilities.engine?.level || 1),
+          sim: careerState.ownedTeam.facilities.sim?.notBuilt ? 0 : (careerState.ownedTeam.facilities.sim?.level || 1),
+          manufacturing: careerState.ownedTeam.facilities.manufacturing?.notBuilt ? 0 : (careerState.ownedTeam.facilities.manufacturing?.level || 1),
+          marketing: careerState.ownedTeam.facilities.marketing?.notBuilt ? 0 : (careerState.ownedTeam.facilities.marketing?.level || 1),
         } : undefined
         
-        // Calculate staff effectiveness bonuses for each R&D facility
+        // Calculate staff effectiveness bonuses for each R&D facility (team staff + facility staff)
+        const rdFacilities: FacilityType[] = ['aero', 'chassis', 'engine', 'sim']
         let staffBonuses: Record<FacilityType, number> | undefined
-        if (careerState.ownedTeam?.facilities && careerState.ownedTeam?.staff) {
-          const teamStaff = careerState.ownedTeam.staff
+        let traitBonuses: Record<string, number> | undefined
+        let juniorGrowthByFacility: Record<FacilityType, number> | undefined
+        let soloBonusByFacility: Record<FacilityType, number> | undefined
+
+        if (careerState.ownedTeam?.facilities) {
+          const teamStaff = careerState.ownedTeam.staff ?? []
+          const facilityStaff = careerState.ownedTeam.facilityStaff ?? []
           const facilities = careerState.ownedTeam.facilities
-          
-          // R&D facilities that contribute to development
-          const rdFacilities: FacilityType[] = ['aero', 'chassis', 'engine', 'sim']
-          
+
           staffBonuses = {
             aero: 0,
             chassis: 0,
@@ -16058,17 +22841,15 @@ export const useCareerStore = create<CareerStore>()(
             manufacturing: 0,
             marketing: 0
           }
-          
+
+          // Team staff bonuses (existing logic)
           for (const facilityType of rdFacilities) {
             const facility = facilities[facilityType]
             if (facility && facility.assignedStaff.length > 0) {
-              // Look up actual staff objects from IDs
               const assignedStaffMembers = facility.assignedStaff
                 .map(staffId => teamStaff.find(s => s.id === staffId))
                 .filter((s): s is TeamStaff => s !== undefined)
-              
               if (assignedStaffMembers.length > 0) {
-                // Calculate bonus using facility-config function
                 staffBonuses[facilityType] = calculateStaffEffectivenessBonus(
                   facilityType,
                   assignedStaffMembers.map(staff => ({
@@ -16080,11 +22861,60 @@ export const useCareerStore = create<CareerStore>()(
               }
             }
           }
+
+          // Facility staff bonuses: effectiveness contribution per assigned staff
+          const facilityStaffEffectivenessFactor = 0.12
+          for (const facilityType of rdFacilities) {
+            const assigned = facilityStaff.filter(s => s.assignedFacility === facilityType)
+            for (const staff of assigned) {
+              const effectiveness = calculateFacilityEffectiveness(staff as FacilityStaffMember, facilityType)
+              staffBonuses[facilityType] += (effectiveness / 100) * facilityStaffEffectivenessFactor
+            }
+          }
+
+          // Aggregate trait bonuses from all assigned facility staff
+          const assignedFacilityStaff = facilityStaff.filter(s => s.assignedFacility)
+          if (assignedFacilityStaff.length > 0) {
+            traitBonuses = {
+              speed: 0,
+              breakthrough_chance: 0,
+              morale: 0,
+              quality: 0,
+              consistency: 0,
+              efficiency: 0,
+              junior_growth: 0,
+              solo_bonus: 0
+            }
+            for (const staff of assignedFacilityStaff) {
+              for (const trait of staff.traits) {
+                const effect = TRAIT_EFFECTS[trait]
+                if (effect && traitBonuses[effect.bonusType] !== undefined) {
+                  traitBonuses[effect.bonusType] += effect.bonusValue
+                }
+              }
+            }
+          }
+
+          // Per-facility: junior_growth (when facility has junior + mentor) and solo_bonus (lone_wolf alone)
+          juniorGrowthByFacility = { aero: 0, chassis: 0, engine: 0, sim: 0, manufacturing: 0, marketing: 0 }
+          soloBonusByFacility = { aero: 0, chassis: 0, engine: 0, sim: 0, manufacturing: 0, marketing: 0 }
+          for (const facilityType of rdFacilities) {
+            const assigned = facilityStaff.filter(s => s.assignedFacility === facilityType)
+            const hasJunior = assigned.some(s => s.role === 'junior_engineer')
+            const mentorBonus = assigned.reduce((sum, s) => {
+              if (s.traits.includes('mentor')) sum += TRAIT_EFFECTS.mentor.bonusValue
+              return sum
+            }, 0)
+            if (hasJunior && mentorBonus > 0) juniorGrowthByFacility[facilityType] = mentorBonus
+            if (assigned.length === 1 && assigned[0].traits.includes('lone_wolf')) {
+              soloBonusByFacility[facilityType] = TRAIT_EFFECTS.lone_wolf.bonusValue
+            }
+          }
         }
-        
-        // Get team morale for morale modifier
+
+        // Get team morale for morale modifier (include trait-based morale from team_player)
         // MoraleModifiers expects: teamMorale, driverMorale, boardMood, controversyCount, missedDuties
-        const teamMorale = careerState.ownedTeam?.teamMorale ?? 50
+        const teamMorale = Math.min(100, (careerState.ownedTeam?.teamMorale ?? 50) + (traitBonuses?.morale ?? 0))
         const boardMood = careerState.teamMediaState?.boardPRSatisfaction ?? 50
         
         // Use player's morale as driver morale (player is the team owner/driver)
@@ -16131,7 +22961,10 @@ export const useCareerStore = create<CareerStore>()(
           currentYear,
           moraleModifiers,
           facilityLevels,
-          staffBonuses
+          staffBonuses,
+          traitBonuses,
+          juniorGrowthByFacility,
+          soloBonusByFacility
         )
         
         // Apply any event effects
@@ -16424,7 +23257,7 @@ export const useCareerStore = create<CareerStore>()(
         }
       },
 
-      getAIModifier: () => {
+      getAIModifier: (): AIModifierResult => {
         const { player, careerState } = get()
         if (!player || !careerState) {
           return {
@@ -16439,26 +23272,27 @@ export const useCareerStore = create<CareerStore>()(
               total: 0
             },
             description: 'No active career'
-          }
+          } as unknown as AIModifierResult
         }
         
         // Update championship position info from rival store
         const rivalStore = useRivalStore.getState()
-        const standings = player.currentSeriesId 
-          ? rivalStore.getStandings(player.currentSeriesId)
+        const resolvedSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+        const standings = resolvedSeriesId 
+          ? rivalStore.getStandings(resolvedSeriesId)
           : []
         const playerFullName = `${player.firstName} ${player.lastName}`
         const playerStanding = standings.find(s => s.isPlayer || s.driverName === playerFullName)
         const leaderStanding = standings[0]
         
         // Get series calendar length
-        const currentSeries = player.currentSeriesId 
-          ? rivalStore.getSeriesById(player.currentSeriesId)
+        const currentSeries = resolvedSeriesId 
+          ? rivalStore.getSeriesById(resolvedSeriesId)
           : null
         const totalRounds = currentSeries?.calendar?.length || 0
-        const completedRounds = player.raceHistory.filter(r => r.seriesId === player.currentSeriesId).length
+        const completedRounds = player.raceHistory.filter(r => r.seriesId === resolvedSeriesId).length
         
-        // Build RPG state with current info
+        // Build RPG state with current info (include stored pressure AI modifier)
         const rpgState: RPGState = {
           ...careerState.rpgState,
           championshipPosition: playerStanding?.position || 0,
@@ -16467,10 +23301,11 @@ export const useCareerStore = create<CareerStore>()(
           pointsToLeader: playerStanding && leaderStanding 
             ? leaderStanding.points - playerStanding.points 
             : 0,
-          recentPodiumStreak: calculatePodiumStreak(player.raceHistory)
+          recentPodiumStreak: calculatePodiumStreak(player.raceHistory),
+          pressureAIModifier: (careerState as any).pressureAIModifier ?? 0
         }
         
-        return calculateAIModifier(player, rpgState)
+        return calculateAIModifier(player, rpgState) as AIModifierResult
       },
 
       getRPGState: () => {
@@ -16481,15 +23316,19 @@ export const useCareerStore = create<CareerStore>()(
 
       isRaceWeek: () => {
         const { player, careerState } = get()
-        if (!player || !careerState || !player.currentSeriesId) return false
+        if (!player || !careerState) return false
 
         const rivalStore = useRivalStore.getState()
+        const activeSeriesEntries = (careerState.seriesEntries || []).filter(e => e.status !== 'inactive')
+        if (activeSeriesEntries.length > 0) {
+          return activeSeriesEntries.some((entry) => {
+            const series = rivalStore.getSeriesById(entry.seriesId)
+            return !!series?.calendar?.some(event => event.week === careerState.currentWeek)
+          })
+        }
+        if (!player.currentSeriesId) return false
         const currentSeries = rivalStore.getSeriesById(player.currentSeriesId)
-        if (!currentSeries?.calendar) return false
-
-        return currentSeries.calendar.some(
-          event => event.week === careerState.currentWeek
-        )
+        return !!currentSeries?.calendar?.some(event => event.week === careerState.currentWeek)
       },
 
       // ============================================
@@ -16552,17 +23391,18 @@ export const useCareerStore = create<CareerStore>()(
           : null
         
         // Estimate tier from reputation if no contract
-        const estimatedTier = player.reputation >= 75 ? 'elite' :
-                              player.reputation >= 55 ? 'pro' :
-                              player.reputation >= 40 ? 'professional' :
-                              player.reputation >= 25 ? 'semi-pro' :
-                              player.reputation >= 15 ? 'amateur' : 'entry'
+        const effectiveReputation = getCanonicalReputation(player, careerState)
+        const estimatedTier = effectiveReputation >= 75 ? 'elite' :
+                              effectiveReputation >= 55 ? 'pro' :
+                              effectiveReputation >= 40 ? 'professional' :
+                              effectiveReputation >= 25 ? 'semi-pro' :
+                              effectiveReputation >= 15 ? 'amateur' : 'entry'
         
         const tier = currentTeam?.tier || estimatedTier
         const baseValue = tierBaseValues[tier] || 50000
         
         // Reputation multiplier (0.5x to 2x based on reputation 0-100)
-        const repMultiplier = 0.5 + (player.reputation / 100) * 1.5
+        const repMultiplier = 0.5 + (effectiveReputation / 100) * 1.5
         
         // Performance bonus from career results
         const wins = player.totalWins || 0
@@ -16579,8 +23419,9 @@ export const useCareerStore = create<CareerStore>()(
         
         // Championship position bonus (if in a series)
         let positionBonus = 0
-        if (player.currentSeriesId) {
-          const standings = rivalStore.seasonStandings[player.currentSeriesId] || []
+        const marketSeriesId = player.currentSeriesId || careerState.seriesEntries?.[0]?.seriesId
+        if (marketSeriesId) {
+          const standings = rivalStore.seasonStandings[marketSeriesId] || []
           const playerStanding = standings.find(s => 
             s.driverName === `${player.firstName} ${player.lastName}` || s.driverId === player.id
           )
@@ -16758,23 +23599,40 @@ export const useCareerStore = create<CareerStore>()(
       clearRaceWeekendProgress: () => {
         const { careerState } = get()
         if (!careerState) return
-        
+
         set({
           careerState: {
             ...careerState,
             raceWeekendProgress: undefined
           }
         })
-        
+
         console.log('[CareerStore] Race weekend progress cleared')
       },
-      
+
+      autoCompletePostRaceActivities: () => {
+        const { careerState } = get()
+        if (!careerState) return
+
+        const POST_RACE_ROUTINE_IDS = ['mandatory_race_debrief', 'mandatory_car_damage_assessment']
+        const activities = careerState.scheduledActivities || []
+
+        const toComplete = activities.filter(
+          a => POST_RACE_ROUTINE_IDS.includes(a.templateId) && a.status === 'scheduled'
+        )
+
+        for (const activity of toComplete) {
+          get().markScheduledActivityCompleted(activity.id)
+          console.log(`[CareerStore] Auto-completed post-race activity: ${activity.templateId}`)
+        }
+      },
+
       // ============================================
       // GOAT PROGRESS SYSTEM
       // ============================================
       
       checkAndUnlockMilestones: () => {
-        const { player } = get()
+        const { player, careerState } = get()
         if (!player) return []
         
         const newlyUnlocked: string[] = []
@@ -16849,11 +23707,13 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Calculate new tier
-        const tripleLegsCompleted = Object.values(currentProgress.tripleCrowns).reduce(
-          (count, crown) => count + Object.values(crown).filter(Boolean).length, 0
+        const tripleCrowns = currentProgress.tripleCrowns || {}
+        const tripleLegsCompleted = Object.values(tripleCrowns).reduce(
+          (count, crown) => count + Object.values(crown || {}).filter(Boolean).length, 0
         )
+        const effectiveReputation = getCanonicalReputation(player, careerState)
         const newTier = calculateGOATTier(
-          player.reputation,
+          effectiveReputation,
           player.totalWins,
           player.championships,
           tripleLegsCompleted,
@@ -16862,7 +23722,7 @@ export const useCareerStore = create<CareerStore>()(
         
         // Calculate tier progress (considers ALL requirements, not just reputation)
         const tierProgress = calculateTierProgress(newTier.id, {
-          reputation: player.reputation,
+          reputation: effectiveReputation,
           totalWins: player.totalWins,
           totalPodiums: player.totalPodiums,
           totalRaces: player.totalRaces,
@@ -16923,8 +23783,8 @@ export const useCareerStore = create<CareerStore>()(
         if (!updatedPlayer) return results
         
         const currentProgress = updatedPlayer.goatProgress || createDefaultGOATProgress()
-        const updatedTripleCrowns = { ...currentProgress.tripleCrowns }
-        const updatedRecordProgress = { ...currentProgress.recordProgress }
+        const updatedTripleCrowns = { ...(currentProgress.tripleCrowns || {}) }
+        const updatedRecordProgress = { ...(currentProgress.recordProgress || {}) }
         
         // Check Triple Crown legs
         for (const crown of TRIPLE_CROWNS) {
@@ -17144,8 +24004,9 @@ export const useCareerStore = create<CareerStore>()(
         const nationality = player.nationality
         
         // Get eligible templates based on player's status (with frequency checking)
+        const effectiveReputation = getCanonicalReputation(player, careerState)
         const eligibleTemplates = getEligibleEventTemplates(
-          player.reputation,
+          effectiveReputation,
           manufacturerId,
           sponsorIds,
           nationality,
@@ -17160,12 +24021,13 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Select a template weighted by player reputation
-        const template = selectEventTemplate(eligibleTemplates, player.reputation)
+        const template = selectEventTemplate(eligibleTemplates, effectiveReputation)
         if (!template) return null
         
         // Find a suitable gap week (2+ weeks after current week, before next race)
-        const currentSeries = player.currentSeriesId
-          ? useRivalStore.getState().getSeriesById(player.currentSeriesId)
+        const invitationalSeriesId = careerState.seriesEntries?.[0]?.seriesId || player.currentSeriesId
+        const currentSeries = invitationalSeriesId
+          ? useRivalStore.getState().getSeriesById(invitationalSeriesId)
           : null
         
         let eventWeek = careerState.currentWeek + 2 // Minimum 2 weeks from now
@@ -17258,17 +24120,18 @@ export const useCareerStore = create<CareerStore>()(
         // Apply consequences
         const { reputationPenalty, organizerRelationPenalty, description } = invitation.declineConsequences
         
-        // Update player reputation
-        const newReputation = Math.max(0, player.reputation - reputationPenalty)
+        // Update reputation (team-first for owner careers)
+        const declinedInviteRep = applyReputationDeltaToPrimaryContext(
+          player,
+          careerState,
+          -reputationPenalty
+        )
         
         // Track decline
         set({
-          player: {
-            ...player,
-            reputation: newReputation
-          },
+          player: declinedInviteRep.updatedPlayer,
           careerState: {
-            ...careerState,
+            ...(declinedInviteRep.updatedCareerState || careerState),
             pendingInvitations: pendingInvitations.filter(i => i.instanceId !== invitationId),
             declinedInvitationsThisSeason: (careerState.declinedInvitationsThisSeason || 0) + 1
           }
@@ -17331,18 +24194,22 @@ export const useCareerStore = create<CareerStore>()(
           year: careerState.currentYear
         }]
         
+        const invitationalRep = applyReputationDeltaToPrimaryContext(
+          player,
+          careerState,
+          reputationGained
+        )
         set({
           player: {
-            ...player,
-            reputation: Math.min(100, player.reputation + reputationGained),
+            ...invitationalRep.updatedPlayer,
             finances: {
-              ...player.finances,
-              bankBalance: player.finances.bankBalance + prize,
+              ...invitationalRep.updatedPlayer.finances,
+              bankBalance: invitationalRep.updatedPlayer.finances.bankBalance + prize,
               transactions: newTransactions
             }
           },
           careerState: {
-            ...careerState,
+            ...(invitationalRep.updatedCareerState || careerState),
             acceptedInvitations: acceptedInvitations.filter(i => i.instanceId !== invitationId),
             completedInvitations: [...(careerState.completedInvitations || []), completedInvitation],
             eventHistory: newEventHistory
@@ -17391,7 +24258,12 @@ export const useCareerStore = create<CareerStore>()(
       // Non-racing opportunities (media, manufacturer, special events)
       // ============================================
       
-      acceptOpportunity: (opportunityId: string, scheduledWeek: number, scheduledDay: number) => {
+      acceptOpportunity: (
+        opportunityId: string,
+        scheduledWeek: number,
+        scheduledDay: number,
+        scheduledPeriod?: import('@/data/day-periods-config').DayPeriod
+      ) => {
         const { careerState, player } = get()
         if (!careerState || !player) return null
         
@@ -17404,10 +24276,18 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Accept the opportunity with scheduling
-        const acceptedOpportunity = acceptOpportunityFn(opportunity, scheduledWeek, scheduledDay)
+        const acceptedOpportunity = acceptOpportunityFn(opportunity)
         
         // Create a scheduled activity for this opportunity
         const activityId = `opp_${opportunity.instanceId}`
+        const timeCost = getActivityTimeCost(opportunity.id)
+        const allowedPeriods = (timeCost.allowedPeriods && timeCost.allowedPeriods.length > 0)
+          ? timeCost.allowedPeriods
+          : undefined
+        const safePeriod = (scheduledPeriod && allowedPeriods && !allowedPeriods.includes(scheduledPeriod))
+          ? allowedPeriods[0]
+          : scheduledPeriod
+
         const scheduledActivity: ScheduledActivity = {
           id: activityId,
           templateId: opportunity.id,
@@ -17433,7 +24313,9 @@ export const useCareerStore = create<CareerStore>()(
             fanSentiment: -(opportunity.consequences.fanSentimentLoss || 0)
           },
           // Store opportunity reference for completion
-          opportunityId: opportunity.instanceId
+          opportunityId: opportunity.instanceId,
+          // Day period scheduling from activity time cost config
+          scheduledPeriod: safePeriod || timeCost.preferredPeriod || allowedPeriods?.[0] || 'afternoon',
         }
         
         set({
@@ -17446,13 +24328,13 @@ export const useCareerStore = create<CareerStore>()(
           }
         })
         
-        console.log(`[Opportunities] Accepted: ${opportunity.name} - Scheduled for Week ${scheduledWeek}, Day ${scheduledDay}`)
+        console.log(`[Opportunities] Accepted: ${opportunity.name} - Scheduled for Week ${scheduledWeek}, Day ${scheduledDay}${scheduledActivity.scheduledPeriod ? ` (${scheduledActivity.scheduledPeriod})` : ''}`)
         
         // === NOTIFICATION INTEGRATION ===
         routeNotification({
           category: opportunity.category === 'media_appearance' ? 'media_pr' : opportunity.category === 'manufacturer_program' ? 'technical' : 'sponsor',
           subject: `Opportunity Accepted: ${opportunity.name}`,
-          body: `You've accepted "${opportunity.name}" and it has been scheduled for Week ${scheduledWeek}, Day ${scheduledDay}.\n\nDuration: ${opportunity.duration} hour(s)\n${opportunity.rewards.cash ? `Payment: $${opportunity.rewards.cash.toLocaleString()}` : ''}`,
+          body: `You've accepted "${opportunity.name}" and it has been scheduled for Week ${scheduledWeek}, Day ${scheduledDay}${scheduledActivity.scheduledPeriod ? ` (${scheduledActivity.scheduledPeriod})` : ''}.\n\nDuration: ${opportunity.duration} hour(s)\n${opportunity.rewards.cash ? `Payment: $${opportunity.rewards.cash.toLocaleString()}` : ''}`,
           emailCategory: opportunity.category === 'media_appearance' ? 'media' : 'team'
         })
 
@@ -17477,9 +24359,10 @@ export const useCareerStore = create<CareerStore>()(
         const consequences = opportunity.consequences
         
         // Apply reputation loss
-        let newReputation = player.reputation
+        const currentReputation = getCanonicalReputation(player, careerState)
+        let newReputation = currentReputation
         if (consequences.reputationLoss) {
-          newReputation = Math.max(0, player.reputation - consequences.reputationLoss)
+          newReputation = Math.max(0, currentReputation - consequences.reputationLoss)
         }
         
         // Apply relationship loss if applicable
@@ -17503,13 +24386,15 @@ export const useCareerStore = create<CareerStore>()(
           }
         }
         
+        const declinedOpportunityRep = applyReputationDeltaToPrimaryContext(
+          player,
+          careerState,
+          newReputation - currentReputation
+        )
         set({
-          player: {
-            ...player,
-            reputation: newReputation
-          },
+          player: declinedOpportunityRep.updatedPlayer,
           careerState: {
-            ...careerState,
+            ...(declinedOpportunityRep.updatedCareerState || careerState),
             pendingOpportunities: pendingOpportunities.filter(o => o.instanceId !== opportunityId),
             declinedOpportunitiesThisSeason: [...(careerState.declinedOpportunitiesThisSeason || []), opportunity.id],
             manufacturerRelationships: updatedManufacturerRelationships,
@@ -17540,7 +24425,7 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Complete the opportunity
-        const completedOpp = completeOpportunity(opportunity, performanceMultiplier)
+        const completedOpp = completeOpportunity(opportunity)
         const rewards = completedOpp.result?.actualRewards
         
         if (!rewards) {
@@ -17548,13 +24433,17 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Apply rewards
-        let newReputation = player.reputation
-        if (rewards.reputation) {
-          newReputation = Math.min(100, player.reputation + rewards.reputation)
-        }
+        const tunedOpportunityRep = rewards.reputation
+          ? scalePositiveSoftStatReward(rewards.reputation)
+          : 0
+        const opportunityRepApplied = applyReputationDeltaToPrimaryContext(
+          player,
+          careerState,
+          tunedOpportunityRep
+        )
         
-        let newBalance = player.finances.bankBalance
-        const newTransactions = [...player.finances.transactions]
+        let newBalance = opportunityRepApplied.updatedPlayer.finances.bankBalance
+        const newTransactions = [...opportunityRepApplied.updatedPlayer.finances.transactions]
         if (rewards.cash) {
           newBalance += rewards.cash
           newTransactions.push({
@@ -17590,25 +24479,27 @@ export const useCareerStore = create<CareerStore>()(
         
         // Apply fan sentiment boost
         let updatedTeamMediaState = careerState.teamMediaState
-        if (rewards.fanSentiment && updatedTeamMediaState) {
+        const tunedOpportunityFanSentiment = rewards.fanSentiment
+          ? scalePositiveSoftStatReward(rewards.fanSentiment)
+          : 0
+        if (tunedOpportunityFanSentiment && updatedTeamMediaState) {
           updatedTeamMediaState = {
             ...updatedTeamMediaState,
-            fanSentiment: Math.min(100, updatedTeamMediaState.fanSentiment + rewards.fanSentiment)
+            fanSentiment: Math.min(100, updatedTeamMediaState.fanSentiment + tunedOpportunityFanSentiment)
           }
         }
         
         set({
           player: {
-            ...player,
-            reputation: newReputation,
+            ...opportunityRepApplied.updatedPlayer,
             finances: {
-              ...player.finances,
+              ...opportunityRepApplied.updatedPlayer.finances,
               bankBalance: newBalance,
               transactions: newTransactions
             }
           },
           careerState: {
-            ...careerState,
+            ...(opportunityRepApplied.updatedCareerState || careerState),
             acceptedOpportunities: acceptedOpportunities.filter(o => o.instanceId !== opportunityId),
             completedOpportunities: [...(careerState.completedOpportunities || []), completedOpp],
             manufacturerRelationships: updatedManufacturerRelationships,
@@ -17617,7 +24508,7 @@ export const useCareerStore = create<CareerStore>()(
         })
         
         console.log(`[Opportunities] Completed: ${opportunity.name}`)
-        console.log(`[Opportunities] Rewards: Rep +${rewards.reputation || 0}, Cash +$${rewards.cash || 0}`)
+        console.log(`[Opportunities] Rewards: Rep +${tunedOpportunityRep || 0}, Cash +$${rewards.cash || 0}`)
         
         return { success: true, rewards }
       },
@@ -17633,10 +24524,388 @@ export const useCareerStore = create<CareerStore>()(
       },
       
       // ============================================
+      // QUICK DECISION SYSTEM
+      // ============================================
+      
+      applyQuickDecisionEffects: (decisionId: string, optionId: string, effects: ActivityEffect, decisionTitle: string, optionText: string, scheduleActivityId?: string) => {
+        const { careerState, player, scheduleActivity } = get()
+        if (!careerState || !player) return { scheduled: false, effectsSummary: [] }
+        effects = tunePositiveSoftStatRewards(effects)
+        
+        let scheduled = false
+        let activityName: string | undefined
+        let scheduledActivityId: string | undefined
+        let scheduledWeek: number | undefined
+        let scheduledDay: number | undefined
+        let scheduledPeriod: import('@/data/day-periods-config').DayPeriod | undefined
+        const effectsSummary: string[] = []
+
+        const consumeQuickDecision = () => {
+          const latest = get().careerState
+          if (!latest) return
+          const briefing = (latest as any).dailyBriefing
+          if (!briefing?.quickDecision) return
+          if (briefing.quickDecision.id !== decisionId) return
+
+          set({
+            careerState: {
+              ...latest,
+              dailyBriefing: {
+                ...briefing,
+                quickDecision: null,
+                lastResolvedQuickDecisionId: decisionId,
+                lastResolvedQuickDecisionOptionId: optionId,
+                lastResolvedQuickDecisionAt: {
+                  week: latest.currentWeek,
+                  day: latest.currentDay ?? 1,
+                  year: latest.currentYear,
+                }
+              }
+            } as any
+          })
+        }
+        
+        // If this option schedules an activity, do that first
+        if (scheduleActivityId) {
+          const baseWeek = careerState.currentWeek
+          const baseDay = careerState.currentDay ?? 1
+          const currentHour = careerState.dayBudget?.currentHour ?? DAY_PERIODS.morning.startHour
+          const currentPeriod = getPeriodForHour(currentHour)
+          const defaultAllowed = DAY_PERIOD_ORDER
+          const allowedPeriods = (() => {
+            const fromCost = getActivityTimeCost(scheduleActivityId).allowedPeriods
+            if (fromCost && fromCost.length > 0) return fromCost
+            return defaultAllowed
+          })()
+          const currentPeriodIndex = DAY_PERIOD_ORDER.indexOf(currentPeriod)
+
+          const clampWeekDay = (week: number, day: number) => {
+            let w = week
+            let d = day
+            while (d > 7) {
+              d -= 7
+              w += 1
+            }
+            while (d < 1) {
+              d += 7
+              w -= 1
+            }
+            return { week: w, day: d }
+          }
+
+          const pickNextSchedulableSlot = (dayOffset: number): { dayOffset: number; period: import('@/data/day-periods-config').DayPeriod } => {
+            if (dayOffset === 0) {
+              // Same-day scheduling: only pick current/future periods, never past ones.
+              for (let i = currentPeriodIndex; i < DAY_PERIOD_ORDER.length; i++) {
+                const p = DAY_PERIOD_ORDER[i]
+                if (allowedPeriods.includes(p)) return { dayOffset, period: p }
+              }
+              // No valid slot left today; roll to tomorrow at first allowed period.
+              return {
+                dayOffset: 1,
+                period: (allowedPeriods[0] || 'morning') as import('@/data/day-periods-config').DayPeriod
+              }
+            }
+            // Future day: pick preferred earliest allowed period.
+            const fallbackPeriod = (allowedPeriods[0] || 'morning') as import('@/data/day-periods-config').DayPeriod
+            return { dayOffset, period: fallbackPeriod }
+          }
+
+          let result: ScheduledActivity | null = null
+          for (let dayOffset = 0; dayOffset <= 5; dayOffset++) {
+            const slot = pickNextSchedulableSlot(dayOffset)
+            const target = clampWeekDay(baseWeek, baseDay + slot.dayOffset)
+            result = scheduleActivity(scheduleActivityId, target.week, target.day, undefined, slot.period)
+            if (result) break
+          }
+
+          if (result) {
+            scheduled = true
+            scheduledActivityId = result.id
+            activityName = result.name
+            scheduledWeek = result.scheduledWeek
+            scheduledDay = result.scheduledDay
+            scheduledPeriod = result.scheduledPeriod
+          }
+          if (scheduled && activityName) {
+            effectsSummary.push(
+              `📅 ${activityName} scheduled: W${scheduledWeek ?? careerState.currentWeek} D${scheduledDay ?? (careerState.currentDay ?? 1)}${scheduledPeriod ? ` (${scheduledPeriod})` : ''}`
+            )
+          }
+
+          // Quick Decision outcome hooks:
+          // "Investor Interest -> Take the meeting" should have tangible upside if completed well.
+          if (
+            scheduled &&
+            scheduledActivityId &&
+            scheduleActivityId === 'investor_coffee' &&
+            decisionId.startsWith('quick_investor_') &&
+            optionId === 'meet'
+          ) {
+            const latest = get().careerState
+            if (latest?.scheduledActivities) {
+              set({
+                careerState: {
+                  ...latest,
+                  scheduledActivities: latest.scheduledActivities.map(a => {
+                    if (a.id !== scheduledActivityId) return a
+                    return {
+                      ...a,
+                      effectsOnComplete: {
+                        ...a.effectsOnComplete,
+                        // This feeds into completion logic that can generate sponsor offers.
+                        sponsorLeadsGenerated: Math.max(1, a.effectsOnComplete?.sponsorLeadsGenerated || 0)
+                      }
+                    }
+                  })
+                }
+              })
+              effectsSummary.push('🔍 Potential sponsor lead if meeting goes well')
+            }
+          }
+        }
+        
+        // Apply any immediate effects (non-scheduling effects like cash, reputation, etc.)
+        if (effects && Object.keys(effects).length > 0) {
+          // Re-read fresh state after potential scheduling
+          const freshState = get()
+          const freshPlayer = freshState.player
+          const freshCareerState = freshState.careerState
+          if (!freshCareerState || !freshPlayer) return { scheduled, activityName, effectsSummary }
+          
+          let updatedPlayer = { ...freshPlayer }
+          let updatedOwnedTeam = freshCareerState.ownedTeam ? { ...freshCareerState.ownedTeam } : undefined
+          let updatedCareerState = { ...freshCareerState }
+          
+          // Team morale (propagate to individual staff + recalc average)
+          if (effects.teamMorale && updatedOwnedTeam) {
+            updatedOwnedTeam = applyTeamMoraleDelta(updatedOwnedTeam, effects.teamMorale)
+            effectsSummary.push(`${effects.teamMorale > 0 ? '↑' : '↓'} Team Morale ${effects.teamMorale > 0 ? '+' : ''}${effects.teamMorale}`)
+          }
+          
+          // Cash (personal money) — record as personal transaction
+          if (effects.cash) {
+            updatedPlayer.finances = {
+              ...updatedPlayer.finances,
+              bankBalance: updatedPlayer.finances.bankBalance + effects.cash,
+              transactions: [
+                ...updatedPlayer.finances.transactions,
+                {
+                  id: `tx_qd_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                  date: new Date().toISOString(),
+                  week: freshCareerState.currentWeek,
+                  year: freshCareerState.currentYear,
+                  type: effects.cash > 0 ? 'income' as const : 'expense' as const,
+                  category: 'other' as const,
+                  amount: Math.abs(effects.cash),
+                  description: `Quick Decision: ${decisionTitle} — ${optionText}`
+                }
+              ]
+            }
+            effectsSummary.push(`💰 Personal: ${effects.cash > 0 ? '+' : '-'}$${Math.abs(effects.cash).toLocaleString()}`)
+          }
+          
+          // Budget impact (team money) — record as team transaction
+          if (effects.budgetImpact && updatedOwnedTeam) {
+            updatedOwnedTeam.budgets = {
+              ...updatedOwnedTeam.budgets,
+              cash: (updatedOwnedTeam.budgets?.cash ?? 0) + effects.budgetImpact
+            }
+            const teamTx: TeamTransaction = {
+              id: `tx_qd_team_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+              date: new Date().toISOString(),
+              week: freshCareerState.currentWeek,
+              year: freshCareerState.currentYear,
+              type: effects.budgetImpact > 0 ? 'income' : 'expense',
+              category: 'other',
+              amount: Math.abs(effects.budgetImpact),
+              description: `Quick Decision: ${decisionTitle} — ${optionText}`,
+              countsTowardCostCap: false
+            }
+            updatedOwnedTeam.finances = {
+              ...updatedOwnedTeam.finances,
+              transactions: [...(updatedOwnedTeam.finances?.transactions || []), teamTx]
+            }
+            effectsSummary.push(`💰 Team Budget: ${effects.budgetImpact > 0 ? '+' : '-'}$${Math.abs(effects.budgetImpact).toLocaleString()}`)
+          }
+          
+          // Reputation
+          if (effects.reputation) {
+            const qdRepApplied = applyReputationDeltaToPrimaryContext(
+              updatedPlayer,
+              updatedCareerState,
+              effects.reputation
+            )
+            updatedPlayer = qdRepApplied.updatedPlayer
+            if (qdRepApplied.updatedCareerState) {
+              updatedCareerState = qdRepApplied.updatedCareerState
+              updatedOwnedTeam = updatedCareerState.ownedTeam ? { ...updatedCareerState.ownedTeam } : updatedOwnedTeam
+            }
+            effectsSummary.push(`${effects.reputation > 0 ? '↑' : '↓'} Reputation ${effects.reputation > 0 ? '+' : ''}${effects.reputation}`)
+          }
+          
+          // Confidence
+          if (effects.confidence && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              confidence: Math.max(0, Math.min(100, updatedPlayer.mentalState.confidence + effects.confidence))
+            }
+            effectsSummary.push(`${effects.confidence > 0 ? '↑' : '↓'} Confidence ${effects.confidence > 0 ? '+' : ''}${effects.confidence}`)
+          }
+          
+          // Driver morale
+          if (effects.driverMorale && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              morale: Math.max(0, Math.min(100, updatedPlayer.mentalState.morale + (effects.driverMorale || 0)))
+            }
+            effectsSummary.push(`${effects.driverMorale > 0 ? '↑' : '↓'} Driver Morale ${effects.driverMorale > 0 ? '+' : ''}${effects.driverMorale}`)
+          }
+          
+          // Stress
+          if (effects.stress && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              stress: Math.max(0, Math.min(100, (updatedPlayer.mentalState.stress || 0) + effects.stress))
+            }
+            effectsSummary.push(`${effects.stress > 0 ? '↑' : '↓'} Stress ${effects.stress > 0 ? '+' : ''}${effects.stress}`)
+          }
+          
+          // Driver fatigue
+          if (effects.driverFatigue && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              fatigue: Math.max(0, Math.min(100, (updatedPlayer.mentalState.fatigue || 0) + effects.driverFatigue))
+            }
+            effectsSummary.push(`${effects.driverFatigue > 0 ? '↑' : '↓'} Fatigue ${effects.driverFatigue > 0 ? '+' : ''}${effects.driverFatigue}`)
+          }
+          
+          // Fan sentiment
+          if (effects.fanSentiment && updatedOwnedTeam) {
+            updatedOwnedTeam.fanSentiment = Math.max(0, Math.min(100, (updatedOwnedTeam.fanSentiment ?? 50) + effects.fanSentiment))
+            effectsSummary.push(`${effects.fanSentiment > 0 ? '↑' : '↓'} Fan Sentiment ${effects.fanSentiment > 0 ? '+' : ''}${effects.fanSentiment}`)
+          }
+          
+          // Sponsor satisfaction
+          if (effects.sponsorSatisfaction) {
+            updatedPlayer.finances = {
+              ...updatedPlayer.finances,
+              sponsorDeals: updatedPlayer.finances.sponsorDeals.map(s => ({
+                ...s,
+                satisfaction: Math.max(0, Math.min(100, (s.satisfaction || 70) + (effects.sponsorSatisfaction || 0)))
+              }))
+            }
+            effectsSummary.push(`${effects.sponsorSatisfaction > 0 ? '↑' : '↓'} Sponsor Satisfaction ${effects.sponsorSatisfaction > 0 ? '+' : ''}${effects.sponsorSatisfaction}`)
+          }
+          
+          // Development points
+          if (effects.developmentPoints && updatedCareerState.teamDevelopment) {
+            const focus = updatedCareerState.teamDevelopment.budget?.focusArea || 'balanced'
+            if (focus !== 'balanced') {
+              const focusArea = focus as any
+              if (updatedCareerState.teamDevelopment.areas[focusArea]) {
+                updatedCareerState.teamDevelopment = {
+                  ...updatedCareerState.teamDevelopment,
+                  areas: {
+                    ...updatedCareerState.teamDevelopment.areas,
+                    [focusArea]: {
+                      ...updatedCareerState.teamDevelopment.areas[focusArea],
+                      points: updatedCareerState.teamDevelopment.areas[focusArea].points + effects.developmentPoints
+                    }
+                  }
+                }
+              }
+            }
+            effectsSummary.push(`${effects.developmentPoints > 0 ? '↑' : '↓'} Development ${effects.developmentPoints > 0 ? '+' : ''}${effects.developmentPoints} pts`)
+          }
+          
+          // Marketability
+          if (effects.marketability) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              marketability: Math.max(0, Math.min(100, updatedPlayer.stats.marketability + effects.marketability))
+            }
+            effectsSummary.push(`${effects.marketability > 0 ? '↑' : '↓'} Marketability ${effects.marketability > 0 ? '+' : ''}${effects.marketability}`)
+          }
+          
+          // Mental strength
+          if (effects.mentalStrength) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              mentalStrength: Math.max(0, Math.min(100, updatedPlayer.stats.mentalStrength + effects.mentalStrength))
+            }
+            effectsSummary.push(`${effects.mentalStrength > 0 ? '↑' : '↓'} Mental Strength ${effects.mentalStrength > 0 ? '+' : ''}${effects.mentalStrength}`)
+          }
+          
+          // Board mood
+          if (effects.boardMood && updatedOwnedTeam) {
+            updatedOwnedTeam.boardMood = Math.max(0, Math.min(100, updatedOwnedTeam.boardMood + effects.boardMood))
+            effectsSummary.push(`${effects.boardMood > 0 ? '↑' : '↓'} Board Mood ${effects.boardMood > 0 ? '+' : ''}${effects.boardMood}`)
+          }
+          
+          // Team followers
+          if (effects.teamFollowers && updatedCareerState.teamMediaState?.teamSocial) {
+            updatedCareerState = {
+              ...updatedCareerState,
+              teamMediaState: {
+                ...updatedCareerState.teamMediaState,
+                teamSocial: {
+                  ...updatedCareerState.teamMediaState.teamSocial,
+                  followers: Math.max(0, updatedCareerState.teamMediaState.teamSocial.followers + effects.teamFollowers)
+                }
+              }
+            }
+            effectsSummary.push(`${effects.teamFollowers > 0 ? '↑' : '↓'} Team Followers ${effects.teamFollowers > 0 ? '+' : ''}${effects.teamFollowers.toLocaleString()}`)
+          }
+          
+          // Personal followers
+          if (effects.personalFollowers && updatedCareerState.personalLife?.brand) {
+            updatedCareerState = {
+              ...updatedCareerState,
+              personalLife: {
+                ...updatedCareerState.personalLife,
+                brand: {
+                  ...updatedCareerState.personalLife.brand,
+                  socialMediaFollowing: Math.max(0, (updatedCareerState.personalLife.brand.socialMediaFollowing || 0) + effects.personalFollowers)
+                }
+              }
+            }
+            effectsSummary.push(`${effects.personalFollowers > 0 ? '↑' : '↓'} Personal Followers ${effects.personalFollowers > 0 ? '+' : ''}${effects.personalFollowers.toLocaleString()}`)
+          }
+          
+          // Sponsor leads
+          if (effects.sponsorLeadsGenerated && effects.sponsorLeadsGenerated > 0) {
+            effectsSummary.push(`🔍 ${effects.sponsorLeadsGenerated} sponsor lead${effects.sponsorLeadsGenerated > 1 ? 's' : ''} generated`)
+          }
+          
+          // Fitness
+          if (effects.fitness) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              fitness: Math.max(0, Math.min(100, updatedPlayer.stats.fitness + effects.fitness))
+            }
+            effectsSummary.push(`${effects.fitness > 0 ? '↑' : '↓'} Fitness ${effects.fitness > 0 ? '+' : ''}${effects.fitness}`)
+          }
+          
+          set({
+            player: updatedPlayer,
+            careerState: {
+              ...updatedCareerState,
+              ownedTeam: updatedOwnedTeam
+            }
+          })
+        }
+        
+        // Persist resolution so reload/navigation doesn't ask the same decision again.
+        consumeQuickDecision()
+        return { scheduled, activityName, effectsSummary }
+      },
+      
+      // ============================================
       // SCHEDULED ACTIVITIES SYSTEM
       // ============================================
       
-      scheduleActivity: (templateId: string, week: number, day: number, sponsorId?: string) => {
+      scheduleActivity: (templateId: string, week: number, day: number, sponsorId?: string, period?: import('@/data/day-periods-config').DayPeriod) => {
         const { careerState, player } = get()
         if (!careerState || !player) return null
         
@@ -17647,37 +24916,44 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         // Check reputation requirement
-        if (template.minReputation && player.reputation < template.minReputation) {
+        const effectiveReputation = getCanonicalReputation(player, careerState)
+        if (template.minReputation && effectiveReputation < template.minReputation) {
           console.warn(`[Activities] Insufficient reputation for ${templateId}`)
           return null
         }
         
-        // Check if already scheduled at same time
+        // Check effective hours (including travel overhead, role transitions, etc.)
         const existingActivities = careerState.scheduledActivities || []
-        const hasSameTimeConflict = existingActivities.some(
-          a => a.scheduledWeek === week && a.scheduledDay === day && a.status === 'scheduled'
+        const dayActivities = existingActivities.filter(
+          a => a.scheduledWeek === week && a.status === 'scheduled' && (
+            a.scheduledDay === day ||
+            (a.spanDays > 1 && day >= a.scheduledDay && day < a.scheduledDay + a.spanDays)
+          )
         )
-        if (hasSameTimeConflict) {
-          console.warn(`[Activities] Time conflict for week ${week} day ${day}`)
+        
+        // Check if same exact activity is already scheduled on this day
+        const hasDuplicateActivity = dayActivities.some(a => a.templateId === templateId)
+        if (hasDuplicateActivity) {
+          console.warn(`[Activities] Activity ${templateId} already scheduled on week ${week} day ${day}`)
           return null
         }
         
-        // Check for driver/owner scheduling conflicts
-        const { checkScheduleConflict } = get()
-        const conflictCheck = checkScheduleConflict(
-          week, 
-          day, 
-          template.requiresDriver ?? true, 
-          !template.requiresDriver // If doesn't require driver, treat as owner-only
-        )
+        // Build a lightweight representation of the new activity for effective hours check
+        const isRaceDay = dayActivities.some(a => a.category === 'race')
+        const newActivityForCheck = {
+          duration: template.duration || 2,
+          category: template.category,
+          configuration: undefined as undefined,
+          requiresDriver: template.requiresDriver ?? true,
+          requiresOwner: !template.requiresDriver,
+        }
+        const projectedBreakdown = wouldExceedDayLimit(dayActivities, newActivityForCheck, isRaceDay)
         
-        if (conflictCheck.hasConflict) {
-          console.warn(`[Activities] Driver/Owner conflict detected:`, {
-            type: conflictCheck.conflictType,
-            conflicting: conflictCheck.conflictingActivities.map(a => a.name),
-            canResolve: conflictCheck.canResolveWithReserve
-          })
-          // Still allow scheduling but log warning - UI should handle displaying this to user
+        if (projectedBreakdown.hasConflict) {
+          // Allow scheduling on overloaded days — the player will face fatigue/stress
+          // penalties when completing activities beyond their daily hour budget.
+          // The UI will show an overload warning so the player can prioritise or reschedule.
+          console.warn(`[Activities] Day ${day} will be overloaded — ${projectedBreakdown.effectiveHours.toFixed(1)}h effective (${projectedBreakdown.totalDuration}h activities + ${projectedBreakdown.travelOverhead}h travel + ${projectedBreakdown.roleTransitionPenalty}h role switch + ${projectedBreakdown.raceDayOverhead}h race overhead) > ${OVERHEAD_MAX_HOURS}h max`)
         }
         
         // Check cooldown
@@ -17716,9 +24992,10 @@ export const useCareerStore = create<CareerStore>()(
           return null
         }
         
-        // Check for conflicts across all days the activity would span
-        for (let d = day; d < day + spanDays; d++) {
-          const conflictOnDay = existingActivities.some(a => {
+        // Check effective hours across all days the activity would span
+        for (let d = day + 1; d < day + spanDays; d++) {
+          // Day `day` was already checked above; check additional span days
+          const activitiesOnSpanDay = existingActivities.filter(a => {
             const aSpan = a.spanDays || 1
             const aStartDay = a.scheduledDay
             const aEndDay = aStartDay + aSpan - 1
@@ -17726,11 +25003,15 @@ export const useCareerStore = create<CareerStore>()(
                    a.status === 'scheduled' &&
                    d >= aStartDay && d <= aEndDay
           })
-          if (conflictOnDay) {
-            console.warn(`[Activities] Day ${d} is blocked by another activity`)
-            return null
+          const isSpanDayRace = activitiesOnSpanDay.some(a => a.category === 'race')
+          const spanDayBreakdown = wouldExceedDayLimit(activitiesOnSpanDay, newActivityForCheck, isSpanDayRace)
+          if (spanDayBreakdown.hasConflict) {
+            console.warn(`[Activities] Span day ${d} will be overloaded — ${spanDayBreakdown.effectiveHours.toFixed(1)}h effective > ${OVERHEAD_MAX_HOURS}h max`)
           }
         }
+        
+        // Look up time cost for period scheduling
+        const timeCostInfo = getActivityTimeCost(templateId)
         
         // Create the activity
         const activity: ScheduledActivity = {
@@ -17753,7 +25034,8 @@ export const useCareerStore = create<CareerStore>()(
           sponsorId,
           canReschedule: true,
           rescheduleCost,
-          timesRescheduled: 0
+          timesRescheduled: 0,
+          scheduledPeriod: period || timeCostInfo.preferredPeriod || (timeCostInfo.allowedPeriods?.[0])
         }
         
         // Add to scheduled activities
@@ -17764,12 +25046,12 @@ export const useCareerStore = create<CareerStore>()(
           }
         })
         
-        console.log(`[Activities] Scheduled: ${activity.name} for Week ${week} Day ${day}`)
+        console.log(`[Activities] Scheduled: ${activity.name} for Week ${week} Day ${day}${activity.scheduledPeriod ? ` (${activity.scheduledPeriod})` : ''}`)
         return activity
       },
       
       cancelActivity: (activityId: string) => {
-        const { careerState } = get()
+        const { careerState, player } = get()
         if (!careerState) return false
         
         const activities = careerState.scheduledActivities || []
@@ -17780,10 +25062,109 @@ export const useCareerStore = create<CareerStore>()(
           return false
         }
         
-        // Remove from scheduled
+        // Apply partial effectsOnMiss (50%) when cancelling so backing out has a cost
+        let updatedPlayer = player ? { ...player } : undefined
+        let updatedOwnedTeam = careerState.ownedTeam ? { ...careerState.ownedTeam } : undefined
+        const effects = activity.effectsOnMiss
+        const hasEffects = effects && typeof effects === 'object' && Object.keys(effects).some(k => typeof (effects as any)[k] === 'number')
+        if (hasEffects && effects && updatedPlayer) {
+          const scale = 0.5
+          const s = (v: number) => Math.round(v * scale)
+          if (effects.driverFatigue && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              fatigue: Math.max(0, Math.min(100, updatedPlayer.mentalState.fatigue + s(effects.driverFatigue)))
+            }
+          }
+          if (effects.driverMorale && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              morale: Math.max(0, Math.min(100, updatedPlayer.mentalState.morale + s(effects.driverMorale)))
+            }
+          }
+          if (effects.reputation) {
+            const cancelRepApplied = applyReputationDeltaToPrimaryContext(
+              updatedPlayer,
+              updatedOwnedTeam ? { ...careerState, ownedTeam: updatedOwnedTeam } : careerState,
+              s(effects.reputation)
+            )
+            updatedPlayer = cancelRepApplied.updatedPlayer
+            updatedOwnedTeam = cancelRepApplied.updatedCareerState?.ownedTeam
+              ? { ...cancelRepApplied.updatedCareerState.ownedTeam }
+              : updatedOwnedTeam
+          }
+          if (effects.cash) {
+            updatedPlayer.finances = {
+              ...updatedPlayer.finances,
+              bankBalance: updatedPlayer.finances.bankBalance + s(effects.cash)
+            }
+          }
+          if (effects.boardMood && updatedOwnedTeam) {
+            updatedOwnedTeam.boardMood = Math.max(0, Math.min(100, updatedOwnedTeam.boardMood + s(effects.boardMood)))
+          }
+          if (effects.teamMorale && updatedOwnedTeam) {
+            updatedOwnedTeam = applyTeamMoraleDelta(updatedOwnedTeam, s(effects.teamMorale!))
+          }
+          if (effects.fanSentiment && updatedOwnedTeam) {
+            updatedOwnedTeam.fanSentiment = Math.max(0, Math.min(100, updatedOwnedTeam.fanSentiment + s(effects.fanSentiment)))
+          }
+          if (effects.sponsorSatisfaction) {
+            if (activity.sponsorId) {
+              updatedPlayer.finances = {
+                ...updatedPlayer.finances,
+                sponsorDeals: updatedPlayer.finances.sponsorDeals.map(deal =>
+                  deal.id === activity.sponsorId
+                    ? { ...deal, satisfaction: Math.max(0, (deal.satisfaction || 70) + s(effects.sponsorSatisfaction!)) }
+                    : deal
+                )
+              }
+            } else {
+              updatedPlayer.finances = {
+                ...updatedPlayer.finances,
+                sponsorDeals: updatedPlayer.finances.sponsorDeals.map(deal => ({
+                  ...deal,
+                  satisfaction: Math.max(0, (deal.satisfaction || 70) + s(effects.sponsorSatisfaction!))
+                }))
+              }
+            }
+          }
+          if (effects.confidence && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              confidence: Math.max(0, Math.min(100, updatedPlayer.mentalState.confidence + s(effects.confidence)))
+            }
+          }
+          if (effects.stress && updatedPlayer.mentalState) {
+            updatedPlayer.mentalState = {
+              ...updatedPlayer.mentalState,
+              stress: Math.max(0, Math.min(100, (updatedPlayer.mentalState.stress || 0) + s(effects.stress)))
+            }
+          }
+          if (effects.fitness) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              fitness: Math.max(0, Math.min(100, updatedPlayer.stats.fitness + s(effects.fitness)))
+            }
+          }
+          if (effects.marketability) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              marketability: Math.max(0, Math.min(100, updatedPlayer.stats.marketability + s(effects.marketability)))
+            }
+          }
+          if (effects.mentalStrength) {
+            updatedPlayer.stats = {
+              ...updatedPlayer.stats,
+              mentalStrength: Math.max(0, Math.min(100, updatedPlayer.stats.mentalStrength + s(effects.mentalStrength)))
+            }
+          }
+        }
+        
         set({
+          ...(updatedPlayer && { player: updatedPlayer }),
           careerState: {
             ...careerState,
+            ...(updatedOwnedTeam && { ownedTeam: updatedOwnedTeam }),
             scheduledActivities: activities.filter(a => a.id !== activityId)
           }
         })
@@ -17799,13 +25180,28 @@ export const useCareerStore = create<CareerStore>()(
         const activities = careerState.scheduledActivities || []
         const activity = activities.find(a => a.id === activityId)
         
-        if (!activity || !activity.canReschedule) {
+        const canRescheduleByTrigger = (activity?.triggeredBy === 'after_car_purchase' || activity?.triggeredBy === 'after_series_entry') && activity?.deadline
+        if (!activity || (!activity.canReschedule && !canRescheduleByTrigger)) {
           console.warn(`[Activities] Cannot reschedule: ${activityId}`)
           return false
         }
         
-        // Check deadline
-        if (activity.rescheduleDeadline && newWeek > activity.rescheduleDeadline) {
+        // Prevent rescheduling to a past date
+        const currentWeek = careerState.currentWeek
+        const currentDay = careerState.currentDay
+        if (newWeek < currentWeek || (newWeek === currentWeek && newDay < currentDay)) {
+          console.warn(`[Activities] Cannot reschedule to past date (week ${newWeek}, day ${newDay}) — current is week ${currentWeek}, day ${currentDay}`)
+          return false
+        }
+        
+        // Check deadline: support both rescheduleDeadline (week) and deadline { week, day }
+        if (activity.deadline && typeof activity.deadline === 'object') {
+          const { week: dlWeek, day: dlDay } = activity.deadline
+          if (newWeek > dlWeek || (newWeek === dlWeek && newDay > dlDay)) {
+            console.warn(`[Activities] Past deadline (week ${dlWeek}, day ${dlDay}) for: ${activityId}`)
+            return false
+          }
+        } else if (activity.rescheduleDeadline && newWeek > activity.rescheduleDeadline) {
           console.warn(`[Activities] Past reschedule deadline for: ${activityId}`)
           return false
         }
@@ -17818,9 +25214,16 @@ export const useCareerStore = create<CareerStore>()(
           return false
         }
         
-        // Check for conflicts across all days the activity would span
+        // Check effective hours across all days the activity would span
+        const rescheduleActivityCheck = {
+          duration: activity.duration || 2,
+          category: activity.category,
+          configuration: activity.configuration,
+          requiresDriver: activity.requiresDriver,
+          requiresOwner: activity.requiresOwner,
+        }
         for (let d = newDay; d < newDay + spanDays; d++) {
-          const conflictOnDay = activities.some(a => {
+          const activitiesOnDay = activities.filter(a => {
             if (a.id === activityId) return false // Skip self
             const aSpan = a.spanDays || 1
             const aStartDay = a.scheduledDay
@@ -17829,26 +25232,11 @@ export const useCareerStore = create<CareerStore>()(
                    a.status === 'scheduled' &&
                    d >= aStartDay && d <= aEndDay
           })
-          if (conflictOnDay) {
-            console.warn(`[Activities] Day ${d} is blocked by another activity`)
-            return false
+          const isSpanDayRace = activitiesOnDay.some(a => a.category === 'race')
+          const spanBreakdown = wouldExceedDayLimit(activitiesOnDay, rescheduleActivityCheck, isSpanDayRace)
+          if (spanBreakdown.hasConflict) {
+            console.warn(`[Activities] Day ${d} will be overloaded after reschedule — ${spanBreakdown.effectiveHours.toFixed(1)}h effective > ${OVERHEAD_MAX_HOURS}h max`)
           }
-        }
-        
-        // Check for driver/owner conflicts
-        const { checkScheduleConflict } = get()
-        const conflictCheck = checkScheduleConflict(
-          newWeek, 
-          newDay, 
-          activity.requiresDriver, 
-          activity.requiresOwner
-        )
-        
-        if (conflictCheck.hasConflict) {
-          console.warn(`[Activities] Driver/Owner conflict for reschedule:`, {
-            type: conflictCheck.conflictType,
-            conflicting: conflictCheck.conflictingActivities.map(a => a.name)
-          })
         }
         
         // Calculate reschedule cost (increases with each reschedule)
@@ -17921,6 +25309,28 @@ export const useCareerStore = create<CareerStore>()(
             })
           }
           
+          // Map budget category to transaction category for accurate reporting
+          const txCategoryMap: Record<string, TeamTransactionCategory> = {
+            development: 'development',
+            marketing: 'marketing',
+            travel: 'travel',
+            contingency: 'other',
+            operations: 'facilities',
+            personal: 'other'
+          }
+          const txCategory = txCategoryMap[budgetCategory] || 'other'
+          
+          // Create a proper team transaction for financial history & cost cap tracking
+          const rescheduleTransaction = createTeamTransaction(
+            'expense',
+            txCategory,
+            rescheduleCost,
+            `Reschedule fee: ${activity.name} → Week ${newWeek}, Day ${newDay}${timesRescheduled > 0 ? ` (reschedule #${timesRescheduled + 1})` : ''}`,
+            careerState.currentWeek,
+            careerState.currentYear,
+            { countsTowardCostCap: true }
+          )
+          
           updatedCareerState = {
             ...updatedCareerState,
             ownedTeam: {
@@ -17930,7 +25340,31 @@ export const useCareerStore = create<CareerStore>()(
                 [budgetField]: newBudgetValue,
                 budgetOverspends: updatedOverspends,
                 yearToDateExpenses: (ownedTeam.budgets.yearToDateExpenses || 0) + rescheduleCost
+              },
+              finances: {
+                ...(ownedTeam.finances || {}),
+                transactions: [...(ownedTeam.finances?.transactions || []), rescheduleTransaction]
               }
+            }
+          }
+        } else if (rescheduleCost > 0 && !ownedTeam) {
+          // No team — deduct reschedule fee from player's personal finances
+          get().addTransaction({
+            type: 'expense',
+            amount: rescheduleCost,
+            category: 'other',
+            description: `Reschedule fee: ${activity.name}`,
+            date: new Date().toISOString()
+          })
+        }
+        
+        // Small non-financial penalty for rescheduling (board notices last-minute changes)
+        if (updatedCareerState.ownedTeam) {
+          updatedCareerState = {
+            ...updatedCareerState,
+            ownedTeam: {
+              ...updatedCareerState.ownedTeam,
+              boardMood: Math.max(0, (updatedCareerState.ownedTeam.boardMood ?? 50) - 1)
             }
           }
         }
@@ -17957,7 +25391,7 @@ export const useCareerStore = create<CareerStore>()(
       },
       
       completeActivity: (activityId: string, effectsOverride?: ActivityEffect) => {
-        const { careerState, player } = get()
+        const { careerState, player, consumeHoursFromBudget } = get()
         if (!careerState || !player) return null
         
         const activities = careerState.scheduledActivities || []
@@ -17968,13 +25402,236 @@ export const useCareerStore = create<CareerStore>()(
           return null
         }
         
+        // === PERIOD CHECK: warn if completing outside scheduled period ===
+        const timeCost = getActivityTimeCost(activity.templateId)
+        if (timeCost?.allowedPeriods && timeCost.allowedPeriods.length > 0) {
+          const currentHour = careerState.dayBudget?.currentHour ?? 7
+          const periodResult = canDoActivityInCurrentPeriod(timeCost.allowedPeriods, currentHour)
+          if (!periodResult.allowed && !activity.mandatory) {
+            console.warn(`[Activities] "${activity.name}" is not available during the current time period. ${periodResult.reason}`)
+            return null  // Block non-mandatory activities outside their period
+          }
+        }
+        
+        const spanDays = activity.spanDays || 1
+        const currentDay = careerState.currentDay ?? 1
+        const isMultiDay = spanDays > 1
+        // Current day index within the activity span (1-based): e.g. activity day 1 and 2 -> day 1 gives 1, day 2 gives 2
+        const dayIndex = currentDay - activity.scheduledDay + 1
+        const currentDayWithinSpan = currentDay >= activity.scheduledDay && currentDay < activity.scheduledDay + spanDays
+        
+        // === CONSUME HOURS FROM DAY BUDGET (attendance cost) ===
+        // Staff interviews delegated to staff do not consume owner time
+        const isDelegatedStaffInterview = activity.templateId === 'staff_interview' && activity.triggerData?.conductedBy && activity.triggerData.conductedBy !== 'owner'
+        const activityDuration = activity.duration || 0
+        const drainLevel = activity.drainLevel || 'normal'
+        const isTodayAndWithinSpan = activity.scheduledWeek === careerState.currentWeek && currentDayWithinSpan
+        if (activityDuration > 0 && isTodayAndWithinSpan && !isDelegatedStaffInterview) {
+          const hoursConsumed = consumeHoursFromBudget(activityDuration, drainLevel, activity.name, activityId)
+          if (!hoursConsumed) {
+            console.warn(`[Activities] Not enough hours to complete "${activity.name}" (needs ${activityDuration}h, have ${careerState.dayBudget?.hoursRemaining ?? 0}h remaining)`)
+            // Allow completion but apply a fatigue/stress penalty for overworking
+            const overworkPlayer = get().player
+            if (overworkPlayer?.mentalState) {
+              set({
+                player: {
+                  ...overworkPlayer,
+                  mentalState: {
+                    ...overworkPlayer.mentalState,
+                    stress: Math.min(100, (overworkPlayer.mentalState.stress || 0) + 5),
+                    fatigue: Math.min(100, (overworkPlayer.mentalState.fatigue || 0) + 8)
+                  }
+                }
+              })
+            }
+          }
+        }
+        
+        // === MULTI-DAY: only mark this day as attended; full completion when all days done ===
+        if (isMultiDay && currentDayWithinSpan && dayIndex >= 1 && dayIndex <= spanDays) {
+          const completedDays = [...(activity.completedDays || [])]
+          if (!completedDays.includes(dayIndex)) completedDays.push(dayIndex)
+          const allDaysDone = completedDays.length >= spanDays
+          
+          if (!allDaysDone) {
+            // Partial completion: update completedDays, keep status scheduled, do not apply effects yet
+            const updatedActivity: ScheduledActivity = {
+              ...activity,
+              completedDays: completedDays.sort((a, b) => a - b)
+            }
+            // Re-read fresh state after consumeHoursFromBudget to preserve dayBudget
+            const freshCS = get().careerState!
+            set({
+              careerState: {
+                ...freshCS,
+                scheduledActivities: (freshCS.scheduledActivities || []).map(a => a.id === activityId ? updatedActivity : a)
+              }
+            })
+            console.log(`[Activities] Multi-day "${activity.name}" day ${dayIndex}/${spanDays} attended (${completedDays.length}/${spanDays} days)`)
+            return {}
+          }
+          // Fall through to apply effects and mark fully completed (below)
+        }
+        
+        // === STAFF INTERVIEW: mark candidate as interviewed when owner completes the activity ===
+        if (activity.templateId === 'staff_interview' && activity.triggerData?.interviewCandidateId) {
+          const conductedBy = activity.triggerData.conductedBy ?? 'owner'
+          get().markInterviewCompleted(activity.triggerData.interviewCandidateId, conductedBy)
+        }
+        
         // Use override effects from gameplay if provided, otherwise use default activity effects
-        const effects = effectsOverride || activity.effectsOnComplete
+        let effects = tunePositiveSoftStatRewards(
+          effectsOverride || { ...activity.effectsOnComplete }
+        )
+        
+        // === DIMINISHING RETURNS: reduce positive gains when stats are already high ===
+        const applyDiminishingReturns = (currentValue: number, gain: number): number => {
+          if (gain <= 0) return gain // No diminishing returns on penalties
+          if (currentValue > 90) return Math.round(gain * 0.15) // Minimal gains above 90
+          if (currentValue > 80) return Math.round(gain * 0.40) // Heavy reduction above 80
+          if (currentValue > 70) return Math.round(gain * 0.75) // Moderate reduction above 70
+          return gain
+        }
+        // Re-read fresh state AFTER consumeHoursFromBudget (which may have updated dayBudget)
+        const freshState = get()
+        const freshPlayer = freshState.player!
+        const freshCareerState = freshState.careerState!
+        
+        const currentBoardMood = freshCareerState.ownedTeam?.boardMood ?? 50
+        const avgCurrentMorale = (freshCareerState.ownedTeam?.staff?.length ?? 0) > 0
+          ? freshCareerState.ownedTeam!.staff.reduce((sum, s) => sum + (s.morale || 70), 0) / freshCareerState.ownedTeam!.staff.length
+          : 70
+        const currentReputation = freshPlayer.reputation ?? 50
+        const currentDriverMorale = freshPlayer.mentalState?.morale ?? 50
+        const currentFanSentiment = freshCareerState.ownedTeam?.fanSentiment ?? 50
+        const avgSponsorSatisfaction = (freshPlayer.finances?.sponsorDeals?.length ?? 0) > 0
+          ? freshPlayer.finances.sponsorDeals.reduce((sum, s) => sum + (s.satisfaction || 70), 0) / freshPlayer.finances.sponsorDeals.length
+          : 70
+        
+        if (effects.boardMood && effects.boardMood > 0) {
+          effects.boardMood = applyDiminishingReturns(currentBoardMood, effects.boardMood)
+        }
+        if (effects.teamMorale && effects.teamMorale > 0) {
+          effects.teamMorale = applyDiminishingReturns(avgCurrentMorale, effects.teamMorale)
+        }
+        if (effects.reputation && effects.reputation > 0) {
+          effects.reputation = applyDiminishingReturns(currentReputation, effects.reputation)
+        }
+        if (effects.driverMorale && effects.driverMorale > 0) {
+          effects.driverMorale = applyDiminishingReturns(currentDriverMorale, effects.driverMorale)
+        }
+        if (effects.fanSentiment && effects.fanSentiment > 0) {
+          effects.fanSentiment = applyDiminishingReturns(currentFanSentiment, effects.fanSentiment)
+        }
+        if (effects.sponsorSatisfaction && effects.sponsorSatisfaction > 0) {
+          effects.sponsorSatisfaction = applyDiminishingReturns(avgSponsorSatisfaction, effects.sponsorSatisfaction)
+        }
+
+        // During skip automation, optional activity upsides are reduced.
+        const fastForwardMultiplier = freshCareerState.fastForward?.isActive
+          ? (freshCareerState.fastForward.rewardMultiplier || 0.6)
+          : 1
+        if (fastForwardMultiplier < 1 && !activity.mandatory) {
+          effects = applyFastForwardRewardScaling(effects, fastForwardMultiplier)
+        }
+        
+        // === DYNAMIC GUEST EFFECTS: Roll acceptance and calculate per-type effects ===
+        let guestAttendanceRecord: ScheduledActivity['actualAttendees'] = undefined
+        let eventSponsorIds: string[] = []
+        if (activity.configuration?.guests) {
+          const config = activity.configuration.guests
+          const venueId = activity.configuration.venueId || 'team_hq'
+          const venue = getVenueById(venueId)
+          const venueType = venue?.type || 'team_hq'
+          const venuePrestige = venue?.prestigeLevel || 2
+          const marketingLevel = freshCareerState.ownedTeam?.facilities?.marketing?.level ?? 1
+          const reputation = freshPlayer.reputation ?? 50
+          
+          // Check for competing events this week
+          const thisWeekActivities = (freshCareerState.scheduledActivities || []).filter(
+            a => a.scheduledWeek === freshCareerState.currentWeek && a.id !== activity.id && a.status === 'scheduled'
+          )
+          const hasCompetingEvent = thisWeekActivities.length > 2
+          
+          // Roll acceptance for VIP guests
+          const vipResults: Array<{ type: VIPGuestType; invited: number; accepted: number }> = []
+          if (config.vipGuests?.length) {
+            for (const vip of config.vipGuests) {
+              if (vip.count <= 0) continue
+              const rate = calculateAcceptanceRate({
+                type: vip.type as VIPGuestType,
+                invitedCount: vip.count,
+                reputation,
+                venuePrestige,
+                marketingLevel,
+                hasCompetingEventThisWeek: hasCompetingEvent
+              })
+              const accepted = rollActualAttendance(vip.count, rate)
+              vipResults.push({ type: vip.type as VIPGuestType, invited: vip.count, accepted })
+              
+              // Pre-select actual sponsors when "potential_sponsors" guests attend
+              if (vip.type === 'potential_sponsors' && accepted > 0) {
+                const contactedIds = freshCareerState.contactedSponsorIds ?? []
+                const team = freshCareerState.ownedTeam
+                if (team) {
+                  eventSponsorIds = selectEventSponsors(team, accepted, contactedIds)
+                  console.log(`[Activities] Pre-selected ${eventSponsorIds.length} specific sponsors for event (from ${accepted} accepted sponsor guests)`)
+                }
+              }
+            }
+          }
+          
+          // Roll acceptance for media invites
+          const mediaResults: Array<{ type: MediaInviteType; invited: number; accepted: number }> = []
+          if (config.mediaInvites?.length) {
+            for (const media of config.mediaInvites) {
+              if (media.count <= 0) continue
+              const rate = calculateAcceptanceRate({
+                type: media.type as MediaInviteType,
+                invitedCount: media.count,
+                reputation,
+                venuePrestige,
+                marketingLevel,
+                hasCompetingEventThisWeek: hasCompetingEvent
+              })
+              const accepted = rollActualAttendance(media.count, rate)
+              mediaResults.push({ type: media.type as MediaInviteType, invited: media.count, accepted })
+            }
+          }
+          
+          // Calculate per-type guest effects with venue affinity and marketing multiplier
+          const guestEffects = calculateGuestEffects(
+            vipResults.map(v => ({ type: v.type, acceptedCount: v.accepted })),
+            mediaResults.map(m => ({ type: m.type, acceptedCount: m.accepted })),
+            venueType,
+            marketingLevel
+          )
+          
+          // Merge guest effects into the activity effects
+          for (const [key, value] of Object.entries(guestEffects)) {
+            if (typeof value === 'number' && value !== 0) {
+              const effectKey = key as keyof ActivityEffect
+              ;(effects as Record<string, number>)[effectKey] = ((effects as Record<string, number>)[effectKey] || 0) + value
+            }
+          }
+          
+          // Build attendance record for post-event summary
+          const totalInvited = vipResults.reduce((s, v) => s + v.invited, 0) + mediaResults.reduce((s, m) => s + m.invited, 0)
+          const totalAccepted = vipResults.reduce((s, v) => s + v.accepted, 0) + mediaResults.reduce((s, m) => s + m.accepted, 0)
+          guestAttendanceRecord = {
+            vipGuests: vipResults.map(v => ({ type: v.type, invited: v.invited, accepted: v.accepted })),
+            mediaInvites: mediaResults.map(m => ({ type: m.type, invited: m.invited, accepted: m.accepted })),
+            totalInvited,
+            totalAccepted
+          }
+          
+          console.log(`[Activities] Guest attendance for "${activity.name}": ${totalAccepted}/${totalInvited} attended`, { vipResults, mediaResults })
+        }
         
         // Apply effects
-        let updatedPlayer = { ...player }
-        let updatedCareerState = { ...careerState }
-        let updatedOwnedTeam = careerState.ownedTeam ? { ...careerState.ownedTeam } : undefined
+        let updatedPlayer = { ...freshPlayer }
+        let updatedCareerState = { ...freshCareerState }
+        let updatedOwnedTeam = freshCareerState.ownedTeam ? { ...freshCareerState.ownedTeam } : undefined
         
         // Fatigue
         if (effects.driverFatigue && updatedPlayer.mentalState) {
@@ -17994,7 +25651,16 @@ export const useCareerStore = create<CareerStore>()(
         
         // Reputation
         if (effects.reputation) {
-          updatedPlayer.reputation = Math.max(0, Math.min(100, updatedPlayer.reputation + effects.reputation))
+          const completedRepApplied = applyReputationDeltaToPrimaryContext(
+            updatedPlayer,
+            updatedCareerState,
+            effects.reputation
+          )
+          updatedPlayer = completedRepApplied.updatedPlayer
+          if (completedRepApplied.updatedCareerState) {
+            updatedCareerState = completedRepApplied.updatedCareerState
+            updatedOwnedTeam = updatedCareerState.ownedTeam ? { ...updatedCareerState.ownedTeam } : updatedOwnedTeam
+          }
         }
         
         // Cash
@@ -18010,12 +25676,9 @@ export const useCareerStore = create<CareerStore>()(
           updatedOwnedTeam.boardMood = Math.max(0, Math.min(100, updatedOwnedTeam.boardMood + effects.boardMood))
         }
         
-        // Team morale (staff)
+        // Team morale (propagate to individual staff + recalc average)
         if (effects.teamMorale && updatedOwnedTeam) {
-          updatedOwnedTeam.staff = updatedOwnedTeam.staff.map(s => ({
-            ...s,
-            morale: Math.max(0, Math.min(100, (s.morale || 70) + effects.teamMorale!))
-          }))
+          updatedOwnedTeam = applyTeamMoraleDelta(updatedOwnedTeam, effects.teamMorale)
         }
         
         // Fan sentiment
@@ -18082,6 +25745,14 @@ export const useCareerStore = create<CareerStore>()(
           }
         }
         
+        // Budget Impact (team cash from gameplay choices)
+        if (effects.budgetImpact && updatedOwnedTeam) {
+          updatedOwnedTeam.budgets = {
+            ...updatedOwnedTeam.budgets,
+            cash: (updatedOwnedTeam.budgets?.cash ?? 0) + effects.budgetImpact
+          }
+        }
+        
         // Fitness (driver performance fitness)
         if (effects.fitness) {
           updatedPlayer.stats = {
@@ -18106,40 +25777,428 @@ export const useCareerStore = create<CareerStore>()(
           }
         }
         
-        // Mark activity as completed
+        // Team Followers (social media)
+        if (effects.teamFollowers && updatedCareerState.teamMediaState?.teamSocial) {
+          updatedCareerState = {
+            ...updatedCareerState,
+            teamMediaState: {
+              ...updatedCareerState.teamMediaState,
+              teamSocial: {
+                ...updatedCareerState.teamMediaState.teamSocial,
+                followers: Math.max(0, updatedCareerState.teamMediaState.teamSocial.followers + effects.teamFollowers)
+              }
+            }
+          }
+        }
+        
+        // Personal Followers (social media)
+        if (effects.personalFollowers && updatedCareerState.personalLife?.brand) {
+          updatedCareerState = {
+            ...updatedCareerState,
+            personalLife: {
+              ...updatedCareerState.personalLife,
+              brand: {
+                ...updatedCareerState.personalLife.brand,
+                socialMediaFollowing: Math.max(0, (updatedCareerState.personalLife.brand.socialMediaFollowing || 0) + effects.personalFollowers)
+              }
+            }
+          }
+        }
+        
+        // === SOCIAL ACTION COMPLETION: apply relationship effects & deduct cost ===
+        if (activity.socialActionMeta) {
+          const meta = activity.socialActionMeta
+          const { updateRelationshipMeters, recordSocialAction } = get()
+          
+          // Look up the contact to check love language and interests for bonuses
+          const contact = updatedCareerState.messaging?.contacts.find(
+            (c: any) => c.id === meta.contactId
+          )
+          
+          // Calculate love language & interest bonus multiplier
+          let bonusMultiplier = 1.0
+          if (contact) {
+            const actionDef = getSocialActionById(meta.actionId)
+            if (actionDef) {
+              bonusMultiplier = getCombinedBonusMultiplier(
+                actionDef,
+                contact.loveLanguage,
+                contact.interests
+              )
+            }
+          }
+          
+          // Apply relationship meter effects (with love language & interest bonus)
+          const socialRewardMultiplier = freshCareerState.fastForward?.isActive
+            ? (freshCareerState.fastForward.rewardMultiplier || 0.6)
+            : 1
+          updateRelationshipMeters(meta.contactId, {
+            affection: meta.effects.affection
+              ? meta.effects.affection * bonusMultiplier * (meta.effects.affection > 0 ? socialRewardMultiplier : 1)
+              : undefined,
+            trust: meta.effects.trust
+              ? meta.effects.trust * bonusMultiplier * (meta.effects.trust > 0 ? socialRewardMultiplier : 1)
+              : undefined,
+            romance: meta.effects.romance
+              ? meta.effects.romance * bonusMultiplier * (meta.effects.romance > 0 ? socialRewardMultiplier : 1)
+              : undefined,
+          })
+          
+          // Record cooldown
+          recordSocialAction(meta.contactId, meta.actionId)
+          
+          // Deduct personal cash on completion
+          if (meta.cost > 0) {
+            const pLife = updatedCareerState.personalLife
+            if (pLife) {
+              const transaction = {
+                id: `txn_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                type: 'expense' as const,
+                category: 'entertainment' as const,
+                amount: meta.cost,
+                description: `${meta.category === 'gift' ? 'Gift' : 'Social'}: ${activity.name}`,
+                week: careerState.currentWeek,
+                year: careerState.currentYear,
+                date: new Date().toISOString(),
+              }
+              updatedCareerState = {
+                ...updatedCareerState,
+                personalLife: {
+                  ...pLife,
+                  finances: {
+                    ...pLife.finances,
+                    liquidCash: pLife.finances.liquidCash - meta.cost,
+                    transactions: [...pLife.finances.transactions, transaction]
+                  }
+                }
+              }
+            }
+          }
+          
+          console.log(`[Activities] Social action completed: "${activity.name}" → +${meta.effects.affection || 0} Aff, +${meta.effects.trust || 0} Trust for ${meta.contactName}`)
+        }
+        
+        // === INVITATION NETWORKING: contact_request activities can generate sponsor leads & new contacts ===
+        if (activity.templateId?.startsWith('contact_request_')) {
+          const reputation = updatedPlayer.reputation ?? 50
+          const team = updatedCareerState.ownedTeam
+          const inviteType = activity.templateId.replace('contact_request_', '')
+          
+          // Networking-eligible invitation types (social gatherings, introductions, sponsor events, etc.)
+          const networkingTypes = ['social_invite', 'dinner_invite', 'introduction', 'sponsor_appearance', 'charity_ask']
+          const isNetworkingEvent = networkingTypes.includes(inviteType)
+          
+          // Sponsor lead chance: higher at networking events, scales with reputation
+          // Base 15% for networking events, 5% for other invitations, boosted by reputation
+          if (isNetworkingEvent && team?.finances) {
+            const sponsorLeadChance = Math.min(0.6, (isNetworkingEvent ? 0.15 : 0.05) + reputation * 0.003)
+            if (Math.random() < sponsorLeadChance) {
+              const contactedIds = updatedCareerState.contactedSponsorIds ?? []
+              const leadsCount = Math.random() < 0.3 ? 2 : 1  // 30% chance for 2 leads
+              const sponsorOffers = generateTeamSponsorOffers(
+                team, updatedCareerState.currentYear, leadsCount, undefined, contactedIds
+              )
+              if (sponsorOffers.length > 0) {
+                const existingPending = team.finances.pendingSponsorOffers || []
+                updatedOwnedTeam = updatedOwnedTeam ? {
+                  ...updatedOwnedTeam,
+                  finances: {
+                    ...updatedOwnedTeam.finances,
+                    pendingSponsorOffers: [...existingPending, ...sponsorOffers]
+                  }
+                } : updatedOwnedTeam
+                
+                // Add small social upside for making connections (soft-stat tuned).
+                const networkingRepBonus = scalePositiveSoftStatReward(1)
+                const networkingRepApplied = applyReputationDeltaToPrimaryContext(
+                  updatedPlayer,
+                  updatedCareerState,
+                  networkingRepBonus
+                )
+                updatedPlayer = networkingRepApplied.updatedPlayer
+                if (networkingRepApplied.updatedCareerState) {
+                  updatedCareerState = networkingRepApplied.updatedCareerState
+                  updatedOwnedTeam = updatedCareerState.ownedTeam ? { ...updatedCareerState.ownedTeam } : updatedOwnedTeam
+                }
+                if (updatedOwnedTeam) {
+                  updatedOwnedTeam.boardMood = Math.min(100, (updatedOwnedTeam.boardMood ?? 50) + scalePositiveSoftStatReward(2))
+                }
+                
+                console.log(`[Activities] Networking at "${activity.name}" generated ${sponsorOffers.length} sponsor lead(s)!`)
+              }
+            }
+          }
+          
+          // Marketability boost for attending social events (you're being seen)
+          if (isNetworkingEvent && updatedPlayer.stats) {
+            const marketBoost = Math.random() < 0.4 ? 1 : 0  // 40% chance for +1 marketability
+            if (marketBoost > 0) {
+              updatedPlayer.stats = {
+                ...updatedPlayer.stats,
+                marketability: Math.min(100, updatedPlayer.stats.marketability + marketBoost)
+              }
+            }
+          }
+        }
+        
+        // Mark activity as completed (single-day or final day of multi-day)
+        const allCompletedDays = isMultiDay
+          ? [...(activity.completedDays || []), dayIndex].filter((v, i, a) => a.indexOf(v) === i).sort((a, b) => a - b)
+          : undefined
         const completedActivity: ScheduledActivity = {
           ...activity,
           status: 'completed',
           completedWeek: careerState.currentWeek,
-          completedDay: careerState.currentDay
+          completedDay: careerState.currentDay,
+          ...(allCompletedDays && allCompletedDays.length > 0 ? { completedDays: allCompletedDays } : {}),
+          ...(guestAttendanceRecord ? { actualAttendees: guestAttendanceRecord, actualOutcome: effects } : {})
         }
         
-        // Move to history
+        // Track recently completed activities for social media suggestions (rolling window of 8)
+        const recentCompleted: RecentCompletedActivity = {
+          templateId: activity.templateId || activity.id,
+          name: activity.name,
+          description: activity.description,
+          category: activity.category || 'team',
+          completedWeek: careerState.currentWeek,
+          completedDay: careerState.currentDay ?? 1,
+        }
+        const prevRecentActivities = careerState.recentCompletedActivities || []
+        const updatedRecentActivities = [...prevRecentActivities, recentCompleted].slice(-8)
+        
+        // Keep completed activity in scheduledActivities (so it remains visible on calendar)
+        // and also add to history for historical tracking
         set({
           player: updatedPlayer,
           careerState: {
             ...updatedCareerState,
             ownedTeam: updatedOwnedTeam,
-            scheduledActivities: activities.filter(a => a.id !== activityId),
-            activityHistory: [...(careerState.activityHistory || []), completedActivity]
+            scheduledActivities: activities.map(a => a.id === activityId ? completedActivity : a),
+            activityHistory: [...(careerState.activityHistory || []), completedActivity],
+            recentCompletedActivities: updatedRecentActivities
           }
         })
         
         console.log(`[Activities] Completed: ${activity.name}`, effects)
         
-        // === NOTIFICATION INTEGRATION ===
+        // === CHECK FOR TRAINING ACCIDENT (risky activities) ===
+        const riskyActivityIds = ['gym_intense', 'wet_practice']
+        if (riskyActivityIds.includes(activity.templateId || '')) {
+          const playerForTraining = get().player
+          if (playerForTraining?.stats) {
+            const trainingInjury = checkTrainingAccident(playerForTraining.stats, activity.templateId || '')
+            if (trainingInjury) {
+              set({
+                player: {
+                  ...get().player!,
+                  injury: trainingInjury
+                }
+              })
+              get().addEmail({
+                category: 'personal',
+                subject: `Training Injury: ${trainingInjury.type?.replace(/_/g, ' ') || 'Injury'}`,
+                sender: 'Medical Team',
+                senderRole: 'Team Doctor',
+                preview: `You sustained a ${trainingInjury.severity} injury during training...`,
+                body: `During "${activity.name}", you sustained a **${trainingInjury.severity} ${trainingInjury.type?.replace(/_/g, ' ') || 'injury'}**.\n\n${trainingInjury.description || ''}\n\nEstimated recovery: **${trainingInjury.recoveryWeeksRemaining} weeks**.\n\nPlease take care and follow the recovery plan.`,
+                receivedDay: careerState.currentDay,
+                receivedWeek: careerState.currentWeek,
+                receivedYear: careerState.currentYear,
+                read: false,
+                starred: false,
+                archived: false,
+                actionType: 'acknowledge'
+              })
+              console.log(`[Activities] Training accident: ${trainingInjury.severity} ${trainingInjury.type} — ${trainingInjury.recoveryWeeksRemaining} weeks recovery`)
+            }
+          }
+        }
+        
+        // === SPONSOR LEADS: trigger sponsor offer generation ===
+        if (effects.sponsorLeadsGenerated && effects.sponsorLeadsGenerated > 0) {
+          console.log(`[Activities] Generating sponsor leads from "${activity.name}" (max ${effects.sponsorLeadsGenerated}, ${eventSponsorIds.length} event sponsors pre-selected)`)
+          // Check if team owner → generate team sponsors, else fallback to player driver sponsors
+          const latestCareerState = get().careerState
+          const team = latestCareerState?.ownedTeam
+          if (team?.finances) {
+            const contactedSponsorIds = latestCareerState?.contactedSponsorIds ?? []
+            // Pass event sponsor IDs so offers come from sponsors who were actually "at the event"
+            // The conversion roll inside generateTeamSponsorOffers will randomize how many actually make offers
+            const teamOffers = generateTeamSponsorOffers(
+              team, latestCareerState?.currentYear ?? careerState.currentYear, effects.sponsorLeadsGenerated, undefined, contactedSponsorIds,
+              eventSponsorIds.length > 0 ? eventSponsorIds : undefined
+            )
+            if (teamOffers.length > 0) {
+              // Queue offers for delayed email delivery instead of adding immediately
+              const currentDay = latestCareerState?.currentDay ?? 1
+              const currentWeek = latestCareerState?.currentWeek ?? 1
+              const currentYear = latestCareerState?.currentYear ?? 1
+              const newQueueEntries = teamOffers.map(offer => {
+                // Each offer arrives 2-4 days after the event
+                const delayDays = 2 + Math.floor(Math.random() * 3) // 2, 3, or 4 days
+                let deliveryDay = currentDay + delayDays
+                let deliveryWeek = currentWeek
+                let deliveryYear = currentYear
+                // Handle week overflow (days are 1-7)
+                while (deliveryDay > 7) {
+                  deliveryDay -= 7
+                  deliveryWeek++
+                }
+                // Handle year overflow (assume 52 weeks)
+                if (deliveryWeek > 52) {
+                  deliveryWeek -= 52
+                  deliveryYear++
+                }
+                return { offer, deliveryDay, deliveryWeek, deliveryYear }
+              })
+              set((state) => {
+                const currentCareerState = state.careerState
+                if (!currentCareerState) return state
+                const pendingQueue = currentCareerState.pendingSponsorOfferEmails || []
+                return {
+                  careerState: {
+                    ...currentCareerState,
+                    pendingSponsorOfferEmails: [...pendingQueue, ...newQueueEntries]
+                  }
+                }
+              })
+              console.log(`[Activities] Queued ${teamOffers.length} team sponsor offers for delayed email delivery from activity`)
+            } else {
+              console.log(`[Activities] No sponsor offers generated (conversion rolls failed or no eligible sponsors)`)
+            }
+          } else {
+            // Fallback for driver careers
+            const newOffers = get().generateSponsorOffers()
+            console.log(`[Activities] Generated ${newOffers.length} sponsor offers from activity`)
+          }
+        }
+        
+        // === DELAYED EMAIL NOTIFICATION (delivered next day) ===
         const effectsSummary: string[] = []
+        
+        // Guest attendance summary
+        if (guestAttendanceRecord && guestAttendanceRecord.totalInvited > 0) {
+          effectsSummary.push(`Guest attendance: ${guestAttendanceRecord.totalAccepted}/${guestAttendanceRecord.totalInvited} invited guests attended`)
+        }
+        
+        if (effects.teamMorale) effectsSummary.push(`Team Morale: ${effects.teamMorale > 0 ? '+' : ''}${effects.teamMorale}`)
+        if (effects.boardMood) effectsSummary.push(`Board Mood: ${effects.boardMood > 0 ? '+' : ''}${effects.boardMood}`)
         if (effects.cash) effectsSummary.push(`Payment: $${effects.cash.toLocaleString()}`)
         if (effects.reputation) effectsSummary.push(`Reputation: ${effects.reputation > 0 ? '+' : ''}${effects.reputation}`)
         if (effects.sponsorSatisfaction) effectsSummary.push(`Sponsor satisfaction: ${effects.sponsorSatisfaction > 0 ? '+' : ''}${effects.sponsorSatisfaction}`)
-        routeNotification({
-          category: activity.category === 'media' ? 'media_pr' : activity.category === 'sponsor' ? 'sponsor' : 'team_manager',
+        if (effects.teamFollowers) effectsSummary.push(`Team followers: +${effects.teamFollowers.toLocaleString()}`)
+        if (effects.personalFollowers) effectsSummary.push(`Personal followers: +${effects.personalFollowers.toLocaleString()}`)
+        if (effects.sponsorLeadsGenerated) effectsSummary.push(`New sponsor leads generated!`)
+        if (effects.fitness) effectsSummary.push(`Fitness: ${effects.fitness > 0 ? '+' : ''}${effects.fitness}`)
+        if (effects.mentalStrength) effectsSummary.push(`Mental strength: ${effects.mentalStrength > 0 ? '+' : ''}${effects.mentalStrength}`)
+        if (effects.confidence) effectsSummary.push(`Confidence: ${effects.confidence > 0 ? '+' : ''}${effects.confidence}`)
+        if (effects.marketability) effectsSummary.push(`Marketability: ${effects.marketability > 0 ? '+' : ''}${effects.marketability}`)
+        if (effects.driverFatigue) effectsSummary.push(`Fatigue: ${effects.driverFatigue > 0 ? '+' : ''}${effects.driverFatigue}`)
+        if (effects.stress) effectsSummary.push(`Stress: ${effects.stress > 0 ? '+' : ''}${effects.stress}`)
+        
+        // Build promises section if any were made during this activity
+        const latestState = get()
+        const activityPromises = (latestState.careerState?.promises || []).filter(
+          p => p.sourceActivityId === activityId && p.status === 'active'
+        )
+        let promisesSection = ''
+        if (activityPromises.length > 0) {
+          const currentWk = latestState.careerState?.currentWeek ?? 0
+          promisesSection = '\n\n**Commitments Made:**\n' + activityPromises.map(
+            p => `- ${p.shortText} (due in ${Math.max(1, p.deadlineWeek - currentWk)} weeks)`
+          ).join('\n')
+          promisesSection += '\n\nThese commitments will be tracked. Make sure to follow through.'
+        }
+        
+        const emailCat = activity.category === 'media' ? 'media' : activity.category === 'sponsor' ? 'sponsor' : 'team'
+        const emailSender = activity.category === 'sponsor' ? 'Partnership Manager' 
+          : activity.category === 'media' ? 'Press Officer' 
+          : 'Team Manager'
+        const currentCS = latestState.careerState!
+        
+        latestState.queueFeedbackEmail({
+          category: emailCat,
           subject: `Activity Complete: ${activity.name}`,
-          body: `"${activity.name}" has been completed successfully.${effectsSummary.length > 0 ? `\n\n**Results:**\n${effectsSummary.map(e => `- ${e}`).join('\n')}` : ''}`,
-          emailCategory: activity.category === 'media' ? 'media' : activity.category === 'sponsor' ? 'sponsor' : 'team'
+          sender: emailSender,
+          senderRole: activity.category || 'team',
+          preview: `${activity.name} has been completed.${activityPromises.length > 0 ? ` ${activityPromises.length} commitment(s) recorded.` : ''}`,
+          body: `"${activity.name}" has been completed successfully.${effectsSummary.length > 0 ? `\n\n**Results:**\n${effectsSummary.map(e => `- ${e}`).join('\n')}` : ''}${promisesSection}`,
+          receivedDay: currentCS.currentDay ?? 1,
+          receivedWeek: currentCS.currentWeek,
+          receivedYear: currentCS.currentYear,
+          actionType: 'acknowledge'
         })
 
         return effects
+      },
+      
+      markScheduledActivityCompleted: (activityId: string) => {
+        const { careerState, player } = get()
+        if (!careerState || !player) return false
+        const activities = careerState.scheduledActivities || []
+        const target = activities.find(a => a.id === activityId)
+        if (!target) return false
+        if (target.status === 'completed') return true
+        
+        const effects = tunePositiveSoftStatRewards(target.effectsOnComplete || {})
+        let updatedPlayer = { ...player }
+        let updatedOwnedTeam = careerState.ownedTeam ? { ...careerState.ownedTeam } : undefined
+        
+        // Apply lightweight completion effects for telemetry-linked completions.
+        if (effects.reputation) {
+          const telemetryRepApplied = applyReputationDeltaToPrimaryContext(
+            updatedPlayer,
+            updatedOwnedTeam ? { ...careerState, ownedTeam: updatedOwnedTeam } : careerState,
+            effects.reputation
+          )
+          updatedPlayer = telemetryRepApplied.updatedPlayer
+          updatedOwnedTeam = telemetryRepApplied.updatedCareerState?.ownedTeam
+            ? { ...telemetryRepApplied.updatedCareerState.ownedTeam }
+            : updatedOwnedTeam
+        }
+        if (effects.sponsorSatisfaction) {
+          updatedPlayer.finances = {
+            ...updatedPlayer.finances,
+            sponsorDeals: updatedPlayer.finances.sponsorDeals.map(s => ({
+              ...s,
+              satisfaction: Math.max(0, Math.min(100, (s.satisfaction || 70) + effects.sponsorSatisfaction!))
+            }))
+          }
+        }
+        if (effects.fanSentiment && updatedOwnedTeam) {
+          updatedOwnedTeam.fanSentiment = Math.max(0, Math.min(100, updatedOwnedTeam.fanSentiment + effects.fanSentiment))
+        }
+        if (effects.boardMood && updatedOwnedTeam) {
+          updatedOwnedTeam.boardMood = Math.max(0, Math.min(100, updatedOwnedTeam.boardMood + effects.boardMood))
+        }
+        if (effects.teamMorale && updatedOwnedTeam) {
+          updatedOwnedTeam.staff = updatedOwnedTeam.staff.map(s => ({
+            ...s,
+            morale: Math.max(0, Math.min(100, (s.morale || 70) + effects.teamMorale!))
+          }))
+          updatedOwnedTeam = recalculateTeamMorale(updatedOwnedTeam)
+        }
+        
+        set({
+          player: updatedPlayer,
+          careerState: {
+            ...careerState,
+            ...(updatedOwnedTeam ? { ownedTeam: updatedOwnedTeam } : {}),
+            scheduledActivities: activities.map(a =>
+              a.id === activityId
+                ? {
+                    ...a,
+                    status: 'completed',
+                    completedWeek: careerState.currentWeek,
+                    completedDay: careerState.currentDay ?? 1,
+                  }
+                : a
+            )
+          }
+        })
+        
+        console.log(`[Activities] Marked completed from race session: ${target.name}`)
+        return true
       },
       
       missActivity: (activityId: string) => {
@@ -18174,7 +26233,15 @@ export const useCareerStore = create<CareerStore>()(
         }
         
         if (effects.reputation) {
-          updatedPlayer.reputation = Math.max(0, Math.min(100, updatedPlayer.reputation + effects.reputation))
+          const missedRepApplied = applyReputationDeltaToPrimaryContext(
+            updatedPlayer,
+            updatedOwnedTeam ? { ...careerState, ownedTeam: updatedOwnedTeam } : careerState,
+            effects.reputation
+          )
+          updatedPlayer = missedRepApplied.updatedPlayer
+          updatedOwnedTeam = missedRepApplied.updatedCareerState?.ownedTeam
+            ? { ...missedRepApplied.updatedCareerState.ownedTeam }
+            : updatedOwnedTeam
         }
         
         if (effects.cash) {
@@ -18269,16 +26336,70 @@ export const useCareerStore = create<CareerStore>()(
           completedWeek: careerState.currentWeek,
           completedDay: careerState.currentDay
         }
-        
+
+        let candidateWithdrew = false
+        let withdrawnCandidateName: string | null = null
+        let signedWithTeamName: string | null = null
+        let updatedCareerState: CareerState = {
+          ...careerState,
+          ownedTeam: updatedOwnedTeam,
+          scheduledActivities: activities.map(a => a.id === activityId ? missedActivity : a),
+          activityHistory: [...(careerState.activityHistory || []), missedActivity]
+        }
+
+        // Missing a staff interview can cause the candidate to walk away and sign elsewhere.
+        if (activity.templateId === 'staff_interview' && activity.triggerData?.interviewCandidateId) {
+          const candidateId = activity.triggerData.interviewCandidateId
+          const candidate = (updatedCareerState.facilityStaffMarket || []).find((s) => s.id === candidateId)
+          if (candidate) {
+            const timesRescheduled = activity.timesRescheduled || 0
+            const withdrawalChance = Math.min(0.85, 0.45 + (timesRescheduled * 0.1))
+            if (Math.random() < withdrawalChance) {
+              candidateWithdrew = true
+              withdrawnCandidateName = candidate.name
+              signedWithTeamName = getRandomGameTeamName()
+
+              const updatedConductedBy = { ...(updatedCareerState.staffInterviewConductedBy || {}) }
+              delete updatedConductedBy[candidateId]
+
+              updatedCareerState = {
+                ...updatedCareerState,
+                facilityStaffMarket: (updatedCareerState.facilityStaffMarket || []).filter((s) => s.id !== candidateId),
+                worldStaffPool: (updatedCareerState.worldStaffPool || []).map((m) =>
+                  m.staff.id === candidateId
+                    ? { ...m, status: 'employed_ai' as const, employedBy: signedWithTeamName! }
+                    : m
+                ),
+                staffInterviewedCandidateIds: (updatedCareerState.staffInterviewedCandidateIds || []).filter(id => id !== candidateId),
+                staffInterviewConductedBy: updatedConductedBy
+              }
+            }
+          }
+        }
+
+        // Keep missed activity in scheduledActivities (so it remains visible on calendar)
+        // and also add to history for historical tracking
         set({
           player: updatedPlayer,
-          careerState: {
-            ...careerState,
-            ownedTeam: updatedOwnedTeam,
-            scheduledActivities: activities.filter(a => a.id !== activityId),
-            activityHistory: [...(careerState.activityHistory || []), missedActivity]
-          }
+          careerState: updatedCareerState
         })
+
+        if (candidateWithdrew && withdrawnCandidateName && signedWithTeamName) {
+          get().addEmail({
+            category: 'team',
+            subject: `Candidate withdrew: ${withdrawnCandidateName}`,
+            sender: 'Team Management',
+            senderRole: 'HR',
+            preview: `${withdrawnCandidateName} withdrew after a missed interview and signed elsewhere.`,
+            body: `We missed the scheduled interview with **${withdrawnCandidateName}**.\n\nThey decided to withdraw from talks and have now signed with **${signedWithTeamName}**.`,
+            receivedDay: careerState.currentDay ?? 1,
+            receivedWeek: careerState.currentWeek,
+            receivedYear: careerState.currentYear ?? new Date().getFullYear(),
+            read: true,
+            starred: false,
+            archived: true
+          })
+        }
         
         console.log(`[Activities] Missed: ${activity.name}`, effects)
         return effects
@@ -18289,9 +26410,9 @@ export const useCareerStore = create<CareerStore>()(
         const activities = careerState?.scheduledActivities || []
         
         if (week !== undefined) {
-          return activities.filter(a => a.scheduledWeek === week && a.status === 'scheduled')
+          return activities.filter(a => a.scheduledWeek === week)
         }
-        return activities.filter(a => a.status === 'scheduled')
+        return activities
       },
       
       getActivityHistory: () => {
@@ -18305,11 +26426,18 @@ export const useCareerStore = create<CareerStore>()(
         
         const ownedTeam = careerState.ownedTeam
         const hasSponsors = (player.finances.sponsorDeals || []).filter(s => s.active).length > 0
+          || (ownedTeam?.finances?.sponsors || []).filter((s: any) => s.active).length > 0
         const hasStaff = (ownedTeam?.staff || []).length > 0
+        const hasCars = (careerState.cars?.length ?? 0) > 0
+        const hasSeriesEntry = !!player.currentSeriesId || (careerState.seriesEntries?.length ?? 0) > 0
+        const hasTeam = !!ownedTeam
+        const hasDriversHired = (ownedTeam?.drivers?.length ?? 0) > 0
+        const facilities = ownedTeam?.facilities
         
         return ACTIVITY_TEMPLATES.filter(template => {
           // Check reputation
-          if (template.minReputation && player.reputation < template.minReputation) return false
+          const effectiveReputation = getCanonicalReputation(player, careerState)
+          if (template.minReputation && effectiveReputation < template.minReputation) return false
           
           // Check sponsor requirement
           if (template.requiresSponsor && !hasSponsors) return false
@@ -18317,10 +26445,30 @@ export const useCareerStore = create<CareerStore>()(
           // Check staff requirement
           if (template.requiresStaff && !hasStaff) return false
           
+          // Check car requirement
+          if (template.requiresCar && !hasCars) return false
+          
+          // Check series entry requirement
+          if (template.requiresSeriesEntry && !hasSeriesEntry) return false
+          
+          // Check team ownership requirement
+          if (template.requiresTeam && !hasTeam) return false
+          
+          // Check hired driver requirement
+          if (template.requiresDriverHired && !hasDriversHired) return false
+          
           // Check specific staff role
           if (template.requiresStaffRole) {
             const hasRole = ownedTeam?.staff.some(s => s.role === template.requiresStaffRole)
             if (!hasRole) return false
+          }
+          
+          // Check facility level requirement
+          if (template.requiresFacilityLevel) {
+            if (!facilities) return false
+            const facilityState = facilities[template.requiresFacilityLevel.type as keyof typeof facilities]
+            const facilityLevel = (facilityState as any)?.level || 0
+            if (facilityLevel < template.requiresFacilityLevel.minLevel) return false
           }
           
           return true
@@ -18328,29 +26476,75 @@ export const useCareerStore = create<CareerStore>()(
       },
       
       processScheduledActivities: () => {
-        const { careerState, completeActivity, missActivity } = get()
+        const { careerState, completeActivity, missActivity, addEmail } = get()
         if (!careerState) return
         
         const currentWeek = careerState.currentWeek
         const currentDay = careerState.currentDay ?? 1
         const activities = careerState.scheduledActivities || []
+        const autoResolvedActivities: ScheduledActivity[] = []
         
         // Find activities that should have been completed by now
         activities.forEach(activity => {
           if (activity.status !== 'scheduled') return
           
-          const isPast = activity.scheduledWeek < currentWeek || 
-            (activity.scheduledWeek === currentWeek && activity.scheduledDay < currentDay)
+          const spanDays = activity.spanDays || 1
+          const lastDayOfSpan = activity.scheduledDay + spanDays - 1
+          // For multi-day: activity is "past" only after the last day of its span has passed
+          const isPast = activity.scheduledWeek < currentWeek ||
+            (activity.scheduledWeek === currentWeek && lastDayOfSpan < currentDay)
           
           if (isPast) {
-            // Auto-complete if driver not required, otherwise miss
-            if (!activity.requiresDriver) {
+            // Activities that explicitly require the player's presence should never
+            // auto-complete and grant free rewards when time passes.
+            if (isDelegatedRoutineMandatory(activity)) {
               completeActivity(activity.id)
-            } else {
+              autoResolvedActivities.push(activity)
+            } else if (activity.mandatory || activity.requiresDriver || activity.requiresOwner) {
               missActivity(activity.id)
+            } else {
+              completeActivity(activity.id)
             }
           }
         })
+
+        if (autoResolvedActivities.length > 0) {
+          const latestState = get().careerState
+          if (!latestState) return
+          const itemNames = autoResolvedActivities
+            .slice(0, 3)
+            .map(a => `- ${a.name}`)
+            .join('\n')
+          const remainingCount = autoResolvedActivities.length - Math.min(3, autoResolvedActivities.length)
+          const extraLine = remainingCount > 0
+            ? `\n- ...and ${remainingCount} more routine item${remainingCount === 1 ? '' : 's'}`
+            : ''
+
+          addEmail({
+            category: 'team',
+            subject: `Ops Update: ${autoResolvedActivities.length} routine task${autoResolvedActivities.length === 1 ? '' : 's'} handled`,
+            sender: getStaffNameOrFallback('team_manager', 'Team Operations'),
+            senderRole: 'Operations',
+            preview: 'Routine mandatory operations were completed automatically in the background.',
+            body:
+`Boss,
+
+To keep the team moving, Operations completed the following routine mandatory task${autoResolvedActivities.length === 1 ? '' : 's'} automatically:
+
+${itemNames}${extraLine}
+
+Anything requiring your or the driver's presence will still wait for your input.
+
+Team Operations`,
+            receivedDay: latestState.currentDay ?? currentDay,
+            receivedWeek: latestState.currentWeek ?? currentWeek,
+            receivedYear: latestState.currentYear,
+            read: false,
+            starred: false,
+            archived: false,
+            actionType: 'acknowledge'
+          })
+        }
       },
       
       // ============================================
@@ -18378,8 +26572,9 @@ export const useCareerStore = create<CareerStore>()(
         const cash = ownedTeam?.budgets?.cash ?? player.finances.bankBalance ?? 0
         
         // Check reputation requirement
-        if (template.minReputation && player.reputation < template.minReputation) {
-          errors.push(`Requires ${template.minReputation} reputation (you have ${player.reputation})`)
+        const effectiveReputation = getCanonicalReputation(player, careerState)
+        if (template.minReputation && effectiveReputation < template.minReputation) {
+          errors.push(`Requires ${template.minReputation} reputation (you have ${effectiveReputation})`)
         }
         
         // Check sponsor requirement
@@ -18390,6 +26585,29 @@ export const useCareerStore = create<CareerStore>()(
         // Check staff requirement
         if (template.requiresStaff && staff.length === 0) {
           errors.push('Requires at least one staff member')
+        }
+        
+        // Check car requirement
+        if (template.requiresCar && (careerState.cars?.length ?? 0) === 0) {
+          errors.push('Requires at least one car')
+        }
+        
+        // Check series entry requirement
+        if (template.requiresSeriesEntry) {
+          const hasSeriesEntry = !!player.currentSeriesId || (careerState.seriesEntries?.length ?? 0) > 0
+          if (!hasSeriesEntry) {
+            errors.push('Requires an active series entry')
+          }
+        }
+        
+        // Check team ownership requirement
+        if (template.requiresTeam && !ownedTeam) {
+          errors.push('Requires team ownership')
+        }
+        
+        // Check hired driver requirement
+        if (template.requiresDriverHired && (ownedTeam?.drivers?.length ?? 0) === 0) {
+          errors.push('Requires at least one hired driver')
         }
         
         // Check specific staff role
@@ -18580,11 +26798,88 @@ export const useCareerStore = create<CareerStore>()(
         })
       },
       
+      // ============================================
+      // PROMISE / COMMITMENT TRACKING SYSTEM
+      // ============================================
+      
+      addPromise: (promise: PlayerPromise) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const existing = careerState.promises || []
+        set({ careerState: { ...careerState, promises: [...existing, promise] } })
+        console.log(`[Promises] Added promise: "${promise.shortText}" (deadline week ${promise.deadlineWeek})`)
+      },
+      
+      updatePromiseStatus: (promiseId: string, status: PlayerPromise['status'], resolvedWeek?: number) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const promises = (careerState.promises || []).map(p => {
+          if (p.id !== promiseId) return p
+          return {
+            ...p,
+            status,
+            ...(status === 'fulfilled' ? { fulfilledAtWeek: resolvedWeek } : {}),
+            ...(status === 'broken' ? { brokenAtWeek: resolvedWeek } : {})
+          }
+        })
+        set({ careerState: { ...careerState, promises } })
+      },
+      
+      getActivePromises: () => {
+        const { careerState } = get()
+        if (!careerState) return []
+        return (careerState.promises || []).filter(
+          p => p.status === 'active' || p.status === 'expiring'
+        )
+      },
+      
+      setPromises: (promises: PlayerPromise[]) => {
+        const { careerState } = get()
+        if (!careerState) return
+        set({ careerState: { ...careerState, promises } })
+      },
+      
+      queueFeedbackEmail: (email) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const pending = careerState.pendingFeedbackEmails || []
+        set({ careerState: { ...careerState, pendingFeedbackEmails: [...pending, email] } })
+      },
+      
+      deliverPendingFeedbackEmails: () => {
+        const { careerState } = get()
+        if (!careerState) return
+        const pending = careerState.pendingFeedbackEmails || []
+        if (pending.length === 0) return
+        
+        const existingEmails = careerState.emails || []
+        const newEmails = pending.map((e, i) => ({
+          ...e,
+          id: `feedback_${careerState.currentWeek}_${careerState.currentDay}_${Date.now()}_${i}`,
+          receivedDay: careerState.currentDay,
+          receivedWeek: careerState.currentWeek,
+          receivedYear: careerState.currentYear,
+          read: false,
+          starred: false,
+          archived: false
+        }))
+        
+        set({
+          careerState: {
+            ...careerState,
+            emails: [...newEmails, ...existingEmails],
+            pendingFeedbackEmails: []
+          }
+        })
+        console.log(`[Promises] Delivered ${newEmails.length} feedback email(s)`)
+      },
+      
       scheduleConfiguredActivity: (
         templateId: string, 
         week: number, 
         day: number, 
-        configuration: ActivityConfiguration
+        configuration: ActivityConfiguration,
+        period?: import('@/data/day-periods-config').DayPeriod
       ) => {
         const { careerState, validateActivityRequirements, calculateActivityCost } = get()
         if (!careerState) return null
@@ -18696,14 +26991,17 @@ export const useCareerStore = create<CareerStore>()(
           expectedOutcome: { ...template.defaultEffectsOnComplete },
           
           triggeredBy: 'manual',
-          autoScheduled: false
+          autoScheduled: false,
+          scheduledPeriod: (() => {
+            if (period) return period
+            const tc = getActivityTimeCost(templateId)
+            return tc.preferredPeriod || tc.allowedPeriods?.[0]
+          })()
         }
         
-        // Boost effects based on configuration quality
-        if (configuration.guests.totalCount > 50) {
-          activity.effectsOnComplete.reputation = (activity.effectsOnComplete.reputation || 0) + 2
-          activity.effectsOnComplete.fanSentiment = (activity.effectsOnComplete.fanSentiment || 0) + 5
-        }
+        // Guest effects are calculated dynamically at completion time via
+        // calculateGuestEffects() with acceptance rate rolls.
+        // See completeActivity() for the actual guest effect application.
         
         // Media coverage boosts
         if (configuration.mediaCoverage.videoTeamHired) {
@@ -18843,9 +27141,10 @@ export const useCareerStore = create<CareerStore>()(
         const context: TriggerContext = {
           currentWeek: careerState.currentWeek,
           currentDay: careerState.currentDay ?? 1,
-          reputation: player.reputation,
+          reputation: getCanonicalReputation(player, careerState),
           hasSponsors: activeSponsors.length > 0,
           hasStaff: staff.length > 0,
+          hasDrivers: (ownedTeam?.drivers?.length ?? 0) > 0,
           boardMood: ownedTeam?.boardMood ?? 50,
           avgSponsorSatisfaction: activeSponsors.length > 0 
             ? activeSponsors.reduce((sum, s) => sum + (s.satisfaction ?? 50), 0) / activeSponsors.length
@@ -18966,84 +27265,9 @@ export const useCareerStore = create<CareerStore>()(
         const tomorrowWeek = currentDay === 7 ? currentWeek + 1 : currentWeek
         
         allActivities.forEach(activity => {
-          // Check if activity is tomorrow
-          if (activity.scheduledWeek === tomorrowWeek && activity.scheduledDay === tomorrowDay) {
-            const dept = getDepartmentInfo(activity.category)
-            const guestSummary = activity.configuration?.guests?.totalCount 
-              ? `${activity.configuration.guests.totalCount} guests expected` 
-              : 'No external guests'
-            const costInfo = activity.totalCost ? `$${activity.totalCost.toLocaleString()}` : activity.requiredCash ? `~$${activity.requiredCash.toLocaleString()}` : 'TBD'
-            
-            addEmail({
-              category: activity.category === 'sponsor' ? 'sponsor' : activity.category === 'media' ? 'media' : 'team',
-              subject: `Reminder: ${activity.name} Tomorrow`,
-              sender: dept.name,
-              senderRole: dept.role,
-              preview: `Don't forget you have ${activity.name} scheduled for tomorrow.`,
-              body: `Hi,
-
-This is a reminder that you have **${activity.name}** scheduled for tomorrow.
-
-**Event Details:**
-- Venue: ${activity.configuration?.venueName || 'Team HQ'}
-- Attendees: ${guestSummary}
-- Estimated Cost: ${costInfo}
-
-Please ensure all preparations are in order. The ${dept.name.toLowerCase()} has everything ready for your arrival.
-
-Best regards,
-${dept.name}`,
-              receivedDay: currentDay,
-              receivedWeek: currentWeek,
-              receivedYear: currentYear,
-              read: false,
-              starred: false,
-              archived: false,
-              actionType: 'activity_reminder',
-              actionData: { activityId: activity.id }
-            })
-          }
+          // Tomorrow reminders are shown on the Calendar — no inbox email needed
           
-          // Check if activity is today (day-of reminders)
-          if (activity.scheduledWeek === currentWeek && activity.scheduledDay === currentDay) {
-            const dept = getDepartmentInfo(activity.category)
-            
-            let contextualInfo = ''
-            if (activity.category === 'sponsor' && activity.configuration?.guests?.sponsorReps?.length) {
-              const sponsors = activity.configuration.guests.sponsorReps.map(s => s.sponsorName).join(', ')
-              contextualInfo = `\n\n**Sponsor representatives from ${sponsors} will be attending.**`
-            }
-            if (activity.category === 'media' && activity.configuration?.guests?.mediaInvites?.length) {
-              contextualInfo = `\n\n**Media personnel have been confirmed and are ready for coverage.**`
-            }
-            
-            addEmail({
-              category: activity.category === 'sponsor' ? 'sponsor' : activity.category === 'media' ? 'media' : 'team',
-              subject: `${activity.name} Today - Action Required`,
-              sender: dept.name,
-              senderRole: dept.role,
-              preview: `Your ${activity.name} is scheduled for today. Click to attend.`,
-              body: `Hi,
-
-Your **${activity.name}** is scheduled for **today**.
-${contextualInfo}
-
-**Location:** ${activity.configuration?.venueName || 'Team HQ'}
-
-When you're ready, head to the Calendar to attend this event.
-
-Best regards,
-${dept.name}`,
-              receivedDay: currentDay,
-              receivedWeek: currentWeek,
-              receivedYear: currentYear,
-              read: false,
-              starred: true,  // Star day-of reminders for visibility
-              archived: false,
-              actionType: 'activity_today',
-              actionData: { activityId: activity.id }
-            })
-          }
+          // Today's activities are visible on the Calendar — no inbox email needed
         })
       },
       
@@ -19097,6 +27321,12 @@ ${dept.name}`,
         const seasonEndWeek = allRaceWeeks.length > 0 ? Math.max(...allRaceWeeks) : 52
         const seasonMidpoint = Math.floor((seasonStartWeek + seasonEndWeek) / 2)
         
+        const hasSponsors = (player.finances?.sponsorDeals ?? []).filter((s: { active?: boolean }) => s.active).length > 0
+        const hasRaceCalendar = allRaceWeeks.length > 0
+        const ownedTeam = careerState.ownedTeam
+        const hasStaff = (ownedTeam?.staff?.length ?? 0) > 0 || (ownedTeam?.facilityStaff?.length ?? 0) > 0
+        const hasDrivers = (ownedTeam?.drivers?.length ?? 0) > 0
+        
         const context = {
           currentWeek,
           currentDay,
@@ -19105,7 +27335,11 @@ ${dept.name}`,
           seasonStartWeek,
           seasonEndWeek,
           seasonMidpoint,
-          existingActivities
+          existingActivities,
+          hasSponsors,
+          hasRaceCalendar,
+          hasStaff,
+          hasDrivers
         }
         
         const newActivities: ScheduledActivity[] = []
@@ -19188,11 +27422,11 @@ ${mandatorySenderInfo.name}`,
               receivedDay: currentDay,
               receivedWeek: currentWeek,
               receivedYear: currentYear,
-              read: false,
-              starred: template.urgencyLevel === 'critical' || template.urgencyLevel === 'high',
-              archived: false,
+              read: true,
+              starred: false,
+              archived: true,
               actionType: 'mandatory_activity',
-              actionData: { 
+              actionData: {
                 activityId: activity.id,
                 templateId: template.id,
                 deadline: deadline
@@ -19214,6 +27448,374 @@ ${mandatorySenderInfo.name}`,
               ]
             }
           })
+        }
+      },
+
+      generateOnboardingMandatoryActivities: () => {
+        const { careerState, player, addEmail } = get()
+        if (!careerState) return
+        if (careerState.onboardingComplete) return
+        if (careerState.currentWeek > 3) return
+
+        const hasSponsors =
+          (player?.finances?.sponsorDeals ?? []).filter((s: { active?: boolean }) => s.active).length > 0 ||
+          (careerState.ownedTeam?.finances?.sponsors ?? []).filter((s: { active?: boolean }) => s.active).length > 0
+        const ownedTeam = careerState.ownedTeam
+        const hasStaff = (ownedTeam?.staff?.length ?? 0) > 0 || (ownedTeam?.facilityStaff?.length ?? 0) > 0
+        const hasDrivers = (ownedTeam?.drivers?.length ?? 0) > 0
+
+        const currentWeek = careerState.currentWeek
+        const currentDay = careerState.currentDay ?? 1
+        const existingActivities = careerState.scheduledActivities || []
+        // Schedule uses linear day (1 = first day of week); store uses calendar weekday
+        const jan1 = new Date(careerState.currentYear, 0, 1)
+        const jan1DayOfWeek = jan1.getDay() === 0 ? 7 : jan1.getDay()
+        const linearDay =
+          currentWeek === 1
+            ? ((currentDay - jan1DayOfWeek + 7) % 7) + 1
+            : currentDay
+        const templates = getOnboardingMandatoryForDay(currentWeek, linearDay)
+        if (templates.length === 0) return
+
+        const newActivities: ScheduledActivity[] = []
+
+        for (const template of templates) {
+          if (template.requiresSponsors && !hasSponsors) continue
+          if (template.onlyWhenNoSponsors && hasSponsors) continue
+          if (template.requiresStaff && !hasStaff) continue
+          if (template.requiresDriver && !hasDrivers) continue
+
+          const alreadyScheduled = existingActivities.some(
+            (a) =>
+              a.templateId === template.id &&
+              (a.status === 'scheduled' || a.status === 'completed') &&
+              a.scheduledWeek === currentWeek &&
+              a.scheduledDay === currentDay
+          )
+          if (alreadyScheduled) continue
+
+          const cost = getActivityTimeCost(template.id)
+          const onboardingDeadline = calculateDeadline(currentWeek, currentDay, 1)
+          const onboardingRescheduleCost = template.baseCost > 0
+            ? Math.floor(template.baseCost * 0.35)
+            : 500
+          const activity: ScheduledActivity = {
+            id: `onboarding_${template.id}_${currentWeek}_${currentDay}_${Date.now()}`,
+            templateId: template.id,
+            name: template.name,
+            description: template.description,
+            category: template.category,
+            scheduledWeek: currentWeek,
+            scheduledDay: currentDay,
+            duration: template.duration,
+            spanDays: 1,
+            status: 'scheduled',
+            requiredCash: template.baseCost,
+            triggeredBy: 'onboarding',
+            mandatory: true,
+            canReschedule: true,
+            rescheduleCost: onboardingRescheduleCost,
+            deadline: { week: onboardingDeadline.week, day: onboardingDeadline.day },
+            effectsOnComplete: template.effectsOnComplete,
+            effectsOnMiss: template.effectsOnMiss,
+            requiresDriver: template.requiresDriver,
+            requiresOwner: template.requiresOwner,
+            urgencyLevel: template.urgencyLevel,
+            drainLevel: (cost?.drain ?? 'normal') as DrainLevel,
+            calendarEntryType: (cost?.calendarType ?? template.calendarEntryType) as CalendarEntryType,
+            scheduledPeriod: cost?.preferredPeriod || cost?.allowedPeriods?.[0],
+          }
+
+          newActivities.push(activity)
+        }
+
+        if (newActivities.length > 0) {
+          set({
+            careerState: {
+              ...careerState,
+              scheduledActivities: [...(careerState.scheduledActivities || []), ...newActivities],
+            },
+          })
+          const activityList = newActivities.map((a) => `• ${a.name} (${a.duration}h)`).join('\n')
+          const senderName = getStaffNameOrFallback('team_manager', 'Team Operations')
+          addEmail({
+            category: 'team',
+            subject: newActivities.length === 1 ? `Today: ${newActivities[0].name}` : `Today: ${newActivities.length} mandatory activities`,
+            sender: senderName,
+            senderRole: 'Team Operations',
+            preview: `${newActivities.length} activity(ies) on your calendar today. Check the Calendar.`,
+            body: `Team Principal,\n\nYou have the following scheduled for today:\n\n${activityList}\n\nCheck your Calendar and complete them to stay on track.\n\n${senderName}`,
+            receivedDay: currentDay,
+            receivedWeek: currentWeek,
+            receivedYear: careerState.currentYear,
+            read: false,
+            starred: true,
+            archived: false,
+            actionType: 'activity_today',
+            actionData: newActivities.length === 1 ? { activityId: newActivities[0].id } : undefined,
+          })
+          console.log(`[CareerStore] Onboarding mandatory: ${newActivities.length} activities added for week ${currentWeek} day ${currentDay}`)
+        }
+      },
+
+      /** Pre-fill race weekend expected activities for all race weeks in the season (so calendar is not bare). */
+      ensureRaceWeekendActivitiesForSeason: () => {
+        const { careerState, player } = get()
+        if (!careerState) return
+        const seriesEntries = careerState.seriesEntries || []
+        if (seriesEntries.length === 0) return
+        const hasSponsors =
+          (player?.finances?.sponsorDeals ?? []).filter((s: { active?: boolean }) => s.active).length > 0 ||
+          (careerState.ownedTeam?.finances?.sponsors ?? []).filter((s: { active?: boolean }) => s.active).length > 0
+        const rivalStore = useRivalStore.getState()
+        const existingActivities = careerState.scheduledActivities || []
+        const seen = new Set<string>()
+        existingActivities.forEach((a) => {
+          if (a.templateId && a.triggeredBy === 'race_weekend_expected') {
+            seen.add(`${a.templateId}_${a.scheduledWeek}_${a.scheduledDay}`)
+          }
+        })
+        const toAdd: ScheduledActivity[] = []
+        for (const entry of seriesEntries) {
+          const series = rivalStore.getSeriesById(entry.seriesId)
+          const rawTier = String((series as any)?.tier || 'amateur').toLowerCase()
+          const tierRank = ['entry', 'amateur', 'semi-pro', 'professional', 'pro', 'elite', 'pinnacle'].indexOf(rawTier)
+          const isSemiProOrHigher = tierRank >= 2
+          const isProOrHigher = tierRank >= 3
+          const calendar = (
+            (series as any)?.calendar?.length
+              ? (series as any).calendar
+              : rivalStore.generateCalendar(entry.seriesId, careerState.currentYear)
+          ) as Array<{ week: number; round?: number; trackName?: string }> | undefined
+          if (!calendar?.length) continue
+          for (const race of calendar) {
+            const raceWeek = race.week
+            // Add concrete race sessions with fixed day/time slots
+            const seriesTag = (series?.shortName || series?.name || entry.seriesName || 'Series').trim()
+            const sessionTemplates = [
+              {
+                id: `race_session_practice_${entry.seriesId}`,
+                name: `Practice - ${seriesTag}`,
+                description: `${race.trackName || 'Track'} practice session for ${seriesTag}.`,
+                day: 5,
+                duration: 2,
+                period: 'afternoon' as const,
+                mandatory: false,
+                effectsOnComplete: { teamMorale: 1 },
+              },
+              {
+                id: `race_session_qualifying_${entry.seriesId}`,
+                name: `Qualifying - ${seriesTag}`,
+                description: `${race.trackName || 'Track'} qualifying session for ${seriesTag}.`,
+                day: 6,
+                duration: 2,
+                period: 'morning' as const,
+                mandatory: isSemiProOrHigher,
+                effectsOnComplete: { reputation: 1, sponsorSatisfaction: 1 },
+              },
+              {
+                id: `race_session_race_${entry.seriesId}`,
+                name: `Race - ${seriesTag}`,
+                description: `${race.trackName || 'Track'} race event for ${seriesTag}.`,
+                day: 7,
+                duration: 3,
+                period: 'afternoon' as const,
+                mandatory: true,
+                effectsOnComplete: { fanSentiment: 1, sponsorSatisfaction: 1, boardMood: 1 },
+              }
+            ]
+            for (const session of sessionTemplates) {
+              const sessionKey = `${session.id}_${raceWeek}_${session.day}`
+              if (seen.has(sessionKey)) continue
+              seen.add(sessionKey)
+              toAdd.push({
+                id: `${session.id}_${raceWeek}_${session.day}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                templateId: session.id,
+                name: session.name,
+                description: session.description,
+                category: 'race',
+                scheduledWeek: raceWeek,
+                scheduledDay: session.day,
+                duration: session.duration,
+                spanDays: 1,
+                status: 'scheduled',
+                requiredCash: 0,
+                triggeredBy: 'race_weekend_expected',
+                mandatory: session.mandatory,
+                effectsOnComplete: session.effectsOnComplete,
+                effectsOnMiss: {},
+                requiresDriver: true,
+                requiresOwner: false,
+                urgencyLevel: 'high',
+                drainLevel: 'high',
+                calendarEntryType: 'mandatory',
+                scheduledPeriod: session.period,
+                autoScheduled: true,
+              } as ScheduledActivity)
+            }
+
+            for (const day of [4, 5, 6, 7]) {
+              let batch = createRaceWeekendExpectedActivities(raceWeek, day)
+              if (!hasSponsors) {
+                batch = batch.filter((a) =>
+                  a.templateId !== 'race_expected_sponsor_hospitality' &&
+                  a.templateId !== 'race_expected_post_race_sponsor_commitment'
+                )
+              }
+              for (const a of batch) {
+                const seriesScopedTemplateId = `${a.templateId}_${entry.seriesId}`
+                const key = `${seriesScopedTemplateId}_${a.scheduledWeek}_${a.scheduledDay}`
+                if (seen.has(key)) continue
+                seen.add(key)
+                const isSponsorDuty = a.templateId.includes('sponsor')
+                const isMediaDuty = a.templateId.includes('press') || a.templateId.includes('media')
+                const adjustedMandatory = isSponsorDuty ? isProOrHigher : isMediaDuty ? isSemiProOrHigher : a.mandatory
+                toAdd.push({
+                  ...a,
+                  templateId: seriesScopedTemplateId,
+                  mandatory: adjustedMandatory,
+                  name: `${a.name} - ${seriesTag}`,
+                  id: `${seriesScopedTemplateId}_${raceWeek}_${day}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+                })
+              }
+            }
+          }
+        }
+        if (toAdd.length > 0) {
+          set({
+            careerState: {
+              ...careerState,
+              scheduledActivities: [...(careerState.scheduledActivities || []), ...toAdd],
+            },
+          })
+          console.log(`[CareerStore] Race weekend pre-fill: ${toAdd.length} activities added for season`)
+        }
+      },
+
+      generateRaceWeekendExpectedActivities: () => {
+        const { careerState, player, isRaceWeek } = get()
+        if (!careerState) return
+        if (!isRaceWeek()) return
+
+        const hasSponsors =
+          (player?.finances?.sponsorDeals ?? []).filter((s: { active?: boolean }) => s.active).length > 0 ||
+          (careerState.ownedTeam?.finances?.sponsors ?? []).filter((s: { active?: boolean }) => s.active).length > 0
+        const currentWeek = careerState.currentWeek
+        const currentDay = careerState.currentDay ?? 1
+        const existingActivities = careerState.scheduledActivities || []
+        const seriesEntries = careerState.seriesEntries || []
+        const rivalStore = useRivalStore.getState()
+        const newActivities: ScheduledActivity[] = []
+        for (const entry of seriesEntries) {
+          const series = rivalStore.getSeriesById(entry.seriesId)
+          const rawTier = String((series as any)?.tier || 'amateur').toLowerCase()
+          const tierRank = ['entry', 'amateur', 'semi-pro', 'professional', 'pro', 'elite', 'pinnacle'].indexOf(rawTier)
+          const isSemiProOrHigher = tierRank >= 2
+          const isProOrHigher = tierRank >= 3
+          const calendar = (
+            (series as any)?.calendar?.length
+              ? (series as any).calendar
+              : rivalStore.generateCalendar(entry.seriesId, careerState.currentYear)
+          ) as Array<{ week: number; round?: number; trackName?: string }> | undefined
+          const race = (calendar || []).find((r: any) => r.week === currentWeek)
+          if (!race) continue
+
+          const seriesTag = (series?.shortName || series?.name || entry.seriesName || 'Series').trim()
+          const sessionsByDay = {
+            5: {
+              id: `race_session_practice_${entry.seriesId}`,
+              name: `Practice - ${seriesTag}`,
+              description: `${race.trackName || 'Track'} practice session for ${seriesTag}.`,
+              duration: 2,
+              period: 'afternoon' as const,
+              mandatory: false,
+              effectsOnComplete: { teamMorale: 1 },
+            },
+            6: {
+              id: `race_session_qualifying_${entry.seriesId}`,
+              name: `Qualifying - ${seriesTag}`,
+              description: `${race.trackName || 'Track'} qualifying session for ${seriesTag}.`,
+              duration: 2,
+              period: 'morning' as const,
+              mandatory: isSemiProOrHigher,
+              effectsOnComplete: { reputation: 1, sponsorSatisfaction: 1 },
+            },
+            7: {
+              id: `race_session_race_${entry.seriesId}`,
+              name: `Race - ${seriesTag}`,
+              description: `${race.trackName || 'Track'} race event for ${seriesTag}.`,
+              duration: 3,
+              period: 'afternoon' as const,
+              mandatory: true,
+              effectsOnComplete: { fanSentiment: 1, sponsorSatisfaction: 1, boardMood: 1 },
+            }
+          } as Record<number, { id: string; name: string; description: string; duration: number; period: 'morning' | 'afternoon' | 'evening' | 'night'; mandatory: boolean; effectsOnComplete: ActivityEffect }>
+          const session = sessionsByDay[currentDay]
+          if (session) {
+            newActivities.push({
+              id: `${session.id}_${currentWeek}_${currentDay}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+              templateId: session.id,
+              name: session.name,
+              description: session.description,
+              category: 'race',
+              scheduledWeek: currentWeek,
+              scheduledDay: currentDay,
+              duration: session.duration,
+              spanDays: 1,
+              status: 'scheduled',
+              requiredCash: 0,
+              triggeredBy: 'race_weekend_expected',
+              mandatory: session.mandatory,
+              effectsOnComplete: session.effectsOnComplete,
+              effectsOnMiss: {},
+              requiresDriver: true,
+              requiresOwner: false,
+              urgencyLevel: 'high',
+              drainLevel: 'high',
+              calendarEntryType: 'mandatory',
+              scheduledPeriod: session.period,
+              autoScheduled: true,
+            } as ScheduledActivity)
+          }
+
+          let expectedForDay = createRaceWeekendExpectedActivities(currentWeek, currentDay)
+          if (!hasSponsors) {
+            expectedForDay = expectedForDay.filter((a) =>
+              a.templateId !== 'race_expected_sponsor_hospitality' &&
+              a.templateId !== 'race_expected_post_race_sponsor_commitment'
+            )
+          }
+          expectedForDay.forEach((a) => {
+            const scopedTemplateId = `${a.templateId}_${entry.seriesId}`
+            const isSponsorDuty = a.templateId.includes('sponsor')
+            const isMediaDuty = a.templateId.includes('press') || a.templateId.includes('media')
+            const adjustedMandatory = isSponsorDuty ? isProOrHigher : isMediaDuty ? isSemiProOrHigher : a.mandatory
+            newActivities.push({
+              ...a,
+              templateId: scopedTemplateId,
+              mandatory: adjustedMandatory,
+              name: `${a.name} - ${seriesTag}`,
+              id: `${scopedTemplateId}_${currentWeek}_${currentDay}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+            })
+          })
+        }
+        const toAdd = newActivities.filter(
+          (a) =>
+            !existingActivities.some(
+              (e) =>
+                e.templateId === a.templateId &&
+                e.scheduledWeek === currentWeek &&
+                e.scheduledDay === a.scheduledDay
+            )
+        )
+        if (toAdd.length > 0) {
+          set({
+            careerState: {
+              ...careerState,
+              scheduledActivities: [...(careerState.scheduledActivities || []), ...toAdd],
+            },
+          })
+          console.log(`[CareerStore] Race weekend expected: ${toAdd.length} activities added for week ${currentWeek} day ${currentDay}`)
         }
       },
       
@@ -19320,9 +27922,12 @@ ${mandatorySenderInfo.name}`,
         const { careerState } = get()
         if (!careerState?.ownedTeam) return false
         
-        // Check if team has a reserve driver on staff
-        const staff = careerState.ownedTeam.staff || []
-        return staff.some(s => s.role === 'reserve_driver')
+        // Team-role hires can exist in either legacy staff[] or facilityStaff[].
+        const allStaff = [
+          ...(careerState.ownedTeam.staff || []),
+          ...(careerState.ownedTeam.facilityStaff || [])
+        ]
+        return allStaff.some(s => s.role === 'reserve_driver')
       },
       
       getActivitiesForDay: (week: number, day: number) => {
@@ -19368,6 +27973,7 @@ ${mandatorySenderInfo.name}`,
         // Filter activities that require driver vs owner-only
         const driverRequiredActivities = sameDayActivities.filter(a => a.requiresDriver)
         const ownerOnlyActivities = sameDayActivities.filter(a => a.requiresOwner && !a.requiresDriver)
+        const driverRaceActivities = sameDayActivities.filter(a => a.requiresDriver && a.category === 'race')
         
         // Check for conflict - both driver and owner duties on same day
         if (driverRequiredActivities.length > 0 && ownerOnlyActivities.length > 0) {
@@ -19398,6 +28004,23 @@ ${mandatorySenderInfo.name}`,
             }
           }
         }
+
+        // If multiple race-driving duties exist on the same day, player can only run one unless reserve driver is available.
+        if (activity.requiresDriver && activity.category === 'race' && driverRaceActivities.length > 1) {
+          const hasReserve = hasReserveDriver()
+          const alreadyCompletedOtherRaceDuty = driverRaceActivities.some(a => a.id !== activity.id && a.status === 'completed')
+          if (!hasReserve && alreadyCompletedOtherRaceDuty) {
+            return {
+              canAttend: false,
+              reason: 'conflict' as const,
+              conflictingActivities: driverRaceActivities.filter(a => a.id !== activity.id),
+              resolutionOptions: [
+                'Hire a reserve driver to cover one of the race sessions',
+                'Attend only one series session for the day'
+              ]
+            }
+          }
+        }
         
         // No conflict
         return { canAttend: true }
@@ -19410,12 +28033,8 @@ ${mandatorySenderInfo.name}`,
           hasConflict: false,
           conflictType: undefined as 'driver' | 'owner' | 'both' | undefined,
           conflictingActivities: [] as ScheduledActivity[],
-          canResolveWithReserve: false
-        }
-        
-        if (!careerState?.ownedTeam) {
-          // Not in owner mode, no conflicts
-          return result
+          canResolveWithReserve: false,
+          breakdown: undefined as EffectiveHoursBreakdown | undefined,
         }
         
         const existingActivities = getActivitiesForDay(week, day)
@@ -19424,38 +28043,59 @@ ${mandatorySenderInfo.name}`,
           return result
         }
         
-        // Check what's already scheduled
-        const existingDriverDuties = existingActivities.filter(a => a.requiresDriver)
-        const existingOwnerDuties = existingActivities.filter(a => a.requiresOwner && !a.requiresDriver)
-        
-        // Determine conflict type
-        if (requiresDriver && existingOwnerDuties.length > 0) {
+        // Detect if this is a race day (any 'race' category activity on this day)
+        const isRaceDay = existingActivities.some(a => a.category === 'race')
+        const driverRaceActivities = existingActivities.filter(a => a.requiresDriver && a.category === 'race')
+        if ((requiresDriver ?? false) && driverRaceActivities.length > 0 && !hasReserveDriver()) {
           result.hasConflict = true
           result.conflictType = 'driver'
-          result.conflictingActivities = existingOwnerDuties
-          result.canResolveWithReserve = true // Reserve can cover driving
+          result.conflictingActivities = driverRaceActivities
+          result.canResolveWithReserve = true
+          return result
         }
         
-        if (requiresOwner && !requiresDriver && existingDriverDuties.length > 0) {
+        // Calculate effective hours using the overhead system
+        const breakdown = calculateDayEffectiveHours(existingActivities, isRaceDay)
+        result.breakdown = breakdown
+        
+        // Conflict is based on effective hours exceeding the daily limit
+        if (breakdown.hasConflict) {
           result.hasConflict = true
-          result.conflictType = 'owner'
-          result.conflictingActivities = existingDriverDuties
-          result.canResolveWithReserve = true // Reserve can cover driving while owner does meeting
-        }
-        
-        // Both required - conflict with either type
-        if (requiresDriver && requiresOwner) {
-          if (existingDriverDuties.length > 0 || existingOwnerDuties.length > 0) {
-            result.hasConflict = true
-            result.conflictType = 'both'
-            result.conflictingActivities = [...existingDriverDuties, ...existingOwnerDuties]
-            result.canResolveWithReserve = false // Can't delegate when both are needed
+          
+          // Determine conflict type for UI hints
+          if (breakdown.hasRoleTransition) {
+            const driverActivities = existingActivities.filter(a => a.requiresDriver)
+            const ownerOnlyActivities = existingActivities.filter(a => a.requiresOwner && !a.requiresDriver)
+            
+            if (driverActivities.length > 0 && ownerOnlyActivities.length > 0) {
+              result.conflictType = 'both'
+              result.conflictingActivities = [...driverActivities, ...ownerOnlyActivities]
+            } else if (driverActivities.length > 0) {
+              result.conflictType = 'driver'
+              result.conflictingActivities = driverActivities
+            } else {
+              result.conflictType = 'owner'
+              result.conflictingActivities = ownerOnlyActivities
+            }
+            
+            // Reserve driver can remove the role transition penalty + driver durations
+            result.canResolveWithReserve = true
+          } else {
+            // Overloaded purely by hours, not role transition
+            result.conflictingActivities = existingActivities
           }
         }
         
         // Check if reserve driver resolves the conflict
+        // Reserve removes role transition penalty — recalculate without driver activities
         if (result.hasConflict && result.canResolveWithReserve && hasReserveDriver()) {
-          result.hasConflict = false // Conflict resolved
+          // With a reserve, driver activities are delegated — recalculate with only non-driver activities
+          const ownerActivities = existingActivities.filter(a => !a.requiresDriver)
+          const recalculated = calculateDayEffectiveHours(ownerActivities, false) // Reserve handles track duties
+          if (!recalculated.hasConflict) {
+            result.hasConflict = false // Conflict resolved by reserve
+            result.breakdown = recalculated
+          }
         }
         
         return result
@@ -19475,11 +28115,12 @@ ${mandatorySenderInfo.name}`,
           
           // Determine player tier from reputation or series entries
           let playerTier = 'entry'
-          if (player.reputation >= 80) playerTier = 'elite'
-          else if (player.reputation >= 60) playerTier = 'pro'
-          else if (player.reputation >= 45) playerTier = 'professional'
-          else if (player.reputation >= 30) playerTier = 'semi-pro'
-          else if (player.reputation >= 15) playerTier = 'amateur'
+          const effectiveReputation = getCanonicalReputation(player, careerState)
+          if (effectiveReputation >= 80) playerTier = 'elite'
+          else if (effectiveReputation >= 60) playerTier = 'pro'
+          else if (effectiveReputation >= 45) playerTier = 'professional'
+          else if (effectiveReputation >= 30) playerTier = 'semi-pro'
+          else if (effectiveReputation >= 15) playerTier = 'amateur'
           
           const listings = generateMarketplaceListings(
             careerState.currentWeek,
@@ -19526,90 +28167,47 @@ ${mandatorySenderInfo.name}`,
           : Math.round(basePrice * discount.carDiscount)
         const price = basePrice - discountAmount
         
-        const totalCost = price + entryFee
-        
+        // Charge only car price; no series entry or entry fee (player assigns via Assign Car modal)
         if (discountAmount > 0) {
           console.log(`[Marketplace] Applied ${discount.tier} discount: -$${discountAmount} (${Math.round(discount.carDiscount * 100)}%)`)
         }
         
-        if (careerState.ownedTeam.budgets.cash < totalCost) {
+        if (careerState.ownedTeam.budgets.cash < price) {
           console.log('[Marketplace] Insufficient funds')
           return false
         }
         
-        // Determine series ID - use provided or from listing
-        const targetSeriesId = seriesId || listing.seriesCompatible[0]
-        const targetSeriesName = seriesName || targetSeriesId
+        // Auto-assign to owner if no owner car exists yet; otherwise unassigned
+        const existingOwnerCarMP = (careerState.cars || []).some(c => c.driverType === 'owner')
         
-        // Check if we already have max cars for this series
-        const existingCarsInSeries = (careerState.cars || []).filter(c => c.seriesId === targetSeriesId)
-        const maxCarsForSeries = getSeriesMaxTeamCars(targetSeriesId)
-        if (existingCarsInSeries.length >= maxCarsForSeries) {
-          console.log('[Marketplace] Max cars reached for series:', targetSeriesId, `(${maxCarsForSeries} max)`)
-          return false
-        }
-        
-        const isFirstCar = existingCarsInSeries.length === 0
-        
-        // Create new car from listing
         const newCar: TeamCar = {
           carId: `car_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          seriesId: targetSeriesId,
           chassisId: listing.carClassId,
           engineId: listing.carClassId,
           liveryName: listing.liveryName,
           liveryPath: listing.liveryPath,
-          
           performance: listing.performance,
           reliability: listing.reliability,
-          
           partWear: { ...listing.partWear },
           mileage: listing.mileage,
-          
           serviceHistory: [...listing.serviceHistory],
           provenance: listing.provenance ? { ...listing.provenance } : undefined,
           installedUpgrades: [...listing.installedUpgrades],
           upgradeQueue: [],
-          
           purchasePrice: price,
           purchaseType: listing.listingType,
           purchaseWeek: careerState.currentWeek,
           purchaseYear: careerState.currentYear,
-          
-          driverType: isFirstCar ? 'owner' : 'unassigned'
+          driverType: existingOwnerCarMP ? 'unassigned' : 'owner'
         }
         
-        // Update budgets
         const updatedBudgets = {
           ...careerState.ownedTeam.budgets,
-          cash: careerState.ownedTeam.budgets.cash - totalCost
+          cash: careerState.ownedTeam.budgets.cash - price
         }
         
-        // Create/update series entry if needed
-        let updatedEntries = [...(careerState.seriesEntries || [])]
-        const existingEntry = updatedEntries.find(e => e.seriesId === targetSeriesId)
-        
-        if (!existingEntry) {
-          updatedEntries.push({
-            seriesId: targetSeriesId,
-            seriesName: targetSeriesName,
-            carCount: 1,
-            entryFee,
-            worksCustomer: 'customer',
-            status: 'active'
-          })
-        } else {
-          updatedEntries = updatedEntries.map(e => 
-            e.seriesId === targetSeriesId 
-              ? { ...e, carCount: e.carCount + 1 }
-              : e
-          )
-        }
-        
-        // Remove listing from marketplace
         const updatedListings = careerState.marketplaceListings.filter(l => l.id !== listingId)
         
-        // Update state
         set({
           careerState: {
             ...careerState,
@@ -19618,12 +28216,10 @@ ${mandatorySenderInfo.name}`,
               budgets: updatedBudgets
             },
             cars: [...(careerState.cars || []), newCar],
-            seriesEntries: updatedEntries,
             marketplaceListings: updatedListings
           }
         })
         
-        // Record transaction
         addTransaction({
           type: 'expense',
           category: 'equipment',
@@ -19633,18 +28229,6 @@ ${mandatorySenderInfo.name}`,
           week: careerState.currentWeek,
           year: careerState.currentYear
         })
-        
-        if (entryFee > 0) {
-          addTransaction({
-            type: 'expense',
-            category: 'other',
-            amount: entryFee,
-            description: `Series entry fee: ${targetSeriesName}`,
-            date: new Date().toISOString(),
-            week: careerState.currentWeek,
-            year: careerState.currentYear
-          })
-        }
         
         // Update manufacturer relationship (favor + purchase tracking)
         updateManufacturerRelationship(manufacturerId, 'purchase', price)
@@ -20736,8 +29320,15 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         // Initialize world pool if it doesn't exist yet
         if (worldPool.length === 0) {
           const currentYear = careerState.currentYear || new Date().getFullYear()
-          worldPool = generateWorldStaffPool(currentYear, tier)
+          worldPool = generateWorldStaffPool(currentYear, tier, getGameWorldTeamNames())
           console.log(`[Facility Staff] Initialized world pool with ${worldPool.length} members`)
+        }
+
+        // Enrich staff members that lack pre-gen bios (handles saves from before pre-gen integration)
+        const staffToEnrich = worldPool.map(m => m.staff)
+        const enrichedCount = enrichStaffBios(staffToEnrich)
+        if (enrichedCount > 0) {
+          console.log(`[Facility Staff] Enriched ${enrichedCount} staff members with pre-gen bios`)
         }
         
         // Filter available staff from the world pool for the market view
@@ -20789,11 +29380,44 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         
         console.log(`[Facility Staff] Refreshed market: ${availableStaff.length} available from pool of ${worldPool.length}`)
       },
+
+      attachStaffPreGenBio: (staffId: string, snapshot: StaffPreGenBioSnapshot) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const withBio = (s: StaffMember) =>
+          s.id === staffId ? { ...s, preGenBio: snapshot } as StaffMember : s
+        const updatedPool = (careerState.worldStaffPool || []).map(m =>
+          m.staff.id === staffId ? { ...m, staff: withBio(m.staff) } : m
+        )
+        const updatedMarket = (careerState.facilityStaffMarket || []).map(withBio)
+        set({
+          careerState: {
+            ...careerState,
+            worldStaffPool: updatedPool,
+            facilityStaffMarket: updatedMarket
+          }
+        })
+      },
       
-      hireFacilityStaff: (staffId: string) => {
+      hireFacilityStaff: (staffId: string, negotiatedTerms?: { salary: number; signingBonus: number; contractLength: number; performanceBonus?: number }) => {
         const { careerState } = get()
         if (!careerState?.ownedTeam) {
           return { success: false, error: 'No team owned' }
+        }
+        
+        // Global facility staff cap check
+        const currentStaffCount = (careerState.ownedTeam.facilityStaff || []).length
+        const facilityLevelsForCap: Record<FacilityType, number> = {
+          aero: careerState.ownedTeam.facilities?.aero?.level || 1,
+          chassis: careerState.ownedTeam.facilities?.chassis?.level || 1,
+          engine: careerState.ownedTeam.facilities?.engine?.level || 1,
+          sim: careerState.ownedTeam.facilities?.sim?.level || 1,
+          manufacturing: careerState.ownedTeam.facilities?.manufacturing?.level || 1,
+          marketing: careerState.ownedTeam.facilities?.marketing?.level || 1
+        }
+        const maxStaff = getMaxFacilityStaff(careerState.ownedTeam.tier || 'amateur', facilityLevelsForCap)
+        if (currentStaffCount >= maxStaff) {
+          return { success: false, error: `Facility staff cap reached (${currentStaffCount}/${maxStaff}). Upgrade facilities or team tier to increase.` }
         }
         
         // Find staff in market
@@ -20802,13 +29426,18 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
           return { success: false, error: 'Staff member not found in market' }
         }
         
-        // Calculate signing bonus (cast to FacilityStaffMember since contract cost calculation uses same fields)
-        const signingBonus = calculateContractCost(staffMember as FacilityStaffMember)
+        // Use negotiated terms when provided; otherwise fall back to candidate defaults
+        const signingBonus = negotiatedTerms
+          ? negotiatedTerms.signingBonus
+          : calculateContractCost(staffMember as FacilityStaffMember)
         const cash = careerState.ownedTeam.budgets?.cash || 0
         
         if (cash < signingBonus) {
           return { success: false, error: `Insufficient funds for signing bonus ($${signingBonus.toLocaleString()} required)` }
         }
+        
+        const contractYears = negotiatedTerms?.contractLength ?? staffMember.contractYears
+        const salary = negotiatedTerms?.salary ?? staffMember.salary
         
         // Create hired staff member (works for both facility and team staff)
         const isTeamStaff = 'staffCategory' in staffMember && staffMember.staffCategory === 'team'
@@ -20816,9 +29445,11 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         
         const hiredStaff = {
           ...staffMember,
+          salary,
+          contractYears,
           hiredWeek: careerState.currentWeek,
           hiredYear: careerState.currentYear,
-          contractEndYear: careerState.currentYear + staffMember.contractYears,
+          contractEndYear: careerState.currentYear + contractYears,
           morale: 70 + Math.floor(Math.random() * 20), // 70-90 initial morale
           // Preserve team staff specific fields if applicable
           ...(isTeamStaff ? {
@@ -20847,6 +29478,11 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
             : m
         )
         
+        // Remove from shortlist (interviewed candidates) since they're now hired
+        const updatedInterviewedIds = (careerState.staffInterviewedCandidateIds || []).filter(id => id !== staffId)
+        const updatedConductedBy = { ...(careerState.staffInterviewConductedBy || {}) }
+        delete updatedConductedBy[staffId]
+        
         // Create transaction
         const transaction = createTeamTransaction(
           'expense',
@@ -20868,7 +29504,9 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
               }
             },
             facilityStaffMarket: updatedMarket,
-            worldStaffPool: updatedWorldPool
+            worldStaffPool: updatedWorldPool,
+            staffInterviewedCandidateIds: updatedInterviewedIds,
+            staffInterviewConductedBy: updatedConductedBy
           }
         })
         
@@ -20942,6 +29580,433 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         return { success: true }
       },
       
+      markInterviewCompleted: (candidateId: string, conductedBy?: 'owner' | string) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const interviewed = [...(careerState.staffInterviewedCandidateIds || [])]
+        if (!interviewed.includes(candidateId)) interviewed.push(candidateId)
+        const conductedByMap = { ...(careerState.staffInterviewConductedBy || {}) }
+        if (conductedBy) conductedByMap[candidateId] = conductedBy
+        set({
+          careerState: {
+            ...careerState,
+            staffInterviewedCandidateIds: interviewed,
+            staffInterviewConductedBy: conductedByMap
+          }
+        })
+      },
+      
+      isCandidateInterviewed: (candidateId: string) => {
+        const { careerState } = get()
+        return (careerState?.staffInterviewedCandidateIds || []).includes(candidateId)
+      },
+      
+      removeFromShortlist: (candidateId: string) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const interviewed = (careerState.staffInterviewedCandidateIds || []).filter(id => id !== candidateId)
+        const conductedByMap = { ...(careerState.staffInterviewConductedBy || {}) }
+        delete conductedByMap[candidateId]
+        set({
+          careerState: {
+            ...careerState,
+            staffInterviewedCandidateIds: interviewed,
+            staffInterviewConductedBy: conductedByMap
+          }
+        })
+      },
+      
+      getInterviewedCandidates: () => {
+        const { careerState } = get()
+        if (!careerState) return []
+        const ids = careerState.staffInterviewedCandidateIds || []
+        if (ids.length === 0) return []
+        // Look up from both the market and the world staff pool
+        const market = careerState.facilityStaffMarket || []
+        const worldPool = careerState.worldStaffPool || []
+        const found: StaffMember[] = []
+        const foundIds = new Set<string>()
+        for (const id of ids) {
+          // Check market first
+          const fromMarket = market.find(s => s.id === id)
+          if (fromMarket && !foundIds.has(id)) {
+            found.push(fromMarket)
+            foundIds.add(id)
+            continue
+          }
+          // Check world pool
+          const fromPool = worldPool.find(w => w.staff.id === id)
+          if (fromPool && !foundIds.has(id)) {
+            found.push(fromPool.staff)
+            foundIds.add(id)
+          }
+        }
+        return found
+      },
+      
+      getInterviewEligibleStaff: () => {
+        const { careerState } = get()
+        if (!careerState?.ownedTeam?.facilityStaff?.length) return []
+        const eligible = careerState.ownedTeam.facilityStaff.filter(s =>
+          ROLES_CAN_CONDUCT_INTERVIEWS.includes(s.role as import('@/data/facility-staff-config').StaffRole)
+        )
+        return eligible
+      },
+      
+      scheduleStaffInterview: (candidateId: string, week: number, day: number, conductedBy: 'owner' | string) => {
+        const { careerState } = get()
+        if (!careerState) return null
+        const candidate = careerState.facilityStaffMarket?.find(s => s.id === candidateId)
+        const candidateName = candidate?.name ?? 'Candidate'
+        const staffInterviewCost = getActivityTimeCost('staff_interview')
+        const activity: ScheduledActivity = {
+          id: `staff_interview_${candidateId}_${week}_${day}_${Date.now()}`,
+          templateId: 'staff_interview',
+          name: `Interview: ${candidateName}`,
+          description: conductedBy === 'owner' ? `You will conduct this interview.` : `Delegated to staff.`,
+          category: 'team',
+          scheduledWeek: week,
+          scheduledDay: day,
+          duration: staffInterviewCost?.hours ?? 1,
+          spanDays: 1,
+          status: 'scheduled',
+          canReschedule: true,
+          rescheduleCost: 500,
+          rescheduleDeadline: week + 1,
+          drainLevel: (staffInterviewCost?.drain as DrainLevel) ?? 'normal',
+          calendarEntryType: 'personal',
+          requiresOwner: conductedBy === 'owner',
+          triggeredBy: 'manual',
+          triggerData: { interviewCandidateId: candidateId, conductedBy },
+          effectsOnComplete: {} as ActivityEffect,
+          effectsOnMiss: {} as ActivityEffect,
+          // Day period scheduling
+          scheduledPeriod: staffInterviewCost?.preferredPeriod || staffInterviewCost?.allowedPeriods?.[0],
+        }
+        // Add to shortlist immediately when interview is scheduled
+        const interviewed = [...(careerState.staffInterviewedCandidateIds || [])]
+        if (!interviewed.includes(candidateId)) interviewed.push(candidateId)
+        const conductedByMap = { ...(careerState.staffInterviewConductedBy || {}) }
+        if (conductedBy) conductedByMap[candidateId] = conductedBy
+
+        set({
+          careerState: {
+            ...careerState,
+            scheduledActivities: [...(careerState.scheduledActivities || []), activity],
+            staffInterviewedCandidateIds: interviewed,
+            staffInterviewConductedBy: conductedByMap
+          }
+        })
+        // Interview is on the Calendar — no inbox email needed
+        return activity.id
+      },
+      
+      markCandidateSignedElsewhere: (staffId: string) => {
+        const { careerState } = get()
+        if (!careerState) return
+        const updatedMarket = (careerState.facilityStaffMarket || []).filter(s => s.id !== staffId)
+        const otherTeam = getRandomGameTeamName()
+        const updatedWorldPool = (careerState.worldStaffPool || []).map(m =>
+          m.staff.id === staffId
+            ? { ...m, status: 'employed_ai' as const, employedBy: otherTeam }
+            : m
+        )
+        set({
+          careerState: {
+            ...careerState,
+            facilityStaffMarket: updatedMarket,
+            worldStaffPool: updatedWorldPool
+          }
+        })
+      },
+      
+      requestDelegatedSearch: (role: ConfigStaffRole, facilityType?: FacilityType) => {
+        const { careerState, addEmail } = get()
+        if (!careerState?.ownedTeam) return null
+        const market = careerState.facilityStaffMarket || []
+        let filtered = market.filter(s => s.role === role)
+        if (facilityType && filtered.length > 0 && 'staffCategory' in filtered[0] && filtered[0].staffCategory === 'facility') {
+          filtered = filtered.filter((s: StaffMember) => ROLE_FACILITY_MAPPING[s.role as FacilityStaffRole]?.includes(facilityType))
+        }
+        const count = Math.min(4, Math.max(2, Math.min(filtered.length, 2 + Math.floor(Math.random() * 3))))
+        const shuffled = [...filtered].sort(() => Math.random() - 0.5)
+        const picked = shuffled.slice(0, count)
+        const delegate = (careerState.ownedTeam.facilityStaff || []).find(s => ROLES_CAN_CONDUCT_INTERVIEWS.includes(s.role as ConfigStaffRole))
+        if (!delegate) return null
+        const shortlistId = `shortlist_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
+        const shortlist: DelegatedShortlist = {
+          id: shortlistId,
+          role: STAFF_ROLE_NAMES[role] || role,
+          facilityType,
+          requestedWeek: careerState.currentWeek ?? 1,
+          shortlist: picked.map(s => ({ id: s.id, name: s.name, role: STAFF_ROLE_NAMES[s.role] || s.role, salary: s.salary, reputation: s.reputation })),
+          delegateStaffId: delegate.id,
+          delegateStaffName: delegate.name
+        }
+        set({
+          careerState: {
+            ...careerState,
+            delegatedShortlists: [...(careerState.delegatedShortlists || []), shortlist]
+          }
+        })
+        addEmail({
+          category: 'team',
+          subject: `Shortlist for ${shortlist.role} – approval needed`,
+          sender: delegate.name,
+          senderRole: 'Team Manager',
+          preview: `Your team has prepared a shortlist of ${picked.length} candidates for ${shortlist.role}.`,
+          body: `We have completed initial interviews and prepared a shortlist of **${picked.length}** candidates for the **${shortlist.role}** position.\n\nPlease review the shortlist and approve one candidate to proceed to contract negotiation, or reject if you would like us to keep looking.`,
+          receivedDay: careerState.currentDay ?? 1,
+          receivedWeek: careerState.currentWeek,
+          receivedYear: careerState.currentYear ?? new Date().getFullYear(),
+          read: false,
+          starred: true,
+          archived: false,
+          actionType: 'open_shortlist',
+          actionData: { shortlistId }
+        })
+        return shortlistId
+      },
+      
+      resolveShortlist: (shortlistId: string, approveCandidateId: string | null) => {
+        const { careerState } = get()
+        if (!careerState) return null
+        const lists = careerState.delegatedShortlists || []
+        const shortlist = lists.find(s => s.id === shortlistId)
+        if (!shortlist) return null
+        const remaining = lists.filter(s => s.id !== shortlistId)
+        set({ careerState: { ...careerState, delegatedShortlists: remaining } })
+        if (!approveCandidateId) return null
+        const staff = (careerState.facilityStaffMarket || []).find(s => s.id === approveCandidateId)
+        return staff ?? null
+      },
+      
+      getDelegatedShortlist: (shortlistId: string) => {
+        const { careerState } = get()
+        return (careerState?.delegatedShortlists || []).find(s => s.id === shortlistId) ?? null
+      },
+      
+      setPendingShortlistId: (id: string | null) => {
+        const { careerState } = get()
+        if (!careerState) return
+        set({ careerState: { ...careerState, pendingShortlistId: id } })
+      },
+      
+      // ============================================
+      // DELEGATION SYSTEM ACTIONS
+      // ============================================
+      toggleDelegation: (domain: string, enabled: boolean) => {
+        const { careerState, addEmail } = get()
+        if (!careerState?.ownedTeam) return
+        const currentFlags = careerState.ownedTeam.delegationFlags || {}
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...careerState.ownedTeam,
+              delegationFlags: {
+                ...currentFlags,
+                [domain]: enabled
+              }
+            }
+          }
+        })
+        
+        // Send an introductory email when a delegation is ENABLED
+        if (enabled) {
+          // Find which role handles this domain and the capability details
+          let capabilityLabel = domain
+          let capabilityDescription = ''
+          let requiredRole = ''
+          for (const [role, capabilities] of Object.entries(STAFF_DELEGATION_MAP)) {
+            const cap = capabilities?.find(c => c.domain === domain)
+            if (cap) {
+              capabilityLabel = cap.label
+              capabilityDescription = cap.description
+              requiredRole = role
+              break
+            }
+          }
+          
+          // Find the staff member with this role (search both arrays)
+          const allStaff = [
+            ...(careerState.ownedTeam?.staff || []),
+            ...(careerState.ownedTeam?.facilityStaff || [])
+          ]
+          const staffMember = allStaff.find((s: any) => s.role === requiredRole)
+          
+          if (staffMember) {
+            const roleName = (TEAM_STAFF_ROLE_NAMES as Record<string, string>)[requiredRole] || (STAFF_ROLE_NAMES as Record<string, string>)[requiredRole] || requiredRole.replace(/_/g, ' ')
+            const staffName = (staffMember as any).name || 'Staff Member'
+            
+            // Determine what needs approval vs auto for this domain
+            const approvalInfo: Record<string, string> = {
+              logistics: 'I\'ll handle routine parts ordering and shipping automatically. For emergency orders above $20K, I\'ll send you an email for approval first.',
+              rnd_focus: 'I\'ll analyze our car\'s performance data and set the R&D development focus each week. I\'ll report my decisions but won\'t need approval — you can always override from the Garage screen.',
+              race_strategy: 'I\'ll prepare race strategies and analyze competitor data each week. No approval needed — I\'ll keep you informed via weekly reports.',
+              media_management: 'I\'ll manage our social media presence and handle routine media requests. I\'ll post updates weekly and report on engagement.',
+              manufacturing: 'I\'ll monitor spare parts stock and queue manufacturing when levels get low. For large batches above $15K, I\'ll ask for your sign-off.',
+              marketing: 'I\'ll run standard marketing campaigns automatically. For bigger PR campaigns or sponsor events, I\'ll send a proposal for your approval.',
+              scouting: 'I\'ll keep tabs on the talent market and compile weekly reports. Every few weeks I\'ll prepare a shortlist of candidates if we have open positions.',
+              mandatory_scheduling: 'I\'ll automatically schedule mandatory activities onto your calendar at optimal times. No approval needed.'
+            }
+            
+            const approvalText = approvalInfo[domain] || 'I\'ll handle things autonomously and send you weekly reports.'
+            
+            addEmail({
+              category: 'team',
+              subject: `Taking over ${capabilityLabel}`,
+              sender: staffName,
+              senderRole: roleName,
+              preview: `${staffName} is now managing ${capabilityLabel} for you.`,
+              body: `Boss,\n\nI've taken note of my new responsibilities. Going forward, I'll be handling:\n\n**${capabilityLabel}**\n${capabilityDescription}\n\n**How I'll operate:**\n${approvalText}\n\nI'll send you weekly reports on any decisions I make so you're always in the loop. If you ever want to take back control, just toggle the delegation off.\n\nLet's get to work.\n\n${staffName}\n${roleName}`,
+              receivedDay: careerState.currentDay ?? 1,
+              receivedWeek: careerState.currentWeek,
+              receivedYear: careerState.currentYear ?? new Date().getFullYear(),
+              read: true,
+              starred: false,
+              archived: true
+            } as Omit<Email, 'id'>)
+          }
+        }
+      },
+      
+      getDelegationFlags: () => {
+        const { careerState } = get()
+        return careerState?.ownedTeam?.delegationFlags || {}
+      },
+      
+      getLastDelegationReport: () => {
+        const { careerState } = get()
+        return (careerState?.ownedTeam?.lastDelegationReport || []) as DelegationResult[]
+      },
+      
+      approveDelegationAction: (approvalId: string): boolean => {
+        const { careerState, addEmail } = get()
+        if (!careerState?.ownedTeam) return false
+        
+        const pendingApprovals = careerState.ownedTeam.pendingDelegationApprovals || []
+        const approval = pendingApprovals.find((a: PendingDelegationApproval) => a.id === approvalId)
+        if (!approval) return false
+        
+        // Execute the approved action
+        let updatedCareerState = { ...careerState }
+        const action = approval.action as any
+        
+        if (action.type === 'add_spare_parts' && updatedCareerState.ownedTeam?.spareParts) {
+          const partTypes: import('@/data/spare-parts-config').SparePartType[] = ['engine', 'chassis', 'brakes', 'suspension', 'gearbox']
+          const partType = partTypes[Math.floor(Math.random() * partTypes.length)]
+          const manufacturerId = (updatedCareerState as any).cars?.[0]?.manufacturerId || 'generic'
+          
+          if (action.source === 'manufactured') {
+            const facilityLevel = updatedCareerState.ownedTeam.facilities?.manufacturing?.level ?? 1
+            const mfgResult = queueManufacturingJob(
+              updatedCareerState.ownedTeam.spareParts,
+              partType,
+              action.count ?? 2,
+              facilityLevel,
+              careerState.currentWeek ?? 1,
+              careerState.currentYear ?? new Date().getFullYear(),
+              manufacturerId
+            )
+            updatedCareerState = {
+              ...updatedCareerState,
+              ownedTeam: {
+                ...updatedCareerState.ownedTeam!,
+                spareParts: mfgResult.state,
+                budgets: {
+                  ...updatedCareerState.ownedTeam!.budgets,
+                  cash: (updatedCareerState.ownedTeam!.budgets.cash ?? 0) - mfgResult.cost
+                }
+              }
+            }
+          } else {
+            const unitCost = 3000 + Math.floor(Math.random() * 2000)
+            const orderResult = placePartOrder(
+              updatedCareerState.ownedTeam.spareParts,
+              partType,
+              action.count ?? 2,
+              manufacturerId,
+              'hq',
+              false,
+              unitCost,
+              careerState.currentWeek ?? 1,
+              careerState.currentYear ?? new Date().getFullYear()
+            )
+            updatedCareerState = {
+              ...updatedCareerState,
+              ownedTeam: {
+                ...updatedCareerState.ownedTeam!,
+                spareParts: orderResult.state,
+                budgets: {
+                  ...updatedCareerState.ownedTeam!.budgets,
+                  cash: (updatedCareerState.ownedTeam!.budgets.cash ?? 0) - orderResult.cost
+                }
+              }
+            }
+          }
+        } else if (action.type === 'run_marketing_campaign' && updatedCareerState.ownedTeam) {
+          updatedCareerState = {
+            ...updatedCareerState,
+            ownedTeam: {
+              ...updatedCareerState.ownedTeam,
+              budgets: {
+                ...updatedCareerState.ownedTeam.budgets,
+                cash: (updatedCareerState.ownedTeam.budgets.cash ?? 0) - (approval.cost ?? 0)
+              }
+            }
+          }
+        } else if (action.type === 'start_research' && updatedCareerState.teamDevelopment) {
+          // Start approved research project
+          const newDevState = startUpgradeResearch(updatedCareerState.teamDevelopment, action.upgradeId)
+          if (newDevState) {
+            updatedCareerState = {
+              ...updatedCareerState,
+              teamDevelopment: newDevState
+            }
+          }
+        }
+        
+        // Remove from pending
+        updatedCareerState = {
+          ...updatedCareerState,
+          ownedTeam: {
+            ...updatedCareerState.ownedTeam!,
+            pendingDelegationApprovals: pendingApprovals.filter((a: PendingDelegationApproval) => a.id !== approvalId)
+          }
+        }
+        
+        set({ careerState: updatedCareerState })
+        
+        // No echo email — the player just clicked Approve, they know
+        
+        return true
+      },
+      
+      declineDelegationAction: (approvalId: string): boolean => {
+        const { careerState, addEmail } = get()
+        if (!careerState?.ownedTeam) return false
+        
+        const pendingApprovals = careerState.ownedTeam.pendingDelegationApprovals || []
+        const approval = pendingApprovals.find((a: PendingDelegationApproval) => a.id === approvalId)
+        if (!approval) return false
+        
+        // Remove from pending
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...careerState.ownedTeam,
+              pendingDelegationApprovals: pendingApprovals.filter((a: PendingDelegationApproval) => a.id !== approvalId)
+            }
+          }
+        })
+        
+        // No echo email — the player just clicked Decline, they know
+        
+        return true
+      },
+      
       assignFacilityStaffToFacility: (staffId: string, facilityType: FacilityType) => {
         const { careerState } = get()
         if (!careerState?.ownedTeam) {
@@ -20953,10 +30018,11 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
           return { success: false, error: 'Staff member not found' }
         }
         
-        // Check if facility has slots available
+        // Check if facility has slots available (per-facility level overrides + grade)
         const facilityState = careerState.ownedTeam.facilities?.[facilityType]
         const facilityLevel = facilityState?.level || 1
-        const levelConfig = getFacilityLevelConfig(facilityLevel)
+        const facilityGradeForSlots = facilityState?.grade || careerState.ownedTeam.tier || 'amateur'
+        const levelConfig = getFacilityLevelConfig(facilityLevel, facilityType, facilityGradeForSlots)
         const currentlyAssigned = careerState.ownedTeam.facilityStaff?.filter(
           s => s.assignedFacility === facilityType
         ).length || 0
@@ -21030,6 +30096,185 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         return careerState?.ownedTeam?.facilityStaff || []
       },
       
+      /**
+       * Get staff employed by a specific AI team from the world pool
+       */
+      getTeamStaffRoster: (teamName: string): WorldStaffMember[] => {
+        const { careerState } = get()
+        if (!careerState?.worldStaffPool) return []
+        return careerState.worldStaffPool.filter(
+          m => m.status === 'employed_ai' && m.employedBy === teamName
+        )
+      },
+
+      /**
+       * Player attempts to poach an AI-employed staff member.
+       * Returns success/failure with details.
+       */
+      poachAIStaff: (staffId: string, offeredSalary: number): { success: boolean; error?: string; hired?: boolean; counterOffer?: boolean; message?: string } => {
+        const { careerState } = get()
+        if (!careerState?.ownedTeam) {
+          return { success: false, error: 'No team owned' }
+        }
+
+        // Find the staff member in the world pool
+        const worldPool = careerState.worldStaffPool || []
+        const poolEntry = worldPool.find(m => m.staff.id === staffId)
+        if (!poolEntry) {
+          return { success: false, error: 'Staff member not found in world pool' }
+        }
+        if (poolEntry.status !== 'employed_ai') {
+          return { success: false, error: 'Staff member is not employed by an AI team' }
+        }
+
+        const staffMember = poolEntry.staff
+        const aiTeamName = poolEntry.employedBy || 'Unknown Team'
+
+        // Calculate buyout clause: 4x current weekly salary × remaining contract years (estimate 2 years avg)
+        const estimatedContractYears = Math.max(1, staffMember.contractYears || 2)
+        const buyoutClause = staffMember.salary * 4 * estimatedContractYears
+        const totalCost = buyoutClause // Player pays buyout to AI team
+
+        const cash = careerState.ownedTeam.budgets?.cash || 0
+        if (cash < totalCost) {
+          return { success: false, error: `Insufficient funds. Buyout clause: $${buyoutClause.toLocaleString()}` }
+        }
+
+        // Use the existing poaching calculation
+        const playerReputation = careerState.ownedTeam.reputation || 50
+        // Estimate AI team reputation based on team name (top teams = higher)
+        const topTeams = ['Red Bull Racing', 'Mercedes AMG', 'McLaren', 'Ferrari']
+        const midTeams = ['Aston Martin', 'Alpine', 'Porsche Motorsport', 'BMW Motorsport', 'Toyota Gazoo Racing']
+        const aiTeamReputation = topTeams.includes(aiTeamName) ? 85 :
+                                  midTeams.includes(aiTeamName) ? 65 : 50
+
+        const { chanceOfSuccess, counterOfferLikely } = calculatePlayerPoachingOffer(
+          staffMember.reputation,
+          staffMember.salary,
+          playerReputation,
+          aiTeamReputation,
+          offeredSalary
+        )
+
+        // Roll for success
+        const roll = Math.random() * 100
+        if (roll > chanceOfSuccess) {
+          // Failed - check if counter offer
+          if (counterOfferLikely) {
+            return {
+              success: true,
+              hired: false,
+              counterOffer: true,
+              message: `${aiTeamName} matched your offer and ${staffMember.name} decided to stay. They offered a counter of $${Math.round(offeredSalary * 1.1).toLocaleString()}/week.`
+            }
+          }
+          return {
+            success: true,
+            hired: false,
+            counterOffer: false,
+            message: `${staffMember.name} declined your offer and chose to remain with ${aiTeamName}. (${Math.round(chanceOfSuccess)}% chance of success)`
+          }
+        }
+
+        // Success! Staff member is willing — return details for player confirmation
+        console.log(`[Facility Staff] ${staffMember.name} from ${aiTeamName} is willing to join. Awaiting player confirmation.`)
+        return {
+          success: true,
+          hired: true,
+          buyoutCost: totalCost,
+          offeredSalary,
+          message: `${staffMember.name} is willing to leave ${aiTeamName} and join your team! Buyout clause: $${buyoutClause.toLocaleString()}, salary: $${offeredSalary.toLocaleString()}/week.`
+        }
+      },
+
+      /**
+       * Confirm hiring a poached staff member after the player has reviewed the terms.
+       */
+      confirmPoachHire: (staffId: string, offeredSalary: number): { success: boolean; error?: string; message?: string } => {
+        const { careerState } = get()
+        if (!careerState?.ownedTeam) {
+          return { success: false, error: 'No team owned' }
+        }
+
+        const worldPool = careerState.worldStaffPool || []
+        const poolEntry = worldPool.find(m => m.staff.id === staffId)
+        if (!poolEntry) {
+          return { success: false, error: 'Staff member not found in world pool' }
+        }
+
+        const staffMember = poolEntry.staff
+        const aiTeamName = poolEntry.employedBy || 'Unknown Team'
+
+        // Re-calculate buyout cost
+        const estimatedContractYears = Math.max(1, staffMember.contractYears || 2)
+        const buyoutClause = staffMember.salary * 4 * estimatedContractYears
+        const totalCost = buyoutClause
+
+        const cash = careerState.ownedTeam.budgets?.cash || 0
+        if (cash < totalCost) {
+          return { success: false, error: `Insufficient funds. Buyout clause: $${buyoutClause.toLocaleString()}` }
+        }
+
+        // Hire the staff member
+        const isTeamStaff = 'staffCategory' in staffMember && staffMember.staffCategory === 'team'
+        const teamStaff = staffMember as TeamStaffMember
+
+        const hiredStaff = {
+          ...staffMember,
+          salary: offeredSalary,
+          hiredWeek: careerState.currentWeek,
+          hiredYear: careerState.currentYear,
+          contractEndYear: careerState.currentYear + (staffMember.contractYears || 2),
+          morale: 60 + Math.floor(Math.random() * 20), // 60-80 (slightly lower - they were poached)
+          ...(isTeamStaff ? {
+            racesWorked: teamStaff.racesWorked,
+            championshipsWon: teamStaff.championshipsWon
+          } : {})
+        } as HiredFacilityStaff
+
+        // Update world pool
+        const updatedWorldPool = worldPool.map(m =>
+          m.staff.id === staffId
+            ? { ...m, status: 'employed_player' as const, employedBy: careerState.ownedTeam?.name || 'Player Team' }
+            : m
+        )
+
+        // Create buyout transaction
+        const transaction = createTeamTransaction(
+          'expense',
+          'salaries',
+          totalCost,
+          `Poached ${staffMember.name} from ${aiTeamName} - Buyout Clause`,
+          careerState.currentWeek,
+          careerState.currentYear
+        )
+
+        set({
+          careerState: {
+            ...careerState,
+            ownedTeam: {
+              ...careerState.ownedTeam,
+              facilityStaff: [...(careerState.ownedTeam.facilityStaff || []), hiredStaff],
+              budgets: {
+                ...careerState.ownedTeam.budgets,
+                cash: cash - totalCost
+              },
+              finances: {
+                ...careerState.ownedTeam.finances,
+                transactions: [...(careerState.ownedTeam.finances?.transactions || []), transaction]
+              }
+            },
+            worldStaffPool: updatedWorldPool
+          }
+        })
+
+        console.log(`[Facility Staff] Confirmed poach of ${staffMember.name} from ${aiTeamName} for $${totalCost.toLocaleString()} buyout`)
+        return {
+          success: true,
+          message: `Successfully hired ${staffMember.name} from ${aiTeamName}! Buyout: $${buyoutClause.toLocaleString()}`
+        }
+      },
+
       // Tutorial/Onboarding System
       markTutorialComplete: () => {
         const { careerState } = get()
@@ -21166,22 +30411,29 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         })
       },
 
-      addMessage: (conversationId: string, message: { content: string; isPlayer: boolean }) => {
+      addMessage: (conversationId: string, message: { content: string; isPlayer: boolean; isSessionEnd?: boolean }) => {
         const { careerState } = get()
         if (!careerState?.messaging) return
         
         const conversation = careerState.messaging.conversations[conversationId]
-        const contact = careerState.messaging.contacts.find(c => c.id === conversationId.replace('conv_', ''))
+        const contact = careerState.messaging.contacts.find(c => c.id === conversationId.replace(/^conv[_-]/, ''))
         
         // Create properly typed TextMessage
+        // Use the current game hour from dayBudget for realistic timestamps
+        const gameHour = careerState.dayBudget?.currentHour ?? 12
+        // For NPC messages, add a small random offset (1-15 min) so they don't share exact timestamp with player
+        const npcOffset = message.isPlayer ? 0 : (0.02 + Math.random() * 0.23)
+        const messageHour = Math.min(23, gameHour + npcOffset)
+        
         const newMessage: import('@/data/messaging-config').TextMessage = {
           id: `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           conversationId,
           sender: message.isPlayer ? 'player' : 'npc',
           content: message.content,
           tone: 'casual',
-          timestamp: { week: careerState.currentWeek, day: careerState.currentDay, hour: 12, year: careerState.currentYear },
-          isRead: message.isPlayer
+          timestamp: { week: careerState.currentWeek, day: careerState.currentDay, hour: messageHour, year: careerState.currentYear },
+          isRead: message.isPlayer,
+          ...(message.isSessionEnd && { isSessionEnd: true }),
         }
         
         // Create properly typed Conversation
@@ -21196,10 +30448,13 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
           ...conversation,
           messages: [...conversation.messages, newMessage],
           lastMessageTime: { week: newMessage.timestamp.week, day: newMessage.timestamp.day, year: newMessage.timestamp.year },
-          unreadCount: message.isPlayer ? conversation.unreadCount : conversation.unreadCount + 1
+          unreadCount: message.isPlayer ? conversation.unreadCount : conversation.unreadCount + 1,
+          awaitingResponse: !message.isPlayer,  // Clear when player replies, set when NPC messages
+          ...(message.isPlayer && { playerGhostedDays: 0 }),  // Reset ghosting counter on player reply
+          cachedChoices: undefined  // Invalidate cached choices when a new message is added
         } : {
           id: conversationId,
-          contactId: conversationId.replace('conv_', ''),
+          contactId: conversationId.replace(/^conv[_-]/, ''),
           contactName: contact?.name || 'Unknown',
           contactType: (contact?.type === 'partner' ? 'romantic' : contact?.type === 'family' ? 'family' : 'social') as import('@/data/messaging-config').ConversationCategory,
           isActive: true,
@@ -21229,6 +30484,473 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         })
       },
 
+      sendPlayerMessageAndQueueReply: (conversationId: string, playerMessage: string, messageCategory: string) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return
+        
+        const contactId = conversationId.replace(/^conv[_-]/, '')
+        const contact = careerState.messaging.contacts.find(c => c.id === contactId)
+        if (!contact) return
+        
+        // Calculate delay based on contact's response speed
+        const speed = (contact as any).messagingStyle?.responseSpeed || 'normal'
+        const delayMs = speed === 'instant' ? 1500 :
+                        speed === 'fast' ? 3000 :
+                        speed === 'slow' ? 8000 :
+                        speed === 'very_slow' ? 12000 : 5000
+        // Add jitter
+        const actualDelay = Math.round(delayMs * (0.7 + Math.random() * 0.6))
+        
+        // Mark this conversation as having a pending NPC reply
+        const pendingReply: import('@/types/personalLife').PendingNpcReply = {
+          conversationId,
+          contactId,
+          playerMessage,
+          messageCategory,
+          status: 'generating',
+          queuedAt: Date.now(),
+          deliverAfterMs: actualDelay,
+        }
+        
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...careerState.messaging,
+              pendingNpcReplies: {
+                ...(careerState.messaging.pendingNpcReplies || {}),
+                [conversationId]: pendingReply,
+              }
+            }
+          }
+        })
+        
+        // Fire off AI generation in background (async, fire-and-forget)
+        import('@/services/dialogueAI').then(async ({ generateNpcResponse, buildDialogueContext }) => {
+          try {
+            const currentState = get().careerState
+            if (!currentState?.messaging) return
+            
+            const latestContact = currentState.messaging.contacts.find(c => c.id === contactId)
+            if (!latestContact) return
+            
+            // Build contact info for dialogue context
+            const contactInfo = {
+              id: latestContact.id,
+              name: latestContact.name,
+              type: latestContact.type,
+              traits: latestContact.traits || [],
+              bio: latestContact.bio,
+              relationshipLevel: latestContact.relationshipLevel,
+              affectionMeter: latestContact.affectionMeter,
+              romanceMeter: latestContact.romanceMeter,
+              trustMeter: latestContact.trustMeter,
+              currentMood: latestContact.currentMood,
+              messagingStyle: (latestContact as any).messagingStyle,
+              conversationTopics: (latestContact as any).conversationTopics,
+              canHelp: (latestContact as any).canHelp,
+              connectionToMotorsport: (latestContact as any).connectionToMotorsport,
+              personalitySummary: (latestContact as any).personalitySummary,
+              occupation: (latestContact as any).occupation,
+              age: latestContact.age,
+              nationality: latestContact.nationality,
+              gender: latestContact.gender,
+              interests: (latestContact as any).interests,
+              staffRole: (latestContact as any).staffRole,
+              staffPersonality: (latestContact as any).staffPersonality,
+              staffQuirks: (latestContact as any).staffQuirks,
+              driverPersonality: (latestContact as any).driverPersonality,
+              driverCareerStage: (latestContact as any).driverCareerStage,
+              driverTeamName: (latestContact as any).driverTeamName,
+              driverSeriesName: (latestContact as any).driverSeriesName,
+              sponsorName: (latestContact as any).sponsorName,
+              sponsorTier: (latestContact as any).sponsorTier,
+              teamPhilosophy: (latestContact as any).teamPhilosophy,
+              metAt: latestContact.metAt,
+            } as import('@/types/personalLife').ContactInfo
+            
+            const storeConv = currentState.messaging.conversations[conversationId]
+            const player = get().player
+            if (!player) return
+            
+            const gameStateForAI = {
+              player: {
+                firstName: player.firstName,
+                lastName: player.lastName,
+                mentalState: player.mentalState,
+                reputation: (player as any).reputation || 50,
+                raceHistory: (player as any).raceHistory || [],
+                totalWins: (player as any).totalWins || 0,
+                totalPodiums: (player as any).totalPodiums || 0,
+                consecutiveWins: (player as any).consecutiveWins || 0,
+                consecutivePodiums: (player as any).consecutivePodiums || 0,
+                championships: (player as any).championships || 0,
+              },
+              currentWeek: currentState.currentWeek,
+              currentYear: currentState.currentYear,
+              currentDay: currentState.currentDay ?? 1,
+              ownedTeam: currentState.ownedTeam ? {
+                name: currentState.ownedTeam.name,
+                tier: currentState.ownedTeam.tier,
+                boardMood: (currentState.ownedTeam as any).boardMood || 50,
+                teamMorale: (currentState.ownedTeam as any).teamMorale,
+                staff: (currentState.ownedTeam.staff || []).map((s: any) => ({ name: s.name, role: s.role })),
+                finances: {
+                  cash: currentState.ownedTeam.finances?.cash ?? 0,
+                },
+              } : null,
+              personalLife: currentState.personalLife ? {
+                partner: (currentState.personalLife as any).partner,
+                children: (currentState.personalLife as any).children,
+              } : undefined,
+            }
+            
+            const context = buildDialogueContext(contactInfo, storeConv, gameStateForAI)
+            const response = await generateNpcResponse(context, playerMessage, messageCategory)
+            
+            // Store the generated response — it will be delivered when the player checks
+            const latestState = get().careerState
+            if (!latestState?.messaging) return
+            
+            const existingPending = latestState.messaging.pendingNpcReplies?.[conversationId]
+            if (!existingPending || existingPending.status === 'delivered') return // Already delivered or removed
+            
+            set({
+              careerState: {
+                ...latestState,
+                messaging: {
+                  ...latestState.messaging,
+                  pendingNpcReplies: {
+                    ...(latestState.messaging.pendingNpcReplies || {}),
+                    [conversationId]: {
+                      ...existingPending,
+                      status: 'ready',
+                      generatedResponse: response,
+                    }
+                  }
+                }
+              }
+            })
+            
+            console.log(`[Messaging] NPC reply ready for ${latestContact.name} (awaiting delivery)`)
+          } catch (err) {
+            console.error('[Messaging] Background NPC reply generation failed:', err)
+            // Clear the pending state so it doesn't show as eternally typing
+            const latestState = get().careerState
+            if (latestState?.messaging?.pendingNpcReplies?.[conversationId]) {
+              const { [conversationId]: _, ...rest } = latestState.messaging.pendingNpcReplies
+              set({
+                careerState: {
+                  ...latestState,
+                  messaging: {
+                    ...latestState.messaging,
+                    pendingNpcReplies: rest,
+                  }
+                }
+              })
+            }
+          }
+        })
+      },
+      
+      deliverReadyQueuedMessages: () => {
+        const cs = get().careerState
+        const msgSt = cs?.messaging
+        if (!msgSt?.queuedMessages || msgSt.queuedMessages.length === 0) return 0
+        
+        const nowHour = cs!.dayBudget?.currentHour ?? 7
+        const nowDay = cs!.currentDay
+        const nowWeek = cs!.currentWeek
+        const nowYear = cs!.currentYear
+        
+        const ready = msgSt.queuedMessages.filter(q => {
+          if (q.delivered) return false
+          if (q.scheduledDeliveryYear < nowYear) return true
+          if (q.scheduledDeliveryYear === nowYear && q.scheduledDeliveryWeek < nowWeek) return true
+          if (q.scheduledDeliveryWeek === nowWeek && q.scheduledDeliveryDay < nowDay) return true
+          if (q.scheduledDeliveryWeek === nowWeek && q.scheduledDeliveryDay === nowDay) {
+            return (q.scheduledDeliveryHour ?? 0) <= nowHour
+          }
+          return false
+        })
+        
+        if (ready.length === 0) return 0
+        
+        const updatedConvs = { ...msgSt.conversations }
+        let newUnread = 0
+        
+        for (const qMsg of ready) {
+          const canonicalConvId = qMsg.conversationId.startsWith('conv-')
+            ? `conv_${qMsg.conversationId.slice(5)}`
+            : qMsg.conversationId
+          const altConvId = canonicalConvId.startsWith('conv_')
+            ? `conv-${canonicalConvId.slice(5)}`
+            : canonicalConvId
+          const existingConv = updatedConvs[canonicalConvId] || updatedConvs[altConvId]
+          const deliveredMessage = {
+            ...qMsg.message,
+            conversationId: canonicalConvId,
+            timestamp: {
+              week: qMsg.scheduledDeliveryWeek,
+              day: qMsg.scheduledDeliveryDay,
+              hour: qMsg.scheduledDeliveryHour,
+              year: qMsg.scheduledDeliveryYear,
+            },
+            isRead: false,
+            read: false,
+          }
+          let deliveredIntoConversation = false
+          if (existingConv) {
+            if (!updatedConvs[canonicalConvId] && updatedConvs[altConvId]) {
+              delete updatedConvs[altConvId]
+            }
+            updatedConvs[canonicalConvId] = {
+              ...existingConv,
+              messages: [...existingConv.messages, deliveredMessage],
+              unreadCount: existingConv.unreadCount + 1,
+              lastMessageTime: deliveredMessage.timestamp || { week: nowWeek, day: nowDay, year: nowYear },
+              awaitingResponse: true,
+            }
+            deliveredIntoConversation = true
+          } else {
+            const contact = msgSt.contacts.find(c => c.id === qMsg.contactId)
+            if (contact) {
+              updatedConvs[canonicalConvId] = {
+                id: canonicalConvId,
+                contactId: qMsg.contactId,
+                contactName: contact.name,
+                contactType: contact.type === 'partner' || contact.type === 'potential_date' ? 'romantic' : 
+                             contact.type === 'family' ? 'family' : 'social',
+                isActive: true,
+                lastMessageTime: { week: nowWeek, day: nowDay, year: nowYear },
+                unreadCount: 1,
+                messages: [deliveredMessage],
+                relationshipLevel: contact.relationshipLevel,
+                currentMood: contact.currentMood,
+                awaitingResponse: true,
+                conversationStage: 'ongoing',
+              } as import('@/data/messaging-config').Conversation
+              deliveredIntoConversation = true
+            }
+          }
+          if (deliveredIntoConversation) {
+            newUnread++
+          }
+          console.log(`[Messaging] Delivered queued message from ${qMsg.contactId} (scheduled ${qMsg.scheduledDeliveryHour}:00, now ${nowHour.toFixed(0)}:00)`)
+        }
+        
+        const updatedQueue = msgSt.queuedMessages.map(q =>
+          ready.some(d => d.id === q.id) ? { ...q, delivered: true } : q
+        ).filter(q => !q.delivered)
+        
+        set({
+          careerState: {
+            ...get().careerState!,
+            messaging: {
+              ...get().careerState!.messaging!,
+              conversations: updatedConvs,
+              unreadTotal: (get().careerState!.messaging!.unreadTotal || 0) + newUnread,
+              queuedMessages: updatedQueue,
+            }
+          }
+        })
+        
+        return ready.length
+      },
+
+      deliverPendingNpcReply: (conversationId: string) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return false
+        
+        const pending = careerState.messaging.pendingNpcReplies?.[conversationId]
+        if (!pending || pending.status !== 'ready' || !pending.generatedResponse) return false
+        
+        // Check if enough real time has elapsed for the "typing" simulation
+        const elapsed = Date.now() - pending.queuedAt
+        if (elapsed < pending.deliverAfterMs) return false
+        
+        // Check contact response window — NPCs only reply during their active hours
+        // Player can always SEND at any time, but NPC replies are delayed until realistic
+        const contact = careerState.messaging.contacts.find(c => c.id === pending.contactId)
+        if (contact) {
+          const currentHour = careerState.dayBudget?.currentHour ?? 12
+          const currentDay = careerState.currentDay ?? 1
+          if (!isContactInResponseWindow(contact.type, currentHour, currentDay)) {
+            // Contact is outside their response window — hold the reply
+            // It will be delivered on the next poll after the clock advances into their window
+            return false
+          }
+        }
+        
+        const response = pending.generatedResponse
+        
+        // Add the NPC message to the conversation
+        get().addMessage(conversationId, {
+          content: response.message,
+          isPlayer: false,
+        })
+        
+        // Update relationship meters
+        if (response.affectionChange || response.romanceChange || response.trustChange) {
+          get().updateRelationshipMeters(pending.contactId, {
+            affection: response.affectionChange,
+            romance: response.romanceChange,
+            trust: response.trustChange,
+          })
+        }
+        
+        // Save topicTag to conversation's topicHistory for AI memory
+        if (response.topicTag) {
+          const topicState = get().careerState
+          if (topicState?.messaging) {
+            const conv = topicState.messaging.conversations[conversationId]
+            if (conv) {
+              const existingTopics = conv.topicHistory || []
+              // Only add if not a duplicate of the most recent topic
+              const lastTopic = existingTopics[existingTopics.length - 1]
+              if (!lastTopic || lastTopic.topic !== response.topicTag) {
+                const sentiment = (response.affectionChange ?? 0) > 0 ? 'positive' : (response.affectionChange ?? 0) < 0 ? 'negative' : 'neutral'
+                set({
+                  careerState: {
+                    ...topicState,
+                    messaging: {
+                      ...topicState.messaging,
+                      conversations: {
+                        ...topicState.messaging.conversations,
+                        [conversationId]: {
+                          ...conv,
+                          topicHistory: [
+                            ...existingTopics.slice(-19), // Keep last 20 topics max
+                            {
+                              topic: response.topicTag,
+                              week: topicState.currentWeek,
+                              year: topicState.currentYear,
+                              sentiment: sentiment as 'positive' | 'neutral' | 'negative',
+                              summary: response.message.slice(0, 100),
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                })
+              }
+            }
+          }
+        }
+        
+        // Process action request if present
+        if (response.actionRequest && response.actionRequest.type && response.actionRequest.description) {
+          const validTypes = ['social_invite', 'dinner_invite', 'date_request', 'introduction', 'sponsor_appearance', 'career_favor', 'race_tickets', 'advice', 'media_request', 'charity_ask']
+          if (validTypes.includes(response.actionRequest.type)) {
+            const latestState = get().careerState
+            if (latestState?.messaging) {
+              const newRequest = {
+                id: `req_msg_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+                contactId: pending.contactId,
+                type: response.actionRequest.type,
+                description: response.actionRequest.description,
+                timeCost: response.actionRequest.timeCost ?? undefined,
+                moneyCost: response.actionRequest.moneyCost ?? undefined,
+                suggestedDay: response.actionRequest.suggestedDay ?? undefined,
+                suggestedWeek: response.actionRequest.suggestedWeek ?? undefined,
+                eventName: response.actionRequest.eventName ?? undefined,
+                venue: response.actionRequest.venue ?? undefined,
+                relationshipReward: 5,
+                expiresWeek: (latestState.currentWeek || 1) + 2,
+                expiresYear: latestState.currentYear || 1,
+                status: 'pending' as const,
+              }
+              set({
+                careerState: {
+                  ...latestState,
+                  messaging: {
+                    ...latestState.messaging,
+                    pendingRequests: [...(latestState.messaging.pendingRequests || []), newRequest],
+                  }
+                }
+              })
+            }
+          }
+        }
+        
+        // Mark as delivered and remove from pending
+        const latestState2 = get().careerState
+        if (latestState2?.messaging?.pendingNpcReplies) {
+          const { [conversationId]: _, ...rest } = latestState2.messaging.pendingNpcReplies
+          set({
+            careerState: {
+              ...latestState2,
+              messaging: {
+                ...latestState2.messaging,
+                pendingNpcReplies: rest,
+              }
+            }
+          })
+        }
+        
+        console.log(`[Messaging] Delivered NPC reply in conversation ${conversationId}`)
+        return true
+      },
+      
+      getConversationNpcTyping: (conversationId: string) => {
+        const { careerState } = get()
+        if (!careerState?.messaging?.pendingNpcReplies) return false
+        const pending = careerState.messaging.pendingNpcReplies[conversationId]
+        return !!pending && (pending.status === 'generating' || pending.status === 'ready')
+      },
+
+      cacheMessageChoices: (conversationId: string, choices: any[], afterMessageId: string, isAIGenerated?: boolean) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return
+        const conversation = careerState.messaging.conversations[conversationId]
+        if (!conversation) return
+
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...careerState.messaging,
+              conversations: {
+                ...careerState.messaging.conversations,
+                [conversationId]: {
+                  ...conversation,
+                  cachedChoices: {
+                    choices,
+                    generatedForDay: { week: careerState.currentWeek, day: careerState.currentDay, year: careerState.currentYear },
+                    afterMessageId,
+                    isAIGenerated: isAIGenerated ?? false
+                  }
+                }
+              }
+            }
+          }
+        })
+      },
+
+      clearCachedChoices: (conversationId: string) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return
+        const conversation = careerState.messaging.conversations[conversationId]
+        if (!conversation) return
+
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...careerState.messaging,
+              conversations: {
+                ...careerState.messaging.conversations,
+                [conversationId]: {
+                  ...conversation,
+                  cachedChoices: undefined
+                }
+              }
+            }
+          }
+        })
+      },
+
       markConversationRead: (conversationId: string) => {
         const { careerState } = get()
         if (!careerState?.messaging) return
@@ -21248,10 +30970,35 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
                 [conversationId]: {
                   ...conversation,
                   unreadCount: 0,
-                  messages: conversation.messages.map(m => ({ ...m, read: true }))
+                  messages: conversation.messages.map(m => ({ ...m, read: true, isRead: true }))
                 }
               },
               unreadTotal: Math.max(0, careerState.messaging.unreadTotal - unreadDelta)
+            }
+          }
+        })
+      },
+
+      updateConversationSession: (conversationId: string, updates: { exchangesToday?: number; lastExchangeDay?: number; conversationStage?: string }) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return
+        const conversation = careerState.messaging.conversations[conversationId]
+        if (!conversation) return
+
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...careerState.messaging,
+              conversations: {
+                ...careerState.messaging.conversations,
+                [conversationId]: {
+                  ...conversation,
+                  ...(updates.exchangesToday !== undefined && { exchangesToday: updates.exchangesToday }),
+                  ...(updates.lastExchangeDay !== undefined && { lastExchangeDay: updates.lastExchangeDay }),
+                  ...(updates.conversationStage !== undefined && { conversationStage: updates.conversationStage as any }),
+                }
+              }
             }
           }
         })
@@ -21263,9 +31010,13 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         
         const conversationId = `conv_${contactId}`
         
-        // If conversation already exists, return existing ID
+        // If conversation already exists, return existing ID (check both formats)
         if (careerState.messaging.conversations[conversationId]) {
           return conversationId
+        }
+        const altConversationId = `conv-${contactId}`
+        if (careerState.messaging.conversations[altConversationId]) {
+          return altConversationId
         }
         
         const contact = careerState.messaging.contacts.find(c => c.id === contactId)
@@ -21399,6 +31150,392 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
             }
           }
         })
+      },
+
+      playerInitiateSeparation: () => {
+        const { careerState } = get()
+        const pl = careerState?.personalLife as (typeof careerState.personalLife & { separationProcess?: SeparationProcess }) | undefined
+        if (!pl?.partner) return false
+        if ((pl as any).separationProcess && !(pl as any).separationProcess.isFinalized) return false
+
+        const partner = pl.partner
+        const isMarried = partner.relationshipStatus === 'married'
+        const isDating = partner.relationshipStatus === 'dating' || partner.relationshipStatus === 'engaged'
+        if (!isMarried && !isDating) return false
+
+        const type = isMarried ? 'divorce' as const : 'breakup' as const
+        const estimatedDurationDays = calculateSeparationDuration(type, partner)
+        const partnerName = `${partner.firstName} ${partner.lastName}`
+
+        const stressHit = type === 'breakup' ? 10 : 15
+        const newStress = Math.min(100, (pl.health?.stressLevel ?? 0) + stressHit)
+        const partnerHappinessHit = Math.max(0, (partner.happiness ?? 50) - 25)
+        const partnerTrustHit = Math.max(0, (partner.trustLevel ?? 50) - 30)
+
+        let separationProcess: SeparationProcess = {
+          type,
+          initiatedBy: 'player',
+          startWeek: careerState!.currentWeek ?? 1,
+          startYear: careerState!.currentYear ?? 1,
+          estimatedDurationDays,
+          daysElapsed: 0,
+          isFinalized: false,
+          partnerName,
+        }
+
+        if (type === 'divorce') {
+          const marriageYear = partner.marriageDate?.year ?? careerState!.currentYear
+          const marriageDurationYears = Math.max(1, (careerState!.currentYear ?? marriageYear) - marriageYear)
+          const childrenCount = partner.childrenIds?.length ?? 0
+          const playerNetWorth = pl.finances?.cachedNetWorth ?? pl.finances?.liquidCash ?? 0
+          const settlement = calculateDivorceSettlement(partner, playerNetWorth, marriageDurationYears, childrenCount, null)
+          separationProcess = {
+            ...separationProcess,
+            settlement,
+            settlementPreview: {
+              alimonyMonthly: settlement.alimonyMonthly,
+              childSupportMonthly: settlement.childSupportMonthly,
+              assetDivisionPercent: settlement.assetDivision,
+              estimatedAssetLoss: Math.round(playerNetWorth * (settlement.assetDivision / 100)),
+            },
+          }
+        }
+
+        const updatedPartner = {
+          ...partner,
+          happiness: partnerHappinessHit,
+          trustLevel: partnerTrustHit,
+        }
+
+        const logId = () => `log-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`
+        const socialLog = [...(pl.socialLog || []), {
+          id: logId(),
+          week: careerState!.currentWeek ?? 1,
+          year: careerState!.currentYear ?? 1,
+          type: 'event_attended' as SocialLogType,
+          title: type === 'breakup' ? 'Breakup' : 'Divorce',
+          description: `You've told ${partnerName} you want to ${type === 'breakup' ? 'break up' : 'file for divorce'}...`,
+          impact: 'neutral' as const,
+        }].slice(0, 100)
+
+        set({
+          careerState: {
+            ...careerState!,
+            personalLife: {
+              ...pl,
+              partner: updatedPartner,
+              health: { ...pl.health, stressLevel: newStress },
+              separationProcess,
+              socialLog,
+            } as any,
+          },
+        })
+
+        routeNotification({
+          category: 'partner',
+          subject: type === 'breakup' ? 'Breakup' : 'Divorce',
+          body: `You've told ${partnerName} you want to ${type === 'breakup' ? 'break up' : 'file for divorce'}. This will take time to resolve.`,
+        })
+        return true
+      },
+
+      setDatingPreference: (pref: 'men' | 'women' | 'both' | 'none') => {
+        const { careerState } = get()
+        if (!careerState) return
+        set({
+          careerState: {
+            ...careerState,
+            datingPreference: pref,
+          },
+        })
+      },
+
+      replaceContactsWithPartnerPool: (contactIds: string[]) => {
+        const state = get()
+        if (!state.careerState?.messaging || !isPreGenContentLoaded()) {
+          return { replaced: 0, error: 'No career or pre-generated content not loaded' }
+        }
+        const pref = state.careerState.datingPreference ?? 'both'
+        const contacts = [...(state.careerState.messaging.contacts ?? [])]
+        const replaceables = contactIds.filter(id => {
+          const c = contacts.find(x => x.id === id)
+          return c && (c.type === 'friend' || c.type === 'business')
+        })
+        if (replaceables.length === 0) return { replaced: 0, error: 'No valid friend/business contacts selected' }
+        const count = Math.min(replaceables.length, 2)
+        const toReplace = replaceables.slice(0, count)
+        const partnerProfiles = getRandomPartnersForFriendSeeding(count, ['male', 'female'])
+        if (partnerProfiles.length === 0) return { replaced: 0, error: 'No partner pool profiles available' }
+        const currentWeek = state.careerState.currentWeek ?? 1
+        const currentYear = state.careerState.currentYear ?? new Date().getFullYear()
+        let conversations = { ...(state.careerState.messaging.conversations ?? {}) }
+        for (let i = 0; i < toReplace.length && i < partnerProfiles.length; i++) {
+          const contactId = toReplace[i]
+          const profile = partnerProfiles[i]
+          const replacedContact = contacts.find(c => c.id === contactId)
+          if (!replacedContact) continue
+          const slotIndex = contacts.findIndex(c => c.id === contactId)
+          const matchesOrientation =
+            (profile.gender === 'female' && pref === 'women') ||
+            (profile.gender === 'male' && pref === 'men') ||
+            pref === 'both'
+          const { contact, conversation } = buildFriendFromPartnerPool(profile, currentWeek, currentYear, {
+            type: (replacedContact.type === 'business' ? 'business' : 'friend') as 'friend' | 'business',
+            romanticEligible: matchesOrientation,
+          })
+          contacts[slotIndex] = contact
+          const oldConvId = `conv_${replacedContact.id}`
+          const { [oldConvId]: _removed, ...rest } = conversations
+          conversations = { ...rest, [conversation.id]: conversation }
+        }
+        set({
+          careerState: {
+            ...state.careerState,
+            messaging: {
+              ...state.careerState.messaging,
+              contacts,
+              conversations,
+            },
+          },
+        })
+        return { replaced: Math.min(toReplace.length, partnerProfiles.length) }
+      },
+
+      migrateExistingInvitations: async () => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return 0
+        
+        const messaging = careerState.messaging
+        const conversations = messaging.conversations || {}
+        const existingRequests = messaging.pendingRequests || []
+        const contacts = messaging.contacts || []
+        const currentWeek = careerState.currentWeek || 1
+        const currentDay = careerState.currentDay || 1
+        const currentYear = careerState.currentYear || 1
+        
+        // Quick regex pre-filter patterns to find candidate messages
+        // (avoids sending every "hey how are you" to the AI)
+        const invitePatterns = [
+          /\b(come|join|attend|visit|swing by|stop by|drop by|meet me|meet us|show up)\b/i,
+          /\b(invit(?:e|ing|ation)|gather(?:ing)?|party|dinner|lunch|brunch|drinks|event|gala|reception|celebration|ceremony)\b/i,
+          /\b(you should come|want to come|fancy coming|would you like to|care to join|be my guest)\b/i,
+          /\b(hosting|throwing|organiz(?:e|ing)|planning)\b/i,
+          /\b(on|this|next)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i,
+        ]
+        
+        // Track contact IDs that already have a pending request (to avoid duplicates)
+        const contactsWithPending = new Set(
+          existingRequests
+            .filter(r => r.status === 'pending' || r.status === 'accepted')
+            .map(r => r.contactId)
+        )
+        
+        // Collect candidate messages: { contactId, contact, content }
+        const candidates: Array<{ contactId: string; contact: typeof contacts[0]; content: string }> = []
+        
+        for (const [convId, conv] of Object.entries(conversations)) {
+          if (!conv?.messages || conv.messages.length === 0) continue
+          
+          const contactId = conv.contactId
+          if (!contactId) continue
+          if (contactsWithPending.has(contactId)) continue
+          
+          const contact = contacts.find(c => c.id === contactId)
+          if (!contact) continue
+          
+          // Scan NPC messages (most recent first) for invitation-like language
+          const npcMessages = [...conv.messages]
+            .filter(m => m.sender !== 'player')
+            .reverse()
+            .slice(0, 15)
+          
+          for (const msg of npcMessages) {
+            const content = msg.content || ''
+            if (content.length < 20) continue
+            
+            const matchCount = invitePatterns.filter(p => p.test(content)).length
+            if (matchCount < 2) continue
+            
+            // This message is a candidate — add it for AI analysis
+            candidates.push({ contactId, contact, content })
+            contactsWithPending.add(contactId) // Only one candidate per contact
+            break
+          }
+        }
+        
+        if (candidates.length === 0) {
+          console.log('[Migration] No candidate invitation messages found')
+          return 0
+        }
+        
+        console.log(`[Migration] Found ${candidates.length} candidate message(s) — analyzing with AI...`)
+        
+        // Try to load AI analysis function
+        let analyzeAI: typeof import('@/services/dialogueAI').analyzeMessageForInvitation | null = null
+        try {
+          const { analyzeMessageForInvitation } = await import('@/services/dialogueAI')
+          analyzeAI = analyzeMessageForInvitation
+        } catch {
+          console.warn('[Migration] AI analysis unavailable, using regex fallback')
+        }
+        
+        const newRequests: typeof existingRequests = []
+        
+        // Day name to number mapping (regex fallback)
+        const dayMap: Record<string, number> = {
+          monday: 1, tuesday: 2, wednesday: 3, thursday: 4,
+          friday: 5, saturday: 6, sunday: 7,
+        }
+        
+        for (const { contactId, contact, content } of candidates) {
+          let inviteType: string = 'social_invite'
+          let eventName: string = `Event with ${contact.name.split(' ')[0]}`
+          let description: string = content.length > 150 ? content.slice(0, 147) + '...' : content
+          let venue: string | undefined
+          let suggestedDay: number | undefined
+          let suggestedWeek: number | undefined
+          let timeCost: number = 2
+          
+          // Try AI analysis first
+          if (analyzeAI) {
+            try {
+              const aiResult = await analyzeAI(content, contact.name, contact.type, currentWeek, currentDay)
+              if (aiResult) {
+                if (!aiResult.isInvitation) {
+                  console.log(`[Migration] AI says "${content.slice(0, 40)}..." from ${contact.name} is NOT an invitation — skipping`)
+                  continue // AI says this isn't actually an invitation
+                }
+                // Use AI-extracted data
+                inviteType = aiResult.type || 'social_invite'
+                eventName = aiResult.eventName || eventName
+                description = aiResult.description || description
+                venue = aiResult.venue || undefined
+                suggestedDay = aiResult.suggestedDay || undefined
+                suggestedWeek = aiResult.suggestedWeek || undefined
+                timeCost = aiResult.timeCost || 2
+                console.log(`[Migration] AI analyzed "${content.slice(0, 40)}..." → ${inviteType}: "${eventName}"`)
+              }
+            } catch (e) {
+              console.warn(`[Migration] AI analysis failed for message from ${contact.name}, using regex fallback`)
+            }
+          }
+          
+          // If AI didn't fill in scheduling, try regex extraction
+          if (!suggestedDay) {
+            const dayMatch = content.match(/\b(this|next|on)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i)
+            if (dayMatch) {
+              const prefix = dayMatch[1].toLowerCase()
+              const dayName = dayMatch[2].toLowerCase()
+              suggestedDay = dayMap[dayName] || 6
+              suggestedWeek = (prefix === 'next') ? currentWeek + 1 : currentWeek
+            } else {
+              suggestedDay = 6
+              suggestedWeek = currentWeek
+            }
+          }
+          if (!suggestedWeek) {
+            suggestedWeek = currentWeek
+          }
+          
+          // If AI wasn't available, use simple regex fallback for type/name
+          if (!analyzeAI) {
+            const lc = content.toLowerCase()
+            if (lc.includes('dinner') || lc.includes('restaurant') || lc.includes('eat') || lc.includes('meal')) {
+              inviteType = 'dinner_invite'
+              eventName = `Dinner with ${contact.name.split(' ')[0]}`
+            } else if (lc.includes('date') || lc.includes('romantic')) {
+              inviteType = 'date_request'
+              eventName = `Date with ${contact.name.split(' ')[0]}`
+            } else if (lc.includes('interview') || lc.includes('press')) {
+              inviteType = 'media_request'
+              eventName = `Interview via ${contact.name.split(' ')[0]}`
+            } else if (lc.includes('sponsor') || lc.includes('brand')) {
+              inviteType = 'sponsor_appearance'
+              eventName = `Sponsor event: ${contact.name.split(' ')[0]}`
+            } else if (lc.includes('charity') || lc.includes('fundrais')) {
+              inviteType = 'charity_ask'
+              eventName = `Charity event with ${contact.name.split(' ')[0]}`
+            } else {
+              eventName = `Gathering with ${contact.name.split(' ')[0]}`
+            }
+          }
+          
+          const newRequest = {
+            id: `req_migrated_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            contactId,
+            type: inviteType as any,
+            description,
+            suggestedDay,
+            suggestedWeek,
+            eventName,
+            venue,
+            timeCost,
+            relationshipReward: 5,
+            expiresWeek: currentWeek + 3,
+            expiresYear: currentYear,
+            status: 'pending' as const,
+          }
+          
+          newRequests.push(newRequest)
+          console.log(`[Migration] Created invitation from ${contact.name}: "${eventName}" (${inviteType})`)
+        }
+        
+        if (newRequests.length > 0) {
+          // Re-read latest state to avoid stale writes
+          const latestState = get().careerState
+          if (latestState?.messaging) {
+            set({
+              careerState: {
+                ...latestState,
+                messaging: {
+                  ...latestState.messaging,
+                  pendingRequests: [...(latestState.messaging.pendingRequests || []), ...newRequests],
+                }
+              }
+            })
+          }
+          console.log(`[Migration] Created ${newRequests.length} invitation(s) from existing messages`)
+        } else {
+          console.log('[Migration] No new invitations found after AI analysis')
+        }
+        
+        return newRequests.length
+      },
+
+      recordSocialAction: (contactId: string, actionId: string) => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return
+        const record = {
+          actionId,
+          contactId,
+          executedWeek: careerState.currentWeek ?? 1,
+          executedYear: careerState.currentYear ?? 1,
+        }
+        set({
+          careerState: {
+            ...careerState,
+            messaging: {
+              ...careerState.messaging,
+              socialActionHistory: [
+                ...(careerState.messaging.socialActionHistory || []),
+                record
+              ]
+            }
+          }
+        })
+      },
+
+      getSocialActionCooldown: (contactId: string, actionId: string): number => {
+        const { careerState } = get()
+        if (!careerState?.messaging) return 999
+        const history = careerState.messaging.socialActionHistory || []
+        const lastUse = history
+          .filter(r => r.contactId === contactId && r.actionId === actionId)
+          .sort((a, b) => (b.executedYear * 52 + b.executedWeek) - (a.executedYear * 52 + a.executedWeek))[0]
+        if (!lastUse) return 999 // Never used = no cooldown
+        const currentTotal = (careerState.currentYear ?? 1) * 52 + (careerState.currentWeek ?? 1)
+        const lastTotal = lastUse.executedYear * 52 + lastUse.executedWeek
+        return Math.max(0, currentTotal - lastTotal)  // Weeks since last use
       },
 
       generatePotentialDate: (): PotentialDate | null => {
@@ -22289,7 +32426,7 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
         
         const stressReduction = 10 + vacation.duration * 5
         const relationshipBoosts: Record<string, number> = {}
-        vacation.companions.forEach(c => {
+        vacation.companions.forEach((c: { id: string }) => {
           relationshipBoosts[c.id] = 5 + Math.floor(Math.random() * 10)
         })
         
@@ -22504,7 +32641,16 @@ ${careerState.ownedTeam?.name || 'Your Team'}`
     }),
     {
       name: 'ams2-career-storage',
-      version: 1, // Versioning helps with migrations
+      version: 2, // Versioning helps with migrations
+      migrate: (persistedState) => {
+        if (!persistedState) return persistedState as any
+        const state = persistedState as any
+        return {
+          ...state,
+          player: state.player ? migratePlayerData(state.player) : state.player,
+          careerState: state.careerState ? migrateCareerState(state.careerState) : state.careerState
+        }
+      },
       onRehydrateStorage: () => (state) => {
         // Called when hydration is complete
         if (state) {
@@ -22539,6 +32685,7 @@ export const forceSaveCareer = () => {
 // Save debouncing to prevent overlapping saves
 let saveDebounceTimer: ReturnType<typeof setTimeout> | null = null
 let saveInProgress = false
+const CAREER_SAVE_SCHEMA_VERSION = 2
 
 // Save to native Electron database (file-based, more reliable than localStorage)
 // Debounced: waits 500ms after last call, and prevents overlapping saves
@@ -22582,6 +32729,9 @@ export const saveToNativeDB = async () => {
           seasonStandings: rivalState.seasonStandings,
           // newsEvents removed - not part of RivalStore interface
           pendingContractOffers: rivalState.pendingContractOffers ?? [],
+          // Pre-generated content used-ID tracking (prevents duplicate staff/contacts)
+          preGenUsedIds: isPreGenContentLoaded() ? getPreGenUsedIds() : undefined,
+          schemaVersion: CAREER_SAVE_SCHEMA_VERSION,
           savedAt: new Date().toISOString()
         }
         
@@ -22591,7 +32741,17 @@ export const saveToNativeDB = async () => {
         }
         console.log('[CareerStore] Saved to native DB successfully')
       } catch (e) {
+        const errorMessage = e instanceof Error ? e.message : 'Unknown error'
         console.error('[CareerStore] Failed to save to native DB:', e)
+        routeNotification({
+          category: 'system',
+          subject: 'Save Failed',
+          body: `An error occurred while saving your career data.\n\n` +
+            `Error: ${errorMessage}\n\n` +
+            `Please try again or check disk permissions.`,
+          emailCategory: 'system',
+          urgency: 'high'
+        })
       } finally {
         saveInProgress = false
       }
@@ -22617,9 +32777,11 @@ export const loadFromNativeDB = async (): Promise<boolean> => {
     }
     
     const { data } = result
+    const savedSchemaVersion = data.schemaVersion ?? 1
     console.log('[CareerStore] Loaded from native DB:', { 
       playerName: data.player?.firstName,
-      savedAt: data.savedAt 
+      savedAt: data.savedAt,
+      schemaVersion: savedSchemaVersion
     })
     
     // Migrate player and career state data for backwards compatibility
@@ -22651,11 +32813,94 @@ export const loadFromNativeDB = async (): Promise<boolean> => {
       pendingContractOffers: data.pendingContractOffers ?? []
     })
     
+    // Fire pre-generated content loading in background — don't block hydration
+    // (With bundled files this takes ~1-2s instead of 10-15s, but still no reason to block the UI)
+    const savedPreGenUsedIds = data.preGenUsedIds
+    loadAllPreGeneratedContent().then(({ success, stats }) => {
+      if (success) {
+        console.log('[CareerStore] Pre-generated content loaded after restore:', stats)
+        if (savedPreGenUsedIds) {
+          restorePreGenUsedIds(savedPreGenUsedIds)
+          console.log('[CareerStore] Restored pre-gen used IDs')
+        }
+        useCareerStore.setState({ preGenContentLoaded: true })
+        backfillRomanceableFriendsIfNeeded()
+      } else {
+        console.warn('[CareerStore] Pre-generated content failed to load, will use runtime generation')
+      }
+    }).catch(e => {
+      console.warn('[CareerStore] Error loading pre-generated content:', e)
+    })
+
     return true
   } catch (e) {
     console.error('[CareerStore] Failed to load from native DB:', e)
     return false
   }
+}
+
+// One-time backfill: replace 1–2 existing friend/business contacts with partner-pool people
+// Realistic mix of genders; only those matching player's orientation are romanceable
+let romanceableFriendsBackfillAttempted = false
+function backfillRomanceableFriendsIfNeeded() {
+  if (romanceableFriendsBackfillAttempted) return
+  romanceableFriendsBackfillAttempted = true
+
+  const state = useCareerStore.getState()
+  if (!state.hasActiveCareer || !state.careerState?.messaging) return
+
+  const contacts = [...(state.careerState.messaging.contacts ?? [])]
+  const hasRomanceable = contacts.some((c: ContactInfo) => (c as ContactInfo & { romanticEligible?: boolean }).romanticEligible === true)
+  if (hasRomanceable) return
+
+  if (!isPreGenContentLoaded()) return
+
+  const pref = state.careerState.datingPreference
+  if (!pref || pref === 'none') return
+
+  const replaceableIndices = contacts
+    .map((c, i) => (c.type === 'friend' || c.type === 'business') ? i : -1)
+    .filter(i => i >= 0)
+  const replaceCount = Math.min(2, replaceableIndices.length, 1 + (Math.random() < 0.5 ? 1 : 0))
+  if (replaceCount === 0) return
+
+  const indicesToReplace = replaceableIndices.slice(-replaceCount)
+  const partnerProfiles = getRandomPartnersForFriendSeeding(replaceCount, ['male', 'female'])
+  if (partnerProfiles.length === 0) return
+
+  const currentWeek = state.careerState.currentWeek ?? 1
+  const currentYear = state.careerState.currentYear ?? new Date().getFullYear()
+  let conversations = { ...(state.careerState.messaging.conversations ?? {}) }
+
+  for (let i = 0; i < indicesToReplace.length && i < partnerProfiles.length; i++) {
+    const slotIndex = indicesToReplace[i]
+    const profile = partnerProfiles[i]
+    const replacedContact = contacts[slotIndex]
+    const matchesOrientation =
+      (profile.gender === 'female' && pref === 'women') ||
+      (profile.gender === 'male' && pref === 'men') ||
+      pref === 'both'
+    const { contact, conversation } = buildFriendFromPartnerPool(profile, currentWeek, currentYear, {
+      type: (replacedContact.type === 'business' ? 'business' : 'friend') as 'friend' | 'business',
+      romanticEligible: matchesOrientation,
+    })
+    contacts[slotIndex] = contact
+    const oldConvId = `conv_${replacedContact.id}`
+    const { [oldConvId]: _removed, ...rest } = conversations
+    conversations = { ...rest, [conversation.id]: conversation }
+  }
+
+  useCareerStore.setState({
+    careerState: {
+      ...state.careerState,
+      messaging: {
+        ...state.careerState.messaging,
+        contacts,
+        conversations,
+      },
+    },
+  })
+  console.log('[CareerStore] Backfilled existing save: replaced', indicesToReplace.length, 'contacts with partner-pool people (orientation-aware)')
 }
 
 // Hook to check if the store has been hydrated
@@ -22732,15 +32977,46 @@ export const useCareerStoreHydration = () => {
         }
       }
       
+      // Fire pre-generated content loading in background — don't block hydration
+      const firePreGenContentLoad = () => {
+        const state = useCareerStore.getState()
+        if (state.hasActiveCareer && !isPreGenContentLoaded()) {
+          loadAllPreGeneratedContent().then(({ success }) => {
+            if (success) {
+              console.log('[CareerStore] Pre-generated content loaded after hydration')
+              useCareerStore.setState({ preGenContentLoaded: true })
+              backfillRomanceableFriendsIfNeeded()
+            }
+          }).catch(e => {
+            console.warn('[CareerStore] Error loading pre-generated content:', e)
+          })
+        }
+      }
+
+      // Auto-fix activities missing scheduledPeriod (backfill from time cost config)
+      const backfillActivityTimeslots = () => {
+        const state = useCareerStore.getState()
+        if (state.hasActiveCareer && state.reassignActivityTimeslots) {
+          const count = state.reassignActivityTimeslots()
+          if (count > 0) {
+            console.log(`[CareerStore] Auto-backfilled ${count} activities with missing timeslots`)
+          }
+        }
+      }
+
       // Wait for Zustand persist hydration
       if (useCareerStore.persist.hasHydrated()) {
         console.log('[CareerStore] Already hydrated on mount')
         verifyAndRestore()
+        firePreGenContentLoad()
+        backfillActivityTimeslots()
         setHydrated(true)
       } else {
         unsubRef.current = useCareerStore.persist.onFinishHydration(() => {
           console.log('[CareerStore] Hydration finished')
           verifyAndRestore()
+          firePreGenContentLoad()
+          backfillActivityTimeslots()
           setHydrated(true)
         })
       }

@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Srisuk",
+  "nationality": "Thai",
+  "age": 33,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Somchai's fascination with motorsport began as a child, watching Formula One races on television. He was captivated by the intricate technology and the constant push for innovation. This passion led him to pursue a degree in electrical engineering, specializing in embedded systems and circuit design.\n\nAfter graduating, Somchai joined a local automotive company, where he honed his skills in designing and testing electronic components. He quickly gained a reputation for his meticulous approach and his ability to troubleshoot complex problems. However, his dream of working in motorsport remained. He transitioned to a smaller racing team, focusing on data acquisition systems and sensor integration. He's known for his ability to quickly analyze data and identify areas for improvement in vehicle performance. Somchai thrives in high-pressure environments and is always seeking new challenges to push his skills to the limit.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "He has a lean build and often wears glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a habit of tapping his fingers on the table when concentrating.",
+    "Insists on using a specific brand of soldering iron."
+  ]
+}

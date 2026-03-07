@@ -1,0 +1,22 @@
+{
+  "name": "Liam Dubois",
+  "nationality": "Canadian",
+  "age": 24,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Liam's passion for motorsport ignited during his childhood summers spent at the local karting track. He quickly transitioned from spectator to competitor, showcasing a natural aptitude for vehicle dynamics. Recognizing his strengths lay beyond the driver's seat, Liam pursued a degree in Mechanical Engineering at McGill University. His academic prowess, coupled with his hands-on experience, led him to Elite Motorsport. \n\nAs a Test Driver Coordinator, Liam thrives on meticulously analyzing data and optimizing testing schedules. He's known for his analytical approach and his ability to translate complex technical information into actionable insights for the drivers and engineers. Liam is determined to push the boundaries of performance and contribute to Elite Motorsport's championship aspirations. He is a firm believer in clear communication and fostering a collaborative environment within the testing team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Hazel",
+    "facialHair": "Short goatee",
+    "description": "Liam is a lean young man of average height with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Meticulously color-codes all his spreadsheets.",
+    "Has a habit of tapping his pen when deep in thought."
+  ]
+}

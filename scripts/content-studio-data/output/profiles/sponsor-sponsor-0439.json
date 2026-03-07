@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0439",
+  "name": "Dynasty Tires",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Hong Kong",
+  "description": "Engineered for grip, priced for performance.",
+  "story": "Dynasty Tires is a Hong Kong-based tire manufacturer focused on providing high-quality, affordable tires for a wide range of vehicles. Recognizing the value of motorsport as a proving ground for their technology, they seek to partner with emerging teams to showcase their tires' durability and performance under extreme conditions. They aim to grow their brand recognition internationally.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0439.png"
+}

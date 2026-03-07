@@ -1,0 +1,22 @@
+{
+  "name": "Magnus Olsen",
+  "nationality": "Norwegian",
+  "age": 36,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Magnus's journey into motorsport began with a childhood fascination for tinkering with electronics and a deep-seated love for rally racing. Growing up in Norway, he spent countless hours disassembling and reassembling radios and remote-controlled cars. After graduating with a degree in electrical engineering from the Norwegian University of Science and Technology (NTNU), he honed his skills in the automotive industry before making the jump to motorsport. He joined GCK Motorsport five years ago. \n\nMagnus is known for his methodical and pragmatic approach to problem-solving. He is responsible for ensuring the reliability and performance of the team's sophisticated electronic systems. He thrives under pressure, often finding creative solutions to complex challenges in high-stakes situations. His dedication to teamwork and his ability to quickly adapt to changing circumstances make him a valuable asset to the team. He's a bit of a quiet one, but he is always listening and learning.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly parted on the side",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Magnus is of average height with a lean build, often seen wearing safety glasses and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Has a habit of tapping his pen when concentrating.",
+    "Insists on using a specific brand of electrical tape."
+  ]
+}

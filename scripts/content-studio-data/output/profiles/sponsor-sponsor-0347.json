@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0347",
+  "name": "Tempus Chronos",
+  "category": "watches",
+  "tier": "mid",
+  "country": "Hungary",
+  "description": "Precision timekeeping for the discerning competitor.",
+  "story": "Tempus Chronos is a Hungarian watchmaker specializing in high-performance timepieces. Founded by a former race engineer, the company values precision, reliability, and the relentless pursuit of excellence. In motorsport, they seek to partner with teams that share their commitment to peak performance and embody the spirit of innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Hungary"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0347.png"
+}

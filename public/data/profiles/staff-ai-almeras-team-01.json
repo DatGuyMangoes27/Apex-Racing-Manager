@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Katsaros",
+  "nationality": "Greek",
+  "age": 40,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Dimitrios Katsaros is a seasoned chief engineer with a passion for motorsport that ignited during his childhood in Athens, tinkering with engines alongside his father. He pursued a degree in Mechanical Engineering, focusing on aerodynamics and vehicle dynamics. His career began in a small racing team, where he quickly rose through the ranks due to his sharp analytical skills and knack for optimizing car performance. \n\nPrior to joining CLRT by Almeras, Dimitrios spent several years honing his skills in various racing series, contributing to multiple championship wins. He believes in a data-driven approach, meticulously analyzing telemetry to extract every last bit of performance. Known for his innovative solutions and commitment to teamwork, Dimitrios strives to create a positive and collaborative environment where engineers can thrive. His loyalty and drive make him a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Dimitrios has a strong, angular face and a focused gaze that reflects his attention to detail."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down ideas at a moment's notice.",
+    "Has a habit of tapping his fingers on the table when deep in thought.",
+    "Insists on a specific brand of Greek coffee every morning."
+  ]
+}

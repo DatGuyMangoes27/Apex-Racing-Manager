@@ -1,0 +1,22 @@
+{
+  "name": "Daniel Hayes",
+  "nationality": "American",
+  "age": 43,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Daniel Hayes' journey into motorsport began not on the track, but in the classroom. A physics prodigy from a young age, he found himself drawn to the intricate interplay of forces and materials that define racing. After graduating top of his class from MIT, Daniel joined a small IndyCar team, quickly proving his worth with his sharp analytical skills and innovative solutions. His talent didn't go unnoticed, and he was soon recruited by Arrow McLaren. \n\nDaniel is known for his meticulous approach to data analysis and his ability to translate complex information into actionable insights for the drivers and pit crew. He believes in constant communication and collaboration, ensuring everyone is on the same page and working towards a common goal. What truly sets him apart is his calm demeanor under pressure – a valuable asset in the high-stakes world of motorsport. He is a steady hand, a mentor, and a force for improvement within the team.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Daniel is of average height with a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn-out copy of 'Fundamentals of Aerodynamics'",
+    "Has a habit of tapping his pen rhythmically when deep in thought",
+    "Insists on using a specific type of mechanical pencil for all calculations"
+  ]
+}

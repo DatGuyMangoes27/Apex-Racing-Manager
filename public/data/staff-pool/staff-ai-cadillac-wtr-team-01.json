@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 41,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Astrid Christensen's passion for motorsport ignited during her childhood summers spent watching rally races across Scandinavia. This early fascination led her to pursue a degree in mechanical engineering, where she excelled in vehicle dynamics and advanced materials. Before joining Cadillac Racing, Astrid honed her skills at a smaller GT racing team, rapidly progressing from junior engineer to lead aerodynamicist, consistently delivering performance improvements. \n\nAs a Chief Engineer, Astrid is known for her meticulous approach and data-driven decision-making. She believes that understanding the smallest details is crucial for unlocking significant gains in performance and reliability. Her strength lies in bridging the gap between simulations and real-world track performance, ensuring that the team's technical strategies are always aligned with the vehicle's capabilities. Her loyalty to the team and her commitment to excellence make her a valuable asset, trusted by both drivers and fellow engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light blonde",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail when working.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is of average height, with a focused and determined gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and calculations.",
+    "Has a peculiar habit of tapping her pen rhythmically on her desk when deep in thought.",
+    "Insists on using metric units for everything, even when communicating with international colleagues."
+  ]
+}

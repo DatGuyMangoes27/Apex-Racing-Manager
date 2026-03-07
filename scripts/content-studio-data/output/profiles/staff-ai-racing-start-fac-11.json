@@ -1,0 +1,22 @@
+{
+  "name": "Tiago Alves",
+  "nationality": "Portuguese",
+  "age": 23,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Tiago's passion for motorsport ignited during his childhood visits to the Estoril Circuit with his grandfather, a former mechanic. He pursued a degree in motorsport engineering, focusing on data analysis and vehicle dynamics. After graduating, he gained experience as a junior data engineer for a small Formula 4 team. He was quickly recognized for his ability to synthesize complex data sets into actionable insights for the drivers. \n\nHe joined Racing Start Academy a year ago, initially as a data analyst, before being promoted to Test Driver Coordinator. Tiago believes in fostering a collaborative environment where drivers and engineers work together to push the boundaries of performance. He’s known for his calm demeanor under pressure and his ability to explain intricate technical details in an easily understandable manner. He is loyal and dedicated to creating a winning environment for his team.\n\nTiago's ability to quickly identify areas for improvement in car setup and driver technique, coupled with his commitment to driver development, makes him a valuable asset to Racing Start Academy.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Tiago is of average height with a lean build and an intense focus in his eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to conduct debriefs while walking around the garage, rather than in a formal meeting room."
+  ]
+}

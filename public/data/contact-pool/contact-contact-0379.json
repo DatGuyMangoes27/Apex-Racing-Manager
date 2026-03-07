@@ -1,0 +1,31 @@
+{
+  "name": "Helena von Habsburg",
+  "nationality": "Austrian",
+  "age": 34,
+  "gender": "female",
+  "contactType": "diplomat",
+  "bio": "Helena von Habsburg hails from one of Austria's most prominent families, known for their long-standing diplomatic service and philanthropic endeavors. Educated at the finest institutions, she holds a postgraduate degree in International Relations and has quickly risen through the ranks, specializing in cultural exchange programs. While seemingly far removed from the roar of engines, Helena's family owns a significant stake in a luxury automotive brand, fostering a subtle but important connection to motorsport. A racing driver might cross paths with Helena at a high-society event, a charity gala sponsored by her family's automotive company, or through mutual connections within the elite world of European business and diplomacy. Her supportive and playful nature, combined with a hint of rebellious spirit against the rigid expectations of her background, makes her an intriguing and potentially valuable ally.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often styled in elegant updos",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Helena has an aristocratic bearing and carries herself with grace. Her green eyes are bright and expressive, often conveying a sense of amusement."
+  },
+  "connectionToMotorsport": "Helena's family owns a significant portion of a luxury car manufacturer that sponsors a racing team. She occasionally attends races as a representative of the company.",
+  "meetingContext": "You might meet Helena at a high-profile charity event hosted by her family's company, or at a VIP lounge during a Formula 1 race in Austria or Italy.",
+  "conversationTopics": [
+    "The latest ballet performances in Vienna",
+    "Vintage car restoration projects",
+    "The challenges and rewards of international diplomacy",
+    "Equestrian competitions and her favorite horses",
+    "Her (secret) love for strategic video games"
+  ],
+  "canHelp": [
+    "Connecting you with sponsors from luxury brands",
+    "Leveraging her diplomatic connections to smooth out travel or visa issues",
+    "Providing access to exclusive events and networking opportunities"
+  ],
+  "personality_summary": "A supportive diplomat with a playful side, who can open doors to high society and influential sponsors."
+}

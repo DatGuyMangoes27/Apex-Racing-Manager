@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0256",
+  "name": "AvtoVAZ Parts",
+  "category": "automotive",
+  "tier": "entry",
+  "country": "Russia",
+  "description": "Reliable parts for the road ahead.",
+  "story": "AvtoVAZ Parts has been a leading supplier of automotive components in Russia for over 50 years. We understand the importance of reliable performance and seek to partner with teams that demonstrate similar dedication. Motorsport provides a valuable testing ground and brand showcase for our products.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15,
+    "nationalities": [
+      "Russia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0256.png"
+}

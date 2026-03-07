@@ -1,0 +1,22 @@
+{
+  "name": "Chloé Dubois",
+  "nationality": "Canadian",
+  "age": 25,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Chloé's precision and dedication to composite materials began during her undergraduate studies in Mechanical Engineering at McGill University. She was captivated by the intricate layering and structural integrity of carbon fiber, leading her to specialize in advanced composites. After graduating, she secured a coveted internship with a local aerospace company, honing her skills in fabrication and quality control. Motorsport beckoned when she attended the Montreal Grand Prix and witnessed the high-stakes environment firsthand. She now brings her rigorous academic background and practical experience to Blau Motorsport, ensuring every component meets her exacting standards.\n\nChloé approaches her work with a pragmatic mindset, prioritizing functionality and reliability above all else. She's known for her meticulous attention to detail, meticulously inspecting each layer of composite to guarantee optimal performance. While she acknowledges the importance of innovation, she emphasizes the need for proven techniques and data-driven decision-making. Her ultimate goal is to contribute to the team's success by providing race-ready components that inspire confidence on the track.",
+  "physical": {
+    "skinTone": "Light with freckles",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, often pulled back into a high ponytail, with a few strands escaping to frame her face.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Athletic build, always wears practical clothing and safety glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always organizes her tools according to a specific geometric pattern.",
+    "Meticulously cleans her workspace at the end of each day, no matter how busy.",
+    "Repeatedly checks her calculations, even after they've been verified."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Harding",
+  "nationality": "British",
+  "age": 47,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Eleanor's journey into motorsport began unexpectedly. After a brief stint as a structural engineer, she found herself drawn to the intricate and high-stakes world of racing after volunteering at a local rally. It was the intricate work of building and maintaining engines that truly captured her imagination. She spent years honing her skills in various workshops before landing a role at Anderson Racing.\n\nAs a machinist, Eleanor is meticulous and demanding, always striving for perfection. She believes in a hands-on approach and isn't afraid to get her hands dirty. Her reputation for precision and efficiency is well-earned. She's known for her no-nonsense attitude and her ability to troubleshoot complex mechanical problems under pressure. Her loyalty to the team and her dedication to her craft make her an invaluable asset.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical bun.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Eleanor is a wiry woman with a focused gaze and grease permanently under her fingernails."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens her pencils to an impossibly fine point.",
+    "Insists on using Imperial measurements despite the team's transition to metric.",
+    "Has a collection of vintage spanners that she refuses to let anyone else use."
+  ]
+}

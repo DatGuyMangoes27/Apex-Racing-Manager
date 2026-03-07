@@ -1,0 +1,56 @@
+{
+  "history": "The Circuito do Estoril, inaugurated in 1972, has a rich history of hosting major international motorsport events. While the Grand Prix layout is most famous for its Formula 1 tenure, the shorter layouts, including the 2.8km 'Short' circuit, have been utilized for national championships, club races, and testing. The full Grand Prix circuit hosted the Portuguese Grand Prix multiple times, but the Short circuit has provided a more compact and accessible venue for smaller series, endurance events, and driver training. It served as a proving ground for many Portuguese drivers aiming for higher echelons of racing.",
+  "atmosphere": "The atmosphere at Estoril during a race on the Short configuration is intimate and exciting. The roar of engines echoes intensely in the compact space, and spectators are closer to the action. The grandstands around the start-finish straight and the first few corners provide excellent views. You can feel the vibrations of the cars as they accelerate past, and the smell of burning rubber hangs heavy in the air. The smaller layout amplifies the sense of speed and drama, making for a very engaging experience.",
+  "trackCharacter": "The Estoril Short circuit is a fast and flowing layout that emphasizes momentum and precision. While it lacks the technical complexity of the full Grand Prix circuit, it is still demanding. Drivers must maintain high corner speeds and string together a series of linked turns. The compact nature of the layout means there's little time to relax, demanding focus and consistency. It's a driver's track, where a well-balanced car and a confident driver can really shine.",
+  "nickname": "The National Arena",
+  "famousCorners": [
+    {
+      "name": "Parque",
+      "description": "A quick right-hander that's crucial for carrying speed onto the back straight.",
+      "challenge": "Requires commitment and precise placement to avoid scrubbing off speed."
+    },
+    {
+      "name": "Galp",
+      "description": "A fast left-hand kink that tests the driver's courage and the car's stability.",
+      "challenge": "Maintaining composure and getting the car settled through this corner is essential for a good lap time."
+    },
+    {
+      "name": "Start/Finish Straight",
+      "description": "A relatively short main straight.",
+      "challenge": "Getting a good launch and maximizing top speed here are crucial for overtaking and defending."
+    },
+    {
+      "name": "Turn 1",
+      "description": "A tight right-hand corner after the start/finish straight, which is a key overtaking spot.",
+      "challenge": "Requires heavy braking and precise turn-in to avoid running wide."
+    }
+  ],
+  "keyFactors": [
+    "Braking efficiency",
+    "Corner exit speed",
+    "Aerodynamic balance",
+    "Tire management",
+    "Aggressive driving style"
+  ],
+  "overtakingSpots": [
+    "Turn 1 (tight right-hander after the start/finish straight)",
+    "Under braking into Turn 4 (after the Galp corner)",
+    "The entry to the final complex of corners"
+  ],
+  "historySnippets": [
+    "Estoril hosted the Portuguese Grand Prix from 1984 to 1996.",
+    "Ayrton Senna won his first F1 race at Estoril in 1985.",
+    "The Circuito do Estoril was built on a former gravel quarry.",
+    "The Short circuit is frequently used for national racing series.",
+    "Estoril has hosted rounds of the A1 Grand Prix series.",
+    "Several motorcycle racing championships have raced at Estoril, including the World Superbike Championship."
+  ],
+  "weatherNotes": "Estoril is known for its mild climate, but the proximity to the Atlantic Ocean means that weather conditions can change rapidly. Fog and rain are not uncommon, especially during the spring and autumn months. These conditions can significantly affect grip levels and visibility on the Short layout, making tire choice and car setup crucial.",
+  "drivingAdvice": "On the Short configuration, maintaining momentum is key. Focus on smooth transitions between corners and minimizing braking distances. The Galp corner is crucial for a fast lap time; carry as much speed as possible through it while maintaining a stable car. Tire management is also critical, as the constant acceleration and braking can quickly wear down the tires, especially in hotter conditions.",
+  "famousRaces": [
+    "Various national championship races on the Short layout often produce close and exciting finishes.",
+    "Endurance races held on the Short layout test the reliability of the cars and the stamina of the drivers.",
+    "The Formula Ford Festival has been held at Estoril, showcasing up-and-coming talent."
+  ],
+  "localCulture": "Estoril is a coastal town known for its casinos, beaches, and luxurious hotels. The area is rich in history and culture, with many historical sites and museums to explore. The local cuisine features fresh seafood and traditional Portuguese dishes. Paddock life is relaxed and friendly, with teams often enjoying the local restaurants and bars after a day of racing."
+}

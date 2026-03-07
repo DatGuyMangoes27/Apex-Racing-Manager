@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Chilean",
+  "age": 49,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey into motorsport began in the dusty Atacama Desert, tinkering with engines of rally cars as a young boy. He quickly developed a knack for understanding the intricate mechanics, a skill honed through years of practical experience and formal training at the Universidad de Chile. After graduating with honors in mechanical engineering, Ricardo joined a local racing team, where he quickly rose through the ranks, demonstrating an exceptional ability to diagnose and resolve complex engineering challenges.\n\nHis approach to engineering is deeply rooted in a data-driven methodology, meticulously analyzing telemetry and performance metrics to identify areas for improvement. Ricardo is known for his relentless pursuit of perfection and his ability to push the boundaries of vehicle performance. He's also a firm believer in fostering a collaborative environment, encouraging open communication and knowledge sharing within his team. His demanding nature is balanced by a commitment to developing talent and empowering his engineers to excel.\n\nWhat sets Ricardo apart is his uncanny ability to predict mechanical failures before they occur. He possesses a sixth sense for identifying subtle vibrations and anomalies that others often miss, making him an invaluable asset in preventing costly breakdowns and ensuring optimal performance on the track.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "salt and pepper",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is a stocky man with strong hands and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on drinking mate in the morning before any major race or test.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

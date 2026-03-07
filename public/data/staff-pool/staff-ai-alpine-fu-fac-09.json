@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 44,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jean-Pierre's journey into motorsport started with a fascination for the intricate paint jobs on rally cars he saw as a child in the French countryside. He pursued an apprenticeship at a local body shop, quickly mastering the art of color matching and paint application. His passion for motorsports led him to seek out opportunities in racing, landing a role with a smaller racing team before eventually joining Alpine F1. \n\nJean-Pierre is known for his unwavering commitment to perfection. He approaches each project with meticulous attention to detail, ensuring that every surface is flawless and every color is precisely matched. He understands the importance of not only aesthetics but also the protective function of the paint, working tirelessly to ensure the cars look and perform their best. His loyalty to the team and his dedication to his craft make him a highly valued member of the Alpine F1 crew.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height with a sturdy build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always wears a beret, even indoors.",
+    "Has a specific playlist of classic French pop music he listens to while working.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy he is."
+  ]
+}

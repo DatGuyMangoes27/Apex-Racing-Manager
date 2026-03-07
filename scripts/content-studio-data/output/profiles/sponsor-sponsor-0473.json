@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0473",
+  "name": "Alpenware AG",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Switzerland",
+  "description": "Precision-engineered software solutions for a connected world.",
+  "story": "Alpenware AG, a leading Swiss software company, sees motorsport as the ultimate testing ground for its real-time data analytics and predictive algorithms. With a focus on innovation and precision, they seek a partnership to demonstrate the power of their technology in a high-performance environment. They are looking to enhance brand awareness and showcase their capabilities to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 11000,
+      "podiumBonus": 5000,
+      "championshipBonus": 85000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 175000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0473.png"
+}

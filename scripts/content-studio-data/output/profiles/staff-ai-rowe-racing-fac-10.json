@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 31,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jan's journey into motorsport began as a child, tinkering with his grandfather's Škoda in their rural Czech village. This early exposure ignited a passion for engineering, leading him to pursue a degree in mechanical engineering. After graduating, Jan honed his skills at a local automotive repair shop before landing a position with a smaller racing team. His dedication and attention to detail quickly earned him recognition, and he eventually caught the eye of ROWE Racing.\n\nAt ROWE Racing, Jan is known for his meticulous approach to fabrication, ensuring every component meets the highest standards of performance and reliability. While demanding of himself and his colleagues, Jan's commitment to excellence is unwavering. He thrives under pressure, consistently delivering top-quality work even in tight deadlines. Jan's ability to diagnose and resolve complex mechanical issues quickly makes him an invaluable asset to the team, contributing to ROWE Racing's success on and off the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Jan is of average height with a wiry build, suggesting strength and agility."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his fingers on metal surfaces to test their resonance.",
+    "Insists on using a specific type of Czech-made wrench for certain tasks."
+  ]
+}

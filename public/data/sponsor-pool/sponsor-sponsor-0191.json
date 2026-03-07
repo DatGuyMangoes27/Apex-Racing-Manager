@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0191",
+  "name": "SolMar Sunglasses",
+  "category": "lifestyle",
+  "tier": "mid",
+  "country": "Portugal",
+  "description": "Sunglasses designed for the outdoor lifestyle.",
+  "story": "SolMar Sunglasses is a Portuguese brand dedicated to providing high-quality eyewear for an active lifestyle. We believe in pushing boundaries and celebrating human achievement, which aligns perfectly with the spirit of motorsport. We seek a partnership that showcases our brand to a global audience and highlights the performance and reliability of our products under pressure.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "nationalities": [
+      "Portugal",
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0191.png"
+}

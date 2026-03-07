@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0491",
+  "name": "Beaumont & Sterling",
+  "category": "luxury",
+  "tier": "elite",
+  "country": "UK",
+  "description": "Crafting exquisite timepieces for discerning individuals.",
+  "story": "Beaumont & Sterling has a long heritage of precision engineering and a passion for motorsport. We seek to partner with teams and drivers who embody the same commitment to excellence and push the boundaries of performance. Our sponsorship aims to enhance brand visibility and reinforce our image as a leader in luxury watchmaking.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 9000,
+      "podiumBonus": 4500,
+      "championshipBonus": 70000
+    },
+    "mid": {
+      "monthly": 75000,
+      "winBonus": 30000,
+      "podiumBonus": 16000,
+      "championshipBonus": 230000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 130000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1300000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "UK"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0491.png"
+}

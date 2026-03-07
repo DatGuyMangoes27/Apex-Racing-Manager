@@ -1,0 +1,22 @@
+{
+  "name": "Andrés Vargas",
+  "nationality": "Colombian",
+  "age": 38,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Andrés Vargas discovered his passion for electronics at a young age, tinkering with radios and building circuits in his rural Colombian hometown. He pursued his engineering degree in Bogotá, where he specialized in embedded systems. A chance encounter with a local racing team ignited his interest in motorsport, leading him to volunteer his skills in data analysis and electronic systems maintenance. His meticulous approach and problem-solving abilities quickly made him an invaluable asset.\n\nAfter several years honing his skills in national racing series, Andrés sought an opportunity to expand his horizons internationally. He joined Team WRT, drawn to their commitment to innovation and pursuit of excellence. Andrés is known for his relentless pursuit of performance improvements through data analysis and advanced electronic systems. He's a firm believer in a data-driven approach to problem-solving, often diving deep into sensor data to identify subtle anomalies that can unlock crucial performance gains.\n\nAndrés’s demanding nature stems from his unwavering commitment to perfection. While sometimes perceived as difficult, his colleagues respect his deep knowledge and his willingness to push boundaries. He thrives on challenges and is always eager to learn and adapt to new technologies, making him a vital part of Team WRT's engineering team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Andrés is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, even into the garage.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on using a specific brand of soldering iron."
+  ]
+}

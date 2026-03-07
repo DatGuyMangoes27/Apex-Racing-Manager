@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0109",
+  "name": "Orzel Racing Apparel",
+  "category": "apparel",
+  "tier": "elite",
+  "country": "Poland",
+  "description": "Performance apparel designed for the rigors of motorsport.",
+  "story": "Orzel Racing Apparel was founded by former racing driver Jan Kowalski, who sought to create gear that could withstand the demands of the track. The company values innovation, durability, and a commitment to pushing boundaries. They sponsor motorsport teams to showcase their technology and dedication to performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Poland"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 10,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0109.png"
+}

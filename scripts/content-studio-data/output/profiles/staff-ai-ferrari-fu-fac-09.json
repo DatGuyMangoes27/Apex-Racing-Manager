@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Swiss",
+  "age": 24,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jean-Luc's passion for motorsport started early, fueled by watching Michael Schumacher dominate the circuits. He initially pursued automotive engineering but found his true calling lay in the artistry of paint application and finish. After completing a rigorous apprenticeship at a high-end automotive restoration workshop, he specialized in motorsport paint schemes, mastering techniques from classic liveries to modern aerodynamic finishes. He meticulously analyzes paint performance under extreme conditions, ensuring both aesthetic appeal and functional durability.\n\nJean-Luc's approach to the paint shop is scientific and artistic. He sees each car as a canvas and each paint layer as a critical component of performance. He's known for his meticulous preparation, precise color matching, and innovative application techniques. His insistence on perfection, combined with his deep understanding of aerodynamic principles, makes him an invaluable asset to any team seeking an edge on the track. His experience with exotic materials is invaluable for Ferrari, where innovative material science is a key part of their success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Close-trimmed goatee",
+    "description": "Jean-Luc is of average height, with a lean build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific brand of microfiber cloths.",
+    "Always wears pristine white overalls, even when working with dark paints.",
+    "Meticulously cleans his spray guns after every use, regardless of how busy he is."
+  ]
+}

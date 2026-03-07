@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0485",
+  "name": "Bohemia Invest",
+  "category": "financial",
+  "tier": "high",
+  "country": "Czech Republic",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Bohemia Invest is a leading Czech investment firm with a strong focus on growth and innovation. We see motorsport as an ideal platform to showcase our commitment to performance and precision. We seek partnerships that reflect our values and demonstrate a drive for success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "nationalities": [
+      "Czech Republic",
+      "Slovakia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0485.png"
+}

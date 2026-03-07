@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 56,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Elena's journey into motorsport began unconventionally. Growing up in rural Romania, she was fascinated by the mechanics of agricultural machinery, spending hours tinkering alongside her father. This practical experience led her to pursue a degree in mechanical engineering. Her break came when a local rally team, impressed by her thesis on suspension dynamics, offered her a junior engineer role.\n\nElena's approach as chief engineer is rooted in meticulous preparation and a deep understanding of vehicle dynamics. She believes in empowering her team, fostering a collaborative environment where ideas are freely shared and rigorously tested. Her relentless pursuit of incremental improvements and her calm demeanor under pressure are what make her a valuable asset to V8 Masters Racing. She has a knack for identifying hidden potential in existing designs, often finding innovative solutions to complex problems.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is a woman of medium build with a no-nonsense demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on personally inspecting every component before it's installed on the car."
+  ]
+}

@@ -6,11 +6,33 @@
  */
 
 import type { Conversation, TextMessage, NpcMood } from '@/data/messaging-config';
+import type { DeepHobby, HobbyLesson, HobbyInstructor } from '@/data/hobbies-deep-config';
+import type { Course, Certification, Book } from '@/data/education-config';
+import type { Collection, CollectionEvent } from '@/data/collections-config';
+import type { SocialMediaProfile, SocialPost, TrollEncounter } from '@/data/social-media-config';
+import type { PrivacyState, PaparazziSighting, LeakedStory } from '@/data/privacy-config';
+import type { BookDeal, DocumentaryDeal, PodcastDeal, SpeakingEngagement } from '@/data/personal-brand-expanded-config';
+import type { CauseSupport, PoliticalStance, ActivismEvent } from '@/data/activism-config';
+import type { Vacation } from '@/data/travel-config';
+import type { LifestyleAssets, LifestyleScoreBreakdown } from '@/data/lifestyle-assets-config';
+import type { RetirementPlan } from '@/data/retirement-config';
+
+export interface SocialBio {
+  background: string
+  careerNarrative: string
+  personalityDescription: string
+  lifeSituation: string
+  anecdotes: string[]
+  interests?: string[]
+  quirks?: string[]
+  values?: string[]
+}
 
 export interface MessagingState {
   conversations: Record<string, Conversation>
   contacts: ContactInfo[]
   unreadTotal: number
+  lastMessageTime?: { week: number; day: number; year: number }
   
   // Dating pool
   potentialDates: PotentialDate[]
@@ -18,20 +40,229 @@ export interface MessagingState {
   // Pending actions
   pendingGifts: PendingGift[]
   pendingDateInvites: PendingDateInvite[]
+  
+  // ── Group chats ──
+  groupConversations?: Record<string, GroupConversation>
+  
+  // ── Social graph — who knows who ──
+  socialConnections?: Record<string, string[]>  // contactId -> [known contact IDs]
+  
+  // ── Pending contact requests (gameplay actions requested by NPCs) ──
+  pendingRequests?: ContactRequest[]
+  
+  // ── Queued NPC messages (delayed delivery for realism) ──
+  queuedMessages?: QueuedNpcMessage[]
+  
+  // ── Pending NPC replies (background generation — player can leave the chat) ──
+  pendingNpcReplies?: Record<string, PendingNpcReply>   // conversationId -> pending reply
+  
+  // ── Social action cooldown tracking ──
+  socialActionHistory?: SocialActionRecord[]
 }
+
+// ============================================
+// PENDING NPC REPLY (Background Generation)
+// ============================================
+
+export interface PendingNpcReply {
+  conversationId: string
+  contactId: string
+  playerMessage: string
+  messageCategory: string
+  status: 'generating' | 'ready' | 'delivered'
+  generatedResponse?: {
+    message: string
+    tone: string
+    mood: string
+    affectionChange: number
+    romanceChange: number
+    trustChange: number
+    emotionalReaction: string
+    suggestedFollowUp?: string
+    wantsToMeetUp: boolean
+    shouldEndConversation?: boolean
+    topicTag?: string
+    actionRequest?: any
+  }
+  queuedAt: number               // Date.now() when queued
+  deliverAfterMs: number          // How many real ms to wait before showing (typing simulation)
+}
+
+// ============================================
+// QUEUED NPC MESSAGES (Delayed Delivery)
+// ============================================
+
+export interface QueuedNpcMessage {
+  id: string
+  conversationId: string
+  contactId: string
+  message: TextMessage
+  actionRequest?: {               // Invitation/offer from NPC-initiated message
+    type: string
+    description: string
+    suggestedDay?: number
+    timeCost?: number
+    moneyCost?: number
+  }
+  scheduledDeliveryHour: number    // Game hour (0-24) when message should appear
+  scheduledDeliveryDay: number     // Day of week (1-7)
+  scheduledDeliveryWeek: number    // Week number
+  scheduledDeliveryYear: number    // Year
+  delivered: boolean
+}
+
+// ============================================
+// GROUP CONVERSATIONS
+// ============================================
+
+export type GroupChatType = 'team_staff' | 'series_drivers' | 'family' | 'friend_group'
+
+export interface GroupConversation {
+  id: string
+  name: string
+  type: GroupChatType
+  participantIds: string[]       // Contact IDs in the group
+  
+  messages: TextMessage[]
+  lastMessageTime: { week: number; day: number; year: number }
+  unreadCount: number
+  
+  // Group avatar (optional, use first 4 participant portraits)
+  avatarContactIds?: string[]
+}
+
+// ============================================
+// CONTACT REQUESTS (NPC-initiated gameplay)
+// ============================================
+
+export type ContactRequestType = 
+  | 'race_tickets'       // Friend wants paddock passes
+  | 'dinner_invite'      // Friend/partner wants quality time
+  | 'career_favor'       // Business contact wants help
+  | 'sponsor_appearance' // Sponsor rep wants you at an event
+  | 'contract_talk'      // Staff wants to discuss contract
+  | 'date_request'       // Partner wants a date night
+  | 'wager'              // Rival proposes a bet
+  | 'introduction'       // Contact offers to introduce someone new
+  | 'advice'             // Contact asks for advice
+  | 'media_request'      // Journalist wants a comment/interview
+  | 'charity_ask'        // Foundation contact asks for support
+  | 'social_invite'      // Contact invites you to an event
+
+export interface ContactRequest {
+  id: string
+  contactId: string
+  type: ContactRequestType
+  description: string            // AI-generated request text
+  
+  // Costs & rewards
+  timeCost?: number              // Hours from day budget
+  moneyCost?: number             // Cash cost
+  relationshipReward?: number    // Relationship points gained
+  secondaryReward?: string       // Description of additional reward
+  
+  // Scheduling
+  suggestedDay?: number          // 1-7 (Mon-Sun) - proposed day for the event
+  suggestedWeek?: number         // Week number the NPC proposed for the event
+  scheduledWeek?: number         // Week number when event is scheduled
+  scheduledDay?: number          // Day of week when event is scheduled (1-7)
+  scheduledYear?: number         // Year when event is scheduled
+  
+  // Invitation metadata
+  eventName?: string             // Short name for the invitation (e.g., "Luxury Partners Gathering")
+  venue?: string                 // Optional location context
+  
+  // Deadline
+  expiresWeek: number
+  expiresYear: number
+  
+  // State
+  status: 'pending' | 'accepted' | 'declined' | 'expired' | 'completed'
+  
+  // For wagers
+  wagerAmount?: number
+  wagerCondition?: string
+}
+
+// ============================================
+// CONVERSATION TOPIC TRACKING
+// ============================================
+
+export interface ConversationTopic {
+  topic: string                  // e.g., 'finances', 'spa_race', 'partner_issues'
+  week: number
+  year: number
+  sentiment: 'positive' | 'neutral' | 'negative'
+  /** Brief summary of what was discussed */
+  summary?: string
+}
+
+export type ContactType = 'partner' | 'family' | 'friend' | 'business' | 'rival' | 'potential_date' | 'team_staff' | 'rival_driver' | 'sponsor_rep' | 'team_principal'
+
+/** Knowledge tier determines what game-state information this contact would realistically know */
+export type KnowledgeTier = 'public' | 'paddock' | 'inner_circle' | 'team_only' | 'partner_only'
 
 export interface ContactInfo {
   id: string
   name: string
-  type: 'partner' | 'family' | 'friend' | 'business' | 'rival' | 'potential_date'
+  type: ContactType
   traits: string[]
   
   // Portrait and identity
   portraitId?: string           // Links to asset system
   gender?: 'male' | 'female'    // For portrait matching
+  nationality?: string
+  age?: number
+  occupation?: string
   
   // Bio - AI-generated backstory and personality details
   bio?: SocialBio
+  
+  // ── Pre-gen profile fields (carried through from pool data) ──
+  pregenId?: string              // Link back to pool for lookup
+  conversationTopics?: string[]  // What they naturally talk about
+  canHelp?: string[]             // How they can help your career
+  connectionToMotorsport?: string // Their link to the racing world
+  personalitySummary?: string    // AI-friendly personality description
+  educationLevel?: string
+  wealthLevel?: string
+  socialCircle?: string
+  interests?: string[]           // Hobbies and interests
+  
+  // Pre-gen partner-specific fields (for romantic contacts)
+  desires?: {
+    wantsChildren: boolean
+    desiredChildrenCount: number
+    wantsMarriage: boolean
+    lifestyleExpectations: string
+    qualityTimeImportance: number
+    socialLifeImportance: number
+    privacyImportance: number
+  }
+  dealBreakers?: string[]
+  loveLanguage?: string
+  firstImpression?: string
+  style?: string
+  
+  // Pre-gen staff-specific fields (for team_staff contacts)
+  staffRole?: string             // chief_engineer, strategist, pr_manager, etc.
+  staffPersonality?: string      // personality string from PreGenStaffProfile
+  staffQuirks?: string[]         // quirks from PreGenStaffProfile
+  
+  // Pre-gen rival driver fields
+  driverPersonality?: 'aggressive' | 'calculating' | 'flashy' | 'steady' | 'inconsistent' | 'defensive'
+  driverCareerStage?: 'rising' | 'peak' | 'declining' | 'veteran'
+  driverTeamName?: string
+  driverSeriesName?: string
+  
+  // Pre-gen sponsor rep fields
+  sponsorName?: string
+  sponsorTier?: string
+  sponsorCategory?: string
+  
+  // Pre-gen team principal fields
+  teamNarrativeId?: string
+  teamPhilosophy?: string
   
   // Relationship meters
   relationshipLevel: number     // 0-100
@@ -51,7 +282,27 @@ export interface ContactInfo {
   metAt?: string
   metWeek?: number
   metYear?: number
-  datingStatus?: 'stranger' | 'acquaintance' | 'talking' | 'dating' | 'exclusive'
+  datingStatus?: 'stranger' | 'acquaintance' | 'talking' | 'dating' | 'exclusive' | 'engaged' | 'married'
+  
+  // Starter contact flag (set during career creation)
+  isStarterContact?: boolean
+  
+  // ── Emergent romance (partner-pool friends who can become romantic interests) ──
+  romanticEligible?: boolean       // True if this contact can become a romantic interest (has partner pool portrait/data)
+  partnerPoolId?: string           // Links back to partner pool profile for romance transition
+  
+  // ── Messaging behavior (derived from personality) ──
+  messagingStyle?: {
+    frequency: 'very_low' | 'low' | 'medium' | 'high' | 'very_high'
+    messageLength: 'very_short' | 'short' | 'medium' | 'long' | 'very_long'
+    emojiUsage: 'none' | 'rare' | 'moderate' | 'frequent' | 'excessive'
+    responseSpeed: 'instant' | 'fast' | 'normal' | 'slow' | 'very_slow'
+    formality: 'very_formal' | 'formal' | 'casual' | 'very_casual' | 'slang'
+  }
+  
+  // ── Social graph ──
+  knownContactIds?: string[]     // Other contacts this person knows
+  introducedBy?: string          // Contact ID who introduced this person
 }
 
 export interface PotentialDate {
@@ -61,12 +312,32 @@ export interface PotentialDate {
   age: number
   occupation: string
   nationality: string
+  gender: 'male' | 'female'
   
   traits: string[]
   interests: string[]
   
   // Bio - AI-generated backstory and personality details
   bio?: SocialBio
+  
+  // Pre-gen partner fields carried through
+  pregenId?: string
+  desires?: {
+    wantsChildren: boolean
+    desiredChildrenCount: number
+    wantsMarriage: boolean
+    lifestyleExpectations: string
+    qualityTimeImportance: number
+    socialLifeImportance: number
+    privacyImportance: number
+  }
+  dealBreakers?: string[]
+  loveLanguage?: string
+  firstImpression?: string
+  style?: string
+  educationLevel?: string
+  wealthLevel?: string
+  socialCircle?: string
   
   compatibilityScore: number
   interestLevel: number
@@ -99,6 +370,17 @@ export interface PendingDateInvite {
 }
 
 // ============================================
+// SOCIAL ACTION HISTORY (cooldown tracking)
+// ============================================
+
+export interface SocialActionRecord {
+  actionId: string
+  contactId: string
+  executedWeek: number
+  executedYear: number
+}
+
+// ============================================
 // EXPANDED HOBBY STATE
 // ============================================
 
@@ -108,16 +390,6 @@ export interface ExpandedHobbiesState {
   totalPracticeHoursThisWeek: number
   availablePracticeHours: number
   instructors: HobbyInstructor[]
-}
-
-export interface HobbyInstructor {
-  id: string
-  name: string
-  hobbyId: string
-  expertise: number
-  lessonCost: number
-  availability: number[]  // Days available
-  relationship: number
 }
 
 // ============================================
@@ -256,6 +528,99 @@ export interface MentoringRelationship {
 }
 
 // ============================================
+// RELATIONSHIP MILESTONES & TIMELINE
+// ============================================
+
+export type RelationshipMilestoneType =
+  | 'first_message'
+  | 'first_date'
+  | 'first_kiss'
+  | 'became_exclusive'
+  | 'said_i_love_you'
+  | 'met_family'
+  | 'moved_in'
+  | 'first_vacation'
+  | 'anniversary_1_year'
+  | 'anniversary_5_year'
+  | 'romantic_spark'      // Friend → potential_date transition
+  | 'player_breakup'      // Player-initiated breakup
+  | 'player_divorce'      // Player-initiated divorce
+
+export interface RelationshipMilestone {
+  type: RelationshipMilestoneType
+  week: number
+  year: number
+  description: string
+}
+
+export interface RelationshipTimeline {
+  milestones: RelationshipMilestone[]
+  startWeek: number
+  startYear: number
+  currentStage: 'talking' | 'dating' | 'exclusive' | 'engaged' | 'married'
+  argumentCount: number
+  unresolvedConflicts: number
+  breakupWarningLevel: number
+}
+
+export interface RelationshipEvent {
+  id: string
+  type: 'argument' | 'milestone' | 'date' | 'surprise' | 'crisis'
+  description: string
+  choices: RelationshipEventChoice[]
+  week: number
+  year: number
+}
+
+export interface RelationshipEventChoice {
+  id: string
+  text: string
+  effects: {
+    happiness?: number
+    love?: number
+    trust?: number
+    romance?: number
+  }
+  riskLevel: 'safe' | 'mild' | 'risky'
+}
+
+export type DateQuality = 'amazing' | 'great' | 'good' | 'awkward' | 'disaster'
+
+export interface DateOutcome {
+  quality: DateQuality
+  description: string
+  moodChange: number
+  romanceChange: number
+  trustChange: number
+  specialMoment?: string
+  milestone?: RelationshipMilestoneType
+}
+
+// ============================================
+// SEPARATION PROCESS (Breakups & Divorces)
+// ============================================
+
+export interface SeparationProcess {
+  type: 'breakup' | 'divorce'
+  initiatedBy: 'player' | 'partner'
+  startWeek: number
+  startYear: number
+  estimatedDurationDays: number   // Breakup: 2-4 days. Divorce: 28-112 days (4-16 weeks)
+  daysElapsed: number
+  isFinalized: boolean
+  partnerName: string             // For UI display
+  // Divorce-specific: preview for UI, full settlement for processDivorce at finalization
+  settlementPreview?: {
+    alimonyMonthly: number
+    childSupportMonthly: number
+    assetDivisionPercent: number
+    estimatedAssetLoss: number
+  }
+  /** Full settlement calculated at initiation; used when finalizing divorce */
+  settlement?: import('@/simulation/personal/relationshipManager').DivorceSettlement
+}
+
+// ============================================
 // COMPLETE EXPANDED PERSONAL LIFE STATE
 // ============================================
 
@@ -264,6 +629,9 @@ export interface ExpandedPersonalLifeState {
   finances: PersonalFinancialState
   teamEquity?: TeamEquityStake
   partner?: Partner
+  
+  // Separation process (breakup/divorce in progress)
+  separationProcess?: SeparationProcess
   children: Child[]
   familyTree?: FamilyTree
   health: OwnerHealth
@@ -311,6 +679,17 @@ export interface ExpandedPersonalLifeState {
   
   // NEW: Retirement Planning
   retirement: ExtendedRetirementState
+  
+  // COMPUTED: Weekly lifestyle bonuses applied to gameplay
+  // These are recalculated every week from owned assets and partner traits
+  lifestyleFatigueReduction?: number     // Reduces daily fatigue debt (from diet/services energy bonus)
+  lifestyleBonusHours?: number           // Extra hours per day (from luxury services timeFreedPerWeek)
+  lifestylePrestigeBonus?: number        // Aggregated prestige from all assets (affects brand, sponsors, social events)
+  lifestyleConfidenceBonus?: number      // Aggregated confidence from wardrobe (affects negotiations)
+  lifestyleNetworkingBonus?: number      // Aggregated networking from memberships/wardrobe (affects social event contact quality)
+  partnerSponsorAttractionBonus?: number // Partner trait bonus for sponsor interest
+  partnerSocialEventBonus?: number       // Partner trait bonus for social event outcomes
+  partnerPublicImageBonus?: number       // Partner trait bonus for public image
 }
 
 // ============================================
@@ -376,9 +755,33 @@ export interface Partner {
   firstName: string
   lastName: string
   age: number
+  gender: 'male' | 'female'
   occupation?: string
+  nationality?: string
   traits: string[]
   happiness: number
+  
+  // Pre-gen profile link
+  pregenId?: string
+  
+  // Pre-gen partner-specific data
+  interests?: string[]
+  desires?: {
+    wantsChildren: boolean
+    desiredChildrenCount: number
+    wantsMarriage: boolean
+    lifestyleExpectations: string
+    qualityTimeImportance: number
+    socialLifeImportance: number
+    privacyImportance: number
+  }
+  dealBreakers?: string[]
+  loveLanguage?: string
+  firstImpression?: string
+  style?: string
+  educationLevel?: string
+  wealthLevel?: string
+  socialCircle?: string
   
   // Relationship meters
   affectionMeter: number
@@ -496,7 +899,11 @@ export function createDefaultMessagingState(): MessagingState {
     unreadTotal: 0,
     potentialDates: [],
     pendingGifts: [],
-    pendingDateInvites: []
+    pendingDateInvites: [],
+    groupConversations: {},
+    socialConnections: {},
+    pendingRequests: [],
+    socialActionHistory: [],
   }
 }
 

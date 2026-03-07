@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0115",
+  "name": "Synapse Solutions",
+  "category": "tech",
+  "tier": "elite",
+  "country": "Singapore",
+  "description": "Innovating the future, one solution at a time.",
+  "story": "Synapse Solutions, a leading Singaporean AI and data analytics firm, sees motorsport as the ultimate testing ground for real-time decision-making technology. They believe the fast-paced, data-rich environment of racing provides invaluable insights for their AI development. Synapse seeks a partnership that showcases their technology's capabilities and aligns with their values of precision, innovation, and speed.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0115.png"
+}

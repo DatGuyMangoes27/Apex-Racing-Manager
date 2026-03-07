@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Albuquerque",
+  "nationality": "Brazilian",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's motorsport journey began unexpectedly. He initially pursued a career in mechanical engineering, focusing on automotive systems. A chance encounter with a local racing team during a university project ignited a passion for motorsport. He quickly transitioned, volunteering his skills and learning the ropes of race car performance. Over the years, Ricardo has honed his skills in data analysis, simulation, and trackside support. He prides himself on his ability to quickly identify and address performance bottlenecks, working closely with drivers and mechanics to optimize car setup. His experience gives him a unique long-term view of the team.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is a fit man of average height, with a weathered face that reflects years spent at the track."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn, leather-bound notebook filled with handwritten notes.",
+    "Has a specific pre-race ritual involving cleaning his glasses exactly three times.",
+    "Often hums quietly to himself while analyzing data, usually bossa nova tunes."
+  ]
+}

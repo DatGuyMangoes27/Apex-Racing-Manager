@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Bjornstad",
+  "nationality": "Norwegian",
+  "age": 39,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Astrid Bjornstad is a highly respected orthopedic surgeon specializing in sports injuries, particularly those affecting the musculoskeletal system. After completing her postgraduate studies at the University of Oslo, she quickly established herself as a leading expert in her field. While she maintains a private practice catering to Oslo's elite, her passion lies in providing cutting-edge treatment and rehabilitation to athletes from various disciplines. \n\nAstrid's nurturing nature and dedication to patient well-being are complemented by a surprising streak of self-centeredness, a trait she attributes to the demanding nature of her profession. Despite her success, she remains grounded in her old-fashioned values and a humble approach to her work, always prioritizing the needs of her patients. A racing driver might cross paths with Astrid following an injury sustained during a race or training, seeking her expertise in diagnosis, treatment, and rehabilitation to ensure a swift and complete return to the track.",
+  "physical": {
+    "skinTone": "Fair, with a rosy complexion",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a kind face framed by high cheekbones and intelligent, observant eyes. She carries herself with a quiet confidence and an air of professional competence."
+  },
+  "connectionToMotorsport": "Astrid occasionally volunteers as a ringside doctor during some of the smaller rally races in Norway. She also treats several local amateur racers at her clinic.",
+  "meetingContext": "The player might meet Astrid after sustaining an injury during a race or training session, or through a referral from another member of their team or medical staff.",
+  "conversationTopics": [
+    "The latest advances in sports medicine and rehabilitation",
+    "The philosophical implications of pushing the human body to its limits",
+    "Her experiences volunteering at local sporting events",
+    "The challenges of balancing a demanding career with personal well-being",
+    "The parallels between the discipline of fencing and the precision required in motorsport"
+  ],
+  "canHelp": [
+    "Provide expert medical consultation and treatment for injuries.",
+    "Offer access to cutting-edge rehabilitation programs and facilities.",
+    "Connect the player with other medical professionals and specialists within her network."
+  ],
+  "personality_summary": "A nurturing yet slightly self-centered doctor with old-fashioned values."
+}

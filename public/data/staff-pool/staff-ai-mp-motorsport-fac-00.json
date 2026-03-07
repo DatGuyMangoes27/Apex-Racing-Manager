@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 54,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Saoirse O'Malley has been immersed in the world of motorsport since her teens, initially captivated by the technical intricacies of rally cars. This passion led her to pursue an engineering degree, specializing in simulation technologies. Before joining MP Motorsport Junior, Saoirse honed her skills at a smaller, independent racing team, where she was instrumental in developing their simulator program from the ground up. Her approach is deeply rooted in pragmatism and a commitment to data-driven decision-making.\n\nSaoirse is known for her ability to translate complex technical data into actionable insights for drivers, making her an invaluable asset to the team. She thrives in high-pressure situations, maintaining a calm demeanor while efficiently troubleshooting issues. Her meticulous approach to simulator calibration and validation ensures that the team's drivers receive the most realistic and effective training possible. Saoirse's relentless pursuit of accuracy and her knack for problem-solving make her a unique and respected figure within the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a low ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "A slender woman with a focused gaze and a kind smile."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping her pen on the table when deep in thought.",
+    "Insists on starting each simulation session with a thorough system check."
+  ]
+}

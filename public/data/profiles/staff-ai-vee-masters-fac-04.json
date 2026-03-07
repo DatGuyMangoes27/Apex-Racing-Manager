@@ -1,0 +1,22 @@
+{
+  "name": "Ayumi Tanaka",
+  "nationality": "Japanese",
+  "age": 46,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Ayumi Tanaka's journey into motorsport began unexpectedly. While pursuing her electrical engineering degree at Kyoto University, a guest lecture by a Formula 1 engineer ignited a passion she never knew she had. After graduating, she honed her skills in consumer electronics before making the leap to a smaller racing team, craving the adrenaline and rapid problem-solving inherent in the sport. \n\nAyumi believes in a data-driven approach, meticulously analyzing telemetry to optimize vehicle performance. Her strength lies in her ability to translate complex technical information into actionable insights for the drivers and mechanics. What sets her apart is her holistic view of the car's electronics; she isn't just fixing problems, she's anticipating them and engineering solutions for future challenges.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Shoulder-length, neatly styled with a slight wave.",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Ayumi has a focused look and a calm demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and calculations.",
+    "Has a collection of vintage transistors displayed on her workbench.",
+    "Insists on drinking green tea precisely brewed at 80 degrees Celsius before starting any major task."
+  ]
+}

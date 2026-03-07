@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Gruber",
+  "nationality": "Austrian",
+  "age": 53,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Hans-Peter's journey in motorsport began in his youth, tinkering with engines in his father's garage in the Austrian Alps. He earned a degree in Mechanical Engineering from the Vienna University of Technology and quickly found his way into the world of Formula racing, initially working as a junior aerodynamicist. His sharp eye for detail and relentless pursuit of performance led him to climb the ranks, working for several smaller teams before landing at Aston Martin. \n\nHans-Peter is known for his meticulous approach to engineering and his unwavering commitment to extracting every last drop of performance from the car. He believes in a data-driven approach, leaving no stone unturned in the quest for marginal gains. His experience is invaluable, but he can be a tough taskmaster, expecting the same level of dedication from his team. What sets him apart is his ability to translate complex technical data into actionable strategies that the drivers can understand and implement on the track.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed Goatee",
+    "description": "A stocky man with a determined gaze, Hans-Peter always looks like he's calculating something."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out slide rule in his pocket, even though he uses computers.",
+    "Insists on having a specific brand of Austrian mineral water available at all times.",
+    "Has a habit of muttering technical jargon under his breath while analyzing data."
+  ]
+}

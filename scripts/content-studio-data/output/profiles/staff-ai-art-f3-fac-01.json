@@ -1,0 +1,22 @@
+{
+  "name": "Angus McLeod",
+  "nationality": "Australian",
+  "age": 36,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Angus McLeod's journey into motorsport analytics began with a childhood fascination for Supercars, fuelled by countless weekends spent at Bathurst. He transitioned from a theoretical physics background at university to data analysis, initially focusing on financial modelling before realizing his passion lay in applying those skills to racing. He thrives on uncovering hidden patterns within complex datasets, believing that even marginal gains can be the difference between winning and losing.\n\nAt ART Grand Prix, Angus is known for his ability to translate raw data into actionable strategies. He doesn't just present numbers; he contextualizes them, providing engineers and strategists with a clear understanding of the implications. His collaborative approach ensures that data insights are effectively integrated into the team's decision-making process, fostering a culture of continuous improvement. Angus is determined to extract the finest details to improve the team's performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Angus is of average height, with a lean build and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn copy of \"Applied Regression Analysis\" in his backpack.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to analyze data while listening to classic rock at a low volume."
+  ]
+}

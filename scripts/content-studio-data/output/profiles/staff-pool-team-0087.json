@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 47,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began unexpectedly with a fascination for go-karts as a child, fueled by weekend trips to the local track. This early exposure ignited a passion that led him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, he quickly found himself immersed in the world of racing, initially working for a small Formula Renault team before moving up the ranks to various GT and touring car outfits. \n\nJean-Pierre's approach to race engineering is rooted in a deep understanding of data analysis and a constant pursuit of innovative solutions. He believes that a strong rapport with the driver is crucial for success, enabling him to translate feedback into tangible improvements in car setup and performance. He's known for his uncanny ability to predict track evolution and adjust strategies accordingly, often giving his teams a competitive edge. What sets him apart is his willingness to experiment with unconventional approaches, pushing the boundaries of what's considered standard practice.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of medium height, Jean-Pierre has a focused gaze and an air of quiet intensity."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out slide rule despite having access to advanced software.",
+    "Insists on having a specific brand of strong espresso before every race.",
+    "Constantly doodles complex mechanical diagrams on any available surface."
+  ]
+}

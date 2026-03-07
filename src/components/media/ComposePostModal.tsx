@@ -2,17 +2,62 @@
  * Compose Post Modal Component
  * 
  * Allows players to compose social media posts with tone selection,
- * preview generated content, and see engagement results.
+ * preview generated content, AI-generated images, and see engagement results.
  */
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Send, Heart, MessageCircle, Share2, 
   Flame, Loader2, AlertTriangle, TrendingUp,
-  Users, Star, Shield, Zap, Scale, Eye
+  Users, Star, Shield, Zap, Scale, Eye,
+  ImagePlus, RefreshCw, ImageOff, Image as ImageIcon
 } from 'lucide-react'
 import { Modal, Button, Card } from '@/components/ui';
+import type { MediaTone, SocialPost } from '@/store/careerStore';
+import type { EngagementResult, AIPostContext, PostImageContext } from '@/services/mediaAI';
+import { generateAISocialPost, generatePostText, simulateEngagement, generatePostImage } from '@/services/mediaAI';
+import { getRandomImage, type ImageCategory } from '@/data/stock-images';
+
+interface ComposePostModalProps {
+  isOpen: boolean
+  onClose: () => void
+  onPost: (post: SocialPost, engagement: EngagementResult) => void
+  postType: string
+  postTypeName: string
+  postTypeIcon?: React.ReactNode
+  context: {
+    playerName: string
+    teamName: string
+    seriesName: string
+    followerCount: number
+    lastRaceResult?: { position: number; trackName: string }
+    isRaceWeek?: boolean
+    isPostRace?: boolean
+    upcomingTrack?: string
+    recentWin?: boolean
+    recentPodium?: boolean
+    recentDNF?: boolean
+    // Enriched context
+    teamTier?: string
+    staffCount?: number
+    carCount?: number
+    seasonsCompleted?: number
+    sponsorCount?: number
+    // Image generation context
+    carType?: string
+    hasSeriesEntry?: boolean
+    facilityDescriptions?: string[]
+    sponsorNames?: string[]
+    teamMorale?: string
+    baseCountry?: string
+  }
+  engagementContext: {
+    rivalName?: string
+    controversyLevel?: number
+    [key: string]: unknown
+  }
+}
 
 const TONE_OPTIONS = [
   { tone: 'humble', icon: Shield, label: 'Humble', description: 'Grateful and modest', risk: 'Low engagement, Low risk' },
@@ -22,6 +67,33 @@ const TONE_OPTIONS = [
   { tone: 'aggressive', icon: Flame, label: 'Aggressive', description: 'No filter, provocative', risk: 'Very high engagement, High risk' },
   { tone: 'deflecting', icon: Eye, label: 'Minimal', description: 'Short and simple', risk: 'Very low engagement, No risk' }
 ]
+
+/**
+ * Map post types to stock image categories for fallback when AI image gen is unavailable
+ */
+const POST_TYPE_FALLBACK_IMAGES: Record<string, ImageCategory> = {
+  post_race_win: 'victory',
+  post_race_podium: 'victory',
+  training_update: 'garage',
+  fan_appreciation: 'paddock',
+  charity_highlight: 'paddock',
+  race_photo: 'gt-racing',
+  behind_scenes: 'garage',
+  team_appreciation: 'pit-stop',
+  fan_qa: 'paddock',
+  sponsor_shoutout: 'paddock',
+  track_preview: 'track-aerial',
+  throwback_memory: 'historic',
+  equipment_showcase: 'garage',
+  lifestyle_post: 'paddock',
+  championship_push: 'gt-racing',
+  comeback_update: 'gt-racing',
+  rival_callout: 'gt-racing',
+  team_criticism: 'pit-stop',
+  incident_reaction: 'rain-racing',
+  paddock_gossip: 'paddock',
+  media_clap_back: 'paddock',
+}
 
 export function ComposePostModal({ 
   isOpen, 
@@ -39,6 +111,63 @@ export function ComposePostModal({
   const [isGeneratingPost, setIsGeneratingPost] = useState(false)
   const [showResults, setShowResults] = useState(false)
   const [engagementResult, setEngagementResult] = useState<EngagementResult | null>(null)
+  
+  // Image generation state
+  const [imageEnabled, setImageEnabled] = useState(true)
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false)
+  const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null)
+  const [imageError, setImageError] = useState(false)
+  
+  // Generate image for the post
+  const handleGenerateImage = useCallback(async () => {
+    setIsGeneratingImage(true)
+    setImageError(false)
+    setGeneratedImageUrl(null)
+    
+    const imageContext: PostImageContext = {
+      postType,
+      tone: selectedTone,
+      playerName: context.playerName,
+      teamName: context.teamName,
+      seriesName: context.seriesName,
+      trackName: context.lastRaceResult?.trackName || context.upcomingTrack,
+      rivalName: engagementContext.rivalName as string | undefined,
+      isVictory: context.recentWin,
+      isPodium: context.recentPodium,
+      isDNF: context.recentDNF,
+      // Full team state for context-aware images
+      teamTier: context.teamTier,
+      carCount: context.carCount,
+      carType: context.carType,
+      hasSeriesEntry: context.hasSeriesEntry,
+      staffCount: context.staffCount,
+      facilityDescriptions: context.facilityDescriptions,
+      sponsorNames: context.sponsorNames,
+      isFirstSeason: (context.seasonsCompleted ?? 0) === 0,
+      seasonsCompleted: context.seasonsCompleted,
+      teamMorale: context.teamMorale,
+      baseCountry: context.baseCountry,
+    }
+    
+    const imageUrl = await generatePostImage(imageContext)
+    
+    if (imageUrl) {
+      setGeneratedImageUrl(imageUrl)
+    } else {
+      // Context-aware fallback: don't show race imagery if team has no car
+      let fallbackCategory: ImageCategory
+      if ((context.carCount ?? 0) === 0) {
+        // No car — use garage or paddock scenes, never racing imagery
+        fallbackCategory = 'paddock'
+      } else {
+        fallbackCategory = POST_TYPE_FALLBACK_IMAGES[postType] || 'paddock'
+      }
+      setGeneratedImageUrl(getRandomImage(fallbackCategory))
+      setImageError(true)
+    }
+    
+    setIsGeneratingImage(false)
+  }, [postType, selectedTone, context, engagementContext])
   
   // Generate post preview when tone changes - try AI first, fall back to templates
   useEffect(() => {
@@ -66,7 +195,13 @@ export function ComposePostModal({
         upcomingTrack: context.upcomingTrack,
         recentWin: context.recentWin,
         recentPodium: context.recentPodium,
-        recentDNF: context.recentDNF
+        recentDNF: context.recentDNF,
+        // Enriched team context
+        teamTier: context.teamTier,
+        staffCount: context.staffCount,
+        carCount: context.carCount,
+        seasonsCompleted: context.seasonsCompleted,
+        sponsorCount: context.sponsorCount,
       }
       
       const aiPost = await generateAISocialPost(aiContext)
@@ -95,6 +230,13 @@ export function ComposePostModal({
     }
   }, [isOpen, selectedTone, postType, context.playerName, context.teamName, context.seriesName])
   
+  // Trigger image generation when modal opens or image toggle is enabled
+  useEffect(() => {
+    if (isOpen && imageEnabled && !generatedImageUrl && !isGeneratingImage) {
+      handleGenerateImage()
+    }
+  }, [isOpen, imageEnabled])
+  
   // Reset state when modal opens
   useEffect(() => {
     if (isOpen) {
@@ -102,6 +244,8 @@ export function ComposePostModal({
       setShowResults(false)
       setEngagementResult(null)
       setIsPosting(false)
+      setGeneratedImageUrl(null)
+      setImageError(false)
     }
   }, [isOpen])
   
@@ -135,6 +279,7 @@ export function ComposePostModal({
       type: postType,
       tone: selectedTone,
       content: postContent,
+      imageDataUrl: imageEnabled && generatedImageUrl ? generatedImageUrl : undefined,
       engagement: {
         likes: engagementResult.likes,
         comments: engagementResult.comments,
@@ -210,6 +355,18 @@ export function ComposePostModal({
                     <p className="text-xs text-text-muted">Just now</p>
                   </div>
                 </div>
+                
+                {/* Generated Image */}
+                {imageEnabled && generatedImageUrl && (
+                  <div className="mb-4 rounded-xl overflow-hidden">
+                    <img 
+                      src={generatedImageUrl} 
+                      alt="Post image" 
+                      className="w-full aspect-video object-cover"
+                    />
+                  </div>
+                )}
+                
                 <p className="text-text-secondary mb-4">{postContent}</p>
                 
                 {/* Engagement Stats */}
@@ -324,6 +481,89 @@ export function ComposePostModal({
                 </div>
               </div>
               
+              {/* Image Generation Toggle */}
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-sm font-medium">Post Image</h4>
+                  <button
+                    onClick={() => {
+                      const newEnabled = !imageEnabled
+                      setImageEnabled(newEnabled)
+                      if (!newEnabled) {
+                        setGeneratedImageUrl(null)
+                        setImageError(false)
+                      }
+                    }}
+                    className={`
+                      flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all
+                      ${imageEnabled 
+                        ? 'bg-accent-red/20 text-accent-red border border-accent-red/30' 
+                        : 'bg-surface-secondary text-text-muted border border-surface-border hover:border-surface-secondary'}
+                    `}
+                  >
+                    {imageEnabled ? (
+                      <>
+                        <ImagePlus className="w-3.5 h-3.5" />
+                        AI Image On
+                      </>
+                    ) : (
+                      <>
+                        <ImageOff className="w-3.5 h-3.5" />
+                        No Image
+                      </>
+                    )}
+                  </button>
+                </div>
+                
+                {imageEnabled && (
+                  <div className="rounded-xl overflow-hidden border border-surface-border mb-1">
+                    {isGeneratingImage ? (
+                      <div className="aspect-video bg-surface-secondary flex flex-col items-center justify-center gap-3">
+                        <div className="relative">
+                          <ImageIcon className="w-8 h-8 text-text-muted opacity-30" />
+                          <Loader2 className="w-5 h-5 text-accent-red animate-spin absolute -bottom-1 -right-1" />
+                        </div>
+                        <div className="text-center">
+                          <p className="text-sm text-text-muted">Generating image...</p>
+                          <p className="text-xs text-text-muted/60 mt-1">Nano Banana Pro is working its magic</p>
+                        </div>
+                      </div>
+                    ) : generatedImageUrl ? (
+                      <div className="relative group">
+                        <img 
+                          src={generatedImageUrl} 
+                          alt="Generated post image" 
+                          className="w-full aspect-video object-cover"
+                        />
+                        {imageError && (
+                          <div className="absolute top-2 left-2 px-2 py-1 bg-black/70 rounded text-xs text-text-muted flex items-center gap-1">
+                            <AlertTriangle className="w-3 h-3 text-status-warning" />
+                            Using stock image
+                          </div>
+                        )}
+                        <button
+                          onClick={handleGenerateImage}
+                          className="absolute bottom-2 right-2 px-3 py-1.5 bg-black/70 hover:bg-black/90 rounded-lg text-xs text-white flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <RefreshCw className="w-3 h-3" />
+                          Regenerate
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="aspect-video bg-surface-secondary flex items-center justify-center">
+                        <button
+                          onClick={handleGenerateImage}
+                          className="flex items-center gap-2 px-4 py-2 bg-surface hover:bg-surface-elevated rounded-lg text-sm text-text-muted hover:text-white transition-colors border border-surface-border"
+                        >
+                          <ImagePlus className="w-4 h-4" />
+                          Generate Image
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+              
               {/* Post Preview */}
               <div>
                 <h4 className="text-sm font-medium mb-3">Preview</h4>
@@ -379,17 +619,17 @@ export function ComposePostModal({
                 variant="primary" 
                 className="w-full" 
                 onClick={handlePost}
-                disabled={isPosting || isGeneratingPost}
+                disabled={isPosting || isGeneratingPost || isGeneratingImage}
               >
                 {isPosting ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                     Posting...
                   </>
-                ) : isGeneratingPost ? (
+                ) : isGeneratingPost || isGeneratingImage ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Generating...
+                    {isGeneratingImage ? 'Generating image...' : 'Generating...'}
                   </>
                 ) : (
                   <>
@@ -431,7 +671,7 @@ function AnimatedCounter({ value }: { value: number }) {
   
   return (
     <span className="font-mono">
-      {displayValue >= 1000 ? `${(displayValue / 1000).toFixed(1)}k` : displayValue.toLocaleString()}
+      {displayValue.toLocaleString()}
     </span>
   )
 }

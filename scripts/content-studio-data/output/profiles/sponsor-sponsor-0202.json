@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0202",
+  "name": "Al-Sahra Tires",
+  "category": "tires",
+  "tier": "mid",
+  "country": "Saudi Arabia",
+  "description": "Grip the future.",
+  "story": "Al-Sahra Tires is a leading tire manufacturer in the Middle East, committed to innovation and performance. With a growing global presence, they seek to enhance brand recognition and showcase their tire technology through motorsport partnerships. They value teams demonstrating cutting-edge engineering and a drive for excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0202.png"
+}

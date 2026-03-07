@@ -1,0 +1,22 @@
+{
+  "name": "Ingrid Karlsson",
+  "nationality": "Swedish",
+  "age": 56,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Ingrid's journey into motorsport began unconventionally, not with racing dreams, but with a profound fascination for the intricate mechanics of engines. After earning a degree in Mechanical Engineering from Chalmers University of Technology, she started her career in the automotive industry, quickly gravitating towards high-performance vehicles. A chance encounter with a local racing team led to her transition into motorsport, initially as a data analyst before proving her mettle as a race engineer.\n\nIngrid's meticulous approach to data analysis, combined with her deep understanding of vehicle dynamics, sets her apart. She excels at translating complex data into actionable insights, working closely with drivers to optimize car setup and performance. While she possesses a calm and collected demeanor under pressure, her ambition to achieve peak performance is unwavering, constantly pushing both herself and her team to new heights. She is known for her ability to foster strong collaborative relationships within the team, and her dedication to mentoring young engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Ingrid is of average height with a thoughtful expression, often seen with a slightly furrowed brow as she contemplates complex engineering problems."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn schematics.",
+    "Has a peculiar habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on having a specific type of Swedish coffee before every race."
+  ]
+}

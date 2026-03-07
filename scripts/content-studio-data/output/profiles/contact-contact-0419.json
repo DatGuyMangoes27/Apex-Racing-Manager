@@ -1,0 +1,31 @@
+{
+  "name": "Kemal Demir",
+  "nationality": "Turkish",
+  "age": 63,
+  "gender": "male",
+  "contactType": "doctor",
+  "bio": "Dr. Kemal Demir is a renowned orthopedic surgeon with a long and distinguished career, specializing in sports-related injuries. A graduate of Istanbul University and later completing his PhD at UCLA, he's known for his innovative surgical techniques and dedication to patient care. Despite his professional success, Kemal maintains a humble demeanor, often reminiscing about his younger days surfing the Mediterranean coast and tinkering with classic cars. He's cultivated a quiet rebellion against the medical establishment, often advocating for holistic treatments alongside traditional methods.\n\nKemal's connection to motorsport stems from his expertise in treating high-impact injuries common in racing. Several prominent drivers have sought his expertise, trusting his skill and discretion. He often provides consultations at major races, offering immediate medical assistance and advising teams on driver safety and recovery protocols. A racing driver might cross paths with Kemal following an accident on the track, or through a recommendation from another driver or team member.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying Black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper mustache",
+    "description": "Kemal is a man of medium build, his posture still surprisingly straight for his age. He carries himself with a quiet confidence, his eyes holding a spark of youthful energy."
+  },
+  "connectionToMotorsport": "Dr. Demir is a sought-after orthopedic surgeon specializing in sports injuries, particularly those common in motorsport. He provides medical consultations and emergency treatment at major racing events.",
+  "meetingContext": "The player might meet Dr. Demir after sustaining an injury during a race or testing session, or through a recommendation from a teammate or team manager.",
+  "conversationTopics": [
+    "The golden age of Formula 1",
+    "The importance of driver safety",
+    "His collection of vintage motorcycles",
+    "The parallels between surgery and racing strategy",
+    "The therapeutic benefits of surfing"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for injuries.",
+    "Offer connections to other medical professionals and rehabilitation specialists.",
+    "Offer insights into driver physiology and performance optimization."
+  ],
+  "personality_summary": "A nostalgic and rebellious doctor with a passion for healing and a hidden love for speed."
+}

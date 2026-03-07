@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0225",
+  "name": "Modella Corse",
+  "category": "apparel",
+  "tier": "entry",
+  "country": "Italy",
+  "description": "Italian motorsport apparel for the discerning racer.",
+  "story": "Modella Corse was founded by ex-racing driver Marco Bellini to bring Italian style and quality to motorsport apparel. We believe in supporting up-and-coming talent and seek a partnership that reflects our commitment to performance and style. We want to see our brand represented with professionalism and a passion for racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0225.png"
+}

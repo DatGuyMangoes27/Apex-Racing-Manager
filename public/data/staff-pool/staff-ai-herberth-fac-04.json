@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Elena Quispe Vargas",
+    "nationality": "Peruvian",
+    "age": 53,
+    "gender": "female",
+    "role": "electronics_engineer",
+    "bio": "Elena's journey into motorsport began unconventionally. A fascination with the intricate workings of radios as a child evolved into a passion for electronics engineering. After graduating top of her class from the Universidad Nacional de Ingeniería in Lima, she sought opportunities beyond traditional engineering roles. An internship with a local rally team ignited her love for motorsports, leading her to focus on the crucial role of electronics in vehicle performance. \n\nElena approaches her role with meticulous precision, believing that every circuit and sensor connection must be flawlessly executed. Her knack for diagnosing complex electrical problems and her forward-thinking approach to electronic systems have made her a valuable asset to Herberth Motorsport. She's known for her ability to optimize electronic components for peak performance, often suggesting innovative solutions that others overlook. Her perfectionism, while occasionally challenging, ensures the highest standards of quality and reliability in her work.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, neatly braided with streaks of silver",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Elena has a warm, approachable face framed by her braided hair, with a focused intensity in her gaze."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Insists on using vintage oscilloscopes alongside modern equipment.",
+      "Carries a small pouch of coca leaves for focus and altitude sickness (even at sea level).",
+      "Always tests electronic components by listening to the sound they make with a stethoscope."
+    ]
+  }
+]

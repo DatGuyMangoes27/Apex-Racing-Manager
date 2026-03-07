@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "French",
+  "age": 39,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Sophie's journey into motorsport began unconventionally. While studying engineering, a summer internship at a small racing team ignited her passion. She quickly realized her organizational and analytical skills were best suited to coordinating the complex world of test driving. Over the years, she's honed her ability to anticipate problems and keep the testing program running smoothly, even under pressure.\n\nSophie's approach is rooted in data. She meticulously tracks performance metrics and uses that information to optimize testing schedules and identify areas for improvement. She's known for her clear communication and ability to translate complex technical information into actionable insights for the drivers and engineers. Her dedication to precision and her unwavering focus on results make her a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often pulled back into a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie is of average height with a determined expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and observations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on having a perfectly organized desk, believing it reflects a well-organized mind."
+  ]
+}

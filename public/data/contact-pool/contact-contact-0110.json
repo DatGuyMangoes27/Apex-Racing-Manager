@@ -1,0 +1,31 @@
+{
+  "name": "Layla Haddad",
+  "nationality": "Lebanese",
+  "age": 61,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Layla Haddad is a celebrated Lebanese actress, renowned for her dramatic roles in classic Arabic cinema and television. While her career peaked in the 80s and 90s, she remains a recognizable face and a respected figure in the entertainment industry, often appearing in nostalgic retrospectives and receiving lifetime achievement awards. She's known for her sharp wit, occasional condescension towards modern trends, and a tendency to share juicy gossip gleaned from her years in the spotlight.\n\nDespite not being directly involved in motorsport, Layla's influence extends to various high-profile social circles, and she's a frequent guest at prestigious events. A rising racing driver might encounter her at a charity gala, a film festival sponsored by a luxury car brand, or even through mutual connections in the world of high society. She's always on the lookout for fresh talent and enjoys mentoring promising individuals (as long as they're willing to listen to her advice, of course).",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant updo, often with intricate braids",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Layla maintains a regal posture and carries herself with an air of old Hollywood glamour. She favors elegant, flowing dresses and statement jewelry."
+  },
+  "connectionToMotorsport": "Layla attends high-profile motorsport events as a celebrity guest, often invited by luxury car brands eager to associate with her classic star power and sophisticated image. She also knows several team owners through her connections in the entertainment and business world.",
+  "meetingContext": "The player might meet Layla at a motorsport-themed charity gala or a film premiere sponsored by a car manufacturer, where she is a guest of honor.",
+  "conversationTopics": [
+    "The Golden Age of Arabic Cinema",
+    "The latest gossip in the entertainment industry",
+    "The importance of tradition and preserving cultural heritage",
+    "The beauty of her rose garden",
+    "Her experiences with meditation and mindfulness"
+  ],
+  "canHelp": [
+    "Introduce the player to influential sponsors and investors.",
+    "Offer valuable media training and guidance on public image.",
+    "Provide access to exclusive social events and networking opportunities."
+  ],
+  "personality_summary": "A nostalgic actress with a condescending streak, Layla enjoys sharing gossip and mentoring promising talent, provided they appreciate her wisdom."
+}

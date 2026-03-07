@@ -1,0 +1,56 @@
+{
+  "history": "Kartódromo Internacional da Granja Viana, located in Cotia near São Paulo, is a cornerstone of Brazilian karting. Opened in the late 1990s, it quickly became a popular venue for both amateur and professional karters. While Granja Viana is renowned for its longer, more complex configurations used in events like the 500 Milhas de Kart, the Mini layout offers a more accessible and compact circuit for entry-level racers and recreational karting. This layout, featuring just six turns over its 0.5km length, has been regularly used for local club races and karting schools, providing a safe and engaging environment for beginners to learn the ropes. The Mini layout has also served as a training ground for future Brazilian motorsport stars, who often start their careers honing their skills on this very track.",
+  "atmosphere": "Imagine standing trackside at Granja Viana as karts scream around the Mini layout. The air vibrates with the high-pitched whine of two-stroke engines, amplified by the close proximity of the track walls. The smell of burning rubber and methanol hangs heavy in the air, a familiar scent to any karting enthusiast. Cheering from friends and family fills the gaps between engine roars as drivers battle for position, elbows out and tires squealing. The energy is palpable, a raw and visceral karting experience concentrated into the tight confines of the Mini circuit.",
+  "trackCharacter": "The Mini layout at Granja Viana is all about momentum and precision. Its short length and limited number of turns demand a driving style that emphasizes carrying speed through the corners and minimizing any loss of momentum. It's a layout where every tenth of a second counts, and small mistakes can be incredibly costly. The track rewards smooth, deliberate inputs and a deep understanding of kart control. While not as technically challenging as the full circuit, the Mini layout presents its own unique challenge, requiring drivers to be both aggressive and precise.",
+  "nickname": "The Beginner's Bend",
+  "famousCorners": [
+    {
+      "name": "Curva 1 (Turn 1)",
+      "description": "The first corner is a crucial right-hander that immediately tests drivers' braking and cornering abilities.",
+      "challenge": "A good exit is essential for carrying speed onto the following straight."
+    },
+    {
+      "name": "Curva 3 (Turn 3)",
+      "description": "This is a sweeping left-hander that demands commitment and a precise line.",
+      "challenge": "Maintaining momentum through the corner is key to a fast lap time."
+    },
+    {
+      "name": "Curva 4 (Turn 4)",
+      "description": "A sharp right-hander that immediately follows the sweeping left.",
+      "challenge": "Requires a quick change of direction and precise braking to avoid running wide."
+    },
+    {
+      "name": "Curva 6 (Turn 6)",
+      "description": "The final corner is a tight left-hander leading onto the main straight.",
+      "challenge": "A good exit here is crucial for maximizing speed down the straight and setting up an overtaking opportunity into Turn 1."
+    }
+  ],
+  "keyFactors": [
+    "Momentum preservation",
+    "Precise braking",
+    "Smooth cornering",
+    "Aggressive driving",
+    "Kart setup for maximum grip"
+  ],
+  "overtakingSpots": [
+    "Into Curva 1 (Turn 1) - using the slipstream from the main straight",
+    "Into Curva 4 (Turn 4) - late braking maneuver",
+    "Run to the start/finish line - slipstream and draft"
+  ],
+  "historySnippets": [
+    "Granja Viana hosts the famous 500 Milhas de Kart endurance race.",
+    "The Mini layout is frequently used for karting schools and introductory events.",
+    "Many Brazilian racing drivers started their careers at Granja Viana.",
+    "The track is known for its challenging and technical nature.",
+    "Granja Viana has multiple layouts, catering to different skill levels.",
+    "The venue is located close to São Paulo, making it easily accessible."
+  ],
+  "weatherNotes": "The weather in Cotia, Brazil, can be unpredictable. Rain is common, particularly during the summer months (December to March), which can make the Mini layout very slippery and challenging. Dry conditions offer more grip, but the track surface can still be affected by temperature changes. Drivers need to be prepared to adapt their driving style and kart setup to suit the prevailing conditions.",
+  "drivingAdvice": "On the Mini layout at Granja Viana, focus on maintaining momentum through the corners. Avoid abrupt steering inputs and brake smoothly to prevent upsetting the kart's balance. Experiment with different lines through Curva 3 to find the optimal path for carrying speed. A good exit from Curva 6 is crucial for maximizing speed down the main straight and setting up an overtaking opportunity into Curva 1.",
+  "famousRaces": [
+    "Local club races held on the Mini layout provide a great opportunity for amateur karters to compete and improve their skills.",
+    "Karting schools often use the Mini layout to teach beginners the fundamentals of kart control and racecraft.",
+    "Regional karting championships sometimes include races on the Mini layout as part of their program."
+  ],
+  "localCulture": "Cotia, where Granja Viana is located, offers a blend of urban and rural life. The area is known for its green spaces and proximity to São Paulo. Paddock life at Granja Viana is typically relaxed and friendly, with karters and mechanics sharing tips and advice. Traditional Brazilian food, such as *pão de queijo* (cheese bread) and *espetinhos* (grilled skewers), can often be found at the trackside vendors."
+}

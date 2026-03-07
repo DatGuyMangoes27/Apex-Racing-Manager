@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 49,
+  "gender": "male",
+  "role": "finance_controller",
+  "bio": "Jean-Pierre Dubois is a seasoned finance controller with nearly two decades of experience in the motorsport industry. Born and raised in Montreal, his passion for racing began at a young age, attending the Canadian Grand Prix every year with his father. After graduating with a degree in accounting, Jean-Pierre initially worked in corporate finance but quickly found himself drawn back to his motorsport roots, taking a role with a small racing team. \n\nHe is known for his meticulous attention to detail and his ability to navigate complex financial situations. Jean-Pierre's approach is data-driven, always seeking to optimize resource allocation and maximize the team's financial performance. His reputation for being demanding stems from his unwavering commitment to financial discipline and his belief that every dollar saved on the balance sheet can translate to milliseconds gained on the track. What sets Jean-Pierre apart is his uncanny ability to spot potential risks and opportunities, combined with a deep understanding of the unique financial challenges faced by motorsport teams.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Jean-Pierre is of average height with a stocky build, often seen with a serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a well-worn financial calculator.",
+    "Insists on using fountain pens for all important documents.",
+    "Has a framed photo of Gilles Villeneuve on his desk."
+  ]
+}

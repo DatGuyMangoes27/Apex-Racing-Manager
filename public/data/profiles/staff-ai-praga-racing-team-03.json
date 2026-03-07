@@ -1,0 +1,22 @@
+{
+  "name": "Angus McMillan",
+  "nationality": "Australian",
+  "age": 51,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Angus McMillan’s journey in motorsport began with a childhood fascination for aerodynamics, fueled by countless hours spent building and testing model aircraft. This passion led him to pursue a degree in aerospace engineering, after which he landed a junior role at a small racing outfit back in Australia. He quickly proved his worth, contributing to significant gains in downforce and drag reduction. \n\nMoving to Europe a decade ago, Angus honed his skills at several high-profile teams before finding a home at Praga Racing. Known for his uncompromising pursuit of aerodynamic perfection, he demands the highest standards from his team, pushing them to explore every possible avenue for improvement. Angus believes that a meticulous approach, coupled with creative problem-solving, is the key to unlocking untapped performance on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly trimmed receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "A lean man with a focused gaze and a perpetually furrowed brow."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on using wind tunnel data to inform even the smallest design decisions."
+  ]
+}

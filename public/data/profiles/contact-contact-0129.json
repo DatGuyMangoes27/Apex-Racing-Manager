@@ -1,0 +1,31 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 43,
+  "gender": "female",
+  "contactType": "musician",
+  "bio": "Sophie Dubois is a celebrated Belgian jazz vocalist and pianist, known for her smoky voice and improvisational style. While never formally trained, her raw talent and passion for music propelled her to international acclaim, performing at renowned venues and festivals across Europe and North America. Sophie's rebellious spirit is evident in her genre-bending approach, often incorporating elements of blues, soul, and even classical music into her performances. Despite her success, she maintains a down-to-earth attitude and a generous spirit, actively supporting young musicians and local arts initiatives.\n\nSophie's connection to the motorsport world is through her late father, a former rally driver. She has occasionally performed at motorsport events, and is a known enthusiast of classic cars. A racing driver might cross paths with her at a vintage car show, a charity gala benefiting a racing-related cause, or perhaps even through a mutual acquaintance in the arts scene who also shares a passion for motorsport.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Wavy, shoulder-length, often worn in a loose bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sophie has a warm, expressive face with laugh lines around her eyes. Her style is eclectic and vintage-inspired."
+  },
+  "connectionToMotorsport": "Sophie's late father was a rally driver, and she has performed at motorsport events. She also has a fondness for classic cars, often attending related shows and auctions.",
+  "meetingContext": "You might meet Sophie at a charity event for a motorsport foundation where she is performing, or at a classic car show where she is admiring a vintage vehicle.",
+  "conversationTopics": [
+    "Jazz music",
+    "Vintage cars",
+    "Her father's rally stories",
+    "Belgian history and culture",
+    "Astronomy"
+  ],
+  "canHelp": [
+    "Introduce you to sponsors with an appreciation for the arts",
+    "Offer a performance slot at a high-profile event, increasing your visibility",
+    "Connect you with influential figures in the Belgian entertainment scene"
+  ],
+  "personality_summary": "A rebellious, spontaneous, and generous jazz musician with a deep appreciation for classic cars and a surprising connection to the racing world."
+}

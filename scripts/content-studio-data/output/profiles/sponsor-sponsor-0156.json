@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0156",
+  "name": "Coastal Canvas",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "USA",
+  "description": "Elevating outdoor living with premium awnings and shade solutions.",
+  "story": "Coastal Canvas is a leading provider of custom awnings and shade solutions for homes and businesses. We believe in the pursuit of excellence and understand the importance of high-performance under pressure, mirroring the dedication of motorsport teams. Our sponsorship aims to increase brand awareness among discerning customers who appreciate quality and precision, while also supporting American talent on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0156.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 53,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Moira MacLeod's journey into motorsport began unconventionally, not on the track but within the intricate workshops of a Clyde shipyard. Her apprenticeship as a marine engineer instilled a deep appreciation for precision and problem-solving under pressure. Trading the high seas for high speeds, she transitioned to motorsport, drawn by the challenge of optimizing performance at the razor's edge. \n\nHer approach as a performance engineer is rooted in data-driven analysis and a relentless pursuit of marginal gains. Known for her meticulousness and calm demeanor, Moira excels at translating complex technical information into actionable strategies for the drivers. She takes immense pride in mentoring junior engineers and fostering a collaborative team environment. Her distinctive ability lies in blending time-honored engineering principles with cutting-edge innovation, ensuring Toyota Gazoo Racing remains competitive.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying auburn",
+    "hairStyle": "Shoulder-length, layered, often pulled back into a practical low ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A sturdy woman with a no-nonsense demeanor, Moira carries herself with quiet confidence."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a well-worn slide rule alongside her laptop.",
+    "Insists on brewing her own strong Scottish breakfast tea in the garage.",
+    "Has a habit of tapping her pen against her notepad when deep in thought, creating a rhythmic clicking sound."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Annelise Dubois",
+  "nationality": "Swiss",
+  "age": 27,
+  "gender": "female",
+  "contactType": "fashion_designer",
+  "bio": "Annelise Dubois is a rising star in the sustainable fashion world, known for her avant-garde designs that blend high fashion with eco-conscious materials. Eschewing formal training, she honed her skills through relentless experimentation and a keen eye for detail, quickly gaining recognition for her bold silhouettes and innovative use of recycled textiles. Her fiercely independent spirit and uncompromising vision have earned her both critical acclaim and a reputation for being somewhat difficult to work with.\n\nWhile not directly involved in motorsport, Annelise's brand is increasingly sought after for collaborations with luxury brands and sponsors associated with racing events. Her unique perspective and commitment to sustainability make her a valuable asset for companies looking to enhance their image and appeal to a younger, more environmentally conscious audience. A racing driver might cross paths with her at a high-profile event, perhaps a fashion show sponsored by a racing team or at an exclusive after-party during a Grand Prix weekend.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Raven Black",
+    "hairStyle": "Sharp, angular bob",
+    "eyeColor": "Steel Grey",
+    "facialHair": null,
+    "description": "Annelise has a striking, almost severe look. Her dark hair and piercing grey eyes contrast sharply with her pale skin."
+  },
+  "connectionToMotorsport": "Annelise's fashion brand is gaining popularity with motorsport sponsors looking to improve their sustainability image. She may be designing team apparel or partnering on marketing campaigns.",
+  "meetingContext": "The player could meet Annelise at a fashion show during a Grand Prix weekend, or at an exclusive after-party hosted by a team sponsor.",
+  "conversationTopics": [
+    "The ethics of fast fashion",
+    "Her latest collection and its inspiration",
+    "The role of art in social change",
+    "The challenges of sourcing sustainable materials",
+    "Philosophy and existentialism"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors in the luxury goods market",
+    "Provide image consulting and styling services",
+    "Connect the player with influential figures in the creative industry"
+  ],
+  "personality_summary": "A creative and opinionated fashion designer with a strong ethical compass."
+}

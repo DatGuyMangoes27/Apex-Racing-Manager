@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 44,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Krzysztof's fascination with motorsport began during his youth, tinkering with go-karts in his hometown. He pursued a degree in Mechanical Engineering, specializing in simulation and modeling. After graduating, he worked on developing simulation software for industrial applications, but his heart always remained in motorsport. He joined a small sim racing team to gain experience and network within the racing community. \n\nKrzysztof is known for his pragmatic approach to problem-solving. He values data and thorough analysis, always seeking to improve the accuracy and realism of the simulator. He is eager to learn from experienced engineers and contribute his skills to a successful racing team. He is particularly interested in developing driver-in-the-loop simulations and enhancing the feedback systems for driver training.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short boxed beard",
+    "description": "Krzysztof is of average height with a sturdy build and often wears glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations and ideas.",
+    "Has a habit of meticulously cleaning his workspace at the end of each day.",
+    "Always drinks herbal tea during work to stay focused."
+  ]
+}

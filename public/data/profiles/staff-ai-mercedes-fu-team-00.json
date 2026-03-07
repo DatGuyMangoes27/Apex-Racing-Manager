@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 60,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Declan O'Malley's journey in motorsport began not in a gleaming garage, but on the winding, rain-slicked roads of rural Ireland, tinkering with engines in his youth. A scholarship to a technical college in Dublin opened doors, leading to a junior engineering role with a small Formula Ford team. His sharp eye for detail and unwavering dedication quickly propelled him through the ranks, eventually leading him to Formula 3, and later, a senior management position at a mid-tier Formula 1 team. \n\nHis pragmatic, no-nonsense approach and emphasis on team cohesion earned him respect throughout the paddock. While not the loudest voice in the room, his strategic acumen and keen understanding of driver psychology make him a formidable leader. He values loyalty above all else, and his focus on long-term stability has consistently delivered results. He joined Mercedes-AMG three years ago, and has been instrumental in their recent successes, fostering a culture of continuous improvement and unwavering support for his team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey mustache",
+    "description": "A stout man with a weathered face and kind eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn leather notebook filled with hand-written notes.",
+    "Insists on personally reviewing every pit stop strategy before a race.",
+    "Has a lucky shamrock that he keeps in his pocket during races."
+  ]
+}

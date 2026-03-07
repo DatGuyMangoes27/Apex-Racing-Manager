@@ -1,0 +1,62 @@
+{
+  "history": "The Circuito Internazionale d'Abruzzo, commonly known as Ortona, is a permanent circuit located in the Abruzzo region of Italy. Opened in 2005, it has quickly become a popular venue for national and international motorsport events. The Full Circuit layout, measuring 3.5km, is the primary configuration used for major races, including Italian GT Championship rounds and various open-wheel series. While it doesn't host top-tier international championships like Formula 1 or MotoGP, Ortona has established itself as a vital proving ground for young drivers and a challenging circuit for seasoned competitors. The track's design, with its mix of technical corners and fast straights, provides a stern test for both driver and machine.",
+  "atmosphere": "Standing on the main grandstand at Ortona during an Italian GT race is a sensory overload. The roar of the V8 engines reverberates through the grandstand, a deep, guttural sound that vibrates in your chest. The air is thick with the smell of high-octane fuel and burning rubber. The vibrant Italian flags wave in the breeze, and the passionate fans erupt with every overtake and close call. The sun beats down on the track, creating a shimmering haze as the cars blast through the Parco corner, a blur of color and speed. It's an experience that perfectly captures the spirit of Italian motorsport: raw, visceral, and utterly captivating.",
+  "trackCharacter": "The Full Circuit layout at Ortona is a demanding track that rewards precision and bravery. Its 3.5km length packs in a diverse range of corners, from the high-speed sweepers of the Parco section to the tight, technical complex at the end of the lap. The track flows well, but there are few opportunities to relax; drivers must be constantly on their toes, managing their speed and tire wear. Success here requires a well-balanced car and a driver who can extract every last tenth of a second from it.",
+  "nickname": "The Dragon of Abruzzo",
+  "famousCorners": [
+    {
+      "name": "Curva 1",
+      "description": "A fast right-hander immediately after the start/finish line. It is crucial to get a good exit to carry speed onto the following straight.",
+      "challenge": "Requires precise car placement and commitment; going in too hot will compromise the entire first sector."
+    },
+    {
+      "name": "Parco",
+      "description": "A long, sweeping right-hander with significant g-forces. It tests the car's aerodynamic balance and the driver's neck strength.",
+      "challenge": "Maintaining consistent speed and line throughout the long duration of the corner is key to a fast lap time. Tire management is critical here."
+    },
+    {
+      "name": "Esse Veloce",
+      "description": "A quick chicane that demands a flick of the wheel and precise timing. It is a popular overtaking spot for the brave.",
+      "challenge": "Requires quick reflexes and a stable car. Misjudging the entry can lead to a loss of momentum or even a spin."
+    },
+    {
+      "name": "Curva del Lago",
+      "description": "A tricky, medium-speed left-hander leading onto the back straight. Getting a good exit is crucial for maximizing speed down the straight.",
+      "challenge": "Finding the right braking point and apex speed is critical. Too much speed and you'll run wide; too little and you'll lose time."
+    },
+    {
+      "name": "Variante",
+      "description": "A tight chicane at the end of the back straight. A common overtaking point and a prime location for late-braking maneuvers.",
+      "challenge": "Requires heavy braking and precise car control. It's easy to lock up the brakes or run wide, losing valuable time."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic Efficiency",
+    "Braking Performance",
+    "Tire Management",
+    "Engine Power (for the straights)",
+    "Chassis Balance"
+  ],
+  "overtakingSpots": [
+    "Curva 1 (start)",
+    "Esse Veloce",
+    "Variante",
+    "Into Curva del Lago (for the brave)"
+  ],
+  "historySnippets": [
+    "Ortona was opened in 2005.",
+    "The Full Circuit is 3.5km long.",
+    "Ortona hosts Italian GT Championship races.",
+    "The circuit is located in the Abruzzo region of Italy.",
+    "It features 12 turns.",
+    "The circuit is known for its challenging mix of corners."
+  ],
+  "weatherNotes": "The weather in Ortona can be unpredictable, especially during the spring and autumn months. Rain showers are common, which can make the already challenging track even more treacherous. In the summer, the track can get very hot, which can lead to increased tire degradation. The wind can also be a factor, particularly in the open sections of the track.",
+  "drivingAdvice": "To be quick at Ortona's Full Circuit, focus on maximizing your corner exit speeds, especially out of Curva 1 and Curva del Lago, as these lead onto the longest straights. Be aggressive but precise in the braking zones for Variante and the Esses. Manage your tires carefully, especially during longer races, as the abrasive surface can quickly wear them down. Don't be afraid to experiment with different lines through Parco to find the optimal balance between speed and grip. Finally, be prepared to defend your position aggressively, as overtaking opportunities are limited.",
+  "famousRaces": [
+    "Italian GT Championship: Ortona has been a regular fixture on the Italian GT calendar, hosting thrilling races with close battles throughout the field.",
+    "Italian Formula 4 Championship: Ortona has provided a platform for young drivers to showcase their talent in the competitive Italian F4 series.",
+    "Various National Series: The circuit is a popular venue for various other national racing series, including touring cars, prototypes, and historic racing events."
+  ],
+  "localCulture": "Ortona is a charming coastal town in the Abruzzo region, known for its beautiful beaches, historic architecture, and delicious cuisine. The local area is famous for its seafood, pasta dishes, and regional wines. Paddock life is relaxed and friendly, with teams often enjoying the local hospitality and exploring the nearby towns and villages. The locals are passionate about motorsport and always welcome visitors with open arms."
+}

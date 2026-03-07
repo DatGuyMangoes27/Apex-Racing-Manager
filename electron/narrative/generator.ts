@@ -5,22 +5,94 @@
  * Used at career creation for drivers and lazily for tracks.
  */
 
-import type { 
-  DriverNarrative, 
-  DrivingStyle, 
-  DriverRivalry,
-  DriverMilestone,
-  RealDriverInfo 
-} from '../../src/store/rivalStore'
+type DrivingStyle = 'aggressive' | 'smooth' | 'calculated' | 'unpredictable' | 'defensive'
 
-import type { 
-  TrackNarrative, 
-  FamousCorner, 
-  NotableMoment,
-  SectorNotes 
-} from '../../src/data/track-narratives'
+interface DriverRivalry {
+  driverId: string
+  intensity: number
+  reason: string
+}
 
-import type { TeamNarrative } from '../../src/data/team-narratives'
+interface DriverMilestone {
+  year?: number
+  title: string
+  detail?: string
+}
+
+interface RealDriverInfo {
+  knownFor?: string
+  [key: string]: unknown
+}
+
+interface DriverNarrative {
+  origin: string
+  careerPath: string
+  breakoutMoment: string
+  drivingStyle: DrivingStyle
+  styleDescription: string
+  knownRivalries: DriverRivalry[]
+  trackHistory: Record<string, unknown>
+  anecdotes: string[]
+  careerMilestones: DriverMilestone[]
+  generatedAt: string
+  generatedVersion: number
+  realDriverInfo?: RealDriverInfo
+  [key: string]: unknown
+}
+
+interface FamousCorner {
+  name: string
+  description: string
+  sectorPosition: 1 | 2 | 3
+  cornerNumber?: number
+  difficulty?: 'easy' | 'medium' | 'hard' | 'extreme'
+}
+
+interface NotableMoment {
+  year: number
+  description: string
+  category?: 'overtake' | 'crash' | 'weather' | 'finish' | 'controversy' | 'record'
+}
+
+interface SectorNotes {
+  sector1: string
+  sector2: string
+  sector3: string
+}
+
+interface TrackNarrative {
+  trackId: string
+  nickname?: string
+  atmosphere: string
+  trackCharacter: string
+  famousCorners: FamousCorner[]
+  historySnippets: string[]
+  notableMoments: NotableMoment[]
+  overtakingSpots: string[]
+  keyFactors: string[]
+  sectorNotes: SectorNotes
+  weatherNotes?: string
+  generatedAt: string
+  generatedVersion: number
+  [key: string]: unknown
+}
+
+interface TeamNarrative {
+  teamId?: string
+  teamName?: string
+  origin: string
+  philosophy: string
+  culturalIdentity: string
+  technicalReputation: string
+  paddockStanding: string
+  achievements: string[]
+  famousAlumni: string[]
+  currentTrajectory: string
+  anecdotes: string[]
+  generatedAt: string
+  generatedVersion: number
+  [key: string]: unknown
+}
 
 // ============================================================================
 // TYPES
@@ -755,17 +827,6 @@ function createFallbackTrackNarrative(track: TrackBasicInfo): TrackNarrative {
     generatedAt: new Date().toISOString(),
     generatedVersion: 1
   }
-}
-
-// ============================================================================
-// EXPORTS FOR IPC
-// ============================================================================
-
-export type { 
-  DriverBasicInfo, 
-  TrackBasicInfo,
-  TeamBasicInfo,
-  NarrativeGenerationProgress 
 }
 
 export { createFallbackTeamNarrative }

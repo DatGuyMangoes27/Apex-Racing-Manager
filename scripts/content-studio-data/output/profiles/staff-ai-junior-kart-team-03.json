@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Alistair Finch's journey in motorsport began unconventionally, not on the track but in the skies. After a brief stint as an aircraft engineer, Alistair found his true calling applying aerodynamic principles to racing. He started in Formula Ford, crafting innovative wing designs that defied conventional wisdom. His knack for blending theory with practical application earned him respect and a reputation for squeezing every last drop of performance from his designs.\n\nDriven by a relentless curiosity, Alistair believes in a holistic approach to aerodynamics, considering not just the car's surfaces but also the interaction with the track and surrounding air. He favors data-driven design informed by real-world testing, fostering a collaborative environment where engineers of all levels can contribute. While his methods can seem old-fashioned at times, his results speak for themselves.\n\nWhat sets Alistair apart is his ability to explain complex aerodynamic concepts in simple, accessible terms. He believes that a deep understanding of the fundamentals is key to unlocking true innovation, and he dedicates himself to mentoring the next generation of aerodynamicists.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey goatee",
+    "description": "Alistair is a man of medium height with a slightly weathered face and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using imperial units alongside metric, much to the frustration of younger engineers."
+  ]
+}

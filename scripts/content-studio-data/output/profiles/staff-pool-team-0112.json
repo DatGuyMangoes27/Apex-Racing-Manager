@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 24,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Erik's journey into motorsport began not in a roaring grandstand, but in a quiet garage. His grandfather, a retired rally mechanic, instilled in him a deep appreciation for the engineering and strategy behind racing. While his peers were playing football, Erik was dismantling and reassembling go-kart engines. This hands-on experience, coupled with a sharp mind for problem-solving, led him to pursue a degree in motorsport engineering. \n\nHe believes in fostering a collaborative environment where every team member's voice is heard and valued. Erik's calm demeanor and methodical approach, honed through years of pressure-cooker situations in university racing programs, allow him to make clear-headed decisions under immense stress. He is driven by a desire to build a team known not only for its speed but also for its unwavering sportsmanship and innovative solutions.\n\nErik distinguishes himself with a balanced perspective. He is not afraid to challenge conventional wisdom but always does so with data-driven insights and a deep respect for the heritage of motorsport. His loyalty and dedication make him a strong leader, capable of inspiring his team to achieve their full potential.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly styled with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Erik is of average height, with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn copy of 'The Art of War'.",
+    "Insists on having a specific brand of Swedish coffee at all meetings.",
+    "Tends to meticulously organize his desk, even in the most chaotic situations."
+  ]
+}

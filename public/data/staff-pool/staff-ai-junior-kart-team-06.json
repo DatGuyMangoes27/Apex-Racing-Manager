@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Costa",
+  "nationality": "Brazilian",
+  "age": 29,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Rafael's journey into motorsport began with a childhood obsession with karting videos, fueling a desire to understand the intricate mechanics and strategies involved. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, and landed his first job at a local karting team, quickly rising through the ranks due to his keen eye for detail and ability to troubleshoot technical issues. He joined Junior Kart Team two years ago, initially as a lead mechanic, and was promoted to Sporting Director due to his insightful understanding of race strategy and driver development. \n\nRafael believes in fostering a collaborative environment where every team member feels empowered to contribute their best ideas. His technical expertise combined with his data-driven approach allows him to make informed decisions that optimize performance on and off the track. He's particularly passionate about exploring innovative technologies and strategies to gain a competitive edge, often spending hours analyzing telemetry data and researching new aerodynamic concepts. What distinguishes Rafael is his calm demeanor even under intense pressure, allowing him to make clear-headed decisions that inspire confidence in the team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Rafael is of average height with an athletic build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Insists on a particular brand of Brazilian coffee before every race."
+  ]
+}

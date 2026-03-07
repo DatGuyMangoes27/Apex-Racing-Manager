@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0381",
+  "name": "Longwei Automobiles",
+  "category": "luxury",
+  "tier": "elite",
+  "country": "China",
+  "description": "Experience the pinnacle of Chinese luxury automotive engineering.",
+  "story": "Longwei Automobiles aims to showcase the innovation and craftsmanship of Chinese luxury vehicles on the global stage. Motorsport provides the perfect platform to demonstrate our commitment to performance and technological advancement. We seek partnerships that reflect our dedication to excellence and can elevate the Longwei brand among discerning audiences.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 22000,
+      "winBonus": 9000,
+      "podiumBonus": 4000,
+      "championshipBonus": 70000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 220000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 130000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1300000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "China"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0381.png"
+}

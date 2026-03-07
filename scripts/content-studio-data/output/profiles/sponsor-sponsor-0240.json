@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0240",
+  "name": "Crédit Sportif",
+  "category": "financial",
+  "tier": "entry",
+  "country": "France",
+  "description": "Your partner in achieving peak performance, on and off the track.",
+  "story": "Crédit Sportif is a leading French financial institution committed to supporting excellence in sports. With a history rooted in fostering local talent, they now seek to expand their brand presence on the international motorsport stage. They believe in investing in drivers who demonstrate dedication, precision, and a drive to succeed, aligning with their own core values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0240.png"
+}

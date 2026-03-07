@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0362",
+  "name": "Tacos El Güero",
+  "category": "local",
+  "tier": "mid",
+  "country": "Mexico",
+  "description": "The authentic taste of Mexico, fuel your victories!",
+  "story": "Tacos El Güero, a family-owned taqueria chain based in Mexico City, has been serving up traditional flavors for over 30 years. Passionate about their community and Mexican culture, they see motorsport as a perfect platform to connect with fans and showcase the vibrant spirit of Mexico. They seek a partnership that celebrates Mexican heritage and delivers thrilling racing action.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 35,
+    "minMarketability": 45,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "events",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0362.png"
+}

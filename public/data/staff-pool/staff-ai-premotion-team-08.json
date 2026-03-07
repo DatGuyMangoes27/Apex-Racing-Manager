@@ -1,0 +1,22 @@
+{
+  "name": "Kazimierz Lewandowski",
+  "nationality": "Polish",
+  "age": 57,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Kazimierz Lewandowski's journey into motorsport began with a childhood fascination for the roaring engines of rally cars tearing through the Polish countryside. He pursued a degree in Mechanical Engineering, dedicating his studies to vehicle dynamics and aerodynamics. After graduating, he spent several years honing his skills in automotive manufacturing before finally breaking into the racing world. Kazimierz is a meticulous engineer, known for his data-driven approach and his ability to translate complex data into actionable performance improvements. He's not just about finding marginal gains; he's focused on creating a stable and robust platform for the drivers to excel.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "short, trimmed grey mustache",
+    "description": "A man of medium build with a focused gaze and a quiet intensity."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on brewing his own strong, black coffee in the paddock every morning."
+  ]
+}

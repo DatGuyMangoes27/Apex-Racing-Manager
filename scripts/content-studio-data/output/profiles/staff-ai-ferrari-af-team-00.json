@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 59,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Declan O'Malley is a motorsport veteran with a keen eye for detail and a relentless pursuit of perfection. His journey began in the back of his father's garage, tinkering with engines and dreaming of racing glory. While his driving ambitions never fully materialized, his knack for understanding vehicle dynamics and team leadership quickly propelled him into management roles. O'Malley's no-nonsense approach and unwavering commitment to innovation have earned him both respect and notoriety in the paddock.\n\nHe believes in empowering his team but also holds them accountable for their performance. O'Malley is known for his meticulous pre-race preparations and his ability to make crucial strategic calls under pressure. He joined Ferrari AF Corse three years ago, bringing a fresh perspective and a renewed focus on data-driven decision-making. His demanding personality is balanced by a deep-seated passion for motorsport and a genuine desire to see his team succeed at the highest level.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Close-cropped grey beard",
+    "description": "A stocky man with a weathered face and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn copy of Sun Tzu's 'The Art of War'.",
+    "Insists on personally inspecting the tires before every qualifying session.",
+    "Has a habit of tapping his pen rapidly when under pressure."
+  ]
+}

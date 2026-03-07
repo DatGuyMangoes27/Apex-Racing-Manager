@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0461",
+  "name": "Axelrad Composites",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "Precision composite engineering for motorsport.",
+  "story": "Axelrad Composites is a Belgian manufacturer specializing in lightweight, high-strength composite components for racing vehicles. Founded by former Formula 1 engineers, they bring cutting-edge technology to teams seeking a competitive edge. Axelrad seeks partnerships that demonstrate technical excellence and a commitment to innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 180000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0461.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 44,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Krzysztof's motorsport journey began with a childhood fascination for rally racing, fueled by watching his father tinker with Ladas in their garage. He pursued a degree in Mechanical Engineering, quickly specializing in vehicle dynamics. After graduating, he worked for a small touring car team before transitioning to single-seaters. \n\nKrzysztof is known for his meticulous data analysis and pragmatic problem-solving. He believes in a systematic approach, favoring incremental improvements based on concrete evidence over radical changes. He's valued for his ability to translate complex technical information into actionable instructions for the driver, fostering a strong driver-engineer relationship. His strength lies in consistently delivering reliable and optimized performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "A man of medium height with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific brand of stopwatch for timing."
+  ]
+}

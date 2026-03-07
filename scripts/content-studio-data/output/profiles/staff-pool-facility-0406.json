@@ -1,0 +1,22 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 26,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Li Wei's fascination with motorsport began in his childhood, watching Formula One races broadcast from Europe. He was captivated by the engineering and intricate machinery. He pursued a degree in Mechanical Engineering and quickly sought out opportunities to apply his knowledge to racing. His first role was at a local tuning shop, where he learned the fundamentals of fabrication and modification. He is meticulous in his approach, always striving for precision and reliability in every component he crafts. Li is also eager to contribute innovative solutions, often sketching out ideas during his downtime, hoping to push the boundaries of performance.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly cropped",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Li is of average height with a lean build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pencil to jot down ideas.",
+    "Has a habit of tapping his foot when concentrating.",
+    "Insists on cleaning his workspace thoroughly before starting any project."
+  ]
+}

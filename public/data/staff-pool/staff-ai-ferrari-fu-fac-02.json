@@ -1,0 +1,22 @@
+{
+  "name": "Eszter Kovács",
+  "nationality": "Hungarian",
+  "age": 31,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Eszter's journey into motorsport began with a fascination for the intricate designs of Formula 1 cars. After completing her degree in mechanical engineering at the Budapest University of Technology and Economics, she pursued specialized training in composite materials. Her meticulous attention to detail quickly made her an asset to several junior formula teams before attracting the attention of Scuderia Ferrari.\n\nAt Ferrari, Eszter is known for her unwavering commitment to quality and precision. She approaches every task with a systematic methodology, ensuring that all composite components meet the highest standards. While her demanding nature can sometimes create tension, it's ultimately driven by her desire to achieve perfection and contribute to the team's success. Her colleagues appreciate her dedication and ability to remain calm under pressure, especially during critical moments in the garage.\n\nEszter's expertise lies in her innovative approach to composite design and repair, often suggesting modifications to improve performance and durability. She is highly regarded for her problem-solving skills and her ability to quickly identify and address any issues that arise during the manufacturing or maintenance process. She is a true asset to the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail during work hours.",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Eszter has a slender build with sharp, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific brand of microfiber cloth for cleaning composite surfaces.",
+    "Always has a detailed notebook filled with technical diagrams and calculations.",
+    "Listens to classical music through noise-canceling headphones while working to maintain focus."
+  ]
+}

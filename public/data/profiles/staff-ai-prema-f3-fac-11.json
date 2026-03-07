@@ -1,0 +1,22 @@
+{
+  "name": "Lorenzo Mancini",
+  "nationality": "Italian",
+  "age": 27,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Lorenzo Mancini’s passion for motorsport ignited at a young age, fueled by his father's involvement in local rally racing. He began his career as a data analyst for a small Formula 4 team, quickly demonstrating a keen eye for detail and an aptitude for interpreting complex telemetry data. This led to opportunities within Formula 3 and eventually a coveted position at Prema Racing.\n\nAs a Test Driver Coordinator, Lorenzo is responsible for meticulously planning and executing testing programs, ensuring that every test session yields maximum value for the team. He is known for his rigorous approach, demanding high standards from both drivers and engineers. Lorenzo believes that thorough preparation and precise execution are the keys to unlocking a car’s full potential, and he strives to instill this philosophy throughout the team.\n\nWhat sets Lorenzo apart is his ability to blend technical acumen with strong leadership skills. He is adept at motivating drivers to push their limits while also providing constructive feedback to the engineering team. His relentless pursuit of perfection makes him a valuable asset to Prema Racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed stubble.",
+    "description": "Lorenzo is of average height with a lean, athletic build, often seen wearing his team jacket."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a notebook and pen, meticulously recording observations and ideas.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific type of Italian espresso before every test session."
+  ]
+}

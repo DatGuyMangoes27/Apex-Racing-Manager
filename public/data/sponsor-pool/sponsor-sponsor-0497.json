@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0497",
+  "name": "Rheingold Performance Lubricants",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "Germany",
+  "description": "German engineered lubricants for peak performance.",
+  "story": "Rheingold Performance Lubricants has been producing high-quality motor oils in Germany for over 50 years. With a commitment to innovation and performance, they see motorsport as the ultimate testing ground for their products. They are looking to partner with up-and-coming teams to showcase the reliability and effectiveness of Rheingold lubricants under extreme conditions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15,
+    "nationalities": [
+      "Germany"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0497.png"
+}

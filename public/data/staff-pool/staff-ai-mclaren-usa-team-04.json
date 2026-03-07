@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 42,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Marco Bellini's journey into motorsport began in his childhood, tinkering with engines alongside his father in their small garage outside Modena. This passion led him to earn a degree in mechanical engineering, after which he joined a Formula 3 team as a junior engineer. His sharp eye for detail and ability to quickly diagnose and resolve technical issues propelled him through the ranks. \n\nBellini's approach to race engineering is meticulous and data-driven. He believes in a collaborative environment where open communication and mutual respect are paramount. He's known for his ability to translate complex technical information into actionable insights for the driver, enhancing their performance on the track. His reputation for relentless pursuit of improvement has earned him respect within the paddock, making him a valuable asset to Arrow McLaren. What sets him apart is his relentless pursuit of data and his ability to translate it into gains on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build with intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical schematics and notes.",
+    "Has a specific brand of espresso he requires every morning before debriefing.",
+    "Obsessively cleans his workstation multiple times a day."
+  ]
+}

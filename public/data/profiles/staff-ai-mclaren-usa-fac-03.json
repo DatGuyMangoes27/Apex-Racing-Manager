@@ -1,0 +1,22 @@
+{
+  "name": "Seamus O'Malley",
+  "nationality": "Irish",
+  "age": 44,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Seamus grew up around engines; his father ran a small garage in County Cork. From a young age, he was fascinated by the intricacies of mechanical systems, spending hours tinkering with old motors and learning the fundamentals of engineering. He honed his skills through apprenticeships and technical certifications, eventually landing a role with a local rally team before making the leap to single-seater racing.\n\nAt Arrow McLaren, Seamus brings a pragmatic and meticulous approach to his work. He believes in the power of simplicity and reliability, favoring proven techniques over untested innovations. He's known for his ability to diagnose and fix complex problems quickly, often devising creative solutions that others have overlooked. His loyalty to the team is unwavering, and he sees his role as a vital piece of the puzzle in the pursuit of victory.\n\nSeamus has a talent for improvising solutions with limited resources, a skill honed from his early days in his father's garage. This ingenuity, combined with his deep understanding of materials and mechanics, makes him a valuable asset when unforeseen challenges arise during race weekends.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Seamus is a stocky man with a weathered face and kind eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils with a pocket knife, even if there's a pencil sharpener nearby.",
+    "Has a lucky wrench that he uses for critical repairs.",
+    "Always hums Irish folk tunes while working, sometimes muttering to himself in Gaelic."
+  ]
+}

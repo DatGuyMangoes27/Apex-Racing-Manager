@@ -790,10 +790,18 @@ export const TRACK_ALIAS_REGISTRY: TrackAliasEntry[] = [
     canonicalId: 'road_atlanta',
     canonicalName: 'Road Atlanta',
     aliases: [
+      'Road Atlanta',
       'Petit Le Mans',
-      'Braselton',
-      'Road Atlanta Full',
-      '10 Hours of Road Atlanta',
+      'Road Atlanta Moto',
+    ]
+  },
+  {
+    canonicalId: 'mosport',
+    canonicalName: 'Mosport',
+    aliases: [
+      'CTMP',
+      'Canadian Tire Motorsport Park',
+      'Mosport Park',
     ]
   },
   {
@@ -853,17 +861,6 @@ export const TRACK_ALIAS_REGISTRY: TrackAliasEntry[] = [
       'Montreal GP',
     ]
   },
-  {
-    canonicalId: 'mosport',
-    canonicalName: 'Mosport',
-    aliases: [
-      'CTMP',
-      'Canadian Tire Motorsport Park',
-      'Mosport Park',
-      'Mosport International Raceway',
-    ]
-  },
-
   // ============================================
   // ECUADOR
   // ============================================

@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 42,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Elena's journey into motorsport started with a childhood fascination for the technical intricacies of rally cars in her hometown. This passion drove her to excel in mechanical engineering, leading her to secure a role at a local racing team after graduation. She quickly proved her worth, troubleshooting complex engine issues and contributing to significant performance improvements. \n\nElena is meticulous in her approach, favoring data-driven decisions and precise adjustments. She believes a strong understanding of the car's behavior, combined with clear communication with the drivers, is paramount for success. Her experience has forged her into a calm and reliable presence in the pit lane, able to handle pressure and deliver results. What makes her stand out is her ability to visualize the impact of changes across the entire car system, rather than focusing on isolated components.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight, often pulled back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena is of average height with a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to work late into the night when the garage is quiet and she can focus without interruption."
+  ]
+}

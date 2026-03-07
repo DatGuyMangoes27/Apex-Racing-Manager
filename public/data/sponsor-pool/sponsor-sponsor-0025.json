@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0025",
+  "name": "Aether Dynamics",
+  "category": "tech",
+  "tier": "high",
+  "country": "UAE",
+  "description": "Innovating the future of motorsport technology.",
+  "story": "Aether Dynamics, a leading UAE-based technology firm specializing in advanced simulation and data analytics, sees motorsport as the ultimate proving ground for their innovations. Founded by a group of passionate engineers and racing enthusiasts, they aim to leverage the high-pressure environment of racing to refine their technologies and gain global recognition. They seek a partnership that showcases their capabilities and drives performance both on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0025.png"
+}

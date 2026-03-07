@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 53,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began unexpectedly. A mechanical engineering apprenticeship at a precision instrument manufacturer in the Jura mountains sparked his interest in the intricate workings of machines. He stumbled into the world of racing through a local karting club, offering his technical skills to improve their setups. This led to a role with a small GT team, where he first encountered racing simulators.\n\nHis meticulous approach and deep understanding of vehicle dynamics quickly made him an invaluable asset. He believes in a data-driven approach, meticulously analyzing telemetry and driver feedback to refine simulator models. While not the most innovative, Jean-Pierre excels at implementing and optimizing existing technologies. His focus is always on delivering a reliable and accurate simulation experience for the drivers, ensuring they are fully prepared for the track. He's known for his ability to diagnose and resolve even the most obscure simulator glitches, making him a highly sought-after engineer.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jean-Pierre has a sturdy build and a focused gaze that reflects his meticulous nature."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small Swiss Army knife, even to the simulator room.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating the simulator controls himself before each session."
+  ]
+}

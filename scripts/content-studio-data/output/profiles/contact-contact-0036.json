@@ -1,0 +1,31 @@
+{
+  "name": "Zola Mabena",
+  "nationality": "South African",
+  "age": 25,
+  "gender": "female",
+  "contactType": "business_mogul",
+  "bio": "Zola Mabena is a self-made billionaire, having built a sustainable energy empire from the ground up. Her relentless drive and sharp business acumen have made her a force to be reckoned with in the South African economy. While outwardly idealistic, Zola is known for her ruthless negotiation tactics and strategic manipulation, always several steps ahead of her competitors. Her interest in motorsport stems from her belief that technological advancements in racing can be translated into innovations for sustainable transportation. She views motorsport as a crucible for developing cutting-edge solutions for energy efficiency and performance.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Black",
+    "hairStyle": "Sleek, low bun with intricate braids",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Zola possesses a commanding presence, accentuated by her elegant style and sharp features. She favors tailored suits that emphasize her confident demeanor."
+  },
+  "connectionToMotorsport": "Zola's company sponsors a Formula E team, using the partnership to test new battery technologies and promote sustainable racing. She also invests in young engineering talent within motorsport, providing scholarships and mentorship opportunities.",
+  "meetingContext": "The player might meet Zola at a Formula E race while networking in the VIP area, or perhaps through a charity gala promoting sustainable initiatives.",
+  "conversationTopics": [
+    "Sustainable energy solutions",
+    "The future of motorsport technology",
+    "The impact of technology on African economies",
+    "Her latest scuba diving adventure in Mozambique",
+    "Whiskey collecting"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals with her company.",
+    "Provide access to cutting-edge technological advancements in vehicle performance.",
+    "Introduce the player to influential figures in the business world."
+  ],
+  "personality_summary": "A calculating idealist with a fiery spirit and a penchant for manipulation."
+}

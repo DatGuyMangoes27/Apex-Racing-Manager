@@ -1,0 +1,31 @@
+{
+  "name": "Ratna Sari Dewi",
+  "nationality": "Indonesian",
+  "age": 59,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Ratna Sari Dewi is a culinary icon in Jakarta, renowned for her innovative fusion of traditional Indonesian flavors with modern techniques. Her eponymous restaurant, 'Dewi's Delights,' is a favorite among Jakarta's elite, including several prominent figures in the Indonesian motorsport scene. While she presents a somewhat mysterious and blunt demeanor, those who earn her respect find her remarkably forgiving. Some say her success has made her slightly entitled, but that's easily overlooked when savoring her extraordinary cuisine.\n\nA racing driver might cross paths with Ratna while seeking sponsorship opportunities among Jakarta's wealthy patrons or through exclusive networking events where Dewi's Delights provides catering. Her establishment is a frequent haunt for pre-race celebrations and post-race commiserations.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Graying Black",
+    "hairStyle": "Neatly tied back in a low bun",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Ratna is a petite woman with a warm, inviting smile that belies her reputation for being blunt. Her hands, though aged, move with practiced grace as she gestures while speaking."
+  },
+  "connectionToMotorsport": "Ratna's restaurant is a popular gathering spot for motorsport enthusiasts and sponsors in Jakarta. She also occasionally caters VIP events at Sentul International Circuit.",
+  "meetingContext": "The player might meet Ratna at 'Dewi's Delights' or during a private catering event for a motorsport team or sponsor.",
+  "conversationTopics": [
+    "The intricacies of Indonesian cuisine",
+    "Her snowboarding trips to Japan",
+    "The challenges of running a high-end restaurant",
+    "The Jakarta creative scene",
+    "Her frustration with amateur drone racers flying too close to her property"
+  ],
+  "canHelp": [
+    "Offer exclusive catering services for team events, impressing sponsors.",
+    "Introduce the player to wealthy potential sponsors who frequent her restaurant.",
+    "Provide advice on managing public image and building relationships within Jakarta's high society."
+  ],
+  "personality_summary": "A mysterious and talented chef with a blunt demeanor but a forgiving heart, who is well-connected in Jakarta's elite circles."
+}

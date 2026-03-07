@@ -1,0 +1,58 @@
+{
+  "id": "sponsor-0076",
+  "name": "Erlkönig Automobilmanufaktur",
+  "category": "luxury",
+  "tier": "high",
+  "country": "Austria",
+  "description": "Experience the pinnacle of Austrian automotive craftsmanship.",
+  "story": "Erlkönig is a bespoke automaker crafting limited-edition, high-performance vehicles. With a heritage steeped in precision engineering and a passion for speed, Erlkönig seeks to showcase its dedication to performance by partnering with a winning motorsport team. They value innovation, precision, and the pursuit of excellence on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 65000,
+      "winBonus": 28000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 320000,
+      "winBonus": 120000,
+      "podiumBonus": 65000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Austria"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0076.png"
+}

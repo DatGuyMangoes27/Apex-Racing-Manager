@@ -1,0 +1,22 @@
+{
+  "name": "Milena Petrović",
+  "nationality": "Serbian",
+  "age": 33,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Milena's journey into motorsport began unexpectedly during a university project focused on aerodynamics. Fascinated by the intricacies of airflow and its impact on vehicle performance, she pursued a master's degree specializing in wind tunnel technology. After graduating, Milena secured a position at a smaller racing team, where she honed her skills and developed a reputation for meticulous data analysis.\n\nJoining Full Time Sports was a significant step in her career. She approaches her role with unwavering dedication, believing that even the smallest adjustments can make a significant difference on the track. Milena is known for her rigorous testing protocols and her ability to identify subtle areas for improvement that others might overlook. She is driven by a pursuit of perfection and a deep understanding of the complex interplay between aerodynamics and racing success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually tied back in a neat ponytail to keep it out of her face while working.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Milena is of average height with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only metric units in all calculations and discussions.",
+    "Always has a small notebook and pen on hand to jot down observations during wind tunnel runs.",
+    "Has a habit of meticulously cleaning the wind tunnel control panel before each session."
+  ]
+}

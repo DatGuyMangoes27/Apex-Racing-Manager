@@ -1,0 +1,31 @@
+{
+  "name": "Alessandra Bellini",
+  "nationality": "Italian",
+  "age": 65,
+  "gender": "female",
+  "contactType": "yacht_captain",
+  "bio": "Alessandra Bellini is a name whispered with respect in the yachting circles of the Mediterranean. For over four decades, she's commanded luxury yachts, navigating treacherous waters and managing demanding clientele with an iron fist and a surprising amount of grace. Though reserved and sometimes judgmental, Alessandra is fiercely loyal to those who earn her respect, and she holds a secret soft spot for those who demonstrate genuine passion and dedication. She earned a degree in Nautical Engineering from the University of Genoa, a feat quite rare for women of her generation.\n\nHer path might intersect with a racing driver due to the high-profile nature of her clientele. Many of her clients are wealthy individuals with a passion for motorsport, and they often host events and parties on their yachts during Grand Prix weekends in Monaco, Italy, and Spain. Alessandra's position allows her to observe the racing world from a unique vantage point, and she might be in a position to influence connections or offer advice.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Alessandra is a woman of strong stature, her years at sea etched into the lines of her face. She carries herself with a quiet confidence and wears practical, yet elegant clothing."
+  },
+  "connectionToMotorsport": "Alessandra's high-society clients are often involved in the motorsport world, either as sponsors, team owners, or simply avid fans who host lavish parties during race weekends.",
+  "meetingContext": "The player could meet Alessandra at a party on a yacht during the Monaco Grand Prix, or perhaps through a mutual acquaintance involved in luxury travel.",
+  "conversationTopics": [
+    "The nuances of yacht maintenance",
+    "The best diving spots in the Mediterranean",
+    "The latest gossip from the Monaco social scene",
+    "The challenges faced by women in traditionally male-dominated industries",
+    "Her experiences sailing around the world"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy sponsors or team owners",
+    "Offer advice on navigating the complex social dynamics of the racing world",
+    "Provide access to exclusive events and networking opportunities"
+  ],
+  "personality_summary": "A stern but ultimately fair yacht captain with a hidden soft spot for passionate individuals."
+}

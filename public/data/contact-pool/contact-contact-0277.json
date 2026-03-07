@@ -1,0 +1,31 @@
+{
+  "name": "Dimitrios Katsaros",
+  "nationality": "Greek",
+  "age": 26,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Dimitrios is a rising star in Athens' legal circles, specializing in contract law and intellectual property. He graduated top of his class and quickly made a name for himself by securing favorable deals for several prominent tech startups. His meticulous approach and aggressive negotiation tactics have earned him both admiration and a few enemies. Underneath the sharp suits and sophisticated demeanor, however, lies a reckless streak; Dimitrios enjoys pushing boundaries, both in the courtroom and in his personal life.\n\nWhile not directly involved in motorsport, Dimitrios often represents wealthy individuals and corporations that sponsor racing teams or own high-performance vehicles. He's the go-to lawyer for drafting sponsorship agreements and resolving disputes. A racing driver might encounter Dimitrios when seeking legal counsel for contract negotiations with a team, handling endorsement deals, or dealing with any legal issues arising from their career.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Slicked back with a subtle side part",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Stubble",
+    "description": "Dimitrios has a sharp, angular face and piercing eyes. He favors tailored suits and designer accessories, projecting an image of success and authority."
+  },
+  "connectionToMotorsport": "Dimitrios represents several high-profile sponsors and team owners in the motorsport world. He also provides legal counsel to drivers facing contract disputes or endorsement issues.",
+  "meetingContext": "You might meet Dimitrios at a charity gala hosted by a racing team sponsor, or through a referral from another contact who knows of his legal expertise.",
+  "conversationTopics": [
+    "The latest developments in contract law",
+    "Ballet performances at the Greek National Opera",
+    "The intricacies of craft beer brewing",
+    "His latest drone racing exploits",
+    "The challenges and rewards of being a young lawyer"
+  ],
+  "canHelp": [
+    "Negotiate favorable contracts with racing teams and sponsors",
+    "Protect your intellectual property rights related to your brand and image",
+    "Provide legal representation in case of disputes or legal issues"
+  ],
+  "personality_summary": "A reckless yet sophisticated lawyer with a penchant for calculated risks and an overprotective nature towards his clients."
+}

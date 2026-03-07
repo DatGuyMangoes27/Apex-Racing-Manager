@@ -1,0 +1,22 @@
+{
+  "name": "Tan Wei Liang",
+  "nationality": "Singaporean",
+  "age": 52,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Tan Wei Liang is a veteran fabricator with over three decades of experience in motorsport. His journey began in his youth, tinkering with engines and building go-karts in his neighborhood. This passion led him to pursue a vocational diploma in mechanical engineering, after which he joined a local tuning shop specializing in performance modifications for street cars. A chance encounter with a race team owner led to his foray into professional racing. \n\nTan prides himself on his meticulous attention to detail and his ability to diagnose and resolve mechanical issues quickly and efficiently. He is known for his rigorous standards and uncompromising approach to quality. At Nostalgia Racing, he's responsible for ensuring that every component meets stringent specifications and is installed flawlessly. Tan’s experience with classic racing machinery, combined with his modern fabrication skills, make him an invaluable asset to the team, particularly when restoring and maintaining vintage vehicles.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "dark brown",
+    "facialHair": "thin, neatly trimmed goatee",
+    "description": "Tan is a wiry man of average height with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations and measurements.",
+    "Insists on using only metric tools and fasteners, even when working on older cars originally designed with imperial measurements.",
+    "Has a peculiar habit of tapping on metal components to assess their structural integrity."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0116",
+  "name": "Al-Mal Investments",
+  "category": "finance",
+  "tier": "entry",
+  "country": "Saudi Arabia",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Al-Mal Investments is a Saudi Arabian investment firm focused on nurturing emerging talent and technologies. Motorsport represents the pinnacle of human achievement and technical innovation. We believe in supporting ambitious drivers and teams who share our commitment to excellence and pushing boundaries, seeking to build long-term partnerships that drive success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0116.png"
+}

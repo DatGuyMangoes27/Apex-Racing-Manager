@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey into motorsport began as a young boy, tinkering with his father's classic cars in Guadalajara. This early exposure sparked a lifelong fascination with engines and vehicle dynamics. He pursued a degree in mechanical engineering, specializing in automotive performance, and quickly found his way into the world of racing. His early career saw him working with smaller regional teams, where he honed his skills in engine optimization and chassis setup. \n\nRicardo is known for his meticulous approach to data analysis and his ability to translate complex technical information into actionable insights for the team. He believes in fostering a collaborative environment where every team member feels empowered to contribute their expertise. While not the most outwardly innovative, Ricardo excels at refining existing technologies and ensuring optimal performance through rigorous testing and attention to detail. He is driven by a desire to win and is always looking for ways to extract that extra tenth of a second from the car.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short goatee",
+    "description": "Ricardo is a man of medium build with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his own tools before any major race weekend."
+  ]
+}

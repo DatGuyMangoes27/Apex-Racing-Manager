@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Carrasco",
+  "nationality": "Chilean",
+  "age": 35,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Valentina's journey into motorsport began with a childhood fascination with aircraft, fueled by visits to airshows in Santiago. This interest naturally evolved into a passion for aerodynamics, leading her to pursue a degree in mechanical engineering. After graduating, she secured an entry-level position at a smaller racing team, quickly proving her ability to optimize aerodynamic performance through meticulous data analysis and innovative design solutions. \n\nHer approach to her role as Head of Aero at Hendrick Motorsports is characterized by a data-driven methodology combined with a keen understanding of driver feedback. Valentina is known for her ability to translate complex simulations into practical adjustments that improve on-track performance. What sets her apart is her relentless pursuit of perfection and her ability to see how small aerodynamic changes can make a big impact on overall car performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back into a practical ponytail during race weekends.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of average height with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Insists on having a perfectly aligned wind tunnel model before any simulation runs.",
+    "Frequently uses motorsport analogies in everyday conversations."
+  ]
+}

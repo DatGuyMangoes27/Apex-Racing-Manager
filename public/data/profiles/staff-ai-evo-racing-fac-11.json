@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 50,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Jean-Pierre's journey into motorsport wasn't exactly planned. After a brief stint as a mechanic in the Canadian Armed Forces, his knack for diagnosing complex mechanical issues caught the eye of a local racing team owner. He transitioned into a role supporting trackside engineering, and quickly became indispensable due to his meticulous approach and uncanny ability to anticipate problems before they arose. He eventually specialized in test programs, crafting meticulous schedules and data analysis protocols. \n\nAt EVO Racing Team, Jean-Pierre's focus is on maximizing the value of every test kilometer. He believes in quantifiable improvements backed by solid data. His methodical nature ensures that every variable is accounted for, and that the test drivers have the precise information they need to push the car to its limits safely. He is known for his ability to distill complex technical feedback into actionable insights for the engineering team, making him a crucial bridge between the driver and the design office. He is also known for his calm demeanor, even under intense pressure, which allows him to make rational decisions when others panic.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a weathered face and a focused gaze, Jean-Pierre always looks like he's deep in thought."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a meticulously organized notebook filled with test data.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Insists on starting every test session with a specific type of black coffee."
+  ]
+}

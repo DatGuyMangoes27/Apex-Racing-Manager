@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0148",
+  "name": "Velocita Tires",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "Italy",
+  "description": "Precision performance for the demanding driver.",
+  "story": "Velocita Tires was founded in Modena, Italy, driven by a passion for racing and a commitment to pushing the limits of tire technology. Our goal is to partner with teams that share our dedication to performance and innovation, providing them with the competitive edge needed to win championships. We value data-driven development and seek to continuously improve our products through motorsport.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3500,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 65000,
+      "winBonus": 28000,
+      "podiumBonus": 14000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Italy",
+      "France"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0148.png"
+}

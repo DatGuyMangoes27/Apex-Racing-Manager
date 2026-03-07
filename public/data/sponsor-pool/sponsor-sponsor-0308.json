@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0308",
+  "name": "Azure Coast Properties",
+  "category": "local",
+  "tier": "high",
+  "country": "Monaco",
+  "description": "Luxury real estate specialists in Monaco and the French Riviera.",
+  "story": "Azure Coast Properties aims to connect with a high-net-worth clientele. Motorsport provides a prestigious and exciting platform to showcase their brand. They seek a partnership that reflects their commitment to excellence and sophistication, leveraging the thrill of racing to enhance their brand image.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "France",
+      "Monaco"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0308.png"
+}

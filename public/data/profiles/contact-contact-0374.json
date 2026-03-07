@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Izquierdo Vargas",
+  "nationality": "Colombian",
+  "age": 60,
+  "gender": "male",
+  "contactType": "diplomat",
+  "bio": "Ricardo Izquierdo Vargas is a name synonymous with Colombian diplomacy and international relations. A distinguished diplomat with over thirty years of service, Ricardo has represented his country in numerous high-profile postings, including ambassadorships to several European nations. Beyond the polished exterior of a seasoned diplomat, Ricardo possesses a captivating blend of compassion and arrogance. A known patron of the arts, a passionate rugby enthusiast, and a romantic at heart, he cultivates an image of a worldly renaissance man. His connection to motorsport comes through his position on the board of directors for a major Colombian energy firm that sponsors a Formula 2 team, giving him access to a world of glamour and speed that both intrigues and amuses him. A racing driver might encounter Ricardo at a Formula 2 event, a charity gala, or through mutual connections in the high-society circles he frequents.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly combed, slightly thinning on top",
+    "eyeColor": "Brown",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Ricardo carries himself with an air of authority, his tailored suits accentuating his broad shoulders. His eyes, though often scrutinizing, twinkle with a hint of amusement."
+  },
+  "connectionToMotorsport": "Ricardo sits on the board of directors for Ecopetrol, a Colombian energy giant that sponsors the Fortec Motorsport Formula 2 team. This role places him in the orbit of racing, attending events and occasionally interacting with drivers and team personnel.",
+  "meetingContext": "The player might meet Ricardo at a Fortec Motorsport VIP event, a Formula 1 after-party he's attending as a guest, or a high-society charity auction where both are present.",
+  "conversationTopics": [
+    "The state of international relations",
+    "Colombian history and culture",
+    "His latest scuba diving adventure in the Caribbean",
+    "The importance of art and patronage",
+    "The finer points of rugby strategy"
+  ],
+  "canHelp": [
+    "Facilitate introductions to wealthy Colombian investors.",
+    "Provide political insights and navigate complex sponsorship negotiations.",
+    "Offer endorsements and leverage his social standing to enhance the player's image."
+  ],
+  "personality_summary": "A charismatic and worldly diplomat with a taste for adventure and a penchant for the finer things in life."
+}

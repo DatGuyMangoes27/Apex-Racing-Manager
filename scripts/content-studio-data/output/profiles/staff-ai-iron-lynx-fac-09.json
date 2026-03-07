@@ -1,0 +1,22 @@
+{
+  "name": "Bruce McKenzie",
+  "nationality": "Australian",
+  "age": 46,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Bruce McKenzie's journey into motorsport began with a fascination for the gleaming finishes on classic cars. After completing his apprenticeship as a panel beater and spray painter, he quickly specialized in custom paint jobs and restoration work. His reputation for flawless finishes and an obsessive attention to detail led him to Iron Lynx, where he's responsible for ensuring every car leaves the paint shop looking immaculate. \n\nBruce brings a no-nonsense approach to his work, demanding perfection from himself and his team. While his high standards can sometimes ruffle feathers, his dedication to quality is undeniable. He believes a flawless paint job is more than just aesthetics; it's a reflection of the team's commitment to excellence. He's particularly meticulous about color matching and ensuring aerodynamic efficiency through smooth paint application.",
+  "physical": {
+    "skinTone": "Fair, freckled",
+    "hairColor": "Light brown",
+    "hairStyle": "Short, slightly receding hairline, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Mutton chops",
+    "description": "A stocky man with weathered features and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears a pristine white lab coat, even when knee-deep in paint.",
+    "Has an encyclopedic knowledge of paint codes and finishes.",
+    "Insists on listening to classic rock at a deafening volume while working."
+  ]
+}

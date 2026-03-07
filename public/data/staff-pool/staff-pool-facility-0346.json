@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 32,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Alistair's journey into motorsport began during his university days, where he volunteered at a local rally team, troubleshooting their archaic data logging systems. He quickly realized the critical role IT plays in modern racing. After graduating with a degree in Computer Science, he spent several years honing his skills in the tech industry before returning to motorsport, determined to bring cutting-edge solutions to the pit lane.\n\nAlistair approaches his role with a meticulous attention to detail, ensuring that every system is robust, reliable, and secure. He's not just about keeping the lights on; he's passionate about leveraging data to improve performance and give his team a competitive edge. His calm demeanor under pressure and dedication to finding innovative solutions make him a valuable asset to any team.\n\nHis experience ranges from cloud infrastructure and database management to telemetry analysis and secure data transmission, Alistair is a skilled IT systems manager. He is motivated by the challenge of working with complex systems in a high-stakes environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Alistair is of average height with a slightly athletic build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a packet of Scottish shortbread on his desk.",
+    "Refuses to use cloud services that aren't hosted in the UK.",
+    "Insists on writing all code documentation in Markdown."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 50,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Dimitri Volkov's fascination with motorsport began in his youth, witnessing Soviet-era racing events that ignited a lifelong passion. He pursued engineering, specializing in aerodynamics, and honed his skills at various aerospace firms before transitioning to motorsport. Dimitri believes in a holistic approach to aero development, emphasizing the interplay between computational fluid dynamics, wind tunnel testing, and driver feedback. His focus is on creating a stable platform for drivers to trust and push to the limit, always seeking marginal gains that can translate into competitive advantage. His experience allows him to quickly grasp complex aerodynamic problems.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed grey goatee",
+    "description": "Dimitri is a man of medium build with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn slide rule for quick calculations, despite having access to advanced software.",
+    "Insists on starting every project with a hand-drawn sketch.",
+    "Has a habit of muttering aerodynamic equations under his breath when deep in thought."
+  ]
+}

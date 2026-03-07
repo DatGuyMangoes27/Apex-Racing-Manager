@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0131",
+  "name": "Siamsphere Gaming",
+  "category": "tech_gaming",
+  "tier": "elite",
+  "country": "Thailand",
+  "description": "The future of immersive Thai gaming experiences.",
+  "story": "Siamsphere Gaming is a leading Thai developer of VR and AR gaming experiences. As they expand globally, they seek to partner with motorsport teams to showcase the cutting-edge technology that powers their games. They value innovation, precision, and a commitment to pushing boundaries.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "nationalities": [
+      "Thailand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0131.png"
+}

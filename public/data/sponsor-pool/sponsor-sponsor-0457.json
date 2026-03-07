@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0457",
+  "name": "Emerald Esports",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "Ireland",
+  "description": "Fueling the future of competitive gaming.",
+  "story": "Emerald Esports is an Irish gaming hardware and software company dedicated to supporting grassroots esports. They believe in investing in the next generation of talent, both in the digital and physical realms. Motorsport provides a unique testing ground for their technology and aligns with their values of speed, precision, and innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0457.png"
+}

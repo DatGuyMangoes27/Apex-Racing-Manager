@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0454",
+  "name": "Ubuntu Investments",
+  "category": "financial",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "Empowering South African futures through strategic investments.",
+  "story": "Ubuntu Investments believes in fostering growth and opportunity, and sees motorsport as a powerful platform to reach a diverse and passionate audience. They are committed to supporting local talent and showcasing South African excellence on the global stage. They seek a partnership that reflects their values of collaboration, innovation, and community upliftment.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0454.png"
+}

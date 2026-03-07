@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0163",
+  "name": "Apex Digital",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Monaco",
+  "description": "Level Up Your Game.",
+  "story": "Apex Digital is a leading developer of high-performance gaming peripherals and esports infrastructure. Recognizing the synergy between competitive gaming and motorsport, Apex Digital seeks to partner with teams to enhance brand visibility among tech-savvy audiences. They value innovation, precision, and a winning mentality.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Monaco"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0163.png"
+}

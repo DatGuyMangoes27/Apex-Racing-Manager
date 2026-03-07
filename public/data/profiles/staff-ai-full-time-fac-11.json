@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 40,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Marco Bellini's passion for motorsport ignited during his childhood visits to the Monza circuit with his father. Starting as a junior mechanic, he quickly demonstrated a knack for understanding vehicle dynamics and data analysis. This led him to transition into a test driver support role, eventually evolving into a Test Driver Coordinator. \n\nMarco believes that a successful test program hinges on clear communication, meticulous planning, and a relentless pursuit of improvement. He is known for his ability to translate complex technical data into actionable insights for the drivers and engineering team. His demanding nature pushes everyone to perform at their best, ensuring that every testing session yields valuable results. Marco's knack for spotting innovative solutions makes him a valuable asset in optimizing performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Marco is of average height, with a lean build and intense, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with track schematics and handwritten notes.",
+    "Insists on starting every testing session with a double espresso.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

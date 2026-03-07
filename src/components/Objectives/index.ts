@@ -1,1 +1,1 @@
-export { ObjectivesPanel } from './ObjectivesPanel'
+export { ObjectivesPanel, CommitmentsPanel } from './ObjectivesPanel'

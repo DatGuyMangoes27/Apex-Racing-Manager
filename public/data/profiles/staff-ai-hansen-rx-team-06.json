@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Ricardo's motorsport journey began dismantling and reassembling go-karts in his uncle's workshop in the Algarve. This early exposure fueled a passion that led him to study Mechanical Engineering, specializing in vehicle dynamics. After graduating, he worked as a junior engineer for a Formula Ford team before transitioning to rallycross, drawn by its intensity and close-quarters racing. He quickly rose through the ranks, impressing teams with his meticulous approach and data-driven decision-making.\n\nAt Hansen World RX Team, Ricardo oversees all sporting aspects, from race strategy to driver development. He's known for his calm demeanor under pressure and his ability to identify subtle performance gains through rigorous analysis. His pragmatic approach emphasizes consistency and minimizing errors, making him a valuable asset in the unpredictable world of rallycross.\n\nRicardo distinguishes himself by blending traditional engineering principles with cutting-edge data analysis techniques. He fosters a culture of continuous improvement within the team, always pushing for marginal gains that can make the difference between winning and losing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Ricardo is of average height with a lean build, and usually wears glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on arriving at the track exactly 2 hours before the first session, regardless of schedule."
+  ]
+}

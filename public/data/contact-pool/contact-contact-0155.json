@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Bima Prasetyo",
+    "nationality": "Indonesian",
+    "age": 23,
+    "gender": "male",
+    "contactType": "athlete",
+    "bio": "Bima Prasetyo is a rising star in the world of marathon running. Hailing from Jakarta, he's known for his incredible endurance and unwavering determination. Despite his young age, Bima has already secured several national titles and is aiming for international recognition, driven by a relentless pursuit of excellence. He balances his intense training with a surprising appreciation for the arts, often attending ballet performances and finding solace in writing poetry.\n\nBima's connection to motorsport stems from his rigorous physical training. He often uses advanced sports science techniques employed by racing teams to optimize his performance. His disciplined approach and understanding of peak physical condition make him a valuable resource for drivers seeking to improve their own fitness and mental fortitude. His wealthy background also means he frequently attends high-profile sporting events and is well-connected in Jakarta's social circles.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly cropped",
+      "eyeColor": "Dark brown",
+      "facialHair": "Clean shaven",
+      "description": "Bima has a lean, athletic build typical of a long-distance runner. His focused gaze and determined expression reflect his competitive spirit."
+    },
+    "connectionToMotorsport": "Bima uses techniques from Formula 1 to optimize his own training and has become a fitness consultant for some drivers. He also attends motorsport events in Asia.",
+    "meetingContext": "The player might meet Bima at a fitness expo, a charity run sponsored by a motorsport team, or at a high-profile motorsport event in Southeast Asia.",
+    "conversationTopics": [
+      "Marathon training techniques",
+      "The importance of mental fortitude in sports",
+      "His love for ballet and poetry",
+      "The latest watch models",
+      "Rugby"
+    ],
+    "canHelp": [
+      "Provide fitness and endurance training advice",
+      "Offer insights into mental preparation for competition",
+      "Introduce the player to potential sponsors and contacts in Jakarta's business community"
+    ],
+    "personality_summary": "A driven and disciplined athlete with a surprising appreciation for the arts."
+  }
+]

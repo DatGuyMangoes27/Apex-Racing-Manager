@@ -1,0 +1,31 @@
+{
+  "name": "Ivana Trumpová",
+  "nationality": "Czech",
+  "age": 62,
+  "gender": "female",
+  "contactType": "celebrity",
+  "bio": "Ivana Trumpová, though perhaps best known for her previous marriage and business ventures, has quietly become a patron of the arts and a keen observer of the motorsport scene. She has always gravitated towards high-octane environments, and the speed and glamour of Formula 1 and other racing series intrigue her. Her sharp business acumen and social connections mean she's often found at exclusive motorsport events.\n\nWhile she might appear self-absorbed due to her high-profile lifestyle, Ivana also possesses a nurturing side, often mentoring young entrepreneurs and supporting charitable causes related to education and the arts. A racing driver might cross paths with her at a VIP event, a charity gala, or even through mutual high-society acquaintances. Her interest in speed and excellence makes her an astute observer of talent.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, styled with voluminous waves",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Ivana is a striking woman who maintains a youthful appearance through careful grooming and fashion. She favors elegant, tailored clothing that accentuates her figure."
+  },
+  "connectionToMotorsport": "Ivana is a well-known presence at VIP motorsport events, often seen networking with team owners and sponsors. She has also been known to invest in up-and-coming drivers through endorsements and sponsorships.",
+  "meetingContext": "The player could meet Ivana at a glamorous after-party following a major race, or at a charity auction benefiting a cause related to motorsport safety.",
+  "conversationTopics": [
+    "Fashion trends",
+    "Luxury real estate",
+    "Her philanthropic endeavors",
+    "The business side of motorsport",
+    "Her favorite racing teams and drivers"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy sponsors",
+    "Provide media exposure through her social media network",
+    "Offer business advice on managing finances and brand image"
+  ],
+  "personality_summary": "A rebellious, yet secretly nurturing, socialite with a shrewd business mind."
+}

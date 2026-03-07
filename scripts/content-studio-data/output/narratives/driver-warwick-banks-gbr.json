@@ -1,0 +1,27 @@
+{
+  "biography": "Warwick Banks, a name whispered with a mix of excitement and apprehension in British racing circles, hails from the unassuming town of Market Harborough. His journey began not on the track, but tinkering in his father's garage, transforming a rusty old Mini into a street-legal racer. It was during these late-night sessions, fueled by strong tea and raw ambition, that Warwick discovered his innate connection to speed and machinery. A defining moment came at the Mallory Park club race in '65. Starting from the back of the grid after a qualifying mishap, Warwick carved his way through the field with a series of daring overtakes, ultimately claiming a shock victory. This raw, untamed talent caught the attention of the MINI Cooper S factory team, and they quickly signed him. Now, at only 21, Warwick is on the cusp of superstardom, ready to prove that his aggressive style and unwavering determination can take him all the way to the top. His recent performance at Snetterton was promising, showing marked improvement with careful driving, though he was pipped at the final corner. He's got the grit, but now needs the finesse to match.",
+  "drivingStyle": "Warwick's driving style is a blend of controlled aggression and calculated risk. He's known for late-braking maneuvers and a willingness to push his car to the absolute limit, often flirting with the edge of control. He attacks corners with ferocity, rarely lifting off the throttle completely, preferring to balance the car on the knife's edge of grip. While his tire management can be inconsistent, he excels under pressure, thriving in the heat of battle and relishing wheel-to-wheel combat. He adapts quickly to changing track conditions, making him a formidable opponent in unpredictable races.",
+  "rivalries": [
+    {
+      "driver": "Julian Fairweather",
+      "reason": "A seasoned veteran, Julian represents the old guard of British racing, often clashing with Warwick's brash, modern approach. There's a mutual respect, but also a fierce desire to prove their respective styles are superior."
+    },
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "A talented French driver, Isabelle and Warwick have a history of close on-track battles. Their rivalry is fueled by their shared ambition and a constant struggle for position, often leading to heated exchanges both on and off the track."
+    },
+    {
+      "driver": "Graham 'The Professor' Hill",
+      "reason": "Graham has publicly criticised Banks' aggressive style, calling him reckless. Banks in turn considers Hill a boring driver, who lacks the killer instinct needed to win."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, regardless of the weather.",
+    "Has to listen to a specific obscure blues record before every race.",
+    "Refuses to shake hands with anyone before the green light."
+  ],
+  "nickname": "Warwick 'The Wildcat' Banks",
+  "famousQuote": "\"You can't win a race by being polite. Sometimes you gotta be a little bit of a bastard.\"",
+  "careerHighlight": "Winning the Mallory Park club race in '65 after starting from the back of the grid, showcasing his raw talent and determination.",
+  "careerLowPoint": "Crashing out of the Brands Hatch race in '66 while leading, costing him a potential victory and damaging his reputation."
+}

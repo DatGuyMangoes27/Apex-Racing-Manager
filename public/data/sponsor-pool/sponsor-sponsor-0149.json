@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0149",
+  "name": "Northwind Studios",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Sweden",
+  "description": "Crafting immersive gaming experiences.",
+  "story": "Northwind Studios is a leading game developer in Sweden, known for its innovative VR and simulation titles. Motorsport provides a perfect testing ground for real-time physics and advanced graphics technologies they are developing. They seek a partnership that showcases their technology and connects them with a passionate audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0149.png"
+}

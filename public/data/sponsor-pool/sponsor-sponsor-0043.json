@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0043",
+  "name": "Rotorua Racing Parts",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "New Zealand",
+  "description": "Performance parts engineered for racing dominance.",
+  "story": "Rotorua Racing Parts was founded by a group of Kiwi motorsport enthusiasts who wanted to bring high-quality, locally-designed components to the racing world. We believe in supporting local talent and fostering a passion for racing. We're looking for a partnership that demonstrates our commitment to performance and innovation on the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "New Zealand"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "unlockReputation": null,
+  "imagePath": "logos/sponsors/sponsor-0043.png"
+}

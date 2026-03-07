@@ -1,0 +1,22 @@
+{
+  "name": "Klaus-Dieter Richter",
+  "nationality": "German",
+  "age": 43,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Klaus-Dieter's fascination with motorsport began in his youth, tinkering with model cars and dreaming of Formula 1 glory. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduation, he honed his skills at a smaller racing outfit, where he quickly became known for his meticulous approach and ability to extract every last bit of performance from the simulator. \n\nHe joined MP Motorsport five years ago, drawn by their commitment to innovation and their focus on developing young talent. Klaus-Dieter sees the simulator as more than just a training tool; it's a virtual laboratory where drivers and engineers can push the boundaries of performance without the risk of real-world consequences. He prides himself on creating realistic and challenging scenarios that help drivers build confidence and refine their racecraft. His dedication to accuracy and his relentless pursuit of improvement make him a valuable asset to the team. He is also known for his unconventional methods, like using old flight simulator techniques to optimize driver feedback.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly parted to the left",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Klaus-Dieter is of medium height with a slightly stocky build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with equations and sketches.",
+    "Insists on drinking only herbal tea during simulator sessions.",
+    "Has a habit of muttering technical jargon under his breath."
+  ]
+}

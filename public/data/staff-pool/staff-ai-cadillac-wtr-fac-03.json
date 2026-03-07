@@ -1,0 +1,22 @@
+{
+  "name": "Eirlys Davies",
+  "nationality": "Welsh",
+  "age": 49,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Eirlys Davies has spent over twenty years honing her skills as a machinist, a career that started unexpectedly after a motorsports event at Pembrey Circuit ignited a passion for the intricate mechanics of racing machines. Starting as an apprentice in a local garage, she quickly distinguished herself through her meticulous attention to detail and innate understanding of material properties. Her move into motorsport was a natural progression, bringing her precision and pragmatic approach to the high-stakes world of Cadillac Racing.\n\nAt Cadillac Racing, Eirlys is known for her ability to diagnose and rectify mechanical issues swiftly and effectively. She is a firm believer in preventative maintenance and collaborative problem-solving, often working closely with engineers and drivers to optimize vehicle performance. While not one for grand pronouncements, Eirlys's quiet competence and unwavering dedication have earned her the respect and trust of the entire team. She's the one they turn to when things absolutely, positively have to work.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, practical bob with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Eirlys is a sturdy woman with a kind face etched with the wisdom of experience."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always has a small tin of Welsh Cakes in her toolbox.",
+    "Insists on using imperial measurements alongside metric, much to the engineers' amusement.",
+    "Calibrates equipment to the hum of specific motorsports engines."
+  ]
+}

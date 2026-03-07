@@ -1,0 +1,22 @@
+{
+  "name": "Sudarat Chaiyarat",
+  "nationality": "Thai",
+  "age": 25,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Sudarat's fascination with motorsport began during her university days, fueled by late-night streams of Formula 1 races and a deep dive into vehicle dynamics. After graduating with a degree in mechanical engineering from Chulalongkorn University, she pursued her passion by joining a small sim racing team. There, she quickly distinguished herself by developing innovative algorithms that significantly improved the realism and effectiveness of their simulator. \n\nHer approach to simulator engineering blends a rigorous technical understanding with a keen focus on driver feedback. Sudarat meticulously analyzes telemetry data, constantly tweaking parameters to ensure the simulator accurately reflects the performance of the real car. She is known for her relentless pursuit of perfection and her ability to translate complex technical concepts into actionable insights for drivers. Sudarat's innovative spirit and exceptional management capabilities make her a valuable asset to any team.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "long, straight hair, often pulled back into a high ponytail",
+    "eyeColor": "dark brown",
+    "facialHair": null,
+    "description": "Sudarat is petite with an athletic build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and equations.",
+    "Insists on calibrating the simulator herself before every session, regardless of who used it last.",
+    "Drinks copious amounts of strong Thai iced coffee throughout the day."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Allende",
+  "nationality": "Argentine",
+  "age": 35,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's passion for motorsport ignited as a child, watching Formula One races with his grandfather. This early exposure fueled his determination to understand the intricate engineering behind racing cars. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics and control systems. After graduating, he started his career at a small, local racing team, quickly proving his abilities in optimizing car setups and troubleshooting mechanical issues.\n\nHis meticulous approach to problem-solving and his ability to quickly adapt to changing circumstances led to a series of promotions, eventually landing him the role of chief engineer. Ricardo believes in fostering a collaborative environment within his team, encouraging open communication and sharing of ideas. He is known for his unwavering dedication to improving performance through incremental gains and his calm demeanor under pressure.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a lean build, often seen wearing his team jacket."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a worn-out copy of 'Race Car Vehicle Dynamics'",
+    "Has a habit of sketching mechanical diagrams on napkins during lunch",
+    "Insists on a specific brand of mate tea in the garage."
+  ]
+}

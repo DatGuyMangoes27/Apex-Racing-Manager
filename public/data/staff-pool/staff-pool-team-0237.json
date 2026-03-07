@@ -1,0 +1,22 @@
+{
+  "name": "Klara Ziegler",
+  "nationality": "Austrian",
+  "age": 56,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Klara Ziegler is a seasoned chief engineer with a career spanning over three decades in motorsport. Her journey began in the hallowed halls of the Graz University of Technology, where she earned a degree in mechanical engineering. Drawn to the thrill of racing, she quickly transitioned from academia to the pit lane, starting as a junior engineer for a small Austrian racing team. Her meticulous approach and uncanny ability to diagnose and resolve complex mechanical issues propelled her through the ranks.\n\nKlara's philosophy centers around precision and data-driven decision-making. She believes in fostering a culture of continuous improvement, pushing her team to constantly refine their processes and explore innovative solutions. While respected for her technical prowess, she is also known for her direct and demanding leadership style, expecting nothing less than perfection from her team. What sets Klara apart is her unwavering commitment to reliability; she prioritizes robust engineering and thorough testing to ensure consistent performance, even if it means sacrificing short-term gains for long-term success.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly trimmed bob",
+    "eyeColor": "blue",
+    "facialHair": null,
+    "description": "Klara is a woman of average height with a serious demeanor etched on her face."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously recording observations and ideas.",
+    "Insists on using metric measurements exclusively, refusing to work with imperial units.",
+    "Has a collection of vintage engineering textbooks that she frequently consults."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Spanish",
+  "age": 43,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo's passion for motorsport ignited during his university days, poring over telemetry data from Formula 1 races instead of attending lectures. After graduating with a degree in Applied Mathematics, he started his career at a small racing outfit, quickly proving his talent for extracting actionable insights from complex datasets. Ricardo's meticulous approach and relentless pursuit of performance gains have made him a valuable asset to any team.\n\nHe joined Hitech Development five years ago, initially focusing on optimizing vehicle setup for Formula 3. Now, he leads the data analysis efforts across multiple racing programs. He believes in a data-driven approach to decision-making, constantly seeking new ways to leverage technology to improve on-track performance. Ricardo's ability to translate raw data into tangible improvements has earned him the respect of drivers and engineers alike.\n\nRicardo is known for his exacting standards and unwavering commitment to excellence. He expects nothing less than perfection from himself and his colleagues, and he's not afraid to challenge conventional wisdom if the data suggests a better path forward. This demanding nature, coupled with his sharp analytical mind, makes him a force to be reckoned with in the world of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a lean, wiry build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on using a specific brand of pen for data entry.",
+    "Has a habit of muttering equations under his breath when analyzing data."
+  ]
+}

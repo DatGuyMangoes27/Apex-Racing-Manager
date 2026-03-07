@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0469",
+  "name": "PetroBras Competição",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "Brazil",
+  "description": "Brazilian fuel and lubricant leader, powering performance on and off the track.",
+  "story": "PetroBras has a long history of supporting Brazilian motorsport, from Formula 1 to stock car racing. They see motorsport as the ultimate testing ground for their fuels and lubricants, pushing the boundaries of performance and innovation. They seek a partnership that showcases their technical expertise and commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Brazil"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0469.png"
+}

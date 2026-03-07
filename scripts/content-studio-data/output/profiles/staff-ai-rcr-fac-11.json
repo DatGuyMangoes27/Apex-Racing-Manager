@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 43,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Zoltán's journey into motorsport began with a childhood fascination for the Hungarian Grand Prix, fueling a passion that led him to pursue a degree in mechanical engineering. After graduating, he spent several years working as a data analyst for a small racing team, honing his skills in interpreting telemetry and identifying areas for improvement. His meticulous approach and keen eye for detail quickly gained him recognition, leading to his current role as a test driver coordinator at Richard Childress Racing.\n\nAt RCR, Zoltán thrives on the challenge of optimizing test sessions and translating driver feedback into actionable technical adjustments. He is known for his pragmatic approach, favoring data-driven decisions over gut feelings. Zoltán's ability to remain calm under pressure, combined with his ambitious drive to push the boundaries of performance, makes him a valuable asset to the team. He's particularly adept at balancing the needs of the drivers with the technical demands of the engineering team, ensuring a seamless and productive testing environment.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build, Zoltán often wears a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking strong black coffee at exactly 10:00 AM every morning."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "sponsor-0272",
+  "name": "Al-Sahra Motors",
+  "category": "automotive",
+  "tier": "high",
+  "country": "Saudi Arabia",
+  "description": "Experience the future of automotive performance.",
+  "story": "Al-Sahra Motors is a pioneering Saudi Arabian automotive manufacturer focused on electric and high-performance vehicles. With a commitment to innovation and sustainability, they seek to showcase their cutting-edge technology and brand through motorsport partnerships. Al-Sahra aims to align with teams that demonstrate a commitment to excellence, technological advancement, and a strong global presence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Saudi Arabia",
+      "United Arab Emirates",
+      "Bahrain"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0272.png"
+}

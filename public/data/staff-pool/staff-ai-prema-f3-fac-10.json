@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Rudolf Keller",
+  "nationality": "Swiss",
+  "age": 55,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Hans-Rudolf's precision engineering skills were honed in the Swiss watchmaking industry before a lifelong passion for motorsport led him to a career change in his late 20s. He started in a small rally team, building roll cages and suspension components, quickly earning a reputation for meticulousness and reliability. He joined Prema Racing fifteen years ago. \n\nHans-Rudolf's approach to fabrication is characterized by a deep understanding of material properties and a commitment to achieving the highest tolerances. He believes in a hands-on approach, preferring the feel of metal and the challenge of problem-solving in the workshop. His experience with a wide range of fabrication techniques, from traditional machining to modern composite layup, makes him a versatile and valuable asset to the team. His ability to 'MacGyver' solutions to unexpected mechanical challenges is legendary within Prema.\n\nWhile not the most outgoing member of the team, Hans-Rudolf is deeply respected for his unwavering dedication and the quiet confidence he exudes in his craft. He is a true craftsman, driven by a desire to create components that are not only functional but also works of art.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed grey mustache",
+    "description": "Hans-Rudolf is of average height with a slightly stocky build, reflecting years spent hunched over machinery."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Insists on using only metric measurements, even when working on components designed in imperial units.",
+    "Has a small collection of vintage watchmaking tools he uses for fine detail work."
+  ]
+}

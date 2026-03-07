@@ -1,0 +1,22 @@
+{
+  "name": "Mei Tan",
+  "nationality": "Singaporean",
+  "age": 30,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Mei Tan's journey into motorsport began unexpectedly during a university engineering project focused on aerodynamics. The challenge of optimizing performance through material science captivated her, leading her to specialize in composite materials. After graduating from the National University of Singapore, she gained valuable experience at a local aerospace company before transitioning to motorsport, seeking the fast-paced environment and constant innovation it offered.\n\nAt Brad Jones Racing, Mei's meticulous approach to composite repair and fabrication is highly valued. She's known for her unwavering commitment to quality, ensuring every component meets exacting standards. Mei believes in continuous learning, constantly researching new materials and techniques to enhance the performance and durability of the team's race cars. She's particularly skilled at identifying subtle imperfections that others might miss, allowing her to proactively address potential issues before they impact performance on the track.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight hair often tied back in a neat ponytail.",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei is petite with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and calculations.",
+    "Insists on using a specific brand of carbon fiber for all repairs.",
+    "Performs a detailed visual inspection of every component under bright light before signing off on it."
+  ]
+}

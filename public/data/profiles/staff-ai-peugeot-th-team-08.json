@@ -1,0 +1,22 @@
+{
+  "name": "Ivana Horvat",
+  "nationality": "Croatian",
+  "age": 58,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Ivana's journey into motorsport began unexpectedly. While studying mechanical engineering at the University of Zagreb, a summer internship at a local rally team ignited a passion that would define her career. She quickly realized her knack for analyzing telemetry data and optimizing car performance, leading her to specialize in performance engineering. \n\nHer approach is rooted in a holistic understanding of the car's systems and the driver's needs. Ivana meticulously examines every aspect of the car's behavior, from suspension dynamics to engine efficiency, always seeking marginal gains. She's known for her ability to translate complex data into actionable insights, effectively bridging the gap between the engineering team and the driver. Her 'big picture' thinking allows her to foresee potential issues and proactively implement solutions, making her a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly styled bob, often pulled back with a clip.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Ivana is a woman of average height with a focused gaze and a practical demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Insists on having a specific brand of Croatian coffee before every race.",
+    "Has a habit of tapping her pen rapidly when deep in thought."
+  ]
+}

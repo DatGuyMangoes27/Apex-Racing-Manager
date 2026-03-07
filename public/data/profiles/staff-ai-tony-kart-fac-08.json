@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Belgian",
+  "age": 26,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Elise's fascination with motorsport began during her childhood visits to the Zolder circuit with her father, a passionate racing fan. Inspired by the engineering marvels on display, she pursued a degree in aerospace engineering at the Katholieke Universiteit Leuven, specializing in aerodynamics. After graduating, she joined Tony Kart Racing as a junior wind tunnel operator, quickly proving her aptitude for data analysis and optimization. \n\nElise's pragmatic approach involves meticulously analyzing airflow patterns and identifying areas for drag reduction and downforce enhancement. She's known for her ability to translate complex simulations into practical adjustments for the kart. Her dedication to continuous improvement and her keen eye for detail make her a valuable asset to the team.\n\nWhat sets Elise apart is her innovative thinking. She's always exploring novel aerodynamic solutions, pushing the boundaries of what's possible within the karting regulations. This forward-thinking approach, combined with her unwavering loyalty to Tony Kart Racing, ensures she's committed to giving the team a competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise is of average height with an athletic build and often wears practical work attire."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas and observations.",
+    "Has a lucky rabbit's foot keychain attached to her wind tunnel access card.",
+    "Prefers listening to classical music while analyzing data to maintain focus."
+  ]
+}

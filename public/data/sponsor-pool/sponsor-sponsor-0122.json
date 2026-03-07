@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0122",
+  "name": "DragonByte Gaming",
+  "category": "gaming",
+  "tier": "high",
+  "country": "China",
+  "description": "Unleash your inner dragon with DragonByte Gaming.",
+  "story": "DragonByte Gaming is a leading Chinese developer of online multiplayer games, focused on competitive esports titles. Motorsport offers a unique avenue to connect with a passionate, tech-savvy audience. They seek to enhance brand awareness globally and associate their innovative spirit with the thrill and precision of racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0122.png"
+}

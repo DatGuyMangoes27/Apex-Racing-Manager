@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Carrasco",
+  "nationality": "Chilean",
+  "age": 30,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Valentina Carrasco's passion for motorsport ignited during her childhood, spent tinkering with go-karts in her grandfather's workshop in Santiago. She pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, before landing a coveted internship at a local racing team. Her sharp analytical skills and knack for problem-solving quickly earned her recognition, leading to her appointment as a junior engineer. \n\nValentina joined Reiza Studios Factory five years ago, where she rapidly ascended the ranks, impressing colleagues with her innovative ideas and ability to foster a collaborative team environment. As Chief Engineer, she spearheads the development and optimization of the team's racing machines, focusing on leveraging data-driven insights to unlock performance gains. She's known for her meticulous attention to detail and her unwavering commitment to pushing the boundaries of engineering excellence. Her distinctive approach lies in her ability to blend cutting-edge technology with practical, real-world solutions, ensuring that the team's cars are not only fast but also reliable and adaptable to diverse racing conditions.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair, often pulled back in a practical ponytail during races.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina has a determined gaze and a slender build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with engineering sketches and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on calibrating the tire pressure gauge herself before every race."
+  ]
+}

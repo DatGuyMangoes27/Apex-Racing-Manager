@@ -1,0 +1,31 @@
+{
+  "name": "Élodie Dubois",
+  "nationality": "French",
+  "age": 32,
+  "gender": "female",
+  "contactType": "journalist",
+  "bio": "Élodie Dubois is a rising star in French motorsport journalism, known for her sharp analysis and unflinching interviews. A graduate of the Sorbonne with a degree in Philosophy and a subsequent master's in Journalism, she brings a unique intellectual rigor to her work. While some find her competitive nature off-putting, those who earn her respect discover a caring and disciplined individual beneath the aloof exterior.\n\nShe currently writes for 'Motorsport Actualités', a prominent French racing publication, covering Formula 1, Formula E, and the World Endurance Championship. Drivers might encounter Élodie during press conferences, paddock interviews, or at exclusive media events. Her insightful articles and knack for uncovering hidden narratives make her a valuable contact, but also a potentially dangerous one.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, straight, often pulled back in a low ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Élodie is of average height with a slender build. She favors tailored clothing and understated jewelry, projecting an image of professional competence."
+  },
+  "connectionToMotorsport": "Élodie is a motorsport journalist who covers various racing series, providing news, analysis, and interviews for 'Motorsport Actualités'. She is a regular presence in the paddock.",
+  "meetingContext": "The player would likely meet Élodie during a post-race press conference after a strong performance, or potentially at a media event organized by one of the team sponsors.",
+  "conversationTopics": [
+    "The philosophical implications of motorsport technology",
+    "The challenges faced by female drivers in a male-dominated sport",
+    "The latest Formula 1 regulations and their impact on racing",
+    "Her recent interview with a controversial team principal",
+    "The merits of different board game strategies"
+  ],
+  "canHelp": [
+    "Increase the player's public profile through positive press coverage",
+    "Provide valuable insights into team dynamics and rivalries",
+    "Offer constructive criticism and advice on improving media relations"
+  ],
+  "personality_summary": "A competitive and calculating journalist who values intellect and discipline, but is surprisingly caring to those she respects."
+}

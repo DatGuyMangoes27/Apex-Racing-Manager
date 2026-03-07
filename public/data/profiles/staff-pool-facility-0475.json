@@ -1,0 +1,22 @@
+{
+  "name": "Marija Babić",
+  "nationality": "Croatian",
+  "age": 55,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Marija Babić's path to motorsport was somewhat unconventional, having started her career as a software developer for industrial machinery. A lifelong fascination with racing simulations led her to begin modding games in her spare time, eventually building a reputation for creating incredibly realistic vehicle dynamics. This passion project evolved into a full-time pursuit when she realized the potential for applying her skills to professional racing simulators.\n\nAs a simulator engineer, Marija is meticulous and demanding, both of herself and those around her. She believes in a data-driven approach, constantly seeking to refine and improve the accuracy of the simulator. While her management skills are still developing, her technical expertise and innovative ideas make her a valuable asset to any team looking to gain an edge through simulation. Her ambition drives her to continually push the boundaries of what's possible within the virtual racing environment.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Marija has a serious demeanor etched into her weathered face."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with equations and technical diagrams.",
+    "Insists on complete silence during simulation runs, even from remote observers.",
+    "Has a habit of muttering technical jargon under her breath when concentrating."
+  ]
+}

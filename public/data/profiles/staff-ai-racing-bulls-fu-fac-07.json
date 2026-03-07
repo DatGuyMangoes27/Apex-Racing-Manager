@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Lindström",
+  "nationality": "Swedish",
+  "age": 47,
+  "gender": "female",
+  "role": "it_systems_manager",
+  "bio": "Astrid's journey into motorsport was somewhat unconventional. After earning a degree in Computer Science from KTH Royal Institute of Technology, she spent several years developing software for the financial sector. The relentless pace and high stakes, however, didn't ignite her passion. A chance encounter with a former racing engineer at a technology conference piqued her interest in the data-driven world of motorsport. She started volunteering at a local racing team, quickly demonstrating her aptitude for managing complex IT infrastructure. \n\nNow at Racing Bulls, Astrid is responsible for ensuring the smooth operation of the team's critical IT systems, from data acquisition and analysis tools to race simulation software. Her approach is pragmatic and collaborative; she believes in empowering her team to find innovative solutions. Astrid is known for her ability to quickly diagnose and resolve technical issues under pressure, making her an invaluable asset during race weekends. Her colleagues appreciate her calm demeanor and knack for explaining complex technical concepts in plain language.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, slightly wavy, with a side part",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is of average height with a thoughtful expression and kind eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during stressful moments.",
+    "Has a collection of vintage computer magazines that she occasionally brings to the office.",
+    "Prefers using a mechanical keyboard with distinct clicky keys."
+  ]
+}

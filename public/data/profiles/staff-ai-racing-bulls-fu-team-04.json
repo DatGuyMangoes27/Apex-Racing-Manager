@@ -1,0 +1,22 @@
+{
+  "name": "Javier Andrade",
+  "nationality": "Chilean",
+  "age": 33,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Javier's fascination with motorsport began in his childhood, fueled by watching Formula One races broadcast from Europe. This early passion led him to pursue a degree in mechanical engineering at the Universidad de Chile, where he specialized in vehicle dynamics and aerodynamics. After graduating, he secured an internship with a local racing team competing in the Chilean National Rally Championship, quickly proving his aptitude for data analysis and problem-solving. He spent several years honing his skills in various racing series across South America before earning a coveted position with Racing Bulls.\n\nKnown for his methodical approach and relentless pursuit of performance gains, Javier excels at translating complex data into actionable insights for the drivers. He's not afraid to challenge conventional wisdom and constantly seeks innovative solutions to improve car setup and race strategy. While his ambition is undeniable, he prioritizes collaboration and open communication within the team, fostering a positive and productive working environment. He is driven by the desire to see his team succeed and constantly strives to improve his own skills and knowledge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Javier is of average height with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating his torque wrench before every session, even if it was already calibrated that day."
+  ]
+}

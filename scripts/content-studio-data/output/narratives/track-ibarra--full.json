@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Internacional José Tobar, commonly known as Ibarra, has been a staple of Ecuadorian motorsport since its inception. While the specific date of initial construction is difficult to pinpoint, its history is deeply intertwined with the growth of racing in the country. The full circuit layout, stretching 3.2km, has hosted numerous national championships and local racing series, providing a challenging and exciting venue for drivers and spectators alike. Its location near Ibarra has made it a focal point for motorsport enthusiasts in the region, fostering a strong racing community.\n\nOver the years, the circuit has undergone some modifications and upgrades to improve safety and facilities, but the core character of the full circuit has remained largely intact. It continues to host various motorsport events, from club racing to national-level competitions, solidifying its place as a vital part of Ecuador's racing heritage. While international events are rare, the full circuit layout is the most challenging configuration, offering a true test of driver skill and car setup.",
+  "atmosphere": "The air crackles with anticipation as the cars line up on the grid at Ibarra's full circuit. The roar of the engines echoes off the surrounding hills, creating an immersive soundscape that vibrates through your chest. The vibrant colors of the team liveries and the passionate cheers of the Ecuadorian fans blend together, creating a palpable sense of excitement. The smell of burning rubber and high-octane fuel fills the air, a sensory overload that intensifies as the race begins. Every apex, every overtake, is met with a wave of enthusiasm, making it an unforgettable experience for both drivers and spectators.",
+  "trackCharacter": "The full circuit at Ibarra is a demanding blend of high-speed straights and technical corners, requiring a well-balanced car setup and precise driving. The undulating terrain adds another layer of complexity, challenging drivers to find the optimal line while managing the car's weight transfer. The circuit rewards bravery and commitment, but also punishes mistakes severely, making it a true test of skill and precision. The flow of the track is crucial here, as maintaining momentum through the various turns is key to setting a fast lap.",
+  "nickname": "The Andean Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Curva del Cementerio",
+      "description": "A fast, sweeping right-hander that leads onto a short straight. It is close to the local cemetery.",
+      "challenge": "Requires immense commitment and precise placement to carry maximum speed onto the following straight. Getting it wrong can result in a trip onto the grass or worse."
+    },
+    {
+      "name": "La Recta Principal",
+      "description": "The main straight where drivers can reach top speed. It's a crucial overtaking spot.",
+      "challenge": "Maintaining a clean exit from the final corner to maximize speed down the straight. Wind direction can also play a significant role."
+    },
+    {
+      "name": "Curva de la Bomba",
+      "description": "A tricky, off-camber corner that requires careful throttle management.",
+      "challenge": "Finding the right balance between aggression and control, as the corner tightens unexpectedly towards the exit. Easy to run wide and lose time."
+    },
+    {
+      "name": "La Ese",
+      "description": "A quick chicane section, testing car agility and driver reflexes.",
+      "challenge": "Maintaining momentum and avoiding scrubbing speed through the tight changes of direction. Precision is key to a fast time."
+    },
+    {
+      "name": "Curva del Puente",
+      "description": "A medium-speed turn located right after crossing a bridge.",
+      "challenge": "Drivers need to accurately gauge their braking point and maintain the perfect line to avoid losing time. The bridge can create unpredictable airflow, affecting the car's stability."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic efficiency for the straights",
+    "Braking stability into the tight corners",
+    "Mechanical grip for cornering speed",
+    "Engine power for acceleration out of the corners",
+    "Driver confidence in the high-speed sections"
+  ],
+  "overtakingSpots": [
+    "End of La Recta Principal into the first hairpin",
+    "Into Curva de la Bomba after the short straight",
+    "Into the final corner, before the main straight"
+  ],
+  "historySnippets": [
+    "Ibarra has been a cornerstone of Ecuadorian motorsport for decades.",
+    "The track is known for its challenging mix of high-speed and technical sections.",
+    "The full circuit is 3.2km long and features 11 turns.",
+    "Many Ecuadorian racing legends have honed their skills at Ibarra.",
+    "The track's elevation changes add to its complexity and challenge.",
+    "Local fans are extremely passionate about racing at Ibarra."
+  ],
+  "weatherNotes": "Ibarra's location in the Andes mountains means that weather conditions can change rapidly. Rain showers are common, particularly in the afternoon, which can make the track extremely slippery. The high altitude also affects engine performance, requiring teams to adjust their engine mapping accordingly. Temperature fluctuations can also impact tire performance and grip levels.",
+  "drivingAdvice": "To master Ibarra's full circuit, focus on maintaining momentum through the technical sections and maximizing your exit speed onto the straights. Be patient and precise with your braking, especially into the tighter corners. Managing tire wear is also crucial, as the abrasive surface can take its toll on the tires over a race distance. Use the available track width to your advantage and be prepared to adapt to changing weather conditions.",
+  "famousRaces": [
+    "National Endurance Championship races: These races showcase the reliability of the cars and the stamina of the drivers on the demanding full circuit.",
+    "Local Touring Car Championships: Provide thrilling wheel-to-wheel action as drivers battle for supremacy on the challenging Ibarra circuit.",
+    "Club racing events: These events are the backbone of Ecuadorian motorsport, with passionate local drivers competing in a variety of classes."
+  ],
+  "localCulture": "Ibarra, known as the 'White City,' is a charming colonial town nestled in the Andes mountains. The local cuisine is a delicious blend of indigenous and Spanish influences, with dishes like 'fritada' (fried pork) and 'locro' (potato soup) being popular favorites. The locals are warm and welcoming, with a deep passion for motorsport. Paddock life is vibrant and friendly, with teams and fans alike sharing stories and experiences around the track. Visiting the nearby Yahuarcocha lake is a must, offering stunning views and a chance to experience the natural beauty of the region."
+}

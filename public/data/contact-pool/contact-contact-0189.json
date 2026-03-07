@@ -1,0 +1,31 @@
+{
+  "name": "Li Wei",
+  "nationality": "Chinese",
+  "age": 36,
+  "gender": "male",
+  "contactType": "celebrity",
+  "bio": "Li Wei is a self-made billionaire, primarily known for his tech empire that revolutionized online streaming in China. His intense drive and stubborn refusal to accept limitations propelled him to the top, but his relentless pursuit of success often borders on reckless. Despite his business acumen, Li has a deep appreciation for the arts and adrenaline-fueled activities, finding solace in snowboarding and the intricacies of jazz. His wealth and connections make him a sought-after figure in high society, and his global travels expose him to a diverse range of experiences and people.\n\nWhile primarily focused on technology, Li Wei has recently started investing in motorsport, seeing it as a potent blend of innovation, high performance, and global reach. He sponsors a Formula E team and often attends races, seeking out opportunities to network and explore new technologies. A racing driver might cross paths with him at a Formula E event, or through mutual high-society connections, particularly if the driver demonstrates a keen interest in technology and innovation.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly styled with a side part",
+    "eyeColor": "Dark brown",
+    "facialHair": "Goatee",
+    "description": "Li Wei is of average height with a lean, athletic build. He favors tailored suits and designer eyewear."
+  },
+  "connectionToMotorsport": "Li Wei is a relatively new but enthusiastic investor in motorsport, primarily in Formula E. He sees the sport as an intersection of technology, speed, and global marketing.",
+  "meetingContext": "The player could meet Li Wei at a Formula E event as part of a VIP guest list, or at a high-profile charity gala that he is sponsoring.",
+  "conversationTopics": [
+    "The future of technology",
+    "Formula E and its potential",
+    "His travels and favorite cultural experiences",
+    "His passion for jazz music",
+    "The stock market and investment opportunities"
+  ],
+  "canHelp": [
+    "Provide introductions to potential sponsors",
+    "Offer business advice and mentorship",
+    "Invest in the player's racing team or personal brand"
+  ],
+  "personality_summary": "An intense and driven tech billionaire with a surprisingly artistic side."
+}

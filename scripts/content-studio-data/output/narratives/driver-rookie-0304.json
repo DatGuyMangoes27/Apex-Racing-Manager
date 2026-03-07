@@ -1,0 +1,27 @@
+{
+  "biography": "Born in Mumbai to a family with no prior racing connections, Jack's journey began with remote-controlled cars, meticulously modifying them for optimal performance. His natural talent became undeniable when he started dominating local RC car races. This passion transitioned to karting at the age of 14, funded by his father's small business. Lacking the resources of established teams, Jack learned to wrench on his own kart, further honing his understanding of vehicle dynamics. A defining moment came during a national karting championship where, despite a mechanical failure, he salvaged enough points to finish third overall, attracting the attention of a few independent backers. Currently, at 19, Jack competes in a regional open-wheel series, meticulously collecting data and seeking opportunities to showcase his strategic driving style to larger teams.",
+  "drivingStyle": "Jack's driving style is characterized by a calculating approach. He doesn't often push for the fastest lap in practice, instead focusing on understanding tire degradation and optimal racing lines. During races, he's known for his patience, often hanging back in the initial laps to observe his competitors' strengths and weaknesses. He excels at late-braking maneuvers and conserving tires, setting up strategic overtakes in the closing stages of a race. He has an uncanny ability to sense the grip level of the car and adjust his driving accordingly.",
+  "rivalries": [
+    {
+      "driver": "Aryan Sharma",
+      "reason": "A wealthy driver from a well-established racing family, Aryan has always looked down on Jack and his lack of funding, leading to several on-track clashes."
+    },
+    {
+      "driver": "Priya Patel",
+      "reason": "Priya and Jack have a history of close battles, often resulting in aggressive overtaking attempts that have led to both on-track incidents and heated post-race exchanges."
+    },
+    {
+      "driver": "David Lee",
+      "reason": "David and Jack have a fierce, but respectful rivalry, each pushing the other to the limit on the track, and always striving to out-perform each other in qualifying."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue wristband during races, a gift from his grandfather.",
+    "Studies telemetry data for hours before a race, meticulously analyzing every corner and braking point.",
+    "Refuses to eat anything with sugar the day before a race, believing it negatively impacts his focus."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't just about speed; it's about strategy and knowing when to make your move.\"",
+  "careerHighlight": "Securing a podium finish in the final race of his rookie karting season despite starting last due to a qualifying penalty, showcasing his overtaking prowess.",
+  "careerLowPoint": "Crashing out of a promising lead in his first open-wheel race due to a misjudgment while battling for position, costing him valuable championship points."
+}

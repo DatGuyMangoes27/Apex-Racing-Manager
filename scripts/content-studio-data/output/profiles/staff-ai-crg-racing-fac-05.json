@@ -1,0 +1,22 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 34,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Angus's meticulous approach to quality control stems from his upbringing on a sheep farm in rural New South Wales, where precision was paramount. He transitioned from maintaining agricultural machinery to motorsport after a chance encounter with a CRG Racing Team mechanic at a local race. He started as an apprentice and quickly impressed with his attention to detail and ability to identify potential issues before they escalated. \n\nNow a seasoned member of the team, Angus believes that quality control is not just about ticking boxes; it's about fostering a culture of continuous improvement. He is known for his rigorous testing protocols and his insistence on holding every component to the highest standards. He's especially good at finding microscopic cracks in chassis welds.\n\nAngus is driven by a desire to ensure that the team's equipment is as reliable and efficient as possible. This dedication, combined with his innate knack for problem-solving, makes him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, slightly receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Angus is of average height and build with a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small magnifying glass.",
+    "Insists on calibrating all measuring instruments himself.",
+    "Has a habit of tapping on components to assess their integrity."
+  ]
+}

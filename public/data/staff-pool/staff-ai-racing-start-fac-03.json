@@ -1,0 +1,22 @@
+{
+  "name": "Jan Horáček",
+  "nationality": "Czech",
+  "age": 32,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jan's fascination with motorsport began in his youth, tinkering with go-karts alongside his father, a mechanic himself. He honed his skills at a local vocational school, specializing in precision machining and engine repair. After graduation, he gained invaluable experience at a small engineering firm, crafting bespoke parts for various industries. \n\nHis passion for racing never waned, leading him to seek opportunities within motorsport. He joined Racing Start Academy three years ago, quickly establishing himself as a reliable and skilled machinist. Jan's pragmatic approach ensures that every component he works on meets the highest standards of quality and performance. He's a firm believer in continuous improvement and readily shares his knowledge with junior team members.\n\nBeyond his technical expertise, Jan is known for his dedication and meticulous nature. He approaches every task with a methodical precision, ensuring that every component is flawless before it finds its way onto the track. His ambition extends beyond his role; he's constantly seeking ways to optimize processes and contribute to the team's overall success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a lean build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting a task.",
+    "Has a specific set of tools he uses for each type of job and refuses to deviate.",
+    "Drinks black coffee throughout the day."
+  ]
+}

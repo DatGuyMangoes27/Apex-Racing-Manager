@@ -1,0 +1,22 @@
+{
+  "name": "Lena Schmidt",
+  "nationality": "German",
+  "age": 32,
+  "gender": "female",
+  "role": "security_chief",
+  "bio": "Lena Schmidt discovered her passion for motorsport at a young age, captivated by the roar of engines and the precision of racing teams. Initially drawn to engineering, she found her calling in security after witnessing a critical safety breach at a local race. This event ignited her drive to ensure the safety and integrity of motorsport environments. Lena's approach to security is proactive and detail-oriented, emphasizing preventative measures and comprehensive risk assessments. She believes in fostering a culture of safety consciousness among all team members. \n\n Lena is a stickler for compliance, ensuring all security protocols are meticulously followed. Her background in technical fields, combined with a keen understanding of human behavior, allows her to anticipate and address potential security vulnerabilities effectively. She is known for her calm demeanor under pressure and her ability to quickly adapt to evolving security challenges, making her a valuable asset to any motorsport team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "neatly braided, often pulled back into a tight bun",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Lena has a strong, athletic build and a no-nonsense demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Insists on double-checking every lock and seal, even if she saw it secured moments before.",
+    "Always carries a small notebook filled with security checklists and contingency plans.",
+    "Has a habit of tapping her pen against the table when deep in thought."
+  ]
+}

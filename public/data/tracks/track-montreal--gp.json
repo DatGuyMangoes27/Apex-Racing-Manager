@@ -1,0 +1,62 @@
+{
+  "history": "Circuit Gilles Villeneuve, located on Île Notre-Dame in Montreal, Quebec, has been a staple of the Formula 1 calendar since 1978. Originally named the Île Notre-Dame Circuit, it was renamed in honor of the legendary Canadian driver Gilles Villeneuve after his tragic death in 1982. The track was built for the 1967 Expo 67, initially hosting other racing events before becoming a permanent fixture in F1. The Grand Prix layout, with its mix of high-speed straights and tight chicanes, has witnessed numerous dramatic moments and memorable races over the decades. While other layouts exist, the Grand Prix configuration remains the primary focus for international motorsport events held at the venue.",
+  "atmosphere": "The roar of the engines echoes off the Olympic Basin as you stand trackside at Circuit Gilles Villeneuve. The air is thick with anticipation, the grandstands packed with passionate fans waving Canadian flags. The scent of maple syrup mixes with the pungent aroma of burning rubber, a uniquely Canadian motorsport experience. The energy is palpable as the cars scream past, mere feet away, before diving into another braking zone. The crowd erupts after every overtake, every near-miss, a collective wave of excitement that sweeps across the island.",
+  "trackCharacter": "The Grand Prix layout at Circuit Gilles Villeneuve is a true stop-start circuit, demanding excellent braking stability and traction. Its long straights reward powerful engines, while the tight chicanes and hairpin put a premium on car control and agility. The proximity of the walls, particularly at the infamous 'Wall of Champions,' means there's little margin for error. It’s a track that punishes mistakes severely, rewarding precision and bravery in equal measure. Overtaking is possible, but requires commitment and a well-timed move.",
+  "nickname": "The Wall Ride",
+  "famousCorners": [
+    {
+      "name": "Senna Curve",
+      "description": "The first corner complex, a right-left chicane, named after Ayrton Senna. It's a critical corner for setting up the rest of the lap.",
+      "challenge": "Requires precise placement to avoid compromising speed through the following straight. Easy to lock up under braking."
+    },
+    {
+      "name": "Turn 3",
+      "description": "A long, sweeping right-hander that tests the car's balance and the driver's commitment. Maintaining momentum is crucial here.",
+      "challenge": "Difficult to get right, as it's easy to run wide and lose time. Requires a delicate touch on the throttle."
+    },
+    {
+      "name": "Turn 6",
+      "description": "A medium-speed right-hander, where the line is key.",
+      "challenge": "It is a relatively unassuming corner, it is very easy to understeer wide on exit, scrubbing speed and damaging tyres."
+    },
+    {
+      "name": "Hairpin",
+      "description": "The slowest corner on the circuit, a tight left-hander that provides a prime overtaking opportunity.",
+      "challenge": "Demands maximum braking force and precise steering. Getting on the power early is crucial for a good exit."
+    },
+    {
+      "name": "Wall of Champions (Turns 13 & 14)",
+      "description": "The final chicane, famous for its unforgiving walls. Many champions have fallen victim to its treacherous nature.",
+      "challenge": "Requires absolute precision and commitment. The slightest mistake results in a race-ending crash."
+    }
+  ],
+  "keyFactors": [
+    "Braking Stability",
+    "Traction",
+    "Engine Power",
+    "Mechanical Grip",
+    "Driver Precision"
+  ],
+  "overtakingSpots": [
+    "Turn 1 (Senna Curve) under braking",
+    "Turn 13 (into the final chicane)",
+    "Turn 10 (Hairpin)",
+    "Into Turn 6"
+  ],
+  "historySnippets": [
+    "Gilles Villeneuve won the inaugural Canadian Grand Prix at this circuit in 1978.",
+    "The 'Wall of Champions' has claimed numerous high-profile victims over the years.",
+    "The track is built on a man-made island originally created for Expo 67.",
+    "Several modifications to the circuit have been made over the years to improve safety.",
+    "Rain often plays a significant role in races held at Circuit Gilles Villeneuve.",
+    "The circuit is known for its high number of Safety Car periods."
+  ],
+  "weatherNotes": "Montreal is known for its unpredictable weather, especially during the Grand Prix season. Rain showers are common, often appearing and disappearing quickly. This can lead to rapidly changing track conditions, making tire strategy crucial. Temperature variations can also affect grip levels, adding another layer of complexity for teams and drivers.",
+  "drivingAdvice": "To be fast around the Grand Prix layout, you must maximize braking performance. Arrive at the braking zones with as much speed as possible, but maintain control to avoid locking up the wheels. Be aggressive but precise through the chicanes, using the kerbs to your advantage while respecting the limits of the track. A good exit from the final chicane is vital for carrying speed onto the start/finish straight.",
+  "famousRaces": [
+    "1995 Canadian Grand Prix: Jean Alesi's only F1 victory, driving for Ferrari, on his 31st birthday.",
+    "2011 Canadian Grand Prix: Jenson Button's incredible comeback victory in a rain-soaked race, overcoming multiple collisions and a penalty.",
+    "2007 Canadian Grand Prix: Lewis Hamilton's maiden F1 victory, starting from pole position and dominating the race."
+  ],
+  "localCulture": "Montreal is a vibrant and cosmopolitan city with a rich French-Canadian heritage. The local cuisine is a delightful blend of French and North American influences, with poutine being a must-try dish. During the Grand Prix weekend, the city comes alive with parties and events, creating a festive atmosphere that extends far beyond the racetrack. Paddock life reflects this energy, with teams and drivers enjoying the city's hospitality and immersing themselves in the local culture."
+}

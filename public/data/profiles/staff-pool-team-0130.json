@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 55,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Declan O'Malley's journey in motorsport began, unusually, with a fascination for wind turbines on the rugged Irish coastline. This led to a degree in aeronautical engineering from Trinity College, Dublin, followed by a decade honing his skills in the aerospace industry. A chance encounter with a Formula 3 team owner at a local pub sparked a career change, and Declan never looked back. He brings a pragmatic but innovative approach to aerodynamics, always seeking marginal gains through meticulous data analysis and creative problem-solving. He is known for his ability to translate complex engineering concepts into easily understandable terms for the trackside engineers, fostering a collaborative and efficient working environment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A wiry man with a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Drinks copious amounts of strong Irish tea.",
+    "Has a habit of muttering equations under his breath during races."
+  ]
+}

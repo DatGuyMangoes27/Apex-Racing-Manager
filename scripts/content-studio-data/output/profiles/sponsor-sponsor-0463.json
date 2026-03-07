@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0463",
+  "name": "Rheinmetall Automotive",
+  "category": "automotive",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Precision engineering for the future of mobility.",
+  "story": "Rheinmetall Automotive has a long history of supplying high-performance components to the automotive industry. With a focus on innovation and sustainability, they seek to partner with motorsport teams that reflect their commitment to excellence and technological advancement. They see motorsport as a proving ground for new technologies and a platform to showcase their brand to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 200000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 750000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Germany",
+      "Austria",
+      "Switzerland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0463.png"
+}

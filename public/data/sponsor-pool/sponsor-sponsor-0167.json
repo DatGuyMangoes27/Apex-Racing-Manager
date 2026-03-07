@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0167",
+  "name": "Puszták Pékség",
+  "category": "local",
+  "tier": "high",
+  "country": "Hungary",
+  "description": "Traditional Hungarian breads, baked fresh daily.",
+  "story": "Puszták Pékség is a family-owned bakery that has been serving the local community for three generations. They believe in supporting local talent and see motorsport as a perfect platform to connect with passionate fans. They aim to increase brand awareness and associate their name with excellence and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 9000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Hungary"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "events",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 1,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0167.png"
+}

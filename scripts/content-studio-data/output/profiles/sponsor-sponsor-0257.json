@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0257",
+  "name": "KiwiCode",
+  "category": "tech",
+  "tier": "mid",
+  "country": "New Zealand",
+  "description": "Cutting-edge software solutions from the heart of New Zealand.",
+  "story": "KiwiCode is a rapidly growing software company focused on providing innovative solutions for data analysis and performance optimization. As a company founded by motorsport enthusiasts, they see a natural synergy in sponsoring racing teams that rely on data to gain a competitive edge. KiwiCode seeks to enhance its brand recognition globally through motorsport partnerships, showcasing their commitment to precision and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0257.png"
+}

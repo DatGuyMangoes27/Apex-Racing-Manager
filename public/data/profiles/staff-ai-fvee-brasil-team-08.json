@@ -1,0 +1,22 @@
+{
+  "name": "Klaus-Dieter Richter",
+  "nationality": "German",
+  "age": 60,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Klaus-Dieter Richter's journey into motorsport began in his youth, captivated by the precision engineering of Formula 1 cars. He earned a degree in mechanical engineering from RWTH Aachen University before starting his career at a small engineering firm specializing in vehicle dynamics. After a decade honing his skills there, he transitioned to motorsport, working with various junior formula teams before finding a home at FVee Brasil. His approach to performance engineering is methodical and data-driven, always seeking marginal gains through meticulous analysis. He is known for his ability to quickly identify areas for improvement and implement effective solutions, even under immense pressure. Klaus-Dieter's experience with a wide range of race series makes him a valuable asset to any team.\n\nHis calm demeanor is something the young drivers appreciate as he is a good mentor. He is not afraid to get his hands dirty and is often seen tinkering with the car himself. He is a perfectionist, always striving for the best possible result. Despite his age, he still has the fire of passion in his eyes. He is eager to mentor the next generation of engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey mustache",
+    "description": "A tall, sturdy man with a serious but kind face, he is always wearing glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Insists on using metric measurements exclusively, even when others are using imperial.",
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a peculiar habit of humming quietly while analyzing data."
+  ]
+}

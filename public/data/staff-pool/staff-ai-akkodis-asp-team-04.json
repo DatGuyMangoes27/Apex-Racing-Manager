@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Jan Veselý",
+    "nationality": "Czech",
+    "age": 59,
+    "gender": "male",
+    "role": "race_engineer",
+    "bio": "Jan's fascination with motorsport began in his youth, watching rally races in the Czech countryside. He pursued mechanical engineering, aiming to combine his technical aptitude with his passion. After graduating, he started in Formula Ford, working his way up through various racing series before joining Akkodis ASP Team. Jan emphasizes methodical preparation and data analysis, believing that a race is won or lost long before the starting grid.\n\nHis approach is characterized by a relentless pursuit of optimization. Jan thrives on identifying marginal gains and implementing innovative solutions. He is known for his calm demeanor under pressure and his ability to clearly communicate technical information to drivers, fostering a collaborative environment. His loyalty to Akkodis ASP is unwavering, contributing to team stability and long-term success.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Gray",
+      "hairStyle": "Short, neatly combed back with a slight wave.",
+      "eyeColor": "Blue",
+      "facialHair": "Gray goatee",
+      "description": "A man of medium height with a slightly weathered face etched with years of experience."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a worn copy of 'Race Car Vehicle Dynamics'.",
+      "Has a peculiar habit of tapping his pen rhythmically on the table when deep in thought.",
+      "Insists on drinking a specific brand of herbal tea before every race."
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0154",
+  "name": "KhelTek Solutions",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "India",
+  "description": "Level Up Your Game.",
+  "story": "KhelTek Solutions, a leading Indian gaming technology firm, is expanding its brand presence globally through motorsport. Recognizing the synergy between high-performance gaming and racing, KhelTek seeks to connect with a passionate and tech-savvy audience. Motorsport provides a platform to showcase KhelTek's cutting-edge technology and commitment to excellence, aligning with the competitive spirit of racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0154.png"
+}

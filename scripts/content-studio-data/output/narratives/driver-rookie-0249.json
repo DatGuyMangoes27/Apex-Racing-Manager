@@ -1,0 +1,27 @@
+{
+  "biography": "Mika Thomas, the 'Taco Tornado' as some have affectionately dubbed him (much to his chagrin), hails from the vibrant streets of Guadalajara, Mexico. Racing wasn't in his bloodline – his family ran a successful bakery – but the roar of engines always captivated him. At 12, he secretly saved up enough money from his part-time job to buy a battered go-kart. He'd sneak out to a makeshift track on the outskirts of town, honing his skills under the watchful eye of an old mechanic named Ricardo. His raw talent was undeniable. At 16, he entered a local karting championship and, against all odds, won. This caught the attention of a small, independent racing team. Now, at 18, Mika is making waves in the Formula 4 circuit, his flashy driving style and undeniable speed turning heads, even if his consistency is still a work in progress.",
+  "drivingStyle": "Mika is an aggressive, all-or-nothing driver. He attacks corners with gusto, often flirting with the limits of grip. His tire management is, generously put, 'enthusiastic,' prioritizing outright pace over long-run conservation. Under pressure, Mika either crumbles spectacularly or elevates his game to another level – there's rarely an in-between. He thrives on the thrill of overtaking, often attempting audacious moves that leave spectators breathless (and his mechanics sweating).",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "A clash of egos during a junior karting event led to an on-track collision and a simmering rivalry ever since. Alessandro represents the established order, something Mika is determined to disrupt."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "They've been neck and neck in the championship standings all season, with several close finishes and heated battles. The rivalry is respectful but fierce, fueled by a mutual desire to win."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Kenji and Mika had a particularly nasty incident during a practice session where Kenji accused Mika of blocking him intentionally. Mika has denied those claims, but the tension lingers."
+    }
+  ],
+  "quirks": [
+    "Always wears a lucky wristband his grandmother knitted for him.",
+    "Listens to mariachi music at full volume right before the race to 'get pumped'.",
+    "Refuses to eat anything green on race days."
+  ],
+  "nickname": "El Fuego",
+  "famousQuote": "Second place is just the first loser. I'm here to win, or I'm going home.",
+  "careerHighlight": "Winning the Guadalajara Karting Championship in his first attempt, proving to everyone (including himself) that he had what it takes.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Mexico City Grand Prix, costing him a potential podium and severely damaging his confidence."
+}

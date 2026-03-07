@@ -1,0 +1,31 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 28,
+  "gender": "female",
+  "contactType": "architect",
+  "bio": "Priya is a rising star in the world of sustainable architecture, known for her innovative designs that blend modern aesthetics with traditional Indian craftsmanship. After graduating top of her class with a postgraduate degree, she quickly made a name for herself by winning several prestigious design competitions. Her disciplined approach to problem-solving and patient dedication to her craft have earned her respect and recognition within the creative community.\n\nThough seemingly distant from the racing world, Priya's firm was recently commissioned to design a new eco-friendly hospitality suite at a major motorsport circuit. A racing driver might cross paths with her during the design phase, offering input on the driver experience and potentially sparking a beneficial connection. Her nostalgic appreciation for classic design elements means she values precision and attention to detail, qualities she appreciates in motorsport as well.",
+  "physical": {
+    "skinTone": "Warm tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair often pulled back in a neat bun",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Priya has a warm and welcoming smile. She is often seen wearing stylish, minimalist clothing that reflects her architectural aesthetic."
+  },
+  "connectionToMotorsport": "Priya's architecture firm is designing a new hospitality suite at a prominent race track, aiming for LEED certification and a driver-centric design.",
+  "meetingContext": "The player might meet Priya during a tour of the construction site at the track, or at a design review meeting.",
+  "conversationTopics": [
+    "Sustainable architecture and design principles",
+    "Her travels to study historical architecture",
+    "The challenges and rewards of balancing creativity with practicality",
+    "Her latest photography project documenting traditional Indian artisans",
+    "The merits of different craft beer styles"
+  ],
+  "canHelp": [
+    "Introduce the player to wealthy investors and sponsors interested in eco-friendly initiatives.",
+    "Offer advice on the design and functionality of the player's personal racing facilities or team garage.",
+    "Connect the player with her extensive network within the creative industries, potentially leading to branding and marketing opportunities."
+  ],
+  "personality_summary": "A disciplined and creative architect with a keen eye for detail and a passion for sustainable design."
+}

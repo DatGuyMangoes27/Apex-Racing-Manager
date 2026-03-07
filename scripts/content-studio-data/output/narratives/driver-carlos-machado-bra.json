@@ -1,0 +1,27 @@
+{
+  "biography": "Carlos Machado grew up in the favelas of São Paulo, where the roar of engines from the nearby Interlagos circuit was a constant soundtrack to his childhood. He started racing go-karts cobbled together from spare parts, honing his skills on the city's chaotic streets. A local mechanic, seeing his raw talent, scraped together enough funding to get him into a regional karting championship. His aggressive defensive driving style quickly earned him both admirers and detractors. After a stellar performance in Formula 3 Sudamericana, catching the eye of Vulkan's talent scouts, he was signed to their junior program. Now at 25, and established as a key driver for Vulkan, Machado is looking to cement his legacy in the sport, hoping to bring the same grit and determination he learned on the streets to the highest levels of racing.",
+  "drivingStyle": "Machado is known for his incredibly defensive driving style. He's a master of blocking maneuvers, making it extremely difficult for opponents to overtake him. While this can frustrate other drivers, it also makes him a formidable competitor. He is very careful with tire wear, understanding the need to conserve his vehicle, especially in longer races, and doesn't shy away from taking calculated risks to maintain his position. He handles pressure well, often performing best when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "Rossi, known for her aggressive overtaking, frequently clashes with Machado's defensive tactics, leading to several on-track incidents and heated exchanges in the media."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a calculated and precise driver, views Machado's style as reckless and unsportsmanlike, creating a professional but tense rivalry."
+    },
+    {
+      "driver": "Ricardo Silva",
+      "reason": "Silva, a fellow Brazilian, has a long-standing rivalry with Machado dating back to their karting days, fueled by national pride and a constant battle for supremacy."
+    }
+  ],
+  "quirks": [
+    "Always wears a lucky wristband given to him by his grandmother before every race.",
+    "Listens to the same samba song moments before getting into the car to center himself.",
+    "Refuses to look at the starting grid until the final five minutes before the race begins."
+  ],
+  "nickname": "The Wall",
+  "famousQuote": "\"In racing, like in life, you have to defend what's yours.\"",
+  "careerHighlight": "Winning the Brazilian Grand Prix in 2027, overcoming a late-race safety car and intense pressure from Rossi and Tanaka to secure a victory in front of his home crowd.",
+  "careerLowPoint": "Crashing out of the lead at the Monaco Grand Prix in 2026 due to a brake failure, costing him a potential championship lead."
+}

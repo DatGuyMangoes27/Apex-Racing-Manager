@@ -1,0 +1,22 @@
+{
+  "name": "Beatriz Oliveira",
+  "nationality": "Portuguese",
+  "age": 34,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Beatriz's fascination with motorsport began during her childhood in Lisbon, where she was captivated by the Formula 1 races on television. This early passion led her to pursue a degree in Aerospace Engineering at the Instituto Superior Técnico. After graduating, she started her career as a junior aerodynamicist at a smaller racing team, quickly proving her aptitude for complex airflow analysis and downforce optimization. Her relentless pursuit of marginal gains and innovative solutions caught the attention of Andretti Global, where she now leads the aero department.\n\nAs head of aero, Beatriz emphasizes a data-driven approach, meticulously analyzing wind tunnel results and CFD simulations to refine the car's aerodynamic package. She believes in fostering a collaborative environment where engineers are encouraged to challenge conventional thinking and explore unconventional solutions. Her calm demeanor under pressure and unwavering commitment to excellence have earned her the respect of her team and made her a key asset to Andretti Global's racing program. What sets Beatriz apart is her ability to translate complex aerodynamic concepts into practical, on-track improvements.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a high ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Beatriz is of average height with a lean, athletic build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on having a perfectly organized workspace, with every tool and document in its designated place."
+  ]
+}

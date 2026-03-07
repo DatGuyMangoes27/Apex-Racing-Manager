@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 32,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Oliveira's journey into motorsport began with a childhood fascination for go-karting. He quickly transitioned from driving to the technical side, earning a degree in Mechanical Engineering from the University of Porto. His meticulous nature and knack for problem-solving caught the attention of PEX Motorsport, where he started as a junior engineer, rapidly climbing the ranks to become the team principal.\n\nRicardo’s leadership style blends data-driven analysis with an emphasis on nurturing talent within the team. He believes in empowering his engineers and mechanics to take ownership of their work, fostering a culture of continuous improvement. His ambition is not just to win races, but to build a legacy of innovation and excellence at PEX Motorsport.\n\nWhat sets Ricardo apart is his ability to bridge the gap between the technical aspects of racing and the strategic management of the team. He's known for his late-night data analysis sessions and an uncanny ability to predict opponent strategies, making him a formidable force in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly side-parted with a slight fade.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has a lean build and a focused gaze, often seen with a slight smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas, even during meetings.",
+    "Has a specific playlist of Portuguese Fado music he listens to before every race.",
+    "Paces back and forth when under pressure, often mumbling equations to himself."
+  ]
+}

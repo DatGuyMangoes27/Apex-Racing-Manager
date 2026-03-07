@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Đặng Hoàng Anh",
+    "nationality": "Vietnamese",
+    "age": 41,
+    "gender": "male",
+    "contactType": "banker",
+    "bio": "Đặng Hoàng Anh is a self-made man, having risen through the ranks of VietCapital Bank through sheer determination and shrewd financial acumen. He started as a teller and now manages a significant portfolio of high-net-worth clients and corporate investments. Despite his wealth, he remains grounded, known for his humility and principled approach to business, often surprising colleagues with his adventurous spirit outside the office. His interest in motorsport stems from a fascination with the blend of precision engineering and daring risk-taking, qualities he admires in both business and sport. A racing driver seeking sponsorship or investment for their team might find themselves sitting across from Đặng, pitching their vision and hoping to impress him with their own blend of skill and strategy.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Black",
+      "hairStyle": "Short, neatly combed",
+      "eyeColor": "Dark Brown",
+      "facialHair": "Goatee",
+      "description": "Đặng is of average height with a lean build, suggesting an active lifestyle. He always dresses impeccably in tailored suits."
+    },
+    "connectionToMotorsport": "Đặng is an avid motorsport enthusiast and a potential investor in racing teams. He occasionally sponsors smaller, local racing events.",
+    "meetingContext": "The player might meet Đặng at a high-profile charity gala or through a mutual connection in the Vietnamese business community. Alternatively, he could be approached directly with a well-crafted sponsorship proposal.",
+    "conversationTopics": [
+      "The Vietnamese economy and investment opportunities",
+      "The latest trends in craft beer",
+      "His passion for contemporary dance",
+      "The potential for motorsport in Southeast Asia",
+      "Ethical business practices"
+    ],
+    "canHelp": [
+      "Secure significant financial sponsorship for the player's team",
+      "Connect the player with other influential business leaders in Vietnam",
+      "Provide sound financial advice to help manage winnings and investments"
+    ],
+    "personality_summary": "A humble yet driven banker with a passion for adventure and a strong moral compass."
+  }
+]

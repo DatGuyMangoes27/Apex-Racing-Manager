@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Wallet } from 'lucide-react'
-import { PageHeader, Button, Modal } from '@/components/ui'
+import { PageHeader, Button, Modal, Card, CardHeader } from '@/components/ui'
 import { useToast } from '@/components/ui/Toast'
 import { WealthOverview, CollectionShowcase } from '@/components/personal'
 import { usePersonalLifeState } from './usePersonalLifeState'
@@ -17,11 +17,16 @@ interface InvestorOffer {
 
 export function PersonalLifeWealth() {
   const { player, careerState, personalLifeState, teamName } = usePersonalLifeState()
-  const { injectCapital, withdrawFunds, seekInvestors, acceptInvestorOffer } = usePersonalLifeActions()
+  const { injectCapital, withdrawFunds, setOwnerSalary, seekInvestors, acceptInvestorOffer } = usePersonalLifeActions()
   const { addToast } = useToast()
   const [pendingOffer, setPendingOffer] = useState<InvestorOffer | null>(null)
 
   if (!player || !careerState || !personalLifeState) return null
+
+  const personalLife = personalLifeState ?? (careerState as any)?.personalLife
+  const stockHoldings = (personalLife as any)?.stockHoldings ?? []
+  const businessVentures = (personalLife as any)?.businessVentures ?? []
+  const properties = (personalLife as any)?.properties ?? []
 
   const handleInjectCapital = (amount: number) => {
     const result = injectCapital(amount)
@@ -94,8 +99,12 @@ export function PersonalLifeWealth() {
         onInjectCapital={handleInjectCapital}
         onWithdrawFunds={handleWithdrawFunds}
         onSeekInvestors={handleSeekInvestors}
+        onSetOwnerSalary={setOwnerSalary}
+        stockHoldings={stockHoldings}
+        businessVentures={businessVentures}
+        properties={properties}
       />
-      
+
       {/* Collections */}
       {(careerState as any).expandedPersonalLife?.collections && (
         <CollectionShowcase

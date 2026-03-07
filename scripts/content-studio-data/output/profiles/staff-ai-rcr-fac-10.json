@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 24,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Mads grew up immersed in the world of motorsport, his grandfather having been a mechanic for touring car teams in the 1980s. He spent his childhood weekends in the garage, learning the intricacies of car construction and repair. After completing his technical education in Denmark, he sought an opportunity to broaden his skills, leading him to Richard Childress Racing.\n\nMads is a meticulous fabricator, known for his precision and attention to detail. He thrives on the challenge of creating high-performance parts and components, always seeking innovative solutions to improve vehicle performance. His loyalty to the team and willingness to mentor junior members make him a valuable asset.\n\nHis innovative approach, combined with his methodical nature, allows him to create solutions that are both reliable and cutting-edge. He's always eager to learn new techniques and contribute to the team's success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble beard",
+    "description": "Mads is of average height with a wiry build, often seen with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting a new task.",
+    "Insists on using only metric tools, even when working on legacy American vehicles.",
+    "Drinks copious amounts of black coffee throughout the day."
+  ]
+}

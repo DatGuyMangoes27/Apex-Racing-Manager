@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Gruber",
+  "nationality": "Austrian",
+  "age": 57,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Hans-Peter's journey in motorsport began unexpectedly. Originally trained as a mechanical engineer, a chance encounter with a Formula 1 aerodynamicist at a local karting event ignited a passion for the intricacies of airflow and downforce. He spent years honing his craft in various junior racing series, meticulously analyzing data and experimenting with wing designs. His pragmatic approach and unwavering focus on tangible results quickly earned him a reputation as a reliable problem-solver. At CRG Racing Team, Hans-Peter oversees all aerodynamic development, pushing the boundaries of efficiency and stability. What sets him apart is his ability to translate complex data into practical solutions that the drivers can immediately feel and utilize on the track, bridging the gap between the lab and the cockpit.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build, Hans-Peter always looks serious and focused, as if constantly calculating aerodynamic coefficients."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn aerodynamic sketches.",
+    "Insists on starting every meeting 5 minutes early.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

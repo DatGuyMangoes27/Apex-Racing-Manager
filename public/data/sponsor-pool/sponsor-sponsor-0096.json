@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0096",
+  "name": "Glacier Rush",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "Canada",
+  "description": "The Canadian energy drink for peak performance.",
+  "story": "Glacier Rush was founded in the Canadian Rockies, inspired by the relentless energy of nature. We believe in pushing boundaries and supporting those who strive for greatness. Motorsport embodies this spirit, and we seek a partnership that reflects our commitment to excellence and fuels success on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0096.png"
+}

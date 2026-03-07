@@ -1,0 +1,27 @@
+{
+  "biography": "Jann Mardenborough's journey to motorsport stardom is unlike any other. Discovered through the GT Academy, a competition designed to find real racing talent from the world of Gran Turismo, Jann traded virtual tracks for real asphalt. Initially dismissed by many as a 'gamer,' he quickly proved his mettle, showcasing a natural feel for racing that belied his unconventional background. A pivotal moment came at the 24 Hours of Le Mans, where despite facing immense pressure, he delivered a stunning performance in the Nissan LMP1 car, holding his own against seasoned veterans. Now in his prime, Jann balances his GT racing commitments with mentoring young drivers, eager to pass on the lessons he learned on his improbable path to the top.",
+  "drivingStyle": "Mardenborough is known for his calculating and precise driving style. He's not one for flashy overtakes or aggressive moves, preferring instead to conserve his tires and exploit opportunities that arise from others' mistakes. He possesses an uncanny ability to read the track and adapt to changing conditions, making him a formidable opponent in endurance races. While some might perceive him as cautious, his consistent lap times and strategic approach often yield impressive results.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Alvarez",
+      "reason": "A long-standing rivalry stemming from a controversial incident at Silverstone, where Alvarez's aggressive move punted Mardenborough off the track, costing him a podium finish."
+    },
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A tense rivalry built on a battle for the GT World Championship title. Rossi's raw speed clashes directly with Mardenborough's calculated strategy, creating intense on-track battles."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "The rivalry started in the early stages of Jann's career in GT Academy, when Tanaka questioned Jann's legitimacy as a 'real' driver. They have been competing against each other ever since."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks for every race, regardless of the weather.",
+    "Listens to classical music to calm his nerves before a race.",
+    "Studies onboard footage of previous races at the track, meticulously analyzing every corner."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about raw speed; it's about making the right decisions at the right time.\"",
+  "careerHighlight": "Winning the 24 Hours of Spa in dominant fashion, showcasing his endurance racing prowess and strategic acumen.",
+  "careerLowPoint": "Suffering a mechanical failure in the final hour of the 24 Hours of Le Mans while leading, costing his team a potential victory."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Guerrero",
+  "nationality": "Mexican",
+  "age": 28,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Mateo's journey into motorsport began, unusually, with a childhood fascination for rebuilding and tuning engines from his father's old trucks. This passion led him to pursue mechanical engineering, where he excelled in materials science and precision manufacturing. After graduating, he initially worked in the automotive industry, but the pull of racing was too strong to resist. He joined a smaller racing team, quickly proving his eye for detail and dedication to quality.\n\nNow at Akkodis ASP Team, Mateo is known for his rigorous approach to quality control. He believes in preventative maintenance and constantly seeks to improve processes to minimize errors and maximize performance. He's not afraid to challenge established practices and pushes the team to adopt more advanced techniques and technologies.\n\nMateo distinguishes himself with his proactive approach to problem-solving and his commitment to continuous improvement. He is always looking for ways to optimize the team's resources and streamline workflows, ensuring that the cars are in peak condition for every race.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "A man of medium height with broad shoulders and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down observations.",
+    "Has a habit of meticulously cleaning his workspace multiple times a day.",
+    "Insists on using a specific torque wrench for all critical fasteners."
+  ]
+}

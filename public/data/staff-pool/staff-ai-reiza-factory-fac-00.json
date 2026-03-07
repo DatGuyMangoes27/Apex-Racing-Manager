@@ -1,0 +1,22 @@
+{
+  "name": "István Kovács",
+  "nationality": "Hungarian",
+  "age": 36,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "István's journey into motorsport began unconventionally, not on the track, but in the realm of coding and virtual environments. After graduating with a degree in computer science, he found himself drawn to the intricate physics and data analysis involved in racing simulations. He honed his skills by contributing to open-source projects, eventually landing a position at a small sim racing company. There, he proved his talent for translating real-world vehicle dynamics into accurate and immersive virtual experiences.\n\nHis passion for detail and relentless pursuit of realism led him to Reiza Studios Factory, where he plays a crucial role in bridging the gap between driver feedback and car development. István is known for his methodical approach to problem-solving and his ability to identify even the smallest discrepancies between the simulated and real-world performance of racing vehicles. He believes that a truly effective simulator must be more than just a game; it must be a powerful tool for driver training and engineering innovation.\n\nIstván's dedication extends beyond the technical aspects of his role. He actively seeks out opportunities to engage with drivers, extracting valuable insights that inform his work. He is driven by a desire to create the most authentic and informative simulator experience possible, ensuring that Reiza Studios Factory remains at the forefront of motorsport technology.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "István is of average height with a focused and analytical gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with equations and code snippets.",
+    "Insists on using a specific brand of ergonomic keyboard.",
+    "Has a habit of muttering technical jargon under his breath when concentrating."
+  ]
+}

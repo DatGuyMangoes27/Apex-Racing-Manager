@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Ayu Lestari",
+  "nationality": "Indonesian",
+  "age": 45,
+  "gender": "female",
+  "contactType": "professor",
+  "bio": "Dr. Ayu Lestari is a professor of Mechanical Engineering at the Bandung Institute of Technology (ITB), specializing in vehicle dynamics and materials science. A highly respected academic, she has published numerous papers and consulted for several automotive manufacturers in the region. Despite her professional success, Ayu harbors a deep romanticism and a penchant for the dramatic, often expressing herself through elaborate storytelling and a subtle, yet noticeable, passive-aggressiveness. She often reminisces about her younger years and her dreams of becoming an architect. \n\nA racing driver might cross paths with Ayu if they are seeking expert advice on vehicle setup or are involved in collaborative research projects with ITB. She also judges student engineering competitions, some of which focus on motorsport applications. Her university often hosts automotive-related events, further increasing the chances of an encounter.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, neatly styled with a slight wave",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Ayu has a warm, approachable face framed by her dark hair. She carries herself with a quiet confidence and often wears elegant, understated clothing."
+  },
+  "connectionToMotorsport": "Ayu's expertise in vehicle dynamics and materials science makes her a valuable resource for racing teams seeking to optimize performance. She also judges student motorsport competitions and advises on engineering projects related to racing.",
+  "meetingContext": "The player might meet Ayu at an engineering conference, a university-sponsored motorsport event, or through a mutual acquaintance in the Indonesian automotive industry.",
+  "conversationTopics": [
+    "The latest advancements in vehicle dynamics",
+    "The challenges of sustainable automotive engineering",
+    "Her travels in Europe and their impact on her design sensibilities",
+    "The beauty of traditional Indonesian architecture and interior design",
+    "Her students' successes and failures in their engineering projects"
+  ],
+  "canHelp": [
+    "Provide technical expertise on vehicle setup and performance optimization",
+    "Offer introductions to potential sponsors or engineering partners within the Indonesian automotive industry",
+    "Write letters of recommendation for advanced racing series"
+  ],
+  "personality_summary": "A disciplined and knowledgeable professor with a romantic soul and a subtle passive-aggressive streak."
+}

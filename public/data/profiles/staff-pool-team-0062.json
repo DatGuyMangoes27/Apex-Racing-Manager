@@ -1,0 +1,22 @@
+{
+  "name": "Lin Mei",
+  "nationality": "Chinese",
+  "age": 40,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Lin Mei's fascination with aerodynamics began during her childhood in Shanghai, watching kites dance in the wind. This early interest led her to pursue a degree in aerospace engineering from Tsinghua University, followed by a master's degree specializing in computational fluid dynamics. After graduating, she spent several years at a leading aviation research institute, contributing to the design of more efficient aircraft wings. \n\nDriven by a desire for more immediate application of her knowledge, Lin transitioned to motorsport, initially working as an aerodynamicist for a Formula 3 team. Her analytical approach and talent for identifying subtle improvements quickly propelled her through the ranks. She believes in a data-driven methodology, emphasizing rigorous testing and simulation to optimize aerodynamic performance. Lin is known for her collaborative spirit and ability to translate complex technical concepts into actionable strategies for the entire engineering team. Her focus on long-term gains and sustainable innovation makes her a valuable asset to any team.\n\nLin's distinctive approach lies in her ability to seamlessly integrate traditional aerodynamic principles with cutting-edge technologies like AI-powered simulation and additive manufacturing. This holistic approach allows her to push the boundaries of aerodynamic design, resulting in tangible performance improvements on the track.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy hair, often pulled back into a practical ponytail during work.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Lin has a focused and intelligent gaze, a testament to her sharp analytical mind."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and observations.",
+    "Insists on having a specific type of green tea during simulations, believing it enhances her concentration.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

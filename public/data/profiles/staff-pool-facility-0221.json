@@ -1,0 +1,22 @@
+{
+  "name": "Hiroki Tanaka",
+  "nationality": "Japanese",
+  "age": 52,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Hiroki Tanaka's journey into motorsport data analysis began unexpectedly. After a career in corporate finance, he found himself captivated by the intricate data streams presented during a Formula 1 race. The challenge of extracting meaningful insights from vast datasets ignited a passion he never knew he possessed. He enrolled in online courses, immersing himself in statistical modeling and motorsport engineering principles. While he's a relative newcomer to the racing world, Hiroki brings a pragmatic and meticulous approach, believing that even the smallest data point can reveal crucial performance gains. \n\nHis focus is on creating clear, actionable reports. He is driven by a desire to provide teams with the insights they need to make informed decisions, and he excels at translating complex data into easily understandable strategies. He is especially interested in tire degradation modeling and aerodynamic efficiency analysis. Hiroki is eager to contribute his skills and unwavering dedication to a team that values data-driven performance.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "graying black",
+    "hairStyle": "short, neatly combed with a slight part to the left",
+    "eyeColor": "dark brown",
+    "facialHair": "thin, well-trimmed mustache",
+    "description": "Hiroki is of average height with a slightly stocky build and wears rectangular-framed glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Insists on using a specific brand of mechanical pencil.",
+    "Performs a quick stretching routine before starting any data analysis session."
+  ]
+}

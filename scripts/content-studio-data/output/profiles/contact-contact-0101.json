@@ -1,0 +1,31 @@
+{
+  "name": "Greta Van Derlyn",
+  "nationality": "American",
+  "age": 52,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Greta Van Derlyn is a name synonymous with quirky, critically acclaimed independent cinema. Known for her fearless portrayals of complex characters and her unapologetically eccentric public persona, Greta has carved a unique niche in Hollywood. While she lacks formal education, her raw talent and dedication to her craft have earned her numerous awards and a loyal fanbase. Beyond acting, she's a passionate cook, a surprisingly adept boxer, and a board game enthusiast. \n\nGreta's connection to the motorsport world is tangential but present. She occasionally attends high-profile races as a guest of sponsors or friends. A racing driver might cross paths with her at a charity event, a film premiere, or even at a high-end board game tournament – you never know where Greta might pop up next!",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Silver",
+    "hairStyle": "Short, choppy bob",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Greta has a striking presence, accentuated by her expressive eyes and mischievous smile. She often sports avant-garde clothing and bold accessories."
+  },
+  "connectionToMotorsport": "Greta occasionally attends races as a celebrity guest, often invited by sponsors she's worked with on commercials.",
+  "meetingContext": "At a Formula 1 after-party hosted by a luxury watch brand. Greta is a spokesperson for the brand.",
+  "conversationTopics": [
+    "Her latest independent film project",
+    "The merits of different board game strategies",
+    "Her scuba diving adventures in the Caribbean",
+    "The art of perfecting a soufflé",
+    "The surprisingly strategic nature of boxing"
+  ],
+  "canHelp": [
+    "Introduce you to influential sponsors within the entertainment industry",
+    "Secure a cameo appearance in a high-profile commercial, boosting your public image",
+    "Provide media training and guidance on handling press interviews"
+  ],
+  "personality_summary": "An eccentric and talented actress with a surprisingly grounded perspective and a penchant for the unexpected."
+}

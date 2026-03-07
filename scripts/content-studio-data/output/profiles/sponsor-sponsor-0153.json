@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0153",
+  "name": "Simitçi Sahin",
+  "category": "local",
+  "tier": "mid",
+  "country": "Turkey",
+  "description": "The taste of Istanbul, on and off the track.",
+  "story": "Simitçi Sahin has been a beloved Istanbul street food vendor for over 30 years, known for their fresh, sesame-crusted simit. As a family business deeply rooted in the community, they see motorsport sponsorship as a way to connect with a wider audience and celebrate Turkish pride. They are looking for a team that embodies the same spirit of hard work and dedication.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 35000,
+      "winBonus": 15000,
+      "podiumBonus": 7000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Turkey"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0153.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 39,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's fascination with motorsport ignited during his childhood, spent watching rally races in the hills of northern Portugal. This passion fueled his pursuit of a degree in Mechanical Engineering, where he specialized in vehicle dynamics. After graduating, Ricardo honed his skills at a smaller racing outfit, focusing on data analysis and suspension tuning. He quickly proved his talent for extracting performance gains from limited resources, leading to his recruitment by RSC Motorsport.\n\nAt RSC, Ricardo thrives on the challenge of optimizing car setup for diverse track conditions. He's known for his meticulous approach to data analysis, identifying subtle adjustments that can shave crucial tenths of a second off lap times. While he appreciates the theoretical aspects of engineering, Ricardo is most comfortable on the pit wall, working directly with drivers and mechanics to translate data into tangible improvements on the track. His ability to quickly diagnose issues and propose effective solutions under pressure makes him an invaluable asset to the team. \n\nWhat sets Ricardo apart is his commitment to holistic car performance. He believes that true speed comes from a synergy between mechanical setup, driver feedback, and strategic planning. He's not just an engineer; he's a facilitator, bridging the gap between technical data and on-track performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a wiry build, suggesting a life lived actively."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten track notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking a specific brand of Portuguese coffee before every race."
+  ]
+}

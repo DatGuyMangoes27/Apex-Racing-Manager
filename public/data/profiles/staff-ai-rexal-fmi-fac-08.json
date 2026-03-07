@@ -1,0 +1,22 @@
+{
+  "name": "Sirkka Nieminen",
+  "nationality": "Finnish",
+  "age": 45,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Sirkka's journey into motorsport began unconventionally, not through racing itself, but through a fascination with fluid dynamics and a summer job at a local aircraft manufacturer. This led her to pursue a degree in aerospace engineering, specializing in wind tunnel testing. She quickly realized the principles she was learning applied directly to optimizing vehicle performance. \n\nSirkka joined Rexal FMI Racing a decade ago, and her meticulous approach to data analysis and her innate understanding of airflow have made her an invaluable asset. She has a talent for visualizing complex airflow patterns and translating them into actionable adjustments for the aerodynamic team. While collaborative, she is at her best when left to analyze data independently before integrating her findings with the team.\n\nWhat sets Sirkka apart is her ability to identify subtle anomalies in wind tunnel data that others might miss. She has a knack for finding innovative solutions to complex aerodynamic problems, often proposing unconventional modifications that yield significant performance gains. She is highly regarded for her uncompromising pursuit of accuracy and efficiency in the wind tunnel.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Ash Blonde",
+    "hairStyle": "Shoulder-length, often pulled back in a practical braid to keep it out of her face.",
+    "eyeColor": "Blue-gray",
+    "facialHair": null,
+    "description": "Sirkka has a focused gaze and a no-nonsense demeanor, often seen wearing practical clothing suitable for the wind tunnel environment."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn aerodynamic sketches.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on listening to classical music while analyzing wind tunnel data, claiming it helps her focus."
+  ]
+}

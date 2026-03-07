@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 41,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for engines. Growing up in rural France, he spent countless hours tinkering with his father's tractor, disassembling and reassembling components to understand their intricacies. This early passion led him to pursue vocational training in machining, where he honed his skills in precision manufacturing. While relatively new to the high-stakes world of motorsport, Jean-Pierre is eager to apply his technical expertise to optimize performance and reliability.\n\nJean-Pierre's approach to machining is characterized by meticulous attention to detail and a relentless pursuit of perfection. He firmly believes that even the smallest adjustments can make a significant difference on the track. His visionary nature allows him to think outside the box and explore innovative solutions to complex engineering challenges. He is known for his ability to quickly learn and adapt to new technologies, making him a valuable asset to any racing team. With his creative mind and fast-working nature, he is ready to make a name for himself.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height and build, with a focused look in his eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always sketches engine modifications on napkins during lunch.",
+    "Has a specific wrench he calls 'Le Fidèle' that he uses for critical tasks.",
+    "Often hums quietly while working, usually French folk songs."
+  ]
+}

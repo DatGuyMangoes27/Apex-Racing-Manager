@@ -1,0 +1,22 @@
+{
+  "name": "Alejandro Garcia",
+  "nationality": "Spanish",
+  "age": 26,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Alejandro's journey into motorsport began with a childhood fascination for Formula 1, fueled by countless hours spent tinkering with computers and racing simulators. He quickly realized his aptitude wasn't on the track but behind the screens, mastering the intricate IT systems that power modern racing teams. After graduating with a degree in Computer Science, he landed an internship at a small Formula E team, where he gained invaluable experience in network infrastructure and data analysis. \n\nAlejandro believes that a robust and innovative IT infrastructure is paramount to a team's success. He's meticulous and driven, constantly seeking new ways to optimize data flow, enhance communication, and safeguard against cyber threats. His calm demeanor under pressure, coupled with his sharp technical skills, makes him an invaluable asset to JOTA Sport. He aims to make JOTA Sport an industry leader when it comes to leveraging IT to improve on-track performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Alejandro is of average height with a lean build and sharp, focused eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool.",
+    "Insists on using a mechanical keyboard, even on the go.",
+    "Has a tendency to over-explain technical concepts, even to non-technical staff."
+  ]
+}

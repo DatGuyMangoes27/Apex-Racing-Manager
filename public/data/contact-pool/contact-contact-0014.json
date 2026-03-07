@@ -1,0 +1,31 @@
+{
+  "name": "Heinrich Sutter",
+  "nationality": "Swiss",
+  "age": 64,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Heinrich Sutter is a self-made billionaire who built his empire in the Swiss banking sector. Driven by an almost obsessive need for control and unwavering adherence to his own moral code, he's known for both ruthless business tactics and surprisingly generous philanthropic endeavors, often funding arts and education programs. While not directly involved in motorsport, Sutter has a penchant for investing in high-performance engineering ventures, and his private investment fund has a history of backing disruptive technologies within the automotive industry. A racing driver might cross paths with him seeking investment for a groundbreaking technology or appealing to his sense of legacy by proposing a historic racing venture.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Sutter is a man of imposing stature, his tailored suits emphasizing his broad shoulders. His piercing blue eyes convey both intelligence and a hint of weariness."
+  },
+  "connectionToMotorsport": "Sutter's investment fund occasionally backs automotive technology start-ups, some of which have tangential connections to motorsport engineering and material sciences. He sees motorsport as a testing ground for future technologies.",
+  "meetingContext": "The player might meet Heinrich at an exclusive technology conference in Zurich or through a mutual connection in the automotive industry seeking investment.",
+  "conversationTopics": [
+    "The future of sustainable energy",
+    "Classical music and opera",
+    "The importance of ethical business practices",
+    "His latest philanthropic project",
+    "The challenges of maintaining a legacy"
+  ],
+  "canHelp": [
+    "Introduce the player to key investors and sponsors.",
+    "Provide financial backing for a racing team or innovative project.",
+    "Offer mentorship and guidance on business strategies."
+  ],
+  "personality_summary": "A principled and driven billionaire with a manipulative edge."
+}

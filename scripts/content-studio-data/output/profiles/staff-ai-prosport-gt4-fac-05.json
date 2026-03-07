@@ -1,0 +1,22 @@
+{
+  "name": "Zola Mabena",
+  "nationality": "South African",
+  "age": 34,
+  "gender": "female",
+  "role": "quality_control",
+  "bio": "Zola's journey into motorsport began unconventionally, not with a family legacy or childhood karting dreams, but through a fascination with engineering. A mechanical engineering degree from the University of Cape Town led her to an internship at a local automotive manufacturer, where she quickly gravitated towards quality assurance. Dissatisfied with the limitations of mass production, she sought a more dynamic and challenging environment, leading her to ProSport Racing. \n\nHer demanding nature stems from a deep-seated belief that perfection is attainable, if relentlessly pursued. She meticulously reviews every component and process, leaving no stone unturned in her quest for optimal performance and reliability. Zola's sharp eye for detail, coupled with her unwavering commitment to excellence, makes her an invaluable asset to the ProSport Racing team.",
+  "physical": {
+    "skinTone": "Medium Brown",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, tightly coiled afro, often adorned with colorful beads.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zola is of average height with a wiry build and an intense, focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small magnifying glass to inspect components.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on using her own specially calibrated gauges, distrusting standard equipment."
+  ]
+}

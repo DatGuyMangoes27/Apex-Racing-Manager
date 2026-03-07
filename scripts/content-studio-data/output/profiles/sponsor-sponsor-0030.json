@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0030",
+  "name": "Al-Sahra Petroleum",
+  "category": "local",
+  "tier": "high",
+  "country": "Saudi Arabia",
+  "description": "Fueling the future of Saudi motorsport.",
+  "story": "Al-Sahra Petroleum is a leading Saudi Arabian oil and gas company committed to supporting national talent and innovation. They see motorsport as a perfect platform to showcase their dedication to performance and technological advancement. They seek partnerships that reflect their values of excellence, reliability, and a commitment to pushing boundaries.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Saudi Arabia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0030.png"
+}

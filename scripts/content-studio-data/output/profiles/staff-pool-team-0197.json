@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for go-karting, quickly evolving into a deep understanding of vehicle dynamics and data analysis. He pursued a degree in Mechanical Engineering, focusing on computational fluid dynamics and vehicle simulation. After graduating, Ricardo gained experience with a smaller racing team, working on setup optimization and performance analysis. \n\nHe is known for his meticulous approach to data analysis, seeking even the smallest marginal gains. Ricardo believes in a collaborative work environment, valuing input from drivers and mechanics alike. He excels at translating complex data into actionable insights, enabling the team to make informed decisions on track setups and race strategies. \n\nWhat sets Ricardo apart is his ability to quickly adapt to changing circumstances and identify innovative solutions. He's always looking for ways to leverage technology and data to gain a competitive edge, and he is determined to see his team and drivers succeed.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Ricardo is of average height with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and equations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to analyze data while listening to classical music."
+  ]
+}

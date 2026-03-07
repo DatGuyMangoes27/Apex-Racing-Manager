@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Declan O'Malley",
+    "nationality": "Irish",
+    "age": 51,
+    "gender": "male",
+    "role": "pr_officer",
+    "bio": "Declan O'Malley is a seasoned PR professional with over two decades of experience shaping narratives and managing reputations in the high-octane world of motorsport. His journey began with a youthful fascination for rallying in the Irish countryside, leading him to pursue a degree in communications and subsequently landing his first role with a small racing team. Over the years, Declan honed his skills, working his way up the ranks, eventually joining Akkodis ASP Team, where he is responsible for crafting compelling stories, managing media relations, and ensuring the team's brand remains strong. \n\nDeclan's approach to PR is rooted in authenticity and building genuine relationships. He believes in proactive communication and understands the importance of staying ahead of the curve in a fast-paced environment. What sets Declan apart is his calm demeanor under pressure and his ability to connect with people from all walks of life, from drivers and engineers to journalists and fans. He's a master of spinning a yarn, always ready with a witty quip or an engaging anecdote, making him a valuable asset to any team.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Graying Brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline",
+      "eyeColor": "Blue",
+      "facialHair": "Short, well-groomed salt and pepper beard",
+      "description": "A stocky man with a warm smile and kind eyes."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with story ideas.",
+      "Has a lucky tweed cap that he wears to every race.",
+      "Refuses to start a press conference without a cup of strong Irish tea."
+    ]
+  }
+]

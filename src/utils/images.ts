@@ -429,12 +429,12 @@ export function getTrackImageById(trackId: string, layoutId?: string): string {
     'kyalami': 'Kyalami',
     'laguna-seca': 'Laguna Seca 2020',
     'watkins-glen': 'Watkins Glen GP',
-    'road-atlanta': 'Road Atlanta',
     'road-america': 'Road America',
+    'road-atlanta': 'Road Atlanta',
+    'mosport': 'Mosport',
     'sebring': 'Sebring',
     'daytona': 'Daytona Sports Car Course',
     'indianapolis': 'Indianapolis Motor Speedway Road Course',
-    'mosport': 'Mosport',
     'montreal': 'Montreal',
     'long-beach': 'Long Beach',
     'curitiba': 'Curitiba',
@@ -487,11 +487,23 @@ export function getClassLiveries(classId: string): string {
 
 /**
  * Build a specific livery image path
+ * Checks subfolder first (manifest.cars), then falls back to flat path
  */
 export function getLiveryImage(classId: string, liveryName: string): string {
+  if (!liveryName) return ''
+  const filename = `${liveryName}.png`
   const folder = CLASS_FOLDER_MAP[classId]
-  if (!folder) return ''
-  return buildCarImagePath(`${liveryName}.png`, folder)
+
+  // Check if the file exists in the subfolder (per manifest)
+  if (folder) {
+    const folderFiles = manifest.cars[folder]
+    if (folderFiles && folderFiles.includes(filename)) {
+      return buildCarImagePath(filename, folder)
+    }
+  }
+
+  // Fall back to flat path (no subfolder)
+  return buildCarImagePath(filename)
 }
 
 // ============================================

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0305",
+  "name": "Petroli Visconti",
+  "category": "oil_fuel",
+  "tier": "high",
+  "country": "Italy",
+  "description": "Advanced lubricants for peak performance.",
+  "story": "Petroli Visconti has been crafting high-performance lubricants since 1952, born from a passion for Italian engineering and a desire to push the limits of automotive technology. We believe motorsport is the ultimate testing ground for our products, seeking partnerships with teams who share our dedication to innovation and achieving victory through superior performance. We value precision, reliability, and a commitment to excellence on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0305.png"
+}

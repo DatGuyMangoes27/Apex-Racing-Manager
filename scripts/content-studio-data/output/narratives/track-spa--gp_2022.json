@@ -1,0 +1,61 @@
+{
+  "history": "Spa-Francorchamps, nestled in the Ardennes forest of Belgium, is one of motorsport's most iconic and challenging circuits. Its history stretches back to 1921, when a 14-kilometer road course was first used for racing. The current 7.004km layout, while significantly shorter than the original, retains much of the character that made Spa famous. The modern layout, designated 'Spa-Francorchamps 2022' (gp_2022), continues to host major international events, most notably the Formula 1 Belgian Grand Prix. This iteration has seen modifications aimed at improving safety and spectator experience, while preserving the essence of the track's demanding nature. The 2022 configuration notably includes changes to run-off areas and gravel traps, especially at Eau Rouge/Raidillon, following incidents in previous years.\n\nSpa has been a fixture on the Formula 1 calendar for decades, and this current layout has witnessed thrilling races and memorable moments. Beyond F1, the circuit is a popular venue for endurance racing, including the 24 Hours of Spa for GT cars, which tests both car and driver to their limits. The circuit has been used for other series such as the FIA World Endurance Championship and various GT and touring car championships.",
+  "atmosphere": "Being at Spa-Francorchamps during a race weekend is an experience unlike any other. The roar of the engines echoes through the dense forest, creating a palpable sense of excitement. The unpredictable weather adds another layer of drama, with sunshine and rain often alternating within minutes. Fans flock from all over Europe, creating a vibrant and international atmosphere. The scent of grilling frites mixes with the unmistakable aroma of high-octane fuel, completing the sensory overload that is Spa.",
+  "trackCharacter": "The 7.004km Spa-Francorchamps 2022 layout is a high-speed rollercoaster that demands respect and precision. Its flowing corners and undulating terrain reward bravery and commitment, while its unforgiving nature punishes even the slightest mistake. The long straights encourage high speeds and overtaking opportunities, but the technical sections require a delicate balance of downforce and mechanical grip. This layout maintains the spirit of the older, longer versions while incorporating modern safety standards.",
+  "nickname": "The Ardennes Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Eau Rouge/Raidillon",
+      "description": "A legendary sequence of corners that tests a driver's courage and skill. A blind uphill left-right-left combination taken at full throttle in modern racing cars.",
+      "challenge": "Maintaining momentum and precision through the compression and elevation changes is crucial. Any mistake can have severe consequences."
+    },
+    {
+      "name": "Pouhon",
+      "description": "A fast, sweeping downhill left-hander that requires perfect balance and commitment. It's a classic corner that separates the good from the great.",
+      "challenge": "Carrying maximum speed through the corner without losing control. The entry is blind and the exit is crucial for a good run down to the next section."
+    },
+    {
+      "name": "Les Combes",
+      "description": "A tight chicane at the end of the Kemmel Straight, offering a prime overtaking opportunity. It's a key braking zone and a potential bottleneck.",
+      "challenge": "Nailing the braking point and apex to set up a clean exit and defend against or execute an overtake."
+    },
+    {
+      "name": "Stavelot",
+      "description": "A fast, flowing right-hander that leads onto the final sector. It requires a smooth and precise line to maintain momentum.",
+      "challenge": "Maintaining speed through the corner while setting up for a good exit onto the straight. It is essential for a fast lap time."
+    },
+    {
+      "name": "Blanchimont",
+      "description": "A fearsome, high-speed left-hander taken at near-full throttle. It's a true test of nerve and car setup.",
+      "challenge": "Commitment and confidence are key. Any hesitation can cost valuable time or even lead to a crash."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic efficiency",
+    "Braking stability",
+    "Engine power and torque",
+    "Mechanical grip in medium-speed corners",
+    "Driver confidence"
+  ],
+  "overtakingSpots": [
+    "Les Combes (end of Kemmel Straight)",
+    "La Source hairpin (start of the lap)",
+    "Into the Bus Stop chicane (end of the lap)"
+  ],
+  "historySnippets": [
+    "Spa-Francorchamps was originally a 14km road circuit.",
+    "The circuit is famous for its unpredictable weather.",
+    "Eau Rouge/Raidillon is one of the most iconic corners in motorsport.",
+    "Michael Schumacher made his Formula 1 debut at Spa in 1991.",
+    "The circuit has undergone numerous modifications over the years to improve safety.",
+    "Spa-Francorchamps is a favourite among drivers and fans alike."
+  ],
+  "weatherNotes": "The Ardennes region is notorious for its unpredictable weather. Rain is common, and it's not unusual to experience different conditions on different parts of the track. This can lead to strategic gambles on tire choices and create exciting racing. Fog can also be a factor, especially in the early morning or late afternoon.",
+  "drivingAdvice": "Spa-Francorchamps 2022 rewards commitment and precision. Confidence through Eau Rouge/Raidillon is crucial for a fast lap time. Managing tire wear is also important, especially in longer races. Be prepared for changing weather conditions and adapt your driving style accordingly. The key to a good lap is maintaining momentum through the flowing corners and maximizing speed on the straights.",
+  "famousRaces": [
+    "1998 Belgian Grand Prix: A chaotic race marred by a massive first-lap pile-up, eventually won by Damon Hill.",
+    "2000 Belgian Grand Prix: Mika Häkkinen's stunning overtake on Michael Schumacher at Blanchimont is one of the most memorable moments in F1 history.",
+    "2008 Belgian Grand Prix: Felipe Massa inherited the win after Kimi Räikkönen crashed late in the race, showcasing the unpredictable nature of Spa."
+  ],
+  "localCulture": "The area surrounding Spa-Francorchamps is steeped in motorsport history and boasts a vibrant local culture. The town of Spa is famous for its thermal springs and relaxing atmosphere. Local cuisine includes hearty dishes like Ardennes ham and Belgian fries. Paddock life is lively, with teams and drivers enjoying the local hospitality and soaking up the atmosphere of this iconic venue."
+}

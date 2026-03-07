@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Belgian",
+  "age": 55,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Isabelle's career in motorsport began somewhat unexpectedly. After initially training as a materials scientist, a chance encounter with a Formula Ford team at a local track sparked a passion for the high-stakes world of racing. She quickly transitioned her skills into composite design and repair, spending years honing her craft in various junior series before joining Sauber. \n\nHer pragmatic approach to problem-solving is highly valued within the team. Isabelle is known for her methodical and efficient work style, ensuring that every composite component meets the highest standards of quality and performance. She thrives under pressure and is always eager to tackle new challenges, contributing significantly to the team's aerodynamic development through her expertise in carbon fiber technology. Isabelle's dedication to precision and her unwavering commitment to quality make her an indispensable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly styled bob with a slight wave.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A petite woman with a focused gaze and a practical demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of meticulously cleaning her workspace before starting any new project.",
+    "Frequently uses analogies from classical mechanics to explain complex composite behaviors."
+  ]
+}

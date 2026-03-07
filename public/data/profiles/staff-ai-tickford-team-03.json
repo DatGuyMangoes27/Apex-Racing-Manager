@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 52,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Nikola Petrović's journey in motorsport began with a childhood fascination for aerodynamics, fueled by observing the raw power of rally cars tearing through the Serbian countryside. He pursued a degree in aeronautical engineering, which led to a role at a small wind tunnel facility, where he honed his skills in computational fluid dynamics and wind tunnel testing. Nikola quickly moved into Formula racing, working with several smaller teams before landing a role at Tickford Racing. \n\nAs head of aero, Nikola emphasizes a data-driven approach, believing that incremental gains, achieved through rigorous analysis and constant refinement, are the key to success. He's known for his relentless pursuit of aerodynamic efficiency and an unwavering commitment to pushing the boundaries of what's possible. His perfectionist tendencies, while sometimes challenging, have consistently delivered measurable improvements on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build, Nikola's intense gaze suggests a mind constantly at work."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a peculiar habit of adjusting his glasses when explaining complex concepts.",
+    "Insists on having the wind tunnel temperature set precisely to 22 degrees Celsius."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Aya Tanaka",
+  "nationality": "Japanese",
+  "age": 36,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Aya's journey into motorsport began unexpectedly during her university days, where she was captivated by the intricate circuitry of a Formula Student car. This sparked a passion that led her to pursue a master's degree in electrical engineering, specializing in automotive electronics. After graduating, she joined a smaller Japanese racing team, honing her skills in data acquisition and control systems.\n\nShe eventually transitioned to Hitech Development, drawn by their commitment to innovation. Aya is a pragmatic engineer, known for her meticulous approach to problem-solving and her ability to optimize electronic systems for peak performance. She emphasizes reliability and believes that a well-integrated system is more crucial than chasing marginal gains. Her ambition lies in leading the electronics division, bringing a holistic view to the team's engineering challenges.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "dark brown",
+    "hairStyle": "shoulder-length, neatly styled with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": null,
+    "description": "Aya is of average height with a slender build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and calculations.",
+    "Insists on using Japanese measurement units during initial assessments, translating to metric later.",
+    "Has a habit of tapping her pen against her teeth when deeply concentrated."
+  ]
+}

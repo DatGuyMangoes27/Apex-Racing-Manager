@@ -1,0 +1,22 @@
+{
+  "name": "Elena Quispe",
+  "nationality": "Peruvian",
+  "age": 55,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Elena's journey into motorsport began unconventionally, not with a childhood fascination for racing, but with a keen interest in aerodynamics and fluid dynamics. After earning her engineering degree in Lima, she sought practical application for her knowledge, eventually landing a research position at a small aeronautics firm. There, she refined her understanding of wind tunnel technology. A chance encounter with a Hot Racing Team engineer at a conference led to her transition into motorsport. \n\nElena is methodical and data-driven. She believes in meticulous preparation and rigorous testing. While others might chase radical new designs, Elena focuses on optimizing existing concepts through incremental improvements gleaned from wind tunnel analysis. Her pragmatic approach ensures consistent, reliable results, making her a valuable asset. She also values the importance of team cohesion, and always strives to ensure her data is clearly communicated and understood.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Neatly braided and coiled into a low bun",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Elena is of medium build with a thoughtful expression etched on her face."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten observations.",
+    "Insists on calibrating the wind tunnel equipment herself before each session.",
+    "Often hums Andean folk songs while analyzing data."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Katsaros",
+  "nationality": "Greek",
+  "age": 28,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Dimitrios's journey into motorsport began in his childhood, fueled by a fascination with engineering and a passion for speed. Growing up in Thessaloniki, he spent countless hours tinkering with engines and studying aerodynamics. After graduating with honors in Mechanical Engineering from the Aristotle University of Thessaloniki, he pursued a master's degree in Motorsport Engineering in the UK, quickly earning a reputation for his rigorous analytical skills and pragmatic approach to problem-solving.\n\nHe joined Williams Racing after a successful stint at a smaller racing outfit, where he honed his skills in data analysis, vehicle dynamics, and team management. Dimitrios excels at identifying performance bottlenecks and implementing targeted solutions that deliver measurable results. He believes in fostering a collaborative environment where engineers can freely exchange ideas and challenge assumptions. His reputation precedes him as a rising star, but he remains grounded and focused on improving the team's overall performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Dimitrios is of average height with a lean build and an intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with engineering calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking Greek coffee before every race."
+  ]
+}

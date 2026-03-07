@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Fonseca",
+  "nationality": "Brazilian",
+  "age": 55,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo Fonseca's journey in motorsport began with a childhood fascination for flight and a knack for understanding airflow. He earned a degree in aeronautical engineering from the Instituto Tecnológico de Aeronáutica (ITA) in Brazil, where he specialized in computational fluid dynamics. His early career saw him working on aircraft design, before transitioning to Formula 1, drawn by the intense competitive environment and the opportunity to push aerodynamic boundaries. \n\nRicardo is known for his meticulous approach to data analysis and his ability to translate complex simulations into practical solutions on the track. He is a firm believer in the power of continuous improvement and constantly encourages his team to explore unconventional ideas. While others might chase immediate gains, Ricardo prioritizes long-term aerodynamic development, fostering a culture of innovation and strategic thinking within his department. His ambition fuels a relentless pursuit of aerodynamic perfection, aiming to give his team a decisive advantage.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a focused gaze, Ricardo carries an air of quiet intensity."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on having a daily cup of strong Brazilian coffee at precisely 10:00 AM.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

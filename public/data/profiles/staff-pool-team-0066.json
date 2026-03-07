@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Hamish Te Whero",
+    "nationality": "New Zealand",
+    "age": 52,
+    "gender": "male",
+    "role": "chief_engineer",
+    "bio": "Hamish Te Whero's journey into motorsport began with a childhood spent tinkering with engines on his family's farm in rural New Zealand. While his technical skills are still developing, he possesses a remarkable intuition for identifying potential improvements and a relentless drive to push boundaries. Hamish is known for his unorthodox approach to problem-solving and his unwavering belief in the power of innovation.\n\nAfter earning a degree in mechanical engineering, Hamish started his career in a small racing team, quickly impressing his colleagues with his quick learning and innovative ideas. While he may lack the extensive experience of some seasoned engineers, Hamish compensates with his infectious enthusiasm, fresh perspective, and willingness to embrace new technologies. He aspires to lead a team that consistently challenges conventional wisdom and creates groundbreaking designs.\n\nHamish views his role as chief engineer not just as a technical position, but as an opportunity to inspire and mentor others. He is committed to fostering a collaborative environment where creativity thrives and every team member feels empowered to contribute their best work. Despite being entry-level, his ambition is to build a team that will make a lasting impact on the sport.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Grey",
+      "hairStyle": "Short, neatly combed back, receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Short, trimmed grey beard",
+      "description": "A stocky build with a weathered face, Hamish looks like he's spent a lot of time outdoors."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Constantly sketching designs on napkins during meetings",
+      "Has a habit of pacing when deep in thought",
+      "Often uses analogies from rugby to explain complex engineering concepts"
+    ]
+  }
+]

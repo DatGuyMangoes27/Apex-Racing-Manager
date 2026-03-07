@@ -1,0 +1,22 @@
+{
+  "name": "Murat Demir",
+  "nationality": "Turkish",
+  "age": 52,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Murat's journey into motorsport began unexpectedly while working at a small automotive repair shop in Istanbul. His meticulous attention to detail and innate understanding of materials quickly led him to specialize in composite repair, where he discovered a passion for the precision and artistry involved. A chance encounter with a touring car team led to an apprenticeship, and he's been honing his craft ever since. \n\nMurat brings a unique perspective to composite work, blending traditional techniques with modern innovations. He believes in a holistic approach, considering not just the structural integrity but also the aerodynamic impact of every repair. His deep understanding of material science, combined with his 'big picture' thinking, makes him an invaluable asset to any team, and his collaborative nature ensures seamless integration with the engineering and design departments. He thrives on challenges, always seeking innovative solutions to push the boundaries of performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Murat is a sturdy man with a focused gaze and hands that show years of dedicated work."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small worry stone in his pocket and rubs it when under pressure.",
+    "Insists on listening to traditional Turkish folk music while working on complex repairs.",
+    "Has an uncanny ability to predict composite failures based on subtle changes in sound during stress tests."
+  ]
+}

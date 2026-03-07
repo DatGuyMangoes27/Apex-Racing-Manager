@@ -1,0 +1,22 @@
+{
+  "name": "Javier Beltrán",
+  "nationality": "Spanish",
+  "age": 33,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Javier's meticulous nature and unwavering commitment to excellence have made him a rising star in motorsport quality control. Growing up in Barcelona, he was captivated by the precision and engineering of Formula 1 cars. He studied mechanical engineering at the Polytechnic University of Catalonia, specializing in materials science and non-destructive testing.\n\nAfter graduation, Javier joined a small racing team, quickly proving his ability to identify and resolve even the most subtle defects. His dedication earned him a position at Arrow McLaren, where he is responsible for ensuring that every component meets the team's exacting standards. Javier's detail-oriented approach and mentorship skills make him invaluable to the team, as he consistently strives to improve processes and guide junior engineers. He is known for his insistence on thoroughness and his belief that even the smallest flaw can have a significant impact on performance.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Javier is a lean man with a focused expression and intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small magnifying glass in his pocket.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Insists on using metric measurements, even when others use imperial."
+  ]
+}

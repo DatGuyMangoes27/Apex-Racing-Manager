@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0228",
+  "name": "Al Sahra Capital",
+  "category": "finance",
+  "tier": "high",
+  "country": "UAE",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Al Sahra Capital is a leading investment firm based in Abu Dhabi, dedicated to supporting innovation and excellence across diverse sectors. Motorsport represents the pinnacle of human ingenuity and technical prowess, aligning perfectly with our values. We seek partnerships with teams demonstrating ambition, strategic thinking, and a commitment to achieving victory, mirroring our own approach to financial success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "UAE"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0228.png"
+}

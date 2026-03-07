@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Larsson",
+  "nationality": "Swedish",
+  "age": 56,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Bjorn Larsson's journey in motorsport began in the late 1980s, fueled by a passion for engineering and a relentless pursuit of performance. After earning a degree in mechanical engineering from Chalmers University of Technology, he quickly immersed himself in the world of rally racing, initially as a vehicle dynamics engineer for a small Swedish team. He transitioned to circuit racing in the late 90s, working his way up through the ranks, from race engineer to technical director. Before joining Boutsen VDS, Bjorn spent several years leading a successful GT team, known for its meticulous preparation and data-driven approach.\n\nAs team principal, Bjorn emphasizes a data-driven approach to decision-making, combined with a focus on process optimization and precise execution. He is known for his methodical nature and attention to detail, expecting the same level of dedication from his team. While demanding, he fosters a culture of continuous improvement, believing that small gains accumulate into significant competitive advantages. His loyalty to his team is unwavering, and he is fiercely protective of his staff, often going to bat for them with management.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard, mostly grey",
+    "description": "Bjorn is a tall man with a stern, focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Insists on reviewing every telemetry report personally.",
+    "Has a particular aversion to sloppiness and disorganization in the garage."
+  ]
+}

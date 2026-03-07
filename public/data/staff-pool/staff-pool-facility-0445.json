@@ -1,0 +1,22 @@
+{
+  "name": "Maria Rodrigues",
+  "nationality": "Portuguese",
+  "age": 54,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Maria grew up in a small village near Lisbon, where her father ran a small machine shop. From a young age, she was fascinated by the intricate workings of engines and machinery. She spent hours watching her father, learning the basics of machining and repair. After completing her technical education, Maria worked in various industrial settings before finally pursuing her passion for motorsport. \n\nShe started as an assistant machinist for a local racing team, quickly proving her dedication and aptitude. Her methodical approach and attention to detail make her a reliable asset in any pit crew. Though relatively new to the high-pressure environment of competitive racing, Maria is eager to learn and contribute her skills to a winning team. She is particularly interested in mastering the use of advanced materials in engine construction.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, practical bob",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Maria is a stocky woman with kind eyes and a strong build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical diagrams and notes.",
+    "Has a habit of humming quietly while working on complex tasks.",
+    "Insists on using traditional tools alongside modern equipment, believing they offer a better feel for the material."
+  ]
+}

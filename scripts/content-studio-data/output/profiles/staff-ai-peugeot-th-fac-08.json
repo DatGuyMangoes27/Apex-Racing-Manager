@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kiss",
+  "nationality": "Hungarian",
+  "age": 33,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Zoltán developed a fascination with aerodynamics at a young age, spending hours poring over books about aircraft and race cars. This passion led him to pursue a degree in mechanical engineering, specializing in fluid dynamics. After graduating, he worked for a small aerospace company before landing his dream role at Peugeot TotalEnergies. He approaches his work in the wind tunnel with meticulous precision, always seeking to optimize airflow and reduce drag. Zoltán's ability to quickly identify subtle aerodynamic improvements and his dedication to data accuracy make him a valuable asset to the team. He believes that even the smallest adjustments can make a significant difference on the track.\n\nZoltán prides himself on his ability to translate complex aerodynamic data into actionable insights for the engineers. He's not just an operator; he's a collaborator, always willing to share his knowledge and contribute to the overall performance of the car. He's known for his calm demeanor under pressure and his knack for troubleshooting unexpected issues in the wind tunnel. His loyalty to Peugeot TotalEnergies is unwavering, and he's committed to helping the team achieve its goals. He aspires to one day lead his own team of aerodynamic specialists.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed, with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "short, well-groomed goatee",
+    "description": "Zoltán is of average height with a focused, intense gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Insists on calibrating the wind tunnel equipment himself before each session."
+  ]
+}

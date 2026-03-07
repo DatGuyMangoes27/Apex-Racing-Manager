@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Kazimierz Lewandowski",
+    "nationality": "Polish",
+    "age": 58,
+    "gender": "male",
+    "role": "performance_engineer",
+    "bio": "Kazimierz Lewandowski's career spans over three decades in motorsport, a journey ignited by a childhood fascination with rally racing in the Polish countryside. After graduating with honors in mechanical engineering from the Warsaw University of Technology, he quickly found his niche in performance engineering, initially working with smaller privateer teams before moving into Formula-level feeder series. His meticulous data analysis and innovative problem-solving skills propelled him through the ranks, eventually leading to a coveted role with a top-tier prototype endurance racing team.\n\nKazimierz is known for his hands-on approach, often found poring over telemetry data late into the night, searching for that elusive tenth of a second. He is a firm believer in fostering a collaborative environment, valuing the input of every member of the team, from the mechanics to the drivers. His distinctive blend of technical expertise, management acumen, and creative thinking makes him an invaluable asset to any racing organization, always striving for continuous improvement and pushing the boundaries of performance. His loyalty is legendary, and he's known to stick with teams through thick and thin, valuing long-term relationships over short-term gains.",
+    "physical": {
+      "skinTone": "light",
+      "hairColor": "gray",
+      "hairStyle": "short, neatly combed back",
+      "eyeColor": "blue",
+      "facialHair": "trimmed salt and pepper goatee",
+      "description": "Kazimierz is a man of medium build, with a thoughtful expression etched on his face."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small, worn-out slide rule for 'quick calculations'.",
+      "Insists on drinking black coffee from a specific chipped mug.",
+      "Has a habit of humming quietly while analyzing data."
+    ]
+  }
+]

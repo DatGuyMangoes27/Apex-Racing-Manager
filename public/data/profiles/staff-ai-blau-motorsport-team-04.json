@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Kovačić",
+  "nationality": "Croatian",
+  "age": 35,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ivan Kovačić's passion for motorsport ignited during his childhood, spent tinkering with go-karts in his family's garage in Zagreb. This early fascination led him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, he gained invaluable experience working with smaller racing teams, honing his skills in data analysis, car setup, and driver communication. He prides himself on his meticulous approach to problem-solving and his ability to translate complex technical data into actionable insights for the driver.\n\nIvan joined Blau Motorsport three years ago, quickly establishing himself as a reliable and dedicated member of the engineering team. He's known for his calm demeanor under pressure and his ability to quickly adapt strategies during races. While he may not be the most outwardly innovative, his deep understanding of vehicle mechanics and unwavering commitment to perfection make him an invaluable asset to any racing team. His loyalty to Blau Motorsport is a driving force in his career.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Ivan is a man of average height with a sturdy build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific type of Croatian coffee blend, which he brews himself in the paddock."
+  ]
+}

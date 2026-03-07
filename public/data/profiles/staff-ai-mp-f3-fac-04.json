@@ -1,0 +1,22 @@
+{
+  "name": "Cillian Murphy",
+  "nationality": "Irish",
+  "age": 27,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Cillian's fascination with motorsport began during his childhood in County Cork, spending countless hours tinkering with go-karts and dreaming of Formula 1. He pursued a degree in Electrical Engineering at University College Dublin, specializing in embedded systems and data analysis. After graduating, he gained valuable experience at a small racing team, developing custom engine control units. He is passionate about optimizing car performance through innovative electronic solutions, and his meticulous approach ensures every detail is carefully considered. Cillian joined MP Motorsport eager to apply his technical expertise and contribute to their success.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly styled with a slight side part",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Lean build and intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas.",
+    "Has a habit of tapping his fingers when deep in thought.",
+    "Drinks green tea religiously throughout the day."
+  ]
+}

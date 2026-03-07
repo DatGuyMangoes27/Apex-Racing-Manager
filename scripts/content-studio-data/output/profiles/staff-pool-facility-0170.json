@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Oliveira",
+    "nationality": "Portuguese",
+    "age": 52,
+    "gender": "male",
+    "role": "fabricator",
+    "bio": "Ricardo's journey into motorsport began with a childhood fascination for engines, sparked by watching rally races in his hometown. He honed his skills through an apprenticeship at a local garage, quickly demonstrating a natural aptitude for metalwork and fabrication. Ricardo spent years working on classic cars before transitioning to the high-pressure world of racing. \n\nHe approaches his work with meticulous precision and a pragmatic problem-solving mindset. Ricardo is known for his ability to devise innovative solutions to complex mechanical challenges, particularly in adapting existing components to new requirements. His dedication to quality and his collaborative spirit have made him a valued asset to any team.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Short, trimmed goatee",
+      "description": "A stocky man with a focused gaze and strong hands, reflecting years of dedicated craftsmanship."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always sharpens his welding tips before starting a new project.",
+      "Keeps a small notebook filled with hand-drawn schematics and calculations.",
+      "Has a habit of whistling classical music while working."
+    ]
+  }
+]

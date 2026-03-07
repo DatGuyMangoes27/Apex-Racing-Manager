@@ -1,0 +1,22 @@
+{
+  "name": "Laszlo Kovacs",
+  "nationality": "Hungarian",
+  "age": 52,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Laszlo's journey into motorsport began with a childhood fascination with rally racing. He spent his youth tinkering with engines and dreaming of track domination. After graduating with a degree in Mechanical Engineering, he started as a junior engineer at a small racing team, quickly rising through the ranks due to his sharp technical mind and innovative approach to problem-solving. He believes in fostering a culture of constant improvement and pushing boundaries, always seeking that extra tenth of a second.\n\nLaszlo's management style is demanding, but fair. He sets high expectations and expects his team to deliver. He has a knack for identifying and nurturing talent, and he is fiercely loyal to those who demonstrate dedication and competence. He is known for his strategic thinking and his ability to make quick decisions under pressure. \n\nHis trademark is his relentless pursuit of innovation. He constantly analyzes data, explores new technologies, and encourages his team to think outside the box. This relentless drive to find an edge sets him apart in the competitive world of motorsport.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed Goatee",
+    "description": "Laszlo has a stern face and an intense gaze, reflecting his demanding nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas, even during meetings.",
+    "Insists on having his coffee black, no sugar or milk.",
+    "Has a habit of tapping his pen on the table when deep in thought."
+  ]
+}

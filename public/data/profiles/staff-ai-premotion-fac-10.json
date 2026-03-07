@@ -1,0 +1,22 @@
+{
+  "name": "Jan Veselý",
+  "nationality": "Czech",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Jan's passion for motorsport ignited during his childhood, spent tinkering with engines alongside his grandfather, a former rally mechanic. This hands-on experience led him to pursue a degree in Mechanical Engineering, specializing in composite materials. After graduating, Jan honed his skills at a small racing outfit, fabricating bespoke components for Formula Ford cars. Now at Proton by Premotion, he brings a meticulous approach to his work, ensuring every part meets his exacting standards. He's driven by a desire to push the boundaries of what's possible, constantly seeking innovative solutions to improve performance and reliability.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed hair with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Jan is of average height with a lean build, often seen wearing safety glasses perched on his forehead."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Has a habit of humming classical music while working on complex fabrications.",
+    "Insists on thoroughly inspecting every weld with a magnifying glass, even if it appears perfect."
+  ]
+}

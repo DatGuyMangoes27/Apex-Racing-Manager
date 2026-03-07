@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0313",
+  "name": "Apex Performance Tyres",
+  "category": "tires",
+  "tier": "high",
+  "country": "Hong Kong",
+  "description": "Engineered for victory, Apex Performance Tyres deliver unparalleled grip and durability.",
+  "story": "Apex Performance Tyres has been a leader in racing tyre technology for over 30 years, developing innovative compounds that consistently outperform the competition. They seek partnerships that showcase their commitment to pushing the limits of performance and achieving podium finishes. As a Hong Kong based company, they are eager to support international teams and drivers, expanding their global brand recognition.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 40
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0313.png"
+}

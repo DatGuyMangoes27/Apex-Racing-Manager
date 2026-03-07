@@ -1,0 +1,22 @@
+{
+  "name": "Seamus O'Connell",
+  "nationality": "Irish",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Seamus O'Connell is a veteran performance engineer with a career spanning over three decades in motorsport. Growing up near Mondello Park, the roar of engines was the soundtrack to his childhood, igniting a lifelong passion. He honed his skills in various racing series, from Formula Ford to GT racing, before specializing in data analysis and vehicle dynamics. \n\nSeamus is known for his meticulous approach and ability to extract crucial performance insights from complex data sets. He believes in a collaborative approach, working closely with drivers and mechanics to optimize car setup. His experience and calm demeanor under pressure make him an invaluable asset to any race team. He's also known for his unique ability to balance cutting-edge technology with a practical, hands-on approach, ensuring that theoretical improvements translate into real-world gains on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "A stout man with a kind face and a permanently focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn copy of 'Race Car Vehicle Dynamics'",
+    "Insists on having a cup of strong tea before every race",
+    "Has a habit of muttering technical calculations under his breath"
+  ]
+}

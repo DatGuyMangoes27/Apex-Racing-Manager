@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 48,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Astrid's motorsport journey began unconventionally, not on the track, but in the icy fjords of Norway, where she honed her mechanical skills modifying snowmobiles for extreme endurance races. This practical, hands-on experience, coupled with a late-in-life engineering degree, gave her a unique perspective on vehicle dynamics and performance under pressure. Her career in racing started in rallycross before transitioning to circuit racing. \n\nAs a race engineer, Astrid is known for her meticulous data analysis and innovative problem-solving, often finding unconventional solutions to complex issues. Her ambition drives her to constantly seek improvement, pushing both the car and the team to their limits. She believes in fostering a collaborative environment where every team member feels empowered to contribute their expertise.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back into a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a woman of medium build with a perpetually focused expression and a scattering of freckles across her nose."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small, well-worn multi-tool.",
+    "Insists on having a specific brand of Norwegian coffee on race days.",
+    "Frequently uses analogies involving boats and the sea to explain technical concepts."
+  ]
+}

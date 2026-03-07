@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0490",
+  "name": "HanbitSoft AI",
+  "category": "tech",
+  "tier": "entry",
+  "country": "South Korea",
+  "description": "AI solutions for a smarter tomorrow.",
+  "story": "HanbitSoft AI is a cutting-edge artificial intelligence company based in Seoul. They are venturing into motorsports to demonstrate the real-world applications of their AI technology, particularly in data analysis and predictive modeling. They seek to partner with a team that is willing to integrate their technology and provide valuable data for development.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 25,
+    "minMarketability": 20,
+    "nationalities": [
+      "South Korea"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0490.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Albuquerque",
+  "nationality": "Brazilian",
+  "age": 45,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination with Ayrton Senna, fueling a passion that led him to pursue mechanical engineering. After graduating top of his class, he started in Formula SAE, designing aero packages for his university's team. His innovative solutions quickly caught the eye of a smaller Formula 3 team, where he spent several years honing his skills before moving to Europe. He believes in a data-driven approach to aerodynamics, constantly seeking marginal gains through simulation and wind tunnel testing. Ricardo is known for his ability to translate complex technical concepts into actionable strategies, bridging the gap between engineering and on-track performance.\n\nHe joined Team WRT three years ago, and has helped them achieve several wins in various GT series. He is a firm believer in empowering his team, fostering a collaborative environment where everyone feels comfortable contributing their ideas. While some might see him as reserved, his dedication and sharp technical mind make him a highly respected and invaluable asset to the team. He is always looking for the next breakthrough, driven by a desire to push the boundaries of aerodynamic performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is a man of average height with a thoughtful expression, often seen with a slight smile."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with equations and sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks mate tea religiously every afternoon."
+  ]
+}

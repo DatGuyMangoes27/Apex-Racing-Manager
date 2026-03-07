@@ -1,0 +1,22 @@
+{
+  "name": "Saoirse O'Malley",
+  "nationality": "Irish",
+  "age": 38,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Saoirse's path to motorsport was unconventional, starting with a degree in mechanical engineering from Trinity College. While her classmates dreamed of Formula 1, Saoirse found herself drawn to the gritty, data-driven world of endurance racing. A chance encounter at a local rally event led to an internship with a small GT team, where she quickly proved her aptitude for analyzing telemetry and translating driver feedback into actionable improvements.\n\nAt JOTA Sport, Saoirse is the vital link between the test drivers and the engineering team. Her demanding personality ensures that no detail is overlooked during testing sessions. She believes in rigorous preparation and data analysis, often pushing drivers and engineers to explore unconventional setups and strategies. Her deep understanding of vehicle dynamics combined with a pragmatic approach has made her an invaluable asset to the team, consistently contributing to performance gains on track. Saoirse's ability to find that last tenth of a second by marrying data with driver feel is what sets her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, wavy, often pulled back into a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Saoirse is of average height with a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a well-worn notebook filled with handwritten notes and diagrams.",
+    "Insists on having a specific type of Irish breakfast tea before every test session.",
+    "Has a habit of tapping her pen rhythmically when deep in thought, which can be unnerving to some."
+  ]
+}

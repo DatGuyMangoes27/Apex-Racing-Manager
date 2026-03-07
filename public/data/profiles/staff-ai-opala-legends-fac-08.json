@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas Mendoza",
+  "nationality": "Peruvian",
+  "age": 33,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Sofia's journey into motorsport began unexpectedly during her engineering studies in Lima. A chance encounter with a racing team needing aerodynamic analysis sparked her interest, leading her to specialize in fluid dynamics and wind tunnel technology. After graduating, she gained invaluable experience at a smaller team, honing her skills in data acquisition and analysis before joining Opala Legends.\n\nSofia is known for her meticulous approach to wind tunnel testing. She believes in a collaborative approach, working closely with engineers and designers to optimize car performance. Her innovative ideas and ability to quickly identify areas for improvement have made her a valuable asset to the team. She's always looking for marginal gains and pushing the boundaries of aerodynamic efficiency.\n\nWhat sets Sofia apart is her ability to visualize airflow patterns and translate complex data into actionable insights. This skill, combined with her deep understanding of computational fluid dynamics (CFD) and wind tunnel methodologies, ensures Opala Legends is always at the forefront of aerodynamic development.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back into a practical ponytail during work.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia has a focused gaze and a slender build honed from years of hiking in the Andes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping her pen rhythmically when analyzing data.",
+    "Insists on playing Andean folk music during late-night wind tunnel sessions."
+  ]
+}

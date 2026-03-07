@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Álvarez",
+  "nationality": "Spanish",
+  "age": 52,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Ricardo Álvarez is a highly respected lawyer specializing in contract law and intellectual property, particularly within the entertainment and sports industries. He's known for his keen eye for detail, creative problem-solving, and a theatrical flair in the courtroom, often turning complex legal battles into compelling narratives. Ricardo's forgiving nature masks a relentless ambition, making him a formidable negotiator and a loyal ally. \n\nWhile his passion lies in theater and the arts, Ricardo's firm has increasingly represented motorsport teams and drivers, handling sponsorship deals, endorsement contracts, and legal disputes. A racing driver might cross paths with Ricardo when seeking legal counsel for contract negotiations, brand protection, or navigating complex regulatory issues within the sport. He is also a prominent figure in Madrid's high-society social circles, often attending exclusive events and networking with influential figures.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium height with a commanding presence. He favors tailored suits and designer glasses, reflecting his wealth and attention to detail."
+  },
+  "connectionToMotorsport": "Ricardo's law firm represents several Formula 2 and GT racing teams, offering expertise in sponsorship agreements, driver contracts, and intellectual property rights related to team branding and technology.",
+  "meetingContext": "The player might meet Ricardo through a mutual acquaintance at a motorsport industry event, or after needing legal representation for a contract dispute or sponsorship deal.",
+  "conversationTopics": [
+    "The latest theater productions in Madrid",
+    "The intricacies of contract law",
+    "His amateur painting hobby",
+    "The challenges of balancing ambition and personal life",
+    "The surprising parallels between motorsport and martial arts strategy"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship and endorsement deals",
+    "Provide legal counsel for contract disputes and intellectual property protection",
+    "Connect the player with potential investors and team owners"
+  ],
+  "personality_summary": "A forgiving yet fiercely ambitious lawyer with a flair for the dramatic and creative solutions."
+}

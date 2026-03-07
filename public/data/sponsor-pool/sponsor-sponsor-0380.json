@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0380",
+  "name": "Aksara Digital",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Indonesia",
+  "description": "Empowering innovation through cutting-edge technology solutions.",
+  "story": "Aksara Digital is a rapidly growing Indonesian tech company specializing in software development and data analytics. Recognizing the global reach and technological synergy of motorsport, they seek to build brand awareness and demonstrate their commitment to performance and innovation through strategic partnerships. They are particularly interested in supporting teams with a strong connection to Southeast Asia.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20,
+    "nationalities": [
+      "Indonesia",
+      "Malaysia",
+      "Singapore",
+      "Thailand",
+      "Vietnam"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0380.png"
+}

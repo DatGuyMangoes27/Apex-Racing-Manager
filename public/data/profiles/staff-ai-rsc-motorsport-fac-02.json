@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 35,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Zoltán's journey into motorsport began with a childhood fascination for model airplanes, which evolved into a passion for understanding the structural integrity of racing vehicles. After obtaining a degree in materials engineering from Budapest University of Technology and Economics, he started his career with a small Hungarian racing team, gaining hands-on experience in composite repair and fabrication. He quickly developed a reputation for meticulousness and problem-solving. \n\nZoltán joined RSC Motorsport five years ago and has become an integral part of the composite team. His approach to his role is characterized by a relentless pursuit of perfection. He is always seeking to improve the strength and weight of the car's components. What makes Zoltán stand out is his ability to quickly adapt to new materials and techniques, making him a valuable asset in the ever-evolving world of motorsport.",
+  "physical": {
+    "skinTone": "Light Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "He has a lean build and a focused look."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Obsessively cleans his workspace before and after each task.",
+    "Listens to classical music through headphones while working."
+  ]
+}

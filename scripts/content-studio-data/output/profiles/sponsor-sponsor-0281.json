@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0281",
+  "name": "Ibérica Racing Apparel",
+  "category": "apparel",
+  "tier": "elite",
+  "country": "Spain",
+  "description": "Performance apparel engineered for the heat of competition.",
+  "story": "Ibérica has outfitted Spanish racing teams for over 30 years, building a reputation for quality and innovation. We believe in supporting homegrown talent and pushing the boundaries of what's possible in motorsport. Our partnership seeks to amplify our brand and connect with racing fans globally.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Spain",
+      "Portugal"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 8,
+    "requiredShoutouts": 4,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0281.png"
+}

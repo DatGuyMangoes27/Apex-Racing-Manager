@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 30,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's passion for motorsport ignited at a young age, fueled by his grandfather's tales of racing legends. He spent his formative years tinkering with engines in his family's workshop, developing a knack for precision and problem-solving. After earning a degree in mechanical engineering, he honed his skills in various racing teams, quickly establishing himself as a highly sought-after machinist known for his meticulous approach.\n\nHis unwavering commitment to perfection sets him apart. Ricardo believes that every component, no matter how small, plays a critical role in achieving peak performance. He approaches each task with a blend of technical expertise, creative thinking, and an unyielding determination to push the boundaries of what's possible. He is a firm believer in continuous learning and eagerly embraces new technologies to enhance his craft. Ricardo's ambition extends beyond personal success; he dreams of contributing to a championship-winning team and leaving a lasting legacy in the world of motorsport.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Ricardo is of medium build with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils to a needle point.",
+    "Has a lucky wrench he uses for critical tasks.",
+    "Meticulously cleans his workspace at the end of each day."
+  ]
+}

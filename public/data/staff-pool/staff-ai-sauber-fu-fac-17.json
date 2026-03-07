@@ -1,0 +1,22 @@
+{
+  "name": "Kazimierz Lewandowski",
+  "nationality": "Polish",
+  "age": 45,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Kazimierz Lewandowski's journey into motorsport security was unconventional, starting as a system administrator for a logistics firm that handled high-value racing components. He quickly identified vulnerabilities in their transport and storage protocols, proposing innovative solutions that drastically reduced theft and damage. His reputation for meticulous planning and proactive risk assessment led to his recruitment by smaller racing teams before ultimately landing him at Stake Sauber.\n\nAt Stake Sauber, Kazimierz is responsible for the overall security infrastructure, from trackside operations to the team's headquarters. He believes in a layered defense approach, combining cutting-edge technology with old-fashioned vigilance. He's known for his ability to anticipate potential threats before they materialize and his unwavering commitment to protecting the team's assets and personnel.\n\nKazimierz is a firm believer in constant improvement and is always looking for new ways to enhance security protocols. He's also a strong advocate for cybersecurity awareness, frequently conducting training sessions for team members to educate them on best practices.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build, Kazimierz has an intense gaze that reflects his meticulous attention to detail."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook where he jots down security vulnerabilities he observes.",
+    "Has an uncanny ability to remember faces and names, even after brief encounters.",
+    "Insists on personally testing every new security measure before implementation."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0231",
+  "name": "Coastal Cruisers",
+  "category": "lifestyle",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Live the Coastal Cruisers lifestyle, on and off the track.",
+  "story": "Coastal Cruisers is a brand dedicated to the laid-back, adventurous spirit of coastal living. We see motorsport as the perfect platform to showcase our brand's values of freedom, excitement, and a connection to the outdoors. We are looking to partner with a team that embodies these qualities and can bring our message to a wider audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0231.png"
+}

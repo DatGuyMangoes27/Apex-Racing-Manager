@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 30,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jean-Pierre's fascination with motorsport began early, spending countless hours tinkering with go-karts in his uncle's garage. This hands-on experience fueled his passion for engineering, leading him to pursue a degree in mechanical engineering at McGill University. After graduation, he landed a role at a small racing team, where he quickly proved his aptitude for data analysis and simulation. His meticulous approach and ability to identify subtle performance gains led to several key improvements in the car's setup. \n\nHe thrives on pushing the limits of what's possible, and his relentless pursuit of perfection is what sets him apart. While some may find his standards demanding, Jean-Pierre believes that the smallest details can make the biggest difference on the track. This drive to excel has made him a valuable asset, and he's eager to contribute to Racing Bulls' success.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a focused gaze that reflects his analytical mind."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool",
+    "Obsessively cleans his workstation multiple times a day",
+    "Has a habit of muttering equations under his breath"
+  ]
+}

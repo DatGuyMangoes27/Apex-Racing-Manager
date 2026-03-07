@@ -1,0 +1,22 @@
+{
+  "name": "Eleanor Vance",
+  "nationality": "British",
+  "age": 26,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Eleanor Vance discovered her passion for motorsport early, captivated by the intricate electronics powering Formula 1 cars. She pursued a degree in Electrical Engineering at Imperial College London, specializing in embedded systems. During her studies, she gained practical experience through internships with several racing teams, contributing to the development of telemetry systems and engine control units.\n\nEleanor's approach to electronics engineering is meticulous and innovative. She thrives on problem-solving and is always eager to explore new technologies to enhance vehicle performance. Her dedication to precision and her ability to quickly adapt to high-pressure environments make her a valuable asset to any team. Eleanor joined Toyota Gazoo Racing BR, drawn to their ambitious approach to electric racing and is determined to contribute to their championship aspirations.\n\nWhat sets Eleanor apart is her understanding of the complete system. She sees the interplay of every electronic system to the car's overall performance, not as isolated systems. She can quickly debug and identify the root cause of any electronic problem in the vehicle.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "auburn",
+    "hairStyle": "Long, wavy hair, often tied back in a practical ponytail during work.",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "A slender woman with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a multi-tool and uses it to fix things, even when not strictly necessary.",
+    "Has a habit of humming complex algorithms under her breath when concentrating.",
+    "Drinks copious amounts of Earl Grey tea."
+  ]
+}

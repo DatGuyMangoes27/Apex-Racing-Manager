@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Streiff",
+  "nationality": "Swiss",
+  "age": 56,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Hans-Peter's journey into motorsport began with a childhood fascination for the intricate clockwork mechanisms of Swiss watches, which naturally evolved into an appreciation for the precision engineering of racing cars. After obtaining a degree in mechanical engineering from ETH Zurich, he cut his teeth in Formula 3, developing race strategies for a small privateer team. His analytical mind and ability to anticipate track conditions quickly earned him a reputation as a rising star.\n\nHe is known for his data-driven approach, meticulously analyzing telemetry and weather patterns to craft race strategies that exploit every possible advantage. His distinctive ability lies in balancing calculated risk-taking with a pragmatic understanding of long-term championship goals. Hans-Peter's unflappable demeanor under pressure makes him a valuable asset on the pit wall, providing calm and decisive guidance to the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium height with a wiry build and intense, focused eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he also uses sophisticated software.",
+    "Insists on having a specific brand of Swiss chocolate available in the pit garage during races.",
+    "Has a habit of muttering calculations to himself while staring intensely at the track."
+  ]
+}

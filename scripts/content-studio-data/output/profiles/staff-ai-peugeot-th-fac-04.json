@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 55,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ivan's journey into motorsport began unconventionally, initially repairing radios in his small Croatian village. His knack for electronics soon led him to modifying car audio systems, which caught the eye of a local rally team. He quickly became their go-to guy for anything electrical, eventually mastering engine management systems and data acquisition. Ivan joined Peugeot TotalEnergies a decade ago, bringing with him a pragmatic approach honed by years of hands-on experience. \n\nIvan's strength lies in his ability to diagnose complex electrical problems quickly and efficiently. He's not afraid to get his hands dirty and prefers practical solutions over theoretical ones. While his demanding nature can sometimes ruffle feathers, his colleagues respect his unwavering commitment to performance and his dedication to getting the job done right. His deep understanding of vehicle electronics and his unwavering focus on results make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed mustache",
+    "description": "A man of medium build, Ivan's weathered face tells a story of countless hours spent under the hood."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small multimeter in his pocket.",
+    "Has a strong aversion to using metric wrenches (prefers SAE).",
+    "Insists on drinking his strong black coffee from a chipped mug."
+  ]
+}

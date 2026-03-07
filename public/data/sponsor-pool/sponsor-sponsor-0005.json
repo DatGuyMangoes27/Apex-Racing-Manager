@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0005",
+  "name": "Kai Tak Timepieces",
+  "category": "watches",
+  "tier": "mid",
+  "country": "Hong Kong",
+  "description": "Precision timekeeping, engineered for performance.",
+  "story": "Kai Tak Timepieces was founded on the principles of precision and innovation, values deeply rooted in the world of motorsport. We believe that the relentless pursuit of excellence on the track mirrors our own dedication to crafting exceptional timepieces. Our partnership with motorsport teams allows us to showcase the durability and accuracy of our watches under extreme conditions, while also connecting with a passionate and discerning audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 75000,
+      "podiumBonus": 35000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0005.png"
+}

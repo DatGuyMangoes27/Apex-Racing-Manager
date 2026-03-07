@@ -13,6 +13,7 @@ import type {
 import type { SparePartType } from '@/data/spare-parts-config'
 import { 
   MANUFACTURING_CONFIG,
+  MANUFACTURER_ORDER_CONFIG,
   calculateManufacturingTime,
   calculateManufacturingQuality,
   calculateManufacturingCost
@@ -359,7 +360,7 @@ export function compareManufactureVsPurchase(
   
   // Purchase costs
   const { rushCostMultiplier, standardLeadWeeks, rushLeadWeeks, qualityGuarantee } = 
-    require('@/data/spare-parts-config').MANUFACTURER_ORDER_CONFIG[manufacturerTier]
+    MANUFACTURER_ORDER_CONFIG[manufacturerTier]
   
   const purchaseCost = purchasePrice * quantity * (rushOrder ? rushCostMultiplier : 1)
   const purchaseTime = rushOrder ? rushLeadWeeks : standardLeadWeeks

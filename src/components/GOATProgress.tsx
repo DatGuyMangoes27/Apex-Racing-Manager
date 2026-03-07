@@ -4,10 +4,26 @@ import {
   Star,
   Award,
   Target,
+  Crown,
+  TrendingUp,
+  CheckCircle2,
+  Circle,
+  Medal,
   getMilestonesByCategory,
-  createDefaultGOATProgress
+  createDefaultGOATProgress,
+  GOAT_TIERS,
+  ALL_MILESTONES,
+  TRIPLE_CROWNS,
+  HISTORICAL_RECORDS,
+  type GOATTier,
+  type MilestoneRarity,
+  type MilestoneCategory,
+  type Milestone,
+  type GOATProgress as GOATProgressType
 } from '@/data/achievements'
 import { useState, useMemo } from 'react'
+import { Card, CardHeader, Badge } from '@/components/ui'
+import { useCareerStore, type PlayerDriver } from '@/store/careerStore'
 
 // Calculate progress toward a milestone based on player stats
 function calculateMilestoneProgress(milestone: Milestone, player: PlayerDriver): { progress: number; label: string } {
@@ -196,6 +212,7 @@ export function GOATProgressPanel({ goatProgress: propGoatProgress, player: prop
   
   // Use props if provided, otherwise fall back to store
   const player = propPlayer || store.player
+  const effectiveReputation = (store.careerState?.ownedTeam?.reputation ?? player?.reputation ?? 0)
   
   if (!player) return null
   
@@ -335,8 +352,8 @@ export function GOATProgressPanel({ goatProgress: propGoatProgress, player: prop
                   )}
                   {nextTier.repMin > 0 && (
                     <RequirementRow
-                      label="Reputation"
-                      current={Math.round(player.reputation * 10) / 10}
+                      label="Team Reputation"
+                      current={Math.round(effectiveReputation * 10) / 10}
                       required={nextTier.repMin}
                     />
                   )}

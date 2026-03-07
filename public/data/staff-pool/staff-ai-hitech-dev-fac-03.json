@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 25,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Thierry Dubois found his calling amidst the rhythmic clang and precision of metalworking at a young age. Growing up near Spa-Francorchamps, the allure of motorsport was inescapable. He started tinkering with go-karts as a teenager, quickly realizing his aptitude for mechanics. This passion led him to pursue a degree in mechanical engineering, specializing in precision machining. \n\nHis approach to the role of machinist is meticulous, bordering on obsessive. Thierry believes that even the smallest imperfections can have a significant impact on performance. He's dedicated to pushing the boundaries of what's possible, constantly seeking innovative solutions to improve component design and manufacturing. Thierry's sharp eye for detail and commitment to precision make him a valuable asset to Hitech Development, where he strives to translate engineering concepts into tangible, high-performance parts.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed with a slight side part",
+    "eyeColor": "hazel",
+    "facialHair": "short, well-groomed goatee",
+    "description": "Thierry is of average height with a focused, intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always wears noise-canceling headphones, even when not operating machinery.",
+    "Carries a small notebook to sketch out ideas and make detailed notes on machining processes.",
+    "Refuses to eat lunch at his workbench, insisting on a clean and organized workspace."
+  ]
+}

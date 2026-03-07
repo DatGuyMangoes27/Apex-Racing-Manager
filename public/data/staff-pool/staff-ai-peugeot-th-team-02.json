@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 40,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Alistair MacLeod's passion for motorsport ignited during his childhood spent watching rallying events in the Scottish Highlands. He pursued mechanical engineering at university, focusing on vehicle dynamics and performance optimization. After graduating, he started his career as a junior engineer at a small racing team, gradually working his way up through various roles. He joined Peugeot TotalEnergies five years ago and has steadily climbed the ranks, earning a reputation for his meticulous approach and ability to troubleshoot complex technical issues under pressure. Alistair believes in fostering a collaborative environment where data-driven insights and innovative solutions are valued above all else. \n\nHis commitment extends beyond the technical aspects; he's known for his ability to mentor junior engineers, guiding them through the intricacies of motorsport engineering. He approaches challenges with a calm and methodical demeanor, earning the respect of his colleagues. Alistair's detail-oriented approach has consistently contributed to improved car performance and reliability, making him a vital asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height with a lean build and focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a specific type of tea he drinks every morning before starting work.",
+    "Insists on personally inspecting critical car components before each race."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 43,
+  "gender": "male",
+  "contactType": "military_officer",
+  "bio": "Colonel Wei Zhang is a decorated officer in the People's Liberation Army, specializing in logistics and procurement. Years of dealing with complex supply chains and navigating bureaucratic hurdles have hardened his demeanor, fostering a cynical outlook tempered by a deep-seated sense of duty. He values tradition and efficiency above all else, often finding the modern world overly complicated and frivolous.\n\nWhile seemingly unrelated to motorsport, Colonel Zhang oversees a department that occasionally contracts with private sector transportation companies, including those involved in specialized vehicle transport and logistics for racing teams competing in China. A racing team needing permits or efficient transport of equipment might find themselves needing to navigate his department, leading to an inevitable encounter. His reliability, once earned, makes him a valuable, if somewhat demanding, contact.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Thin mustache",
+    "description": "Wei is of average height with a wiry build, honed by years of military service. His uniform is always immaculate, reflecting his meticulous nature."
+  },
+  "connectionToMotorsport": "Colonel Zhang's connection to motorsport is tangential, stemming from his department's involvement in authorizing and facilitating the transport of racing equipment within China. He views motorsport primarily as another logistical challenge to be efficiently managed.",
+  "meetingContext": "The player would likely meet Colonel Zhang at a permit hearing or during a meeting to discuss logistics for a race event held in China. The player's team might need his approval to transport specialized equipment across provincial lines or to import parts temporarily.",
+  "conversationTopics": [
+    "The importance of discipline and order",
+    "The decline of traditional values",
+    "The logistical challenges of large-scale operations",
+    "The merits of Chinese art and calligraphy",
+    "His (surprisingly deep) knowledge of tennis"
+  ],
+  "canHelp": [
+    "Expedite permits and logistical approvals for racing events in China",
+    "Provide access to secure transportation channels within the country",
+    "Offer insights into navigating the Chinese bureaucracy"
+  ],
+  "personality_summary": "A cynical but reliable military officer with a surprisingly cultured side."
+}

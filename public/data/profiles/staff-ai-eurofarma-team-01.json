@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 29,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Nikola's motorsport journey began in his childhood, tinkering with go-karts in his family's garage. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and aerodynamics. After graduating, he started as a junior engineer at a small racing team, quickly proving his aptitude for problem-solving and performance optimization. His meticulous approach and knack for identifying marginal gains caught the eye of Eurofarma RC, where he has steadily climbed the ranks to become Chief Engineer.\n\nNikola's leadership style is demanding, but his expectations are always rooted in data and a deep understanding of the car's capabilities. He believes in empowering his team through clear communication and fostering a culture of continuous improvement. While some find his intensity challenging, his colleagues respect his technical expertise and unwavering commitment to achieving peak performance on the track. He is known for his ability to see the big picture, ensuring that every detail contributes to the overall strategic objective.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed beard",
+    "description": "Nikola is of average height with a lean build, often seen sporting a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on a precisely organized toolbox, with each tool in its designated place."
+  ]
+}

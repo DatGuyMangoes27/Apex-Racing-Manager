@@ -1,0 +1,22 @@
+{
+  "name": "Sirkka Nieminen",
+  "nationality": "Finnish",
+  "age": 48,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Sirkka Nieminen's journey into motorsport began unexpectedly. After completing her vocational training in machining, she took a job at a small engineering firm that fabricated components for rally cars. The precision and attention to detail required immediately captivated her, and she quickly developed a reputation for her meticulous work. Years later, an opportunity arose to join Meyer Shank Racing, and she seized it. \n\nAt MSR, Sirkka brings a calm and methodical approach to her work. She is known for her ability to diagnose and rectify complex mechanical problems with minimal fuss. Her experience and knowledge of various materials and manufacturing techniques make her a valuable asset to the team. She is constantly seeking ways to improve efficiency and performance, often suggesting innovative solutions that others have overlooked. She prides herself on the quality of her workmanship and attention to detail.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "blonde",
+    "hairStyle": "short, practical bob, often tucked behind her ears",
+    "eyeColor": "blue",
+    "facialHair": null,
+    "description": "Sirkka is of average height with a sturdy build and kind eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn copy of a machining handbook",
+    "Has a habit of humming quietly while working on intricate parts",
+    "Insists on cleaning her tools meticulously at the end of each day, regardless of how busy things are"
+  ]
+}

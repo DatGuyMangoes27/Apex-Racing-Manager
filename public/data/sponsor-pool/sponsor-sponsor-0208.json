@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0208",
+  "name": "Outback Outfitters",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "Australia",
+  "description": "Gear up for adventure with Outback Outfitters.",
+  "story": "Outback Outfitters is a leading Australian apparel brand specializing in rugged, durable clothing for outdoor adventures. We see motorsport as the ultimate testing ground for our gear, pushing both driver and equipment to their limits. We seek to partner with teams that embody the spirit of adventure and resilience, demonstrating the performance and reliability of our apparel in demanding conditions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "Australia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0208.png"
+}

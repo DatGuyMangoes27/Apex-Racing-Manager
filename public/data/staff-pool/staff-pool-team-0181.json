@@ -1,0 +1,22 @@
+{
+  "name": "Lena Schmidt",
+  "nationality": "German",
+  "age": 33,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Lena Schmidt's passion for motorsport ignited early, fueled by countless hours spent watching Formula 1 races with her father, a mechanical engineer. She pursued a degree in automotive engineering at RWTH Aachen University, where she excelled in vehicle dynamics and advanced materials. After graduating, she joined a small Formula 3 team as a junior engineer, quickly proving her aptitude for problem-solving and data analysis. \n\nLena's meticulous approach to technical challenges and her ability to communicate complex ideas effectively led to her rapid ascent. She spent several years honing her skills, specializing in aerodynamics and vehicle setup. Lena is known for her collaborative leadership style, fostering a culture of innovation and continuous improvement within her teams. Her ambition extends beyond personal achievement, as she hopes to see her team at the very top of the sport.\n\nWhat sets Lena apart is her ability to balance strategic thinking with a hands-on approach. She enjoys being in the garage, working alongside her engineers to fine-tune every detail. She believes that a deep understanding of the car and the driver is essential for unlocking its full potential.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight, with a slight side part.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Lena is of average height and has a focused, intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on having a perfectly organized workspace, with all tools and equipment in their designated places."
+  ]
+}

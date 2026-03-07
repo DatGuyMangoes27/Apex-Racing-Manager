@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Bjørn's fascination with motorsport began during his childhood, watching rally races in the Norwegian countryside with his father. He pursued a degree in Mechanical Engineering at the Norwegian University of Science and Technology, specializing in vehicle dynamics and simulation. After graduating, he secured a junior role at a local racing team, quickly proving his aptitude for data analysis and simulator development.\n\nHis meticulous approach to simulator engineering involves creating highly accurate models that mirror real-world track conditions and car behavior. Bjørn believes in constant refinement, using driver feedback and on-track data to fine-tune the simulator's parameters. He's known for his ability to identify subtle discrepancies between the virtual and physical environments, contributing significantly to Prema Racing's driver development program. He's particularly adept at optimizing setups for specific drivers and adapting simulator programs to incorporate new technological updates.\n\nWhat distinguishes Bjørn is his relentless pursuit of realism and his capacity to translate complex engineering data into actionable insights for drivers. His ambition to improve Prema's simulation capabilities further drives him, and he dreams of one day developing a simulator capable of predicting race outcomes with near-perfect accuracy.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Bjørn is of average height with a lean build and a perpetually focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and notes.",
+    "Has a habit of tapping his pen against his teeth when deeply concentrated.",
+    "Needs to have a specific brand of Norwegian coffee to start his workday."
+  ]
+}

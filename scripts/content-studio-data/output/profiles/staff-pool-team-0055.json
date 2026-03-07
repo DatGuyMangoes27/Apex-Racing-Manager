@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 55,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Ricardo Vargas's journey in motorsport began unexpectedly, fueled by a chance encounter with a local racing team during his engineering studies in Lima. Initially volunteering as a mechanic, his keen eye for detail and methodical approach quickly earned him responsibilities, eventually leading him to oversee race operations. His career has spanned across various South American racing series, including rally and touring cars, where he honed his organizational skills and gained a reputation for meticulous planning and problem-solving.\n\nAs Head of Operations, Ricardo emphasizes a structured and data-driven approach. He believes in empowering his team with the right tools and information, while maintaining strict accountability. While his demanding nature can be challenging, it stems from a deep commitment to achieving peak performance and ensuring every aspect of the team's operation runs smoothly. His leadership style is centered on fostering a culture of continuous improvement and meticulous preparation, leaving nothing to chance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed mustache",
+    "description": "A man of medium build, Ricardo's serious demeanor is softened by the crinkles around his eyes when he smiles."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, meticulously jotting down observations.",
+    "Insists on a strict adherence to schedules, often arriving early to meetings.",
+    "Has a collection of racing flags from different events displayed in his office."
+  ]
+}

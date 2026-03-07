@@ -1,0 +1,22 @@
+{
+  "name": "Graeme McMillan",
+  "nationality": "New Zealand",
+  "age": 57,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Graeme's journey into motorsport began in his youth, tinkering with engines on his family's farm in rural New Zealand. He earned a degree in mechanical engineering, specializing in vehicle dynamics, and quickly found his passion in race engineering. Early in his career, he worked with several smaller teams, honing his skills in data analysis and vehicle setup. He is known for his systematic approach to problem-solving and his ability to quickly adapt to changing conditions.\n\nHe joined JHR Developments a decade ago and has been instrumental in the team's success, consistently providing valuable insights that improve vehicle performance. Graeme's colleagues appreciate his calm demeanor under pressure and his willingness to mentor younger engineers. His methodical approach and emphasis on data-driven decision-making set him apart. He's renowned for his ability to diagnose subtle issues that others might miss, making him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Graeme is a man of average height, with a slightly weathered face and a thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen, even in the paddock.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Prefers to analyze data using self-written scripts rather than commercially available software."
+  ]
+}

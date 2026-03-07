@@ -1,0 +1,22 @@
+{
+  "name": "Luka Babić",
+  "nationality": "Croatian",
+  "age": 35,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Luka's passion for motorsport ignited during his childhood, fueled by watching Formula 1 races with his father. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he initially worked in the aerospace industry, refining his skills in computational fluid dynamics and advanced simulation techniques. Eager to apply his expertise to racing, he joined Meyer Shank Racing three years ago, where he has become an invaluable asset to the team's simulator program.\n\nLuka's methodical approach to simulator development is a key strength. He meticulously analyzes real-world data to ensure the simulator accurately reflects the car's behavior and track conditions. His ability to quickly identify and resolve discrepancies between the simulator and the actual car has directly contributed to improved driver performance and race strategy. What sets Luka apart is his commitment to continuous improvement and his willingness to explore innovative solutions to complex engineering problems.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the side",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed beard",
+    "description": "Luka is of average height with a focused and intelligent gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas during simulator sessions.",
+    "Has a collection of miniature race cars on his desk.",
+    "Frequently uses analogies from Croatian folk tales to explain complex engineering concepts."
+  ]
+}

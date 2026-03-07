@@ -1,0 +1,22 @@
+{
+  "name": "Arjun Verma",
+  "nationality": "Indian",
+  "age": 43,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Arjun's motorsport journey began in his youth, captivated by Formula 1 races broadcasted from Europe. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before moving to the US to work for smaller racing teams. He quickly rose through the ranks, demonstrating a sharp eye for talent and a knack for optimizing car performance. His strategic mind and ability to remain calm under pressure led to his appointment as team principal.\n\nAt Hendrick Motorsports, Arjun champions a data-driven approach, emphasizing rigorous analysis and continuous improvement. He believes in fostering a collaborative environment where engineers and drivers can freely exchange ideas. His pragmatic approach to problem-solving, coupled with a willingness to embrace innovative solutions, makes him a respected and effective leader. Arjun is distinguished by his ability to identify and nurture emerging talent, ensuring the team's long-term success.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Arjun is of average height with a wiry build and an intense gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every team meeting with a brief recap of the previous race, even if it was a disaster."
+  ]
+}

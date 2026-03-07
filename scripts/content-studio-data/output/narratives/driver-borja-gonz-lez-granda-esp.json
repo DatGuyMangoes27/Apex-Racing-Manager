@@ -1,0 +1,27 @@
+{
+  "biography": "Borja González Granda, a name synonymous with controlled aggression in the Kart Cross world, hails from the sun-drenched plains of Castile-La Mancha, Spain. His journey began not on asphalt, but on the dusty, uneven terrain of his family's farm, where he honed his car control skills driving an old tractor. Racing wasn't a family tradition; it was a fire ignited by a televised rally race witnessed during a rare rainy afternoon. He started small, modifying old go-karts and racing in local amateur events, quickly building a reputation for his smooth, consistent driving style. A defining moment came during a regional championship race where, despite starting at the back of the grid due to a mechanical failure, he clawed his way to victory, showcasing his tenacity and overtaking prowess. Now at 29, and arguably in his prime, Borja is a force to be reckoned with in the Kart Cross circuit, consistently challenging for podium finishes and proving that raw talent, coupled with unwavering dedication, can overcome any obstacle. While some drivers rely on raw speed, Borja's success is built on meticulous preparation and calculated risk-taking.",
+  "drivingStyle": "Borja's driving style is a blend of calculated aggression and unwavering precision. He's not the flashiest driver, preferring to build momentum through smooth corner entries and exits. He conserves his tires meticulously, often running longer stints than his competitors, a crucial advantage in endurance races. While not afraid to engage in wheel-to-wheel combat, he prioritizes calculated overtakes, choosing his moments carefully and minimizing risk. Under pressure, Borja remains remarkably composed, rarely making rash decisions or succumbing to the heat of the moment. This unflappable nature allows him to capitalize on the mistakes of others and consistently deliver strong results.",
+  "rivalries": [
+    {
+      "name": "Ricardo 'El Toro' Torres",
+      "reason": "A long-standing rivalry fueled by contrasting driving styles. Torres is known for his aggressive, high-risk maneuvers, often clashing with Borja's more calculated approach."
+    },
+    {
+      "name": "Sofia 'La Lince' Mendes",
+      "reason": "A tactical rivalry. Sofia is a master strategist, often using clever race tactics to outmaneuver Borja and gain track position."
+    },
+    {
+      "name": "Javier 'Trueno' Ruiz",
+      "reason": "A close-fought rivalry stemming from their early karting days. Their careers have mirrored each other, constantly pushing each other to improve."
+    }
+  ],
+  "quirks": [
+    "Always wears the same worn-out racing gloves, claiming they bring him luck.",
+    "Listens to classical guitar music before every race to calm his nerves.",
+    "Has a specific routine of checking every bolt and nut on his Kart Cross before each session, regardless of how recently it was inspected."
+  ],
+  "nickname": "El Calculador (The Calculator)",
+  "famousQuote": "\"Racing isn't just about speed; it's about understanding the equation and finding the optimal solution.\"",
+  "careerHighlight": "Winning the Spanish National Kart Cross Championship in 2021 after a season-long battle with Ricardo Torres, securing the title with a daring last-lap overtake.",
+  "careerLowPoint": "Crashing out of the European Kart Cross Championship final in 2020 while leading, costing him a potential international title and leaving him questioning his abilities."
+}

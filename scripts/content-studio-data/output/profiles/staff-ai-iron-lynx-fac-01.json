@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Møller",
+  "nationality": "Danish",
+  "age": 52,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Bjørn Møller's journey into motorsport data analysis began unexpectedly after a career in statistical modeling for renewable energy projects. Frustrated with the slow pace of implementation, he sought a field where data-driven insights could yield immediate, tangible results. Rallying became his obsession, spending hours studying telemetry and experimenting with setup adjustments. His approach is methodical and deeply rooted in first principles, always seeking to understand the 'why' behind every data point.\n\nHe joined Iron Lynx after a successful stint with a smaller GT team, drawn by the challenge of applying his skills to a larger, more complex operation. Bjørn is known for his ability to extract meaningful patterns from noisy data, often identifying subtle correlations that others miss. He’s a firm believer in the power of data visualization and spends considerable time crafting clear, concise dashboards for the team. Bjørn's value lies in his ability to translate complex technical data into actionable strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed-back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium build with a thoughtful gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of Danish coffee."
+  ]
+}

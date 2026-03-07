@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 34,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Krzysztof's fascination with motorsport began during his childhood, spent glued to rally races on TV. This passion led him to pursue a degree in mechanical engineering, focusing on vehicle dynamics. He landed his first job at a local automotive research facility, where he gained invaluable experience in simulation software and data analysis. Seeking a more direct connection to racing, Krzysztof transitioned to a simulator engineering role, honing his skills in creating realistic and challenging virtual environments for drivers. \n\nKrzysztof's approach is rooted in a relentless pursuit of accuracy. He meticulously analyzes telemetry data, constantly refining the simulator's parameters to mirror real-world conditions. He believes that a well-calibrated simulator is crucial for driver development and race strategy optimization. While he values data-driven decisions, Krzysztof also recognizes the importance of driver feedback and integrates it seamlessly into his work, ensuring the simulator feels intuitive and responsive. His colleagues appreciate his dedication and keen eye for detail, making him a valuable asset to any motorsport team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Krzysztof has a slender build and a focused look behind his rectangular glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down simulator settings.",
+    "Has a habit of tapping his fingers on his desk when deep in thought.",
+    "Prefers to work in complete silence, often wearing noise-canceling headphones."
+  ]
+}

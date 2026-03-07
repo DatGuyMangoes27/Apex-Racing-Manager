@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 45,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ricardo Vargas's journey into motorsport analytics began unconventionally, stemming from his meticulous analysis of agricultural data in rural Peru. His ability to identify patterns and predict outcomes caught the eye of a visiting engineer during a local rally event. Intrigued, Ricardo transitioned his skills to racing data, quickly proving invaluable. \n\nAt Blau Motorsport, Ricardo focuses on pre-race simulations and post-race analysis, meticulously dissecting telemetry to identify areas for improvement in car setup and driver performance. He has a knack for uncovering hidden efficiencies in complex datasets, but prefers working independently, believing the silence allows for deeper focus. His calm demeanor, even under intense pressure, makes him a reliable anchor for the team during crucial moments. He is distinguished by his old-school statistical techniques that he has honed over the years.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed mustache",
+    "description": "Ricardo is of average height with a slightly stocky build and a serious expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with handwritten notes and calculations.",
+    "Insists on using a specific brand of Peruvian coffee beans, which he grinds fresh every morning.",
+    "Has a habit of quietly humming traditional Andean melodies while analyzing data."
+  ]
+}

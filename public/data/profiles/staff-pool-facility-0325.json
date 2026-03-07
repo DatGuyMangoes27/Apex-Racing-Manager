@@ -1,0 +1,22 @@
+{
+  "name": "Isabela Vieira",
+  "nationality": "Brazilian",
+  "age": 51,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Isabela's journey into motorsport began unexpectedly during her university days, captivated by the intricate electronics powering Formula SAE vehicles. This fascination led her to pursue advanced degrees in electrical engineering, specializing in high-performance control systems. Prior to joining the racing world, she spent several years designing and testing avionics for Embraer, experience she leverages to bring aerospace-grade reliability and precision to her motorsport projects. \n\nIn her role, Isabela is known for her meticulous approach and her ability to diagnose and resolve complex electrical issues under immense pressure. She thrives in fast-paced environments, constantly seeking innovative solutions to improve vehicle performance. Her distinctive trait is her unwavering commitment to continuous improvement, always pushing the boundaries of what's possible through sophisticated data analysis and cutting-edge technological applications. Isabela is a strong believer in collaborative problem-solving and open communication within the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "shoulder-length, slightly wavy, often tied back in a practical ponytail during races",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Isabela is of average height and build, with a focused and intelligent gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams and technical notes.",
+    "Has a habit of tapping her pen rhythmically when concentrating on a problem.",
+    "Prefers to debug code and analyze data while listening to classical music through noise-cancelling headphones."
+  ]
+}

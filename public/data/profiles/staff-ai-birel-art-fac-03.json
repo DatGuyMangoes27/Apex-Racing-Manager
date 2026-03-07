@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Nowak",
+  "nationality": "Polish",
+  "age": 43,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Krzysztof's journey into motorsport began in his youth, tinkering with his father's old Fiat 126p. This early exposure ignited a passion for mechanics, leading him to pursue a degree in Mechanical Engineering. After graduating, he honed his skills in various workshops, gaining experience in precision machining and fabrication. His meticulous approach and problem-solving abilities eventually caught the attention of Birel ART, where he now plays a crucial role in ensuring the kart's components meet exacting specifications.\n\nKrzysztof is known for his unwavering focus and ability to remain calm under pressure, qualities that have proven invaluable during critical race weekends. His dedication to precision and his ability to identify and resolve potential issues before they escalate make him a vital asset to the team. He approaches every task with a pragmatic mindset, prioritizing efficiency and reliability above all else. \n\nWhat sets Krzysztof apart is his quiet dedication and his ability to work independently. He prefers to let his work speak for itself, and his consistently high standards have earned him the respect and trust of his colleagues.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a focused gaze and calloused hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his tools before starting a new task, regardless of their current condition.",
+    "Has a collection of vintage engineering textbooks that he occasionally consults.",
+    "Only drinks herbal tea, claiming it helps him maintain concentration."
+  ]
+}

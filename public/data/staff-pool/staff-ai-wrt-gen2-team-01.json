@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Ulrich Keller",
+  "nationality": "Swiss",
+  "age": 59,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Hans-Ulrich Keller's journey into motorsport began unexpectedly, amidst the precision of Swiss watchmaking. His early career involved designing intricate components, but the allure of speed and dynamic systems proved irresistible. He transitioned into motorsports engineering, quickly establishing a reputation for meticulous analysis and practical problem-solving. \n\nKeller's approach is characterized by a relentless pursuit of marginal gains. He believes in data-driven decisions, fostering a culture of experimentation and continuous improvement. His experience with Team WRT has honed his ability to extract maximum performance from the machinery at his disposal, making him a highly sought-after figure in the paddock. He is known for his ability to stay calm under pressure, a trait he attributes to his early training in the demanding world of precision engineering.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a serious demeanor, his intense gaze reveals a sharp intellect."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on starting every race day with a cup of strong black coffee.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

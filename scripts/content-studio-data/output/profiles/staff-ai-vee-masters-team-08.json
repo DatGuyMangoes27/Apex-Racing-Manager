@@ -1,0 +1,22 @@
+{
+  "name": "Jan van Dijk",
+  "nationality": "Dutch",
+  "age": 52,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jan's motorsport journey began in his youth, tinkering with karts in his father's garage. His passion led him to pursue a degree in mechanical engineering, after which he worked for a small racing team specializing in Formula Ford. He quickly gained a reputation for his meticulous approach and ability to extract maximum performance from limited resources. After several years, he joined Vee Masters, drawn by their ambition and commitment to innovation.\n\nAs a performance engineer, Jan is known for his relentless pursuit of perfection. He believes in a data-driven approach, spending countless hours analyzing telemetry and simulations to identify areas for improvement. While demanding of himself and his team, he is also a firm believer in fostering a collaborative environment where everyone feels empowered to contribute their best. His sharp eye for detail and ability to quickly diagnose and solve problems make him a valuable asset to the team.\n\n Jan's unique blend of technical expertise, leadership skills, and a 'never settle' attitude are what sets him apart. He is always looking for new ways to push the boundaries of performance, and he isn't afraid to challenge conventional wisdom in the pursuit of excellence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A stocky man with a serious demeanor and a neatly trimmed goatee."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a specific brand of coffee he insists on having every morning, brewed precisely at 8:00 AM.",
+    "Tends to tap his pen rhythmically when deep in thought, which can be distracting."
+  ]
+}

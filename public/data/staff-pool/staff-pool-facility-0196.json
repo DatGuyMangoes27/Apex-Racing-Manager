@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 52,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey into motorsport started later in life, after a career in industrial automation. He became fascinated by the precision and data-driven nature of racing simulations. Eager for a career change, he undertook courses in simulation technology and dedicated himself to mastering the intricacies of virtual race environments. Ricardo is meticulous in his approach, ensuring every detail of the simulator aligns with real-world data. \n\nWhile relatively new to the field, Ricardo compensates with unwavering dedication and a methodical problem-solving approach. He is currently focused on improving the correlation between simulation data and on-track performance, aiming to make the simulator an invaluable tool for driver development. His calm demeanor and unwavering focus make him a valuable asset, especially during high-pressure situations.\n\nWhat sets Ricardo apart is his ability to quickly learn and adapt. He is always researching the latest advancements in simulation technology and actively seeks opportunities to improve his skills and contribute to the team's success. His loyalty and eagerness to learn make him a promising simulator engineer with great potential.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A stocky man with a kind face, often seen with a slight smile."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with simulation data and notes.",
+    "Has a habit of adjusting his glasses even when they're perfectly positioned.",
+    "Prefers working late at night when the simulator bay is quiet."
+  ]
+}

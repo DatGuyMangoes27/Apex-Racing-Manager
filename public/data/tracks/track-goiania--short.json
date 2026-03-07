@@ -1,0 +1,55 @@
+{
+  "history": "The Autódromo Internacional Ayrton Senna, commonly known as Goiânia, was inaugurated in 1974 and named in honor of the legendary Brazilian driver. It has played a significant role in Brazilian motorsport, hosting various national series including Stock Car Brasil, Formula Truck, and Copa Truck. While the full circuit layout is more widely known, the Short Circuit layout has been a consistent feature for support races and specific series that favor a tighter, more compact track. Goiânia has provided a challenging and respected racing venue for decades.",
+  "atmosphere": "The air crackles with anticipation as the cars line up on the grid at Goiânia's Short Circuit. The roar of the engines echoes off the grandstands, a visceral wave that vibrates through your chest. The smell of burning rubber and high-octane fuel fills the air, a pungent cocktail that defines race day. The Brazilian fans, passionate and knowledgeable, create a vibrant tapestry of color and sound, their cheers rising above the mechanical symphony as the green flag drops.",
+  "trackCharacter": "The Goiânia Short Circuit is a technical and demanding layout that emphasizes car control and precise driving. Its relatively short length and mix of tight corners and flowing sections favor nimble cars with good mechanical grip. The track rewards drivers who can maintain momentum and find the optimal line through the infield, making it a test of skill rather than outright horsepower.",
+  "nickname": "The Infield Scramble",
+  "famousCorners": [
+    {
+      "name": "Curva da Caixa",
+      "description": "A tight, almost 90-degree right-hander that demands precise braking and throttle control.",
+      "challenge": "Maintaining momentum through the corner without losing the rear end."
+    },
+    {
+      "name": "Curva do Lago",
+      "description": "A medium-speed right-hander leading onto the main straight, crucial for carrying speed.",
+      "challenge": "Finding the right balance between apex speed and exit grip to maximize acceleration."
+    },
+    {
+      "name": "Curva 1",
+      "description": "The first corner, a fast sweeping right-hander after the start/finish line.",
+      "challenge": "Carry as much speed as possible through the corner while setting up for the next section."
+    },
+    {
+      "name": "Curva 2",
+      "description": "A sharper right-hander after Curva 1, demanding quick braking.",
+      "challenge": "Braking late but accurately to set up the right entry to the corner."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical Grip",
+    "Braking Efficiency",
+    "Traction Out of Slow Corners",
+    "Car Rotation",
+    "Consistent Lap Times"
+  ],
+  "overtakingSpots": [
+    "Into Curva da Caixa",
+    "Into Curva 2",
+    "Into the final corner before the start/finish straight"
+  ],
+  "historySnippets": [
+    "Goiânia was inaugurated in 1974.",
+    "The track is named after Ayrton Senna.",
+    "The Short Circuit is often used for support races.",
+    "Goiânia has hosted major Brazilian motorsport series.",
+    "The track is known for its challenging infield section."
+  ],
+  "weatherNotes": "Goiânia experiences a tropical climate with hot and humid conditions, especially during the summer months (December-February). Rain showers are common, which can quickly change track conditions and make tire strategy crucial. The high temperatures can also lead to increased tire degradation, particularly on the heavily loaded corners.",
+  "drivingAdvice": "On the Goiânia Short Circuit, focus on maximizing corner exit speed. The tight infield section rewards a smooth and precise driving style. Be patient with the throttle and prioritize traction to maintain momentum. Pay close attention to tire management, as the high temperatures and abrasive surface can take their toll over a race distance.",
+  "famousRaces": [
+    "Stock Car Brasil races at Goiânia are always fiercely contested, with close battles and strategic pit stops playing a key role.",
+    "Formula Truck events have showcased the raw power and spectacle of these behemoth racing trucks.",
+    "Copa Truck races are known for their high drama and intense competition."
+  ],
+  "localCulture": "Goiânia, the capital of Goiás state, is a modern and vibrant city known for its parks, Art Deco architecture, and thriving music scene. The local cuisine features hearty dishes like pamonha (corn paste) and empadão goiano (chicken pot pie). The paddock at Goiânia is always buzzing with activity, with a friendly and welcoming atmosphere that reflects the passion of Brazilian motorsport fans."
+}

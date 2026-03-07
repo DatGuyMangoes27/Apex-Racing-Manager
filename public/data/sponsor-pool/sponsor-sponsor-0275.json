@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0275",
+  "name": "AvtoSpetsMash",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Russia",
+  "description": "Russian manufacturer of high-performance automotive parts and accessories.",
+  "story": "AvtoSpetsMash believes in pushing the limits of automotive engineering. With a strong heritage in supplying parts for rally and off-road vehicles, they see motorsport sponsorship as a way to test their products in the most demanding environments and connect with passionate enthusiasts. They seek a partnership that demonstrates the reliability and performance of their components.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "Russia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0275.png"
+}

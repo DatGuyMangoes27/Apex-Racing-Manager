@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Marko's passion for motorsport ignited during his childhood karting days in Zagreb. He pursued mechanical engineering at the University of Zagreb, specializing in internal combustion engines. After graduating, he joined a small rally team before making the jump to Formula racing, initially focusing on data analysis and simulation. His analytical mind and dedication to finding every last tenth of a second quickly propelled him up the ranks.\n\nMarko is known for his relentless pursuit of perfection and his ability to translate complex data into actionable engineering solutions. He's a firm believer in a data-driven approach, but also values the importance of driver feedback. He is driven to push the boundaries of performance, often challenging conventional wisdom and encouraging his team to explore innovative solutions. His demanding nature stems from his unwavering commitment to excellence and his desire to see Ferrari return to its winning ways.\n\nHis experience in a number of racing series has given him a broad understanding of what it takes to win.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Marko is of average height with a lean build, often seen sporting a serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific brand of Croatian coffee every morning."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jan van Dijk",
+  "nationality": "Dutch",
+  "age": 48,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jan's journey into motorsport began later in life, after a decade working as a general mechanic. A chance encounter with a Formula 3 team during a local racing event sparked his interest, leading him to pursue specialized training in precision machining. He's a meticulous worker, driven by the pursuit of perfection in every component he crafts. While relatively new to the high-pressure environment of professional racing, Jan's adaptability and willingness to learn make him a valuable asset, and he brings a fresh perspective to problem-solving.\n\nHe is eager to hone his skills under experienced engineers, and aims to master the latest CNC technologies used in modern race car manufacturing. He's a firm believer in the importance of collaboration and clear communication, and is actively working to improve his teamworking skills. Jan dreams of one day contributing to a championship-winning team, his name etched on the side of a successful machine.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A stocky man with kind eyes and a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches.",
+    "Has a habit of humming classical music while working.",
+    "Organizes his tools meticulously, often reorganizing them if interrupted."
+  ]
+}

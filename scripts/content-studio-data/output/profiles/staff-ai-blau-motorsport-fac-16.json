@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Argentine",
+  "age": 52,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Ricardo Mendoza has been involved in motorsport catering for over 25 years, a career born out of his love for both food and Formula 1. Growing up in Buenos Aires, he dreamed of being a mechanic, but his family owned a small restaurant, and he learned the culinary arts. He combined his passions by starting a catering business specifically targeting racing teams. \n\nAt Blau Motorsport, Ricardo is responsible for ensuring the entire team is well-fed, with menus that cater to diverse dietary needs and provide the energy required for long race weekends. His approach is detail-oriented, focusing on fresh, locally sourced ingredients whenever possible. He's known for his empanadas and his ability to conjure up a feast, even in the most challenging paddock environments. What sets Ricardo apart is his understanding of the unique pressures of motorsport – he knows the importance of a hot meal and a friendly face during stressful times.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Full mustache, neatly trimmed",
+    "description": "Ricardo is a stocky man with a warm smile and a perpetually flour-dusted apron."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with recipes and ingredient lists.",
+    "Insists on taste-testing every dish before it leaves the kitchen.",
+    "Has a habit of humming tango tunes while he works."
+  ]
+}

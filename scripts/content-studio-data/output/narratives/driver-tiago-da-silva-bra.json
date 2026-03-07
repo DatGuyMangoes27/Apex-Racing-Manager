@@ -1,0 +1,27 @@
+{
+  "biography": "Tiago da Silva, a name now whispered with anticipation in Brazilian motorsport circles, hails from the vibrant favelas of Rio de Janeiro. Unlike many drivers who started with karting in manicured circuits, Tiago's racing career began on makeshift dirt tracks, dodging stray dogs and navigating treacherous potholes in a beat-up, hand-me-down go-kart his grandfather, a former mechanic, cobbled together. His raw talent was undeniable, his reflexes honed by the unpredictable terrain. One sweltering afternoon, during a local 'corrida maluca' (crazy race), Tiago, barely 16, outmaneuvered seasoned veterans in their souped-up machines, earning him the attention of a local Copa Fusca team owner. Now, at 23, Tiago is making waves in the Copa Fusca series, his defensive driving style frustrating opponents and securing him valuable points. He dreams of one day racing in Europe, carrying the spirit of the favelas with him.",
+  "drivingStyle": "Tiago is a master of defensive driving. He doesn't always have the outright pace, but he positions his car impeccably, making it incredibly difficult for rivals to overtake. He's a late-braking specialist, often surprising opponents with daring moves into corners, then expertly blocking their exit. Tire management is another strength; he conserves his rubber early in the race, allowing him to push harder in the closing laps when others are struggling for grip. He thrives under pressure, seemingly unflappable even when multiple cars are breathing down his neck.",
+  "rivalries": [
+    {
+      "driver": "Ricardo 'Rico' Esteves",
+      "reason": "A bitter rivalry stemming from a controversial collision that cost Tiago a race win in Interlagos last season. Rico accused Tiago of reckless driving, while Tiago maintains it was a legitimate racing incident."
+    },
+    {
+      "driver": "Isabela 'Isa' Costa",
+      "reason": "A clash of styles; Isa is an aggressive, attacking driver, while Tiago is fiercely defensive. Their contrasting approaches often lead to thrilling, but tense, on-track battles."
+    },
+    {
+      "driver": "Joao 'Jota' Pereira",
+      "reason": "Both drivers came from similar backgrounds and competed fiercely in the karting scene, their rivalry fueled by ambition and the desire to escape their circumstances. The animosity has carried over into their Copa Fusca careers."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue t-shirt under his racing suit, a gift from his grandfather.",
+    "Listens to a specific samba song by Cartola before every race to calm his nerves.",
+    "Refuses to eat anything red on race days, believing it brings bad luck."
+  ],
+  "nickname": "Escudo (Shield)",
+  "famousQuote": "\"The track is a battlefield, and I am the shield. They will not pass.\"",
+  "careerHighlight": "Winning the Rio de Janeiro state Copa Fusca championship in his rookie year, defying expectations and proving his potential.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Interlagos race due to a mechanical failure, costing him a crucial victory and damaging his confidence."
+}

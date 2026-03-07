@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Australian",
+  "age": 31,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Liam's journey into motorsport began with a childhood spent tinkering with engines on his family's farm in rural New South Wales. This hands-on experience fostered a deep understanding of mechanical systems, which he honed through a degree in mechanical engineering. After graduating, Liam started in Formula Ford, working his way up the ranks by proving his meticulous approach to data analysis and car setup. He prides himself on his ability to translate driver feedback into tangible improvements, focusing on extracting maximum performance through incremental gains rather than radical changes. His knack for identifying subtle performance bottlenecks makes him a valuable asset to any race team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Liam is of average height with a lean build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his own tire pressure gauge before each session."
+  ]
+}

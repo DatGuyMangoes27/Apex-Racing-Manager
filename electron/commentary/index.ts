@@ -33,7 +33,8 @@ import {
 } from './audio'
 import { testVoiceConnection, getAvailableVoices as fetchElevenLabsVoices } from './voice'
 import { 
-  generateRaceContentPool, 
+  generateRaceContentPool,
+  loadPreGeneratedContentPool,
   getContentPool, 
   clearContentPool, 
   getNextContent,
@@ -59,6 +60,12 @@ import {
   resetVoiceTracking
 } from './voices'
 import { synthesizeSpeechStreaming } from './voice'
+import {
+  getRecentCommentaryMentions,
+  getCommentaryEntityState,
+  type CommentaryMentionQuery,
+  type CommentaryEntityType,
+} from '../db/database'
 
 let isInitialized = false
 let schedulerMainWindow: BrowserWindow | null = null
@@ -380,6 +387,16 @@ export function registerCommentaryHandlers(mainWindow: BrowserWindow | null): vo
     const { queueManager } = await import('./queueManager')
     return queueManager.getStatus()
   })
+
+  // Query persisted commentary mentions (Phase 1 narrative memory)
+  ipcMain.handle('commentary:getRecentMentions', async (_event, query?: CommentaryMentionQuery) => {
+    return getRecentCommentaryMentions(query)
+  })
+
+  // Query persisted entity state snapshots (Phase 1 narrative memory)
+  ipcMain.handle('commentary:getEntityState', async (_event, entityType: CommentaryEntityType, entityId: string) => {
+    return getCommentaryEntityState(entityType, entityId)
+  })
   
   // ============== STREAMING TTS HANDLERS ==============
   
@@ -612,6 +629,18 @@ export function registerCommentaryHandlers(mainWindow: BrowserWindow | null): vo
     }
   })
   
+  // Load pre-generated content pool (from Content Studio data)
+  ipcMain.handle('commentary:loadPreGeneratedContentPool', async (_event, data: { trackId: string; seriesId: string; pool: any }) => {
+    try {
+      console.log(`[Commentary] Loading pre-generated content pool for track ${data.trackId}`)
+      const pool = loadPreGeneratedContentPool(data.trackId, data.seriesId, data.pool)
+      return { success: true, stats: getPoolStats() }
+    } catch (error) {
+      console.error('[Commentary] Pre-generated content pool load failed:', error)
+      return { success: false, error: String(error) }
+    }
+  })
+
   // Get next content from pool
   ipcMain.handle('commentary:getPoolContent', async (_event, category?: string, lapPhase?: string, voice?: string) => {
     const content = getNextContent(

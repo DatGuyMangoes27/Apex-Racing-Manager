@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 34,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood karting days in Braga. He pursued a degree in Mechanical Engineering from the University of Porto, channeling his theoretical knowledge into practical applications within various Formula Student teams. His career began with a small GT racing team, where he quickly rose through the ranks, demonstrating an aptitude for diagnosing complex mechanical issues and optimizing vehicle performance. \n\nJoining Ipiranga Racing was a pivotal moment for Ricardo. He thrives on the challenge of extracting maximum performance from the car through meticulous data analysis and a collaborative approach with the drivers. Ricardo's pragmatic nature ensures that engineering solutions are always grounded in practicality and reliability, prioritizing consistent results over chasing fleeting gains. He believes in a data-driven approach, always looking for ways to improve the car's setup and performance through careful analysis and testing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is a lean man with a focused gaze, often seen with grease smudges on his hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical schematics and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of Portuguese coffee beans in the team's espresso machine."
+  ]
+}

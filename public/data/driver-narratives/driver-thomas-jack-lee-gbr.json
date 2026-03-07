@@ -1,0 +1,27 @@
+{
+  "biography": "Thomas Jack Lee, a name synonymous with calculating precision on the track, hails from the quaint British town of Silverstone – perhaps unsurprisingly, given his lifelong obsession with motorsport. Unlike many racers who were practically born in a go-kart, Thomas's entry into the world of racing was almost accidental. A chance visit to a local track day at 22 ignited a spark, a feeling he described as 'finally understanding what I was meant to do'. He started in local club races, meticulously studying data and optimizing his every move, quickly rising through the ranks. While he never quite reached the heights of Formula 1, his tenacity and strategic brilliance made him a formidable competitor in various GT and endurance series. Currently, at 38, he's a veteran presence with Ligier JS P4, mentoring younger drivers while still harboring ambitions for a major endurance victory. He's known for his consistent lap times and ability to bring a damaged car home, a skill honed after a spectacular crash at Spa in 2015 where he nursed a mangled car to the finish line, earning him the respect of his peers. He may not be the fastest, but he's often the smartest.",
+  "drivingStyle": "Lee's driving style is characterized by its calculated efficiency. He's not one for flamboyant overtakes or pushing the car to its absolute limit every lap. Instead, he focuses on maximizing consistency and minimizing mistakes. He's renowned for his meticulous tire management, often able to extract several extra laps from a set of tires compared to his rivals. He meticulously studies telemetry data, identifying areas where he can shave off fractions of a second without compromising the car's reliability. He excels in endurance races, where his strategic approach and ability to maintain a consistent pace make him a valuable asset to any team. He is known to be calm and collected under pressure, a trait that has served him well in numerous high-stakes situations.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A constant battle for podium finishes in GT racing. Rossi's aggressive style clashes with Lee's calculated approach, leading to several on-track incidents."
+    },
+    {
+      "driver": "Marcus Volkov",
+      "reason": "A long-standing rivalry dating back to their early days in Formula Ford. Volkov consistently out-qualified Lee, fueling Lee's desire to prove his racecraft superiority."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka and Lee were teammates for a short period, but Tanaka's preferential treatment from the team caused friction, and Lee felt his strategic input was ignored."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks for every race, regardless of the weather.",
+    "Meticulously cleans his racing helmet visor with a specific brand of cleaner before each session.",
+    "Listens to classical music (specifically Bach) to calm his nerves before a race."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "\"Racing isn't just about speed; it's about understanding the equation and solving it better than anyone else.\"",
+  "careerHighlight": "Winning the 24 Hours of Barcelona in 2018, a victory secured through impeccable teamwork and Lee's masterful fuel-saving strategy in the final stint.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the 2016 Spa 24 Hours due to a mechanical failure, a devastating blow that cost him and his team a major victory."
+}

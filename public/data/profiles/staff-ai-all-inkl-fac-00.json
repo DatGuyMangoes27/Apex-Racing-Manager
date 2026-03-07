@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papadopoulos",
+  "nationality": "Greek",
+  "age": 50,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitrios' journey into motorsport began unexpectedly. Initially trained as an electrical engineer, a chance encounter with a local rally team sparked his fascination with the intricacies of vehicle dynamics and simulation. He quickly transitioned from designing electrical systems to developing and refining driving simulators, recognizing their potential to drastically improve driver performance. Before joining ALL-INKL.COM Münnich Motorsport, Dimitrios honed his skills in Formula 3 and GT racing, building a reputation for his meticulous approach and data-driven decision-making.\n\nDimitrios is known for his relentless pursuit of realism within the simulator. He constantly seeks new ways to improve the accuracy of the simulated environment, from tire models to track surfaces. He emphasizes that a simulator should not just be a game, but a crucial tool that allows drivers to push their limits safely, find the edge, and optimize race strategies. His demanding nature ensures that every component of the simulation is scrutinized and refined, contributing to a competitive edge on the track. What sets him apart is his ability to translate complex data into practical insights that drivers can immediately apply.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A stocky man of medium height, Dimitrios has a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations during simulator sessions.",
+    "Insists on drinking Greek coffee, brewed in a specific way, before any major simulation run.",
+    "Has a habit of tapping his fingers on the desk when deep in thought."
+  ]
+}

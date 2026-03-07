@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 52,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Bjorn's career started in the Swedish military police, where he honed his skills in risk assessment and security protocols. After a decade of service, a chance encounter with a former rally driver ignited his passion for motorsport. He transitioned into security roles at various racing events across Scandinavia, eventually catching the attention of Caterham Motorsport. \n\nBjorn's pragmatic approach is the bedrock of his security strategy. He prioritizes meticulous planning, thorough execution, and proactive threat mitigation. What sets him apart is his understanding of both physical and digital security threats, making him a valuable asset in the modern motorsport landscape. He believes that a safe environment is crucial for optimal team performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blond",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed salt-and-pepper beard",
+    "description": "A tall, imposing figure with a weathered face that reflects years of experience."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with security checklists and diagrams.",
+    "Has a habit of meticulously cleaning his glasses, even when they appear spotless.",
+    "Insists on a daily briefing with all team members, no matter how brief, to reinforce security awareness."
+  ]
+}

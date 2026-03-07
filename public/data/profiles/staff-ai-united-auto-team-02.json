@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 53,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo's journey into motorsport began in his teens, tinkering with engines in his family's auto repair shop in Buenos Aires. He quickly developed a knack for diagnosing and improving performance, which led him to pursue a degree in mechanical engineering. After graduating, he joined a local racing team, steadily climbing the ranks from a junior mechanic to chief engineer. His meticulous approach and innovative solutions caught the attention of United Autosports, where he was offered the role of technical director. Ricardo is known for his ability to dissect complex problems and implement practical solutions, fostering a culture of continuous improvement within the team. He believes in empowering his team members and values clear communication and collaboration above all else. He's determined to win championships.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "A stocky man with a warm smile and intelligent eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and observations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on checking the torque settings on critical components himself before any race."
+  ]
+}

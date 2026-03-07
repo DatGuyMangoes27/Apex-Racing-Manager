@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 30,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Ricardo's journey into motorsport began in his father's small automotive repair shop in São Paulo. Growing up surrounded by engines and tools, he developed a natural aptitude for mechanics and a deep passion for racing. He honed his skills through vocational training and apprenticeships, eventually specializing in chassis fabrication and welding. Ricardo is known for his meticulous attention to detail and his ability to troubleshoot complex mechanical problems under pressure. He prides himself on his ability to craft durable and efficient components, ensuring that the team's vehicles are always performing at their peak. His dedication and innovative approach make him a valuable asset to Herberth Motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a strong, athletic build, reflecting his years of physical labor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his welding tools before starting a new project, regardless of how dull they are.",
+    "Has a lucky wrench that he refuses to let anyone else use.",
+    "Hums Brazilian samba tunes while working, often unconsciously."
+  ]
+}

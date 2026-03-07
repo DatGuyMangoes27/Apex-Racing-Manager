@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Swiss",
+  "age": 32,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Jean-Pierre's journey into the world of motorsport IT began unconventionally. He initially pursued a degree in theoretical physics, but a summer internship at a local racing garage sparked an unexpected passion for the intersection of technology and speed. He quickly pivoted, earning a second degree in computer science and specializing in high-performance computing. \n\nAt ROWE Racing, Jean-Pierre is responsible for maintaining and optimizing the team's complex IT infrastructure, ensuring seamless data flow between the track, the factory, and the engineering team. His demanding nature pushes his team to deliver robust and innovative solutions under immense pressure. He's known for his relentless pursuit of efficiency and his ability to troubleshoot critical issues in real-time, making him an invaluable asset during race weekends. Jean-Pierre believes that every millisecond counts, not just on the track, but in the data processing pipeline as well.",
+  "physical": {
+    "skinTone": "Light with a rosy undertone",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave on top",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Jean-Pierre has a focused gaze and a wiry build, suggesting a mind constantly at work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a mechanical keyboard, even in the paddock.",
+    "Carries a Rubik's Cube and solves it during stressful meetings.",
+    "Drinks only Swiss mineral water; refuses any substitutes."
+  ]
+}

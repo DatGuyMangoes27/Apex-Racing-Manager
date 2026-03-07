@@ -1,0 +1,22 @@
+{
+  "name": "Liam Baker",
+  "nationality": "New Zealand",
+  "age": 33,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Liam's journey into motorsport began with a childhood spent tinkering with go-karts on his family's farm in rural Waikato. He excelled in mechanical engineering at the University of Auckland, quickly developing a reputation for innovative problem-solving. After graduation, Liam gained valuable experience in a local racing team before transitioning to Formula racing.\n\nAs a performance engineer, Liam thrives on data analysis and identifying marginal gains. He's known for his meticulous approach and ability to translate complex information into actionable strategies for the drivers. His calm demeanor under pressure makes him an invaluable asset during critical race moments, and he has quickly risen through the ranks at Trident due to his unique ability to work with both drivers and mechanics.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly styled with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "short boxed beard",
+    "description": "Liam is of average height, with a lean build and an intense, focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook for jotting down ideas, even during meetings.",
+    "Has a peculiar habit of tapping his pen against his teeth when deeply focused.",
+    "Insists on listening to classical music while analyzing telemetry data."
+  ]
+}

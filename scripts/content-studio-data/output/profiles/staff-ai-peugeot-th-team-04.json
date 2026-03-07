@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Obregón",
+  "nationality": "Mexican",
+  "age": 54,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for the technical intricacies of automobiles. Raised in Mexico City, he spent countless hours disassembling and reassembling engines alongside his father, a mechanic. This hands-on experience ignited a passion that led him to pursue a degree in mechanical engineering, eventually landing him a role with a local racing team. \n\nHis pragmatic approach to race engineering is characterized by meticulous planning and data analysis. Ricardo thrives on identifying even the smallest margins for improvement, believing that consistent incremental gains ultimately lead to victory. He demands perfection from himself and his team, fostering a culture of precision and accountability. Ricardo's deep understanding of vehicle dynamics and his ability to communicate complex technical information clearly make him a valuable asset to Peugeot TotalEnergies.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache, neatly trimmed",
+    "description": "A stocky build, Ricardo exudes an air of calm competence."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his own tire pressure gauge before each session."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 42,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Declan's journey into motorsport began with a childhood obsession with rally cars tearing through the Irish countryside. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and control systems. After graduating, he spent several years honing his skills in a smaller racing outfit, developing a reputation for meticulous data analysis and practical problem-solving. He joined Rexal FMI Racing five years ago and has since become an integral part of the team's engineering efforts.\n\nDeclan's approach to performance engineering is rooted in a deep understanding of the car's mechanical systems and their interaction with the track. He believes in leveraging data to identify marginal gains and optimize the car's setup for each specific circuit. What sets Declan apart is his ability to translate complex technical data into actionable insights for the drivers, fostering a collaborative environment that drives performance. He values reliability and consistency, but is not afraid of unconventional solutions to achieve an edge.\n\nHis passion for motorsport extends beyond the track, as he regularly mentors young engineers, and actively researches novel technologies to improve car performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly trimmed hair with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed beard.",
+    "description": "Declan is of average height with a slightly stocky build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his fingers on his desk when deep in thought.",
+    "Insists on using a specific brand of Irish tea during race weekends."
+  ]
+}

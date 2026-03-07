@@ -1,0 +1,31 @@
+{
+  "name": "Sofia Oliveira",
+  "nationality": "Portuguese",
+  "age": 46,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Sofia Oliveira is a force to be reckoned with in the world of motorsport management. She started her career as a personal assistant to a prominent F1 team owner and, through sheer grit and relentless work ethic, built her own agency from the ground up. Known for her sharp negotiation skills and unwavering dedication to her clients, Sofia has a reputation for securing lucrative deals and fiercely protecting their interests. She can come off as blunt and condescending at times, but those who know her well understand that beneath the tough exterior lies a caring heart and a genuine desire to see her clients succeed. A racing driver might cross paths with Sofia when seeking representation to elevate their career, negotiate contracts, or secure sponsorships.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, sleek bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sofia is a striking woman with a commanding presence. She favors tailored suits and always looks impeccably put together."
+  },
+  "connectionToMotorsport": "Sofia represents several up-and-coming drivers in various motorsport categories, from Formula racing to GT endurance series. Her agency also manages the marketing and public relations for a few smaller racing teams.",
+  "meetingContext": "The player might meet Sofia at a racing event, either through a mutual acquaintance or by attending a networking event specifically for drivers and agents.",
+  "conversationTopics": [
+    "The current state of Formula 1",
+    "The challenges of managing young talent",
+    "The best whiskey distilleries in Scotland",
+    "The latest trends in motorsport sponsorships",
+    "Her boxing classes"
+  ],
+  "canHelp": [
+    "Negotiate more favorable contracts with racing teams",
+    "Secure sponsorships and endorsement deals",
+    "Provide access to high-profile networking events and industry contacts"
+  ],
+  "personality_summary": "A fiercely dedicated and successful agent known for her bluntness and unwavering commitment to her clients."
+}

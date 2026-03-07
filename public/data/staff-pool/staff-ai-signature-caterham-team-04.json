@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 36,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood spent tinkering with his father's motorcycles in Valencia. He earned a degree in mechanical engineering from the Polytechnic University of Valencia, focusing on vehicle dynamics. After graduating, he worked as a junior engineer for a small touring car team before joining Signature Racing five years ago. \n\nRicardo is known for his methodical approach to problem-solving and his ability to quickly analyze data to identify areas for improvement. He values clear communication with the driver and prioritizes reliability above all else. While not the most flamboyant engineer, his consistent performance and attention to detail have earned him the respect of his colleagues and drivers alike. He dreams of one day leading an engineering team to a championship victory.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "A man of medium height with a focused gaze and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, even in the pit lane.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating his tools before every session, regardless of whether it's necessary."
+  ]
+}

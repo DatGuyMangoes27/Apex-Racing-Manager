@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 50,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Valentina's journey into motorsport began unexpectedly. While studying electrical engineering at the University of Buenos Aires, she took on a part-time job repairing radios for a local racing team. The thrill of the track and the intricate technology captivated her. She quickly moved from radios to data acquisition systems, and then into engine control units, developing a knack for optimizing performance through meticulous analysis and innovative solutions.\n\nOver the years, Valentina has cultivated a reputation as a reliable and resourceful electronics engineer. She's known for her methodical approach and her ability to troubleshoot complex problems under pressure. At Ipiranga Racing, Valentina is invaluable. She has a deep understanding of the team's systems and a knack for finding those last few tenths of a second through clever adjustments. She is also known for her unconventional approach to problem-solving, often drawing inspiration from seemingly unrelated fields.\n\nValentina is committed to fostering a collaborative environment within the team, and while capable of working independently, she values the input of her colleagues. This attitude combined with her technical knowledge makes her an invaluable resource within the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of average height with a determined look in her eyes and a practical, no-nonsense demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multimeter in her pocket, even outside the garage.",
+    "Has a habit of humming classical music while debugging software.",
+    "Insists on using a specific brand of soldering iron, claiming it gives her better precision."
+  ]
+}

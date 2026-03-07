@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Sofia Pereira",
+    "nationality": "Portuguese",
+    "age": 28,
+    "gender": "female",
+    "role": "fabricator",
+    "bio": "Sofia's fascination with motorsport began during her childhood, watching rally races in the hills near her village. This passion led her to pursue a degree in mechanical engineering, where she excelled in materials science and manufacturing processes. After graduating, she gained experience at a local automotive workshop, honing her skills in welding, fabrication, and engine tuning.\n\nSofia joined CRG Racing Team two years ago, quickly proving herself as a meticulous and efficient fabricator. Her dedication to precision and her ability to troubleshoot complex mechanical issues make her a valuable asset to the team. She is known for her innovative solutions to improve vehicle performance and reliability. Sofia aims to contribute significantly to CRG's success by continuously improving her skills and knowledge.\n\nHer approach to fabrication is deeply rooted in precision and efficiency. She is particularly skilled at welding intricate components and designing custom parts to optimize vehicle performance. Sofia distinguishes herself through her dedication to staying updated with the latest advancements in materials and fabrication techniques.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair, often tied back in a practical ponytail.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "She is of average height with a lean build and a focused gaze."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always double-checks measurements, even if she's already sure.",
+      "Listens to Fado music while working on complex projects.",
+      "Has a collection of miniature tools on her workbench."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Jan van der Meer",
+  "nationality": "Dutch",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jan's passion for motorsport ignited during his childhood visits to the Zandvoort circuit. He meticulously studied every aspect of racing, from aerodynamics to engine performance. After graduating with a degree in mechanical engineering from Delft University of Technology, he joined a small Formula Ford team, quickly making a name for himself with his innovative suspension designs.\n\nHe moved to Inter Europol Competition five years ago and has steadily risen through the ranks. Jan is known for his methodical approach to problem-solving and his ability to extract maximum performance from the car. He believes in fostering a collaborative environment, encouraging his team to challenge conventional wisdom and push the boundaries of engineering. His strategic thinking and attention to detail have been instrumental in the team's recent successes in the European Le Mans Series.\n\nJan's approach as a chief engineer is defined by his relentless pursuit of efficiency and reliability. He focuses on creating a stable and predictable car that allows the drivers to push to their limits with confidence, knowing the equipment will hold. He is currently focused on improving the team's pit stop strategy to gain precious seconds.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Jan has a lean build and a focused, intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific brand of Dutch coffee available at all times."
+  ]
+}

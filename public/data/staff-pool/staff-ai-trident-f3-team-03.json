@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 53,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Dimitri's path to motorsport was forged in the crucible of Soviet engineering. He graduated top of his class from the Bauman Moscow State Technical University, specializing in aerodynamics. After the collapse of the Soviet Union, he sought opportunities abroad, working with several European aerospace firms before finding his way to Formula racing. He believes in relentless refinement and data-driven decisions; his approach to aerodynamics is methodical and precise, always seeking marginal gains that can translate to significant performance improvements on the track. His tenure at Trident has been marked by a steady, if unspectacular, improvement in aero efficiency, a testament to his unwavering focus on the fundamentals.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Thinning, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, neatly trimmed grey beard",
+    "description": "A tall, imposing man with a perpetual air of serious contemplation."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small slide rule, even though he uses CAD software.",
+    "Drinks copious amounts of strong black tea.",
+    "Has a habit of tapping his pen rhythmically on his desk when deep in thought."
+  ]
+}

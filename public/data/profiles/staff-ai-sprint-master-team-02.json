@@ -1,0 +1,22 @@
+{
+  "name": "Mikko Virtanen",
+  "nationality": "Finnish",
+  "age": 42,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Mikko's journey into motorsport started early, tinkering with engines alongside his father, a rally enthusiast. He quickly developed a knack for understanding the intricate workings of racing machines. After graduating with a degree in Mechanical Engineering from Tampere University of Technology, he began his career at a small Formula Ford team. His meticulous approach and problem-solving skills saw him rise through the ranks, eventually landing a position at Sprint Masters. \n\nAs Technical Director, Mikko is known for his methodical approach to problem solving and his ability to extract the maximum performance from the available resources. He believes in fostering a collaborative environment where engineers can freely share ideas and learn from each other. His deep understanding of vehicle dynamics and his focus on data analysis make him a valuable asset to the team.\n\n Mikko's distinctive skill is his ability to simplify complex problems into manageable tasks, ensuring the team stays focused and efficient. He also has a knack for spotting potential issues before they arise on the track.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "blond",
+    "hairStyle": "Short, neatly combed to the side with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height with a stocky build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking strong black coffee at precisely 10:00 AM every morning."
+  ]
+}

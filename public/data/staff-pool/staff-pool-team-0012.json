@@ -1,0 +1,22 @@
+{
+  "name": "Elin Rhys",
+  "nationality": "Welsh",
+  "age": 36,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Elin's journey into motorsport began with a childhood fascination for rally cars tearing through the Welsh countryside. After graduating top of her class in mechanical engineering from Cardiff University, she cut her teeth in Formula Ford, quickly proving her aptitude for data analysis and performance optimization. Her meticulous approach and talent for extracting marginal gains propelled her through the ranks, culminating in several successful seasons in Formula 3 before transitioning to a performance engineering role.\n\nElin believes that a collaborative environment, where drivers and engineers communicate openly, is crucial for success. She prides herself on her ability to translate complex data into actionable insights, empowering drivers to push their limits. She is known for her calm demeanor under pressure and her unwavering commitment to achieving peak performance. Elin is particularly skilled at developing and implementing innovative aerodynamic solutions and suspension setups, making her a highly sought-after engineer in the paddock.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail during work.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elin is of average height with a determined look about her."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a cup of strong Earl Grey tea on her desk.",
+    "Uses colour-coded sticky notes to organize data streams.",
+    "Fidgets with a small fidget spinner when deep in thought."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Luiz Carlos Zapelini hails from the vibrant, sun-drenched streets of Florianópolis, Brazil, a stark contrast to the high-octane world he now inhabits. His journey began not on a racetrack, but on the dusty, makeshift karting circuits carved out in the backstreets of his neighborhood. He'd cobble together spare parts and race against older, more experienced kids, often relying on sheer grit and determination to compensate for his equipment's shortcomings. One defining moment occurred when, at age 14, he won a local karting championship despite starting last due to a mechanical failure, showcasing his resilience and overtaking prowess. \n\nZapelini's talent caught the eye of a local motorsport benefactor, who sponsored him to compete in Formula Delta, a regional single-seater championship. He quickly adapted to the faster cars, earning several podium finishes and further solidifying his reputation as a rising star. However, progress stalled due to limited funding, forcing him to rely heavily on his own team, 'Luiz Carlos Zapelini'. This experience instilled in him a fierce independence and a deep understanding of the technical aspects of racing. \n\nCurrently, Zapelini is competing in the South American Formula 3 series, aiming to gain enough experience and exposure to break into the international racing scene. He's known for his calculated approach and defensive driving style, making him a difficult opponent to overtake. While victories have been elusive, his consistency and determination have kept him in contention for championship points, proving he's a force to be reckoned with. The journey has been tough, but Zapelini remains focused on his ultimate goal: to reach the pinnacle of motorsport.",
+  "drivingStyle": "Zapelini's driving style is characterized by a calculated and highly defensive approach. He is exceptionally skilled at positioning his car to block overtaking attempts, often forcing rivals into making mistakes. While not the fastest in outright pace, he excels at tire management and maintaining consistent lap times throughout a race, allowing him to capitalize on the errors of more aggressive drivers. He's known for his late braking and precise cornering, prioritizing stability and minimizing risk, a trait that often frustrates competitors.",
+  "rivalries": [
+    {
+      "driver": "Mateo Ramirez",
+      "reason": "A bitter rivalry stemming from a controversial incident in a Formula Delta race where Ramirez forced Zapelini off the track, costing him a potential victory. Zapelini believes Ramirez lacks respect."
+    },
+    {
+      "driver": "Isabella de Souza",
+      "reason": "De Souza is a more experienced driver, and Zapelini is constantly trying to prove himself against her, often leading to on-track clashes. Their styles are diametrically opposed, with de Souza favoring aggressive overtakes and Zapelini relying on defensive maneuvers."
+    },
+    {
+      "driver": "Ricardo Silva",
+      "reason": "Silva openly questions Zapelini's talent, claiming he only succeeds due to his defensive driving style and luck. Zapelini is determined to prove Silva wrong by securing a dominant victory."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky socks, which are faded and full of holes, for every race.",
+    "Listens to a specific Brazilian samba song on repeat for one hour before each qualifying session.",
+    "Always walks the entire track twice before the race, visualizing every corner and braking point."
+  ],
+  "nickname": "The Fortaleza (The Fortress)",
+  "famousQuote": "\"Victory isn't always about being the fastest; it's about being the smartest and most resilient.\"",
+  "careerHighlight": "Winning the 2020 Florianópolis Karting Championship from last place after a first-lap mechanical issue. He overtook twelve drivers in the final few laps to secure the victory.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of a Formula Delta race due to a mechanical failure, costing him his first single-seater victory and severely impacting his team's already strained budget."
+}

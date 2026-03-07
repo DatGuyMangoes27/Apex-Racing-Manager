@@ -1,0 +1,60 @@
+{
+  "history": "The Autodromo Internazionale Enzo e Dino Ferrari, universally known as Imola, stands as a monument to Italian motorsport. Conceived in the late 1940s, the circuit's initial design was influenced by Enzo Ferrari himself, aiming to create a challenging and fast track. The circuit opened in 1953 and held its first non-championship Formula One race in 1963. While the Grand Prix layout is the most famous, Imola's 'Historic' configuration evokes a bygone era, retaining much of the original circuit's character before significant safety modifications were introduced. The Historic layout has hosted numerous classic and vintage racing events, celebrating the circuit's rich heritage and the cars that once thundered through its challenging corners. It's a reminder of a time when driver skill was paramount, and safety took a back seat.",
+  "atmosphere": "Stepping into Imola during a race weekend on the Historic configuration is like stepping back in time. The air crackles with the raw, unfiltered sounds of classic engines, the scent of burning oil mingling with the aroma of Italian espresso. The grandstands, steeped in history, offer panoramic views of the circuit's undulating landscape. The energy is palpable, a fervent celebration of motorsport's golden age, where the roar of the crowd merges seamlessly with the symphony of racing engines. The passionate Tifosi, draped in Ferrari red, add a fervent, unwavering energy to the atmosphere. Every gear change, every braking maneuver, is amplified, a testament to the visceral thrill of classic racing.",
+  "trackCharacter": "The Historic layout of Imola is a demanding and relentlessly challenging circuit. Its relatively narrow track, coupled with a series of fast, flowing corners and minimal run-off areas, punishes even the slightest mistake. Unlike the modern Grand Prix layout, the Historic configuration retains much of the original circuit's character, including the Tamburello chicane before the safety modifications. It's a track that rewards precision, bravery, and a deep understanding of car control. The undulations and camber changes add another layer of complexity, making it a true test for both driver and machine. It is a high-speed circuit that demands respect and rewards commitment.",
+  "nickname": "The Time Machine",
+  "famousCorners": [
+    {
+      "name": "Tamburello (pre-1994)",
+      "description": "The original, flat-out left-hander that was infamous for its high speeds and proximity to the wall. It was a true test of courage and commitment.",
+      "challenge": "Maintaining maximum speed through the corner required immense bravery and a willingness to flirt with the limit."
+    },
+    {
+      "name": "Villeneuve (pre-1994)",
+      "description": "A rapid right-hander immediately following Tamburello, requiring delicate balance and precise placement.",
+      "challenge": "Maintaining momentum through Villeneuve while preparing for the braking zone of Tosa."
+    },
+    {
+      "name": "Tosa",
+      "description": "A hairpin bend that requires heavy braking and precise placement.",
+      "challenge": "Nailing the braking point and apex speed to maximize exit speed onto the next straight."
+    },
+    {
+      "name": "Piratella",
+      "description": "A blind, uphill left-hander that demands absolute commitment and trust in the car.",
+      "challenge": "Carrying maximum speed through the blind apex, relying on feel and experience."
+    },
+    {
+      "name": "Acque Minerali",
+      "description": "A complex of two right-hand turns that flow into one another, requiring smooth inputs and precise car control.",
+      "challenge": "Maintaining momentum and balance through the chicane, preparing for the run down to Variante Alta."
+    }
+  ],
+  "keyFactors": [
+    "Brave commitment through fast corners",
+    "Precise car placement and control",
+    "Effective braking technique",
+    "Smoothness and minimal steering inputs",
+    "Mechanical sympathy to preserve classic machinery"
+  ],
+  "overtakingSpots": [
+    "Into the Tosa hairpin (requires a strong exit from Piratella)",
+    "Into the Variante Bassa chicane (demands late braking and precise positioning)",
+    "Down the hill to Gresini (requires a good run out of Acque Minerali)"
+  ],
+  "historySnippets": [
+    "Imola was originally intended as a road racing circuit.",
+    "The track is named after Enzo and Dino Ferrari, the founder and his son.",
+    "Imola is one of the few major circuits to run in an anti-clockwise direction.",
+    "The circuit is located in the heart of Italy's 'Motor Valley'.",
+    "The Santerno river runs alongside parts of the circuit."
+  ],
+  "weatherNotes": "Imola's location in the Emilia-Romagna region of Italy makes it susceptible to unpredictable weather. Spring and autumn races often see rain showers, which can make the already challenging Historic layout treacherous. The track's narrow width and limited run-off amplify the risks in wet conditions. Summer races can be extremely hot, placing a strain on both drivers and machinery. Temperature changes can also affect tire grip, making setup crucial.",
+  "drivingAdvice": "On the Historic layout, prioritize smoothness and momentum. The old layout rewards drivers who can maintain a consistent rhythm and avoid abrupt inputs. Focus on maximizing corner exit speed, as this will be crucial for setting up overtaking opportunities. Be mindful of the limited run-off areas and avoid pushing too hard in the early stages of the race. Manage your tires carefully, as the abrasive surface can cause significant wear. And above all, respect the history and challenge of this iconic circuit.",
+  "famousRaces": [
+    "The 1982 San Marino Grand Prix: Infamous for the controversial finish where Ferrari drivers Didier Pironi and Gilles Villeneuve battled for the win, defying team orders.",
+    "Various Historic Racing Events: Showcasing legendary cars from different eras, these races celebrate the track's heritage and provide a spectacle of classic motorsport.",
+    "The Imola Classic: A prestigious event dedicated to historic endurance racing, featuring iconic GT and sports cars from the past."
+  ],
+  "localCulture": "Imola is a charming town steeped in Italian history and culture. The local cuisine is a highlight, with traditional dishes like tortellini in brodo and tagliatelle al ragu readily available. The region is also famous for its wines, particularly Sangiovese. Paddock life at Imola is typically relaxed and friendly, with a strong sense of community among teams and drivers. The passionate Tifosi, clad in Ferrari attire, create a vibrant and enthusiastic atmosphere, adding to the unique charm of the Imola experience."
+}

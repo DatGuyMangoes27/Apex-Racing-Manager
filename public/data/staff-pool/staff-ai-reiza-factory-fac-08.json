@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Astrid Bjornstad",
+    "nationality": "Norwegian",
+    "age": 35,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Astrid's journey into motorsport began unconventionally, not through racing, but through a fascination with fluid dynamics sparked by studying coastal engineering during her university years in Trondheim. She quickly realized the parallels between wave behavior and airflow around race cars, leading her to pursue a career in aerodynamics. She joined a smaller Formula team where she cut her teeth and honed her skills, eventually finding her way to Reiza Studios Factory. \n\nAstrid is known for her methodical approach to wind tunnel testing, meticulously analyzing data and identifying even the smallest improvements. She's not afraid to challenge conventional wisdom and often proposes innovative solutions that others might overlook. While she enjoys collaborating with the team, she also thrives working independently, diving deep into complex simulations and emerging with actionable insights. She's driven by the pursuit of pure efficiency.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Strawberry Blonde",
+      "hairStyle": "Long, thick braid worn over her shoulder, often with stray strands escaping around her face.",
+      "eyeColor": "Green",
+      "facialHair": null,
+      "description": "Astrid is of average height with a lean build, often seen wearing practical, functional clothing."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always has a small, hand-drawn sketch of a sailboat on her desk, a reminder of her coastal engineering roots.",
+      "Prefers to listen to instrumental synthwave music while analyzing data, claiming it helps her focus.",
+      "Has a habit of tapping her pen against her teeth when deep in thought, a nervous habit she's trying to break."
+    ]
+  }
+]

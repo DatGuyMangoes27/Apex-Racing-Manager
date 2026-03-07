@@ -1,0 +1,61 @@
+{
+  "history": "Mount Panorama, a name synonymous with Australian motorsport, has a history stretching back to 1938. Originally conceived as a scenic tourist drive during the Great Depression, it quickly evolved into a challenging race circuit. The Historic layout, closely resembling the original configuration, captures the essence of early motor racing with its unforgiving nature and minimal safety features compared to modern circuits. It has hosted numerous races over the years, including vintage and historic motorsport events that celebrate the circuit's rich heritage. While modern championships utilize the full layout, the Historic configuration remains a vital part of Bathurst's appeal, offering a nostalgic glimpse into the past.",
+  "atmosphere": "Imagine standing at the crest of the mountain, the air thick with the scent of high-octane fuel and the roar of classic engines. The rumble reverberates through your chest as historic touring cars navigate the treacherous Esses, their tires protesting against the unforgiving tarmac. Spectators line the hillside, their cheers echoing across the valley, a symphony of passion for a bygone era of motorsport. The atmosphere is electric, a tangible link to the pioneers who tamed this legendary circuit.",
+  "trackCharacter": "The Historic layout of Mount Panorama is a brutal test of man and machine, a true old-school circuit where bravery and precision are paramount. The narrow track, combined with the lack of run-off areas, demands absolute commitment and respect. The relentless series of corners, from the climb up the mountain to the rapid descent, leaves no room for error. It is a circuit that rewards those who dare to push the limits, but punishes those who overstep the mark. This configuration emphasizes mechanical grip and car control above all else.",
+  "nickname": "The Mountain's Embrace",
+  "famousCorners": [
+    {
+      "name": "Hell Corner",
+      "description": "The first corner after the start/finish line, a tight right-hander that has witnessed countless incidents over the years.",
+      "challenge": "Demands precise braking and a delicate throttle application to avoid spinning or running wide, especially on the opening lap."
+    },
+    {
+      "name": "The Cutting",
+      "description": "A steep, uphill left-hander carved into the side of the mountain, requiring significant commitment and trust in the car's grip.",
+      "challenge": "Maintaining momentum through the Cutting is crucial, but overdoing it can result in a costly accident. The blind entry adds to the challenge."
+    },
+    {
+      "name": "Forrest's Elbow",
+      "description": "A deceptively slow, almost hairpin-like corner at the bottom of the mountain, often catching drivers out with its decreasing radius.",
+      "challenge": "Requires patience and a late apex to maximize corner exit speed onto Conrod Straight. Easy to understeer wide."
+    },
+    {
+      "name": "The Esses",
+      "description": "A series of fast, flowing corners that test a driver's ability to maintain momentum and car control at high speed.",
+      "challenge": "Maintaining a smooth line and minimizing steering inputs is essential to avoid losing time or crashing. The elevation changes add to the complexity."
+    },
+    {
+      "name": "Brock's (formerly Skyline)",
+      "description": "The crest of the mountain where the track dramatically drops away. Named after Peter Brock.",
+      "challenge": "Blind entry requires absolute commitment. Getting the line wrong can have catastrophic consequences."
+    }
+  ],
+  "keyFactors": [
+    "Brave Pill Consumption",
+    "Mechanical Grip",
+    "Car Control",
+    "Braking Precision",
+    "Maintaining Momentum"
+  ],
+  "overtakingSpots": [
+    "Into Hell Corner (brave under braking)",
+    "Forrest's Elbow (opportunistic dive bomb)",
+    "The Chase (outbraking maneuver)"
+  ],
+  "historySnippets": [
+    "Mount Panorama was originally intended as a scenic tourist drive.",
+    "The first race at Bathurst was held in 1938.",
+    "The circuit is named after the panoramic views it offers.",
+    "The Historic layout closely resembles the original configuration of the circuit.",
+    "The track has hosted numerous iconic Australian motorsport events.",
+    "Peter Brock is a legendary figure at Bathurst, with a record number of wins."
+  ],
+  "weatherNotes": "Bathurst's weather can be unpredictable, ranging from scorching heat to torrential rain, even within the same day. Sudden downpours can make the already treacherous circuit even more challenging, especially on the Historic layout with its limited run-off areas. Fog is also a common occurrence, particularly in the early morning, reducing visibility and adding to the danger.",
+  "drivingAdvice": "On the Historic layout, prioritize car control and momentum. Conserve your tires and brakes, as the circuit is particularly demanding on both. Be patient in traffic, as overtaking opportunities are limited. Most importantly, respect the circuit and its history. Remember, survival is key.",
+  "famousRaces": [
+    "Armstrong 500 (precursor to the Bathurst 1000): Held on the Historic layout, showcasing the best touring cars of the era.",
+    "Australian Grand Prix (1938-1948): Early races at Mount Panorama were significant events in Australian motorsport history.",
+    "Bathurst Motor Festival: A celebration of historic motorsport held on the shorter layout, featuring a variety of classic racing cars."
+  ],
+  "localCulture": "Bathurst is a vibrant regional city with a strong connection to motorsport. The local community embraces the racing culture, with many residents volunteering as marshals and officials. The city offers a range of accommodation options, from hotels to camping sites. Local pubs and restaurants are filled with racing enthusiasts during event weekends, creating a lively and welcoming atmosphere. Bathurst is also known for its gold mining history, adding to the city's unique character."
+}

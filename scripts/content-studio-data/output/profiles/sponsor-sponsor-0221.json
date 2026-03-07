@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0221",
+  "name": "Innovatech Solutions",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Spain",
+  "description": "Driving innovation through cutting-edge technology solutions.",
+  "story": "Innovatech Solutions is a Spanish software company focused on data analytics and simulation. They're entering motorsport to demonstrate their capabilities in real-time data processing under extreme conditions. They hope to gain brand recognition and case studies to bolster their reputation in the European market.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0221.png"
+}

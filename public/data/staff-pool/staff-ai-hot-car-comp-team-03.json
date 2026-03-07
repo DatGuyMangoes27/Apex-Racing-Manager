@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Zoltán's fascination with aerodynamics began in his youth, observing the sleek lines of jet fighters at airshows near his hometown. This early interest led him to pursue a degree in aeronautical engineering, where he excelled in fluid dynamics and computational modeling. After graduating, he joined a small Hungarian racing team, where he honed his skills designing aerodynamic components for touring cars. His innovative designs quickly gained attention, resulting in improved downforce and reduced drag, leading to several race wins.\n\nDriven by ambition, Zoltán sought opportunities in larger motorsport organizations, eventually landing a role at Hot Car Competições. Known for his meticulous approach and unwavering pursuit of perfection, he quickly rose through the ranks to become the Head of Aerodynamics. He is respected for his ability to translate complex theoretical concepts into practical solutions that improve on-track performance. His dedication to innovation and his relentless work ethic have made him an invaluable asset to the team, though his solitary nature can sometimes create friction.\n\nZoltán's approach to aerodynamics is rooted in a deep understanding of airflow management and a commitment to pushing the boundaries of what's possible. He believes that every detail matters and is constantly seeking incremental improvements that can give his team a competitive edge. His perfectionism, while beneficial in many ways, can also lead to frustration when faced with limitations or setbacks, making him a complex but ultimately highly effective leader.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Thin mustache, slightly unkempt",
+    "description": "A lean man with a focused gaze and a perpetually furrowed brow."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always wears a lucky engineering tie when wind tunnel testing.",
+    "Insists on using a specific brand of Hungarian coffee, brewed in a vintage percolator, for all aero team meetings.",
+    "Has a habit of sketching aerodynamic profiles on napkins during lunch."
+  ]
+}

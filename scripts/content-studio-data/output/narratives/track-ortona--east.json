@@ -1,0 +1,61 @@
+{
+  "history": "The Circuito Internazionale d'Abruzzo, more commonly known as Ortona, opened in 2005 and quickly became a staple of Italian national racing. While not hosting Formula 1 or MotoGP, Ortona has been a consistent venue for national touring car series, Formula 3 Italia, and various GT championships. The East layout, a shorter configuration focusing on the circuit's faster sections, is frequently used for club racing, track days, and driver training programs. It has also hosted several rounds of regional karting championships, providing a challenging but manageable track for young drivers. The venue is named in honour of the town of Ortona, and has played a role in promoting motorsport in the Abruzzo region.",
+  "atmosphere": "Standing at the crest of the hill overlooking the Ortona East circuit during a race, the air crackles with the high-pitched whine of engines reaching for their redlines. The scent of burning rubber and high-octane fuel hangs heavy, mixing with the aroma of grilling sausages from the paddock. The grandstand is alive with passionate Italian fans, waving flags and chanting encouragement to their favorite drivers as they navigate the sweeping turns of the East layout. The roar of the crowd intensifies as cars battle for position into the tight right-hander, a cauldron of noise and excitement.",
+  "trackCharacter": "The Ortona East layout is all about maintaining momentum. Its six turns are mostly fast and flowing, rewarding drivers who can carry maximum speed through the corners and onto the straights. The track’s relatively short length and lack of extremely technical sections means that outright power is less important than cornering speed and efficient use of the racing line. The layout favours cars with good aerodynamic balance and drivers who are precise and confident in high-speed corners. It's a layout that can lull you into a false sense of security, as one small mistake can have significant consequences on lap time.",
+  "nickname": "The Abruzzese Sweep",
+  "famousCorners": [
+    {
+      "name": "Curva 1",
+      "description": "The first corner is a long, sweeping right-hander, taken at high speed. It requires commitment and precision to carry maximum speed through.",
+      "challenge": "Maintaining the ideal line while managing understeer due to the sustained G-forces."
+    },
+    {
+      "name": "Curva 2",
+      "description": "A short left-hand kink followed by a longer right hander. It's crucial to get the entry right to maintain speed onto the next straight.",
+      "challenge": "Finding the right balance between attack and stability to set up the next turn."
+    },
+    {
+      "name": "Curva 3",
+      "description": "The turn at the end of the longest straight on the East layout, this right-hander is the most significant braking zone on the circuit.",
+      "challenge": "Nailing the braking point and turn-in to avoid locking up the front tires and compromising the exit."
+    },
+    {
+      "name": "Curva 4",
+      "description": "A short right-hand kink that leads drivers back towards the start/finish line, It's a quick transition that tests the car's responsiveness.",
+      "challenge": "Maintaining momentum and avoiding unnecessary steering inputs to preserve speed."
+    },
+    {
+      "name": "Curva 5",
+      "description": "A sweeping left-hander that requires a smooth and consistent line. This corner is critical for setting up a good run onto the final straight.",
+      "challenge": "Finding the optimal apex and carrying enough speed without running wide on the exit."
+    }
+  ],
+  "keyFactors": [
+    "Cornering speed",
+    "Braking efficiency into Curva 3",
+    "Momentum maintenance",
+    "Aerodynamic balance",
+    "Tire management (especially the front tires)"
+  ],
+  "overtakingSpots": [
+    "Into Curva 3 after the long straight",
+    "Under braking for Curva 1 if the car ahead makes a mistake",
+    "Late braking into Curva 5"
+  ],
+  "historySnippets": [
+    "Ortona was designed by a team of Italian motorsport engineers.",
+    "The East layout is a popular choice for driver training programs.",
+    "The circuit features modern facilities and safety standards.",
+    "Ortona has hosted various national-level racing series.",
+    "The East configuration prioritizes flowing corners and momentum.",
+    "Several national karting championships have been held at Ortona East."
+  ],
+  "weatherNotes": "The Abruzzo region is known for its variable weather, with hot and sunny summers and cool, wet winters. Rain can significantly impact grip levels on the Ortona East layout, making it crucial for teams to adapt their setups and tire strategies accordingly. Wind can also be a factor, particularly on the exposed sections of the track, affecting the car's stability in high-speed corners. The proximity to the Adriatic Sea can also bring in morning fog, especially during the cooler months.",
+  "drivingAdvice": "On the Ortona East layout, focus on maximizing corner exit speed. The straights are relatively short, so carrying as much momentum as possible through the corners is crucial for a fast lap time. Be precise with your braking into Curva 3, as locking up the front tires will compromise your exit and cost you valuable time. Use all of the available track width in the sweeping corners to maintain momentum, but be mindful of track limits. Also, be patient in traffic, as overtaking opportunities are limited, and forcing a move can easily lead to a mistake.",
+  "famousRaces": [
+    "Italian Formula 3 Championship: Several rounds of the Italian F3 championship have been held at Ortona, showcasing the talents of young Italian drivers.",
+    "Italian Touring Car Championship: The track has hosted races for various touring car series, attracting large crowds and providing exciting wheel-to-wheel action.",
+    "Regional Karting Championships: The East layout is a regular fixture on the calendar for regional karting championships, providing a challenging and competitive environment for young karters."
+  ],
+  "localCulture": "Ortona is a charming coastal town in the Abruzzo region, known for its beautiful beaches, historic architecture, and delicious cuisine. The local specialty is brodetto di pesce, a flavorful fish stew made with fresh seafood from the Adriatic Sea. The town also boasts several wineries producing Montepulciano d'Abruzzo, a robust red wine that pairs perfectly with local dishes. Paddock life at Ortona is relaxed and friendly, with teams often sharing meals and stories with each other. The locals are passionate about motorsport and welcome visitors with open arms, creating a warm and inviting atmosphere."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Lindström",
+  "nationality": "Swedish",
+  "age": 45,
+  "gender": "female",
+  "role": "quality_control",
+  "bio": "Astrid Lindström's path to motorsport was unconventional. Starting as a materials science engineer, she initially worked in the automotive industry, focusing on durability testing for road cars. However, a chance encounter with a Formula 3 team during a collaborative project ignited her passion for racing. She was captivated by the relentless pursuit of performance and the critical role quality control played in achieving it.\n\nAstrid transitioned into motorsport quality control a decade ago, quickly establishing a reputation for meticulousness and an eye for detail. Her approach is rooted in data analysis and a deep understanding of material properties. She believes that preventing failures is as important as identifying them, and she constantly seeks innovative ways to improve testing methods and predictive analysis. Her ability to see the big picture while simultaneously focusing on the smallest imperfections makes her an invaluable asset to any team, especially Carlin Academy.\n\nWhat sets Astrid apart is her ability to communicate complex technical information in a clear, concise manner, bridging the gap between the engineering department and the race track. She is not afraid to challenge the status quo and is always pushing for higher standards of quality and reliability. Her pragmatic approach is balanced with a creative problem-solving mindset.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, styled in a practical, no-nonsense bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a woman of medium height with a thoughtful expression and a perpetually focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a particular fondness for Swedish 'fika' and insists on a daily coffee break with the team.",
+    "Uses color-coded sticky notes extensively to categorize potential failure points."
+  ]
+}

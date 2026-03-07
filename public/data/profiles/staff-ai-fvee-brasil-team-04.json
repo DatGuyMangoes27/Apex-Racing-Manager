@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Llewellyn",
+  "nationality": "Welsh",
+  "age": 54,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Rhys's journey into motorsport began in the valleys of Wales, tinkering with engines alongside his father. He quickly developed a knack for diagnostics and problem-solving, leading him to pursue a degree in mechanical engineering. After graduating, Rhys gained experience in various racing series, from Formula Ford to British GT, honing his skills in data analysis, car setup, and driver communication. He thrives under pressure and is known for his ability to identify innovative solutions that give his team a competitive edge. Now at FVee Brasil, Rhys brings a wealth of experience and a visionary approach to racing.\n\nRhys is distinguished by his mentoring abilities. He’s able to bring out the best in young talent and develop new technical staff. He is particularly strong in identifying potential problems before they become critical issues, and is well known for his ability to stay calm and focused, even in the most chaotic race situations. His collaborative spirit and analytical mind make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Rhys is a man of medium build, with a weathered face that reflects years spent at the track."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn notebook filled with technical sketches and notes.",
+    "Has a specific ritual for cleaning his glasses before each race session.",
+    "Humming quietly to himself while analysing telemetry data."
+  ]
+}

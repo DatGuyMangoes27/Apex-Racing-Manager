@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ricardo Flores",
+    "nationality": "Mexican",
+    "age": 48,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Ricardo’s journey into motorsport began unexpectedly. A childhood fascination with aerodynamics, sparked by observing birds in flight, led him to pursue a degree in mechanical engineering. After graduating, he landed a role at a local automotive factory, but his true passion remained in motorsport. He tirelessly pursued opportunities, eventually securing a position as a junior technician in a small racing team's wind tunnel. \n\nOver the years, Ricardo honed his skills, developing a keen eye for detail and an unwavering commitment to accuracy. He prides himself on his ability to identify even the most subtle aerodynamic inefficiencies. While some may find his methods demanding, his commitment to achieving optimal results is undeniable. He believes in precise data and meticulous execution, pushing the team to extract every last bit of performance from the car. He is known for his innovative approach to data interpretation, often suggesting unconventional testing methods to gain a competitive edge.",
+    "physical": {
+      "skinTone": "Tan",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed back with slight receding hairline",
+      "eyeColor": "Brown",
+      "facialHair": "Short, trimmed goatee",
+      "description": "Ricardo is of average height, with a sturdy build and focused gaze."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+      "Insists on calibrating the wind tunnel sensors himself before each test.",
+      "Has a specific playlist of instrumental music he plays during testing to maintain focus."
+    ]
+  }
+]

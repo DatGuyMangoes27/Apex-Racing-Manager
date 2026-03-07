@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0367",
+  "name": "Aether Dynamics",
+  "category": "equipment",
+  "tier": "elite",
+  "country": "Singapore",
+  "description": "Precision engineered components for motorsport excellence.",
+  "story": "Aether Dynamics is a Singapore-based engineering firm specializing in advanced composite materials and precision manufacturing. Founded by former Formula 1 engineers, Aether Dynamics seeks to push the boundaries of performance in motorsport through cutting-edge technology. They partner with teams that demonstrate a commitment to innovation and achieving peak performance, aligning with their core values of precision and reliability.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0367.png"
+}

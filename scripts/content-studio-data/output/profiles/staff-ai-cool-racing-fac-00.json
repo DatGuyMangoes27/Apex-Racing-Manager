@@ -1,0 +1,22 @@
+{
+  "name": "Priya Iyer",
+  "nationality": "Indian",
+  "age": 44,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Priya's journey into motorsport began unexpectedly during her mechanical engineering degree, where she developed a fascination with vehicle dynamics and simulation. After graduating, she landed a role at a prominent automotive research facility, honing her skills in virtual prototyping and performance optimization. The allure of motorsport proved too strong to resist, and she transitioned to Cool Racing five years ago. \n\nPriya's approach to simulator engineering is meticulous and data-driven. She believes in creating a simulator environment that mirrors real-world conditions as closely as possible, allowing drivers to push their limits and extract maximum performance. She is known for her ability to quickly diagnose discrepancies between simulator data and on-track performance, and her commitment to continuous improvement makes her a valuable asset to the team. Her unique ability lies in translating complex technical data into actionable insights for the drivers and race engineers.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Priya has a focused look and a warm smile that puts drivers at ease."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Prefers listening to classical music while calibrating the simulator."
+  ]
+}

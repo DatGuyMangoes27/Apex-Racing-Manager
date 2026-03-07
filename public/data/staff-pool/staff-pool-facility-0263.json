@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 36,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Antoine's passion for electronics ignited during his childhood, tinkering with radios and building circuits in his father's workshop. This fascination led him to pursue a degree in electrical engineering, specializing in embedded systems. After graduating, he spent several years working on automotive control systems before realizing his true calling lay in motorsport. He joined a smaller racing team, honing his skills in data acquisition and performance optimization. \n\nAntoine approaches his work with meticulous detail, believing that even the smallest electronic component can make a significant difference on the track. He is constantly seeking new ways to improve performance through innovative solutions and advanced data analysis. His ambition drives him to push the boundaries of what is possible, ensuring the car's electronic systems are always at their peak.\n\nAntoine distinguishes himself with his ability to quickly diagnose and resolve complex electrical issues under pressure. His calm demeanor and systematic approach make him a valuable asset in the high-stakes environment of motorsport, where every second counts. His management skills are also exceptional, able to navigate team dynamics and technical challenges with ease.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Antoine is of average height with a lean build, often seen wearing practical, functional attire."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multi-tool, even when not working on the car.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific brand of soldering iron, believing it provides superior precision."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 58,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Gareth's journey into motorsport began unexpectedly. After excelling in applied mathematics at university, he found himself drawn to the complexities of aerodynamics, initially working on industrial airflow simulations. A chance encounter with a local racing team led him to apply his expertise to motorsport, where he quickly proved his worth. His methodical approach to problem-solving, coupled with his strong management skills, saw him rapidly rise through the ranks.\n\nAs head of aero, Gareth is known for his ability to foster a collaborative environment, encouraging his team to explore innovative solutions while maintaining a laser focus on performance gains. He believes in the power of data-driven decision-making and is always looking for ways to optimize the car's aerodynamic package. His loyalty and dedication to the team are unwavering, making him a valuable asset to any organization.\n\nGareth's distinctive ability lies in translating complex aerodynamic concepts into practical, real-world improvements on the track. He is a master of extracting the maximum performance from every design, always seeking that extra tenth of a second that can make all the difference.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed grey mustache",
+    "description": "A man of medium build with a kind face and a perpetually thoughtful expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a well-worn slide rule, even though he has access to advanced simulation software.",
+    "Has a habit of humming quietly while deep in thought, often variations on Welsh folk songs.",
+    "Insists on reviewing every wind tunnel test report personally, highlighting key data points with a red pen."
+  ]
+}

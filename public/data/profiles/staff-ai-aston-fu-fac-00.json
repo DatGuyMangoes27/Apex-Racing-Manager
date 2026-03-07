@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 41,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Alistair's fascination with motorsport began early, fueled by family trips to Silverstone and a keen interest in the technical aspects of racing. After graduating with a degree in mechanical engineering from Imperial College London, he spent several years honing his skills in automotive design before transitioning to Formula 1. He believes deeply in data analysis, taking a systematic approach to simulator work, always striving to correlate on-track performance with simulator data, allowing drivers to improve setup and performance. He joined Aston Martin three years ago, becoming a key member of the simulator team, known for his ability to quickly identify and resolve technical issues.\n\nAlistair's approach is methodical and data-driven; he thrives on problem-solving. He is particularly adept at translating driver feedback into actionable changes within the simulation environment. His colleagues appreciate his calm demeanor and his willingness to assist others, even under pressure. He is respected by the drivers for his attention to detail and his ability to replicate the nuances of a race track within the simulator.\n\nWhile not always the most vocal member of the team, Alistair's insights are highly valued. His talent lies in his ability to bridge the gap between the theoretical and the practical, translating complex engineering principles into tangible benefits on the track. He prefers quietly solving problems and improving performance through meticulous work, making him an invaluable asset to Aston Martin.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the side, slightly receding hairline.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height with a focused, analytical gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a cup of Earl Grey tea on his desk.",
+    "Organizes his workstation with meticulous precision.",
+    "Mumbles quietly to himself when deep in thought."
+  ]
+}

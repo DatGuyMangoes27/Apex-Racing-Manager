@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Catalina Rodriguez",
+    "nationality": "American",
+    "age": 45,
+    "gender": "female",
+    "role": "composite_technician",
+    "bio": "Catalina's journey into motorsport began unexpectedly. While working as an aircraft mechanic, her precision and attention to detail caught the eye of a visiting Formula SAE team. Intrigued, she volunteered her skills, quickly mastering composite repair and design. Soon, she transitioned full-time into racing, honing her expertise across various series before landing at Hitech GP. \n\nCatalina's approach is methodical and proactive. She believes in preventative maintenance and meticulous inspection to ensure structural integrity and optimal performance. What sets her apart is her ability to diagnose subtle stress fractures and her innovative solutions for lightweighting components. She thrives under pressure and is always eager to push the boundaries of composite technology.",
+    "physical": {
+      "skinTone": "tan",
+      "hairColor": "dark brown",
+      "hairStyle": "shoulder-length, usually tied back in a practical braid",
+      "eyeColor": "brown",
+      "facialHair": null,
+      "description": "Catalina is a lean woman with sharp, focused eyes that miss nothing."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with sketches and calculations.",
+      "Has an uncanny ability to identify different carbon fiber weaves by touch.",
+      "Listens to classic rock while working, but only through noise-canceling headphones."
+    ]
+  }
+]

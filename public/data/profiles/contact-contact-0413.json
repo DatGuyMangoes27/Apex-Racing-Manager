@@ -1,0 +1,31 @@
+{
+  "name": "Sofia Vargas Mendoza",
+  "nationality": "Peruvian",
+  "age": 40,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Sofia Vargas Mendoza is a renowned sports medicine physician practicing in Lima. After completing her postgraduate studies in the UK, she returned to Peru and quickly established herself as a leader in her field, specializing in the treatment and prevention of injuries common among high-performance athletes. While she spends much of her time at her private clinic, she is also a consultant for several national sports teams, and has a particular interest in motorsport related injuries.\n\nSofia is known for her restless energy and demanding approach, though she is also incredibly grateful for the opportunities she has been given. Despite her wealth and professional success, she remains humble and grounded, finding solace in her diverse range of interests. She might come across as controlling initially, but it is only because she cares deeply about the well-being of her patients and wants to see them reach their full potential. A racing driver may cross paths with her after sustaining an injury during a race or training session, or seeking preventative care to optimize their physical condition.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia has a strong, athletic build and a focused gaze. Her intense eyes hint at her sharp intellect and unwavering determination."
+  },
+  "connectionToMotorsport": "Dr. Vargas Mendoza provides specialized care for motorsport athletes, focusing on injury prevention and rehabilitation. Her expertise in sports medicine makes her a valuable resource for drivers seeking to maintain peak physical condition.",
+  "meetingContext": "The player might meet Dr. Vargas Mendoza at a sports medicine conference, or through a referral after sustaining an injury during a race. It's also possible they could meet at a charity event related to sports injuries.",
+  "conversationTopics": [
+    "The latest advancements in sports medicine",
+    "The mental fortitude required for marathon running",
+    "The philosophical aspects of competition",
+    "The burgeoning coffee culture in Peru",
+    "Her experiences volunteering at a free clinic"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for injuries.",
+    "Offer performance-enhancing strategies to improve physical fitness.",
+    "Connect the player with other professionals in the sports medicine field."
+  ],
+  "personality_summary": "A restless and sometimes controlling sports doctor who is grateful for her success and dedicated to helping athletes achieve their potential."
+}

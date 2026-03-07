@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Mexican",
+  "age": 31,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Mateo Rodriguez's passion for motorsport ignited during his childhood in Guadalajara, where he spent countless hours tinkering with engines and devouring racing magazines. After graduating with a degree in mechanical engineering from the Universidad Nacional Autónoma de México, he landed a junior role at a local racing team, honing his skills in data analysis and vehicle dynamics. His meticulous approach and knack for identifying performance bottlenecks quickly earned him recognition. \n\nHe's drawn to the challenge of extracting every last ounce of performance from a car, viewing each race as a complex puzzle to be solved. Mateo believes in a data-driven approach, meticulously analyzing telemetry to optimize setup and strategy. While he values collaboration, he's ultimately driven by his own ambition and a desire to prove himself as one of the best performance engineers in the sport. Tolman Motorsport seemed like the perfect place to prove himself.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-maintained goatee",
+    "description": "Mateo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having his workspace meticulously organized."
+  ]
+}

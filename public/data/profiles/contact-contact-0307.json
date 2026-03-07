@@ -1,0 +1,31 @@
+{
+  "name": "Chanya Srisawat",
+  "nationality": "Thai",
+  "age": 47,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Chanya Srisawat isn't your typical financier. While she commands respect as a managing director at Siam Commercial Bank, overseeing a significant portfolio of high-net-worth clients, she's known for her playful wit and surprisingly adventurous spirit. She's as comfortable discussing complex financial instruments as she is recounting her latest surfing trip in Bali or her personal best in a marathon. Chanya is self-made, preferring the school of hard knocks to a fancy MBA. \n\nHer connection to motorsport stems from her clients, many of whom are involved in racing as sponsors, team owners, or even drivers themselves. She's known to discreetly manage the finances of a few prominent teams, ensuring their operations remain smooth and compliant. A racing driver seeking significant sponsorship or needing expert financial advice might find themselves seeking a meeting with Chanya.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, subtly highlighted waves",
+    "eyeColor": "Dark Brown",
+    "facialHair": null,
+    "description": "Chanya possesses an elegant and athletic build. She often wears sophisticated business attire with a touch of Thai silk, reflecting her heritage."
+  },
+  "connectionToMotorsport": "Chanya manages the financial affairs of several motorsport teams and sponsors, offering her insight into the financial aspects of the sport.",
+  "meetingContext": "The player might meet Chanya at a high-end networking event, a sponsor gala, or perhaps through an introduction from another team owner seeking financial advice.",
+  "conversationTopics": [
+    "The latest trends in the Thai stock market",
+    "Her recent marathon time and training regime",
+    "Her favorite whiskey distilleries in Scotland",
+    "Exotic travel destinations she's visited",
+    "The current state of Formula 1 racing"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals through her extensive network",
+    "Provide expert financial advice on managing racing earnings and investments",
+    "Offer introductions to key figures in the business world who could benefit the player's career"
+  ],
+  "personality_summary": "A mischievous and sophisticated banker with a surprisingly adventurous side."
+}

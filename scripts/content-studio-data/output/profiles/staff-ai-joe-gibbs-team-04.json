@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 56,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Marco Bellini's journey into motorsport began in the small town of Modena, the heart of Italian automotive engineering. As a boy, he spent hours watching the mechanics at his uncle's repair shop, fascinated by the intricate workings of engines. This early exposure ignited a lifelong passion. He honed his skills through years of rigorous study, earning a degree in mechanical engineering from the University of Bologna.\n\nMarco's pragmatic approach to race engineering is rooted in a deep understanding of vehicle dynamics and a relentless pursuit of data-driven solutions. He believes in fostering a collaborative environment where open communication and shared knowledge are paramount. His ability to see the big picture, combined with his mentorship skills, makes him an invaluable asset to any team, always striving to push boundaries while maintaining a realistic perspective on achievable goals. Joe Gibbs Racing recognized his unique skillset and recruited him to the team, confident in his ability to deliver results.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build with a slightly weathered face, Marco looks like he's spent a lifetime tinkering with engines."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously drawn diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Refuses to drink anything but espresso before a race."
+  ]
+}

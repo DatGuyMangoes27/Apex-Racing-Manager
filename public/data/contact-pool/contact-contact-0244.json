@@ -1,0 +1,31 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "New Zealand",
+  "age": 36,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Alistair Finch is a self-made man with a keen eye for talent, particularly in the high-stakes world of motorsport. He bypassed traditional education, instead immersing himself in the business world from a young age, developing a knack for spotting potential and nurturing it into success. His independent spirit and slightly eccentric approach have earned him both respect and a certain mystique among his peers.\n\nWhile Alistair's interests span art, theatre, and various sports, his passion for motorsport runs deep, fueled by a nostalgic love for classic racing and a desire to see raw talent flourish. He represents a select group of drivers, focusing on those with unique potential rather than simply chasing established names. A driver seeking representation who stands out from the crowd or possesses a compelling backstory might find themselves in Alistair's crosshairs.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Slicked back with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, neatly trimmed beard",
+    "description": "Alistair has a refined air about him. He favors tailored suits and has sharp, intelligent eyes that seem to always be observing."
+  },
+  "connectionToMotorsport": "Alistair is a high-profile agent known for representing up-and-coming drivers with unique stories and a penchant for taking risks. He's often seen at Formula Regional and Formula 3 races, scouting for the next big thing.",
+  "meetingContext": "The player might meet Alistair at an exclusive motorsport auction or a private viewing at an art gallery he sponsors, both of which are attended by motorsport personalities.",
+  "conversationTopics": [
+    "The intersection of art and motorsport",
+    "The golden age of racing",
+    "Unique driver backstories",
+    "The evolution of motorsport technology",
+    "Interior design trends"
+  ],
+  "canHelp": [
+    "Negotiate favorable contracts with racing teams and sponsors",
+    "Secure endorsement deals with luxury brands",
+    "Provide media training and public relations support"
+  ],
+  "personality_summary": "An independent and eccentric agent with a keen eye for talent and a love for the finer things in life."
+}

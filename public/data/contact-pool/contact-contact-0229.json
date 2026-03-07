@@ -1,0 +1,31 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 23,
+  "gender": "female",
+  "contactType": "fashion_designer",
+  "bio": "Ivana Kovačić is a rising star in the Croatian fashion scene, known for her bold, avant-garde designs that blend traditional Croatian motifs with contemporary silhouettes. Fresh out of Zagreb University's fashion program, her graduate collection caught the eye of several influential stylists, quickly landing her work with local celebrities and fashion magazines. While her personal style leans towards understated elegance, she injects a playful spontaneity into her creations, reflecting her own adventurous spirit and love for travel. \n\nHer connection to motorsport is tangential but growing. She's recently been commissioned to design bespoke racing suits for a small, private team competing in regional GT events. A racing driver might cross paths with Ivana at exclusive fashion events, through mutual connections in the Croatian social scene, or directly if seeking a unique and stylish racing suit.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy, often styled in a messy bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana has a slender build and a confident posture. Her style is minimalist chic, favoring neutral tones and high-quality fabrics."
+  },
+  "connectionToMotorsport": "Ivana designs racing suits for a small GT racing team, bringing her unique fashion sense to the sport. Her designs aim to combine safety with a distinctive and fashionable appearance on the track.",
+  "meetingContext": "The player could meet Ivana at a fashion show in Zagreb, a motorsport event where her team is competing, or a private party hosted by a mutual acquaintance.",
+  "conversationTopics": [
+    "Her latest design projects and inspirations",
+    "Sustainable fashion practices",
+    "Her travels to exotic destinations",
+    "The intersection of fashion and performance in motorsport",
+    "Her favorite new restaurants in Zagreb"
+  ],
+  "canHelp": [
+    "Connect the player with potential sponsors in the luxury goods sector",
+    "Offer styling advice and create a unique personal brand image",
+    "Introduce the player to influential figures in the Croatian social scene"
+  ],
+  "personality_summary": "A sophisticated and spontaneous designer with a touch of entitlement, Ivana is a valuable contact if you can navigate her judgmental side."
+}

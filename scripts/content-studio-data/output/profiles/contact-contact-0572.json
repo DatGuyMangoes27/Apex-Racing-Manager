@@ -1,0 +1,31 @@
+{
+  "name": "Bronte Callaghan",
+  "nationality": "Australian",
+  "age": 45,
+  "gender": "female",
+  "contactType": "yacht_captain",
+  "bio": "Bronte Callaghan isn't your typical yacht captain, though she's spent over 20 years navigating the world's oceans. Starting as a deckhand fresh out of trade school, her natural leadership and intuitive understanding of the sea saw her quickly rise through the ranks. She now captains 'The Albatross,' a luxury superyacht owned by Sheikh Rashid Al-Maktoum, a prominent figure in motorsports and a known patron of young drivers.\n\nBeneath her calm exterior lies a thoughtful and compassionate soul with a penchant for gossip and a surprising creative streak. Bronte is fiercely loyal to her crew and known for fostering a positive atmosphere onboard. She's also deeply committed to sustainable practices, always seeking ways to minimize the yacht's environmental impact. While her primary responsibility is the Sheikh's comfort and safety, she's also a keen observer and often finds herself privy to conversations and decisions regarding his racing endeavors. A racing driver may cross paths with her either by being a guest on the yacht or through introductions from the Sheikh.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, practical bob",
+    "eyeColor": "Ocean blue",
+    "facialHair": null,
+    "description": "Bronte is of average height with a wiry build honed from years at sea. She has a sun-kissed complexion and kind eyes that crinkle at the corners when she smiles."
+  },
+  "connectionToMotorsport": "As the captain of Sheikh Rashid Al-Maktoum's yacht, Bronte is peripherally involved in motorsports, often overhearing discussions about drivers, sponsorships, and racing strategy. She also directly manages the transportation and logistics for the Sheikh when he attends races, giving her a unique insight into the inner workings of the sport.",
+  "meetingContext": "The player might meet Bronte if they are invited aboard 'The Albatross' as a guest of Sheikh Rashid, perhaps as a potential driver for his racing team, or at a high-society event attended by both the Sheikh and the driver.",
+  "conversationTopics": [
+    "The challenges and rewards of being a yacht captain",
+    "Sustainable practices in maritime travel",
+    "The latest gossip from the high-society circuit",
+    "Her passion for contemporary dance and jazz music",
+    "Interior design trends for luxury yachts"
+  ],
+  "canHelp": [
+    "Provide introductions to influential figures within Sheikh Rashid's network.",
+    "Offer insights into the Sheikh's personality and preferences, helping the player navigate their relationship.",
+    "Potentially influence the Sheikh's decisions regarding driver selection or sponsorship opportunities."
+  ],
+  "personality_summary": "A thoughtful and worldly yacht captain with a surprising knack for gossip and a hidden creative side."
+}

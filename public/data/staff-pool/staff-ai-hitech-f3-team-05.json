@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 49,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Ricardo Alonso's journey into motorsport began with a childhood fascination with Formula 1, sparked by watching Fernando Alonso's early successes. He studied engineering at the Polytechnic University of Catalonia before transitioning to motorsport strategy. He began his career in junior formulas, honing his skills in data analysis and race simulation before moving to Formula 3, and eventually Formula 2. He is known for his calm demeanor under pressure and his ability to make informed decisions based on real-time data. \n\nRicardo's approach to strategy is centered around meticulous preparation and adaptability. He emphasizes the importance of understanding tire degradation, weather patterns, and competitor strategies. His strength lies in his ability to anticipate changes in track conditions and make proactive pit stop calls. He is a firm believer in continuous improvement and constantly seeks new ways to optimize race performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has a serious, focused look, reflecting his analytical mind."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down race notes.",
+    "Has a superstition about wearing the same lucky socks on race days.",
+    "Prefers to analyze data in complete silence, often using noise-canceling headphones, even without music."
+  ]
+}

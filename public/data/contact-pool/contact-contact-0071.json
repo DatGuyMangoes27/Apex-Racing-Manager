@@ -1,0 +1,31 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 54,
+  "gender": "male",
+  "contactType": "tech_entrepreneur",
+  "bio": "Marko Kovačić is the founder and CEO of 'Synapse Solutions,' a leading AI development company specializing in advanced data analysis and predictive modeling. His sharp intellect and relentless pursuit of innovation have propelled Synapse to the forefront of the tech industry. Known for his stubborn adherence to ethical principles and a surprisingly caring nature beneath his tough exterior, Marko balances his demanding career with passions for cycling, philosophy, and supporting emerging artists. While not directly involved in motorsport, Synapse Solutions has been exploring applications of their AI technology within the automotive industry, specifically for optimizing vehicle performance and driver safety.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed grey beard",
+    "description": "Marko has a commanding presence, often accentuated by tailored suits and a focused gaze. His strong jawline and thoughtful expression hint at a life dedicated to solving complex problems."
+  },
+  "connectionToMotorsport": "Marko's company, Synapse Solutions, is currently in talks with several Formula 1 teams about implementing their AI for real-time race strategy optimization. He is also a collector of vintage cars, some with racing pedigree.",
+  "meetingContext": "The player could meet Marko at a tech conference where Synapse Solutions is presenting their automotive AI, or perhaps through a mutual connection at a vintage car auction.",
+  "conversationTopics": [
+    "The ethical implications of AI",
+    "The future of automotive technology",
+    "The parallels between racing and business strategy",
+    "His vintage car collection",
+    "The best espresso in Croatia"
+  ],
+  "canHelp": [
+    "Introduce the player to potential sponsors in the tech industry.",
+    "Provide data analysis tools to optimize driving performance.",
+    "Offer networking opportunities with automotive engineers and team principals."
+  ],
+  "personality_summary": "A brilliant but stubborn tech CEO with a hidden soft spot and a passion for innovation."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0296",
+  "name": "Synapse Dynamics",
+  "category": "tech",
+  "tier": "elite",
+  "country": "Hong Kong",
+  "description": "Leading provider of advanced AI-powered simulation software.",
+  "story": "Synapse Dynamics is committed to pushing the boundaries of performance through cutting-edge simulation technology. Motorsport provides a challenging environment to test and refine our software, ensuring our products remain at the forefront of innovation. We seek partnerships that demonstrate a commitment to data-driven improvement and a relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0296.png"
+}

@@ -921,7 +921,7 @@ export const TRACK_MASTERY_MILESTONES: Milestone[] = [
     icon: '🇺🇸🎯',
     conditions: { 
       tracksWonAt: { 
-        trackIds: ['daytona', 'sebring', 'indianapolis'],
+        trackIds: ['daytona', 'sebring', 'road_atlanta', 'indianapolis'],
         all: true 
       } 
     },

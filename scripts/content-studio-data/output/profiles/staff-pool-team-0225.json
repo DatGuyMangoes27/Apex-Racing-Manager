@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 27,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Kenji's fascination with motorsport ignited during his undergraduate years at Tokyo University, where he pursued a degree in Mechanical Engineering. He quickly found himself immersed in the university's Formula Student team, leading the aerodynamics division and contributing significantly to their vehicle's performance. This experience cemented his desire to work in the high-pressure environment of professional racing. Following graduation, Kenji joined a smaller Super Formula team, honing his skills in vehicle dynamics and data analysis. \n\nHe possesses a keen ability to diagnose and resolve complex engineering problems with a pragmatic and collaborative approach. Kenji believes that fostering open communication and knowledge sharing within the engineering team is essential for achieving optimal performance. His calm demeanor, even under intense pressure, makes him a valuable asset in the pit lane. Kenji is now looking to advance his career and take on the challenge of leading an engineering team for a top tier racing organization.\n\nKenji is notable for his innovative approach to problem-solving, frequently using unconventional methods to overcome challenges. He believes in pushing the boundaries of what's possible, while always maintaining a focus on reliability and safety.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Kenji is of average height with a slender build and an intense, focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to communicate complex ideas through whiteboarding sessions."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Lindstrom",
+  "nationality": "Swedish",
+  "age": 43,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Bjorn's passion for motorsport ignited during his childhood, fueled by his father's involvement in rally racing. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and data analysis. After graduating, Bjorn started his career as a junior engineer at a small racing team, where he gained invaluable hands-on experience. He is known for his meticulous approach to data analysis and his ability to translate complex technical information into actionable insights for the driver and pit crew. Bjorn excels at identifying areas for improvement and developing innovative solutions to enhance performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Bjorn is of average height, with a lean build and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Insists on having his coffee brewed using a specific Swedish method."
+  ]
+}

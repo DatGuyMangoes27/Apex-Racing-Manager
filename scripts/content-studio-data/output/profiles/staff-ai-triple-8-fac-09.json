@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Vargas",
+  "nationality": "Colombian",
+  "age": 28,
+  "gender": "female",
+  "role": "paint_shop_specialist",
+  "bio": "Sofia's journey into motorsport started unexpectedly. While studying chemical engineering in Medellín, she took a summer job at a local auto body shop. Her meticulous nature and keen eye for detail quickly made her invaluable, leading to her specializing in custom paint jobs. A chance encounter with a visiting racing team ignited her passion for motorsport, and she dedicated herself to mastering the art of applying flawless finishes to racing cars.\n\nSofia's approach to her work is demanding, both of herself and her team. She believes that a perfect paint job isn't just about aesthetics; it's about aerodynamics, weight distribution, and reflecting the team's commitment to excellence. Her distinctive ability lies in her unwavering commitment to quality control, ensuring that every panel leaving her shop meets the highest standards of precision and durability. She sees herself as a guardian of the team's image and performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a high ponytail to keep it out of her face while she works. A few strands always manage to escape and frame her face.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a lean build, and her focused gaze reflects her intense concentration."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only a specific brand of imported lacquer for the final clear coat.",
+    "Always listens to salsa music while working, regardless of the preferences of her team.",
+    "Has an uncanny ability to spot even the tiniest imperfection on a painted surface from across the room."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Riley",
+  "nationality": "American",
+  "age": 28,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ethan Riley's fascination with motorsport began in his childhood, spent tinkering with go-karts in his uncle's garage. This passion fueled his pursuit of a mechanical engineering degree, which he leveraged into a junior engineer role at a small IndyCar team. He quickly proved his worth, demonstrating a knack for data analysis and problem-solving under pressure. His meticulous approach and unwavering focus on performance improvement caught the eye of EKS JC, who headhunted him to join their race engineering team.\n\nEthan's engineering philosophy revolves around marginal gains and relentless optimization. He believes in building strong, data-driven relationships with drivers to extract the maximum potential from the car. While some may find his direct communication style and high expectations challenging, his dedication to achieving victory is undeniable. He is driven by a desire to constantly learn and push the boundaries of what is possible in racing.\n\nEthan is known for his ability to rapidly diagnose issues and implement effective solutions, often staying late into the night poring over telemetry data. He is an ambitious and driven engineer, determined to reach the pinnacle of motorsport and establish himself as one of the best in the business.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "A lean man of average height with a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and observations.",
+    "Drinks at least three cups of black coffee before each race.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

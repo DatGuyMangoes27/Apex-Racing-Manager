@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 51,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Jaroslav's fascination with electronics began in his youth, tinkering with radios and building his own circuits. He honed his skills at the Czech Technical University in Prague, specializing in embedded systems. After graduating, he spent several years in the automotive industry, developing advanced control systems before making the leap to motorsport. \n\nHe joined Racing Start Academy five years ago, drawn by the challenge of optimizing performance through cutting-edge electronics. Jaroslav is known for his meticulous approach and his ability to troubleshoot complex problems under pressure. He believes in a holistic approach, understanding how each electronic component contributes to the overall vehicle performance. \n\nWhat sets Jaroslav apart is his relentless pursuit of improvement. He is never satisfied with the status quo and constantly seeks new ways to push the boundaries of what's possible, blending proven reliability with calculated innovation.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A lean man with a focused gaze and a permanent air of concentration."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Refers to electronic components by nicknames.",
+    "Has a habit of muttering technical jargon to himself when deep in thought."
+  ]
+}

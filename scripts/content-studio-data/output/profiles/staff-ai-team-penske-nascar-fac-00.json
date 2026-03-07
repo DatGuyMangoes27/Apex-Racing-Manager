@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 33,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Adrian's journey into motorsport began with a childhood fascination for rally racing, fueled by grainy VHS tapes and late-night tinkering with his father's old Dacia. He pursued a degree in mechanical engineering, specializing in computational fluid dynamics, always with the goal of translating his academic knowledge into real-world performance gains. He joined Team Penske three years ago and has been instrumental in refining their simulator program, focusing on tire degradation models and driver-in-the-loop feedback.\n\nAdrian's approach is methodical and data-driven, but he also possesses an intuitive understanding of what drivers need to feel to extract the maximum performance from the car. He is known for his ability to remain calm and focused under pressure, even when the simulator is spitting out conflicting data or the drivers are demanding immediate changes. His colleagues appreciate his willingness to share his knowledge and provide constructive feedback, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Adrian is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams.",
+    "Has a habit of tapping his pen rhythmically when concentrating.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

@@ -3,9 +3,11 @@ import { generateCommentary, clearRecentLines } from './scriptGenerator'
 import { synthesizeSpeech } from './voice'
 import { playAudio, playAudioAndWait, stopAllAudio, setVolume, testAudioPlayback, clearQueue } from './audio'
 import { queueManager } from './queueManager'
-import { telemetryLog } from '../services/debugLogger'
+import { telemetryLog, logCommentaryDecision } from '../services/debugLogger'
 import { getSeriesProfile, SeriesCategory } from '../../src/data/series-commentary'
 import { setVoiceIds } from './voices'
+import { evolveNarrativeThreads, type NarrativeThread } from './narrativeThreads'
+import { getCommentaryEntityState, upsertCommentaryEntityState } from '../db/database'
 
 /**
  * Commentary Engine
@@ -121,6 +123,8 @@ function sanitizeTrackName(rawName: string | undefined): string {
     'jacarepagua': 'Jacarepaguá',
     'montreal': 'Montreal',
     'mosport': 'Canadian Tire Motorsport Park',
+    'virginia': 'Virginia International Raceway',
+    'road_atlanta': 'Road Atlanta',
   }
   
   // Check for known mappings (case-insensitive)
@@ -208,6 +212,7 @@ export type CommentaryEventType =
   | 'RACE_FINISH' | 'PIT_ENTRY' | 'PIT_EXIT' | 'SECTOR_PURPLE' | 'BATTLE_FORMING'
   // Flags (from shared memory)
   | 'FLAG_GREEN' | 'FLAG_YELLOW' | 'FLAG_DOUBLE_YELLOW' | 'FLAG_BLUE' | 'FLAG_WHITE' | 'FLAG_BLACK' | 'FLAG_CHEQUERED'
+  | 'FLAG_SAFETY_CAR' | 'FLAG_RED'
   | 'FLAG_FINAL_LAP'  // White flag for final lap
   // Start-specific events
   | 'POOR_START' | 'GREAT_START' | 'UNDER_PRESSURE'
@@ -218,7 +223,7 @@ export type CommentaryEventType =
   | 'RECOVERY_DRIVE' | 'PRESSURE_BUILDING' | 'GAP_CALCULATION'
   // Session Events
   | 'SESSION_START' | 'SESSION_END' | 'PRACTICE_IMPROVEMENT' | 'QUALIFYING_ATTEMPT'
-  | 'POLE_POSITION' | 'FRONT_ROW'
+  | 'POLE_POSITION' | 'FRONT_ROW' | 'STRATEGY_UPDATE'
   // Practice/Qualifying Specific (NEW)
   | 'OTHER_DRIVER_HOTLAP' | 'TRACK_EVOLUTION' | 'SECTOR_COMPARISON' | 'PIT_ACTIVITY'
   // Track-Specific (NEW)
@@ -344,6 +349,7 @@ export interface EventContext {
   // Flags (from shared-memory -> legacy session passthrough)
   flagColour?: number
   flagReason?: number
+  homeCountry?: string
   
   // Pit (player)
   pitMode?: number
@@ -371,6 +377,7 @@ export interface EventContext {
   nationality?: string
   experienceLevel?: string // e.g., "Rookie", "Sophomore", "Veteran"
   isRookie?: boolean
+  commentaryDataSource?: 'content_studio' | 'runtime' | 'mixed'
   
   // Other drivers context (for narrative/comparison)
   championshipLeader?: string      // Name of championship leader
@@ -380,44 +387,40 @@ export interface EventContext {
   
   // ===== TV BROADCAST: DRIVER NARRATIVES =====
   // Rich backstories for colorful commentary about other drivers
+  // Fields match the Content Studio pre-generated bundle format
   driverNarratives?: Array<{
     name: string
     nationality?: string
     age?: number
     teamId?: string
-    origin?: string           // "From a small town in Bavaria..."
-    careerPath?: string       // "Rose through F4, won F3 title..."
-    breakoutMoment?: string   // "Announced himself with a stunning..."
-    drivingStyle?: string
-    styleDescription?: string // "Known for late braking and bold overtakes"
-    anecdotes?: string[]      // Fun facts for commentary
-    careerStage?: string      // 'rising_star' | 'prime' | 'veteran' etc.
+    biography?: string          // Full multi-sentence driver backstory
+    drivingStyle?: string       // "Aggressive late-braker" etc.
+    rivalries?: string[]        // Known rivalries with other drivers
+    quirks?: string[]           // Personality quirks / fun facts
+    nickname?: string           // Driver nickname
+    famousQuote?: string        // Memorable quote
+    careerHighlight?: string    // Best career moment
+    careerLowPoint?: string     // Toughest career moment
+    careerStage?: string        // 'rising' | 'peak' | 'declining' | 'veteran'
     totalWins?: number
     championships?: number
-    rivalryIntensity?: number // How much of a rival to player
-    realDriverInfo?: {        // For real-world drivers
-      realAge?: number
-      knownFor?: string
-    }
+    rivalryIntensity?: number
   }>
   
   // ===== TV BROADCAST: TEAM NARRATIVES =====
   // Rich backstories for colorful commentary about other teams
+  // Fields match the Content Studio pre-generated bundle format
   teamNarratives?: Array<{
     teamId: string
     name: string
     shortName?: string
-    origin?: string                 // "Founded in a small garage in Bavaria..."
-    philosophy?: string             // "Known for developing young talent..."
-    culturalIdentity?: string       // "A true family team" / "Corporate precision"
-    technicalReputation?: string    // "Engineering excellence since 1987"
-    paddockStanding?: string        // "Respected throughout the paddock"
-    achievements?: string[]         // ["3x championship winners", "Le Mans 2019"]
-    titleCount?: number
-    famousAlumni?: string[]         // Driver names who raced here
-    currentTrajectory?: string      // "A team on the rise under new management"
-    recentForm?: string             // "Strong start to 2024"
-    anecdotes?: string[]            // Fun facts for color commentary
+    origin?: string              // Full team backstory
+    philosophy?: string          // Team racing philosophy
+    achievements?: string[]      // Notable achievements
+    teamPrincipal?: string       // Team boss info
+    headquarters?: string        // Where the team is based
+    reputation?: string          // Paddock reputation
+    fanBase?: string             // Fan following description
   }>
   
   // ===== 8-THEME INTELLIGENCE DATA =====
@@ -680,6 +683,51 @@ export interface EventContext {
   seriesCategory?: string            // Category (formula, gt, stock, etc.)
   seriesPrestige?: number            // 0-100 prestige rating
   isMultiClass?: boolean             // Multi-class racing?
+
+  // ===== PADDOCK WORLD SNAPSHOT (Phase 2) =====
+  worldSnapshot?: {
+    generatedAt: string
+    seriesId?: string
+    seriesName?: string
+    currentRound: number
+    totalRounds: number
+    racesRemaining: number
+    titleFightStatus?: string
+    teamCount: number
+    driverCount: number
+    teams: Array<{
+      id: string
+      name: string
+      shortName?: string
+      points: number
+      wins: number
+      avgFinish?: number
+      trend?: 'rising' | 'stable' | 'falling'
+      reliabilityRisk?: 'low' | 'moderate' | 'high'
+      sponsorPressure?: 'none' | 'low' | 'moderate' | 'high'
+    }>
+    drivers: Array<{
+      id: string
+      name: string
+      teamId?: string
+      teamName?: string
+      points?: number
+      wins?: number
+      recentForm?: string
+      rivalryIntensity?: number
+    }>
+    coverageLanes: {
+      frontRunners: string[]
+      midfield: string[]
+      underdogs: string[]
+    }
+    marketSignals: {
+      activeSponsors: number
+      sponsorsAtRisk: number
+      budgetPressure: 'none' | 'low' | 'moderate' | 'high'
+      boardPressure?: number
+    }
+  }
   
   // ===== SEASON FORM =====
   seasonPodiums?: number             // Podiums this season
@@ -693,6 +741,32 @@ export interface EventContext {
   // ===== BROADCAST PHASE (for TV-style commentary flow) =====
   broadcastPhase?: 'pre-session' | 'early-session' | 'mid-session' | 'late-session'
   hasValidTiming?: boolean           // True when lap times exist to reference
+  narrativeThreads?: NarrativeThread[]
+
+  // ===== STRATEGY / CROWD / POST-RACE ENRICHMENTS =====
+  pitWindowLap?: number
+  pitLap?: number
+  estimatedStops?: number
+  fuelConsumptionPerLap?: number
+  raceProgress?: number
+  isHomeHero?: boolean
+  excitingMomentCount?: number
+  finalPosition?: number
+  positionsGained?: number
+  overtakesMade?: number
+  overtakesLost?: number
+  purpleSectors?: number
+  personalBests?: number
+  narrativeHighlights?: string[]
+  keyMoments?: NarrativeMemory
+  startPosition?: number
+  pointsScored?: number
+  newChampionshipPosition?: number
+
+  // Legacy aliases still referenced by older pathways
+  teamPressure?: boolean
+  sponsorPressure?: boolean
+  mediaHeadlines?: string[]
   
   // ===== PLAYER ACTIVITY STATE (for intelligent commentary routing) =====
   _playerState?: PlayerActivityState  // Current player activity state
@@ -744,6 +818,9 @@ export interface NarrativeMemory {
   fastestLapSet?: { lap: number; time: number }
   personalBests: number
   purpleSectors: number
+  overtakesMade: number
+  overtakesLost: number
+  defensiveMoves: number
   
   // Mentioned facts (to avoid repeating)
   mentionedPoorStart: boolean
@@ -763,6 +840,9 @@ function createNarrativeMemory(): NarrativeMemory {
     defensiveSuccesses: 0,
     personalBests: 0,
     purpleSectors: 0,
+    overtakesMade: 0,
+    overtakesLost: 0,
+    defensiveMoves: 0,
     mentionedPoorStart: false,
     mentionedGreatStart: false,
     mentionedRecovery: false,
@@ -946,7 +1026,7 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
     'SESSION_START', 'DRIVER_BACKGROUND', 'TEAM_INFO', 'TRACK_CHARACTER',
     'TRIVIA_DROP', 'CHAMPIONSHIP_UPDATE', 'RIVALRY_MENTION', 'COLOR_COMMENTARY',
     'RANDOM_FACT', 'MEDIA_HEADLINE_CALLBACK', 'TEAM_PRESSURE_MENTION', 
-    'SPONSOR_PRESSURE_MENTION', 'TRACK_EVOLUTION',
+    'SPONSOR_PRESSURE_MENTION', 'TRACK_EVOLUTION', 'DISAGREEMENT',
     // Pit reporter events (grid walk, etc.)
     'PIT_REPORTER_GRID', 'ATMOSPHERE_ELECTRIC', 'BREATHING_ROOM'
   ],
@@ -962,7 +1042,7 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
     // Setup, preparation, track learning - NO lap time or corner analysis
     'TRACK_CHARACTER', 'TRIVIA_DROP', 'DRIVER_BACKGROUND', 'TEAM_INFO',
     'WEATHER_CHANGE', 'TRACK_EVOLUTION', 'COLOR_COMMENTARY', 'RANDOM_FACT',
-    'RIVALRY_MENTION', 'CHAMPIONSHIP_UPDATE'
+    'RIVALRY_MENTION', 'CHAMPIONSHIP_UPDATE', 'DISAGREEMENT'
   ],
   'FLYING_LAP': [
     // FULL ACTION - everything is fair game!
@@ -976,6 +1056,7 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
     // Color commentary
     'TRACK_CHARACTER', 'COLOR_COMMENTARY', 'TRIVIA_DROP', 'RANDOM_FACT',
     'DRIVER_BACKGROUND', 'TEAM_INFO', 'CHAMPIONSHIP_UPDATE', 'RIVALRY_MENTION',
+    'DISAGREEMENT',
     // Weather/track
     'WEATHER_CHANGE', 'TRACK_EVOLUTION',
     // Flags
@@ -996,7 +1077,7 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
   'COOLDOWN_LAP': [
     // Debrief mode - analysis and reflection
     'LAP_COMPLETE', 'COLOR_COMMENTARY', 'RANDOM_FACT', 'TRACK_CHARACTER',
-    'TRIVIA_DROP', 'CHAMPIONSHIP_UPDATE', 'SESSION_END',
+    'TRIVIA_DROP', 'CHAMPIONSHIP_UPDATE', 'SESSION_END', 'DISAGREEMENT',
     // Post-race events
     'COOLDOWN_LAP', 'POST_RACE_REFLECTION', 'CHAMPIONSHIP_IMPLICATIONS',
     'PIT_REPORTER_POST_RACE', 'ATMOSPHERE_ELECTRIC'
@@ -1008,7 +1089,7 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
     'RACE_START', 'FINAL_LAPS', 'HALFWAY_POINT', 'LAP_COMPLETE',
     'FASTEST_LAP', 'PERSONAL_BEST', 'PIT_ENTRY', 'PIT_EXIT',
     'CORNER_CALLOUT', 'TRACK_CHARACTER', 'COLOR_COMMENTARY', 'RANDOM_FACT',
-    'CHAMPIONSHIP_UPDATE', 'RIVALRY_MENTION', 'WEATHER_CHANGE',
+    'CHAMPIONSHIP_UPDATE', 'RIVALRY_MENTION', 'WEATHER_CHANGE', 'DISAGREEMENT',
     'RACE_WIN', 'PODIUM_FINISH', 'RACE_FINISH', 'LEADER_UPDATE',
     'MIDFIELD_ACTION', 'RIVAL_PIT_ENTRY', 'RIVAL_PIT_EXIT', 'RIVAL_FASTEST_LAP',
     'CONTACT_DETECTED', 'PLAYER_SPINNING', 'FLAG_YELLOW', 'FLAG_SAFETY_CAR',
@@ -1026,6 +1107,9 @@ const STATE_ALLOWED_EVENTS: Record<PlayerActivityState, CommentaryEventType[]> =
 const BYPASS_STATE_EVENTS: CommentaryEventType[] = [
   // Race finish events
   'RACE_WIN', 'PODIUM_FINISH', 'RACE_FINISH', 'SESSION_END',
+  // Session milestone events - broadcast-level, must fire regardless of player state
+  'SESSION_START', 'SESSION_TIME_5MIN', 'SESSION_TIME_1MIN', 'SESSION_TIME_30SEC',
+  'SESSION_CHECKERED', 'PRACTICE_COMPLETE', 'QUALI_COMPLETE',
   // Post-race TV broadcast events
   'COOLDOWN_LAP', 'POST_RACE_REFLECTION', 'CHAMPIONSHIP_IMPLICATIONS',
   'PIT_REPORTER_POST_RACE',
@@ -1742,7 +1826,7 @@ let mainWindow: BrowserWindow | null = null
 let geminiKey: string = ''
 let elevenLabsKey: string = ''
 let leadVoiceId: string = 'KYXXenFO8IFao5NWmALZ' // Crofty v2 - Lead commentator (cloned voice)
-let coVoiceId: string = 'V0cljQmo7wpx8LTdbqfJ' // Vicky Cowan - Co-commentator
+let coVoiceId: string = 'cmPhBFoVi6Q3CAWAx2Gr' // Brundle - Co-commentator
 
 /**
  * Initialize the commentary engine
@@ -1780,13 +1864,18 @@ function updateQueueManagerConfig(): void {
  * Enable/disable commentary
  */
 export function setCommentaryEnabled(enabled: boolean): void {
+  const wasEnabled = state.enabled
   state.enabled = enabled
   if (!enabled) {
     stopAllAudio()
     state.queuedEvents = []
-    queueManager.clearAll()  // Clear all stream queues
+    queueManager.clearAll()
   }
-  console.log(`[Commentary] ${enabled ? 'Enabled' : 'Disabled'}`)
+  const hasKeys = !!(geminiKey && elevenLabsKey)
+  console.log(`[Commentary] ${enabled ? 'ENABLED' : 'DISABLED'} (was ${wasEnabled ? 'on' : 'off'}, keys: ${hasKeys ? 'yes' : 'NO'})`)
+  if (enabled && !hasKeys) {
+    console.warn('[Commentary] WARNING: Enabled but missing API keys – processTelemetry will early-return')
+  }
 }
 
 /**
@@ -1819,14 +1908,14 @@ export function setVoiceSettings(voice: string, volume: number): void {
  * Set dual voice settings (lead + co-commentator)
  */
 export function setDualVoiceSettings(leadVoice: string, coVoice: string, volume: number): void {
-  leadVoiceId = leadVoice
-  coVoiceId = coVoice
-  setVolume(volume)
+  leadVoiceId = leadVoice || ''
+  coVoiceId = coVoice || ''
+  setVolume(volume ?? 0.8)
   
   // IMPORTANT: Also update the voices module used by the scheduler
-  setVoiceIds(leadVoice, coVoice)
+  setVoiceIds(leadVoiceId, coVoiceId)
   
-  console.log(`[Commentary] Lead: ${leadVoice}, Co: ${coVoice}, volume ${volume}`)
+  console.log(`[Commentary] Lead: ${leadVoiceId || '(none)'}, Co: ${coVoiceId || '(none)'}, volume ${volume}`)
   updateQueueManagerConfig()
 }
 
@@ -1841,8 +1930,100 @@ export function getVoiceIds(): { lead: string; co: string } {
  * Set career data for color commentary
  */
 export function setCareerData(data: Partial<EventContext>): void {
-  state.careerData = data
-  console.log('[Commentary] Career data updated:', data.playerName, data.teamName)
+  const source = data.commentaryDataSource || 'mixed'
+  const sanitized = { ...data }
+  // Sanitize player name to prevent double spaces from firstName/lastName concatenation
+  if (sanitized.playerName) {
+    sanitized.playerName = sanitized.playerName.replace(/\s+/g, ' ').trim()
+  }
+  const beforeDriverNarratives = Array.isArray(data.driverNarratives) ? data.driverNarratives.length : 0
+  const beforeTeamNarratives = Array.isArray(data.teamNarratives) ? data.teamNarratives.length : 0
+
+  // Strict pre-generated policy: only trust narrative payloads tagged as Content Studio.
+  if (source !== 'content_studio') {
+    delete sanitized.driverNarratives
+    delete sanitized.teamNarratives
+    logCommentaryDecision(
+      'DATA_SOURCE_REJECTED',
+      `Rejected non-pregen narrative payload from source "${source}"`,
+      {
+        source,
+        droppedDriverNarratives: beforeDriverNarratives,
+        droppedTeamNarratives: beforeTeamNarratives,
+        playerName: sanitized.playerName,
+        teamName: sanitized.teamName,
+      },
+      'warning'
+    )
+  } else {
+    const sampleDrivers = Array.isArray(data.driverNarratives)
+      ? data.driverNarratives.slice(0, 3).map(d => {
+          const hasBio = !!(d as any).biography
+          const hasStyle = !!(d as any).drivingStyle
+          return `${d.name}(bio:${hasBio},style:${hasStyle})`
+        }).join(', ')
+      : 'none'
+    logCommentaryDecision(
+      'DATA_SOURCE_ACCEPTED',
+      `Accepted pre-generated narrative payload from source "${source}"`,
+      {
+        source,
+        driverNarratives: beforeDriverNarratives,
+        teamNarratives: beforeTeamNarratives,
+        playerName: sanitized.playerName,
+        teamName: sanitized.teamName,
+        sampleDrivers,
+      },
+      'info'
+    )
+  }
+
+  const seriesThreadKey = String(sanitized.seriesName || sanitized.seriesShortName || 'global')
+  const existingThreadState = getCommentaryEntityState('series', seriesThreadKey)
+  const existingThreadsRaw = existingThreadState.success && Array.isArray(existingThreadState.data)
+    ? existingThreadState.data.find((row) => row.stateKey === 'narrative_threads')?.value
+    : undefined
+  const existingThreads = Array.isArray(existingThreadsRaw) ? existingThreadsRaw as NarrativeThread[] : []
+
+  const evolvedThreads = evolveNarrativeThreads(existingThreads, {
+    currentRound: sanitized.currentRound,
+    titleFightStatus: sanitized.titleFightStatus,
+    contractEndingSoon: sanitized.contractEndingSoon,
+    sponsorPressureLevel: sanitized.sponsorPressureLevel,
+    seasonAvgFinish: sanitized.seasonAvgFinish,
+    teamName: sanitized.teamName,
+    playerName: sanitized.playerName,
+    worldSnapshot: sanitized.worldSnapshot,
+  })
+  sanitized.narrativeThreads = evolvedThreads
+
+  upsertCommentaryEntityState({
+    entityType: 'series',
+    entityId: seriesThreadKey,
+    stateKey: 'narrative_threads',
+    value: evolvedThreads,
+    roundUpdated: sanitized.currentRound,
+  })
+
+  logCommentaryDecision(
+    'NARRATIVE_THREADS_UPDATED',
+    `Updated ${evolvedThreads.length} narrative threads for ${seriesThreadKey}`,
+    {
+      seriesKey: seriesThreadKey,
+      source,
+      threadCount: evolvedThreads.length,
+      currentRound: sanitized.currentRound,
+      states: evolvedThreads.slice(0, 8).map((thread) => ({
+        id: thread.id,
+        type: thread.type,
+        state: thread.state,
+      })),
+    },
+    'decision'
+  )
+
+  state.careerData = sanitized
+  console.log('[Commentary] Career data updated:', sanitized.playerName, sanitized.teamName, `(source: ${source})`)
 }
 
 /**
@@ -1881,12 +2062,21 @@ function markEventTriggered(eventType: string): void {
 let lastTelemetryProcess = 0
 const TELEMETRY_PROCESS_INTERVAL = 1000 // Process every 1 second (was 2s)
 
+let telemetryGateLoggedAt = 0
+
 export function processTelemetry(
   session: any,
   participants: any[],
   playerIndex: number
 ): void {
-  if (!state.enabled || !geminiKey || !elevenLabsKey) return
+  if (!state.enabled || !geminiKey || !elevenLabsKey) {
+    const now = Date.now()
+    if (now - telemetryGateLoggedAt > 15_000) {
+      telemetryGateLoggedAt = now
+      console.log(`[Commentary] processTelemetry skipped – enabled:${state.enabled} gemini:${!!geminiKey} eleven:${!!elevenLabsKey}`)
+    }
+    return
+  }
   
   // Throttle processing to prevent spam
   const now = Date.now()
@@ -1933,10 +2123,12 @@ export function processTelemetry(
   
   updatePlayerActivityState(playerSpeed, pitMode, currentLap, sessionType, raceState)
   
-  // Build context with career data
+  // Position is meaningless when sitting in the garage or before completing a lap
+  const hasValidPosition = (player.currentLap || 0) >= 1 && state.playerActivityState !== 'GARAGE'
+  
   const context: EventContext = {
     playerName: state.careerData?.playerName || player.name || 'Driver',
-    playerPosition: player.racePosition || 0,
+    playerPosition: hasValidPosition ? (player.racePosition || 0) : 0,
     trackName: sanitizeTrackName(session?.trackName),
     currentLap: player.currentLap || 0,
     totalLaps: session?.lapsInEvent || 0,
@@ -2338,11 +2530,11 @@ export function processTelemetry(
       state.sessionMemory.raceFinished = true
       state.sessionMemory.finalRacePosition = context.playerPosition
       
-      // Determine the right event type
+      // Determine the right event type (position must be valid and not retired/DNF)
       let eventType: CommentaryEventType = 'RACE_FINISH'
-      if (context.playerPosition === 1) {
+      if (context.playerPosition === 1 && raceStateStr === 'Finished') {
         eventType = 'RACE_WIN'
-      } else if (context.playerPosition <= 3) {
+      } else if (context.playerPosition > 0 && context.playerPosition <= 3 && raceStateStr === 'Finished') {
         eventType = 'PODIUM_FINISH'
       }
       
@@ -4263,6 +4455,7 @@ function detectRaceEvents(
       driver: overtakenDriver,
       forPosition: context.playerPosition
     })
+    state.narrativeMemory.overtakesMade++
     // Keep only last 5 overtakes
     if (state.narrativeMemory.bigOvertakes.length > 5) {
       state.narrativeMemory.bigOvertakes.shift()
@@ -4329,6 +4522,7 @@ function detectRaceEvents(
       driver: passingDriver,
       toPosition: context.playerPosition
     })
+    state.narrativeMemory.overtakesLost++
     // Keep only last 5
     if (state.narrativeMemory.positionsLost.length > 5) {
       state.narrativeMemory.positionsLost.shift()
@@ -4410,7 +4604,7 @@ function detectRaceEvents(
     )
     // Track in narrative memory
     state.narrativeMemory.personalBests++
-    state.narrativeMemory.fastestLapSet = { lap: context.currentLap, time: context.bestLapTime }
+    state.narrativeMemory.fastestLapSet = { lap: context.currentLap, time: context.bestLapTime as number }
     
     events.push({
       type: 'PERSONAL_BEST',
@@ -4573,6 +4767,7 @@ function detectRaceEvents(
         priority: 'medium',
         timestamp: Date.now()
       })
+      state.narrativeMemory.defensiveMoves++
       markEventTriggered('DEFENSIVE_DRIVING')
       state.underPressureLaps = 0 // Reset
     }
@@ -5021,8 +5216,12 @@ function maybeAddColorCommentary(context: EventContext): void {
   
   // ===== TEAM strand - team dynamics, pressure, sponsors =====
   if (context.teamName && !isOnCooldown('TEAM_INFO')) strandPools['TEAM'].push('TEAM_INFO')
-  if (context.teamPressure && !isOnCooldown('TEAM_PRESSURE_MENTION')) strandPools['TEAM'].push('TEAM_PRESSURE_MENTION')
-  if (context.sponsorPressure && !isOnCooldown('SPONSOR_PRESSURE_MENTION')) strandPools['TEAM'].push('SPONSOR_PRESSURE_MENTION')
+  if (context.teamSatisfactionStatus === 'concerned' || context.teamSatisfactionStatus === 'crisis') {
+    if (!isOnCooldown('TEAM_PRESSURE_MENTION')) strandPools['TEAM'].push('TEAM_PRESSURE_MENTION')
+  }
+  if (context.sponsorPressureLevel === 'moderate' || context.sponsorPressureLevel === 'high') {
+    if (!isOnCooldown('SPONSOR_PRESSURE_MENTION')) strandPools['TEAM'].push('SPONSOR_PRESSURE_MENTION')
+  }
   // Always allow team color commentary if we have team data
   if (context.teamName && !isOnCooldown('COLOR_COMMENTARY') && !strandPools['DRIVER'].includes('COLOR_COMMENTARY')) {
     strandPools['TEAM'].push('COLOR_COMMENTARY')
@@ -5031,7 +5230,7 @@ function maybeAddColorCommentary(context: EventContext): void {
   // ===== SEASON strand - championship, rivalry, media =====
   if (context.championshipPosition && !isOnCooldown('CHAMPIONSHIP_UPDATE')) strandPools['SEASON'].push('CHAMPIONSHIP_UPDATE')
   if (context.rivalName && !isOnCooldown('RIVALRY_MENTION')) strandPools['SEASON'].push('RIVALRY_MENTION')
-  if (context.mediaHeadlines && context.mediaHeadlines.length > 0 && !isOnCooldown('MEDIA_HEADLINE_CALLBACK')) {
+  if (context.recentPressClippings && context.recentPressClippings.length > 0 && !isOnCooldown('MEDIA_HEADLINE_CALLBACK')) {
     strandPools['SEASON'].push('MEDIA_HEADLINE_CALLBACK')
   }
   // Add generic season color if we have standings data
@@ -5370,17 +5569,17 @@ export function handleRaceComplete(data: any): void {
     currentLap: data.lapsCompleted || 0,
     totalLaps: data.lapsCompleted || 0,
     bestLapTime: data.bestLapTime,
-    sessionType: 'Race',
+    sessionType: data.sessionType || 'Race',
     ...state.careerData
   }
   
   let eventType: CommentaryEventType = 'RACE_FINISH'
   
   if (data.dnf) {
-    eventType = 'RACE_FINISH' // Could add DNF event
+    eventType = 'RACE_FINISH'
   } else if (data.playerPosition === 1) {
     eventType = 'RACE_WIN'
-  } else if (data.playerPosition <= 3) {
+  } else if (data.playerPosition > 0 && data.playerPosition <= 3) {
     eventType = 'PODIUM_FINISH'
   }
   
@@ -5429,7 +5628,8 @@ export async function testAudio(): Promise<boolean> {
  */
 export function getAvailableVoices(): Array<{ id: string; name: string; description: string }> {
   return [
-    { id: 'V0cljQmo7wpx8LTdbqfJ', name: 'Vicky Cowan', description: 'British female, preppy radio presenter ⭐' },
+    { id: 'cmPhBFoVi6Q3CAWAx2Gr', name: 'Brundle', description: 'Co-commentator - Martin Brundle style ⭐' },
+    { id: 'V0cljQmo7wpx8LTdbqfJ', name: 'Vicky Cowan', description: 'British female, preppy radio presenter' },
     { id: 'onwK4e9ZLuTAKqWW03F9', name: 'Daniel', description: 'British male, steady broadcaster' },
     { id: 'JBFqnCBsd6RMkjVDRZzb', name: 'George', description: 'British male, warm storyteller' },
     { id: 'pNInz6obpgDQGcFmaJgB', name: 'Adam', description: 'British male, warm' },

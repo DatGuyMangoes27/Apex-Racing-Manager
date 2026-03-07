@@ -1,0 +1,22 @@
+{
+  "name": "Park Jae-Hyun",
+  "nationality": "South Korean",
+  "age": 30,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jae-Hyun's passion for motorsport ignited during his university days, fueled by late-night viewings of Formula 1 races. After graduating with a degree in mechanical engineering from KAIST, he immediately pursued a career in racing, starting as a data analyst for a smaller Korean racing team. His meticulous approach and knack for identifying performance gains quickly propelled him into the role of a junior race engineer. \n\nHe honed his skills for several years before being scouted by ART Grand Prix Academy, where he now works with promising young drivers. Jae-Hyun believes in a collaborative engineering style, prioritizing clear communication and data-driven decision-making. He's known for his ability to quickly adapt to changing track conditions and driver feedback, making him a valuable asset in the pit lane.\n\nJae-Hyun distinguishes himself through his calm demeanor under pressure and a relentless focus on the details. He can often be found poring over telemetry data late into the night, searching for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly parted to the side with a slight wave.",
+    "eyeColor": "Dark brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jae-Hyun has a focused look, with sharp eyes and a thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking green tea before every race session."
+  ]
+}

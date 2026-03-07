@@ -1,0 +1,22 @@
+{
+  "name": "Andreas Gruber",
+  "nationality": "Austrian",
+  "age": 36,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Andreas's journey into motorsport started with a childhood obsession with go-karting, fueled by his father's passion for rally racing. He quickly moved from racing to tinkering, finding more satisfaction in understanding the mechanics than competing. After graduating with a degree in mechanical engineering from the Graz University of Technology, Andreas secured a junior position at a small Formula 3 team, where he rapidly absorbed knowledge and proved his worth. His meticulous approach to problem-solving and his knack for optimizing car setups caught the attention of EKS JC, where he now leads the technical team. \n\nAndreas believes in a data-driven approach, meticulously analyzing every aspect of the car's performance to identify areas for improvement. He's known for pushing his team to their limits, demanding precision and excellence in every task. While some find his intensity challenging, most respect his unwavering commitment to achieving the best possible results.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A lean man with a focused gaze and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having his workstation perfectly organized."
+  ]
+}

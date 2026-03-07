@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0453",
+  "name": "Bharat Finance",
+  "category": "financial",
+  "tier": "entry",
+  "country": "India",
+  "description": "Securing your future, driving performance.",
+  "story": "Bharat Finance is a leading Indian microfinance institution dedicated to empowering entrepreneurs and communities. Seeing the dedication and precision required in motorsport, they believe sponsoring racing teams aligns with their commitment to supporting high-achievers. They seek to build brand awareness across India and showcase their values of reliability and growth.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15,
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0453.png"
+}

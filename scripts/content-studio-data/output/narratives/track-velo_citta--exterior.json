@@ -1,0 +1,61 @@
+{
+  "history": "Autódromo Velo Città, located near Mogi Guaçu, São Paulo, Brazil, is a modern motorsport facility designed by Dito Giannetti. Inaugurated in 2012, it quickly became a popular venue for national racing series, track days, and corporate events. While the full circuit is the most well-known configuration, the 'Exterior' layout offers a shorter, more technical challenge. Specific races and events designed solely for the Exterior layout are less documented compared to events utilizing the full circuit, but it remains a popular choice for club racing and driver training due to its accessibility and engaging nature. It is known for its challenging corners and elevation changes, offering a unique driving experience for both amateur and professional drivers.",
+  "atmosphere": "The air crackles with anticipation as you approach Velo Città for a race on the Exterior configuration. The roar of engines echoes against the surrounding hills, a constant reminder of the battles about to unfold. The paddock buzzes with activity, teams making last-minute adjustments, drivers focused and determined. From the grandstands overlooking the circuit, you get a panoramic view of the track, the Brazilian sun glinting off the asphalt. The smell of burning rubber and high-octane fuel hangs in the air, creating an intoxicating blend of excitement and adrenaline.",
+  "trackCharacter": "The 'Exterior' layout at Velo Città is a flowing, technical circuit that rewards precision and car control. At 2.8km with 9 turns, it emphasizes mid-corner speed and quick transitions. The elevation changes are less dramatic than the full circuit, but still play a significant role, requiring drivers to carefully manage their momentum. Unlike the full layout, which features a longer straight, the Exterior configuration is focused on linking corners together, making it a true driver's track where small mistakes are heavily punished.",
+  "nickname": "The Technical Loop",
+  "famousCorners": [
+    {
+      "name": "Curva do Lago",
+      "description": "A sweeping left-hander that leads onto a short straight, requiring a delicate balance between entry speed and exit trajectory.",
+      "challenge": "Maintaining momentum through the corner and setting up the next straight is crucial."
+    },
+    {
+      "name": "Curva da Mata",
+      "description": "A fast, blind right-hander that tests a driver's courage and commitment. It's critical to nail the apex to maintain speed.",
+      "challenge": "Requires absolute precision and a leap of faith to carry maximum speed through this blind corner."
+    },
+    {
+      "name": "Curva da Caixa D'Agua",
+      "description": "A tight right-hand corner that is approached after a fast run through the Esses and the 'Curva da Mata', requiring a significant reduction in speed and perfect braking.",
+      "challenge": "Perfecting the braking point to avoid running wide or losing valuable time."
+    },
+    {
+      "name": "Curva do Saci",
+      "description": "A tricky left-hand corner that demands precise throttle control and a good exit to set up the next straight.",
+      "challenge": "Balancing entry speed with a clean exit to maintain momentum is key."
+    },
+    {
+      "name": "Curva da Capela",
+      "description": "A wide, flowing right-hander that allows drivers to carry a lot of speed. Exit speed is crucial for the following straight.",
+      "challenge": "Maintaining a tight line while maximizing speed through the corner."
+    }
+  ],
+  "keyFactors": [
+    "Mid-corner speed",
+    "Braking precision",
+    "Throttle control",
+    "Car balance",
+    "Quick corner transitions"
+  ],
+  "overtakingSpots": [
+    "Into Curva da Caixa D'Agua after the fast run from the Esses.",
+    "Under braking for Curva do Saci, using the run from Curva da Capela.",
+    "Into Curva do Lago if a driver gets a good run out of the final corner."
+  ],
+  "historySnippets": [
+    "Velo Città was designed by renowned Brazilian track designer Dito Giannetti.",
+    "The track's name, Velo Città, translates to 'Speed City' in Italian.",
+    "The Exterior layout is often used for driver training programs.",
+    "The facility includes a modern driving school and event spaces.",
+    "Velo Città's location in Mogi Guaçu offers a scenic backdrop for racing.",
+    "The track is known for its challenging combination of corners and elevation changes."
+  ],
+  "weatherNotes": "The weather in Mogi Guaçu is typically warm and humid, with the rainy season occurring during the summer months (December to March). Rain can significantly impact grip levels on the Exterior layout, making braking zones treacherous and requiring drivers to adjust their lines. High temperatures can also affect tire performance, leading to increased degradation.",
+  "drivingAdvice": "On the Exterior layout at Velo Città, focus on maintaining momentum through the corners. Smooth inputs are crucial, as the track rewards precision and car control. Pay close attention to your braking points, especially into Curva da Caixa D'Agua and Curva do Saci. Experiment with different lines through the Esses to maximize your speed. Managing tire wear is also essential, particularly in longer races, so avoid overdriving the car early in the stint.",
+  "famousRaces": [
+    "Although there aren't specific high-profile races unique to the Exterior layout, it is used in support races for larger events held on the full circuit.",
+    "Velo Città hosts various national racing series, including touring car and GT championships, often using the full or short circuits.",
+    "The venue is a popular choice for track days and corporate events, providing opportunities for amateur drivers to experience the thrill of racing."
+  ],
+  "localCulture": "Mogi Guaçu is a city known for its agricultural production and strong industrial base. The local cuisine features traditional Brazilian dishes, with a focus on fresh ingredients. The region is also known for its coffee production. Paddock life at Velo Città reflects the passion and enthusiasm of Brazilian motorsport fans, with a friendly and welcoming atmosphere."
+}

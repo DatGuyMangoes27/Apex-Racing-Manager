@@ -1,0 +1,22 @@
+{
+  "name": "Jana Novotna",
+  "nationality": "Czech",
+  "age": 50,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Jana's motorsport journey began with a childhood fascination for engineering, fueled by watching rally races in her native Czech Republic. She pursued mechanical engineering at the Czech Technical University in Prague, where she excelled in vehicle dynamics and design. After graduating, she started her career at a small engineering firm that specialized in race car components, gradually gaining experience in aerodynamics and suspension systems.\n\nHer pragmatic approach to problem-solving and her meticulous attention to detail quickly made her an invaluable asset. She joined Tolman Motorsport five years ago, initially as a senior engineer before rising to the role of technical director. Jana believes in a data-driven approach, emphasizing rigorous testing and analysis to optimize car performance. She is known for her ability to clearly communicate complex technical concepts to the drivers and mechanics, fostering a collaborative team environment.\n\nWhat sets Jana apart is her unwavering commitment to reliability and consistency. She prioritizes robust engineering solutions that minimize mechanical failures, ensuring that the team can consistently perform at its best. Her colleagues appreciate her calm demeanor under pressure and her ability to find practical solutions even in the most challenging situations.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, straight, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Jana has a focused expression and a practical, no-nonsense appearance."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Insists on a specific brand of Czech-made coffee in the garage.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

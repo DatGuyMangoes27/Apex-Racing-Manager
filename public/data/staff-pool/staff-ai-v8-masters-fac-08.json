@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Chanthawong",
+  "nationality": "Thai",
+  "age": 53,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Somchai's journey into motorsport began unexpectedly during his engineering studies. A guest lecture by a Formula 1 aerodynamicist sparked an intense fascination with the science of speed. He initially worked for a local automotive firm, honing his skills in fluid dynamics before making the jump to V8 Masters Racing a decade ago. Somchai is known for his meticulous approach to data analysis and his ability to identify subtle airflow anomalies that others might miss. His patience and methodical nature make him an invaluable asset in the often-frustrating world of wind tunnel testing.\n\nAt V8 Masters, Somchai has become a vital part of the team's aerodynamic development program. He takes pride in his ability to translate complex data into actionable insights for the engineering team. While not overtly charismatic, his quiet confidence and attention to detail have earned him the respect of his colleagues. He's always eager to learn new techniques and embraces the challenge of optimizing performance through aerodynamic improvements.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Thin mustache",
+    "description": "Somchai is of average height with a slightly stocky build and a kind face."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of humming softly while reviewing wind tunnel data.",
+    "Insists on using only traditional slide rulers to double check computer data outputs."
+  ]
+}

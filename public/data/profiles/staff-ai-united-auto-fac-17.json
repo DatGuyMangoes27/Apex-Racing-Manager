@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 45,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Kenji Tanaka's career began in law enforcement, where he spent fifteen years honing his skills in risk assessment and security protocols. A lifelong motorsport enthusiast, he transitioned to racing security after witnessing a major safety incident at Suzuka. He believes in proactive security, focusing on prevention through meticulous planning and rigorous enforcement. What sets Kenji apart is his calm demeanor under pressure and his unwavering commitment to the safety of everyone involved, from drivers to spectators.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "A man of medium build, Kenji carries himself with a quiet confidence."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with security checklists.",
+    "Insists on checking every fire extinguisher personally before each event.",
+    "Drinks green tea constantly throughout the day."
+  ]
+}

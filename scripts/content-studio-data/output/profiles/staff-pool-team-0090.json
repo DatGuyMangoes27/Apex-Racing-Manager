@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 41,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Erik's fascination with motorsport began during his childhood, watching rally races in the Swedish countryside. He pursued a degree in mechanical engineering, focusing on vehicle dynamics and control systems. After graduating, he joined a junior formula team, initially as a data analyst, quickly demonstrating an aptitude for race strategy. He rose through the ranks, contributing to several championship wins, and developing a reputation for making bold, yet calculated decisions under pressure. His approach centers around meticulous data analysis, coupled with an understanding of driver psychology. What sets Erik apart is his ability to quickly adapt to changing conditions and his commitment to continuous improvement, always seeking innovative solutions to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Erik is of average height with a focused look."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a habit of tapping his fingers on the table when deep in thought.",
+    "Prefers to work in a quiet environment with minimal distractions."
+  ]
+}

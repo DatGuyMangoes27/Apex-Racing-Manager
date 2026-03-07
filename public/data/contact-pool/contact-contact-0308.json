@@ -1,0 +1,31 @@
+{
+  "name": "Isabela Oliveira",
+  "nationality": "Brazilian",
+  "age": 44,
+  "gender": "female",
+  "contactType": "banker",
+  "bio": "Isabela Oliveira is a self-made titan in the Brazilian finance world. Starting from humble beginnings, she built her empire through shrewd investments and an uncanny ability to spot emerging markets. Now the CEO of a boutique investment bank specializing in high-growth ventures, she’s known for her meticulous due diligence and unwavering commitment to her clients. While some might find her directness off-putting, those who earn her respect find a fiercely loyal and insightful ally. \n\nA racing driver might cross paths with Isabela seeking investment for their team or personal sponsorship. Her bank is known to selectively invest in ventures with high growth potential, and a promising driver could be seen as just that. However, she's not easily impressed and values a strong business plan as much as raw talent, and can be condescending if she thinks someone is not serious about their career.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Sleek, shoulder-length bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabela has a commanding presence, often accentuated by her power suits. She has sharp, intelligent eyes that seem to assess everything at once."
+  },
+  "connectionToMotorsport": "Isabela's bank has previously invested in a Brazilian Formula 4 team, giving her some understanding of the sport's financial landscape. She also attends the occasional F1 race in São Paulo for networking opportunities.",
+  "meetingContext": "The player might meet Isabela at a fundraising gala for a local charity in São Paulo or through a mutual connection in the business world who recognizes the potential synergy between Isabela's investment expertise and the player's racing career.",
+  "conversationTopics": [
+    "The Brazilian economy",
+    "Investment strategies",
+    "The importance of financial planning",
+    "Her latest climbing expedition in the Andes",
+    "The philosophy of Seneca"
+  ],
+  "canHelp": [
+    "Provide substantial financial backing for the player's racing endeavors",
+    "Offer guidance on financial management and investment opportunities",
+    "Introduce the player to other high-net-worth individuals and potential sponsors"
+  ],
+  "personality_summary": "A driven and thoughtful banker, but can come off as condescending."
+}

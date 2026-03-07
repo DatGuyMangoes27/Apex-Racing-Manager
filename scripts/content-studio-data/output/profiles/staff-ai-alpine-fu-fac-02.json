@@ -1,0 +1,22 @@
+{
+  "name": "Marko Kovačić",
+  "nationality": "Croatian",
+  "age": 36,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Marko's journey into motorsport began with a fascination for the intricate engineering behind Formula 1 cars. Growing up in Zagreb, he spent countless hours dismantling and reassembling old engines, developing a deep understanding of mechanical structures. After graduating with a degree in mechanical engineering, he honed his skills in composite materials at a local aerospace firm, working on advanced aircraft components. His passion for speed and precision led him to Alpine F1, where he quickly became a valuable member of the composite department. \n\nMarko's approach to composite work is meticulous and methodical. He believes in the importance of continuous learning and actively seeks out new techniques and materials to improve performance. Known for his innovative solutions and problem-solving abilities, Marko is always looking for ways to shave off those crucial milliseconds. His colleagues value his dedication and collaborative spirit, making him an integral part of the Alpine team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Marko is of average height, with a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and ideas.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought.",
+    "Insists on using a specific brand of carbon fiber sealant."
+  ]
+}

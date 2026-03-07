@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0464",
+  "name": "AlpenGrip Tires",
+  "category": "equipment",
+  "tier": "entry",
+  "country": "Austria",
+  "description": "Performance tires engineered for ultimate grip.",
+  "story": "AlpenGrip is a family-owned Austrian tire manufacturer focused on precision and performance. They believe motorsport is the ultimate testing ground for their innovative tire designs, and seek a partnership to showcase their reliability and cutting-edge technology. They are eager to support up-and-coming teams and drivers.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0464.png"
+}

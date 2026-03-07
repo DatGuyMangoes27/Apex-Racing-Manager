@@ -1,0 +1,22 @@
+{
+  "name": "Elias Virtanen",
+  "nationality": "Finnish",
+  "age": 27,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Elias's journey into motorsport began with a childhood fascination with electronics and a deep-seated love for racing, fueled by watching Mika Häkkinen dominate the Formula 1 circuit. He excelled in electrical engineering at Tampere University, specializing in embedded systems and signal processing, skills he quickly applied to karting, first as a hobbyist and then professionally. Elias joined the Kart Academy straight out of university and quickly became a vital member of the team, known for his methodical approach to problem-solving. \n\nHis strength lies in his ability to quickly diagnose complex electronic issues and implement effective solutions. He's less interested in theoretical innovation, preferring to focus on optimizing existing systems for maximum performance. While he works well independently, he's willing to collaborate on projects that require his specialized expertise. Elias is often found meticulously analyzing data logs, searching for that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Light Brown",
+    "hairStyle": "Short, neatly combed to the side with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Elias is of average height with a lean build and a focused expression."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small multi-tool.",
+    "Has a habit of tapping his pen on the table when concentrating.",
+    "Insists on using a specific brand of soldering iron."
+  ]
+}

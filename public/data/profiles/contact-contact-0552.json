@@ -1,0 +1,31 @@
+{
+  "name": "Pippa Sterling",
+  "nationality": "British",
+  "age": 35,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Pippa Sterling isn't your typical racing driver. While her peers are poring over telemetry data, Pippa's more likely to be discussing the merits of single-origin coffee or the latest avant-garde ballet. Don't let her eccentricities fool you, though; she's a formidable competitor with a string of podium finishes in GT racing under her belt. Her empathetic nature shines through in her dedication to promoting female participation in motorsport, and she's known for mentoring young drivers.\n\nHer impulsive streak led her to switch from a promising career in finance to racing in her late twenties, much to the bewilderment of her family. Despite her privileged background, Pippa is grounded, approachable, and fiercely independent. Her interest in various motorsport categories means she often attends events where aspiring drivers are trying to make a name for themselves.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Wavy bob",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Pippa is of average height with a lean, athletic build, a testament to her dedication to fitness. She often sports a pair of stylish, oversized sunglasses, even indoors."
+  },
+  "connectionToMotorsport": "Pippa is a well-respected GT racing driver with several years of experience and a strong network within the British motorsport scene. She also actively supports and mentors young, up-and-coming drivers.",
+  "meetingContext": "You might meet Pippa at a charity motorsport event, a GT race meet, or a networking event for young drivers.",
+  "conversationTopics": [
+    "Coffee culture",
+    "Avant-garde ballet",
+    "The challenges faced by women in motorsport",
+    "Latest trends in sustainable gardening",
+    "Polo Matches"
+  ],
+  "canHelp": [
+    "Introduce you to influential team owners",
+    "Provide expert feedback on your driving technique",
+    "Offer sponsorship opportunities through her network"
+  ],
+  "personality_summary": "An eccentric but talented and empathetic racing driver with a wide range of interests and a desire to help others succeed."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0123",
+  "name": "Beaumont & Sons",
+  "category": "watches",
+  "tier": "entry",
+  "country": "Canada",
+  "description": "Canadian craftsmanship, timeless precision.",
+  "story": "Beaumont & Sons is a family-owned watchmaker based in Montreal, crafting quality timepieces since 1947. We admire the dedication and precision required in motorsport. We seek to partner with teams that reflect our values of heritage, reliability, and a commitment to excellence, hoping to reach a new generation of discerning enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 3
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "luxury",
+    "noControversyClause": true
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0123.png"
+}

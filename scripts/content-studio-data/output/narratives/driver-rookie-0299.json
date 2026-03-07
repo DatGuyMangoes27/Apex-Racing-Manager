@@ -1,0 +1,27 @@
+{
+  "biography": "Oscar Thompson, a name whispered with increasing frequency in junior racing circles, hails from the sun-drenched Algarve region of Portugal. His journey began not on a meticulously maintained track, but on the winding, often treacherous, coastal roads near his family's olive grove. He learned car control wrestling his grandfather’s ancient farm truck along these routes, a baptism by fire that instilled in him both a deep respect for machinery and an innate understanding of grip limits. His formal racing debut came at age 14 in the Portuguese karting championship, where his raw talent quickly became apparent. One defining moment came during a rain-soaked race at Braga; while others struggled, Thompson threaded the needle with uncanny precision, overtaking three karts in one daring move around the outside of turn one, securing his first victory. Now 18, Thompson is navigating the fiercely competitive world of Formula 4, running as an independent, a testament to his family's unwavering support and his own relentless drive. He dreams of one day gracing the Formula 1 grid, carrying the Portuguese flag with pride.",
+  "drivingStyle": "Thompson is a remarkably steady and calculated driver, earning him the moniker \"The Professor\" among his peers. He doesn’t possess the flamboyant aggression of some, preferring a smooth, precise approach. He excels at managing tire degradation, often running longer stints than his rivals. His cornering style is characterized by late braking and a willingness to carry a higher minimum speed through the apex, prioritizing momentum over brute force. Under pressure, he remains remarkably composed, rarely making rash decisions, a trait that has served him well in wheel-to-wheel battles.",
+  "rivalries": [
+    {
+      "driver": "Marco Rossi",
+      "reason": "Rossi, a fellow F4 competitor, represents the establishment, backed by a major manufacturer team. Thompson's independent status makes him an underdog, frequently clashing with Rossi on and off the track."
+    },
+    {
+      "driver": "Isabella Silva",
+      "reason": "Silva and Thompson are evenly matched, leading to intense on-track battles. Their rivalry stems from a controversial incident at Estoril where Thompson forced Silva wide, costing her a podium finish. The tension is palpable whenever they share the same tarmac."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "Dubois, a veteran karting champion, sees Thompson as an upstart who hasn't earned his stripes. Dubois often uses aggressive tactics against Thompson, viewing him as a threat to his own legacy."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue wristband his grandfather gave him before every race.",
+    "Studies detailed track maps the night before a race, visualizing every corner.",
+    "Listens to traditional Portuguese Fado music to calm his nerves before getting into the car."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "\"Racing isn't just about speed; it's about understanding the rhythm of the machine and the road.\"",
+  "careerHighlight": "Winning the rain-soaked Portuguese Karting Championship race at Braga in 2020, where his daring overtaking maneuver in treacherous conditions showcased his exceptional car control and cemented his reputation as a rising star.",
+  "careerLowPoint": "Crashing out of the F4 race at Portimao in 2022 while leading in the final lap due to a mechanical failure, losing a potential victory and valuable championship points."
+}

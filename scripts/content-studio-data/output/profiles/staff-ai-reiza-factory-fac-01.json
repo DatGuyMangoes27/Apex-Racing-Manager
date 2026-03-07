@@ -1,0 +1,22 @@
+{
+  "name": "Carlos Huamán",
+  "nationality": "Peruvian",
+  "age": 26,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Carlos Huamán's journey into motorsport analytics began with a fascination for the complex algorithms powering racing simulations. Growing up in Lima, he spent countless hours dissecting lap times and telemetry data, honing his skills in data analysis. He translated this passion into a degree in computer science, specializing in statistical modeling. Joining Reiza Studios Factory team was a dream come true for Carlos, enabling him to apply his analytical prowess to real-world racing data. \n\nCarlos is known for his meticulous approach to data analysis, ensuring every variable is accounted for. He prides himself on uncovering hidden patterns and extracting actionable insights that can provide a competitive edge. His demanding nature pushes both himself and the team to achieve peak performance. While a bit of a lone wolf, his reliability and dedication are highly valued within the team, and his work ethic is contagious.\n\nHis unique ability to translate complex data into practical racing strategies sets him apart. He's always pushing the boundaries of what's possible with data-driven decision-making, often suggesting innovative adjustments to vehicle setups based on his findings. He is also known for his ability to clearly and concisely explain his conclusions to the team, which is crucial for a successful data analyst.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed hair, slightly receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Goatee",
+    "description": "Carlos is a lean man with sharp features and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with data points.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Refuses to drink anything but black coffee during race weekends."
+  ]
+}

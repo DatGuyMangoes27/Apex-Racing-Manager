@@ -1,0 +1,31 @@
+{
+  "name": "Aino Virtanen",
+  "nationality": "Finnish",
+  "age": 30,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Aino Virtanen is a rising star in the world of rallycross, known for her aggressive driving style and unwavering determination. Coming from a wealthy background, she initially faced skepticism about her commitment, but she quickly silenced the doubters with a string of impressive victories. While undeniably talented behind the wheel, Aino is also known for her complex personality. She's fiercely supportive of her team, but can come across as arrogant, particularly after a win. Underneath the bravado, she's deeply creative, using interior design as an outlet to balance the adrenaline rush of racing. \n\nDespite her sometimes-abrasive exterior, Aino is fundamentally forgiving and values loyalty. She runs a small charity supporting young female drivers in karting. You might run into Aino at a motorsport awards gala, or perhaps while training at a high-performance driving center, given her dedication to pushing her limits. Her passion for coffee culture means she frequents specialty cafes near race tracks, always on the lookout for the perfect espresso.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Sleek ponytail when racing, loose waves otherwise",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Aino has a strong, athletic build honed from years of racing. She often has a focused, intense expression, but her eyes can light up with genuine warmth when she smiles."
+  },
+  "connectionToMotorsport": "Aino is a professional rallycross driver competing in the European Rallycross Championship and occasionally in World RX events. She's also an outspoken advocate for greater female representation in motorsports.",
+  "meetingContext": "You might meet Aino at a post-race press conference or a sponsor event for a shared brand. Alternatively, you could bump into her at a high-end coffee shop near a racetrack, discussing tire pressures with her engineer over a latte.",
+  "conversationTopics": [
+    "The challenges and rewards of rallycross",
+    "Her interior design projects",
+    "The best coffee roasters in Europe",
+    "The lack of opportunities for female drivers",
+    "Her latest marathon training regime"
+  ],
+  "canHelp": [
+    "Provide insights into rallycross driving techniques and strategies.",
+    "Introduce you to key figures in the rallycross community.",
+    "Offer sponsorship opportunities through her connections in the design world."
+  ],
+  "personality_summary": "A talented but complex rallycross driver; supportive, creative, but also arrogant and demanding."
+}

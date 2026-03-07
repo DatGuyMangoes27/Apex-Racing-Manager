@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Swiss",
+  "age": 33,
+  "gender": "female",
+  "role": "machinist",
+  "bio": "Elise's journey into motorsport began with a childhood fascination for the intricate workings of watches, a Swiss tradition. This early exposure to precision engineering naturally led her to the high-octane world of racing. After graduating from the Swiss Federal Institute of Technology in Lausanne with a degree in Mechanical Engineering, she honed her skills in various precision manufacturing roles before transitioning to Erebus Motorsport five years ago.\n\nAs a machinist, Elise is known for her meticulous approach and unwavering commitment to perfection. She believes that even the smallest component can make a significant difference on the track, and she strives to ensure that every part meets her exacting standards. While some may find her demanding, her colleagues respect her dedication and the high-quality work she consistently delivers. Elise is passionate about leveraging new materials and techniques to optimize performance, constantly pushing the boundaries of what's possible in motorsport engineering.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, often tied back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elise has a focused gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on using only Swiss-made tools, believing in their superior quality.",
+    "Has a habit of humming classical music while working, often lost in concentration."
+  ]
+}

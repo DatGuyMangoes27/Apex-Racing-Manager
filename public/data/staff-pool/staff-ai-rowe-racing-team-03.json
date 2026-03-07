@@ -1,0 +1,22 @@
+{
+  "name": "Rhys McMillan",
+  "nationality": "New Zealand",
+  "age": 49,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Rhys McMillan's motorsport journey began in a small garage in Auckland, tinkering with go-karts before graduating to Formula Ford. Though his driving career was short-lived, his fascination with aerodynamics never waned. He earned a degree in mechanical engineering, specializing in fluid dynamics, and quickly found his niche in motorsport, initially working for a small touring car team before moving to Europe. He joined ROWE Racing five years ago.\n\nAs Head of Aero, Rhys is meticulous and driven by data. He believes in a holistic approach, emphasizing collaboration between the simulation, design, and trackside engineering teams. While he can be demanding, his relentless pursuit of aerodynamic perfection has delivered tangible results for the team. He is known for his uncanny ability to identify subtle airflow improvements that others overlook.\n\nRhys’ dedication to ROWE Racing is unwavering. His experience and technical skill, although sometimes overshadowed by his perfectionist tendencies, make him a valuable asset. He is dedicated to fostering new talent and passing on his considerable expertise to up-and-coming engineers.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed, with a slight receding hairline.",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Rhys is of average height with a lean build, often seen wearing glasses perched on his nose."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on reviewing all CFD simulations personally before sign-off."
+  ]
+}

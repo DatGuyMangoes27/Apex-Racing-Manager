@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 35,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Erik's fascination with motorsport ignited during his childhood, watching rally races in the Swedish countryside. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing a role at a smaller racing outfit, honing his skills in data analysis and simulation. After years of dedicated work he moved across the atlantic to NASCAR. He's known for his meticulous approach to vehicle setup, always seeking marginal gains and pushing the boundaries of performance. Erik believes that a strong understanding of both the driver's feedback and the underlying data is crucial for achieving optimal results. He is a firm believer in the power of teamwork and open communication, always encouraging collaboration between the engineering and race strategy teams.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Erik is of average height with a lean build and an intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Drinks copious amounts of strong coffee throughout the day.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

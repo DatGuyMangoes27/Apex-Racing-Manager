@@ -1,0 +1,31 @@
+{
+  "name": "Lenka Svobodová",
+  "nationality": "Czech",
+  "age": 38,
+  "gender": "female",
+  "contactType": "yacht_captain",
+  "bio": "Lenka is no ordinary yacht captain; she's a force of nature on the open water, known for her daring maneuvers and impeccable navigation skills. Having spent years crisscrossing the globe, she's now the captain of a lavish superyacht owned by a prominent Monaco-based family with deep ties to Formula 1. Her crew respects her unwavering determination, her insatiable curiosity, and her surprisingly generous spirit. Beneath her tough exterior lies a mischievous streak and a deep appreciation for the finer things in life, especially a well-aged single malt. \n\nWhile Lenka spends most of her time navigating the seas, she regularly attends high-profile events, particularly those in Monaco, where her employer maintains close relations with several racing teams and sponsors. This makes her a valuable connection for aspiring racing drivers seeking to expand their network and gain access to influential figures in the sport. Her sharp eye and no-nonsense attitude mean she can quickly assess a driver's potential, and if she sees something special, she's not afraid to open doors.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Sleek, short bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Lenka has a strong, athletic build from years at sea. Her piercing hazel eyes and confident smirk hint at her adventurous spirit."
+  },
+  "connectionToMotorsport": "Lenka captains a superyacht owned by a Monaco family deeply involved in Formula 1 sponsorships and hosting VIP events during the Grand Prix season. She regularly interacts with team principals, drivers, and sponsors.",
+  "meetingContext": "The player might meet Lenka at a high-society yacht party during the Monaco Grand Prix, or perhaps through a mutual acquaintance at a charity event in the French Riviera.",
+  "conversationTopics": [
+    "Her most challenging voyages",
+    "The best scuba diving spots in the world",
+    "The latest developments in yachting technology",
+    "Whiskey distilleries around the world",
+    "The constellations and their navigational uses"
+  ],
+  "canHelp": [
+    "Introduce the player to key figures in F1 sponsorships.",
+    "Offer the player a luxurious stay on the yacht during a race weekend, providing valuable networking opportunities.",
+    "Provide discreet but honest feedback on the player's public image and potential marketability."
+  ],
+  "personality_summary": "A driven and generous yacht captain with a mischievous side and valuable connections in the racing world."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 42,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Jean-Pierre's journey into motorsport began in his father's small machine shop in Liège, where he spent countless hours tinkering with engines and learning the intricacies of metalwork. After completing his apprenticeship, he honed his skills in various automotive workshops before landing a coveted position with a local rally team. There, he discovered his true passion for the precision and demands of racing. \n\nJean-Pierre is known for his meticulous approach to his work. He believes that even the smallest component can have a significant impact on performance. He's not afraid to get his hands dirty and is always willing to go the extra mile to ensure everything is perfect. He joined Inter Europol Competition five years ago, drawn by their commitment to innovation and their family-like atmosphere. His quiet dedication and ability to troubleshoot under pressure make him an invaluable asset to the team. \n\nWhile Jean-Pierre is a master of his craft, his lone wolf tendencies means he is often found working by himself, preferring the focus and quiet of solo work. He needs to be reminded to share his knowledge with the junior team members to assist in their development.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed to the side with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Jean-Pierre is a man of average height with a stocky build, reflecting years of physical work."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sharpens his tools before starting any task, regardless of their current sharpness.",
+    "Insists on using a specific brand of Belgian-made cutting oil, even if it means special ordering it.",
+    "Has a habit of humming classical music while working, often lost in his own world."
+  ]
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Ricardo Alvarez-Calderón",
+    "nationality": "Peruvian",
+    "age": 52,
+    "gender": "male",
+    "contactType": "banker",
+    "bio": "Ricardo Alvarez-Calderón is a self-made titan of Peruvian finance. Starting from humble beginnings, he built a financial empire through shrewd investments and a relentless pursuit of opportunity. He is now the CEO of Andes Capital, a powerful investment bank known for its high-risk, high-reward strategies. Beneath his polished exterior lies a fiercely competitive spirit and a deeply held belief in meritocracy. \n\nRicardo's involvement in motorsport stems from his bank's sponsorship of the 'Rally Peru', a gruelling off-road race that attracts international competitors. A racing driver might cross paths with Ricardo seeking sponsorship for their team, or perhaps to secure a loan for upgrading equipment. Gaining Ricardo's favor could unlock significant financial backing, but it requires demonstrating both talent and a compelling business plan. He has a soft spot for Peruvian talent, and has invested in local athletes in the past.\n\nDespite his ruthless business acumen, Ricardo is a patron of the arts, particularly ballet, and believes in sustainable practices, incorporating them into his personal and business ethos.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Dark brown",
+      "facialHair": "Thin mustache, neatly trimmed",
+      "description": "Ricardo carries himself with an air of authority, his tailored suits accentuating his powerful build. He has piercing eyes that seem to assess your every move."
+    },
+    "connectionToMotorsport": "Andes Capital sponsors the Rally Peru, providing vital funding for the event and showcasing the bank's commitment to the region. Ricardo himself is a regular attendee and occasional co-driver in the support vehicles, though he leaves the actual racing to the professionals.",
+    "meetingContext": "The player would likely meet Ricardo at a corporate event, a fundraising gala for the Rally Peru, or through an introduction from another business contact within the motorsport industry.",
+    "conversationTopics": [
+      "The Peruvian economy and investment opportunities",
+      "The importance of sustainable business practices",
+      "The complexities of high-stakes finance",
+      "The artistry and discipline of ballet",
+      "The challenges of the Rally Peru"
+    ],
+    "canHelp": [
+      "Provide significant sponsorship funding for a racing team.",
+      "Offer preferential loan terms for equipment upgrades or team expansion.",
+      "Introduce the player to other high-net-worth individuals and potential investors."
+    ],
+    "personality_summary": "A competitive and judgmental banker with a penchant for high-risk investments and an appreciation for the finer things in life."
+  }
+]

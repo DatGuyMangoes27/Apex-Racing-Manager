@@ -1,0 +1,22 @@
+{
+  "name": "Chantal Dubois",
+  "nationality": "Canadian",
+  "age": 31,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Chantal's journey into motorsport began unexpectedly during her mechanical engineering degree at McGill University. A Formula SAE competition ignited her passion for aerodynamics, leading her to internships with various racing teams across North America. Her sharp analytical skills and innovative thinking quickly set her apart. \n\nChantal joined Kosmic Kart three years ago as a junior aerodynamicist, rapidly climbing the ranks due to her ability to translate complex data into tangible performance gains on the track. As Head of Aero, she champions a data-driven approach, emphasizing cross-departmental collaboration to optimize the entire vehicle package. Her relentless pursuit of marginal gains and knack for spotting unconventional aerodynamic solutions make her a valuable asset to the team. She is particularly proud of developing a novel front wing design that significantly improved downforce without compromising drag, a major contribution to the team's success last season.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair, usually pulled back into a high ponytail during work.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Chantal is a lean woman of average height with a focused, intense gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and equations.",
+    "Has a habit of tapping her pen rapidly when deep in thought.",
+    "Prefers to work late at night when the workshop is quiet and distraction-free."
+  ]
+}

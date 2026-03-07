@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0013",
+  "name": "Beaumont & Sons",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "UK",
+  "description": "Handcrafted leather goods, designed for the discerning gentleman.",
+  "story": "Beaumont & Sons has a long history of supporting British craftsmanship. Motorsport represents the pinnacle of engineering and precision, values that resonate with their brand. They seek to associate with teams that demonstrate dedication to excellence and embody a sophisticated image.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 25,
+    "minMarketability": 30,
+    "nationalities": [
+      "UK"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredEvents": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0013.png"
+}

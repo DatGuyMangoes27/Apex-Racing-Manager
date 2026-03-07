@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0429",
+  "name": "Sibirskaya Zima",
+  "category": "local",
+  "tier": "high",
+  "country": "Russia",
+  "description": "The taste of Russia's winter.",
+  "story": "Sibirskaya Zima is a leading producer of premium winter beverages, based in Siberia. We believe in the spirit of resilience and peak performance, values we see reflected in motorsport. We are looking to partner with teams who demonstrate dedication and a commitment to achieving excellence, both on and off the track.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 40000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "Russia"
+    ],
+    "minPodiums": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0429.png"
+}

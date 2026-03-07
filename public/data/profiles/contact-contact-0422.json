@@ -1,0 +1,31 @@
+{
+  "name": "Thandiwe Nkosi",
+  "nationality": "South African",
+  "age": 52,
+  "gender": "female",
+  "contactType": "architect",
+  "bio": "Thandiwe Nkosi is a celebrated architect known for her innovative and sustainable designs, particularly in luxury residential and commercial spaces. Her firm, Nkosi Design Collective, has won numerous awards for its commitment to blending modern aesthetics with environmentally conscious practices. A passionate advocate for the arts and a dedicated patron of young talent, Thandiwe brings an intense focus and genuine care to everything she undertakes. She also has a deep appreciation for the engineering and artistry behind classic cars. \n\nWhile seemingly distant from motorsport, Thandiwe has been commissioned to design several VIP lounges and private residences at prestigious racing circuits. Her discerning taste and commitment to excellence make her a highly sought-after collaborator. A racing driver might encounter her at a VIP event or during consultations for a new trackside development project, where her vision is shaping the experience for both drivers and spectators.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, elegantly styled natural curls",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Thandiwe is a striking woman with a regal bearing. She favors tailored clothing that reflects her sophisticated style."
+  },
+  "connectionToMotorsport": "Thandiwe's architectural firm designs exclusive VIP lounges and residences at racing circuits, bringing her into contact with drivers and teams. She also personally collects vintage racing cars.",
+  "meetingContext": "The player might meet Thandiwe at a VIP event at a Grand Prix, through a mutual connection in the classic car scene, or potentially as a client if the player invests in real estate development.",
+  "conversationTopics": [
+    "Sustainable architecture and design",
+    "The beauty and engineering of vintage cars",
+    "The importance of supporting local artists",
+    "Her latest surfing trip to Durban",
+    "The power of boxing as a discipline"
+  ],
+  "canHelp": [
+    "Connect the player with wealthy sponsors and investors.",
+    "Offer guidance on managing personal branding and public image.",
+    "Provide access to exclusive events and networking opportunities."
+  ],
+  "personality_summary": "An idealistic and elegant architect with a passion for design, sustainability, and speed."
+}

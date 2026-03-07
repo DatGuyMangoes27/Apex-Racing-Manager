@@ -1,0 +1,31 @@
+{
+  "name": "Karim El Ouazzani",
+  "nationality": "Moroccan",
+  "age": 44,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Karim El Ouazzani is a highly sought-after legal professional specializing in contract law and intellectual property, with a reputation for fiercely protecting his clients' interests. His sharp wit and exacting standards have made him a formidable negotiator, though some find his sarcastic demeanor off-putting. Despite his demanding personality, Karim is known for his unwavering reliability and patience, qualities that have earned him the trust of numerous high-profile clients in the business and entertainment sectors.\n\nKarim's connection to the motorsport world stems from representing several racing teams and drivers in endorsement deals, sponsorship agreements, and contract disputes. A racing driver might cross paths with him when seeking legal counsel regarding their professional contracts, intellectual property rights relating to their brand, or any potential legal issues arising from their racing career. Securing Karim's representation is a sign you are serious about your career.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Karim is a man of medium build, always impeccably dressed in tailored suits. His intense gaze and sharp features convey a sense of authority."
+  },
+  "connectionToMotorsport": "Karim represents several racing teams and drivers, handling their legal matters related to contracts, sponsorships, and intellectual property.",
+  "meetingContext": "The player might meet Karim through a referral from a team manager or sponsor when seeking legal representation for a contract negotiation or dispute.",
+  "conversationTopics": [
+    "The intricacies of contract law",
+    "The latest developments in the craft beer scene",
+    "His recent sailing trip in the Mediterranean",
+    "The challenges of sustainable living in a modern world",
+    "The importance of protecting intellectual property in motorsport"
+  ],
+  "canHelp": [
+    "Negotiate favorable contracts with teams and sponsors",
+    "Protect the player's brand and intellectual property rights",
+    "Provide legal counsel in the event of disputes or legal challenges"
+  ],
+  "personality_summary": "A controlling and sarcastic but ultimately reliable lawyer with high standards."
+}

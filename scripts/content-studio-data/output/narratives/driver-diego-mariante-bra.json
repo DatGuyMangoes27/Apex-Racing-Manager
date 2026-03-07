@@ -1,0 +1,27 @@
+{
+  "biography": "Diego Mariante, a name now whispered with respect in Brazilian motorsport circles, hails from the vibrant streets of São Paulo. Unlike many who find racing through family legacies, Diego's path began with a battered old go-kart salvaged from a junkyard. He spent countless hours tinkering, fueled by a passion ignited watching F1 races on a small, crackling television. His raw talent became evident at local karting events, where his aggressive overtakes and uncanny car control defied his humble beginnings. Moving into the Passat Classic B series, Diego quickly made a name for himself. His move to the Passat Classic FL team saw him gain consistency, and despite lacking the deep pockets of some rivals, he has secured several podium finishes. While a championship title remains elusive, his unwavering dedication and steady improvement suggest it's only a matter of time.",
+  "drivingStyle": "Diego's driving style is characterized by a calculated aggression. He's not one for flamboyant displays of speed, but rather a methodical approach to each corner. He prioritizes corner exit speed, often sacrificing entry to maximize momentum down the following straight. Known for his exceptional tire management, Diego can consistently extract the most out of his rubber, allowing him to push harder in the closing stages of a race. Under pressure, he remains remarkably composed, rarely making rash decisions or succumbing to the heat of the moment.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Vargas",
+      "reason": "A long-standing rivalry stemming from karting days, fueled by numerous on-track clashes and accusations of unsportsmanlike conduct."
+    },
+    {
+      "driver": "Isabela Flores",
+      "reason": "A fierce but respectful rivalry, born from battling for championship points in the Passat Classic FL series. Known for their clean but intense wheel-to-wheel racing."
+    },
+    {
+      "driver": "Thiago Oliveira",
+      "reason": "A professional rivalry developed because Oliveira's father owns the Passat Classic FL team, and Diego feels like he has to work twice as hard to prove himself."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky wristband given to him by his grandmother before every race.",
+    "Listens to classic samba music on repeat during his pre-race warm-up.",
+    "Meticulously cleans his helmet visor before each session, regardless of how clean it already is."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about raw speed alone, it's about calculating every risk, every opportunity. It's a complex equation, and I'm determined to solve it.\"",
+  "careerHighlight": "Winning the Interlagos Invitational race in his rookie season with Passat Classic B, securing his first major victory in front of his home crowd.",
+  "careerLowPoint": "Crashing out of the championship decider at Curitiba after a mechanical failure, costing him the title by a single point."
+}

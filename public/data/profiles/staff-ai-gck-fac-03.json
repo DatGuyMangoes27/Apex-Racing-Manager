@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Jelena Petrović",
+    "nationality": "Serbian",
+    "age": 55,
+    "gender": "female",
+    "role": "machinist",
+    "bio": "Jelena's journey into motorsport began with a childhood fascination for disassembling and reassembling her grandfather's old tractors in rural Serbia. This early tinkering evolved into a passion for precision engineering, leading her to pursue a degree in mechanical engineering at the University of Belgrade. After graduating, she spent several years honing her skills in a local machine shop, mastering the art of metalwork and precision machining.\n\nHer meticulous approach and unwavering commitment to perfection quickly earned her a reputation as a highly skilled machinist. Jelena's attention to detail is unparalleled; she believes that every component, no matter how small, plays a critical role in the overall performance and reliability of a race car. She approaches each task with a quiet determination, striving to achieve flawless results and pushing the boundaries of what's possible. This dedication, combined with her flexible nature, allows her to seamlessly adapt to the ever-changing demands of the motorsport environment, making her a valuable asset to GCK Motorsport.\n\nJelena is distinguished by her ability to diagnose and resolve complex mechanical issues with remarkable efficiency. Her calm demeanor and analytical mind allow her to remain focused under pressure, ensuring that the team can rely on her expertise when it matters most.",
+    "physical": {
+      "skinTone": "olive",
+      "hairColor": "gray",
+      "hairStyle": "short, neatly styled bob",
+      "eyeColor": "brown",
+      "facialHair": null,
+      "description": "Jelena is a woman of medium height with a focused expression."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always sharpens her pencils to an almost dangerously fine point.",
+      "Insists on using a traditional slide rule alongside CAD software for calculations.",
+      "Maintains an immaculate workstation, organizing tools by size and function."
+    ]
+  }
+]

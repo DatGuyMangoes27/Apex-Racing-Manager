@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0335",
+  "name": "Karnataka Tourism",
+  "category": "local",
+  "tier": "elite",
+  "country": "India",
+  "description": "Explore Karnataka: One State, Many Worlds.",
+  "story": "Karnataka Tourism aims to promote the diverse attractions of the state, from ancient temples to lush landscapes. Motorsport sponsorship is seen as a dynamic way to reach a younger, more adventurous audience. The organization seeks to align with teams that showcase excellence and a spirit of exploration, driving interest in Karnataka as a premier tourist destination.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 70,
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0335.png"
+}

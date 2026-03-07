@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 30,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Wei Zhang's journey into motorsport began with a childhood fascination for aerodynamics, fueled by countless hours spent designing and building model airplanes. He pursued a degree in aerospace engineering, excelling in fluid dynamics and computational analysis. After graduation, Wei worked as a CFD engineer for a prominent aerospace firm before transitioning to motorsport. He joined JHR Developments three years ago and quickly rose through the ranks, demonstrating a remarkable ability to translate complex simulations into tangible performance gains on the track.\n\nWei's approach to aerodynamics is characterized by a relentless pursuit of innovation and a deep understanding of the interplay between theory and practice. He believes in fostering a collaborative environment where engineers are encouraged to challenge conventional wisdom and explore unconventional solutions. His distinctive talent lies in his ability to identify subtle aerodynamic inefficiencies and devise creative strategies to optimize airflow, resulting in improved downforce and reduced drag. He is known for his commitment to data-driven decision-making and his willingness to embrace new technologies to enhance aerodynamic performance.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight fade on the sides",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Wei is a lean man with a focused gaze and a confident demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to work late at night when the workshop is quiet."
+  ]
+}

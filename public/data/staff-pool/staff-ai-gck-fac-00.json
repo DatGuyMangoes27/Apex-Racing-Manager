@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Gruber",
+  "nationality": "Austrian",
+  "age": 24,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Maximilian's fascination with motorsport began during his childhood visits to the Red Bull Ring, fueling a desire to understand the complex engineering behind the cars. After excelling in mechanical engineering at Graz University of Technology, he secured an internship at a local racing team, quickly discovering his aptitude for simulator work. He joined GCK Motorsport after impressing team leadership with his simulator setup optimizations, quickly earning a reputation for his keen eye for detail and ability to translate driver feedback into tangible improvements. \n\nMaximilian approaches his role with a systematic and data-driven mindset. He believes in meticulously analyzing every aspect of the simulation, from tire models to track surfaces, ensuring maximum realism and relevance for driver training. His methodical nature allows him to identify subtle discrepancies and fine-tune parameters, ultimately enhancing the driver's ability to prepare for race conditions. He's a valuable asset to the team, bridging the gap between virtual testing and real-world performance. \n\nWhat sets Maximilian apart is his unique ability to connect with drivers on a technical level, translating their subjective experiences into quantifiable data points. He possesses an innate understanding of vehicle dynamics and simulation technology, allowing him to optimize the virtual environment for each driver's specific needs and driving style. He is also known for developing small scripts to automate repetitive tasks, such as data processing and report generation.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Maximilian is of average height with a lean build."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Meticulously cleans his workstation at the end of each day, organizing every tool and cable.",
+    "Prefers to communicate via email or instant messaging, even when colleagues are nearby."
+  ]
+}

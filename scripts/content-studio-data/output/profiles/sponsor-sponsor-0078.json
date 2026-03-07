@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0078",
+  "name": "Teknorulman A.Ş.",
+  "category": "equipment",
+  "tier": "high",
+  "country": "Turkey",
+  "description": "Precision bearings and drivetrain components for motorsport.",
+  "story": "Teknorulman A.Ş. has been a leading manufacturer of bearings and drivetrain components in Turkey for over 40 years. With a commitment to quality and performance, they see motorsport as the ultimate proving ground for their products. They seek to partner with teams that demonstrate a similar dedication to excellence and innovation, hoping to showcase their technology on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 40,
+    "nationalities": [
+      "Turkey"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0078.png"
+}

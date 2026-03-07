@@ -1,0 +1,22 @@
+{
+  "name": "Alessia Mancini",
+  "nationality": "Italian",
+  "age": 34,
+  "gender": "female",
+  "role": "race_engineer",
+  "bio": "Alessia Mancini's passion for motorsport ignited during her childhood, spent watching F1 races with her grandfather. This early exposure fueled her pursuit of a mechanical engineering degree, graduating top of her class at the Politecnico di Milano. After university, she quickly ascended through the ranks of junior racing series, proving herself a highly capable engineer. Her strategic thinking and ability to quickly diagnose issues under pressure made her a valuable asset to any team. \n\nAlessia joined Haas F1 Team three years ago, bringing with her a fresh perspective and an analytical mind. She's known for her meticulous approach to data analysis, identifying subtle performance gains that others might miss. While she is a strong advocate for innovative solutions, she also understands the importance of reliability and consistency in a high-stakes environment. Her visionary outlook pushes the team to continually seek improvement, making her a distinctive presence in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail during races.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Alessia has a focused gaze and a slender build, always appearing calm under pressure."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on having a double espresso before every qualifying session."
+  ]
+}

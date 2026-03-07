@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Layla Haddad",
+    "nationality": "Lebanese",
+    "age": 36,
+    "gender": "female",
+    "contactType": "yacht_captain",
+    "bio": "Layla Haddad is a highly respected yacht captain, known for her daring maneuvers and unwavering professionalism in navigating the Mediterranean's most challenging waters. She's charted courses for some of the world's wealthiest individuals, earning a reputation for discretion and a keen eye for detail. While fiercely independent and a bit of a rebel at heart, Layla possesses a magnetic personality, drawing people to her with her infectious passion and sharp wit.\n\nA racing driver might encounter Layla while vacationing or attending a high-profile event on a luxury yacht during the off-season. Many wealthy motorsport sponsors and team owners frequent these gatherings, creating opportunities for networking and potential career advancement. Layla, being at the heart of such gatherings, could be an invaluable connection.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy, often pulled back in a practical ponytail or bun",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Layla has a strong, athletic build from years at sea. She often sports a pair of stylish sunglasses, even when indoors."
+    },
+    "connectionToMotorsport": "Layla captains yachts owned by influential figures in motorsport, including team owners and sponsors, giving her inside access to the racing world's elite.",
+    "meetingContext": "The player might meet Layla at a glamorous party hosted on a yacht during the Monaco Grand Prix or a similar event. Alternatively, the player might be introduced through a mutual acquaintance while on vacation in the Mediterranean.",
+    "conversationTopics": [
+      "The latest architectural trends in yacht design",
+      "Her experiences navigating challenging sea conditions",
+      "The best cycling routes along the French Riviera",
+      "Ethical sourcing of materials for yacht construction",
+      "Her favorite podcasts on leadership and personal development"
+    ],
+    "canHelp": [
+      "Introduce the player to wealthy sponsors and team owners",
+      "Provide insights into the personalities and preferences of key decision-makers in the motorsport industry",
+      "Offer advice on managing personal finances and investments"
+    ],
+    "personality_summary": "Passionate and driven yacht captain with a rebellious spirit and a taste for the finer things in life."
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0458",
+  "name": "Vertex Dynamics",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "Singapore",
+  "description": "Precision engineering for peak automotive performance.",
+  "story": "Vertex Dynamics is a leading Singaporean manufacturer of high-performance automotive components, specializing in advanced suspension systems and lightweight materials. We're deeply invested in pushing the boundaries of automotive technology, and motorsport provides the ultimate testing ground for our innovations. We seek a partnership that showcases our technology's capabilities and enhances our brand recognition on a global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Singapore"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 8,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0458.png"
+}

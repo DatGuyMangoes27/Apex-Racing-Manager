@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Velez",
+  "nationality": "Colombian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey in motorsport began with a childhood fascination for Formula 1, fueled by watching Juan Pablo Montoya's successes. He earned a degree in mechanical engineering from the Universidad Nacional de Colombia, followed by a master's in aerodynamics at Cranfield University in the UK. His early career involved stints at smaller racing teams, gradually building his expertise in wind tunnel testing and computational fluid dynamics. \n\nRicardo is known for his meticulous approach to aerodynamic development, favoring incremental improvements based on solid data analysis over radical design changes. He believes in fostering a collaborative environment, valuing input from engineers at all levels of experience. Ricardo's commitment to data-driven design and his ability to translate complex aerodynamic principles into practical solutions have made him a valuable asset to Team Penske.\n\nHis strength lies in his deep understanding of aerodynamic principles and his ability to effectively communicate technical concepts to both engineers and drivers. Ricardo is very loyal and committed to the team's success.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Salt and pepper goatee",
+    "description": "Ricardo is of medium height with a slightly stocky build, and a perpetually serious expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn slide rule in his pocket.",
+    "Has a habit of tapping his pen on the desk when deep in thought.",
+    "Insists on double-checking all CFD simulations himself, regardless of complexity."
+  ]
+}

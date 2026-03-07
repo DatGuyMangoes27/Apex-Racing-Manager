@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Mendoza",
+  "nationality": "Argentine",
+  "age": 50,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for the sleek lines of Formula One cars. After securing a degree in Aeronautical Engineering from the Instituto Tecnológico de Buenos Aires, he quickly immersed himself in the world of aerodynamics. He started as a junior aerodynamicist for a smaller team, working his way up through tireless dedication and a keen eye for detail.\n\nNow heading the aero department at Nostalgia Racing, Ricardo is known for his methodical and results-oriented approach. He prioritizes data analysis and wind tunnel testing to find those crucial marginal gains. While he appreciates innovative ideas, Ricardo always emphasizes the importance of proven technologies and reliable performance. He believes in a collaborative environment but ultimately trusts his own judgment when making key decisions. His ability to extract the maximum potential from existing resources is what sets him apart.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "A man with a focused expression, Ricardo always looks as though he is deep in thought."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen rapidly when under pressure.",
+    "Insists on drinking mate tea at precisely 3 PM every day."
+  ]
+}

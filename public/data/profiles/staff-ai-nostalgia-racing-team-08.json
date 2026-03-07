@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Benavides",
+  "nationality": "Spanish",
+  "age": 44,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood obsession with Formula 1, meticulously studying telemetry data and race strategies. He secured a mechanical engineering degree from the Polytechnic University of Catalonia and then interned with a small rally team, honing his skills in data analysis and vehicle dynamics. His relentless pursuit of performance improvements and his sharp analytical mind quickly made him an indispensable asset. \n\nRicardo thrives on the pressure of race weekends, meticulously analyzing every aspect of the car's performance to identify marginal gains. He believes in fostering open communication within the team, encouraging drivers and mechanics to share their insights and observations. His ability to translate complex data into actionable strategies has earned him the respect of his peers, setting him apart as a highly sought-after performance engineer.\n\nAt Nostalgia Racing, Ricardo aims to bring a data-driven approach to optimize the classic cars, blending modern engineering principles with the unique characteristics of vintage racing machines. He is confident that his experience and passion can help the team achieve its competitive goals.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A stocky man with a focused gaze, Ricardo always seems to be deep in thought."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Insists on having a specific type of espresso before each race.",
+    "Tends to pace around when under pressure, muttering calculations under his breath."
+  ]
+}

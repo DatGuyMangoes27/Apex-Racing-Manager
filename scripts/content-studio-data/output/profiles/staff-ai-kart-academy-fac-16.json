@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 41,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Astrid's culinary journey began in her grandmother's kitchen in Bergen, where she learned the art of traditional Norwegian baking. While initially pursuing a career in hotel management, her passion for motorsport was ignited after attending a Formula 1 race in Monaco. Seeing the intense dedication of the teams, she felt compelled to combine her love for food and racing. \n\nAstrid joined Kart Academy five years ago, transforming their catering operations into a well-oiled machine. She believes in providing nutritious and delicious meals that fuel the team's performance, focusing on locally sourced ingredients and sustainable practices. Her attention to detail and commitment to quality have earned her the respect of the entire team, making her an indispensable part of the Kart Academy family. Astrid is known for her innovative twists on classic dishes, always seeking to improve the menu and cater to the dietary needs of the diverse team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Blonde",
+    "hairStyle": "Braided crown with loose waves framing her face",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is a petite woman with a warm, approachable demeanor and a perpetual smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with recipe ideas.",
+    "Has a strict no-mayonnaise policy.",
+    "Listens to classical music while prepping meals."
+  ]
+}

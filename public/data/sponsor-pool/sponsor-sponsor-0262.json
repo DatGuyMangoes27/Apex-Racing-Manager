@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0262",
+  "name": "Kódex Gaming",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Hungary",
+  "description": "Level up your game with Kódex Gaming's high-performance peripherals.",
+  "story": "Kódex Gaming is a Hungarian company dedicated to providing gamers with cutting-edge technology. We believe in pushing boundaries and supporting those who strive for excellence. Motorsport provides the ideal testing ground for our products and a high-visibility platform to connect with our core audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "nationalities": [
+      "Hungary"
+    ],
+    "minPodiums": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0262.png"
+}

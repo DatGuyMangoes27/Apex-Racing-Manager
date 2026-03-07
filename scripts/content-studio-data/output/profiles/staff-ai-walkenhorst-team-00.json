@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Haugen",
+  "nationality": "Norwegian",
+  "age": 35,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Bjørn Haugen’s journey in motorsport began not on the track, but in the garage. Growing up in a small town outside Oslo, he spent countless hours tinkering with engines alongside his father, a local mechanic. This hands-on experience ignited a passion for racing that led him to pursue a degree in mechanical engineering, specializing in race car design.\n\nAfter graduating, Bjørn quickly climbed the ranks, starting as a junior engineer before transitioning to team management. He believes that a strong team is built on clear communication, mutual respect, and a shared commitment to excellence. He joined Walkenhorst Motorsport three years ago, bringing a fresh perspective and a data-driven approach to race strategy. Bjørn is known for his calm demeanor under pressure and his ability to inspire his team to perform at their best, even in the face of adversity.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard, neatly trimmed",
+    "description": "Bjørn is a tall man with a lean build and piercing blue eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn-out multi-tool in his pocket.",
+    "Meticulously organizes his desk before and after every race.",
+    "Has a habit of tapping his pen against the table when deep in thought."
+  ]
+}

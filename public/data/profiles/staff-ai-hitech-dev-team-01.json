@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 37,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood in Porto, where he spent countless hours tinkering with go-karts. He pursued a degree in mechanical engineering at the University of Lisbon, specializing in aerodynamics and vehicle dynamics. After graduation, he joined a small racing team, gaining invaluable experience in data analysis, trackside problem-solving, and team management. Ricardo is known for his meticulous approach to engineering challenges. He prioritizes data-driven decision-making and fosters a collaborative environment within his team. \n\nHis leadership style emphasizes clear communication, continuous improvement, and a relentless pursuit of performance gains. At Hitech Development, Ricardo is driven to optimize every aspect of the car's performance, from suspension geometry to engine calibration. He believes in empowering his engineers to take ownership of their work and encourages them to experiment with innovative solutions. His ambition extends beyond simply winning races; he aspires to develop cutting-edge technologies that will shape the future of motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Ricardo is a lean man of average height with a focused gaze and a confident demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on brewing his own espresso every morning before starting work."
+  ]
+}

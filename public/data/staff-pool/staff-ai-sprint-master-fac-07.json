@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 22,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Erik's journey into motorsport began unexpectedly. Initially drawn to computer science, he found himself captivated by the telemetry data streaming from a friend's sim racing setup. He realized the untapped potential for data analysis to improve performance, and his passion was ignited. After completing his degree, Erik joined Sprint Masters, eager to apply his IT skills in a competitive environment.\n\nErik's approach to IT systems management is methodical and proactive. He's constantly exploring new technologies and data analysis techniques to give Sprint Masters a competitive edge. His relentless pursuit of optimization, coupled with his innovative ideas, makes him a valuable asset to the team. He is also very experienced from his sim racing background.\n\nWhat distinguishes Erik is his ability to translate complex technical information into actionable insights for the race engineers and drivers. He thrives under pressure and sees challenges as opportunities for growth, always pushing the boundaries of what's possible with data-driven strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A slim build with a focused gaze, he often sports a slight smirk."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with code snippets.",
+    "Has a habit of tapping his fingers rapidly when processing data.",
+    "Drinks an excessive amount of energy drinks during race weekends."
+  ]
+}

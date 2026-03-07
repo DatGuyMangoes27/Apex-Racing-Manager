@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0054",
+  "name": "PetroNorth Lubricants",
+  "category": "oil_fuel",
+  "tier": "mid",
+  "country": "Canada",
+  "description": "Powering performance, protecting your engine.",
+  "story": "PetroNorth Lubricants is a Canadian-owned and operated company specializing in high-performance synthetic lubricants for automotive and motorsports applications. With a commitment to innovation and sustainability, PetroNorth seeks partnerships that demonstrate the effectiveness of their products in demanding environments. They believe motorsport provides a perfect platform to showcase their technology and build brand awareness amongst a passionate audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [
+      "pro"
+    ],
+    "nationalities": [
+      "Canada"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0054.png"
+}

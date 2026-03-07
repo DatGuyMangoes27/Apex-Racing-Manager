@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 46,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo's passion for motorsport ignited during his childhood, spent tinkering with go-karts in his father's workshop. He pursued a degree in Mechanical Engineering from the University of Porto, focusing on aerodynamics and vehicle dynamics. After graduating, he joined a small Portuguese racing team, where he honed his skills in vehicle setup and data analysis. His dedication and innovative solutions quickly caught the eye of larger teams.\n\nBefore joining Trackhouse Racing, Ricardo spent several years as a senior engineer with a European touring car team, contributing to multiple championship wins. He is known for his meticulous approach, data-driven decision-making, and relentless pursuit of performance gains. At Trackhouse, Ricardo is responsible for overseeing all technical aspects of the race cars, from design and development to trackside setup and maintenance. He believes in fostering a collaborative environment where engineers can freely share ideas and challenge conventional thinking. \n\nRicardo distinguishes himself through his unwavering commitment to continuous improvement. He's a firm believer that even the smallest adjustments can make a significant difference on the track, and he constantly seeks out new technologies and techniques to push the boundaries of performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "A man of medium height, Ricardo's intense gaze reflects his focused and demanding nature."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on using metric measurements, even when working with teams accustomed to imperial units."
+  ]
+}

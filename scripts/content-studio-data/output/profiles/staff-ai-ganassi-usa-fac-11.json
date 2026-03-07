@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Elodie Dubois",
+    "nationality": "Belgian",
+    "age": 30,
+    "gender": "female",
+    "role": "test_driver_coordinator",
+    "bio": "Elodie's motorsport journey began tinkering with karts at her uncle's garage in the Ardennes. Her knack for understanding vehicle dynamics led her to an engineering degree and a subsequent role at a smaller racing team, where she quickly realized her organizational skills were just as valuable as her technical knowledge. She excelled at coordinating test schedules, managing driver feedback, and ensuring data integrity. \n\nAt Chip Ganassi Racing, Elodie thrives on the fast-paced environment. She believes in fostering open communication between drivers, engineers, and mechanics to optimize testing outcomes. Her ability to see the big picture while meticulously attending to details makes her a crucial asset to the team, bridging the gap between on-track performance and data analysis. Elodie is known for her calm demeanor and ability to remain unfazed under pressure.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Elodie has a friendly face, often framed by her practical hairstyle."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with test notes and observations.",
+      "Has a specific brand of Belgian chocolate she shares with the team after a successful test session.",
+      "Prefers to conduct post-test briefings standing up, believing it keeps everyone more alert."
+    ]
+  }
+]

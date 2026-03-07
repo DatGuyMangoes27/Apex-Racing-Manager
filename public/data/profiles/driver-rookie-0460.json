@@ -1,0 +1,27 @@
+{
+  "biography": "Born and raised in the shadow of the Monaco Grand Prix circuit, Oscar Tanaka's destiny seemed intertwined with motorsport from the start. Unlike many of his peers who started karting at a young age, Oscar's entry into racing was almost accidental. At age 14, while working as a volunteer marshal at a local karting event, a last-minute driver withdrawal gave him an unexpected opportunity to fill in. Despite his lack of experience, Oscar showcased a natural talent, demonstrating an uncanny ability to adapt to the unfamiliar machine and track. He impressed enough to earn a spot on a small independent team. A defining moment came during a Formula 4 race at Imola, where, despite starting from the back of the grid due to a technical issue, Oscar skillfully navigated the treacherous conditions and overtook several competitors to secure a podium finish. Currently, Oscar is navigating the challenges of Formula 3, driving for a smaller, independent team. While the equipment may not always be the most competitive, his raw talent and determination shine through, making him a driver to watch for the future.",
+  "drivingStyle": "Oscar's driving style is characterized by a calculated, defensive approach. He is known for his exceptional racecraft and ability to extract the maximum performance from his car while minimizing risks. He favors consistency and tire management over outright aggression, patiently waiting for opportunities to capitalize on opponents' mistakes. He thrives under pressure, maintaining his composure in tight situations, often making crucial overtakes in the closing laps of races.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "A fierce on-track battle during a Formula Renault race resulted in a controversial collision, creating lingering animosity."
+    },
+    {
+      "name": "Isabelle Dubois",
+      "reason": "A constant rivalry for limited sponsorship opportunities has led to tension and competitive friction off the track."
+    },
+    {
+      "name": "Kenji Sato",
+      "reason": "Both drivers are vying for the same coveted seat in a higher-tier racing series, leading to intense competition."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of driving gloves, even if they are falling apart.",
+    "Listens to classical music to calm his nerves before each race.",
+    "Polishes his helmet visor himself before every session, regardless of team support."
+  ],
+  "nickname": "The Monaco Wall",
+  "famousQuote": "\"Racing isn't just about speed; it's about resilience. It's about knowing when to defend and when to strike.\"",
+  "careerHighlight": "Securing a podium finish at the Imola Formula 4 race after starting from the back of the grid due to mechanical issues, showcasing exceptional overtaking skills and determination.",
+  "careerLowPoint": "Suffering a mechanical failure while leading a Formula Renault race in the final lap, costing him his first victory and a significant championship points haul."
+}

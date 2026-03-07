@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 31,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Kenji's fascination with motorsport began during his university years, fueled by a deep interest in aerodynamics. He pursued a degree in aerospace engineering, focusing on computational fluid dynamics and wind tunnel testing. After graduation, he joined a smaller Japanese racing team, where he honed his skills in aerodynamic design and simulation. His dedication and innovative solutions quickly gained him recognition, leading to opportunities to collaborate with international teams.\n\nKenji is a pragmatic and detail-oriented engineer. He believes in a data-driven approach to aerodynamic development, prioritizing performance gains validated through rigorous testing. His ability to translate complex theoretical concepts into practical track solutions is a key asset. While he values teamwork, he also thrives working independently, often spending late nights meticulously analyzing data and refining his designs.\n\nAt ART Grand Prix, Kenji aims to push the boundaries of aerodynamic performance. He's known for his unique blend of Japanese precision and a willingness to challenge conventional wisdom, making him a valuable and sometimes unconventional leader within the team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Dark Brown",
+    "facialHair": "null",
+    "description": "Kenji is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having green tea at precisely 3:00 PM every day."
+  ]
+}

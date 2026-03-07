@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Allende",
+  "nationality": "Argentine",
+  "age": 54,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey in motorsport began unconventionally, not on the track, but behind the screen. After completing his degree in electrical engineering at the University of Buenos Aires, he initially worked in the aerospace industry. However, his passion for racing, fueled by watching Fangio as a child, led him to explore opportunities in Formula 1. He landed a role with a simulator development team, quickly proving his knack for translating real-world physics into the virtual realm.\n\nHe spent years honing his skills, eventually specializing in vehicle dynamics and tire modeling. Ricardo is known for his meticulous approach and ability to identify subtle nuances in simulator data that translate into significant on-track improvements. His keen eye for detail and his ability to communicate complex technical information in a clear and concise manner have made him a valuable asset to any team. His loyalty to his team is unwavering, he always puts the needs of the team before his own.\n\nRicardo's analytical prowess allows him to understand the 'big picture' of the car's performance and how different components interact. He can quickly identify areas where the simulation isn't accurately reflecting reality, and propose solutions to improve its fidelity. While he isn't the most charismatic manager, his technical abilities more than compensate.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back, thinning at the crown",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed grey mustache",
+    "description": "A stocky man with a focused gaze, Ricardo carries himself with a quiet confidence."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with equations.",
+    "Has a specific brand of mate he insists on drinking throughout the day.",
+    "Often mumbles technical jargon to himself while analyzing data."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Meier",
+  "nationality": "Swiss",
+  "age": 53,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Hans-Peter Meier's journey into motorsport began in his youth, tinkering with engines in his father's small garage in the Swiss Alps. His passion for precision and mechanics led him to pursue a career in fabrication. He honed his skills at a local machine shop before landing a role with a smaller racing team, where he quickly proved his worth. Hans-Peter's meticulous approach to his craft ensures that every component is built to the highest standards. \n\nHe joined Hitech Development fifteen years ago. He is known for his ability to troubleshoot complex fabrication issues and his dedication to the team's success. He is a master of TIG welding and is renowned for his ability to create intricate, lightweight components. His loyalty to Hitech Development is unwavering, and he consistently goes above and beyond to ensure the cars are race-ready.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Hans-Peter is a stocky man with strong hands and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to a needle point before starting any task.",
+    "Keeps a small Swiss cowbell on his workbench for good luck.",
+    "Insists on using only metric measurements, even when dealing with parts from other teams."
+  ]
+}

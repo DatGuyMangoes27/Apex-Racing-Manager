@@ -1,0 +1,27 @@
+{
+  "biography": "Mário Barbosa, a name whispered with respect in the rallycross paddocks, hails from the sun-baked hills of northern Portugal. His journey began not on asphalt, but on the dusty trails of his family's vineyard, mastering car control in a beat-up pickup truck long before he saw a racetrack. A defining moment came at the age of 19, at a local hillclimb where, against seasoned veterans in far superior machinery, he took second place, showcasing raw talent and a preternatural feel for the car. That performance earned him a sponsored drive in the national rallycross championship, and he never looked back. Now, at 35, and driving for the Citroen DS3 RX team, Barbosa is at the peak of his powers, a wily veteran capable of upsetting the established order.",
+  "drivingStyle": "Barbosa's driving style is best described as calculating and defensive. He's not one for flamboyant overtakes, preferring to build his advantage through consistent lap times and impeccable car placement. He's a master of tire management, often nursing his rubber through long heats to unleash a final, devastating push in the closing laps. He excels under pressure, rarely cracking even when hounded by faster rivals, frustrating them into mistakes while maintaining his own composure.",
+  "rivalries": [
+    {
+      "name": "Jean-Pierre Dubois",
+      "reason": "A long-standing rivalry fueled by a controversial collision at the 2021 European Championship final, where Dubois accused Barbosa of deliberately blocking him."
+    },
+    {
+      "name": "Anya Petrova",
+      "reason": "A battle of wits and strategy on the track, where Petrova's aggressive style clashes with Barbosa's calculating approach, often leading to intense wheel-to-wheel racing."
+    },
+    {
+      "name": "Ricardo Silva",
+      "reason": "A national rivalry, both being from Portugal, with bragging rights always on the line. Their families have known each other for years adding fuel to the fire."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue wristband he got from his grandfather before every race.",
+    "Refuses to eat anything orange on race day, believing it brings bad luck.",
+    "Studies the track map meticulously for at least an hour before each session, visualizing every corner and potential overtaking spot."
+  ],
+  "nickname": "The Vineyard Viper",
+  "famousQuote": "\"Racing isn't about being the fastest for a lap; it's about being the smartest for the entire race.\"",
+  "careerHighlight": "Winning the 2022 Portuguese National Rallycross Championship in dramatic fashion, overtaking his main rival on the final corner of the final race to secure the title.",
+  "careerLowPoint": "Crashing out of the 2019 European Championship semi-final while leading, due to a mechanical failure, costing him a potential podium finish and a shot at the title."
+}

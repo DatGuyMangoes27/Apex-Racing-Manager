@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 25,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Zoltán's fascination with motorsport began during his childhood, spending countless hours watching Formula 1 races with his father. He pursued a degree in mechanical engineering with a specialization in aerodynamics, driven by a desire to understand the intricate forces shaping racing car performance. His early career involved an internship at a small Hungarian racing team, where he gained hands-on experience with wind tunnel testing and data analysis.\n\nDriven by a meticulous approach and a passion for optimization, Zoltán excels at identifying subtle airflow anomalies and suggesting innovative solutions to improve aerodynamic efficiency. He's known for his ability to translate complex data into actionable insights, making him a valuable asset in any development program. His ambition lies in contributing to a championship-winning team, pushing the boundaries of aerodynamic performance.\n\nZoltán is a quick learner and adapts well to new challenges. His colleagues describe him as a dedicated and reliable team player with a strong work ethic. He is now looking for opportunities to contribute to a competitive racing team.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly styled with a slight side part.",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Zoltán is of average height with a lean build and an intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook for jotting down ideas and observations.",
+    "Has a habit of humming quietly while analyzing wind tunnel data.",
+    "Insists on calibrating all instruments himself before each test session."
+  ]
+}

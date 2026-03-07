@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 42,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood obsession for snowmobile racing in Quebec. He quickly transitioned to karts and then to open-wheel racing, always more fascinated by the engineering behind the performance than the driving itself. This led him to pursue a degree in mechanical engineering with a specialization in aerodynamics. He spent several years working in IndyCar before transitioning to Formula racing, where he felt his analytical skills would be best utilized.\n\nJean-Pierre is a meticulous performance engineer, known for his data-driven approach and keen eye for identifying marginal gains. He thrives on challenges and is adept at troubleshooting complex problems under pressure. While he's a valuable asset to any team, his perfectionist tendencies can sometimes lead to friction with colleagues who prefer a more agile approach.\n\nCurrently at MP Motorsport Junior, Jean-Pierre is focused on developing young talent, helping them understand the technical nuances of their cars and how to maximize their performance. His ability to translate complex engineering concepts into easily understandable terms makes him a highly effective mentor.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "A stocky man with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously drawn diagrams.",
+    "Has a habit of tapping his pen against his teeth when concentrating.",
+    "Insists on having his workstation organized in a specific way, with all tools and equipment in their designated place."
+  ]
+}

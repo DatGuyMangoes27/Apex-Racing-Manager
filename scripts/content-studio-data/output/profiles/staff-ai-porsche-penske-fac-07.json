@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papandreou",
+  "nationality": "Greek",
+  "age": 54,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Dimitrios Papandreou's career began in the early days of networking, cutting his teeth on complex systems administration at a local university in Athens. His passion for motorsport was ignited by a chance encounter at a rally event, where he quickly realized the critical role of robust IT infrastructure in modern racing. He transitioned his skills to the automotive industry, eventually finding his niche in motorsport, drawn by the high stakes and constant technological evolution.\n\nAt Porsche Penske Motorsport, Dimitrios is known for his meticulous approach to data security and system uptime. He believes in a proactive, preventative strategy, constantly seeking to improve the team's IT capabilities to provide a competitive edge. He is demanding of himself and his team, always pushing for optimal performance and reliability, earning him a reputation as a no-nonsense but ultimately respected figure.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly trimmed, receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed grey beard",
+    "description": "Dimitrios is a man of medium build with a serious demeanor, often seen with a thoughtful expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small worry stone in his pocket, which he rubs when stressed.",
+    "Insists on using a mechanical keyboard with loud, clicky keys, much to the annoyance of his colleagues.",
+    "Has a habit of diagnosing IT problems out loud, even when no one is listening."
+  ]
+}

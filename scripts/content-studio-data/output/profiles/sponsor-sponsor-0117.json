@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0117",
+  "name": "GamerTech Systems",
+  "category": "tech_gaming",
+  "tier": "mid",
+  "country": "Russia",
+  "description": "Innovating gaming hardware and software for the competitive edge.",
+  "story": "GamerTech Systems is a leading Russian developer of high-performance gaming PCs and peripherals. Recognizing the synergy between esports and motorsport, they seek to expand their brand awareness among a technologically savvy audience. Motorsports offers a compelling real-world testbed for their hardware and software, with the pursuit of speed and precision aligning perfectly with their core values.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50,
+    "nationalities": [
+      "Russia"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0117.png"
+}

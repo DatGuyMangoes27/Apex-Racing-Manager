@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 40,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Erik's journey into motorsport began unexpectedly. He initially trained as a precision engineer, focusing on aerospace components. A chance visit to a local rally event sparked an obsession, and he began volunteering with smaller teams, offering his expertise in ensuring mechanical reliability. He quickly realised the critical role quality control plays in the high-stakes environment of racing.\n\nErik is a firm believer in preventative measures and meticulous testing. He's known for his systematic approach, often diving deep into the smallest details to identify potential weaknesses. His calm demeanor and ability to clearly communicate technical issues make him a valuable asset to any team. He strives for perfection but understands the constraints of racing environments.\n\nWhat sets Erik apart is his dedication to continuous improvement. He's always seeking out new technologies and methodologies to enhance quality control processes. He balances his technical skills with a strong awareness of management principles, facilitating effective communication and collaboration within the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Erik is of average height with a sturdy build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool, even when it's not strictly necessary.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on using a specific brand of Swedish coffee in the workshop."
+  ]
+}

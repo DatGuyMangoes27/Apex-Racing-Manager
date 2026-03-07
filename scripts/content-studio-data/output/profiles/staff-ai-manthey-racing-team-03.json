@@ -1,0 +1,22 @@
+{
+  "name": "István Kovács",
+  "nationality": "Hungarian",
+  "age": 51,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "István's journey into motorsport began with a fascination for aircraft design. He studied aeronautical engineering at the Budapest University of Technology and Economics, initially planning a career in the aviation sector. However, a chance encounter with a Formula Student team ignited his passion for applying aerodynamic principles to racing cars. After graduation, he joined a small Hungarian racing team, where he honed his skills in CFD analysis and wind tunnel testing. He quickly gained a reputation for his meticulous approach and ability to extract marginal gains from existing designs. \n\nHis career took off when he joined Manthey Racing a decade ago. István's approach to aero is deeply rooted in data analysis and a relentless pursuit of efficiency. He is known for his demanding nature, pushing his team to constantly refine their simulations and validate their findings on track. He believes that the key to success lies in understanding the intricate interplay between aerodynamic forces and vehicle dynamics, and he instills this philosophy in his team. István is a big picture thinker, always looking for the global optimum and finding ways to make his team better.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium height with a slightly weathered face and intense blue eyes, radiating authority."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn copy of 'Aerodynamics for Engineers'",
+    "Has a specific type of Hungarian paprika he adds to his lunch every day",
+    "Insists on reviewing every CFD simulation result personally, no matter how small"
+  ]
+}

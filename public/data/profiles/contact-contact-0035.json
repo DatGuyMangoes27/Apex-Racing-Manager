@@ -1,0 +1,31 @@
+{
+  "name": "Kazimierz 'Kaz' Dabrowski",
+  "nationality": "Polish",
+  "age": 63,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Kazimierz Dabrowski, or 'Kaz' as he prefers, is a Polish industrialist who made his fortune in renewable energy. Starting with a small wind farm in the early 2000s, he shrewdly leveraged government incentives and technological advancements to build a diversified energy empire. Despite his business acumen, Kaz is known for his flamboyant personality and penchant for the dramatic. He's a patron of the arts, a collector of historical artifacts, and an avid (though not particularly skilled) tennis player. A racing driver might cross paths with Kaz through sponsorship opportunities or at high-society events he frequently attends. He is always looking for exciting investments.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Silver",
+    "hairStyle": "Comb-over with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Kazimierz is a man of considerable stature, with a powerful build softened by age. He favors tailored suits and often sports a silk pocket square."
+  },
+  "connectionToMotorsport": "Kaz invests in various ventures, including a minor stake in a Formula 3 team. He views motorsport as a playground for the wealthy and a potential avenue for promoting his green energy initiatives.",
+  "meetingContext": "The player might meet Kaz at a charity gala hosted by a Formula 1 team, or through a mutual contact in the business world.",
+  "conversationTopics": [
+    "Opera",
+    "The history of Polish noble families",
+    "His latest art acquisition",
+    "The future of renewable energy",
+    "His yoga retreats in Tuscany"
+  ],
+  "canHelp": [
+    "Provide significant sponsorship",
+    "Introduce the player to other wealthy investors",
+    "Offer a brand ambassadorship for his energy company"
+  ],
+  "personality_summary": "A flamboyant and eccentric business magnate with a soft spot for dramatic gestures and exciting ventures."
+}

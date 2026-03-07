@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0018",
+  "name": "Terra Analytics",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Australia",
+  "description": "Data-driven solutions for a faster future.",
+  "story": "Terra Analytics is a leading Australian software company specializing in predictive analytics and data visualization. They believe in the power of data to optimize performance, both on and off the track. Motorsport provides a high-visibility testing ground for their technology, and they seek a partnership that showcases the real-world impact of their analytical tools.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 6,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0018.png"
+}

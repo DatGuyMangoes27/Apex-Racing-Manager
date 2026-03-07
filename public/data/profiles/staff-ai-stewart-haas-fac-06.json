@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Anneliese Schmidt",
+    "nationality": "German",
+    "age": 35,
+    "gender": "female",
+    "role": "logistics_coordinator",
+    "bio": "Anneliese's motorsport journey began with a childhood spent tinkering with her grandfather's vintage BMW. This early exposure ignited a passion for precision and organization, leading her to pursue a degree in logistics management. After graduating, she honed her skills at a German touring car team before being recruited by Stewart-Haas Racing.\n\nAs a logistics coordinator, Anneliese is known for her meticulous planning and unwavering commitment to efficiency. She thrives under pressure and possesses a knack for anticipating potential problems before they arise. Her demanding nature pushes her team to deliver exceptional results, ensuring that the entire operation runs like clockwork.\n\nWhat sets Anneliese apart is her uncanny ability to remember obscure details, from the exact torque specifications for each wheel nut to the preferred brand of coffee for every team member. This attention to detail, combined with her mentoring abilities, makes her an indispensable asset to Stewart-Haas Racing.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Dark brown",
+      "hairStyle": "Shoulder-length, straight, with a subtle side part",
+      "eyeColor": "Blue",
+      "facialHair": null,
+      "description": "Anneliese is of average height with a slender build and a focused expression."
+    },
+    "personality": "demanding",
+    "quirks": [
+      "Color-codes her spreadsheets with extreme precision.",
+      "Always carries a small, well-organized notebook filled with logistics notes.",
+      "Has a ritual of checking all transport manifests three times before sign-off."
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "history": "The Circuito do Estoril, inaugurated in 1972, quickly became a staple in international motorsport. While primarily known for hosting the Portuguese Grand Prix from 1984 to 1996, Estoril has also been a popular venue for various touring car, GT, and motorcycle racing series. The Historic layout, which retains much of the original circuit design, has seen action in classic car events and national racing series. Its blend of high-speed sections and challenging corners provides a demanding test for drivers and machines alike. Though overshadowed by its Grand Prix history, the Historic configuration offers a unique glimpse into Estoril's past.",
+  "atmosphere": "Standing on the banks of the Parabolica Ayrton Senna during a historic race weekend at Estoril is a visceral experience. The air vibrates with the roar of classic engines, their exhaust fumes carrying the scent of burning oil and high-octane fuel. The grandstands, though smaller and more intimate than at modern circuits, offer panoramic views of the track, allowing you to witness the raw, unfiltered spectacle of racing as it once was. The crowd is a mix of seasoned veterans and young enthusiasts, all united by their appreciation for the history and heritage of motorsport.",
+  "trackCharacter": "The Historic layout at Estoril is a flowing, undulating circuit that demands precision and commitment. Its blend of fast sweepers, tight hairpins, and elevation changes creates a challenging rhythm that rewards drivers who can maintain momentum and find the perfect balance. The track's relatively narrow width and lack of run-off areas punish mistakes severely, while the abrasive surface puts a premium on tire management. It's a true test of skill and courage, requiring drivers to push the limits of their machinery while respecting the circuit's unforgiving nature.",
+  "nickname": "The Throwback Track",
+  "famousCorners": [
+    {
+      "name": "Tamburello",
+      "description": "A fast, sweeping right-hander that requires immense commitment and courage. It's a high-speed corner that tests the limits of grip and downforce.",
+      "challenge": "Maintaining a high minimum speed through the corner without running wide or losing control."
+    },
+    {
+      "name": "Curva 2",
+      "description": "A tight hairpin that follows the fast Tamburello, demanding a sharp deceleration and precise turn-in. It's a prime overtaking opportunity.",
+      "challenge": "Nailing the braking point and apex to maximize exit speed and set up the run down to the next corner."
+    },
+    {
+      "name": "Parabolica Ayrton Senna",
+      "description": "A long, sweeping right-hand corner that leads onto the main straight. It demands a gradual application of throttle and precise steering input.",
+      "challenge": "Carrying maximum speed through the corner while maintaining a tight line and avoiding running wide on the exit."
+    },
+    {
+      "name": "chicane Variante",
+      "description": "A quick left-right chicane section.",
+      "challenge": "Maintaining car balance through the change of direction. Keeping it smooth is key for a good exit."
+    },
+    {
+      "name": "Turn 4",
+      "description": "After Turn 2 hairpin, a short straight leads to this fast right hander.",
+      "challenge": "Getting the positioning right, and not running too wide on the exit, with the risk of losing time."
+    }
+  ],
+  "keyFactors": [
+    "Braking Precision",
+    "Tire Management",
+    "Momentum",
+    "Aerodynamic Efficiency",
+    "Mechanical Grip"
+  ],
+  "overtakingSpots": [
+    "Turn 2 hairpin (after Tamburello)",
+    "Into the chicane Variante",
+    "Under braking for Turn 4",
+    "Into Turn 13 (final corner)"
+  ],
+  "historySnippets": [
+    "Estoril hosted the Portuguese Grand Prix from 1984 to 1996.",
+    "Ayrton Senna won his first Formula 1 race at Estoril in 1985.",
+    "The circuit has hosted various touring car and GT racing series.",
+    "Estoril is known for its challenging blend of high-speed and technical sections.",
+    "The Historic layout retains much of the original circuit design.",
+    "Estoril's location near the coast often brings unpredictable weather conditions."
+  ],
+  "weatherNotes": "Estoril's coastal location makes it susceptible to unpredictable weather. Rain showers are common, even during the summer months, and can quickly transform the track from dry to treacherous. The wind can also be a factor, affecting aerodynamic balance and tire grip. Be prepared for changing conditions and adjust your driving style accordingly.",
+  "drivingAdvice": "The Historic layout rewards smooth, precise driving. Avoid aggressive inputs and focus on maintaining momentum through the corners. Pay close attention to tire management, as the abrasive surface can quickly degrade grip. Be patient in traffic and choose your overtaking opportunities wisely. Remember that track position is crucial, as overtaking can be difficult on this narrow and challenging circuit.",
+  "famousRaces": [
+    "1985 Portuguese Grand Prix: Ayrton Senna's maiden F1 victory in torrential rain.",
+    "1993 Portuguese Grand Prix: Michael Schumacher's victory after Damon Hill retired due to engine failure.",
+    "Various Historic Racing Events: Showcasing classic cars and celebrating motorsport history."
+  ],
+  "localCulture": "Estoril is a charming coastal town located just west of Lisbon. It's known for its beautiful beaches, elegant casinos, and vibrant nightlife. The local cuisine is a delicious blend of fresh seafood, traditional Portuguese dishes, and international flavors. Paddock life at Estoril is relaxed and welcoming, with a strong sense of community among the teams and drivers. Be sure to explore the town and sample the local culture during your visit."
+}

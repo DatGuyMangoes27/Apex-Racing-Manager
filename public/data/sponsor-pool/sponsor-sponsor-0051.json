@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0051",
+  "name": "Rennstahl Engineering",
+  "category": "equipment",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Precision engineered motorsport components.",
+  "story": "Rennstahl Engineering is a leading German manufacturer of high-performance racing components, specializing in suspension and braking systems. With a long history in motorsport engineering, they seek partnerships that showcase the reliability and performance of their products in demanding racing environments. They aim to elevate their brand visibility and gain valuable data from on-track performance to further refine their technology.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 40,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Germany"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0051.png"
+}

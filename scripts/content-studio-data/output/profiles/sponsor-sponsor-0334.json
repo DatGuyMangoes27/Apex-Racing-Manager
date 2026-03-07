@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0334",
+  "name": "Apex Interactive",
+  "category": "tech_gaming",
+  "tier": "entry",
+  "country": "South Africa",
+  "description": "Level up your game with Apex Interactive's cutting-edge gaming peripherals.",
+  "story": "Apex Interactive is a South African gaming hardware company focused on affordable, high-performance accessories. They see motorsport as an ideal testing ground for product durability and a great way to connect with their target audience of young, tech-savvy enthusiasts. They hope to gain brand recognition and showcase their products to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0334.png"
+}

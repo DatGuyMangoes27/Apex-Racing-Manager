@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0353",
+  "name": "Polkom Technologies",
+  "category": "tech",
+  "tier": "entry",
+  "country": "Poland",
+  "description": "Innovative technology solutions, engineered in Poland.",
+  "story": "Polkom Technologies is a rising Polish tech company specializing in advanced data analytics and sensor technology. Seeing motorsport as a proving ground for their technology, they seek to partner with teams that can demonstrate the real-world applications of their innovations. Polkom values data-driven decision-making and precision engineering.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 20,
+    "nationalities": [
+      "Poland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0353.png"
+}

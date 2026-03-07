@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre Dubois's journey into motorsport began with a childhood fascination for snowmobiles in rural Quebec. This passion evolved into an engineering degree focused on vehicle dynamics. He started his career in a small open-wheel racing team, quickly proving his aptitude for problem-solving under pressure. His approach to race engineering is rooted in meticulous data analysis and a collaborative spirit. He believes in empowering the driver with information while remaining adaptable to changing conditions. At Triple Eight, Jean-Pierre is known for his ability to extract performance gains from seemingly marginal adjustments, often finding innovative solutions that others overlook, despite his somewhat solitary work style.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "gray",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A man of medium build with a serious demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a specific brand of coffee he insists on drinking before each race.",
+    "Tends to mutter technical jargon under his breath when concentrating."
+  ]
+}

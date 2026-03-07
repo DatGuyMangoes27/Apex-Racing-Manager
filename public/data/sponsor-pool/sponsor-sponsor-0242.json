@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0242",
+  "name": "Vredestein Motorsport",
+  "category": "tires",
+  "tier": "elite",
+  "country": "Netherlands",
+  "description": "Performance tires engineered for victory.",
+  "story": "Vredestein has been a leader in tire technology for over a century, with a strong heritage in European motorsport. We are committed to pushing the boundaries of performance and innovation. Our motorsport program is crucial for developing cutting-edge tire compounds and designs, seeking partnerships that demonstrate excellence and a commitment to winning.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Netherlands",
+      "Belgium",
+      "Germany"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0242.png"
+}

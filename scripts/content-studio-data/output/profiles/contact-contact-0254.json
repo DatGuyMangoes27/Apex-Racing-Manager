@@ -1,0 +1,31 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 41,
+  "gender": "female",
+  "contactType": "agent",
+  "bio": "Valentina Herrera is a force to be reckoned with in the world of motorsport management. Though lacking formal education, her sharp wit and relentless negotiation skills have made her a sought-after agent for up-and-coming drivers, particularly those from South America. Her argumentative nature often puts her at odds with team owners and sponsors, but her clients appreciate her unwavering dedication to securing the best possible deals. Valentina entered motorsports somewhat by accident, initially representing a polo player who transitioned into rally racing. She quickly discovered a knack for understanding the business side of racing and hasn't looked back since.\n\nA racing driver might cross paths with Valentina when seeking representation to navigate the complexities of contract negotiations, sponsorship deals, and team management. She's known for spotting raw talent and nurturing them into world-class competitors, although her 'entitled' attitude means she won't work with just anyone - you have to be worth her time.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, sleek bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Valentina has a commanding presence, often accentuated by her designer clothing. She favors tailored suits and bold jewelry."
+  },
+  "connectionToMotorsport": "Valentina is a successful motorsport agent, representing several drivers across different racing series, from Formula racing to Rallycross. She specializes in helping South American drivers break into the European racing scene.",
+  "meetingContext": "You might meet Valentina at a motorsport event, perhaps a Formula 3 race or a racing industry networking party. She often attends these events to scout for new talent or meet with existing clients and team representatives.",
+  "conversationTopics": [
+    "The future of motorsport in South America",
+    "Her latest art acquisition",
+    "The best Polo clubs in Argentina",
+    "Negotiating tactics and winning strategies",
+    "The latest astronomical discoveries"
+  ],
+  "canHelp": [
+    "Negotiate better contract terms with racing teams",
+    "Secure lucrative sponsorship deals",
+    "Provide career guidance and mentorship"
+  ],
+  "personality_summary": "A sharp-tongued and ambitious agent with a nose for talent, Valentina demands the best for her clients and herself."
+}

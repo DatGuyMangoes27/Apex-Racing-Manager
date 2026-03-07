@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0371",
+  "name": "Aetheria Bespoke",
+  "category": "luxury",
+  "tier": "mid",
+  "country": "Australia",
+  "description": "Curating extraordinary experiences.",
+  "story": "Aetheria Bespoke is a luxury concierge service renowned for crafting exclusive experiences for high-net-worth individuals. They see motorsport as a perfect alignment with their brand, offering unparalleled access and excitement. They are looking to associate with a team demonstrating precision, excellence, and a winning spirit, reflecting Aetheria's commitment to delivering the ultimate in luxury experiences.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 95000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 55,
+    "seriesTiers": [],
+    "nationalities": [],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "events",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0371.png"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Liam Baker",
+    "nationality": "New Zealand",
+    "age": 28,
+    "gender": "male",
+    "role": "electronics_engineer",
+    "bio": "Liam's journey into motorsport began with a childhood fascination for remote-controlled cars, which he quickly modified and raced with friends. This passion led him to pursue a degree in electrical engineering, specializing in embedded systems. After graduating, Liam gained valuable experience working on electric vehicle charging infrastructure before transitioning to motorsport. He joined Joe Gibbs Racing two years ago and has quickly become a reliable member of the team. Liam is known for his methodical approach to problem-solving and his ability to remain calm under pressure, ensuring that the team's electronics systems are always running optimally. His innovative thinking and data-driven insights help the team push the boundaries of performance.",
+    "physical": {
+      "skinTone": "Light tan",
+      "hairColor": "Dark brown",
+      "hairStyle": "Short, neatly trimmed with a slight wave",
+      "eyeColor": "Hazel",
+      "facialHair": "Clean shaven",
+      "description": "Liam is of average height with an athletic build, often seen wearing glasses."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a multi-tool",
+      "Meticulously organizes his workspace",
+      "Has a habit of humming quietly while concentrating"
+    ]
+  }
+]

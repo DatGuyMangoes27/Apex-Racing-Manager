@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Gomez",
+  "nationality": "Argentine",
+  "age": 50,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's journey into motorsport began in his father's small auto repair shop in Buenos Aires. He spent his youth tinkering with engines, developing a deep understanding of mechanical systems. After completing his technical training, he worked for several local racing teams, gaining invaluable experience in maintaining and improving racing vehicles. He joined FVee Brasil five years ago, drawn by their commitment to innovation and their vibrant team spirit.\n\nRicardo is known for his meticulous approach to his work. He believes in thoroughly understanding every component and system before making any adjustments. He’s not afraid to challenge conventional wisdom, but always backs his ideas with solid data and careful analysis. His colleagues appreciate his calm demeanor under pressure and his willingness to share his knowledge.\n\nWhat sets Ricardo apart is his ability to diagnose complex mechanical problems with uncanny accuracy. He has a knack for identifying subtle issues that others might miss, preventing potential failures on the track. He's a true asset to the team, ensuring the cars are always performing at their best.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed mustache",
+    "description": "Ricardo is a stocky man with a warm, friendly face and calloused hands."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn copy of 'Machinery's Handbook'.",
+    "Insists on using only imperial units for measurements.",
+    "Whistles tango tunes while working on the engines."
+  ]
+}

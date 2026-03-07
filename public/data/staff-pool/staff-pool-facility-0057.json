@@ -1,0 +1,22 @@
+{
+  "name": "Lena Dubois",
+  "nationality": "Swiss",
+  "age": 23,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Lena's passion for motorsport ignited during her childhood visits to the Geneva International Motor Show. The roar of the engines and the sophisticated engineering captivated her, but she soon realized her true calling lay in ensuring the smooth operation behind the scenes. While she admired the drivers, she recognized the pivotal role of every member of the support crew.\n\nHaving completed her apprenticeship in hospitality management, Lena is eager to apply her perfectionism to the high-stakes environment of motorsport catering. She's particularly focused on optimizing nutritional plans for the drivers and pit crew to maximize performance. Lena believes that even the smallest details, like the timing and presentation of meals, can give a team a competitive edge. She is determined to establish herself as an indispensable asset to any racing team through her meticulous planning and dedication to team well-being.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "long, wavy hair, often tied back in a practical ponytail during events",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Lena has a slender build and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Keeps a detailed, color-coded spreadsheet of every team member's dietary needs and preferences.",
+    "Always carries a small notebook filled with innovative recipe ideas.",
+    "Has an uncanny ability to predict when someone needs a snack or a caffeine boost."
+  ]
+}

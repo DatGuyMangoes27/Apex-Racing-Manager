@@ -1,0 +1,27 @@
+{
+  "biography": "James Potts, hailing from a small village nestled in the Cotswolds, didn't grow up around racing royalty. His father was a sheep farmer, his mother a schoolteacher. His motorsport journey began, improbably, with a beat-up kart found rusting in a barn. After painstakingly restoring it with his grandfather, a retired mechanic, the thrill of speed ignited a passion that consumed him. James initially raced on local karting circuits, quickly displaying a preternatural ability to read the track and extract every ounce of performance from his machine. He entered the Caterham Academy at 21, a relative latecomer, but his analytical approach and relentless dedication saw him quickly rise through the ranks, turning heads with consistent point-scoring finishes. Now, at 24, James is considered a promising prospect within the Academy, his eyes firmly set on a future in professional racing. Though he lacks the raw aggression of some of his competitors, his meticulous approach and unwavering focus make him a dangerous opponent, one who capitalizes on every mistake and extracts maximum performance. He is now in his third year, seeking a championship to propel him to the next level.",
+  "drivingStyle": "Potts is known for his calculating and precise driving style. He's not one for flamboyant overtakes, preferring to meticulously analyze the track and his opponents, identifying the optimal braking points and apexes. He excels at tire management, nursing his rubber through long stints while maintaining a consistent pace. Under pressure, he remains remarkably calm, rarely making rash decisions. He is a master of defensive driving, making it incredibly difficult for rivals to find a way past. Some might call him cautious, but Potts sees it as efficiency, minimizing risk while maximizing results. He is a student of the sport, constantly studying telemetry and race footage to identify areas for improvement, always seeking the marginal gains that separate the good from the great.",
+  "rivalries": [
+    {
+      "driver": "Marcus Thorne",
+      "reason": "A clash of personalities and driving styles. Thorne is aggressive and impulsive, while Potts is measured and calculating, leading to several on-track incidents and heated exchanges off the track."
+    },
+    {
+      "driver": "Olivia Reyes",
+      "reason": "A battle for championship points. Reyes and Potts are consistently at the top of the leaderboard, their rivalry fueled by the constant pressure to outperform each other."
+    },
+    {
+      "driver": "Ben Carter",
+      "reason": "Carter and Potts have been racing each other since karting days, and their rivalry is based on mutual respect but also a fierce desire to prove who is the better driver."
+    }
+  ],
+  "quirks": [
+    "Always wears the same pair of lucky socks, given to him by his grandmother before his first ever race.",
+    "Spends 15 minutes in complete silence before each race, visualizing every corner and overtaking opportunity.",
+    "Refuses to eat anything containing tomatoes on race days."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "\"Racing isn't about brute force, it's about applied intelligence.\"",
+  "careerHighlight": "Winning the Caterham Academy race at Brands Hatch in 2023, after starting from 10th on the grid, showcasing his exceptional overtaking skills and strategic tire management.",
+  "careerLowPoint": "Spinning out on the first lap of the race at Silverstone in 2022 due to a sudden downpour, ending his chances of securing a podium finish."
+}

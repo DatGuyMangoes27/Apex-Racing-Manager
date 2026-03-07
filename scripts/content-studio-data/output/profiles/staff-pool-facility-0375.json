@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Benavides",
+  "nationality": "Spanish",
+  "age": 34,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for disassembling and reassembling anything he could get his hands on. He started as an apprentice mechanic at a local garage, quickly earning a reputation for his meticulous attention to detail. Seeking a more challenging environment, he transitioned to a small rally team, where he honed his fabrication skills under pressure. \n\nRicardo's approach to fabrication is rooted in precision and reliability. He believes that the smallest imperfection can have significant consequences on the track. He is known for his ability to troubleshoot complex mechanical issues and develop innovative solutions to improve performance. Ricardo's ambition and commitment to excellence make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a wiry build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to an impossibly fine point before starting a task.",
+    "Insists on using only metric measurements, even when working with legacy parts.",
+    "Meticulously cleans his tools after every use, no matter how small the job."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Stefan Gruber",
+  "nationality": "Austrian",
+  "age": 42,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Stefan's journey into motorsport began with a fascination for flight and aerodynamics, fueled by watching Formula 1 races as a child. He pursued a degree in Aerospace Engineering at the Graz University of Technology, focusing on computational fluid dynamics and wind tunnel testing. After graduating, he landed a role at a small Austrian racing team, where he honed his skills in designing and optimizing aerodynamic components. His innovative approach quickly gained recognition, leading to opportunities at larger teams.\n\nStefan is known for his meticulous attention to detail and his ability to translate complex aerodynamic concepts into practical, on-track performance gains. He believes in fostering a collaborative environment where engineers can freely experiment and challenge conventional thinking. While he values data-driven analysis, he also trusts his intuition and experience to guide his decisions. His ambition to develop groundbreaking aerodynamic solutions, combined with his independent streak, drives him to push boundaries and seek every advantage.\n\nWhat sets Stefan apart is his holistic approach to aerodynamic development. He doesn't just focus on maximizing downforce; he considers the overall vehicle balance, drag reduction, and sensitivity to changing track conditions. This comprehensive understanding allows him to create aerodynamic packages that are both effective and adaptable, giving his teams a competitive edge.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed to the side with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Stefan is of average height with a lean build and an intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and equations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific brand of Austrian mineral water in his office."
+  ]
+}

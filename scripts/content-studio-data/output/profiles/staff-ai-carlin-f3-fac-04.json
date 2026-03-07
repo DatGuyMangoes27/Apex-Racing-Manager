@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Benavides",
+  "nationality": "Argentine",
+  "age": 44,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's fascination with electronics began early, dismantling radios and building circuits as a child in Buenos Aires. This passion led him to pursue an engineering degree, specializing in embedded systems. Motorsport called to him after seeing the technical complexity of Formula 1 cars. He started his career in a small racing team, working tirelessly to improve data acquisition systems and optimize car performance. Ricardo's meticulous approach and innovative solutions quickly earned him recognition, leading to his current role at Carlin.\n\nRicardo's strength lies in his ability to translate complex data into actionable insights for the drivers and other engineers. He is always looking for ways to improve the car's electronics, whether it's through software tweaks, hardware upgrades, or novel sensor placements. He believes in fostering a collaborative environment, where ideas are freely exchanged and everyone feels empowered to contribute to the team's success. His visionary approach to problem-solving allows him to consistently find unconventional solutions that give Carlin an edge on the track.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "He has a lean build and a focused gaze behind rectangular glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with circuit diagrams.",
+    "Drinks mate throughout the day, often sharing with colleagues.",
+    "Tends to pace when deeply engrossed in a problem."
+  ]
+}

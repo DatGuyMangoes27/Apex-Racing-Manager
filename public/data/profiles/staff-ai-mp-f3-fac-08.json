@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 49,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Dimitri's journey into motorsport began with a childhood fascination for Soviet-era rockets, fueling a lifelong pursuit of understanding aerodynamics. After completing his engineering degree at Bauman Moscow State Technical University, he initially worked in the aerospace industry, but the allure of Formula 1 proved too strong. He transitioned to motorsport, honing his skills in wind tunnel operations. Dimitri is known for his meticulous approach, often spending hours analyzing airflow patterns and identifying subtle areas for improvement. His experience allows him to correlate wind tunnel data with on-track performance with uncanny accuracy.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Dimitri is of average height, with a slightly stocky build and a perpetually focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on listening to classical music while calibrating the wind tunnel.",
+    "Has a habit of muttering aerodynamic equations under his breath."
+  ]
+}

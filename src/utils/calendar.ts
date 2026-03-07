@@ -28,6 +28,28 @@ export function calculateWeekNumber(date: Date, startYear: number): number {
 }
 
 /**
+ * Get the game (week, day) for a given date.
+ * Used so the calendar grid can show activities on the correct date when
+ * the season starts on a non-Monday (e.g. Jan 1 = Thursday).
+ *
+ * - week: same as calculateWeekNumber (Week 1 = Jan 1 to first Sunday, then full weeks).
+ * - day: calendar weekday 1=Mon … 7=Sun (matches careerStore currentDay and activity keys).
+ *
+ * For dates before Jan 1 of startYear, returns { week: 0, day: 0 } (no in-season date).
+ */
+export function getGameWeekAndDayFromDate(
+  date: Date,
+  startYear: number
+): { week: number; day: number } {
+  const startOfYear = new Date(startYear, 0, 1)
+  const daysSinceJan1 = Math.floor((date.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24))
+  if (daysSinceJan1 < 0) return { week: 0, day: 0 }
+  const week = calculateWeekNumber(date, startYear)
+  const day = date.getDay() === 0 ? 7 : date.getDay() // 1=Mon, 7=Sun
+  return { week, day }
+}
+
+/**
  * Get the date for a specific week and day of week.
  * 
  * This is the reverse of calculateWeekNumber - given a week number

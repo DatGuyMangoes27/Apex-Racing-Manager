@@ -1,0 +1,22 @@
+{
+  "name": "Deniz Yilmaz",
+  "nationality": "Turkish",
+  "age": 37,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Deniz Yilmaz's fascination with motorsport began as a child, spending hours dismantling and reassembling his toy cars. This early passion led him to pursue a degree in mechanical engineering, where he excelled in thermodynamics and fluid dynamics. After graduating, Deniz quickly found his way into the world of racing, starting as a junior data analyst for a small Formula 3 team. His sharp analytical skills and relentless work ethic propelled him through the ranks. \n\nDeniz's approach to engineering is meticulous and data-driven. He believes in optimizing every aspect of the car, from the engine's performance to the aerodynamics, relentlessly searching for marginal gains. He's known for his ability to quickly identify and resolve mechanical issues under pressure, making him a valuable asset to any team. Deniz is driven by a desire to create the fastest and most reliable machine possible, and his innovative ideas have often given his teams a competitive edge. His demanding nature pushes those around him to perform at their best, though it can sometimes create friction within the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Close-trimmed goatee",
+    "description": "A man of average height with a wiry build, Deniz always looks focused and intense."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes",
+    "Has a habit of tapping his pen rhythmically when deep in thought",
+    "Insists on a perfectly clean and organized workspace"
+  ]
+}

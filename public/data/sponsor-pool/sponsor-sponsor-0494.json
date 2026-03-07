@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0494",
+  "name": "AvtoPromStal",
+  "category": "automotive",
+  "tier": "mid",
+  "country": "Russia",
+  "description": "Russian steel for high-performance automotive applications.",
+  "story": "AvtoPromStal is a leading Russian steel manufacturer specializing in alloys for the automotive industry. Recognizing the demanding conditions of motorsport, they see it as the perfect proving ground for their materials. They seek to enhance their brand image and demonstrate the reliability and performance of their steel in a competitive environment.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 8000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 25000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 40,
+    "nationalities": [
+      "Russia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0494.png"
+}

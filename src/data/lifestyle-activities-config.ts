@@ -46,20 +46,21 @@ export interface LifestyleActivityTemplate {
 // HOBBY ACTIVITIES
 // ============================================
 
-export const HOBBY_ACTIVITY_CONFIG: Record<HobbyType, { hoursRequired: number; drainLevel: DrainLevel }> = {
-  golf: { hoursRequired: 3, drainLevel: 'low' },
-  yachting: { hoursRequired: 4, drainLevel: 'low' },
-  car_collecting: { hoursRequired: 2, drainLevel: 'low' },
-  horse_racing: { hoursRequired: 3, drainLevel: 'normal' },
-  art_collecting: { hoursRequired: 2, drainLevel: 'low' },
-  wine_collecting: { hoursRequired: 1, drainLevel: 'restorative' },
-  flying: { hoursRequired: 3, drainLevel: 'normal' },
-  fishing: { hoursRequired: 3, drainLevel: 'restorative' },
-  photography: { hoursRequired: 2, drainLevel: 'low' },
+export const HOBBY_ACTIVITY_CONFIG: Record<HobbyType, { hoursRequired: number; drainLevel: DrainLevel; stressReduction: number; skillProgress: number }> = {
+  golf: { hoursRequired: 3, drainLevel: 'low', stressReduction: 12, skillProgress: 8 },
+  sim_racing: { hoursRequired: 2, drainLevel: 'normal', stressReduction: 8, skillProgress: 10 },
+  fitness: { hoursRequired: 1.5, drainLevel: 'high', stressReduction: 10, skillProgress: 6 },
+  flying: { hoursRequired: 3, drainLevel: 'normal', stressReduction: 15, skillProgress: 7 },
+  sailing: { hoursRequired: 4, drainLevel: 'low', stressReduction: 18, skillProgress: 6 },
+  photography: { hoursRequired: 2, drainLevel: 'low', stressReduction: 8, skillProgress: 10 },
+  cooking: { hoursRequired: 2, drainLevel: 'restorative', stressReduction: 10, skillProgress: 9 },
+  music: { hoursRequired: 2, drainLevel: 'restorative', stressReduction: 14, skillProgress: 7 },
+  art: { hoursRequired: 2, drainLevel: 'restorative', stressReduction: 12, skillProgress: 8 },
+  charity_work: { hoursRequired: 3, drainLevel: 'low', stressReduction: 10, skillProgress: 5 },
 }
 
 export function getHobbyActivity(hobbyType: HobbyType, hobbyName: string): LifestyleActivityTemplate {
-  const config = HOBBY_ACTIVITY_CONFIG[hobbyType] || { hoursRequired: 2, drainLevel: 'low' as DrainLevel }
+  const config = HOBBY_ACTIVITY_CONFIG[hobbyType] || { hoursRequired: 2, drainLevel: 'low' as DrainLevel, stressReduction: 8, skillProgress: 8 }
   return {
     id: `hobby_${hobbyType}`,
     category: 'hobby',
@@ -69,8 +70,8 @@ export function getHobbyActivity(hobbyType: HobbyType, hobbyName: string): Lifes
     cooldownType: 'once_per_day',
     cooldownValue: 0,
     benefits: {
-      stressReduction: 10,
-      skillProgress: 8,
+      stressReduction: config.stressReduction,
+      skillProgress: config.skillProgress,
     },
     description: `Spend time practicing ${hobbyName} to improve your skill and reduce stress.`
   }

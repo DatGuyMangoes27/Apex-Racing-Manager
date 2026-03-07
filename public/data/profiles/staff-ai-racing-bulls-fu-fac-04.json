@@ -1,0 +1,22 @@
+{
+  "name": "Priya Sharma",
+  "nationality": "Indian",
+  "age": 25,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Priya's fascination with motorsport began during her engineering studies at IIT Delhi, where she specialized in embedded systems and control. Inspired by the complex electronics governing modern racing cars, she pursued internships with local racing teams, quickly gaining practical experience in data acquisition, sensor integration, and ECU tuning. Her dedication and sharp analytical skills earned her a spot with Racing Bulls, where she's responsible for optimizing the car's electronic systems for peak performance.\n\nPriya is known for her methodical approach to problem-solving and her ability to remain calm under pressure. She believes in continuous improvement and is constantly seeking innovative solutions to enhance the car's reliability and speed. She's also a natural communicator, able to explain complex technical details in a way that is easy for drivers and mechanics to understand, fostering a collaborative environment within the team. Her ambition is to one day lead the electronics department and contribute to championship-winning success.",
+  "physical": {
+    "skinTone": "medium brown",
+    "hairColor": "dark brown",
+    "hairStyle": "long, wavy hair usually tied in a high ponytail",
+    "eyeColor": "dark brown",
+    "facialHair": null,
+    "description": "Priya is petite and athletic, with a focused gaze that conveys her intense concentration."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical diagrams and notes.",
+    "Prefers to listen to classical Indian music while working on complex coding problems.",
+    "Has a habit of tapping her pen rhythmically when deep in thought."
+  ]
+}

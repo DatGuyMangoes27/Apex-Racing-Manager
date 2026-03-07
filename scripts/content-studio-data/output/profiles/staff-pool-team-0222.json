@@ -1,0 +1,22 @@
+{
+  "name": "Stefan Meier",
+  "nationality": "Swiss",
+  "age": 34,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Stefan's motorsport journey began dismantling and reassembling go-karts in his father's garage, fueled by a childhood obsession with racing. He honed his engineering skills at ETH Zurich before diving into Formula Student, where his innovative suspension designs caught the eye of a junior formula team. After several years progressing through the ranks, he transitioned into a technical director role, where he balances meticulous analysis with a knack for spotting unconventional solutions. Stefan is known for his methodical approach and ability to extract maximum performance from limited resources, favoring data-driven decisions over gut feelings. He is a relentless problem-solver, always seeking to optimize every detail of the car's performance.\n\nStefan's pragmatic approach makes him unflappable under pressure; he remains calm and focused even when facing daunting challenges. He values teamwork but possesses the self-reliance to work autonomously, making him a dependable asset in high-stakes environments. His innovation score is a testament to his out-of-the-box thinking. He is passionate about mentoring young engineers and cultivating a culture of continuous improvement within the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Stefan is a lean man of average height with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a habit of sketching complex diagrams on napkins during lunch.",
+    "Insists on meticulously organizing his workspace every morning."
+  ]
+}

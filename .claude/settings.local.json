@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(cd:*)",
+      "Bash(npx vite build)",
+      "Bash(awk:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(node -e:*)",
+      "Bash(npm install:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}

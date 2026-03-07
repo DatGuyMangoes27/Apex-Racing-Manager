@@ -3,19 +3,21 @@ import { motion } from 'framer-motion'
 import { 
   Activity, Heart, Brain, Dumbbell, Wind, Pill,
   Home, Car, Users, Coffee, Star, Sparkles,
-  Plus, AlertTriangle,
-  Award, Crown,
+  Plus, AlertTriangle, TrendingUp, TrendingDown, ArrowRight,
+  Award, Crown, ChevronDown, ChevronUp, Zap, Shield,
   Gem, Utensils, PawPrint, GraduationCap,
-  Plane, Shirt
+  Plane, Shirt, Info
 } from 'lucide-react'
 import { 
   Card, 
   CardHeader, 
   Badge, 
   Button,
-  Modal
+  Modal,
+  StaffPortrait
 } from '@/components/ui'
 import { useToast } from '@/components/ui/Toast'
+import { getStaffPortrait, getRandomStaffPortraitByRole, getLifestyleImage, getVehicleImage, getPetImage, getLifestyleImageId } from '@/utils/generated-assets'
 import type {
   OwnerHealth,
   Hobby,
@@ -47,11 +49,14 @@ import {
   getCollectibleCatalog,
   getPetCatalog,
   getWardrobeCatalog,
-  getDietCatalog,
-  calculateTotalMonthlyCosts
+  getDietCatalog
 } from '@/simulation/personal/lifestyleAssetsManager'
 import { generatePropertyListings } from '@/simulation/investments/realEstateManager'
 import { COURSE_CATALOG } from '@/data/education-config'
+import { getLifestyleRecommendation } from '@/simulation/personal/lifestyleManager'
+import { getAssetSummary, getTotalAssetValue, calculateLifestyleScore, processWeeklyLifestyleBonuses } from '@/simulation/personal/lifestyleAssetsManager'
+import { LIFESTYLE_LEVEL_THRESHOLDS, LIFESTYLE_SCORE_WEIGHTS } from '@/data/lifestyle-assets-config'
+import type { LifestyleScoreBreakdown } from '@/data/lifestyle-assets-config'
 
 // ============================================
 // TYPES
@@ -99,6 +104,27 @@ export function LifestylePanel({
   const [showHealthcareModal, setShowHealthcareModal] = useState(false)
   const [showCourseModal, setShowCourseModal] = useState(false)
   
+  // Property browse state
+  const [selectedPropertyIndex, setSelectedPropertyIndex] = useState<number | null>(null)
+  const [showMortgageCalc, setShowMortgageCalc] = useState(false)
+  const [propertyFilter, setPropertyFilter] = useState<string>('all')
+  const [propertyCountryFilter, setPropertyCountryFilter] = useState<string>('all')
+  const [mortgageDownPercent, setMortgageDownPercent] = useState(20)
+  const [mortgageTermYears, setMortgageTermYears] = useState(25)
+  
+  // Sell confirmation modal state
+  const [pendingSale, setPendingSale] = useState<{
+    type: string
+    id: string
+    name: string
+    purchasePrice: number
+    currentValue: number
+    resaleMultiplier: number
+    estimatedProceeds: number
+    feeLabel: string
+    sellFn: () => { success: boolean; message: string; proceeds?: number }
+  } | null>(null)
+  
   // Personal life actions
   const {
     sellOwnedVehicle,
@@ -128,6 +154,7 @@ export function LifestylePanel({
     buyWardrobeItem,
     subscribeToDiet,
     buyProperty,
+    sellOwnedProperty,
     enrollInCourse,
     getAvailableVehicles,
     getAvailableMemberships,
@@ -138,7 +165,6 @@ export function LifestylePanel({
     getAvailablePets,
     getAvailableWardrobe,
     getAvailableDiets,
-    getPropertyListings,
     getCourseCatalog
   } = usePersonalLifeActions()
   
@@ -169,7 +195,7 @@ export function LifestylePanel({
   // Get active courses from education state
   const activeCourses: Course[] = useMemo(() => {
     const personalLife = careerState?.personalLife
-    return (personalLife as any)?.education?.activeCourses || []
+    return (personalLife as any)?.education?.enrolledCourses || []
   }, [careerState?.personalLife])
   
   // Catalogs
@@ -182,34 +208,28 @@ export function LifestylePanel({
   const petCatalog = useMemo(() => getAvailablePets(), [])
   const wardrobeCatalog = useMemo(() => getAvailableWardrobe(), [])
   const dietCatalog = useMemo(() => getAvailableDiets(), [])
-  const propertyCatalog = useMemo(() => getPropertyListings(), [])
+  const propertyCatalog = useMemo(() => {
+    // Compute directly from finances prop to avoid stale closure from hook
+    const budgetMin = 50000
+    const budgetMax = Math.max((finances?.liquidCash ?? 0) * 5, 5000000)
+    return generatePropertyListings(40, budgetMin, budgetMax)
+  }, [Math.floor((finances?.liquidCash ?? 0) / 500000)])
   const courseCatalog = useMemo(() => getCourseCatalog(), [])
   
-  // Computed values
-  const totalVehicleValue = useMemo(() => 
-    assets.vehicles.reduce((sum, v) => sum + v.currentValue, 0),
-    [assets.vehicles]
-  )
+  // Computed values (using centralized asset summary)
+  const assetSummary = useMemo(() => getAssetSummary(assets), [assets])
+  const totalAssetValue = useMemo(() => getTotalAssetValue(assets), [assets])
   
-  const monthlyMembershipCost = useMemo(() => 
-    assets.memberships.reduce((sum, m) => sum + (m.annualFee / 12), 0),
-    [assets.memberships]
-  )
-  
-  const totalFurnishingValue = useMemo(() => 
-    assets.furnishings.reduce((sum, f) => sum + f.currentValue, 0),
-    [assets.furnishings]
-  )
+  const totalVehicleValue = assetSummary.vehicleValue
+  const totalFurnishingValue = assetSummary.furnishingValue
+  const monthlyMembershipCost = assetSummary.annualMembershipFees / 12
   
   const monthlyServiceCost = useMemo(() => 
     (assets.services || []).reduce((sum, s) => sum + s.monthlyFee, 0),
     [assets.services]
   )
   
-  const totalCollectibleValue = useMemo(() => 
-    (assets.collectibles || []).reduce((sum, c) => sum + c.currentValue, 0),
-    [assets.collectibles]
-  )
+  const totalCollectibleValue = assetSummary.collectibleValue
   
   const monthlyHobbyCost = useMemo(() => 
     hobbies.reduce((sum, h) => sum + (h.currentMonthlyCost || 0), 0),
@@ -217,7 +237,7 @@ export function LifestylePanel({
   )
   
   const monthlyStaffCost = useMemo(() => 
-    staff.reduce((sum, s) => sum + (s.salary / 12), 0),
+    staff.reduce((sum, s) => sum + s.salary, 0),
     [staff]
   )
   
@@ -233,24 +253,63 @@ export function LifestylePanel({
   
   return (
     <div className="space-y-6">
-      {/* Health Metrics */}
+      {/* Health Metrics + Mental & Workouts at top */}
       <div className="grid grid-cols-4 gap-4">
         <HealthMetric icon={<Heart className="w-5 h-5" />} label="Health" value={health.physicalHealth} color="red" />
         <HealthMetric icon={<Brain className="w-5 h-5" />} label="Mental" value={health.mentalHealth} color="purple" />
         <HealthMetric icon={<Dumbbell className="w-5 h-5" />} label="Fitness" value={health.fitness} color="blue" />
-        <HealthMetric icon={<Wind className="w-5 h-5" />} label="Stress" value={health.stress} color="orange" inverted />
+        <HealthMetric icon={<Wind className="w-5 h-5" />} label="Stress" value={health.stressLevel ?? health.stress ?? 0} color="orange" inverted />
       </div>
 
-      {/* Lifestyle Score */}
+      {/* Workouts – horizontal layout at top */}
       <Card variant="glass" padding="md">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-medium text-lg mb-1">Lifestyle Score</h3>
-            <p className="text-sm text-text-muted capitalize">{lifestyleLevel.replace('_', ' ')}</p>
-          </div>
-          <ScoreComponent label="Score" value={health.lifestyleScore || 0} max={100} />
+        <div className="flex items-center gap-1.5 mb-3">
+          <Dumbbell className="w-4 h-4 text-text-muted flex-shrink-0" />
+          <span className="font-medium text-sm">Workouts</span>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {FITNESS_ACTIVITIES.map((activity) => {
+            const canDo = hoursRemaining >= activity.hoursRequired
+            return (
+              <div key={activity.id} className="p-3 bg-background rounded-lg min-w-[140px] max-w-[180px] flex-1 flex flex-col">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-medium text-xs">{activity.name}</span>
+                  <Badge variant="outline" size="xs" className="text-[9px]">{activity.hoursRequired}h</Badge>
+                </div>
+                <p className="text-[10px] text-text-muted mb-1.5 line-clamp-2">{activity.description}</p>
+                <div className="flex flex-wrap gap-1.5 text-[10px] text-text-muted mb-2">
+                  {activity.benefits.fitnessBonus ? <span>+{activity.benefits.fitnessBonus} fit</span> : null}
+                  {activity.benefits.stressReduction ? <span>-{activity.benefits.stressReduction} stress</span> : null}
+                  {activity.benefits.healthBonus ? <span>+{activity.benefits.healthBonus} health</span> : null}
+                </div>
+                <button
+                  className={`w-full mt-auto text-[10px] py-1.5 rounded transition-colors ${
+                    canDo
+                      ? 'bg-accent-blue/10 text-accent-blue hover:bg-accent-blue/20'
+                      : 'bg-surface text-text-muted cursor-not-allowed'
+                  }`}
+                  disabled={!canDo}
+                  title={!canDo ? `Need ${activity.hoursRequired}h, only ${hoursRemaining.toFixed(1)}h left` : ''}
+                  onClick={() => { const r = doWorkout(activity.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Workout' : 'Failed', message: r.message }) }}
+                >
+                  Start ({activity.hoursRequired}h)
+                </button>
+              </div>
+            )
+          })}
         </div>
       </Card>
+
+      {/* Lifestyle Score — Expanded Panel */}
+      <LifestyleScorePanel
+        careerState={careerState}
+        lifestyleLevel={lifestyleLevel}
+        staff={staff}
+        hobbies={hobbies}
+        health={health}
+        finances={finances}
+        assets={assets}
+      />
 
       {/* Assets Grid */}
       <div className="grid grid-cols-4 gap-4">
@@ -274,12 +333,17 @@ export function LifestylePanel({
                 <span>${(prop.currentValue || prop.purchasePrice || 0).toLocaleString()}</span>
                 <span>{prop.location}</span>
               </div>
-              <button className="w-full text-[10px] text-status-danger hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => { const r = (buyProperty as any)(prop.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Sold' : 'Failed', message: r.message }) }}>
-                Sell
-              </button>
+              {!prop.isPlayerRental && (
+                <button className="w-full text-[10px] text-status-danger hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={() => {
+                    const value = prop.currentValue || prop.purchasePrice || 0
+                    setPendingSale({ type: 'Property', id: prop.id, name: prop.name || `${prop.location} property`, purchasePrice: prop.purchasePrice || 0, currentValue: value, resaleMultiplier: 1.0, estimatedProceeds: value, feeLabel: 'Sold at market value (agent fees handled separately)', sellFn: () => sellOwnedProperty(prop.id) })
+                  }}>
+                  Sell ~${(prop.currentValue || prop.purchasePrice || 0).toLocaleString()}
+                </button>
+              )}
             </CompactItemRow>
-          )) : <EmptySection icon={<Home className="w-8 h-8" />} label="No properties" actionLabel="Browse" onAction={() => setShowPropertyModal(true)} />}
+          )) : <EmptySection icon={<Home className="w-8 h-8" />} label="No properties yet" actionLabel="Buy property" onAction={() => setShowPropertyModal(true)} />}
         </AssetSection>
 
         {/* Vehicles */}
@@ -292,7 +356,13 @@ export function LifestylePanel({
         >
           {assets.vehicles.length > 0 ? assets.vehicles.map((vehicle, index) => (
             <VehicleCard key={vehicle.id} vehicle={vehicle} index={index}
-              onSell={(id) => { const r = sellOwnedVehicle(id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Vehicle Sold' : 'Sale Failed', message: r.message }) }}
+              onSell={(id) => {
+                const v = assets.vehicles.find(veh => veh.id === id)
+                if (!v) return
+                const mult = 0.85
+                const proceeds = Math.round(v.currentValue * mult)
+                setPendingSale({ type: 'Vehicle', id, name: `${v.brand} ${v.model}`, purchasePrice: v.purchasePrice, currentValue: v.currentValue, resaleMultiplier: mult, estimatedProceeds: proceeds, feeLabel: '15% dealer/broker fee', sellFn: () => sellOwnedVehicle(id) })
+              }}
               onSetPrimary={(id) => { const r = setAsPrimaryVehicle(id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Set Primary' : 'Failed', message: r.message }) }}
             />
           )) : <EmptySection icon={<Car className="w-8 h-8" />} label="No vehicles" actionLabel="Browse" onAction={() => setShowVehicleModal(true)} />}
@@ -334,8 +404,12 @@ export function LifestylePanel({
                 <span>+{f.comfortBonus} comfort</span>
               </div>
               <button className="w-full text-[10px] text-status-danger hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => { const r = sellOwnedFurnishing(f.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Sold' : 'Failed', message: r.message }) }}>
-                Sell
+                onClick={() => {
+                  const mult = 0.50
+                  const proceeds = Math.round(f.currentValue * mult)
+                  setPendingSale({ type: 'Furnishing', id: f.id, name: f.name, purchasePrice: f.purchasePrice, currentValue: f.currentValue, resaleMultiplier: mult, estimatedProceeds: proceeds, feeLabel: '50% resale for used furnishings', sellFn: () => sellOwnedFurnishing(f.id) })
+                }}>
+                Sell ~${Math.round(f.currentValue * 0.50).toLocaleString()}
               </button>
             </CompactItemRow>
           )) : <EmptySection icon={<Sparkles className="w-8 h-8" />} label="No furnishings" actionLabel="Shop" onAction={() => setShowFurnishingModal(true)} />}
@@ -388,8 +462,12 @@ export function LifestylePanel({
                 </span>
               </div>
               <button className="w-full text-[10px] text-status-danger hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => { const r = sellOwnedCollectible(c.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Sold' : 'Failed', message: r.message }) }}>
-                Sell
+                onClick={() => {
+                  const mult = 0.90
+                  const proceeds = Math.round(c.currentValue * mult)
+                  setPendingSale({ type: 'Collectible', id: c.id, name: c.name, purchasePrice: c.purchasePrice, currentValue: c.currentValue, resaleMultiplier: mult, estimatedProceeds: proceeds, feeLabel: '10% auction commission', sellFn: () => sellOwnedCollectible(c.id) })
+                }}>
+                Sell ~${Math.round(c.currentValue * 0.90).toLocaleString()}
               </button>
             </CompactItemRow>
           )) : <EmptySection icon={<Gem className="w-8 h-8" />} label="No collectibles" actionLabel="Browse" onAction={() => setShowCollectibleModal(true)} />}
@@ -521,8 +599,13 @@ export function LifestylePanel({
                 <span>+{item.prestigeBonus} prestige</span>
               </div>
               <button className="w-full text-[10px] text-status-danger hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={() => { const r = sellOwnedWardrobeItem(item.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Sold' : 'Failed', message: r.message }) }}>
-                Sell
+                onClick={() => {
+                  const mult = 0.30
+                  const value = item.currentValue || item.purchasePrice || 0
+                  const proceeds = Math.round(value * mult)
+                  setPendingSale({ type: 'Wardrobe', id: item.id, name: `${item.brand} ${item.name}`, purchasePrice: item.purchasePrice || 0, currentValue: value, resaleMultiplier: mult, estimatedProceeds: proceeds, feeLabel: 'Used luxury resale value', sellFn: () => sellOwnedWardrobeItem(item.id) })
+                }}>
+                Sell ~${Math.round((item.currentValue || item.purchasePrice || 0) * 0.30).toLocaleString()}
               </button>
             </CompactItemRow>
           )) : <EmptySection icon={<Shirt className="w-8 h-8" />} label="No wardrobe" actionLabel="Shop" onAction={() => setShowWardrobeModal(true)} />}
@@ -594,45 +677,6 @@ export function LifestylePanel({
           </div>
         </Card>
 
-        {/* Fitness & Workouts */}
-        <Card variant="glass" padding="sm" className="flex flex-col">
-          <div className="flex items-center gap-1.5 mb-2">
-            <Dumbbell className="w-4 h-4 text-text-muted flex-shrink-0" />
-            <span className="font-medium text-sm">Workouts</span>
-          </div>
-          <div className="space-y-1.5">
-            {FITNESS_ACTIVITIES.map((activity) => {
-              const canDo = hoursRemaining >= activity.hoursRequired
-              return (
-                <div key={activity.id} className="p-2 bg-background rounded-lg">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-medium text-xs">{activity.name}</span>
-                    <Badge variant="outline" size="xs" className="text-[9px]">{activity.hoursRequired}h</Badge>
-                  </div>
-                  <p className="text-[10px] text-text-muted mb-1.5">{activity.description}</p>
-                  <div className="flex gap-2 text-[10px] text-text-muted mb-1.5">
-                    {activity.benefits.fitnessBonus ? <span>+{activity.benefits.fitnessBonus} fitness</span> : null}
-                    {activity.benefits.stressReduction ? <span>-{activity.benefits.stressReduction} stress</span> : null}
-                    {activity.benefits.healthBonus ? <span>+{activity.benefits.healthBonus} health</span> : null}
-                  </div>
-                  <button
-                    className={`w-full text-[10px] py-1 rounded transition-colors ${
-                      canDo 
-                        ? 'bg-accent-blue/10 text-accent-blue hover:bg-accent-blue/20' 
-                        : 'bg-surface text-text-muted cursor-not-allowed'
-                    }`}
-                    disabled={!canDo}
-                    title={!canDo ? `Need ${activity.hoursRequired}h, only ${hoursRemaining.toFixed(1)}h left` : ''}
-                    onClick={() => { const r = doWorkout(activity.id); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Workout' : 'Failed', message: r.message }) }}
-                  >
-                    Start ({activity.hoursRequired}h)
-                  </button>
-                </div>
-              )
-            })}
-          </div>
-        </Card>
-
       </div>
 
       {/* Hobby Selection Modal */}
@@ -640,7 +684,7 @@ export function LifestylePanel({
         isOpen={showHobbyModal}
         onClose={() => setShowHobbyModal(false)}
         title="Start a New Hobby"
-        size="lg"
+        size="full"
       >
         <HobbySelectionView 
           currentHobbies={hobbies}
@@ -662,7 +706,7 @@ export function LifestylePanel({
         isOpen={showStaffModal}
         onClose={() => setShowStaffModal(false)}
         title="Hire Personal Staff"
-        size="lg"
+        size="full"
       >
         <StaffHiringView 
           currentStaff={staff}
@@ -732,7 +776,7 @@ export function LifestylePanel({
         isOpen={showVehicleModal}
         onClose={() => setShowVehicleModal(false)}
         title="Vehicle Showroom"
-        size="lg"
+        size="full"
       >
         <VehicleSelectionView 
           catalog={vehicleCatalog}
@@ -757,7 +801,7 @@ export function LifestylePanel({
         isOpen={showMembershipModal}
         onClose={() => setShowMembershipModal(false)}
         title="Join a Club"
-        size="lg"
+        size="full"
       >
         <MembershipSelectionView 
           catalog={membershipCatalog}
@@ -780,9 +824,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Furnishing Purchase Modal */}
-      <Modal isOpen={showFurnishingModal} onClose={() => setShowFurnishingModal(false)} title="Home Furnishings" size="lg">
+      <Modal isOpen={showFurnishingModal} onClose={() => setShowFurnishingModal(false)} title="Home Furnishings" size="full">
         <CatalogGrid
-          items={furnishingCatalog.map((f, i) => ({ id: f.id, name: f.name, description: f.description, price: f.basePrice, tags: [f.category, f.tier], index: i }))}
+          items={furnishingCatalog.map((f, i) => ({ id: f.id, name: f.name, description: f.description, price: f.basePrice, tags: [f.category, f.tier], index: i, imageId: getLifestyleImageId('furnishings', f.id, { category: f.category, tier: f.tier }), imageCategory: 'furnishings' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = buyFurnishing(item.id, 'primary')
@@ -794,9 +838,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Service Subscription Modal */}
-      <Modal isOpen={showServiceModal} onClose={() => setShowServiceModal(false)} title="Luxury Services" size="lg">
+      <Modal isOpen={showServiceModal} onClose={() => setShowServiceModal(false)} title="Luxury Services" size="full">
         <CatalogGrid
-          items={serviceCatalog.map((s, i) => ({ id: s.id, name: s.name, description: s.description, price: s.monthlyFee, tags: [s.type], index: i, priceLabel: '/mo' }))}
+          items={serviceCatalog.map((s, i) => ({ id: s.id, name: s.name, description: s.description, price: s.monthlyFee, tags: [s.type], index: i, priceLabel: '/mo', imageId: getLifestyleImageId('services', s.id, { type: s.type }), imageCategory: 'services' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = subscribeToService(item.id, 'standard')
@@ -809,9 +853,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Experience Booking Modal */}
-      <Modal isOpen={showExperienceModal} onClose={() => setShowExperienceModal(false)} title="Experiences & Travel" size="lg">
+      <Modal isOpen={showExperienceModal} onClose={() => setShowExperienceModal(false)} title="Experiences & Travel" size="full">
         <CatalogGrid
-          items={experienceCatalog.map((e, i) => ({ id: e.id, name: e.name, description: e.description, price: e.cost, tags: [e.type, e.duration], index: i }))}
+          items={experienceCatalog.map((e, i) => ({ id: e.id, name: e.name, description: e.description, price: e.cost, tags: [e.type, e.duration], index: i, imageId: getLifestyleImageId('experiences', e.id), imageCategory: 'experiences' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = bookLuxuryExperience(item.id)
@@ -824,9 +868,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Collectible Purchase Modal */}
-      <Modal isOpen={showCollectibleModal} onClose={() => setShowCollectibleModal(false)} title="Collectibles Market" size="lg">
+      <Modal isOpen={showCollectibleModal} onClose={() => setShowCollectibleModal(false)} title="Collectibles Market" size="full">
         <CatalogGrid
-          items={collectibleCatalog.map((c, i) => ({ id: c.id, name: c.name, description: c.description, price: c.basePrice, tags: [c.category, c.rarity], index: i }))}
+          items={collectibleCatalog.map((c, i) => ({ id: c.id, name: c.name, description: c.description, price: c.basePrice, tags: [c.category, c.rarity], index: i, imageId: getLifestyleImageId('collectibles', c.id, { category: c.category }), imageCategory: 'collectibles' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = buyCollectible(item.id)
@@ -839,9 +883,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Pet Adoption Modal */}
-      <Modal isOpen={showPetModal} onClose={() => setShowPetModal(false)} title="Adopt a Pet" size="lg">
+      <Modal isOpen={showPetModal} onClose={() => setShowPetModal(false)} title="Adopt a Pet" size="full">
         <CatalogGrid
-          items={petCatalog.map((p, i) => ({ id: p.id, name: `${p.breed}`, description: p.description, price: p.basePrice, tags: [p.type, `$${p.monthlyUpkeep}/mo upkeep`], index: i }))}
+          items={petCatalog.map((p, i) => ({ id: p.id, name: `${p.breed}`, description: p.description, price: p.basePrice, tags: [p.type, `$${p.monthlyUpkeep}/mo upkeep`], index: i, imageId: getLifestyleImageId('pets', p.id), imageCategory: 'pets' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const petEntry = petCatalog.find(p => p.id === item.id)
@@ -855,9 +899,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Wardrobe Shopping Modal */}
-      <Modal isOpen={showWardrobeModal} onClose={() => setShowWardrobeModal(false)} title="Fashion & Wardrobe" size="lg">
+      <Modal isOpen={showWardrobeModal} onClose={() => setShowWardrobeModal(false)} title="Fashion & Wardrobe" size="full">
         <CatalogGrid
-          items={wardrobeCatalog.map((w, i) => ({ id: w.id, name: w.name, description: `${w.brand} - ${w.description}`, price: w.basePrice, tags: [w.category], index: i }))}
+          items={wardrobeCatalog.map((w, i) => ({ id: w.id, name: w.name, description: `${w.brand} - ${w.description}`, price: w.basePrice, tags: [w.category], index: i, imageId: getLifestyleImageId('wardrobe', w.id, { category: w.category }), imageCategory: 'wardrobe' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = buyWardrobeItem(item.id)
@@ -869,9 +913,9 @@ export function LifestylePanel({
       </Modal>
 
       {/* Diet Selection Modal */}
-      <Modal isOpen={showDietModal} onClose={() => setShowDietModal(false)} title="Diet & Nutrition Plans" size="lg">
+      <Modal isOpen={showDietModal} onClose={() => setShowDietModal(false)} title="Diet & Nutrition Plans" size="full">
         <CatalogGrid
-          items={dietCatalog.map((d, i) => ({ id: d.id, name: d.name, description: d.description, price: d.monthlyFee, tags: [d.type, `+${d.healthBonus} health`, `+${d.fitnessBonus} fitness`], index: i, priceLabel: '/mo' }))}
+          items={dietCatalog.map((d, i) => ({ id: d.id, name: d.name, description: d.description, price: d.monthlyFee, tags: [d.type, `+${d.healthBonus} health`, `+${d.fitnessBonus} fitness`], index: i, priceLabel: '/mo', imageId: d.id.replace(/_/g, '-'), imageCategory: 'diet' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = subscribeToDiet(item.id)
@@ -883,24 +927,165 @@ export function LifestylePanel({
         />
       </Modal>
 
-      {/* Property Purchase Modal */}
-      <Modal isOpen={showPropertyModal} onClose={() => setShowPropertyModal(false)} title="Real Estate Listings" size="lg">
-        <CatalogGrid
-          items={propertyCatalog.map((p: any, i: number) => ({ id: p.id || `prop_${i}`, name: p.name, description: `${p.location || 'Location TBD'} - ${p.type?.replace('_', ' ') || 'Property'}`, price: p.listPrice || p.price || 0, tags: [p.type?.replace('_', ' ') || ''], index: i }))}
-          liquidCash={finances.liquidCash}
-          onPurchase={(item) => {
-            const r = buyProperty(item.index)
-            addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Property Purchased!' : 'Failed', message: r.message })
-            if (r.success) setShowPropertyModal(false)
-          }}
-          onClose={() => setShowPropertyModal(false)}
-        />
+      {/* Property Browse & Purchase Modal */}
+      <Modal isOpen={showPropertyModal} onClose={() => { setShowPropertyModal(false); setSelectedPropertyIndex(null); setShowMortgageCalc(false) }} title="Property Market — Buy, Mortgage or Rent" size="full">
+        {selectedPropertyIndex !== null && propertyCatalog[selectedPropertyIndex] ? (() => {
+          const listing = propertyCatalog[selectedPropertyIndex] as any
+          const prop = listing.property || listing
+          const price = listing.askingPrice || listing.listPrice || prop.currentValue || 0
+          const monthlyRent = Math.round(price * 0.04 / 12)
+          const loanAmount = Math.round(price * (1 - mortgageDownPercent / 100))
+          const rate = 0.045 / 12
+          const nPayments = mortgageTermYears * 12
+          const monthlyMortgage = rate > 0 ? Math.round(loanAmount * (rate * Math.pow(1 + rate, nPayments)) / (Math.pow(1 + rate, nPayments) - 1)) : 0
+          const downPayment = Math.round(price * mortgageDownPercent / 100)
+
+          return showMortgageCalc ? (
+            // Mortgage Calculator View
+            <div className="space-y-4 p-4">
+              <button onClick={() => setShowMortgageCalc(false)} className="text-sm text-text-secondary hover:text-text-primary flex items-center gap-1">&larr; Back to property</button>
+              <h3 className="text-lg font-bold">{listing.name}</h3>
+              <p className="text-sm text-text-secondary">Property Price: <span className="text-text-primary font-mono">${price.toLocaleString()}</span></p>
+              
+              <div className="bg-surface-700 rounded-lg p-4 space-y-4">
+                <div>
+                  <label className="text-sm text-text-secondary block mb-1">Down Payment: {mortgageDownPercent}% (${downPayment.toLocaleString()})</label>
+                  <input type="range" min={10} max={50} step={5} value={mortgageDownPercent} onChange={e => setMortgageDownPercent(Number(e.target.value))} className="w-full accent-accent-primary" />
+                  <div className="flex justify-between text-xs text-text-tertiary"><span>10%</span><span>50%</span></div>
+                </div>
+                <div>
+                  <label className="text-sm text-text-secondary block mb-1">Term: {mortgageTermYears} years</label>
+                  <div className="flex gap-2">
+                    {[10, 15, 20, 25, 30].map(y => (
+                      <button key={y} onClick={() => setMortgageTermYears(y)} className={`px-3 py-1 rounded text-sm ${mortgageTermYears === y ? 'bg-accent-primary text-white' : 'bg-surface-600 text-text-secondary hover:bg-surface-500'}`}>{y}y</button>
+                    ))}
+                  </div>
+                </div>
+                <div className="border-t border-surface-500 pt-3 grid grid-cols-2 gap-3 text-sm">
+                  <div><span className="text-text-secondary">Loan Amount:</span> <span className="font-mono">${loanAmount.toLocaleString()}</span></div>
+                  <div><span className="text-text-secondary">Monthly Payment:</span> <span className="font-mono text-accent-primary font-bold">${monthlyMortgage.toLocaleString()}</span></div>
+                  <div><span className="text-text-secondary">Interest Rate:</span> <span className="font-mono">~4.5%</span></div>
+                  <div><span className="text-text-secondary">Total Interest:</span> <span className="font-mono">${(monthlyMortgage * nPayments - loanAmount).toLocaleString()}</span></div>
+                </div>
+                {finances.liquidCash < downPayment && (
+                  <div className="bg-status-danger/20 border border-status-danger/40 rounded p-2 text-sm text-status-danger">Insufficient funds for down payment. Need ${downPayment.toLocaleString()}, have ${finances.liquidCash.toLocaleString()}</div>
+                )}
+              </div>
+              <button
+                disabled={finances.liquidCash < downPayment}
+                onClick={() => {
+                  const r = buyProperty(selectedPropertyIndex, { paymentMethod: 'mortgage', downPaymentPercent: mortgageDownPercent, mortgageTermYears })
+                  addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Mortgage Approved!' : 'Denied', message: r.message })
+                  if (r.success) { setShowPropertyModal(false); setSelectedPropertyIndex(null); setShowMortgageCalc(false) }
+                }}
+                className="w-full py-2 rounded-lg bg-accent-primary text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent-primary/90"
+              >Apply for Mortgage</button>
+            </div>
+          ) : (
+            // Property Detail View
+            <div className="space-y-4 p-4">
+              <button onClick={() => setSelectedPropertyIndex(null)} className="text-sm text-text-secondary hover:text-text-primary flex items-center gap-1">&larr; Back to listings</button>
+              <div className="flex gap-4">
+                <div className="w-48 h-32 bg-surface-700 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+                  <img src={getLifestyleImage('properties', listing.name || '', { type: prop.type })} alt={listing.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                </div>
+                <div className="flex-1 space-y-1">
+                  <h3 className="text-lg font-bold">{listing.name}</h3>
+                  <p className="text-sm text-text-secondary">{prop.city}, {prop.country} &bull; {prop.neighborhood}</p>
+                  <p className="text-xl font-mono font-bold text-accent-primary">${price.toLocaleString()}</p>
+                  <div className="flex gap-2 flex-wrap text-xs">
+                    <span className="px-2 py-0.5 bg-surface-600 rounded">{(prop.type || '').replace('_', ' ')}</span>
+                    {prop.bedrooms > 0 && <span className="px-2 py-0.5 bg-surface-600 rounded">{prop.bedrooms} bed</span>}
+                    {prop.bathrooms > 0 && <span className="px-2 py-0.5 bg-surface-600 rounded">{prop.bathrooms} bath</span>}
+                    {prop.squareMeters > 0 && <span className="px-2 py-0.5 bg-surface-600 rounded">{prop.squareMeters}m²</span>}
+                    <span className="px-2 py-0.5 bg-surface-600 rounded">{(prop.quality || 'good').replace('_', ' ')}</span>
+                  </div>
+                  {(prop.features || []).length > 0 && <div className="flex gap-1 flex-wrap text-xs text-text-tertiary">{prop.features.map((f: string) => <span key={f} className="px-1.5 py-0.5 bg-surface-700 rounded">{f.replace('_', ' ')}</span>)}</div>}
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-sm">
+                <div className="bg-surface-700 rounded p-2 text-center"><p className="text-text-tertiary text-xs">Maintenance</p><p className="font-mono">${(prop.monthlyMaintenance || 0).toLocaleString()}/mo</p></div>
+                <div className="bg-surface-700 rounded p-2 text-center"><p className="text-text-tertiary text-xs">Tax</p><p className="font-mono">${Math.round((prop.annualPropertyTax || 0) / 12).toLocaleString()}/mo</p></div>
+                <div className="bg-surface-700 rounded p-2 text-center"><p className="text-text-tertiary text-xs">Insurance</p><p className="font-mono">${(prop.insuranceCost || 0).toLocaleString()}/mo</p></div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <button onClick={() => { const r = buyProperty(selectedPropertyIndex, { paymentMethod: 'cash' }); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Purchased!' : 'Failed', message: r.message }); if (r.success) { setShowPropertyModal(false); setSelectedPropertyIndex(null) } }}
+                  disabled={finances.liquidCash < price}
+                  className="py-2 rounded-lg bg-status-success/20 border border-status-success/40 text-status-success text-sm font-medium hover:bg-status-success/30 disabled:opacity-40 disabled:cursor-not-allowed">
+                  Buy Cash<br/><span className="text-xs font-mono">${price.toLocaleString()}</span>
+                </button>
+                <button onClick={() => setShowMortgageCalc(true)}
+                  className="py-2 rounded-lg bg-accent-primary/20 border border-accent-primary/40 text-accent-primary text-sm font-medium hover:bg-accent-primary/30">
+                  Mortgage<br/><span className="text-xs font-mono">~${Math.round(price * 0.8 * 0.045 / 12 * (Math.pow(1.00375, 300)) / (Math.pow(1.00375, 300) - 1)).toLocaleString()}/mo</span>
+                </button>
+                <button onClick={() => { const r = buyProperty(selectedPropertyIndex, { paymentMethod: 'rent' }); addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Rented!' : 'Failed', message: r.message }); if (r.success) { setShowPropertyModal(false); setSelectedPropertyIndex(null) } }}
+                  className="py-2 rounded-lg bg-blue-500/20 border border-blue-500/40 text-blue-400 text-sm font-medium hover:bg-blue-500/30">
+                  Rent<br/><span className="text-xs font-mono">${monthlyRent.toLocaleString()}/mo</span>
+                </button>
+              </div>
+            </div>
+          )
+        })() : (
+          // Property Listings Grid
+          <div className="space-y-3 p-4">
+            {/* Filters */}
+            <div className="flex gap-2 flex-wrap">
+              <select value={propertyFilter} onChange={e => setPropertyFilter(e.target.value)} className="bg-surface-700 border border-surface-500 rounded px-2 py-1 text-sm text-text-primary" style={{ colorScheme: 'dark' }}>
+                <option value="all">All Types</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+                <option value="villa">Villa</option>
+                <option value="mansion">Mansion</option>
+                <option value="penthouse">Penthouse</option>
+                <option value="beach_house">Beach House</option>
+                <option value="ski_chalet">Ski Chalet</option>
+                <option value="land">Land</option>
+              </select>
+              <select value={propertyCountryFilter} onChange={e => setPropertyCountryFilter(e.target.value)} className="bg-surface-700 border border-surface-500 rounded px-2 py-1 text-sm text-text-primary" style={{ colorScheme: 'dark' }}>
+                <option value="all">All Countries</option>
+                {[...new Set(propertyCatalog.map((p: any) => (p.property || p).country))].sort().map((c: any) => <option key={c} value={c}>{c}</option>)}
+              </select>
+              <span className="text-xs text-text-tertiary ml-auto self-center">
+                {propertyCatalog.filter((p: any) => { const prop = p.property || p; return (propertyFilter === 'all' || prop.type === propertyFilter) && (propertyCountryFilter === 'all' || prop.country === propertyCountryFilter) }).length} listings
+              </span>
+            </div>
+            {/* Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto">
+              {propertyCatalog
+                .map((p: any, i: number) => ({ listing: p, index: i }))
+                .filter(({ listing }: any) => {
+                  const prop = listing.property || listing
+                  return (propertyFilter === 'all' || prop.type === propertyFilter) && (propertyCountryFilter === 'all' || prop.country === propertyCountryFilter)
+                })
+                .map(({ listing, index }: any) => {
+                  const prop = listing.property || listing
+                  const price = listing.askingPrice || listing.listPrice || prop.currentValue || 0
+                  return (
+                    <button key={index} onClick={() => setSelectedPropertyIndex(index)} className="bg-surface-700 rounded-lg overflow-hidden text-left hover:bg-surface-600 transition-colors border border-surface-500 hover:border-accent-primary/50">
+                      <div className="h-24 bg-surface-600 flex items-center justify-center overflow-hidden">
+                        <img src={getLifestyleImage('properties', listing.name || '', { type: prop.type })} alt={listing.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />
+                      </div>
+                      <div className="p-2 space-y-0.5">
+                        <p className="text-sm font-medium truncate">{listing.name}</p>
+                        <p className="text-xs text-text-secondary truncate">{prop.city}, {prop.country}</p>
+                        <p className="text-sm font-mono font-bold text-accent-primary">${price.toLocaleString()}</p>
+                        <div className="flex gap-1 text-xs">
+                          <span className="px-1 py-0.5 bg-surface-600 rounded">{(prop.type || '').replace('_', ' ')}</span>
+                          {prop.bedrooms > 0 && <span className="px-1 py-0.5 bg-surface-600 rounded">{prop.bedrooms}bd</span>}
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+            </div>
+          </div>
+        )}
       </Modal>
 
       {/* Course Enrollment Modal */}
-      <Modal isOpen={showCourseModal} onClose={() => setShowCourseModal(false)} title="Education & Courses" size="lg">
+      <Modal isOpen={showCourseModal} onClose={() => setShowCourseModal(false)} title="Education & Courses" size="full">
         <CatalogGrid
-          items={courseCatalog.map((c: any, i: number) => ({ id: `course_${i}`, name: c.name, description: `${c.provider} - ${c.format?.replace('_', ' ')} (${c.totalHours}h)`, price: c.enrollmentFee, tags: [c.category, c.format?.replace('_', ' ')], index: i }))}
+          items={courseCatalog.map((c: any, i: number) => ({ id: `course_${i}`, name: c.name, description: `${c.provider} - ${c.format?.replace('_', ' ')} (${c.totalHours}h)`, price: c.enrollmentFee, tags: [c.category, c.format?.replace('_', ' ')], index: i, imageId: getLifestyleImageId('courses', c.id || `course_${i}`, { category: c.category }), imageCategory: 'courses' }))}
           liquidCash={finances.liquidCash}
           onPurchase={(item) => {
             const r = enrollInCourse(item.index)
@@ -910,6 +1095,94 @@ export function LifestylePanel({
           onClose={() => setShowCourseModal(false)}
           actionLabel="Enroll"
         />
+      </Modal>
+
+      {/* Sell Confirmation Modal */}
+      <Modal isOpen={!!pendingSale} onClose={() => setPendingSale(null)} title="" size="sm">
+        {pendingSale && (() => {
+          const gainLoss = pendingSale.currentValue - pendingSale.purchasePrice
+          const gainLossPercent = pendingSale.purchasePrice > 0 ? ((gainLoss / pendingSale.purchasePrice) * 100) : 0
+          const fees = pendingSale.currentValue - pendingSale.estimatedProceeds
+          const netGainLoss = pendingSale.estimatedProceeds - pendingSale.purchasePrice
+          const isProfit = netGainLoss >= 0
+
+          return (
+            <div className="space-y-5 px-1">
+              {/* Header */}
+              <div className="text-center space-y-1">
+                <div className="w-10 h-10 rounded-full bg-status-danger/15 flex items-center justify-center mx-auto mb-2">
+                  <AlertTriangle className="w-5 h-5 text-status-danger" />
+                </div>
+                <h3 className="text-lg font-bold">Sell {pendingSale.type}?</h3>
+                <p className="text-sm text-text-secondary">{pendingSale.name}</p>
+              </div>
+
+              {/* Price Breakdown */}
+              <div className="bg-surface-700/60 rounded-xl p-4 space-y-3">
+                {/* Purchase -> Current Value */}
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-text-tertiary">Purchased for</span>
+                  <span className="font-mono text-text-secondary">${pendingSale.purchasePrice.toLocaleString()}</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-text-tertiary">Current market value</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono font-medium">${pendingSale.currentValue.toLocaleString()}</span>
+                    {gainLoss !== 0 && (
+                      <span className={`text-[10px] font-mono flex items-center gap-0.5 ${gainLoss >= 0 ? 'text-status-success' : 'text-status-danger'}`}>
+                        {gainLoss >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                        {gainLoss >= 0 ? '+' : ''}{gainLossPercent.toFixed(1)}%
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Fee line */}
+                {fees > 0 && (
+                  <div className="flex items-center justify-between text-sm border-t border-surface-500/50 pt-2">
+                    <span className="text-text-tertiary">{pendingSale.feeLabel}</span>
+                    <span className="font-mono text-status-danger">-${fees.toLocaleString()}</span>
+                  </div>
+                )}
+
+                {/* Divider + Final proceeds */}
+                <div className="border-t border-surface-500 pt-3 flex items-center justify-between">
+                  <span className="text-sm font-medium">You&apos;ll receive</span>
+                  <span className="font-mono font-bold text-xl text-accent-primary">${pendingSale.estimatedProceeds.toLocaleString()}</span>
+                </div>
+
+                {/* Net gain/loss summary */}
+                <div className={`flex items-center justify-center gap-1.5 text-xs font-medium rounded-lg py-1.5 ${isProfit ? 'bg-status-success/10 text-status-success' : 'bg-status-danger/10 text-status-danger'}`}>
+                  {isProfit ? <TrendingUp className="w-3.5 h-3.5" /> : <TrendingDown className="w-3.5 h-3.5" />}
+                  Net {isProfit ? 'profit' : 'loss'}: <span className="font-mono">${Math.abs(netGainLoss).toLocaleString()}</span>
+                  {pendingSale.purchasePrice > 0 && (
+                    <span className="opacity-70">({isProfit ? '+' : ''}{((netGainLoss / pendingSale.purchasePrice) * 100).toFixed(1)}%)</span>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setPendingSale(null)}
+                  className="flex-1 py-2.5 rounded-lg bg-surface-600 text-text-secondary text-sm font-medium hover:bg-surface-500 transition-colors"
+                >
+                  Keep It
+                </button>
+                <button
+                  onClick={() => {
+                    const r = pendingSale.sellFn()
+                    addToast({ type: r.success ? 'success' : 'error', title: r.success ? 'Sold!' : 'Sale Failed', message: r.message })
+                    setPendingSale(null)
+                  }}
+                  className="flex-1 py-2.5 rounded-lg bg-status-danger text-white text-sm font-bold hover:bg-status-danger/90 transition-colors"
+                >
+                  Sell for ${pendingSale.estimatedProceeds.toLocaleString()}
+                </button>
+              </div>
+            </div>
+          )
+        })()}
       </Modal>
     </div>
   )
@@ -996,6 +1269,8 @@ interface CatalogGridItem {
   tags: string[]
   index: number
   priceLabel?: string
+  imageId?: string
+  imageCategory?: string
 }
 
 interface CatalogGridProps {
@@ -1004,6 +1279,21 @@ interface CatalogGridProps {
   onPurchase: (item: CatalogGridItem) => void
   onClose: () => void
   actionLabel?: string
+}
+
+function LifestyleImageWithFallback({ imageCategory, imageId, alt, className = 'w-full h-full object-cover' }: { imageCategory: string; imageId: string; alt: string; className?: string }) {
+  const [failed, setFailed] = useState(false)
+  const src = getLifestyleImage(imageCategory, imageId)
+  const FallbackIcon = imageCategory === 'pets' ? PawPrint : imageCategory === 'wardrobe' ? Shirt : imageCategory === 'collectibles' ? Gem : imageCategory === 'vehicles' ? Car : imageCategory === 'properties' ? Home : imageCategory === 'courses' ? GraduationCap : imageCategory === 'diet' ? Utensils : imageCategory === 'experiences' ? Plane : imageCategory === 'services' ? Star : imageCategory === 'furnishings' ? Sparkles : Star
+  return (
+    <div className="rounded-md overflow-hidden mb-2 h-36 bg-surface-secondary flex items-center justify-center">
+      {!failed && src ? (
+        <img src={src} alt={alt} className={className} loading="lazy" onError={() => setFailed(true)} />
+      ) : (
+        <FallbackIcon className="w-10 h-10 text-text-muted/50" aria-hidden />
+      )}
+    </div>
+  )
 }
 
 function CatalogGrid({ items, liquidCash, onPurchase, onClose, actionLabel = 'Purchase' }: CatalogGridProps) {
@@ -1029,11 +1319,15 @@ function CatalogGrid({ items, liquidCash, onPurchase, onClose, actionLabel = 'Pu
         </div>
       )}
       
-      <div className="grid grid-cols-2 gap-3 max-h-[400px] overflow-y-auto">
+      <div className="grid grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
         {filteredItems.map((item) => {
           const canAfford = liquidCash >= item.price
           return (
-            <Card key={item.id} variant="default" padding="sm" className={!canAfford ? 'opacity-50' : ''}>
+            <Card key={item.id} variant="default" padding="md" className={!canAfford ? 'opacity-50' : ''}>
+              {/* Image thumbnail */}
+              {item.imageId && item.imageCategory && (
+                <LifestyleImageWithFallback imageCategory={item.imageCategory} imageId={item.imageId} alt={item.name} />
+              )}
               <h4 className="font-medium text-sm mb-1">{item.name}</h4>
               <p className="text-xs text-text-muted mb-2 line-clamp-2">{item.description}</p>
               <div className="flex flex-wrap gap-1 mb-2">
@@ -1041,8 +1335,8 @@ function CatalogGrid({ items, liquidCash, onPurchase, onClose, actionLabel = 'Pu
                   <Badge key={i} variant="outline" size="xs" className="capitalize text-[9px]">{tag.replace('_', ' ')}</Badge>
                 ))}
               </div>
-              <p className="font-mono font-bold text-sm mb-2">${item.price.toLocaleString()}{item.priceLabel || ''}</p>
-              <Button variant="primary" size="xs" className="w-full" disabled={!canAfford}
+              <p className="font-mono font-bold text-lg mb-2">${item.price.toLocaleString()}{item.priceLabel || ''}</p>
+              <Button variant="primary" size="sm" className="w-full" disabled={!canAfford}
                 onClick={() => onPurchase(item)}>
                 {canAfford ? actionLabel : 'Can\'t Afford'}
               </Button>
@@ -1069,7 +1363,8 @@ interface HealthMetricProps {
 }
 
 function HealthMetric({ icon, label, value, color, inverted }: HealthMetricProps) {
-  const displayValue = inverted ? value : value
+  const safeValue = typeof value === 'number' && !isNaN(value) ? Math.round(value) : 0
+  const displayValue = inverted ? safeValue : safeValue
   const colorClasses = {
     red: 'bg-red-500/20 text-red-500',
     purple: 'bg-purple-500/20 text-purple-500',
@@ -1115,10 +1410,10 @@ interface HobbyCardProps {
 }
 
 function HobbyCard({ hobby, index, onPractice, hoursRemaining }: HobbyCardProps) {
-  // Get config from hobby data or use defaults
-  const config = (hobby as any).config || { stressReduction: 10, name: hobby.name }
+  // Use actual activity config for accurate stress reduction and time cost
   const activityConfig = HOBBY_ACTIVITY_CONFIG[hobby.type as HobbyType]
   const hoursNeeded = activityConfig?.hoursRequired ?? 2
+  const stressReduction = activityConfig?.stressReduction ?? 8
   const canPractice = hoursRemaining >= hoursNeeded
   
   return (
@@ -1161,7 +1456,7 @@ function HobbyCard({ hobby, index, onPractice, hoursRemaining }: HobbyCardProps)
         disabled={!canPractice}
         title={!canPractice ? `Need ${hoursNeeded}h, only ${hoursRemaining.toFixed(1)}h left` : ''}
       >
-        Practice ({hoursNeeded}h, -{config?.stressReduction || 0} stress)
+        Practice ({hoursNeeded}h, -{stressReduction} stress)
       </button>
     </motion.div>
   )
@@ -1187,19 +1482,25 @@ function StaffCard({ staff, index, onFire }: StaffCardProps) {
       transition={{ delay: index * 0.03 }}
       className="p-2 bg-background rounded-lg group hover:bg-surface/50 transition-colors"
     >
-      {/* Name */}
-      <div className="flex items-center gap-1 mb-1">
-        <span className="font-medium text-xs truncate">{staff.name}</span>
+      {/* Portrait + Name */}
+      <div className="flex items-center gap-2 mb-1">
+        <StaffPortrait
+          src={getStaffPortrait(staff.id) || getRandomStaffPortraitByRole(staff.role)}
+          name={staff.name}
+          role={staff.role.replace('_', ' ')}
+          size="xs"
+        />
+        <div className="min-w-0">
+          <span className="font-medium text-xs truncate block">{staff.name}</span>
+          <p className="text-[10px] text-text-muted capitalize truncate">
+            {staff.role.replace('_', ' ')} • {staff.yearsEmployed}yr{staff.yearsEmployed !== 1 ? 's' : ''}
+          </p>
+        </div>
       </div>
-      
-      {/* Role */}
-      <p className="text-[10px] text-text-muted mb-1 capitalize truncate">
-        {staff.role.replace('_', ' ')} • {staff.yearsEmployed}yr{staff.yearsEmployed !== 1 ? 's' : ''}
-      </p>
       
       {/* Salary & Satisfaction */}
       <div className="flex justify-between items-baseline mb-1.5">
-        <span className="font-mono text-xs font-bold">${Math.round(staff.salary / 12).toLocaleString()}/mo</span>
+        <span className="font-mono text-xs font-bold">${Math.round(staff.salary).toLocaleString()}/mo</span>
         <span className={`text-[10px] font-mono ${satisfactionColor}`}>
           {staff.satisfaction}%
         </span>
@@ -1225,11 +1526,9 @@ interface HobbySelectionViewProps {
 }
 
 function HobbySelectionView({ currentHobbies, onClose, onStartHobby }: HobbySelectionViewProps) {
-  // Get hobby templates from the hook or use a default list
-  const hobbyTypes: HobbyType[] = ['golf', 'yachting', 'car_collecting', 'horse_racing', 'art_collecting', 'wine_collecting', 'flying', 'fishing', 'photography']
-  const availableHobbies = hobbyTypes
-    .filter(type => !currentHobbies.find(h => h.type === type))
-    .map(type => [type, { name: type.replace('_', ' '), description: `${type} hobby`, initialInvestment: 5000, annualCost: 2000, stressReduction: 10, networkingOpportunities: 0 }])
+  // Use actual HOBBY_TEMPLATES data for accurate pricing
+  const availableHobbies = Object.entries(HOBBY_TEMPLATES)
+    .filter(([type]) => !currentHobbies.find(h => h.type === type))
 
   return (
     <div className="space-y-4">
@@ -1237,19 +1536,18 @@ function HobbySelectionView({ currentHobbies, onClose, onStartHobby }: HobbySele
         Hobbies help reduce stress and can provide networking opportunities.
       </p>
       
-      <div className="grid grid-cols-2 gap-4 max-h-[400px] overflow-y-auto">
+      <div className="grid grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
         {availableHobbies.map(([type, config]) => (
           <Card key={type} variant="default" padding="md" hoverable className="cursor-pointer">
-            <h4 className="font-medium mb-2">{config.name}</h4>
+            <h4 className="font-medium text-lg mb-2">{config.name}</h4>
             <p className="text-sm text-text-muted mb-3">{config.description}</p>
             
-            <div className="space-y-1 text-xs text-text-muted mb-3">
-              <p>Initial investment: ${config.initialInvestment.toLocaleString()}</p>
-              <p>Annual cost: ${config.annualCost.toLocaleString()}</p>
-              <p>Stress reduction: -{config.stressReduction}/session</p>
-              {config.networkingOpportunities > 0 && (
-                <p>Networking: +{config.networkingOpportunities}</p>
-              )}
+            <div className="space-y-1.5 text-xs text-text-muted mb-4">
+              <p className="text-[10px] uppercase tracking-wider mb-1">Initial Investment</p>
+              <p className="font-mono font-bold text-lg text-text-primary mb-2">${config.initialInvestment.toLocaleString()}</p>
+              <p className="text-[10px] uppercase tracking-wider mb-1">Ongoing Cost</p>
+              <p className="font-mono font-bold text-sm text-text-primary">${config.annualCost.toLocaleString()}<span className="text-xs font-normal text-text-muted">/year</span></p>
+              <p>${Math.round(config.annualCost / 12).toLocaleString()}/month</p>
             </div>
             
             <Button 
@@ -1278,11 +1576,9 @@ interface StaffHiringViewProps {
 }
 
 function StaffHiringView({ currentStaff, onClose, onHire }: StaffHiringViewProps) {
-  // Get staff templates from the hook or use default roles
-  const staffRoles: StaffRole[] = ['personal_assistant', 'chef', 'driver', 'security', 'trainer', 'therapist']
-  const availableRoles = staffRoles
-    .filter(role => !currentStaff.find(s => s.role === role))
-    .map(role => [role, { description: `${role.replace('_', ' ')} role`, benefits: { stressReduction: 5 }, baseSalary: 50000 }])
+  // Use actual STAFF_TEMPLATES for accurate pricing
+  const availableRoles = Object.entries(STAFF_TEMPLATES)
+    .filter(([role]) => !currentStaff.find(s => s.role === role))
 
   return (
     <div className="space-y-4">
@@ -1290,43 +1586,36 @@ function StaffHiringView({ currentStaff, onClose, onHire }: StaffHiringViewProps
         Personal staff can help manage your daily life and reduce stress.
       </p>
       
-      <div className="space-y-3 max-h-[400px] overflow-y-auto">
+      <div className="grid grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
         {availableRoles.map(([role, config]) => (
-          <div 
+          <Card
             key={role}
-            className="flex items-center justify-between p-4 bg-background rounded-lg"
+            variant="default"
+            padding="md"
           >
-            <div>
-              <h4 className="font-medium capitalize">{role.replace('_', ' ')}</h4>
-              <p className="text-sm text-text-muted">{config.description}</p>
-              <div className="flex gap-2 mt-2">
-                {config.benefits.stressReduction && config.benefits.stressReduction > 0 && (
-                  <Badge variant="outline" size="sm">
-                    -{config.benefits.stressReduction} stress
-                  </Badge>
-                )}
-                {config.benefits.timeFreedPerWeek && config.benefits.timeFreedPerWeek > 0 && (
-                  <Badge variant="outline" size="sm">
-                    +{config.benefits.timeFreedPerWeek}h freed
-                  </Badge>
-                )}
-              </div>
+            <h4 className="font-medium text-lg mb-1">{config.title}</h4>
+            <p className="text-sm text-text-muted mb-3 capitalize">{role.replace(/_/g, ' ')}</p>
+            
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {config.benefits.map((benefit, i) => (
+                <Badge key={i} variant="outline" size="sm">{benefit}</Badge>
+              ))}
             </div>
-            <div className="text-right">
-              <p className="font-mono text-lg">
-                ${config.baseSalary.toLocaleString()}
-              </p>
-              <p className="text-xs text-text-muted">per year</p>
-              <Button 
-                variant="primary" 
-                size="sm" 
-                className="mt-2"
-                onClick={() => onHire(role)}
-              >
-                Hire
-              </Button>
-            </div>
-          </div>
+            
+            <p className="font-mono font-bold text-lg mb-1">
+              ${config.baseSalary.toLocaleString()}
+            </p>
+            <p className="text-xs text-text-muted mb-3">per year (${Math.round(config.baseSalary / 12).toLocaleString()}/mo)</p>
+            
+            <Button 
+              variant="primary" 
+              size="sm" 
+              className="w-full"
+              onClick={() => onHire(role)}
+            >
+              Hire
+            </Button>
+          </Card>
         ))}
       </div>
 
@@ -1334,6 +1623,288 @@ function StaffHiringView({ currentStaff, onClose, onHire }: StaffHiringViewProps
         Cancel
       </Button>
     </div>
+  )
+}
+
+// ============================================
+// LIFESTYLE SCORE PANEL
+// ============================================
+
+const CATEGORY_META: { key: keyof Omit<LifestyleScoreBreakdown, 'total' | 'level'>; label: string; icon: typeof Home; max: number; color: string }[] = [
+  { key: 'housing', label: 'Housing', icon: Home, max: LIFESTYLE_SCORE_WEIGHTS.housing.maxPoints, color: 'bg-blue-500' },
+  { key: 'vehicles', label: 'Vehicles', icon: Car, max: LIFESTYLE_SCORE_WEIGHTS.vehicles.maxPoints, color: 'bg-emerald-500' },
+  { key: 'collections', label: 'Collections', icon: Gem, max: LIFESTYLE_SCORE_WEIGHTS.collections.maxPoints, color: 'bg-purple-500' },
+  { key: 'furnishings', label: 'Furnishings', icon: Sparkles, max: LIFESTYLE_SCORE_WEIGHTS.furnishings.maxPoints, color: 'bg-amber-500' },
+  { key: 'memberships', label: 'Memberships', icon: Crown, max: LIFESTYLE_SCORE_WEIGHTS.memberships.maxPoints, color: 'bg-rose-500' },
+  { key: 'staff', label: 'Staff', icon: Users, max: LIFESTYLE_SCORE_WEIGHTS.staff.maxPoints, color: 'bg-cyan-500' },
+  { key: 'hobbies', label: 'Hobbies', icon: Coffee, max: LIFESTYLE_SCORE_WEIGHTS.hobbies.maxPoints, color: 'bg-orange-500' },
+]
+
+function LifestyleScorePanel({ careerState, lifestyleLevel, staff, hobbies, health, finances, assets }: {
+  careerState: any
+  lifestyleLevel: LifestyleLevel
+  staff: PersonalStaff[]
+  hobbies: Hobby[]
+  health: OwnerHealth
+  finances: PersonalFinancialState
+  assets: LifestyleAssets & { properties?: any[] }
+}) {
+  const [showLevelGuide, setShowLevelGuide] = useState(false)
+
+  // Compute score breakdown from actual data (with NaN safety)
+  const scoreBreakdown = useMemo<LifestyleScoreBreakdown>(() => {
+    const storedScore = careerState?.personalLife?.lifestyleScore
+    let raw: LifestyleScoreBreakdown
+    if (storedScore && typeof storedScore === 'object' && typeof storedScore.total === 'number' && !isNaN(storedScore.total)) {
+      raw = storedScore as LifestyleScoreBreakdown
+    } else {
+      // Fallback: compute on-the-fly
+      const primaryResidenceValue = (assets.properties || [])
+        .filter((p: any) => !p.isPlayerRental)
+        .reduce((max: number, p: any) => Math.max(max, p.currentValue || p.purchasePrice || 0), 0)
+      const collectionsValue = (assets.collectibles || [])
+        .reduce((sum: number, c: any) => sum + (c.currentValue || c.purchasePrice || 0), 0)
+      raw = calculateLifestyleScore(primaryResidenceValue, assets, collectionsValue, staff, hobbies)
+    }
+    // Sanitise every numeric field to prevent NaN in the UI
+    return {
+      housing: isNaN(raw.housing) ? 0 : raw.housing,
+      vehicles: isNaN(raw.vehicles) ? 0 : raw.vehicles,
+      collections: isNaN(raw.collections) ? 0 : raw.collections,
+      furnishings: isNaN(raw.furnishings) ? 0 : raw.furnishings,
+      memberships: isNaN(raw.memberships) ? 0 : raw.memberships,
+      staff: isNaN(raw.staff) ? 0 : raw.staff,
+      hobbies: isNaN(raw.hobbies) ? 0 : raw.hobbies,
+      total: isNaN(raw.total) ? 0 : raw.total,
+      level: raw.level || 'frugal'
+    }
+  }, [careerState?.personalLife?.lifestyleScore, assets, staff, hobbies])
+
+  // Current level info
+  const currentTier = typeof lifestyleLevel === 'string' ? lifestyleLevel : lifestyleLevel.tier
+  const currentThreshold = LIFESTYLE_LEVEL_THRESHOLDS.find(t => t.level === currentTier) || LIFESTYLE_LEVEL_THRESHOLDS[0]
+  const currentIndex = LIFESTYLE_LEVEL_THRESHOLDS.indexOf(currentThreshold)
+  const nextThreshold = currentIndex < LIFESTYLE_LEVEL_THRESHOLDS.length - 1 ? LIFESTYLE_LEVEL_THRESHOLDS[currentIndex + 1] : null
+  const pointsToNext = nextThreshold ? nextThreshold.minScore - scoreBreakdown.total : 0
+
+  // Progress within current tier (0-100%)
+  const tierMin = currentThreshold.minScore
+  const tierMax = nextThreshold ? nextThreshold.minScore : 100
+  const tierProgress = tierMax > tierMin ? Math.min(100, Math.max(0, ((scoreBreakdown.total - tierMin) / (tierMax - tierMin)) * 100)) : 100
+
+  // Weekly bonuses from assets
+  const weeklyBonuses = useMemo(() => processWeeklyLifestyleBonuses(assets), [assets])
+
+  // Lifestyle recommendation
+  const netWorth = (finances?.liquidCash ?? 0) + (finances?.totalAssets ?? 0)
+  const recommended = getLifestyleRecommendation(netWorth)
+  const recommendedTier = typeof recommended === 'string' ? recommended : recommended.tier
+
+  // Total monthly expenses — read from the same finances.monthlyExpenses that the Wealth tab uses
+  // so both screens always show identical numbers
+  const totalMonthlyCosts = useMemo(() => {
+    const exp = finances?.monthlyExpenses
+    if (!exp) return 0
+    return Math.round(
+      (exp.personalStaff || 0) +
+      (exp.mortgagePayments || 0) +
+      (exp.loanPayments || 0) +
+      (exp.familyExpenses || 0) +
+      (exp.hobbies || 0) +
+      (exp.philanthropy || 0) +
+      (exp.services || 0) +
+      (exp.dietPlan || 0) +
+      (exp.petUpkeep || 0) +
+      (exp.vehicleCosts || 0) +
+      (exp.membershipFees || 0) +
+      (exp.rent || 0) +
+      (exp.other || 0)
+    )
+  }, [finances?.monthlyExpenses])
+
+  // Bonus entries for display (only non-zero)
+  const bonusEntries = useMemo(() => {
+    const entries: { label: string; value: string; icon: typeof Heart }[] = []
+    if (weeklyBonuses.totalStressReduction > 0) entries.push({ label: 'Stress reduction', value: `-${weeklyBonuses.totalStressReduction.toFixed(1)}/wk`, icon: Wind })
+    if (weeklyBonuses.totalHealthBonus > 0) entries.push({ label: 'Health bonus', value: `+${weeklyBonuses.totalHealthBonus.toFixed(1)}/wk`, icon: Heart })
+    if (weeklyBonuses.totalFitnessBonus > 0) entries.push({ label: 'Fitness bonus', value: `+${weeklyBonuses.totalFitnessBonus.toFixed(1)}/wk`, icon: Dumbbell })
+    if (weeklyBonuses.totalPrestigeBonus > 0) entries.push({ label: 'Prestige', value: `+${weeklyBonuses.totalPrestigeBonus.toFixed(1)}`, icon: Crown })
+    if (weeklyBonuses.totalNetworkingBonus > 0) entries.push({ label: 'Networking', value: `+${weeklyBonuses.totalNetworkingBonus.toFixed(1)}`, icon: Users })
+    if (weeklyBonuses.totalConfidenceBoost > 0) entries.push({ label: 'Confidence', value: `+${weeklyBonuses.totalConfidenceBoost.toFixed(1)}`, icon: Shield })
+    if (weeklyBonuses.timeFreedPerWeek > 0) entries.push({ label: 'Time freed', value: `+${weeklyBonuses.timeFreedPerWeek.toFixed(0)}h/wk`, icon: Zap })
+    if (weeklyBonuses.totalEnergyBonus > 0) entries.push({ label: 'Energy', value: `+${weeklyBonuses.totalEnergyBonus.toFixed(1)}/wk`, icon: Activity })
+    if (weeklyBonuses.totalHappinessBoost > 0) entries.push({ label: 'Happiness', value: `+${weeklyBonuses.totalHappinessBoost.toFixed(1)}/wk`, icon: Star })
+    return entries
+  }, [weeklyBonuses])
+
+  // Find weakest categories (lowest percentage of max)
+  const improvementHints = useMemo(() => {
+    return CATEGORY_META
+      .map(c => ({ ...c, score: scoreBreakdown[c.key] as number, pct: ((scoreBreakdown[c.key] as number) / c.max) * 100 }))
+      .filter(c => c.pct < 50)
+      .sort((a, b) => a.pct - b.pct)
+      .slice(0, 3)
+  }, [scoreBreakdown])
+
+  return (
+    <Card variant="glass" padding="md">
+      {/* Section 1: Score + Level Header */}
+      <div className="flex items-start gap-4">
+        {/* Circular score gauge */}
+        <div className="flex-shrink-0">
+          <div className="h-20 w-20 relative">
+            <svg className="w-full h-full transform -rotate-90">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" strokeWidth="5" className="text-surface-600" />
+              <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" strokeWidth="5"
+                strokeDasharray={`${(scoreBreakdown.total / 100) * 213.6} 213.6`}
+                strokeLinecap="round"
+                className="text-accent-blue"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="font-mono text-lg font-bold leading-none">{scoreBreakdown.total}</span>
+              <span className="text-[10px] text-text-muted leading-none">/100</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Level info + progress */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1">
+            <h3 className="font-semibold text-lg capitalize">{currentThreshold.name}</h3>
+            <Badge variant="default" size="sm">{currentTier.replace('_', ' ')}</Badge>
+          </div>
+          <p className="text-xs text-text-muted mb-2">{currentThreshold.description}</p>
+
+          {/* Tier progress bar */}
+          {nextThreshold && (
+            <div className="mb-2">
+              <div className="flex items-center justify-between text-[10px] text-text-muted mb-1">
+                <span>{currentThreshold.name}</span>
+                <span>{pointsToNext} pts to {nextThreshold.name}</span>
+              </div>
+              <div className="h-2 bg-surface-600 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-accent-blue to-accent-primary rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${tierProgress}%` }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                />
+              </div>
+            </div>
+          )}
+          {!nextThreshold && (
+            <p className="text-xs text-accent-gold font-medium mb-2">Maximum lifestyle level reached</p>
+          )}
+
+          {/* Recommendation + costs */}
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-text-muted">
+            {recommendedTier !== currentTier && (
+              <span>Recommended: <span className="text-accent-primary capitalize">{recommendedTier.replace('_', ' ')}</span></span>
+            )}
+            <span>Monthly costs: <span className="text-text-primary">${totalMonthlyCosts.toLocaleString()}</span></span>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 2: Category Breakdown */}
+      <div className="mt-4 space-y-1.5">
+        <h4 className="text-xs font-medium text-text-muted uppercase tracking-wide mb-2">Score Breakdown</h4>
+        {CATEGORY_META.map(cat => {
+          const score = scoreBreakdown[cat.key] as number
+          const pct = cat.max > 0 ? (score / cat.max) * 100 : 0
+          const Icon = cat.icon
+          return (
+            <div key={cat.key} className="flex items-center gap-2">
+              <Icon className="w-3.5 h-3.5 text-text-muted flex-shrink-0" />
+              <span className="text-xs w-20 text-text-secondary truncate">{cat.label}</span>
+              <div className="flex-1 h-2 bg-surface-600 rounded-full overflow-hidden">
+                <div className={`h-full ${cat.color} rounded-full transition-all duration-500`} style={{ width: `${pct}%` }} />
+              </div>
+              <span className="text-xs font-mono text-text-muted w-12 text-right">{score}/{cat.max}</span>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Section 3: Current Level Effects */}
+      {bonusEntries.length > 0 && (
+        <div className="mt-4">
+          <h4 className="text-xs font-medium text-text-muted uppercase tracking-wide mb-2">Lifestyle Effects</h4>
+          <div className="grid grid-cols-3 gap-2">
+            {bonusEntries.map((entry, i) => {
+              const Icon = entry.icon
+              return (
+                <div key={i} className="flex items-center gap-1.5 bg-surface-700/50 rounded-lg px-2 py-1.5">
+                  <Icon className="w-3.5 h-3.5 text-accent-green flex-shrink-0" />
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-text-muted block leading-tight truncate">{entry.label}</span>
+                    <span className="text-xs font-medium text-accent-green leading-tight">{entry.value}</span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+      {bonusEntries.length === 0 && (
+        <div className="mt-4 p-3 bg-surface-700/30 rounded-lg text-center">
+          <p className="text-xs text-text-muted">No active lifestyle bonuses — purchase assets & services to unlock effects</p>
+        </div>
+      )}
+
+      {/* Improvement hints */}
+      {improvementHints.length > 0 && (
+        <div className="mt-3">
+          <h4 className="text-xs font-medium text-text-muted uppercase tracking-wide mb-1.5">Areas to Improve</h4>
+          <div className="flex flex-wrap gap-1.5">
+            {improvementHints.map(cat => (
+              <span key={cat.key} className="inline-flex items-center gap-1 text-[10px] bg-amber-500/10 text-amber-400 px-2 py-1 rounded-full">
+                <cat.icon className="w-3 h-3" />
+                {cat.label} ({cat.score}/{cat.max})
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Section 4: Level Guide (collapsible) */}
+      <button
+        onClick={() => setShowLevelGuide(!showLevelGuide)}
+        className="mt-3 w-full flex items-center justify-between text-xs text-text-muted hover:text-text-secondary transition-colors py-1"
+      >
+        <span className="flex items-center gap-1"><Info className="w-3.5 h-3.5" /> Level Guide</span>
+        {showLevelGuide ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+      </button>
+      {showLevelGuide && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="overflow-hidden"
+        >
+          <div className="space-y-1.5 pt-1">
+            {LIFESTYLE_LEVEL_THRESHOLDS.map((tier, i) => {
+              const isActive = tier.level === currentTier
+              const nextTier = i < LIFESTYLE_LEVEL_THRESHOLDS.length - 1 ? LIFESTYLE_LEVEL_THRESHOLDS[i + 1] : null
+              const rangeMax = nextTier ? nextTier.minScore - 1 : 100
+              return (
+                <div key={tier.level} className={`flex items-start gap-2 p-2 rounded-lg text-xs ${isActive ? 'bg-accent-blue/10 ring-1 ring-accent-blue/30' : 'bg-surface-700/30'}`}>
+                  <div className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${isActive ? 'bg-accent-blue' : 'bg-surface-500'}`} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className={`font-medium ${isActive ? 'text-accent-blue' : 'text-text-secondary'}`}>{tier.name}</span>
+                      <span className="text-text-muted font-mono">{tier.minScore}–{rangeMax} pts</span>
+                    </div>
+                    <p className="text-text-muted mt-0.5 leading-snug">{tier.description}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </motion.div>
+      )}
+    </Card>
   )
 }
 
@@ -1435,7 +2006,7 @@ function VehicleCard({ vehicle, index, onSell, onSetPrimary }: VehicleCardProps)
           className="flex-1 text-[10px] text-status-danger hover:underline"
           onClick={() => onSell(vehicle.id)}
         >
-          Sell
+          Sell ~${Math.round(vehicle.currentValue * 0.85).toLocaleString()}
         </button>
       </div>
     </motion.div>
@@ -1486,6 +2057,26 @@ function MembershipCard({ membership, index, onCancel }: MembershipCardProps) {
   )
 }
 
+function VehicleImageWithFallback({ brand, model }: { brand: string; model: string }) {
+  const [failed, setFailed] = useState(false)
+  const src = getVehicleImage(`${brand} ${model}`)
+  return (
+    <div className="rounded-md overflow-hidden mb-2 h-44 bg-surface-secondary flex items-center justify-center">
+      {!failed && src ? (
+        <img
+          src={src}
+          alt={`${brand} ${model}`}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <Car className="w-12 h-12 text-text-muted/50" aria-hidden />
+      )}
+    </div>
+  )
+}
+
 interface VehicleSelectionViewProps {
   catalog: ReturnType<typeof import('@/simulation/personal/lifestyleAssetsManager').getVehicleCatalog>
   liquidCash: number
@@ -1528,7 +2119,7 @@ function VehicleSelectionView({ catalog, liquidCash, onClose, onPurchase }: Vehi
         ))}
       </div>
       
-      <div className="grid grid-cols-2 gap-4 max-h-[400px] overflow-y-auto">
+      <div className="grid grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto">
         {filteredVehicles.map((vehicle) => {
           const canAfford = liquidCash >= vehicle.price
           return (
@@ -1538,6 +2129,8 @@ function VehicleSelectionView({ catalog, liquidCash, onClose, onPurchase }: Vehi
               padding="md"
               className={!canAfford ? 'opacity-50' : ''}
             >
+              {/* Vehicle Image */}
+              <VehicleImageWithFallback brand={vehicle.brand} model={vehicle.model} />
               <div className="flex items-start justify-between mb-2">
                 <h4 className="font-medium">{vehicle.brand} {vehicle.model}</h4>
                 <Badge variant={vehicle.isCollectible ? 'green' : 'outline'} size="sm">
@@ -1612,7 +2205,7 @@ function MembershipSelectionView({
       
       {!selectedMembership ? (
         // Club Selection
-        <div className="space-y-3 max-h-[400px] overflow-y-auto">
+        <div className="space-y-3 max-h-[70vh] overflow-y-auto">
           {availableMemberships.map((club) => {
             const meetsNetWorth = !club.minimumNetWorth || netWorth >= club.minimumNetWorth
             const canAfford = liquidCash >= club.initializationFee

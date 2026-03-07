@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood spent tinkering with engines in his father's auto repair shop in Buenos Aires. He earned a degree in mechanical engineering and quickly found himself drawn to the high-stakes world of racing. He's spent the last 25 years honing his skills, working his way up from local touring car series to international GT racing. Ricardo believes in a data-driven approach, meticulously analyzing every aspect of the car's performance to find the optimal setup. His calm demeanor and ability to troubleshoot under pressure make him a valuable asset to any team.\n\nRicardo is known for his dedication to his craft and his ability to mentor younger engineers. He thrives in collaborative environments where he can share his knowledge and learn from others. He is also skilled at managing the balance between technical precision and the human element of racing, understanding that a motivated and cohesive team is essential for success. His experience across various racing disciplines has equipped him with a broad understanding of vehicle dynamics, aerodynamics, and tire management, making him a truly versatile race engineer.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is a stocky man with a weathered face that reflects years spent on the racetrack."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a worn-out notebook filled with technical drawings and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking mate from a traditional gourd during race weekends."
+  ]
+}

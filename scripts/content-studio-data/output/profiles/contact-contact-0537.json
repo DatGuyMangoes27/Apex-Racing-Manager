@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Albuquerque",
+  "nationality": "Brazilian",
+  "age": 59,
+  "gender": "male",
+  "contactType": "military_officer",
+  "bio": "Ricardo Albuquerque served in the Brazilian Air Force for over three decades, rising to the rank of Colonel before retiring. He's known for his optimistic outlook and adventurous spirit, having led numerous challenging missions, including humanitarian aid deliveries deep within the Amazon rainforest. Despite his military background, Ricardo possesses a deep empathy and an idealistic view of the world, fueled by his experiences helping communities in need. \n\nAfter retiring, Ricardo indulged his passion for drone racing, quickly becoming a respected figure in the Brazilian drone racing scene. He now sponsors a small drone racing team and uses his military connections to help young pilots gain access to training facilities and resources. He might cross paths with a racing driver through shared sponsorship opportunities or at events where both motorsport and drone racing communities intersect.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Brown",
+    "facialHair": "Gray mustache",
+    "description": "Ricardo is a man of medium build, still fit from his years in the military. He carries himself with a quiet confidence and a warm smile."
+  },
+  "connectionToMotorsport": "Ricardo is an avid motorsport fan and sponsors a small Formula 4 team as a way to support young talent in Brazilian racing. His drone racing connections also allow him to scout potential drivers with exceptional reflexes and spatial awareness.",
+  "meetingContext": "The player could meet Ricardo at a Formula 4 race in Brazil, either through his sponsored team or at a VIP event. Alternatively, a shared interest in drone technology could lead to a meeting at a technology expo.",
+  "conversationTopics": [
+    "The future of drone technology",
+    "The importance of discipline and teamwork",
+    "His experiences in the Air Force",
+    "The history of Brazilian aviation",
+    "The challenges facing young Brazilian athletes"
+  ],
+  "canHelp": [
+    "Provide financial backing or sponsorship opportunities",
+    "Offer connections to other influential figures in Brazilian business and politics",
+    "Facilitate access to advanced training facilities and resources"
+  ],
+  "personality_summary": "An optimistic and empathetic retired military officer with a passion for motorsports and a desire to help young talent."
+}

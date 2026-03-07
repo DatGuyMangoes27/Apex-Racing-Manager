@@ -1,0 +1,22 @@
+{
+  "name": "Javier Mendoza",
+  "nationality": "Spanish",
+  "age": 32,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Javier's journey into motorsport began with a fascination for the engineering marvels behind racing cars. He pursued a degree in mechanical engineering and quickly found himself drawn to the high-stakes world of racing. After working as a data analyst for a smaller racing team, Javier honed his skills in extracting crucial performance insights from mountains of data. His analytical prowess and ability to translate technical jargon into actionable strategies caught the eye of VW Racing Brasil. \n\nAs Sporting Director, Javier is known for his meticulous approach to race preparation and his uncanny ability to foresee potential problems. He's a firm believer in fostering a culture of collaboration and innovation within the team, always pushing his team to explore new technologies and strategies to gain a competitive edge. He distinguishes himself by blending his technical expertise with strong management and innovative thinking, leading to consistently improved team performance.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Javier is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific brand of espresso before every race."
+  ]
+}

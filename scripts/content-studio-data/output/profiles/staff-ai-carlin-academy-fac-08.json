@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 28,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Ricardo's fascination with motorsport began during his childhood summers spent watching Formula 1 races with his grandfather. He pursued a degree in aerospace engineering, specializing in aerodynamics, and quickly landed a junior role at a small racing outfit upon graduation. His meticulous nature and sharp analytical skills led him to excel in wind tunnel operations, where he developed a keen eye for spotting subtle aerodynamic inefficiencies. He joined Carlin Academy two years ago, bringing a fresh perspective and a proactive approach to optimizing vehicle performance. Ricardo is known for his ability to translate complex data into actionable insights for the engineers, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo is of average height with a lean, athletic build, and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas during wind tunnel runs.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Insists on listening to classical music while calibrating the wind tunnel."
+  ]
+}

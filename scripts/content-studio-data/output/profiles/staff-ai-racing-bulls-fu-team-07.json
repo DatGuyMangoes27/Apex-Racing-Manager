@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 30,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Jan Kovář's passion for motorsport ignited during his childhood, spent watching rally races in the Czech countryside. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and aerodynamics. After graduating, he joined a small engineering firm specializing in performance upgrades for racing cars, quickly rising through the ranks due to his sharp analytical skills and dedication. \n\nHe transitioned to a management role, recognizing the importance of efficient operations for on-track success. Jan believes in fostering a culture of continuous improvement, meticulously analyzing every aspect of the team's processes. He is known for his data-driven approach and unwavering commitment to optimizing performance, even in the face of tight deadlines and resource constraints.\n\nJan's meticulous planning and ability to identify bottlenecks have been instrumental in improving operational efficiency, allowing the team to focus on pushing the boundaries of performance. His innovative approach to problem-solving and relentless pursuit of excellence make him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific brand of stopwatch for timing simulations.",
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against the table when deep in thought."
+  ]
+}

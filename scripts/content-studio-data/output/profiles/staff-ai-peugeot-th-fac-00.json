@@ -1,0 +1,22 @@
+{
+  "name": "Jameson Davies",
+  "nationality": "American",
+  "age": 48,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jameson Davies' fascination with motorsport began as a child, watching races with his father. This passion led him to pursue a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he spent several years working in the aerospace industry, honing his skills in computational fluid dynamics and vehicle dynamics. He transitioned to motorsport a decade ago, initially working with smaller teams before joining Peugeot TotalEnergies.\n\nJameson believes the simulator is a crucial tool for driver development and car setup optimization. His approach is deeply data-driven, meticulously analyzing every aspect of the simulated environment to identify areas for improvement. He prides himself on his ability to translate complex technical data into actionable insights for the drivers and race engineers. He is also extremely good at managing drivers' expectations regarding simulator performance.\n\nWhat sets Jameson apart is his uncanny ability to identify subtle nuances in the simulator that correlate with real-world track behavior. This, combined with his approachable and collaborative style, makes him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "hazel",
+    "facialHair": "goatee",
+    "description": "A man of average height with a slightly athletic build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a cup of black coffee on his desk.",
+    "Fidgets with a Rubik's cube during meetings.",
+    "Uses motorsport analogies in everyday conversation."
+  ]
+}

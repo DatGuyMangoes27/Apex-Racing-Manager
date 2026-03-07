@@ -1,0 +1,27 @@
+{
+  "biography": "Alain Prost, a name whispered with respect in the paddocks, didn't emerge from the karting frenzy like many of his peers. His journey began later, a deliberate entry fueled by a meticulous understanding of engineering principles gleaned from his father's workshop. He spent hours dissecting engine blueprints, learning the nuances of torque and power curves before ever gripping a steering wheel. His debut with McLean G.P. was unremarkable, but a switch to McLaren MP4/4 in his early twenties proved transformative. He demonstrated an uncanny ability to conserve fuel and tires, a skill honed not through raw aggression but through a deep understanding of vehicle dynamics. A particularly memorable moment was at the 1984 Monaco Grand Prix. In treacherous, rain-soaked conditions, Prost sliced through the field, his McLaren a beacon of control amidst the chaos. Though the race was controversially stopped, robbing him of a potential victory, it cemented his reputation as a master strategist. Now approaching his peak, Prost is a formidable force, a calculating presence who elevates the art of racing beyond mere speed.",
+  "drivingStyle": "Prost's driving style is characterized by surgical precision and an almost unnerving composure. He doesn't muscle the car around the track; instead, he coaxes it, using subtle adjustments to maximize grip and minimize wear. His corner entries are deceptively smooth, masking a deep understanding of braking points and apex speeds. Prost is a master of tire management, capable of running longer and harder than his rivals. In high-pressure situations, he remains unflappable, his focus unwavering, making him a dangerous opponent in any race.",
+  "rivalries": [
+    {
+      "driver": "Riccardo Battaglia",
+      "reason": "A fierce, on-track rivalry stemming from a controversial collision at the 1986 Italian Grand Prix, where Battaglia accused Prost of deliberately forcing him off the track."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "A national rivalry fueled by contrasting driving styles; Dubois, known for his flamboyant and aggressive approach, often clashes with Prost's calculated precision."
+    },
+    {
+      "driver": "Hans-Joachim Schmidt",
+      "reason": "A strategic rivalry in endurance racing. Schmidt's team, known for its raw power, contrasts heavily with Prost's team which is known for reliability."
+    }
+  ],
+  "quirks": [
+    "Always polishes his helmet visor with a specific brand of chamois cloth before each session.",
+    "Insists on having a perfectly aligned steering wheel, even if it requires multiple adjustments from the mechanics.",
+    "Analyzes telemetry data in complete silence, often for hours, without speaking to anyone."
+  ],
+  "nickname": "The Professor",
+  "famousQuote": "Racing isn't about who goes fastest for a lap; it's about who goes fastest for the entire race.",
+  "careerHighlight": "Winning the 1985 Monaco Grand Prix after years of near misses, finally conquering the treacherous street circuit with a masterful display of controlled aggression and strategic brilliance.",
+  "careerLowPoint": "Suffering a mechanical failure while leading the 1983 World Championship finale, a heartbreak that cost him the title by a single point."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Isla MacLeod",
+  "nationality": "Scottish",
+  "age": 27,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Isla's motorsport journey began with a childhood spent glued to rally broadcasts alongside her father, a former amateur racer. She excelled in engineering at university, channeling her passion for performance into technical expertise. After graduating, she started at Century Motorsport as a data analyst, quickly impressing senior management with her insightful reports and proactive problem-solving. \n\nNow, as a test driver coordinator, Isla thrives on optimizing testing schedules and extracting maximum value from each session. She meticulously analyzes driver feedback and telemetry data to identify areas for improvement, bridging the gap between the engineering team and the drivers. Her calm demeanor and clear communication skills make her an invaluable asset, ensuring that development programs stay on track and deliver tangible performance gains. Isla's innovative approach to data analysis, combined with her dedication to fostering strong driver relationships, sets her apart in this highly competitive field.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair, often tied back in a practical ponytail during test sessions.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Isla has a slender build and a focused, intelligent gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on listening to classic rock while reviewing telemetry data."
+  ]
+}

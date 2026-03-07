@@ -1,0 +1,22 @@
+{
+  "name": "Pieter Van Der Merwe",
+  "nationality": "South African",
+  "age": 37,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Pieter's journey into motorsport began during his university days, fueled by a passion for Formula 1 and a knack for understanding airflow dynamics. After graduating with a degree in Aerospace Engineering, he quickly found work in the wind tunnels of a smaller European racing team, honing his skills and absorbing knowledge like a sponge. His ability to identify subtle aerodynamic improvements and his relentless pursuit of performance caught the eye of Ferrari AF Corse, who headhunted him to lead their aero department.\n\nPieter is a demanding leader who insists on precision and data-driven decision-making. His meticulous approach, combined with his innovative ideas, has already yielded positive results for the team. He is known for pushing boundaries and challenging established norms, always seeking that extra tenth of a second. While he values collaboration, he often prefers to work independently, diving deep into the details and emerging with innovative solutions that others might miss. His 'lone wolf' tendencies are balanced by his deep commitment to the team's success.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Pieter is of average height, with a lean build and an intense gaze that reflects his unwavering focus."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always wears the same lucky pair of socks on race days.",
+    "Has a habit of sketching aerodynamic concepts on napkins during lunch.",
+    "Refuses to use email for critical design discussions, preferring face-to-face meetings."
+  ]
+}

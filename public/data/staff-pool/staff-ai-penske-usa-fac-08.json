@@ -1,0 +1,22 @@
+{
+  "name": "Mikko Virtanen",
+  "nationality": "Finnish",
+  "age": 45,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Mikko's journey into motorsport began with a childhood obsession with rally racing, fueled by watching legendary Finnish drivers dominate the world stage. He pursued a degree in aerospace engineering, specializing in aerodynamics, before landing his first role at a small wind tunnel facility supporting local racing teams. His meticulous approach and knack for identifying subtle airflow anomalies quickly earned him a reputation as a reliable and insightful operator. \n\nAfter a decade honing his skills, Mikko made the jump to Formula 1, spending several years with Sauber before ultimately accepting an offer from Team Penske. He sees the wind tunnel as a critical tool for unlocking performance and believes in a data-driven approach combined with a healthy dose of intuition. Mikko is known for his demanding standards, pushing his team to constantly refine their methodologies and strive for absolute accuracy. His experience and innovative ideas make him a valuable asset to the team's aerodynamic development program.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Mikko is a man of average height with a sturdy build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic equations.",
+    "Insists on precisely calibrating the wind tunnel equipment before each run.",
+    "Has a habit of muttering observations about airflow patterns under his breath."
+  ]
+}

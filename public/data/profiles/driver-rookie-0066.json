@@ -1,0 +1,27 @@
+{
+  "biography": "Charles Wilson, a name whispered with a mix of intrigue and frustration in the British racing paddock, hails from a small village in Oxfordshire. His journey into motorsport wasn't paved with silver spoons; instead, it began with tinkering on a battered go-kart salvaged from a local scrapyard. Hours spent under the bonnet with his grandfather, a retired mechanic, instilled in him a deep understanding of racing machinery. A defining moment came during a regional karting championship where, despite starting last due to a technical fault, he carved his way through the field to finish second, showcasing a raw talent that couldn't be ignored. Now, at 20, Charles finds himself navigating the treacherous waters of independent racing, often overshadowed by wealthier, more established teams. He's a diamond in the rough, desperately seeking the opportunity to truly shine, battling for every inch on the track while scrounging for every pound off it.",
+  "drivingStyle": "Wilson's driving style is characterized by a defensive tenacity that borders on stubbornness. He's a master of the late-braking maneuver, often unsettling opponents with his aggressive corner entries. Tire management isn't his strongest suit; he tends to push the limits early, sacrificing long-term pace for immediate gains. Under pressure, he becomes even more resolute, tightening his lines and refusing to yield an inch, a trait that endears him to some and infuriates others.",
+  "rivalries": [
+    {
+      "driver": "Marcus Sterling",
+      "reason": "A clash of egos and driving styles; Sterling represents the establishment, while Wilson is the upstart outsider."
+    },
+    {
+      "driver": "Isabelle Rossi",
+      "reason": "A fierce on-track battle during a junior championship resulted in a controversial collision, leading to lingering animosity."
+    },
+    {
+      "driver": "Daniel Hayes",
+      "reason": "Hayes, backed by significant sponsorship, consistently outpaces Wilson, fueling Charles's resentment and determination to prove himself."
+    }
+  ],
+  "quirks": [
+    "Always wears a pair of lucky socks knitted by his grandmother.",
+    "Listens to classical music (specifically Bach) before every race to calm his nerves.",
+    "Refuses to eat anything yellow on race day."
+  ],
+  "nickname": "The Stonewall",
+  "famousQuote": "\"They can have the money, they can have the fancy cars, but they can't have my grit.\"",
+  "careerHighlight": "Winning the Silverstone National Junior Championship in 2021 after a daring last-lap overtake.",
+  "careerLowPoint": "Crashing out of the Brands Hatch Grand Prix in 2022 due to a mechanical failure while running in a promising fifth position."
+}

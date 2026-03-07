@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0146",
+  "name": "Koala Timepieces",
+  "category": "watches",
+  "tier": "elite",
+  "country": "Australia",
+  "description": "Precision engineered watches, inspired by the Australian outback.",
+  "story": "Koala Timepieces are crafted with meticulous attention to detail, reflecting the rugged beauty and enduring spirit of Australia. Motorsport embodies precision, endurance, and a relentless pursuit of excellence, mirroring Koala's core values. We seek a partnership that showcases our commitment to performance and innovation on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 45000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Australia"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0146.png"
+}

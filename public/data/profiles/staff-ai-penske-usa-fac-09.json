@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Prasert",
+  "nationality": "Thai",
+  "age": 42,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Somchai's journey into motorsport began with a childhood fascination for the vibrant liveries of touring cars racing through the streets of Bangkok. He honed his skills in automotive refinishing, quickly becoming known for his meticulous attention to detail and ability to match colors with uncanny accuracy. An opportunity at a local racing team soon followed, where he learned the unique demands of motorsport paintwork – durability, weight reduction, and aesthetic perfection. \n\nHis approach to his role is rooted in the belief that the paint job is not merely cosmetic but a crucial element of the car's performance and identity. He is constantly experimenting with new materials and techniques to improve the finish's resistance to the harsh conditions of the track. Somchai's distinctive ability lies in his capacity to blend traditional Thai artistry with cutting-edge paint technology, creating visually stunning and aerodynamically efficient designs.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "dark brown",
+    "facialHair": "trimmed goatee",
+    "description": "Somchai is of medium build, with a focused gaze and a calm demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using traditional Thai lacquer for clear coats.",
+    "Always listens to traditional Thai folk music while working.",
+    "Meticulously cleans his spray guns after every use, regardless of the hour."
+  ]
+}

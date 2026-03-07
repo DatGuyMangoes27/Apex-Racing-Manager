@@ -1,0 +1,31 @@
+{
+  "name": "Enrique \"Ricky\" de la Cruz",
+  "nationality": "Filipino",
+  "age": 57,
+  "gender": "male",
+  "contactType": "business_mogul",
+  "bio": "Enrique, affectionately known as Ricky, is a self-made billionaire who built his empire through a series of savvy tech investments and a relentless drive. Starting with a small computer repair shop, he rapidly expanded into software development and venture capital, now holding significant stakes in several prominent Asian tech firms. Despite his immense wealth, Ricky maintains a reputation for being surprisingly approachable, often forgiving of minor missteps but unforgiving of disloyalty. However, underneath his charismatic exterior lies a certain arrogance, born from years of success and the constant attention he receives. He sees himself as a visionary, always seeking the next big thing. \n\nHis connection to the motorsport world is through sponsorship. Ricky sees racing as a way to promote his brand and indulge his love for speed and technological innovation. He frequently attends Formula 1 and other high-profile races as a VIP guest, mingling with team owners and drivers alike. A racing driver might cross paths with Ricky at a glamorous after-party or through an introduction from a mutual business associate, especially if they are seeking sponsorship opportunities.",
+  "physical": {
+    "skinTone": "Light brown",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly styled with a slight wave",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Ricky is a well-groomed man with a commanding presence. He favors tailored suits and expensive watches, reflecting his wealth and status."
+  },
+  "connectionToMotorsport": "Ricky sponsors a junior formula team as a pet project and has been known to invest in promising drivers. He sees motorsport as a unique marketing opportunity and enjoys the thrill of competition.",
+  "meetingContext": "The player might meet Ricky at a Formula 1 after-party in Singapore, or through an introduction from a high-profile agent or team owner.",
+  "conversationTopics": [
+    "The future of technology",
+    "Meditation techniques and their benefits",
+    "His latest philanthropic endeavors",
+    "The art of photography",
+    "The potential of electric vehicles in motorsport"
+  ],
+  "canHelp": [
+    "Provide significant sponsorship for the player's team or career.",
+    "Offer valuable business advice and connections within the corporate world.",
+    "Introduce the player to influential figures in the motorsport industry."
+  ],
+  "personality_summary": "A charismatic but arrogant tech mogul with a soft spot for speed and innovation."
+}

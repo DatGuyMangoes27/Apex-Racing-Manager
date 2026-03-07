@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Rhys's journey into motorsport began with a childhood spent tinkering with go-karts on his family's farm in rural New Zealand. He quickly developed a knack for understanding the intricate mechanics of engines and a passion for pushing the boundaries of performance. He earned a degree in Mechanical Engineering and secured a position at a small racing team, where he honed his skills in vehicle dynamics and race strategy. Over the years, he’s worked his way up the ladder, specializing in data analysis and simulation to optimize car setup and performance.\n\nRhys is a pragmatic engineer who believes in a data-driven approach to problem-solving. He is known for his ability to quickly identify and address technical challenges, often developing innovative solutions that give his team a competitive edge. While respected for his technical expertise, Rhys is also driven by a desire to climb the ranks within Nostalgia Racing, and is always looking for opportunities to prove his leadership potential. He emphasizes reliability and pre-emptive solutions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "A neatly trimmed goatee.",
+    "description": "Rhys is of average height with a lean build, always seeming focused and alert."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally checking the torque settings on critical components before each race."
+  ]
+}

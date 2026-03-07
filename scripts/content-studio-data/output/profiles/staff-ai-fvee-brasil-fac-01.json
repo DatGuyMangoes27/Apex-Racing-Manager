@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 44,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Jean-Pierre's journey into motorsport began unconventionally. After earning a degree in econometrics, he found himself drawn to the data-rich environment of racing. Initially working in finance, he volunteered at local karting events, meticulously analyzing lap times and identifying performance trends. His passion led him to pursue a career shift, landing a junior analyst role with a Formula Ford team before eventually joining FVee Brasil.\n\nJean-Pierre approaches data analysis with a keen eye for detail and a relentless pursuit of accuracy. He believes that even the smallest improvements, when compounded, can lead to significant gains on the track. His focus is on understanding the underlying factors that influence performance, not just presenting raw numbers. He is distinctive for his ability to translate complex data into actionable insights, bridging the gap between engineering and driving.\n\nHis loyalty is unwavering, and he's known for dedicating long hours to ensure the team has the information it needs to succeed. His ambition is to make FVee Brasil the most data-driven team in the series, but never at the expense of the team's culture.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of medium height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data observations.",
+    "Has a specific type of Belgian chocolate he eats before every race.",
+    "Insists on using a vintage calculator for initial data checks, despite having access to advanced software."
+  ]
+}

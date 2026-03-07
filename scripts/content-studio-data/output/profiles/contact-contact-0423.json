@@ -1,0 +1,31 @@
+{
+  "name": "Elektra Papadopoulos",
+  "nationality": "Greek",
+  "age": 41,
+  "gender": "female",
+  "contactType": "architect",
+  "bio": "Elektra Papadopoulos is a rising star in the world of sustainable architecture, known for her innovative designs and eco-conscious approach. After obtaining her postgraduate degree from the National Technical University of Athens, she quickly gained recognition for her work on several high-profile residential and commercial projects, blending modern aesthetics with traditional Greek elements. While she can be perceived as entitled and restless, always chasing the next big project, those who know her well understand her deep-seated gratitude and unwavering loyalty. \n\nElektra's path might cross with a racing driver who is looking to build a state-of-the-art, environmentally friendly garage or even a luxurious, minimalist home. Her passion for design and commitment to sustainability make her a sought-after architect for those who appreciate both style and substance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often pulled back in a loose bun",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elektra has a striking, angular face and carries herself with a quiet confidence. She favors tailored, minimalist clothing in neutral tones."
+  },
+  "connectionToMotorsport": "Elektra's firm was commissioned to design the VIP suites for a newly renovated racetrack near Thessaloniki, aiming to create a luxurious and sustainable experience for race attendees.",
+  "meetingContext": "The player could meet Elektra at a design conference, a charity gala, or through a mutual acquaintance in the high-end real estate market. Alternatively, the player might find themselves attending an event at the racetrack with her VIP suites and meet her there.",
+  "conversationTopics": [
+    "Sustainable architecture and design principles",
+    "The latest trends in interior design",
+    "The Greek creative scene and its influence on contemporary art",
+    "Her recent ski trip to the Swiss Alps",
+    "The nuances of different coffee bean roasts"
+  ],
+  "canHelp": [
+    "Design and build a state-of-the-art garage or home.",
+    "Introduce the player to wealthy investors and sponsors within her social circle.",
+    "Offer advice on branding and image, ensuring a sophisticated and modern aesthetic."
+  ],
+  "personality_summary": "An ambitious and talented architect with a strong sense of style and an appreciation for sustainability, Elektra is both grateful and loyal to those who earn her respect."
+}

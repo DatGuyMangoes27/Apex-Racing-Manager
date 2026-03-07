@@ -1,0 +1,22 @@
+{
+  "name": "Sophie Dubois",
+  "nationality": "Belgian",
+  "age": 33,
+  "gender": "female",
+  "role": "catering_manager",
+  "bio": "Sophie Dubois brings a decade of experience to the world of motorsport catering, transforming trackside hospitality into a gourmet experience. Starting her career in Brussels' vibrant culinary scene, Sophie quickly rose through the ranks, managing catering for high-profile events. A lifelong motorsports enthusiast, she saw an opportunity to combine her passion with her professional skills, offering a unique blend of fine dining and racing excitement.\n\nKnown for her exacting standards and creative flair, Sophie approaches catering with a scientific precision, meticulously planning menus to optimize nutritional needs and enhance the overall experience for teams and sponsors. Her innovative approach includes sourcing local ingredients, minimizing waste, and crafting dishes that reflect the cultural diversity of the racing world. This commitment to quality and efficiency makes her a valuable asset to any motorsport team or event.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "Neatly tied back in a low ponytail with a few stray strands framing her face",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Sophie is of average height with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only organic, locally sourced ingredients, even when supply is difficult.",
+    "Categorizes all food items with a detailed spreadsheet indicating their nutritional value and carbon footprint.",
+    "Always carries a small notebook filled with menu ideas and flavor combinations."
+  ]
+}

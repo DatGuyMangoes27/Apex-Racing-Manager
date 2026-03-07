@@ -1,0 +1,22 @@
+{
+  "name": "Eleni Papakonstantinou",
+  "nationality": "Greek",
+  "age": 47,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Eleni's journey into motorsport began unconventionally, not through a childhood dream of racing, but through a fascination with fluid dynamics and aerodynamics. After graduating with a degree in Mechanical Engineering from the National Technical University of Athens, she specialized in wind tunnel testing. Her early career involved stints at aerospace companies before she found her niche in Formula Student, helping student teams optimize their car designs. This experience led to an opportunity with a smaller racing team, where she honed her skills in data analysis and model correlation.\n\nEleni joined Cadillac Racing five years ago. Her methodical approach and attention to detail are invaluable in the wind tunnel. She's particularly skilled at identifying subtle airflow anomalies that can significantly impact performance. Her calm demeanor under pressure makes her a steadying force during intense testing sessions. She's known for her ability to explain complex aerodynamic concepts in a clear and concise manner, fostering collaboration between engineers and drivers.\n\nWhat sets Eleni apart is her intuitive understanding of how airflow interacts with the car's surfaces. She doesn't just rely on data; she visualizes the flow patterns and can often predict performance changes before they appear on the graphs. This blend of technical expertise and intuition makes her a crucial asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back into a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Eleni is a woman of medium height with a serious but kind face, usually wearing practical, dark-rimmed glasses."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations, even outside of the wind tunnel.",
+    "Has a habit of tapping her pen against her teeth when deeply focused on data.",
+    "Insists on listening to traditional Greek music during setup phases to 'harmonize with the airflow'."
+  ]
+}

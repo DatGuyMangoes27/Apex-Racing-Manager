@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 50,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ricardo's journey into motorsport began unconventionally, fueled by a childhood fascination with complex machines and a knack for understanding their intricacies. Initially drawn to automotive engineering, he quickly discovered the limitations of real-world testing and gravitated towards the precision and control offered by simulation. His career started in the aerospace industry, where he honed his skills in flight simulation before transitioning to Formula racing. At Trident, Ricardo focuses on creating the most realistic and challenging simulations possible, pushing the limits of both the hardware and software to give drivers a competitive edge.\n\nRicardo is known for his meticulous attention to detail and his ability to translate complex data into tangible improvements in the simulator. He approaches his role with a deep understanding of vehicle dynamics and a relentless pursuit of accuracy. His colleagues appreciate his willingness to share his knowledge and his calm demeanor under pressure. What sets him apart is his belief that the simulator is more than just a training tool; it's a window into the future of racing, a place where innovation can thrive.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Ricardo is a stocky man with a kind face and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks copious amounts of black coffee throughout the day."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Zofia Lewandowska",
+  "nationality": "Polish",
+  "age": 40,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Zofia's journey into motorsport began unconventionally, fueled by a fascination with patterns hidden within complex systems. After earning a degree in applied mathematics, she initially worked in financial modeling but quickly grew restless. The allure of extracting performance gains from racing data proved irresistible, leading her to pursue opportunities within motorsport. She joined JHR Developments five years ago, where her methodical approach and sharp analytical skills have become invaluable.\n\nZofia focuses on identifying subtle correlations between various telemetry data points and on-track performance. She's particularly adept at translating complex data into actionable insights for the engineers and drivers, ensuring that every decision is backed by solid evidence. Her colleagues appreciate her patience in explaining complicated analytical concepts and her ability to cut through the noise to focus on the essential elements.\n\nWhat sets Zofia apart is her relentless pursuit of innovation. She's always looking for new algorithms and statistical methods to enhance the team's data analysis capabilities. She has been instrumental in integrating advanced simulation techniques, significantly improving the accuracy of pre-race strategy development.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy hair often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Zofia is a petite woman with an intense gaze that reflects her analytical mind."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data observations and equations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on a completely organized workspace, with every item in its designated place."
+  ]
+}

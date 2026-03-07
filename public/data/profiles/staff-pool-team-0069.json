@@ -1,0 +1,22 @@
+{
+  "name": "Erik Kristensen",
+  "nationality": "Danish",
+  "age": 59,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Erik Kristensen's journey in motorsport began in his youth, tinkering with engines in his father's workshop. This passion led him to pursue a degree in mechanical engineering, after which he joined a small Danish racing team as a junior engineer. His sharp technical mind and knack for problem-solving quickly propelled him through the ranks. \n\nOver the years, Erik has honed his skills in both technical and managerial aspects of racing. He believes in fostering a collaborative and data-driven environment, where every team member's input is valued. His loyalty to his team is unwavering, and he strives to create a supportive atmosphere where everyone can thrive. Erik is known for his calm demeanor under pressure and his ability to make strategic decisions in the heat of the moment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Erik is a man of medium build with a weathered face that speaks of years spent trackside."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small, worn-out notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a cup of strong black coffee before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Luc Dubois",
+  "nationality": "Swiss",
+  "age": 33,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jean-Luc's passion for motorsport ignited during his childhood, watching Formula 1 races with his father. He was captivated by the intricate engineering behind the cars and the constant pursuit of speed. After completing his apprenticeship in composite materials, Jean-Luc actively sought opportunities in racing, eager to contribute his skills to the demanding world of motorsport.\n\nHe thrives on the challenges of working with carbon fiber and other advanced materials, always seeking innovative solutions to improve the performance and safety of the vehicles. Jean-Luc is meticulous in his work, ensuring the highest standards of quality and precision. His loyalty and dedication make him a valued member of any team, and his colleagues appreciate his willingness to go the extra mile.\n\nHe is especially interested in the intersection of motorsport and environmental sustainability, and wants to find ways to make racing more environmentally friendly through materials science.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Jean-Luc is of average height, with a wiry build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always brings a Swiss Army knife to work, even though he rarely needs it.",
+    "Meticulously cleans his workspace at the end of each day.",
+    "Has a habit of humming quietly while working on intricate composite layups."
+  ]
+}

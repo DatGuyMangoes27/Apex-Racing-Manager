@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   Target,
@@ -9,18 +10,29 @@ import {
   DollarSign,
   Users,
   Calendar,
+  Handshake,
+  AlertTriangle,
+  Heart,
+  Clock,
+  FileText,
+  Wrench,
+  ShieldAlert,
+  CheckCheck,
+  XCircle,
 } from 'lucide-react'
 import { Card, CardHeader, Badge, Button } from '@/components/ui'
 import { useCareerStore } from '@/store/careerStore'
+import { useRivalStore } from '@/store/rivalStore'
+import type { PlayerPromise } from '@/simulation/promises'
 
 type RoleTag = 'racing' | 'business' | 'life'
 
-interface ObjectiveItem {
+interface Objective {
   id: string
   title: string
   description: string
   progress?: number
-  target?: number
+  maxProgress?: number
   completed: boolean
   priority: 'high' | 'medium' | 'low'
   icon: typeof Target
@@ -69,13 +81,17 @@ export function ObjectivesPanel() {
     const totalRaces = currentSeries?.calendar?.length ?? 0
     
     // === NEW PLAYER OBJECTIVES ===
+    // Urgency escalation: after week 4, incomplete critical tasks become urgent
+    const isUrgent = (careerState.currentWeek ?? 1) >= 4 && !careerState.onboardingComplete
     
     // 1. Buy first car
     if (!hasCars) {
       objs.push({
         id: 'first-car',
-        title: 'Acquire Your First Car',
-        description: 'Visit the Marketplace to purchase a car to race with.',
+        title: isUrgent ? 'URGENT: Buy a Car Now!' : 'Acquire Your First Car',
+        description: isUrgent 
+          ? `Week ${careerState.currentWeek} and still no car! Your team cannot compete without one. Visit the Marketplace immediately.`
+          : 'Visit the Marketplace to purchase a car to race with.',
         completed: false,
         priority: 'high',
         icon: Car,
@@ -91,8 +107,10 @@ export function ObjectivesPanel() {
     if (hasCars && !hasSeriesEntry) {
       objs.push({
         id: 'enter-series',
-        title: 'Enter Your First Series',
-        description: 'Choose a racing series that fits your car and budget.',
+        title: isUrgent ? 'URGENT: Enter a Series!' : 'Enter Your First Series',
+        description: isUrgent
+          ? `You have a car but no series entry! Races won't wait — register for a championship now.`
+          : 'Choose a racing series that fits your car and budget.',
         completed: false,
         priority: 'high',
         icon: Trophy,
@@ -108,8 +126,10 @@ export function ObjectivesPanel() {
     if (hasCars && !hasDrivers) {
       objs.push({
         id: 'assign-driver',
-        title: 'Assign a Driver',
-        description: 'Assign yourself or hire a driver to compete in races.',
+        title: isUrgent ? 'URGENT: Assign a Driver!' : 'Assign a Driver',
+        description: isUrgent
+          ? `Your car has no driver! Assign yourself or hire a driver immediately.`
+          : 'Assign yourself or hire a driver to compete in races.',
         completed: false,
         priority: 'high',
         icon: Users,
@@ -121,14 +141,16 @@ export function ObjectivesPanel() {
       })
     }
     
-    // 4. Get sponsors (if team has low funds)
-    if (!hasSponsors && (team?.budgets?.cash ?? 0) < 500000) {
+    // 4. Get sponsors (urgency escalation: show even without low funds after week 4)
+    if (!hasSponsors && (isUrgent || (team?.budgets?.cash ?? 0) < 500000)) {
       objs.push({
         id: 'get-sponsors',
-        title: 'Attract Sponsors',
-        description: 'Sponsors provide regular income to fund your team operations.',
+        title: isUrgent ? 'URGENT: Find Sponsors!' : 'Attract Sponsors',
+        description: isUrgent
+          ? `No sponsor income! Your cash will run out. Visit the Sponsor Market before it's too late.`
+          : 'Sponsors provide regular income to fund your team operations.',
         completed: false,
-        priority: 'medium',
+        priority: isUrgent ? 'high' : 'medium',
         icon: Handshake,
         roleTag: 'business',
         action: {
@@ -142,10 +164,12 @@ export function ObjectivesPanel() {
     if (!hasKeyStaff) {
       objs.push({
         id: 'hire-staff',
-        title: 'Build Your Team',
-        description: 'Hire a Chief Engineer and Strategist to improve performance.',
+        title: isUrgent ? 'URGENT: Hire Staff!' : 'Build Your Team',
+        description: isUrgent
+          ? `Your team is understaffed! At minimum hire a Chief Engineer. Visit the Staff Market now.`
+          : 'Hire a Chief Engineer and Strategist to improve performance.',
         completed: false,
-        priority: 'medium',
+        priority: isUrgent ? 'high' : 'medium',
         icon: Users,
         roleTag: 'business',
         action: {
@@ -507,6 +531,157 @@ export function ObjectivesPanel() {
       {objectives.length > 5 && (
         <p className="text-xs text-text-muted text-center mt-3">
           +{objectives.length - 5} more objectives
+        </p>
+      )}
+    </Card>
+  )
+}
+
+// ============================================
+// COMMITMENTS PANEL (Promise Tracking)
+// ============================================
+
+const PROMISE_STATUS_STYLES: Record<PlayerPromise['status'], { bg: string; text: string; border: string; label: string; icon: typeof Target }> = {
+  active: { bg: 'bg-accent-blue/10', text: 'text-accent-blue', border: 'border-accent-blue/30', label: 'Active', icon: Target },
+  expiring: { bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/30', label: 'Expiring', icon: ShieldAlert },
+  fulfilled: { bg: 'bg-status-success/10', text: 'text-status-success', border: 'border-status-success/30', label: 'Kept', icon: CheckCheck },
+  broken: { bg: 'bg-status-error/10', text: 'text-status-error', border: 'border-status-error/30', label: 'Broken', icon: XCircle },
+}
+
+const PROMISE_CATEGORY_STYLES: Record<string, { bg: string; text: string; label: string }> = {
+  performance: { bg: 'bg-cyan-500/20', text: 'text-cyan-400', label: 'Performance' },
+  investment: { bg: 'bg-emerald-500/20', text: 'text-emerald-400', label: 'Investment' },
+  wellbeing: { bg: 'bg-pink-500/20', text: 'text-pink-400', label: 'Wellbeing' },
+  strategy: { bg: 'bg-violet-500/20', text: 'text-violet-400', label: 'Strategy' },
+  development: { bg: 'bg-accent-orange/20', text: 'text-accent-orange', label: 'Development' },
+}
+
+export function CommitmentsPanel() {
+  const { careerState } = useCareerStore()
+  
+  const promises = useMemo(() => {
+    if (!careerState?.promises) return []
+    // Show active/expiring first, then recently resolved
+    return [...careerState.promises]
+      .sort((a, b) => {
+        const statusOrder = { expiring: 0, active: 1, fulfilled: 2, broken: 3 }
+        const statusDiff = (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9)
+        if (statusDiff !== 0) return statusDiff
+        return a.deadlineWeek - b.deadlineWeek
+      })
+  }, [careerState?.promises])
+  
+  // Only show active/expiring and recent resolutions
+  const currentWeek = careerState?.currentWeek ?? 1
+  const displayPromises = promises.filter(p => {
+    if (p.status === 'active' || p.status === 'expiring') return true
+    // Show fulfilled/broken for 2 weeks after resolution
+    const resolvedWeek = p.fulfilledAtWeek ?? p.brokenAtWeek ?? 0
+    return (currentWeek - resolvedWeek) <= 2
+  }).slice(0, 5)
+  
+  if (displayPromises.length === 0) return null
+  
+  const activeCount = promises.filter(p => p.status === 'active' || p.status === 'expiring').length
+  const expiringCount = promises.filter(p => p.status === 'expiring').length
+  
+  return (
+    <Card variant="glass" padding="lg" className="mt-4">
+      <CardHeader 
+        title="Your Commitments"
+        icon={<ShieldAlert className="w-5 h-5" />}
+        action={
+          <div className="flex items-center gap-2">
+            {expiringCount > 0 && (
+              <Badge variant="orange" size="sm">{expiringCount} Expiring</Badge>
+            )}
+            <Badge variant={activeCount > 0 ? 'blue' : 'green'} size="sm">
+              {activeCount > 0 ? `${activeCount} Active` : 'All Resolved'}
+            </Badge>
+          </div>
+        }
+      />
+      
+      <div className="space-y-2 mt-1">
+        {displayPromises.map((promise, index) => {
+          const statusStyle = PROMISE_STATUS_STYLES[promise.status]
+          const categoryStyle = PROMISE_CATEGORY_STYLES[promise.category] ?? PROMISE_CATEGORY_STYLES.strategy
+          const StatusIcon = statusStyle.icon
+          const weeksLeft = promise.deadlineWeek - currentWeek
+          const isResolved = promise.status === 'fulfilled' || promise.status === 'broken'
+          
+          return (
+            <motion.div
+              key={promise.id}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className={`p-3 rounded-lg border transition-colors ${statusStyle.bg} ${statusStyle.border}`}
+            >
+              <div className="flex items-start gap-3">
+                <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${statusStyle.bg} ${statusStyle.text}`}>
+                  <StatusIcon className="w-3.5 h-3.5" />
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h4 className={`font-medium text-sm ${isResolved ? statusStyle.text : 'text-text-primary'}`}>
+                      {promise.shortText}
+                    </h4>
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${categoryStyle.bg} ${categoryStyle.text}`}>
+                      {categoryStyle.label}
+                    </span>
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${statusStyle.bg} ${statusStyle.text} border ${statusStyle.border}`}>
+                      {statusStyle.label}
+                    </span>
+                  </div>
+                  
+                  <p className="text-xs text-text-muted mt-0.5 line-clamp-2">{promise.text}</p>
+                  
+                  <div className="flex items-center gap-3 mt-1.5 text-[10px] text-text-muted">
+                    {!isResolved && (
+                      <span className={`flex items-center gap-1 ${weeksLeft <= 1 ? 'text-amber-400 font-medium' : ''}`}>
+                        <Clock className="w-3 h-3" />
+                        {weeksLeft <= 0 ? 'Due now' : `${weeksLeft}w left`}
+                      </span>
+                    )}
+                    <span>From: {promise.sourceActivityName}</span>
+                    {promise.stakeholders[0] && (
+                      <span>Heard by: {promise.stakeholders[0].name}</span>
+                    )}
+                  </div>
+                  
+                  {/* Deadline progress bar for active promises */}
+                  {!isResolved && (
+                    <div className="mt-2">
+                      <div className="h-1 bg-surface-secondary rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full rounded-full ${
+                            weeksLeft <= 1 ? 'bg-amber-400' : 
+                            weeksLeft <= 2 ? 'bg-accent-orange' : 
+                            'bg-accent-blue'
+                          }`}
+                          initial={{ width: 0 }}
+                          animate={{ 
+                            width: `${Math.max(5, Math.min(100, 
+                              ((promise.deadlineWeek - promise.madeAtWeek - weeksLeft) / 
+                               Math.max(1, promise.deadlineWeek - promise.madeAtWeek)) * 100
+                            ))}%` 
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )
+        })}
+      </div>
+      
+      {promises.filter(p => p.status === 'active' || p.status === 'expiring').length > 5 && (
+        <p className="text-xs text-text-muted text-center mt-3">
+          +{promises.filter(p => p.status === 'active' || p.status === 'expiring').length - 5} more commitments
         </p>
       )}
     </Card>

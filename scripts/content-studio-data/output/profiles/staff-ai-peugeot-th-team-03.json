@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 30,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Thierry's fascination with motorsport began as a child, watching his father race karts on local tracks. This early exposure ignited a passion for aerodynamics, leading him to pursue a degree in aerospace engineering at the Université libre de Bruxelles. After graduating, he joined a Formula 3 team, quickly demonstrating his aptitude for optimizing downforce and reducing drag. He spent several years honing his skills before being headhunted by Peugeot TotalEnergies.\n\nAs Head of Aero, Thierry is known for his methodical approach and relentless pursuit of marginal gains. He believes that even the smallest aerodynamic improvements can translate to significant lap time reductions. Thierry emphasizes close collaboration with the drivers and engineers, ensuring that aero developments are aligned with the car's overall performance characteristics and driver preferences. His focus on data-driven analysis and innovative solutions has quickly established him as a rising star in the world of motorsport aerodynamics. His perfectionism is both a blessing and a curse, driving him to achieve exceptional results but occasionally leading to late nights in the wind tunnel.\n\nThierry is distinguished by his uncanny ability to visualize airflow patterns and identify subtle areas for improvement. He combines theoretical knowledge with hands-on experience, allowing him to effectively bridge the gap between simulation and real-world performance. His dedication and innovative approach are key to Peugeot's success on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Hazel",
+    "facialHair": "Close-trimmed goatee",
+    "description": "Thierry is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having the wind tunnel temperature set to precisely 22 degrees Celsius."
+  ]
+}

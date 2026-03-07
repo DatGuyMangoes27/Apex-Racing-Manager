@@ -1,0 +1,22 @@
+{
+  "name": "Aroha Kōhere",
+  "nationality": "New Zealand",
+  "age": 46,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Aroha's journey into motorsport began unconventionally, not with go-karts, but with a passion for understanding complex systems. After completing her degree in Engineering Science at the University of Auckland, she initially worked in the aerospace industry, developing flight simulators. However, the roar of engines and the allure of the track eventually drew her in. She transitioned to motorsport, working for several Formula teams before finding her niche in GT racing.\n\nAroha is a firm believer that the simulator is more than just a training tool; it's a laboratory. She is known for her meticulous approach to data analysis, constantly tweaking parameters to precisely replicate real-world conditions. Her demanding nature pushes drivers and engineers alike to extract every last tenth of a second. Her ability to identify subtle inconsistencies between the virtual and actual car has been instrumental in several race-winning setups.\n\nWhat sets Aroha apart is her innate understanding of driver feedback. She possesses a rare talent for translating subjective comments into actionable changes within the simulation environment. This, combined with her creative problem-solving and willingness to explore unconventional solutions, makes her a valuable asset to any team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, braided and often tied back in a practical ponytail.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "She has a strong, determined face and a lean build, honed from years of early morning runs."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on starting every simulator session with a traditional Māori karakia (prayer).",
+    "Has a habit of tapping her pen rapidly when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 55,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Declan's journey into motorsport began unconventionally, not on the track, but within the intricate circuits of telecommunications. He spent his early career troubleshooting complex network issues, a skill that proved surprisingly transferable to the world of racing simulation. The precision and analytical thinking demanded by both fields ignited his passion for motorsport problem-solving. \n\nHe transitioned to motorsport after designing a simulator rig in his garage. His approach to simulator engineering is deeply rooted in data analysis and driver feedback. He believes the key to a successful simulation lies not just in replicating the car's behaviour, but in creating an environment that accurately reflects the psychological pressures a driver faces. Declan's ability to identify subtle inconsistencies between the virtual and real world, coupled with his willingness to experiment with unconventional solutions, makes him a valuable asset to any team, even a Junior Kart Team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A slightly stout man with a kind face and a perpetual twinkle in his eye."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations.",
+    "Has a habit of muttering to himself while analyzing simulator data.",
+    "Insists on playing traditional Irish folk music during breaks."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Anca Popescu",
+  "nationality": "Romanian",
+  "age": 47,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Anca's journey in motorsport began unexpectedly, fueled by a fascination with engineering and a chance encounter with a local racing team needing a data analyst. Her analytical skills quickly proved invaluable, leading to roles with increasing responsibility. Prior to Racing Start Academy, Anca spent several years honing her skills at a smaller Formula team, where she developed a reputation for identifying crucial performance gains through meticulous data analysis and innovative problem-solving.\n\nAs Technical Director, Anca is known for her pragmatic approach. She strongly believes in focusing on incremental improvements, prioritizing reliability and consistency over chasing radical, unproven designs. Her philosophy is rooted in a deep understanding of the complex interplay between the car, the driver, and the track, and she excels at optimizing performance within existing constraints. Anca's ability to see the big picture while maintaining a keen eye for detail makes her a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, neatly styled in a simple bob.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Anca has a serious but kind face, framed by her dark hair and intelligent, focused eyes."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small, worn notebook filled with technical diagrams.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on a specific brand of Romanian coffee in the garage."
+  ]
+}

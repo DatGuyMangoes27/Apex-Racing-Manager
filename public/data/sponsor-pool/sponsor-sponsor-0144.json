@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0144",
+  "name": "Credinvest Belgium",
+  "category": "finance",
+  "tier": "mid",
+  "country": "Belgium",
+  "description": "Your trusted partner for financial growth.",
+  "story": "Credinvest Belgium is a leading investment firm dedicated to supporting innovation and high performance. Motorsports represent the pinnacle of human achievement and technological advancement, aligning perfectly with our values. We seek to partner with teams that demonstrate ambition, professionalism, and a commitment to excellence, mirroring our own dedication to our clients.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0144.png"
+}

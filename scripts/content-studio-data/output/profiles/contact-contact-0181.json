@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Moreau",
+  "nationality": "Belgian",
+  "age": 62,
+  "gender": "female",
+  "contactType": "celebrity",
+  "bio": "Isabelle Moreau is a Belgian actress and philanthropist, renowned for her intense, emotionally driven performances in both film and theatre. Though self-taught, her deep understanding of human psychology, gleaned from years of philosophical study and observation, has earned her critical acclaim and a dedicated following. Known for her complex and sometimes demanding personality, Moreau is fiercely protective of those she cares about, yet possesses a profound compassion for the underdog. \n\nWhile not directly involved in motorsport, Isabelle is a patron of several charities that support children's education and development, including programs that introduce underprivileged youth to STEM fields. Her high-profile galas and fundraising events often draw attendees from all walks of life, including the racing world. A driver might cross paths with her through charitable endorsements, celebrity races, or simply by attending one of her exclusive social gatherings.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant updo",
+    "eyeColor": "Emerald Green",
+    "facialHair": null,
+    "description": "Isabelle is a striking woman who carries herself with undeniable poise. Her sharp features and piercing green eyes command attention, softened only by the delicate lines etched by time and experience."
+  },
+  "connectionToMotorsport": "Isabelle is not directly involved in motorsports, but she occasionally attends high-profile races as a guest of luxury brands and supports STEM education charities that engage young people in engineering through racing programs.",
+  "meetingContext": "The player might meet Isabelle at a charity gala hosted by one of her foundations, or perhaps at an exclusive after-party following a Formula 1 race in Monaco.",
+  "conversationTopics": [
+    "The philosophical implications of modern technology",
+    "The transformative power of contemporary dance",
+    "The ethical responsibility of celebrities",
+    "The history and craftsmanship of fine whiskey",
+    "The importance of supporting arts education"
+  ],
+  "canHelp": [
+    "Introduce the player to high-profile sponsors and investors.",
+    "Provide access to exclusive social events and networking opportunities.",
+    "Offer mentorship and guidance on navigating the public eye and managing their image."
+  ],
+  "personality_summary": "A controlling but compassionate intellectual with a penchant for the finer things in life."
+}

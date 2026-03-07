@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 27,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Zoltán's fascination with motorsport began in his childhood, captivated by the intricate electronics powering Formula One cars. He pursued a degree in Electrical Engineering at the Budapest University of Technology and Economics, specializing in embedded systems and control algorithms. Upon graduation, he secured a position at a small racing team focused on touring cars, where he honed his skills in diagnosing and resolving complex electrical issues under immense pressure. Zoltán is now eager to contribute his technical expertise to Boutsen VDS, aiming to optimize the car's electronic systems for peak performance. \n\nHis approach centers around precision and meticulous attention to detail. Zoltán believes that even the smallest adjustments to the electronics can translate into significant gains on the track. He is particularly adept at data analysis, using sensor readings and telemetry to identify areas for improvement and fine-tune the car's electronic configuration. He sees his role as a critical link between the driver's feedback and the car's performance, ensuring that the driver has the tools they need to push the limits. \n\nWhat truly sets Zoltán apart is his ability to remain calm and focused under pressure. He thrives in high-stakes situations, approaching challenges with a methodical and analytical mindset. His loyalty to the team is unwavering, and he is committed to working tirelessly to achieve collective success.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Zoltán has a focused gaze and a wiry build, suggesting intense concentration and dedication."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Meticulously organizes his workspace with color-coded labels.",
+    "Has a habit of humming quietly while debugging complex systems."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0224",
+  "name": "Kawa Capital",
+  "category": "finance",
+  "tier": "high",
+  "country": "Japan",
+  "description": "Investing in your future, on and off the track.",
+  "story": "Kawa Capital is a leading Japanese investment firm specializing in high-growth technology and sustainable energy ventures. Recognizing the parallels between motorsport and the fast-paced world of finance, they seek to partner with teams that demonstrate innovation, precision, and a commitment to excellence. Motorsport provides Kawa Capital with a high-visibility platform to showcase their brand and connect with a global audience of investors and enthusiasts.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0224.png"
+}

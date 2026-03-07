@@ -1,0 +1,27 @@
+{
+  "biography": "Lucas Jackson's journey began on the windswept karting tracks of rural Oxfordshire. The son of a mechanic, he grew up surrounded by the oily aroma of engines and the screech of tires. His first taste of competition came at age eight, a battered kart salvaged from a scrapyard, lovingly rebuilt by his father. Despite the rudimentary equipment, Lucas possessed an innate ability to find speed, often upsetting the more established racers with his raw talent and fearless overtaking maneuvers. Funding proved a constant hurdle, but his dedication and undeniable potential earned him a scholarship to a regional racing academy at sixteen. After some success in the Formula Regional championship, Lucas has struggled to secure a works drive, and currently competes as an independent driver, relying on a patchwork of sponsors and his innate talent to stay competitive. He hopes to prove himself worthy of a top-tier seat.",
+  "drivingStyle": "Jackson is a primarily defensive driver known for his exceptional car control and ability to extract maximum performance from limited machinery. He prioritizes consistency and tire management, often sacrificing outright pace in the early stages of a race to preserve his equipment for a late-race charge. He is adept at defending his position, making it exceedingly difficult for rivals to find a way past, even with a significant performance advantage. In qualifying, he tends to play it safe, focusing on clean laps and avoiding unnecessary risks, as he prefers to gain places during the race itself.",
+  "rivalries": [
+    {
+      "driver": "Enzo Bellini",
+      "reason": "A clash of egos and driving styles dating back to their karting days, where Enzo often accused Lucas of overly aggressive defending."
+    },
+    {
+      "driver": "Astrid Schmidt",
+      "reason": "A heated on-track battle for a podium finish last season resulted in contact and a post-race war of words."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Both are seen as rising stars with similar skillsets, leading to a constant battle for recognition and sponsor attention."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue racing gloves, believing they bring him luck.",
+    "Listens to classical music before every race to calm his nerves and focus his mind.",
+    "Insists on personally inspecting and cleaning his tires before each session."
+  ],
+  "nickname": "The Stonewall",
+  "famousQuote": "\"Racing isn't just about speed; it's about resilience. It's about knowing when to push and when to hold back. It's about surviving when others falter.\"",
+  "careerHighlight": "Winning the Formula Regional Championship at Brands Hatch in 2022, securing the title with a daring last-lap overtake in the wet.",
+  "careerLowPoint": "Crashing out of the lead at Silverstone in 2023 due to a mechanical failure, costing him a crucial race win and severely impacting his championship hopes."
+}

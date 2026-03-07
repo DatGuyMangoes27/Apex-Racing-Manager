@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 43,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Jaroslav's journey into motorsport began unexpectedly. A promising career in theoretical physics took a sharp turn when he discovered the power of data in optimizing kart performance. Initially volunteering at local races, he quickly proved his aptitude for extracting actionable insights from complex telemetry. His ability to translate raw data into tangible improvements on the track earned him a reputation, ultimately leading to his position with Tony Kart Racing.\n\nJaroslav approaches data analysis with a scientist's rigor and a racer's passion. He's relentless in his pursuit of marginal gains, employing a blend of statistical modeling and intuitive understanding of racing dynamics. He believes that the key to success lies not just in identifying problems, but in developing innovative solutions that give his team a competitive edge. He's known for his meticulous attention to detail and his ability to communicate complex findings in a clear and concise manner.\n\nWhat truly sets Jaroslav apart is his uncanny ability to spot patterns where others see noise. His colleagues often joke that he speaks fluent 'telemetry,' but beneath the surface lies a deep understanding of the interplay between driver, machine, and track.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed, receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed goatee",
+    "description": "Jaroslav has a serious demeanor that is often offset by his quick, unexpected smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with equations and observations.",
+    "Insists on using a vintage slide rule for quick calculations.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

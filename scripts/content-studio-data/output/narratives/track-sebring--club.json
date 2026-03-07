@@ -1,0 +1,61 @@
+{
+  "history": "Sebring International Raceway, built on a former World War II airbase, has a rich history dating back to 1950. The track's challenging surface and high-speed sections have made it a proving ground for both drivers and machinery. While the full circuit is most famous for the 12 Hours of Sebring, the Club Circuit layout has also seen its share of action, hosting club races, testing sessions, and driver training events. Though less prominent than its longer counterpart, the Club Circuit provides a valuable alternative for those seeking a shorter, more technical challenge. The track's enduring legacy as an American motorsport icon continues to this day.",
+  "atmosphere": "The air crackles with anticipation as the field lines up for the start on the Sebring Club Circuit. The roar of engines echoes off the surrounding grandstands and pit buildings, a symphony of raw power. The Florida sun beats down, intensifying the heat radiating from the asphalt. The smell of burning rubber and high-octane fuel hangs heavy in the air. Fans pack the infield, their cheers adding to the electric atmosphere as cars dive into Turn 1, jostling for position. The Club Circuit, though shorter, offers an intimate viewing experience, bringing spectators closer to the action.",
+  "trackCharacter": "The Sebring Club Circuit, at 2.8km and 8 turns, presents a unique test compared to the full layout. Its shorter length favors nimble handling and acceleration over outright top speed. The emphasis shifts to precise cornering and maintaining momentum. The infield section becomes more prominent, demanding a different rhythm and flow from drivers. The bumpy surface, a Sebring trademark, is still present, requiring careful setup and driver skill to navigate effectively. While the full circuit is about endurance and managing degradation, the Club Circuit is a sprint, demanding maximum attack from start to finish.",
+  "nickname": "The Sebring Sprint",
+  "famousCorners": [
+    {
+      "name": "Turn 1",
+      "description": "A fast, sweeping right-hander that immediately tests a driver's courage and commitment. It sets the tone for the entire lap.",
+      "challenge": "Maintaining the ideal line and carrying maximum speed through the corner without running wide onto the unforgiving apex."
+    },
+    {
+      "name": "Turn 3",
+      "description": "A tricky, decreasing-radius corner that requires precise braking and throttle control. Getting it wrong can easily upset the car.",
+      "challenge": "Judging the braking point perfectly and balancing the car on the edge of grip as the corner tightens."
+    },
+    {
+      "name": "Turn 4",
+      "description": "A 90-degree right-hander that follows a short straight, offering a brief overtaking opportunity.",
+      "challenge": "Braking late and deep into the corner while maintaining control and avoiding locking up the wheels."
+    },
+    {
+      "name": "Turn 5",
+      "description": "A long, sweeping left-hander that tests the car's balance and the driver's stamina. Maintaining speed through here is crucial for a good lap time.",
+      "challenge": "Finding the optimal line and maintaining consistent throttle input to maximize speed and minimize tire wear."
+    },
+    {
+      "name": "Turn 7",
+      "description": "A tight hairpin that demands heavy braking and a precise turn-in. It's a crucial corner for setting up the final straight.",
+      "challenge": "Nailing the braking point and apex to maximize exit speed onto the final straight."
+    }
+  ],
+  "keyFactors": [
+    "Braking Efficiency",
+    "Corner Exit Speed",
+    "Tire Management",
+    "Agility and Handling",
+    "Acceleration"
+  ],
+  "overtakingSpots": [
+    "Into Turn 1 (brave move)",
+    "Into Turn 4 (under braking)",
+    "Into Turn 7 (hairpin - risk/reward)"
+  ],
+  "historySnippets": [
+    "Sebring was originally a B-17 training base during WWII.",
+    "The 12 Hours of Sebring is one of the oldest endurance races in the US.",
+    "The track's surface is notoriously bumpy and challenging.",
+    "Sebring has hosted numerous IMSA and SCCA events.",
+    "The Club Circuit is popular for testing and driver training.",
+    "The track is located in central Florida, near citrus groves."
+  ],
+  "weatherNotes": "Sebring's location in central Florida means hot and humid conditions are common, especially during the summer months. Rain showers can be frequent and unpredictable, often appearing and disappearing quickly. Track temperatures can fluctuate dramatically, affecting tire grip and performance. Afternoon thunderstorms are a typical summer occurrence.",
+  "drivingAdvice": "On the Sebring Club Circuit, focus on maximizing corner exit speed, as the short straights reward good acceleration. Be precise with your braking points, as the bumpy surface can make it easy to lock up the wheels. Manage your tires carefully, as the high temperatures and abrasive surface can cause rapid degradation. Use the kerbs sparingly, as they can unsettle the car. Most of all, be patient and methodical, building up your speed gradually to find the limit.",
+  "famousRaces": [
+    "12 Hours of Sebring (IMSA WeatherTech SportsCar Championship): While primarily run on the full circuit, its history influences all layouts.",
+    "SCCA National Championship Runoffs: Various classes have competed on different Sebring layouts, including the Club Circuit.",
+    "Local Club Racing Events: The Club Circuit is a regular venue for local club races, offering accessible competition."
+  ],
+  "localCulture": "Sebring is a small town in central Florida, known for its citrus groves and natural beauty. The local culture is relaxed and friendly, with a strong emphasis on outdoor activities. Paddock life at Sebring is a unique experience, with fans and teams mingling freely. The local cuisine features fresh seafood and Southern comfort food. Be sure to try some key lime pie, a Florida specialty."
+}

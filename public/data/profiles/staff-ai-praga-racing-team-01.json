@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Hayes",
+  "nationality": "American",
+  "age": 36,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ethan Hayes is a seasoned chief engineer with a decade of experience in motorsport. He found his passion for racing early, spending countless hours tinkering with engines alongside his father, a local mechanic. This hands-on experience fueled his desire to pursue a career in motorsport engineering, leading him to earn a degree in mechanical engineering with a specialization in automotive design.\n\nEthan's approach to engineering blends technical expertise with a big-picture perspective. He believes in fostering a collaborative environment where every team member feels empowered to contribute their best. His dedication to data-driven decision-making, coupled with his ability to identify innovative solutions, has earned him a reputation as a reliable and effective leader. At Praga Racing, he aims to optimize vehicle performance and reliability through meticulous analysis and continuous improvement, ensuring the team remains competitive on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Ethan is of average height with a lean build and a perpetually focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with engineering calculations and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting every major component before a race."
+  ]
+}

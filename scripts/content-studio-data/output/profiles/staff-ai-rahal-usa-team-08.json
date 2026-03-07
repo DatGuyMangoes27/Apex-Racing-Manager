@@ -1,0 +1,22 @@
+{
+  "name": "Elin Jones",
+  "nationality": "Welsh",
+  "age": 48,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Elin Jones is a seasoned performance engineer with a passion for extracting every last ounce of performance from racing machines. Growing up in a small Welsh town, she was captivated by motorsport from a young age, spending hours tinkering with engines and dreaming of race tracks. Elin's career began in Formula Ford, working her way up through various junior categories before landing a coveted role at Rahal Letterman Lanigan. \n\nKnown for her meticulous approach and relentless pursuit of perfection, Elin leaves no stone unturned when analyzing data and optimizing car setup. She's not afraid to challenge conventional wisdom and push the boundaries of innovation, often coming up with unique solutions that give her team a competitive edge. While her demanding nature can sometimes ruffle feathers, her commitment to success is undeniable, making her a vital asset to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy hair often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A slight build, but with a focused intensity in her eyes, she exudes quiet competence."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on a specific brand of Welsh tea in the garage.",
+    "Has a habit of tapping her pen rapidly when deep in thought."
+  ]
+}

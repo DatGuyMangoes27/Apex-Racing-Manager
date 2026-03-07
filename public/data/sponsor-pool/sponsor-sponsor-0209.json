@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0209",
+  "name": "Desert Diamond Composites",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "UAE",
+  "description": "Advanced composite materials for motorsport and aerospace.",
+  "story": "Desert Diamond Composites is a leading manufacturer of carbon fiber components and advanced materials based in Abu Dhabi. With a commitment to innovation and performance, they sponsor motorsport to showcase the durability and weight-saving benefits of their products. They seek partnerships that demonstrate their technology on the track and provide valuable feedback for further development.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0209.png"
+}

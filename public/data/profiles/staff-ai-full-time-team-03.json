@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 43,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's passion for motorsport ignited during his childhood, fueled by the roar of Formula 1 cars on TV. He pursued a degree in Aerospace Engineering at the École Polytechnique, determined to contribute to the cutting edge of vehicle dynamics. After graduating, he started as a junior aerodynamicist at a smaller racing outfit, quickly proving his worth with innovative downforce solutions. \n\nHe now leads the aerodynamics department at Full Time Sports, focusing on a data-driven approach to optimizing car performance. Jean-Pierre believes in fostering a collaborative environment, encouraging his team to challenge conventional thinking and push the boundaries of aerodynamic design. He is known for his meticulous attention to detail and his unwavering commitment to achieving peak aerodynamic efficiency, always seeking marginal gains that can make a significant difference on the track.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "A man of medium height with a serious demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Insists on using metric measurements exclusively, even when others use imperial.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

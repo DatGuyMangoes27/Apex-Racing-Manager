@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0466",
+  "name": "Ukhuseleko Financial Services",
+  "category": "financial",
+  "tier": "entry",
+  "country": "South Africa",
+  "description": "Securing your future, driving your ambitions.",
+  "story": "Ukhuseleko believes in investing in the future of South African talent. Motorsport represents the pinnacle of ambition and precision, values we admire. We seek to partner with drivers who demonstrate dedication and represent the spirit of excellence, helping them achieve their racing goals.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0466.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sanna Kärkinen",
+  "nationality": "Finnish",
+  "age": 43,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Sanna's journey into motorsport was unconventional, sparked by a high school physics project on aerodynamics that ignited a lifelong fascination. Before joining Vee Masters, she honed her skills at a smaller research facility, where she developed innovative testing methodologies that caught the attention of several Formula teams. Sanna meticulously analyzes wind tunnel data, looking for the smallest details to help improve aerodynamic performance. Her approach combines a deep understanding of fluid dynamics with a relentless pursuit of marginal gains, making her an invaluable asset to the team.\n\nHer colleagues know Sanna as an innovator who is never afraid to challenge conventional wisdom. She thrives on collaborating with engineers and designers, bridging the gap between theoretical models and practical application. Sanna often spends extra hours meticulously reviewing data, driven by an insatiable curiosity and a desire to push the boundaries of aerodynamic understanding. She is a true visionary in her field, constantly seeking new ways to optimize car performance and gain a competitive edge.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Long, often tied back in a practical braid to keep it out of her face during experiments.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Sanna is of average height with a focused, intense gaze that reflects her dedication."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Insists on complete silence during critical wind tunnel runs.",
+    "Has a habit of adjusting her safety glasses even when they are perfectly in place."
+  ]
+}

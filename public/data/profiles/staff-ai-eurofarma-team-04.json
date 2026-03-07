@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alonso",
+  "nationality": "Spanish",
+  "age": 43,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for Formula 1, fueled by watching Fernando Alonso dominate the circuits. He pursued a degree in Mechanical Engineering at the Polytechnic University of Valencia, focusing on vehicle dynamics and aerodynamics. After graduating, Ricardo started as a junior engineer at a smaller racing team, working his way up through the ranks. He joined Eurofarma RC five years ago, drawn by their commitment to innovation and performance.\n\nAs a race engineer, Ricardo is known for his meticulous approach to data analysis and his ability to translate complex technical information into actionable insights for the driver. He believes in building strong relationships with his drivers, fostering open communication and mutual trust. His analytical skills are highly valued within the team, although his occasional reluctance to fully embrace collaborative brainstorming sessions has been noted. Ricardo's ambition drives him to constantly seek marginal gains and optimize every aspect of the car's setup, often pushing the boundaries of conventional wisdom.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "A man of medium height with a serious demeanor and intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a worn-out copy of a vehicle dynamics textbook.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on reviewing telemetry data in complete silence."
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Valentina Morales",
+    "nationality": "Chilean",
+    "age": 23,
+    "gender": "female",
+    "role": "data_analyst",
+    "bio": "Valentina's passion for motorsport ignited during her childhood, spent watching Formula 1 races with her grandfather. This early fascination led her to pursue a degree in Data Science, where she quickly recognized the potential for advanced analytics to revolutionize racing strategies. After graduating top of her class, she interned with a smaller racing outfit, where her insights into tire degradation and fuel consumption led to a significant improvement in race day performance. \n\nNow at Carlin, Valentina focuses on predictive modeling and real-time data analysis, providing the team with a crucial edge. She believes in translating complex data into actionable strategies that empower drivers and engineers alike. Her unwavering commitment to innovation and her ability to quickly identify patterns within vast datasets make her a valuable asset to the team.\n\nValentina is particularly interested in exploring the application of machine learning to optimize race simulations and driver training. She hopes to develop new algorithms that can predict track conditions with greater accuracy, allowing Carlin's drivers to adapt their driving styles and maximize their performance.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair usually pulled back in a high ponytail.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Valentina is of average height with a slender build and a focused gaze."
+    },
+    "personality": "visionary",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten data visualizations.",
+      "Has a habit of tapping her pen rhythmically when deep in thought.",
+      "Insists on listening to classical music while analyzing race data."
+    ]
+  }
+]

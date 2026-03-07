@@ -1,0 +1,27 @@
+{
+  "biography": "Oliver Gavin, a name whispered with a mix of admiration and frustration in the Chevrolet paddock, hails from a small village in the Cotswolds, England. His journey began not on asphalt, but on muddy fields, tearing around on a battered quad bike his grandfather gifted him. The transition to karting was almost inevitable, and his calculating approach quickly set him apart. At 16, he secured a scholarship to a racing academy, where his raw speed was honed, but his tendency to overthink situations sometimes hampered him. A defining moment came during a Formula Ford race at Brands Hatch. Leading comfortably, Gavin made a last-lap error, gifting the win to his rival. This fueled a burning desire for perfection. Today, at 24, Oliver is a rising star in the GT racing scene, representing Chevrolet. While victories have been sporadic, his consistency and strategic mind make him a valuable asset. The pressure to convert potential into tangible results, however, weighs heavily on him.",
+  "drivingStyle": "Gavin's driving style is characterized by precision and calculation. He's not one for flamboyant, over-the-limit moves. Instead, he meticulously studies track data, identifies optimal braking points, and conserves tire life with almost unnerving patience. His corner entries are smooth and controlled, maximizing mid-corner speed. He thrives in endurance races, where his ability to maintain a consistent pace and manage resources shines. Under pressure, however, Gavin can sometimes become overly cautious, sacrificing crucial tenths of a second in pursuit of absolute safety.",
+  "rivalries": [
+    {
+      "name": "Isabella Rossi",
+      "reason": "A fierce competitor known for her aggressive overtaking maneuvers, Rossi represents a stark contrast to Gavin's calculated approach. Their clashes on track are often explosive, with Rossi frequently accusing Gavin of being too timid."
+    },
+    {
+      "name": "Marcus 'The Maverick' Vance",
+      "reason": "Vance, a young prodigy with seemingly limitless natural talent, represents the raw, instinctive driver that Gavin both admires and resents. Their rivalry stems from a fundamental difference in philosophy: talent versus strategy."
+    },
+    {
+      "name": "Jean-Pierre Dubois",
+      "reason": "A veteran racer with a reputation for playing mind games, Dubois often targets Gavin with psychological tactics, attempting to exploit his tendency to overthink situations. Gavin deeply respects Dubois's experience, however, resents his manipulative tactics."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of red socks on race days, regardless of the weather.",
+    "Insists on meticulously cleaning his driving gloves before each session, a ritual he believes helps him maintain focus.",
+    "Studies chess puzzles in his downtime, believing it sharpens his strategic thinking."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "Racing isn't about luck; it's about probabilities. Calculate the odds, minimize the risks, and the finish line will find you.",
+  "careerHighlight": "Winning the 24 Hours of Daytona in the GT class, a victory achieved through flawless teamwork and Gavin's strategic fuel management in the final stint.",
+  "careerLowPoint": "Crashing out of the lead in the final hour of the 12 Hours of Sebring, a mistake attributed to fatigue and a momentary lapse in concentration, costing his team a certain victory."
+}

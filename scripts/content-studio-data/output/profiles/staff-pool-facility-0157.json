@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 44,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jean-Pierre's journey into motorsport began unconventionally. After studying art history at the Sorbonne, he stumbled upon a vintage car restoration workshop in his hometown of Lyon. He quickly became fascinated with the meticulous process of restoring classic paint jobs, spending countless hours perfecting his craft. He then worked for several years with a custom motorcycle shop before entering racing. His approach to the paint shop is rooted in a deep understanding of color theory and material science. He insists on using only the highest quality paints and techniques, believing that a flawless finish not only enhances the aesthetic appeal of a vehicle but also contributes to its overall performance by improving aerodynamics and reducing drag. Jean-Pierre's unique blend of artistic sensibility and technical expertise allows him to create paint jobs that are both visually stunning and aerodynamically sound, making him a valuable asset to any racing team.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Jean-Pierre is of average height, with a focused gaze and a perpetually paint-stained work apron."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always listens to classical music while working.",
+    "Insists on using a specific brand of imported brushes.",
+    "Has a small collection of vintage toy cars on his workbench."
+  ]
+}

@@ -15,7 +15,8 @@ interface VoiceSettings {
   speed?: number // 0.7 to 1.2 range
 }
 
-const CROFTY_VOICE_ID = 'KYXXenFO8IFao5NWmALZ'
+const CROFTY_VOICE_ID = 'byILgTtsBg1jwbuvslb2'
+const VOICE_ID_PATTERN = /^[A-Za-z0-9]{16,64}$/
 
 // Crofty v2 voice settings (tuned for his cloned voice)
 const DEFAULT_VOICE_SETTINGS: VoiceSettings = {
@@ -55,6 +56,45 @@ const resolveVoiceSettings = (voiceId: string, settings: Partial<VoiceSettings>)
   return resolved
 }
 
+const resolveRequestedVoiceId = async (requestedVoiceId: string, apiKey: string): Promise<string> => {
+  const trimmed = (requestedVoiceId || '').trim()
+
+  // Already a proper ElevenLabs voice id, use directly.
+  if (VOICE_ID_PATTERN.test(trimmed)) {
+    return trimmed
+  }
+
+  const availableVoices = await getAvailableVoices(apiKey)
+  if (!availableVoices.length) {
+    // If we cannot fetch voices, keep backward compatibility with requested value,
+    // or fall back to Crofty if nothing was provided.
+    return trimmed || CROFTY_VOICE_ID
+  }
+
+  if (!trimmed) {
+    const fallback = availableVoices[0]?.voice_id || CROFTY_VOICE_ID
+    console.warn('[Voice] Empty voice ID provided, defaulting to first available voice')
+    return fallback
+  }
+
+  const normalized = trimmed.toLowerCase()
+  const exactNameMatch = availableVoices.find(v => v.name?.toLowerCase() === normalized)
+  if (exactNameMatch?.voice_id) {
+    console.log(`[Voice] Resolved preset "${trimmed}" to voice ID ${exactNameMatch.voice_id.slice(0, 8)}...`)
+    return exactNameMatch.voice_id
+  }
+
+  const partialNameMatch = availableVoices.find(v => v.name?.toLowerCase().includes(normalized))
+  if (partialNameMatch?.voice_id) {
+    console.log(`[Voice] Resolved voice alias "${trimmed}" to ${partialNameMatch.voice_id.slice(0, 8)}...`)
+    return partialNameMatch.voice_id
+  }
+
+  const fallback = availableVoices[0]?.voice_id || CROFTY_VOICE_ID
+  console.warn(`[Voice] Could not resolve voice "${trimmed}", using first available voice`)
+  return fallback
+}
+
 /**
  * Synthesize speech using ElevenLabs (Node https module for Electron compatibility)
  */
@@ -77,76 +117,81 @@ export function synthesizeSpeech(
       return
     }
     
-    const voiceSettings = resolveVoiceSettings(voiceId, settings)
-    
-    const buildPostData = () => JSON.stringify({
-      text,
-      model_id: PRIMARY_TTS_MODEL_ID,
-      voice_settings: {
-        stability: voiceSettings.stability,
-        similarity_boost: voiceSettings.similarity_boost,
-        style: voiceSettings.style,
-        use_speaker_boost: voiceSettings.use_speaker_boost
-      },
-      speed: voiceSettings.speed || 1.0 // Speed is top-level parameter
-    })
-    
-    const attemptSynthesis = (): Promise<Buffer | null> => {
-      return new Promise((attemptResolve) => {
-        const postData = buildPostData()
-        
-        const options = {
-          hostname: 'api.elevenlabs.io',
-          port: 443,
-          path: `/v1/text-to-speech/${voiceId}`,
-          method: 'POST',
-          headers: {
-            'Accept': 'audio/mpeg',
-            'Content-Type': 'application/json',
-            'xi-api-key': apiKey,
-            'Content-Length': Buffer.byteLength(postData)
-          }
-        }
-        
-        console.log(`[Voice] Synthesizing (${PRIMARY_TTS_MODEL_ID}):`, text.substring(0, 50) + '...')
-        
-        const req = https.request(options, (res) => {
-          const chunks: Buffer[] = []
-          
-          res.on('data', (chunk) => {
-            chunks.push(chunk)
-          })
-          
-          res.on('end', () => {
-            if (res.statusCode === 200) {
-              const audioBuffer = Buffer.concat(chunks)
-              console.log('[Voice] Synthesis complete, audio size:', audioBuffer.length, 'bytes')
-              attemptResolve(audioBuffer)
-            } else {
-              const errorText = Buffer.concat(chunks).toString()
-              console.error(`[Voice] API error (${PRIMARY_TTS_MODEL_ID}):`, res.statusCode, errorText)
-              attemptResolve(null)
-            }
-          })
-        })
-        
-        req.on('error', (error) => {
-          console.error('[Voice] Synthesis error:', error.message)
-          attemptResolve(null)
-        })
-        
-        req.setTimeout(30000, () => {
-          console.error('[Voice] Synthesis timeout')
-          req.destroy()
-          attemptResolve(null)
-        })
-        
-        req.write(postData)
-        req.end()
+    void resolveRequestedVoiceId(voiceId, apiKey).then((resolvedVoiceId) => {
+      const voiceSettings = resolveVoiceSettings(resolvedVoiceId, settings)
+      
+      const buildPostData = () => JSON.stringify({
+        text,
+        model_id: PRIMARY_TTS_MODEL_ID,
+        voice_settings: {
+          stability: voiceSettings.stability,
+          similarity_boost: voiceSettings.similarity_boost,
+          style: voiceSettings.style,
+          use_speaker_boost: voiceSettings.use_speaker_boost
+        },
+        speed: voiceSettings.speed || 1.0 // Speed is top-level parameter
       })
-    }
-    
-    attemptSynthesis().then(resolve)
+      
+      const attemptSynthesis = (): Promise<Buffer | null> => {
+        return new Promise((attemptResolve) => {
+          const postData = buildPostData()
+          
+          const options = {
+            hostname: 'api.elevenlabs.io',
+            port: 443,
+            path: `/v1/text-to-speech/${resolvedVoiceId}`,
+            method: 'POST',
+            headers: {
+              'Accept': 'audio/mpeg',
+              'Content-Type': 'application/json',
+              'xi-api-key': apiKey,
+              'Content-Length': Buffer.byteLength(postData)
+            }
+          }
+          
+          console.log(`[Voice] Synthesizing (${PRIMARY_TTS_MODEL_ID}) with ${resolvedVoiceId.slice(0, 8)}...:`, text.substring(0, 50) + '...')
+          
+          const req = https.request(options, (res) => {
+            const chunks: Buffer[] = []
+            
+            res.on('data', (chunk) => {
+              chunks.push(chunk)
+            })
+            
+            res.on('end', () => {
+              if (res.statusCode === 200) {
+                const audioBuffer = Buffer.concat(chunks)
+                console.log('[Voice] Synthesis complete, audio size:', audioBuffer.length, 'bytes')
+                attemptResolve(audioBuffer)
+              } else {
+                const errorText = Buffer.concat(chunks).toString()
+                console.error(`[Voice] API error (${PRIMARY_TTS_MODEL_ID}):`, res.statusCode, errorText)
+                attemptResolve(null)
+              }
+            })
+          })
+          
+          req.on('error', (error) => {
+            console.error('[Voice] Synthesis error:', error.message)
+            attemptResolve(null)
+          })
+          
+          req.setTimeout(30000, () => {
+            console.error('[Voice] Synthesis timeout')
+            req.destroy()
+            attemptResolve(null)
+          })
+          
+          req.write(postData)
+          req.end()
+        })
+      }
+      
+      attemptSynthesis().then(resolve)
+    }).catch((error) => {
+      console.error('[Voice] Failed to resolve voice ID:', error)
+      resolve(null)
+    })
   })
 }
 
@@ -185,112 +230,152 @@ export function synthesizeSpeechStreaming(
       return
     }
     
-    const voiceSettings = resolveVoiceSettings(voiceId, settings)
-    const startTime = Date.now()
-    let firstChunkTime: number | null = null
-    let totalBytes = 0
-    let isFirstChunk = true
-    
-    const buildPostData = () => JSON.stringify({
-      text,
-      model_id: PRIMARY_TTS_MODEL_ID,
-      voice_settings: {
-        stability: voiceSettings.stability,
-        similarity_boost: voiceSettings.similarity_boost,
-        style: voiceSettings.style,
-        use_speaker_boost: voiceSettings.use_speaker_boost
-      },
-      speed: voiceSettings.speed || 1.0 // Speed is top-level parameter
-      // output_format and optimize_streaming_latency are set via query parameters
-    })
-    
-    const attemptStreaming = (): Promise<{ success: boolean; firstChunkMs?: number; totalMs?: number; totalBytes?: number; error?: string }> => {
-      return new Promise((attemptResolve) => {
-        const postData = buildPostData()
-        
-        // Use 24kHz PCM for better quality (22050 is also good if 24000 has issues)
-        const optimizeLatencyParam = PRIMARY_TTS_MODEL_ID === 'eleven_v3'
-          ? ''
-          : `&optimize_streaming_latency=${latencyOptimization}`
-        const options = {
-          hostname: 'api.elevenlabs.io',
-          port: 443,
-          path: `/v1/text-to-speech/${voiceId}/stream?output_format=pcm_24000${optimizeLatencyParam}`,
-          method: 'POST',
-          headers: {
-            'Accept': '*/*', // Accept any format - let output_format control it
-            'Content-Type': 'application/json',
-            'xi-api-key': apiKey,
-            'Content-Length': Buffer.byteLength(postData)
-          }
+    void resolveRequestedVoiceId(voiceId, apiKey).then((resolvedVoiceId) => {
+      const voiceSettings = resolveVoiceSettings(resolvedVoiceId, settings)
+      const startTime = Date.now()
+      let firstChunkTime: number | null = null
+      let totalBytes = 0
+      let isFirstChunk = true
+      
+      const buildPostData = () => JSON.stringify({
+        text,
+        model_id: PRIMARY_TTS_MODEL_ID,
+        voice_settings: {
+          stability: voiceSettings.stability,
+          similarity_boost: voiceSettings.similarity_boost,
+          style: voiceSettings.style,
+          use_speaker_boost: voiceSettings.use_speaker_boost
+        },
+        speed: voiceSettings.speed || 1.0 // Speed is top-level parameter
+        // output_format and optimize_streaming_latency are set via query parameters
+      })
+
+      const fallbackToNonStreaming = async (
+        attemptResolve: (value: { success: boolean; firstChunkMs?: number; totalMs?: number; totalBytes?: number; error?: string }) => void,
+        reason: string
+      ): Promise<void> => {
+        console.warn(`[Voice] Streaming unavailable, falling back to standard TTS: ${reason}`)
+        const fallbackStart = Date.now()
+        const fallbackAudio = await synthesizeSpeech(text, apiKey, resolvedVoiceId, settings)
+        if (!fallbackAudio || fallbackAudio.length === 0) {
+          attemptResolve({ success: false, error: `Fallback synthesis failed (${reason})` })
+          return
         }
-        
-        console.log(`[Voice] Streaming synthesis starting (${PRIMARY_TTS_MODEL_ID}, latency ${latencyOptimization}):`, text.substring(0, 50) + '...')
-        
-        const req = https.request(options, (res) => {
-          if (res.statusCode !== 200) {
-            let errorData = ''
-            res.on('data', (chunk) => { errorData += chunk })
-            res.on('end', () => {
-              console.error(`[Voice] Stream API error (${PRIMARY_TTS_MODEL_ID}):`, res.statusCode, errorData)
-              attemptResolve({ success: false, error: `API error: ${res.statusCode}` })
-            })
-            return
+
+        const firstChunkMs = fallbackStart - startTime
+        totalBytes += fallbackAudio.length
+        try {
+          onChunk(fallbackAudio, true)
+        } catch (err) {
+          console.error('[Voice] Error in fallback chunk handler:', err)
+        }
+
+        const totalMs = Date.now() - startTime
+        console.log(`[Voice] Fallback synthesis complete: ${totalBytes} bytes in ${totalMs}ms`)
+        attemptResolve({
+          success: true,
+          firstChunkMs,
+          totalMs,
+          totalBytes
+        })
+      }
+      
+      const attemptStreaming = (): Promise<{ success: boolean; firstChunkMs?: number; totalMs?: number; totalBytes?: number; error?: string }> => {
+        return new Promise((attemptResolve) => {
+          const postData = buildPostData()
+          
+          // Use 24kHz PCM for better quality (22050 is also good if 24000 has issues)
+          const optimizeLatencyParam = PRIMARY_TTS_MODEL_ID === 'eleven_v3'
+            ? ''
+            : `&optimize_streaming_latency=${latencyOptimization}`
+          const options = {
+            hostname: 'api.elevenlabs.io',
+            port: 443,
+            path: `/v1/text-to-speech/${resolvedVoiceId}/stream?output_format=pcm_24000${optimizeLatencyParam}`,
+            method: 'POST',
+            headers: {
+              'Accept': '*/*', // Accept any format - let output_format control it
+              'Content-Type': 'application/json',
+              'xi-api-key': apiKey,
+              'Content-Length': Buffer.byteLength(postData)
+            }
           }
           
-          res.on('data', (chunk: Buffer) => {
-            const now = Date.now()
-            
-            if (isFirstChunk) {
-              firstChunkTime = now - startTime
-              console.log(`[Voice] First chunk received in ${firstChunkTime}ms, size: ${chunk.length} bytes`)
-              isFirstChunk = false
-            }
-            
-            totalBytes += chunk.length
-            
-            // Call the chunk handler
-            try {
-              onChunk(chunk, firstChunkTime === now - startTime)
-            } catch (err) {
-              console.error('[Voice] Error in chunk handler:', err)
-            }
-          })
+          console.log(`[Voice] Streaming synthesis starting (${PRIMARY_TTS_MODEL_ID}, latency ${latencyOptimization}, voice ${resolvedVoiceId.slice(0, 8)}...):`, text.substring(0, 50) + '...')
           
-          res.on('end', () => {
-            const totalTime = Date.now() - startTime
-            console.log(`[Voice] Streaming complete: ${totalBytes} bytes in ${totalTime}ms (first chunk: ${firstChunkTime}ms)`)
-            attemptResolve({
-              success: true,
-              firstChunkMs: firstChunkTime || 0,
-              totalMs: totalTime,
-              totalBytes
+          const req = https.request(options, (res) => {
+            if (res.statusCode !== 200) {
+              let errorData = ''
+              res.on('data', (chunk) => { errorData += chunk })
+              res.on('end', async () => {
+                console.error(`[Voice] Stream API error (${PRIMARY_TTS_MODEL_ID}):`, res.statusCode, errorData)
+                if (res.statusCode === 404) {
+                  await fallbackToNonStreaming(attemptResolve, '404 Not Found')
+                  return
+                }
+                attemptResolve({ success: false, error: `API error: ${res.statusCode}` })
+              })
+              return
+            }
+            
+            res.on('data', (chunk: Buffer) => {
+              const now = Date.now()
+              const isCurrentFirstChunk = isFirstChunk
+              
+              if (isFirstChunk) {
+                firstChunkTime = now - startTime
+                console.log(`[Voice] First chunk received in ${firstChunkTime}ms, size: ${chunk.length} bytes`)
+                isFirstChunk = false
+              }
+              
+              totalBytes += chunk.length
+              
+              // Call the chunk handler
+              try {
+                onChunk(chunk, isCurrentFirstChunk)
+              } catch (err) {
+                console.error('[Voice] Error in chunk handler:', err)
+              }
+            })
+            
+            res.on('end', () => {
+              const totalTime = Date.now() - startTime
+              console.log(`[Voice] Streaming complete: ${totalBytes} bytes in ${totalTime}ms (first chunk: ${firstChunkTime}ms)`)
+              attemptResolve({
+                success: true,
+                firstChunkMs: firstChunkTime || 0,
+                totalMs: totalTime,
+                totalBytes
+              })
+            })
+            
+            res.on('error', (error) => {
+              console.error('[Voice] Stream response error:', error.message)
+              attemptResolve({ success: false, error: error.message })
             })
           })
           
-          res.on('error', (error) => {
-            console.error('[Voice] Stream response error:', error.message)
+          req.on('error', (error) => {
+            console.error('[Voice] Stream request error:', error.message)
             attemptResolve({ success: false, error: error.message })
           })
+          
+          req.setTimeout(60000, () => {
+            console.error('[Voice] Streaming timeout')
+            req.destroy()
+            attemptResolve({ success: false, error: 'Timeout' })
+          })
+          
+          req.write(postData)
+          req.end()
         })
-        
-        req.on('error', (error) => {
-          console.error('[Voice] Stream request error:', error.message)
-          attemptResolve({ success: false, error: error.message })
-        })
-        
-        req.setTimeout(60000, () => {
-          console.error('[Voice] Streaming timeout')
-          req.destroy()
-          attemptResolve({ success: false, error: 'Timeout' })
-        })
-        
-        req.write(postData)
-        req.end()
-      })
-    }
-    
-    attemptStreaming().then(resolve)
+      }
+      
+      attemptStreaming().then(resolve)
+    }).catch((error) => {
+      console.error('[Voice] Failed to resolve voice ID for streaming:', error)
+      resolve({ success: false, error: 'Voice ID resolution failed' })
+    })
   })
 }
 

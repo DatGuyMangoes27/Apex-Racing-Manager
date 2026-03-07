@@ -1,0 +1,22 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 25,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Klara's fascination with motorsport began during her childhood visits to the Austrian Grand Prix with her father, an engineer. After excelling in mathematics and computer science at the Graz University of Technology, she pursued a career blending her passions. She interned with a Formula 3 team before landing a role at ART Grand Prix Academy.\n\nAs a data analyst, Klara thrives on extracting meaningful insights from complex datasets. Her approach is meticulous, focusing on identifying subtle patterns that can unlock competitive advantages. She believes in the power of data to inform strategic decisions and continuously seeks innovative ways to refine her analytical techniques. Klara's ability to quickly adapt to new analytical tools and methodologies sets her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often tied back in a high ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Klara has a slender build and a focused gaze behind her glasses."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a stash of Austrian chocolate in her desk drawer.",
+    "Meticulously color-codes her data spreadsheets.",
+    "Needs complete silence when analyzing data."
+  ]
+}

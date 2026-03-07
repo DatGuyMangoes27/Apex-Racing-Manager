@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novák",
+  "nationality": "Czech",
+  "age": 33,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jan's journey into motorsport began with a childhood fascination for model cars, meticulously painting and customizing each one. This passion evolved into an apprenticeship at a local automotive body shop in Brno, where he honed his skills in painting and finishing. He quickly developed an eye for detail and a commitment to achieving flawless results. \n\nHis reputation for quality craftsmanship eventually caught the attention of Dick Johnson Racing, who headhunted him to join their paint shop team. Jan is known for his meticulous approach to color matching and his ability to create visually stunning liveries that stand out on the track. He's not just painting cars; he's crafting rolling works of art, ensuring every vehicle reflects the team's commitment to excellence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average build with a focused gaze and paint-stained hands."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always listens to classical music while working.",
+    "Obsessively cleans his spray guns after each use.",
+    "Has a lucky paint brush he refuses to retire."
+  ]
+}

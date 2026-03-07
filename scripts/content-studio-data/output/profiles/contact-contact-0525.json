@@ -1,0 +1,31 @@
+{
+  "name": "Isabella de Valois",
+  "nationality": "Spanish",
+  "age": 62,
+  "gender": "female",
+  "contactType": "philanthropist",
+  "bio": "Isabella de Valois is a self-made woman who rose from humble beginnings to become a prominent figure in the Spanish business world, primarily through strategic investments in real estate and luxury goods. Her passionate and intense nature fuels her philanthropic endeavors, particularly in supporting education and the arts. While seemingly distant from motorsport, Isabella's investment firm sponsors a junior racing team, reflecting her belief in nurturing young talent. A racing driver might encounter Isabella at a fundraising gala or a team event, giving them a chance to connect with a powerful benefactor.\n\nBeyond her business acumen, Isabella is known for her demanding yet supportive nature. She expects excellence and dedication from those she supports, but also provides unwavering loyalty and resources to help them succeed. She is an avid reader and a keen observer of people, often offering insightful advice and guidance. Her later-in-life interest in meditation and writing helps her manage the stresses of her demanding life, but she remains, at heart, a driven force.",
+  "physical": {
+    "skinTone": "Light olive",
+    "hairColor": "Silver",
+    "hairStyle": "Elegant, short bob",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabella carries herself with an air of quiet confidence. Her silver hair is impeccably styled, framing a face that reflects both intelligence and warmth."
+  },
+  "connectionToMotorsport": "Isabella's investment firm, Valois Holdings, is the primary sponsor for the 'Rayo Verde' junior racing team, which develops young Spanish drivers. She views the team as a platform to promote discipline, teamwork, and the pursuit of excellence.",
+  "meetingContext": "The player might meet Isabella at a VIP event hosted by Rayo Verde, or at a high-profile charity auction where she is a major donor.",
+  "conversationTopics": [
+    "Art and architecture",
+    "The importance of education",
+    "Her grandchildren",
+    "The challenges of running a business",
+    "The latest astronomy discoveries"
+  ],
+  "canHelp": [
+    "Introduce the player to other wealthy sponsors",
+    "Provide financial backing for the player's racing career",
+    "Offer mentorship and business advice"
+  ],
+  "personality_summary": "A passionate and driven philanthropist who expects excellence but offers unwavering support."
+}

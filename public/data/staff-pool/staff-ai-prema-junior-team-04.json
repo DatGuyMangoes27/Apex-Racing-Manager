@@ -1,0 +1,22 @@
+{
+  "name": "Jan de Vries",
+  "nationality": "Dutch",
+  "age": 52,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jan's journey into motorsport began in his youth, fueled by a passion for tinkering with engines. He started his career in local karting, quickly gaining a reputation for his meticulous approach to setup and problem-solving. This led to opportunities in Formula Ford and eventually the junior ranks of single-seater racing. Jan is known for his calm demeanor under pressure and his ability to clearly communicate complex technical information to drivers. \n\nHe's worked with a diverse range of drivers, adapting his engineering style to suit individual needs. Jan believes a collaborative environment is key to success, emphasizing open communication and mutual respect within the team. His experience in various racing disciplines has equipped him with a broad understanding of vehicle dynamics and setup optimization, making him a valuable asset to Prema Junior. Jan is particularly adept at analyzing telemetry data to identify areas for improvement and extract maximum performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A man of medium build with a focused gaze, Jan looks like he's perpetually calculating something."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn notebook for jotting down observations.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Dutch licorice in the garage at all times."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Giovanni Rossi",
+  "nationality": "Italian",
+  "age": 57,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Giovanni Rossi's journey in motorsport began in his youth, fueled by a family deeply involved in karting. He started as a mechanic, honing his technical skills before transitioning into team management. His meticulous approach and keen eye for detail quickly earned him recognition. Over the years, Giovanni has cultivated a reputation for demanding excellence, pushing his teams to achieve peak performance while fostering a culture of continuous improvement.\n\nGiovanni's leadership style is characterized by a blend of experience and innovation. He believes in empowering team members to take ownership of their roles while providing clear direction and support. His focus on streamlining processes and leveraging data-driven insights has consistently led to improved operational efficiency and race results. What sets Giovanni apart is his unwavering loyalty to his team and his ability to inspire dedication from those around him. He is known for his calm demeanor under pressure and his ability to resolve conflicts effectively, making him a respected and trusted figure within CRG Racing Team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped gray goatee",
+    "description": "A tall, imposing figure with a weathered face that reflects years spent trackside."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes.",
+    "Insists on having a perfectly organized workspace.",
+    "Has a habit of tapping his pen when deep in thought."
+  ]
+}

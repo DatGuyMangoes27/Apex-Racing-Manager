@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 35,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Alistair's journey into motorsport began unconventionally, not through a family connection, but a fascination with the physics of flight and aerodynamics sparked by watching old airshows near his childhood home. This led him to pursue a degree in mechanical engineering, where he specialized in fluid dynamics. After graduating, he sought out opportunities in Formula Student, quickly gaining experience building and testing model cars in wind tunnels.\n\nHis meticulous approach and keen eye for detail caught the attention of VW Racing Brasil during a recruitment event. Alistair thrives in the controlled environment of the wind tunnel, finding satisfaction in optimizing aerodynamic performance through careful adjustments and data analysis. He's known for his ability to spot subtle inconsistencies in data and translate them into actionable insights, making him a valuable asset to the team. His flexible nature allows him to adapt to new testing protocols and work collaboratively with engineers from different departments.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Alistair has a lean build and a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Insists on listening to classical music during wind tunnel sessions for concentration."
+  ]
+}

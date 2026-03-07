@@ -1,0 +1,22 @@
+{
+  "name": "Maximilian Gruber",
+  "nationality": "Austrian",
+  "age": 30,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Maximilian's fascination with motorsport ignited during his childhood visits to the Österreichring. Inspired by the intricate aerodynamic designs of Formula 1 cars, he pursued a degree in aerospace engineering at the Graz University of Technology. Upon graduation, he joined a small Formula 3 team, quickly rising through the ranks due to his keen eye for detail and innovative solutions. He believes in a holistic approach to aerodynamics, integrating computational fluid dynamics with trackside data analysis to optimize vehicle performance. His distinctive trait is his ability to translate complex scientific concepts into practical engineering solutions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Maximilian is of average height with a lean build and intense, focused eyes."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a precisely calibrated wind meter at his desk."
+  ]
+}

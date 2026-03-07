@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 31,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for race cars, fueled by annual visits to the Le Mans 24 Hours. After completing his degree in materials engineering, he landed a coveted apprenticeship with a small Formula 3 team, learning the intricate art of composite repair and fabrication under the watchful eye of seasoned technicians. His meticulous approach and keen eye for detail quickly set him apart. \n\nJean-Pierre thrives on the challenge of pushing the boundaries of composite technology. He's known for his ability to quickly diagnose structural issues and devise innovative repair solutions. Now with Arrow McLaren, he's eager to contribute his expertise to a team with championship aspirations. He believes in a collaborative environment where knowledge is shared and everyone is empowered to contribute their best.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, slightly wavy, receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a slightly wiry build and focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sketches potential composite solutions on napkins during lunch.",
+    "Has an encyclopedic knowledge of carbon fiber weave patterns.",
+    "Insists on using a specific brand of calipers for precision measurements."
+  ]
+}

@@ -7,11 +7,58 @@
 
 import { DriverStats, RaceResult } from '@/store/careerStore';
 
+// ============================================
+// TYPES
+// ============================================
+
+export type InjurySeverity = 'none' | 'minor' | 'moderate' | 'major'
+export type InjuryType = 'muscle_strain' | 'back_pain' | 'neck_strain' | 'concussion' | 'wrist_injury' | 'rib_injury' | 'leg_injury' | 'fatigue_collapse' | 'training_accident'
+export type InjuryCause = 'crash' | 'overtraining' | 'training_accident' | 'fatigue' | 'random'
+
+export interface InjuryState {
+  injured: boolean
+  severity: InjurySeverity
+  recoveryWeeksRemaining: number
+  originalRecoveryWeeks: number
+  type?: InjuryType
+  cause?: InjuryCause
+  description?: string
+}
+
+export interface InjuryEvent {
+  id: string
+  type: InjuryType
+  severity: InjurySeverity
+  cause: string
+  title: string
+  description: string
+  recoveryWeeks: number
+  aiPenalty: number
+  trainingRestrictions: string[]
+}
+
 const RECOVERY_WEEKS: Record<string, { min: number; max: number }> = {
   none: { min: 0, max: 0 },
   minor: { min: 1, max: 2 },
   moderate: { min: 2, max: 4 },
   major: { min: 4, max: 8 }
+}
+
+const BASE_RECOVERY_WEEKS = RECOVERY_WEEKS as Record<InjurySeverity, { min: number; max: number }>
+
+const LOW_FITNESS_THRESHOLD = 40
+const HIGH_FITNESS_RECOVERY_BONUS = 0.2
+const LOW_FITNESS_RECOVERY_PENALTY = 0.3
+const CRASH_INJURY_CHANCE = 0.15
+const OVERTRAINING_INJURY_CHANCE = 0.08
+const TRAINING_ACCIDENT_CHANCE = 0.05
+const RANDOM_INJURY_CHANCE = 0.005
+
+const INJURY_AI_PENALTIES: Record<InjurySeverity, number> = {
+  none: 0,
+  minor: 2,
+  moderate: 5,
+  major: 10
 }
 
 // ============================================

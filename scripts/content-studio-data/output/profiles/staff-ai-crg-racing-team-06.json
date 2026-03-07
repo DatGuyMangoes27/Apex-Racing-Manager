@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 51,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "Jean-Pierre's journey in motorsport started with a childhood fascination for go-karts, fueled by watching local races near his hometown. He began as a mechanic, quickly earning a reputation for his meticulous attention to detail and ability to diagnose complex mechanical issues. His sharp analytical skills soon led him to team management roles. At CRG, Jean-Pierre is responsible for overseeing all sporting aspects, from race strategy to driver development. He blends a data-driven approach with an innate understanding of driver psychology, striving to unlock the full potential of both the team and its individual members. His visionary leadership style helps to anticipate future trends and challenges in motorsports.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A man of average height with a focused gaze and a confident demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with racing data and observations.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on reviewing all telemetry data himself, even if it's already been analyzed by the engineers."
+  ]
+}

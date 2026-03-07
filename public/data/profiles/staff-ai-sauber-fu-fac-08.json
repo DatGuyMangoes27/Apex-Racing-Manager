@@ -1,0 +1,22 @@
+{
+  "name": "Hafiz Zamri",
+  "nationality": "Malaysian",
+  "age": 43,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Hafiz Zamri's journey into motorsport began with a childhood fascination with aerodynamics, fueled by observing the intricate designs of Formula 1 cars. After completing his engineering degree at Universiti Teknologi Malaysia, he landed an internship at a local engineering firm involved in automotive component design. This experience solidified his desire to work in the high-stakes world of racing. \n\nHe joined Stake Sauber five years ago, quickly becoming a reliable wind tunnel operator. Hafiz possesses a sharp eye for detail and a methodical approach to data analysis. While his technical skills are solid, he's known for pushing boundaries in the wind tunnel, always looking for innovative ways to simulate real-world conditions and improve aerodynamic performance. Hafiz is a strong believer in the importance of rigorous testing and data-driven decisions, making him a valued, if sometimes demanding, member of the aerodynamic team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Hafiz is of average height with a stocky build and a focused demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Insists on listening to traditional Malaysian music while analyzing wind tunnel data.",
+    "Has a habit of tapping his pen rapidly when deep in thought."
+  ]
+}

@@ -26,10 +26,9 @@ import {
   FACILITY_COSTS_BY_TIER,
   DEVELOPMENT_COSTS_BY_TIER,
   COST_CAP_BY_TIER,
-  _TEAM_SPONSOR_TIERS,
-  _getTeamSponsorTierForReputation,
-  _INCOME_CATEGORIES,
-  _EXPENSE_CATEGORIES,
+  getTeamSponsorTierForReputation,
+  INCOME_CATEGORIES,
+  EXPENSE_CATEGORIES,
   SERIES_REVENUE_BY_TIER,
   MAINTENANCE_COSTS_BY_TIER,
   calculateWeeklyMaintenanceCost
@@ -56,6 +55,150 @@ import {
 // ============================================
 
 let transactionIdCounter = 0
+
+interface SponsorPortfolioCapBand {
+  maxReputation: number
+  weeklyCap: number
+}
+
+// Hard cap on aggregate weekly sponsor income.
+// Keeps early/mid-game progression from snowballing and applies to legacy saves immediately.
+const SPONSOR_WEEKLY_PORTFOLIO_CAPS: SponsorPortfolioCapBand[] = [
+  { maxReputation: 35, weeklyCap: 12000 },
+  { maxReputation: 45, weeklyCap: 22000 },
+  { maxReputation: 60, weeklyCap: 38000 },
+  { maxReputation: 75, weeklyCap: 70000 },
+  { maxReputation: 85, weeklyCap: 110000 },
+  { maxReputation: 100, weeklyCap: 180000 }
+]
+
+const SLOT_PAYOUT_CEILING: Record<string, number> = {
+  title: 2.2,
+  primary: 1.25,
+  secondary: 0.9,
+  associate: 0.35
+}
+
+function getWeeklySponsorPortfolioCap(reputation: number): number {
+  const safeRep = Math.max(0, Math.min(100, reputation))
+  for (const band of SPONSOR_WEEKLY_PORTFOLIO_CAPS) {
+    if (safeRep <= band.maxReputation) return band.weeklyCap
+  }
+  return SPONSOR_WEEKLY_PORTFOLIO_CAPS[SPONSOR_WEEKLY_PORTFOLIO_CAPS.length - 1].weeklyCap
+}
+
+export function normalizeSponsorDealForCurrentEconomy(
+  sponsor: TeamSponsorDeal,
+  tierCap: ReturnType<typeof getTeamSponsorTierForReputation>
+): TeamSponsorDeal {
+  if (sponsor.monthlyPayment <= 0) return sponsor
+
+  const slotMultiplier = SLOT_PAYOUT_CEILING[sponsor.slot] ?? 1.0
+  const allowedMonthlyMax = Math.round(tierCap.monthlyPaymentRange.max * slotMultiplier * 1.15)
+  if (sponsor.monthlyPayment <= allowedMonthlyMax) return sponsor
+
+  const scale = allowedMonthlyMax / sponsor.monthlyPayment
+  return {
+    ...sponsor,
+    monthlyPayment: allowedMonthlyMax,
+    winBonus: Math.round(sponsor.winBonus * scale),
+    podiumBonus: Math.round(sponsor.podiumBonus * scale),
+    championshipBonus: Math.round((sponsor.championshipBonus || 0) * scale)
+  }
+}
+
+export function normalizeSponsorDealForTeamReputation(
+  sponsor: TeamSponsorDeal,
+  reputation: number
+): TeamSponsorDeal {
+  const tierCap = getTeamSponsorTierForReputation(reputation)
+  return normalizeSponsorDealForCurrentEconomy(sponsor, tierCap)
+}
+
+export function normalizeTeamSponsorsForCurrentEconomy(
+  team: OwnedTeam,
+  sponsors: TeamSponsorDeal[],
+  options: { applyPortfolioScaleToDeals?: boolean } = {}
+): {
+  normalizedSponsors: TeamSponsorDeal[]
+  weeklyBeforeCap: number
+  weeklyAfterCap: number
+  weeklyCap: number
+  portfolioScale: number
+  adjustedDeals: number
+} {
+  const teamTierCap = getTeamSponsorTierForReputation(team.reputation ?? 0)
+  const normalizedSponsors = sponsors.map(s =>
+    normalizeSponsorDealForCurrentEconomy(s, teamTierCap)
+  )
+
+  const paymentMap = new Map<string, { adjustedPayment: number }>()
+  let weeklyBeforeCap = 0
+
+  normalizedSponsors.forEach(sponsor => {
+    if (!sponsor.active) return
+    const weeklyPayment = Math.round(sponsor.monthlyPayment / 4)
+    const satisfactionModifier = getSponsorPaymentModifier(sponsor.satisfaction)
+    const adjustedPayment = Math.round(weeklyPayment * satisfactionModifier)
+    paymentMap.set(sponsor.id, { adjustedPayment })
+    weeklyBeforeCap += adjustedPayment
+  })
+
+  const weeklyCap = getWeeklySponsorPortfolioCap(team.reputation ?? 0)
+  const portfolioScale = weeklyBeforeCap > weeklyCap && weeklyBeforeCap > 0
+    ? weeklyCap / weeklyBeforeCap
+    : 1
+  const weeklyAfterCap = Math.round(weeklyBeforeCap * portfolioScale)
+
+  if (!options.applyPortfolioScaleToDeals || portfolioScale >= 1) {
+    return {
+      normalizedSponsors,
+      weeklyBeforeCap,
+      weeklyAfterCap,
+      weeklyCap,
+      portfolioScale,
+      adjustedDeals: normalizedSponsors.filter((s, idx) => {
+        const original = sponsors[idx]
+        return original && (
+          s.monthlyPayment !== original.monthlyPayment ||
+          s.winBonus !== original.winBonus ||
+          s.podiumBonus !== original.podiumBonus ||
+          (s.championshipBonus || 0) !== (original.championshipBonus || 0)
+        )
+      }).length
+    }
+  }
+
+  const scaledSponsors = normalizedSponsors.map(sponsor => {
+    if (!sponsor.active) return sponsor
+    return {
+      ...sponsor,
+      monthlyPayment: Math.max(1, Math.round(sponsor.monthlyPayment * portfolioScale)),
+      winBonus: Math.max(0, Math.round(sponsor.winBonus * portfolioScale)),
+      podiumBonus: Math.max(0, Math.round(sponsor.podiumBonus * portfolioScale)),
+      championshipBonus: Math.max(0, Math.round((sponsor.championshipBonus || 0) * portfolioScale))
+    }
+  })
+
+  const adjustedDeals = scaledSponsors.filter((s, idx) => {
+    const original = sponsors[idx]
+    return original && (
+      s.monthlyPayment !== original.monthlyPayment ||
+      s.winBonus !== original.winBonus ||
+      s.podiumBonus !== original.podiumBonus ||
+      (s.championshipBonus || 0) !== (original.championshipBonus || 0)
+    )
+  }).length
+
+  return {
+    normalizedSponsors: scaledSponsors,
+    weeklyBeforeCap,
+    weeklyAfterCap,
+    weeklyCap,
+    portfolioScale,
+    adjustedDeals
+  }
+}
 
 export function createTeamTransaction(
   type: 'income' | 'expense',
@@ -105,37 +248,56 @@ export function processTeamSponsorPayments(
 ): { transactions: TeamTransaction[]; updatedSponsors: TeamSponsorDeal[] } {
   const transactions: TeamTransaction[] = []
   const sponsors = team.finances?.sponsors || []
-  const updatedSponsors = sponsors.map(sponsor => {
-    if (!sponsor.active) return sponsor
-    
-    // Weekly payment = monthly / 4
+  const normalizedResult = normalizeTeamSponsorsForCurrentEconomy(team, sponsors, { applyPortfolioScaleToDeals: false })
+  const normalizedSponsors = normalizedResult.normalizedSponsors
+
+  const paymentMap = new Map<string, { adjustedPayment: number; satisfactionModifier: number }>()
+  let totalAdjustedPayment = 0
+
+  normalizedSponsors.forEach(sponsor => {
+    if (!sponsor.active) return
     const weeklyPayment = Math.round(sponsor.monthlyPayment / 4)
-    
-    // Satisfaction modifier (similar to personal sponsors)
     const satisfactionModifier = getSponsorPaymentModifier(sponsor.satisfaction)
     const adjustedPayment = Math.round(weeklyPayment * satisfactionModifier)
-    
-    if (adjustedPayment > 0) {
+    paymentMap.set(sponsor.id, { adjustedPayment, satisfactionModifier })
+    totalAdjustedPayment += adjustedPayment
+  })
+
+  const weeklyPortfolioCap = normalizedResult.weeklyCap
+  const portfolioScale = totalAdjustedPayment > weeklyPortfolioCap && totalAdjustedPayment > 0
+    ? weeklyPortfolioCap / totalAdjustedPayment
+    : 1
+
+  const updatedSponsors = normalizedSponsors.map(sponsor => {
+    if (!sponsor.active) return sponsor
+    const payment = paymentMap.get(sponsor.id)
+    if (!payment) return sponsor
+
+    const cappedPayment = Math.round(payment.adjustedPayment * portfolioScale)
+    if (cappedPayment > 0) {
       let description = `${sponsor.sponsorName} weekly payment`
-      if (satisfactionModifier !== 1) {
-        const pct = Math.round(satisfactionModifier * 100)
+      if (payment.satisfactionModifier !== 1) {
+        const pct = Math.round(payment.satisfactionModifier * 100)
         description += ` (${pct}% - ${sponsor.satisfaction >= 80 ? 'Excellent' : sponsor.satisfaction >= 60 ? 'Good' : 'Warning'})`
       }
-      
+      if (portfolioScale < 1) {
+        description += ' (portfolio cap applied)'
+      }
+
       transactions.push(createTeamTransaction(
         'income',
         'team_sponsor',
-        adjustedPayment,
+        cappedPayment,
         description,
         week,
         year,
         { sponsorId: sponsor.id }
       ))
     }
-    
+
     return sponsor
   })
-  
+
   return { transactions, updatedSponsors }
 }
 

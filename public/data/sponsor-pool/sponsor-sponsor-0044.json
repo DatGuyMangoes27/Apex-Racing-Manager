@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0044",
+  "name": "Tempo Brasil",
+  "category": "watches",
+  "tier": "entry",
+  "country": "Brazil",
+  "description": "Precision timekeeping, crafted for victory.",
+  "story": "Tempo Brasil has been crafting fine timepieces in Rio de Janeiro for over 50 years. As a brand deeply rooted in Brazilian culture, they are passionate about supporting local talent and showcasing the nation's ambition on the global stage. They seek a partnership that embodies the relentless pursuit of excellence and reflects the vibrant energy of Brazil.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 10,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonWins": 1,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0044.png"
+}

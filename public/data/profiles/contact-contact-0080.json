@@ -1,0 +1,31 @@
+{
+  "name": "Marko Bilić",
+  "nationality": "Croatian",
+  "age": 33,
+  "gender": "male",
+  "contactType": "actor",
+  "bio": "Marko Bilić is a rising star in Croatian cinema, known for his intense dramatic roles and striking screen presence. While his career started in smaller independent films, his recent lead role in a critically acclaimed historical drama has catapulted him to national fame. Beyond his acting, Marko is known for his somewhat contradictory personality. He can be incredibly stubborn and condescending, particularly when discussing his craft, yet demonstrates remarkable patience and empathy when working with younger actors or engaging with fans. He also has a reputation for being rather gossipy, often knowing the latest happenings within the entertainment industry. \n\nMarko's connection to motorsport is tangential, but he's a passionate fan and attends several high-profile races each year. He sees parallels between the precision and dedication required for racing and the discipline needed for acting. A driver might cross paths with him at a VIP event or through mutual connections in the entertainment and luxury lifestyle spheres.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Marko is a handsome man with a commanding presence. He carries himself with a certain air of confidence, often accentuated by his tailored clothing."
+  },
+  "connectionToMotorsport": "Marko is a motorsport enthusiast who frequents prestigious races, particularly Formula 1 and GT events. He appreciates the technical skill and mental fortitude required to compete at the highest levels.",
+  "meetingContext": "The player might meet Marko at a Formula 1 after-party in Monaco or through a mutual connection at a charity gala that supports motorsport initiatives.",
+  "conversationTopics": [
+    "The latest developments in Croatian cinema",
+    "The parallels between acting and high-pressure sports",
+    "His watch collection",
+    "Gossip about other celebrities",
+    "The importance of meditation and mindfulness"
+  ],
+  "canHelp": [
+    "Offer endorsements or sponsorships if impressed by the player's image and skills.",
+    "Introduce the player to other wealthy individuals or potential sponsors within his social circle.",
+    "Provide media training or advice on handling public appearances."
+  ],
+  "personality_summary": "A stubborn and gossipy, yet patient and empathetic actor with a passion for the finer things in life and a surprising interest in motorsport."
+}

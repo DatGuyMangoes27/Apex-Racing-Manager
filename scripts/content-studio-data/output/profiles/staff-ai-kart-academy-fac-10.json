@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 50,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Bjorn's journey into motorsport began as a young boy, spending countless hours in his grandfather's workshop, tinkering with engines and learning the art of metalwork. He honed his skills at a local vocational school, specializing in precision manufacturing. After graduating, he worked for several years in the automotive industry before finally landing a role at Kart Academy, where his expertise in fabrication and welding proved invaluable. \n\nBjorn approaches his work with a meticulous attention to detail, driven by a desire to create components that are not only functional but also aesthetically pleasing. He's known for his ability to troubleshoot complex problems and find innovative solutions to improve the performance of the karts. His demanding nature pushes the team to maintain the highest standards. \n\nWhat sets Bjorn apart is his unwavering loyalty and his perfectionist tendencies. He believes in doing things right the first time, every time, and he's not afraid to challenge conventional wisdom if he thinks there's a better way.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying blond",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Bjorn is of medium build with a strong, weathered face that reflects years of dedication to his craft."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only Swedish-made tools.",
+    "Always wears a spotless white lab coat, even in the dirtiest conditions.",
+    "Sharpens his pencils to an almost impossibly fine point."
+  ]
+}

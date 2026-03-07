@@ -1,0 +1,22 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 30,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Angus's passion for motorsport ignited during his childhood, spent tinkering with go-karts on his uncle's farm. This hands-on experience led him to pursue a degree in mechanical engineering, specializing in aerodynamics and vehicle dynamics. He honed his skills through internships at local racing teams, quickly establishing a reputation for his meticulous approach to data analysis and problem-solving. \n\nAs a performance engineer, Angus believes in a data-driven approach, always seeking that extra tenth of a second through rigorous analysis and optimization. He is particularly adept at identifying subtle areas for improvement that others might overlook. While still relatively new to the professional racing scene, his unwavering dedication and analytical mind make him a valuable asset to any team. Angus is driven by a desire to push the boundaries of performance and contribute to championship-winning success.\n\nWhat sets Angus apart is his relentless pursuit of perfection and willingness to challenge conventional wisdom. He's not afraid to question assumptions and explore unconventional solutions, making him a valuable asset in a dynamic and competitive environment.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "light brown",
+    "hairStyle": "short, slightly messy, with a natural wave",
+    "eyeColor": "blue",
+    "facialHair": "short, neatly trimmed beard",
+    "description": "Angus is of average height and build, with a focused intensity in his blue eyes."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music through noise-canceling headphones while working."
+  ]
+}

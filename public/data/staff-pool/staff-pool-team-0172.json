@@ -1,0 +1,22 @@
+{
+  "name": "Rhys ap Gruffydd",
+  "nationality": "Welsh",
+  "age": 35,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Rhys's journey into motorsport began with a childhood obsession with rally cars tearing through the Welsh countryside. After graduating with a degree in mechanical engineering from Cardiff University, he started his career as a junior engineer with a small racing team competing in national championships. His meticulous approach and knack for problem-solving quickly saw him rise through the ranks, gaining experience in chassis development, aerodynamics, and engine performance. Rhys is known for his data-driven decision-making and his ability to translate complex technical concepts into actionable strategies. He believes in fostering a collaborative environment where engineers are empowered to push the boundaries of innovation while maintaining a focus on reliability and performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Trimmed Goatee",
+    "description": "Rhys has a lean build and a focused gaze, often seen with a tablet displaying telemetry data."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on a specific brand of Welsh tea being available in the engineering office at all times."
+  ]
+}

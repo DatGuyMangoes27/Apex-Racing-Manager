@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 40,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Nikola's journey into motorsport began with a childhood fascination for tinkering with Lada engines in his uncle's garage in Kragujevac. This early exposure ignited a passion that led him to pursue a degree in mechanical engineering. After graduating, he honed his skills at a local manufacturing plant before transitioning to a small racing team, where he quickly proved his mettle.\n\nNikola's meticulous approach and dedication to precision have earned him a reputation as a reliable and resourceful machinist. He thrives under pressure and possesses an uncanny ability to diagnose and resolve complex mechanical issues. His experience makes him a valuable asset to any team striving for peak performance, even though his understanding of team management is average. Nikola joined Lechner Racing hoping to apply his skills at a higher level.\n\nWhat sets Nikola apart is his adaptability and willingness to embrace new technologies. He is always eager to learn and implement innovative solutions to improve the efficiency and reliability of the team's machinery. His colleagues know him to be a calming influence in the garage.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Nikola is of medium build with a focused and observant demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always sharpens his pencils to a needle point before starting any task.",
+    "Has a specific set of wrenches he refuses to let anyone else use.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy he is."
+  ]
+}

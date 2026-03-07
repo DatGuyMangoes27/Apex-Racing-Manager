@@ -1,0 +1,22 @@
+{
+  "name": "Kacper Lewandowski",
+  "nationality": "Polish",
+  "age": 24,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Kacper's fascination with motorsport began in his early teens, watching F1 races with his grandfather. He was immediately drawn to the engineering marvel of the cars. After completing a degree in composite materials engineering from Warsaw University of Technology, Kacper sought an opportunity to apply his knowledge in a high-pressure environment. He started as a junior technician at a local racing team specializing in GT cars, quickly mastering the intricacies of carbon fiber repair and fabrication. \n\nHis meticulous attention to detail and proactive approach impressed his superiors, leading to his recruitment by Haas F1 Team. Kacper thrives on the challenges of Formula 1, constantly seeking innovative solutions to improve the performance and reliability of the car's composite components. He is a firm believer in pushing the boundaries of material science to gain a competitive edge, always eager to learn and implement new techniques.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the left side",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Kacper is a lean man of average height with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas, even during breaks.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought.",
+    "Insists on cleaning his workspace meticulously before starting any task."
+  ]
+}

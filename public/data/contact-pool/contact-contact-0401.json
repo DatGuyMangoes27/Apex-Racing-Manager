@@ -1,0 +1,31 @@
+{
+  "name": "Professor Klaus Richter",
+  "nationality": "Austrian",
+  "age": 59,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Professor Klaus Richter is a distinguished academic at the Vienna University of Technology, specializing in automotive engineering with a focus on sustainable technologies. He's published extensively on the subject of hybrid and electric vehicle performance, and is highly respected within the engineering community. Though seemingly far removed from the high-octane world of motorsports, his research and expertise are increasingly relevant as racing series embrace eco-friendly technologies. \n\nKlaus is known for his independent spirit and patient demeanor in academic circles, though some perceive him as subtly manipulative when it comes to securing research grants. He values elegance and intellectual rigor above all else, but also understands the importance of forgiving mistakes, especially in young, aspiring engineers. A racing driver might cross paths with him if they were seeking technical expertise or sponsorship for a project related to sustainable racing technologies, or perhaps through a university-sponsored event.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "null",
+    "description": "Professor Richter is a man of medium height with a scholarly build. He exudes an air of quiet authority, often accentuated by his stylish, wire-rimmed glasses."
+  },
+  "connectionToMotorsport": "Professor Richter consults with several Formula E teams on battery optimization and energy recovery systems. He also mentors student engineering teams that participate in Formula Student competitions.",
+  "meetingContext": "The player might meet Professor Richter at a university lecture, an engineering conference, or a Formula Student event where he is a judge.",
+  "conversationTopics": [
+    "The future of sustainable racing technologies",
+    "The challenges of electric vehicle performance",
+    "The importance of education in engineering",
+    "His latest marathon training regime",
+    "The principles of interior design"
+  ],
+  "canHelp": [
+    "Provide technical expertise and guidance on vehicle development",
+    "Offer introductions to potential sponsors and investors focused on sustainable technologies",
+    "Write letters of recommendation for the player to gain access to certain racing programs or teams"
+  ],
+  "personality_summary": "An independent and patient academic with a hidden manipulative streak, deeply invested in the future of sustainable automotive technologies."
+}

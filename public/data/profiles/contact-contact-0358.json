@@ -1,0 +1,31 @@
+{
+  "name": "Mette Frederiksen-Krog",
+  "nationality": "Danish",
+  "age": 54,
+  "gender": "female",
+  "contactType": "politician",
+  "bio": "Mette Frederiksen-Krog is a prominent figure in Danish politics, known for her strategic mind and unwavering dedication to her constituents. While she rose through the ranks with a reputation for being fiercely competitive, she's cultivated a public persona of thoughtful consideration. She is respected for her ability to navigate complex political landscapes and build consensus, even if it sometimes means compromising on her own ideals. She is dedicated to innovation and technological advancement, especially green initiatives. A racing driver might cross paths with Mette through her efforts to promote sustainable technologies within the automotive industry or during high-profile motorsport events held in Denmark, where her presence lends credibility and attracts investment.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Shoulder-length, often styled with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Mette has a strong, confident presence. She favors tailored suits and a minimalist aesthetic, reflecting her serious demeanor."
+  },
+  "connectionToMotorsport": "Mette supports green initiatives and recognizes the importance of motorsport events in Denmark for tourism and economic growth. She occasionally attends races to show support for Danish teams and drivers, particularly those involved in electric or hybrid racing.",
+  "meetingContext": "The player could meet Mette at a motorsport industry conference focused on sustainability, or at a VIP event during a Danish Grand Prix (if one exists in the game world, or a major international race held in Denmark).",
+  "conversationTopics": [
+    "The future of sustainable transportation",
+    "The Danish economy and its global competitiveness",
+    "The role of technology in solving environmental challenges",
+    "Her experiences as a female leader in politics",
+    "The importance of public-private partnerships"
+  ],
+  "canHelp": [
+    "Facilitate introductions to potential sponsors interested in green technologies",
+    "Lobby for government support for the player's team or racing program",
+    "Raise the player's public profile through joint appearances or endorsements"
+  ],
+  "personality_summary": "A controlling yet witty politician who always plays the long game."
+}

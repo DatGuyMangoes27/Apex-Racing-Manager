@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Chilean",
+  "age": 35,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Ricardo's journey into motorsport began unconventionally, not through racing, but through a fascination with aerodynamics during his mechanical engineering studies. He was captivated by the complex interplay of forces shaping a vehicle's performance. After graduating, he pursued an internship at a small Formula Student team, where he gained his first hands-on experience with wind tunnels. His aptitude for meticulous data collection and analysis quickly became apparent. \n\nHe joined Sprint V8 Team five years ago, initially as a junior technician. Ricardo's pragmatic approach to problem-solving and his ability to quickly identify subtle variations in airflow patterns have made him an invaluable asset. He is known for his unwavering focus, preferring to let the data speak for itself rather than getting caught up in theoretical debates. His dedication to precision ensures that the team's aerodynamic developments are always grounded in empirical evidence, providing a crucial edge on the track.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back, with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo is of average height with a wiry build, suggesting a life spent tinkering and focusing on details."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data points.",
+    "Has a ritual of calibrating the wind tunnel sensors before each session, regardless of whether it's needed.",
+    "Drinks mate tea constantly throughout the day."
+  ]
+}

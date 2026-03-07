@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Olsen",
+  "nationality": "Norwegian",
+  "age": 27,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Astrid's journey into motorsport was sparked by a childhood spent glued to rally broadcasts, captivated by the interplay of driver skill and machine precision. She pursued a degree in statistics, always with the goal of applying her analytical abilities to racing. Her entry into the field came through a local racing team where she volunteered, quickly demonstrating a knack for uncovering hidden patterns in lap data. \n\nAstrid is meticulous and patient in her approach, believing that even the smallest details can reveal crucial insights. She's particularly interested in developing algorithms that can predict tire degradation and optimize pit stop strategies. While relatively new to the professional scene, her dedication and sharp mind make her a valuable asset to any team. Her unique perspective comes from an understanding of both the technical and human elements of racing.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Long, wavy hair often pulled back in a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is of average height with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with mathematical equations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Prefers to work in complete silence and wears noise-canceling headphones even in quiet environments."
+  ]
+}

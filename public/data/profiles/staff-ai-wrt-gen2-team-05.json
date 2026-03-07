@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Alessia Mancini",
+    "nationality": "Italian",
+    "age": 46,
+    "gender": "female",
+    "role": "strategist",
+    "bio": "Alessia's motorsport journey began unexpectedly, volunteering at a local karting track during her university years. Captivated by the strategic nuances of racing, she transitioned from pit lane volunteer to data analyst for a smaller Formula 3 team. Her keen eye for detail and ability to predict competitor strategies quickly earned her recognition. Prior to joining Team WRT, Alessia honed her skills in GT racing, where she developed a reputation for innovative race strategies that consistently outperformed expectations. She is known for her calm demeanor under pressure and her ability to extract maximum performance from available data.\n\nAlessia's approach to strategy is deeply rooted in data analysis, but she also values intuition and the ability to adapt to unpredictable circumstances. She believes that a successful strategy is not just about maximizing theoretical performance, but also about understanding the human element – the driver's strengths and weaknesses, the team's dynamics, and the competitor's mindset. She is driven by a relentless pursuit of improvement and is always seeking new ways to gain a competitive edge.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Alessia is of medium height with a thoughtful expression, often seen with a tablet in hand."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten notes and observations.",
+      "Has a habit of tapping her pen against her chin when deep in thought.",
+      "Drinks a large espresso every morning precisely at 9:00 AM."
+    ]
+  }
+]

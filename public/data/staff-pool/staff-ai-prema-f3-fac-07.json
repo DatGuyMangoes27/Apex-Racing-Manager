@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Arnesen",
+  "nationality": "Norwegian",
+  "age": 47,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Bjørn's journey into the fast-paced world of motorsport began unexpectedly. After earning a degree in computer science from NTNU, he spent several years honing his skills in the tech industry, working on complex network infrastructures for large corporations. A chance encounter with a former racing engineer sparked his interest in the application of IT within racing. He saw the potential to leverage data and technology to gain a competitive edge, and swiftly transitioned his career.\n\nAt Prema Racing, Bjørn is responsible for maintaining and optimizing the team's IT infrastructure, ensuring seamless data flow between the track, the factory, and the engineering teams. He is a firm believer in proactive system monitoring and preventative maintenance, aiming to minimize downtime and maximize data reliability. Bjørn's meticulous approach and dedication to problem-solving have earned him the respect of his colleagues, who value his expertise and unwavering commitment to the team's success. What sets Bjørn apart is his ability to explain complex technical issues in a clear and understandable manner, bridging the gap between the IT department and the rest of the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Bjørn is a man of average height with a slightly weathered face that reflects his years of experience."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small USB drive loaded with diagnostic tools.",
+    "Insists on using a mechanical keyboard for its tactile feedback.",
+    "Has a habit of muttering code snippets under his breath when troubleshooting."
+  ]
+}

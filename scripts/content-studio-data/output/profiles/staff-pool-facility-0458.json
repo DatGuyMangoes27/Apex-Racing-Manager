@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 28,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ivan's fascination with motorsport began during his childhood, watching Formula 1 races with his grandfather. He was captivated by the intricate data analysis that underpinned each team's strategy. After graduating from the University of Zagreb with a degree in applied mathematics, Ivan sought opportunities to combine his analytical skills with his passion for racing. \n\nHe believes in a data-driven approach, emphasizing the importance of identifying trends and patterns to optimize performance. While relatively new to the field, Ivan is eager to learn from experienced professionals and contribute to a team's success through insightful analysis and strategic recommendations. He is particularly interested in developing predictive models to anticipate race outcomes and inform real-time decision-making.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly parted on the left",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed beard",
+    "description": "Ivan is of average height, with a focused expression that reflects his analytical nature."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas.",
+    "Has a tendency to over-analyze seemingly simple situations.",
+    "Drinks copious amounts of strong coffee throughout the day."
+  ]
+}

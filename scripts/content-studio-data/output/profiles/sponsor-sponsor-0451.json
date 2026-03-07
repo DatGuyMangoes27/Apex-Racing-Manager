@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0451",
+  "name": "CrediMais",
+  "category": "finance",
+  "tier": "mid",
+  "country": "Brazil",
+  "description": "Empowering your financial future, one lap at a time.",
+  "story": "CrediMais is a leading Brazilian financial services provider committed to innovation and performance. Inspired by the precision and teamwork of motorsport, they seek to connect with a passionate audience and showcase their dedication to helping individuals and businesses achieve their financial goals. They believe in supporting talent and achieving excellence through strategic partnerships.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 35000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Brazil"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 60,
+  "imagePath": "logos/sponsors/sponsor-0451.png"
+}

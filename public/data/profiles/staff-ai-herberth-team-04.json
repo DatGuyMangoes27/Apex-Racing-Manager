@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 45,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jan Kovář's passion for motorsport ignited during his childhood in Brno, where he frequently attended motorcycle races at the Masaryk Circuit. This early exposure fueled his desire to understand the intricate mechanics of racing vehicles. After graduating with a degree in mechanical engineering from Brno University of Technology, Jan began his career in a local automotive workshop, quickly transitioning to a smaller racing team competing in national GT series. \n\nHis meticulous attention to detail and ability to diagnose complex issues earned him recognition, leading to his recruitment by Herberth Motorsport. Jan's approach centers on data-driven analysis and a collaborative spirit, fostering open communication with drivers to optimize car performance. He is particularly adept at adapting to changing track conditions and devising innovative solutions to gain a competitive edge. His experience, coupled with a forward-thinking approach, makes him a valuable asset to the team.\n\nJan's ability to find those crucial tenths of a second through nuanced adjustments sets him apart. He believes in empowering his team and driver through clear communication and a shared understanding of the car's behavior, ensuring everyone is working toward a common goal.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of average height, Jan's thoughtful gaze and perpetually furrowed brow reflect his analytical mind."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with detailed notes and diagrams.",
+    "Insists on having a perfectly clean workspace before each race.",
+    "Has a habit of humming quietly while analyzing telemetry data."
+  ]
+}

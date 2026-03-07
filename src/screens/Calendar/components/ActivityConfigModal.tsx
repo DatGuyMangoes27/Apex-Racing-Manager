@@ -25,7 +25,13 @@ import {
   Zap,
   Heart,
   Wrench,
-  User
+  User,
+  Lock,
+  AlertCircle,
+  Sunrise,
+  Sun,
+  Sunset,
+  Moon
 } from 'lucide-react'
 import { Card, Button, Badge } from '@/components/ui'
 import { 
@@ -56,6 +62,19 @@ import {
   calculateCateringCost,
   getTierDisplayName
 } from '@/data/catering'
+import {
+  calculateGuestLimits,
+  getEstimatedAttendance,
+  getGuestTypeEffectDescription,
+  VIP_GUEST_EFFECTS,
+  MEDIA_INVITE_EFFECTS,
+  type VIPGuestType,
+  type MediaInviteType,
+  type GuestTypeLimit
+} from '@/data/guest-effects-config'
+import { getEffectiveVenueCapacity } from '@/data/venues'
+import { DAY_PERIODS, DAY_PERIOD_ORDER, type DayPeriod } from '@/data/day-periods-config'
+import { getActivityTimeCost } from '@/data/activity-time-costs'
 
 interface ActivityConfigModalProps {
   isOpen: boolean
@@ -63,7 +82,7 @@ interface ActivityConfigModalProps {
   day: number
   activityTemplate?: ActivityTemplate
   onClose: () => void
-  onSchedule: (templateId: string, week: number, day: number, config: ActivityConfiguration) => void
+  onSchedule: (templateId: string, week: number, day: number, config: ActivityConfiguration, period?: DayPeriod) => void
 }
 
 type ConfigStep = 'template' | 'venue' | 'guests' | 'catering' | 'media' | 'review'
@@ -83,6 +102,7 @@ export function ActivityConfigModal({
   const [selectedTemplate, setSelectedTemplate] = useState<ActivityTemplate | null>(activityTemplate || null)
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const [selectedCatering, setSelectedCatering] = useState<CateringOption | null>(null)
+  const [selectedPeriod, setSelectedPeriod] = useState<DayPeriod | null>(null)
   
   // Guest configuration
   const [sponsorReps, setSponsorReps] = useState<SponsorRepInvite[]>([])
@@ -110,6 +130,15 @@ export function ActivityConfigModal({
     if (activityTemplate) {
       setSelectedTemplate(activityTemplate)
       setCurrentStep('venue')
+      // Auto-select preferred period
+      const timeCost = getActivityTimeCost(activityTemplate.id)
+      if (timeCost.preferredPeriod) {
+        setSelectedPeriod(timeCost.preferredPeriod)
+      } else if (timeCost.allowedPeriods && timeCost.allowedPeriods.length === 1) {
+        setSelectedPeriod(timeCost.allowedPeriods[0])
+      } else {
+        setSelectedPeriod(null)
+      }
     }
   }, [activityTemplate])
   
@@ -151,6 +180,15 @@ export function ActivityConfigModal({
     return getCateringForEventType(eventType)
   }, [selectedTemplate])
   
+  // Marketing facility level
+  const marketingLevel = careerState?.ownedTeam?.facilities?.marketing?.level ?? 1
+  
+  // Effective venue capacity (dynamic for team_hq based on marketing level)
+  const effectiveVenueCapacity = useMemo(() => {
+    if (!selectedVenue) return 50
+    return getEffectiveVenueCapacity(selectedVenue, marketingLevel)
+  }, [selectedVenue, marketingLevel])
+  
   // Calculate total guests
   const totalGuests = useMemo(() => {
     const sponsorTotal = sponsorReps.reduce((sum, s) => sum + s.count, 0)
@@ -158,6 +196,29 @@ export function ActivityConfigModal({
     const vipTotal = vipGuests.reduce((sum, v) => sum + v.count, 0)
     return sponsorTotal + mediaTotal + vipTotal + fanCount
   }, [sponsorReps, mediaInvites, vipGuests, fanCount])
+  
+  // Dynamic guest limits based on player state, venue, and facility level
+  const guestLimits = useMemo(() => {
+    if (!selectedVenue) return null
+    return calculateGuestLimits({
+      playerState: {
+        reputation: player?.reputation ?? 50,
+        boardMood: careerState?.ownedTeam?.boardMood ?? 50,
+        fanSentiment: careerState?.ownedTeam?.fanSentiment ?? 50,
+        personalFollowers: careerState?.personalLife?.brand?.socialMediaFollowing ?? 0
+      },
+      venueType: selectedVenue.type,
+      venuePrestige: selectedVenue.prestigeLevel,
+      venueCapacityMax: effectiveVenueCapacity,
+      marketingLevel,
+      currentTotalGuests: totalGuests
+    })
+  }, [selectedVenue, player?.reputation, careerState?.ownedTeam?.boardMood, 
+      careerState?.ownedTeam?.fanSentiment, careerState?.personalLife?.brand?.socialMediaFollowing,
+      effectiveVenueCapacity, marketingLevel, totalGuests])
+  
+  // Remaining venue capacity
+  const remainingCapacity = effectiveVenueCapacity - totalGuests
   
   // Calculate costs
   const costs = useMemo(() => {
@@ -282,7 +343,7 @@ export function ActivityConfigModal({
   const handleSchedule = () => {
     if (!selectedTemplate) return
     const config = buildConfiguration()
-    onSchedule(selectedTemplate.id, week, day, config)
+    onSchedule(selectedTemplate.id, week, day, config, selectedPeriod ?? undefined)
     onClose()
   }
   
@@ -581,17 +642,50 @@ export function ActivityConfigModal({
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold">Guest Management</h3>
-                    <p className="text-xs text-text-muted mt-1">
-                      {selectedTemplate?.category === 'sponsor' && 'Invite sponsor representatives to strengthen relationships'}
-                      {selectedTemplate?.category === 'media' && 'Select which media outlets to invite for coverage'}
-                      {selectedTemplate?.category === 'team' && 'Choose team members and stakeholders to attend'}
-                      {selectedTemplate?.category === 'development' && 'Select engineers and technical staff'}
-                    </p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold">Guest Management</h3>
+                      <p className="text-xs text-text-muted mt-1">
+                        {selectedTemplate?.category === 'sponsor' && 'Invite sponsor representatives to strengthen relationships'}
+                        {selectedTemplate?.category === 'media' && 'Select which media outlets to invite for coverage'}
+                        {selectedTemplate?.category === 'team' && 'Choose team members and stakeholders to attend'}
+                        {selectedTemplate?.category === 'development' && 'Select engineers and technical staff'}
+                      </p>
+                    </div>
+                    <Badge variant="blue">Total: {totalGuests} guests</Badge>
                   </div>
-                  <Badge variant="blue">Total: {totalGuests} guests</Badge>
+                  
+                  {/* Venue Capacity Bar */}
+                  <div className="p-3 rounded-lg bg-surface-secondary/30 border border-surface-secondary">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs text-text-muted flex items-center gap-1.5">
+                        <Building2 className="w-3.5 h-3.5" />
+                        {selectedVenue?.name || 'Venue'} capacity
+                      </span>
+                      <span className={`text-xs font-medium ${remainingCapacity < 0 ? 'text-status-error' : remainingCapacity < 10 ? 'text-accent-orange' : 'text-text-secondary'}`}>
+                        {totalGuests} / {effectiveVenueCapacity}
+                      </span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-300 ${
+                          totalGuests / effectiveVenueCapacity > 0.9 
+                            ? 'bg-status-error' 
+                            : totalGuests / effectiveVenueCapacity > 0.7 
+                              ? 'bg-accent-orange' 
+                              : 'bg-accent-blue'
+                        }`}
+                        style={{ width: `${Math.min(100, (totalGuests / effectiveVenueCapacity) * 100)}%` }}
+                      />
+                    </div>
+                    {selectedVenue?.type === 'team_hq' && marketingLevel < 5 && (
+                      <p className="text-xs text-text-muted mt-1.5 flex items-center gap-1">
+                        <Zap className="w-3 h-3 text-accent-purple" />
+                        Upgrade Marketing facility for more capacity (currently Level {marketingLevel})
+                      </p>
+                    )}
+                  </div>
                 </div>
                 
                 {/* Sponsor Reps */}
@@ -712,42 +806,70 @@ export function ActivityConfigModal({
                         { type: 'international' as const, label: 'International Media', desc: 'Global motorsport outlets', reach: 'Worldwide reach, scrutinized coverage' },
                         { type: 'influencers' as const, label: 'Influencers', desc: 'Social media personalities', reach: 'Young audience, viral potential' }
                       ]).map(item => {
+                        const limit = guestLimits?.media[item.type]
+                        const isHidden = limit && limit.venueAffinity === 0
+                        const isLocked = limit && !limit.available
                         const existing = mediaInvites.find(m => m.type === item.type)
                         const isInvited = (existing?.count || 0) > 0
+                        
+                        // Get dynamic max: min of reputation limit and remaining capacity
+                        const dynamicMax = limit 
+                          ? Math.max(1, Math.min(limit.maxCount, (existing?.count || 0) + remainingCapacity))
+                          : 50
+                        
+                        // Calculate acceptance estimate
+                        const acceptanceEst = isInvited && existing ? getEstimatedAttendance({
+                          type: item.type,
+                          invitedCount: existing.count,
+                          reputation: player?.reputation ?? 50,
+                          venuePrestige: selectedVenue?.prestigeLevel ?? 2,
+                          marketingLevel
+                        }) : null
+                        
+                        // Hidden types: venue affinity 0
+                        if (isHidden) return null
+                        
                         return (
                           <div 
                             key={item.type} 
                             className={`
                               p-3 rounded-lg border-2 transition-all
-                              ${isInvited 
-                                ? 'bg-accent-orange/10 border-accent-orange/50' 
-                                : 'bg-surface-secondary/30 border-transparent'}
+                              ${isLocked 
+                                ? 'bg-surface-secondary/10 border-transparent opacity-60'
+                                : isInvited 
+                                  ? 'bg-accent-orange/10 border-accent-orange/50' 
+                                  : 'bg-surface-secondary/30 border-transparent'}
                             `}
                           >
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
-                                <input
-                                  type="checkbox"
-                                  checked={isInvited}
-                                  onChange={(e) => {
-                                    if (e.target.checked) {
-                                      setMediaInvites(prev => [...prev, { type: item.type, count: 3, exclusiveAccess: false }])
-                                    } else {
-                                      setMediaInvites(prev => prev.filter(m => m.type !== item.type))
-                                    }
-                                  }}
-                                  className="w-4 h-4 rounded accent-accent-orange"
-                                />
-                                <span className="text-sm font-medium">{item.label}</span>
+                                {isLocked ? (
+                                  <Lock className="w-4 h-4 text-text-muted" />
+                                ) : (
+                                  <input
+                                    type="checkbox"
+                                    checked={isInvited}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        const defaultCount = Math.min(3, dynamicMax)
+                                        setMediaInvites(prev => [...prev, { type: item.type, count: defaultCount, exclusiveAccess: false }])
+                                      } else {
+                                        setMediaInvites(prev => prev.filter(m => m.type !== item.type))
+                                      }
+                                    }}
+                                    className="w-4 h-4 rounded accent-accent-orange"
+                                  />
+                                )}
+                                <span className={`text-sm font-medium ${isLocked ? 'text-text-muted' : ''}`}>{item.label}</span>
                               </div>
-                              {isInvited && (
+                              {isInvited && !isLocked && (
                                 <input
                                   type="number"
                                   min="1"
-                                  max="50"
+                                  max={dynamicMax}
                                   value={existing?.count || 3}
                                   onChange={(e) => {
-                                    const count = Math.max(1, parseInt(e.target.value) || 1)
+                                    const count = Math.max(1, Math.min(dynamicMax, parseInt(e.target.value) || 1))
                                     setMediaInvites(prev => prev.map(m => 
                                       m.type === item.type ? { ...m, count } : m
                                     ))
@@ -757,8 +879,40 @@ export function ActivityConfigModal({
                               )}
                             </div>
                             <p className="text-xs text-text-muted">{item.desc}</p>
-                            <p className="text-xs text-accent-orange/70 mt-1">{item.reach}</p>
-                            {isInvited && (
+                            
+                            {isLocked && limit?.unlockRequirement && (
+                              <p className="text-xs text-accent-orange/70 mt-1 flex items-center gap-1">
+                                <Lock className="w-3 h-3" />
+                                {limit.unlockRequirement}
+                              </p>
+                            )}
+                            
+                            {!isLocked && (
+                              <p className="text-xs text-accent-orange/70 mt-1">{item.reach}</p>
+                            )}
+                            
+                            {limit?.warningText && !isLocked && (
+                              <p className="text-xs text-amber-400/80 mt-1 flex items-center gap-1">
+                                <AlertCircle className="w-3 h-3" />
+                                {limit.warningText}
+                              </p>
+                            )}
+                            
+                            {/* Effect description tooltip */}
+                            {!isLocked && (
+                              <p className="text-xs text-text-muted/60 mt-1 italic">
+                                {getGuestTypeEffectDescription(item.type)}
+                              </p>
+                            )}
+                            
+                            {/* Acceptance rate estimate */}
+                            {isInvited && acceptanceEst && (
+                              <p className="text-xs text-accent-blue/70 mt-1">
+                                Est. {acceptanceEst.min}-{acceptanceEst.max} of {existing?.count} will attend
+                              </p>
+                            )}
+                            
+                            {isInvited && !isLocked && (
                               <label className="flex items-center gap-1 text-xs mt-2 bg-accent-orange/20 px-2 py-1 rounded w-fit">
                                 <input
                                   type="checkbox"
@@ -850,42 +1004,70 @@ export function ActivityConfigModal({
                         { type: 'officials' as const, label: 'Motorsport Officials', desc: 'Series organizers and stewards' },
                         { type: 'drivers' as const, label: 'Guest Drivers', desc: 'Other racing drivers' }
                       ]).map(item => {
+                        const limit = guestLimits?.vip[item.type]
+                        const isHidden = limit && limit.venueAffinity === 0
+                        const isLocked = limit && !limit.available
                         const existing = vipGuests.find(v => v.type === item.type)
                         const isInvited = (existing?.count || 0) > 0
+                        
+                        // Get dynamic max: min of reputation limit and remaining capacity
+                        const dynamicMax = limit 
+                          ? Math.max(1, Math.min(limit.maxCount, (existing?.count || 0) + remainingCapacity))
+                          : 20
+                        
+                        // Calculate acceptance estimate
+                        const acceptanceEst = isInvited && existing ? getEstimatedAttendance({
+                          type: item.type,
+                          invitedCount: existing.count,
+                          reputation: player?.reputation ?? 50,
+                          venuePrestige: selectedVenue?.prestigeLevel ?? 2,
+                          marketingLevel
+                        }) : null
+                        
+                        // Hidden types: venue affinity 0
+                        if (isHidden) return null
+                        
                         return (
                           <div 
                             key={item.type} 
                             className={`
                               p-3 rounded-lg border-2 transition-all
-                              ${isInvited 
-                                ? 'bg-accent-purple/10 border-accent-purple/50' 
-                                : 'bg-surface-secondary/30 border-transparent'}
+                              ${isLocked 
+                                ? 'bg-surface-secondary/10 border-transparent opacity-60'
+                                : isInvited 
+                                  ? 'bg-accent-purple/10 border-accent-purple/50' 
+                                  : 'bg-surface-secondary/30 border-transparent'}
                             `}
                           >
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center gap-2">
-                                <input
-                                  type="checkbox"
-                                  checked={isInvited}
-                                  onChange={(e) => {
-                                    if (e.target.checked) {
-                                      setVipGuests(prev => [...prev, { type: item.type, count: 2 }])
-                                    } else {
-                                      setVipGuests(prev => prev.filter(v => v.type !== item.type))
-                                    }
-                                  }}
-                                  className="w-4 h-4 rounded accent-accent-purple"
-                                />
-                                <span className="text-sm font-medium">{item.label}</span>
+                                {isLocked ? (
+                                  <Lock className="w-4 h-4 text-text-muted" />
+                                ) : (
+                                  <input
+                                    type="checkbox"
+                                    checked={isInvited}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        const defaultCount = Math.min(2, dynamicMax)
+                                        setVipGuests(prev => [...prev, { type: item.type, count: defaultCount }])
+                                      } else {
+                                        setVipGuests(prev => prev.filter(v => v.type !== item.type))
+                                      }
+                                    }}
+                                    className="w-4 h-4 rounded accent-accent-purple"
+                                  />
+                                )}
+                                <span className={`text-sm font-medium ${isLocked ? 'text-text-muted' : ''}`}>{item.label}</span>
                               </div>
-                              {isInvited && (
+                              {isInvited && !isLocked && (
                                 <input
                                   type="number"
                                   min="1"
-                                  max="20"
+                                  max={dynamicMax}
                                   value={existing?.count || 2}
                                   onChange={(e) => {
-                                    const count = Math.max(1, parseInt(e.target.value) || 1)
+                                    const count = Math.max(1, Math.min(dynamicMax, parseInt(e.target.value) || 1))
                                     setVipGuests(prev => prev.map(v => 
                                       v.type === item.type ? { ...v, count } : v
                                     ))
@@ -895,6 +1077,34 @@ export function ActivityConfigModal({
                               )}
                             </div>
                             <p className="text-xs text-text-muted">{item.desc}</p>
+                            
+                            {isLocked && limit?.unlockRequirement && (
+                              <p className="text-xs text-accent-purple/70 mt-1 flex items-center gap-1">
+                                <Lock className="w-3 h-3" />
+                                {limit.unlockRequirement}
+                              </p>
+                            )}
+                            
+                            {limit?.warningText && !isLocked && (
+                              <p className="text-xs text-amber-400/80 mt-1 flex items-center gap-1">
+                                <AlertCircle className="w-3 h-3" />
+                                {limit.warningText}
+                              </p>
+                            )}
+                            
+                            {/* Effect description */}
+                            {!isLocked && (
+                              <p className="text-xs text-text-muted/60 mt-1 italic">
+                                {getGuestTypeEffectDescription(item.type)}
+                              </p>
+                            )}
+                            
+                            {/* Acceptance rate estimate */}
+                            {isInvited && acceptanceEst && (
+                              <p className="text-xs text-accent-blue/70 mt-1">
+                                Est. {acceptanceEst.min}-{acceptanceEst.max} of {existing?.count} will attend
+                              </p>
+                            )}
                           </div>
                         )
                       })}
@@ -1148,6 +1358,53 @@ export function ActivityConfigModal({
                   )}
                 </Card>
                 
+                {/* Time Slot Picker */}
+                <Card variant="surface" padding="md">
+                  <h4 className="font-medium mb-3 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-accent-blue" />
+                    Time Slot
+                  </h4>
+                  {(() => {
+                    const timeCost = selectedTemplate ? getActivityTimeCost(selectedTemplate.id) : null
+                    const allowedPeriods = timeCost?.allowedPeriods
+                    const periodIcons: Record<DayPeriod, typeof Sun> = {
+                      morning: Sunrise, afternoon: Sun, evening: Sunset, night: Moon,
+                    }
+                    return (
+                      <div className="grid grid-cols-4 gap-2">
+                        {DAY_PERIOD_ORDER.map(period => {
+                          const config = DAY_PERIODS[period]
+                          const PIcon = periodIcons[period]
+                          const isAllowed = !allowedPeriods || allowedPeriods.includes(period)
+                          const isSelected = selectedPeriod === period
+                          return (
+                            <button
+                              key={period}
+                              disabled={!isAllowed}
+                              onClick={() => setSelectedPeriod(isSelected ? null : period)}
+                              className={`
+                                flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all
+                                ${!isAllowed 
+                                  ? 'opacity-30 cursor-not-allowed border-surface-secondary bg-surface-secondary/20'
+                                  : isSelected
+                                    ? 'border-accent-blue bg-accent-blue/15 text-accent-blue ring-1 ring-accent-blue/40'
+                                    : 'border-surface-secondary bg-surface-secondary/30 hover:border-accent-blue/50 text-text-secondary'
+                                }
+                              `}
+                            >
+                              <PIcon className="w-3.5 h-3.5" />
+                              <span className="font-medium">{config.shortLabel}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    )
+                  })()}
+                  {!selectedPeriod && (
+                    <p className="mt-2 text-[10px] text-text-muted">No slot selected — flexible scheduling</p>
+                  )}
+                </Card>
+
                 {/* Custom Name */}
                 <div>
                   <label className="text-sm text-text-muted block mb-2">Custom Activity Name (optional)</label>

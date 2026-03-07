@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 35,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for engines, nurtured in his grandfather's small automotive repair shop in Porto. He devoured technical manuals and spent countless hours tinkering with discarded parts, developing an intuitive understanding of mechanical systems. After earning a degree in Mechanical Engineering, he honed his skills working for a local racing team, specializing in engine optimization and performance enhancement. \n\nRicardo is known for his meticulous approach and unwavering commitment to precision. He believes that even the smallest detail can make a significant difference on the track, and he relentlessly pursues perfection in every task he undertakes. His calm demeanor under pressure and his ability to quickly diagnose and resolve complex technical issues have earned him the respect of his peers. At Joe Gibbs Racing, he aims to bring a blend of European precision and American innovation to the team's machining processes, constantly seeking new ways to improve performance and reliability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a wiry build, reflecting his dedication to maintaining peak physical condition."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Insists on listening to Fado music while calibrating precision instruments.",
+    "Has a collection of vintage spark plugs displayed on his workbench."
+  ]
+}

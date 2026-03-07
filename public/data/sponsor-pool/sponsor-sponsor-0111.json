@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0111",
+  "name": "Banca Nazionale Corse",
+  "category": "finance",
+  "tier": "elite",
+  "country": "Italy",
+  "description": "Italy's leading bank for motorsports professionals and enthusiasts.",
+  "story": "Banca Nazionale Corse has a long and proud history of supporting Italian motorsport. Founded by passionate racing enthusiasts, they understand the unique financial needs of drivers and teams. They seek partners who embody the same dedication to excellence and performance as they do.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "nationalities": [
+      "Italy"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0111.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Carlos Ramirez",
+  "nationality": "Mexican",
+  "age": 23,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Carlos's passion for motorsport ignited at a young age, fueled by watching Formula One races with his grandfather. He began his journey volunteering at local karting events, quickly learning the intricacies of vehicle setup and data analysis. His dedication led him to secure a position as a junior data analyst for a regional racing team before transitioning to FVee Brasil.\n\nAs a test driver coordinator, Carlos excels at bridging the gap between the drivers and the engineering team. He meticulously plans testing schedules, analyzes driver feedback, and translates it into actionable insights for vehicle development. His keen eye for detail and ability to communicate effectively make him a valuable asset to the team. Carlos is determined to optimize the testing process, ensuring FVee Brasil extracts maximum value from every lap on the track.\n\nCarlos stands out due to his unwavering commitment to precision and his ability to build strong relationships with drivers. He understands that effective communication is crucial for maximizing performance, and he strives to create a collaborative environment where everyone feels comfortable sharing their thoughts and ideas.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Carlos has a focused look and a confident posture."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a specific playlist he listens to before every test session for focus.",
+    "Meticulously cleans his workspace at the end of each day, regardless of how busy he is."
+  ]
+}

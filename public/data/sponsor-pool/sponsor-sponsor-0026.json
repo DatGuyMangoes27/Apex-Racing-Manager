@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0026",
+  "name": "Zeitlos Leben",
+  "category": "lifestyle",
+  "tier": "high",
+  "country": "Germany",
+  "description": "Embrace timeless living with Zeitlos Leben.",
+  "story": "Zeitlos Leben is a premium German lifestyle brand focused on enduring quality and experiences. We believe motorsport embodies the pursuit of excellence and the thrill of pushing boundaries, aligning perfectly with our brand values. We seek to partner with teams and drivers who demonstrate dedication, precision, and a commitment to achieving lasting success.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0026.png"
+}

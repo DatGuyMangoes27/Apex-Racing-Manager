@@ -1,0 +1,62 @@
+{
+  "history": "Sebring International Raceway, built on a former World War II airbase, has a rich history dating back to 1950. The track quickly became a staple of American sports car racing, hosting the prestigious 12 Hours of Sebring, a race that has drawn legendary drivers and manufacturers for decades. The Historic layout, closely resembling the original circuit, allows racers and fans to experience the raw, demanding nature of early endurance racing. While modern iterations have evolved, the Historic course serves as a tangible link to Sebring's formative years, when drivers wrestled with powerful machines on unforgiving concrete.",
+  "atmosphere": "Standing trackside during a race on the Historic layout is like stepping back in time. The roar of engines echoes off the vast expanse of the former Hendricks Army Airfield, mingling with the smells of high-octane fuel and burning rubber. Spectators gather along the old concrete runways, feeling every bump and vibration as the cars thunder past, a visceral experience that embodies the spirit of vintage racing. The lack of modern safety features adds an element of palpable danger, amplifying the excitement and respect for the drivers who tackle this challenging circuit.",
+  "trackCharacter": "The Historic layout of Sebring is a relentless test of car and driver. Unlike the smoother, more forgiving modern configurations, the Historic course retains much of the original concrete surface, riddled with bumps and imperfections. It's a long, demanding circuit with a relentless series of corners, few of which are truly flat-out. Mechanical sympathy is key, as is the ability to adapt to constantly changing grip levels. It favors cars with good mechanical grip and drivers who aren't afraid to manhandle their machines.",
+  "nickname": "The Concrete Gauntlet",
+  "famousCorners": [
+    {
+      "name": "Webster Turn",
+      "description": "A long, sweeping left-hander that requires commitment and precise throttle control.",
+      "challenge": "Maintaining speed and avoiding the bumps while carrying momentum through the corner."
+    },
+    {
+      "name": "The Hairpin",
+      "description": "A tight, slow corner that demands heavy braking and precise placement.",
+      "challenge": "Balancing braking performance with maintaining momentum for the exit."
+    },
+    {
+      "name": "Gendebien Bend",
+      "description": "A fast, flowing right-hander named for the legendary Belgian driver Olivier Gendebien.",
+      "challenge": "Carrying maximum speed while navigating the corner's decreasing radius."
+    },
+    {
+      "name": "Warehouse Straight",
+      "description": "A long straight offering a brief respite before diving into more challenging corners.",
+      "challenge": "Managing engine temperatures and optimizing aerodynamic setup for maximum top speed."
+    },
+    {
+      "name": "LeMans",
+      "description": "A sweeping, high-speed corner leading onto the long back straight.",
+      "challenge": "Maintaining a tight line and maximum speed while managing tire wear."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical Grip",
+    "Driver Stamina",
+    "Braking Efficiency",
+    "Suspension Compliance",
+    "Engine Reliability"
+  ],
+  "overtakingSpots": [
+    "Into The Hairpin (Turn 4)",
+    "Into Webster Turn (Turn 1)",
+    "Under braking into LeMans (Turn 12)",
+    "On the run to Gendebien Bend after the Warehouse Straight."
+  ],
+  "historySnippets": [
+    "Sebring was originally a B-17 training base during WWII.",
+    "The 12 Hours of Sebring is one of the oldest endurance races in the United States.",
+    "The Historic layout closely resembles the original 1950s configuration.",
+    "Many famous drivers have raced at Sebring, including Mario Andretti, Stirling Moss, and Juan Manuel Fangio.",
+    "The track surface is notoriously bumpy and unforgiving.",
+    "The 12 Hours of Sebring is part of the FIA World Endurance Championship."
+  ],
+  "weatherNotes": "Central Florida is known for its unpredictable weather, with intense heat and humidity being common. Afternoon thunderstorms are frequent, especially during the summer months. Rain can dramatically alter the track conditions, making the already challenging surface even more treacherous. Temperature fluctuations can also affect tire grip and engine performance.",
+  "drivingAdvice": "The Historic layout demands respect. Conserve your equipment, especially brakes and tires. Be smooth with your inputs and avoid overdriving the car. The bumps and imperfections of the track surface will punish aggressive driving. Focus on maintaining momentum and finding the best line through the corners. Patience is key; the race is long, and attrition is high.",
+  "famousRaces": [
+    "The inaugural 12 Hours of Sebring in 1952, which established the track as a premier endurance racing venue.",
+    "Vintage racing events that showcase historic race cars on the Historic layout, offering a glimpse into the past.",
+    "SCCA National Championship Runoffs events that feature club racers competing on the challenging circuit."
+  ],
+  "localCulture": "Sebring is a small town with a strong racing heritage. The local community embraces the track and its history. Paddock life is friendly and welcoming, with a mix of professional teams and amateur racers. Local restaurants offer classic American fare, and the area is known for its citrus groves and outdoor recreational opportunities."
+}

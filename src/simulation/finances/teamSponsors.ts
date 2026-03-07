@@ -10,9 +10,14 @@ import {
   TeamSponsorSlot,
   OwnedTeam 
 } from '@/store/careerStore'
-import { SPONSORS, Sponsor } from '@/data/sponsors'
-import { getTeamSponsorTierForReputation, TeamSponsorPaymentTier } from '@/data/financial-config'
+import type { Sponsor } from '@/data/sponsors'
+import { getSponsors } from '@/services/preGeneratedContentService'
+import { getTeamSponsorTierForReputation, TeamSponsorPaymentTier, getSponsorWeeklyPortfolioCap } from '@/data/financial-config'
 import { calculateActivePerks } from '@/simulation/perkSystem'
+import { calculateSponsorInterest } from '@/simulation/sponsors'
+
+const MIN_INTEREST_FOR_SEEK = 30
+export const MIN_INTEREST_FOR_SUGGESTED = 50
 
 let sponsorIdCounter = 0
 
@@ -22,16 +27,37 @@ let sponsorIdCounter = 0
 export function generateTeamSponsorOffers(
   team: OwnedTeam,
   currentYear: number,
-  maxOffers: number = 5
+  maxOffers: number = 5,
+  desiredSlot?: TeamSponsorSlot,
+  contactedSponsorIds: string[] = [],
+  preferredSponsorIds?: string[]
 ): TeamSponsorDeal[] {
-  const eligibleSponsors = getEligibleSponsors(team)
+  const currentActiveWeekly = (team.finances?.sponsors || [])
+    .filter(s => s.active)
+    .reduce((sum, s) => sum + Math.round((s.monthlyPayment || 0) / 4), 0)
+  const weeklyPortfolioCap = getSponsorWeeklyPortfolioCap(team.reputation ?? 0)
+  if (currentActiveWeekly >= weeklyPortfolioCap) return []
+
+  const eligibleSponsors = getEligibleSponsors(team, contactedSponsorIds)
   if (eligibleSponsors.length === 0) return []
+
+  let candidateSponsors = eligibleSponsors.filter(
+    sponsor => calculateSponsorInterest(sponsor, team) >= MIN_INTEREST_FOR_SEEK
+  )
+
+  if (preferredSponsorIds && preferredSponsorIds.length > 0) {
+    const preferredSet = new Set(preferredSponsorIds)
+    candidateSponsors = candidateSponsors.filter(s => preferredSet.has(s.id))
+  }
+  if (candidateSponsors.length === 0) return []
+
+  if (desiredSlot && !isSlotAvailable(team, desiredSlot)) return []
   
   const tier = getTeamSponsorTierForReputation(team.reputation)
   const perks = calculateActivePerks()
   
   // Shuffle and take up to maxOffers
-  const shuffled = [...eligibleSponsors].sort(() => Math.random() - 0.5)
+  const shuffled = [...candidateSponsors].sort(() => Math.random() - 0.5)
   const offers: TeamSponsorDeal[] = []
   
   for (let i = 0; i < Math.min(maxOffers, shuffled.length); i++) {
@@ -41,7 +67,8 @@ export function generateTeamSponsorOffers(
       tier,
       team,
       currentYear,
-      perks
+      perks,
+      desiredSlot
     )
     offers.push(offer)
   }
@@ -49,9 +76,23 @@ export function generateTeamSponsorOffers(
   return offers
 }
 
-function getEligibleSponsors(team: OwnedTeam): Sponsor[] {
-  const currentSponsorIds = new Set(team.finances.sponsors.map(s => s.sponsorId))
-  return SPONSORS.filter(s => !currentSponsorIds.has(s.id))
+function getEligibleSponsors(team: OwnedTeam, contactedSponsorIds: string[] = []): Sponsor[] {
+  const currentSponsorIds = new Set((team.finances?.sponsors || []).map(s => s.sponsorId))
+  const contactedSet = new Set(contactedSponsorIds)
+  const reputation = team.reputation ?? 0
+
+  return getSponsors().filter(s => {
+    if (currentSponsorIds.has(s.id)) return false
+    const vis = (s as any).visibility ?? 'always'
+    if (vis === 'approach_only') return false
+    if (vis === 'always') return true
+    if (vis === 'unlock_after_reputation') {
+      const threshold = (s as any).unlockReputation ?? 0
+      return reputation >= threshold
+    }
+    if (vis === 'unlock_after_contact') return contactedSet.has(s.id)
+    return true
+  })
 }
 
 function generateSponsorOffer(
@@ -59,12 +100,13 @@ function generateSponsorOffer(
   tier: TeamSponsorPaymentTier,
   team: OwnedTeam,
   currentYear: number,
-  perks: ReturnType<typeof calculateActivePerks>
+  perks: ReturnType<typeof calculateActivePerks>,
+  forcedSlot?: TeamSponsorSlot
 ): TeamSponsorDeal {
   const id = `team_sponsor_${++sponsorIdCounter}_${Date.now()}`
   
   // Determine slot based on sponsor size and current deals
-  const slot = determineSponsorSlot(team, tier.tier)
+  const slot = forcedSlot ?? determineSponsorSlot(team, tier.tier)
   
   // Generate payment amounts with variance
   const variance = 0.8 + Math.random() * 0.4  // 0.8 - 1.2x
@@ -91,6 +133,18 @@ function generateSponsorOffer(
     monthlyPayment = Math.round(monthlyPayment * bonus)
     winBonus = Math.round(winBonus * bonus)
     podiumBonus = Math.round(podiumBonus * bonus)
+  }
+
+  // Respect remaining sponsor portfolio cap headroom so newly generated offers
+  // align with actual payable economy at current team reputation.
+  const currentActiveWeekly = (team.finances?.sponsors || [])
+    .filter(s => s.active)
+    .reduce((sum, s) => sum + Math.round((s.monthlyPayment || 0) / 4), 0)
+  const weeklyPortfolioCap = getSponsorWeeklyPortfolioCap(team.reputation ?? 0)
+  const remainingWeeklyHeadroom = Math.max(0, weeklyPortfolioCap - currentActiveWeekly)
+  const maxMonthlyByHeadroom = remainingWeeklyHeadroom * 4
+  if (maxMonthlyByHeadroom > 0) {
+    monthlyPayment = Math.min(monthlyPayment, maxMonthlyByHeadroom)
   }
   
   // Generate contract duration (1-3 years)
@@ -148,16 +202,72 @@ function determineSponsorSlot(team: OwnedTeam, tierName: string): TeamSponsorSlo
     return 'secondary'
   }
   
-  // Associate - unlimited
+  // Associate - capped to prevent early-game sponsor stacking
   return 'associate'
+}
+
+export function isSlotAvailable(team: OwnedTeam, slot: TeamSponsorSlot): boolean {
+  const activeSponsors = (team.finances?.sponsors || []).filter(s => s.active)
+  const count = activeSponsors.filter(s => s.slot === slot).length
+  const slotLimits: Record<TeamSponsorSlot, number> = {
+    title: 1,
+    primary: 2,
+    secondary: 3,
+    associate: 4
+  }
+  return count < slotLimits[slot]
+}
+
+export function getSlotCapacity(
+  team: OwnedTeam,
+  slot: TeamSponsorSlot
+): { current: number; max: number } {
+  const activeSponsors = (team.finances?.sponsors || []).filter(s => s.active)
+  const current = activeSponsors.filter(s => s.slot === slot).length
+  const slotLimits: Record<TeamSponsorSlot, number> = {
+    title: 1,
+    primary: 2,
+    secondary: 3,
+    associate: 4
+  }
+  return { current, max: slotLimits[slot] }
+}
+
+export function getSuggestedSponsorsForSlot(
+  team: OwnedTeam,
+  slot: TeamSponsorSlot,
+  maxCount: number = 5,
+  contactedSponsorIds: string[] = []
+): Sponsor[] {
+  if (!isSlotAvailable(team, slot)) return []
+  const eligible = getEligibleSponsors(team, contactedSponsorIds)
+  const interested = eligible.filter(
+    sponsor => calculateSponsorInterest(sponsor, team) >= MIN_INTEREST_FOR_SUGGESTED
+  )
+  const shuffled = [...interested].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, maxCount)
+}
+
+export function selectEventSponsors(
+  team: OwnedTeam,
+  count: number,
+  contactedSponsorIds: string[] = []
+): string[] {
+  if (count <= 0) return []
+  const eligible = getEligibleSponsors(team, contactedSponsorIds)
+  const interested = eligible.filter(
+    sponsor => calculateSponsorInterest(sponsor, team) >= MIN_INTEREST_FOR_SEEK
+  )
+  const shuffled = [...interested].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, Math.min(count, shuffled.length)).map(s => s.id)
 }
 
 function getSlotMultiplier(slot: TeamSponsorSlot): number {
   switch (slot) {
-    case 'title': return 3.0
-    case 'primary': return 1.5
-    case 'secondary': return 1.0
-    case 'associate': return 0.5
+    case 'title': return 2.2
+    case 'primary': return 1.25
+    case 'secondary': return 0.9
+    case 'associate': return 0.35
     default: return 1.0
   }
 }

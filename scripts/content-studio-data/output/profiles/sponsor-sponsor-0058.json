@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0058",
+  "name": "Jeonju Bibimbap Co.",
+  "category": "local",
+  "tier": "elite",
+  "country": "South Korea",
+  "description": "The taste of Korea, on and off the track.",
+  "story": "Jeonju Bibimbap Co. is a South Korean food company dedicated to preserving and promoting the traditional Korean dish, Bibimbap. Recognizing the global reach and excitement of motorsport, they sponsor teams to connect with a wider audience and share their passion for Korean cuisine. They seek a partnership that reflects their values of tradition, quality, and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 80000,
+      "podiumBonus": 40000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "nationalities": [
+      "South Korea"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 10,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0058.png"
+}

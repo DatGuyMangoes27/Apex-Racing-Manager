@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 30,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jean-Pierre's fascination with motorsport began during his childhood in Spa, witnessing the roar of engines at the famed circuit. After obtaining a degree in Mechanical Engineering from the University of Liège, he pursued his passion by specializing in aerodynamics and computational fluid dynamics. His dedication led him to a junior role with a smaller racing outfit, where he honed his skills in wind tunnel testing and data analysis. He joined RFK Racing with a reputation for meticulousness and a keen eye for detail.\n\nAt RFK Racing, Jean-Pierre is known for his methodical approach to wind tunnel operations, ensuring the accuracy and reliability of every test run. He is passionate about optimizing aerodynamic performance and thrives on collaborating with engineers to translate data into tangible improvements on the track. His loyalty to the team and commitment to excellence make him a valuable asset. \n\nJean-Pierre is known for his calm demeanor under pressure and his ability to explain complex aerodynamic concepts in a clear, concise manner. His distinctive approach involves cross-referencing wind tunnel results with on-track telemetry data to identify subtle performance gains often overlooked, contributing to the team's competitiveness.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Jean-Pierre is of average height with a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always calibrates the wind tunnel equipment himself, regardless of schedule.",
+    "Has a specific type of Belgian chocolate he eats before important tests.",
+    "Speaks in detailed technical jargon when he is excited about a finding."
+  ]
+}

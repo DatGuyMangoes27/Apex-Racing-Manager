@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0248",
+  "name": "Bharat Forge Motorsports",
+  "category": "automotive",
+  "tier": "elite",
+  "country": "India",
+  "description": "Forging the future of Indian motorsport.",
+  "story": "Bharat Forge, a global leader in metal forging and manufacturing, sees motorsport as the ultimate testing ground for their advanced engineering capabilities. They are committed to fostering Indian talent on the world stage and pushing the boundaries of automotive technology. A successful partnership will demonstrate their commitment to innovation and performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 6000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "India"
+    ],
+    "minWins": 3,
+    "minPodiums": 6
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 5,
+    "minSeasonPodiums": 10,
+    "requiredShoutouts": 6,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0248.png"
+}

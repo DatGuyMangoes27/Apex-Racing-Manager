@@ -22,3 +22,4 @@ export { Tooltip, InfoTooltip, HelpTooltip, MetricTooltip, tooltipDefinitions } 
 export { PortraitImage, Avatar, DriverPortrait, StaffPortrait } from './PortraitImage'
 export { LogoImage, TeamLogo, ManufacturerBadge, SponsorLogo, ChampionshipBadge, BankLogo } from './LogoImage'
 export { TrackImage, TrackHero, TrackThumbnail } from './TrackImage'
+export { PhoneFrame } from './PhoneFrame'

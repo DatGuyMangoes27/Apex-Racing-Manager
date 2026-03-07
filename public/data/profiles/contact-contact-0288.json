@@ -1,0 +1,31 @@
+{
+  "name": "Sofia Ramirez",
+  "nationality": "Mexican",
+  "age": 28,
+  "gender": "female",
+  "contactType": "lawyer",
+  "bio": "Sofia Ramirez is a rising star in the world of international law, specializing in contract negotiations and intellectual property. After completing her postgraduate studies at Harvard Law School, she returned to Mexico City to join a prestigious firm, quickly making a name for herself with her sharp wit and unwavering dedication to her clients. Despite her sophisticated demeanor, Sofia possesses a fiery passion for her work and a surprisingly sarcastic sense of humor. \n\nGrowing up in a family of motorsport enthusiasts, Sofia developed a deep appreciation for the sport. While her career path led her down a different road, she remains a devoted fan and has even begun representing a few smaller racing teams in contract disputes. A racing driver might cross paths with her when seeking legal representation for sponsorships, endorsements, or team negotiations, particularly those involving international entities or complex legal structures.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often styled in a sophisticated updo or left cascading down her back.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Sofia is a striking woman with a confident air. She favors tailored suits and elegant dresses that accentuate her figure."
+  },
+  "connectionToMotorsport": "Sofia represents several smaller racing teams and individual drivers in contract negotiations and intellectual property matters. She uses her legal expertise to ensure their rights and interests are protected in a highly competitive industry.",
+  "meetingContext": "The player might meet Sofia at a motorsport industry networking event or be introduced to her by a mutual contact when seeking legal counsel.",
+  "conversationTopics": [
+    "The latest advancements in automotive technology",
+    "The ethical implications of artificial intelligence",
+    "Her favorite contemporary sculptors",
+    "The nuances of international contract law",
+    "The strategy behind a winning boxing match"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship and endorsement deals",
+    "Protect the player's image rights and brand identity",
+    "Provide legal counsel on team contracts and potential disputes"
+  ],
+  "personality_summary": "A sharp and sophisticated lawyer with a caring heart and a sarcastic wit, always ready for a challenge."
+}

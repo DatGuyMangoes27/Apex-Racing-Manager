@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 45,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Isabelle's journey into motorsport began with a childhood fascination for aircraft and a natural aptitude for mathematics and physics. After graduating from McGill University with a degree in aerospace engineering, she quickly found her niche in Formula SAE. Her work caught the attention of several racing teams, leading her to a role at Joe Gibbs Racing. Isabelle sees her role as a constant search for marginal gains, meticulously analyzing wind tunnel data and CFD simulations to eke out every last bit of aerodynamic performance. \n\nIsabelle is known for her calm and methodical approach, even under the intense pressure of race weekends. She fosters a collaborative environment within her team, encouraging open communication and innovative thinking. Her dedication to detail and relentless pursuit of aerodynamic perfection have made her a highly respected figure in the motorsport world.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a low ponytail.",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Isabelle has a focused look and a kind smile that belies her intense dedication."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Prefers to conduct team meetings standing up, believing it encourages more dynamic discussion."
+  ]
+}

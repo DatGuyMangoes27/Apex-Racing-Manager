@@ -1,0 +1,22 @@
+{
+  "name": "Elijah Carter",
+  "nationality": "American",
+  "age": 27,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Elijah's journey into motorsport began unconventionally, stemming from a deep fascination with statistical modeling during his collegiate years. While pursuing a degree in Applied Mathematics, he discovered how data analytics could be leveraged to optimize racing strategies and vehicle performance. He landed an internship with a smaller IndyCar team, proving his ability to translate raw data into actionable insights. \n\nHe approaches data analysis with a unique blend of technical rigor and creative problem-solving. He's not just crunching numbers; he's seeking hidden patterns and correlations that might give Tolman Motorsport a competitive edge. Elijah is particularly adept at developing predictive models that anticipate track conditions and competitor strategies, making him a valuable asset to the team. His keen eye for detail and passion for motorsport make him a distinctive force in the pit lane.",
+  "physical": {
+    "skinTone": "Light brown",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave in the front",
+    "eyeColor": "Hazel",
+    "facialHair": "Clean shaven",
+    "description": "A tall, lean man with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten data visualizations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on listening to classical music while coding to enhance concentration."
+  ]
+}

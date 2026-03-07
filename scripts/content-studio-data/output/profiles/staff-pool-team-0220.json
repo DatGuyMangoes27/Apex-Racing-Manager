@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Eriksson",
+  "nationality": "Swedish",
+  "age": 45,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Bjorn's journey into motorsport began with a childhood fascination for rally racing in the forests of Värmland. He pursued a degree in mechanical engineering, focusing on aerodynamics and vehicle dynamics, before landing his first job at a small Swedish racing team. Over the years, Bjorn honed his skills in various roles, from race engineer to head of vehicle performance, gaining a reputation for his systematic approach and ability to extract maximum performance from limited resources. He believes in fostering a collaborative environment where data analysis and driver feedback are equally valued, allowing for continuous improvement and innovation.\n\nBjorn’s distinctive approach lies in his meticulous attention to detail, combined with an uncanny ability to see the big picture. He's known for his long hours in the simulator, meticulously analyzing every aspect of vehicle setup and performance. He is now seeking a new challenge where he can apply his experience and leadership to lead a team to success.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A tall, lean man with a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every morning with a cup of strong black coffee."
+  ]
+}

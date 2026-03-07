@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 22,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Astrid's fascination with motorsport began during her childhood summers spent watching Formula 1 races with her grandfather. This early exposure ignited a passion for the technical aspects of racing, leading her to pursue a degree in data science with a focus on predictive modeling. After graduating, she interned with a smaller racing team, honing her skills in analyzing telemetry data and identifying areas for performance improvement. \n\nAstrid is a dedicated and analytical data analyst, who believes that data-driven insights are key to unlocking a team's full potential. She thrives on the challenge of extracting meaningful information from complex datasets, and her innovative approach to data analysis allows her to quickly identify trends and patterns that others might miss. She is particularly adept at using data visualization techniques to communicate her findings effectively to engineers and drivers.\n\nHer strong work ethic, combined with her innate ability to learn quickly, make her a valuable asset to any motorsport team. Her commitment to excellence and her collaborative spirit are qualities that distinguish her in the competitive world of motorsport data analysis.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, straight hair often worn in a high ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "A tall woman with a slender build and a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a cup of strong black coffee on her desk.",
+    "Organizes her data visualizations by color and complexity.",
+    "Often talks to herself while analyzing data, muttering equations and racing terms."
+  ]
+}

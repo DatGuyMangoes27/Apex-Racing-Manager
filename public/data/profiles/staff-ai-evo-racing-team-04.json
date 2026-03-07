@@ -1,0 +1,22 @@
+{
+  "name": "Javier Rodriguez",
+  "nationality": "Chilean",
+  "age": 32,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Javier's fascination with motorsport ignited during his youth in Santiago, fueled by countless hours spent tinkering with go-karts and attending local races. He pursued a degree in mechanical engineering, specializing in vehicle dynamics, before landing his first role at a small rally team. From there, he honed his skills in data analysis and vehicle setup, quickly rising through the ranks due to his keen eye for detail and relentless pursuit of performance.\n\nAt EVO Racing Team, Javier is known for his meticulous approach and unwavering commitment to extracting every last bit of potential from the car. He believes in fostering a collaborative environment where drivers and engineers work together to identify and address performance bottlenecks. While demanding, Javier is respected for his technical expertise and dedication to achieving optimal results. He is driven by a desire to push the boundaries of what's possible on the track, and his ambition is to lead a team to victory in a major championship.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Javier is of average height and build, with a focused and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a specific playlist of Chilean rock music he listens to before each race.",
+    "Obsessively cleans his workspace, ensuring everything is perfectly organized."
+  ]
+}

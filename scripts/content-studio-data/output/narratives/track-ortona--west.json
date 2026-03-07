@@ -1,0 +1,56 @@
+{
+  "history": "Circuito Internazionale d'Abruzzo, commonly known as Ortona, opened its doors in 2005, quickly establishing itself as a versatile motorsport venue in central Italy. While primarily used for national racing series, driver training, and testing, Ortona has hosted a variety of events, including Italian GT Championship rounds and various club-level races. The West circuit configuration, a shorter 1.8km layout, is often favored for smaller club events and driver development programs, offering a more compact and accessible experience for drivers of all levels. The full circuit has also seen some international action, hosting rounds of the FIA European Truck Racing Championship in the past.",
+  "atmosphere": "Standing on the banking overlooking the first corner at Ortona's West circuit, you're immediately struck by the raw energy of Italian club racing. The air crackles with the sound of highly-strung engines, their exhaust notes echoing off the surrounding hills. The compact nature of the West layout means you're always close to the action, the scent of burning rubber and high-octane fuel filling your nostrils. Enthusiastic spectators line the fences, passionately cheering on their local heroes as they battle wheel-to-wheel. It's an intimate and visceral racing experience, far removed from the glitz and glamour of Formula 1, but no less captivating.",
+  "trackCharacter": "The West layout at Ortona is a quick and flowing configuration designed to reward momentum and precision. With only five turns, it emphasizes a driver's ability to carry speed through corners and maintain a consistent rhythm. The lack of long straights means that every corner is crucial, and even the slightest mistake can cost valuable time. Its simplicity is deceptive; mastering the West circuit requires a delicate balance of aggression and finesse, making it an excellent training ground for aspiring racing drivers.",
+  "nickname": "The Sprint Loop",
+  "famousCorners": [
+    {
+      "name": "Curvone",
+      "description": "A fast, sweeping right-hander that demands commitment and bravery.",
+      "challenge": "Maintaining maximum speed and apexing perfectly to avoid losing momentum."
+    },
+    {
+      "name": "Tornantino",
+      "description": "A tight hairpin that serves as a key overtaking spot.",
+      "challenge": "Braking late and precisely to set up a pass or defend against an attack."
+    },
+    {
+      "name": "Svoltone",
+      "description": "A medium-speed left-hander that requires a good exit to set up the following straight.",
+      "challenge": "Finding the optimal line and carrying enough speed without running wide."
+    },
+    {
+      "name": "Prima Curva",
+      "description": "The first turn on the West layout. A fairly fast right hander.",
+      "challenge": "Getting a good launch and maintaining speed through the turn"
+    }
+  ],
+  "keyFactors": [
+    "Corner exit speed",
+    "Braking precision",
+    "Momentum maintenance",
+    "Aggressive overtaking",
+    "Tire management (especially in longer races)"
+  ],
+  "overtakingSpots": [
+    "Tornantino hairpin",
+    "Into Prima Curva",
+    "Under braking for Svoltone"
+  ],
+  "historySnippets": [
+    "Ortona was designed by a team of Italian engineers with a passion for motorsport.",
+    "The circuit's location in Abruzzo offers stunning views of the surrounding countryside.",
+    "Ortona's facilities include a modern pit lane, paddock area, and hospitality suites.",
+    "The track is regularly used for testing by various racing teams.",
+    "Several Italian racing champions have honed their skills at Ortona.",
+    "Ortona is a popular choice for track days and corporate events."
+  ],
+  "weatherNotes": "Ortona experiences typical Mediterranean weather, with hot, dry summers and mild, wet winters. During the summer months, track temperatures can soar, leading to increased tire degradation. Rain can be unpredictable, and even a light shower can significantly impact grip levels on the West layout. Wind can also be a factor, particularly in the exposed sections of the circuit.",
+  "drivingAdvice": "The key to a fast lap on the West circuit is maintaining momentum. Avoid over-braking and focus on smooth transitions between corners. The Tornantino hairpin is the best overtaking opportunity, so practice your braking technique and prepare to defend your line. Tire management is also crucial, especially in longer races. Conserve your tires in the early stages and push hard in the final laps.",
+  "famousRaces": [
+    "Italian GT Championship races on the full circuit have showcased thrilling battles between top Italian GT teams.",
+    "Various club-level races on the West layout have provided a platform for up-and-coming drivers to showcase their talent.",
+    "Endurance races on the full circuit have tested the limits of both drivers and machines."
+  ],
+  "localCulture": "Ortona is located in the Abruzzo region of Italy, known for its stunning natural beauty, rich history, and delicious cuisine. The local area is home to numerous vineyards and olive groves, producing some of Italy's finest wines and olive oils. The paddock at Ortona is always buzzing with activity, with teams and drivers sharing stories and enjoying the local hospitality. Be sure to sample some of the local specialties, such as arrosticini (grilled lamb skewers) and maccheroni alla chitarra (a type of pasta). "
+}

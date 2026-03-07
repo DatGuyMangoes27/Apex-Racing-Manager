@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 47,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Ricardo's journey in motorsport began with a fascination for mechanics, tinkering with engines in his father's workshop from a young age. He pursued a degree in Mechanical Engineering, specializing in automotive design. After graduating, he joined a small racing team, working his way up from junior mechanic to race engineer. His meticulous attention to detail and talent for problem-solving quickly became apparent. \n\nRicardo's passion lies in optimizing vehicle performance through data analysis and innovative solutions. He believes in fostering a collaborative environment within the engineering team, encouraging open communication and the sharing of ideas. He joined Target Racing five years ago and has been instrumental in improving the team's reliability and performance on the track. He is known for his ability to extract maximum performance from existing resources.\n\nWhat sets Ricardo apart is his unflappable demeanor under pressure and his knack for identifying subtle mechanical issues that others might miss. He's a firm believer in continuous improvement and is always looking for ways to refine the team's approach to engineering.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Ricardo has a serious face with a focused gaze, reflecting his analytical mind."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a perfectly organized workspace, with tools arranged in a specific order."
+  ]
+}

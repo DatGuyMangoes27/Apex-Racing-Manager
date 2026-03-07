@@ -1,0 +1,22 @@
+{
+  "name": "Somchai Srisuk",
+  "nationality": "Thai",
+  "age": 39,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Somchai's journey into motorsport began with a childhood fascination for aerodynamics, fueled by countless hours spent observing birds in flight. This curiosity led him to pursue a degree in Mechanical Engineering, where he excelled in fluid dynamics and computational modeling. His career started at a small aerodynamics research firm, but his passion for racing soon drew him to the high-stakes world of motorsport. He spent several years honing his skills at a Formula 3 team before transitioning to his current role as a wind tunnel operator.\n\nSomchai's methodical and data-driven approach is what sets him apart. He believes in the power of meticulous observation and careful analysis, often spending hours poring over data to identify subtle improvements in aerodynamic performance. His colleagues appreciate his ability to translate complex technical information into actionable insights for the engineering team. He's known for his collaborative spirit and commitment to continuous improvement.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Goatee",
+    "description": "Somchai is of medium build with a focused gaze and a calm demeanor."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against the table when deep in thought.",
+    "Insists on drinking green tea before every wind tunnel run."
+  ]
+}

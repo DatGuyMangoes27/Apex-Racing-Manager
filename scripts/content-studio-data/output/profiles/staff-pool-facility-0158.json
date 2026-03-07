@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 30,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Alistair's journey into motorsport began with a childhood fascination for racing sims and a knack for troubleshooting computer problems. He honed his IT skills through formal education and several years working in corporate environments, always dreaming of applying his expertise to his passion. He finally made the leap, joining a smaller racing team where he quickly proved his value by streamlining their data analysis processes and upgrading their communication infrastructure.\n\nAlistair is a pragmatic and dedicated IT professional who believes in building robust and reliable systems that minimize downtime. He is particularly adept at identifying vulnerabilities and implementing preventative measures to safeguard sensitive data. While not a flashy innovator, his focus on stability and security makes him a valuable asset to any team.\n\nWhat sets Alistair apart is his quiet diligence and unwavering loyalty. He is not one to seek the spotlight, but he consistently delivers high-quality work and is always willing to go the extra mile to support his colleagues.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Alistair is of average height with a slightly wiry build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Insists on using a mechanical keyboard, even in meetings.",
+    "Always has a spare Ethernet cable in his pocket.",
+    "Favors using command line interfaces over graphical user interfaces whenever possible."
+  ]
+}

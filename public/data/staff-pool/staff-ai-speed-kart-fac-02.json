@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 29,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jean-Pierre grew up around his father's autobody shop in Montreal, quickly developing a passion for the intricacies of vehicle construction and repair. He was particularly fascinated by the emerging use of composite materials in high-performance vehicles. He pursued a degree in Mechanical Engineering, specializing in advanced materials, and interned with a local race team, where he honed his skills in carbon fiber layups and repairs. \n\nJean-Pierre is meticulous and dedicated to his craft, approaching each repair and fabrication with a craftsman's eye. He prides himself on finding innovative solutions to complex challenges, often experimenting with new techniques to improve performance and durability. He's known for his calm demeanor under pressure and his ability to collaborate effectively with engineers and mechanics alike. He is a valuable asset to Speed Kart Racing.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly parted on the left",
+    "eyeColor": "brown",
+    "facialHair": "short, boxed beard",
+    "description": "Jean-Pierre is of average height, with a sturdy build from years of working with his hands."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always wears a pair of blue nitrile gloves, even when not actively working.",
+    "Has a collection of miniature race cars displayed on his workstation.",
+    "Meticulously cleans his tools at the end of each shift."
+  ]
+}

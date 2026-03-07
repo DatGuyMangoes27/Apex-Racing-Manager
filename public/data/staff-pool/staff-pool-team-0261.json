@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 29,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Ricardo Alves's passion for motorsport ignited during his childhood spent watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering, determined to blend his technical aptitude with his love for racing. After graduating, he started as a junior engineer at a small Brazilian racing team, quickly climbing the ranks due to his sharp analytical skills and ability to identify critical areas for improvement.\n\nHis pragmatic approach to team management emphasizes data-driven decision-making and efficient resource allocation. He believes in fostering a collaborative environment where every team member feels empowered to contribute their best. While technically astute, Ricardo understands that success also relies on strong interpersonal skills and a clear vision for the future. He's known for his calm demeanor even under intense pressure, enabling him to make rational choices in high-stakes situations.\n\nRicardo is particularly interested in exploring advanced simulation technologies to optimize car setups and driver performance. He is eager to take on new challenges and aims to lead a team to championship glory by combining technical expertise with strategic foresight.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed hair with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has an athletic build and a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Prefers to conduct team meetings standing up."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Lena Schmidt",
+  "nationality": "German",
+  "age": 27,
+  "gender": "female",
+  "role": "paint_shop_specialist",
+  "bio": "Lena's precision and eye for detail were honed early, growing up in her grandfather's autobody shop in Bavaria. What started as sanding and masking quickly evolved into a passion for color matching and advanced paint techniques. She pursued formal training at a vocational school specializing in automotive refinishing before landing an apprenticeship with a high-end custom car shop. \n\nHer meticulous approach and drive to innovate led her to Team Penske. Lena is known for her ability to create durable and visually stunning finishes, often experimenting with new materials and application methods to improve aerodynamic efficiency and aesthetic appeal. She believes a flawless paint job is crucial, not just for looks, but for reflecting the team's dedication to excellence.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "Long, straight hair usually pulled back in a practical ponytail to keep it out of her face.",
+    "eyeColor": "hazel",
+    "facialHair": null,
+    "description": "Lena is of average height with a focused gaze and a practical demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always color-codes her tools and equipment.",
+    "Insists on using a specific brand of masking tape, claiming it provides the cleanest lines.",
+    "Keeps a small notebook filled with custom color formulas and experimental paint combinations."
+  ]
+}

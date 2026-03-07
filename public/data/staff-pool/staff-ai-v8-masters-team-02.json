@@ -1,0 +1,22 @@
+{
+  "name": "Alistair MacLeod",
+  "nationality": "Scottish",
+  "age": 47,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Alistair's journey began tinkering with engines on his family's farm in the Highlands. He earned a degree in Mechanical Engineering from the University of Edinburgh before diving headfirst into motorsport. His early career saw him working as a data analyst for a small Formula Ford team, quickly rising through the ranks due to his keen eye for detail and innovative problem-solving. \n\nHe joined V8 Masters Racing five years ago and has been instrumental in improving the team's car performance. Alistair believes in a data-driven approach, constantly analyzing telemetry and pushing the boundaries of vehicle dynamics. He's known for his ability to spot subtle performance gains that others miss, often leading to significant improvements on the track. Alistair is a leader who inspires his team to exceed expectations.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair has a lean build and an intense gaze that reflects his dedication to his work."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Constantly sketches engineering diagrams on napkins during lunch.",
+    "Has an uncanny ability to predict mechanical failures based on the sound of the engine.",
+    "Always carries a worn-out slide rule in his pocket, even though he uses computer simulations."
+  ]
+}

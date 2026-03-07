@@ -1,0 +1,27 @@
+{
+  "biography": "Born amidst the picturesque Austrian Alps, Charles Thomas's journey into motorsport was as unexpected as it was rapid. Unlike many racers who grow up karting, Charles spent his early years obsessed with downhill skiing, dreaming of Olympic glory. That dream shattered at age 13 when a reckless skiing accident left him with a knee injury. Frustrated and restless, Charles's father, a local mechanic, introduced him to the world of sim racing. His natural talent was immediately apparent. Within months, he was dominating online leagues. Recognizing his son's potential, his father poured his savings into a used Formula Ford car, and Charles entered the local racing scene at 15. His aggressive, no-holds-barred driving style quickly made him a fan favorite, but also earned him a few enemies. Now at 16, Charles is an independent driver, hungry to prove himself and attract the attention of a bigger team. His raw speed and fearless attitude make him one to watch, though his lack of experience often shines through.",
+  "drivingStyle": "Charles's driving style is characterized by aggressive late braking and a willingness to push the limits of his car. He's known for his daring overtakes, often diving into corners where others wouldn't dare. Tire management is still a weakness; he tends to overdrive the car early in a stint, sacrificing long-run pace for immediate gains. Under pressure, Charles tends to become even more aggressive, sometimes leading to costly mistakes, but also producing moments of brilliance.",
+  "rivalries": [
+    {
+      "driver": "Klaus Richter",
+      "reason": "A veteran of the Austrian racing scene, Klaus accuses Charles of being reckless and disrespectful, often criticizing his driving in post-race interviews."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "Isabella and Charles have clashed several times on track, resulting in multiple collisions and heated exchanges in the paddock. Their rivalry is fueled by a mutual desire to be the top young talent in the series."
+    },
+    {
+      "driver": "Viktor Steiner",
+      "reason": "Viktor, known for his calculated and consistent approach, represents the antithesis of Charles's flamboyant style. Viktor views Charles as immature and undisciplined, while Charles sees Viktor as boring."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, even if they are full of holes.",
+    "Listens to a specific Austrian pop song (loudly) on repeat for 30 minutes before every race.",
+    "Taps the steering wheel three times before every corner"
+  ],
+  "nickname": "The Alpine Ace",
+  "famousQuote": "Second place is just the first loser.",
+  "careerHighlight": "Winning the Styrian Cup race in only his fifth start, overtaking three cars in the final lap with a daring move around the outside of turn four.",
+  "careerLowPoint": "Crashing out of the lead in the Austrian Junior Championship final race due to overeager defending, costing him the championship title."
+}

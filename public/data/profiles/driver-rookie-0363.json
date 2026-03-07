@@ -1,0 +1,27 @@
+{
+  "biography": "Carlos Park, a name whispered with a mix of admiration and trepidation in Swedish racing circles, hails from the small, snow-dusted town of Kiruna, far above the Arctic Circle. His racing journey began not on asphalt, but on frozen lakes, where his father, a former rally driver, taught him car control in a beat-up Volvo. He entered his first karting race at age 12, borrowing his grandfather's life savings to buy a second-hand kart. That day, he stunned the local veterans, finishing second despite starting last due to a mechanical issue. His aggressive style and fearless overtaking maneuvers quickly earned him a reputation. Now at 17, he competes independently in Formula Nordic, scraping together sponsorships and relying on his raw talent. Though he lacks the backing of a major team, Carlos is a force to be reckoned with, a diamond in the rough ready to prove himself.",
+  "drivingStyle": "Carlos's driving style is characterized by relentless aggression and a 'never give up' attitude. He attacks every corner with maximum commitment, often pushing the car to the very edge of grip. His tire management is still a work in progress, sometimes sacrificing early pace for a late-race surge. Under pressure, he thrives, often pulling off daring overtakes in the closing laps. He has a natural feel for the car's balance and isn't afraid to make bold adjustments to his driving line mid-corner to find an advantage.",
+  "rivalries": [
+    {
+      "name": "Erik Lindstrom",
+      "reason": "A wealthy, established driver in Formula Nordic, Erik represents everything Carlos despises: privilege and entitlement. Their on-track battles are always fierce, often resulting in close calls and accusations of dangerous driving."
+    },
+    {
+      "name": "Astrid Berg",
+      "reason": "Astrid is a calculating and precise driver, the polar opposite of Carlos. Their contrasting styles often lead to strategic clashes, with Astrid attempting to outsmart Carlos while he tries to simply overpower her."
+    },
+    {
+      "name": "Jari Mäkinen",
+      "reason": "Another independent driver, Jari and Carlos have a heated rivalry born from a controversial incident where Carlos punted Jari off the track in the final corner of a race. Jari hasn't forgotten and seeks revenge."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue cap his father wore during his rally days.",
+    "Listens to Swedish death metal to get pumped up before a race.",
+    "Sharpens his own pencils meticulously before every practice and qualifying session."
+  ],
+  "nickname": "The Kiruna Comet",
+  "famousQuote": "Second place is just the first loser.",
+  "careerHighlight": "Winning the Formula Nordic race at Kinnekulle Ring last year, battling from 10th on the grid to take the lead with a last-lap overtake.",
+  "careerLowPoint": "Crashing out of the lead in the final race of the karting championship due to a mechanical failure, costing him the title."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 52,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport IT began somewhat unconventionally. After years managing IT infrastructure for a large bank in Lisbon, a chance encounter with a racing team owner at a tech conference sparked a new passion. He was immediately drawn to the high-pressure, data-driven environment of racing. Ricardo thrives on ensuring the team's critical systems run flawlessly, from telemetry analysis to race strategy simulations. \n\nRicardo's approach is deeply methodical and proactive. He believes in anticipating problems before they arise and implementing robust, scalable solutions. His loyalty to Eurofarma RC is unwavering; he sees the team as family. He is a stickler for detail, which sometimes frustrates the younger engineers, but his dedication to excellence is undeniable. Ricardo's unique blend of corporate IT experience and motorsports enthusiasm makes him an invaluable asset.\n\nHis ambition is to build the most reliable and innovative IT infrastructure in the paddock, giving Eurofarma RC a competitive edge through superior data management and analysis.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee.",
+    "description": "Ricardo has a sturdy build and carries himself with a quiet confidence, his face etched with the lines of experience."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Insists on using a physical keyboard for all tasks, even on tablets.",
+    "Always carries a small notebook filled with hand-drawn network diagrams.",
+    "Refuses to drink coffee after midday, switching to herbal tea instead."
+  ]
+}

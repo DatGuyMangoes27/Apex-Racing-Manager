@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 26,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Ricardo grew up in Guadalajara, surrounded by the roar of engines and the smell of gasoline. His father owned a small auto repair shop, where Ricardo spent countless hours tinkering with cars, learning the intricacies of mechanics from a young age. This early exposure ignited a passion for motorsport, leading him to pursue a degree in mechanical engineering. After graduating, he landed an apprenticeship with a local racing team, honing his skills in precision machining and fabrication. \n\nRicardo's dedication to perfection and his keen eye for detail quickly earned him a reputation as a reliable and highly skilled machinist. He joined Tolman Motorsport two years ago and has become an integral part of the team, consistently delivering high-quality components and contributing to the team's success on the track. His ability to troubleshoot complex mechanical issues under pressure and his unwavering commitment to the team make him a valuable asset.\n\nWhat sets Ricardo apart is his holistic approach to machining. He doesn't just focus on the technical aspects; he understands how each component contributes to the overall performance of the race car. This 'big picture' thinking allows him to anticipate potential problems and proactively develop innovative solutions, making him an invaluable asset to Tolman Motorsport.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a muscular build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any task.",
+    "Has a collection of miniature race car models on his workbench.",
+    "Meticulously cleans his tools after each use, organizing them in a specific order."
+  ]
+}

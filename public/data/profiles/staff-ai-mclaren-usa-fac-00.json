@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 46,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jean-Pierre's fascination with motorsport began in his youth, tinkering with go-karts in his village. He pursued a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he spent several years working for a smaller racing team, honing his skills in data analysis and simulator development. His meticulous approach and ability to identify even the most subtle discrepancies in simulator feedback quickly earned him a reputation as a reliable and insightful engineer.\n\nHe joined Arrow McLaren five years ago, bringing a wealth of practical experience. Jean-Pierre is known for his relentless pursuit of accuracy and his insistence on pushing the boundaries of simulation technology. He believes that the simulator is not just a training tool but a crucial component of race strategy and car development. His demanding nature stems from a deep-seated desire to extract every possible advantage from the technology at his disposal. He is committed to providing drivers with the most realistic and challenging simulations possible, even if it means pushing them to their limits.\n\nWhat sets Jean-Pierre apart is his ability to blend theoretical knowledge with hands-on experience. He's not afraid to get his hands dirty, often spending hours tweaking the simulator's physical components to ensure optimal performance. This dedication, combined with his critical eye, makes him a valuable asset to the team, even if his exacting standards can sometimes ruffle feathers.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build with a serious expression and focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and data points.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having the simulator room temperature set to precisely 21 degrees Celsius."
+  ]
+}

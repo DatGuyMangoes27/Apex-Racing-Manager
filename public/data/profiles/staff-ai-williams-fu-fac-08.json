@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 44,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jan's fascination with motorsport began in his youth, captivated by the roar of engines at local hill climb events. He pursued a degree in mechanical engineering, focusing on aerodynamics, with the clear goal of working in Formula 1. After graduating, he gained valuable experience at a small Czech aerospace firm, honing his skills in wind tunnel testing and data analysis. His dedication and expertise eventually landed him a position at Williams Racing.\n\nJan is a meticulous and highly detail-oriented wind tunnel operator. He takes pride in ensuring the accuracy and reliability of the data collected, understanding that even the smallest discrepancy can have significant consequences on the track. He's known for his calm demeanor under pressure and his ability to troubleshoot complex technical issues efficiently. While not a flashy personality, his steady hand and deep knowledge make him a valuable asset to the team. He is known for his commitment to training younger engineers and is seen as a team mentor.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Jan is of average height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating the wind tunnel equipment himself before each major test session."
+  ]
+}

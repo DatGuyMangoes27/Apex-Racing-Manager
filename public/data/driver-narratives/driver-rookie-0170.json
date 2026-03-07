@@ -1,0 +1,27 @@
+{
+  "biography": "James Novak’s journey began not on a racetrack, but amidst the bustling streets of Seoul, South Korea. Unlike many of his peers, Novak wasn't born into a racing dynasty. His introduction to motorsport came through a battered arcade racing cabinet in a local game center, where he spent countless hours mastering virtual tracks. The pixelated speed ignited a passion that fueled his ambition. Lacking financial backing, Novak honed his skills in karting, securing regional championships through sheer determination and late-night practice sessions. \n\nHis breakthrough arrived at a national karting event, where an impressed independent team owner offered him a chance to test a Formula 4 car. Despite limited experience, Novak’s raw talent shone through, earning him a spot on the team. His early seasons were marked by aggressive defense and opportunistic overtakes, often exceeding the car's potential. \n\nHowever, his independent status meant constant struggles for resources and recognition. A string of podium finishes in a lower-tier Formula series caught the attention of some mid-level teams, but Novak's defensive driving style and perceived lack of adaptability have made securing a top-tier seat a challenge. \n\nCurrently, Novak continues to compete as an independent driver, constantly seeking opportunities to prove his worth and climb the ranks. He's a rising talent, but faces an uphill battle against wealthier and more connected competitors.",
+  "drivingStyle": "Novak's driving style is characterized by a resolute defensive approach. He prioritizes track position and excels at defending against overtakes, often employing late braking and strategic blocking maneuvers. While this makes him difficult to pass, it sometimes comes at the expense of outright pace. He is known to be conservative with tire management, aiming for consistent lap times rather than pushing for ultimate speed early in a stint. However, his focus on defense can lead to reactive rather than proactive race strategies.",
+  "rivalries": [
+    {
+      "driverName": "Anya Petrova",
+      "reason": "Petrova, known for her aggressive overtaking, clashes frequently with Novak's defensive style, resulting in several on-track incidents and heated exchanges in the media."
+    },
+    {
+      "driverName": "Kenji Tanaka",
+      "reason": "Tanaka, a fellow South Korean driver from a well-funded team, represents the establishment that Novak struggles against, leading to a competitive and nationalistic rivalry."
+    },
+    {
+      "driverName": "Ricardo Silva",
+      "reason": "Silva, known for his consistent and reliable speed, often finds himself stuck behind Novak, leading to frustration and accusations of unfair blocking tactics."
+    }
+  ],
+  "quirks": [
+    "Always wears the same worn-out racing gloves, claiming they bring him luck.",
+    "Listens to traditional Korean folk music before every race to calm his nerves.",
+    "Obsessively cleans his visor before each session, believing a clear view is essential for victory."
+  ],
+  "nickname": "The Seoul Sentinel",
+  "famousQuote": "\"Racing isn't about being the fastest, it's about being the smartest. Sometimes, the best move is no move at all.\"",
+  "careerHighlight": "Securing a surprise podium finish at a rain-soaked street circuit race, expertly defending his position against faster cars in treacherous conditions. It proved he could handle immense pressure.",
+  "careerLowPoint": "Crashing out of a crucial championship race on the final lap while attempting a risky overtake, costing him the title and damaging his reputation."
+}

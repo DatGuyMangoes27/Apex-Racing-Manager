@@ -1,0 +1,62 @@
+{
+  "history": "The Circuit de Monaco, a name synonymous with glamour and danger, has been a fixture of the Formula 1 World Championship since 1950, though racing in the principality dates back to 1929. The Grand Prix layout, largely unchanged since its inception, winds through the narrow streets of Monte Carlo and La Condamine, offering a unique challenge unlike any other circuit on the calendar. It has witnessed countless dramatic moments, from Alberto Ascari's plunge into the harbor in 1955 to Ayrton Senna's dominant victories in the late 1980s and early 1990s. The track's unforgiving nature has made it a true test of driver skill and a spectacle for fans worldwide. While other racing series, like Formula E and Historic Grand Prix events, also grace the streets, the Formula 1 Grand Prix remains its most iconic event.",
+  "atmosphere": "Standing trackside at Monaco during the Grand Prix is an assault on the senses. The roar of the engines echoes off the buildings, the smell of burning rubber and high-octane fuel fills the air, and the sheer speed of the cars as they thread the needle between the barriers is breathtaking. The crowds are a mix of royalty, celebrities, and passionate motorsport enthusiasts, all drawn to the unique spectacle of Formula 1 racing in this glamorous setting. The atmosphere crackles with anticipation and excitement, knowing that even the slightest mistake can have devastating consequences.",
+  "trackCharacter": "The Monaco Grand Prix layout is defined by its extreme tightness and lack of run-off areas. The 3.337km track demands absolute precision and commitment from the drivers. Overtaking is notoriously difficult, placing a premium on qualifying and strategic tire management. It's a circuit where a driver can truly make the difference, rewarding bravery and car control above all else. The constant changes in elevation and the varying road surfaces add to the challenge, making it a true test of a driver's skill and mental fortitude.",
+  "nickname": "The Jewel in the Crown",
+  "famousCorners": [
+    {
+      "name": "Sainte-Dévote",
+      "description": "The first corner, a tight right-hander approached at high speed downhill. It's a notorious bottleneck and the scene of many first-lap incidents.",
+      "challenge": "Braking late while avoiding contact with the inside barrier and the cars around you."
+    },
+    {
+      "name": "Casino Square",
+      "description": "A slow, uphill hairpin at the top of the hill, surrounded by the iconic Casino de Monte-Carlo. Requires precise throttle control and steering input.",
+      "challenge": "Maintaining momentum and avoiding understeer while navigating the tight turn."
+    },
+    {
+      "name": "Mirabeau Haute / Bas",
+      "description": "A tricky complex of corners, a slow right-hander followed by a sharper downhill left. It is often the scene of lock-ups and minor incidents.",
+      "challenge": "Managing the car's balance and braking effectively while transitioning between the two corners."
+    },
+    {
+      "name": "Grand Hotel Hairpin (Fairmont Hairpin)",
+      "description": "The slowest corner on the Formula 1 calendar, a near 180-degree hairpin that requires almost full lock steering.",
+      "challenge": "Nailing the apex and avoiding contact with the barriers on exit."
+    },
+    {
+      "name": "Tunnel",
+      "description": "A flat-out blast through a dark tunnel, a unique and exhilarating experience for the drivers. The sudden change in light and downforce makes it a challenging section.",
+      "challenge": "Maintaining speed and precision while dealing with the sudden change in conditions."
+    }
+  ],
+  "keyFactors": [
+    "Qualifying performance",
+    "Mechanical Grip",
+    "Braking stability",
+    "Tire Management (especially the front tires)",
+    "Driver Confidence"
+  ],
+  "overtakingSpots": [
+    "Sainte-Dévote (primarily at the start)",
+    "Nouvelle Chicane (very risky)",
+    "Into the braking zone for Portier (rare)"
+  ],
+  "historySnippets": [
+    "The Monaco Grand Prix is one of the three races that make up the Triple Crown of Motorsport.",
+    "Ayrton Senna holds the record for the most Monaco Grand Prix wins with six.",
+    "The track is so narrow that overtaking is incredibly difficult, making qualifying crucial.",
+    "The race has been held on the same basic layout since 1929.",
+    "Many residents rent out their balconies overlooking the track during the race weekend.",
+    "The race is known for its high attrition rate due to the tight confines of the circuit."
+  ],
+  "weatherNotes": "Monaco's coastal location means that the weather can be unpredictable. Rain is not uncommon, and when it falls, it can make the already challenging circuit even more treacherous. The narrow streets offer little grip in wet conditions, and aquaplaning can be a major issue. The microclimate within the city can also lead to localized showers, making tire strategy even more critical.",
+  "drivingAdvice": "At Monaco, patience and precision are key. Avoid unnecessary risks and focus on building a rhythm. Qualifying is paramount, so prioritize setting a good lap time. During the race, manage your tires carefully and be prepared to capitalize on any mistakes made by your rivals. Above all, respect the circuit and its unforgiving nature.",
+  "famousRaces": [
+    "1982: A chaotic finish saw five different leaders in the final three laps after Alain Prost crashed, and Riccardo Patrese eventually took the win.",
+    "1996: Olivier Panis's only F1 victory, in a race of high attrition, with only three cars finishing.",
+    "2004: Jarno Trulli took his only F1 victory for Renault, leading most of the race after starting from pole position.",
+    "1988: Ayrton Senna dominated qualifying and the race, only to crash out while leading comfortably, handing victory to Alain Prost."
+  ],
+  "localCulture": "Monaco exudes luxury and sophistication. The city is renowned for its high-end boutiques, casinos, and Michelin-starred restaurants. During the Grand Prix, the paddock becomes a melting pot of celebrities, team personnel, and racing enthusiasts. The atmosphere is electric, with parties and events taking place throughout the weekend. Local cuisine features Mediterranean flavors, with fresh seafood being a specialty. \"Socca\", a chickpea pancake, is a local favorite. Paddock life is often a mix of high-stakes business and extravagant entertainment."
+}

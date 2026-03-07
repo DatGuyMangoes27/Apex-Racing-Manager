@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 38,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Kenji Tanaka's path to motorsport began with a childhood fascination for engineering. He excelled in mathematics and physics, eventually earning a degree in Mechanical Engineering from the University of Tokyo. His early career involved stints in automotive R&D, but the allure of competitive racing proved too strong to resist. He transitioned to motorsport, initially focusing on data analysis and simulation work before moving into a trackside performance engineering role.\n\nKenji is known for his meticulous approach and data-driven decision-making. He believes in optimizing every aspect of the car's setup, from aerodynamics to tire management, to extract maximum performance. His demanding nature stems from his relentless pursuit of perfection and a belief in holding himself and his team to the highest standards. While detail-oriented, he understands the interplay between individual components and the overall vehicle performance, allowing him to suggest non-conventional solutions when needed.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "black",
+    "hairStyle": "short, neatly combed, slightly receding hairline",
+    "eyeColor": "dark brown",
+    "facialHair": "trimmed goatee",
+    "description": "Kenji is of average height with a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on having his workstation arranged in a specific order, becoming visibly agitated if anything is out of place.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

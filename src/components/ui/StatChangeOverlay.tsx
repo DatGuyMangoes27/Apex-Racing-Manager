@@ -4,6 +4,7 @@
 // Displays floating "+X Reputation", "-$5,000 Team Budget" indicators
 // when game stats change, making consequences visible to the player.
 
+import { forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStatChangeTracker, type StatChange } from '@/hooks/useStatChangeTracker'
 import { TrendingUp, TrendingDown } from 'lucide-react'
@@ -41,7 +42,7 @@ export function StatChangeOverlay({
   )
 }
 
-function StatChangeIndicator({ change, onDismiss }: { change: StatChange; onDismiss: () => void }) {
+const StatChangeIndicator = forwardRef<HTMLDivElement, { change: StatChange; onDismiss: () => void }>(function StatChangeIndicator({ change, onDismiss }, ref) {
   const isPositive = change.isPositive
   const sign = change.delta > 0 ? '+' : ''
   
@@ -63,6 +64,7 @@ function StatChangeIndicator({ change, onDismiss }: { change: StatChange; onDism
   
   return (
     <motion.div
+      ref={ref}
       layout
       initial={{ opacity: 0, x: 60, scale: 0.8 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -116,4 +118,4 @@ function StatChangeIndicator({ change, onDismiss }: { change: StatChange; onDism
       />
     </motion.div>
   )
-}
+})

@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kolář",
+  "nationality": "Czech",
+  "age": 26,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Jan developed an eye for detail early on, meticulously building model cars as a child. This passion led him to explore automotive painting and bodywork, quickly discovering a natural talent. He joined a local garage after finishing trade school, where he honed his skills in color matching and paint application. Eager to apply his expertise to motorsport, Jan is determined to prove his worth and contribute to a team's success through immaculate paint jobs. \n\nJan is a meticulous individual who takes immense pride in his work. He believes that a flawless finish is essential, not just for aesthetics, but also for aerodynamic performance and team morale. He approaches each project with a pragmatic mindset, focusing on efficiency and delivering exceptional results. While relatively new to the high-pressure world of racing, he is a quick learner and dedicated to continuous improvement.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Jan is of average height with a lean build and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always wears gloves, even when not actively painting",
+    "Uses a specific brand of masking tape and refuses to use anything else",
+    "Frequently polishes his tools to a mirror sheen"
+  ]
+}

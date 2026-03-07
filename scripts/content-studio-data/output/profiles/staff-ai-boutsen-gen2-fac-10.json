@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Williams",
+  "nationality": "New Zealand",
+  "age": 44,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Rhys's journey into motorsport began in his father's garage, tinkering with engines and learning the art of metal fabrication from a young age. He honed his skills through a mechanical apprenticeship, eventually landing a role with a local racing team before making his way to Europe. Rhys thrives on the challenge of translating complex engineering designs into tangible components, always striving for precision and durability.\n\nHis pragmatic approach means he prioritizes functionality and reliability over flashy aesthetics. While he appreciates innovation, he believes in proven methods and rigorous testing. Rhys's experience has taught him that a well-engineered part, meticulously crafted, can be the difference between victory and a DNF. He brings a calm, steady hand to the Boutsen VDS garage, focusing on the essential details that keep the cars performing at their best.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly cropped with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Rhys is of medium build with strong hands calloused from years of working with metal."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always has a small notebook filled with sketches and measurements in his pocket.",
+    "Insists on using only imperial measurements, much to the amusement of his European colleagues.",
+    "Has a habit of tapping his fingers rhythmically on any surface while deep in thought."
+  ]
+}

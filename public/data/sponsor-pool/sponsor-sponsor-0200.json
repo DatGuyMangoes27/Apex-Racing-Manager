@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0200",
+  "name": "Torq Energy",
+  "category": "energy_drinks",
+  "tier": "entry",
+  "country": "USA",
+  "description": "Fuel your drive with Torq Energy.",
+  "story": "Torq Energy is a new player in the energy drink market, aiming to associate its brand with high-octane performance. We see motorsport as the perfect arena to showcase our product's ability to enhance focus and reaction time. We're looking for a team that's hungry for success and willing to help us build brand awareness among racing fans.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 35000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 20
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0200.png"
+}

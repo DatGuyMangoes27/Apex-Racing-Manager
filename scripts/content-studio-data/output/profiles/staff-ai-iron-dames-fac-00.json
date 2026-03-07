@@ -1,0 +1,22 @@
+{
+  "name": "Angus McGregor",
+  "nationality": "Australian",
+  "age": 48,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Angus McGregor's journey into motorsport was somewhat unconventional, beginning with a childhood fascination with remote-controlled cars and evolving into a deep understanding of vehicle dynamics. He initially pursued a degree in mechanical engineering, but quickly gravitated towards simulation technology. His career began at a small race team where he helped refine their simulation program and quickly proved his worth. \n\nAngus is known for his meticulous approach to data analysis and his ability to translate complex algorithms into practical solutions for the team's drivers. He's particularly adept at identifying areas where the simulator can be improved to better reflect real-world conditions, making him a valuable asset to Iron Dames. His ambition extends beyond simply performing his duties; he's driven to push the boundaries of simulation technology in motorsport.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed with a slight receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Angus is of average height with a slightly stocky build, reflecting years spent analyzing data."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with equations and technical notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking his flat white from the same mug every morning."
+  ]
+}

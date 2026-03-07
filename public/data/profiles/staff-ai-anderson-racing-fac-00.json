@@ -1,0 +1,22 @@
+{
+  "name": "Ethan Parker",
+  "nationality": "American",
+  "age": 32,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Ethan's fascination with motorsport began in his teens, spending countless hours tweaking racing games and analyzing telemetry data. This passion led him to pursue a degree in mechanical engineering, specializing in simulation and modeling. After graduating, he worked for a smaller racing team, honing his skills in data analysis and simulator setup. He joined Anderson Racing two years ago, eager to contribute his expertise to a more competitive environment. Ethan is known for his meticulous approach to simulator development, always striving to create the most realistic and effective training environment for the drivers.\n\nEthan believes the key to a successful simulator program lies in the details. He's constantly seeking ways to improve the accuracy of the simulated physics, tire models, and track surfaces. He works closely with the drivers to gather feedback and refine the simulator to match their individual driving styles. His dedication to continuous improvement and his ability to translate real-world data into a virtual environment make him a valuable asset to the team. He approaches every challenge with a calm demeanor and unwavering focus, earning him the respect of his colleagues and the drivers alike. He is a perfectionist, always striving for the most realistic simulation possible.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Ethan is of average height with a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Refers to the simulator as 'the rig'."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0168",
+  "name": "ZipZap Energy",
+  "category": "energy_drinks",
+  "tier": "mid",
+  "country": "USA",
+  "description": "Electrify your performance with ZipZap.",
+  "story": "ZipZap Energy is a dynamic new energy drink company based out of California focused on fueling peak performance. We believe in supporting athletes who push their limits, and motorsport is the perfect arena to showcase our brand's intensity. We seek a partnership that highlights speed, precision, and the pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0168.png"
+}

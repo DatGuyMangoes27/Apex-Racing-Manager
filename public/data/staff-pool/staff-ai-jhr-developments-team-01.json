@@ -1,0 +1,22 @@
+{
+  "name": "Jan Vermeer",
+  "nationality": "Dutch",
+  "age": 55,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jan's journey into motorsport began with a childhood fascination for tinkering with engines on his family's farm. He pursued a degree in mechanical engineering at Delft University of Technology, specializing in powertrain design. After graduation, Jan joined a small engineering firm that supplied components to various racing teams. His meticulous attention to detail and problem-solving skills quickly earned him recognition, leading to a role as a trackside engineer for a Formula 3 team. \n\nOver the years, Jan honed his expertise in vehicle dynamics and data analysis, becoming known for his pragmatic approach to problem-solving. He believes in focusing on incremental improvements and leveraging data to drive performance gains. He's a strong advocate for clear communication and teamwork, fostering a collaborative environment where engineers can share ideas and learn from each other. At JHR Developments, Jan is responsible for overseeing the entire engineering team, ensuring the cars are performing at their peak and identifying areas for improvement through rigorous testing and analysis.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of average height with a sturdy build, Jan has a focused gaze that conveys his dedication to his craft."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on starting every morning with a strong cup of black coffee.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 36,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Thierry's journey into motorsport began unconventionally, initially drawn to the complex telemetry data streams that flowed from Formula 1 cars. He saw patterns and possibilities where others saw noise. After earning his degree in computer science from KU Leuven, he landed a junior role at a small Belgian racing team, quickly proving his worth by optimizing their data analysis processes. He then spent several years at a larger European outfit, honing his skills in network infrastructure and cybersecurity for racing operations, before Cadillac Racing headhunted him.\n\nThierry is a stickler for detail and process. He believes that a robust and reliable IT infrastructure is the backbone of any successful racing team, allowing engineers and strategists to extract maximum performance from their data. He is known for pushing his team hard, but always with the goal of achieving excellence. His focus on preemptive problem-solving and continuous improvement helps to keep Cadillac Racing ahead of the curve.\n\nWhat sets Thierry apart is his ability to bridge the gap between the technical and the practical. He can translate complex IT concepts into terms that engineers and drivers can understand, ensuring that everyone is on the same page and working towards the same goals.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Thierry is of average height, with a slightly intense look behind his glasses."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas and issues.",
+    "Has a habit of tapping his pen on the desk when deep in thought.",
+    "Insists on having the latest version of every software, even if it's only a beta."
+  ]
+}

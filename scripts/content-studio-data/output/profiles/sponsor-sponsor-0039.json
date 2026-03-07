@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0039",
+  "name": "PetroFrance",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "France",
+  "description": "Fueling passion, powering performance.",
+  "story": "PetroFrance has been a leading provider of high-quality fuels and lubricants in France for over 50 years. We believe in supporting French innovation and talent, and motorsport provides a perfect platform to showcase the reliability and performance of our products. We seek a partnership that demonstrates our commitment to excellence and fuels the next generation of racing champions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 3
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0039.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Pieter van der Merwe",
+  "nationality": "South African",
+  "age": 47,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Pieter's journey into motorsport began unusually, not on the track but in the skies. As a young man, he studied aeronautical engineering, fascinated by the principles of lift and drag. His first role was designing wing components for commercial aircraft, but the lure of speed and competition proved too strong. He transitioned to motorsport, initially working as a data analyst, meticulously studying airflow around Formula Ford cars. \n\nAfter a decade of honing his skills, Pieter moved into a management role, leading the aero development program for a successful GT team. His pragmatic approach, combined with a talent for spotting marginal gains, quickly established him as a rising star. At JOTA Sport, he emphasizes rigorous testing and data-driven design, believing that even small improvements can translate into significant lap time reductions. He is known for his calm demeanor under pressure and his ability to inspire his team to push the boundaries of aerodynamic performance. He is a firm believer in the integration of CFD simulations with on-track testing, optimizing both to maximize performance.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Pieter has a serious look, but his eyes crinkle when he smiles."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations and sketches.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on starting every meeting with a review of the latest weather forecast, believing it significantly impacts aero performance."
+  ]
+}

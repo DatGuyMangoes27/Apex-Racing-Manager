@@ -1,0 +1,31 @@
+{
+  "name": "Bima Adiwangsa",
+  "nationality": "Indonesian",
+  "age": 33,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Bima Adiwangsa is a rising star in the world of motorsports management, despite his unconventional path. Unlike many agents who come from racing backgrounds, Bima is self-taught, having honed his business acumen through shrewd investments and a deep understanding of global markets. He possesses a unique blend of patience and perfectionism, allowing him to nurture young talent while demanding excellence. His entry into motorsports stems from a personal passion for the sport, coupled with a realization that many talented drivers lack the business savvy to navigate the complex world of sponsorships and contract negotiations. He is known for taking a generous, almost paternal, approach to his clients, ensuring they are not only financially secure but also mentally and physically prepared for the pressures of professional racing. A driver might cross paths with Bima when seeking representation, particularly if they are looking for someone who prioritizes long-term career growth and ethical business practices over short-term gains.",
+  "physical": {
+    "skinTone": "Warm tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark brown",
+    "facialHair": "Light stubble",
+    "description": "Bima has a calm and approachable demeanor, often sporting a subtle, knowing smile. He favors tailored suits that accentuate his trim build and convey an air of quiet confidence."
+  },
+  "connectionToMotorsport": "Bima represents a small but growing stable of promising young drivers from Southeast Asia, leveraging his extensive business network to secure them sponsorships and opportunities within the international racing scene. He is also a keen observer of the sport, attending races and networking events to identify new talent and keep abreast of industry trends.",
+  "meetingContext": "The player might meet Bima at a regional karting event in Southeast Asia or through a mutual connection within the junior racing circuit. He is known to scout promising young talent at these races.",
+  "conversationTopics": [
+    "The challenges and opportunities for Southeast Asian drivers in international motorsports",
+    "His love for classical music and how it helps him focus",
+    "The latest strategies in Formula 1",
+    "The importance of mental health and well-being for athletes",
+    "His collection of vintage fountain pens"
+  ],
+  "canHelp": [
+    "Secure sponsorships with international brands",
+    "Negotiate favorable contracts with racing teams",
+    "Provide mentorship and guidance on career development"
+  ],
+  "personality_summary": "A patient and generous agent with a keen eye for talent and a commitment to ethical business practices."
+}

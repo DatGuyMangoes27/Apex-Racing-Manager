@@ -1,0 +1,61 @@
+{
+  "history": "Sebring International Raceway, built on a former World War II airbase, has been a staple of American motorsport since its inaugural race in 1950. The track's notoriously bumpy surface, a legacy of its concrete runway origins, has challenged drivers and machines for decades. While the full circuit is iconic, the Short Circuit layout, a 3.7km configuration, offers a different, more compact challenge, often utilized for club racing and testing. The track was originally Hendricks Army Airfield, a training base for B-17 Flying Fortress bomber crews. After the war, Alec Ulmann, a Russian-American aviation enthusiast, saw potential in the abandoned runways and transformed them into a racing circuit. The first Sebring 12 Hours was held in 1952, quickly establishing the track's reputation for grueling endurance racing. The Short Circuit layout provides a valuable alternative, enabling more frequent track activity and diverse racing formats.",
+  "atmosphere": "The air crackles with anticipation at Sebring, even on the Short Circuit. The roar of engines echoes off the concrete, a constant reminder of the track's raw, unfiltered nature. The smell of racing fuel and burning rubber hangs heavy in the air. The sun beats down relentlessly, reflecting off the track surface, adding to the intensity. Smaller crowds often mean a closer, more intimate experience, feeling the vibrations as cars thunder past mere feet away. The atmosphere is a mix of old-school grit and modern racing technology, a palpable sense of history and speed.",
+  "trackCharacter": "The Sebring Short Circuit is a blend of high-speed straights and tight, technical corners. The bumpy surface is a constant factor, demanding car control and punishing mistakes. The layout flows well, rewarding drivers who can maintain momentum and carry speed through the corners. While shorter than the full circuit, it retains the essence of Sebring's challenging nature, demanding precision and respect. It's a track that favors nimble cars and skilled drivers who can adapt to the ever-changing conditions. The Short Circuit offers a more accessible taste of Sebring's unique character, a challenging and rewarding experience for drivers of all levels.",
+  "nickname": "The Sprinter",
+  "famousCorners": [
+    {
+      "name": "Turn 1",
+      "description": "A fast, sweeping right-hander that demands commitment and precision. It's crucial to get a good exit to maximize speed down the subsequent straight.",
+      "challenge": "Maintaining speed through the turn while navigating the bumpy surface."
+    },
+    {
+      "name": "Turn 4",
+      "description": "A tight hairpin that requires heavy braking and precise turn-in. A good exit is essential for setting up the next complex of corners.",
+      "challenge": "Balancing braking and maintaining momentum through the apex."
+    },
+    {
+      "name": "Turn 6",
+      "description": "A fast left-hander that leads onto a long straight. Carrying speed through this turn is crucial for overall lap time.",
+      "challenge": "Managing grip and maintaining a tight line to maximize exit speed."
+    },
+    {
+      "name": "Turn 10",
+      "description": "The final corner is a tricky right-hander that leads onto the main straight. Getting a good exit is vital for a strong run to the finish line.",
+      "challenge": "Maintaining composure and precision under pressure on the last corner of the lap."
+    },
+    {
+      "name": "The Hairpin (Turn 4)",
+      "description": "A tight, nearly 180-degree turn that tests braking and acceleration. A key overtaking spot.",
+      "challenge": "Maximizing braking performance while maintaining corner speed without locking up."
+    }
+  ],
+  "keyFactors": [
+    "Mechanical Grip",
+    "Braking Performance",
+    "Traction",
+    "Corner Exit Speed",
+    "Driver Confidence on Bumps"
+  ],
+  "overtakingSpots": [
+    "Turn 4 (The Hairpin)",
+    "Into Turn 1 under braking",
+    "Into Turn 10 on the final lap"
+  ],
+  "historySnippets": [
+    "Sebring was originally a B-17 training base during World War II.",
+    "The first Sebring 12 Hours was held in 1952.",
+    "The track's surface is notoriously bumpy due to its concrete origins.",
+    "The Short Circuit layout is frequently used for club racing and testing events.",
+    "The Short Circuit layout is approximately 3.7 kilometers in length.",
+    "Sebring is one of the oldest continuously operating race tracks in the United States."
+  ],
+  "weatherNotes": "Sebring is located in central Florida, which means hot and humid conditions are common. Afternoon thunderstorms are also frequent, especially during the summer months. These conditions can significantly affect track grip and visibility, making tire management and strategy crucial.",
+  "drivingAdvice": "On the Sebring Short Circuit, focus on maximizing corner exit speed, especially out of Turn 6 onto the long straight. Be patient and precise with your braking, especially into Turn 4 (The Hairpin) and Turn 10. The bumpy surface demands smooth inputs and a well-sorted suspension. Don't overdrive the car – focus on maintaining momentum and carrying speed through the corners.",
+  "famousRaces": [
+    "SCCA National Championship Runoffs: Often utilizes the Short Circuit layout for various classes, showcasing amateur racing talent.",
+    "Various Club Racing Events: The Short Circuit provides a safe and accessible environment for amateur and professional drivers to hone their skills.",
+    "Testing sessions for IMSA teams: The Short Circuit allows teams to test specific components and setups without the wear and tear of the full circuit."
+  ],
+  "localCulture": "Sebring is a relatively small town in central Florida, known for its laid-back atmosphere and strong connection to motorsport. The local cuisine features classic American fare, with a focus on fresh seafood and local produce. Paddock life is generally relaxed and friendly, with a strong sense of camaraderie among racers and fans. The town embraces its racing heritage, with numerous shops and restaurants celebrating Sebring's rich history."
+}

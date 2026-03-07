@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 29,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Mateo's passion for motorsport ignited during his childhood, fueled by the roar of engines at local rally races near his hometown in Cordoba. He pursued a degree in Mechanical Engineering at the University of Buenos Aires, where he excelled in thermodynamics and fluid dynamics, always with an eye towards applying his knowledge to racing. After graduating, Mateo secured an internship with a small racing outfit, quickly proving his worth with his meticulous approach to data analysis and his ability to identify crucial performance gains.\n\nHe joined ProSport Racing two years ago and has become a key asset, known for his innovative solutions to complex engineering challenges. Mateo's approach to performance engineering is highly analytical, focusing on optimizing every aspect of the car's setup for maximum efficiency and speed. He is driven by a relentless pursuit of improvement and a desire to push the boundaries of what's possible on the track. His colleagues appreciate his collaborative spirit and his willingness to share his expertise, making him a valuable team player. Mateo is distinguished by his ability to combine theoretical knowledge with practical application, consistently delivering tangible results that contribute to the team's success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight wave.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Lean and athletic build with a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical drawings and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating all measurement tools himself before each session."
+  ]
+}

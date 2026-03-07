@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 29,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Antoine's passion for motorsport ignited at a young age, fueled by weekend trips to Le Mans with his father. After graduating from the Institut Supérieur de l'Aéronautique et de l'Espace with a specialization in aerodynamics, he honed his skills in Formula Renault before transitioning to touring car racing. He believes a deep understanding of airflow and downforce is crucial for success in the ever-evolving world of motorsport aerodynamics.\n\nAs Head of Aero at ALL-INKL.COM Münnich Motorsport, Antoine is responsible for leading the aerodynamic development program. He's a firm believer in data-driven decisions but always trusts his intuition when it comes to innovative solutions. Antoine is known for his calm demeanor under pressure and his ability to explain complex aerodynamic concepts in a clear and concise manner, fostering effective communication within the team. His experienced approach allows him to quickly identify and address areas for aerodynamic improvement, contributing to the team's overall performance.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "blue",
+    "facialHair": "short, trimmed beard",
+    "description": "Antoine is of average height, with a wiry build and an intense gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music while reviewing CFD simulations."
+  ]
+}

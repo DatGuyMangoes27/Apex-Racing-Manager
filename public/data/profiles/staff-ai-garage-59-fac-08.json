@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Tiago Alves",
+    "nationality": "Portuguese",
+    "age": 27,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Tiago's fascination with motorsport began during his childhood in Lisbon, watching Formula 1 races with his grandfather. This passion led him to pursue a degree in Mechanical Engineering, specializing in aerodynamics. After graduating, he gained experience at a smaller racing team, primarily focusing on data analysis and simulation before transitioning to Garage 59. He's now responsible for preparing and executing wind tunnel tests, ensuring data accuracy and contributing to the team's aerodynamic development program.\n\nTiago is meticulous and detail-oriented, qualities that make him an exceptional wind tunnel operator. He is constantly seeking ways to improve testing methodologies and optimize data collection. His ability to see the 'big picture' allows him to connect wind tunnel results with on-track performance, making his insights invaluable to the engineering team. He strives for perfection in every test, ensuring the team has the most accurate information to make critical decisions.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly trimmed with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-groomed goatee",
+      "description": "Tiago is of average height, with a focused gaze and a perpetually calm demeanor."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook filled with hand-drawn aerodynamic sketches.",
+      "Insists on calibrating the wind tunnel equipment himself before each session.",
+      "Has a habit of whistling softly while analyzing data."
+    ]
+  }
+]

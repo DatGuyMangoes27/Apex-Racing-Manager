@@ -1,0 +1,31 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Swiss",
+  "age": 52,
+  "gender": "female",
+  "contactType": "sponsor_exec",
+  "bio": "Isabelle Dubois is the Chief Marketing Officer for 'Chronos Precision,' a luxury Swiss watch manufacturer renowned for its intricate designs and unwavering commitment to quality. Despite lacking formal education, her sharp instincts and ruthless negotiating skills propelled her through the ranks. She is known for her keen eye for talent and her ability to spot trends before they become mainstream. Her personal life, however, is a whirlwind of opera galas, exclusive martial arts retreats, and fleeting romances, often splashed across the society pages. \n\nDubois's interest in motorsports stems from the sport's inherent association with precision, timing, and luxury – values that Chronos Precision embodies. She sees Formula racing, in particular, as a prime marketing platform to showcase the brand's dedication to perfection. A racing driver might cross paths with Isabelle while she is evaluating potential sponsorship opportunities, attending races as a VIP guest, or hosting exclusive events for Chronos Precision clients and partners. Her romantic inclinations also sometimes lead to unexpected alliances and opportunities.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Ash Blonde",
+    "hairStyle": "Elegant chignon",
+    "eyeColor": "Emerald Green",
+    "facialHair": null,
+    "description": "Isabelle is slender and impeccably dressed, favoring tailored suits and designer dresses. Her posture is ramrod straight, projecting an air of confidence and sophistication."
+  },
+  "connectionToMotorsport": "As the CMO of Chronos Precision, Isabelle oversees the company's motorsport sponsorship program, actively seeking partnerships with promising drivers and teams to enhance brand visibility. She views racing as a platform to showcase the brand's values of precision and performance.",
+  "meetingContext": "The player might meet Isabelle at a high-profile motorsport event, such as a Formula race, where Chronos Precision is a sponsor. Alternatively, the player's agent might arrange a meeting to discuss potential sponsorship opportunities.",
+  "conversationTopics": [
+    "The latest opera performances in Europe",
+    "The intricacies of Swiss watchmaking",
+    "Her rigorous martial arts training regime",
+    "The marketing strategy of Chronos Precision",
+    "The thrill of Formula racing"
+  ],
+  "canHelp": [
+    "Secure a lucrative sponsorship deal with Chronos Precision",
+    "Provide valuable connections within the luxury goods market",
+    "Offer marketing and branding advice to enhance the player's public image"
+  ],
+  "personality_summary": "A self-assured and elegant executive with a sharp wit and a penchant for luxury."
+}

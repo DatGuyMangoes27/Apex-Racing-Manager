@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0056",
+  "name": "Ardan Technologies",
+  "category": "tech",
+  "tier": "elite",
+  "country": "Ireland",
+  "description": "Innovating the future of motorsport data analytics.",
+  "story": "Ardan Technologies is a leading Irish software company specializing in data analytics and performance optimization. Founded in Dublin, Ardan sees motorsport as the ultimate proving ground for its technology, seeking partnerships that drive innovation and demonstrate the power of data-driven decision-making. They aim to enhance team performance while showcasing their capabilities to a global audience.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Ireland"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 8,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0056.png"
+}

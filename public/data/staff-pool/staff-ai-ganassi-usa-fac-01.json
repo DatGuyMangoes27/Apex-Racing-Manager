@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rossi",
+  "nationality": "Argentine",
+  "age": 22,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mateo's passion for motorsport ignited during his childhood in Buenos Aires, where he frequented local karting events. Recognizing his knack for numbers and strategic thinking, he pursued a degree in data science, eager to apply his skills to racing. He landed an internship with a smaller racing team where he honed his data analysis skills, focusing on telemetry and race simulations. His ambition led him to Chip Ganassi Racing, where he is determined to make a significant contribution to the team's success.\n\nMateo's approach to data analysis is rooted in understanding the nuances of motorsport. He believes that data is not just about numbers but also about the stories they tell. He meticulously analyzes lap times, tire degradation, and weather patterns to provide actionable insights to engineers and drivers. His ability to translate complex data into clear and concise recommendations sets him apart.\n\nDriven by a desire to revolutionize motorsport through data-driven strategies, Mateo is always seeking innovative solutions. He is particularly interested in developing advanced algorithms that can predict race outcomes and optimize pit stop strategies. His loyalty to the team and his relentless pursuit of excellence make him a valuable asset to Chip Ganassi Racing.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Mateo is of average height with a lean build and focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten formulas and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on drinking mate tea during every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 30,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Bjørn grew up in a small coastal town in Norway, where he developed a fascination with cars and boats. He spent countless hours tinkering with engines and learning about different types of paints and finishes. After completing a vocational program in automotive painting, he moved to the UK to pursue his passion for motorsport. He started as an apprentice at a local garage before landing a job at Tickford Racing. Bjørn takes immense pride in his work, seeing the paint job as the final touch that transforms a machine into a work of art. His meticulous attention to detail and unwavering commitment to perfection have earned him the respect of his colleagues.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Light Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed beard",
+    "description": "Bjørn is of average height with a sturdy build, reflecting years of hands-on work."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always uses a specific brand of microfiber cloth.",
+    "Has a habit of whistling while working.",
+    "Insists on cleaning his spray gun immediately after each use."
+  ]
+}

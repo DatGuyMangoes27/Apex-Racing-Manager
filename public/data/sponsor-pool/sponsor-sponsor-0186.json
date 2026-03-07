@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0186",
+  "name": "Pixel Drive Studios",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "Mexico",
+  "description": "Crafting immersive gaming experiences for the ultimate thrill.",
+  "story": "Pixel Drive Studios, a leading game developer in Mexico, sponsors motorsport to connect with a passionate and competitive audience. Rooted in a culture of pushing boundaries and achieving peak performance, they see a natural synergy between the precision of racing and the immersive experiences they create. They seek a partnership that amplifies their brand and showcases their commitment to innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 70
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 6,
+    "requiredEvents": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0186.png"
+}

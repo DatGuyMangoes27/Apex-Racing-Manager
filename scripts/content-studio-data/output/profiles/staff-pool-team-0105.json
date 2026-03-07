@@ -1,0 +1,22 @@
+{
+  "name": "Owain Rhys",
+  "nationality": "Welsh",
+  "age": 50,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Owain's passion for motorsport ignited during his childhood in rural Wales, where he spent countless hours tinkering with engines alongside his father, a local mechanic. He pursued a degree in mechanical engineering and quickly found his way into the world of racing, initially as a junior engineer for a Formula 3 team. His meticulous approach and keen eye for detail saw him rise through the ranks, eventually leading technical teams in various racing series. Owain believes in fostering a collaborative environment where innovation is encouraged, and data-driven decisions are paramount. His visionary leadership style has earned him a reputation for consistently pushing the boundaries of performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of average height with a thoughtful expression etched on his face."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out notebook filled with technical sketches.",
+    "Has a habit of tapping his pen rapidly when deep in thought.",
+    "Insists on using metric units for everything, even when dealing with colleagues from other countries."
+  ]
+}

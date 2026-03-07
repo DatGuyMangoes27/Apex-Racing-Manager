@@ -1,0 +1,22 @@
+{
+  "name": "Mei Lian Tan",
+  "nationality": "Singaporean",
+  "age": 49,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Mei Lian's fascination with electronics began early, dismantling radios and building her own circuits as a child. She pursued Electrical Engineering at the National University of Singapore, excelling in microelectronics and embedded systems. Her motorsport journey started with a local Formula SAE team, where she honed her skills in data acquisition and engine control systems. She has since worked with several racing teams, specializing in optimizing electronic control units and designing custom sensor packages.\n\nMei Lian is meticulous and data-driven. She believes in a systematic approach to problem-solving, using telemetry and simulation to identify areas for improvement. Her experience in integrating complex electronic systems, coupled with her keen eye for detail, makes her a valuable asset in any racing team. Her ability to translate complex technical data into actionable insights for the drivers and mechanics sets her apart from other engineers.\n\nShe's known for her calm demeanor under pressure and her ability to troubleshoot problems quickly and efficiently. Mei Lian is also a strong believer in mentorship, often guiding junior engineers and sharing her extensive knowledge.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Shoulder-length, straight hair with a neat side part",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei Lian is of average height with a practical and focused demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a multi-meter in her bag.",
+    "Has a habit of sketching circuit diagrams on napkins during lunch.",
+    "Insists on using a specific brand of soldering iron."
+  ]
+}

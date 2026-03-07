@@ -1,0 +1,22 @@
+{
+  "name": "Isla MacLeod",
+  "nationality": "Scottish",
+  "age": 25,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Isla's journey into motorsport began with a fascination for the intricate workings of Formula 1 cars. Growing up in a small town near Knockhill Racing Circuit, she spent countless hours observing the vehicles being repaired and modified. This sparked an interest in engineering, which led her to pursue a degree in composite materials science. \n\nHer approach to composite technology is deeply rooted in pragmatism. She believes in finding the most efficient and reliable solutions to complex problems. She is meticulous in her work, ensuring that every component meets the highest standards of quality and performance. While relatively new to the field, Isla is eager to learn and contribute her unique perspectives on materials innovation. Her drive to improve performance and durability is why she is a valuable asset to any team.\n\nIsla’s background working on carbon fiber prosthetics gives her an edge in understanding the human element of performance. She has a unique perspective on the relationship between the car and the driver, allowing her to better tailor composite solutions to their needs.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair often tied back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Isla is a slender woman with a focused gaze and a smattering of freckles across her nose."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with material properties and stress test data.",
+    "Has a habit of tapping her fingers on surfaces to test their resonance.",
+    "Insists on using only metric measurements, even when working with older vehicles."
+  ]
+}

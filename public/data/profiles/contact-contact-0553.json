@@ -1,0 +1,31 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 35,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Ivana Kovačić is a rising star in the world of aerobatic flight, known for her daring maneuvers and unwavering focus. After graduating with a degree in Aeronautical Engineering, she initially worked as a test pilot before transitioning to competitive aerobatics. Her passion extends beyond the cockpit; Ivana is also an avid photographer, capturing the beauty of flight from unique perspectives. Her empathetic nature and optimistic outlook make her a popular figure in the aviation community. \n\nWhile her primary focus is aerial acrobatics, Ivana often participates in air shows and exhibitions where motorsport events also take place. Her skill and daring are often a topic of conversation among racing drivers, many of whom have a shared appreciation for pushing limits and managing risk. A racing driver might cross paths with her at a shared sponsorship event, or perhaps through a mutual acquaintance involved in both aviation and motorsport.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, braided",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana is of average height with a lean, athletic build. She often wears her hair in a long braid to keep it out of her face during flights."
+  },
+  "connectionToMotorsport": "Ivana attends air shows and aviation events that are sometimes co-sponsored or located near motorsport events. Her love of speed and precision connects her with the culture of racing.",
+  "meetingContext": "The player could meet Ivana at a shared sponsorship event that brings together the worlds of aviation and motorsport. Alternatively, the player might encounter her at a charity event supporting aviation education.",
+  "conversationTopics": [
+    "The physics of flight and driving",
+    "The mental discipline required for both racing and aerobatics",
+    "Her photography, especially aerial shots",
+    "The challenges faced by women in traditionally male-dominated fields",
+    "Her training regimen including boxing and equestrian"
+  ],
+  "canHelp": [
+    "Offer opportunities for joint sponsorship deals with aviation-related brands.",
+    "Provide training on focus and mental resilience under pressure.",
+    "Introduce the player to other influential figures in the aviation and sports communities."
+  ],
+  "personality_summary": "A rebellious but empathetic pilot with a passion for flight and pushing boundaries."
+}

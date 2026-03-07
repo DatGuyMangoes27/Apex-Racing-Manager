@@ -1,0 +1,22 @@
+{
+  "name": "Mika Nieminen",
+  "nationality": "Finnish",
+  "age": 49,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Mika's journey into motorsport began unexpectedly, spending his youth tinkering with engines in his father's garage. He quickly developed a knack for understanding mechanical intricacies, leading him to pursue a degree in Mechanical Engineering. After graduating, he joined a small rally team, working his way up from junior mechanic to lead engineer. His innovative approach to problem-solving and dedication to continuous improvement caught the attention of several Formula teams. \n\nOver the past two decades, Mika has honed his expertise in aerodynamics, suspension systems, and engine performance. He believes in fostering a collaborative environment where engineers can freely share ideas and challenge conventional thinking. His ability to see the 'big picture' while simultaneously focusing on the smallest details has earned him a reputation as a highly effective and respected technical director. He is known for his calm demeanor under pressure and his ability to motivate his team to achieve exceptional results. His experience with a variety of teams has made him highly adaptable.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build with a thoughtful expression, he exudes quiet confidence."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with sketches and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Prefers to conduct meetings while walking around the workshop."
+  ]
+}

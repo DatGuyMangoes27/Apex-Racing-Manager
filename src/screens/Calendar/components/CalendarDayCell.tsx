@@ -1,7 +1,7 @@
 /**
  * CalendarDayCell
- * Individual day cell within the monthly calendar grid
- * Shows day number, activity previews, and status indicators
+ * Individual day cell matching the Figma Schedule design
+ * Shows day number and colored event pills
  */
 
 import { motion } from 'framer-motion'
@@ -10,6 +10,7 @@ import {
   Plus,
   Flag,
   AlertTriangle,
+  AlertCircle,
   Handshake,
   Users,
   Wrench,
@@ -18,18 +19,28 @@ import {
   Car,
   Check,
   Clock,
-  AlertCircle,
   UserX,
-  Timer
+  Timer,
+  HeartHandshake,
+  Home,
+  Dumbbell,
+  Leaf,
+  GraduationCap,
+  Palette,
+  PawPrint,
+  Settings
 } from 'lucide-react'
-import { Badge } from '@/components/ui'
 import { 
   ScheduledActivity, 
   ActivityCategory,
   useCareerStore
 } from '@/store/careerStore'
+import { calculateDayEffectiveHours } from '@/simulation/activities/schedulingOverhead'
 import { RaceEvent } from '@/store/rivalStore'
 import { getDaysUntilDeadline } from '@/simulation/activities/mandatoryActivities'
+
+const FB: React.CSSProperties = { fontFamily: "'Arial Black', 'Arial', sans-serif" }
+const FR: React.CSSProperties = { fontFamily: "'Arial', sans-serif" }
 
 interface CalendarDayCellProps {
   day: number
@@ -41,38 +52,69 @@ interface CalendarDayCellProps {
   activities: ScheduledActivity[]
   race?: RaceEvent
   hasMandatory: boolean
+  isEvenCol: boolean
+  isLastRow: boolean
+  isLastCol: boolean
   onClick: () => void
   onAddActivity: () => void
 }
 
-// Get icon for activity category
+// Map activity categories to the Figma color scheme
+type EventColor = 'black' | 'red' | 'orange' | 'blue' | 'purple'
+
+function getEventColor(activity: ScheduledActivity): EventColor {
+  // Mandatory activities with deadlines → Red (Deadline)
+  if (activity.mandatory && activity.deadline) return 'red'
+  
+  switch (activity.category) {
+    case 'race': return 'black'
+    case 'maintenance': return 'orange'
+    case 'development': return 'purple'
+    case 'sponsor': return 'blue'
+    case 'team': return 'blue'
+    case 'media': return 'blue'
+    case 'social': return 'blue'
+    case 'personal': return 'blue'
+    case 'lifestyle': return 'orange'
+    case 'romance': return 'blue'
+    case 'family': return 'blue'
+    case 'fitness': return 'purple'
+    case 'wellness': return 'purple'
+    case 'education': return 'purple'
+    case 'hobby': return 'purple'
+    case 'pet': return 'blue'
+    default: return 'blue'
+  }
+}
+
+const EVENT_BG: Record<EventColor, string> = {
+  black: 'bg-black',
+  red: 'bg-[#e7000b]',
+  orange: 'bg-[#d08700]',
+  blue: 'bg-[#155dfc]',
+  purple: 'bg-[#9810fa]'
+}
+
 function getCategoryIcon(category: ActivityCategory) {
   const icons: Record<ActivityCategory, typeof Handshake> = {
     sponsor: Handshake,
     team: Users,
-    development: Wrench,
+    development: Settings,
     media: Newspaper,
     personal: Heart,
     race: Flag,
-    maintenance: Car,
-    lifestyle: Heart
+    maintenance: Wrench,
+    lifestyle: Heart,
+    social: Users,
+    romance: HeartHandshake,
+    family: Home,
+    fitness: Dumbbell,
+    wellness: Leaf,
+    education: GraduationCap,
+    hobby: Palette,
+    pet: PawPrint
   }
   return icons[category] || Clock
-}
-
-// Get color for activity category
-function getCategoryColor(category: ActivityCategory): string {
-  const colors: Record<ActivityCategory, string> = {
-    sponsor: 'text-accent-gold',
-    team: 'text-accent-blue',
-    development: 'text-accent-purple',
-    media: 'text-accent-orange',
-    personal: 'text-status-success',
-    race: 'text-accent-red',
-    maintenance: 'text-text-muted',
-    lifestyle: 'text-status-success'
-  }
-  return colors[category] || 'text-text-muted'
 }
 
 export function CalendarDayCell({
@@ -85,38 +127,71 @@ export function CalendarDayCell({
   activities,
   race,
   hasMandatory,
+  isEvenCol,
+  isLastRow,
+  isLastCol,
   onClick,
   onAddActivity
 }: CalendarDayCellProps) {
   const { hasReserveDriver, careerState } = useCareerStore()
+  const seriesNameById = useMemo(() => {
+    const map = new Map<string, string>()
+    ;(careerState?.seriesEntries || []).forEach((e: any) => {
+      map.set(e.seriesId, e.seriesName || e.seriesId)
+    })
+    return map
+  }, [careerState?.seriesEntries])
+  
+  const getSeriesChip = (activity: ScheduledActivity): string | null => {
+    const templateId = activity.templateId || ''
+    const prefixes = [
+      'race_session_practice_',
+      'race_session_qualifying_',
+      'race_session_race_',
+      'race_weekend_event_',
+      'race_expected_sponsor_hospitality_',
+      'race_expected_fan_meet_',
+      'race_expected_driver_briefing_',
+      'race_expected_scrutineering_',
+    ]
+    const prefix = prefixes.find(p => templateId.startsWith(p))
+    if (!prefix) return null
+    const seriesId = templateId.slice(prefix.length)
+    const name = seriesNameById.get(seriesId)
+    if (!name) return null
+    return name.length > 14 ? `${name.slice(0, 14)}...` : name
+  }
   
   const scheduledActivities = activities.filter(a => a.status === 'scheduled')
   const completedActivities = activities.filter(a => a.status === 'completed')
-  const _hasActivities = activities.length > 0
   const activityCount = activities.length
   
-  // Determine cell styling
   const isRaceDay = !!race
-  const isWeekend = dayOfWeek >= 6 // Saturday or Sunday
   
-  // Check for driver/owner conflicts on this day
+  // Check for overloaded day
   const conflictInfo = useMemo(() => {
-    if (scheduledActivities.length < 2) return null
+    if (scheduledActivities.length === 0) return null
     
-    // Check if there are both driver-required and owner-only activities
-    const driverActivities = scheduledActivities.filter(a => a.requiresDriver)
-    const ownerOnlyActivities = scheduledActivities.filter(a => a.requiresOwner && !a.requiresDriver)
+    const isRaceDayForCalc = scheduledActivities.some(a => a.category === 'race')
+    const breakdown = calculateDayEffectiveHours(scheduledActivities, isRaceDayForCalc)
     
-    if (driverActivities.length > 0 && ownerOnlyActivities.length > 0) {
-      const canResolve = hasReserveDriver()
-      return {
-        hasConflict: !canResolve,
-        canResolveWithReserve: true,
-        driverActivities,
-        ownerOnlyActivities
+    if (!breakdown.hasConflict) return null
+    
+    const hasReserve = hasReserveDriver()
+    
+    if (breakdown.hasRoleTransition && hasReserve) {
+      const ownerOnly = scheduledActivities.filter(a => !a.requiresDriver)
+      const resolved = calculateDayEffectiveHours(ownerOnly, false)
+      if (!resolved.hasConflict) {
+        return { hasConflict: false, canResolveWithReserve: true, breakdown: resolved }
       }
     }
-    return null
+    
+    return {
+      hasConflict: true,
+      canResolveWithReserve: breakdown.hasRoleTransition,
+      breakdown,
+    }
   }, [scheduledActivities, hasReserveDriver])
   
   // Check for mandatory activities with approaching deadlines
@@ -144,167 +219,131 @@ export function CalendarDayCell({
     return null
   }, [scheduledActivities, careerState])
   
+  // Determine cell background (matching Figma checkerboard pattern)
+  let cellBg = 'bg-white'
+  if (!isCurrentMonth) {
+    cellBg = 'bg-[#f3f4f6]'
+  } else if (isEvenCol) {
+    cellBg = 'bg-[#f9fafb]'
+  }
+  
+  // Today highlight overrides
+  if (isToday) {
+    cellBg = 'bg-blue-50'
+  }
+  
+  // Border classes
+  const borderRight = !isLastCol ? 'border-r-[1.6px] border-r-black' : ''
+  const borderBottom = !isLastRow ? 'border-b-[1.6px] border-b-black' : ''
+  
+  // Get displayable activities (up to 2 event pills)
+  const displayActivities = [...scheduledActivities, ...completedActivities].slice(0, 2)
+  const remainingCount = activityCount - displayActivities.length
+
   return (
-    <motion.div
-      whileHover={{ scale: isCurrentMonth ? 1.02 : 1 }}
+    <div
       className={`
-        min-h-[90px] p-1.5 border-r border-surface-secondary last:border-r-0
-        transition-colors cursor-pointer relative group
-        ${!isCurrentMonth ? 'bg-surface-secondary/20 opacity-50' : ''}
-        ${isToday ? 'bg-accent-blue/10 ring-2 ring-accent-blue ring-inset' : ''}
-        ${isPast && isCurrentMonth ? 'bg-surface-secondary/10' : ''}
-        ${isRaceDay ? 'bg-accent-red/5' : ''}
-        ${isWeekend && isCurrentMonth && !isRaceDay && !isToday ? 'bg-surface-secondary/5' : ''}
-        ${conflictInfo?.hasConflict ? 'ring-2 ring-status-error ring-inset bg-status-error/5' : ''}
-        ${urgentDeadline?.urgency === 'critical' ? 'ring-2 ring-status-error ring-inset animate-pulse' : ''}
-        ${hasMandatory && !isPast && !conflictInfo?.hasConflict && urgentDeadline?.urgency !== 'critical' ? 'ring-1 ring-accent-orange ring-inset' : ''}
-        hover:bg-surface-secondary/30
+        relative min-h-[140px] cursor-pointer group transition-colors
+        ${cellBg} ${borderRight} ${borderBottom}
+        ${isToday ? 'ring-2 ring-[#155dfc] ring-inset z-10' : ''}
+        ${conflictInfo?.hasConflict ? 'ring-2 ring-[#e7000b] ring-inset' : ''}
+        ${urgentDeadline?.urgency === 'critical' ? 'ring-2 ring-[#e7000b] ring-inset animate-pulse' : ''}
+        hover:bg-white/80
       `}
       onClick={onClick}
     >
-      {/* Day Number */}
-      <div className="flex items-start justify-between mb-1">
-        <span className={`
-          text-sm font-mono font-medium
-          ${!isCurrentMonth ? 'text-text-muted/50' : ''}
-          ${isToday ? 'text-accent-blue font-bold' : ''}
-          ${isPast && isCurrentMonth ? 'text-text-muted' : ''}
-        `}>
+      {/* Day Number + Indicators */}
+      <div className="flex items-start justify-between p-[8px]">
+        <span className={`text-[18px] leading-[28px] ${
+          !isCurrentMonth ? 'text-black/30' :
+          isToday ? 'text-[#155dfc]' :
+          isPast ? 'text-black/40' :
+          'text-black'
+        }`} style={FB}>
           {day}
         </span>
         
-        {/* Indicators */}
-        <div className="flex items-center gap-0.5">
-          {isRaceDay && (
-            <Flag className="w-3 h-3 text-accent-red" />
-          )}
-          {/* Driver/Owner Conflict Warning */}
+        <div className="flex items-center gap-[2px]">
           {conflictInfo?.hasConflict && (
-            <div className="relative group/conflict">
-              <AlertCircle className="w-3 h-3 text-status-error animate-pulse" />
-              <div className="absolute z-20 bottom-full left-0 mb-1 p-1.5 bg-surface-primary border border-status-error rounded shadow-lg opacity-0 group-hover/conflict:opacity-100 transition-opacity whitespace-nowrap text-[9px]">
-                <div className="text-status-error font-medium">Scheduling Conflict!</div>
-                <div className="text-text-muted">You can't be driver and owner simultaneously</div>
-                <div className="text-accent-blue mt-0.5">Hire a reserve driver to resolve</div>
-              </div>
-            </div>
+            <AlertCircle className="w-[14px] h-[14px] text-[#e7000b] animate-pulse" />
           )}
-          {/* Resolved conflict indicator */}
           {conflictInfo && !conflictInfo.hasConflict && conflictInfo.canResolveWithReserve && (
-            <div className="relative group/reserve">
-              <UserX className="w-3 h-3 text-status-success" />
-              <div className="absolute z-20 bottom-full left-0 mb-1 p-1.5 bg-surface-primary border border-status-success rounded shadow-lg opacity-0 group-hover/reserve:opacity-100 transition-opacity whitespace-nowrap text-[9px]">
-                <div className="text-status-success font-medium">Reserve Driver Covering</div>
-                <div className="text-text-muted">Your reserve driver handles driving duties</div>
-              </div>
-            </div>
+            <UserX className="w-[14px] h-[14px] text-[#00a63e]" />
           )}
-          {/* Urgent deadline warning */}
           {urgentDeadline && (
-            <div className="relative group/deadline">
-              <Timer className={`w-3 h-3 ${urgentDeadline.urgency === 'critical' ? 'text-status-error animate-pulse' : 'text-accent-orange'}`} />
-              <div className="absolute z-20 bottom-full left-0 mb-1 p-1.5 bg-surface-primary border border-accent-orange rounded shadow-lg opacity-0 group-hover/deadline:opacity-100 transition-opacity whitespace-nowrap text-[9px]">
-                <div className={`font-medium ${urgentDeadline.urgency === 'critical' ? 'text-status-error' : 'text-accent-orange'}`}>
-                  {urgentDeadline.urgency === 'critical' ? 'DEADLINE TODAY!' : `${urgentDeadline.daysLeft} days left`}
-                </div>
-                <div className="text-text-muted">{urgentDeadline.activity.name}</div>
-              </div>
-            </div>
+            <Timer className={`w-[14px] h-[14px] ${urgentDeadline.urgency === 'critical' ? 'text-[#e7000b] animate-pulse' : 'text-[#d08700]'}`} />
           )}
           {hasMandatory && !isPast && !urgentDeadline && (
-            <AlertTriangle className="w-3 h-3 text-accent-orange" />
-          )}
-          {activityCount > 0 && (
-            <Badge 
-              variant={conflictInfo?.hasConflict ? 'destructive' : hasMandatory ? 'orange' : 'default'} 
-              className="h-4 min-w-[16px] text-[10px] px-1"
-            >
-              {activityCount}
-            </Badge>
+            <AlertTriangle className="w-[14px] h-[14px] text-[#d08700]" />
           )}
         </div>
       </div>
       
-      {/* Race Label */}
-      {isRaceDay && (
-        <div className="mb-1 px-1 py-0.5 rounded bg-accent-red/20 text-accent-red text-[10px] font-medium truncate">
-          {race.trackName.split(' ')[0]}
-        </div>
-      )}
-      
-      {/* Activity Previews - Show up to 2 */}
-      <div className="space-y-0.5">
-        {scheduledActivities.slice(0, 2).map(activity => {
+      {/* Event Pills */}
+      <div className="flex flex-col gap-[4px] px-[8px] overflow-hidden">
+        {displayActivities.map((activity, idx) => {
+          const color = getEventColor(activity)
+          const bgClass = EVENT_BG[color]
           const Icon = getCategoryIcon(activity.category)
-          const color = getCategoryColor(activity.category)
-          // Check if this is a multi-day activity
-          const isSpanContinuation = (activity as any)._isSpanContinuation
-          const spanPosition = (activity as any)._spanPosition
-          const totalSpanDays = (activity as any)._totalSpanDays || activity.spanDays || 1
-          const isMultiDay = totalSpanDays > 1
+          const isCompleted = activity.status === 'completed'
+          
+          // Determine time label
+          let timeLabel = ''
+          if (activity.scheduledPeriod) {
+            const periodTimes: Record<string, string> = {
+              morning: '09:00',
+              afternoon: '14:00',
+              evening: '19:00'
+            }
+            timeLabel = periodTimes[activity.scheduledPeriod] || ''
+          }
+          if (activity.mandatory && !timeLabel) {
+            timeLabel = 'EOD'
+          }
+          if (activity.category === 'race') {
+            timeLabel = activity.scheduledPeriod === 'morning' ? '10:00' : 
+                        activity.scheduledPeriod === 'afternoon' ? '14:00' : '15:00'
+          }
           
           return (
             <div 
-              key={`${activity.id}-${spanPosition || 1}`}
-              className={`
-                flex items-center gap-1 px-1 py-0.5 rounded text-[10px]
-                ${activity.mandatory 
-                  ? 'bg-accent-orange/20 text-accent-orange' 
-                  : isSpanContinuation
-                    ? 'bg-accent-purple/15 text-accent-purple border-l-2 border-accent-purple'
-                    : 'bg-surface-secondary/50 text-text-secondary'}
-              `}
+              key={`${activity.id}-${idx}`}
+              className={`${bgClass} rounded-[10px] px-[6px] pt-[6px] pb-[4px] flex flex-col gap-[2px] ${isCompleted ? 'opacity-60' : ''}`}
             >
-              <Icon className={`w-2.5 h-2.5 flex-shrink-0 ${color}`} />
-              <span className="truncate">
-                {isSpanContinuation 
-                  ? `↳ ${activity.name.split(' ').slice(0, 1).join(' ')}` 
-                  : activity.name.split(' ').slice(0, 2).join(' ')}
-              </span>
-              {isMultiDay && !isSpanContinuation && (
-                <span className="text-[8px] text-text-muted ml-auto">
-                  {totalSpanDays}d
+              <div className="flex items-center gap-[4px]">
+                <Icon className="w-[12px] h-[12px] text-white flex-shrink-0" />
+                <span className="text-[9px] text-white truncate leading-[11px]" style={FB}>
+                  {isCompleted ? '✓ ' : ''}{activity.name.length > 18 ? activity.name.slice(0, 18) + '...' : activity.name}
+                </span>
+              </div>
+              {timeLabel && (
+                <span className="text-[8px] text-white/90 leading-[12px]" style={FR}>
+                  {timeLabel}
                 </span>
               )}
             </div>
           )
         })}
         
-        {/* Completed activities indicator */}
-        {completedActivities.length > 0 && (
-          <div className="flex items-center gap-1 px-1 py-0.5 rounded bg-status-success/10 text-status-success text-[10px]">
-            <Check className="w-2.5 h-2.5" />
-            <span>{completedActivities.length} done</span>
-          </div>
-        )}
-        
-        {/* More activities indicator */}
-        {scheduledActivities.length > 2 && (
-          <div className="text-[10px] text-text-muted px-1">
-            +{scheduledActivities.length - 2} more
-          </div>
+        {remainingCount > 0 && (
+          <span className="text-[9px] text-black/50 px-[2px]" style={FB}>
+            +{remainingCount} more
+          </span>
         )}
       </div>
       
       {/* Add Activity Button (hover) */}
       {isCurrentMonth && !isPast && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          whileHover={{ scale: 1.1 }}
-          className={`
-            absolute bottom-1 right-1 w-5 h-5 rounded 
-            bg-accent-blue/20 text-accent-blue
-            flex items-center justify-center
-            opacity-0 group-hover:opacity-100 transition-opacity
-          `}
+        <button
+          className="absolute bottom-[4px] right-[4px] w-[20px] h-[20px] rounded-[6px] bg-[#155dfc]/20 text-[#155dfc] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
           onClick={(e) => {
             e.stopPropagation()
             onAddActivity()
           }}
         >
-          <Plus className="w-3 h-3" />
-        </motion.button>
+          <Plus className="w-[12px] h-[12px]" />
+        </button>
       )}
-    </motion.div>
+    </div>
   )
 }

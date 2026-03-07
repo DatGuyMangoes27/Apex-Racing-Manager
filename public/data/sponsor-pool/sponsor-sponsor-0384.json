@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0384",
+  "name": "Casa Azul Tequila Soda",
+  "category": "lifestyle",
+  "tier": "elite",
+  "country": "Mexico",
+  "description": "Authentic Mexican refreshment.",
+  "story": "Casa Azul Tequila Soda is dedicated to celebrating Mexican heritage and vibrant culture. Recognizing the growing popularity of motorsport in Mexico and globally, they seek to partner with a winning team to expand their brand reach. They value performance, authenticity, and a commitment to excellence, aiming to resonate with a passionate fanbase.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 75,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Mexico"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "media",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 10,
+    "requiredEvents": 3,
+    "noControversyClause": true,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0384.png"
+}

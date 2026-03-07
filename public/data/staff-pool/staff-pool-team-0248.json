@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 25,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Thierry's passion for motorsport ignited during his childhood visits to the Spa-Francorchamps circuit with his father, a retired mechanic. He pursued a degree in mechanical engineering at the University of Liège, specializing in vehicle dynamics and simulation. Eager to apply his theoretical knowledge to real-world racing, Thierry interned with a local GT team, where he gained valuable experience in data analysis and performance optimization. He believes in a data-driven approach, constantly seeking marginal gains through meticulous analysis and innovative solutions. \n\nThierry is particularly interested in exploring novel aerodynamic concepts and suspension setups. He is an advocate for using advanced simulation tools to predict performance and identify potential issues before they arise on the track. Although still relatively new to the field, Thierry's enthusiasm and sharp analytical skills make him a promising addition to any team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Thierry has a lean build and a focused expression, often seen with a tablet in hand."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and ideas",
+    "Has a habit of tapping his pen against his teeth when deep in thought",
+    "Prefers to work late at night when the garage is quiet"
+  ]
+}

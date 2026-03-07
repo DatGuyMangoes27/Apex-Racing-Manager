@@ -1,0 +1,22 @@
+{
+  "name": "Jens Petersen",
+  "nationality": "Danish",
+  "age": 38,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jens's fascination with motorsport began during his childhood visits to the Roskilde Ring, where he was captivated by the blend of engineering and adrenaline. He pursued a degree in Aerospace Engineering from the Technical University of Denmark, focusing on aerodynamics and fluid dynamics. After graduating, Jens joined a small engineering firm specializing in wind tunnel testing for various racing teams. \n\nHis sharp analytical skills and innovative problem-solving quickly propelled him through the ranks. He's known for his meticulous approach to data analysis and his ability to translate complex aerodynamic concepts into practical solutions. Jens believes in fostering a collaborative environment where engineers can freely experiment and push the boundaries of aerodynamic design. At Racing Start Academy, he aims to develop cutting-edge aero packages that give their drivers a competitive edge while also nurturing young engineering talent. He remains calm and collected even when facing tight deadlines.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Clean shaven",
+    "description": "Jens is of average height, with a focused gaze and a perpetually thoughtful expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deeply focused.",
+    "Insists on having a specific brand of Danish pastries during team meetings."
+  ]
+}

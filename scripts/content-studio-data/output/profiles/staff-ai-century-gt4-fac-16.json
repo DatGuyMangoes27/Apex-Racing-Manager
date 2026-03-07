@@ -1,0 +1,22 @@
+{
+  "name": "Jan Novotny",
+  "nationality": "Czech",
+  "age": 34,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Jan's journey into motorsport catering began unexpectedly. Originally training as a chef specializing in traditional Czech cuisine, he stumbled upon an opportunity to cater for a small rally team competing in a regional championship. He discovered a passion for the fast-paced, high-pressure environment and quickly adapted his culinary skills to meet the unique demands of feeding a racing team.\n\nAt Century Motorsport, Jan prides himself on providing nutritious and delicious meals that fuel the team's performance. He understands the importance of catering to diverse dietary needs and preferences, ensuring every member of the team is well-fed and energized. He believes in using locally sourced ingredients whenever possible, supporting local businesses and reducing the team's environmental impact. Jan's demanding nature ensures the highest standards of hygiene and food safety are always maintained, making him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Jan is of average height, with a sturdy build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on labeling every food container with the date and time it was prepared.",
+    "Has a peculiar habit of humming traditional Czech folk songs while cooking.",
+    "Carries a small notebook to jot down recipe ideas or dietary requirements."
+  ]
+}

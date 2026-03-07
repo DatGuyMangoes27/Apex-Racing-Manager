@@ -1,0 +1,22 @@
+{
+  "name": "Eszter Kovács",
+  "nationality": "Hungarian",
+  "age": 39,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Eszter's motorsport journey began with a childhood fascination for rally racing in the Hungarian countryside. She started as a volunteer mechanic at a local team, quickly demonstrating an exceptional ability to diagnose and resolve technical issues. This led her to pursue formal education in engineering, specializing in vehicle dynamics. After graduating, she worked as a data analyst for a smaller Formula team, honing her skills in interpreting telemetry and providing actionable feedback to drivers.\n\nShe transitioned to Team WRT five years ago, initially as a junior performance engineer. Her talent for coordinating test sessions and extracting maximum value from limited track time was quickly recognized. Now, as the test driver coordinator, Eszter meticulously plans and executes testing programs, ensuring that every aspect of the session is optimized for data acquisition and driver development. Eszter's calm demeanor under pressure and her ability to communicate complex technical information in a clear and concise manner have made her an invaluable asset to the team. She's known for her deep understanding of vehicle setup and her capability of identifying subtle changes that lead to significant performance gains.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy, often tied back in a practical ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Eszter is of average height with a focused and intelligent expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on having a specific brand of herbal tea before every test session."
+  ]
+}

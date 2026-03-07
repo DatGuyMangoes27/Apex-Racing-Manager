@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Bronte Chapman",
+    "nationality": "Australian",
+    "age": 38,
+    "gender": "female",
+    "role": "wind_tunnel_operator",
+    "bio": "Bronte's journey into motorsport began unconventionally, fueled by a childhood fascination with aerodynamics sparked by her grandfather's glider hobby. After completing her engineering degree at the University of Sydney, she pursued an internship at a small aerospace firm, where she discovered her passion for wind tunnel testing. Eager to combine her love of motorsport with her technical skills, she transitioned into Formula Racing, starting as a junior data analyst before gravitating towards a wind tunnel operator role. \n\nBronte is meticulously detailed and dedicated to ensuring data integrity. Her approach involves closely monitoring airflow patterns and meticulously recording all relevant parameters. She is known for her innovative problem-solving skills, often suggesting modifications to testing procedures to gain a more comprehensive understanding of aerodynamic performance. She thrives in collaborative environments and actively seeks input from engineers and aerodynamicists to optimize testing strategies. Bronte is particularly driven to climb the ranks, and make an impact on the sport she loves.",
+    "physical": {
+      "skinTone": "Light tan",
+      "hairColor": "Dark brown",
+      "hairStyle": "Shoulder-length, wavy hair usually tied back in a practical ponytail.",
+      "eyeColor": "Hazel",
+      "facialHair": null,
+      "description": "Bronte is of average height with a lean build from regular hiking."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic sketches and ideas.",
+      "Has a habit of tapping her pen against her teeth when deep in thought.",
+      "Insists on calibrating the wind tunnel equipment herself before each test run."
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "Min-seo Park",
+  "nationality": "South Korean",
+  "age": 25,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Min-seo's journey into motorsport began unconventionally. While studying mechanical engineering at KAIST, he became obsessed with optimizing the university's solar car racing team's performance. It wasn't just about the numbers for Min-seo; he wanted to understand how the driver's feedback and the car's telemetry could be harmonized to unlock hidden potential. This led him to karting, where he quickly developed an eye for talent and a knack for identifying areas of improvement in both the driver's technique and the kart's setup.\n\nAs a test driver coordinator for the Junior Kart Team, Min-seo is known for his rigorous approach. He believes in data-driven decision-making but also trusts his intuition, honed by countless hours observing young drivers on the track. His demanding nature stems from a deep desire to see his team members succeed and reach their full potential. He's constantly looking for innovative ways to extract every last bit of performance, whether it's through advanced data analysis or subtle adjustments to the kart's configuration. Min-seo is loyal to a fault, always putting the team's needs above his own.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly styled with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "Min-seo is of average height with a lean, athletic build from years of karting himself."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook to jot down observations about driver performance and kart setup.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking only green tea from a specific brand."
+  ]
+}

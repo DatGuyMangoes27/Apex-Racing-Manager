@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Dieter Ziegler",
+  "nationality": "German",
+  "age": 34,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Hans-Dieter's passion for motorsport ignited during his childhood, spent tinkering with his father's vintage BMW. He pursued a degree in aerospace engineering, specializing in computational fluid dynamics (CFD). After graduating, Hans-Dieter joined a small Formula 3 team, rapidly gaining experience in aerodynamic development and wind tunnel testing. His meticulous approach and ability to translate data into practical improvements quickly earned him recognition.\n\nHe's known for his systematic approach to problem-solving and his relentless pursuit of aerodynamic efficiency. Hans-Dieter believes in fostering a collaborative environment within his team, encouraging open communication and the sharing of ideas. He joined Prema Junior to hone his skills and to contribute to the development of young talent.\n\nHans-Dieter is particularly adept at identifying subtle aerodynamic inefficiencies that others might overlook. His dedication to detail and constant learning make him a valuable asset to any racing team. He thrives under pressure and is always eager to embrace new challenges.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Hans-Dieter is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having his desk perfectly organized before starting any project."
+  ]
+}

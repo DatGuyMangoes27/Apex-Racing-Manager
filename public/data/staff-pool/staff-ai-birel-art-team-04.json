@@ -1,0 +1,22 @@
+{
+  "name": "Dimitrios Papakonstantinou",
+  "nationality": "Greek",
+  "age": 49,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Dimitrios's journey in motorsport began with a childhood fascination for the intricate mechanics of racing engines. He pursued mechanical engineering at the National Technical University of Athens, developing a deep understanding of vehicle dynamics and aerodynamics. After graduating, he joined a small racing team, quickly proving his aptitude for problem-solving under pressure. His keen eye for detail and ability to translate driver feedback into tangible adjustments helped the team secure several podium finishes.\n\nHe joined Birel ART Factory five years ago, drawn by their commitment to innovation. Dimitrios's approach to race engineering is characterized by a methodical analysis of data, combined with an intuitive understanding of track conditions. He excels at optimizing vehicle setup for varying weather and track layouts, often pushing the boundaries of conventional wisdom. His collaborative approach and ability to clearly communicate technical concepts have made him a valuable asset to the team, fostering a culture of continuous improvement.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight recession at the temples.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A man of medium build, Dimitrios has a focused gaze and a calm demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and track notes.",
+    "Insists on drinking only Greek mountain tea during race weekends.",
+    "Has a habit of pacing while analyzing telemetry data, muttering quietly to himself."
+  ]
+}

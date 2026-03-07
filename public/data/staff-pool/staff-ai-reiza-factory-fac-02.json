@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 32,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Mihai's journey into motorsport began with a fascination for the intricate designs of Formula 1 cars, fueled by late-night races broadcasted on Romanian television. This passion led him to pursue a degree in mechanical engineering, specializing in composite materials. After graduating, he honed his skills at a local aerospace company, gaining invaluable experience in the fabrication and repair of lightweight structures. Now at Reiza Studios Factory, Mihai brings a meticulous and methodical approach to his work, ensuring that every component meets the highest standards of performance and durability. His calm demeanor and sharp eye for detail have made him a respected figure within the team, someone who can always be relied upon to deliver quality, even under pressure.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight wave",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Mihai is of average height with a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas or measurements.",
+    "Has a habit of meticulously cleaning his workstation before starting any task.",
+    "Prefers to listen to classical music while working to maintain focus."
+  ]
+}

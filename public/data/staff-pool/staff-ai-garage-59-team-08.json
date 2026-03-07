@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 50,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Alistair's journey into motorsport began unconventionally, not through racing, but through a deep fascination with vehicle dynamics. After graduating with a degree in Mechanical Engineering, he spent several years in automotive research, focusing on suspension systems and aerodynamic performance. The allure of competitive racing eventually drew him in, and he transitioned to motorsport, initially working with a smaller GT team before joining Garage 59.\n\nAlistair is meticulous in his approach, prioritizing data-driven decisions and rigorous analysis. He believes in building a strong rapport with the drivers to understand their feedback and translate it into tangible performance gains. His years of experience have instilled in him a calm, methodical problem-solving approach.\n\nWhat sets Alistair apart is his ability to see the bigger picture. He's not just focused on immediate lap time improvements, but on understanding the long-term implications of setup changes and component wear. This strategic perspective makes him an invaluable asset to the team.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Alistair is of average height with a slightly stocky build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and calculations.",
+    "Insists on having a perfectly organized workspace, even in the chaotic environment of a race garage.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

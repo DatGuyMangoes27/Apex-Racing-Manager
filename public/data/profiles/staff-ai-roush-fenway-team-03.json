@@ -1,0 +1,22 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 33,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Klara's journey into motorsport began unconventionally, not through racing, but through a fascination with the physics of flight. This led her to aeronautical engineering at Graz University of Technology, where she specialized in computational fluid dynamics. After graduating, she initially worked in the aerospace industry, but the allure of Formula 1 proved too strong. She joined a smaller team as a junior aerodynamicist, quickly proving her worth with innovative wing designs. \n\nHer approach to aerodynamics is meticulous and data-driven, always seeking marginal gains. She believes in a collaborative environment where ideas are freely exchanged and challenged. Having joined RFK Racing recently, she aims to bring a fresh perspective and optimize the team's aero package to unlock the car's full potential. Klara's ability to bridge the gap between theoretical models and practical on-track performance sets her apart.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair usually tied back in a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Klara is a slender woman with an intense gaze and focused demeanor."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always has a Rubik's cube on her desk and solves it during breaks.",
+    "Drinks copious amounts of herbal tea.",
+    "Has a habit of sketching aerodynamic concepts on napkins during meetings."
+  ]
+}

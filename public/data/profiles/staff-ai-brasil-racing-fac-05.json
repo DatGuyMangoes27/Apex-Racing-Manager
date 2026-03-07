@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 50,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Gareth's journey into motorsport began with a childhood spent tinkering with his father's old Morris Minor in the valleys of South Wales. He translated this practical skill into a career, starting as an apprentice mechanic before specializing in non-destructive testing and quality assurance. He's spent the last two decades ensuring the integrity of racing components, first for smaller club teams and now for the ambitious Brasil Racing team.\n\nGareth's approach is meticulous and uncompromising. He believes that attention to detail is paramount when lives are on the line. He is known for his ability to spot even the smallest imperfection, and his insistence on rigorous testing has earned him a reputation as a tough but fair member of the team. He is driven by a deep-seated sense of responsibility, ensuring that every part meets the highest standards of safety and performance.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back, receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "A stocky man with a serious demeanor and calloused hands."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Insists on using analogue measuring tools alongside digital equipment.",
+    "Has a habit of whistling classical music when inspecting parts."
+  ]
+}

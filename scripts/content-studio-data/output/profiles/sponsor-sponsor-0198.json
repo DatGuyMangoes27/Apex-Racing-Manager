@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0198",
+  "name": "Złoty Czas",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "Poland",
+  "description": "Experience the golden moment with Złoty Czas watches.",
+  "story": "Złoty Czas, a Polish luxury watchmaker, believes in precision, performance, and timeless elegance. They see motorsport as the perfect arena to showcase their dedication to craftsmanship and innovation. They seek a partnership that embodies their values and elevates their brand image on the global stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 12000,
+      "winBonus": 4000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 40000,
+      "winBonus": 15000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 30,
+    "minMarketability": 40,
+    "nationalities": [
+      "Poland"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0198.png"
+}

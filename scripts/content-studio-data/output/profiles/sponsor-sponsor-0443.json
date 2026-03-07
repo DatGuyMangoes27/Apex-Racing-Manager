@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0443",
+  "name": "Jinlong Construction",
+  "category": "local",
+  "tier": "entry",
+  "country": "China",
+  "description": "Building the future, one brick at a time.",
+  "story": "Jinlong Construction is a regional construction firm based in Chengdu, specializing in residential and commercial projects. As a company deeply rooted in community development, Jinlong sees motorsport sponsorship as a way to connect with local fans and showcase their commitment to progress and innovation. They are seeking a driver who embodies their values of hard work and dedication.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 15
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0443.png"
+}

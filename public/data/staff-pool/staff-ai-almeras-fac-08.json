@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Ante Kovačić",
+    "nationality": "Croatian",
+    "age": 47,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Ante's journey into motorsport began somewhat unconventionally, stemming from a childhood fascination with aerodynamics and model airplanes. He honed his technical skills through rigorous engineering studies at the University of Zagreb, eventually landing an entry-level position at a local automotive manufacturer. However, his true passion lay with racing, and he tirelessly networked within the motorsport community until he secured a role assisting with wind tunnel testing for a Formula 3 team.\n\nOver the years, Ante has developed a reputation for meticulous data analysis and a keen eye for identifying subtle aerodynamic improvements. He believes in a collaborative approach, working closely with engineers and drivers to translate wind tunnel data into tangible on-track performance gains. His loyalty and dedication to CLRT by Almeras have made him an invaluable asset, and he is always eager to embrace new challenges and push the boundaries of aerodynamic optimization.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed goatee",
+      "description": "Ante is a sturdy man of medium height with a focused gaze and a permanent crease between his eyebrows from scrutinizing wind tunnel data."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic calculations.",
+      "Has a habit of tapping his pen against the table when deep in thought.",
+      "Insists on listening to classical music during wind tunnel sessions, claiming it enhances his focus."
+    ]
+  }
+]

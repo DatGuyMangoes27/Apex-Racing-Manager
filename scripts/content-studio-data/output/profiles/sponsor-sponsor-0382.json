@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0382",
+  "name": "Roadrunner Performance",
+  "category": "automotive",
+  "tier": "high",
+  "country": "Australia",
+  "description": "Australian-made performance parts and accessories for the discerning driver.",
+  "story": "Roadrunner Performance has been dedicated to enhancing the driving experience for over 30 years. Born from the Australian motorsport scene, we understand the need for reliable and high-quality components. We sponsor motorsport teams to showcase our products' durability and performance under extreme conditions, aligning our brand with winning teams and pushing the boundaries of automotive engineering.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 65,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Australia"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0382.png"
+}

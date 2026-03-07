@@ -1,0 +1,22 @@
+{
+  "name": "Klara Steiner",
+  "nationality": "Austrian",
+  "age": 34,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Klara's motorsport obsession began early, fueled by watching her father, a rally mechanic, tinker with engines. She pursued a degree in mechanical engineering, specializing in vehicle dynamics. Before joining Manthey Racing, Klara spent several years with a smaller GT team, honing her skills in data analysis and simulation. She's known for her meticulous approach to problem-solving and her ability to translate complex data into actionable insights for drivers. \n\nHer demanding nature stems from a deep-seated desire for perfection and a belief in pushing boundaries. While some find her direct communication style challenging, Klara is a staunch advocate for her team and genuinely committed to their success. She believes in continuous improvement and constantly seeks innovative solutions to gain a competitive edge. Her experience has made her a valuable mentor, and she takes pride in guiding junior engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Straight, shoulder-length hair, usually pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Klara has a focused gaze and a no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on using a specific brand of pen for all official documents.",
+    "Has a habit of tapping her foot rapidly when deep in thought."
+  ]
+}

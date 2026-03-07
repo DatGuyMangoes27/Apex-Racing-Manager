@@ -1,0 +1,22 @@
+{
+  "name": "Jan Kovář",
+  "nationality": "Czech",
+  "age": 49,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Jan Kovář's journey into motorsport began unexpectedly. Initially working in Prague's burgeoning tech sector, he volunteered his IT skills at a local rally team as a weekend hobby. He quickly realized the critical role of robust IT systems in modern racing. Jan's dedication transformed the team's data analysis capabilities, significantly improving their performance.\n\nNow, with years of experience under his belt, Jan is known for his meticulous approach and ability to troubleshoot complex IT challenges under pressure. He prioritizes system stability and data security, understanding the competitive advantage derived from reliable information flow. His focus on innovative solutions ensures that any team he joins stays ahead of the curve when it comes to data processing and communication.\n\nJan's distinctive trait is his ability to translate complex technical jargon into understandable terms for the entire team, fostering collaboration and preventing communication breakdowns between engineers, drivers, and management. He believes that technology should empower, not overwhelm, the team.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is of average height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket",
+    "Drinks black coffee exclusively, regardless of the situation",
+    "Has a habit of tapping his fingers on the table when deep in thought"
+  ]
+}

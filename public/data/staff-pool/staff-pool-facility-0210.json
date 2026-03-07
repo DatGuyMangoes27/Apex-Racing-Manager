@@ -1,0 +1,22 @@
+{
+  "name": "Thierry Dubois",
+  "nationality": "Belgian",
+  "age": 26,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Thierry's passion for motorsport ignited at a young age, spending weekends at the Spa-Francorchamps circuit with his father. He quickly recognized the pivotal role of technology in modern racing, leading him to pursue a degree in Computer Science. After graduating, he worked for a leading tech firm, but his heart remained in motorsport. He took a significant pay cut to join a smaller racing team, where he honed his skills in managing complex IT systems under pressure. He's known for his proactive approach, always anticipating potential issues before they arise.\n\nThierry believes that effective IT management is about more than just keeping the systems running; it's about providing the team with a competitive edge. He's constantly exploring new technologies and innovative solutions to improve data analysis, communication, and overall performance. His meticulous attention to detail and ability to think outside the box make him a valuable asset to any team. Thierry's long-term goal is to integrate AI-driven solutions to predict mechanical failures and optimize race strategies.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed beard",
+    "description": "Thierry is of average height with a slender build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small Rubik's Cube and solves it during stressful meetings.",
+    "Insists on using a mechanical keyboard with loud, clicky keys.",
+    "Has a habit of drawing flowcharts on whiteboards to explain even the simplest concepts."
+  ]
+}

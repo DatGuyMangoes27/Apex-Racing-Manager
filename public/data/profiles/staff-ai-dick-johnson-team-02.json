@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 54,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Ricardo Oliveira's journey in motorsport began unexpectedly. While pursuing a degree in mechanical engineering at the University of Porto, a chance encounter with a local rally team ignited his passion. He quickly traded textbooks for tools, volunteering as a mechanic and immersing himself in the intricacies of race car engineering. His relentless dedication and knack for problem-solving soon earned him a full-time position.\n\nOver the years, Ricardo honed his skills in various racing disciplines, from rallying to touring cars, working his way up the ranks to become a respected technical director. He is known for his meticulous approach, unwavering commitment to performance, and ability to extract the maximum potential from his team and equipment. Ricardo's demanding nature stems from his belief that only through relentless pursuit of perfection can true competitive advantage be achieved. He joined Dick Johnson Racing seeking a new challenge and the opportunity to leave his mark on the world of V8 Supercars.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, neatly trimmed goatee",
+    "description": "Ricardo is a man of medium build with a focused gaze and a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting every car component before a race."
+  ]
+}

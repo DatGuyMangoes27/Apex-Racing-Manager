@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Marco Bellini",
+    "nationality": "Italian",
+    "age": 34,
+    "gender": "male",
+    "role": "wind_tunnel_operator",
+    "bio": "Marco's fascination with motorsport began in his childhood, watching Formula 1 races with his grandfather. After earning a degree in aerospace engineering from the Politecnico di Milano, he focused his efforts on aerodynamics. He started as a junior technician at a smaller racing outfit before joining Cool Racing five years ago. \n\nMarco is known for his meticulous approach and dedication to detail. He thrives in the controlled environment of the wind tunnel, where he can methodically analyze airflow and optimize aerodynamic performance. His colleagues appreciate his loyalty and willingness to go the extra mile to ensure accurate and reliable data, even if it means working late into the night.\n\nWhat sets Marco apart is his knack for identifying subtle improvements that others might miss. He has a keen eye for spotting inconsistencies in the data and is always looking for new ways to improve the team's understanding of aerodynamics.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Short, neatly combed back with a slight wave",
+      "eyeColor": "Brown",
+      "facialHair": "Short, well-trimmed goatee",
+      "description": "Marco is of medium build with a focused, intense gaze."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Always carries a small notebook filled with aerodynamic equations.",
+      "Insists on using a specific type of pen for data logging.",
+      "Has a habit of adjusting his glasses even when they're perfectly in place."
+    ]
+  }
+]

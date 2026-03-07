@@ -1,0 +1,22 @@
+{
+  "name": "Zola Nkomo",
+  "nationality": "South African",
+  "age": 55,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Zola Nkomo's journey into motorsport began unconventionally, fueled by a childhood fascination with electronics and a keen interest in Formula 1. She started as an apprentice technician, quickly mastering the intricacies of vehicle dynamics. Her passion for problem-solving led her to specialize in simulation technology, recognizing its potential to bridge the gap between the track and the engineering bay.\n\nAt Stewart-Haas Racing, Zola is responsible for developing and maintaining the team's simulator programs. She approaches each simulation with a data-driven mindset, ensuring the drivers get the most accurate representation of real-world conditions. A hallmark of her work is her ability to translate complex technical data into actionable insights for the drivers and engineers, making her a valuable asset to the team. Her experience allows her to quickly diagnose simulation anomalies and adapt the simulator to match changing track conditions, offering a competitive edge.",
+  "physical": {
+    "skinTone": "Medium Brown",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly cropped Afro with subtle grey streaks at the temples.",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Zola is a woman of average height with a warm smile and a perpetually thoughtful expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and diagrams.",
+    "Has a habit of humming quietly while debugging code.",
+    "Insists on having a specific brand of Rooibos tea available in the simulator room."
+  ]
+}

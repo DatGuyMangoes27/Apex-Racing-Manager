@@ -1,0 +1,21 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 45,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's passion for motorsports ignited during his childhood in Lima, captivated by the Dakar Rally's challenging Peruvian stages. He pursued a degree in mechanical engineering, eager to translate his theoretical knowledge into practical performance on the track. His early career involved working on local rally teams, developing a keen understanding of vehicle dynamics and problem-solving under pressure. He is eager to prove himself as a valuable engineer.\n\nRicardo believes in a collaborative approach, valuing input from drivers and mechanics to optimize car setup. He focuses on meticulous data analysis and trackside communication, striving to build strong relationships within the team. While still honing his expertise, his ambition and creativity make him a promising talent in the pit lane. Ricardo aims to become a top-tier race engineer.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "Ricardo is of medium height, with a focused gaze and a build suggesting his dedication to physical fitness."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical diagrams.",
+    "Has a habit of tapping his pen rapidly when deep in thought."
+  ]
+}

@@ -159,6 +159,14 @@ export const NOTIFICATION_SENDERS: Record<string, NotificationSender> = {
     requiresSender: false,
     fallbackDepartment: 'Team Management'
   },
+  'merchandise': {
+    name: 'dynamic',
+    role: 'Marketing Manager',
+    channel: 'email',
+    staffRoleKey: 'marketing_manager',
+    requiresSender: false,
+    fallbackDepartment: 'Commercial'
+  },
   
   // ==========================================
   // PERSONAL LIFE -> PHONE
@@ -219,7 +227,8 @@ export const NOTIFICATION_SENDERS: Record<string, NotificationSender> = {
     channel: 'phone',
     contactType: 'business',
     personalLifeField: 'personalStaff.assistant',
-    requiresSender: true   // No assistant = miss scheduling tips
+    requiresSender: false,  // Degrades to email if no PA hired
+    fallbackDepartment: 'Personal Office'
   },
   'hobby_instructor': {
     name: 'dynamic',
@@ -244,6 +253,13 @@ export const NOTIFICATION_SENDERS: Record<string, NotificationSender> = {
     contactType: 'business',
     personalLifeField: 'foundation',
     requiresSender: true
+  },
+  'event_organiser_fallback': {
+    name: 'Event Committee',
+    role: 'Event Organizer',
+    channel: 'email',
+    requiresSender: false,
+    fallbackDepartment: 'Event Committee'
   },
 }
 
@@ -309,6 +325,19 @@ export const ACTIVITY_TO_SENDER: Record<string, string> = {
   'sponsor_payment': 'finances',
   'logistics_update': 'logistics',
   'contract_update': 'legal',
+}
+
+// ============================================
+// CATEGORY FALLBACK SENDERS
+// ============================================
+// When the primary sender is unavailable (e.g. no friends), these categories
+// fall back to an alternative sender instead of being missed entirely.
+// Event invitations come from the organiser if the player has no social contacts.
+
+export const CATEGORY_FALLBACK_SENDER: Record<string, string> = {
+  'social_invitation': 'event_organiser_fallback',
+  'trigger_charity_invitation': 'event_organiser_fallback',
+  'gala_invitation': 'event_organiser_fallback',
 }
 
 // ============================================

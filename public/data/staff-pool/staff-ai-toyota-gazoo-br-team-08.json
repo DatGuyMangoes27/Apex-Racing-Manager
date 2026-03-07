@@ -1,0 +1,22 @@
+{
+  "name": "Declan O'Malley",
+  "nationality": "Irish",
+  "age": 41,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Declan's journey into motorsport began with a childhood obsession with rally cars tearing through the Irish countryside. He pursued a degree in mechanical engineering at University College Dublin, focusing on vehicle dynamics and data analysis. After graduating, he started as a junior data analyst for a small Formula Ford team, quickly proving his ability to extract meaningful insights from complex telemetry. This led to a role as a performance engineer in the World Rally Championship, working with a privateer team. \n\nHe is now part of the Toyota Gazoo Racing BR setup, where Declan is known for his meticulous approach to car setup and his ability to communicate complex technical information in a clear and concise manner. He believes in fostering a collaborative environment, ensuring the drivers' feedback is fully integrated into the engineering process. What sets him apart is his holistic view of vehicle performance, always considering the interplay between mechanical grip, aerodynamic efficiency, and driver confidence.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "A wiry man with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on having a specific type of Irish tea before every race."
+  ]
+}

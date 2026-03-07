@@ -1,0 +1,31 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "New Zealand",
+  "age": 39,
+  "gender": "male",
+  "contactType": "athlete",
+  "bio": "Liam O'Connell is a retired All Blacks fly-half, known for his pinpoint accuracy and strategic playmaking during his decade-long career. Off the field, he's a complex individual, passionate about his interests but also known for his impatience and occasional unreliability. Now retired, he spends his time indulging in his passions, including a growing interest in motorsports, often attending races and events in his native New Zealand and abroad. A racing driver might cross paths with him at VIP events, charity functions, or even private track days, as Liam frequently participates in amateur racing and enjoys connecting with professionals in the field.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Liam is a tall, powerfully built man, a lasting testament to his rugby career. His piercing blue eyes often betray a hint of the intensity that made him a formidable athlete."
+  },
+  "connectionToMotorsport": "Liam is an avid motorsport enthusiast and amateur racer, participating in local events and track days. He also attends international races as a VIP guest, leveraging his celebrity status.",
+  "meetingContext": "The player could meet Liam at a motorsport charity event, a VIP lounge at a race, or possibly even at a high-end watch auction.",
+  "conversationTopics": [
+    "The latest Formula 1 season",
+    "His experiences playing rugby for the All Blacks",
+    "His collection of vintage watches",
+    "Scuba diving in the Bay of Islands",
+    "The merits of different motorsport disciplines"
+  ],
+  "canHelp": [
+    "Provide introductions to high-profile sponsors",
+    "Offer mentorship and guidance based on his experience in professional sports",
+    "Increase the player's visibility through social media and personal connections"
+  ],
+  "personality_summary": "A passionate and wealthy ex-rugby player with a love for motorsport, but can be unreliable."
+}

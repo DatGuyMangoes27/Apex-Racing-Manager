@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0106",
+  "name": "Rosneft Racing",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "Russia",
+  "description": "Powering performance, on and off the track.",
+  "story": "Rosneft has a long-standing commitment to motorsports, viewing it as the ultimate testing ground for their advanced fuel technologies. They seek partnerships that demonstrate excellence, innovation, and a relentless pursuit of victory. Rosneft aims to enhance its brand image globally through successful motorsport collaborations.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Russia"
+    ],
+    "minWins": 3,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0106.png"
+}

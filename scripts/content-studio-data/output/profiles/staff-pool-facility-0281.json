@@ -1,0 +1,24 @@
+[
+  {
+    "name": "István Kovács",
+    "nationality": "Hungarian",
+    "age": 50,
+    "gender": "male",
+    "role": "catering_manager",
+    "bio": "István Kovács brings a wealth of experience from Budapest's bustling culinary scene to the high-octane world of motorsport catering. After years managing banquets and restaurants, he sought a new challenge, drawn to the fast-paced environment of racing. He views catering not just as providing sustenance, but as a crucial element of team morale and performance. István is known for his meticulous attention to detail, ensuring every meal is not only delicious but also perfectly tailored to the dietary needs and preferences of the team. \n\nHis approach is deeply rooted in Hungarian culinary tradition, but he is always eager to experiment with modern techniques and international flavors. István believes in using fresh, locally sourced ingredients whenever possible, supporting regional farmers and minimizing the team's environmental impact. His innovative menus and unwavering dedication to quality have earned him a reputation as one of the most respected catering managers in the paddock. He's particularly proud of his ability to create comforting, home-style meals that help drivers and crew feel grounded amidst the pressure of competition.\n\nIstván is a firm believer in the power of a shared meal to foster camaraderie and boost team spirit. He's not afraid to get his hands dirty, often pitching in with food preparation and service. His warm personality and genuine care for the well-being of his colleagues make him a beloved figure in any team he joins.",
+    "physical": {
+      "skinTone": "Medium",
+      "hairColor": "Salt and pepper",
+      "hairStyle": "Short, neatly combed back",
+      "eyeColor": "Brown",
+      "facialHair": "Trimmed mustache",
+      "description": "István is a stout man with a friendly, open face and a perpetually warm smile."
+    },
+    "personality": "loyal",
+    "quirks": [
+      "Insists on playing traditional Hungarian folk music during meal prep.",
+      "Always carries a small, well-worn recipe book.",
+      "Refuses to start cooking without first sharpening his knives."
+    ]
+  }
+]

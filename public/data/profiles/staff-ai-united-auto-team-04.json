@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 58,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey in motorsport began with a childhood fascination for go-karts, fueled by watching Formula 1 races on a grainy television in his small Chilean town. He pursued a degree in mechanical engineering, later finding his way into the world of professional racing through a small touring car team. His meticulous approach to data analysis and his ability to translate complex engineering concepts into actionable insights for drivers quickly set him apart. Over the years, he's honed his skills working across various racing disciplines, from GT racing to endurance events. He joined United Autosports seeking new challenges and is known for his ability to extract maximum performance from both the car and the driver, even under immense pressure. He is demanding but fair, always striving for excellence.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back, with a receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium build with a serious demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a particular fondness for strong, black coffee, consuming multiple cups throughout the day.",
+    "Insists on personally checking the torque settings on critical components before each session."
+  ]
+}

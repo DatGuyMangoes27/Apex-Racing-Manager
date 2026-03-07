@@ -1,0 +1,22 @@
+{
+  "name": "Lieke Vermeer",
+  "nationality": "Dutch",
+  "age": 27,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Lieke's fascination with motorsport began during her mechanical engineering studies at Delft University of Technology, where she specialized in aerodynamics. A university project involving wind tunnel testing sparked a passion that led her directly to GCK Motorsport after graduation. Lieke excels at meticulously analyzing airflow data and identifying subtle areas for aerodynamic improvement. Her attention to detail and ability to translate complex data into actionable insights make her a valuable asset to the team.\n\nLieke believes in a collaborative approach to wind tunnel testing, valuing input from both engineers and drivers. She is adept at adapting testing procedures to explore innovative aerodynamic concepts, always seeking to push the boundaries of performance. While data-driven, she also trusts her intuition, often uncovering unexpected aerodynamic phenomena that others might miss. Her dedication to precision and her collaborative spirit contribute significantly to GCK Motorsport's aerodynamic development program.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Long, often pulled back in a practical braid",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Lieke has a serious but approachable look with her focused eyes."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Prefers to wear noise-canceling headphones, even when the wind tunnel isn't running."
+  ]
+}

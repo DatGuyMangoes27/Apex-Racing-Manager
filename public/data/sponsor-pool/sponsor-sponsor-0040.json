@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0040",
+  "name": "PetroSyn Technologies",
+  "category": "oil_fuel",
+  "tier": "elite",
+  "country": "Singapore",
+  "description": "Advanced synthetic lubricants for peak performance.",
+  "story": "PetroSyn Technologies is a Singapore-based leader in synthetic lubricant innovation. We've invested heavily in motorsport to prove our technology under extreme conditions and to showcase our commitment to performance and reliability. We seek partnerships with teams that demonstrate cutting-edge engineering and a relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "technical",
+    "weight": 5
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0040.png"
+}

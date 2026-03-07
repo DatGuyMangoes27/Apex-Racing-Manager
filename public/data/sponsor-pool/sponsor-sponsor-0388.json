@@ -1,0 +1,51 @@
+{
+  "id": "sponsor-0388",
+  "name": "Guaraná Power",
+  "category": "energy_drinks",
+  "tier": "high",
+  "country": "Brazil",
+  "description": "The power of the Amazon in every sip.",
+  "story": "Guaraná Power fuels the passion of Brazil, and what better embodies that passion than motorsports? We seek to partner with teams and drivers who exemplify Brazilian grit and determination. Our partnership aims to invigorate both the team's performance and the hearts of fans across the globe.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 50,
+    "minMarketability": 60,
+    "nationalities": [
+      "Brazil"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0388.png"
+}

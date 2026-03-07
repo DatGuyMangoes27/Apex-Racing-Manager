@@ -1,0 +1,22 @@
+{
+  "name": "Ivan Horvat",
+  "nationality": "Croatian",
+  "age": 25,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Ivan's passion for motorsport ignited during his childhood, watching rally races in the Croatian countryside. He pursued a degree in data science, focusing on predictive modeling for vehicle performance. After graduating, Ivan interned with a small Formula 3 team before landing a junior analyst role at JOTA Sport. He quickly proved his worth, identifying crucial areas for improvement in race strategy and setup.\n\nIvan believes in meticulous data analysis and the power of visualization to communicate complex information effectively. He's known for his ability to sift through vast datasets, pinpointing subtle trends that others miss. His colleagues appreciate his calm demeanor and dedication to finding that extra edge that can make the difference between winning and losing.\n\nWhat truly sets Ivan apart is his unwavering commitment to accuracy and his relentless pursuit of innovative analytical techniques. He's always experimenting with new algorithms and data sources to enhance JOTA Sport's competitive advantage.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "Ivan is of average height with a lean build and a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas.",
+    "Has a habit of tapping his pen when deep in thought.",
+    "Prefers to listen to classical music while working."
+  ]
+}

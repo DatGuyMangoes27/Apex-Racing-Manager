@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0114",
+  "name": "Financière Dubois",
+  "category": "financial",
+  "tier": "elite",
+  "country": "France",
+  "description": "Your financial future, driven by performance.",
+  "story": "Financière Dubois is a leading French investment firm dedicated to providing innovative financial solutions. Recognizing the parallels between the precision and dedication required in motorsport and the world of finance, they sponsor teams that embody excellence and strategic decision-making. They seek a partnership that amplifies their brand visibility on the global stage and underscores their commitment to high performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 30000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "France"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0114.png"
+}

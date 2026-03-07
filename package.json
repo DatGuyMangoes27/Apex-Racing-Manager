@@ -6,11 +6,13 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
-    "electron:build": "vite build && electron-builder",
+    "build": "node scripts/bundle-content.js && vite build",
+    "bundle-content": "node scripts/bundle-content.js",
+    "electron:dev": "node scripts/bundle-content.js && concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "node scripts/bundle-content.js && vite build && electron-builder",
     "sync-assets": "powershell -ExecutionPolicy Bypass -File scripts/sync-manifest.ps1",
-    "generate-assets": "node scripts/generate-assets/run-parallel.js && npm run sync-assets"
+    "generate-assets": "node scripts/generate-assets/run-parallel.js && npm run sync-assets && npm run bundle-content",
+    "postinstall": "npx @electron/rebuild -o better-sqlite3"
   },
   "build": {
     "appId": "com.ams2.career-companion",
@@ -24,7 +26,8 @@
     ],
     "asar": true,
     "asarUnpack": [
-      "dist/images/**/*"
+      "dist/images/**/*",
+      "node_modules/better-sqlite3/**/*"
     ],
     "win": {
       "target": "nsis"
@@ -41,6 +44,7 @@
     "@fontsource/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/rajdhani": "^5.2.7",
+    "better-sqlite3": "^12.6.2",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.0",
     "framer-motion": "^11.0.0",
@@ -54,6 +58,8 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@electron/rebuild": "^4.0.3",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/uuid": "^10.0.0",

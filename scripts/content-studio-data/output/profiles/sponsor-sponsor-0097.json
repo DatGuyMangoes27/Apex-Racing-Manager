@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0097",
+  "name": "Apex Dynamics",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "UK",
+  "description": "Precision peripherals for peak performance.",
+  "story": "Apex Dynamics believes that the same precision engineering that drives success in esports can translate to the high-stakes world of motorsport. With a focus on innovation and peak performance, they seek partnerships that showcase cutting-edge technology and a relentless pursuit of victory. They see motorsport as the ultimate testing ground for reaction time and precision, mirroring the demands of competitive gaming.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0097.png"
+}

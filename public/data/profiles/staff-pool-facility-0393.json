@@ -1,0 +1,22 @@
+{
+  "name": "Elise Dubois",
+  "nationality": "Belgian",
+  "age": 25,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Elise's passion for motorsport ignited during her childhood visits to Spa-Francorchamps. She pursued a degree in mechanical engineering, specializing in simulation and modeling. Her thesis on optimizing vehicle dynamics through advanced simulation techniques caught the eye of a Formula 3 team, where she gained invaluable experience in refining simulator setups for driver training and race strategy development.\n\nElise thrives on the challenge of translating real-world physics into the digital realm. She meticulously analyzes telemetry data, ensuring the simulator accurately reflects the car's behavior. Her approach blends technical expertise with a keen understanding of driver feedback, resulting in highly realistic and effective training environments. What sets Elise apart is her ability to quickly adapt to new simulation platforms and her knack for identifying subtle nuances that can significantly impact performance.\n\nBeyond her technical skills, Elise is an excellent communicator, capable of explaining complex concepts in a clear and concise manner. She has a proven track record of collaborating effectively with drivers, engineers, and strategists to deliver tangible performance gains.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often tied back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Elise is of average height with a focused, analytical gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down simulator feedback and technical observations.",
+    "Has a peculiar habit of tapping her pen rhythmically when deeply focused on debugging a simulation issue.",
+    "Insists on calibrating the simulator's force feedback settings herself before each driver session."
+  ]
+}

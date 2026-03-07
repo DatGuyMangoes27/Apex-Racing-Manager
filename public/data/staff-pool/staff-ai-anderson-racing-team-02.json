@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 60,
+  "gender": "male",
+  "role": "technical_director",
+  "bio": "Mihai's journey into motorsport began unexpectedly, fixing tractors on his family's farm. His innate understanding of mechanics led him to a local rally team, where he quickly rose through the ranks. Mihai spent years honing his skills, learning from the best engineers in the business before joining Anderson Racing. He believes in a data-driven approach, meticulously analyzing every aspect of the car's performance. He's known for his relentless pursuit of perfection and his ability to identify and solve even the most complex technical challenges.\n\nMihai's meticulous nature and unwavering commitment to excellence set him apart. He is dedicated to creating a high-performance team by fostering a culture of continuous improvement and innovation. He sees his role as more than just managing the technical aspects; he aims to inspire and mentor the next generation of motorsport engineers. His demanding nature is tempered by his genuine desire to see his team succeed, making him a respected, if sometimes feared, figure in the paddock.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed salt-and-pepper mustache",
+    "description": "A sturdy man with a focused gaze and a permanent crease between his eyebrows."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen, even to lunch.",
+    "Has a habit of tapping his fingers on the table when deep in thought.",
+    "Insists on drinking black coffee, brewed precisely at 92 degrees Celsius."
+  ]
+}

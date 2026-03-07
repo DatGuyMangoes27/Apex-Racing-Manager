@@ -25,6 +25,37 @@ export type SocialEventType =
   | 'business_networking'
   | 'media_appearance'
   | 'interview'
+  // New event types
+  | 'art_exhibition'
+  | 'casino_night'
+  | 'drivers_dinner'
+  | 'beach_party'
+  | 'wine_tasting'
+  | 'charity_auction'
+  | 'tech_summit'
+  | 'private_jet_trip'
+  | 'documentary_premiere'
+  | 'book_launch'
+
+export type AttendanceTier = 'standard' | 'vip' | 'vip_table'
+
+export type SeasonTrigger = 'pre_season' | 'mid_season' | 'post_season' | 'race_week' | 'any'
+
+export interface TierOptions {
+  vipCostMultiplier: number       // e.g. 2 = 2x base cost for VIP
+  tableCostMultiplier: number     // e.g. 5 = 5x base cost for VIP table
+  plusOneCost: number              // extra cost per guest
+  maxPlusOnes: number             // 1 for standard/VIP, 3-4 for table
+  vipMaxPlusOnes: number          // plus ones allowed at VIP tier
+  tableMaxPlusOnes: number        // plus ones allowed at table tier
+}
+
+export interface SeasonalContext {
+  seasonTrigger?: SeasonTrigger
+  trackContext?: string[]         // Track IDs that boost this event's likelihood
+  resultTrigger?: 'after_win' | 'after_podium' | 'after_championship'
+  minReputationForInvite?: number // Reputation needed for NPC to invite you
+}
 
 export interface SocialEvent {
   id: string
@@ -58,9 +89,19 @@ export interface SocialEvent {
   // Attendees
   expectedAttendeeTypes: string[]
   vipGuests?: string[]
+  
+  // Attendance tier & plus-one (set when scheduling)
+  attendanceTier?: AttendanceTier
+  invitedContactIds?: string[]    // Contact IDs the player is bringing
+  
+  // Tier & invite configuration (from template)
+  tierOptions?: TierOptions
+  
+  // Seasonal / contextual generation
+  seasonalContext?: SeasonalContext
 }
 
-export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
+export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date' | 'attendanceTier' | 'invitedContactIds'>[] = [
   {
     type: 'gala',
     name: 'Racing Industry Gala',
@@ -78,7 +119,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 10,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['team_owner', 'sponsor_exec', 'celebrity', 'driver']
+    expectedAttendeeTypes: ['team_owner', 'sponsor_exec', 'celebrity', 'driver'],
+    tierOptions: { vipCostMultiplier: 2.5, tableCostMultiplier: 6, plusOneCost: 3000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 45 }
   },
   {
     type: 'charity_dinner',
@@ -95,7 +138,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 15,
       stressChange: -5
     },
-    expectedAttendeeTypes: ['team_owner', 'business_mogul', 'celebrity', 'politician']
+    expectedAttendeeTypes: ['team_owner', 'business_mogul', 'celebrity', 'politician'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 5, plusOneCost: 5000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 30 }
   },
   {
     type: 'sponsor_reception',
@@ -113,7 +158,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 5,
       stressChange: 10
     },
-    expectedAttendeeTypes: ['sponsor_exec', 'business_mogul', 'banker']
+    expectedAttendeeTypes: ['sponsor_exec', 'business_mogul', 'banker'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 1000, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'mid_season', minReputationForInvite: 20 }
   },
   {
     type: 'paddock_party',
@@ -131,7 +178,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 5,
       stressChange: -10
     },
-    expectedAttendeeTypes: ['driver', 'team_owner', 'journalist', 'athlete']
+    expectedAttendeeTypes: ['driver', 'team_owner', 'journalist', 'athlete'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 3, plusOneCost: 500, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'race_week', minReputationForInvite: 10 }
   },
   {
     type: 'awards_ceremony',
@@ -149,7 +198,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 30,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['driver', 'team_owner', 'celebrity', 'journalist']
+    expectedAttendeeTypes: ['driver', 'team_owner', 'celebrity', 'journalist'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 5, plusOneCost: 2000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'post_season', minReputationForInvite: 35 }
   },
   {
     type: 'yacht_party',
@@ -168,7 +219,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 15,
       stressChange: -15
     },
-    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'team_owner']
+    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 8000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 2 },
+    seasonalContext: { seasonTrigger: 'race_week', trackContext: ['monaco', 'monte_carlo'], minReputationForInvite: 60 }
   },
   {
     type: 'networking_dinner',
@@ -186,7 +239,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 0,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['business_mogul', 'banker', 'sponsor_exec', 'lawyer']
+    expectedAttendeeTypes: ['business_mogul', 'banker', 'sponsor_exec', 'lawyer'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 3000, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 25 }
   },
   {
     type: 'championship_celebration',
@@ -205,7 +260,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 20,
       stressChange: -20
     },
-    expectedAttendeeTypes: ['driver', 'team_owner', 'sponsor_exec', 'celebrity', 'journalist']
+    expectedAttendeeTypes: ['driver', 'team_owner', 'sponsor_exec', 'celebrity', 'journalist'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 3, plusOneCost: 10000, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 6 },
+    seasonalContext: { resultTrigger: 'after_championship', minReputationForInvite: 50 }
   },
   {
     type: 'product_launch',
@@ -222,7 +279,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 15,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['sponsor_exec', 'journalist', 'celebrity', 'business_mogul']
+    expectedAttendeeTypes: ['sponsor_exec', 'journalist', 'celebrity', 'business_mogul'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 0, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 2 },
+    seasonalContext: { seasonTrigger: 'mid_season', minReputationForInvite: 20 }
   },
   {
     type: 'charity_gala',
@@ -240,7 +299,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 10,
       stressChange: 0
     },
-    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'team_owner']
+    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 5, plusOneCost: 7500, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 30 }
   },
   {
     type: 'fashion_show',
@@ -259,7 +320,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 15,
       stressChange: -5
     },
-    expectedAttendeeTypes: ['celebrity', 'business_mogul', 'journalist']
+    expectedAttendeeTypes: ['celebrity', 'business_mogul', 'journalist'],
+    tierOptions: { vipCostMultiplier: 2.5, tableCostMultiplier: 5, plusOneCost: 5000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'mid_season', minReputationForInvite: 45 }
   },
   {
     type: 'team_celebration',
@@ -278,7 +341,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 10,
       stressChange: -15
     },
-    expectedAttendeeTypes: ['driver', 'team_owner']
+    expectedAttendeeTypes: ['driver', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 3, plusOneCost: 1000, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 4 },
+    seasonalContext: { resultTrigger: 'after_win', minReputationForInvite: 10 }
   },
   {
     type: 'sponsor_dinner',
@@ -296,7 +361,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 0,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['sponsor_exec', 'business_mogul', 'banker']
+    expectedAttendeeTypes: ['sponsor_exec', 'business_mogul', 'banker'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 2000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'mid_season', minReputationForInvite: 20 }
   },
   {
     type: 'business_networking',
@@ -313,7 +380,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 5,
       stressChange: 5
     },
-    expectedAttendeeTypes: ['business_mogul', 'banker', 'sponsor_exec', 'lawyer', 'team_owner']
+    expectedAttendeeTypes: ['business_mogul', 'banker', 'sponsor_exec', 'lawyer', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 1000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 15 }
   },
   {
     type: 'media_appearance',
@@ -330,7 +399,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 35,
       stressChange: 10
     },
-    expectedAttendeeTypes: ['journalist', 'celebrity']
+    expectedAttendeeTypes: ['journalist', 'celebrity'],
+    tierOptions: { vipCostMultiplier: 1, tableCostMultiplier: 1, plusOneCost: 0, maxPlusOnes: 0, vipMaxPlusOnes: 0, tableMaxPlusOnes: 0 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 25 }
   },
   {
     type: 'interview',
@@ -347,7 +418,9 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       mediaExposure: 25,
       stressChange: 10
     },
-    expectedAttendeeTypes: ['journalist']
+    expectedAttendeeTypes: ['journalist'],
+    tierOptions: { vipCostMultiplier: 1, tableCostMultiplier: 1, plusOneCost: 0, maxPlusOnes: 0, vipMaxPlusOnes: 0, tableMaxPlusOnes: 0 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 15 }
   },
   {
     type: 'season_opening',
@@ -365,7 +438,214 @@ export const SOCIAL_EVENT_TEMPLATES: Omit<SocialEvent, 'id' | 'date'>[] = [
       partnerHappinessBonus: 10,
       stressChange: 0
     },
-    expectedAttendeeTypes: ['driver', 'team_owner', 'sponsor_exec', 'journalist', 'celebrity']
+    expectedAttendeeTypes: ['driver', 'team_owner', 'sponsor_exec', 'journalist', 'celebrity'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 5, plusOneCost: 5000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'pre_season', minReputationForInvite: 20 }
+  },
+  // ============================================
+  // NEW EVENT TYPES
+  // ============================================
+  {
+    type: 'art_exhibition',
+    name: 'Gallery Opening',
+    description: 'Exclusive preview of a motorsport-themed art exhibition',
+    cost: 3000,
+    isHosting: false,
+    dresscode: 'formal',
+    inviteOnly: false,
+    effects: {
+      publicImageChange: 10,
+      networkingOpportunities: 20,
+      sponsorImpressions: 10,
+      mediaExposure: 15,
+      partnerHappinessBonus: 12,
+      stressChange: -8
+    },
+    expectedAttendeeTypes: ['celebrity', 'business_mogul', 'politician'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 2000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 25 }
+  },
+  {
+    type: 'casino_night',
+    name: 'High Roller Casino Night',
+    description: 'Exclusive casino event where fortunes are won and lost',
+    cost: 10000,
+    isHosting: false,
+    dresscode: 'black_tie',
+    inviteOnly: true,
+    minimumReputation: 40,
+    effects: {
+      publicImageChange: 8,
+      networkingOpportunities: 30,
+      sponsorImpressions: 15,
+      mediaExposure: 10,
+      partnerHappinessBonus: 8,
+      stressChange: 10
+    },
+    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'banker', 'politician'],
+    tierOptions: { vipCostMultiplier: 3, tableCostMultiplier: 8, plusOneCost: 5000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'any', trackContext: ['monaco', 'monte_carlo'], minReputationForInvite: 35 }
+  },
+  {
+    type: 'drivers_dinner',
+    name: 'Drivers\' Private Dinner',
+    description: 'Intimate dinner with rival and fellow drivers — friendships or rivalries deepen',
+    cost: 2000,
+    isHosting: false,
+    dresscode: 'casual',
+    inviteOnly: true,
+    effects: {
+      publicImageChange: 3,
+      networkingOpportunities: 15,
+      sponsorImpressions: 5,
+      mediaExposure: 5,
+      stressChange: -5
+    },
+    expectedAttendeeTypes: ['driver', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 3, plusOneCost: 1000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'race_week', minReputationForInvite: 10 }
+  },
+  {
+    type: 'beach_party',
+    name: 'Summer Beach Party',
+    description: 'Casual beachside celebration — great for stress relief and romantic encounters',
+    cost: 2000,
+    isHosting: false,
+    dresscode: 'casual',
+    inviteOnly: false,
+    effects: {
+      publicImageChange: 5,
+      networkingOpportunities: 20,
+      sponsorImpressions: 5,
+      mediaExposure: 10,
+      partnerHappinessBonus: 15,
+      stressChange: -20
+    },
+    expectedAttendeeTypes: ['driver', 'celebrity', 'athlete', 'journalist'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 1000, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'mid_season', minReputationForInvite: 10 }
+  },
+  {
+    type: 'wine_tasting',
+    name: 'Vineyard Tour & Tasting',
+    description: 'Exclusive vineyard tour with sponsors and industry leaders',
+    cost: 4000,
+    isHosting: false,
+    dresscode: 'business',
+    inviteOnly: true,
+    effects: {
+      publicImageChange: 5,
+      networkingOpportunities: 25,
+      sponsorImpressions: 30,
+      mediaExposure: 5,
+      partnerHappinessBonus: 10,
+      stressChange: -10
+    },
+    expectedAttendeeTypes: ['sponsor_exec', 'business_mogul', 'celebrity'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 2500, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 25 }
+  },
+  {
+    type: 'charity_auction',
+    name: 'Motorsport Charity Auction',
+    description: 'Bid on exclusive items and experiences for a good cause',
+    cost: 20000,
+    isHosting: false,
+    dresscode: 'black_tie',
+    inviteOnly: false,
+    effects: {
+      publicImageChange: 18,
+      networkingOpportunities: 25,
+      sponsorImpressions: 20,
+      mediaExposure: 20,
+      partnerHappinessBonus: 8,
+      stressChange: 0
+    },
+    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 5, plusOneCost: 10000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 4 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 35 }
+  },
+  {
+    type: 'tech_summit',
+    name: 'Motorsport Tech Summit',
+    description: 'Industry conference showcasing the latest in racing technology and innovation',
+    cost: 5000,
+    isHosting: false,
+    dresscode: 'business',
+    inviteOnly: false,
+    effects: {
+      publicImageChange: 8,
+      networkingOpportunities: 35,
+      sponsorImpressions: 25,
+      mediaExposure: 15,
+      stressChange: 5
+    },
+    expectedAttendeeTypes: ['team_owner', 'sponsor_exec', 'journalist', 'business_mogul'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 3000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'pre_season', minReputationForInvite: 20 }
+  },
+  {
+    type: 'private_jet_trip',
+    name: 'Private Jet Weekend',
+    description: 'Exclusive weekend getaway with VIPs aboard a private jet — ultimate networking',
+    cost: 50000,
+    isHosting: false,
+    dresscode: 'casual',
+    inviteOnly: true,
+    minimumReputation: 65,
+    effects: {
+      publicImageChange: 15,
+      networkingOpportunities: 45,
+      sponsorImpressions: 30,
+      mediaExposure: 10,
+      partnerHappinessBonus: 20,
+      stressChange: -15
+    },
+    expectedAttendeeTypes: ['business_mogul', 'celebrity', 'politician', 'banker'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 2, plusOneCost: 15000, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 2 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 60 }
+  },
+  {
+    type: 'documentary_premiere',
+    name: 'Motorsport Documentary Premiere',
+    description: 'Red carpet screening of a new motorsport documentary',
+    cost: 2000,
+    isHosting: false,
+    dresscode: 'formal',
+    inviteOnly: false,
+    effects: {
+      publicImageChange: 12,
+      networkingOpportunities: 15,
+      sponsorImpressions: 10,
+      mediaExposure: 30,
+      partnerHappinessBonus: 8,
+      stressChange: -5
+    },
+    expectedAttendeeTypes: ['journalist', 'driver', 'celebrity', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 2, tableCostMultiplier: 4, plusOneCost: 1500, maxPlusOnes: 1, vipMaxPlusOnes: 1, tableMaxPlusOnes: 3 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 20 }
+  },
+  {
+    type: 'book_launch',
+    name: 'Your Memoir Launch',
+    description: 'Launch party for your autobiography — massive media attention',
+    cost: 30000,
+    isHosting: true,
+    hostingCostMultiplier: 1,
+    dresscode: 'formal',
+    inviteOnly: false,
+    minimumReputation: 60,
+    effects: {
+      publicImageChange: 25,
+      networkingOpportunities: 20,
+      sponsorImpressions: 15,
+      mediaExposure: 45,
+      partnerHappinessBonus: 10,
+      stressChange: 10
+    },
+    expectedAttendeeTypes: ['journalist', 'celebrity', 'business_mogul', 'team_owner'],
+    tierOptions: { vipCostMultiplier: 1.5, tableCostMultiplier: 3, plusOneCost: 0, maxPlusOnes: 1, vipMaxPlusOnes: 2, tableMaxPlusOnes: 6 },
+    seasonalContext: { seasonTrigger: 'any', minReputationForInvite: 50 }
   }
 ]
 
@@ -478,6 +758,67 @@ export const POSSIBLE_EVENT_OUTCOMES: Record<SocialEventType, EventOutcome[]> = 
     { type: 'positive', description: 'Revealed team ambitions that excited the fanbase', effects: { reputationChange: 5, mediaAttention: 10 } },
     { type: 'neutral', description: 'Professional interview with standard talking points', effects: { reputationChange: 1, mediaAttention: 3 } },
     { type: 'negative', description: 'Accidentally leaked confidential team strategy', effects: { reputationChange: -10, mediaAttention: 20 } }
+  ],
+  // New event type outcomes
+  art_exhibition: [
+    { type: 'positive', description: 'A renowned collector praised your taste and offered a private viewing', effects: { newContact: { type: 'celebrity', name: 'Art Collector' }, reputationChange: 5 } },
+    { type: 'positive', description: 'Your partner loved the evening — a perfect date night', effects: { partnerReaction: 12, reputationChange: 3 } },
+    { type: 'neutral', description: 'Enjoyed the art and had pleasant conversations', effects: { reputationChange: 2 } },
+    { type: 'negative', description: 'Overheard making an uninformed comment about a piece', effects: { reputationChange: -3 } }
+  ],
+  casino_night: [
+    { type: 'positive', description: 'Hit a massive winning streak — walked away with a fortune', effects: { reputationChange: 8, sponsorLead: { company: 'Lucky Break Corp', value: 200000 } } },
+    { type: 'positive', description: 'Impressed a high-roller who wants to sponsor your team', effects: { newContact: { type: 'business_mogul', name: 'Casino Mogul' }, sponsorLead: { company: 'Casino Group', value: 500000 } } },
+    { type: 'neutral', description: 'Broke even and had a glamorous evening', effects: { reputationChange: 2 } },
+    { type: 'negative', description: 'Lost heavily and photos of your frustration went viral', effects: { reputationChange: -8, mediaAttention: 15 } }
+  ],
+  drivers_dinner: [
+    { type: 'positive', description: 'Bonded deeply with a rival driver — mutual respect grew', effects: { reputationChange: 5 } },
+    { type: 'positive', description: 'A driver shared insider knowledge about a competitor team', effects: { newContact: { type: 'driver', name: 'Friendly Rival' }, reputationChange: 3 } },
+    { type: 'neutral', description: 'Pleasant evening swapping racing stories', effects: { reputationChange: 1 } },
+    { type: 'negative', description: 'A heated argument over racing incidents soured the mood', effects: { reputationChange: -4 } }
+  ],
+  beach_party: [
+    { type: 'positive', description: 'Made great new friends in a relaxed setting — stress melted away', effects: { reputationChange: 3, newContact: { type: 'celebrity', name: 'Lifestyle Influencer' } } },
+    { type: 'positive', description: 'Your plus-one was the life of the party', effects: { partnerReaction: 15, reputationChange: 4 } },
+    { type: 'neutral', description: 'A fun, relaxing day by the sea', effects: { reputationChange: 1 } },
+    { type: 'negative', description: 'Paparazzi caught unflattering beach photos', effects: { reputationChange: -5, mediaAttention: 20 } }
+  ],
+  wine_tasting: [
+    { type: 'positive', description: 'A sponsor exec loved your wine knowledge — partnership discussions followed', effects: { sponsorLead: { company: 'Luxury Wine Group', value: 400000 }, reputationChange: 5 } },
+    { type: 'positive', description: 'The vineyard owner offered a private label collaboration', effects: { newContact: { type: 'business_mogul', name: 'Vineyard Owner' }, reputationChange: 3 } },
+    { type: 'neutral', description: 'A refined afternoon among industry peers', effects: { reputationChange: 2 } },
+    { type: 'negative', description: 'Overindulged and said something regrettable', effects: { reputationChange: -4 } }
+  ],
+  charity_auction: [
+    { type: 'positive', description: 'Your winning bid on a rare item made headlines — great publicity', effects: { reputationChange: 15, mediaAttention: 20 } },
+    { type: 'positive', description: 'A billionaire was impressed by your generosity and offered introductions', effects: { newContact: { type: 'business_mogul', name: 'Auction Billionaire' }, reputationChange: 8 } },
+    { type: 'neutral', description: 'Contributed to a good cause and enjoyed the evening', effects: { reputationChange: 5 } },
+    { type: 'negative', description: 'Got into a bidding war and overpaid dramatically', effects: { reputationChange: -2 } }
+  ],
+  tech_summit: [
+    { type: 'positive', description: 'Your keynote on team innovation was the talk of the summit', effects: { reputationChange: 10, mediaAttention: 15 } },
+    { type: 'positive', description: 'Connected with a tech firm interested in sponsoring cutting-edge racing tech', effects: { sponsorLead: { company: 'Tech Innovation Labs', value: 800000 }, reputationChange: 5 } },
+    { type: 'neutral', description: 'Learned about emerging technologies and made some contacts', effects: { reputationChange: 2 } },
+    { type: 'negative', description: 'Asked a basic question that made you look out of touch', effects: { reputationChange: -3 } }
+  ],
+  private_jet_trip: [
+    { type: 'positive', description: 'Sealed a major deal at 40,000 feet — the ultimate power move', effects: { sponsorLead: { company: 'Elite Partners', value: 2000000 }, reputationChange: 10 } },
+    { type: 'positive', description: 'Built lifelong connections with some of the most powerful people in the world', effects: { newContact: { type: 'business_mogul', name: 'Billionaire Investor' }, reputationChange: 8 } },
+    { type: 'neutral', description: 'A luxurious weekend with interesting company', effects: { reputationChange: 5 } },
+    { type: 'negative', description: 'Social media leaked photos of the extravagant trip, drawing public criticism', effects: { reputationChange: -10, mediaAttention: 25 } }
+  ],
+  documentary_premiere: [
+    { type: 'positive', description: 'The documentary featured your team prominently — great exposure', effects: { reputationChange: 10, mediaAttention: 25 } },
+    { type: 'positive', description: 'A producer approached you about a dedicated series on your team', effects: { newContact: { type: 'celebrity', name: 'TV Producer' }, reputationChange: 7 } },
+    { type: 'neutral', description: 'Enjoyed the film and mingled with motorsport personalities', effects: { reputationChange: 3 } },
+    { type: 'negative', description: 'The documentary contained unflattering footage of your team', effects: { reputationChange: -5, mediaAttention: 15 } }
+  ],
+  book_launch: [
+    { type: 'positive', description: 'Your memoir became an instant bestseller — media frenzy in the best way', effects: { reputationChange: 20, mediaAttention: 40 } },
+    { type: 'positive', description: 'Critics praised your honesty — endorsement offers flooded in', effects: { sponsorLead: { company: 'Publishing Royalties', value: 500000 }, reputationChange: 12 } },
+    { type: 'neutral', description: 'Respectable launch with good attendance and decent reviews', effects: { reputationChange: 5, mediaAttention: 10 } },
+    { type: 'negative', description: 'A controversial chapter leaked early, causing backlash before the event', effects: { reputationChange: -10, mediaAttention: 30 } }
   ]
 }
 

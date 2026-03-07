@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0187",
+  "name": "Élan Vital Lubricants",
+  "category": "oil_fuel",
+  "tier": "entry",
+  "country": "France",
+  "description": "High-performance synthetic lubricants for demanding engines.",
+  "story": "Élan Vital Lubricants is a family-owned French company dedicated to engineering excellence in lubrication. We believe in supporting young talent and pushing the boundaries of performance. Our sponsorship aims to demonstrate the reliability and performance of our products under extreme racing conditions.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10,
+    "nationalities": [
+      "France"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "approach_only",
+  "imagePath": "logos/sponsors/sponsor-0187.png"
+}

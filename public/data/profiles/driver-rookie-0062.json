@@ -1,0 +1,27 @@
+{
+  "biography": "Kimi Lopez, a name whispered with anticipation in the racing paddocks, hails from the windswept coast of County Clare, Ireland. Her journey began not on the asphalt, but on the treacherous, muddy hills of her family's sheep farm. The agility and precision she honed navigating those slopes in her beat-up quad bike translated surprisingly well to karting. She wasn't an instant prodigy; early races were marked by more spins than podiums. However, a defining moment came during the Irish National Karting Championship. After a collision took out half the field, Kimi, starting from the back, clawed her way to second place with a relentless, defensive driving style, showcasing her uncanny ability to protect her position. Now, at 20, Kimi races as an independent, a rarity in the increasingly corporate world of motorsport. She's a rising star, battling for recognition and funding, fueled by a fierce determination to prove that talent, not just money, can pave the road to victory. Every dent on her self-maintained car is a testament to her sacrifices and struggles, a visual representation of her climb.",
+  "drivingStyle": "Kimi's driving style is best described as 'defensive masterclass'. She's not the flashiest driver, rarely attempting daring overtakes unless absolutely necessary. Instead, she excels at positioning her car in the optimal defensive line, making it incredibly difficult for opponents to pass. She's a master of braking late and precisely, shutting down any potential overtaking opportunities. Tire management is another strength; she nurse's her tires, maintaining consistent lap times even as others begin to fade. Under pressure, she rarely cracks, her focus sharpening as the stakes rise, turning her defensive driving into an impenetrable wall.",
+  "rivalries": [
+    {
+      "name": "Alessandro Rossi",
+      "reason": "Rossi, a well-funded Italian driver, often mocks Kimi's independent status and perceived lack of resources, creating a fierce on-track rivalry. Kimi finds Rossi's arrogance infuriating."
+    },
+    {
+      "name": "Zara Khan",
+      "reason": "Khan and Lopez have clashed multiple times due to aggressive on-track maneuvers. Khan's 'win-at-all-costs' attitude often leads to collisions and heated exchanges with the more defensively minded Lopez."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Tanaka, a rising Japanese star, frequently challenges Kimi's defensive driving style, claiming it's 'unsportsmanlike'. Their contrasting philosophies often result in strategic battles on the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded green wristband her grandmother gave her before every race.",
+    "Listens to traditional Irish folk music to calm her nerves before getting into the car.",
+    "Polishes her own steering wheel with a special chamois cloth before each session, believing it improves her grip."
+  ],
+  "nickname": "The Clare Barrier",
+  "famousQuote": "\"They can have the money, the fancy cars, the sponsors... but they can't have my grit.\"",
+  "careerHighlight": "Securing a surprise podium finish at the Silverstone Grand Prix in torrential rain, skillfully defending against faster, more experienced drivers in the final laps.",
+  "careerLowPoint": "Crashing out on the first lap of her home race in Dublin due to a mechanical failure, shattering her hopes of a strong performance in front of her family and supporters."
+}

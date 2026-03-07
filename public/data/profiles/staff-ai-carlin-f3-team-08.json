@@ -1,0 +1,22 @@
+{
+  "name": "Lieke Vermeer",
+  "nationality": "Dutch",
+  "age": 40,
+  "gender": "female",
+  "role": "performance_engineer",
+  "bio": "Lieke's journey into motorsport began with a childhood fascination for Formula 1, captivated by the technical complexity and the sheer speed. She honed her skills at Delft University of Technology, focusing on aerodynamics and vehicle dynamics. Post-graduation, she joined a smaller racing team before making her mark at Carlin. \n\nLieke has a knack for seeing the bigger picture, quickly identifying areas for improvement across the entire car setup. Her approach is data-driven, but she also trusts her intuition, often suggesting unconventional solutions that yield surprisingly positive results. She's known for her tireless work ethic and her ability to thrive under pressure, making her a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back into a practical ponytail.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Lieke has a focused gaze and a determined expression, with fine lines around her eyes hinting at long hours spent analyzing data."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations and sketches.",
+    "Has a habit of pacing when deep in thought, often muttering technical jargon under her breath.",
+    "Insists on drinking a strong cup of black coffee before every race."
+  ]
+}

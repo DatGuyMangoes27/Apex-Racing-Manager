@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Tariq Al-Mansouri",
+  "nationality": "Emirati",
+  "age": 63,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dr. Tariq Al-Mansouri is a professor of Mechanical Engineering at Khalifa University in Abu Dhabi, specializing in fluid dynamics and aerodynamics. He's a respected figure in Emirati academia, known for his rigorous teaching style and groundbreaking research on wind tunnel technology. While possessing a sharp, sometimes cynical, outlook on the world, he masks it with a humble demeanor that often belies a sense of entitlement stemming from his academic achievements. He is a product of the old guard, and tends to be quite controlling in most environments.\n\nA racing driver might cross paths with Dr. Al-Mansouri through university-sponsored motorsport engineering programs or during guest lectures he gives to aspiring engineers. He also serves on the advisory board for several motorsport-related initiatives within the UAE, providing valuable technical insights and access to university resources. He's difficult to impress, but if you can demonstrate genuine technical aptitude, he might take an interest.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Dr. Al-Mansouri has a distinguished air, carrying himself with the confidence of a seasoned academic. His face is lined with the wisdom of experience, framed by stylish glasses."
+  },
+  "connectionToMotorsport": "Dr. Al-Mansouri consults with several Formula 1 teams on aerodynamics, leveraging his expertise in fluid dynamics. He also runs a small but well-regarded motorsport engineering program at Khalifa University.",
+  "meetingContext": "The player might meet Dr. Al-Mansouri while attending a seminar on motorsport engineering at Khalifa University or during a networking event hosted by a Formula 1 team in Abu Dhabi.",
+  "conversationTopics": [
+    "Aerodynamics",
+    "The future of motorsport engineering",
+    "The importance of education and research",
+    "The latest developments in wind tunnel technology",
+    "His Polo team"
+  ],
+  "canHelp": [
+    "Provide access to university resources, such as wind tunnels and simulation software.",
+    "Offer technical advice and mentorship on vehicle dynamics and aerodynamics.",
+    "Introduce the player to potential sponsors and engineering contacts within the motorsport industry."
+  ],
+  "personality_summary": "A controlling yet cynical professor with hidden entitlement, who may be convinced to help talented individuals."
+}

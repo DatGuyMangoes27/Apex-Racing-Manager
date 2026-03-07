@@ -1,0 +1,22 @@
+{
+  "name": "Nikola Petrović",
+  "nationality": "Serbian",
+  "age": 30,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Nikola's fascination with motorsport began as a child, watching Formula 1 races with his father. He pursued a degree in Mechanical Engineering, specializing in simulation and modelling. After graduating, he honed his skills working for a local automotive company before transitioning to Kart Academy. Nikola is driven by a desire to push the boundaries of simulator technology, constantly seeking innovative solutions to improve driver training and vehicle development.\n\nAt Kart Academy, Nikola is known for his meticulous approach. He believes that a simulator is only as good as its calibration and the data it provides. He spends hours tweaking settings, analyzing telemetry, and collaborating with drivers to ensure the simulator provides the most realistic and effective training environment possible. He's particularly skilled at creating custom force feedback profiles, allowing drivers to feel even the subtlest changes in grip and balance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Nikola is of medium height with a lean, athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas, even during lunch.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Refuses to drink anything but strong Serbian coffee before noon."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bruce 'Bluey' McKenzie",
+  "nationality": "Australian",
+  "age": 60,
+  "gender": "male",
+  "role": "head_of_operations",
+  "bio": "Bruce, affectionately known as 'Bluey' around the paddock, is a motorsport veteran with a no-nonsense approach forged over decades in the Australian racing scene. He began his career as a mechanic, quickly rising through the ranks thanks to his sharp technical mind and uncanny ability to diagnose problems others missed. A stint managing a V8 Supercars team solidified his leadership skills before ProSport Racing lured him in to oversee their operations.\n\nBluey is a firm believer in meticulous preparation and rigorous execution. He demands the best from his team, pushing them to their limits but always backing them up when the pressure is on. His old-school style and unwavering commitment to excellence have earned him the respect of even the most seasoned professionals. He's not afraid to get his hands dirty and is often found in the garage late at night, ensuring everything is perfect before race day.\n\nWhat sets Bluey apart is his ability to blend technical expertise with a deep understanding of team dynamics. He's a master motivator, knowing exactly how to get the best out of each individual under his command. While his methods may be demanding, his results speak for themselves.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed grey beard",
+    "description": "A stocky man with weathered features and a perpetually serious expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out multi-tool in his pocket.",
+    "Has a habit of tapping his pen on the table when thinking.",
+    "Refuses to use computers for anything beyond basic email."
+  ]
+}

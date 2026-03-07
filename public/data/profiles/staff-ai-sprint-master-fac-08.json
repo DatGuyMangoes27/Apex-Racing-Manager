@@ -1,0 +1,22 @@
+{
+  "name": "Raúl Benavides",
+  "nationality": "Chilean",
+  "age": 33,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Raúl's journey into motorsport began with a childhood fascination with aerodynamics, sparked by watching Formula 1 races on a small, grainy television in his hometown. He pursued a degree in mechanical engineering, specializing in fluid dynamics, and landed an internship at a small wind tunnel facility, where he quickly proved his aptitude for the work. He joined Sprint Masters after several years honing his skills with smaller teams, drawn by their commitment to innovation. \n\nRaúl approaches his role with a meticulous eye for detail, believing that even the smallest adjustments in the wind tunnel can translate into significant gains on the track. He's known for his ability to quickly identify and troubleshoot issues, and his collaborative spirit makes him a valuable asset to the team. What sets Raúl apart is his knack for thinking outside the box, often suggesting unconventional testing methods that lead to breakthroughs.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Raúl is of average height with a lean build and a focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to classical music while calibrating the wind tunnel."
+  ]
+}

@@ -19,6 +19,7 @@ import {
   generateCommentaryStream,
   generateCoCommentaryStream
 } from './scriptGenerator'
+import { saveCommentaryMention, type CommentaryEntityRef } from '../db/database'
 import { synthesizeSpeech, synthesizeSpeechStreaming } from './voice'
 import { playAudio, playAudioAndWait, getQueueLength as getAudioQueueLength, setVoiceBoost } from './audio'
 import { BrowserWindow } from 'electron'
@@ -75,6 +76,91 @@ class QueueManager {
   // Streaming state
   private streamingSessionId = 0
   private useStreaming = true  // Enable streaming by default for live events
+
+  private persistMention(
+    event: CommentaryEvent,
+    speaker: 'lead' | 'co',
+    script: string,
+    source: string
+  ): void {
+    if (!script || script.trim().length < 8) return
+
+    const context = event.context as EventContext & {
+      currentRound?: number
+      seriesName?: string
+      sessionType?: string
+      playerName?: string
+      teamName?: string
+      rivalName?: string
+      overtakenDriver?: string
+      championshipLeader?: string
+      trackName?: string
+    }
+
+    const entities: CommentaryEntityRef[] = []
+    const pushEntity = (entity: CommentaryEntityRef): void => {
+      if (!entity.id || entities.some((existing) => existing.type === entity.type && existing.id === entity.id)) {
+        return
+      }
+      entities.push(entity)
+    }
+
+    if (context.playerName) pushEntity({ type: 'driver', id: context.playerName, name: context.playerName })
+    if (context.teamName) pushEntity({ type: 'team', id: context.teamName, name: context.teamName })
+    if (context.rivalName) pushEntity({ type: 'driver', id: context.rivalName, name: context.rivalName })
+    if (context.overtakenDriver) pushEntity({ type: 'driver', id: context.overtakenDriver, name: context.overtakenDriver })
+    if (context.championshipLeader) pushEntity({ type: 'driver', id: context.championshipLeader, name: context.championshipLeader })
+    if (context.trackName) pushEntity({ type: 'track', id: context.trackName, name: context.trackName })
+    if (context.seriesName) pushEntity({ type: 'series', id: context.seriesName, name: context.seriesName })
+
+    const seasonId = context.seriesName || context.sessionType || 'unknown'
+    const round = typeof context.currentRound === 'number' ? context.currentRound : undefined
+    const confidence = event.priority === 'high' ? 0.9 : event.priority === 'medium' ? 0.8 : 0.7
+
+    const result = saveCommentaryMention({
+      seasonId,
+      round,
+      sessionType: context.sessionType,
+      eventType: event.type,
+      speaker,
+      script: script.trim(),
+      entities,
+      claimType: event.type,
+      confidence,
+      source,
+    })
+
+    if (!result.success) {
+      logCommentaryDecision(
+        'MEMORY_MENTION_SAVE_FAILED',
+        `Failed to persist mention for ${event.type}`,
+        {
+          eventType: event.type,
+          speaker,
+          source,
+          error: result.error,
+        },
+        'warning'
+      )
+      console.warn(`[QueueManager] Failed to persist commentary mention (${event.type}): ${result.error}`)
+      return
+    }
+
+    logCommentaryDecision(
+      'MEMORY_MENTION_SAVED',
+      `Persisted mention for ${event.type}`,
+      {
+        mentionId: result.id,
+        eventType: event.type,
+        speaker,
+        source,
+        entityCount: entities.length,
+        seasonId,
+        round,
+      },
+      'info'
+    )
+  }
   
   constructor() {
     this.liveStream = new LiveActionStream()
@@ -237,6 +323,7 @@ class QueueManager {
         // ... (existing pre-gen logic)
         console.log(`[QueueManager] Playing pre-generated: "${preGen.script.substring(0, 50)}..."`)
         this.config.onScript?.({ event: event.type, script: preGen.script, speaker: 'lead', timestamp: Date.now() })
+        this.persistMention(event, 'lead', preGen.script, 'pre_generated_pool')
         setVoiceBoost(this.config.leadVoiceId) // Apply Crofty volume boost
         await playAudioAndWait(preGen.audio, 'low')
       } else {
@@ -280,6 +367,7 @@ class QueueManager {
           // Send final complete script
           if (fullLeadScript) {
             this.config.onScript?.({ event: refreshedEvent.type, script: fullLeadScript, speaker: 'lead', timestamp: Date.now() })
+            this.persistMention(refreshedEvent, 'lead', fullLeadScript, 'live_streaming')
             logCommentaryDecision('VICKY_SCRIPT_DONE', `Script ready: ${leadScriptTime}ms`, { 
               timeMs: leadScriptTime, 
               scriptLength: fullLeadScript.length,
@@ -336,6 +424,7 @@ class QueueManager {
             
             if (fullCoScript) {
               this.config.onScript?.({ event: refreshedEvent.type, script: fullCoScript, speaker: 'co', timestamp: Date.now() })
+              this.persistMention(refreshedEvent, 'co', fullCoScript, 'co_streaming')
               logCommentaryDecision('RYAN_SCRIPT_DONE', `Script ready: ${coScriptTime}ms`, { 
                 timeMs: coScriptTime, 
                 scriptLength: fullCoScript.length,
@@ -384,6 +473,7 @@ class QueueManager {
           const leadScript = await generateCommentary(refreshedEvent, this.config.geminiKey)
           if (leadScript) {
             this.config.onScript?.({ event: refreshedEvent.type, script: leadScript, speaker: 'lead', timestamp: Date.now() })
+            this.persistMention(refreshedEvent, 'lead', leadScript, 'live_batch')
             const leadAudio = await synthesizeSpeech(leadScript, this.config.elevenLabsKey, this.config.leadVoiceId)
             if (leadAudio) {
               setVoiceBoost(this.config.leadVoiceId) // Apply Crofty volume boost
@@ -394,6 +484,7 @@ class QueueManager {
               const coScript = await generateCoCommentaryResponse(refreshedEvent, leadScript, this.config.geminiKey)
               if (coScript) {
                 this.config.onScript?.({ event: refreshedEvent.type, script: coScript, speaker: 'co', timestamp: Date.now() })
+                this.persistMention(refreshedEvent, 'co', coScript, 'co_batch')
                 const coAudio = await synthesizeSpeech(coScript, this.config.elevenLabsKey, this.config.coVoiceId)
                 if (coAudio) {
                   setVoiceBoost(this.config.coVoiceId) // Apply co-commentator volume (no boost needed for Vicky)

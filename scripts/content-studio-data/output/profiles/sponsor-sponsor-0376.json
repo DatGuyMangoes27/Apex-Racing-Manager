@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0376",
+  "name": "Bohemia Crystal Racing",
+  "category": "luxury",
+  "tier": "elite",
+  "country": "Czech Republic",
+  "description": "Exquisite crystalware, crafted for champions.",
+  "story": "Bohemia Crystal has a long tradition of excellence and precision craftsmanship. Motorsport provides a perfect platform to showcase their dedication to perfection under pressure. They seek to partner with teams that embody elegance, precision, and a relentless pursuit of victory, mirroring the values ingrained in every piece of Bohemia Crystal.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 120000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Czech Republic"
+    ],
+    "minWins": 2,
+    "minPodiums": 5
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 8,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0376.png"
+}

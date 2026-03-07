@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Mei Lian Tan",
+    "nationality": "Singaporean",
+    "age": 35,
+    "gender": "female",
+    "role": "fabricator",
+    "bio": "Mei Lian's journey into motorsport began unconventionally, not with a family legacy, but with a childhood fascination for taking apart and reassembling her grandfather's old radios. This curiosity led her to pursue a degree in mechanical engineering, where she excelled in materials science and manufacturing processes. After graduating, Mei Lian joined a local racing team, honing her skills in fabrication and quickly becoming known for her meticulous approach and ability to troubleshoot complex mechanical issues. \n\nHer dedication and technical expertise caught the attention of McLaren Racing, who recruited her to their fabrication team. Mei Lian thrives on the precision and high-pressure environment of Formula 1. She is particularly skilled in working with composite materials and is constantly seeking innovative ways to improve the performance and reliability of the car's components. Her pragmatic approach ensures that solutions are not only effective but also practical and sustainable. What sets Mei Lian apart is her understanding that fabrication is not just about following instructions, but about understanding the underlying engineering principles and anticipating potential problems.",
+    "physical": {
+      "skinTone": "Medium tan",
+      "hairColor": "Dark brown",
+      "hairStyle": "Neatly tied back in a low ponytail with a few strands framing her face",
+      "eyeColor": "Dark brown",
+      "facialHair": null,
+      "description": "Mei Lian is of average height with a lean, athletic build."
+    },
+    "personality": "pragmatic",
+    "quirks": [
+      "Always carries a small multi-tool in her pocket.",
+      "Insists on personally inspecting every weld, even if it has already been quality-checked.",
+      "Has a habit of sketching out solutions on napkins during lunch breaks."
+    ]
+  }
+]

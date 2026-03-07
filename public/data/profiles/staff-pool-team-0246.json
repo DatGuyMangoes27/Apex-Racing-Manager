@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Mads Christensen",
+    "nationality": "Danish",
+    "age": 50,
+    "gender": "male",
+    "role": "sporting_director",
+    "bio": "Mads' motorsport journey began unexpectedly. After a brief stint in engineering, he found himself drawn to the strategic side of racing. He started volunteering at local karting events, quickly demonstrating an aptitude for organization and race management. His meticulous nature and ability to anticipate issues led to opportunities with smaller racing teams, where he honed his skills in sporting regulations and team coordination.\n\nMads believes in fostering a positive and collaborative team environment. He is known for his calm demeanor under pressure and his ability to find creative solutions within the constraints of the rulebook. He aims to provide the support and clarity necessary for every team member to perform at their best.\n\nWhile his technical knowledge is still growing, Mads compensates with his strong communication skills and dedication to continuous learning. His genuine passion for motorsport and eagerness to contribute make him a valuable asset to any team.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Graying Brown",
+      "hairStyle": "Short, neatly combed with a slight receding hairline.",
+      "eyeColor": "Blue",
+      "facialHair": "Trimmed Goatee",
+      "description": "Mads is of average height with a slightly stocky build and a kind face."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook and pen, meticulously jotting down observations.",
+      "Has a habit of tapping his fingers on the table when deep in thought.",
+      "Insists on starting every team meeting with a brief recap of the previous race's key events."
+    ]
+  }
+]

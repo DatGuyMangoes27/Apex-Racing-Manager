@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0298",
+  "name": "QafTech Gaming",
+  "category": "gaming",
+  "tier": "mid",
+  "country": "Saudi Arabia",
+  "description": "Level Up Your Game.",
+  "story": "QafTech Gaming is a Saudi Arabian gaming hardware and software company focused on performance and innovation. Recognizing the growing popularity of esports and gaming culture within motorsports, they seek to connect with a passionate audience and showcase their commitment to cutting-edge technology. They aim to partner with teams that demonstrate precision, speed, and a dedication to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 50
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0298.png"
+}

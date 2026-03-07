@@ -1,40 +1,169 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-// NOTE: useCareerStore is imported lazily to avoid circular dependency
-// Use useCareerStore.getState() helper function instead of direct import
+// NOTE: careerStore and rivalStore have a circular dependency.
+// This is safe because both are Zustand stores — the store objects are created at
+// module init time, and all cross-store .getState() calls happen at runtime.
 import { 
   AMS2_TRACKS,
   getTrackById,
   getTracksFiltered,
-  applyRegionalWeighting,
+  getTracksForCategory,
   selectTracksForCalendar,
-  getTrackTypesForCategory,
-  _AMS2Track
+  sortTracksByRegionPriority,
+  AMS2Track
 } from '../data/ams2-tracks'
-import type {
-  AMS2RealTeam,
-  TeamTier,
+import {
+  type AMS2RealTeam,
+  type AMS2Driver,
+  type TeamTier,
   getTeamsForClass,
-  _getTeamsForReputation,
-  _getModernCarClasses,
+  getTeamsForReputation,
+  getModernCarClasses,
   getCarClassById,
-  getTeamById as _getRealTeamById,
+  getTeamById as getRealTeamById,
   detectManufacturerId,
   detectProgramType,
-  _getTeamsByManufacturer,
+  getTeamsByManufacturer,
   findRelatedTeamEntries,
-  getCarNameForManufacturer,
-  type ProgramType
+  getCarNameForManufacturer
 } from '../data/ams2-teams-real'
+import type { ProgramType, RacingProgram as RacingProgramData } from '../data/racing-programs'
+import {
+  getChampionshipById,
+  getAllChampionships,
+  isCurrentClass
+} from '../data/championships'
+import {
+  AMS2_RACING_PROGRAMS,
+  getProgramById,
+  getProgramsByManufacturer,
+  getProgramForTeamEntry
+} from '../data/racing-programs'
+import { AMS2_MANUFACTURERS, getManufacturerById } from '../data/manufacturers'
+import {
+  getSeriesTerritory,
+  getAcceptableGradesForTier,
+  getCalendarSettingsForTier,
+  getMaxRoundsForTier,
+  getIconicTracksForCategory,
+  FIXED_VENUE_CHAMPIONSHIPS,
+  selectBestLayoutId
+} from '../data/calendar-config'
+import {
+  createAITeamDevelopment,
+  updateAITeamDevelopment,
+  calculateAITeamModifier,
+  resetAITeamForSeason
+} from '@/simulation/teamDevelopment'
 import type { AITeamDevelopment } from '@/simulation/teamDevelopment'
 import type { TeamNarrative } from '@/data/team-narratives'
+import { getPointsSystem, getPointsForPosition } from '@/data/points-systems'
+import {
+  getDriverNarrative,
+  getTeamNarrative as getPreGenTeamNarrative,
+  isContentLoaded as isPreGenContentLoaded
+} from '@/services/preGeneratedContentService'
+
+import { useCareerStore } from './careerStore'
 
 // ============================================
 // TYPES
 // ============================================
 
+export type Personality = 'aggressive' | 'calculating' | 'inconsistent' | 'steady' | 'flashy' | 'defensive'
+export type CareerStage = 'rising' | 'peak' | 'declining' | 'veteran'
+export type ContractType = 'race-driver' | 'reserve' | 'test-driver' | 'pay-driver' | 'works-full' | 'spec' | 'customer' | 'factory-supported'
+export type ChampionshipType = 'single-class' | 'multi-class' | 'sprint' | 'endurance' | 'mixed' | 'spec-series' | 'national' | 'continental' | 'international' | 'historic' | 'club' | 'endurance-special'
+
+export interface Manufacturer {
+  id: string
+  name: string
+  country: string
+  logoUrl?: string
+  programs: string[] // program IDs
+}
+
+export interface RacingProgram {
+  id: string
+  name: string
+  manufacturerId: string
+  type: 'works' | 'customer' | 'spec-series'
+  tier: TeamTier
+  seriesIds: string[]
+  teamIds: string[]
+}
+
+export interface RivalStats {
+  raceSkill: number
+  qualifyingSkill: number
+  aggression: number
+  defending: number
+  consistency: number
+  wetSkill: number
+  tireManagement: number
+  fuelManagement: number
+  stamina: number
+  startReactions: number
+}
+
+export interface RivalDriver {
+  id: string
+  firstName: string
+  lastName: string
+  nationality: string
+  age: number
+  dateOfBirth: string
+  personality: Personality
+  stats: RivalStats
+  peakAge: number
+  declineRate: number
+  currentTeamId: string
+  currentSeriesId: string
+  contractEndYear: number
+  salary: number
+  marketValue: number
+  reputation: number
+  totalRaces: number
+  totalWins: number
+  totalPodiums: number
+  championships: number
+  careerActive: boolean
+  relationshipWithPlayer: number
+  rivalryIntensity: number
+  baseSkill: number
+  currentForm: number
+  formStreak: number
+  developmentRate: number
+  careerStage: CareerStage
+  seasonStats: { wins: number; podiums: number; points: number; races: number; avgFinish: number; bestFinish: number; dnfs: number }
+  trackAffinities: Record<string, number>
+  lastRacePosition: number
+  weekendForm: number
+  narrative?: any
+}
+
+export interface TeamDevelopmentEvent {
+  teamId: string
+  teamName: string
+  type: string
+  description: string
+  modifier: number
+  week: number
+}
+
+export interface DetailedCarClasses {
+  id: string
+  name: string
+  category: string
+  gridSize?: number
+}
+
+/** Car class list for grid size lookup; populated from data or left empty to use fallback logic */
+const DETAILED_CAR_CLASSES: DetailedCarClasses[] = []
+
 export interface AITeamEconomics {
-  financialHealth: 'excellent' | 'good' | 'stable' | 'struggling' | 'critical'
+  /** 0-100 score; display as excellent/good/stable/struggling/critical in UI */
+  financialHealth: number
   sponsorTier: 'none' | 'local' | 'regional' | 'national' | 'international' | 'global'
   seasonWins: number
   seasonPodiums: number
@@ -63,10 +192,18 @@ export interface Team extends AMS2RealTeam {
   economics?: AITeamEconomics
   // === TV BROADCAST COMMENTARY: Rich narrative data ===
   narrative?: TeamNarrative  // Generated at career creation for commentary depth
+  // Runtime fields (set when building world from championships)
+  seriesId?: string
+  facilities?: 'basic' | 'standard' | 'professional' | 'elite'
+  availableSeats?: number
+  secondaryColor?: string
+  // Player team flag (set when player chose this real team)
+  isPlayerTeam?: boolean
 }
 
 // Re-export types for convenience
-export type { Manufacturer, RacingProgram, ProgramType }
+export type { TeamTier }
+export type { ProgramType }
 
 export interface Series {
   id: string
@@ -96,6 +233,8 @@ export interface Series {
   format?: 'sprint' | 'endurance' | 'mixed'
   prestige: number            // 0-100 championship prestige
   prizePool: number           // Total season prize pool
+  seasonRounds?: number       // Defined round count from championship data
+  seriesCategory?: string     // More specific category from championship (e.g. 'endurance', 'stock-usa', 'gt-sportscar')
   historicEra?: string        // For historic championships
   youtubeId?: string          // Trailer or intro video
 }
@@ -300,14 +439,18 @@ interface RivalStore {
   getStandings: (seriesId: string) => SeasonStanding[]
   resetStandingsRaceCount: (seriesId: string, actualRaceCount: number) => void
   resetSeasonStandings: () => void // Reset all standings for new season
-  simulateOtherSeries: (currentWeek: number, playerSeriesId: string | null) => void
+  simulateOtherSeries: (currentWeek: number, excludedSeries: string | null | string[]) => void
   simulateRaceForSeries: (seriesId: string, round: number) => void
   getRivalsInSeries: (seriesId: string) => RivalDriver[]
   getTeamsInSeries: (seriesId: string) => Team[]
   
   // Contract system
   generateCalendar: (seriesId: string, year: number) => RaceEvent[]
+  repairSeriesCalendar: (seriesId: string, year: number) => RaceEvent[]
   regenerateAllCalendars: (year: number) => void // Regenerate calendars for new season
+  updateRoundTrack: (seriesId: string, round: number, trackId: string, layoutId: string) => void
+  addRound: (seriesId: string, trackId: string, layoutId: string, week: number) => void
+  removeRound: (seriesId: string, round: number) => void
   getAvailableSeriesForPlayer: (reputation: number) => Series[]
   calculateTeamInterest: (teamId: string, playerReputation: number, recentWins?: number) => TeamInterest
   getAllTeamInterests: (playerReputation: number, recentWins?: number) => TeamInterest[]
@@ -318,12 +461,12 @@ interface RivalStore {
   getTeamById: (teamId: string) => Team | undefined
   getSeriesById: (seriesId: string) => Series | undefined
   
-  // Manufacturer & Program system
-  getManufacturers: () => Manufacturer[]
-  getManufacturer: (id: string) => Manufacturer | undefined
-  getPrograms: () => RacingProgram[]
-  getProgram: (id: string) => RacingProgram | undefined
-  getProgramsForManufacturer: (manufacturerId: string) => RacingProgram[]
+  // Manufacturer & Program system (data from manufacturers + racing-programs)
+  getManufacturers: () => import('../data/manufacturers').Manufacturer[]
+  getManufacturer: (id: string) => import('../data/manufacturers').Manufacturer | undefined
+  getPrograms: () => RacingProgramData[]
+  getProgram: (id: string) => RacingProgramData | undefined
+  getProgramsForManufacturer: (manufacturerId: string) => RacingProgramData[]
   getTeamsForProgram: (programId: string) => Team[]
   getSeriesForProgram: (programId: string) => Series[]
   /** Get all entries in a program with full data for reassignment logic */
@@ -333,7 +476,7 @@ interface RivalStore {
   
   // Team categorization for contract offers
   categorizeTeamForOffer: (team: Team) => OfferType
-  getWorksPrograms: () => RacingProgram[]
+  getWorksPrograms: () => RacingProgramData[]
   getSpecSeriesTeams: () => Team[]
   getCustomerTeams: () => Team[]
   getTeamPrimaryDriver: (teamId: string) => RivalDriver | undefined
@@ -448,7 +591,7 @@ export interface TeamEconomicsNews {
 
 // Helper constants for team economics
 const SPONSOR_TIERS: Array<AITeamEconomics['sponsorTier']> = ['none', 'local', 'regional', 'national', 'international', 'global']
-const FACILITY_LEVELS: Array<Team['facilities']> = ['basic', 'standard', 'professional', 'elite']
+const FACILITY_LEVELS: Array<NonNullable<Team['facilities']>> = ['basic', 'standard', 'professional', 'elite']
 const BUDGET_LEVELS: Array<Team['budget']> = ['low', 'medium', 'high', 'factory']
 
 export const useRivalStore = create<RivalStore>()(
@@ -537,6 +680,8 @@ export const useRivalStore = create<RivalStore>()(
             format: championship.format,
             prestige: championship.prestige,
             prizePool: championship.prizePool,
+            seasonRounds: championship.seasonRounds,
+            seriesCategory: championship.seriesCategory,
             historicEra: championship.historicEra,
             youtubeId: championship.youtubeId
           }
@@ -606,6 +751,7 @@ export const useRivalStore = create<RivalStore>()(
                   secondaryColor: '#ffffff',
                   seriesId: championship.id,
                   carClassId: realTeam.carClassId,
+                  carClassName: realTeam.carClassName,
                   tier: realTeam.tier,
                   budget: programType === 'spec-series' ? 'medium' : realTeam.budget,
                   prestige: Math.max(30, realTeam.prestige - (seatIdx * 2)), // Slight variation
@@ -646,6 +792,7 @@ export const useRivalStore = create<RivalStore>()(
                 secondaryColor: '#ffffff',
                 seriesId: championship.id,
                 carClassId: realTeam.carClassId,
+                carClassName: realTeam.carClassName,
                 tier: realTeam.tier,
                 budget: realTeam.budget,
                 prestige: realTeam.prestige,
@@ -820,14 +967,27 @@ export const useRivalStore = create<RivalStore>()(
           : null
         const pointsSystem = getPointsSystem(championship?.pointsSystemId || 'standard')
         
+        // Determine who got the fastest lap (lowest bestLapTime > 0)
+        const validLaps = raceResults.filter(r => r.bestLapTime > 0 && r.lapsCompleted > 0)
+        const fastestLapDriver = validLaps.length > 0
+          ? validLaps.reduce((fastest, r) => r.bestLapTime < fastest.bestLapTime ? r : fastest)
+          : null
+        const fastestLapBonus = pointsSystem.fastestLap || 0
+        
         // Process each participant's result
         const updatedStandings = [...currentStandings]
         
         raceResults.forEach(result => {
-          const points = getPointsForPosition(pointsSystem, result.position)
+          let points = getPointsForPosition(pointsSystem, result.position)
           const isWin = result.position === 1
           const isPodium = result.position <= 3
           const isDNF = result.lapsCompleted === 0 && result.position > 10
+          const hasFastestLap = fastestLapDriver?.name === result.name && fastestLapBonus > 0
+          
+          // Add fastest lap bonus points
+          if (hasFastestLap && result.position <= 10) {
+            points += fastestLapBonus
+          }
           
           // Find existing standing or create new one
           let standing = updatedStandings.find(s => s.driverName === result.name)
@@ -838,6 +998,7 @@ export const useRivalStore = create<RivalStore>()(
             standing.races += 1
             standing.wins += isWin ? 1 : 0
             standing.podiums += isPodium ? 1 : 0
+            standing.fastestLaps += hasFastestLap ? 1 : 0
             standing.dnfs += isDNF ? 1 : 0
             standing.bestFinish = Math.min(standing.bestFinish, result.position)
             standing.avgFinish = ((standing.avgFinish * (standing.races - 1)) + result.position) / standing.races
@@ -852,7 +1013,7 @@ export const useRivalStore = create<RivalStore>()(
               wins: isWin ? 1 : 0,
               podiums: isPodium ? 1 : 0,
               poles: 0,
-              fastestLaps: 0,
+              fastestLaps: hasFastestLap ? 1 : 0,
               races: 1,
               bestFinish: result.position,
               avgFinish: result.position,
@@ -1047,12 +1208,17 @@ export const useRivalStore = create<RivalStore>()(
         console.log(`[RivalStore] Season standings reset complete for ${Object.keys(freshStandings).length} series`)
       },
 
-      simulateOtherSeries: (currentWeek, playerSeriesId) => {
+      simulateOtherSeries: (currentWeek, excludedSeries) => {
         const { series } = get()
+        const excludedIds = new Set(
+          Array.isArray(excludedSeries)
+            ? excludedSeries.filter(Boolean)
+            : (excludedSeries ? [excludedSeries] : [])
+        )
         
         // Find all series that have a race this week, excluding player's series
         series.forEach(s => {
-          if (s.id === playerSeriesId) return // Skip player's series
+          if (excludedIds.has(s.id)) return // Skip excluded series
           
           const raceThisWeek = s.calendar?.find(r => r.week === currentWeek)
           if (raceThisWeek) {
@@ -1206,14 +1372,78 @@ export const useRivalStore = create<RivalStore>()(
         // Update standings
         get().updateStandingsFromRace(seriesId, finalResults, '', 'simulated')
         
-        // Update form/streak/seasonStats for each driver after the simulated race
-        // Without this, drivers in non-player series would have stale form data forever
+        // Update form/streak/seasonStats in one batched state write.
+        // This is significantly faster than one store update per driver.
+        const formUpdates = new Map<string, {
+          newForm: number
+          newStreak: number
+          position: number
+          seasonStats: {
+            wins: number
+            podiums: number
+            points: number
+            races: number
+            avgFinish: number
+            bestFinish: number
+            dnfs: number
+          }
+        }>()
+
         results.forEach((result, index) => {
-          const position = result.dnf 
-            ? gridSize - dnfResults.length + dnfResults.indexOf(result) + 1 
+          const driver = result.driver
+          const position = result.dnf
+            ? gridSize - dnfResults.length + dnfResults.indexOf(result) + 1
             : index + 1
-          get().updateFormAfterRace(result.driver.id, position, gridSize)
+
+          const normalizedResult = 1 - ((position - 1) / Math.max(1, gridSize - 1))
+          const expectedResult = driver.baseSkill || 0.5
+          const delta = normalizedResult - expectedResult
+
+          const newForm = clamp(
+            (driver.currentForm * 0.6) + (delta * 0.4),
+            -0.15,
+            0.15
+          )
+
+          let newStreak = driver.formStreak || 0
+          if (delta > 0.1) newStreak = Math.min(5, newStreak + 1)
+          else if (delta < -0.1) newStreak = Math.max(-5, newStreak - 1)
+          else newStreak = Math.sign(newStreak) * Math.max(0, Math.abs(newStreak) - 1)
+
+          const isWin = position === 1
+          const isPodium = position <= 3
+          const prevStats = driver.seasonStats || { wins: 0, podiums: 0, points: 0, races: 0, avgFinish: 0, bestFinish: 99, dnfs: 0 }
+          const newRaces = prevStats.races + 1
+          const newAvgFinish = ((prevStats.avgFinish * prevStats.races) + position) / newRaces
+
+          formUpdates.set(driver.id, {
+            newForm,
+            newStreak,
+            position,
+            seasonStats: {
+              ...prevStats,
+              wins: prevStats.wins + (isWin ? 1 : 0),
+              podiums: prevStats.podiums + (isPodium ? 1 : 0),
+              races: newRaces,
+              avgFinish: newAvgFinish,
+              bestFinish: Math.min(prevStats.bestFinish, position)
+            }
+          })
         })
+
+        set((state) => ({
+          rivals: state.rivals.map(r => {
+            const update = formUpdates.get(r.id)
+            if (!update) return r
+            return {
+              ...r,
+              currentForm: update.newForm,
+              formStreak: update.newStreak,
+              lastRacePosition: update.position,
+              seasonStats: update.seasonStats
+            }
+          })
+        }))
         
         console.log(`[RivalStore] Simulated ${currentSeries.name} Round ${round}: Winner - ${finalResults[0]?.name}, DNFs: ${dnfResults.length}`)
       },
@@ -1236,8 +1466,106 @@ export const useRivalStore = create<RivalStore>()(
         const { series } = get()
         if (!Array.isArray(series)) return []
         const s = series.find(s => s.id === seriesId)
-        if (!s) return []
-        return generateCalendarForSeries(s, year)
+        if (s) return generateCalendarForSeries(s, year)
+
+        // Fallback: series may not have been instantiated in world state
+        // (e.g., missing team definitions for a valid championship). Build a
+        // minimal temporary Series from championship data so schedule UI still works.
+        const championship = getChampionshipById(seriesId)
+        if (!championship) return []
+
+        const primaryClassId = championship.carClassIds?.[0] || 'generic'
+        const primaryClass = getCarClassById(primaryClassId)
+        const tempSeries: Series = {
+          id: championship.id,
+          name: championship.name,
+          shortName: championship.shortName,
+          tier: championship.tier,
+          carClassId: primaryClassId,
+          carClassName: primaryClass?.name || primaryClassId,
+          category: getCategoryForClass(primaryClassId),
+          teams: [],
+          calendar: [],
+          prizeMoney: getPrizeMoneyFromPrizePool(championship.prizePool, championship.tier),
+          seatCost: getSeatCostForTier(championship.tier),
+          minReputation: getMinReputationForTier(championship.tier),
+          gridSize: 20,
+          isModern: isCurrentClass(primaryClassId),
+          championshipId: championship.id,
+          championshipType: championship.type,
+          multiClass: championship.multiClass,
+          carClassIds: championship.carClassIds,
+          region: championship.region,
+          format: championship.format,
+          prestige: championship.prestige,
+          prizePool: championship.prizePool,
+          seasonRounds: championship.seasonRounds,
+          seriesCategory: championship.seriesCategory,
+          historicEra: championship.historicEra,
+          youtubeId: championship.youtubeId
+        }
+
+        return generateCalendarForSeries(tempSeries, year)
+      },
+
+      repairSeriesCalendar: (seriesId, year) => {
+        const { series } = get()
+        const safeSeries = Array.isArray(series) ? series : []
+        const existing = safeSeries.find(s => s.id === seriesId)
+
+        // Build a source series from existing runtime data when possible,
+        // otherwise from championship definitions.
+        let sourceSeries: Series | null = existing || null
+        if (!sourceSeries) {
+          const championship = getChampionshipById(seriesId)
+          if (!championship) return []
+
+          const primaryClassId = championship.carClassIds?.[0] || 'generic'
+          const primaryClass = getCarClassById(primaryClassId)
+          sourceSeries = {
+            id: championship.id,
+            name: championship.name,
+            shortName: championship.shortName,
+            tier: championship.tier,
+            carClassId: primaryClassId,
+            carClassName: primaryClass?.name || primaryClassId,
+            category: getCategoryForClass(primaryClassId),
+            teams: [],
+            calendar: [],
+            prizeMoney: getPrizeMoneyFromPrizePool(championship.prizePool, championship.tier),
+            seatCost: getSeatCostForTier(championship.tier),
+            minReputation: getMinReputationForTier(championship.tier),
+            gridSize: 20,
+            isModern: isCurrentClass(primaryClassId),
+            championshipId: championship.id,
+            championshipType: championship.type,
+            multiClass: championship.multiClass,
+            carClassIds: championship.carClassIds,
+            region: championship.region,
+            format: championship.format,
+            prestige: championship.prestige,
+            prizePool: championship.prizePool,
+            seasonRounds: championship.seasonRounds,
+            seriesCategory: championship.seriesCategory,
+            historicEra: championship.historicEra,
+            youtubeId: championship.youtubeId
+          }
+        }
+
+        const generated = generateCalendarForSeries(sourceSeries, year)
+        if (generated.length === 0) return []
+
+        if (existing) {
+          set({
+            series: safeSeries.map(s => s.id === seriesId ? { ...s, calendar: generated } : s)
+          })
+        } else {
+          set({
+            series: [...safeSeries, { ...sourceSeries, calendar: generated }]
+          })
+        }
+
+        return generated
       },
       
       regenerateAllCalendars: (year) => {
@@ -1254,6 +1582,80 @@ export const useRivalStore = create<RivalStore>()(
         set({ series: updatedSeries })
         
         console.log(`[RivalStore] Calendars regenerated for ${updatedSeries.length} series`)
+      },
+
+      updateRoundTrack: (seriesId, round, trackId, layoutId) => {
+        const { series } = get()
+        if (!Array.isArray(series)) return
+        const track = getTrackById(trackId)
+        if (!track) return
+        const layout = track.layouts.find(l => l.id === layoutId) || track.layouts[0]
+        if (!layout) return
+
+        set({
+          series: series.map(s => {
+            if (s.id !== seriesId) return s
+            return {
+              ...s,
+              calendar: s.calendar.map(ev => {
+                if (ev.round !== round) return ev
+                return {
+                  ...ev,
+                  trackId: track.id,
+                  trackName: track.name,
+                  layoutId: layout.id,
+                  layoutName: layout.name,
+                  country: track.country,
+                  lengthKm: layout.lengthKm,
+                }
+              })
+            }
+          })
+        })
+      },
+
+      addRound: (seriesId, trackId, layoutId, week) => {
+        const { series } = get()
+        if (!Array.isArray(series)) return
+        const track = getTrackById(trackId)
+        if (!track) return
+        const layout = track.layouts.find(l => l.id === layoutId) || track.layouts[0]
+        if (!layout) return
+
+        set({
+          series: series.map(s => {
+            if (s.id !== seriesId) return s
+            const newRound = s.calendar.length + 1
+            const newEvent: RaceEvent = {
+              id: `${seriesId}_new_r${newRound}`,
+              round: newRound,
+              trackId: track.id,
+              trackName: track.name,
+              layoutId: layout.id,
+              layoutName: layout.name,
+              country: track.country,
+              lengthKm: layout.lengthKm,
+              week,
+              sessions: { practice: true, qualifying: true, race: true, sprintRace: false },
+            }
+            return { ...s, calendar: [...s.calendar, newEvent] }
+          })
+        })
+      },
+
+      removeRound: (seriesId, round) => {
+        const { series } = get()
+        if (!Array.isArray(series)) return
+
+        set({
+          series: series.map(s => {
+            if (s.id !== seriesId) return s
+            const filtered = s.calendar
+              .filter(ev => ev.round !== round)
+              .map((ev, i) => ({ ...ev, round: i + 1 }))
+            return { ...s, calendar: filtered }
+          })
+        })
       },
 
       getAvailableSeriesForPlayer: (reputation) => {
@@ -1463,7 +1865,7 @@ export const useRivalStore = create<RivalStore>()(
         
         return {
           teamId,
-          seriesId: team.seriesId,
+          seriesId: team.seriesId ?? '',
           level,
           reputationRequired: team.reputationRequired,
           reputationGap: Math.max(0, repGap),
@@ -1589,7 +1991,7 @@ export const useRivalStore = create<RivalStore>()(
               entryId: t.id,
               entryName: t.name,
               carName: getCarNameForManufacturer(t.carClassId, program.manufacturerId || undefined),
-              seriesId: t.seriesId,
+              seriesId: t.seriesId ?? '',
               seriesName: teamSeries?.name || 'Unknown Series',
               currentDriverName: primaryDriver ? `${primaryDriver.firstName} ${primaryDriver.lastName}` : undefined,
               currentDriverRep: primaryDriver?.reputation
@@ -1602,7 +2004,7 @@ export const useRivalStore = create<RivalStore>()(
             entryName: bestEntry.name,
             carName: getCarNameForManufacturer(bestEntry.carClassId, program.manufacturerId || undefined),
             carClassId: bestEntry.carClassId,
-            seriesId: bestEntry.seriesId,
+            seriesId: bestEntry.seriesId ?? '',
             seriesName: bestSeriesData.name,
             reason: bestFitResult.reason
           }
@@ -1626,7 +2028,7 @@ export const useRivalStore = create<RivalStore>()(
           offers.push({
             // Base identification (use best entry for backwards compatibility)
             teamId: bestEntry.id,
-            seriesId: bestEntry.seriesId,
+            seriesId: bestEntry.seriesId ?? '',
             teamName: program.name, // Use program name, not team entry
             seriesName: bestSeriesData.name,
             
@@ -1697,7 +2099,7 @@ export const useRivalStore = create<RivalStore>()(
             entryName: team.name,
             carName: getCarNameForManufacturer(team.carClassId, team.manufacturerId) || seriesData.carClassName,
             carClassId: team.carClassId,
-            seriesId: team.seriesId,
+            seriesId: team.seriesId ?? '',
             seriesName: seriesData.name
           }
           
@@ -1714,7 +2116,7 @@ export const useRivalStore = create<RivalStore>()(
           
           offers.push({
             teamId: team.id,
-            seriesId: team.seriesId,
+            seriesId: team.seriesId ?? '',
             teamName: team.name,
             seriesName: seriesData.name,
             
@@ -1733,8 +2135,8 @@ export const useRivalStore = create<RivalStore>()(
             manufacturerId: team.manufacturerId,
             programType: 'spec-series',
             contractType: 'spec',
-            availableSeriesIds: [team.seriesId],
-            selectedSeriesIds: [team.seriesId],
+            availableSeriesIds: [team.seriesId ?? ''],
+            selectedSeriesIds: [team.seriesId ?? ''],
             
             // Enhanced contract terms
             hasPerformanceTargets: team.tier !== 'entry',
@@ -1780,7 +2182,7 @@ export const useRivalStore = create<RivalStore>()(
             entryName: team.name,
             carName: getCarNameForManufacturer(team.carClassId, team.manufacturerId),
             carClassId: team.carClassId,
-            seriesId: team.seriesId,
+            seriesId: team.seriesId ?? '',
             seriesName: seriesData.name
           }
           
@@ -1810,7 +2212,7 @@ export const useRivalStore = create<RivalStore>()(
           
           offers.push({
             teamId: team.id,
-            seriesId: team.seriesId,
+            seriesId: team.seriesId ?? '',
             teamName: team.name,
             seriesName: seriesData.name,
             
@@ -1829,8 +2231,8 @@ export const useRivalStore = create<RivalStore>()(
             manufacturerId: team.manufacturerId,
             programType: team.programType,
             contractType,
-            availableSeriesIds: [team.seriesId],
-            selectedSeriesIds: [team.seriesId],
+            availableSeriesIds: [team.seriesId ?? ''],
+            selectedSeriesIds: [team.seriesId ?? ''],
             
             // Enhanced contract terms
             hasPerformanceTargets: team.tier !== 'entry',
@@ -1875,13 +2277,13 @@ export const useRivalStore = create<RivalStore>()(
               entryName: team.name,
               carName: getCarNameForManufacturer(team.carClassId, team.manufacturerId) || seriesData.carClassName,
               carClassId: team.carClassId,
-              seriesId: team.seriesId,
+              seriesId: team.seriesId ?? '',
               seriesName: seriesData.name
             }
             
             offers.push({
               teamId: team.id,
-              seriesId: team.seriesId,
+              seriesId: team.seriesId ?? '',
               teamName: team.name,
               seriesName: seriesData.name,
               salary: 0,
@@ -1899,8 +2301,8 @@ export const useRivalStore = create<RivalStore>()(
               manufacturerId: team.manufacturerId,
               programType: team.programType,
               contractType: team.programType === 'spec-series' ? 'spec' : 'customer',
-              availableSeriesIds: [team.seriesId],
-              selectedSeriesIds: [team.seriesId]
+              availableSeriesIds: [team.seriesId ?? ''],
+              selectedSeriesIds: [team.seriesId ?? '']
             })
           })
           console.log(`[Contracts] Created ${offers.length} fallback offers`)
@@ -1974,7 +2376,7 @@ export const useRivalStore = create<RivalStore>()(
           ),
           teams: state.teams.map(t => 
             t.id === offer.teamId 
-              ? { ...t, availableSeats: t.availableSeats - 1 }
+              ? { ...t, availableSeats: (t.availableSeats ?? 0) - 1 }
               : t
           )
         }))
@@ -2138,7 +2540,7 @@ export const useRivalStore = create<RivalStore>()(
                 entryName: team.name,
                 carName: getCarNameForManufacturer(team.carClassId, program.manufacturerId || undefined),
                 carClassId: team.carClassId,
-                seriesId: team.seriesId,
+                seriesId: team.seriesId ?? '',
                 seriesName: seriesData?.name || '',
                 tier: team.tier,
                 currentDriverName: `${driver.firstName} ${driver.lastName}`,
@@ -2428,7 +2830,8 @@ export const useRivalStore = create<RivalStore>()(
           } : r)
         }))
         
-        console.log(`[Form] ${driver.firstName} ${driver.lastName}: P${position} -> form ${newForm.toFixed(3)}, streak ${newStreak}`)
+        // Intentionally no per-driver console logging here; it is too expensive
+        // during large batched simulations.
       },
 
       /**
@@ -2568,7 +2971,7 @@ export const useRivalStore = create<RivalStore>()(
               // Find a team in the next tier with an available seat
               const nextTierTeams = teams.filter(t => {
                 const teamSeries = series.find(ts => ts.id === t.seriesId)
-                return teamSeries?.tier === nextTier && t.availableSeats > 0
+                return teamSeries?.tier === nextTier && (t.availableSeats ?? 0) > 0
               })
               
               if (nextTierTeams.length > 0) {
@@ -2576,16 +2979,16 @@ export const useRivalStore = create<RivalStore>()(
                 const oldTeam = teams.find(t => t.id === driver.currentTeamId)
                 
                 // Move driver to new team
-                set((state) => ({
+                set((state): Partial<RivalStore> => ({
                   rivals: state.rivals.map(r => r.id === driver.id ? {
                     ...r,
                     currentTeamId: newTeam.id,
-                    currentSeriesId: newTeam.seriesId,
+                    currentSeriesId: newTeam.seriesId ?? '',
                     contractEndYear: currentYear + 2
                   } : r),
                   teams: state.teams.map(t => {
-                    if (t.id === driver.currentTeamId) return { ...t, availableSeats: t.availableSeats + 1 }
-                    if (t.id === newTeam.id) return { ...t, availableSeats: t.availableSeats - 1 }
+                    if (t.id === driver.currentTeamId) return { ...t, availableSeats: (t.availableSeats ?? 0) + 1 }
+                    if (t.id === newTeam.id) return { ...t, availableSeats: (t.availableSeats ?? 0) - 1 }
                     return t
                   })
                 }))
@@ -2622,23 +3025,23 @@ export const useRivalStore = create<RivalStore>()(
               if (Math.random() < 0.4) { // 40% chance of demotion
                 const prevTierTeams = teams.filter(t => {
                   const teamSeries = series.find(ts => ts.id === t.seriesId)
-                  return teamSeries?.tier === prevTier && t.availableSeats > 0
+                  return teamSeries?.tier === prevTier && (t.availableSeats ?? 0) > 0
                 })
                 
                 if (prevTierTeams.length > 0) {
                   const newTeam = prevTierTeams[Math.floor(Math.random() * prevTierTeams.length)]
                   const oldTeam = teams.find(t => t.id === driver.currentTeamId)
                   
-                  set((state) => ({
+                  set((state): Partial<RivalStore> => ({
                     rivals: state.rivals.map(r => r.id === driver.id ? {
                       ...r,
                       currentTeamId: newTeam.id,
-                      currentSeriesId: newTeam.seriesId,
+                      currentSeriesId: newTeam.seriesId ?? '',
                       contractEndYear: currentYear + 1
                     } : r),
                     teams: state.teams.map(t => {
-                      if (t.id === driver.currentTeamId) return { ...t, availableSeats: t.availableSeats + 1 }
-                      if (t.id === newTeam.id) return { ...t, availableSeats: t.availableSeats - 1 }
+                      if (t.id === driver.currentTeamId) return { ...t, availableSeats: (t.availableSeats ?? 0) + 1 }
+                      if (t.id === newTeam.id) return { ...t, availableSeats: (t.availableSeats ?? 0) - 1 }
                       return t
                     })
                   }))
@@ -2756,7 +3159,7 @@ export const useRivalStore = create<RivalStore>()(
           const teamSeries = series.find(s => s.id === team.seriesId)
           if (!teamSeries) return team
           
-          const standings = seasonStandings[team.seriesId] || []
+          const standings = seasonStandings[team.seriesId ?? ''] || []
           let updatedTeam = { ...team }
           let updatedEconomics = { ...team.economics }
           
@@ -2839,7 +3242,7 @@ export const useRivalStore = create<RivalStore>()(
           ))
           
           // === FACILITY CHANGES ===
-          const currentFacilityIndex = FACILITY_LEVELS.indexOf(team.facilities)
+          const currentFacilityIndex = FACILITY_LEVELS.indexOf(team.facilities ?? 'basic')
           let newFacilityIndex = currentFacilityIndex
           
           // High financial health + good momentum can upgrade facilities
@@ -2992,26 +3395,27 @@ export const useRivalStore = create<RivalStore>()(
         
         entrySeries.forEach(s => {
           const numRookies = 2 + Math.floor(Math.random() * 3) // 2-4 rookies
-          const seriesTeams = teams.filter(t => t.seriesId === s.id && t.availableSeats > 0)
+          const seriesTeams = teams.filter(t => t.seriesId === s.id && (t.availableSeats ?? 0) > 0)
           
           for (let i = 0; i < numRookies && seriesTeams.length > 0; i++) {
             const team = seriesTeams[Math.floor(Math.random() * seriesTeams.length)]
             const rookie = generateRookieDriver(s.id, team, currentYear)
             
             newRookies.push(rookie)
-            team.availableSeats--
+            team.availableSeats = Math.max(0, (team.availableSeats ?? 0) - 1)
             
             console.log(`[Rookie] ${rookie.firstName} ${rookie.lastName} joins ${team.name}`)
           }
         })
         
         // Add rookies to the store
-        set((state) => ({
+        set((state): Partial<RivalStore> => ({
           rivals: [...state.rivals, ...newRookies],
           teams: state.teams.map(t => {
             const teamRookies = newRookies.filter(r => r.currentTeamId === t.id)
+            const existingDrivers = t.drivers ?? []
             return teamRookies.length > 0 
-              ? { ...t, availableSeats: t.availableSeats - teamRookies.length, drivers: [...t.drivers, ...teamRookies.map(r => r.id)] }
+              ? { ...t, availableSeats: (t.availableSeats ?? 0) - teamRookies.length, drivers: [...existingDrivers, ...teamRookies.map(r => r.id)] } as Team
               : t
           })
         }))
@@ -3103,7 +3507,46 @@ export const useRivalStore = create<RivalStore>()(
         
         console.log(`[Narrative] Generating narratives for ${driversNeedingNarratives.length} drivers in ${targetSeries.name}`)
         
-        // Prepare driver info for the generator
+        // ── Try pre-generated narratives first ──
+        if (isPreGenContentLoaded()) {
+          const preGenMatched: Record<string, any> = {}
+          const remaining: typeof driversNeedingNarratives = []
+
+          for (const driver of driversNeedingNarratives) {
+            const preGenNarr = getDriverNarrative(driver.id)
+            if (preGenNarr) {
+              preGenMatched[driver.id] = preGenNarr
+            } else {
+              remaining.push(driver)
+            }
+          }
+
+          // Apply pre-generated narratives immediately
+          if (Object.keys(preGenMatched).length > 0) {
+            set((state) => ({
+              rivals: state.rivals.map(rival => {
+                const narrative = preGenMatched[rival.id]
+                if (narrative) return { ...rival, narrative }
+                return rival
+              })
+            }))
+            console.log(`[Narrative] Applied ${Object.keys(preGenMatched).length} pre-generated narratives for ${targetSeries.name}`)
+          }
+
+          // If all drivers are covered, we're done
+          if (remaining.length === 0) {
+            onProgress?.({ total: driversNeedingNarratives.length, completed: driversNeedingNarratives.length, status: 'complete' })
+            return
+          }
+
+          // Fall through to Gemini for remaining drivers
+          console.log(`[Narrative] ${remaining.length} drivers need Gemini-generated narratives (not found in pre-gen data)`)
+          // Update the list to only generate for remaining
+          driversNeedingNarratives.length = 0
+          driversNeedingNarratives.push(...remaining)
+        }
+
+        // ── Fallback: Gemini generation for any remaining drivers ──
         const driverInfos = driversNeedingNarratives.map(driver => {
           const team = teams.find(t => t.id === driver.currentTeamId)
           return {
@@ -3124,7 +3567,6 @@ export const useRivalStore = create<RivalStore>()(
         })
         
         try {
-          // Call the IPC handler to generate narratives
           if (!window.electron?.generateDriverNarratives) {
             console.error('[Narrative] window.electron.generateDriverNarratives is not available')
             onProgress?.({ total: driversNeedingNarratives.length, completed: 0, status: 'error' })
@@ -3138,7 +3580,6 @@ export const useRivalStore = create<RivalStore>()(
           )
           
           if (result.success && result.narratives) {
-            // Update drivers with their narratives
             set((state) => ({
               rivals: state.rivals.map(rival => {
                 const narrative = result.narratives[rival.id]
@@ -3293,7 +3734,7 @@ export const useRivalStore = create<RivalStore>()(
         }
         
         // Get teams in this series that need narratives
-        const seriesTeams = Object.values(teams).filter(t => 
+        let seriesTeams = Object.values(teams).filter(t => 
           t.seriesId === seriesId && !t.narrative
         )
         
@@ -3303,8 +3744,65 @@ export const useRivalStore = create<RivalStore>()(
         }
         
         console.log(`[TeamNarrative] Generating narratives for ${seriesTeams.length} teams in ${targetSeries.name}`)
+
+        // ── Try pre-generated team narratives first ──
+        if (isPreGenContentLoaded()) {
+          const preGenMatched: Record<string, any> = {}
+
+          for (const team of seriesTeams) {
+            const preGenNarr = getPreGenTeamNarrative(team.id)
+            if (preGenNarr) {
+              // Map pre-gen narrative to game's TeamNarrative shape
+              preGenMatched[team.id] = {
+                teamId: team.id,
+                origin: preGenNarr.origin || '',
+                philosophy: preGenNarr.philosophy || '',
+                culturalIdentity: '',
+                technicalReputation: preGenNarr.reputation || '',
+                paddockStanding: '',
+                achievements: preGenNarr.achievements || [],
+                titleCount: (preGenNarr.achievements || []).length,
+                famousAlumni: [],
+                teamPrincipal: preGenNarr.teamPrincipal?.name || '',
+                keyFigures: preGenNarr.keyFigures?.map((f: any) => f.name) || [],
+                currentTrajectory: '',
+                recentForm: '',
+                anecdotes: [],
+                fanBase: preGenNarr.fanBase || '',
+                generatedAt: new Date().toISOString(),
+                generatedVersion: 1
+              } as TeamNarrative
+            }
+          }
+
+          // Apply pre-generated narratives immediately
+          if (Object.keys(preGenMatched).length > 0) {
+            const teamsArray = get().teams
+            const teamsRecord: Record<string, Team> = {}
+            teamsArray.forEach(team => { teamsRecord[team.id] = team })
+
+            for (const [teamId, narrative] of Object.entries(preGenMatched)) {
+              if (teamsRecord[teamId]) {
+                teamsRecord[teamId] = { ...teamsRecord[teamId], narrative: narrative as TeamNarrative }
+              }
+            }
+
+            const updatedTeams = Object.values(teamsRecord)
+            set({ teams: updatedTeams })
+            console.log(`[TeamNarrative] Applied ${Object.keys(preGenMatched).length} pre-generated team narratives for ${targetSeries.name}`)
+          }
+
+          // Filter out teams that now have narratives
+          seriesTeams = seriesTeams.filter(t => !preGenMatched[t.id])
+          if (seriesTeams.length === 0) {
+            onProgress?.({ total: seriesTeams.length, completed: seriesTeams.length, status: 'complete' })
+            return
+          }
+
+          console.log(`[TeamNarrative] ${seriesTeams.length} teams need Gemini-generated narratives`)
+        }
         
-        // Build team info for API
+        // ── Fallback: Gemini generation for remaining teams ──
         const teamBasicInfo = seriesTeams.map(t => ({
           id: t.id,
           name: t.name,
@@ -3315,16 +3813,16 @@ export const useRivalStore = create<RivalStore>()(
           facilities: t.facilities,
           prestige: t.prestige,
           seriesName: targetSeries.name,
-          driverNames: t.drivers.map(dId => {
-            const driver = get().rivals.find(r => r.id === dId)
-            return driver ? `${driver.firstName} ${driver.lastName}` : 'Unknown'
+          driverNames: (t.drivers ?? []).map(dId => {
+            const id = typeof dId === 'string' ? dId : (dId as AMS2Driver).name
+            const driver = get().rivals.find(r => r.id === id)
+            return driver ? `${driver.firstName} ${driver.lastName}` : (typeof dId === 'string' ? 'Unknown' : (dId as AMS2Driver).name)
           })
         }))
         
         try {
           onProgress?.({ total: seriesTeams.length, completed: 0, status: 'generating' })
           
-          // Use the electron IPC to generate team narratives
           if (!window.electron?.generateTeamNarratives) {
             console.error('[TeamNarrative] window.electron.generateTeamNarratives is not available')
             onProgress?.({ total: seriesTeams.length, completed: 0, status: 'error' })
@@ -3338,8 +3836,6 @@ export const useRivalStore = create<RivalStore>()(
           )
           
           if (result?.success && result.narratives) {
-            // Apply the narratives to teams
-            // Convert teams array to Record for easier lookup, then convert back to array
             const teamsArray = get().teams
             const teamsRecord: Record<string, Team> = {}
             teamsArray.forEach(team => {
@@ -3355,7 +3851,6 @@ export const useRivalStore = create<RivalStore>()(
               }
             }
             
-            // Convert back to array
             const updatedTeams = Object.values(teamsRecord)
             set({ teams: updatedTeams })
             console.log(`[TeamNarrative] Generated ${Object.keys(result.narratives).length} team narratives for ${targetSeries.name}`)
@@ -3783,7 +4278,7 @@ export const useRivalStore = create<RivalStore>()(
         
         // Get player's actual race history for accurate recalculation
         const playerRaceHistory = useCareerStore.getState().player?.raceHistory || []
-        const playerSeriesRaces = playerRaceHistory.filter(r => r.seriesId === seriesId)
+        const playerSeriesRaces = playerRaceHistory.filter((r: { seriesId: string }) => r.seriesId === seriesId)
         
         // Calculate what the points SHOULD be based on the new system
         const recalculatedStandings = currentStandings.map(standing => {
@@ -3791,7 +4286,7 @@ export const useRivalStore = create<RivalStore>()(
           
           if (standing.isPlayer && playerSeriesRaces.length > 0) {
             // For player: recalculate from actual race positions
-            playerSeriesRaces.forEach(race => {
+            playerSeriesRaces.forEach((race: { racePosition: number; fastestLap?: boolean }) => {
               const racePoints = getPointsForPosition(pointsSystem, race.racePosition)
               // Add fastest lap bonus if applicable
               if (race.fastestLap && pointsSystem.fastestLap) {
@@ -3915,14 +4410,17 @@ export const useRivalStore = create<RivalStore>()(
             currentWeek
           )
           
-          // Add team name to event if generated
+          // Add team name to event if generated; map to store's TeamDevelopmentEvent shape
           if (event) {
-            const namedEvent = {
-              ...event,
-              title: event.title.replace('{teamName}', team.name),
-              description: event.description.replace('{teamName}', team.name)
-            }
-            events.push(namedEvent)
+            const description = event.description.replace('{teamName}', team.name)
+            events.push({
+              teamId: team.id,
+              teamName: team.name,
+              type: event.type,
+              description,
+              modifier: event.effects?.reduce((s: number, e: { value: number }) => s + e.value, 0) ?? 0,
+              week: event.week
+            })
           }
           
           return { ...team, development: newState }
@@ -3959,14 +4457,23 @@ export const useRivalStore = create<RivalStore>()(
         const { teams } = get()
         const seriesTeams = teams.filter(t => t.seriesId === seriesId)
         
+        // Build display names: append car number/shortName when multiple teams share a name
+        const nameCount = new Map<string, number>()
+        for (const t of seriesTeams) nameCount.set(t.name, (nameCount.get(t.name) || 0) + 1)
+        
         return seriesTeams
           .map(team => {
             const dev = team.development
             const weeklyGain = dev ? dev.totalPoints - dev.seasonStartPoints : 0
             
+            let displayName = team.name
+            if ((nameCount.get(team.name) || 0) > 1 && team.shortName) {
+              displayName = `${team.name} ${team.shortName}`
+            }
+            
             return {
               teamId: team.id,
-              teamName: team.name,
+              teamName: displayName,
               totalPoints: dev?.totalPoints || 0,
               weeklyGain: weeklyGain > 0 ? weeklyGain : 0
             }
@@ -4072,10 +4579,11 @@ export const useRivalStore = create<RivalStore>()(
 
 function getCategoryForClass(classId: string): string {
   if (classId.includes('formula') || classId.includes('f-') || classId.includes('f3')) return 'formula'
+  // Check prototype/LMDh BEFORE gt - 'lmdh-gtp' contains 'gt' but is a prototype class
+  if (classId.includes('lmdh') || classId.includes('prototype') || classId.includes('lmp') || classId.includes('hypercar')) return 'prototype'
   if (classId.includes('gt')) return 'gt'
   if (classId.includes('stock')) return 'stock'
   if (classId.includes('kart')) return 'kart'
-  if (classId.includes('prototype') || classId.includes('lmp') || classId.includes('hypercar')) return 'prototype'
   if (classId.includes('touring') || classId.includes('supercar')) return 'touring'
   return 'other'
 }
@@ -4280,7 +4788,7 @@ function calculateGridSize(
   primaryClassId: string
 ): number {
   // First, try to use the car class gridSize from detailed car data
-  const detailedClass = DetailedCarClasses.find(c => c.id === primaryClassId)
+  const detailedClass = DETAILED_CAR_CLASSES.find((c: DetailedCarClasses) => c.id === primaryClassId)
   
   // Calculate total liveries/drivers across all teams
   let totalEntries = 0
@@ -4379,89 +4887,250 @@ function getPrizeMoneyFromPrizePool(prizePool: number, tier: TeamTier): { win: n
   }
 }
 
+function getTierTrackLevel(tier: TeamTier): number {
+  switch (tier) {
+    case 'entry': return 1
+    case 'amateur': return 2
+    case 'semi-pro': return 3
+    case 'professional': return 4
+    case 'pro': return 5
+    case 'elite': return 6
+    case 'pinnacle': return 6
+    default: return 3
+  }
+}
+
+function isRaceLayoutIdCompatible(layoutId: string, category: string): boolean {
+  const id = layoutId.toLowerCase()
+
+  // Keep STT variants out of generated race calendars by default.
+  if (id.includes('stt')) return false
+
+  const isRallyVariant =
+    id.includes('rx') ||
+    id.includes('rally') ||
+    id.includes('dirt') ||
+    id.includes('snow') ||
+    id.includes('ice')
+
+  if (category === 'rallycross') return true
+  if (isRallyVariant) return false
+
+  // Only stock-usa should default to pure oval race layouts.
+  const isPureOval = id.includes('oval') && !id.includes('roval') && !id.includes('road')
+  if (category !== 'stock-usa' && isPureOval) return false
+
+  return true
+}
+
+function getSeriesTrackEligibility(
+  track: AMS2Track,
+  series: Series,
+  category: string,
+  enforceTierSuitability: boolean
+): { eligible: boolean; selectedLayoutId?: string } {
+  if (enforceTierSuitability) {
+    const level = getTierTrackLevel(series.tier)
+    if (!track.suitableTiers.includes(level)) {
+      return { eligible: false }
+    }
+  }
+
+  const bestLayoutId = selectBestLayoutId(
+    track.layouts,
+    track.defaultLayout,
+    category,
+    series.tier
+  )
+  const layout = track.layouts.find(l => l.id === bestLayoutId) ||
+    track.layouts.find(l => l.id === track.defaultLayout) ||
+    track.layouts[0]
+
+  if (!layout) return { eligible: false }
+  if (!isRaceLayoutIdCompatible(layout.id, category)) return { eligible: false }
+
+  return { eligible: true, selectedLayoutId: layout.id }
+}
+
 /**
  * Generate a realistic championship calendar for a series
  * 
- * This improved version considers:
- * 1. Regional relevance - Series favor tracks from appropriate regions
- * 2. Track grade matching - Higher tier series use Grade 1-2 circuits
- * 3. Iconic track requirements - Each category has "must-visit" tracks
+ * Territory-first approach:
+ * 1. Fixed venue check - Named events (24h Le Mans, Daytona 500, etc.) get their exact track
+ * 2. Territory filtering - Tracks MUST be in the series' allowed regions (hard boundary)
+ * 3. Category/type filtering - Track types must match the racing category
+ * 4. Grade filtering - Higher tiers require higher-grade circuits
+ * 5. Round count = min(seasonRounds, availableTracks) - never more rounds than tracks
+ * 6. Iconic track prioritization - Must-visit circuits appear first
+ * 7. Layout selection - Category-appropriate layouts (oval for NASCAR, road for IMSA, etc.)
  */
 function generateCalendarForSeries(series: Series, year: number): RaceEvent[] {
   const calendar: RaceEvent[] = []
-  
-  // 1. Get configuration for this series
-  const regionalConfig = getRegionalPreference(series.id)
-  const acceptableGrades = getAcceptableGradesForTier(series.tier)
   const calendarSettings = getCalendarSettingsForTier(series.tier)
-  const numRounds = getRoundCountForTier(series.tier)
-  
-  // 2. Get suitable track types for this category
-  const trackTypes = getTrackTypesForCategory(series.category)
-  
-  // 3. Filter tracks by type and grade
-  let filteredTracks = getTracksFiltered({
-    types: trackTypes,
-    grades: acceptableGrades,
-  })
-  
-  // Fallback to permanent circuits if no tracks match
-  if (filteredTracks.length === 0) {
-    filteredTracks = getTracksFiltered({
-      types: ['permanent'],
-      grades: acceptableGrades,
-    })
+
+  // ── STEP 1: Check for fixed venue (named events like 24h Le Mans, Daytona 500) ──
+  const fixedVenue = FIXED_VENUE_CHAMPIONSHIPS[series.id]
+  if (fixedVenue) {
+    const track = getTrackById(fixedVenue.trackId)
+    if (track) {
+      const primaryLayout = track.layouts.find(l => l.id === fixedVenue.layoutId) ||
+                            track.layouts.find(l => l.id === track.defaultLayout) ||
+                            track.layouts[0]
+
+      if (primaryLayout) {
+        const requestedRounds = series.seasonRounds || 1
+        const { seasonStartWeek, seasonEndWeek, minWeeksBetweenRaces } = calendarSettings
+        const totalWeeks = Math.max(1, seasonEndWeek - seasonStartWeek)
+        const spacing = Math.max(
+          minWeeksBetweenRaces,
+          Math.floor(totalWeeks / Math.max(requestedRounds, 1))
+        )
+
+        const layoutCycle = [
+          primaryLayout,
+          ...track.layouts.filter(l => l.id !== primaryLayout.id)
+        ]
+
+        for (let roundIndex = 0; roundIndex < requestedRounds; roundIndex++) {
+          const layout = layoutCycle[roundIndex % layoutCycle.length] || primaryLayout
+          const week = Math.min(
+            seasonStartWeek + (roundIndex * spacing),
+            seasonEndWeek - ((requestedRounds - roundIndex - 1) * minWeeksBetweenRaces)
+          )
+
+          calendar.push({
+            id: `${series.id}_${year}_r${roundIndex + 1}`,
+            round: roundIndex + 1,
+            trackId: track.id,
+            trackName: track.name,
+            layoutId: layout.id,
+            layoutName: layout.name,
+            country: track.country,
+            lengthKm: layout.lengthKm,
+            week,
+            sessions: {
+              practice: true,
+              qualifying: true,
+              race: true,
+              sprintRace: false
+            }
+          })
+        }
+
+        console.log(`[Calendar] Fixed venue: ${series.name} → ${track.name} (${requestedRounds} rounds)`)
+        return calendar
+      }
+    } else {
+      console.warn(`[Calendar] Fixed venue track '${fixedVenue.trackId}' not found for ${series.name}`)
+    }
   }
-  
-  // Final fallback - any permanent track
+
+  // ── STEP 2: Get territory (allowed regions) for this series ──
+  const territory = getSeriesTerritory(series.id, series.region)
+  const acceptableGrades = getAcceptableGradesForTier(series.tier)
+
+  // Use seriesCategory (more specific) with fallback to category
+  const effectiveCategory = series.seriesCategory || series.category
+
+  // ── STEP 3: Get tracks filtered by category, territory, and grade ──
+  let filteredTracks = getTracksForCategory(
+    effectiveCategory,
+    territory.allowedRegions,
+    acceptableGrades.length > 0 ? acceptableGrades : undefined
+  )
+
+  // Fallback 1: relax grade requirements within territory
   if (filteredTracks.length === 0) {
-    filteredTracks = AMS2_TRACKS.filter(t => t.type === 'permanent')
+    filteredTracks = getTracksForCategory(
+      effectiveCategory,
+      territory.allowedRegions
+    )
   }
-  
+
+  // Fallback 2: try permanent tracks within territory (no type/grade filter)
   if (filteredTracks.length === 0) {
-    console.warn(`[Calendar] No suitable tracks found for ${series.name}`)
+    filteredTracks = AMS2_TRACKS.filter(t =>
+      territory.allowedRegions.includes(t.region) &&
+      t.type === 'permanent'
+    )
+  }
+
+  // Fallback 3: any track in territory (very last resort)
+  if (filteredTracks.length === 0) {
+    filteredTracks = AMS2_TRACKS.filter(t =>
+      territory.allowedRegions.includes(t.region)
+    )
+  }
+
+  if (filteredTracks.length === 0) {
+    console.warn(`[Calendar] No tracks found for ${series.name} in territory [${territory.allowedRegions.join(', ')}]`)
     return calendar
   }
-  
-  // 4. Apply regional weighting
-  const weightedTracks = applyRegionalWeighting(
-    filteredTracks,
-    regionalConfig.primary,
-    regionalConfig.weight,
-    regionalConfig.secondary
+
+  // ── STEP 3B: Universal realism guardrails (all series) ──
+  const strictEligibleTracks = filteredTracks.filter(track =>
+    getSeriesTrackEligibility(track, series, effectiveCategory, true).eligible
   )
-  
-  // 5. Get iconic tracks for this category
-  const iconicTrackIds = getIconicTracksForCategory(series.category, series.tier)
-  
-  // 6. Select tracks, prioritizing iconic ones
+  if (strictEligibleTracks.length > 0) {
+    filteredTracks = strictEligibleTracks
+  } else {
+    const relaxedEligibleTracks = filteredTracks.filter(track =>
+      getSeriesTrackEligibility(track, series, effectiveCategory, false).eligible
+    )
+    if (relaxedEligibleTracks.length > 0) {
+      filteredTracks = relaxedEligibleTracks
+      console.log(`[Calendar] ${series.name}: using relaxed eligibility fallback (${relaxedEligibleTracks.length} tracks)`)
+    }
+  }
+
+  // ── STEP 4: Determine round count - capped by available tracks ──
+  const requestedRounds = series.seasonRounds || getMaxRoundsForTier(series.tier)
+  const numRounds = Math.min(requestedRounds, filteredTracks.length)
+
+  if (numRounds < requestedRounds) {
+    console.log(`[Calendar] ${series.name}: Capped from ${requestedRounds} to ${numRounds} rounds (only ${filteredTracks.length} tracks in territory)`)
+  }
+
+  // ── STEP 5: Sort tracks with primary region priority ──
+  const sortedTracks = sortTracksByRegionPriority(filteredTracks, territory.primary)
+
+  // ── STEP 6: Select tracks, prioritizing iconic ones ──
+  const iconicTrackIds = getIconicTracksForCategory(effectiveCategory, series.tier)
   const selectedTracks = selectTracksForCalendar(
-    weightedTracks,
+    sortedTracks,
     iconicTrackIds,
     numRounds
   )
-  
-  // 7. Generate calendar with proper week spacing
+
+  // ── STEP 7: Generate calendar with proper week spacing ──
   const { seasonStartWeek, seasonEndWeek, minWeeksBetweenRaces } = calendarSettings
   const totalWeeks = seasonEndWeek - seasonStartWeek
   const weekSpacing = Math.max(
     minWeeksBetweenRaces,
     Math.floor(totalWeeks / Math.max(selectedTracks.length, 1))
   )
-  
-  // 8. Create race events
+
+  // ── STEP 8: Create race events with category-appropriate layouts ──
   selectedTracks.forEach((track, index) => {
-    const layout = track.layouts.find(l => l.id === track.defaultLayout) || 
+    // Select layout based on category and tier (not just defaultLayout)
+    const bestLayoutId = selectBestLayoutId(
+      track.layouts,
+      track.defaultLayout,
+      effectiveCategory,
+      series.tier
+    )
+    const layout = track.layouts.find(l => l.id === bestLayoutId) ||
+                   track.layouts.find(l => l.id === track.defaultLayout) ||
                    track.layouts[0]
-    
+
     if (!layout) return
-    
+
     // Calculate week, ensuring we stay within season bounds
     const week = Math.min(
       seasonStartWeek + (index * weekSpacing),
       seasonEndWeek - (selectedTracks.length - index - 1) * minWeeksBetweenRaces
     )
-    
+
     calendar.push({
       id: `${series.id}_${year}_r${index + 1}`,
       round: index + 1,
@@ -4480,8 +5149,8 @@ function generateCalendarForSeries(series: Series, year: number): RaceEvent[] {
       }
     })
   })
-  
-  // Log calendar generation info for debugging
+
+  // ── Logging ──
   const regionCounts = calendar.reduce((acc, race) => {
     const track = getTrackById(race.trackId)
     if (track) {
@@ -4489,15 +5158,16 @@ function generateCalendarForSeries(series: Series, year: number): RaceEvent[] {
     }
     return acc
   }, {} as Record<string, number>)
-  
+
   console.log(`[Calendar] Generated ${calendar.length} rounds for ${series.name}:`, {
     tier: series.tier,
-    category: series.category,
-    preferredRegion: regionalConfig.primary,
+    category: effectiveCategory,
+    territory: territory.allowedRegions,
     regionDistribution: regionCounts,
+    tracks: calendar.map(r => `${r.trackName} (${r.layoutName})`),
     iconicIncluded: iconicTrackIds.filter(id => calendar.some(r => r.trackId === id))
   })
-  
+
   return calendar
 }
 
@@ -4560,19 +5230,19 @@ function generateRivalsFromTeams(teams: Team[]): RivalDriver[] {
       )
       
       rivals.push(rival)
-      team.drivers.push(rival.id)
-      team.availableSeats = Math.max(0, team.availableSeats - 1)
+      ;(team.drivers as (string | AMS2Driver)[]).push(rival.id)
+      team.availableSeats = Math.max(0, (team.availableSeats ?? 0) - 1)
     })
     
     // If team needs more drivers, generate random ones
-    while (team.drivers.length < 2 && team.availableSeats > 0) {
+    while (team.drivers.length < 2 && (team.availableSeats ?? 0) > 0) {
       const age = 18 + Math.floor(Math.random() * 20)
-      const rival = generateRandomRival(team.seriesId, age, team.prestige)
+      const rival = generateRandomRival(team.seriesId ?? '', age, team.prestige)
       rival.currentTeamId = team.id
       rival.id = `${team.id}_gen_${team.drivers.length}`
       rivals.push(rival)
-      team.drivers.push(rival.id)
-      team.availableSeats--
+      ;(team.drivers as (string | AMS2Driver)[]).push(rival.id)
+      team.availableSeats = (team.availableSeats ?? 0) - 1
     }
   })
   
@@ -4646,7 +5316,7 @@ function generateRivalFromData(
     peakAge: 25 + Math.floor(Math.random() * 8),
     declineRate: 0.01 + Math.random() * 0.02,
     currentTeamId: team.id,
-    currentSeriesId: team.seriesId,
+    currentSeriesId: team.seriesId ?? '',
     contractEndYear: new Date().getFullYear() + 1 + Math.floor(Math.random() * 3),
     // Realistic salary based on tier and skill
     salary: calculateDriverSalary(team.tier, baseSkill, team.prestige),
@@ -4694,7 +5364,7 @@ function getSponsorTierFromPrestige(prestige: number, tier: TeamTier): AITeamEco
 }
 
 /**
- * Calculate initial financial health based on prestige and budget
+ * Calculate initial financial health based on prestige and budget (0-100 score)
  */
 function getInitialFinancialHealth(prestige: number, budget: Team['budget']): number {
   // Base health from prestige (30-70 range)

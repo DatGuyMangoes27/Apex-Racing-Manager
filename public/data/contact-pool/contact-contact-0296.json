@@ -1,0 +1,31 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 28,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Alistair is a rising star at Barclays Private Bank, specializing in wealth management for high-net-worth individuals, particularly those involved in sports and entertainment. Despite being entirely self-taught in finance, his knack for identifying profitable opportunities and his refreshingly blunt honesty have made him a favorite among clients. He offsets the intense pressures of his job with a diverse range of hobbies, embracing the arts and physical pursuits with equal enthusiasm.\n\nAlistair's interest in motorsport stems from a desire to understand the financial landscape of the industry; he sees it as a high-stakes arena with significant investment potential. Drivers often seek financial advice and investment opportunities, making a relationship with Alistair potentially invaluable. He appreciates the dedication and precision required to succeed in racing, qualities he sees mirrored in his own profession.\n\nDespite his sharp wit and occasional cynicism, Alistair is deeply committed to helping his clients achieve their goals. He is spontaneous with his support, and fiercely loyal, and he genuinely seeks opportunities to make a positive impact, even if he couches it in sarcasm. His idealism is masked, but present.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight side part",
+    "eyeColor": "Hazel",
+    "facialHair": "Light stubble",
+    "description": "Alistair is of average height with a lean build, likely from his cycling and martial arts hobbies. He usually wears impeccably tailored suits, but with a subtly rebellious edge like brightly colored socks."
+  },
+  "connectionToMotorsport": "Alistair manages the finances of several high-profile racing team owners and drivers, providing investment advice and managing their assets.",
+  "meetingContext": "You might meet Alistair at a networking event hosted by a motorsport sponsor, or through a mutual connection within the racing community.",
+  "conversationTopics": [
+    "The latest cycling gear",
+    "The parallels between ballet and racing (discipline and precision)",
+    "The intricacies of coffee brewing",
+    "The current state of Formula 1",
+    "Ethical investments in motorsport"
+  ],
+  "canHelp": [
+    "Secure lucrative sponsorship deals through his network.",
+    "Provide sound financial advice and investment opportunities to maximize earnings.",
+    "Introduce the player to wealthy team owners looking for talented drivers."
+  ],
+  "personality_summary": "A sarcastic yet caring banker with a surprising range of interests and a sharp financial mind."
+}

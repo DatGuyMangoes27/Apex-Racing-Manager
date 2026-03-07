@@ -1,0 +1,22 @@
+{
+  "name": "Aria Williams",
+  "nationality": "New Zealand",
+  "age": 22,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Aria's journey into motorsport began unexpectedly during a university project focused on computational fluid dynamics. Intrigued by the application of her work to racing aerodynamics, she pursued an internship at a local racing team, quickly finding her niche in simulator engineering. Her background in physics and software engineering allows her to translate real-world data into accurate and insightful simulations. \n\nAria is known for her methodical and data-driven approach. She believes in rigorous testing and validation, ensuring that the simulations provide actionable feedback to the drivers and engineers. Her focus is on improving correlation between the virtual and real worlds, optimizing setup choices and race strategies. What distinguishes her is her ability to quickly identify discrepancies and propose innovative solutions that improve the accuracy and reliability of the simulations.\n\nAt Mercedes-AMG, Aria is responsible for developing and maintaining the driver-in-the-loop simulator, working closely with the drivers and race engineers to optimize car setup and develop race strategies. She also contributes to the development of new simulation tools and methodologies.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Aria is of average height with an athletic build, always appearing focused and energetic."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with equations and data points.",
+    "Has a habit of tapping her pen rhythmically when concentrating.",
+    "Prefers working late at night when the simulator lab is quiet."
+  ]
+}

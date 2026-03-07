@@ -1,0 +1,62 @@
+{
+  "history": "Kartódromo Internacional da Granja Viana, located just outside São Paulo, Brazil, has been a mainstay of Brazilian karting since its opening in 1996. It quickly became known for its challenging layout and commitment to hosting high-level competitions. While the venue boasts several configurations, the Full Circuit layout is a staple, often used for national championships and international events. Over the years, Granja Viana has seen countless future stars hone their skills, becoming a proving ground for drivers aiming for Formula 1 and other top-tier series. Its enduring popularity stems from its technical nature and the intense racing it consistently delivers.",
+  "atmosphere": "The air crackles with anticipation at Granja Viana during a Full Circuit race. The roar of the engines echoes off the surrounding buildings, creating a visceral experience that engulfs you. The paddock buzzes with activity as teams fine-tune their karts, and the grandstands are filled with passionate fans cheering on their favorites. The scent of high-octane fuel and burning rubber hangs heavy in the air, a constant reminder of the fierce competition unfolding on the track. Every corner is a battleground, and the energy is palpable as drivers push their limits in pursuit of victory.",
+  "trackCharacter": "The Full Circuit at Granja Viana is a demanding test of karting skill. Its 1.15km length is packed with 16 turns that require precise kart control and strategic thinking. The layout features a mix of fast sweepers, tight hairpins, and tricky chicanes, demanding a well-rounded setup and adaptable driving style. The track rewards bravery and commitment, but punishes mistakes harshly. The flow is crucial here; maintaining momentum through the technical sections is key to setting a competitive lap time. It's a circuit that separates the good drivers from the truly great.",
+  "nickname": "The Gauntlet",
+  "famousCorners": [
+    {
+      "name": "Curva do Café",
+      "description": "A long, sweeping right-hander that requires commitment and a smooth entry to maintain momentum onto the following straight.",
+      "challenge": "Finding the perfect line and managing the kart's balance to avoid scrubbing off speed."
+    },
+    {
+      "name": "Curva do Pinheirinho",
+      "description": "A tricky hairpin that demands precise braking and a tight line to set up for the exit.",
+      "challenge": "Balancing the need for a late apex with maintaining enough speed to avoid losing time on the following straight."
+    },
+    {
+      "name": "Curva do Saca Rolha",
+      "description": "A fast, downhill chicane that tests a driver's courage and kart control.",
+      "challenge": "Maintaining speed through the complex while avoiding the temptation to overdrive and risk losing control."
+    },
+    {
+      "name": "Curva da Caixa D'Água",
+      "description": "A medium-speed right-hander that requires a delicate touch and precise placement to set up the next section.",
+      "challenge": "Finding the optimal entry point and apex to maximize exit speed and maintain momentum."
+    },
+    {
+      "name": "Curva da Arquibancada",
+      "description": "A sweeping final corner leading onto the main straight, crucial for a good run to the finish line.",
+      "challenge": "Carrying maximum speed through the corner while setting up the kart perfectly for a clean exit and optimal acceleration."
+    }
+  ],
+  "keyFactors": [
+    "Kart setup for a balance of speed and grip",
+    "Precise braking technique",
+    "Maintaining momentum through technical sections",
+    "Aggressive but controlled driving style",
+    "Consistent lap times"
+  ],
+  "overtakingSpots": [
+    "Into Curva do Pinheirinho (hairpin)",
+    "Into Curva do Saca Rolha (if close enough)",
+    "On the approach to Curva da Caixa D'Água (braking zone)",
+    "Into the final corner, Curva da Arquibancada, with a good exit"
+  ],
+  "historySnippets": [
+    "Granja Viana opened in 1996.",
+    "The Full Circuit is 1.15km long with 16 turns.",
+    "Many future F1 drivers have raced at Granja Viana.",
+    "The track hosts national and international karting events.",
+    "Granja Viana is located near São Paulo, Brazil.",
+    "The venue features multiple track configurations."
+  ],
+  "weatherNotes": "São Paulo's climate is generally mild, but Granja Viana can experience sudden rain showers, especially during the summer months. These showers can dramatically change track conditions, making tire choice and kart setup crucial. Humidity is also a factor, affecting engine performance and grip levels. Drivers and teams must be prepared for variable weather conditions.",
+  "drivingAdvice": "On the Full Circuit at Granja Viana, consistency is key. Focus on hitting your marks in every corner, especially in the technical sections. Conserve your tires, as the abrasive surface can wear them down quickly. Be patient in traffic, and choose your overtaking opportunities wisely. A clean, consistent race is often more rewarding than taking unnecessary risks.",
+  "famousRaces": [
+    "Brazilian Karting Championship: This national championship often uses the Full Circuit layout, attracting top karters from across Brazil.",
+    "International Karting events: Granja Viana has hosted various international karting competitions, showcasing talent from around the world.",
+    "Endurance Karting Races: The circuit is also known for hosting long-distance endurance races, testing the reliability of karts and the stamina of drivers."
+  ],
+  "localCulture": "Granja Viana is situated in a vibrant area near São Paulo, offering a blend of urban amenities and natural beauty. The local cuisine features delicious Brazilian dishes, including feijoada (bean stew) and churrasco (barbecue). The paddock atmosphere is friendly and welcoming, with teams often sharing tips and experiences. The Brazilian passion for motorsport is evident in the enthusiastic support from the fans, creating a memorable experience for drivers and spectators alike."
+}

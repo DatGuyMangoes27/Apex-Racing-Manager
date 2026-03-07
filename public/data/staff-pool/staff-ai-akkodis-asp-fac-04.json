@@ -1,0 +1,22 @@
+{
+  "name": "Irina Volkov",
+  "nationality": "Russian",
+  "age": 27,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Irina's fascination with motorsport began during her childhood, captivated by the intricate electronics that powered Formula 1 cars. She pursued a degree in Electrical Engineering at Moscow State University, specializing in advanced control systems. After graduation, Irina gained valuable experience at a local engineering firm, focusing on embedded systems development. Seeking a more challenging and dynamic environment, she transitioned to motorsport, initially working on data acquisition systems for a smaller racing team before joining Akkodis ASP Team. Irina's approach to electronics engineering is rooted in a blend of rigorous analysis and creative problem-solving. Her focus is on optimizing electronic performance to achieve a competitive advantage on the track. She's particularly known for her ability to diagnose complex electrical issues swiftly and efficiently, often devising innovative solutions under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair often pulled back in a practical ponytail",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Irina is a slender woman with sharp, intelligent eyes and a focused expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a multi-tool on her person, even off-track",
+    "Has a habit of sketching circuit diagrams on napkins during meetings",
+    "Prefers to listen to electronic music while working to enhance focus"
+  ]
+}

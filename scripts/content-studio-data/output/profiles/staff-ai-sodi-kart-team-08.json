@@ -1,0 +1,22 @@
+{
+  "name": "Murat Demir",
+  "nationality": "Turkish",
+  "age": 56,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Murat's journey into motorsport began unexpectedly. While studying mechanical engineering in Istanbul, a friend dragged him to a local karting event. The raw energy and technical precision captivated him. After graduating, he started as a junior mechanic for a small rally team, learning the ropes in harsh conditions. He later transitioned to karting, drawn by the intricate details of optimizing a relatively simple machine for maximum performance. His meticulous approach and relentless pursuit of marginal gains quickly made him a valuable asset.\n\nOver the years, Murat has developed a reputation for being a demanding but fair engineer. He believes in pushing the limits of both the equipment and the team, always seeking that extra tenth of a second. He's known for his ability to diagnose problems quickly and efficiently, a skill honed from years of experience in the field. His colleagues appreciate his dedication, even if they occasionally find his intensity challenging. He joined the Sodi Kart Factory team hoping to contribute to the development of groundbreaking karting technology.\n\nHis distinctive approach involves detailed data analysis combined with an uncanny intuition for mechanical sympathy. He can often predict component failures before they occur, saving valuable time and resources. Murat is also a firm believer in constant innovation, always exploring new materials and techniques to improve kart performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Graying Black",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of sturdy build, Murat's face bears the marks of years spent under the sun and in the garage."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on personally inspecting every kart component before each race."
+  ]
+}

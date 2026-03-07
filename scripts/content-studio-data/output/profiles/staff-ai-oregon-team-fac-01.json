@@ -1,0 +1,22 @@
+{
+  "name": "Mads Christensen",
+  "nationality": "Danish",
+  "age": 31,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Mads's journey into motorsport began with a childhood fascination for Lego Technic sets, often rebuilding them into increasingly complex racing car designs. This early interest evolved into a deep understanding of vehicle dynamics and data analysis. He started analyzing race data for a local karting team, quickly proving his aptitude for uncovering hidden performance gains. His reputation grew, eventually leading him to Oregon Team.\n\nMads excels at translating raw data into actionable insights. He has a knack for identifying subtle patterns and correlations that others miss, which has allowed him to help teams optimize their strategies and improve their lap times. His flexible approach means he's able to adapt to new challenges and work collaboratively with engineers and drivers to achieve common goals.\n\nWhat sets Mads apart is his ability to not only analyze the data, but also to visualize it in a way that is easy for everyone to understand. He bridges the gap between complex technical information and practical application on the track.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "light brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Mads is of average height with a lean build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a small bag of licorice nearby.",
+    "Taps his pen rhythmically when deeply focused.",
+    "Often sketches data visualizations on napkins during lunch."
+  ]
+}

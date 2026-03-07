@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's fascination with motorsport began during his childhood in Porto, where he spent countless hours tinkering with go-karts and dreaming of Formula 1. He pursued a degree in Electrical Engineering at the University of Lisbon, focusing on embedded systems and control engineering. After graduating, he gained experience working for a small automotive company before landing a role with Team Penske. \n\nRicardo is known for his methodical approach and relentless pursuit of perfection. He believes that even the smallest details can have a significant impact on performance, and he is meticulous in his analysis and troubleshooting. His demanding nature stems from his commitment to excellence and his desire to push the boundaries of what's possible. He's always looking for innovative solutions to optimize the car's electrical systems.\n\nRicardo's distinctive approach is his ability to blend his technical expertise with a deep understanding of racing dynamics. He doesn't just see circuits and wires; he visualizes the flow of energy and information, constantly seeking ways to improve efficiency and reliability.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight fade on the sides",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard",
+    "description": "Ricardo has a lean build and a focused expression."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always has a Portuguese espresso at 10:00 AM sharp, no matter what.",
+    "Insists on using a specific brand of multimeter, claiming it's more accurate.",
+    "Tends to over-explain technical concepts, even to non-technical staff."
+  ]
+}

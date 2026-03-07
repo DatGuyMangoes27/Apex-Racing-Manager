@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0213",
+  "name": "Dumont Autocare",
+  "category": "automotive",
+  "tier": "entry",
+  "country": "Belgium",
+  "description": "Premium car care products, made in Belgium.",
+  "story": "Dumont Autocare is a family-owned business dedicated to quality automotive cleaning and detailing products. We believe in the precision and performance of motorsport, reflecting our own commitment to excellence. We seek to build brand awareness and connect with passionate car enthusiasts through racing.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 10,
+    "minMarketability": 5,
+    "nationalities": [
+      "Belgium"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "performance",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 1,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0213.png"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "sponsor-0445",
+  "name": "AlpenBlitz Energy",
+  "category": "energy_drinks",
+  "tier": "high",
+  "country": "Austria",
+  "description": "Fuel your performance with AlpenBlitz Energy.",
+  "story": "AlpenBlitz Energy is a new Austrian energy drink formulated to maximize focus and reaction time. We're passionate about supporting high-performance individuals and seek a partnership that showcases our product's impact on peak performance. We believe motorsport is a perfect platform to demonstrate our drink's invigorating effects.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 180000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60,
+    "nationalities": [
+      "Austria",
+      "Germany",
+      "Switzerland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0445.png"
+}

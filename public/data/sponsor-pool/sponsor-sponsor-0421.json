@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0421",
+  "name": "Ruedas Seguras",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Argentina",
+  "description": "High-performance wheels and tires engineered for superior grip and durability.",
+  "story": "Ruedas Seguras is a leading Argentinian manufacturer of racing wheels and tires, committed to innovation and safety. We believe in supporting local talent and pushing the boundaries of motorsport technology. We seek a partnership that showcases our products' performance and reliability on the world stage.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 85000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "seriesTiers": [],
+    "nationalities": [
+      "Argentina"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0421.png"
+}

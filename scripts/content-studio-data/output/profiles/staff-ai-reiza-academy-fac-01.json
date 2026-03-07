@@ -1,0 +1,22 @@
+{
+  "name": "Eleftheria Papadopoulos",
+  "nationality": "Greek",
+  "age": 39,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Eleftheria's journey into motorsport began unconventionally, fueled by a lifelong fascination with complex systems and a knack for identifying patterns. Initially studying astrophysics, she soon realized her analytical skills could be applied to the intricate world of racing. She transitioned into data analysis, honing her expertise through various engineering projects before landing at Reiza Racing Academy.\n\nEleftheria's approach is deeply rooted in meticulousness and precision. She believes that even the smallest data point can hold the key to unlocking significant performance gains. Known for her calm demeanor under pressure, she excels at distilling vast datasets into actionable insights, providing drivers and engineers with the critical information needed to optimize their strategies. Her analytical prowess combined with her calm problem solving makes her a vital, if somewhat demanding, asset to the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back into a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A slender woman with a focused gaze and a practical air about her."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with cryptic mathematical equations.",
+    "Insists on having absolute silence in the data analysis room during race sessions.",
+    "Drinks an excessive amount of strong Greek coffee throughout the day."
+  ]
+}

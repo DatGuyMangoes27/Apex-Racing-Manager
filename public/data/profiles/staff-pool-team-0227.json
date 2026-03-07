@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "New Zealand",
+  "age": 30,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Liam's passion for motorsport ignited early, fueled by his father's involvement in local rally racing. He pursued a degree in Mechanical Engineering, focusing on vehicle dynamics and aerodynamics. Following graduation, Liam spent several years honing his skills in smaller racing teams, working his way up from data acquisition to race engineer. He prides himself on his ability to quickly adapt to changing track conditions and effectively communicate technical information to drivers, ensuring they have the confidence to push their limits. His dedication to data analysis and creative problem-solving sets him apart.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Hazel",
+    "facialHair": "Short boxed beard",
+    "description": "Liam is of average height with a lean build."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always has a small notebook and pen, even in meetings",
+    "Drinks copious amounts of flat whites",
+    "Has a habit of tapping his pen when deep in thought"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 31,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Erik's path to motorsport was somewhat unconventional. He initially pursued a degree in mechanical engineering, focusing on precision manufacturing. It was during an internship at a Volvo production facility that he discovered his passion for identifying and resolving quality control issues. He realized the same principles could be applied, on a much grander and faster scale, to motorsport. \n\nHe landed an entry-level position at a smaller European racing outfit before being recruited by Rahal Letterman Lanigan. Erik is meticulous in his approach, believing that even the smallest imperfection can have significant consequences on the track. His keen eye for detail and relentless pursuit of perfection have earned him the respect of his colleagues, even if his demanding nature can sometimes rub people the wrong way. He prides himself on his ability to anticipate problems before they arise, saving the team valuable time and resources.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Erik is of average height, with a lean build and intense blue eyes that seem to constantly analyze everything around him."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with meticulously documented observations.",
+    "Has a habit of tapping his pen against surfaces when deep in thought.",
+    "Insists on using a specific brand of Swedish coffee, even when traveling."
+  ]
+}

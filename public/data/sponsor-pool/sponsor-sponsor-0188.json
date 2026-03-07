@@ -1,0 +1,44 @@
+{
+  "id": "sponsor-0188",
+  "name": "Azure Capital",
+  "category": "financial",
+  "tier": "entry",
+  "country": "Monaco",
+  "description": "Smart investments for a brighter future.",
+  "story": "Azure Capital is a boutique investment firm based in Monaco, specializing in early-stage funding for innovative companies. We believe in supporting ambitious individuals and teams, and see motorsport as an ideal platform to showcase our commitment to speed, precision, and strategic risk-taking. We are looking for a driver who embodies these values and can deliver consistent results.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0188.png"
+}

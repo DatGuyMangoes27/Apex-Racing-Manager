@@ -1,0 +1,22 @@
+{
+  "name": "Gheorghe Popescu",
+  "nationality": "Romanian",
+  "age": 59,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Gheorghe's journey into motorsport began in his youth, tinkering with Lada engines in his father's garage in Bucharest. He pursued a degree in mechanical engineering and soon found himself applying his skills to rallying, working with a local team optimizing car performance for the challenging Transfăgărășan Highway. He is a firm believer in data-driven decisions, meticulously analyzing telemetry to identify areas for improvement. His calm and methodical approach has earned him the respect of drivers and mechanics alike, making him a reliable and steady presence in any team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Graying mustache",
+    "description": "A man of average height with a slightly weathered face, hinting at years spent trackside."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on using a slide rule alongside modern software for cross-checking.",
+    "Has a particular fondness for strong Romanian coffee, which he brews himself in the paddock."
+  ]
+}

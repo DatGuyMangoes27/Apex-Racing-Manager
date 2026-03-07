@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 29,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Liam's motorsport journey began with a childhood obsession with Formula 1, fueled by late-night races on grainy television. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics, and quickly found his niche in simulator technology. Liam believes the simulator is more than just a training tool; it's a development platform, a place to push boundaries and explore unconventional solutions. \n\nHis approach is highly analytical, meticulously correlating simulated data with real-world performance. Liam is known for his ability to identify subtle discrepancies and translate them into actionable improvements for the race car setup. His deep understanding of vehicle dynamics, combined with his sharp intuition, makes him a valuable asset to the team. He is known for his innovative approach to simulator setups, and his ability to translate complex data into understandable insights for the drivers and engineers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave at the front.",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Liam is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten equations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Irish tea before every simulator session."
+  ]
+}

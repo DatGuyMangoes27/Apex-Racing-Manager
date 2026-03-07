@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0164",
+  "name": "Apex Composites",
+  "category": "equipment",
+  "tier": "elite",
+  "country": "Hong Kong",
+  "description": "The leading innovator in carbon fiber racing components.",
+  "story": "Apex Composites was founded by a team of engineers who sought to bring cutting-edge materials science to motorsport. We believe that the pursuit of victory demands relentless innovation and a commitment to excellence. Our sponsorship reflects our dedication to supporting teams and drivers who share our values and push the boundaries of performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0164.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Isabelle Dubois",
+  "nationality": "Canadian",
+  "age": 36,
+  "gender": "female",
+  "role": "test_driver_coordinator",
+  "bio": "Isabelle's journey into motorsport began unconventionally, not on the track, but within the intricate world of data analysis during her engineering studies at McGill. Fascinated by the telemetry and performance metrics, she sought a career that blended her technical acumen with her passion for racing. After graduating, she landed a role at a small Canadian racing team, initially assisting with data acquisition and race strategy. Her meticulous attention to detail and ability to identify subtle performance improvements quickly gained her recognition. \n\nMoving to Europe, Isabelle honed her skills coordinating test driver programs for various motorsport teams before eventually joining Manthey EMA. She excels at bridging the gap between the drivers' feedback and the engineering team's technical analysis. Her unique approach involves a deep understanding of both the human element of driving and the complex engineering behind the car's performance, ensuring that test sessions are efficient and deliver tangible results. Isabelle is a firm believer in clear communication and data-driven decision-making, which has earned her the respect of both drivers and engineers alike.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Isabelle is of average height with a focused and observant gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and observations.",
+    "Insists on a pre-test debriefing coffee, brewed precisely to her specifications.",
+    "Has a knack for remembering obscure technical specifications from past races."
+  ]
+}

@@ -39,6 +39,8 @@ contextBridge.exposeInMainWorld('electron', {
   stopTelemetry: () => ipcRenderer.invoke('telemetry:stop'),
   getTelemetryStatus: () => ipcRenderer.invoke('telemetry:status'),
   setTelemetryPort: (port: number) => ipcRenderer.invoke('telemetry:setPort', port),
+  getTelemetryData: () => ipcRenderer.invoke('telemetry:getData'),
+  setTelemetryPollRate: (rate: number) => ipcRenderer.invoke('telemetry:setPollRate', rate),
   
   // Telemetry event listeners
   onTelemetrySession: (callback: (data: any) => void) => {
@@ -64,6 +66,13 @@ contextBridge.exposeInMainWorld('electron', {
 
   // XML Generator
   generateAIXML: (data: any) => ipcRenderer.invoke('xml:generateGrid', data),
+  writeAIDriver: (drivers: any[], seriesName: string, config: any) =>
+    ipcRenderer.invoke('ams2:writeAIDriver', { drivers, seriesName, config }),
+  getAMS2DefaultPath: () => ipcRenderer.invoke('ams2:getDefaultPath'),
+  checkAMS2Path: (customPath?: string) => ipcRenderer.invoke('ams2:checkPath', customPath),
+  listCareerFiles: (config: any) => ipcRenderer.invoke('ams2:listCareerFiles', config),
+  removeCareerFiles: (config: any) => ipcRenderer.invoke('ams2:removeCareerFiles', config),
+  validateAIDriverData: (driver: any) => ipcRenderer.invoke('ams2:validateDriverData', driver),
   generateCareerAI: (standings: any[], seriesName: string, config: any) => 
     ipcRenderer.invoke('ams2:generateCareerAI', { standings, seriesName, config }),
   generateRaceWeekendAI: (drivers: any[], seriesName: string, config: any, carClassId?: string, aiModifier?: number) =>
@@ -72,6 +81,12 @@ contextBridge.exposeInMainWorld('electron', {
   // Database operations
   saveCareer: (careerData: unknown) => ipcRenderer.invoke('db:saveCareer', careerData),
   loadCareer: () => ipcRenderer.invoke('db:loadCareer'),
+  deleteCareer: () => ipcRenderer.invoke('db:deleteCareer'),
+  careerExists: () => ipcRenderer.invoke('db:careerExists'),
+  getSaveInfo: () => ipcRenderer.invoke('db:getSaveInfo'),
+  exportCareer: (exportPath: string) => ipcRenderer.invoke('db:exportCareer', exportPath),
+  importCareer: (importPath: string) => ipcRenderer.invoke('db:importCareer', importPath),
+  getDefaultSavePath: () => ipcRenderer.invoke('db:getDefaultPath'),
   
   // Commentary system (Gemini 3 Flash + ElevenLabs)
   setCommentaryEnabled: (enabled: boolean) => ipcRenderer.invoke('commentary:setEnabled', enabled),
@@ -99,6 +114,9 @@ contextBridge.exposeInMainWorld('electron', {
   testCommentaryQueueSequence: (geminiKey: string, elevenLabsKey: string, leadVoice: string, coVoice: string) =>
     ipcRenderer.invoke('commentary:testQueueSequence', geminiKey, elevenLabsKey, leadVoice, coVoice),
   getCommentaryQueueStatus: () => ipcRenderer.invoke('commentary:getQueueStatus'),
+  getCommentaryRecentMentions: (query?: any) => ipcRenderer.invoke('commentary:getRecentMentions', query),
+  getCommentaryEntityState: (entityType: string, entityId: string) =>
+    ipcRenderer.invoke('commentary:getEntityState', entityType, entityId),
   onCommentaryScript: (callback: (data: any) => void) => {
     ipcRenderer.on('commentary:script', (_event, data) => callback(data))
   },
@@ -138,6 +156,8 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('logs:saveToFile', telemetryLogs, commentaryLogs),
   getBufferedLogs: () => 
     ipcRenderer.invoke('logs:getBuffered'),
+  clearLogFiles: () =>
+    ipcRenderer.invoke('logs:clearFiles'),
   
   // Narrative Generation (TV Broadcast Commentary Data)
   generateDriverNarratives: (drivers: any[], seriesName: string, apiKey: string, realDriverData?: any) =>
@@ -155,6 +175,8 @@ contextBridge.exposeInMainWorld('electron', {
   // TV Broadcast Content Pool (Pre-race color commentary generation)
   generateContentPool: (context: any, apiKey: string) =>
     ipcRenderer.invoke('commentary:generateContentPool', context, apiKey),
+  loadPreGeneratedContentPool: (data: { trackId: string; seriesId: string; pool: any }) =>
+    ipcRenderer.invoke('commentary:loadPreGeneratedContentPool', data),
   getPoolContent: (category?: string, lapPhase?: string, voice?: string) =>
     ipcRenderer.invoke('commentary:getPoolContent', category, lapPhase, voice),
   getPoolStats: () => ipcRenderer.invoke('commentary:getPoolStats'),
@@ -179,6 +201,13 @@ contextBridge.exposeInMainWorld('electron', {
     ipcRenderer.invoke('commentary:getSchedulerStatus'),
   configureScheduler: (config: any) =>
     ipcRenderer.invoke('commentary:configureScheduler', config),
+  
+  // AMS2 Livery Generation
+  generateLivery: (request: any) => ipcRenderer.invoke('livery:generate', request),
+  getLiverySupportedClasses: () => ipcRenderer.invoke('livery:getSupportedClasses'),
+  getLiveryDesignStyles: () => ipcRenderer.invoke('livery:getDesignStyles'),
+  checkLiveryTemplate: (carClassId: string) => ipcRenderer.invoke('livery:checkTemplate', carClassId),
+  extractLiveryTemplate: (carClassId: string, gamePath: string) => ipcRenderer.invoke('livery:extractTemplate', carClassId, gamePath),
 })
 
 // Also expose as electronAPI for backward compatibility
@@ -212,6 +241,8 @@ declare global {
       stopTelemetry: () => Promise<{ success: boolean }>
       getTelemetryStatus: () => Promise<{ isListening: boolean; port: number }>
       setTelemetryPort: (port: number) => Promise<{ success: boolean; port: number }>
+      getTelemetryData: () => Promise<any>
+      setTelemetryPollRate: (rate: number) => Promise<{ success: boolean; rate?: number }>
       onTelemetrySession: (callback: (data: any) => void) => void
       onTelemetryParticipants: (callback: (data: any) => void) => void
       onTelemetryHeartbeat: (callback: (data: any) => void) => void
@@ -240,10 +271,22 @@ declare global {
       forceRaceComplete: () => Promise<{ success: boolean; data?: any; error?: string; message?: string }>
       resetSessionPhase: () => Promise<{ success: boolean }>
       generateAIXML: (data: any) => Promise<any>
+      writeAIDriver: (drivers: any[], seriesName: string, config: any) => Promise<any>
+      getAMS2DefaultPath: () => Promise<string>
+      checkAMS2Path: (customPath?: string) => Promise<boolean>
+      listCareerFiles: (config: any) => Promise<any>
+      removeCareerFiles: (config: any) => Promise<any>
+      validateAIDriverData: (driver: any) => Promise<{ valid: boolean; errors: string[] }>
       generateCareerAI: (standings: any[], seriesName: string, config: any) => Promise<{ success: boolean; filePath: string; error?: string; driversGenerated: number }>
       generateRaceWeekendAI: (drivers: any[], seriesName: string, config: any, carClassId?: string, aiModifier?: number) => Promise<{ success: boolean; filePath: string; error?: string; driversGenerated: number; modifierApplied?: number }>
       saveCareer: (careerData: unknown) => Promise<void>
       loadCareer: () => Promise<unknown>
+      deleteCareer: () => Promise<{ success: boolean; error?: string }>
+      careerExists: () => Promise<boolean>
+      getSaveInfo: () => Promise<{ exists: boolean; savedAt?: string; size?: number; error?: string }>
+      exportCareer: (exportPath: string) => Promise<{ success: boolean; error?: string }>
+      importCareer: (importPath: string) => Promise<{ success: boolean; error?: string }>
+      getDefaultSavePath: () => Promise<string>
       // Commentary (Gemini 3 Flash + ElevenLabs)
       setCommentaryEnabled: (enabled: boolean) => Promise<{ success: boolean; enabled: boolean }>
       setCommentaryAPIKeys: (geminiKey: string, elevenLabsKey: string) => Promise<{ success: boolean }>
@@ -263,6 +306,8 @@ declare global {
       testCommentaryBanter: (geminiKey: string, elevenLabsKey: string, leadVoice: string, coVoice: string) => Promise<{ success: boolean; leadScript?: string; coScript?: string; message?: string; error?: string }>
       testCommentaryQueueSequence: (geminiKey: string, elevenLabsKey: string, leadVoice: string, coVoice: string) => Promise<{ success: boolean; message?: string; queueStatus?: any; error?: string }>
       getCommentaryQueueStatus: () => Promise<{ live: number; status: number; color: number; preGenerated: number; isProcessing: boolean; isBacklogged: boolean }>
+      getCommentaryRecentMentions: (query?: any) => Promise<{ success: boolean; data?: any[]; error?: string }>
+      getCommentaryEntityState: (entityType: string, entityId: string) => Promise<{ success: boolean; data?: any[]; error?: string }>
       onCommentaryScript: (callback: (data: any) => void) => void
       onCommentaryTestStarted: (callback: (data: any) => void) => void
       // Streaming audio for low-latency TTS
@@ -283,6 +328,7 @@ declare global {
       onTelemetryLog?: (callback: (data: any) => void) => void
       onCommentaryLog?: (callback: (data: any) => void) => void
       saveLogsToFile?: (telemetryLogs: any[], commentaryLogs: any[]) => Promise<{ success: boolean; filePath?: string; error?: string }>
+      clearLogFiles?: () => Promise<{ success: boolean; error?: string }>
       // Narrative Generation (TV Broadcast Commentary Data)
       generateDriverNarratives: (drivers: any[], seriesName: string, apiKey: string, realDriverData?: any) => Promise<{ success: boolean; narratives?: Record<string, any>; error?: string }>
       generateTrackNarrative: (track: any, apiKey: string) => Promise<{ success: boolean; narrative?: any; error?: string }>
@@ -291,6 +337,7 @@ declare global {
       onNarrativeProgress?: (callback: (data: any) => void) => void
       // TV Broadcast Content Pool
       generateContentPool: (context: any, apiKey: string) => Promise<{ success: boolean; stats?: { total: number; used: number; remaining: number }; error?: string }>
+      loadPreGeneratedContentPool: (data: { trackId: string; seriesId: string; pool: any }) => Promise<{ success: boolean; stats?: { total: number; used: number; remaining: number } | null; error?: string }>
       getPoolContent: (category?: string, lapPhase?: string, voice?: string) => Promise<{ success: boolean; content?: any }>
       getPoolStats: () => Promise<{ success: boolean; stats?: { total: number; used: number; remaining: number } }>
       clearContentPool: () => Promise<{ success: boolean }>
@@ -303,6 +350,18 @@ declare global {
       notifyAudioEnded: () => Promise<{ success: boolean }>
       getSchedulerStatus: () => Promise<{ success: boolean; status?: any }>
       configureScheduler: (config: any) => Promise<{ success: boolean }>
+      // AMS2 Livery Generation
+      generateLivery: (request: any) => Promise<{
+        success: boolean
+        error?: string
+        ddsPath?: string
+        previewBase64?: string
+        overrideName?: string
+      }>
+      getLiverySupportedClasses: () => Promise<Array<{ classId: string; displayName: string; hasTemplate: boolean }>>
+      getLiveryDesignStyles: () => Promise<Array<{ id: string; name: string; description: string }>>
+      checkLiveryTemplate: (carClassId: string) => Promise<{ hasTemplate: boolean; classId: string }>
+      extractLiveryTemplate: (carClassId: string, gamePath: string) => Promise<{ success: boolean; error?: string; templateCount?: number }>
     }
     electronAPI: {
       minimizeWindow: () => void

@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Rodriguez",
+  "nationality": "Argentine",
+  "age": 30,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Mateo's fascination with motorsport began in his childhood, watching Formula 1 races with his grandfather. He pursued an engineering degree at the Instituto Tecnológico de Buenos Aires, specializing in electrical systems. After graduating, he started his career at a local racing team, honing his skills in data acquisition and analysis, and troubleshooting complex electrical issues under intense pressure. \n\nHe joined Carlin Academy two years ago, where his meticulous approach and analytical abilities quickly made him a valuable asset. Mateo is known for his relentless pursuit of performance improvements, meticulously analyzing telemetry data to identify areas for optimization. He is particularly adept at diagnosing and resolving intermittent electrical faults that can plague racing cars. His ultimate goal is to develop cutting-edge electrical systems that give his team a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "He has a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a multi-tool, even in the office.",
+    "Drinks mate religiously throughout the day.",
+    "Has a habit of tapping his pen rhythmically when concentrating."
+  ]
+}

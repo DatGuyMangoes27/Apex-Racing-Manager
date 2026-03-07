@@ -1,0 +1,62 @@
+{
+  "history": "The Autodromo Internazionale Enzo e Dino Ferrari, better known as Imola, is steeped in motorsport history. Built in 1953, it quickly became a favorite among drivers and fans alike due to its challenging layout and picturesque setting in the Emilia-Romagna region of Italy. The circuit has hosted numerous prestigious events, including Formula 1, World Superbike Championships, and various touring car series. Imola's role in Formula 1 is particularly significant, having hosted the Italian Grand Prix in 1980 and subsequently the San Marino Grand Prix from 1981 to 2006. The venue was named in honor of Enzo and Dino Ferrari, commemorating the Ferrari founder and his son. Following safety upgrades, Imola returned to the Formula 1 calendar in 2020 as the Emilia Romagna Grand Prix, continuing its legacy as a demanding and respected circuit.",
+  "atmosphere": "Being at Imola during a race weekend is an assault on the senses. The sound of high-revving engines echoes through the rolling hills, creating an intense and visceral experience. The scent of burning rubber and high-octane fuel hangs heavy in the air, mixing with the aromas of Italian cuisine wafting from the surrounding cafes. The grandstands, packed with passionate tifosi, erupt in a sea of red as Ferrari cars scream past, creating an electric atmosphere that is both exhilarating and uniquely Italian. The close proximity of the track to the spectators ensures that every moment feels immediate and immersive, making it a truly unforgettable motorsport experience.",
+  "trackCharacter": "The Imola Grand Prix layout is a fast and flowing circuit that rewards precision and commitment. Its narrow track and unforgiving gravel traps leave little margin for error, demanding respect from drivers. The rapid changes in elevation and camber, combined with a mix of high-speed corners and tight chicanes, create a relentless challenge that tests a driver's skill and courage to the limit. Unlike some modern circuits with long run-off areas, Imola punishes mistakes, making it a true driver's track where bravery and accuracy are paramount.",
+  "nickname": "The Mini-Nürburgring",
+  "famousCorners": [
+    {
+      "name": "Tamburello",
+      "description": "Infamously known for the tragic accident of Ayrton Senna in 1994, Tamburello is a high-speed left-hander that requires immense courage and commitment. It is now a chicane, but its history remains ever-present.",
+      "challenge": "Despite the addition of chicanes, maintaining momentum and precise placement remains crucial."
+    },
+    {
+      "name": "Villeneuve",
+      "description": "Following Tamburello, Villeneuve is a fast right-hander that leads into the Tosa hairpin. It's a corner that requires pinpoint accuracy and a delicate balance between speed and control.",
+      "challenge": "Managing entry speed and avoiding running wide onto the exit kerbs is critical to maintaining momentum."
+    },
+    {
+      "name": "Tosa",
+      "description": "A tight, uphill hairpin that demands heavy braking and precise turn-in. It's a key overtaking spot and a crucial corner for setting up the following section.",
+      "challenge": "Getting the braking point right is essential, as locking up can easily lead to running wide and losing time."
+    },
+    {
+      "name": "Piratella",
+      "description": "A fast, sweeping right-hander that requires immense bravery and commitment. It's a challenging corner to get right and rewards drivers who are willing to push the limits.",
+      "challenge": "Finding the optimal line and carrying maximum speed through the corner is key to a good lap time."
+    },
+    {
+      "name": "Acque Minerali",
+      "description": "A complex sequence of two right-handers followed by a left-hander, requiring a good rhythm and car balance. It's a technically demanding section that can make or break a lap.",
+      "challenge": "Maintaining momentum and hitting the apexes perfectly is crucial to navigating this section smoothly."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic efficiency",
+    "Braking performance",
+    "Mechanical grip",
+    "Cornering speed",
+    "Traction out of slow corners"
+  ],
+  "overtakingSpots": [
+    "Tosa hairpin",
+    "Gresini chicane (after Rivazza)",
+    "Into Tamburello (though difficult)"
+  ],
+  "historySnippets": [
+    "Imola is one of the few major circuits to run in an anti-clockwise direction.",
+    "Ayrton Senna and Roland Ratzenberger both tragically lost their lives at Imola during the 1994 San Marino Grand Prix.",
+    "The circuit was extensively modified after the 1994 season to improve safety.",
+    "Michael Schumacher holds the record for the most Formula 1 wins at Imola with 7 victories.",
+    "The circuit is named after Enzo and Dino Ferrari.",
+    "Imola hosted the San Marino Grand Prix for 26 years."
+  ],
+  "weatherNotes": "Imola's location in the Emilia-Romagna region means it can experience a wide range of weather conditions. Spring and autumn are often characterized by unpredictable rain showers, which can significantly impact grip levels and strategy. Summers tend to be hot and dry, putting a premium on tire management. The surrounding hills can also create localized weather patterns, making it difficult to predict conditions accurately.",
+  "drivingAdvice": "Mastering the rhythm of Imola is crucial to a fast lap time. The circuit rewards precision and commitment, so it's essential to hit the apexes and carry as much speed as possible through the corners. Pay particular attention to braking points, as the unforgiving nature of the track means that mistakes are heavily penalized. Managing tire wear is also important, especially in warmer conditions, as the high-speed corners can quickly degrade the rubber. Use the kerbs wisely to maximize corner exit speeds, but be mindful of the bumps and undulations that can upset the car's balance.",
+  "famousRaces": [
+    "1982 San Marino Grand Prix: A controversial race where Ferrari teammates Gilles Villeneuve and Didier Pironi battled fiercely for the win, leading to a falling out between the drivers.",
+    "1994 San Marino Grand Prix: A tragic weekend marred by the deaths of Ayrton Senna and Roland Ratzenberger, leading to significant safety improvements in Formula 1.",
+    "2005 San Marino Grand Prix: A thrilling battle between Fernando Alonso and Michael Schumacher, with Alonso ultimately holding off Schumacher's relentless pressure to take the victory.",
+    "2021 Emilia Romagna Grand Prix: A wet race with multiple incidents and overtakes, ultimately won by Max Verstappen in dominant fashion."
+  ],
+  "localCulture": "Imola is located in the heart of the Emilia-Romagna region, known for its rich culinary heritage. Local specialties include pasta dishes like tortellini and tagliatelle, as well as cured meats such as prosciutto and mortadella. The region is also famous for its balsamic vinegar and Parmigiano-Reggiano cheese. Paddock life at Imola is characterized by a relaxed and friendly atmosphere, with teams and drivers often taking the opportunity to sample the local cuisine and soak up the Italian culture. The passionate tifosi create a vibrant and energetic atmosphere, making Imola a truly special place to experience motorsport."
+}

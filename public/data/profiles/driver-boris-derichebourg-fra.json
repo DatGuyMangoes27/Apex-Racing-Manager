@@ -1,0 +1,27 @@
+{
+  "biography": "Boris Derichebourg, a name once whispered with promise in the paddocks of endurance racing, hails from the cobblestone streets of Lyon, France. The son of a clockmaker, Boris initially displayed an uncanny knack for intricate mechanisms, a skill that would later translate surprisingly well to the complexities of race car engineering. He began his racing career in karting, funded by his father's savings, quickly displaying a calculating precision that belied his age. A defining moment came at the 24 Hours of Le Mans in 2018, where, despite driving a technically inferior car, he managed to secure a podium finish through sheer consistency and strategic brilliance. However, the years have taken their toll. Now, at 36, Boris finds himself battling not just the competition, but also the creeping shadow of obsolescence. The Courage C60 Hybrid, while a familiar steed, struggles to keep pace, and Boris's once-sharp reflexes seem to have dulled slightly, relegating him to the twilight of his career, searching for one last flicker of glory.",
+  "drivingStyle": "Derichebourg is known for his meticulous and calculating driving style. He rarely pushes the car to its absolute limit, preferring instead to maintain a consistent pace, preserve tire life, and capitalize on the mistakes of others. He is a master of fuel conservation and excels in wet conditions, where his precise inputs and careful throttle control give him a distinct advantage. While not the fastest outright, his strategic approach often allows him to outperform drivers with superior machinery, earning him a reputation as a cunning and resourceful competitor.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "Rossi, a young, aggressive Italian driver, represents everything Derichebourg is not. Their contrasting styles often clash on the track, leading to heated battles and occasional accusations of unsportsmanlike conduct."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka and Derichebourg have been rivals since their Formula 3 days. Tanaka's raw speed versus Derichebourg's measured consistency has always been a compelling narrative."
+    },
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "Moreau, a fellow French driver, and Derichebourg often find themselves vying for the same sponsorship opportunities and team positions, creating a constant undercurrent of professional rivalry."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue driving gloves, claiming they bring him luck.",
+    "Insists on personally inspecting the spark plugs of his car before every race.",
+    "Listens to classical music, specifically Bach, to calm his nerves before getting into the car."
+  ],
+  "nickname": "The Clockmaker",
+  "famousQuote": "\"Racing isn't about being the fastest for a lap; it's about being the most consistent across a lifetime.\"",
+  "careerHighlight": "Securing a podium finish at the 2018 24 Hours of Le Mans with a privately-funded team, showcasing his strategic brilliance and unwavering consistency.",
+  "careerLowPoint": "Crashing out of the lead at the 2020 Spa 24 Hours due to a rare lapse in concentration, costing his team a potentially decisive victory."
+}

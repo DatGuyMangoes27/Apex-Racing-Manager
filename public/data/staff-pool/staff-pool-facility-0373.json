@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Herrera",
+  "nationality": "Argentine",
+  "age": 27,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Valentina's fascination with motorsport began during her childhood in Buenos Aires, where she spent countless hours watching Formula 1 races with her grandfather. This passion led her to pursue a degree in mechanical engineering, specializing in aerodynamics. After graduating, Valentina secured an internship at a local racing team, where she gained hands-on experience in wind tunnel testing and data analysis. \n\nHer approach to wind tunnel operations is methodical and detail-oriented, ensuring accurate and reliable data collection. She believes that even the smallest adjustments can make a significant difference in a car's performance. Valentina is eager to expand her knowledge and contribute to a winning team. \n\nWhat sets Valentina apart is her unwavering commitment to continuous improvement and her innate ability to identify subtle aerodynamic inefficiencies. She is a valuable asset to any team looking to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair usually tied back in a practical ponytail",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is of average height with a determined gaze and a practical, no-nonsense demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook to jot down observations and ideas during wind tunnel tests.",
+    "Has a habit of humming quietly while analyzing data, a habit she's unaware of.",
+    "Prefers to calibrate the wind tunnel equipment herself to ensure accuracy, even if it's not her primary responsibility."
+  ]
+}

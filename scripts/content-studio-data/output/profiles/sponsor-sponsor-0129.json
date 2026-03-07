@@ -1,0 +1,46 @@
+{
+  "id": "sponsor-0129",
+  "name": "Llantas Azteca",
+  "category": "tires",
+  "tier": "entry",
+  "country": "Mexico",
+  "description": "Reliable performance, inspired by Mexican heritage.",
+  "story": "Llantas Azteca is a proudly Mexican tire manufacturer committed to providing durable and affordable tires for everyday drivers. Recognizing the passion for motorsport in Mexico, they sponsor racing to showcase their products' reliability and performance under extreme conditions. They aim to connect with a younger demographic and increase brand awareness nationally.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 15,
+    "minMarketability": 10,
+    "nationalities": [
+      "Mexico"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0129.png"
+}

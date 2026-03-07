@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0073",
+  "name": "Mzansi Tyres",
+  "category": "local",
+  "tier": "mid",
+  "country": "South Africa",
+  "description": "South Africa's leading manufacturer of high-performance tyres.",
+  "story": "Mzansi Tyres is a proudly South African company dedicated to providing quality tyres for all types of vehicles. With a passion for motorsport, we believe in supporting local talent and pushing the boundaries of performance. We seek a partnership that showcases our tyres' durability and performance on the track, enhancing brand recognition nationwide.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 40,
+    "minMarketability": 30,
+    "nationalities": [
+      "South Africa"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0073.png"
+}

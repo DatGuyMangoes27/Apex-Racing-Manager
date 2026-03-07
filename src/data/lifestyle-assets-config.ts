@@ -1736,14 +1736,14 @@ export const LIFESTYLE_SCORE_WEIGHTS = {
   }
 }
 
-// Score to Level mapping
-export const LIFESTYLE_LEVEL_THRESHOLDS: { minScore: number; level: LifestyleLevel }[] = [
-  { minScore: 0, level: 'frugal' },
-  { minScore: 16, level: 'modest' },
-  { minScore: 31, level: 'comfortable' },
-  { minScore: 51, level: 'affluent' },
-  { minScore: 71, level: 'luxury' },
-  { minScore: 86, level: 'ultra_luxury' }
+// Score to Level mapping (rebalanced so starting backgrounds land in sensible tiers)
+export const LIFESTYLE_LEVEL_THRESHOLDS: { minScore: number; level: LifestyleLevel; name: string; description: string }[] = [
+  { minScore: 0, level: 'frugal', name: 'Frugal', description: 'Living lean — rented accommodation, basic transport, minimal luxuries' },
+  { minScore: 8, level: 'modest', name: 'Modest', description: 'Comfortable basics — own car, decent home, a hobby or two' },
+  { minScore: 20, level: 'comfortable', name: 'Comfortable', description: 'Well-off — nice property, quality vehicle, staff support, active social life' },
+  { minScore: 40, level: 'affluent', name: 'Affluent', description: 'Wealthy lifestyle — premium real estate, luxury fleet, collections, exclusive memberships' },
+  { minScore: 65, level: 'luxury', name: 'Luxury', description: 'Elite living — multi-million portfolio, full staff, world-class assets across every category' },
+  { minScore: 85, level: 'ultra_luxury', name: 'Ultra Luxury', description: 'Pinnacle — $50M+ property, hypercar collection, bespoke everything, ultimate prestige' }
 ]
 
 // ============================================

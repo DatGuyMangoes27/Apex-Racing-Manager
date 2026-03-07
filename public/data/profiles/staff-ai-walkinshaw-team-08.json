@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 37,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bjorn's motorsport journey began in the icy grip of Norway, tinkering with engines as a teenager to extract every last horsepower for local ice racing. That passion led him to a mechanical engineering degree, followed by stints in rallycross and Formula Ford before he made the leap to touring cars. Bjorn believes in data-driven decisions, but he also trusts his gut – his ability to 'feel' what the car needs has often proven invaluable. \n\nAt Walkinshaw Andretti United, Bjorn focuses on optimizing the car's performance through advanced telemetry analysis and simulation. He's known for his meticulous attention to detail, his ability to communicate complex technical information clearly, and his unwavering commitment to continuous improvement. Bjorn distinguishes himself through his holistic approach to performance engineering, blending data analysis with driver feedback and a deep understanding of vehicle dynamics to unlock the full potential of the car.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Bjorn is of average height, with a lean build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with handwritten notes and diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on brewing his own strong, black coffee every morning, claiming it's essential for optimal performance."
+  ]
+}

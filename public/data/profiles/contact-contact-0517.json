@@ -1,0 +1,31 @@
+{
+  "name": "Elodie Dubois",
+  "nationality": "French",
+  "age": 31,
+  "gender": "female",
+  "contactType": "philanthropist",
+  "bio": "Elodie Dubois is an enigmatic figure in French high society, known for her substantial philanthropic contributions to both arts and sciences. While she lacks formal education, her sharp intellect and tireless work ethic have propelled her to become a major investor in several cutting-edge technology firms, many of which focus on sustainable energy solutions. Her humble demeanor belies a shrewd business acumen, and despite her wealth, she prefers quiet evenings at home with her telescope to lavish parties. \n\nThough seemingly detached, Elodie is a passionate individual, particularly when it comes to her interests. She is deeply involved in preserving historical artifacts and is a patron of the arts, especially the theater. A racing driver might encounter Elodie through her sponsorship of a young engineers' program that provides internships to motorsport teams, or perhaps at a charity auction benefiting a cause she champions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy, often pulled back in a simple braid",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elodie has a delicate, almost ethereal beauty. She is tall and slender, with an air of quiet confidence."
+  },
+  "connectionToMotorsport": "Elodie sponsors a STEM program that places young engineers in motorsport teams. She sees motorsport as a proving ground for innovation and technology.",
+  "meetingContext": "The player could meet Elodie at an awards ceremony for the STEM program she sponsors, or at a high-end antique auction where both are bidding on the same item.",
+  "conversationTopics": [
+    "The latest discoveries in astronomy",
+    "The ethical implications of AI",
+    "The importance of preserving historical artifacts",
+    "Her equestrian pursuits",
+    "The future of drone technology"
+  ],
+  "canHelp": [
+    "Provide a substantial sponsorship deal for the player's team.",
+    "Connect the player with influential figures in the tech industry who could offer performance-enhancing technologies.",
+    "Offer the player media exposure through her extensive network of contacts in the arts and culture scene."
+  ],
+  "personality_summary": "A humble and mysterious philanthropist with a hidden romantic streak and a passion for innovation."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Belgian",
+  "age": 52,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Jean-Pierre's journey into motorsport began unconventionally, not through a racing pedigree, but through a fascination with aerodynamics sparked by his model airplane obsession as a child. He pursued mechanical engineering, specializing in fluid dynamics, and landed a role at a small aerospace firm before transitioning to Formula racing. He is known for his meticulous approach to data analysis and an uncanny ability to identify subtle airflow anomalies that others miss. \n\nAt AF Corse, Jean-Pierre is the cornerstone of their wind tunnel operations. He insists on rigorous calibration and repeatability in every test, often pushing engineers to refine their setups until they meet his exacting standards. His creative problem-solving and ability to see the big picture make him an invaluable asset, even if his perfectionist tendencies can sometimes cause friction within the team. He’s dedicated to finding that one marginal gain that will secure victory.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Graying Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "A man of medium build with a focused gaze and perpetually furrowed brow."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on listening to classical music (particularly Bach) during wind tunnel runs.",
+    "Has a peculiar habit of adjusting his glasses even when they're perfectly positioned."
+  ]
+}

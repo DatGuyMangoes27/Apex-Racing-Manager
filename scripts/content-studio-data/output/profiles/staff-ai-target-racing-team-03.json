@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Arnesen",
+  "nationality": "Norwegian",
+  "age": 28,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Bjørn's journey into motorsport began unexpectedly during a university project focused on fluid dynamics. He quickly realized the practical applications for motorsport, leading him to dedicate his studies to aerodynamics. After graduating with honors from NTNU, he took on a junior aero position at a smaller Formula team. \n\nHis methodical approach and knack for spotting inefficiencies quickly earned him recognition. Bjørn joined Target Racing two years ago as a senior aero engineer, making a name for himself through innovative solutions to aerodynamic problems. He was promoted to Head of Aero after demonstrating excellent leadership and communication skills, fostering a collaborative environment within the team. Bjørn is known for his calm demeanor, even under intense pressure, and his ability to translate complex data into practical improvements on the track.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed to the side",
+    "eyeColor": "Blue",
+    "facialHair": "Clean shaven",
+    "description": "Bjørn has a slender build and a focused look."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Drinks copious amounts of black coffee throughout the day.",
+    "Has a habit of tapping his pen when deep in thought."
+  ]
+}

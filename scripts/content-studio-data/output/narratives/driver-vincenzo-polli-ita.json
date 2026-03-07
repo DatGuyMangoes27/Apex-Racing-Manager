@@ -1,0 +1,27 @@
+{
+  "biography": "Vincenzo Polli's story is one etched in the roaring echoes of the Italian countryside. Born in Modena, the heartland of Italian motorsport, Vincenzo's childhood was saturated with the scent of gasoline and the thunderous symphony of engines. His father, a mechanic for a small-time touring car team, ignited his passion, smuggling him into the paddocks at every opportunity. Vincenzo began karting at 10, quickly displaying a raw, untamed talent that set him apart. A defining moment came at 16, when he won the Italian National Karting Championship despite starting last due to a mechanical failure. He fearlessly weaved through the entire field, showcasing the aggressive overtaking style that would become his trademark. After a brief stint in Formula Renault, sponsorship woes threatened to derail his career. However, a chance encounter with a Lamborghini executive led to a test drive, which he aced, securing a coveted spot within their GT program. Now at 37, Polli is at the peak of his powers, a seasoned veteran with the hunger of a rookie, consistently challenging for podiums in the world's most prestigious GT races.",
+  "drivingStyle": "Polli's driving style is best described as controlled aggression. He attacks corners with a ferocity that often pushes the limits of grip, favoring late braking and daring overtaking maneuvers. While some might consider him reckless, Polli possesses an uncanny ability to manage tire wear, often extracting surprising longevity from his rubber. He thrives under pressure, relishing the challenge of close wheel-to-wheel combat. Polli is known for his relentless pursuit of victory, never backing down from a fight and always searching for the slightest advantage.",
+  "rivalries": [
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "A long-standing rivalry stemming from their karting days, Rossi represents the calculated, technical driver, constantly clashing with Polli's aggressive style. They have frequently collided on track, resulting in heated exchanges."
+    },
+    {
+      "driver": "Jean-Pierre Dubois",
+      "reason": "Dubois, a suave and experienced French driver, represents the old guard, often criticizing Polli's perceived recklessness. Polli sees Dubois as an outdated, slow driver blocking his path to victory."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Tanaka, a quiet and disciplined Japanese driver, is Polli's teammate. While respectful, their differing approaches to car setup and race strategy often lead to internal friction and competition for team priority."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of driving gloves, even if they are falling apart.",
+    "Listens to classical opera at full volume in his garage before every race to center himself.",
+    "Refuses to eat anything green on race weekends, believing it brings bad luck."
+  ],
+  "nickname": "Il Leone (The Lion)",
+  "famousQuote": "\"Racing isn't about finesse; it's about will. You either take the corner, or the corner takes you.\"",
+  "careerHighlight": "Winning the 24 Hours of Spa in 2020 after a dramatic final-lap overtake, securing Lamborghini's first victory at the legendary endurance race.",
+  "careerLowPoint": "Crashing out of the lead in the final hour of the 24 Hours of Daytona in 2018 due to a mechanical failure, costing his team a guaranteed victory."
+}

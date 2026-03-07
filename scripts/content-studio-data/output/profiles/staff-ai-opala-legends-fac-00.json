@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Colombian",
+  "age": 25,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Mateo's journey into motorsport started with a childhood obsession with karting, fueled by watching local races in Bogota. He quickly realized his passion lay more in understanding the mechanics than actually driving. This led him to pursue a degree in mechanical engineering, specializing in simulation technologies. During his studies, he gained valuable experience working with several sim racing teams, refining his ability to translate real-world data into accurate and immersive virtual environments.\n\nAt Opala Legends, Mateo is known for his meticulous approach to simulator development. He's constantly tweaking parameters and experimenting with new algorithms to improve the fidelity of the driving experience. He possesses a rare combination of technical expertise and a deep understanding of driver feedback, enabling him to create simulations that are both realistic and useful for driver development. His loyalty to the team is unwavering, always willing to go the extra mile to ensure the drivers have the best possible tools at their disposal.\n\nMateo's distinctive approach involves deep collaboration with the drivers, ensuring the simulator reflects their unique driving styles and needs. He’s dedicated to continuous improvement and constantly seeks new methods to enhance the realism and effectiveness of the simulation, making him a crucial component in the team’s success.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Light stubble",
+    "description": "Mateo is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a cup of strong Colombian coffee at his desk.",
+    "Meticulously organizes his workspace to maximize efficiency.",
+    "Has a habit of muttering technical jargon under his breath while problem-solving."
+  ]
+}

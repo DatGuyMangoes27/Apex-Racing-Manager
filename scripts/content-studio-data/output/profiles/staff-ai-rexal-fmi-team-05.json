@@ -1,0 +1,22 @@
+{
+  "name": "Jan van de Berg",
+  "nationality": "Dutch",
+  "age": 38,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "Jan's journey into motorsport began during his engineering studies at Delft University, where he became fascinated by the complex interplay of physics and real-time decision-making. After graduating, he joined a smaller racing outfit, cutting his teeth on data analysis and race simulations. He quickly demonstrated a knack for identifying crucial strategic opportunities, even with limited resources. \n\nAt Rexal FMI Racing, Jan focuses on pre-race strategy development and real-time race management. His approach combines meticulous data analysis with an intuitive understanding of track conditions and competitor behavior. He's known for his calm demeanor under pressure and his ability to adapt strategies on the fly. His meticulous nature and ability to make critical calls under immense pressure are what sets him apart.\n\nJan is deeply loyal and committed to the team's success, often working late into the night to fine-tune strategies and simulations. He believes that clear communication and collaboration are essential for effective race management.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline.",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Jan is a man of average height with a thoughtful expression, often seen with a furrowed brow when analyzing data."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on drinking a specific brand of Dutch coffee before every race."
+  ]
+}

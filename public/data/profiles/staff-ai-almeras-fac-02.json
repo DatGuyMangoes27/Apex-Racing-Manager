@@ -1,0 +1,22 @@
+{
+  "name": "Jamal Washington",
+  "nationality": "American",
+  "age": 35,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jamal's journey into motorsport began unconventionally, not through racing, but through a passion for aerospace engineering. He spent his early twenties designing composite structures for experimental aircraft, honing his skills with carbon fiber and advanced polymers. A chance encounter with a CLRT by Almeras engineer at a tech conference sparked his interest in applying his knowledge to racing. \n\nHe thrives under pressure and meticulously ensures every component meets exacting standards. Jamal's demanding nature pushes his colleagues to achieve peak performance, believing that even the smallest imperfection can cost a race. He's known for his innovative problem-solving in composite repair and his ability to adapt quickly to trackside demands, making him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Medium Brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, tightly cropped afro",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Jamal is powerfully built, with broad shoulders and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using a specific type of carbon fiber weave for all repairs.",
+    "Always sharpens his pencils to an exact point before starting work.",
+    "Listens to classical music through noise-canceling headphones while working."
+  ]
+}

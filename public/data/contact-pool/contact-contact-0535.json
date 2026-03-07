@@ -1,0 +1,31 @@
+{
+  "name": "Gabriela \"Gabi\" Reyes",
+  "nationality": "Filipino",
+  "age": 27,
+  "gender": "female",
+  "contactType": "military_officer",
+  "bio": "Lieutenant Gabriela Reyes is a rising star in the Philippine Air Force, known for her sharp intellect and unwavering resolve. After graduating top of her class from the Philippine Military Academy, she quickly gained a reputation as a skilled pilot and strategist. Despite her demanding career, Gabi is surprisingly eccentric and down-to-earth, pursuing a variety of hobbies from hiking and gaming to ballet and learning new languages.\n\nGabi's connection to motorsport stems from her Air Force duties, where she occasionally provides aerial support for major racing events held in the Philippines. She is responsible for coordinating air traffic and ensuring the safety of participants and spectators during these events. A driver may cross paths with her when seeking authorization for promotional activities involving aerial displays or during pre-race briefings where she outlines airspace restrictions and emergency procedures.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Neat, shoulder-length with subtle waves",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Gabriela is of average height with an athletic build honed from military training. She carries herself with a quiet confidence, her dark eyes often sparkling with intelligence and a hint of amusement."
+  },
+  "connectionToMotorsport": "Gabi is connected to motorsport through her role in the Philippine Air Force, where she oversees aerial support and safety measures for major racing events. She ensures airspace security and coordinates emergency response in case of accidents.",
+  "meetingContext": "The player might meet Gabriela at a pre-race briefing held for drivers participating in a race where the Air Force is providing support. Alternatively, the player could encounter her at a charity event organized to support military veterans.",
+  "conversationTopics": [
+    "The latest strategies in mobile gaming",
+    "Her experiences flying different aircraft",
+    "The challenges and rewards of military service",
+    "The best hiking trails in the Philippines",
+    "The intricacies of ballet technique"
+  ],
+  "canHelp": [
+    "Provide access to unique promotional opportunities involving the Air Force (e.g., filming commercials at Air Force bases)",
+    "Offer introductions to potential sponsors within the Filipino business community",
+    "Provide expertise in risk assessment and safety protocols for racing events"
+  ],
+  "personality_summary": "A sharp-witted and confident military officer with a surprising passion for the arts and a genuine warmth towards others."
+}

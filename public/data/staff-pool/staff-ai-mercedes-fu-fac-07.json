@@ -1,0 +1,22 @@
+{
+  "name": "Jan Veselý",
+  "nationality": "Czech",
+  "age": 25,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Jan's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with his father. He excelled in computer science during his studies at the Czech Technical University in Prague, specializing in high-performance computing and data analysis. His thesis on real-time telemetry processing caught the attention of Mercedes-AMG's recruiters, leading to his current role as IT Systems Manager.\n\nJan is a highly organized and results-oriented individual, dedicated to ensuring the smooth operation of the team's critical IT infrastructure. He thrives on the challenges of maintaining and optimizing complex systems under pressure, always seeking innovative solutions to improve performance and efficiency. He's known for his meticulous approach and unwavering commitment to problem-solving, making him an invaluable asset to the team.\n\nWhat sets Jan apart is his unique ability to bridge the gap between IT and motorsport. He understands the technical intricacies of the sport and translates them into actionable IT strategies. His dedication to continuous learning and his passion for pushing the boundaries of technology make him a rising star in the world of motorsport IT.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-groomed stubble",
+    "description": "Jan is of average height with a lean build, and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small Rubik's cube to solve during breaks.",
+    "Insists on using a mechanical keyboard with very clicky keys.",
+    "Has a detailed spreadsheet tracking the performance of all IT systems, color-coded by priority."
+  ]
+}

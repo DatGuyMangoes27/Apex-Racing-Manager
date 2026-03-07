@@ -1,0 +1,22 @@
+{
+  "name": "Moira MacLeod",
+  "nationality": "Scottish",
+  "age": 48,
+  "gender": "female",
+  "role": "technical_director",
+  "bio": "Moira MacLeod's journey into motorsport began not in the grandstands, but in her father's engineering workshop in Glasgow. Tinkering with engines from a young age, she developed a deep understanding of mechanical systems that fueled her passion. A first-class degree in Mechanical Engineering from Strathclyde University paved the way for her entry into the racing world, starting as a junior engineer before rapidly climbing the ranks.\n\nKnown for her meticulous attention to detail and unwavering commitment to performance, Moira is a demanding leader who inspires her team to push boundaries. She believes in a data-driven approach, constantly analyzing telemetry and simulations to optimize car setup and strategy. Her ability to translate complex technical concepts into actionable insights makes her an invaluable asset to Porsche Penske Motorsport. What sets Moira apart is her ability to foster a collaborative environment while maintaining high standards. She's not afraid to challenge conventional wisdom and encourages her team to think outside the box, resulting in innovative solutions that give them a competitive edge.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Shoulder-length, slightly wavy, often pulled back in a practical ponytail.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Moira is a slender woman with a focused gaze and a practical demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn-out engineering notebook filled with handwritten calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought.",
+    "Insists on personally reviewing every telemetry report, no matter how small."
+  ]
+}

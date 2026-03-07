@@ -1,4 +1,7 @@
 export { TeamFinancesDashboard } from './TeamFinancesDashboard'
-export { BudgetAllocationPanel } from './BudgetAllocationPanel'
+export { default as BudgetAllocationPanel } from './BudgetAllocationPanel'
 export { TransactionHistory } from './TransactionHistory'
 export { FinancialCharts } from './FinancialCharts'
+export { InvestmentsPanel } from './InvestmentsPanel'
+export { LoansPanel } from './LoansPanel'
+export { MerchandiseDashboard } from './MerchandiseDashboard'

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 47,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began in his teens, tinkering with go-karts in his father's workshop. This passion led him to pursue a degree in mechanical engineering, after which he dove headfirst into the world of racing. He started as a junior data analyst for a small Formula Ford team, quickly proving his worth with his sharp analytical skills and dedication. His understanding of vehicle dynamics and his ability to translate data into actionable insights earned him a promotion to race engineer. \n\nRicardo's approach to race engineering is deeply rooted in meticulous preparation and relentless optimization. He's known for his ability to quickly adapt to changing track conditions and make decisive calls that can swing a race. He joined Toyota Gazoo Racing BR five years ago, bringing with him a wealth of experience from various levels of motorsport. His colleagues value his calm demeanor under pressure and his ability to inspire confidence in the drivers. What sets Ricardo apart is his uncanny ability to predict tire degradation, allowing him to develop race strategies that maximize performance and minimize pit stops. Ricardo is keen to prove himself as one of the best in the business, and will go to any lengths to win.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a lean build, and always looks like he needs a good night's sleep."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific brand of strong espresso before every race."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Lê Hà Phương",
+  "nationality": "Vietnamese",
+  "age": 31,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Lê Hà Phương is a rising star in Vietnamese cinema, known for her captivating performances in both independent films and mainstream dramas. Her nuanced acting and dedication to her craft have earned her critical acclaim and a devoted fanbase. She's also known for her down-to-earth personality and genuine interest in connecting with people from all walks of life.\n\nDespite her demanding career, Hà Phương is deeply supportive of the arts and enjoys exploring diverse hobbies. You might find her at a local brewery enjoying craft beer after a theater performance or cheering on a marathon runner. Her path crosses with motorsport through her role as the lead in a popular action movie that features a thrilling race scene. The production team worked closely with a real racing team for authenticity, leading to her meeting several drivers and developing a genuine interest in the sport.",
+  "physical": {
+    "skinTone": "Warm tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy, often worn in a loose braid",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Hà Phương has a warm, expressive face and a bright smile that lights up a room. She is slender and carries herself with a quiet confidence."
+  },
+  "connectionToMotorsport": "Hà Phương starred in a major action film featuring a high-stakes race, which required her to spend time with a professional racing team for research and training.",
+  "meetingContext": "You meet Hà Phương at a charity gala benefiting a children's hospital, where she's a guest speaker and you're invited as a rising star in motorsport.",
+  "conversationTopics": [
+    "Her latest film projects and the challenges of acting",
+    "The importance of supporting local artists and theaters",
+    "The dedication and discipline required for marathon running",
+    "The thrill of drone racing and the innovative technology behind it",
+    "Her experience working with the racing team on her movie"
+  ],
+  "canHelp": [
+    "Introduce you to influential figures in the entertainment industry, opening doors for sponsorship opportunities.",
+    "Use her platform to raise awareness about your racing career and team.",
+    "Provide advice and support on handling media attention and public image."
+  ],
+  "personality_summary": "A creative and supportive actor with a genuine interest in people and diverse pursuits."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0173",
+  "name": "Somerset & Thorne",
+  "category": "watches",
+  "tier": "mid",
+  "country": "UK",
+  "description": "Precision timekeeping, crafted in England.",
+  "story": "Somerset & Thorne is a family-owned watchmaker with a long history of supporting British engineering. We believe in pushing the boundaries of precision, just like motorsport teams. We seek a partnership that showcases our commitment to performance and innovation, aligning with teams that value craftsmanship and dedication.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 50000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 50,
+    "nationalities": [
+      "UK"
+    ],
+    "minPodiums": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 4,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0173.png"
+}

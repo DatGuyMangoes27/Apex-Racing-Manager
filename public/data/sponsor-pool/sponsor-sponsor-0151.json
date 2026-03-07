@@ -1,0 +1,57 @@
+{
+  "id": "sponsor-0151",
+  "name": "Synapse AI",
+  "category": "tech",
+  "tier": "high",
+  "country": "Canada",
+  "description": "Accelerating your future with intelligent solutions.",
+  "story": "Synapse AI is a leading Canadian developer of advanced artificial intelligence and machine learning platforms. Seeing the parallels between high-performance computing and motorsport, they began sponsoring racing teams to showcase their technology's speed and precision. Synapse seeks to partner with teams that demonstrate data-driven decision-making and a commitment to innovation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 60,
+    "minMarketability": 50,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Canada"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0151.png"
+}

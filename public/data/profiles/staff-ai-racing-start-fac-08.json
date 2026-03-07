@@ -1,0 +1,22 @@
+{
+  "name": "Narumon Suksai",
+  "nationality": "Thai",
+  "age": 30,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Narumon's journey into motorsport began unexpectedly during a university internship at a local engineering firm. Initially assigned to mundane tasks, she quickly gravitated towards projects involving aerodynamics, captivated by the intricate dance between airflow and vehicle performance. This led her to pursue a Master's degree in Aerospace Engineering, specializing in Computational Fluid Dynamics. She joined Racing Start Academy three years ago, bringing with her a meticulous approach to data analysis and a knack for identifying subtle improvements in aerodynamic efficiency.\n\nAs a wind tunnel operator, Narumon excels in ensuring the precision and reliability of testing procedures. Her pragmatic nature allows her to quickly adapt to changing conditions and troubleshoot technical issues, while her sharp analytical skills enable her to extract meaningful insights from the vast amounts of data generated during wind tunnel sessions. Narumon's dedication to accuracy and her ability to translate complex data into actionable recommendations make her a valuable asset to the team, constantly pushing for marginal gains that can make a significant difference on the track.",
+  "physical": {
+    "skinTone": "tan",
+    "hairColor": "dark brown",
+    "hairStyle": "long, straight hair usually tied back in a neat ponytail",
+    "eyeColor": "dark brown",
+    "facialHair": null,
+    "description": "Narumon is of average height with a slender build, often seen wearing practical attire suited for the wind tunnel environment."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a specific playlist of instrumental music she listens to during data analysis.",
+    "Insists on cleaning and calibrating the wind tunnel sensors herself before each major test."
+  ]
+}

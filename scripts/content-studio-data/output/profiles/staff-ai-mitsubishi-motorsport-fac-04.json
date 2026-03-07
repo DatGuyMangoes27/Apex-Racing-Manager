@@ -1,0 +1,22 @@
+{
+  "name": "Alexandru Popescu",
+  "nationality": "Romanian",
+  "age": 26,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Alexandru's journey into motorsport began with a childhood fascination for dismantling and rebuilding old radios. This early tinkering led him to pursue a degree in electrical engineering, where he specialized in embedded systems and signal processing. During university, he volunteered at a local racing team, helping them optimize their telemetry systems. His pragmatic approach ensures that solutions are not only innovative but also reliable and maintainable under the pressures of race conditions. Alexandru's uncanny ability to diagnose obscure electrical faults quickly makes him a valuable asset to any team.\n\nAfter graduating, Alexandru worked for a consumer electronics company, but his heart remained in motorsport. He jumped at the opportunity to join Mitsubishi Motorsport, where he applies his analytical skills to enhance vehicle performance through advanced sensor integration and data analysis. He believes in a collaborative approach, working closely with mechanics and drivers to ensure that electronic systems are perfectly tailored to the car and the driver's needs.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "brown",
+    "facialHair": "short, well-trimmed goatee",
+    "description": "Alexandru is of average height, with a lean build and focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool with him, even outside the garage.",
+    "Has a habit of muttering circuit diagrams under his breath when troubleshooting.",
+    "Insists on using a specific brand of soldering iron for all delicate work."
+  ]
+}

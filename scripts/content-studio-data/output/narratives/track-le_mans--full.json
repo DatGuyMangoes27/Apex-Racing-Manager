@@ -1,0 +1,63 @@
+{
+  "history": "The Circuit des 24 Heures du Mans, primarily known as Le Mans, is a motorsport race track located near Le Mans, France. It is most famous as the venue for the 24 Hours of Le Mans, an endurance race held annually since 1923. The circuit is a blend of permanent track and public roads, closed specifically for the race. The original track was much longer, but has been modified over the years, primarily for safety reasons. The current 13.629km layout is a testament to the evolution of motorsport safety and technology, whilst retaining its core identity.",
+  "atmosphere": "Standing trackside at Le Mans during the 24 Hours is an assault on the senses. The roar of the engines, a cacophony of different exhaust notes from the various classes, reverberates through your chest. The smells of burning rubber, high-octane fuel, and grilling food mingle in the air. The constant stream of cars flashing past at incredible speeds, headlights cutting through the darkness, creates an unforgettable spectacle. The energy of the crowd, a mix of seasoned veterans and first-time attendees, is palpable, united by a shared passion for endurance racing.",
+  "trackCharacter": "The Le Mans 24h layout is all about efficiency. The long straights demand minimal drag and maximum power, making aerodynamic efficiency paramount. The flowing corners, such as the Porsche Curves, require a car that handles well at high speeds and can maintain momentum. Mechanical sympathy is crucial, as the cars are pushed to their limits for a full 24 hours. It's a test of man and machine, rewarding reliability and strategic brilliance as much as outright speed.",
+  "nickname": "La Sarthe",
+  "famousCorners": [
+    {
+      "name": "Dunlop Curve",
+      "description": "The first corner after the start/finish line, notable for its steep elevation change and the iconic Dunlop bridge overhead.",
+      "challenge": "Requires precise car placement and throttle control to maintain momentum into the Esses."
+    },
+    {
+      "name": "Tertre Rouge",
+      "description": "A fast, sweeping right-hander that leads onto the Mulsanne Straight. It's crucial for maintaining speed down the long straight.",
+      "challenge": "A tricky corner that requires a delicate balance between speed and control. Getting it wrong can severely impact top speed on the Mulsanne Straight."
+    },
+    {
+      "name": "Mulsanne Corner",
+      "description": "A slow, tight right-hander at the end of the Mulsanne Straight. Historically a braking zone from very high speeds, now after the chicanes a crucial overtaking opportunity.",
+      "challenge": "Demands hard braking and precise turn-in. Easy to lock up the brakes or run wide, compromising exit speed."
+    },
+    {
+      "name": "Indianapolis",
+      "description": "A double-apex corner consisting of a fast right-hander followed by a slower left-hander. Named after the Indianapolis Motor Speedway.",
+      "challenge": "Requires a complex braking maneuver, weight transfer, and precise timing to navigate the two corners seamlessly."
+    },
+    {
+      "name": "Porsche Curves",
+      "description": "A series of fast, flowing corners that demand precision and bravery. One of the most challenging sections of the track.",
+      "challenge": "Requires absolute commitment and trust in the car. Minimal margin for error, and a mistake can be costly."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic Efficiency",
+    "Engine Power and Reliability",
+    "Brake Performance and Durability",
+    "Driver Stamina and Consistency",
+    "Pit Stop Strategy and Execution"
+  ],
+  "overtakingSpots": [
+    "Mulsanne Corner",
+    "Arnage",
+    "Indianapolis",
+    "The run to the Dunlop Chicane"
+  ],
+  "historySnippets": [
+    "The first 24 Hours of Le Mans was held in 1923.",
+    "The Mulsanne Straight was originally a 6km long straight before the addition of chicanes in 1990.",
+    "The Porsche Curves are considered one of the most challenging sections of any race track.",
+    "The circuit uses public roads which are closed for the race.",
+    "Numerous safety modifications have been made to the circuit over the years.",
+    "The race has been held annually, with exceptions during World War II and in 1968 due to political unrest in France."
+  ],
+  "weatherNotes": "The weather at Le Mans can be unpredictable, with sunshine, rain, and fog all possible during the 24-hour race. Rain can significantly affect grip levels, especially on the public road sections of the track. Temperature changes can also affect tire performance, requiring teams to adjust their strategies accordingly.",
+  "drivingAdvice": "At Le Mans, patience is key. The race is long, and it's easy to get caught up in early battles. Focus on preserving the car and tires, and be consistent with lap times. Overtaking should be done strategically, choosing safe and predictable spots. Communication with the team is crucial to adapt to changing conditions and optimize pit stop strategy.",
+  "famousRaces": [
+    "1966: Ford's iconic 1-2-3 finish, ending Ferrari's dominance.",
+    "1969: Jacky Ickx's dramatic victory over Hans Herrmann by just 120 meters, a race that symbolized the transition to safer racing standards.",
+    "2016: Toyota's heartbreaking loss on the final lap, handing victory to Porsche after leading for much of the race.",
+    "2023: The Centenary race of the 24 Hours of Le Mans, with a strong field of Hypercars."
+  ],
+  "localCulture": "Le Mans is a city steeped in motorsport history, with a strong sense of pride in its association with the 24 Hours race. The local cuisine features hearty, traditional French dishes, with a focus on fresh, local ingredients. Paddock life is a vibrant mix of teams, drivers, media, and fans, creating a unique atmosphere of camaraderie and competition."
+}

@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0189",
+  "name": "SaunaLife",
+  "category": "lifestyle",
+  "tier": "entry",
+  "country": "Finland",
+  "description": "Embrace the Finnish tradition of relaxation and well-being.",
+  "story": "SaunaLife believes in the power of tradition and the importance of well-being. Rooted in Finnish culture, we see motorsport as a pursuit that requires dedication and mental fortitude, values mirrored in the sauna experience. We aim to connect with a global audience through motorsport, promoting a balanced lifestyle of intensity and relaxation.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 8000,
+      "winBonus": 3000,
+      "podiumBonus": 1500,
+      "championshipBonus": 20000
+    },
+    "mid": {
+      "monthly": 30000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "elite": {
+      "monthly": 90000,
+      "winBonus": 40000,
+      "podiumBonus": 20000,
+      "championshipBonus": 300000
+    }
+  },
+  "requirements": {
+    "minReputation": 20,
+    "minMarketability": 30,
+    "nationalities": [
+      "Finland"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "requiredShoutouts": 2,
+    "preferredImageStyle": "family_friendly"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0189.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "Canadian",
+  "age": 42,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's journey into motorsport began in his youth, tinkering with go-karts in his father's garage. This early fascination evolved into a passion for aerodynamics, leading him to pursue a degree in aerospace engineering. After graduating, he cut his teeth in Formula SAE, designing aerodynamic packages for his university team. His knack for innovation and problem-solving quickly caught the attention of smaller racing outfits, where he honed his skills before joining Proton by Premotion.\n\nAs head of aero, Jean-Pierre is known for his meticulous approach and unwavering commitment to performance. He's a firm believer in data-driven decisions, constantly analyzing wind tunnel results and track telemetry to optimize the car's aerodynamic efficiency. While some find his demanding nature challenging, his dedication to pushing boundaries and achieving tangible results is undeniable. His big-picture thinking, combined with his creative problem solving, allows him to see opportunities that others might miss.\n\nJean-Pierre is distinguished by his ability to translate complex aerodynamic principles into practical solutions that improve the car's performance. He fosters a culture of continuous improvement within his team, always encouraging them to challenge conventional wisdom and explore new ideas. He's a firm believer that even the smallest aerodynamic tweak can make a significant difference on the track.",
+  "physical": {
+    "skinTone": "Light tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Jean-Pierre is of average height, with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches.",
+    "Has a peculiar habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having the wind tunnel data displayed on a large monitor in his office, even when not actively working on it."
+  ]
+}

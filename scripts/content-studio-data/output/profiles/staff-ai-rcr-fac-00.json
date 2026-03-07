@@ -1,0 +1,22 @@
+{
+  "name": "Rafael Costa",
+  "nationality": "Brazilian",
+  "age": 41,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Rafael's passion for motorsport ignited during his childhood in São Paulo, captivated by the roar of Formula One cars at Interlagos. He pursued a degree in Mechanical Engineering, specializing in vehicle dynamics and simulation. After graduating, he honed his skills at a local racing team, developing simulation models for touring cars. Eager to broaden his horizons, Rafael sought opportunities abroad, leading him to Richard Childress Racing.\n\nAt RCR, Rafael meticulously crafts and refines the simulation environment, ensuring it accurately reflects the nuances of the track and car behavior. He believes in a data-driven approach, constantly analyzing telemetry and driver feedback to improve the correlation between the virtual and real worlds. Rafael distinguishes himself through his relentless pursuit of accuracy and his ability to translate complex engineering concepts into actionable insights for drivers and engineers alike.\n\nHis ambition is to develop a simulator program so accurate that it can be used to create new car setups. This would give Richard Childress Racing a major advantage over the competition.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed, with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Rafael is of average height with a slightly athletic build."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on listening to Brazilian samba music during simulator setup."
+  ]
+}

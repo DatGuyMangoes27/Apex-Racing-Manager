@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Flores",
+  "nationality": "Mexican",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport started young, tinkering with go-karts in Guadalajara. His early fascination with engines led him to study mechanical engineering, specializing in vehicle dynamics. After graduating, he started in Formula Ford, quickly climbing the ranks through various junior series before landing a role at a smaller F1 team as a data analyst. His meticulous approach and ability to translate data into actionable race strategy earned him a reputation as a rising talent. He spent several seasons with the team, eventually progressing to a race engineer position. \n\nRicardo joined McLaren five years ago, drawn by the team's legacy and ambition. He is known for his calm demeanor under pressure and his ability to build strong relationships with drivers. He believes in empowering his team members, fostering a collaborative environment where everyone feels valued and their input is heard. While he appreciates innovation, he always emphasizes the importance of reliability and a solid understanding of the fundamentals. His calm but firm demeanor has proved to be a valuable asset to the team.\n\nRicardo's focus is on creating a predictable and reliable car setup that allows the driver to push the limits with confidence. He is always looking for marginal gains but recognizes that consistent performance is often more valuable than chasing elusive breakthroughs. His deep understanding of vehicle dynamics and his ability to anticipate challenges have made him an integral part of McLaren's race day operations.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed goatee",
+    "description": "Ricardo is a man of medium build with a focused gaze and a warm smile."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every race weekend with a traditional Mexican coffee."
+  ]
+}

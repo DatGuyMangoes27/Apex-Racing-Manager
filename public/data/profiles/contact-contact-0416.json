@@ -1,0 +1,31 @@
+{
+  "name": "Thandiwe Nkosi",
+  "nationality": "South African",
+  "age": 65,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Thandiwe Nkosi is a renowned sports medicine physician with a prestigious career spanning over four decades. Specializing in the unique physical demands placed on athletes, she has treated everyone from Olympic sprinters to professional rugby players. While she might come across as self-centered at times, her drive and pursuit of excellence are undeniable, stemming from a deep-seated nostalgia for her own athletic aspirations cut short by injury. Beneath a veneer of professional detachment, Thandiwe is fiercely loyal to those who earn her respect, though her passive-aggressive tendencies can sometimes make her a challenging colleague.\n\nA racing driver might cross paths with Dr. Nkosi either through her work at a high-performance training center, or, unfortunately, after a serious accident. Her expertise in rehabilitating complex musculoskeletal injuries is highly sought after, and she is known for pushing her patients to achieve the impossible. She also consults for several racing teams on driver fitness and injury prevention, making her a valuable, if somewhat demanding, contact in the motorsport world.",
+  "physical": {
+    "skinTone": "Deep brown",
+    "hairColor": "Graying black",
+    "hairStyle": "Short, neatly cropped afro",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Dr. Nkosi carries herself with a regal bearing. She's physically fit for her age, a testament to her dedication to fitness."
+  },
+  "connectionToMotorsport": "Dr. Nkosi consults for several motorsport teams on driver fitness and injury prevention strategies. She's also the go-to doctor for many drivers seeking rehabilitation after serious accidents.",
+  "meetingContext": "You might meet Dr. Nkosi as part of a required medical checkup at a racing facility, or she could be recommended to you by your team manager after an injury.",
+  "conversationTopics": [
+    "The benefits of yoga and mindfulness for performance",
+    "The golden age of boxing",
+    "The importance of discipline and hard work",
+    "Her travels around the world",
+    "The latest advancements in sports medicine"
+  ],
+  "canHelp": [
+    "Provide expert medical advice and treatment for injuries.",
+    "Offer personalized fitness and training plans to optimize performance.",
+    "Connect you with other influential figures in the motorsport world through her extensive network."
+  ],
+  "personality_summary": "A highly skilled but demanding doctor with a soft spot for driven individuals, but a passive-aggressive streak."
+}

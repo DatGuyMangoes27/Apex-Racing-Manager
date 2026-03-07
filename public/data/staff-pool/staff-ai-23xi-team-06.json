@@ -1,0 +1,22 @@
+{
+  "name": "László Kovács",
+  "nationality": "Hungarian",
+  "age": 48,
+  "gender": "male",
+  "role": "sporting_director",
+  "bio": "László's journey in motorsport began in his teens, tinkering with go-karts in his father's garage. He quickly realized his passion lay not in driving, but in the intricate strategy and technical aspects of racing. After earning a degree in mechanical engineering, he worked his way up through various racing teams, starting as a data analyst before transitioning into team management. His approach as a sporting director is rooted in data-driven decision-making and a relentless pursuit of incremental improvements. He believes in fostering a culture of continuous learning and adaptation, always seeking innovative solutions to gain a competitive edge. What sets László apart is his ability to stay calm and focused under immense pressure, a trait that has proven invaluable in making critical decisions during high-stakes races.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "László is of average height with a lean build, often seen wearing glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen, jotting down observations throughout the day.",
+    "Insists on having a cup of strong black coffee precisely 30 minutes before each race.",
+    "Has a habit of tapping his fingers on the table when deep in thought."
+  ]
+}

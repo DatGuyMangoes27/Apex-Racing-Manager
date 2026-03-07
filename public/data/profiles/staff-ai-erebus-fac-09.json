@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 24,
+  "gender": "male",
+  "role": "paint_shop_specialist",
+  "bio": "Erik's passion for motorsport ignited during his childhood, spent tinkering with model cars and watching rally races with his grandfather. He pursued vocational training in automotive painting and quickly developed a reputation for meticulousness and an exceptional eye for color matching. After graduating top of his class, Erik gained experience at a local custom car shop before setting his sights on the high-stakes world of motorsport. \n\nHis work ethic is impeccable. Erik believes in a systematic approach to his craft, ensuring every surface is flawlessly prepared and that the final coat of paint meets the highest standards. While valuing teamwork, he is also comfortable working independently, often losing himself in the details of his projects. He's particularly skilled in applying intricate livery designs, making him a valuable asset to any racing team.\n",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Stubble",
+    "description": "Erik is of average height with a slender build, often seen wearing protective eyewear."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always listens to Swedish death metal while working.",
+    "Keeps a meticulously organized toolbox, each tool in its exact place.",
+    "Has an uncanny ability to identify paint colors from memory."
+  ]
+}

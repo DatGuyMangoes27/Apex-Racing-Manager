@@ -1,0 +1,22 @@
+{
+  "name": "Jens Erik Kristensen",
+  "nationality": "Danish",
+  "age": 45,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jens Erik Kristensen's path to motorsport engineering began with a fascination for LEGO Technic as a child, which evolved into a degree in mechanical engineering from Aarhus University. He started his career at a small tuning shop, quickly demonstrating an aptitude for problem-solving and optimization. His talent caught the eye of a Formula Ford team, where he honed his skills in race car setup and data analysis. \n\nJoining Crown Racing five years ago, Jens brought a pragmatic and adaptable approach to engineering. He excels at bridging the gap between theoretical concepts and real-world track performance. His strength lies in his ability to stay calm under pressure and find creative solutions to complex engineering challenges. While not the most outwardly innovative, his meticulous attention to detail and collaborative spirit make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Blonde",
+    "hairStyle": "Short, neatly combed, slightly receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Goatee",
+    "description": "Jens is of average height, with a lean build and a focused look."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Has a specific brand of licorice he snacks on during races.",
+    "Tends to explain complex technical issues using analogies involving sailing."
+  ]
+}

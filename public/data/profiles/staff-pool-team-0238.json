@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Vargas",
+  "nationality": "Peruvian",
+  "age": 42,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began in his youth, dismantling and rebuilding go-karts with his cousins in Lima. This early fascination led him to pursue mechanical engineering, where he excelled in thermodynamics and fluid dynamics. After graduating, he worked for a local automotive manufacturer, honing his skills in vehicle dynamics and data analysis. \n\nHe transitioned to motorsport five years ago, initially working with a small rally team before moving into single-seaters. Ricardo is meticulous in his approach, favoring a data-driven methodology coupled with keen observation. He believes in a holistic view of performance, considering not only the car's setup but also the driver's feedback and the broader race strategy. He's known for his ability to quickly identify and address performance bottlenecks, often suggesting innovative solutions that others overlook. His ambition is to one day lead the engineering team for a championship-winning formula team.\n\n What sets Ricardo apart is his ability to communicate complex technical concepts in a clear and concise manner. He excels at bridging the gap between the engineering team and the driver, ensuring that everyone is aligned and working towards a common goal. He is also extremely reliable, often the first to arrive and the last to leave, ensuring the job is done to the highest standard.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a lean build, often seen with a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a specific type of Peruvian coffee before every race."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "French",
+  "age": 30,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Antoine's passion for motorsport ignited during his childhood, watching Formula 1 races with his father. He pursued a degree in Mechanical Engineering, specializing in aerodynamics, at École Centrale Paris. After graduating, he joined a small GT racing team, where he honed his skills in vehicle dynamics and data analysis. His meticulous approach and problem-solving abilities quickly earned him a reputation as a rising star.\n\nPrior to joining Rexal FMI Racing, Antoine spent several years as a performance engineer, focusing on improving car setup and tire management. He's known for his calm demeanor under pressure and his ability to translate complex data into actionable insights for the drivers and other engineers. He believes in a collaborative approach, fostering open communication and teamwork within the engineering department. Antoine is driven by a desire to push the boundaries of performance through innovative solutions and data-driven decisions. He is detail-oriented, and never stops learning.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Antoine is of average height, with a lean build and intense, focused eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down ideas.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on starting every morning with a strong espresso."
+  ]
+}

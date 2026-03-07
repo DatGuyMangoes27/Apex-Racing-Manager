@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Colombian",
+  "age": 34,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Mateo's journey into motorsport began unconventionally, not through racing himself, but through a fascination with the intricate mechanics of karts. Growing up in Bogotá, he spent hours tinkering with engines and learning the intricacies of vehicle dynamics. After completing his engineering degree, he sought an opportunity to apply his knowledge in a professional racing environment, eventually landing a role with a small Colombian karting team.\n\nHis meticulous attention to detail and analytical mind quickly made him an asset. Mateo's approach to quality control is holistic; he not only identifies potential issues but also seeks to understand the root causes, advocating for process improvements to prevent future occurrences. This proactive approach, combined with his unwavering loyalty and commitment to excellence, sets him apart. Now at Birel ART, Mateo brings a South American flavour to the European team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Mateo is of medium build with a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen, even to the cafeteria.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on calibrating every piece of equipment before use, even if it was calibrated the day before."
+  ]
+}

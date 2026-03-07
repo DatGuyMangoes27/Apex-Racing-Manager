@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Gonçalves",
+  "nationality": "Portuguese",
+  "age": 33,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's journey into motorsport began with karting, but he quickly realized his true passion lay in understanding the complex interplay of data and vehicle dynamics. After graduating with a degree in Mechanical Engineering from the University of Porto, he landed a junior position with a Formula Renault team, spending countless hours poring over telemetry and simulations. His meticulous approach and relentless pursuit of performance gains quickly caught the attention of Hitech GP, where he's become a key member of the engineering team.\n\nRicardo is known for his ability to quickly identify areas for improvement and translate complex data into actionable insights for the drivers and mechanics. He's a firm believer in a data-driven approach but also understands the importance of driver feedback in optimizing performance. He strives to create a collaborative environment where everyone feels empowered to contribute their expertise. Ricardo’s mentoring abilities have been recognized by the team, and he regularly guides junior engineers, fostering the next generation of motorsport talent.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight fade on the sides.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Ricardo has a lean build and a focused, intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten notes and calculations.",
+    "Insists on having a specific type of Portuguese coffee before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Gareth Llewellyn",
+  "nationality": "Welsh",
+  "age": 30,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Gareth’s fascination with motorsport began as a child, spending countless hours tinkering with engines alongside his grandfather, a retired coal miner with a surprising knack for mechanics. He honed his skills at a local engineering firm before specializing in precision machining for a small racing team. He's now looking to broaden his experience at a larger organization.\n\nGareth's approach is methodical and precise, driven by a desire for constant improvement. He thrives on complex challenges, meticulously analyzing every detail to ensure optimal performance. He believes in collaborative problem-solving and is always eager to share his knowledge with colleagues. His creative solutions to tricky problems have earned him respect in the paddock.\n\nWhat sets Gareth apart is his intuitive understanding of materials and their properties. He can often predict how a component will behave under stress, allowing him to fine-tune designs for maximum durability and performance. He is also a keen advocate for sustainable manufacturing practices, always seeking ways to minimize waste and reduce the environmental impact of his work.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side parting",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, trimmed beard",
+    "description": "Gareth is of average height with a lean build and a thoughtful expression."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches.",
+    "Has a habit of humming quietly while working on intricate parts.",
+    "Drinks copious amounts of tea throughout the day."
+  ]
+}

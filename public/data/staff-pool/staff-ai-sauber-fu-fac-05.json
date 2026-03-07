@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 47,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Ricardo's journey into motorsport wasn't exactly planned. After completing his degree in Mechanical Engineering from the University of Porto, he initially worked in the automotive industry, focusing on vehicle manufacturing. However, a chance encounter with a former Formula 1 engineer sparked his interest in the precision and high stakes of racing. He quickly transitioned to a quality control role within a smaller racing team before eventually finding his place at Stake Sauber.\n\nRicardo is known for his meticulous approach to quality control. He believes that even the smallest imperfection can have a significant impact on performance, and he is relentless in his pursuit of excellence. His demanding nature stems from his deep understanding of the technical complexities involved and his unwavering commitment to ensuring that the team's equipment meets the highest standards. He is particularly adept at identifying potential points of failure and implementing preventative measures.\n\nWhat sets Ricardo apart is his ability to balance his technical expertise with a pragmatic understanding of the practical limitations of the sport. He's not just looking for perfection in a vacuum; he's looking for solutions that are both effective and feasible within the constraints of time and budget.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo is of average height with a slightly stocky build, reflecting years spent poring over technical schematics."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen against surfaces when deep in thought, much to the annoyance of his colleagues.",
+    "Insists on using a specific brand of Portuguese coffee beans in the team's coffee machine, claiming it improves concentration."
+  ]
+}

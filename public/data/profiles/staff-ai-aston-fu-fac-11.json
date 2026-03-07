@@ -1,0 +1,22 @@
+{
+  "name": "Lin Wei",
+  "nationality": "Chinese",
+  "age": 50,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Lin Wei’s motorsport journey began unconventionally, not on the track, but in the engineering labs of Tsinghua University. His fascination with vehicle dynamics led him to an internship with a burgeoning electric vehicle company, where he honed his understanding of data analysis and simulation. Recognizing the critical link between engineering and on-track performance, Lin transitioned into motorsport, initially as a data analyst before specializing in test driver coordination.\n\nHis approach to coordinating test drivers is meticulous and data-driven, prioritizing clear communication and precise feedback. He believes that effective testing isn't just about speed, but about systematically identifying and addressing areas for improvement. Lin's unique ability lies in translating complex engineering concepts into actionable insights for drivers, fostering a collaborative environment that pushes the boundaries of vehicle performance. His visionary leadership is quickly becoming invaluable to the Aston Martin team.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Thin, neatly trimmed mustache",
+    "description": "Lin has a thoughtful, focused expression, accentuated by his wire-rimmed glasses."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on analyzing tire wear data before every team lunch."
+  ]
+}

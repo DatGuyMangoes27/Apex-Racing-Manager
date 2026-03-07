@@ -1,0 +1,22 @@
+{
+  "name": "Jia Wei Lim",
+  "nationality": "Singaporean",
+  "age": 25,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Jia Wei's fascination with motorsport began during his national service, spending his downtime immersed in sim racing leagues. He quickly realized his talent wasn't just for driving, but for understanding the mechanics beneath the surface. This led him to pursue a degree in mechanical engineering, specializing in vehicle dynamics. After graduating, he interned at a local racing team before landing a full-time role at Signature Racing.\n\nJia Wei is a firm believer in data-driven optimization. He meticulously analyzes telemetry and driver feedback to refine the simulator's setup, ensuring it accurately reflects real-world conditions. His colleagues appreciate his dedication to detail and his ability to translate complex technical information into actionable insights for the drivers. He's known for pushing the boundaries of simulator fidelity, always seeking new ways to improve the correlation between the virtual and physical worlds.\n\nWhat sets Jia Wei apart is his proactive approach to problem-solving. He doesn't just identify issues; he actively researches and implements innovative solutions. His ability to quickly adapt to new technologies and his unwavering commitment to continuous improvement make him a valuable asset to the team.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly combed back with a slight fade on the sides.",
+    "eyeColor": "Dark brown",
+    "facialHair": "Clean shaven",
+    "description": "Jia Wei has a lean build and a focused expression, often seen wearing glasses."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has an uncanny ability to diagnose simulator glitches just by listening to the sound it makes.",
+    "Insists on brewing his own kopi (Singaporean coffee) every morning."
+  ]
+}

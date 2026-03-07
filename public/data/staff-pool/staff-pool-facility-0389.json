@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Alves",
+  "nationality": "Brazilian",
+  "age": 53,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Ricardo's journey into motorsport began unconventionally. After a career repairing consumer electronics, he felt stifled and longed for something more challenging. A chance encounter with a former racing mechanic sparked his interest, and he dedicated himself to learning the intricacies of racing electronics. He started volunteering at a local karting track, quickly proving his aptitude for diagnosing and repairing complex systems. \n\nThough relatively new to the professional motorsport scene, Ricardo possesses a methodical approach and an insatiable curiosity. He thrives on understanding the 'why' behind every component and system, ensuring optimal performance and reliability. He's eager to absorb knowledge and contribute to a winning team. His ambition is fueled by a desire to prove that experience and dedication can overcome a late start in the field.",
+  "physical": {
+    "skinTone": "Medium Tan",
+    "hairColor": "Salt and Pepper",
+    "hairStyle": "Short, neatly combed back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Trimmed Goatee",
+    "description": "A stocky man with strong hands and a focused gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Constantly chews on the end of his pen when concentrating.",
+    "Always carries a small notebook filled with circuit diagrams.",
+    "Has a habit of talking to the electronic components as he works."
+  ]
+}

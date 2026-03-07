@@ -1,0 +1,22 @@
+{
+  "name": "Park Jae-hyun",
+  "nationality": "South Korean",
+  "age": 45,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Park Jae-hyun's fascination with electronics began early, disassembling and reassembling radios as a child in Seoul. He pursued electrical engineering at KAIST, excelling in embedded systems and signal processing. A chance encounter with a Formula Student team ignited his passion for motorsport, leading him to dedicate his expertise to improving vehicle performance through advanced electronics.\n\nJae-hyun believes in a data-driven approach, meticulously analyzing telemetry to optimize electronic control units and sensor networks. He excels at troubleshooting complex electrical issues under pressure and thrives on the challenge of pushing the boundaries of what's electronically possible. While fiercely independent, Jae-hyun is unwavering in his loyalty to his team, consistently prioritizing their success above personal recognition.\n\nHis innovative solutions for power management and data acquisition have consistently contributed to improved lap times and overall reliability for Speed Kart Racing. He has a reputation for getting the best out of the kart's electrical systems.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "dark brown",
+    "facialHair": "thin mustache",
+    "description": "He is of medium height with a wiry build and a focused gaze."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small multimeter in his pocket",
+    "Prefers to work late at night when the garage is quiet",
+    "Drinks copious amounts of green tea"
+  ]
+}

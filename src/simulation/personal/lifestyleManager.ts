@@ -36,26 +36,6 @@ import {
 // HEALTH MANAGEMENT
 // ============================================
 
-export function createInitialHealth(age: number): OwnerHealth {
-  // Health based on age with some variance
-  const ageHealthPenalty = Math.max(0, (age - 30) * 0.3)
-  
-  return {
-    physicalHealth: Math.max(40, 85 - ageHealthPenalty + Math.floor(Math.random() * 10 - 5)),
-    fitness: Math.max(30, 70 - ageHealthPenalty + Math.floor(Math.random() * 20 - 10)),
-    mentalHealth: 75 + Math.floor(Math.random() * 15 - 7),
-    stressLevel: 30 + Math.floor(Math.random() * 20),
-    burnoutRisk: 10 + Math.floor(Math.random() * 15),
-    age,
-    lifeExpectancy: 82,
-    activeConditions: [],
-    healthcareLevel: 'premium',
-    annualHealthcareCost: HEALTHCARE_COSTS.premium,
-    lastCheckupWeek: 1,
-    lastCheckupYear: 2024
-  }
-}
-
 export function processWeeklyHealth(
   health: OwnerHealth,
   workHours: number,
@@ -183,37 +163,6 @@ export function processWeeklyHealth(
   }
 }
 
-export function treatCondition(
-  health: OwnerHealth,
-  conditionId: string
-): {
-  updatedHealth: OwnerHealth
-  cost: number
-  message: string
-} {
-  const condition = health.activeConditions.find(c => c.id === conditionId)
-  if (!condition) {
-    return { updatedHealth: health, cost: 0, message: 'Condition not found' }
-  }
-  
-  if (!condition.isTreatable) {
-    return { updatedHealth: health, cost: 0, message: 'This condition cannot be treated' }
-  }
-  
-  const updatedConditions = health.activeConditions.map(c => {
-    if (c.id === conditionId) {
-      return { ...c, isBeingTreated: true }
-    }
-    return c
-  })
-  
-  return {
-    updatedHealth: { ...health, activeConditions: updatedConditions },
-    cost: condition.treatmentCost || 0,
-    message: `Started treatment for ${condition.name}`
-  }
-}
-
 export function upgradeHealthcare(
   health: OwnerHealth,
   newLevel: OwnerHealth['healthcareLevel']
@@ -293,19 +242,6 @@ export function calculateHobbyBenefits(hobbies: Hobby[]): {
 // ============================================
 // PERSONAL BRAND MANAGEMENT
 // ============================================
-
-export function createInitialBrand(reputation: number): PersonalBrand {
-  return {
-    brandValue: Math.min(100, reputation * 0.8),
-    publicImage: 50 + Math.floor(Math.random() * 20),
-    mediaPresence: 30 + Math.floor(Math.random() * 20),
-    endorsements: [],
-    mediaDeals: [],
-    speakingFee: 5000,
-    annualAppearances: 0,
-    reputationEvents: []
-  }
-}
 
 export function addEndorsement(
   brand: PersonalBrand,
@@ -886,8 +822,8 @@ export function calculateMonthlyCosts(
 } {
   const tier = getLifestyleTier(lifestyle)
   
-  const lifestyleBase = tier.baseMonthlyCost
-  const staffSalaries = staff.reduce((sum, s) => sum + s.salary / 12, 0)
+  const lifestyleBase = tier.level.monthlyCost
+  const staffSalaries = staff.reduce((sum, s) => sum + s.salary, 0)
   const hobbyCosts = hobbies.reduce((sum, h) => sum + h.annualCost / 12, 0)
   const healthcareCosts = health.annualHealthcareCost / 12
   
@@ -905,11 +841,12 @@ export function canAffordLifestyle(
   netWorth: number
 ): { canAfford: boolean; reason?: string } {
   const tier = getLifestyleTier(level)
+  const minimumNetWorth = (tier as { minimumNetWorth?: number }).minimumNetWorth ?? 0
   
-  if (netWorth < tier.minimumNetWorth) {
+  if (minimumNetWorth > 0 && netWorth < minimumNetWorth) {
     return {
       canAfford: false,
-      reason: `Requires minimum net worth of $${tier.minimumNetWorth.toLocaleString()}`
+      reason: `Requires minimum net worth of $${minimumNetWorth.toLocaleString()}`
     }
   }
   
@@ -917,10 +854,11 @@ export function canAffordLifestyle(
 }
 
 export function getLifestyleRecommendation(netWorth: number): LifestyleLevel {
-  // Find highest affordable lifestyle
-  const affordable = LIFESTYLE_TIERS
-    .filter(t => t.minimumNetWorth <= netWorth)
-    .sort((a, b) => b.minimumNetWorth - a.minimumNetWorth)
+  const tiersWithMin = LIFESTYLE_TIERS as Array<{ level: LifestyleLevel; minimumNetWorth?: number }>
+  const affordable = tiersWithMin
+    .filter(t => (t.minimumNetWorth ?? 0) <= netWorth)
+    .sort((a, b) => (b.minimumNetWorth ?? 0) - (a.minimumNetWorth ?? 0))
   
-  return affordable[0]?.level || 'frugal'
+  return affordable[0]?.level ?? LIFESTYLE_TIERS[0].level
 }
+

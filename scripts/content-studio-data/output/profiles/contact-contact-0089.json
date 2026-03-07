@@ -1,0 +1,31 @@
+{
+  "name": "Elena de la Vega",
+  "nationality": "Spanish",
+  "age": 57,
+  "gender": "female",
+  "contactType": "actor",
+  "bio": "Elena de la Vega is a renowned Spanish actress celebrated for her captivating performances in film, television, and theatre. A self-taught artist, Elena's career spans over three decades, marked by numerous awards and accolades for her dramatic range and passionate portrayals of complex characters. Known for her adventurous spirit and blunt honesty, Elena often surprises those who expect a delicate diva. She's as comfortable discussing the latest advancements in AI as she is critiquing a Verdi opera. \n\nElena's connection to motorsport is somewhat indirect, but significant. She's an avid supporter of emerging talent in the arts and sciences, often sponsoring young individuals with exceptional potential. This extends to the motorsport world, where she occasionally attends races and supports young drivers through her charitable foundation. A driver may cross paths with her at a charity event, or through mutual connections seeking her endorsement or support.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, slightly wavy, with subtle highlights",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena possesses a striking beauty, accentuated by her expressive eyes and strong features. Her confident posture and elegant style reflect her artistic nature."
+  },
+  "connectionToMotorsport": "Elena sponsors young, promising talents in various fields, including motorsport, through her charitable foundation. She is also a known attendee at major racing events, albeit more for the social scene than the technical aspects.",
+  "meetingContext": "The player might meet Elena at a charity gala benefiting young athletes or artists, or perhaps at a VIP lounge during a Formula 1 race in Spain.",
+  "conversationTopics": [
+    "The evolution of acting techniques in the digital age",
+    "The therapeutic benefits of equestrian sports",
+    "Her latest charitable endeavors",
+    "The parallels between artistic expression and technological innovation",
+    "The challenges faced by young people pursuing unconventional careers"
+  ],
+  "canHelp": [
+    "Provide endorsements or sponsorships",
+    "Introduce the player to high-profile individuals within the entertainment industry",
+    "Offer media training and guidance on public image"
+  ],
+  "personality_summary": "A passionate and adventurous actress who supports young talent and isn't afraid to speak her mind."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Valtteri Niemi",
+  "nationality": "Finnish",
+  "age": 23,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Valtteri's passion for motorsport ignited at a young age, fueled by countless hours spent tinkering with go-karts and devouring Formula 1 races. He pursued a degree in Mechanical Engineering, specializing in simulation technologies, driven by a desire to bridge the gap between virtual and real-world performance. Following internships at smaller racing teams, he joined Inter Europol Competition, eager to apply his skills on a larger stage.\n\nAs a simulator engineer, Valtteri meticulously analyzes telemetry data, identifies areas for improvement, and translates these findings into actionable adjustments within the simulator environment. He believes in a collaborative approach, working closely with drivers and race engineers to refine the simulation model and optimize car setup. His keen eye for detail and knack for identifying subtle nuances in vehicle dynamics make him a valuable asset to the team. Valtteri's background in competitive sim racing also gives him a unique perspective when evaluating driver performance in the simulator.\n\nValtteri is known for his innovative approach to problem-solving, constantly seeking new ways to enhance the realism and effectiveness of the simulator. His ambition is to eventually lead a team of simulator engineers, pushing the boundaries of virtual racing technology to unlock new levels of performance for Inter Europol Competition.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Short, slightly messy, with a side part.",
+    "eyeColor": "Blue",
+    "facialHair": "Light stubble",
+    "description": "Valtteri is of average height, with a lean build."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook to jot down ideas during simulation runs.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Drinks copious amounts of black coffee throughout the day."
+  ]
+}

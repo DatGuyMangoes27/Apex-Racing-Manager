@@ -1,0 +1,22 @@
+{
+  "name": "Zoltán Kovács",
+  "nationality": "Hungarian",
+  "age": 33,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Zoltán's fascination with motorsport began with the roar of engines at the Hungaroring, where he attended races as a child. He pursued a degree in Mechanical Engineering, specializing in simulation technologies, driven by a desire to bridge the gap between virtual and real-world racing. After graduating, he spent several years honing his skills at a smaller engineering firm, developing vehicle dynamics models for various applications. \n\nHe transitioned to motorsport full-time, initially working with a Formula 3 team to refine their simulator setup. Zoltán is passionate about creating immersive and realistic simulation environments, believing that accurate feedback is crucial for driver development and car setup. He approaches his work with meticulous attention to detail, constantly seeking ways to improve the correlation between the simulator and on-track performance. His ability to identify subtle discrepancies in the simulation environment and translate them into actionable insights sets him apart.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "brown",
+    "facialHair": "short, trimmed goatee",
+    "description": "Zoltán is of average height, with a focused gaze and a confident demeanor."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a small notebook filled with equations and diagrams.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on calibrating his monitor's color settings before starting any simulation work."
+  ]
+}

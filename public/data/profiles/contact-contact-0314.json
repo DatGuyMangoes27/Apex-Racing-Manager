@@ -1,0 +1,31 @@
+{
+  "name": "Ricardo Alvarez",
+  "nationality": "Argentine",
+  "age": 41,
+  "gender": "male",
+  "contactType": "banker",
+  "bio": "Ricardo Alvarez is a self-made titan of Argentine finance. Starting with virtually nothing, he built Alvarez Investments into a major player in South American markets, known for its aggressive strategies and high-risk, high-reward investments. While formally uneducated, Ricardo possesses a razor-sharp intellect and an uncanny ability to spot emerging trends, often dismissing traditional financial wisdom in favor of his own gut feelings. He's cultivated a reputation for being both brilliant and unpredictable, a combination that makes him a force to be reckoned with in Buenos Aires. \n\nBeyond the boardroom, Ricardo indulges in a diverse range of passions, from collecting rare first editions of Borges' poetry to meticulously restoring vintage Leica cameras. He’s a fierce competitor, whether trading stocks, sparring in a boxing ring, or playing high-stakes poker. Given his fondness for taking calculated risks and his considerable wealth, Ricardo is often approached by motorsport teams and drivers seeking sponsorship or investment. His interest is piqued by the thrill and precision of racing, viewing it as another arena for testing his strategic acumen. He sees potential in backing rising stars who demonstrate not just talent, but also the same relentless drive he possesses.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Slicked back with a slight wave",
+    "eyeColor": "Brown",
+    "facialHair": "Close-cropped goatee",
+    "description": "Ricardo is a sharply dressed man, favoring bespoke Italian suits that accentuate his athletic build. He carries himself with an air of confident authority."
+  },
+  "connectionToMotorsport": "Ricardo is a potential investor and sponsor for racing teams and drivers, drawn to the high-stakes, high-reward environment of motorsport. He sees the sport as a blend of technology, skill, and calculated risk, mirroring his own approach to business.",
+  "meetingContext": "The player might encounter Ricardo at a high-profile charity gala in Buenos Aires, or through an introduction from a mutual business contact involved in motorsport sponsorship.",
+  "conversationTopics": [
+    "The current state of global markets",
+    "The parallels between racing strategy and financial investments",
+    "His latest antique find",
+    "The merits of different boxing styles",
+    "His photography projects"
+  ],
+  "canHelp": [
+    "Provide significant financial backing and sponsorship.",
+    "Offer valuable business advice and connections.",
+    "Introduce the player to other high-net-worth individuals."
+  ],
+  "personality_summary": "A self-made millionaire with a penchant for risk and a taste for the finer things in life."
+}

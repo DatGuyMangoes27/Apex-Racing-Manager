@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Peter Baumann",
+  "nationality": "Swiss",
+  "age": 40,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Hans-Peter's fascination with aerodynamics began with building model airplanes in his youth, eventually leading him to pursue a degree in mechanical engineering at ETH Zurich. After graduating, he started his career at Sauber, where he quickly rose through the ranks, contributing to the design of several successful Formula 1 cars. He has a knack for finding innovative solutions within tight regulatory constraints. \n\nHis approach to leading the aero department at Carlin Academy is collaborative, fostering a culture of experimentation and continuous improvement. He believes in empowering his team to take risks and learn from failures, always keeping a close eye on the big picture. Hans-Peter is known for his meticulous attention to detail and his ability to translate complex aerodynamic concepts into practical, track-ready solutions.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "light brown",
+    "hairStyle": "short, neatly combed back, slightly receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Hans-Peter has a serious demeanor with piercing blue eyes that reflect his analytical mind."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with aerodynamic sketches and equations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a perfectly organized desk, even in the chaos of a race weekend."
+  ]
+}

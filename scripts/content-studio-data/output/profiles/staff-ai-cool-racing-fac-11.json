@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 35,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Dimitri's journey into motorsport began unexpectedly, fueled by a childhood fascination with the engineering marvels of Soviet-era vehicles. While never a driver himself, he gravitated towards the technical aspects, spending countless hours tinkering with engines and absorbing schematics. This passion led him to pursue a degree in mechanical engineering, which he then applied to a junior role at a local racing team.\n\nOver the years, Dimitri's meticulous approach and keen eye for detail made him an invaluable asset. He possesses a natural talent for identifying potential issues before they become critical, earning him a reputation for reliability and problem-solving. At Cool Racing, he thrives in the fast-paced environment, focusing on ensuring that test drivers have the optimal conditions and resources to push the limits of the car. He believes in clear communication and collaborative problem-solving, making him a respected figure within the team. His innovative approaches to data analysis have helped the team identify previously unnoticed areas of improvement.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight wave",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Dimitri is of medium height with a lean build and a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking only green tea during testing sessions."
+  ]
+}

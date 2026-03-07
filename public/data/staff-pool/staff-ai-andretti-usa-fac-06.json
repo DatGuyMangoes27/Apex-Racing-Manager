@@ -1,0 +1,22 @@
+{
+  "name": "Alistair Finch",
+  "nationality": "British",
+  "age": 39,
+  "gender": "male",
+  "role": "logistics_coordinator",
+  "bio": "Alistair's journey into motorsport began with a childhood spent tinkering with engines alongside his father, a local mechanic. This hands-on experience instilled in him a deep appreciation for the intricate workings of racing machines and the importance of meticulous preparation. After earning a degree in Logistics Management, he honed his skills in the demanding world of international shipping before transitioning to motorsport five years ago. \n\nAt Andretti Global, Alistair oversees the complex logistics of transporting equipment and personnel to races around the globe. He is known for his calm and pragmatic approach to problem-solving, often finding innovative solutions to logistical challenges. Alistair's dedication to efficiency and precision ensures that the team is always well-prepared, regardless of the location or conditions.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height with a slightly stocky build, reflecting years spent both behind a desk and on the move."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a miniature Rubik's Cube and solves it during stressful moments.",
+    "Keeps a detailed spreadsheet of travel times for every race location.",
+    "Insists on personally inspecting every shipping container before it leaves the garage."
+  ]
+}

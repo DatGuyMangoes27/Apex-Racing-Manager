@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Mikkelsen",
+  "nationality": "Danish",
+  "age": 32,
+  "gender": "female",
+  "contactType": "doctor",
+  "bio": "Dr. Astrid Mikkelsen is a highly regarded sports medicine physician specializing in traumatic brain injuries and concussion protocols, holding a PhD in sports science. Despite her relatively young age, she's quickly built a reputation for her rigorous approach and cutting-edge research, publishing several influential papers on the long-term effects of head trauma in high-impact sports. While seemingly aloof and reserved, those who earn her trust find her surprisingly generous, though she has little patience for perceived incompetence or unnecessary delays. \n\nAstrid's connection to motorsport is primarily through her work consulting with several racing teams on driver safety and concussion management. Her expertise is highly sought after, particularly in Formula racing and rally events. A racing driver might cross paths with Astrid following an accident, during pre-season medical evaluations mandated by a team, or when seeking specialized consultation on performance optimization through physical and mental resilience.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark blonde",
+    "hairStyle": "Straight, shoulder-length, often pulled back in a low ponytail",
+    "eyeColor": "Blue-grey",
+    "facialHair": null,
+    "description": "Astrid has a slender build and often carries herself with a certain formality. Her gaze is direct and analytical, as if constantly assessing the situation."
+  },
+  "connectionToMotorsport": "Astrid consults with several motorsport teams as a specialist in concussion protocols and driver safety. Her research on head trauma is highly valued within the racing community.",
+  "meetingContext": "The player might meet Astrid during a mandatory medical check-up before a race, after a crash requiring medical attention, or at a motorsport industry conference focusing on driver safety.",
+  "conversationTopics": [
+    "The latest research on concussion treatment",
+    "The ethics of high-risk sports",
+    "Her photography projects (landscapes)",
+    "The importance of mental resilience in elite athletes",
+    "Advances in sports medicine technology"
+  ],
+  "canHelp": [
+    "Provide expert medical opinions and expedite recovery from injuries.",
+    "Offer connections to other professionals in sports science and medicine.",
+    "Consult on physical and mental conditioning strategies to enhance performance."
+  ],
+  "personality_summary": "A brilliant but condescending and impatient doctor with a hidden generous side."
+}

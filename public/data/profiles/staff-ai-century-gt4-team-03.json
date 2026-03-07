@@ -1,0 +1,22 @@
+{
+  "name": "Dr. Evelyn Reed",
+  "nationality": "American",
+  "age": 40,
+  "gender": "female",
+  "role": "head_of_aero",
+  "bio": "Evelyn Reed's journey in motorsport began, unusually, with a fascination for ornithology. Observing the intricate aerodynamics of bird flight sparked a lifelong passion that she channeled into engineering. After earning a PhD in Aerospace Engineering from MIT, she cut her teeth at a private defense contractor before joining the racing world. Her approach to aerodynamics is deeply rooted in data analysis and simulation, but she never loses sight of the practical realities of the track. She's known for her rigorous testing protocols and relentless pursuit of marginal gains.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Brown",
+    "hairStyle": "Shoulder-length, often pulled back in a practical ponytail.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "A practical woman, Evelyn exudes competence with her sharp features and no-nonsense demeanor."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with complex calculations.",
+    "Insists on reviewing all wind tunnel data personally.",
+    "Has a habit of tapping her pen rapidly when under pressure."
+  ]
+}

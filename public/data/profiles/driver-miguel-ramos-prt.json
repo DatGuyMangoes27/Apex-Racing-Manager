@@ -1,0 +1,27 @@
+{
+  "biography": "Miguel Ramos, a name whispered with both excitement and a touch of apprehension in the paddock, hails from the sun-drenched Algarve coast of Portugal. His journey began not on a karting track, but on the winding, treacherous roads that snake through the hills near his family's olive groves. He would spend hours mimicking Formula 1 drivers with his father's old tractor, nearly causing several accidents. His raw talent was undeniable, catching the eye of a local karting team owner after a particularly daring (and illegal) maneuver on a public road. From there, he tore through the ranks, his aggressive style turning heads and raising eyebrows in equal measure. Now, at 24, Ramos finds himself in the McLaren stable, a rising star burdened with the weight of expectation. His debut season has been a rollercoaster, flashes of brilliance overshadowed by costly errors, but he remains undeterred, fueled by an unshakeable belief in his own abilities. He is still on the path to a long career.",
+  "drivingStyle": "Ramos is a flamboyant driver, known for his aggressive overtaking maneuvers and late-braking entries. He thrives on the edge, pushing the car to its absolute limit, often flirting with disaster. While his tire management can be erratic, he possesses an uncanny ability to extract maximum performance from a car when under pressure, often producing stunning qualifying laps and daring overtakes in the closing stages of a race. He attacks every corner like it's his last, a high-risk, high-reward strategy that makes him both thrilling and unpredictable to watch.",
+  "rivalries": [
+    {
+      "driver": "Isabelle Moreau",
+      "reason": "A clash of personalities and driving styles. Moreau is known for her calculated approach, while Ramos prefers a more impulsive style, leading to several on-track incidents and heated exchanges in the media."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A battle for supremacy within the McLaren team. Tanaka's consistent performance puts pressure on Ramos to deliver, leading to a tense and competitive atmosphere within the garage."
+    },
+    {
+      "driver": "Alessandro Rossi",
+      "reason": "Rossi accused Ramos of dangerous driving after a controversial collision at Monza, sparking a feud that continues to simmer."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded blue bracelet, a gift from his grandmother, during every race.",
+    "Listens to Portuguese Fado music to calm his nerves before qualifying.",
+    "Refuses to eat anything green on race weekends, believing it brings bad luck."
+  ],
+  "nickname": "The Algarve Ace",
+  "famousQuote": "\"I don't race to finish second. Second is just the first loser.\"",
+  "careerHighlight": "Winning the Formula 2 championship in his rookie year, securing his seat with McLaren for the following season.",
+  "careerLowPoint": "Crashing out of the lead at the Monaco Grand Prix with only two laps remaining, costing him his first Formula 1 victory."
+}

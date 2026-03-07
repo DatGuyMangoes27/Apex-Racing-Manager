@@ -1,0 +1,22 @@
+{
+  "name": "Kenji Tanaka",
+  "nationality": "Japanese",
+  "age": 28,
+  "gender": "male",
+  "role": "security_chief",
+  "bio": "Kenji Tanaka's journey into motorsport security began unconventionally. A childhood fascination with engineering led him to study technical security systems, but it was the adrenaline-fueled atmosphere of a local drift racing event that ignited his passion for motorsport. He transitioned from designing security protocols for commercial properties to applying his expertise to the high-stakes world of racing. Kenji's approach is meticulous and preventative, focusing on identifying potential vulnerabilities before they can be exploited. His unwavering commitment to safety and proactive problem-solving distinguishes him in the paddock.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Dark Brown",
+    "facialHair": "Clean shaven",
+    "description": "Kenji is of average height with a lean build and an intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small, high-powered flashlight.",
+    "Meticulously organizes his workspace, often rearranging items for optimal efficiency.",
+    "Insists on personally testing all security systems, regardless of previous certifications."
+  ]
+}

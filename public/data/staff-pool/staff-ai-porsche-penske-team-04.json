@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 37,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Jean-Pierre's fascination with motorsport began as a child, watching Formula 1 races with his grandfather. He pursued a degree in mechanical engineering and quickly gravitated towards racing, starting in Formula Renault before transitioning to endurance racing. He joined Porsche Penske Motorsport five years ago, and his meticulous approach to data analysis and car setup has become invaluable to the team. Jean-Pierre's strength lies in his ability to quickly adapt to changing track conditions and optimize the car's performance, often making crucial calls during races.\n\nWhile his technical expertise is undeniable, Jean-Pierre also possesses a unique understanding of driver psychology. He believes that a car setup is only truly effective if the driver feels confident and comfortable behind the wheel. This holistic approach, combined with his unwavering dedication, makes him a highly sought-after race engineer.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "A man of average height with a lean build, his intense gaze reflects his focused mind."
+  },
+  "personality": "visionary",
+  "quirks": [
+    "Always carries a worn-out copy of 'Race Car Vehicle Dynamics'.",
+    "Insists on a specific brand of French coffee before every race.",
+    "Muttering technical jargon under his breath when stressed."
+  ]
+}

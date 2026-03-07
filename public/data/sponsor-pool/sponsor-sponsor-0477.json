@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0477",
+  "name": "De Coninck Performance Apparel",
+  "category": "apparel",
+  "tier": "high",
+  "country": "Belgium",
+  "description": "Engineered for speed, designed for victory.",
+  "story": "De Coninck has been crafting high-performance apparel for over 40 years, initially serving the cycling and athletics markets. Seeing the parallels between the demands of top-tier athletes and motorsport professionals, they've expanded into racing, seeking partnerships that showcase their commitment to innovation and performance under pressure. They are particularly interested in supporting drivers and teams who demonstrate meticulous preparation and a drive to push boundaries.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 45
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0477.png"
+}

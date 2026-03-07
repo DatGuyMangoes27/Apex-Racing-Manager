@@ -1,0 +1,22 @@
+{
+  "name": "Mateo Vargas",
+  "nationality": "Peruvian",
+  "age": 39,
+  "gender": "male",
+  "role": "team_principal",
+  "bio": "Mateo Vargas's journey in motorsport began unexpectedly. Initially studying engineering with no particular passion, he was drawn in by the raw energy and complex challenges of a local racing team. He started as a volunteer, quickly proving his worth with a knack for problem-solving and a keen eye for detail. His technical aptitude allowed him to climb the ranks, from mechanic to race engineer, before transitioning into management roles.\n\nNow Team Principal at Triple Eight Race Engineering, Mateo brings a pragmatic and results-oriented approach. He emphasizes clear communication and data-driven decision-making, believing that a well-coordinated team is more powerful than any individual. He fosters a culture of continuous improvement, encouraging his staff to learn from both successes and failures. Mateo is known for his ability to stay calm under pressure, a trait that has proven invaluable during high-stakes races.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Stubble",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook to jot down observations",
+    "Insists on a strict 15-minute debrief after every practice session",
+    "Has a lucky Peruvian 'chullo' hat he wears during race weekends (but never in the garage)"
+  ]
+}

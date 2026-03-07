@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0488",
+  "name": "DragonTech Gaming",
+  "category": "gaming",
+  "tier": "elite",
+  "country": "China",
+  "description": "Level up your game with DragonTech Gaming.",
+  "story": "DragonTech Gaming is a leading Chinese developer of high-performance gaming PCs and peripherals. Seeing the synergy between precision engineering and competitive spirit, they've entered motorsport to showcase their technology and reach a global audience of passionate gamers. They seek a team that embodies their values of innovation and relentless pursuit of victory.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1200000
+    }
+  },
+  "requirements": {
+    "minReputation": 70,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "China"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 10,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 55,
+  "imagePath": "logos/sponsors/sponsor-0488.png"
+}

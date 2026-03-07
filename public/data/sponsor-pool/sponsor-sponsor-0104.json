@@ -1,0 +1,47 @@
+{
+  "id": "sponsor-0104",
+  "name": "Apex Capital Group",
+  "category": "finance",
+  "tier": "mid",
+  "country": "Hong Kong",
+  "description": "Navigating global markets, driving your financial future.",
+  "story": "Apex Capital Group is a leading investment firm based in Hong Kong, specializing in emerging markets. Recognizing the global reach and prestige of motorsport, Apex seeks to align its brand with the values of precision, performance, and innovation. They aim to enhance brand awareness and demonstrate their commitment to excellence through a winning partnership.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 18000,
+      "winBonus": 7000,
+      "podiumBonus": 3000,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 22000,
+      "podiumBonus": 11000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 5,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "unlock_after_reputation",
+  "unlockReputation": 65,
+  "imagePath": "logos/sponsors/sponsor-0104.png"
+}

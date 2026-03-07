@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 44,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Ricardo's journey into motorsport began with a childhood fascination for rally racing, fueled by his father's stories of navigating challenging terrains. He pursued mechanical engineering, eager to understand the intricate mechanics of race cars. After graduating, Ricardo joined a small Portuguese racing team, where he quickly impressed with his ability to diagnose and solve complex technical issues under pressure. \n\nHis pragmatic approach to race engineering is rooted in data analysis and clear communication. Ricardo prioritizes understanding the driver's feedback and translating it into actionable adjustments to the car's setup. He's known for his calm demeanor and ability to make decisive calls during critical moments of a race. Ricardo's distinctive approach is blending traditional engineering with modern simulation tools to optimize car performance.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Ricardo has a focused look and a wiry build from years spent leaning over engines."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten technical notes.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on having a cup of strong espresso before every race."
+  ]
+}

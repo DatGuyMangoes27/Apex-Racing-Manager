@@ -1,0 +1,49 @@
+{
+  "id": "sponsor-0288",
+  "name": "Shamrock Stitch",
+  "category": "apparel",
+  "tier": "mid",
+  "country": "Ireland",
+  "description": "Irish-designed performance apparel for motorsport athletes.",
+  "story": "Shamrock Stitch was founded by a former rally driver who saw a need for better quality, more durable racing apparel. We are passionate about supporting up-and-coming talent in motorsport and want to partner with teams who embody the spirit of Irish innovation and determination. We seek a partnership that will showcase our apparel's performance in demanding racing environments.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 35,
+    "minMarketability": 45,
+    "nationalities": [
+      "Ireland"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 4,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0288.png"
+}

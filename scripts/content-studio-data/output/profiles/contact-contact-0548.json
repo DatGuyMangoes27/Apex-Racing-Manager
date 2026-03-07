@@ -1,0 +1,31 @@
+{
+  "name": "Minna Korhonen",
+  "nationality": "Finnish",
+  "age": 55,
+  "gender": "female",
+  "contactType": "pilot",
+  "bio": "Minna Korhonen isn't just a pilot; she's a legend in aerobatic circles and a respected figure in the Finnish aviation community. With decades of experience under her belt, she's known for her precise maneuvers, calm demeanor under pressure, and an uncanny ability to read the wind. Though she never entered the world of motorsport directly, her precision flying skills have made her a sought-after consultant for race teams looking to understand aerodynamics and optimize their car setups. \n\nBeyond her technical expertise, Minna is known for her surprisingly playful nature and sharp wit. She enjoys indulging in fine wines, discussing modern architecture, and critiquing the latest fashion trends. A racing driver might cross paths with her at a corporate event she's contracted to fly at, or perhaps at a high-end winery she frequents, where her aviation stories are legendary.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Silver",
+    "hairStyle": "Short, neatly styled bob",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Minna has a confident posture and kind eyes that hint at her adventurous spirit. She favors practical yet stylish clothing, reflecting her blend of professionalism and artistic flair."
+  },
+  "connectionToMotorsport": "Minna consults with racing teams on aerodynamics, leveraging her expertise in aviation to improve car performance and handling. Her insights into airflow and stability are highly valued in the competitive world of motorsport.",
+  "meetingContext": "You might meet Minna at a motorsport industry networking event, where she's presenting a seminar on aerodynamics, or at a wine tasting event hosted by a sponsor common to both of you.",
+  "conversationTopics": [
+    "Aerodynamics",
+    "Wine regions of Europe",
+    "Modern Finnish architecture",
+    "Latest trends in aviation technology",
+    "Ballet performances"
+  ],
+  "canHelp": [
+    "Provide insights into aerodynamic principles applicable to racing.",
+    "Offer introductions to potential sponsors and investors.",
+    "Mentor the player on staying calm under pressure."
+  ],
+  "personality_summary": "An empathetic and reliable pilot with a playful spirit and a sharp mind."
+}

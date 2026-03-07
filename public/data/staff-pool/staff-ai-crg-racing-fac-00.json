@@ -1,0 +1,22 @@
+{
+  "name": "Dimitri Volkov",
+  "nationality": "Russian",
+  "age": 25,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Dimitri's passion for motorsport began with virtual racing, spending countless hours fine-tuning setups and analyzing telemetry data. This dedication led him to pursue a degree in mechanical engineering, where he specialized in vehicle dynamics. His career started as a junior data analyst for a Formula Student team, before transitioning to CRG Racing Team as a simulator engineer. \n\nDimitri's pragmatic approach focuses on extracting tangible performance gains from the simulator. He meticulously validates simulation models against real-world data, ensuring accuracy and reliability. He's known for his ability to quickly identify areas for improvement and implement effective solutions, making him a valuable asset to the team. His focus on real-world application and quantifiable gains defines his working style.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed with a slight side part",
+    "eyeColor": "hazel",
+    "facialHair": "short, well-groomed goatee",
+    "description": "Dimitri is of average height with a focused gaze and a serious demeanor."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook for jotting down observations and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on using a specific brand of Russian tea, which he brews in his office."
+  ]
+}

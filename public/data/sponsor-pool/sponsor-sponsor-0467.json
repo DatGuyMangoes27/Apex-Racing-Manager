@@ -1,0 +1,56 @@
+{
+  "id": "sponsor-0467",
+  "name": "Al-Malik Capital",
+  "category": "financial",
+  "tier": "elite",
+  "country": "Saudi Arabia",
+  "description": "Empowering growth, driving success.",
+  "story": "Al-Malik Capital recognizes the synergy between high-performance motorsport and strategic investment. With a commitment to excellence and innovation, they seek partnerships that reflect their dedication to success. Motorsport provides a dynamic platform to showcase their brand values and commitment to pushing boundaries.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 65,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ],
+    "nationalities": [
+      "Saudi Arabia"
+    ],
+    "minWins": 3,
+    "minPodiums": 7
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "professional"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0467.png"
+}

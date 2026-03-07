@@ -1,0 +1,22 @@
+{
+  "name": "Ivana Kovačić",
+  "nationality": "Croatian",
+  "age": 22,
+  "gender": "female",
+  "role": "data_analyst",
+  "bio": "Ivana's passion for motorsport ignited during her childhood visits to local rally events near Zagreb. Witnessing the intricate interplay of vehicle dynamics and driver skill sparked a deep fascination with the underlying data. She pursued a degree in applied mathematics, focusing on statistical modeling and data analysis, specifically tailored for motorsport applications. Her experience started with a Croatian GT team where she analyzed telemetry data to optimise car setups and improve driver performance. \n\nIvana's approach to data analysis is driven by a desire to uncover hidden patterns and insights that can give her team a competitive edge. She believes that data is only as valuable as the actions it inspires, and she is committed to translating complex data into actionable strategies for drivers and engineers. She is known for her innovative approach to data visualization and her ability to communicate complex findings in a clear and concise manner.\n\nWhat sets Ivana apart is her blend of technical expertise, creative problem-solving, and collaborative spirit. While comfortable working independently, she thrives in a team environment, valuing open communication and shared knowledge. She is always eager to learn from her colleagues and contribute to a culture of continuous improvement.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, straight hair, often pulled back into a high ponytail",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ivana is a slender woman with a focused gaze and a confident posture."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a Rubik's Cube and solves it during breaks.",
+    "Prefers to work with noise-canceling headphones, even in quiet environments.",
+    "Obsessively color-codes her spreadsheets and data visualizations."
+  ]
+}

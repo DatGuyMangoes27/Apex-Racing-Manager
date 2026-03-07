@@ -1,0 +1,22 @@
+{
+  "name": "István Kovács",
+  "nationality": "Hungarian",
+  "age": 40,
+  "gender": "male",
+  "role": "strategist",
+  "bio": "István's motorsport journey began in his youth, fueled by a fascination with the technical intricacies of race cars. He honed his analytical skills through a degree in mechanical engineering, quickly applying his knowledge to racing simulations and data analysis. His meticulous approach caught the eye of a small Hungarian racing team, where he served as a junior strategist, learning the ropes and proving his aptitude for race-day decision making. \n\nAfter several successful seasons, István sought opportunities on a larger stage, joining a European GT team. There, he refined his understanding of tire management, fuel strategy, and the impact of changing weather conditions. István is known for his data-driven approach. He is a demanding leader, expecting his team to be as thorough and prepared as he is, ensuring no detail is overlooked. This focus on precision and rigorous planning makes him a valuable asset, capable of extracting every ounce of performance from the car and driver.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee.",
+    "description": "István has a serious demeanor etched on his face, framed by wire-rimmed glasses."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a worn notebook filled with calculations and notes.",
+    "Insists on drinking strong black coffee before every race.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

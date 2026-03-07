@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 31,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Marco's journey into motorsport began with a childhood fascination for Formula 1, meticulously constructing model cars and dreaming of working on the real thing. After graduating from the Politecnico di Milano with a degree in aerospace engineering, he honed his skills at a small composite manufacturing company, specializing in carbon fiber components for the automotive industry. He quickly gained a reputation for his precision and problem-solving abilities, leading to an opportunity with a Formula 3 team where he specialized in composite repairs and aerodynamic upgrades.\n\nHe thrives under pressure, meticulously inspecting and repairing composite structures with an unwavering attention to detail. His demanding nature ensures that every component meets the highest standards, contributing to the car's overall performance and safety. He approaches his work with a methodical and systematic approach, always striving for perfection in every aspect of his craft. Marco joined GCK Motorsport seeking to leverage his skills at a higher level of competition.\n\nMarco's distinctive approach lies in his ability to blend traditional craftsmanship with modern techniques. He's always looking for innovative ways to improve the strength and weight of composite materials, always eager to test new methods. He is loyal to a fault and is always willing to share his knowledge with others, but he expects the same level of commitment from his colleagues.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed goatee",
+    "description": "Marco is of average height with a lean build and intense gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on using only Italian-made tools",
+    "Always listens to opera while working on composite layups",
+    "Meticulously cleans his workstation before and after each task"
+  ]
+}

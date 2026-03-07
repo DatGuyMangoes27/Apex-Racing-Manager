@@ -1,0 +1,22 @@
+{
+  "name": "Thabo Cele",
+  "nationality": "South African",
+  "age": 22,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Thabo's journey into motorsport began with a childhood fascination for rebuilding engines with his grandfather, a mechanic in Durban. This early exposure ignited a passion for precision and quality, leading him to pursue a degree in Mechanical Engineering. While studying, he volunteered at local racing events, quickly proving his aptitude for identifying and resolving technical issues under pressure.\n\nHe joined CLRT by Almeras as a Quality Control specialist, drawn to their commitment to excellence. Thabo approaches his role with a meticulous eye, ensuring every component meets stringent standards. He believes in preventative measures, catching potential problems before they escalate into costly failures on the track. His sharp analytical skills and dedication to perfection make him a valuable asset to the team.\n\nThabo's ability to quickly learn and adapt, combined with his unwavering commitment to quality, sets him apart. He thrives in high-pressure environments and consistently seeks innovative solutions to improve the team's performance.",
+  "physical": {
+    "skinTone": "Dark brown",
+    "hairColor": "Black",
+    "hairStyle": "Short, neatly faded afro",
+    "eyeColor": "Brown",
+    "facialHair": "Clean shaven",
+    "description": "Thabo is of average height with a muscular build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool, even off-duty.",
+    "Insists on personally inspecting every batch of new components.",
+    "Uses a complicated spreadsheet to track even minor variations in parts performance."
+  ]
+}

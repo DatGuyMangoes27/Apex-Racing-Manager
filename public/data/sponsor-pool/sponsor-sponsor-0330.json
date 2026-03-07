@@ -1,0 +1,45 @@
+{
+  "id": "sponsor-0330",
+  "name": "Jati Performance",
+  "category": "equipment",
+  "tier": "mid",
+  "country": "Malaysia",
+  "description": "Precision engineered components for superior performance.",
+  "story": "Jati Performance has been producing high-quality aftermarket parts for over 20 years. Motorsport is the ultimate proving ground for our products, and we seek partnerships with teams that share our commitment to excellence and innovation. We want to see our components pushed to the limit, proving their durability and performance in the heat of competition.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2500,
+      "championshipBonus": 40000
+    },
+    "mid": {
+      "monthly": 50000,
+      "winBonus": 20000,
+      "podiumBonus": 10000,
+      "championshipBonus": 150000
+    },
+    "elite": {
+      "monthly": 150000,
+      "winBonus": 60000,
+      "podiumBonus": 30000,
+      "championshipBonus": 500000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 30
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 2,
+    "minSeasonPodiums": 5,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0330.png"
+}

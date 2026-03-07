@@ -1,0 +1,22 @@
+{
+  "name": "Hamiora Te Rau",
+  "nationality": "New Zealand",
+  "age": 39,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "Hamiora grew up around engines, helping his father repair farm equipment in rural New Zealand. This hands-on experience ignited a passion for mechanics, leading him to pursue a trade certification in machining. After working in various industrial settings, he landed a role with a local racing team, building his expertise in precision engineering and performance enhancements. He's known for his ability to diagnose complex mechanical issues quickly and develop practical, effective solutions.\n\nAt United Autosports, Hamiora is valued for his meticulous approach and ability to work independently. He thrives on the challenge of pushing the limits of the car's mechanical systems, always seeking incremental improvements that can contribute to a competitive edge. While not a natural leader, his practical knowledge and unwavering focus make him a reliable and respected member of the team. He favors practical solutions over theoretical ones, and is often seen sketching designs on scrap paper during his downtime.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly trimmed",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Hamiora is a solidly built man with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pencil for sketching ideas.",
+    "Has a habit of tapping his fingers on surfaces when deep in thought.",
+    "Drinks copious amounts of strong black coffee throughout the day."
+  ]
+}

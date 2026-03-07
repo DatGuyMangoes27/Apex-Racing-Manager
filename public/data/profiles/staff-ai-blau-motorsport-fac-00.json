@@ -1,0 +1,22 @@
+{
+  "name": "Marcus Hayes",
+  "nationality": "American",
+  "age": 42,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Marcus Hayes is a simulator engineer with a passion for motorsports that ignited in his childhood, spending countless hours dissecting and rebuilding go-karts with his father. After graduating with a degree in Mechanical Engineering from MIT, Marcus honed his skills in aerospace before transitioning to Formula 1, driven by a desire to blend cutting-edge technology with the adrenaline-fueled world of racing. His analytical mindset and commitment to performance optimization make him an invaluable asset to the Blau Motorsport team.\n\nMarcus's approach to simulator engineering is characterized by a meticulous attention to detail and an insatiable curiosity. He is known for his ability to translate complex data into actionable insights, helping drivers refine their techniques and improve lap times. What sets Marcus apart is his innate ability to identify and resolve the most subtle discrepancies between the simulator and the real-world track, ensuring the team is always one step ahead.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly combed",
+    "eyeColor": "brown",
+    "facialHair": "goatee",
+    "description": "Marcus is of average height with a lean build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook for jotting down ideas.",
+    "Insists on maintaining complete silence during simulator sessions.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

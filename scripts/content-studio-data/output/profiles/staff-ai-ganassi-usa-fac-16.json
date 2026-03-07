@@ -1,0 +1,22 @@
+{
+  "name": "Dejan Petrović",
+  "nationality": "Serbian",
+  "age": 38,
+  "gender": "male",
+  "role": "catering_manager",
+  "bio": "Dejan's culinary journey began in his grandmother's kitchen in Belgrade, where he learned the art of traditional Serbian cuisine. He transitioned from fine dining to motorsport catering after a chance encounter with a racing team owner at a food festival. Dejan believes a well-fed team is a winning team, and he meticulously plans menus to optimize energy levels and morale. His insistence on fresh, locally-sourced ingredients and his signature 'Pljeskavica Power Bowls' have become a team favorite.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short boxed beard, meticulously maintained.",
+    "description": "A stocky man with a warm smile and a powerful handshake."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Insists on tasting every dish before it leaves the kitchen.",
+    "Has a lucky spatula he refuses to let anyone else use.",
+    "Always plays traditional Serbian folk music while prepping meals."
+  ]
+}

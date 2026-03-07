@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0484",
+  "name": "Seiko Motorsport",
+  "category": "watches",
+  "tier": "elite",
+  "country": "Japan",
+  "description": "Precision timekeeping, engineered for victory.",
+  "story": "Seiko has a long and storied history in motorsports, dating back to the 1960s when they first provided timing equipment for racing events. Their dedication to precision and reliability aligns perfectly with the demands of competitive racing. They seek partnerships that demonstrate exceptional performance and a commitment to excellence.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 300000,
+      "winBonus": 120000,
+      "podiumBonus": 60000,
+      "championshipBonus": 1000000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "pro",
+      "elite"
+    ]
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 5,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0484.png"
+}

@@ -1,0 +1,27 @@
+{
+  "biography": "Born into the opulent world of Italian aristocracy, Rocco 'Rocky' Agusta's racing journey began not on the track, but on the winding coastal roads of Sardinia in his father's vintage Ferrari. The thrill of speed and the roar of the engine ignited a passion that transcended his privileged upbringing. Leaving behind a life of luxurious ease, Rocky immersed himself in the demanding world of motorsport, joining the Dallara SP1 team with a burning desire to prove his worth beyond his name. Despite flashes of brilliance and undeniable raw talent, Rocky's inconsistency has plagued his career. A defining moment came at the Imola Grand Prix in his rookie year, where he qualified on the front row only to crash out on the first lap, showcasing his potential and his fragility in equal measure. Now, at 28, Rocky finds himself at a critical juncture, battling to harness his talent and silence the critics who dismiss him as just another 'rich kid' racer. He is determined to transform his erratic flashes of brilliance into consistent, race-winning performances.",
+  "drivingStyle": "Rocky's driving style is a high-risk, high-reward approach characterized by aggressive overtaking maneuvers and late-braking entries into corners. He thrives on the adrenaline of pushing the car to its absolute limit, often flirting with disaster. While his raw speed is undeniable, Rocky's tire management suffers due to his relentless aggression, and he tends to crack under pressure from seasoned competitors. He is known for his spectacular saves and daring passes, but also for his costly mistakes and unnecessary risks.",
+  "rivalries": [
+    {
+      "name": "Marco Bellini",
+      "reason": "A fellow Italian driver, Bellini represents everything Rocky isn't: consistent, calculating, and ruthlessly efficient. Their contrasting styles often clash on the track, leading to heated battles and occasional collisions."
+    },
+    {
+      "name": "Anya Petrova",
+      "reason": "Petrova, a rising star in the sport, publicly criticized Rocky's 'reckless' driving after a near-miss incident, sparking a war of words and intensifying their on-track competition. Rocky is determined to prove her wrong, while Anya aims to show him the consequences of his actions."
+    },
+    {
+      "name": "Jean-Pierre Dubois",
+      "reason": "A veteran driver nearing retirement, Dubois views Rocky as an entitled newcomer who hasn't earned his place in the sport. Dubois constantly uses his experience to outsmart Rocky, creating friction whenever they are on track together."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks, regardless of the weather.",
+    "Listens to opera music at full volume on his headphones right before each race to calm his nerves.",
+    "Refuses to sign autographs until he has completed his pre-race stretching routine."
+  ],
+  "nickname": "The Roman Rocket",
+  "famousQuote": "\"You either commit fully, or you don't commit at all. Second place is the first loser.\"",
+  "careerHighlight": "Winning the chaotic and rain-soaked Monaco Grand Prix in 2022, skillfully navigating treacherous conditions while his rivals crashed around him, proving his ability to perform under immense pressure.",
+  "careerLowPoint": "Crashing out of the lead on the final lap of the Italian Grand Prix in 2021 due to an overly ambitious overtaking attempt, costing him a home victory and severely damaging his confidence."
+}

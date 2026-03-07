@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 47,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Ricardo's passion for motorsport ignited during his youth, tinkering with go-karts in his hometown. He pursued a degree in mechanical engineering, quickly finding his niche in performance optimization. Ricardo's career began in local rally racing, progressing to touring car championships before making the leap to international motorsport.\n\nHe prides himself on a data-driven approach, meticulously analyzing telemetry and simulations to unlock hidden performance gains. Ricardo is known for his ability to communicate complex technical concepts clearly to drivers and mechanics, fostering a collaborative environment. While demanding, his dedication to pushing boundaries and achieving optimal results is undeniable. He's always striving to find that extra tenth of a second.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "A man of average height, Ricardo carries himself with a focused intensity."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Insists on a specific brand of Chilean coffee before every race."
+  ]
+}

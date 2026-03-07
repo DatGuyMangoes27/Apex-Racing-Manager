@@ -1,0 +1,31 @@
+{
+  "name": "Valentina Quispe",
+  "nationality": "Peruvian",
+  "age": 23,
+  "gender": "female",
+  "contactType": "chef",
+  "bio": "Valentina is a rising star in Lima's culinary scene, known for her innovative takes on traditional Peruvian dishes. Though self-taught, her passion and dedication have earned her accolades from local food critics. She infuses her cooking with a romantic flair, often drawing inspiration from ballet and jazz music, but beneath her sincere exterior lies a touch of pettiness and a strong opinion on everything from food trends to social issues.\n\nValentina's connection to motorsport is through her family's catering business, which occasionally services private events for racing teams and sponsors at the Autódromo La Chutana. A racing driver might encounter her at one of these exclusive gatherings, or perhaps even discover her small, but highly-rated, restaurant in Lima while looking for an authentic culinary experience during a race weekend.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy, often worn in a loose bun",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina is petite with a warm smile that can quickly turn into a sharp gaze. She carries herself with a confident grace, often accentuated by her elegant, yet practical, style."
+  },
+  "connectionToMotorsport": "Valentina's family catering business provides services for private events at the Autódromo La Chutana, bringing her into occasional contact with racing teams and sponsors.",
+  "meetingContext": "The player could meet Valentina at a private catering event at the Autódromo La Chutana or stumble upon her restaurant, 'Sabores del Perú', in Lima during a race weekend.",
+  "conversationTopics": [
+    "The latest culinary trends in Peru and beyond",
+    "Her love for jazz and ballet",
+    "Vintage cars and their design aesthetics",
+    "The importance of using fresh, local ingredients",
+    "The best martial arts movies."
+  ],
+  "canHelp": [
+    "Provide exclusive catering for the player's racing team, impressing sponsors and guests.",
+    "Connect the player with influential figures in the Lima social scene, potentially leading to sponsorship opportunities.",
+    "Offer unique insights into Peruvian culture, helping the player connect with local fans and media."
+  ],
+  "personality_summary": "A romantic and talented chef with strong opinions and a touch of pettiness."
+}

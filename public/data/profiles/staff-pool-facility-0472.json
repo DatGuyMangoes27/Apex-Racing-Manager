@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 37,
+  "gender": "male",
+  "role": "composite_technician",
+  "bio": "Jean-Pierre discovered his passion for motorsport early, fueled by countless hours spent watching Formula 1 races with his father. After completing his technical education with a specialization in composite materials, he began his career at a small racing team, quickly gaining experience in the fabrication and repair of carbon fiber components. He's meticulous in his work, always striving for perfection in every layup and cure cycle.\n\nJean-Pierre is known for his innovative problem-solving skills, constantly seeking new ways to improve the performance and durability of composite structures. While he enjoys the technical challenges of his role, he also recognizes the importance of teamwork and communication, always eager to share his knowledge and collaborate with other engineers. He is driven by a desire to see his work contribute to the team's success on the track.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Jean-Pierre is of average height, with a focused and intense gaze."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils to an extreme point.",
+    "Meticulously cleans his tools after every use.",
+    "Drinks black coffee throughout the day."
+  ]
+}

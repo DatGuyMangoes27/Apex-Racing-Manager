@@ -1,0 +1,31 @@
+{
+  "name": "Dato' Dr. Wan Ahmad Firdaus",
+  "nationality": "Malaysian",
+  "age": 57,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dato' Dr. Wan Ahmad Firdaus is a renowned professor of engineering at Universiti Teknologi Malaysia (UTM), specializing in aerodynamics and computational fluid dynamics. He's published extensively in prestigious journals and consulted on several high-profile projects, including the design of wind turbines and advanced automotive components. While possessing a sharp intellect and a dry, sarcastic wit, he's also known for his surprisingly romantic outlook on life and a deep-seated humility stemming from his early struggles. \n\nDr. Firdaus is subtly connected to the motorsport world through his research, often collaborating with racing teams on aerodynamic optimization. A racing driver might cross paths with him through a university-sponsored racing program, a guest lecture he gives, or perhaps even a casual conversation at a craft beer tasting event, where his knowledge of fluid dynamics might unexpectedly surface in a discussion about downforce.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed",
+    "eyeColor": "Dark brown",
+    "facialHair": "Thin mustache",
+    "description": "Dr. Firdaus has a distinguished look, often seen in well-tailored shirts and slacks. His kind eyes and warm smile soften his otherwise serious demeanor."
+  },
+  "connectionToMotorsport": "Dr. Firdaus consults with local racing teams on aerodynamic improvements and occasionally advises student motorsport projects at UTM, bridging the gap between academia and practical racing applications.",
+  "meetingContext": "The player might meet Dr. Firdaus at a guest lecture at UTM, a university motorsport event, or a local technology conference related to automotive engineering.",
+  "conversationTopics": [
+    "Aerodynamics in racing",
+    "The beauty of fluid dynamics",
+    "The latest advancements in CFD software",
+    "The challenges of balancing ambition with humility",
+    "Malaysian craft beer scene"
+  ],
+  "canHelp": [
+    "Provide technical insights and advice on aerodynamics",
+    "Offer connections to student racing teams",
+    "Write recommendation letters for advanced studies or jobs"
+  ],
+  "personality_summary": "A brilliant, sarcastic yet deeply romantic professor with a passion for engineering and a hidden soft spot for motorsport."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hans-Rudolf Keller",
+  "nationality": "Swiss",
+  "age": 51,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Hans-Rudolf's precision was honed in the Swiss watchmaking industry before a lifelong passion for motorsport led him to a career change in his late twenties. Initially assisting at a local rally team, he quickly demonstrated an aptitude for chassis and component fabrication, catching the eye of a Formula Renault team. He believes in the 'measure twice, cut once' philosophy, ensuring every part meets exacting specifications. His dedication to quality and his ability to troubleshoot complex mechanical issues make him a valuable asset to any team, known for his calm demeanor even under pressure.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "Hans-Rudolf is a man of medium build with a focused gaze, often seen wearing protective eyewear."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always sharpens his pencils to a perfect point before starting any project.",
+    "Keeps a small collection of vintage watch parts on his workbench as a reminder of his past.",
+    "Insists on listening to classical music while working."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Valentina Morales",
+  "nationality": "Chilean",
+  "age": 37,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Valentina's journey into motorsport began with a childhood fascination for racing, fueled by watching Formula 1 races with her father. After completing her engineering degree at the Universidad de Chile, she sought opportunities to combine her technical expertise with her passion for speed. Her initial experience was in data analysis for a local rally team, where she honed her skills in interpreting complex datasets and identifying performance improvements.\n\nValentina's meticulous approach to simulator engineering is centered on creating a realistic and insightful training environment for drivers. She believes that the simulator should not only mimic the physical sensations of driving but also provide actionable feedback for optimizing driving techniques and car setup. Her innovative approach to data-driven analysis, coupled with her unwavering loyalty to the team, makes her an invaluable asset to Cadillac Racing. She's known for developing new telemetry overlays that show the car's performance with real-time adjustments, which drivers find invaluable.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Long, wavy hair, often pulled back in a practical braid",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Valentina has a warm, friendly face and a focused intensity in her eyes."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Drinks mate tea throughout the day, offering it to anyone who comes near her workstation."
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Jan Kolář",
+    "nationality": "Czech",
+    "age": 47,
+    "gender": "male",
+    "role": "sporting_director",
+    "bio": "Jan Kolář's motorsport journey began in his youth, tinkering with go-karts in his father's workshop. His passion led him to pursue mechanical engineering, eventually landing a role as a data analyst for a small rally team. He quickly rose through the ranks, displaying a knack for strategic race planning and driver development. Jan believes in fostering a collaborative environment, valuing open communication and data-driven decision-making. He is known for his analytical approach and ability to identify and nurture young talent, making him a valuable asset to Vee Masters.\n\nAt Vee Masters, Jan is focused on implementing cutting-edge simulation technology to optimize race strategies and improve driver performance. He's a firm believer in continuous improvement and encourages his team to explore innovative solutions to gain a competitive edge. His hands-on approach and dedication to detail have earned him the respect of both drivers and engineers. Jan's ambition is to lead Vee Masters to championship glory by building a strong, cohesive team and pushing the boundaries of motorsport technology.",
+    "physical": {
+      "skinTone": "fair",
+      "hairColor": "dark brown",
+      "hairStyle": "short, neatly combed back",
+      "eyeColor": "hazel",
+      "facialHair": "goatee",
+      "description": "Jan is a man of medium height with a focused gaze and a composed demeanor."
+    },
+    "personality": "ambitious",
+    "quirks": [
+      "Always carries a small notebook filled with data points and observations.",
+      "Has a habit of tapping his pen rhythmically when deep in thought.",
+      "Insists on having his morning coffee brewed exactly the same way."
+    ]
+  }
+]

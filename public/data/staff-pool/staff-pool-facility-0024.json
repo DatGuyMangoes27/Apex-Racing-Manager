@@ -1,0 +1,22 @@
+{
+  "name": "Liam Dubois",
+  "nationality": "Canadian",
+  "age": 27,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Liam's passion for motorsport ignited during his childhood summers spent at local karting events. He was captivated by the data-driven decisions behind race strategies. After graduating with a degree in Statistics, he worked as a junior analyst at a racing simulation company, where he honed his skills in extracting meaningful insights from complex datasets. He is driven by an insatiable curiosity and a commitment to continuous improvement.\n\nLiam believes that data analysis is the key to unlocking a team's full potential. He approaches every challenge with a meticulous and analytical mindset, seeking to identify hidden patterns and opportunities. His keen eye for detail and ability to translate complex data into actionable strategies make him a valuable asset to any team.\n\nWhat sets Liam apart is his unique blend of technical expertise and creative problem-solving skills. He is not afraid to think outside the box and explore unconventional approaches, always striving to find innovative solutions that give his team a competitive edge.",
+  "physical": {
+    "skinTone": "Light",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly styled with a slight side part",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed beard",
+    "description": "Liam is of average height with a lean build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with data insights and observations.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to analyze data while listening to classical music through noise-canceling headphones."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Bjørn Halvorsen",
+  "nationality": "Norwegian",
+  "age": 60,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Bjørn's journey into motorsport began unexpectedly. While serving in the Norwegian army, his aptitude for mechanics was noticed and he was assigned to maintain the military vehicles. He developed a deep understanding of engines and systems, fostering a passion that led him to racing. After leaving the army, Bjørn joined a small rally team, rapidly ascending through the ranks due to his meticulous approach and ability to diagnose complex problems swiftly. \n\nHis move to single-seaters came later, taking on roles in Formula Ford and Formula 3. Bjørn's strength lies in his ability to translate theoretical concepts into practical solutions on the track. He's known for his data-driven approach, ensuring every decision is backed by solid evidence. Bjørn joined Carlin Academy after a successful stint in Formula Renault, drawn to the team's focus on developing young talent. He sees his role as a mentor as much as a technical leader, shaping the next generation of motorsport engineers.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed grey mustache",
+    "description": "Bjørn is a tall, lean man with a focused gaze, always looking like he is calculating something."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on starting every race weekend with a thorough inspection of the car, regardless of previous checks."
+  ]
+}

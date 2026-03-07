@@ -1,0 +1,61 @@
+{
+  "history": "The Kouvola Circuit, affectionately known as Tykki, has been a mainstay of Finnish motorsport since its inception. Primarily a rallycross venue, it has hosted numerous national and international rallycross events. The Full Circuit layout, with its 1.2km length and eight turns, represents the most comprehensive configuration, fully utilizing the available land. While dedicated circuit racing is less common on this specific layout, it forms the backbone for the more intense rallycross competitions that define Tykki's racing heritage. The track has evolved over the years, with safety improvements and surface modifications to keep pace with the ever-increasing speeds of modern rallycross machinery.\n\nTykki's significance extends beyond just racing; it's a hub for driver development and a crucial training ground for Finnish rallycross stars. The circuit's challenging blend of surfaces and technical corners demands precision and adaptability, qualities highly valued in the world of rallycross. The Full Circuit configuration, in particular, tests a driver's ability to maintain momentum and control over a relatively long and demanding lap.",
+  "atmosphere": "Standing at the crest of the hill overlooking the Joker Lap entrance during a race on the Full Circuit is an experience. The roar of engines echoes through the Finnish forest as the cars launch from the starting grid, plumes of dust and gravel erupting behind them. The smell of burning rubber and high-octane fuel hangs heavy in the air. The crowd, a mix of seasoned motorsport enthusiasts and families enjoying a day out, cheers wildly as drivers jostle for position through the opening corners. The intensity is palpable, a raw and visceral connection to the sport that makes Tykki a truly special place.",
+  "trackCharacter": "The Full Circuit layout at Tykki is a challenging blend of high-speed sections and tight, technical corners. It demands a car that is both powerful and agile, capable of accelerating quickly out of the corners and maintaining stability over the undulating terrain. The mix of asphalt and gravel adds another layer of complexity, requiring drivers to adapt their driving style to the changing grip levels. Maintaining momentum is key to a fast lap, as is the ability to anticipate the track's ever-evolving surface conditions. It's a layout that rewards precision and bravery, punishing any mistakes with a trip into the gravel traps.",
+  "nickname": "The Beast of the East",
+  "famousCorners": [
+    {
+      "name": "Start Straight Hairpin",
+      "description": "The first corner is a tight hairpin right after the starting grid. It's a crucial point for gaining positions at the start.",
+      "challenge": "Heavy braking and precise turn-in are crucial to avoid locking up or running wide."
+    },
+    {
+      "name": "Uphill Sweep",
+      "description": "A long, sweeping left-hander that climbs uphill. It tests the car's balance and the driver's commitment.",
+      "challenge": "Maintaining speed through the corner without running out of track on the exit is key."
+    },
+    {
+      "name": "Joker Lap Entry",
+      "description": "A sharp right-hander that leads into the Joker Lap section. Strategic use of the Joker Lap can make or break a race.",
+      "challenge": "Balancing the need to enter the Joker Lap cleanly with the desire to maintain momentum is a constant calculation."
+    },
+    {
+      "name": "Downhill Right",
+      "description": "A fast, downhill right-hander that requires nerves of steel. It's a high-speed section that rewards bravery.",
+      "challenge": "Trusting the grip and committing to the corner is essential, but overdoing it can lead to a spin or crash."
+    },
+    {
+      "name": "Final Turn",
+      "description": "A medium-speed right-hander leading onto the finish straight. A good exit is crucial for a fast lap time.",
+      "challenge": "Getting on the power early without spinning the wheels is the key to a strong run to the finish line."
+    }
+  ],
+  "keyFactors": [
+    "Traction on mixed surfaces",
+    "Braking consistency",
+    "Joker Lap strategy",
+    "Suspension setup for varying terrain",
+    "Maintaining momentum"
+  ],
+  "overtakingSpots": [
+    "Into the Start Straight Hairpin",
+    "Under braking for the Joker Lap Entry",
+    "On the exit of the Final Turn, using the slipstream"
+  ],
+  "historySnippets": [
+    "Tykki is known for its challenging mixed-surface sections.",
+    "The Full Circuit layout is the longest configuration available.",
+    "The venue has hosted numerous Finnish rallycross championships.",
+    "Driver development programs frequently use Tykki for training.",
+    "The Joker Lap is a crucial strategic element in rallycross races here.",
+    "The track's undulating terrain adds to the driving challenge."
+  ],
+  "weatherNotes": "Kouvola experiences a wide range of weather conditions, from hot and dry summers to cold and snowy winters. Rain can make the mixed-surface sections extremely slippery, while snow and ice transform the track into a completely different beast. Temperature changes can also significantly affect grip levels, making tire choice and setup crucial.",
+  "drivingAdvice": "On the Full Circuit layout, maintaining momentum is paramount. Avoid excessive wheelspin and focus on smooth transitions between the asphalt and gravel sections. Pay close attention to the Joker Lap strategy, as it can be a race-winning or losing decision. Be brave through the downhill sections, but always respect the track limits. Experiment with different braking points to find the optimal balance between speed and control.",
+  "famousRaces": [
+    "Finnish Rallycross Championship Round: These events showcase the best of Finnish rallycross talent on the demanding Tykki circuit.",
+    "NEZ (North European Zone) Championship Races: Attract international competitors and raise the level of competition.",
+    "Local club races: While not internationally famous, these races form the backbone of motorsport at Tykki, providing opportunities for amateur drivers to hone their skills."
+  ],
+  "localCulture": "Kouvola is a city known for its strong industrial heritage and its close proximity to nature. The local culture is welcoming and down-to-earth, with a strong emphasis on community. Food-wise, expect hearty Finnish fare like Karelian pies, salmon soup, and reindeer stew. Paddock life at Tykki is typically relaxed and friendly, with teams often sharing tips and helping each other out. The atmosphere is one of camaraderie and shared passion for motorsport."
+}

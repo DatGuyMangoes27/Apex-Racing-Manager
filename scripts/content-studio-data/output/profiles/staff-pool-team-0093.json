@@ -1,0 +1,22 @@
+{
+  "name": "Wei Zhang",
+  "nationality": "Chinese",
+  "age": 55,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Wei Zhang's journey into motorsport began unconventionally. Initially trained as a materials scientist, a university project involving composite materials for racing bicycles sparked his interest in aerodynamics. He transitioned to motorsport, cutting his teeth at a Formula 3 team before moving into Formula 1 development roles. Wei believes in a data-driven approach, emphasizing rigorous testing and simulation to optimize aerodynamic performance. His calm demeanor and methodical problem-solving skills make him a valuable asset in high-pressure environments. He is known for his ability to distill complex data into actionable insights.",
+  "physical": {
+    "skinTone": "Light Tan",
+    "hairColor": "Gray",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "Wei is of average height with a lean build, often seen wearing rectangular glasses."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on a 'tea break' every afternoon at 3 PM, regardless of ongoing deadlines.",
+    "Has a habit of tapping his pen rhythmically when deep in thought."
+  ]
+}

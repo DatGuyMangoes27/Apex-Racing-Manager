@@ -1,0 +1,27 @@
+{
+  "biography": "Loris Kessel, a Swiss racer with a fiery spirit, was practically born with gasoline in his veins. Growing up in Ticino, Switzerland, Loris spent his childhood tearing around the family vineyard on an old go-kart, much to the chagrin of his father. It wasn't until his late teens, after winning a local karting championship, that his father, a retired engineer, reluctantly supported his passion. He quickly rose through the ranks of Formula Renault, showcasing raw talent and an aggressive overtaking style that often left rivals fuming. After a brief stint in Formula 3, Kessel secured a spot with Lamborghini in GT racing, where he's currently making a name for himself as a fearless competitor, pushing both himself and the limits of his machine.",
+  "drivingStyle": "Kessel's driving style can be described as relentlessly aggressive. He's a late-braking specialist, often diving into corners where others wouldn't dare, relying on instinct and a healthy dose of controlled chaos. While this approach has earned him podiums, it has also led to costly mistakes. He's still learning to temper his aggression and develop a more nuanced approach to tire management, particularly in longer endurance races. However, when he's on form, his raw speed and willingness to take risks make him a formidable opponent.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A long-standing feud dating back to their karting days, fueled by on-track collisions and off-track trash talk."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A clash of styles; Dubois, known for her calculated precision, often criticizes Kessel's reckless approach, creating tension both on and off the track."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A recent rivalry sparked after a controversial overtake by Kessel resulted in Tanaka's retirement from a crucial championship race."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, gifted by his grandmother, for every race.",
+    "Listens to a specific Italian opera aria moments before getting into the car to calm his nerves.",
+    "Refuses to shave on race days, believing it brings bad luck."
+  ],
+  "nickname": "The Ticino Tornado",
+  "famousQuote": "\"Second place is just the first loser.\"",
+  "careerHighlight": "Winning the 24 Hours of Spa in a Lamborghini, after a nail-biting final stint battling against a faster, more established team.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Monza GT race due to overzealousness, costing him a significant championship lead."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mihai Popescu",
+  "nationality": "Romanian",
+  "age": 50,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "Mihai's journey into motorsport began unexpectedly, fueled by a childhood fascination with the intricate mechanics of Dacia automobiles. He transitioned from tinkering with engines in his youth to mastering complex simulator systems. Initially working with a small rally team, Mihai honed his skills in data analysis and software optimization, eventually attracting the attention of Iron Lynx.\n\nHe is known for his meticulous approach to simulator development, meticulously fine-tuning parameters to achieve the most realistic driving experience. Mihai's focus is on providing drivers with a platform to effectively prepare for races, emphasizing the importance of accurate track representation and vehicle dynamics. What sets him apart is his relentless pursuit of perfection and his ability to translate theoretical data into tangible improvements on the track.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, receding hairline, neatly combed",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Mihai is of medium height, with a focused gaze and a slightly weathered face from years spent analyzing screens."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams.",
+    "Insists on using a specific brand of Romanian coffee beans in the simulator lab.",
+    "Has a habit of muttering technical jargon to himself while debugging code."
+  ]
+}

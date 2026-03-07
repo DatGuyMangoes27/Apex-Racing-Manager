@@ -1,0 +1,22 @@
+{
+  "name": "Astrid Christensen",
+  "nationality": "Danish",
+  "age": 25,
+  "gender": "female",
+  "role": "composite_technician",
+  "bio": "Astrid's meticulous nature and drive for perfection make her a standout composite technician. Growing up near the Padborg Park circuit, she was captivated by the roaring engines and sleek designs from a young age. After excelling in materials science at the University of Southern Denmark, Astrid sought a hands-on role in motorsport, eager to apply her theoretical knowledge to the practical demands of racing.\n\nNow at JHR Developments, Astrid is known for her unwavering focus and relentless pursuit of marginal gains. She believes that even the smallest improvement in the composite materials can translate into valuable tenths on the track. She's quickly becoming known for her ability to identify and correct minor flaws that others might miss, making her a valuable asset to the team's performance.\n\nAstrid's demanding personality stems from her commitment to excellence. She pushes herself and her colleagues to achieve the highest standards, ensuring that every component leaving her workspace is of the utmost quality. While some may find her direct approach challenging, it's ultimately driven by a shared desire for success on the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Strawberry Blonde",
+    "hairStyle": "Long, usually tied back in a high ponytail with a few stray strands framing her face.",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid is of medium height with a lean, athletic build."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with calculations and material specifications.",
+    "Has a habit of tapping her fingers on surfaces when deep in thought.",
+    "Insists on using a specific brand of microfiber cloth for cleaning composite components."
+  ]
+}

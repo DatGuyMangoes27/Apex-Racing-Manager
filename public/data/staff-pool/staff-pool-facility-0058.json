@@ -1,0 +1,22 @@
+{
+  "name": "László Kovács",
+  "nationality": "Hungarian",
+  "age": 39,
+  "gender": "male",
+  "role": "machinist",
+  "bio": "László's journey into motorsport began unexpectedly in his youth, tinkering with his grandfather's old Lada in their small village workshop. This early fascination quickly evolved into a passion, leading him to pursue a degree in mechanical engineering at the Budapest University of Technology and Economics. After graduating, he honed his skills at a local automotive manufacturing plant before landing a coveted position with a small, independent racing team.\n\nKnown for his pragmatic approach to problem-solving and unwavering dedication to precision, László quickly earned a reputation as a reliable and resourceful machinist. He possesses a keen eye for detail and a knack for identifying potential mechanical issues before they escalate into serious problems. His experience spans a wide range of motorsport disciplines, including Formula racing and rallycross, giving him a unique understanding of the demands placed on racing machinery.\n\nWhile not one for the limelight, László's tireless efforts behind the scenes have been instrumental in numerous race victories and championship titles. His deep understanding of materials science and manufacturing processes, combined with his unflappable demeanor under pressure, makes him an invaluable asset to any motorsport team.",
+  "physical": {
+    "skinTone": "Medium",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Goatee",
+    "description": "László is of medium height with a wiry build and calloused hands that speak to years of dedicated work."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always sharpens his pencils to a needle point.",
+    "Insists on using only metric measurements, even when others use imperial.",
+    "Has a collection of miniature vintage wrenches displayed on his workbench."
+  ]
+}

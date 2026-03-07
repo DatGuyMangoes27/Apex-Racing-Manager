@@ -1,0 +1,31 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 55,
+  "gender": "male",
+  "contactType": "politician",
+  "bio": "Marko Babić is a prominent figure in Croatian politics, known for his unwavering loyalty to his constituents and a rebellious streak that often puts him at odds with party leadership. His charismatic personality and stubborn determination have made him a force to be reckoned with, leading to significant infrastructure projects and economic reforms in his region. Beyond politics, Marko is a passionate equestrian and a patron of the arts. \n\nHis connection to motorsport stems from his district's recent investment in a new racing facility aimed at boosting tourism and creating jobs. As the local representative, Marko played a crucial role in securing funding and navigating the complex regulatory landscape. A racing driver might cross paths with Marko at the facility's inauguration, a charity event hosted by the track, or through mutual connections in the business world.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-groomed beard",
+    "description": "Marko is a man of medium build with a strong presence. His eyes are sharp and intelligent, reflecting years of political maneuvering."
+  },
+  "connectionToMotorsport": "Marko spearheaded the initiative to build a new racing facility in his district to stimulate local economic growth.",
+  "meetingContext": "The player could meet Marko at the grand opening of the racing facility, or at a fundraising gala for a local charity that he supports.",
+  "conversationTopics": [
+    "Equestrian sports and horse breeding",
+    "The economic benefits of motorsports tourism",
+    "Contemporary dance performances",
+    "Local Croatian politics and development",
+    "The latest trends in fitness and wellness"
+  ],
+  "canHelp": [
+    "Secure endorsements from local businesses in Croatia",
+    "Provide access to key government officials for permit approvals or sponsorship opportunities",
+    "Offer introductions to wealthy investors interested in motorsport"
+  ],
+  "personality_summary": "A charismatic and influential politician with a rebellious spirit and a passion for his constituents."
+}

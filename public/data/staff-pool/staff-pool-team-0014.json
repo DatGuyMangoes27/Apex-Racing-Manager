@@ -1,0 +1,22 @@
+{
+  "name": "Jameson Cole",
+  "nationality": "American",
+  "age": 45,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Jameson Cole's passion for motorsports ignited at a young age, tinkering with engines alongside his father in their rural Indiana garage. This early exposure evolved into a formal education in mechanical engineering, followed by a decade spent honing his skills in various racing series, from IndyCar to IMSA. Jameson's methodical approach and sharp problem-solving abilities quickly earned him recognition as a rising star. He believes in a data-driven approach, prioritizing reliability and efficiency above all else. His ability to stay calm under pressure and quickly diagnose issues sets him apart, making him a valuable asset in any racing environment.\n\nJameson's management style is direct and results-oriented. He values clear communication and expects his team to uphold the highest standards of precision. He understands that innovation is essential for staying ahead of the competition, and encourages his team to explore new ideas and technologies. He's not afraid to push boundaries but always with a strong foundation in sound engineering principles. He thrives on the challenge of finding that extra tenth of a second, and his dedication to performance is infectious.",
+  "physical": {
+    "skinTone": "light tan",
+    "hairColor": "brown",
+    "hairStyle": "short, neatly cropped with a slight receding hairline",
+    "eyeColor": "hazel",
+    "facialHair": "trimmed goatee",
+    "description": "Jameson has a lean build and a focused gaze, often seen with a tablet in hand, analyzing data."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a multi-tool, even to meetings.",
+    "Has a habit of sketching engine schematics on napkins during lunch.",
+    "Insists on a specific type of coffee, brewed precisely at 195 degrees Fahrenheit."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Esko Virtanen",
+  "nationality": "Finnish",
+  "age": 48,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Esko's journey into motorsport began unconventionally, not on the track but in the biting winds of Lapland, studying airflow over aircraft wings during his university days. His expertise in fluid dynamics quickly caught the attention of a small Finnish rally team, where he honed his skills analyzing aerodynamic performance on a shoestring budget.\n\nHe joined Red Bull Racing fifteen years ago, initially as a junior technician. His meticulous approach and innovative solutions in the wind tunnel have earned him a reputation as a reliable and insightful operator. Esko's strength lies in his ability to translate complex data into practical, actionable improvements, often finding subtle advantages that others overlook. While not one for the spotlight, his contributions are integral to the team's success. What sets him apart is his ability to stay calm under pressure, a trait honed by years of problem-solving in challenging environments.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back, with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Esko is a man of medium build with a focused gaze and a practical demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on adjusting the wind tunnel fan speed by precisely 0.1 m/s increments.",
+    "Has a collection of miniature wind turbine models on his desk."
+  ]
+}

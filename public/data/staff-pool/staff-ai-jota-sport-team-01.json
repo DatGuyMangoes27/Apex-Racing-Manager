@@ -1,0 +1,22 @@
+{
+  "name": "Ayşe Demir",
+  "nationality": "Turkish",
+  "age": 45,
+  "gender": "female",
+  "role": "chief_engineer",
+  "bio": "Ayşe Demir's journey into motorsport began unexpectedly. Growing up in Istanbul, she excelled in mathematics and physics, initially aiming for a career in aerospace. However, a university project involving vehicle dynamics sparked an intense fascination with racing. Ayşe quickly immersed herself in the world of Formula Student, leading her team to multiple national victories. \n\nAfter graduating, Ayşe joined a small engineering firm specializing in motorsport components. Her innovative designs and meticulous approach quickly caught the attention of JOTA Sport, who recruited her as a junior engineer. Over the years, Ayşe's technical expertise and natural leadership skills propelled her through the ranks. Now, as Chief Engineer, she is known for her ability to optimize performance through data analysis and a deep understanding of vehicle dynamics. Her focus remains on fostering a collaborative environment and pushing the boundaries of innovation within the team.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Shoulder-length, wavy hair, usually tied back in a practical ponytail during races.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Ayşe is of average height with a focused expression that conveys both intelligence and determination."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small, well-worn notebook filled with technical sketches and calculations.",
+    "Has a habit of tapping her pen rhythmically when deep in thought, which can be unnerving to some.",
+    "Insists on starting every race day with a cup of strong Turkish coffee, brewed using a traditional cezve."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Dr. Rohan Verma",
+  "nationality": "Indian",
+  "age": 45,
+  "gender": "male",
+  "contactType": "professor",
+  "bio": "Dr. Rohan Verma is a distinguished professor of Engineering at the prestigious Indian Institute of Technology (IIT), specializing in aerodynamics and vehicle dynamics. Known for his rigorous academic standards and razor-sharp wit, Dr. Verma is both admired and slightly feared by his students. Despite his demanding nature, he harbors a playful side, often engaging in spirited debates on topics ranging from the intricacies of Formula 1 engineering to the philosophical implications of high-speed pursuits. He's also a passionate believer in giving back to the community, actively participating in volunteer initiatives. A racing driver might cross paths with him through IIT's Formula Student program, where Dr. Verma serves as a faculty advisor, or at industry events where he's a sought-after speaker.",
+  "physical": {
+    "skinTone": "Medium brown",
+    "hairColor": "Black",
+    "hairStyle": "Neatly combed, slightly receding hairline",
+    "eyeColor": "Dark brown",
+    "facialHair": "Close-trimmed goatee",
+    "description": "Dr. Verma has a studious look, often sporting spectacles perched on his nose. He carries himself with an air of quiet confidence and intellectual curiosity."
+  },
+  "connectionToMotorsport": "Dr. Verma is a faculty advisor for IIT's Formula Student team, offering his expertise in aerodynamics and vehicle dynamics to aspiring engineers. He also consults on a freelance basis for smaller racing teams, helping them optimize their vehicle performance.",
+  "meetingContext": "The player could meet Dr. Verma at an IIT Formula Student event, or at a motorsport engineering conference in India.",
+  "conversationTopics": [
+    "Formula 1 engineering",
+    "The ethics of autonomous racing",
+    "The latest advancements in vehicle aerodynamics",
+    "His volunteer work with underprivileged children",
+    "The parallels between ballet and motorsport precision"
+  ],
+  "canHelp": [
+    "Provide technical expertise and advice on vehicle setup and aerodynamics.",
+    "Offer access to IIT's state-of-the-art engineering facilities.",
+    "Connect the player with potential sponsors or investors from the Indian tech industry."
+  ],
+  "personality_summary": "A perfectionist professor with a playful side and a passion for motorsport engineering."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Khalid Al-Thani",
+  "nationality": "Qatari",
+  "age": 63,
+  "gender": "male",
+  "contactType": "lawyer",
+  "bio": "Khalid Al-Thani is a senior partner at Al-Thani & Sons, a prestigious law firm specializing in international business and sports law. He's known for his sharp legal mind and calculated approach to negotiations, often securing favorable outcomes for his clients. Despite his sometimes dismissive exterior, Khalid possesses a nurturing side, mentoring young lawyers and quietly supporting charitable causes. He's a paradox: an adventurer who enjoys snowboarding and scuba diving, yet a thoughtful intellectual who appreciates the intricacies of jazz and emerging technologies. \n\nA racing driver might encounter Khalid when negotiating sponsorship deals, dealing with contract disputes, or navigating complex legal landscapes in the Middle East. Given his firm's prominent role in sports law, he's well-versed in the particular legal challenges facing athletes, especially those competing internationally. He might also be introduced as a wealthy investor looking to back promising talent.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Dark brown",
+    "facialHair": "Well-trimmed goatee",
+    "description": "Khalid carries himself with a quiet confidence. He favors tailored suits, always impeccably pressed."
+  },
+  "connectionToMotorsport": "Al-Thani & Sons represents several high-profile motorsport teams and drivers in the Middle East, providing legal counsel on sponsorship agreements, regulatory compliance, and intellectual property rights. Khalid himself has a personal interest in the sport and occasionally attends major racing events.",
+  "meetingContext": "The player might meet Khalid at a motorsport networking event in Qatar, through an introduction by a mutual business acquaintance, or after retaining his firm to review a sponsorship contract.",
+  "conversationTopics": [
+    "The latest advancements in electric vehicle technology",
+    "The history and evolution of jazz music",
+    "His recent snowboarding trip to the Swiss Alps",
+    "The complexities of international business law",
+    "The growing popularity of Rugby in Qatar"
+  ],
+  "canHelp": [
+    "Negotiate favorable sponsorship contracts",
+    "Provide legal counsel on complex racing regulations",
+    "Connect the player with potential investors in the Middle East"
+  ],
+  "personality_summary": "A calculating lawyer with a surprisingly adventurous spirit and a dismissive yet nurturing demeanor."
+}

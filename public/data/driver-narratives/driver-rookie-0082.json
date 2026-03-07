@@ -1,0 +1,27 @@
+{
+  "biography": "Marco Harris, a name rapidly gaining traction in the unforgiving world of motorsport, hails from the vibrant favelas of São Paulo, Brazil. His journey began not on the manicured asphalt of a racetrack, but on the chaotic, winding streets of his neighborhood, where he honed his reflexes navigating the unpredictable dance of cars and pedestrians on his beat-up scooter. Racing wasn't a family legacy; it was a burning desire ignited by the roar of distant Formula 1 races echoing through the city. He scraped together enough money to enter a local karting competition, stunning seasoned competitors with his raw talent and fearless overtaking maneuvers. A defining moment came when, during a torrential downpour, he managed to wrestle his kart from last place to a podium finish, showcasing an uncanny ability to adapt to treacherous conditions. Now, at 18, competing as an independent, Marco is making waves, proving that talent, grit, and a hunger for victory can overcome any obstacle. His current focus is securing consistent funding and a more competitive machine to showcase his full potential.",
+  "drivingStyle": "Marco's driving style is a captivating blend of controlled aggression and instinctive improvisation. He attacks corners with a ferocity that belies his age, often pushing the limits of grip to gain an advantage. He possesses an uncanny ability to sense the subtle nuances of tire degradation, allowing him to extract maximum performance without prematurely sacrificing longevity. Under pressure, Marco thrives, his focus sharpening as the stakes rise. He's a master of late braking and audacious overtakes, earning him a reputation as a driver who's never afraid to take a risk.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Silva",
+      "reason": "A bitter rivalry stemming from a controversial collision during a karting championship decider. Marco accused Ricardo of deliberately blocking him."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A fierce on-track battle for position that has escalated into a personal feud. Marco and Isabella are both extremely ambitious and see each other as major obstacles."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "A clash of driving styles, with Kenji's calculated precision often at odds with Marco's aggressive approach. Their contrasting approaches have led to several tense moments on the track."
+    }
+  ],
+  "quirks": [
+    "Always wears the same faded São Paulo FC scarf under his racing suit.",
+    "Listens to a specific track by Sepultura before every race to pump himself up.",
+    "Refuses to start a race without tapping his helmet three times and whispering a blessing to his late grandfather."
+  ],
+  "nickname": "The 'Favelas Flyer'",
+  "famousQuote": "\"Life's too short for second place. You either send it, or you go home.\"",
+  "careerHighlight": "Winning the Brazilian National Karting Championship in 2022 after starting from the back of the grid due to a mechanical failure in qualifying. He pulled off a series of daring overtakes to secure the victory.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of his debut Formula Regional race due to a mechanical failure, costing him a potential podium and valuable championship points."
+}

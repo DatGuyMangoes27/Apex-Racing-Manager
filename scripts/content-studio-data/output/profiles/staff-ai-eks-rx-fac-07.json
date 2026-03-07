@@ -1,0 +1,22 @@
+{
+  "name": "Liam O'Connell",
+  "nationality": "Irish",
+  "age": 35,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Liam's journey into motorsport began unconventionally, not through a love of racing, but through a fascination with the complex data systems that underpin it. After graduating with a degree in Computer Science from Trinity College, Dublin, he spent several years working in the financial sector, honing his skills in managing critical IT infrastructure. He craved a more dynamic environment, and the opportunity to combine his technical expertise with his growing interest in racing proved irresistible. \n\nAt EKS JC, Liam is responsible for ensuring the smooth operation of all IT systems, from race data analysis tools to team communication networks. He is known for his methodical approach, prioritizing stability and reliability above all else. His calm demeanor and ability to troubleshoot under pressure have earned him the respect of his colleagues, who often rely on him to keep the team running smoothly even in the most stressful situations. He brings a unique perspective, focusing on long-term system resilience, rather than quick fixes.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly parted on the left",
+    "eyeColor": "Blue",
+    "facialHair": "Short, well-trimmed beard",
+    "description": "Liam is of average height with a slightly stocky build and a perpetually focused expression."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook and pen, even in meetings.",
+    "Has a habit of tapping his fingers on the desk when deep in thought.",
+    "Insists on backing up all critical data at exactly 3:00 AM, regardless of the day."
+  ]
+}

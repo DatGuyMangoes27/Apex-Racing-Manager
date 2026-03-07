@@ -1,0 +1,27 @@
+{
+  "biography": "Pedro Jones, a name whispered with both excitement and skepticism in the junior racing circuits, hails from the sun-drenched streets of Monaco. Born into a family with no prior connection to motorsport, Pedro's passion ignited at the tender age of eight, watching a Formula 1 race on a flickering television screen. He badgered his parents relentlessly until they relented, enrolling him in a local karting academy. Pedro's natural talent was immediately apparent. He possessed a raw, almost reckless speed that often bordered on brilliance. However, it was his flamboyant style, both on and off the track, that quickly made him a talking point. His first major breakthrough came at the Rotax Max Challenge Grand Finals, where he secured a podium finish despite starting from the back of the grid after a controversial penalty. Now, at 17, competing as an independent driver, Pedro is navigating the treacherous waters of Formula 4, determined to prove that his talent can transcend his 'flashy' reputation. He's shown glimpses of brilliance, securing a surprise pole position at Imola, but consistency remains his Achilles' heel.",
+  "drivingStyle": "Pedro's driving style can be best described as 'high-risk, high-reward'. He's an incredibly aggressive driver, known for late-braking maneuvers and daring overtakes. He attacks corners with an almost fearless abandon, often pushing the limits of grip to extract every last ounce of performance. While this approach can yield spectacular results, it also makes him prone to errors and tire degradation. He's still learning to manage his tires effectively over a race distance and sometimes struggles to maintain composure under pressure, especially when battling for position. Despite these shortcomings, his raw speed and willingness to take risks make him a formidable opponent.",
+  "rivalries": [
+    {
+      "driver": "Marco Rossi",
+      "reason": "A fierce rivalry stemming from a controversial collision at the Italian F4 Championship, where Rossi accused Pedro of deliberately taking him out."
+    },
+    {
+      "driver": "Isabelle Dubois",
+      "reason": "A clash of personalities and driving styles. Isabelle, known for her calculated and consistent approach, often clashes with Pedro's aggressive tactics on the track. They constantly fight for similar positions."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Both known as young hotshots, they are constantly compared by the media and fans, pushing them to outdo each other."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky blue socks for every race.",
+    "Listens to a specific hype song (never changes!) on repeat during the final minutes before entering the car.",
+    "Always writes a short motivational message on his steering wheel with a marker before each race."
+  ],
+  "nickname": "Monaco Missile",
+  "famousQuote": "\"Second place is just the first loser. I'm here to win, and I'll do whatever it takes to get there.\"",
+  "careerHighlight": "Securing a surprise pole position at the Imola F4 race despite being an independent driver with limited resources. It showed his raw speed and potential.",
+  "careerLowPoint": "Crashing out of the lead at the final corner of the French F4 race due to excessive tire wear, costing him his first potential victory."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sponsor-0100",
+  "name": "Kryotech Solutions",
+  "category": "tech",
+  "tier": "mid",
+  "country": "Thailand",
+  "description": "Innovating thermal management for peak performance.",
+  "story": "Kryotech Solutions is a leading Thai company specializing in advanced cooling solutions for high-performance computing and electronics. Recognizing the extreme thermal demands of motorsport, they see an opportunity to showcase their technology's resilience and effectiveness in a demanding environment. Kryotech seeks a partnership to enhance brand awareness and demonstrate the real-world applications of their cooling technology.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 28000,
+      "winBonus": 12000,
+      "podiumBonus": 6000,
+      "championshipBonus": 90000
+    },
+    "mid": {
+      "monthly": 55000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 175000
+    },
+    "elite": {
+      "monthly": 110000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 45,
+    "minMarketability": 35,
+    "nationalities": [
+      "Thailand"
+    ],
+    "minWins": 1
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 3,
+    "requiredShoutouts": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "technical"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0100.png"
+}

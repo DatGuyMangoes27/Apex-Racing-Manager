@@ -5,16 +5,27 @@ import {
   Filter, Search, Calendar, MapPin, Globe2, Clock,
   ChevronRight, ChevronDown, Car, Layers, X, DollarSign, Building2,
   TrendingUp, TrendingDown, Medal, Route, Info, History,
-  CheckCircle, PlusCircle, AlertCircle
+  CheckCircle, PlusCircle, AlertCircle, Zap, Timer
 } from 'lucide-react'
 import {
   Card,
   CardHeader,
   Badge,
-  Button
+  Button,
+  DriverPortrait,
+  ChampionshipBadge
 } from '@/components/ui'
+import { getDriverPortrait, getChampionshipLogo } from '@/utils/generated-assets'
 import { useRivalStore } from '@/store/rivalStore'
-import type { ChampionshipType } from '@/store/rivalStore'
+import type { ChampionshipType, Series, Team, RivalDriver } from '@/store/rivalStore'
+import { useCareerStore } from '@/store/careerStore'
+import type { TeamSeriesEntry } from '@/store/careerStore'
+import { getCategoryImage, type ImageCategory } from '@/data/stock-images'
+import { getTrackById } from '@/data/ams2-tracks'
+import { getTrackNarrative } from '@/data/track-narratives'
+
+type FilterMode = 'your-entries' | 'available' | 'all'
+type GroupBy = 'type' | 'tier' | 'region'
 
 const TYPE_LABELS: Record<ChampionshipType, { label: string; icon: React.ReactNode; color: string }> = {
   'spec-series': { label: 'Spec Series', icon: <Car className="w-4 h-4" />, color: 'text-blue-400' },
@@ -22,7 +33,13 @@ const TYPE_LABELS: Record<ChampionshipType, { label: string; icon: React.ReactNo
   'continental': { label: 'Continental', icon: <Globe2 className="w-4 h-4" />, color: 'text-purple-400' },
   'international': { label: 'International', icon: <Globe2 className="w-4 h-4" />, color: 'text-cyan-400' },
   'multi-class': { label: 'Multi-Class', icon: <Layers className="w-4 h-4" />, color: 'text-orange-400' },
-  'historic': { label: 'Historic', icon: <Clock className="w-4 h-4" />, color: 'text-amber-400' }
+  'historic': { label: 'Historic', icon: <Clock className="w-4 h-4" />, color: 'text-amber-400' },
+  'club': { label: 'Club & Amateur', icon: <Users className="w-4 h-4" />, color: 'text-teal-400' },
+  'endurance-special': { label: 'Special Events', icon: <Zap className="w-4 h-4" />, color: 'text-red-400' },
+  'single-class': { label: 'Single Class', icon: <Car className="w-4 h-4" />, color: 'text-blue-400' },
+  'sprint': { label: 'Sprint', icon: <Timer className="w-4 h-4" />, color: 'text-green-400' },
+  'endurance': { label: 'Endurance', icon: <Clock className="w-4 h-4" />, color: 'text-orange-400' },
+  'mixed': { label: 'Mixed', icon: <Layers className="w-4 h-4" />, color: 'text-purple-400' },
 }
 
 const TIER_CONFIG: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
@@ -207,7 +224,7 @@ export function ChampionshipsTab() {
   // Determine group order
   const groupOrder = useMemo(() => {
     if (groupBy === 'type') {
-      return ['international', 'multi-class', 'continental', 'national', 'spec-series', 'historic']
+      return ['international', 'endurance-special', 'multi-class', 'continental', 'national', 'spec-series', 'club', 'historic']
     }
     if (groupBy === 'tier') {
       return ['pinnacle', 'elite', 'pro', 'professional', 'semi-pro', 'amateur', 'entry']
@@ -506,26 +523,24 @@ export function ChampionshipsTab() {
       </div>
       
       {/* Championship Detail Slide-in Panel */}
-      <AnimatePresence>
-        {selectedChampionship && (
-          <ChampionshipDetailPanel
-            championship={selectedChampionship}
-            teams={selectedChampTeams}
-            drivers={selectedChampDrivers}
-            ownedTeam={ownedTeam}
-            seriesEntry={isEnteredInSeries(selectedChampionship.id)}
-            canEnterResult={canEnterSeries(selectedChampionship)}
-            onClose={() => setSelectedChampionship(null)}
-          />
-        )}
-      </AnimatePresence>
+      <ChampionshipDetailPanel
+        isOpen={!!selectedChampionship}
+        championship={selectedChampionship}
+        teams={selectedChampTeams}
+        drivers={selectedChampDrivers}
+        ownedTeam={ownedTeam}
+        seriesEntry={selectedChampionship ? isEnteredInSeries(selectedChampionship.id) : undefined}
+        canEnterResult={selectedChampionship ? canEnterSeries(selectedChampionship) : { canEnter: false }}
+        onClose={() => setSelectedChampionship(null)}
+      />
     </div>
   )
 }
 
 // Championship Detail Panel Component - Team Owner Perspective
 interface ChampionshipDetailPanelProps {
-  championship: Series
+  isOpen: boolean
+  championship: Series | null
   teams: Team[]
   drivers: RivalDriver[]
   ownedTeam: any | undefined
@@ -535,6 +550,7 @@ interface ChampionshipDetailPanelProps {
 }
 
 function ChampionshipDetailPanel({ 
+  isOpen,
   championship, 
   teams, 
   drivers,
@@ -548,7 +564,8 @@ function ChampionshipDetailPanel({
   
   // Get standings for this championship
   const { seasonStandings, getStandings } = useRivalStore()
-  const standings = seasonStandings[championship.id] || getStandings(championship.id) || []
+  const champId = championship?.id
+  const standings = champId ? (seasonStandings[champId] || getStandings(champId) || []) : []
   
   // Get team's position and points from standings
   const teamStanding = ownedTeam ? standings.find(s => s.teamId === ownedTeam.id) : null
@@ -563,29 +580,37 @@ function ChampionshipDetailPanel({
   // Find your team's drivers in standings
   const yourDriverStandings = useMemo(() => {
     if (!ownedTeam) return []
-    const yourDriverIds = ownedTeam.drivers?.map((d: any) => d.id) || []
+    const yourDriverIds = ownedTeam.drivers?.map((d: any) => d.driverId) || []
     return standings.filter(s => yourDriverIds.includes(s.driverId) || s.teamId === ownedTeam.id)
   }, [standings, ownedTeam])
 
   return (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-        className="fixed inset-0 bg-black/50 z-40"
-      />
-      
-      {/* Panel */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="fixed top-0 right-0 h-full w-[500px] bg-background border-l border-surface-border shadow-2xl z-50 flex flex-col"
-      >
+    <AnimatePresence
+      onExitComplete={() => console.log('[ChampDetailPanel] AnimatePresence onExitComplete fired')}
+    >
+      {isOpen && championship && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            key="championship-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onAnimationComplete={(def) => console.log('[ChampDetailPanel] Backdrop animation COMPLETE:', def)}
+            onClick={() => { console.log('[ChampDetailPanel] Backdrop clicked, calling onClose'); onClose() }}
+            className="fixed inset-0 bg-black/50 z-40"
+          />
+          
+          {/* Panel */}
+          <motion.div
+            key="championship-panel"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            onAnimationComplete={(def) => console.log('[ChampDetailPanel] Panel animation COMPLETE:', def)}
+            className="fixed top-0 right-0 h-full w-[500px] bg-background border-l border-surface-border shadow-2xl z-50 flex flex-col"
+          >
       {/* Header with Hero Image */}
       <div className="relative border-b border-surface-border overflow-hidden">
         {/* Background Hero */}
@@ -603,16 +628,11 @@ function ChampionshipDetailPanel({
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <div className={`
-                  w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold backdrop-blur-sm
-                  ${championship.prestige >= 90 ? 'bg-accent-gold/30 text-accent-gold border border-accent-gold/50' :
-                    championship.prestige >= 75 ? 'bg-orange-500/30 text-orange-400 border border-orange-500/50' :
-                    championship.prestige >= 50 ? 'bg-purple-500/30 text-purple-400 border border-purple-500/50' :
-                    'bg-surface/50 text-text-muted border border-surface-border'
-                  }
-                `}>
-                  {championship.prestige || 50}
-                </div>
+                <ChampionshipBadge
+                  src={getChampionshipLogo(championship.id)}
+                  name={championship.name}
+                  size="lg"
+                />
                 <div>
                   <h2 className="font-display font-bold text-xl drop-shadow-lg">{championship.name}</h2>
                   <p className="text-text-secondary text-sm drop-shadow">{championship.shortName}</p>
@@ -763,6 +783,11 @@ function ChampionshipDetailPanel({
                         </div>
                         
                         {/* Driver Info */}
+                        <DriverPortrait
+                          src={getDriverPortrait(standing.driverName, driver?.country)}
+                          name={standing.driverName}
+                          size="sm"
+                        />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <p className="font-medium truncate">
@@ -1321,5 +1346,7 @@ function ChampionshipDetailPanel({
       </div>
     </motion.div>
     </>
+      )}
+    </AnimatePresence>
   )
 }

@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Oliveira",
+  "nationality": "Portuguese",
+  "age": 32,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Ricardo's journey into motorsport began unconventionally, not through a love of racing as a child, but through a fascination with the data it generated. While studying computer science at the University of Porto, he developed a passion for data analytics and predictive modeling. He saw motorsport as the perfect arena to apply his skills, leading him to seek internships and eventually a full-time position at Hot Racing Team.\n\nAs IT Systems Manager, Ricardo is responsible for the team's entire IT infrastructure, from ensuring seamless data transmission from the track to the factory, to developing custom software for performance analysis. He's known for his pragmatic approach, always prioritizing stability and efficiency over flashy new technologies. His mentorship of junior engineers has earned him respect within the team, and he's seen as a crucial link between the technical and strategic sides of the organization.\n\nRicardo is a firm believer in the power of data-driven decisions. He is meticulous and thorough, always seeking ways to improve the team's analytical capabilities. He's particularly skilled at identifying bottlenecks in data flow and developing innovative solutions to optimize performance. His colleagues admire his dedication and problem-solving abilities.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly trimmed with a slight wave",
+    "eyeColor": "Hazel",
+    "facialHair": "Goatee",
+    "description": "Ricardo is of average height with a slender build, and always has a focused look."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen for jotting down ideas, even during meetings.",
+    "Has a habit of tapping his fingers on his desk when deep in thought.",
+    "Insists on using a wired keyboard and mouse, claiming wireless connections are unreliable."
+  ]
+}

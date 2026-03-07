@@ -1,0 +1,22 @@
+{
+  "name": "Mei Fong Tan",
+  "nationality": "Singaporean",
+  "age": 45,
+  "gender": "female",
+  "role": "wind_tunnel_operator",
+  "bio": "Mei Fong Tan's journey into motorsport began unconventionally, not with a love for racing, but a fascination with fluid dynamics. While studying mechanical engineering at the National University of Singapore, she became captivated by the principles governing airflow and its impact on vehicle performance. After graduating, she secured a position at a local aerospace firm, honing her skills in computational fluid dynamics and wind tunnel testing. Her expertise caught the attention of Kosmic Kart, who recruited her to lead their wind tunnel operations.\n\nMei Fong's pragmatic approach centers on data-driven decision-making. She meticulously analyzes wind tunnel results, identifying areas for aerodynamic improvement with a sharp eye for detail. She excels at translating complex data into actionable insights for the engineering team. What sets her apart is her resourcefulness. Faced with budget constraints, she constantly seeks innovative ways to optimize testing procedures and extract maximum value from the available resources.\n\nWhile she may not be the most outspoken member of the team, her quiet dedication and unwavering focus on results have earned her the respect of her colleagues. Her ability to consistently deliver accurate and insightful data makes her an invaluable asset to Kosmic Kart's aerodynamic development program.",
+  "physical": {
+    "skinTone": "Medium tan",
+    "hairColor": "Dark brown",
+    "hairStyle": "Neatly tied back in a low bun with a few stray strands framing her face",
+    "eyeColor": "Dark brown",
+    "facialHair": null,
+    "description": "Mei Fong has a calm and composed demeanor that is mirrored by her precise and tidy appearance."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations, even during casual conversations.",
+    "Has a habit of tapping her pen against her teeth when deep in thought.",
+    "Insists on calibrating the wind tunnel equipment herself before each testing session, regardless of the technicians' assurances."
+  ]
+}

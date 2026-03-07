@@ -1,0 +1,48 @@
+{
+  "id": "sponsor-0352",
+  "name": "Rajah Jewels",
+  "category": "luxury",
+  "tier": "entry",
+  "country": "India",
+  "description": "Exquisite handcrafted jewelry, inspired by India's royal heritage.",
+  "story": "Rajah Jewels seeks to expand its brand awareness beyond the Indian subcontinent and appeal to a younger, more global audience. Motorsport provides an ideal platform to showcase the brand's commitment to precision, craftsmanship, and the thrill of the chase. They are looking for a partner who embodies their values of excellence and dedication.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 15000,
+      "winBonus": 5000,
+      "podiumBonus": 2000,
+      "championshipBonus": 25000
+    },
+    "mid": {
+      "monthly": 45000,
+      "winBonus": 18000,
+      "podiumBonus": 8000,
+      "championshipBonus": 120000
+    },
+    "elite": {
+      "monthly": 120000,
+      "winBonus": 50000,
+      "podiumBonus": 25000,
+      "championshipBonus": 400000
+    }
+  },
+  "requirements": {
+    "minReputation": 25,
+    "minMarketability": 35,
+    "nationalities": [
+      "India"
+    ]
+  },
+  "priority": {
+    "primary": "brand_alignment",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonPodiums": 2,
+    "requiredShoutouts": 3,
+    "preferredImageStyle": "luxury"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0352.png"
+}

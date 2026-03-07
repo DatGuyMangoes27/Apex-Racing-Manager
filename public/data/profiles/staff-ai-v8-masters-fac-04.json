@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Dubois",
+  "nationality": "French",
+  "age": 51,
+  "gender": "male",
+  "role": "electronics_engineer",
+  "bio": "Jean-Pierre's journey into motorsport began with a childhood fascination for radio-controlled cars, which he meticulously modified and raced. This passion led him to pursue electrical engineering, graduating at the top of his class from the École Polytechnique. His professional career started in the aerospace industry, designing intricate sensor systems for satellites. However, the allure of speed and competition proved too strong, and he transitioned to motorsport, joining a smaller racing team initially. \n\nHe approaches his role with a methodical precision honed over years of experience. Jean-Pierre believes in a data-driven approach, meticulously analyzing telemetry and sensor readings to optimize the car's electrical systems. While not a natural leader, his loyalty to the team is unwavering, and he consistently delivers reliable results. His innovative mindset, particularly in optimizing energy recovery systems, sets him apart from many of his peers. \n\nAt V8 Masters Racing, Jean-Pierre sees an opportunity to contribute to a growing team, helping them leverage cutting-edge electronics to gain a competitive edge. He is keen to apply his aerospace experience to enhance the reliability and performance of the team's racing cars.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back, thinning at the crown",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A stocky man with a thoughtful expression and a slight build around the middle."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool, even off-track.",
+    "Has a habit of muttering technical solutions to himself.",
+    "Insists on using a specific brand of soldering iron."
+  ]
+}

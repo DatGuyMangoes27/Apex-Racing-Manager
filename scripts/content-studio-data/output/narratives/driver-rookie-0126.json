@@ -1,0 +1,27 @@
+{
+  "biography": "Jack Thompson, a name whispered with increasing frequency in racing circles, hails from the quiet Finnish countryside. Unlike many drivers groomed from karting, Jack's entry into motorsport was almost accidental. At 14, while helping his father repair an old rally car, he discovered an innate mechanical aptitude and a burning desire to race. He secretly began practicing on frozen lakes, honing his car control in the most unforgiving conditions. His raw talent was undeniable, catching the eye of a local racing enthusiast who sponsored his entry into regional rallycross events. Despite limited resources, Jack's calculated aggression and precise driving quickly earned him podium finishes, paving the way for a transition to single-seaters. Now at 19, driving as an independent, Jack is a rising star, constantly battling more established teams while developing his skills and proving his mettle in every race.",
+  "drivingStyle": "Thompson's driving style is a study in controlled aggression. He's not one for flamboyant slides or late-braking heroics. Instead, he prefers a calculated approach, meticulously analyzing track conditions and opponent weaknesses. His corner entry is precise, maximizing mid-corner speed, and he's remarkably smooth on the throttle, preserving tire life for late-race surges. He excels under pressure, often delivering his best performances when the stakes are highest. This calculating approach, combined with his inherent car control, makes him a formidable competitor, especially in endurance races.",
+  "rivalries": [
+    {
+      "name": "Nikolai Volkov",
+      "reason": "Volkov, a heavily sponsored driver, publicly dismissed Thompson's talent, sparking an on-track feud that has resulted in several close calls and heated post-race interviews."
+    },
+    {
+      "name": "Isabelle Rossi",
+      "reason": "Rossi and Thompson often find themselves battling for position, their contrasting driving styles – Rossi's aggressive, Thompson's calculated – leading to intense and strategic duels."
+    },
+    {
+      "name": "Kenji Tanaka",
+      "reason": "Tanaka and Thompson were teammates briefly in a feeder series, but a controversial pit strategy led to Tanaka's retirement and a lingering sense of resentment between the two."
+    }
+  ],
+  "quirks": [
+    "Always wears the same worn-out driving gloves, claiming they bring him good luck.",
+    "Studies telemetry data of his rivals obsessively before each race, searching for any exploitable weakness.",
+    "Listens to classical music to calm his nerves before getting into the car."
+  ],
+  "nickname": "The Iceman",
+  "famousQuote": "\"Racing isn't about raw speed; it's about calculated execution. Every decision, every movement, must be precise. That's how you win.\"",
+  "careerHighlight": "Winning the Junior Formula Championship at Imola after starting from P12, overtaking several rivals in the final laps with a daring display of strategic driving and tire management.",
+  "careerLowPoint": "Crashing out of the lead in the final lap of the Finnish Grand Prix due to a sudden downpour, costing him his first major victory and shattering his confidence momentarily."
+}

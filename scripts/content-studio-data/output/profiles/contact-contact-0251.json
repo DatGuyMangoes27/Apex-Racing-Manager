@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Bruce 'The Hammer' Hamilton",
+    "nationality": "Australian",
+    "age": 60,
+    "gender": "male",
+    "contactType": "agent",
+    "bio": "Bruce Hamilton, known in motorsport circles as 'The Hammer,' is a force to be reckoned with. After a brief, unremarkable stint as a driver himself, Bruce quickly pivoted to management, showcasing a ruthless efficiency and uncanny knack for spotting talent. He's built a reputation for securing lucrative deals and fiercely protecting his drivers, sometimes to a fault. He's obsessive about his clients' success, driven by a competitive spirit that borders on manic, and still seeks the thrill of adventure through high-stakes negotiations. \n\nA racing driver might cross paths with Bruce as they climb the ladder, seeking representation from a proven deal-maker. Bruce attends lower-tier races scouting for the next big thing, particularly if they demonstrate the raw talent and mental fortitude he values. He's not afraid to take risks on promising newcomers, seeing them as investments in his own legacy.",
+    "physical": {
+      "skinTone": "Fair, sun-weathered",
+      "hairColor": "Grey",
+      "hairStyle": "Short, slicked-back",
+      "eyeColor": "Steel blue",
+      "facialHair": "Trimmed goatee",
+      "description": "Bruce carries himself with a confident swagger, despite his age. His face is etched with the lines of countless deals and sleepless nights, but his eyes remain sharp and calculating."
+    },
+    "connectionToMotorsport": "Bruce is a highly successful driver agent with decades of experience representing top-tier drivers in various motorsport disciplines, from Formula racing to endurance events.",
+    "meetingContext": "The player would likely meet Bruce at a racing event where they've achieved a notable result, catching his attention. Alternatively, a mutual connection within the motorsport world could facilitate an introduction.",
+    "conversationTopics": [
+      "The current state of motorsport and the 'lack of real talent'",
+      "The art of negotiation and securing the best sponsorships",
+      "His past adventures, often embellished for dramatic effect",
+      "The importance of mental fortitude in racing",
+      "The latest jazz record he's obsessed with"
+    ],
+    "canHelp": [
+      "Negotiate better contracts with teams and sponsors",
+      "Provide access to exclusive networking opportunities within the motorsport industry",
+      "Offer guidance and mentorship based on his extensive experience"
+    ],
+    "personality_summary": "A ruthless and driven agent who's obsessed with success, Bruce is a formidable ally, if you can tolerate his intensity."
+  }
+]

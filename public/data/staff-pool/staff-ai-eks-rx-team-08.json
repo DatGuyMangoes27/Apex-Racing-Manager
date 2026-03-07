@@ -1,0 +1,22 @@
+{
+  "name": "Bjorn Stromberg",
+  "nationality": "Swedish",
+  "age": 53,
+  "gender": "male",
+  "role": "performance_engineer",
+  "bio": "Bjorn's journey into motorsport began in his youth, tinkering with engines in his father's garage in rural Sweden. He earned a degree in mechanical engineering and quickly found his niche optimizing vehicle performance. Over the years, Bjorn has worked with various teams, honing his skills in data analysis, simulation, and trackside adjustments. He joined EKS JC because he was excited by the team's forward thinking approach and the cutting edge technology it employs.\n\nBjorn is known for his methodical approach and ability to identify subtle performance gains that others miss. He thrives in high-pressure situations, remaining calm and focused when the stakes are highest. His experience, combined with a sharp technical mind, makes him a valuable asset to any team looking for that extra edge.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Bjorn is a man of medium height with a sturdy build and kind eyes."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with calculations.",
+    "Has a specific brand of Swedish coffee he insists on having available at all times.",
+    "Meticulously cleans his workstation at the end of each day."
+  ]
+}

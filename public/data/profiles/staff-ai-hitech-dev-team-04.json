@@ -1,0 +1,22 @@
+{
+  "name": "Marco Bellini",
+  "nationality": "Italian",
+  "age": 51,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Marco Bellini's fascination with motorsport began in his childhood, growing up near the Imola circuit. He pursued a degree in mechanical engineering, focusing on aerodynamics, and quickly found his way into Formula 3, working his way up the ranks. Marco's strength lies in his meticulous approach to data analysis and his ability to translate technical insights into practical improvements on the track. His calm demeanor under pressure makes him a valuable asset to any team.\n\nHe joined Hitech Development five years ago, drawn by their commitment to nurturing young talent. Marco prides himself on his ability to mentor junior engineers, fostering a collaborative environment where innovation thrives. He is known for his flexible approach, adapting his strategies to suit the driver's style and the ever-changing conditions of the race.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Salt and pepper",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Brown",
+    "facialHair": "Thin mustache",
+    "description": "A man of medium build with a focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Pace nervously while chewing gum when the car is on track.",
+    "Has a collection of miniature racing helmets on his desk."
+  ]
+}

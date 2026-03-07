@@ -1,0 +1,22 @@
+{
+  "name": "Deniz Yilmaz",
+  "nationality": "Turkish",
+  "age": 43,
+  "gender": "male",
+  "role": "chief_engineer",
+  "bio": "Deniz Yilmaz's journey into motorsport began in his youth, tinkering with engines in his father's small auto repair shop in Istanbul. He earned a degree in Mechanical Engineering from Istanbul Technical University, specializing in vehicle dynamics. After graduation, Deniz joined a small GT racing team as a junior engineer, quickly proving his aptitude for problem-solving and data analysis. \n\nHe's known for his methodical approach, meticulously analyzing every aspect of the car's performance to identify areas for improvement. Deniz is a pragmatic engineer, valuing practical solutions and data-driven decisions over theoretical concepts. His experience across various racing disciplines, from GT to endurance racing, has honed his ability to adapt and thrive under pressure. At Walkenhorst Motorsport, Deniz aims to bring a blend of German engineering precision and Turkish ingenuity to the team's pursuit of victory. He's also keen on mentoring younger engineers, sharing his knowledge and passion for motorsport.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Brown",
+    "facialHair": "Short, well-trimmed goatee",
+    "description": "Deniz is a lean man of medium height with a focused gaze."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and observations.",
+    "Has a habit of tapping his pen against his teeth when deep in thought.",
+    "Insists on drinking Turkish coffee before every race."
+  ]
+}

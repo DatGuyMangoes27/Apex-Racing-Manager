@@ -1,0 +1,22 @@
+{
+  "name": "Jaroslav Novák",
+  "nationality": "Czech",
+  "age": 58,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jaroslav Novák's journey in aerodynamics began with a fascination for the sleek lines of rally cars tearing through the Czech countryside. After graduating with honors in mechanical engineering from the Czech Technical University in Prague, he quickly immersed himself in motorsport, initially working with a small rally team, optimizing their aerodynamic package on a shoestring budget. His keen eye for detail and innovative solutions led him to Formula racing, where he spent two decades refining his skills, ultimately leading aero departments for multiple teams.\n\nJaroslav's approach to aerodynamics is deeply rooted in a methodical, data-driven process. He believes in relentlessly testing and refining designs, always seeking marginal gains that can translate into significant lap time improvements. His management style focuses on fostering a collaborative environment where engineers are encouraged to think outside the box and challenge conventional wisdom. What truly sets him apart is his uncanny ability to visualize airflow and identify subtle areas for improvement that others often miss.\n\nDespite his success, Jaroslav remains grounded, always eager to learn and push the boundaries of aerodynamic performance. He is particularly passionate about mentoring young engineers and fostering the next generation of aerodynamicists, ensuring that the pursuit of aerodynamic excellence continues.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "thin mustache",
+    "description": "A man of medium build with a thoughtful, almost permanently focused expression."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a worn-out slide rule, despite having access to the latest simulation software.",
+    "Insists on using physical wind tunnel models for initial concept validation.",
+    "Has a habit of muttering aerodynamic equations under his breath when deep in thought."
+  ]
+}

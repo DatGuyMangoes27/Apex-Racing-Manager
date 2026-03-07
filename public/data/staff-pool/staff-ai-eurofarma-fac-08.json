@@ -1,0 +1,22 @@
+{
+  "name": "Ricardo Sepúlveda",
+  "nationality": "Chilean",
+  "age": 29,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Ricardo's passion for motorsport ignited at a young age, fueled by watching Formula 1 races with his grandfather in Santiago. He pursued a degree in Mechanical Engineering at the Universidad de Chile, focusing on aerodynamics and fluid dynamics. After graduating, he gained valuable experience at a local aerospace company, refining his skills in wind tunnel testing and data analysis.\n\nHe joined Eurofarma RC two years ago, quickly proving himself as a dedicated and meticulous wind tunnel operator. Ricardo's strength lies in his ability to identify subtle airflow patterns and translate them into actionable improvements for the race car's design. He is always eager to learn new techniques and contribute to the team's overall performance. He prides himself on the accuracy and reliability of his work, understanding that every detail matters in the pursuit of victory.\n\nRicardo is known for his calm demeanor under pressure and his collaborative spirit. He believes that open communication and shared knowledge are essential for success. He is committed to pushing the boundaries of aerodynamic performance and helping Eurofarma RC achieve its racing goals.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight side part.",
+    "eyeColor": "Brown",
+    "facialHair": "A neatly trimmed goatee",
+    "description": "Ricardo is of average height with a lean build and a focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always double-checks the wind tunnel calibration before starting a test, regardless of how recently it was done.",
+    "Keeps a small notebook filled with hand-drawn diagrams of airflow patterns he's observed.",
+    "Has a habit of humming quietly while analyzing data."
+  ]
+}

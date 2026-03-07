@@ -1,0 +1,22 @@
+{
+  "name": "Robert 'Bob' Johnson",
+  "nationality": "American",
+  "age": 53,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Robert, known to everyone as 'Bob,' has been immersed in motorsport since he was a young boy, tinkering with engines in his father's garage. He honed his skills through years of experience in various racing series, from local stock car races to IMSA, developing a keen eye for detail and a knack for optimizing car performance. Bob joined Racing Start Academy to pass on his knowledge to the next generation of engineers.\n\nBob's approach to race engineering is meticulous and data-driven. He believes in building strong relationships with his drivers, understanding their feedback, and translating it into tangible improvements in the car's setup. His perfectionist tendencies often lead to late nights in the garage, but his dedication to achieving optimal performance is unwavering. He is a firm believer in teamwork and fosters a collaborative environment where everyone's input is valued.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "grey",
+    "hairStyle": "short, neatly combed back",
+    "eyeColor": "blue",
+    "facialHair": "goatee",
+    "description": "Bob is a sturdy man with a weathered face and kind eyes that crinkle when he smiles."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a well-worn notebook filled with technical diagrams and notes.",
+    "Has a habit of tapping his pen rhythmically when deep in thought.",
+    "Prefers to analyze telemetry data with classic rock music playing softly in the background."
+  ]
+}

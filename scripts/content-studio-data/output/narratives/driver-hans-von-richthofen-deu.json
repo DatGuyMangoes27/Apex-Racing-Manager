@@ -1,0 +1,27 @@
+{
+  "biography": "Hans von Richthofen's name carries a weight of expectation, a legacy of aerial combat that he traded for four wheels and a roaring engine. Born into a family steeped in Prussian tradition, Hans rejected the military path, finding his true calling in the raw, visceral world of motorsport. His early years were marked by a rebellious streak, honing his skills in illegal street races around Munich before catching the eye of a local BMW tuner. A defining moment came at the Nürburgring during a vintage car event; a near-miss on the Karussell, where he wrestled his classic BMW 2002 Turbo back from the brink, showcased his raw talent and fearless aggression. Now, in his mid-thirties, Hans finds himself at a crossroads. The reflexes aren't quite as sharp, the competition is fiercer, and the whispers of 'past his prime' are growing louder. Yet, the fire still burns, a desperate need to prove that the name von Richthofen still commands respect on the track.",
+  "drivingStyle": "Von Richthofen's driving style is a reflection of his aggressive personality – a relentless, high-risk approach that often pushes both car and driver to the absolute limit. He's known for late braking maneuvers and daring overtakes, frequently sacrificing tire longevity for immediate gains. In qualifying, he's a force to be reckoned with, extracting every last tenth of a second. However, this aggressive approach can lead to costly mistakes under pressure, especially in endurance races where consistency is key. He struggles with tire management, often blistering his rubber in the early stages of a stint.",
+  "rivalries": [
+    {
+      "driver": "Enzo Bellini",
+      "reason": "A long-standing feud stemming from a controversial collision at the 1997 Hockenheimring, costing both drivers a potential victory."
+    },
+    {
+      "driver": "Astrid Müller",
+      "reason": "A battle for supremacy in the German touring car scene, with Astrid's calculated precision clashing against Hans's raw aggression."
+    },
+    {
+      "driver": "Kenji Tanaka",
+      "reason": "Clashed in the Asian Le Mans Series, with Kenji accusing Hans of dangerous driving and unsportsmanlike conduct."
+    }
+  ],
+  "quirks": [
+    "Always wears a vintage aviator scarf, a nod to his family's history.",
+    "Listens to Wagner's 'Ride of the Valkyries' before every race.",
+    "Insists on personally inspecting and polishing his helmet before each session."
+  ],
+  "nickname": "The Baron",
+  "famousQuote": "\"Victory is not a right, it is a conquest. And I intend to conquer.\"",
+  "careerHighlight": "Winning the 1995 Nürburgring 24 Hours in a privately entered BMW, overcoming numerous mechanical issues and a torrential downpour to claim an unexpected victory.",
+  "careerLowPoint": "Crashing out of the lead at the 1998 Spa 24 Hours in the final hour, costing his team a guaranteed victory and damaging his reputation."
+}

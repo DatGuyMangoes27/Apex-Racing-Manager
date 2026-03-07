@@ -1,0 +1,27 @@
+{
+  "biography": "Born in Modena, the heart of Italian motorsport, Pedro Jones practically breathed gasoline from birth. His grandfather, a mechanic for Ferrari in the 70s, instilled in him a love for speed and precision. Pedro's karting career began at age 8, funded by his grandfather's retirement savings. He showed immense promise, winning the Italian Junior Karting Championship at 14. However, a lack of major sponsorship forced him to cobble together funding from local businesses and smaller racing teams, making his rise through the ranks a constant uphill battle. Despite the financial struggles, Pedro's raw talent and unwavering determination have caught the eye of several Formula 3 teams, and he's currently fighting tooth and nail to prove he belongs at the highest level.",
+  "drivingStyle": "Pedro is a calculating and precise driver, often described as an 'old soul' behind the wheel. He prioritizes tire management and strategic overtaking, preferring to bide his time and exploit opportunities rather than forcing risky moves. He studies telemetry data meticulously, searching for every possible advantage. His corner entry is smooth and controlled, focusing on maintaining momentum through the apex and maximizing exit speed. He excels under pressure, often delivering his best performances in wet conditions or late in the race when others falter.",
+  "rivalries": [
+    {
+      "driver": "Marco Bellini",
+      "reason": "A fierce karting rivalry that continued into single-seaters. Marco is a more aggressive driver, often clashing with Pedro on the track."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "A battle for the top spot in their current racing series. Isabella has better funding and equipment, making their on-track duels all the more intense."
+    },
+    {
+      "driver": "Carlos Alvarez",
+      "reason": "Shared a team briefly, leading to friction due to differing setups and racing philosophies."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky pair of socks, gifted to him by his grandmother before every race.",
+    "Listens to classical music to calm his nerves before getting in the car.",
+    "Visually inspects all four tires meticulously before each session, regardless of what the mechanics say."
+  ],
+  "nickname": "The Modenese Mathematician",
+  "famousQuote": "\"Racing isn't just about speed; it's about solving the equation of the track, the car, and the competition.\"",
+  "careerHighlight": "Winning the Italian Formula 4 Championship in 2021, securing the title in the final race with a daring last-lap overtake.",
+  "careerLowPoint": "Crashing out of the lead in the Monaco Grand Prix support race in 2022 due to a mechanical failure, losing a potential victory and valuable championship points."
+}

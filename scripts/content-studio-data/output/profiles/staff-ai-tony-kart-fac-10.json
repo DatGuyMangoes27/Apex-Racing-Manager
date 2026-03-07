@@ -1,0 +1,22 @@
+{
+  "name": "Erik Karlsson",
+  "nationality": "Swedish",
+  "age": 26,
+  "gender": "male",
+  "role": "fabricator",
+  "bio": "Erik's journey into motorsport began with a childhood fascination for rebuilding engines with his grandfather, a retired Volvo engineer. He honed his skills at a local vocational school specializing in automotive technology, quickly becoming known for his meticulous attention to detail and problem-solving abilities. After graduating, Erik spent several years working in a high-performance tuning shop, where he gained experience with a variety of racing machines.\n\nHe joined Tony Kart Racing two years ago, initially as a junior fabricator, but his exceptional performance and dedication saw him rapidly promoted. Erik is particularly adept at welding and machining, consistently delivering components that meet the team's exacting standards. He believes in a proactive approach to fabrication, constantly seeking ways to improve the durability and performance of the karts.\n\nErik's demanding nature stems from his unwavering commitment to quality. He pushes himself and his colleagues to achieve the best possible results, always striving for perfection. His calm demeanor under pressure makes him a valuable asset during critical moments, ensuring that even the most complex repairs are completed efficiently and effectively.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "blond",
+    "hairStyle": "short, neatly trimmed with a slight fade",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "Erik is of average height with a lean build, often seen with grease smudges on his cheek."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always sharpens his pencils to a needle-point before starting a task.",
+    "Insists on using only Swedish-made tools.",
+    "Hums classical music while welding."
+  ]
+}

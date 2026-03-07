@@ -1,0 +1,55 @@
+{
+  "id": "sponsor-0175",
+  "name": "Adrenalin CZ",
+  "category": "energy_drinks",
+  "tier": "elite",
+  "country": "Czech Republic",
+  "description": "Fueling performance with Czech energy.",
+  "story": "Adrenalin CZ was founded by extreme sports enthusiasts who saw a need for a clean, powerful energy drink. They believe in pushing limits and support motorsport teams that demonstrate the same dedication to excellence. They seek a partnership that highlights both speed and endurance, aligning with their brand's commitment to sustained energy.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 70000,
+      "winBonus": 30000,
+      "podiumBonus": 15000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 350000,
+      "winBonus": 130000,
+      "podiumBonus": 70000,
+      "championshipBonus": 1300000
+    }
+  },
+  "requirements": {
+    "minReputation": 75,
+    "minMarketability": 60,
+    "seriesTiers": [
+      "elite"
+    ],
+    "nationalities": [
+      "Czech Republic"
+    ],
+    "minWins": 3
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "brand_alignment",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 4,
+    "minSeasonPodiums": 7,
+    "requiredShoutouts": 6,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "always",
+  "imagePath": "logos/sponsors/sponsor-0175.png"
+}

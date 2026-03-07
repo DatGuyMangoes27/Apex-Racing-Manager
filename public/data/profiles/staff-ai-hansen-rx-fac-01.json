@@ -1,0 +1,22 @@
+{
+  "name": "Rhys Davies",
+  "nationality": "Welsh",
+  "age": 32,
+  "gender": "male",
+  "role": "data_analyst",
+  "bio": "Rhys' journey into motorsport began with a childhood fascination for rally racing, fueled by his grandfather's stories of the RAC Rally. After graduating with a degree in Statistics, Rhys sought a way to combine his analytical skills with his passion. He started as an intern, poring over telemetry data for a small Formula Ford team, quickly proving his aptitude for identifying crucial performance gains hidden within the numbers.\n\nNow at Hansen World RX Team, Rhys is known for his meticulous approach and ability to translate complex datasets into actionable insights. He focuses on predictive modelling, helping the team optimize car setup and race strategy. What sets Rhys apart is his knack for seeing beyond the immediate data, understanding the broader implications of every adjustment, and effectively communicating these insights to the engineers and drivers.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly trimmed, slightly receding hairline",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-maintained beard",
+    "description": "Rhys is of average height, with a focused expression and a calm demeanor."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn graphs and charts.",
+    "Has a specific brand of tea he drinks before every race to 'calm the algorithms'.",
+    "Tends to mumble statistical probabilities under his breath when observing race footage."
+  ]
+}

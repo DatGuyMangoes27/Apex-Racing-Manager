@@ -1,0 +1,22 @@
+{
+  "name": "Marko Babić",
+  "nationality": "Croatian",
+  "age": 39,
+  "gender": "male",
+  "role": "test_driver_coordinator",
+  "bio": "Marko's journey into motorsport started unconventionally. While many of his peers dreamed of racing glory, Marko was fascinated by the meticulous process of vehicle testing. He spent years volunteering at local karting tracks, diligently recording data and observing how subtle adjustments impacted performance. This passion led him to pursue a degree in mechanical engineering, where he excelled in subjects related to data analysis and vehicle dynamics.\n\nMarko's approach to test driver coordination is characterized by his meticulous attention to detail and commitment to accuracy. He firmly believes that a well-organized test program is essential for identifying and resolving performance bottlenecks. He strives to foster a collaborative environment between drivers, engineers, and technicians, ensuring that everyone is aligned on the objectives of each test session. His dedication to precise data collection sets him apart, making him a valuable asset for any team seeking to optimize their car's setup.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark brown",
+    "hairStyle": "Short, neatly combed back with a slight receding hairline.",
+    "eyeColor": "Brown",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Marko is of average height with a slightly stocky build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Insists on double-checking all data entries before submission.",
+    "Has a habit of tapping his pen on the desk when deep in thought."
+  ]
+}

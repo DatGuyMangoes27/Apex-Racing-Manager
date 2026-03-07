@@ -1,0 +1,22 @@
+{
+  "name": "Elena Popescu",
+  "nationality": "Romanian",
+  "age": 23,
+  "gender": "female",
+  "role": "electronics_engineer",
+  "bio": "Elena's fascination with motorsport began during her childhood, watching Formula 1 races with her grandfather. This early exposure ignited a passion for the technical intricacies of racing vehicles, leading her to pursue a degree in electrical engineering. During her studies, she excelled in robotics and automation, skills she believes translate directly to optimizing vehicle performance on the track.\n\nElena is a highly analytical and detail-oriented electronics engineer, excelling in problem-solving under pressure. Her dedication to her work is unwavering, always striving to push the boundaries of what's possible with vehicle electronics. She believes in a collaborative approach, working closely with drivers and other team members to ensure the car's electronics are perfectly tailored to their needs and the track conditions. What sets Elena apart is her ability to quickly adapt and learn, constantly seeking innovative solutions to gain a competitive edge.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, wavy hair often pulled back into a high ponytail during work.",
+    "eyeColor": "Hazel",
+    "facialHair": null,
+    "description": "Elena is of average height with a focused gaze and athletic build."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always has a small, intricate puzzle cube on her desk that she fiddles with when deep in thought.",
+    "Insists on using a specific, vintage multimeter for all her measurements.",
+    "Has a habit of humming softly while soldering."
+  ]
+}

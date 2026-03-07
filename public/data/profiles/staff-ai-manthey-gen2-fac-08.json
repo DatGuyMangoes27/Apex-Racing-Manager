@@ -1,0 +1,22 @@
+{
+  "name": "Alistair McGregor",
+  "nationality": "Scottish",
+  "age": 37,
+  "gender": "male",
+  "role": "wind_tunnel_operator",
+  "bio": "Alistair's fascination with motorsport began as a child, watching Formula 1 races with his grandfather. This early exposure ignited a passion for the technical intricacies of racing. After completing his degree in mechanical engineering at the University of Edinburgh, he landed an internship at a local racing team, where he quickly discovered his aptitude for wind tunnel testing.\n\nHe joined Manthey EMA five years ago, and has become a key part of their aerodynamic development program. Alistair's methodical approach and keen eye for detail ensure that every test run is meticulously executed and analyzed. He's known for his ability to identify subtle airflow anomalies that others might miss, contributing significantly to the team's performance gains. He thrives under pressure and enjoys collaborating with engineers and drivers to optimize car performance.",
+  "physical": {
+    "skinTone": "Pale",
+    "hairColor": "Brown",
+    "hairStyle": "Short, neatly trimmed",
+    "eyeColor": "Blue",
+    "facialHair": "Short boxed beard",
+    "description": "Alistair is of average height, with a lean build and focused gaze."
+  },
+  "personality": "flexible",
+  "quirks": [
+    "Always carries a small notebook to jot down observations.",
+    "Has a habit of humming quietly while analyzing data.",
+    "Prefers to wear noise-canceling headphones, even when no loud equipment is running."
+  ]
+}

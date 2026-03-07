@@ -17,6 +17,7 @@ import type { OwnerHealth, PersonalBrand, SocialContact, Hobby, PersonalStaff, L
 import type { Rivalry, Scandal, CharityFoundation, SocialEvent } from '@/data/social-events-config'
 import type { LifestyleAssets, LifestyleScoreBreakdown } from '@/data/lifestyle-assets-config'
 import type { CollectionsState } from '@/types/personalLife'
+import type { StockHolding, BusinessVenture } from '@/data/investment-config'
 import { usePersonalLifeActions } from '@/hooks/usePersonalLifeActions'
 
 // ============================================
@@ -76,6 +77,11 @@ export interface PersonalLifeState {
   foundations: CharityFoundation[]
   upcomingEvents: SocialEvent[]
   socialLog?: SocialLogEntry[]
+
+  // Personal investments (stocks, businesses; properties at .properties)
+  stockHoldings?: StockHolding[]
+  businessVentures?: BusinessVenture[]
+  properties?: unknown[]
 }
 
 interface PersonalLifeDashboardProps {
@@ -124,10 +130,15 @@ export function PersonalLifeDashboard({
 
   const monthlyExpenses = useMemo(() => {
     const expenses = state.finances.monthlyExpenses
-    return (expenses.lifestyle || 0) + (expenses.staffSalaries || 0) +
-           (expenses.propertyMaintenance || 0) + (expenses.insurances || 0) +
-           (expenses.childSupport || 0) + (expenses.alimony || 0) +
-           (expenses.loanPayments || 0) + (expenses.other || 0)
+    return (expenses.personalStaff || expenses.staffSalaries || 0) +
+           (expenses.mortgagePayments || 0) +
+           (expenses.familyExpenses || expenses.childSupport || 0) +
+           (expenses.hobbies || 0) +
+           (expenses.loanPayments || 0) + (expenses.philanthropy || 0) +
+           (expenses.services || 0) + (expenses.dietPlan || 0) +
+           (expenses.petUpkeep || 0) + (expenses.vehicleCosts || 0) +
+           (expenses.membershipFees || 0) + (expenses.rent || 0) +
+           (expenses.alimony || 0) + (expenses.other || 0)
   }, [state.finances.monthlyExpenses])
 
   const familyHappiness = useMemo(() => {

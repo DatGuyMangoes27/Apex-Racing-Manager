@@ -83,6 +83,74 @@ export function generatePlayerOption(tier: TeamTier, playerReputation: number): 
 }
 
 // ============================================
+// CONTRACT TARGETS & CLAUSES GENERATION
+// ============================================
+
+/** Generate performance targets for a contract based on tier and series. */
+export function generateContractTargets(
+  teamTier: TeamTier,
+  totalRaces: number,
+  gridSize: number,
+  _isWorksDriver: boolean,
+  championshipId?: string
+): ContractTarget[] {
+  const pointsSystem = championshipId ? getPointsSystem(championshipId) : null
+  const maxPointsPerRace = pointsSystem ? getMaxPointsForRace(pointsSystem) : 25
+  const roughPointsForTopHalf = Math.floor(totalRaces * maxPointsPerRace * 0.4)
+  const targets: ContractTarget[] = []
+  let id = 0
+  const add = (type: ContractTargetType, targetValue: number, description: string, severity: ContractTargetSeverity) => {
+    targets.push({
+      id: `ct-${++id}`,
+      type,
+      targetValue,
+      currentProgress: 0,
+      description,
+      met: false,
+      exceeded: false,
+      severity
+    })
+  }
+  if (['professional', 'pro', 'elite', 'pinnacle'].includes(teamTier)) {
+    add('points_minimum', Math.max(10, roughPointsForTopHalf), `Score at least ${Math.max(10, roughPointsForTopHalf)} points`, 'expected')
+    add('podiums', teamTier === 'pinnacle' || teamTier === 'elite' ? 2 : 1, `At least ${teamTier === 'pinnacle' || teamTier === 'elite' ? 2 : 1} podium(s)`, 'bonus')
+  }
+  return targets
+}
+
+/** Generate termination conditions for a contract based on tier. */
+export function generateTerminationConditions(teamTier: TeamTier): TerminationConditions {
+  const strict = ['elite', 'pinnacle'].includes(teamTier)
+  return {
+    performanceClause: true,
+    missedTargetLimit: strict ? 1 : 2,
+    dnfPenalty: true,
+    maxDNFsBeforeWarning: 3,
+    maxDNFsBeforeTermination: strict ? 5 : 6,
+    canBeTerminatedMidSeason: strict
+  }
+}
+
+/** Generate renewal conditions for a contract based on tier and duration. */
+export function generateRenewalConditions(teamTier: TeamTier, duration: number): RenewalConditions {
+  const extensionYears = duration >= 2 ? 1 : 1
+  const salaryIncrease = ['elite', 'pinnacle'].includes(teamTier) ? 15 : 10
+  return {
+    autoRenewIf: 'meets_targets' as AutoRenewCondition,
+    extensionYears,
+    salaryIncrease
+  }
+}
+
+// ============================================
+// SATISFACTION THRESHOLDS
+// ============================================
+
+export const SATISFACTION_WARNING_THRESHOLD = 45
+export const SATISFACTION_FINAL_WARNING_THRESHOLD = 35
+export const SATISFACTION_TERMINATION_THRESHOLD = 25
+
+// ============================================
 // SATISFACTION UI HELPERS
 // ============================================
 
@@ -119,4 +187,86 @@ export function getTeamSatisfactionLabel(satisfaction: number): string {
     case 'unhappy': return 'Unhappy'
     case 'critical': return 'Critical'
   }
+}
+
+// ============================================
+// CONTRACT SATISFACTION & SEASON TRACKING
+// ============================================
+
+export const DEFAULT_TEAM_SATISFACTION = 70
+
+export interface RaceResultForContract {
+  position: number
+  totalDrivers: number
+  points: number
+  dnf: boolean
+  fastestLap: boolean
+  positionsGained: number
+  gridPosition: number
+}
+
+export function calculateRaceSatisfactionChange(
+  result: RaceResultForContract,
+  contract: Contract,
+  currentSatisfaction: number
+): number {
+  const positionRatio = result.position / result.totalDrivers
+  let change = 0
+  
+  if (positionRatio <= 0.1) change = 8    // Top 10%
+  else if (positionRatio <= 0.25) change = 4  // Top 25%
+  else if (positionRatio <= 0.5) change = 1   // Top 50%
+  else if (positionRatio <= 0.75) change = -2 // Bottom 50%
+  else change = -5                             // Bottom 25%
+  
+  if (result.dnf) change -= 3
+  if (result.fastestLap) change += 1
+  if (result.positionsGained >= 5) change += 2
+  
+  return Math.max(-10, Math.min(10, change))
+}
+
+export function updateContractTargets(
+  targets: ContractTarget[],
+  result: RaceResultForContract,
+  seasonStats: ContractSeasonStats
+): ContractTarget[] {
+  return targets.map(target => {
+    let progress = target.currentProgress || 0
+    switch (target.type) {
+      case 'points_minimum': progress = seasonStats.points; break
+      case 'podiums': progress = seasonStats.podiums; break
+      case 'wins': progress = seasonStats.wins; break
+      default: break
+    }
+    return { ...target, currentProgress: progress }
+  })
+}
+
+export function updateSeasonStats(
+  stats: ContractSeasonStats,
+  result: RaceResultForContract
+): ContractSeasonStats {
+  return {
+    ...stats,
+    racesCompleted: stats.racesCompleted + 1,
+    points: stats.points + result.points,
+    wins: stats.wins + (result.position === 1 ? 1 : 0),
+    podiums: stats.podiums + (result.position <= 3 ? 1 : 0),
+    dnfCount: stats.dnfCount + (result.dnf ? 1 : 0)
+  }
+}
+
+/** Result of contract renewal evaluation (may be extended with newEndYear, newSalary, etc. by callers) */
+export type RenewalEvaluationResult = { shouldRenew: boolean; reason: string }
+
+export function evaluateContractRenewal(
+  contract: Contract,
+  satisfaction: number,
+  seasonStats: ContractSeasonStats
+): RenewalEvaluationResult {
+  if (satisfaction < 30) return { shouldRenew: false, reason: 'Team satisfaction too low' }
+  if (satisfaction >= 70 && seasonStats.wins > 0) return { shouldRenew: true, reason: 'Strong performance' }
+  if (satisfaction >= 50) return { shouldRenew: true, reason: 'Acceptable performance' }
+  return { shouldRenew: false, reason: 'Underwhelming season results' }
 }

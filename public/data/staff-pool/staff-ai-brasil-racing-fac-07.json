@@ -1,0 +1,22 @@
+{
+  "name": "Klaus Richter",
+  "nationality": "Austrian",
+  "age": 55,
+  "gender": "male",
+  "role": "it_systems_manager",
+  "bio": "Klaus Richter’s journey into the world of motorsport began unexpectedly during his compulsory military service, where he was assigned to maintain the communication systems for a small rally team. This sparked a lifelong fascination with the intricate technology underpinning racing. Before joining Brasil Racing, Klaus spent years honing his skills at a Viennese tech firm, specializing in network infrastructure. He brings a methodical and thorough approach to his work, ensuring that the team's data flows seamlessly, crucial for real-time analysis and strategic decision-making.\n\nKlaus is known for his relentless pursuit of optimization. He believes that a stable and robust IT infrastructure is as vital to a team's success as a finely tuned engine. His attention to detail is legendary – no server setting goes unexamined, no potential vulnerability unaddressed. At Brasil Racing, he's responsible for maintaining the entire IT ecosystem, from telemetry data acquisition at the track to the cloud-based simulation servers back at headquarters. He takes pride in his ability to anticipate and resolve problems before they impact the team's performance, making him an invaluable asset.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Grey",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Blue",
+    "facialHair": "Trimmed goatee",
+    "description": "A stocky man with a reassuringly calm demeanor and a perpetually focused gaze."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small multi-tool in his pocket.",
+    "Insists on using a mechanical keyboard with loud, clicky keys.",
+    "Has a habit of muttering code snippets under his breath when troubleshooting."
+  ]
+}

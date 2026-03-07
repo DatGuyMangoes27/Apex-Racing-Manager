@@ -1,0 +1,31 @@
+{
+  "name": "Astrid Lindstrom",
+  "nationality": "Swedish",
+  "age": 26,
+  "gender": "female",
+  "contactType": "philanthropist",
+  "bio": "Astrid Lindstrom comes from a long line of Swedish industrialists and philanthropists. Inheriting a substantial fortune at a young age, she has dedicated herself to supporting various cultural and technological initiatives, with a particular interest in innovative engineering solutions. Though sometimes perceived as unreliable due to her spontaneous nature, Astrid is known for her forgiving attitude and unwavering belief in second chances. \n\nAstrid's connection to motorsport stems from her family's historical involvement in automotive manufacturing and her personal fascination with the engineering challenges of racing. A racing driver might cross paths with Astrid at a charity gala, a tech demonstration event showcasing advancements in automotive technology, or perhaps even through a shared acquaintance within high society.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Blonde",
+    "hairStyle": "Long, wavy, often pulled back in a loose bun",
+    "eyeColor": "Blue",
+    "facialHair": null,
+    "description": "Astrid has a delicate, refined appearance. She's often seen wearing minimalist, yet elegant clothing."
+  },
+  "connectionToMotorsport": "Astrid's family has historical ties to Swedish automotive manufacturing. She also supports motorsport engineering research through charitable donations.",
+  "meetingContext": "At a high-society charity gala benefiting a motorsport safety initiative.",
+  "conversationTopics": [
+    "The future of electric vehicle technology",
+    "Swedish design and innovation",
+    "Her latest podcast obsession",
+    "Sustainable materials in racing",
+    "The ethical responsibilities of wealthy individuals"
+  ],
+  "canHelp": [
+    "Provide significant financial backing for the player's racing team.",
+    "Introduce the player to influential figures in the automotive industry.",
+    "Offer mentorship and guidance on managing wealth and public image."
+  ],
+  "personality_summary": "An independent and confident philanthropist who can be a bit unreliable, but is very forgiving."
+}

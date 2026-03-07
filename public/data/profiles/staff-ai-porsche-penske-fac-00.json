@@ -1,0 +1,22 @@
+{
+  "name": "Fiona MacLeod",
+  "nationality": "Scottish",
+  "age": 43,
+  "gender": "female",
+  "role": "simulator_engineer",
+  "bio": "Fiona's journey into motorsport began with a childhood fascination for engineering. Growing up near Knockhill Racing Circuit, she spent countless weekends absorbing the sights and sounds, fueling her desire to understand the intricacies of racing machinery. After graduating with a degree in Mechanical Engineering from the University of Edinburgh, she initially worked in the automotive industry, honing her skills in vehicle dynamics and simulation. \n\nHer transition to motorsport came through a connection with a smaller GT team, where she quickly made a name for herself through her meticulous approach to simulator work, and her ability to translate driver feedback into tangible improvements to the virtual car. Now at Porsche Penske Motorsport, Fiona thrives on the challenge of pushing the boundaries of simulation technology. She firmly believes that a strong, collaborative relationship with drivers is key, and is known for her patience and ability to explain complex concepts in an understandable way. Her dedication to refining every aspect of the simulation environment makes her a vital part of the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Auburn",
+    "hairStyle": "Long, wavy hair, often tied back in a practical ponytail during work.",
+    "eyeColor": "Green",
+    "facialHair": null,
+    "description": "Fiona has a warm, friendly face with a smattering of freckles across her nose."
+  },
+  "personality": "loyal",
+  "quirks": [
+    "Always carries a small notebook filled with hand-drawn diagrams and equations.",
+    "Has a particular fondness for strong, black coffee, consuming multiple cups throughout the day.",
+    "Insists on calibrating her own equipment before each simulation session, regardless of who used it last."
+  ]
+}

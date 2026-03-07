@@ -1,0 +1,22 @@
+{
+  "name": "Adrian Popescu",
+  "nationality": "Romanian",
+  "age": 41,
+  "gender": "male",
+  "role": "quality_control",
+  "bio": "Adrian's journey into motorsport began with a fascination for engines and a meticulous approach to problem-solving. He honed his skills at a local engineering workshop, where he developed a keen eye for detail and a relentless pursuit of perfection. His talent quickly caught the attention of a regional racing team, where he served as a junior mechanic before transitioning into quality control.\n\nAt Team WRT, Adrian is responsible for ensuring that every component and process meets the highest standards of quality and reliability. He is known for his unwavering commitment to excellence and his ability to identify and address potential issues before they escalate. While some find his demanding nature intimidating, his colleagues respect his expertise and acknowledge the critical role he plays in the team's success. Adrian's calm demeanor under pressure and unwavering reliability make him a cornerstone of the team's operational efficiency.",
+  "physical": {
+    "skinTone": "olive",
+    "hairColor": "dark brown",
+    "hairStyle": "short, neatly combed back with a slight receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed goatee",
+    "description": "Adrian is of average height with a stocky build and a focused gaze."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook and pen to jot down observations.",
+    "Insists on double-checking every calibration, even if already verified by others.",
+    "Has a specific pre-race ritual involving cleaning his tools in a particular order."
+  ]
+}

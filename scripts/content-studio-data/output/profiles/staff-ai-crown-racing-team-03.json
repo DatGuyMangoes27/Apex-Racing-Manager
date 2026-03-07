@@ -1,0 +1,22 @@
+{
+  "name": "Jean-Pierre Tremblay",
+  "nationality": "Canadian",
+  "age": 59,
+  "gender": "male",
+  "role": "head_of_aero",
+  "bio": "Jean-Pierre's journey in motorsport began unconventionally, not on the track but in the skies. A former aerospace engineer specializing in airfoil design for Bombardier, he was drawn to the applied aerodynamics of Formula racing. After a decade fine-tuning wings for private jets, Jean-Pierre made a bold career shift, joining a smaller IndyCar team before eventually landing at Crown Racing.\n\nHis approach to aerodynamics is rooted in meticulous data analysis and real-world application. Jean-Pierre eschews purely theoretical approaches, preferring to test and refine designs iteratively. He believes that the best aero package is one that translates directly to improved lap times and driver confidence, not just impressive simulations. His experience in aerospace brings a unique perspective, one that emphasizes reliability and robustness alongside pure performance. \n\nWhat sets Jean-Pierre apart is his ability to bridge the gap between engineering and the practicalities of racing. He understands the pressures faced by drivers and mechanics, and he tailors his designs to be not only effective but also maintainable and adaptable under race conditions. He values collaboration and clear communication, ensuring that the entire team is aligned on the aerodynamic strategy.",
+  "physical": {
+    "skinTone": "fair",
+    "hairColor": "grey",
+    "hairStyle": "Short, neatly combed back, receding hairline",
+    "eyeColor": "blue",
+    "facialHair": "trimmed goatee",
+    "description": "A man of medium build with a perpetually thoughtful expression, Jean-Pierre always looks like he's calculating lift and drag in his head."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Has a habit of tapping his pen on the table when deep in thought.",
+    "Insists on using imperial units alongside metric, much to the annoyance of his younger colleagues."
+  ]
+}

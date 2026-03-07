@@ -1,0 +1,22 @@
+{
+  "name": "Krzysztof Lewandowski",
+  "nationality": "Polish",
+  "age": 48,
+  "gender": "male",
+  "role": "race_engineer",
+  "bio": "Krzysztof's passion for motorsport ignited at a young age, tinkering with go-karts in his father's garage. He pursued a degree in mechanical engineering, channeling his academic knowledge into practical applications on the racetrack. His career began in junior formula series, quickly rising through the ranks due to his meticulous approach to data analysis and car setup. Krzysztof thrives on the challenge of optimizing performance, constantly seeking innovative solutions to extract every last tenth of a second. He is known for his calm demeanor under pressure and ability to clearly communicate complex technical information to drivers, fostering a collaborative environment within the team.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed with a slight receding hairline",
+    "eyeColor": "Blue",
+    "facialHair": "Short, trimmed goatee",
+    "description": "Krzysztof is of average height with a slightly stocky build and a focused expression."
+  },
+  "personality": "ambitious",
+  "quirks": [
+    "Always carries a small notebook filled with technical sketches and notes.",
+    "Drinks precisely two cups of black coffee before each race session.",
+    "Has a habit of tapping his pen against his teeth when deep in thought."
+  ]
+}

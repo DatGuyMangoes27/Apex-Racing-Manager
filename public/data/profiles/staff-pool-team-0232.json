@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Valentina Rossi",
+    "nationality": "Argentine",
+    "age": 24,
+    "gender": "female",
+    "role": "performance_engineer",
+    "bio": "Valentina's passion for motorsport ignited early, fueled by her grandfather's involvement in local rally racing. She excelled in mechanical engineering at the University of Buenos Aires, consistently topping her class. After graduating, she gained invaluable experience working with a Formula 4 team, quickly earning a reputation for her meticulous data analysis and ability to translate complex information into actionable race strategies.\n\nValentina's approach as a performance engineer is deeply rooted in methodical data analysis. She believes in finding the marginal gains that can make a significant difference. While technically brilliant, Valentina also understands the importance of clear communication and collaboration with the driver and the rest of the team. Her flexibility in adapting to changing conditions and her unwavering focus make her an asset to any racing outfit. Her ability to quickly troubleshoot issues and propose innovative solutions sets her apart.",
+    "physical": {
+      "skinTone": "Olive",
+      "hairColor": "Dark Brown",
+      "hairStyle": "Long, wavy hair usually tied back in a practical ponytail during work.",
+      "eyeColor": "Brown",
+      "facialHair": null,
+      "description": "Valentina has a focused and determined look with sharp, intelligent eyes."
+    },
+    "personality": "flexible",
+    "quirks": [
+      "Always carries a small notebook filled with handwritten technical observations.",
+      "Has a habit of tapping her pen when deep in thought.",
+      "Needs a strong espresso before every practice session."
+    ]
+  }
+]

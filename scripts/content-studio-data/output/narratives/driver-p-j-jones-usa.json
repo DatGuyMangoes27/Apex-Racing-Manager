@@ -1,0 +1,27 @@
+{
+  "biography": "Born in the heart of Indianapolis, P.J. Jones practically inherited a love for speed. His father, a mechanic for a local IndyCar team, fostered his obsession, letting him tinker with engines from the time he could hold a wrench. P.J.'s formal racing career began at 16 in karting, quickly proving his talent with consistent podium finishes. He transitioned to open-wheel racing, impressing scouts with his calculated overtakes and uncanny ability to manage tire wear. A defining moment came during the 1997 Formula Ford season finale at Sebring, where he nursed a damaged car to a hard-fought third place, showcasing his resilience. He stepped up to Indy Lights in 1998, then Indycar in 1999 where he faced some harsh realities of professional racing. Currently, P.J. is seeking opportunities to prove himself in Indycar.",
+  "drivingStyle": "P.J. is a master of controlled aggression. He's known for his precise braking and smooth corner entries, opting to carry momentum through turns rather than relying on brute force. His tire management is exceptional, often allowing him to run longer stints than his competitors. While not the most flamboyant driver, he's incredibly calculating, always assessing risks and opportunities before making a move. He thrives under pressure, often delivering his best performances when the stakes are highest.",
+  "rivalries": [
+    {
+      "driver": "Ricardo Alvarez",
+      "reason": "A bitter rivalry stemming from a controversial collision at Laguna Seca in 1998, where Alvarez accused P.J. of intentionally blocking him."
+    },
+    {
+      "driver": "Marcus Thorne",
+      "reason": "Thorne represents the establishment, a well-funded driver who P.J. believes has been given opportunities he's had to fight for."
+    },
+    {
+      "driver": "Isabella Rossi",
+      "reason": "Rossi and Jones were Karting rivals and their aggressive racing styles clashed multiple times, leading to several on-track incidents."
+    }
+  ],
+  "quirks": [
+    "Always wears the same lucky wristband his father gave him before every race.",
+    "Listens to a specific playlist of classic rock songs in the hour leading up to the start.",
+    "Studies telemetry data of previous races at the track, even if the car setup is significantly different."
+  ],
+  "nickname": "The Calculator",
+  "famousQuote": "\"Racing isn't about who's the fastest for one lap, it's about who's the smartest over the entire race.\"",
+  "careerHighlight": "Finishing 3rd at Sebring in the 1997 Formula Ford season finale, showcasing exceptional car control and determination despite significant damage.",
+  "careerLowPoint": "Failing to secure a full-time Indycar ride after a promising rookie test, leaving him sidelined and questioning his future in the sport."
+}

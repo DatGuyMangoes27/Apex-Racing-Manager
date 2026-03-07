@@ -1,0 +1,22 @@
+{
+  "name": "István Kovács",
+  "nationality": "Hungarian",
+  "age": 53,
+  "gender": "male",
+  "role": "simulator_engineer",
+  "bio": "István's journey into motorsport began unexpectedly, fuelled by a lifelong fascination with engineering and a chance encounter with a local racing team. Before joining Lechner Racing, he spent years honing his skills in automotive manufacturing, developing a deep understanding of vehicle dynamics and simulation software. His pragmatic approach to problem-solving, coupled with a relentless pursuit of accuracy, makes him an invaluable asset in optimizing the team's simulator performance.\n\nIstván is known for his meticulous attention to detail and his ability to translate real-world data into actionable insights for the drivers. He is particularly adept at identifying and correcting discrepancies between the simulator and the actual track, ensuring that the team's practice sessions are as productive as possible. He is driven by the desire to push the boundaries of simulation technology and to contribute to the team's success on the track. His ambition lies in developing advanced simulation techniques that will provide Lechner Racing with a competitive edge.\n\nHis ambition is to continuously refine the simulator to the point where it becomes indistinguishable from the real car, allowing the drivers to push their limits without fear of consequences. He is constantly researching and experimenting with new algorithms and technologies to improve the fidelity of the simulation and to provide the drivers with the most realistic and effective training possible.",
+  "physical": {
+    "skinTone": "light",
+    "hairColor": "graying brown",
+    "hairStyle": "short, neatly combed back, receding hairline",
+    "eyeColor": "brown",
+    "facialHair": "trimmed mustache",
+    "description": "István is a man of medium build with a focused expression, often seen with a slight furrow in his brow as he analyzes data."
+  },
+  "personality": "pragmatic",
+  "quirks": [
+    "Always carries a small notebook filled with handwritten calculations.",
+    "Insists on calibrating the simulator himself before every session.",
+    "Has a habit of muttering technical jargon under his breath when deeply focused."
+  ]
+}

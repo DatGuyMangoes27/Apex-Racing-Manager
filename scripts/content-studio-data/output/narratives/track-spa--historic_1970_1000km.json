@@ -1,0 +1,62 @@
+{
+  "history": "The Circuit de Spa-Francorchamps, nestled in the Ardennes forest of Belgium, is legendary. Its origins date back to 1921, conceived by Jules de Thier and Henri Langlois van Ophem. The original triangle-shaped layout, utilizing public roads between Francorchamps, Malmedy, and Stavelot, was known for its immense speed and danger. The Spa-Francorchamps 1970 1000km layout represents a late iteration of that original circuit, a 14.12 km beast hosting sports car endurance races. While Formula 1 raced on this daunting layout until 1970, the 1000km events showcased the raw power and reliability of sports prototypes battling through the Ardennes.",
+  "atmosphere": "Imagine standing trackside in 1970, the air thick with the smell of high-octane fuel and burning rubber. The roar of flat-12 Ferrari 512s and Porsche 917s reverberates through the trees. Spectators line the open fields, separated from the track by only a thin strip of grass. The blur of color as the cars scream past at unimaginable speeds, a symphony of mechanical fury, creates an atmosphere of palpable excitement and inherent danger.",
+  "trackCharacter": "The Spa-Francorchamps 1970 1000km layout is a relentless test of courage and machine. Its long, high-speed straights demand powerful engines and minimal drag, while the unforgiving corners punish any lack of commitment. This circuit is a test of endurance, rewarding bravery and precision in equal measure. Unlike the modern, shorter layout, the historic version's sweeping curves and massive length emphasize aerodynamic stability and the driver's ability to maintain momentum through the flowing sections.",
+  "nickname": "The Ardennes Rollercoaster",
+  "famousCorners": [
+    {
+      "name": "Eau Rouge",
+      "description": "One of motorsport's most iconic corners, a blind uphill sweep immediately followed by Raidillon.",
+      "challenge": "Maintaining maximum speed through the compression and up the steep hill, requiring unwavering commitment."
+    },
+    {
+      "name": "Raidillon",
+      "description": "The crest of Eau Rouge, launching cars skyward with a sudden change in elevation.",
+      "challenge": "Perfectly positioning the car to avoid scrubbing speed and setting up for the following straight."
+    },
+    {
+      "name": "Masta Kink",
+      "description": "A flat-out, high-speed left-right chicane on a public road between barns and fields.",
+      "challenge": "Maintaining maximum speed and precision while threading the needle between the barriers, with no margin for error."
+    },
+    {
+      "name": "Stavelot",
+      "description": "A fast, sweeping right-hander that requires a delicate balance of throttle and steering.",
+      "challenge": "Carrying as much speed as possible through the corner without losing control, essential for a good run onto the following straight."
+    },
+    {
+      "name": "Blanchimont",
+      "description": "The final, ultra-fast left-hander before the Bus Stop chicane, taken at near-maximum speed.",
+      "challenge": "Demands unwavering commitment and pinpoint accuracy to carry maximum momentum onto the start/finish straight."
+    }
+  ],
+  "keyFactors": [
+    "Aerodynamic Efficiency",
+    "Engine Power",
+    "Brave Driving",
+    "Mechanical Reliability",
+    "Driver Endurance"
+  ],
+  "overtakingSpots": [
+    "Eau Rouge/Raidillon exit leading onto the Kemmel Straight (slipstream)",
+    "Les Combes (braking zone)",
+    "La Source hairpin (tight entry)",
+    "At the end of the Masta Straight"
+  ],
+  "historySnippets": [
+    "The original Spa circuit used public roads.",
+    "The Masta Kink was one of the most feared corners in racing.",
+    "Many legendary drivers considered Spa their favorite track.",
+    "The 1970 layout was over 14 kilometers long.",
+    "Spa has hosted Formula 1, sports car racing, and motorcycle racing.",
+    "The Ardennes weather can change dramatically in a short period."
+  ],
+  "weatherNotes": "The Ardennes region is notorious for its unpredictable weather. Rain showers can appear suddenly and be localized to specific sections of the track, creating treacherous conditions. Fog is also common, especially in the early morning, reducing visibility and adding to the challenge. Tire choice is often a gamble, and drivers must be prepared to adapt to changing conditions on every lap.",
+  "drivingAdvice": "On the Spa-Francorchamps 1970 1000km layout, momentum is key. Maintain a smooth driving style, focusing on carrying speed through the corners. Be brave through Eau Rouge/Raidillon and the Masta Kink. Conserve your tires, as the long lap and high speeds will put them under significant stress. Finally, be prepared for unpredictable weather and adapt your strategy accordingly.",
+  "famousRaces": [
+    "The Spa 24 Hours: A grueling endurance race testing the limits of man and machine.",
+    "The Belgian Grand Prix (historic): A Formula 1 race held on the fearsome Spa layout.",
+    "The 1000km of Spa: A classic sports car race attracting top manufacturers and drivers."
+  ],
+  "localCulture": "The Ardennes region is known for its rolling hills, dense forests, and charming villages. The local cuisine features hearty dishes like Ardennes ham and Trappist beer. Paddock life at Spa is typically relaxed and friendly, with a strong sense of camaraderie among the teams and drivers. The fans are passionate and knowledgeable, creating a vibrant atmosphere around the circuit."
+}

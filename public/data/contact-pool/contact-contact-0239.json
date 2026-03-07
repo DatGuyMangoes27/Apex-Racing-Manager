@@ -1,0 +1,31 @@
+{
+  "name": "Zayn bin Hisham",
+  "nationality": "Malaysian",
+  "age": 24,
+  "gender": "male",
+  "contactType": "agent",
+  "bio": "Zayn is a rising star in the world of motorsports representation. Despite his youth, he's quickly built a reputation for his sharp negotiating skills and keen eye for talent, securing lucrative deals for a select group of up-and-coming drivers across Southeast Asia. Don't let his playful demeanor fool you; Zayn is fiercely competitive and dedicated to his clients' success, often leveraging his family's extensive network within the Malaysian business community. \n\nHis interest in motorsport stems from his father, a former amateur racer, who instilled in him a deep appreciation for the sport. Zayn views driver management as a fusion of his business acumen and his passion. A racing driver might cross paths with Zayn during scouting events in Asia, if they're looking for representation from someone with local knowledge and international ambitions.",
+  "physical": {
+    "skinTone": "Tan",
+    "hairColor": "Black",
+    "hairStyle": "Neat undercut",
+    "eyeColor": "Dark brown",
+    "facialHair": "Light stubble",
+    "description": "Zayn has a confident posture and a contagious smile. He favors tailored suits, often paired with stylish sneakers, reflecting his blend of business and youthful energy."
+  },
+  "connectionToMotorsport": "Zayn works as a driver agent, representing young and upcoming drivers across Southeast Asia, primarily focusing on Formula racing and GT series. His family also has connections to sponsors within the Malaysian business sector.",
+  "meetingContext": "You might meet Zayn at a regional karting event in Malaysia or Singapore, or at a networking event during a Formula 4 South East Asia race weekend.",
+  "conversationTopics": [
+    "The latest Formula 1 developments",
+    "Local motorsport talent",
+    "The complexities of sponsorship deals",
+    "His travels through Europe",
+    "Craft beer from around the world"
+  ],
+  "canHelp": [
+    "Negotiate sponsorship deals",
+    "Provide introductions to key figures in Asian motorsport",
+    "Offer career advice and management"
+  ],
+  "personality_summary": "A playfully sarcastic yet fiercely dedicated agent with a sharp business mind and a passion for motorsports."
+}

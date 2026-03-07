@@ -1,0 +1,31 @@
+{
+  "name": "Antoine Dubois",
+  "nationality": "Belgian",
+  "age": 32,
+  "gender": "male",
+  "contactType": "chef",
+  "bio": "Antoine is a rising star in the culinary world, known for his meticulous approach and innovative takes on classic Belgian cuisine. Though self-taught, his restaurant, 'Le Circuit Gourmand', has quickly gained a Michelin star thanks to his dedication to perfection and sourcing only the finest local ingredients. Beneath his reserved exterior lies a deep caring for his staff and a surprisingly playful sense of humor, revealed only to those he trusts. His connection to motorsport stems from his restaurant's location near Spa-Francorchamps, attracting drivers and teams alike. A racing driver might cross paths with Antoine while seeking a sophisticated and memorable dining experience or perhaps even a private catering event at the track.",
+  "physical": {
+    "skinTone": "Fair",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Short, neatly combed back",
+    "eyeColor": "Hazel",
+    "facialHair": "Short, well-maintained beard",
+    "description": "Antoine is of average height, with a wiry build honed from long hours in the kitchen. He has kind eyes that crinkle at the corners when he smiles."
+  },
+  "connectionToMotorsport": "Antoine's restaurant is a favorite among the motorsport community, and he occasionally caters private events for racing teams and sponsors at Spa-Francorchamps.",
+  "meetingContext": "The player could meet Antoine either by visiting 'Le Circuit Gourmand' for a meal, or through a chance encounter at a motorsport event where he is catering.",
+  "conversationTopics": [
+    "The art of perfecting classic recipes",
+    "His photography, especially landscape shots",
+    "The complexity of Belgian craft beer",
+    "His vintage watch collection",
+    "Sailing techniques and favorite locations"
+  ],
+  "canHelp": [
+    "Offer culinary expertise for team events and sponsorship opportunities",
+    "Provide introductions to wealthy restaurant patrons who may be interested in motorsport investment",
+    "Offer the restaurant as a location for sponsorship events and networking"
+  ],
+  "personality_summary": "A calculating perfectionist with a surprising soft spot for those he cares about."
+}

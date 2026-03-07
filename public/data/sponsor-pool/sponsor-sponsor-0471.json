@@ -1,0 +1,52 @@
+{
+  "id": "sponsor-0471",
+  "name": "Impuls Energy",
+  "category": "energy_drinks",
+  "tier": "high",
+  "country": "Poland",
+  "description": "Fueling your drive to victory.",
+  "story": "Impuls Energy is a Polish energy drink company committed to pushing the limits of human potential. Recognizing the intense focus and endurance required in motorsport, Impuls began sponsoring racing teams to showcase their product's performance-enhancing benefits. They seek partnerships that resonate with a high-energy, competitive spirit, aligning with their brand's message of achieving peak performance.",
+  "paymentTiers": {
+    "entry": {
+      "monthly": 20000,
+      "winBonus": 8000,
+      "podiumBonus": 4000,
+      "championshipBonus": 60000
+    },
+    "mid": {
+      "monthly": 60000,
+      "winBonus": 25000,
+      "podiumBonus": 12000,
+      "championshipBonus": 200000
+    },
+    "elite": {
+      "monthly": 250000,
+      "winBonus": 100000,
+      "podiumBonus": 50000,
+      "championshipBonus": 800000
+    }
+  },
+  "requirements": {
+    "minReputation": 55,
+    "minMarketability": 60,
+    "nationalities": [
+      "Poland"
+    ],
+    "minWins": 2
+  },
+  "priority": {
+    "primary": "performance",
+    "secondary": "media",
+    "weight": 4
+  },
+  "expectations": {
+    "minSeasonWins": 3,
+    "minSeasonPodiums": 6,
+    "requiredShoutouts": 4,
+    "requiredEvents": 2,
+    "noControversyClause": true,
+    "preferredImageStyle": "edgy"
+  },
+  "visibility": "unlock_after_contact",
+  "imagePath": "logos/sponsors/sponsor-0471.png"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sofia Ramirez",
+  "nationality": "Mexican",
+  "age": 35,
+  "gender": "female",
+  "role": "fabricator",
+  "bio": "Sofia Ramirez's journey into motorsport began in her grandfather's auto repair shop in Guadalajara. Surrounded by engines and tools from a young age, she developed a keen understanding of mechanical systems and a passion for precision. After earning a degree in mechanical engineering, Sofia honed her skills at a local racing team before making the leap to international competition. She’s worked in Formula 3 and Formula 2 before landing at Hitech GP. \n\nKnown for her meticulous approach and relentless pursuit of perfection, Sofia specializes in chassis fabrication and composite materials. Her ability to diagnose and resolve complex technical issues under pressure has earned her the respect of her colleagues. She’s particularly adept at innovating on existing designs to improve performance and durability, often sketching ideas during her lunch breaks. Sofia's demanding nature pushes those around her to achieve their best, making her a valuable, if sometimes challenging, asset to the team. She's known for spotting the smallest flaws that others miss.",
+  "physical": {
+    "skinTone": "Olive",
+    "hairColor": "Dark Brown",
+    "hairStyle": "Long, braided and often pulled back into a practical bun",
+    "eyeColor": "Brown",
+    "facialHair": null,
+    "description": "Sofia is of average height with a lean, wiry build, testament to her active lifestyle."
+  },
+  "personality": "demanding",
+  "quirks": [
+    "Always carries a small notebook filled with technical diagrams and calculations.",
+    "Insists on using only metric tools, regardless of the situation.",
+    "Has a habit of humming quietly while welding or assembling parts."
+  ]
+}

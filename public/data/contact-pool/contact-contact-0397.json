@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Dr. Eleanor Vance",
+    "nationality": "British",
+    "age": 53,
+    "gender": "female",
+    "contactType": "professor",
+    "bio": "Dr. Eleanor Vance is a Professor of Engineering at the University of Cambridge, specializing in aerodynamics and materials science. Her groundbreaking research on composite materials has been published in numerous prestigious journals, earning her international recognition. She's known for her sharp wit and brutally honest critiques, which, while occasionally delivered with a sarcastic edge, stem from a genuine desire for excellence. Some whisper that she harbors a secret envy for those who apply scientific principles in real-world, high-stakes scenarios, like motorsport.\n\nA racing driver might cross paths with Dr. Vance through university-sponsored research projects or guest lectures. Perhaps the driver is looking for advanced engineering solutions to improve their car's performance, or maybe they are invited to the university to talk about the practical applications of physics in racing, giving Eleanor a chance to observe and perhaps, advise.",
+    "physical": {
+      "skinTone": "Fair",
+      "hairColor": "Graying Brown",
+      "hairStyle": "Short, slightly disheveled bob",
+      "eyeColor": "Steel Blue",
+      "facialHair": null,
+      "description": "Eleanor is of average height, with a perpetually thoughtful expression etched on her face. She typically dresses in practical, unfussy clothing, often favoring tweed jackets and sensible shoes."
+    },
+    "connectionToMotorsport": "Dr. Vance consults on material science for a Formula 1 team, using her expertise to optimize car components for weight and durability. She also judges engineering competitions for university racing teams.",
+    "meetingContext": "The player might meet Dr. Vance at a university lecture, a motorsports engineering conference, or through a mutual contact in the Formula 1 team she consults for.",
+    "conversationTopics": [
+      "The latest advancements in composite materials",
+      "The failings of modern education",
+      "The principles of aerodynamics",
+      "The beauty of jazz music",
+      "Her volunteer work with underprivileged students"
+    ],
+    "canHelp": [
+      "Provide introductions to engineers and designers.",
+      "Offer technical advice on vehicle design and performance.",
+      "Write letters of recommendation to racing teams."
+    ],
+    "personality_summary": "A brilliant but sarcastic professor, secretly jealous of practical application of engineering, especially in racing."
+  }
+]
