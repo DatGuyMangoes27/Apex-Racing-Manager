@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Career Mode Godot Prototype"
+run/main_scene="res://scenes/intro.tscn"
+config/features=PackedStringArray("4.6", "C#")
+
+[autoload]
+
+PrototypeState="*res://scripts/prototype_state.gd"
+Ams2Telemetry="*res://scripts/Ams2Telemetry.cs"
+TutorialDirector="*res://scripts/tutorial_director.gd"
+ScreenTransition="*res://scripts/screen_transition.gd"
+AudioManager="*res://scripts/audio_manager.gd"
+SettingsManager="*res://scripts/settings_manager.gd"
+MCPScreenshot="*res://addons/godot_mcp/mcp_screenshot_service.gd"
+MCPInputService="*res://addons/godot_mcp/mcp_input_service.gd"
+MCPGameInspector="*res://addons/godot_mcp/mcp_game_inspector_service.gd"
+
+[display]
+
+window/size/viewport_width=2560
+window/size/viewport_height=1440
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
+window/size/min_width=1280
+window/size/min_height=720
+
+[dotnet]
+
+project/assembly_name="CareerModeGodotPrototype"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg", "res://addons/material_icons_importer/plugin.cfg", "res://addons/plenticons/plugin.cfg")
